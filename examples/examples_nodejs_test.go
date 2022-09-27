@@ -20,3 +20,11 @@ func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
 
 	return baseJS
 }
+
+func TestSKSTs(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: filepath.Join(getCwd(t), "sks-example", "ts"),
+		})
+	integration.ProgramTest(t, &test)
+}
