@@ -104,6 +104,8 @@ export class SKSKubeconfig extends pulumi.CustomResource {
             resourceInputs["readyForRenewal"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["kubeconfig"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(SKSKubeconfig.__pulumiType, name, resourceInputs, opts);
     }
 }

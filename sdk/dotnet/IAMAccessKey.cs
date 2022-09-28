@@ -76,6 +76,11 @@ namespace Pulumiverse.Exoscale
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/pulumiverse/pulumi-exoscale",
+                AdditionalSecretOutputs =
+                {
+                    "key",
+                    "secret",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -149,11 +154,21 @@ namespace Pulumiverse.Exoscale
 
     public sealed class IAMAccessKeyState : global::Pulumi.ResourceArgs
     {
+        [Input("key")]
+        private Input<string>? _key;
+
         /// <summary>
         /// The IAM access key (identifier).
         /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        public Input<string>? Key
+        {
+            get => _key;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _key = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The IAM access key name.
@@ -185,11 +200,21 @@ namespace Pulumiverse.Exoscale
             set => _resources = value;
         }
 
+        [Input("secret")]
+        private Input<string>? _secret;
+
         /// <summary>
         /// (Sensitive) The key secret.
         /// </summary>
-        [Input("secret")]
-        public Input<string>? Secret { get; set; }
+        public Input<string>? Secret
+        {
+            get => _secret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("tags")]
         private InputList<string>? _tags;

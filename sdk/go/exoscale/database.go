@@ -87,6 +87,10 @@ func NewDatabase(ctx *pulumi.Context,
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"uri",
+	})
+	opts = append(opts, secrets)
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Database
 	err := ctx.RegisterResource("exoscale:index/database:Database", name, args, &resource, opts...)

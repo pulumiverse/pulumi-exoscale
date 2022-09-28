@@ -5,48 +5,216 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./affinity";
-export * from "./antiAffinityGroup";
-export * from "./compute";
-export * from "./computeInstance";
-export * from "./database";
-export * from "./domain";
-export * from "./domainRecord";
-export * from "./elasticIP";
-export * from "./getAffinity";
-export * from "./getAntiAffinityGroup";
-export * from "./getCompute";
-export * from "./getComputeIPAddress";
-export * from "./getComputeInstance";
-export * from "./getComputeInstanceList";
-export * from "./getComputeTemplate";
-export * from "./getDomain";
-export * from "./getDomainRecord";
-export * from "./getElasticIP";
-export * from "./getInstancePool";
-export * from "./getInstancePoolList";
-export * from "./getNLB";
-export * from "./getNetwork";
-export * from "./getPrivateNetwork";
-export * from "./getSecurityGroup";
-export * from "./iamaccessKey";
-export * from "./instancePool";
-export * from "./ipaddress";
-export * from "./network";
-export * from "./nic";
-export * from "./nlb";
-export * from "./nlbservice";
-export * from "./privateNetwork";
-export * from "./provider";
-export * from "./secondaryIPAddress";
-export * from "./securityGroup";
-export * from "./securityGroupRule";
-export * from "./securityGroupRules";
-export * from "./skscluster";
-export * from "./skskubeconfig";
-export * from "./sksnodepool";
-export * from "./sshkey";
-export * from "./sshkeypair";
+export { AffinityArgs, AffinityState } from "./affinity";
+export type Affinity = import("./affinity").Affinity;
+export const Affinity: typeof import("./affinity").Affinity = null as any;
+
+export { AntiAffinityGroupArgs, AntiAffinityGroupState } from "./antiAffinityGroup";
+export type AntiAffinityGroup = import("./antiAffinityGroup").AntiAffinityGroup;
+export const AntiAffinityGroup: typeof import("./antiAffinityGroup").AntiAffinityGroup = null as any;
+
+export { ComputeArgs, ComputeState } from "./compute";
+export type Compute = import("./compute").Compute;
+export const Compute: typeof import("./compute").Compute = null as any;
+
+export { ComputeInstanceArgs, ComputeInstanceState } from "./computeInstance";
+export type ComputeInstance = import("./computeInstance").ComputeInstance;
+export const ComputeInstance: typeof import("./computeInstance").ComputeInstance = null as any;
+
+export { DatabaseArgs, DatabaseState } from "./database";
+export type Database = import("./database").Database;
+export const Database: typeof import("./database").Database = null as any;
+
+export { DomainArgs, DomainState } from "./domain";
+export type Domain = import("./domain").Domain;
+export const Domain: typeof import("./domain").Domain = null as any;
+
+export { DomainRecordArgs, DomainRecordState } from "./domainRecord";
+export type DomainRecord = import("./domainRecord").DomainRecord;
+export const DomainRecord: typeof import("./domainRecord").DomainRecord = null as any;
+
+export { ElasticIPArgs, ElasticIPState } from "./elasticIP";
+export type ElasticIP = import("./elasticIP").ElasticIP;
+export const ElasticIP: typeof import("./elasticIP").ElasticIP = null as any;
+
+export { GetAffinityArgs, GetAffinityResult, GetAffinityOutputArgs } from "./getAffinity";
+export const getAffinity: typeof import("./getAffinity").getAffinity = null as any;
+export const getAffinityOutput: typeof import("./getAffinity").getAffinityOutput = null as any;
+
+export { GetAntiAffinityGroupArgs, GetAntiAffinityGroupResult, GetAntiAffinityGroupOutputArgs } from "./getAntiAffinityGroup";
+export const getAntiAffinityGroup: typeof import("./getAntiAffinityGroup").getAntiAffinityGroup = null as any;
+export const getAntiAffinityGroupOutput: typeof import("./getAntiAffinityGroup").getAntiAffinityGroupOutput = null as any;
+
+export { GetComputeArgs, GetComputeResult, GetComputeOutputArgs } from "./getCompute";
+export const getCompute: typeof import("./getCompute").getCompute = null as any;
+export const getComputeOutput: typeof import("./getCompute").getComputeOutput = null as any;
+
+export { GetComputeIPAddressArgs, GetComputeIPAddressResult, GetComputeIPAddressOutputArgs } from "./getComputeIPAddress";
+export const getComputeIPAddress: typeof import("./getComputeIPAddress").getComputeIPAddress = null as any;
+export const getComputeIPAddressOutput: typeof import("./getComputeIPAddress").getComputeIPAddressOutput = null as any;
+
+export { GetComputeInstanceArgs, GetComputeInstanceResult, GetComputeInstanceOutputArgs } from "./getComputeInstance";
+export const getComputeInstance: typeof import("./getComputeInstance").getComputeInstance = null as any;
+export const getComputeInstanceOutput: typeof import("./getComputeInstance").getComputeInstanceOutput = null as any;
+
+export { GetComputeInstanceListArgs, GetComputeInstanceListResult, GetComputeInstanceListOutputArgs } from "./getComputeInstanceList";
+export const getComputeInstanceList: typeof import("./getComputeInstanceList").getComputeInstanceList = null as any;
+export const getComputeInstanceListOutput: typeof import("./getComputeInstanceList").getComputeInstanceListOutput = null as any;
+
+export { GetComputeTemplateArgs, GetComputeTemplateResult, GetComputeTemplateOutputArgs } from "./getComputeTemplate";
+export const getComputeTemplate: typeof import("./getComputeTemplate").getComputeTemplate = null as any;
+export const getComputeTemplateOutput: typeof import("./getComputeTemplate").getComputeTemplateOutput = null as any;
+
+export { GetDomainArgs, GetDomainResult, GetDomainOutputArgs } from "./getDomain";
+export const getDomain: typeof import("./getDomain").getDomain = null as any;
+export const getDomainOutput: typeof import("./getDomain").getDomainOutput = null as any;
+
+export { GetDomainRecordArgs, GetDomainRecordResult, GetDomainRecordOutputArgs } from "./getDomainRecord";
+export const getDomainRecord: typeof import("./getDomainRecord").getDomainRecord = null as any;
+export const getDomainRecordOutput: typeof import("./getDomainRecord").getDomainRecordOutput = null as any;
+
+export { GetElasticIPArgs, GetElasticIPResult, GetElasticIPOutputArgs } from "./getElasticIP";
+export const getElasticIP: typeof import("./getElasticIP").getElasticIP = null as any;
+export const getElasticIPOutput: typeof import("./getElasticIP").getElasticIPOutput = null as any;
+
+export { GetInstancePoolArgs, GetInstancePoolResult, GetInstancePoolOutputArgs } from "./getInstancePool";
+export const getInstancePool: typeof import("./getInstancePool").getInstancePool = null as any;
+export const getInstancePoolOutput: typeof import("./getInstancePool").getInstancePoolOutput = null as any;
+
+export { GetInstancePoolListArgs, GetInstancePoolListResult, GetInstancePoolListOutputArgs } from "./getInstancePoolList";
+export const getInstancePoolList: typeof import("./getInstancePoolList").getInstancePoolList = null as any;
+export const getInstancePoolListOutput: typeof import("./getInstancePoolList").getInstancePoolListOutput = null as any;
+
+export { GetNLBArgs, GetNLBResult, GetNLBOutputArgs } from "./getNLB";
+export const getNLB: typeof import("./getNLB").getNLB = null as any;
+export const getNLBOutput: typeof import("./getNLB").getNLBOutput = null as any;
+
+export { GetNetworkArgs, GetNetworkResult, GetNetworkOutputArgs } from "./getNetwork";
+export const getNetwork: typeof import("./getNetwork").getNetwork = null as any;
+export const getNetworkOutput: typeof import("./getNetwork").getNetworkOutput = null as any;
+
+export { GetPrivateNetworkArgs, GetPrivateNetworkResult, GetPrivateNetworkOutputArgs } from "./getPrivateNetwork";
+export const getPrivateNetwork: typeof import("./getPrivateNetwork").getPrivateNetwork = null as any;
+export const getPrivateNetworkOutput: typeof import("./getPrivateNetwork").getPrivateNetworkOutput = null as any;
+
+export { GetSecurityGroupArgs, GetSecurityGroupResult, GetSecurityGroupOutputArgs } from "./getSecurityGroup";
+export const getSecurityGroup: typeof import("./getSecurityGroup").getSecurityGroup = null as any;
+export const getSecurityGroupOutput: typeof import("./getSecurityGroup").getSecurityGroupOutput = null as any;
+
+export { IAMAccessKeyArgs, IAMAccessKeyState } from "./iamaccessKey";
+export type IAMAccessKey = import("./iamaccessKey").IAMAccessKey;
+export const IAMAccessKey: typeof import("./iamaccessKey").IAMAccessKey = null as any;
+
+export { InstancePoolArgs, InstancePoolState } from "./instancePool";
+export type InstancePool = import("./instancePool").InstancePool;
+export const InstancePool: typeof import("./instancePool").InstancePool = null as any;
+
+export { IPAddressArgs, IPAddressState } from "./ipaddress";
+export type IPAddress = import("./ipaddress").IPAddress;
+export const IPAddress: typeof import("./ipaddress").IPAddress = null as any;
+
+export { NetworkArgs, NetworkState } from "./network";
+export type Network = import("./network").Network;
+export const Network: typeof import("./network").Network = null as any;
+
+export { NICArgs, NICState } from "./nic";
+export type NIC = import("./nic").NIC;
+export const NIC: typeof import("./nic").NIC = null as any;
+
+export { NLBArgs, NLBState } from "./nlb";
+export type NLB = import("./nlb").NLB;
+export const NLB: typeof import("./nlb").NLB = null as any;
+
+export { NLBServiceArgs, NLBServiceState } from "./nlbservice";
+export type NLBService = import("./nlbservice").NLBService;
+export const NLBService: typeof import("./nlbservice").NLBService = null as any;
+
+export { PrivateNetworkArgs, PrivateNetworkState } from "./privateNetwork";
+export type PrivateNetwork = import("./privateNetwork").PrivateNetwork;
+export const PrivateNetwork: typeof import("./privateNetwork").PrivateNetwork = null as any;
+
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+
+export { SecondaryIPAddressArgs, SecondaryIPAddressState } from "./secondaryIPAddress";
+export type SecondaryIPAddress = import("./secondaryIPAddress").SecondaryIPAddress;
+export const SecondaryIPAddress: typeof import("./secondaryIPAddress").SecondaryIPAddress = null as any;
+
+export { SecurityGroupArgs, SecurityGroupState } from "./securityGroup";
+export type SecurityGroup = import("./securityGroup").SecurityGroup;
+export const SecurityGroup: typeof import("./securityGroup").SecurityGroup = null as any;
+
+export { SecurityGroupRuleArgs, SecurityGroupRuleState } from "./securityGroupRule";
+export type SecurityGroupRule = import("./securityGroupRule").SecurityGroupRule;
+export const SecurityGroupRule: typeof import("./securityGroupRule").SecurityGroupRule = null as any;
+
+export { SecurityGroupRulesArgs, SecurityGroupRulesState } from "./securityGroupRules";
+export type SecurityGroupRules = import("./securityGroupRules").SecurityGroupRules;
+export const SecurityGroupRules: typeof import("./securityGroupRules").SecurityGroupRules = null as any;
+
+export { SKSClusterArgs, SKSClusterState } from "./skscluster";
+export type SKSCluster = import("./skscluster").SKSCluster;
+export const SKSCluster: typeof import("./skscluster").SKSCluster = null as any;
+
+export { SKSKubeconfigArgs, SKSKubeconfigState } from "./skskubeconfig";
+export type SKSKubeconfig = import("./skskubeconfig").SKSKubeconfig;
+export const SKSKubeconfig: typeof import("./skskubeconfig").SKSKubeconfig = null as any;
+
+export { SKSNodepoolArgs, SKSNodepoolState } from "./sksnodepool";
+export type SKSNodepool = import("./sksnodepool").SKSNodepool;
+export const SKSNodepool: typeof import("./sksnodepool").SKSNodepool = null as any;
+
+export { SSHKeyArgs, SSHKeyState } from "./sshkey";
+export type SSHKey = import("./sshkey").SSHKey;
+export const SSHKey: typeof import("./sshkey").SSHKey = null as any;
+
+export { SSHKeypairArgs, SSHKeypairState } from "./sshkeypair";
+export type SSHKeypair = import("./sshkeypair").SSHKeypair;
+export const SSHKeypair: typeof import("./sshkeypair").SSHKeypair = null as any;
+
+utilities.lazyLoad(exports, ["Affinity"], () => require("./affinity"));
+utilities.lazyLoad(exports, ["AntiAffinityGroup"], () => require("./antiAffinityGroup"));
+utilities.lazyLoad(exports, ["Compute"], () => require("./compute"));
+utilities.lazyLoad(exports, ["ComputeInstance"], () => require("./computeInstance"));
+utilities.lazyLoad(exports, ["Database"], () => require("./database"));
+utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
+utilities.lazyLoad(exports, ["DomainRecord"], () => require("./domainRecord"));
+utilities.lazyLoad(exports, ["ElasticIP"], () => require("./elasticIP"));
+utilities.lazyLoad(exports, ["getAffinity","getAffinityOutput"], () => require("./getAffinity"));
+utilities.lazyLoad(exports, ["getAntiAffinityGroup","getAntiAffinityGroupOutput"], () => require("./getAntiAffinityGroup"));
+utilities.lazyLoad(exports, ["getCompute","getComputeOutput"], () => require("./getCompute"));
+utilities.lazyLoad(exports, ["getComputeIPAddress","getComputeIPAddressOutput"], () => require("./getComputeIPAddress"));
+utilities.lazyLoad(exports, ["getComputeInstance","getComputeInstanceOutput"], () => require("./getComputeInstance"));
+utilities.lazyLoad(exports, ["getComputeInstanceList","getComputeInstanceListOutput"], () => require("./getComputeInstanceList"));
+utilities.lazyLoad(exports, ["getComputeTemplate","getComputeTemplateOutput"], () => require("./getComputeTemplate"));
+utilities.lazyLoad(exports, ["getDomain","getDomainOutput"], () => require("./getDomain"));
+utilities.lazyLoad(exports, ["getDomainRecord","getDomainRecordOutput"], () => require("./getDomainRecord"));
+utilities.lazyLoad(exports, ["getElasticIP","getElasticIPOutput"], () => require("./getElasticIP"));
+utilities.lazyLoad(exports, ["getInstancePool","getInstancePoolOutput"], () => require("./getInstancePool"));
+utilities.lazyLoad(exports, ["getInstancePoolList","getInstancePoolListOutput"], () => require("./getInstancePoolList"));
+utilities.lazyLoad(exports, ["getNLB","getNLBOutput"], () => require("./getNLB"));
+utilities.lazyLoad(exports, ["getNetwork","getNetworkOutput"], () => require("./getNetwork"));
+utilities.lazyLoad(exports, ["getPrivateNetwork","getPrivateNetworkOutput"], () => require("./getPrivateNetwork"));
+utilities.lazyLoad(exports, ["getSecurityGroup","getSecurityGroupOutput"], () => require("./getSecurityGroup"));
+utilities.lazyLoad(exports, ["IAMAccessKey"], () => require("./iamaccessKey"));
+utilities.lazyLoad(exports, ["InstancePool"], () => require("./instancePool"));
+utilities.lazyLoad(exports, ["IPAddress"], () => require("./ipaddress"));
+utilities.lazyLoad(exports, ["Network"], () => require("./network"));
+utilities.lazyLoad(exports, ["NIC"], () => require("./nic"));
+utilities.lazyLoad(exports, ["NLB"], () => require("./nlb"));
+utilities.lazyLoad(exports, ["NLBService"], () => require("./nlbservice"));
+utilities.lazyLoad(exports, ["PrivateNetwork"], () => require("./privateNetwork"));
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+utilities.lazyLoad(exports, ["SecondaryIPAddress"], () => require("./secondaryIPAddress"));
+utilities.lazyLoad(exports, ["SecurityGroup"], () => require("./securityGroup"));
+utilities.lazyLoad(exports, ["SecurityGroupRule"], () => require("./securityGroupRule"));
+utilities.lazyLoad(exports, ["SecurityGroupRules"], () => require("./securityGroupRules"));
+utilities.lazyLoad(exports, ["SKSCluster"], () => require("./skscluster"));
+utilities.lazyLoad(exports, ["SKSKubeconfig"], () => require("./skskubeconfig"));
+utilities.lazyLoad(exports, ["SKSNodepool"], () => require("./sksnodepool"));
+utilities.lazyLoad(exports, ["SSHKey"], () => require("./sshkey"));
+utilities.lazyLoad(exports, ["SSHKeypair"], () => require("./sshkeypair"));
 
 // Export sub-modules:
 import * as config from "./config";
@@ -56,33 +224,6 @@ export {
     config,
     types,
 };
-
-// Import resources to register:
-import { Affinity } from "./affinity";
-import { AntiAffinityGroup } from "./antiAffinityGroup";
-import { Compute } from "./compute";
-import { ComputeInstance } from "./computeInstance";
-import { Database } from "./database";
-import { Domain } from "./domain";
-import { DomainRecord } from "./domainRecord";
-import { ElasticIP } from "./elasticIP";
-import { IAMAccessKey } from "./iamaccessKey";
-import { IPAddress } from "./ipaddress";
-import { InstancePool } from "./instancePool";
-import { NIC } from "./nic";
-import { NLB } from "./nlb";
-import { NLBService } from "./nlbservice";
-import { Network } from "./network";
-import { PrivateNetwork } from "./privateNetwork";
-import { SKSCluster } from "./skscluster";
-import { SKSKubeconfig } from "./skskubeconfig";
-import { SKSNodepool } from "./sksnodepool";
-import { SSHKey } from "./sshkey";
-import { SSHKeypair } from "./sshkeypair";
-import { SecondaryIPAddress } from "./secondaryIPAddress";
-import { SecurityGroup } from "./securityGroup";
-import { SecurityGroupRule } from "./securityGroupRule";
-import { SecurityGroupRules } from "./securityGroupRules";
 
 const _module = {
     version: utilities.getVersion(),
@@ -168,9 +309,6 @@ pulumi.runtime.registerResourceModule("exoscale", "index/secondaryIPAddress", _m
 pulumi.runtime.registerResourceModule("exoscale", "index/securityGroup", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/securityGroupRule", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/securityGroupRules", _module)
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("exoscale", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

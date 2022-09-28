@@ -50,6 +50,13 @@ func NewProvider(ctx *pulumi.Context,
 	if args.Timeout == nil {
 		return nil, errors.New("invalid value for required argument 'Timeout'")
 	}
+	if args.Secret != nil {
+		args.Secret = pulumi.ToSecret(args.Secret).(pulumi.StringPtrOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"secret",
+	})
+	opts = append(opts, secrets)
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:exoscale", name, args, &resource, opts...)

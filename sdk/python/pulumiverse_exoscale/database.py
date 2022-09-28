@@ -682,6 +682,8 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["updated_at"] = None
             __props__.__dict__["uri"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["uri"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Database, __self__).__init__(
             'exoscale:index/database:Database',
             resource_name,

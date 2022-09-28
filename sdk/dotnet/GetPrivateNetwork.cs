@@ -13,10 +13,10 @@ namespace Pulumiverse.Exoscale
     public static class GetPrivateNetwork
     {
         public static Task<GetPrivateNetworkResult> InvokeAsync(GetPrivateNetworkArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPrivateNetworkResult>("exoscale:index/getPrivateNetwork:getPrivateNetwork", args ?? new GetPrivateNetworkArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrivateNetworkResult>("exoscale:index/getPrivateNetwork:getPrivateNetwork", args ?? new GetPrivateNetworkArgs(), options.WithDefaults());
 
         public static Output<GetPrivateNetworkResult> Invoke(GetPrivateNetworkInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPrivateNetworkResult>("exoscale:index/getPrivateNetwork:getPrivateNetwork", args ?? new GetPrivateNetworkInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPrivateNetworkResult>("exoscale:index/getPrivateNetwork:getPrivateNetwork", args ?? new GetPrivateNetworkInvokeArgs(), options.WithDefaults());
     }
 
 

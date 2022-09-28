@@ -13,10 +13,10 @@ namespace Pulumiverse.Exoscale
     public static class GetSecurityGroup
     {
         public static Task<GetSecurityGroupResult> InvokeAsync(GetSecurityGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecurityGroupResult>("exoscale:index/getSecurityGroup:getSecurityGroup", args ?? new GetSecurityGroupArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecurityGroupResult>("exoscale:index/getSecurityGroup:getSecurityGroup", args ?? new GetSecurityGroupArgs(), options.WithDefaults());
 
         public static Output<GetSecurityGroupResult> Invoke(GetSecurityGroupInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSecurityGroupResult>("exoscale:index/getSecurityGroup:getSecurityGroup", args ?? new GetSecurityGroupInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecurityGroupResult>("exoscale:index/getSecurityGroup:getSecurityGroup", args ?? new GetSecurityGroupInvokeArgs(), options.WithDefaults());
     }
 
 

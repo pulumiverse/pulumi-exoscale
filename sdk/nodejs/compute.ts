@@ -219,6 +219,8 @@ export class Compute extends pulumi.CustomResource {
             resourceInputs["username"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Compute.__pulumiType, name, resourceInputs, opts);
     }
 }

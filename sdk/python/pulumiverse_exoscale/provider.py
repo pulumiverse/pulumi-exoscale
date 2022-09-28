@@ -302,7 +302,7 @@ class Provider(pulumi.ProviderResource):
                 pulumi.log.warn("""profile is deprecated: Use region instead""")
             __props__.__dict__["profile"] = profile
             __props__.__dict__["region"] = region
-            __props__.__dict__["secret"] = secret
+            __props__.__dict__["secret"] = None if secret is None else pulumi.Output.secret(secret)
             if timeout is None and not opts.urn:
                 raise TypeError("Missing required property 'timeout'")
             __props__.__dict__["timeout"] = pulumi.Output.from_input(timeout).apply(pulumi.runtime.to_json) if timeout is not None else None
@@ -310,6 +310,8 @@ class Provider(pulumi.ProviderResource):
                 warnings.warn("""Use key instead""", DeprecationWarning)
                 pulumi.log.warn("""token is deprecated: Use key instead""")
             __props__.__dict__["token"] = token
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secret"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'exoscale',
             resource_name,

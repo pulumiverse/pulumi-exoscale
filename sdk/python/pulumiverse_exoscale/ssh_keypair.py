@@ -176,6 +176,8 @@ class SSHKeypair(pulumi.CustomResource):
             __props__.__dict__["public_key"] = public_key
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["private_key"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["privateKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(SSHKeypair, __self__).__init__(
             'exoscale:index/sSHKeypair:SSHKeypair',
             resource_name,

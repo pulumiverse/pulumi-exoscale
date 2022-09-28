@@ -35,6 +35,11 @@ func NewIAMAccessKey(ctx *pulumi.Context,
 		args = &IAMAccessKeyArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"key",
+		"secret",
+	})
+	opts = append(opts, secrets)
 	opts = pkgResourceDefaultOpts(opts)
 	var resource IAMAccessKey
 	err := ctx.RegisterResource("exoscale:index/iAMAccessKey:IAMAccessKey", name, args, &resource, opts...)

@@ -79,6 +79,10 @@ namespace Pulumiverse.Exoscale
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/pulumiverse/pulumi-exoscale",
+                AdditionalSecretOutputs =
+                {
+                    "kubeconfig",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -170,11 +174,21 @@ namespace Pulumiverse.Exoscale
             set => _groups = value;
         }
 
+        [Input("kubeconfig")]
+        private Input<string>? _kubeconfig;
+
         /// <summary>
         /// The generated Kubeconfig (YAML content).
         /// </summary>
-        [Input("kubeconfig")]
-        public Input<string>? Kubeconfig { get; set; }
+        public Input<string>? Kubeconfig
+        {
+            get => _kubeconfig;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _kubeconfig = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("readyForRenewal")]
         public Input<bool>? ReadyForRenewal { get; set; }

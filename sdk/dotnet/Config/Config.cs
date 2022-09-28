@@ -30,7 +30,7 @@ namespace Pulumiverse.Exoscale
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("exoscale");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("exoscale");
 
         private static readonly __Value<string?> _computeEndpoint = new __Value<string?>(() => __config.Get("computeEndpoint"));
         /// <summary>

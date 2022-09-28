@@ -16,13 +16,13 @@ namespace Pulumiverse.Exoscale
         /// !&gt; **WARNING:** This data source is DEPRECATED and will be removed in the next major version. Please use exoscale.AntiAffinityGroup instead.
         /// </summary>
         public static Task<GetAffinityResult> InvokeAsync(GetAffinityArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAffinityResult>("exoscale:index/getAffinity:getAffinity", args ?? new GetAffinityArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAffinityResult>("exoscale:index/getAffinity:getAffinity", args ?? new GetAffinityArgs(), options.WithDefaults());
 
         /// <summary>
         /// !&gt; **WARNING:** This data source is DEPRECATED and will be removed in the next major version. Please use exoscale.AntiAffinityGroup instead.
         /// </summary>
         public static Output<GetAffinityResult> Invoke(GetAffinityInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAffinityResult>("exoscale:index/getAffinity:getAffinity", args ?? new GetAffinityInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAffinityResult>("exoscale:index/getAffinity:getAffinity", args ?? new GetAffinityInvokeArgs(), options.WithDefaults());
     }
 
 

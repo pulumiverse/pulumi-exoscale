@@ -13,10 +13,10 @@ namespace Pulumiverse.Exoscale
     public static class GetElasticIP
     {
         public static Task<GetElasticIPResult> InvokeAsync(GetElasticIPArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetElasticIPResult>("exoscale:index/getElasticIP:getElasticIP", args ?? new GetElasticIPArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetElasticIPResult>("exoscale:index/getElasticIP:getElasticIP", args ?? new GetElasticIPArgs(), options.WithDefaults());
 
         public static Output<GetElasticIPResult> Invoke(GetElasticIPInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetElasticIPResult>("exoscale:index/getElasticIP:getElasticIP", args ?? new GetElasticIPInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetElasticIPResult>("exoscale:index/getElasticIP:getElasticIP", args ?? new GetElasticIPInvokeArgs(), options.WithDefaults());
     }
 
 

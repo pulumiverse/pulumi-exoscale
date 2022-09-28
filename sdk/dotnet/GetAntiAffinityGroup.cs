@@ -13,10 +13,10 @@ namespace Pulumiverse.Exoscale
     public static class GetAntiAffinityGroup
     {
         public static Task<GetAntiAffinityGroupResult> InvokeAsync(GetAntiAffinityGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAntiAffinityGroupResult>("exoscale:index/getAntiAffinityGroup:getAntiAffinityGroup", args ?? new GetAntiAffinityGroupArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAntiAffinityGroupResult>("exoscale:index/getAntiAffinityGroup:getAntiAffinityGroup", args ?? new GetAntiAffinityGroupArgs(), options.WithDefaults());
 
         public static Output<GetAntiAffinityGroupResult> Invoke(GetAntiAffinityGroupInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAntiAffinityGroupResult>("exoscale:index/getAntiAffinityGroup:getAntiAffinityGroup", args ?? new GetAntiAffinityGroupInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAntiAffinityGroupResult>("exoscale:index/getAntiAffinityGroup:getAntiAffinityGroup", args ?? new GetAntiAffinityGroupInvokeArgs(), options.WithDefaults());
     }
 
 

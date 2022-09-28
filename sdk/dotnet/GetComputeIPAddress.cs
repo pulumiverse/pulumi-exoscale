@@ -16,13 +16,13 @@ namespace Pulumiverse.Exoscale
         /// !&gt; **WARNING:** This data source is **DEPRECATED** and will be removed in the next major version. Please use exoscale.ElasticIP instead.
         /// </summary>
         public static Task<GetComputeIPAddressResult> InvokeAsync(GetComputeIPAddressArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetComputeIPAddressResult>("exoscale:index/getComputeIPAddress:getComputeIPAddress", args ?? new GetComputeIPAddressArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetComputeIPAddressResult>("exoscale:index/getComputeIPAddress:getComputeIPAddress", args ?? new GetComputeIPAddressArgs(), options.WithDefaults());
 
         /// <summary>
         /// !&gt; **WARNING:** This data source is **DEPRECATED** and will be removed in the next major version. Please use exoscale.ElasticIP instead.
         /// </summary>
         public static Output<GetComputeIPAddressResult> Invoke(GetComputeIPAddressInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetComputeIPAddressResult>("exoscale:index/getComputeIPAddress:getComputeIPAddress", args ?? new GetComputeIPAddressInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetComputeIPAddressResult>("exoscale:index/getComputeIPAddress:getComputeIPAddress", args ?? new GetComputeIPAddressInvokeArgs(), options.WithDefaults());
     }
 
 
