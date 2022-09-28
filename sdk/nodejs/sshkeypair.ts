@@ -74,6 +74,8 @@ export class SSHKeypair extends pulumi.CustomResource {
             resourceInputs["privateKey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["privateKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(SSHKeypair.__pulumiType, name, resourceInputs, opts);
     }
 }

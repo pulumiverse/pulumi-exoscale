@@ -176,6 +176,10 @@ namespace Pulumiverse.Exoscale
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/pulumiverse/pulumi-exoscale",
+                AdditionalSecretOutputs =
+                {
+                    "uri",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -393,11 +397,21 @@ namespace Pulumiverse.Exoscale
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 
+        [Input("uri")]
+        private Input<string>? _uri;
+
         /// <summary>
         /// The database service connection URI.
         /// </summary>
-        [Input("uri")]
-        public Input<string>? Uri { get; set; }
+        public Input<string>? Uri
+        {
+            get => _uri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _uri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The Exoscale [Zone][zone] name.

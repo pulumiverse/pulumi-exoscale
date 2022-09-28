@@ -13,11 +13,21 @@ namespace Pulumiverse.Exoscale.Inputs
 
     public sealed class DatabaseMysqlGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("adminPassword")]
+        private Input<string>? _adminPassword;
+
         /// <summary>
         /// A custom administrator account password (may only be set at creation time).
         /// </summary>
-        [Input("adminPassword")]
-        public Input<string>? AdminPassword { get; set; }
+        public Input<string>? AdminPassword
+        {
+            get => _adminPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _adminPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// A custom administrator account username (may only be set at creation time).

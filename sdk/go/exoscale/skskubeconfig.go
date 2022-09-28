@@ -49,6 +49,10 @@ func NewSKSKubeconfig(ctx *pulumi.Context,
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"kubeconfig",
+	})
+	opts = append(opts, secrets)
 	opts = pkgResourceDefaultOpts(opts)
 	var resource SKSKubeconfig
 	err := ctx.RegisterResource("exoscale:index/sKSKubeconfig:SKSKubeconfig", name, args, &resource, opts...)

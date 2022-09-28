@@ -89,6 +89,8 @@ export class IAMAccessKey extends pulumi.CustomResource {
             resourceInputs["tagsOperations"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["key", "secret"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(IAMAccessKey.__pulumiType, name, resourceInputs, opts);
     }
 }

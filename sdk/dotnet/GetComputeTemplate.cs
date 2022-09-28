@@ -13,10 +13,10 @@ namespace Pulumiverse.Exoscale
     public static class GetComputeTemplate
     {
         public static Task<GetComputeTemplateResult> InvokeAsync(GetComputeTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetComputeTemplateResult>("exoscale:index/getComputeTemplate:getComputeTemplate", args ?? new GetComputeTemplateArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetComputeTemplateResult>("exoscale:index/getComputeTemplate:getComputeTemplate", args ?? new GetComputeTemplateArgs(), options.WithDefaults());
 
         public static Output<GetComputeTemplateResult> Invoke(GetComputeTemplateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetComputeTemplateResult>("exoscale:index/getComputeTemplate:getComputeTemplate", args ?? new GetComputeTemplateInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetComputeTemplateResult>("exoscale:index/getComputeTemplate:getComputeTemplate", args ?? new GetComputeTemplateInvokeArgs(), options.WithDefaults());
     }
 
 

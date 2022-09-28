@@ -85,11 +85,13 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["key"] = args ? args.key : undefined;
             resourceInputs["profile"] = args ? args.profile : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["secret"] = args ? args.secret : undefined;
+            resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
             resourceInputs["timeout"] = pulumi.output(args ? args.timeout : undefined).apply(JSON.stringify);
             resourceInputs["token"] = args ? args.token : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["secret"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }

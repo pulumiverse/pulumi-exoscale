@@ -892,6 +892,8 @@ class Compute(pulumi.CustomResource):
             __props__.__dict__["password"] = None
             __props__.__dict__["user_data_base64"] = None
             __props__.__dict__["username"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Compute, __self__).__init__(
             'exoscale:index/compute:Compute',
             resource_name,

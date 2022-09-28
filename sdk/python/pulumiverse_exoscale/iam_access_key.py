@@ -261,6 +261,8 @@ class IAMAccessKey(pulumi.CustomResource):
             __props__.__dict__["key"] = None
             __props__.__dict__["secret"] = None
             __props__.__dict__["tags_operations"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["key", "secret"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(IAMAccessKey, __self__).__init__(
             'exoscale:index/iAMAccessKey:IAMAccessKey',
             resource_name,

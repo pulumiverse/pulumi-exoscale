@@ -102,7 +102,8 @@
             },
             "secret": {
                 "type": "string",
-                "description": "Exoscale API secret\n"
+                "description": "Exoscale API secret\n",
+                "secret": true
             },
             "timeout": {
                 "type": "integer",
@@ -275,7 +276,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "secret": true
                 },
                 "adminUsername": {
                     "type": "string",
@@ -554,7 +556,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "secret": true
                 },
                 "adminUsername": {
                     "type": "string",
@@ -1918,7 +1921,8 @@
             },
             "secret": {
                 "type": "string",
-                "description": "Exoscale API secret\n"
+                "description": "Exoscale API secret\n",
+                "secret": true
             },
             "timeout": {
                 "type": "integer",
@@ -1976,7 +1980,8 @@
             },
             "secret": {
                 "type": "string",
-                "description": "Exoscale API secret\n"
+                "description": "Exoscale API secret\n",
+                "secret": true
             },
             "timeout": {
                 "type": "integer",
@@ -2176,7 +2181,8 @@
                 },
                 "password": {
                     "type": "string",
-                    "description": "The instance initial password and/or encrypted password.\n"
+                    "description": "The instance initial password and/or encrypted password.\n",
+                    "secret": true
                 },
                 "reverseDns": {
                     "type": "string",
@@ -2431,7 +2437,8 @@
                     },
                     "password": {
                         "type": "string",
-                        "description": "The instance initial password and/or encrypted password.\n"
+                        "description": "The instance initial password and/or encrypted password.\n",
+                        "secret": true
                     },
                     "reverseDns": {
                         "type": "string",
@@ -2880,7 +2887,8 @@
                 },
                 "uri": {
                     "type": "string",
-                    "description": "The database service connection URI.\n"
+                    "description": "The database service connection URI.\n",
+                    "secret": true
                 },
                 "zone": {
                     "type": "string",
@@ -3045,7 +3053,8 @@
                     },
                     "uri": {
                         "type": "string",
-                        "description": "The database service connection URI.\n"
+                        "description": "The database service connection URI.\n",
+                        "secret": true
                     },
                     "zone": {
                         "type": "string",
@@ -3339,7 +3348,8 @@
             "properties": {
                 "key": {
                     "type": "string",
-                    "description": "The IAM access key (identifier).\n"
+                    "description": "The IAM access key (identifier).\n",
+                    "secret": true
                 },
                 "name": {
                     "type": "string",
@@ -3361,7 +3371,8 @@
                 },
                 "secret": {
                     "type": "string",
-                    "description": "(Sensitive) The key secret.\n"
+                    "description": "(Sensitive) The key secret.\n",
+                    "secret": true
                 },
                 "tags": {
                     "type": "array",
@@ -3419,7 +3430,8 @@
                 "properties": {
                     "key": {
                         "type": "string",
-                        "description": "The IAM access key (identifier).\n"
+                        "description": "The IAM access key (identifier).\n",
+                        "secret": true
                     },
                     "name": {
                         "type": "string",
@@ -3444,7 +3456,8 @@
                     },
                     "secret": {
                         "type": "string",
-                        "description": "(Sensitive) The key secret.\n"
+                        "description": "(Sensitive) The key secret.\n",
+                        "secret": true
                     },
                     "tags": {
                         "type": "array",
@@ -4870,7 +4883,8 @@
                 },
                 "kubeconfig": {
                     "type": "string",
-                    "description": "The generated Kubeconfig (YAML content).\n"
+                    "description": "The generated Kubeconfig (YAML content).\n",
+                    "secret": true
                 },
                 "readyForRenewal": {
                     "type": "boolean"
@@ -4956,7 +4970,8 @@
                     },
                     "kubeconfig": {
                         "type": "string",
-                        "description": "The generated Kubeconfig (YAML content).\n"
+                        "description": "The generated Kubeconfig (YAML content).\n",
+                        "secret": true
                     },
                     "readyForRenewal": {
                         "type": "boolean"
@@ -5331,7 +5346,8 @@
                 },
                 "privateKey": {
                     "type": "string",
-                    "description": "The SSH *private* key generated if no public key was provided.\n"
+                    "description": "The SSH *private* key generated if no public key was provided.\n",
+                    "secret": true
                 },
                 "publicKey": {
                     "type": "string",
@@ -5369,7 +5385,8 @@
                     },
                     "privateKey": {
                         "type": "string",
-                        "description": "The SSH *private* key generated if no public key was provided.\n"
+                        "description": "The SSH *private* key generated if no public key was provided.\n",
+                        "secret": true
                     },
                     "publicKey": {
                         "type": "string",

@@ -311,6 +311,8 @@ class SKSKubeconfig(pulumi.CustomResource):
             __props__.__dict__["zone"] = zone
             __props__.__dict__["kubeconfig"] = None
             __props__.__dict__["ready_for_renewal"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["kubeconfig"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(SKSKubeconfig, __self__).__init__(
             'exoscale:index/sKSKubeconfig:SKSKubeconfig',
             resource_name,

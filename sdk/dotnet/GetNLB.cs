@@ -13,10 +13,10 @@ namespace Pulumiverse.Exoscale
     public static class GetNLB
     {
         public static Task<GetNLBResult> InvokeAsync(GetNLBArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNLBResult>("exoscale:index/getNLB:getNLB", args ?? new GetNLBArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNLBResult>("exoscale:index/getNLB:getNLB", args ?? new GetNLBArgs(), options.WithDefaults());
 
         public static Output<GetNLBResult> Invoke(GetNLBInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNLBResult>("exoscale:index/getNLB:getNLB", args ?? new GetNLBInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNLBResult>("exoscale:index/getNLB:getNLB", args ?? new GetNLBInvokeArgs(), options.WithDefaults());
     }
 
 

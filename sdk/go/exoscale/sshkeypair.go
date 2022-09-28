@@ -30,6 +30,10 @@ func NewSSHKeypair(ctx *pulumi.Context,
 		args = &SSHKeypairArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"privateKey",
+	})
+	opts = append(opts, secrets)
 	opts = pkgResourceDefaultOpts(opts)
 	var resource SSHKeypair
 	err := ctx.RegisterResource("exoscale:index/sSHKeypair:SSHKeypair", name, args, &resource, opts...)
