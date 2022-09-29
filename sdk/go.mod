@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-exoscale/sdk
+module github.com/pulumiverse/pulumi-exoscale/sdk
 
 go 1.19
 
