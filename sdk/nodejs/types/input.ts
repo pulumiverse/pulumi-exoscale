@@ -260,25 +260,6 @@ export interface ElasticIPHealthcheck {
     uri?: pulumi.Input<string>;
 }
 
-export interface GetDomainRecordFilterArgs {
-    /**
-     * A regular expression to match the record content.
-     */
-    contentRegex?: pulumi.Input<string>;
-    /**
-     * The record ID to match.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * The domain record name to match.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * The record type to match.
-     */
-    recordType?: pulumi.Input<string>;
-}
-
 export interface GetDomainRecordFilter {
     /**
      * A regular expression to match the record content.
@@ -296,6 +277,25 @@ export interface GetDomainRecordFilter {
      * The record type to match.
      */
     recordType?: string;
+}
+
+export interface GetDomainRecordFilterArgs {
+    /**
+     * A regular expression to match the record content.
+     */
+    contentRegex?: pulumi.Input<string>;
+    /**
+     * The record ID to match.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The domain record name to match.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The record type to match.
+     */
+    recordType?: pulumi.Input<string>;
 }
 
 export interface InstancePoolInstance {
@@ -432,4 +432,3 @@ export interface SecurityGroupRulesIngress {
      */
     userSecurityGroupLists?: pulumi.Input<pulumi.Input<string>[]>;
 }
-

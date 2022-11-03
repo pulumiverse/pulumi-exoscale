@@ -8,213 +8,213 @@ import * as utilities from "./utilities";
 export { AffinityArgs, AffinityState } from "./affinity";
 export type Affinity = import("./affinity").Affinity;
 export const Affinity: typeof import("./affinity").Affinity = null as any;
+utilities.lazyLoad(exports, ["Affinity"], () => require("./affinity"));
 
 export { AntiAffinityGroupArgs, AntiAffinityGroupState } from "./antiAffinityGroup";
 export type AntiAffinityGroup = import("./antiAffinityGroup").AntiAffinityGroup;
 export const AntiAffinityGroup: typeof import("./antiAffinityGroup").AntiAffinityGroup = null as any;
+utilities.lazyLoad(exports, ["AntiAffinityGroup"], () => require("./antiAffinityGroup"));
 
 export { ComputeArgs, ComputeState } from "./compute";
 export type Compute = import("./compute").Compute;
 export const Compute: typeof import("./compute").Compute = null as any;
+utilities.lazyLoad(exports, ["Compute"], () => require("./compute"));
 
 export { ComputeInstanceArgs, ComputeInstanceState } from "./computeInstance";
 export type ComputeInstance = import("./computeInstance").ComputeInstance;
 export const ComputeInstance: typeof import("./computeInstance").ComputeInstance = null as any;
+utilities.lazyLoad(exports, ["ComputeInstance"], () => require("./computeInstance"));
 
 export { DatabaseArgs, DatabaseState } from "./database";
 export type Database = import("./database").Database;
 export const Database: typeof import("./database").Database = null as any;
+utilities.lazyLoad(exports, ["Database"], () => require("./database"));
 
 export { DomainArgs, DomainState } from "./domain";
 export type Domain = import("./domain").Domain;
 export const Domain: typeof import("./domain").Domain = null as any;
+utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
 
 export { DomainRecordArgs, DomainRecordState } from "./domainRecord";
 export type DomainRecord = import("./domainRecord").DomainRecord;
 export const DomainRecord: typeof import("./domainRecord").DomainRecord = null as any;
+utilities.lazyLoad(exports, ["DomainRecord"], () => require("./domainRecord"));
 
 export { ElasticIPArgs, ElasticIPState } from "./elasticIP";
 export type ElasticIP = import("./elasticIP").ElasticIP;
 export const ElasticIP: typeof import("./elasticIP").ElasticIP = null as any;
+utilities.lazyLoad(exports, ["ElasticIP"], () => require("./elasticIP"));
 
 export { GetAffinityArgs, GetAffinityResult, GetAffinityOutputArgs } from "./getAffinity";
 export const getAffinity: typeof import("./getAffinity").getAffinity = null as any;
 export const getAffinityOutput: typeof import("./getAffinity").getAffinityOutput = null as any;
+utilities.lazyLoad(exports, ["getAffinity","getAffinityOutput"], () => require("./getAffinity"));
 
 export { GetAntiAffinityGroupArgs, GetAntiAffinityGroupResult, GetAntiAffinityGroupOutputArgs } from "./getAntiAffinityGroup";
 export const getAntiAffinityGroup: typeof import("./getAntiAffinityGroup").getAntiAffinityGroup = null as any;
 export const getAntiAffinityGroupOutput: typeof import("./getAntiAffinityGroup").getAntiAffinityGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getAntiAffinityGroup","getAntiAffinityGroupOutput"], () => require("./getAntiAffinityGroup"));
 
 export { GetComputeArgs, GetComputeResult, GetComputeOutputArgs } from "./getCompute";
 export const getCompute: typeof import("./getCompute").getCompute = null as any;
 export const getComputeOutput: typeof import("./getCompute").getComputeOutput = null as any;
+utilities.lazyLoad(exports, ["getCompute","getComputeOutput"], () => require("./getCompute"));
 
 export { GetComputeIPAddressArgs, GetComputeIPAddressResult, GetComputeIPAddressOutputArgs } from "./getComputeIPAddress";
 export const getComputeIPAddress: typeof import("./getComputeIPAddress").getComputeIPAddress = null as any;
 export const getComputeIPAddressOutput: typeof import("./getComputeIPAddress").getComputeIPAddressOutput = null as any;
+utilities.lazyLoad(exports, ["getComputeIPAddress","getComputeIPAddressOutput"], () => require("./getComputeIPAddress"));
 
 export { GetComputeInstanceArgs, GetComputeInstanceResult, GetComputeInstanceOutputArgs } from "./getComputeInstance";
 export const getComputeInstance: typeof import("./getComputeInstance").getComputeInstance = null as any;
 export const getComputeInstanceOutput: typeof import("./getComputeInstance").getComputeInstanceOutput = null as any;
+utilities.lazyLoad(exports, ["getComputeInstance","getComputeInstanceOutput"], () => require("./getComputeInstance"));
 
 export { GetComputeInstanceListArgs, GetComputeInstanceListResult, GetComputeInstanceListOutputArgs } from "./getComputeInstanceList";
 export const getComputeInstanceList: typeof import("./getComputeInstanceList").getComputeInstanceList = null as any;
 export const getComputeInstanceListOutput: typeof import("./getComputeInstanceList").getComputeInstanceListOutput = null as any;
+utilities.lazyLoad(exports, ["getComputeInstanceList","getComputeInstanceListOutput"], () => require("./getComputeInstanceList"));
 
 export { GetComputeTemplateArgs, GetComputeTemplateResult, GetComputeTemplateOutputArgs } from "./getComputeTemplate";
 export const getComputeTemplate: typeof import("./getComputeTemplate").getComputeTemplate = null as any;
 export const getComputeTemplateOutput: typeof import("./getComputeTemplate").getComputeTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getComputeTemplate","getComputeTemplateOutput"], () => require("./getComputeTemplate"));
 
 export { GetDomainArgs, GetDomainResult, GetDomainOutputArgs } from "./getDomain";
 export const getDomain: typeof import("./getDomain").getDomain = null as any;
 export const getDomainOutput: typeof import("./getDomain").getDomainOutput = null as any;
+utilities.lazyLoad(exports, ["getDomain","getDomainOutput"], () => require("./getDomain"));
 
 export { GetDomainRecordArgs, GetDomainRecordResult, GetDomainRecordOutputArgs } from "./getDomainRecord";
 export const getDomainRecord: typeof import("./getDomainRecord").getDomainRecord = null as any;
 export const getDomainRecordOutput: typeof import("./getDomainRecord").getDomainRecordOutput = null as any;
+utilities.lazyLoad(exports, ["getDomainRecord","getDomainRecordOutput"], () => require("./getDomainRecord"));
 
 export { GetElasticIPArgs, GetElasticIPResult, GetElasticIPOutputArgs } from "./getElasticIP";
 export const getElasticIP: typeof import("./getElasticIP").getElasticIP = null as any;
 export const getElasticIPOutput: typeof import("./getElasticIP").getElasticIPOutput = null as any;
+utilities.lazyLoad(exports, ["getElasticIP","getElasticIPOutput"], () => require("./getElasticIP"));
 
 export { GetInstancePoolArgs, GetInstancePoolResult, GetInstancePoolOutputArgs } from "./getInstancePool";
 export const getInstancePool: typeof import("./getInstancePool").getInstancePool = null as any;
 export const getInstancePoolOutput: typeof import("./getInstancePool").getInstancePoolOutput = null as any;
+utilities.lazyLoad(exports, ["getInstancePool","getInstancePoolOutput"], () => require("./getInstancePool"));
 
 export { GetInstancePoolListArgs, GetInstancePoolListResult, GetInstancePoolListOutputArgs } from "./getInstancePoolList";
 export const getInstancePoolList: typeof import("./getInstancePoolList").getInstancePoolList = null as any;
 export const getInstancePoolListOutput: typeof import("./getInstancePoolList").getInstancePoolListOutput = null as any;
+utilities.lazyLoad(exports, ["getInstancePoolList","getInstancePoolListOutput"], () => require("./getInstancePoolList"));
 
 export { GetNLBArgs, GetNLBResult, GetNLBOutputArgs } from "./getNLB";
 export const getNLB: typeof import("./getNLB").getNLB = null as any;
 export const getNLBOutput: typeof import("./getNLB").getNLBOutput = null as any;
+utilities.lazyLoad(exports, ["getNLB","getNLBOutput"], () => require("./getNLB"));
 
 export { GetNetworkArgs, GetNetworkResult, GetNetworkOutputArgs } from "./getNetwork";
 export const getNetwork: typeof import("./getNetwork").getNetwork = null as any;
 export const getNetworkOutput: typeof import("./getNetwork").getNetworkOutput = null as any;
+utilities.lazyLoad(exports, ["getNetwork","getNetworkOutput"], () => require("./getNetwork"));
 
 export { GetPrivateNetworkArgs, GetPrivateNetworkResult, GetPrivateNetworkOutputArgs } from "./getPrivateNetwork";
 export const getPrivateNetwork: typeof import("./getPrivateNetwork").getPrivateNetwork = null as any;
 export const getPrivateNetworkOutput: typeof import("./getPrivateNetwork").getPrivateNetworkOutput = null as any;
+utilities.lazyLoad(exports, ["getPrivateNetwork","getPrivateNetworkOutput"], () => require("./getPrivateNetwork"));
 
 export { GetSecurityGroupArgs, GetSecurityGroupResult, GetSecurityGroupOutputArgs } from "./getSecurityGroup";
 export const getSecurityGroup: typeof import("./getSecurityGroup").getSecurityGroup = null as any;
 export const getSecurityGroupOutput: typeof import("./getSecurityGroup").getSecurityGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getSecurityGroup","getSecurityGroupOutput"], () => require("./getSecurityGroup"));
 
 export { IAMAccessKeyArgs, IAMAccessKeyState } from "./iamaccessKey";
 export type IAMAccessKey = import("./iamaccessKey").IAMAccessKey;
 export const IAMAccessKey: typeof import("./iamaccessKey").IAMAccessKey = null as any;
+utilities.lazyLoad(exports, ["IAMAccessKey"], () => require("./iamaccessKey"));
 
 export { InstancePoolArgs, InstancePoolState } from "./instancePool";
 export type InstancePool = import("./instancePool").InstancePool;
 export const InstancePool: typeof import("./instancePool").InstancePool = null as any;
+utilities.lazyLoad(exports, ["InstancePool"], () => require("./instancePool"));
 
 export { IPAddressArgs, IPAddressState } from "./ipaddress";
 export type IPAddress = import("./ipaddress").IPAddress;
 export const IPAddress: typeof import("./ipaddress").IPAddress = null as any;
+utilities.lazyLoad(exports, ["IPAddress"], () => require("./ipaddress"));
 
 export { NetworkArgs, NetworkState } from "./network";
 export type Network = import("./network").Network;
 export const Network: typeof import("./network").Network = null as any;
+utilities.lazyLoad(exports, ["Network"], () => require("./network"));
 
 export { NICArgs, NICState } from "./nic";
 export type NIC = import("./nic").NIC;
 export const NIC: typeof import("./nic").NIC = null as any;
+utilities.lazyLoad(exports, ["NIC"], () => require("./nic"));
 
 export { NLBArgs, NLBState } from "./nlb";
 export type NLB = import("./nlb").NLB;
 export const NLB: typeof import("./nlb").NLB = null as any;
+utilities.lazyLoad(exports, ["NLB"], () => require("./nlb"));
 
 export { NLBServiceArgs, NLBServiceState } from "./nlbservice";
 export type NLBService = import("./nlbservice").NLBService;
 export const NLBService: typeof import("./nlbservice").NLBService = null as any;
+utilities.lazyLoad(exports, ["NLBService"], () => require("./nlbservice"));
 
 export { PrivateNetworkArgs, PrivateNetworkState } from "./privateNetwork";
 export type PrivateNetwork = import("./privateNetwork").PrivateNetwork;
 export const PrivateNetwork: typeof import("./privateNetwork").PrivateNetwork = null as any;
+utilities.lazyLoad(exports, ["PrivateNetwork"], () => require("./privateNetwork"));
 
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
 export { SecondaryIPAddressArgs, SecondaryIPAddressState } from "./secondaryIPAddress";
 export type SecondaryIPAddress = import("./secondaryIPAddress").SecondaryIPAddress;
 export const SecondaryIPAddress: typeof import("./secondaryIPAddress").SecondaryIPAddress = null as any;
+utilities.lazyLoad(exports, ["SecondaryIPAddress"], () => require("./secondaryIPAddress"));
 
 export { SecurityGroupArgs, SecurityGroupState } from "./securityGroup";
 export type SecurityGroup = import("./securityGroup").SecurityGroup;
 export const SecurityGroup: typeof import("./securityGroup").SecurityGroup = null as any;
+utilities.lazyLoad(exports, ["SecurityGroup"], () => require("./securityGroup"));
 
 export { SecurityGroupRuleArgs, SecurityGroupRuleState } from "./securityGroupRule";
 export type SecurityGroupRule = import("./securityGroupRule").SecurityGroupRule;
 export const SecurityGroupRule: typeof import("./securityGroupRule").SecurityGroupRule = null as any;
+utilities.lazyLoad(exports, ["SecurityGroupRule"], () => require("./securityGroupRule"));
 
 export { SecurityGroupRulesArgs, SecurityGroupRulesState } from "./securityGroupRules";
 export type SecurityGroupRules = import("./securityGroupRules").SecurityGroupRules;
 export const SecurityGroupRules: typeof import("./securityGroupRules").SecurityGroupRules = null as any;
+utilities.lazyLoad(exports, ["SecurityGroupRules"], () => require("./securityGroupRules"));
 
 export { SKSClusterArgs, SKSClusterState } from "./skscluster";
 export type SKSCluster = import("./skscluster").SKSCluster;
 export const SKSCluster: typeof import("./skscluster").SKSCluster = null as any;
+utilities.lazyLoad(exports, ["SKSCluster"], () => require("./skscluster"));
 
 export { SKSKubeconfigArgs, SKSKubeconfigState } from "./skskubeconfig";
 export type SKSKubeconfig = import("./skskubeconfig").SKSKubeconfig;
 export const SKSKubeconfig: typeof import("./skskubeconfig").SKSKubeconfig = null as any;
+utilities.lazyLoad(exports, ["SKSKubeconfig"], () => require("./skskubeconfig"));
 
 export { SKSNodepoolArgs, SKSNodepoolState } from "./sksnodepool";
 export type SKSNodepool = import("./sksnodepool").SKSNodepool;
 export const SKSNodepool: typeof import("./sksnodepool").SKSNodepool = null as any;
+utilities.lazyLoad(exports, ["SKSNodepool"], () => require("./sksnodepool"));
 
 export { SSHKeyArgs, SSHKeyState } from "./sshkey";
 export type SSHKey = import("./sshkey").SSHKey;
 export const SSHKey: typeof import("./sshkey").SSHKey = null as any;
+utilities.lazyLoad(exports, ["SSHKey"], () => require("./sshkey"));
 
 export { SSHKeypairArgs, SSHKeypairState } from "./sshkeypair";
 export type SSHKeypair = import("./sshkeypair").SSHKeypair;
 export const SSHKeypair: typeof import("./sshkeypair").SSHKeypair = null as any;
-
-utilities.lazyLoad(exports, ["Affinity"], () => require("./affinity"));
-utilities.lazyLoad(exports, ["AntiAffinityGroup"], () => require("./antiAffinityGroup"));
-utilities.lazyLoad(exports, ["Compute"], () => require("./compute"));
-utilities.lazyLoad(exports, ["ComputeInstance"], () => require("./computeInstance"));
-utilities.lazyLoad(exports, ["Database"], () => require("./database"));
-utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
-utilities.lazyLoad(exports, ["DomainRecord"], () => require("./domainRecord"));
-utilities.lazyLoad(exports, ["ElasticIP"], () => require("./elasticIP"));
-utilities.lazyLoad(exports, ["getAffinity","getAffinityOutput"], () => require("./getAffinity"));
-utilities.lazyLoad(exports, ["getAntiAffinityGroup","getAntiAffinityGroupOutput"], () => require("./getAntiAffinityGroup"));
-utilities.lazyLoad(exports, ["getCompute","getComputeOutput"], () => require("./getCompute"));
-utilities.lazyLoad(exports, ["getComputeIPAddress","getComputeIPAddressOutput"], () => require("./getComputeIPAddress"));
-utilities.lazyLoad(exports, ["getComputeInstance","getComputeInstanceOutput"], () => require("./getComputeInstance"));
-utilities.lazyLoad(exports, ["getComputeInstanceList","getComputeInstanceListOutput"], () => require("./getComputeInstanceList"));
-utilities.lazyLoad(exports, ["getComputeTemplate","getComputeTemplateOutput"], () => require("./getComputeTemplate"));
-utilities.lazyLoad(exports, ["getDomain","getDomainOutput"], () => require("./getDomain"));
-utilities.lazyLoad(exports, ["getDomainRecord","getDomainRecordOutput"], () => require("./getDomainRecord"));
-utilities.lazyLoad(exports, ["getElasticIP","getElasticIPOutput"], () => require("./getElasticIP"));
-utilities.lazyLoad(exports, ["getInstancePool","getInstancePoolOutput"], () => require("./getInstancePool"));
-utilities.lazyLoad(exports, ["getInstancePoolList","getInstancePoolListOutput"], () => require("./getInstancePoolList"));
-utilities.lazyLoad(exports, ["getNLB","getNLBOutput"], () => require("./getNLB"));
-utilities.lazyLoad(exports, ["getNetwork","getNetworkOutput"], () => require("./getNetwork"));
-utilities.lazyLoad(exports, ["getPrivateNetwork","getPrivateNetworkOutput"], () => require("./getPrivateNetwork"));
-utilities.lazyLoad(exports, ["getSecurityGroup","getSecurityGroupOutput"], () => require("./getSecurityGroup"));
-utilities.lazyLoad(exports, ["IAMAccessKey"], () => require("./iamaccessKey"));
-utilities.lazyLoad(exports, ["InstancePool"], () => require("./instancePool"));
-utilities.lazyLoad(exports, ["IPAddress"], () => require("./ipaddress"));
-utilities.lazyLoad(exports, ["Network"], () => require("./network"));
-utilities.lazyLoad(exports, ["NIC"], () => require("./nic"));
-utilities.lazyLoad(exports, ["NLB"], () => require("./nlb"));
-utilities.lazyLoad(exports, ["NLBService"], () => require("./nlbservice"));
-utilities.lazyLoad(exports, ["PrivateNetwork"], () => require("./privateNetwork"));
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
-utilities.lazyLoad(exports, ["SecondaryIPAddress"], () => require("./secondaryIPAddress"));
-utilities.lazyLoad(exports, ["SecurityGroup"], () => require("./securityGroup"));
-utilities.lazyLoad(exports, ["SecurityGroupRule"], () => require("./securityGroupRule"));
-utilities.lazyLoad(exports, ["SecurityGroupRules"], () => require("./securityGroupRules"));
-utilities.lazyLoad(exports, ["SKSCluster"], () => require("./skscluster"));
-utilities.lazyLoad(exports, ["SKSKubeconfig"], () => require("./skskubeconfig"));
-utilities.lazyLoad(exports, ["SKSNodepool"], () => require("./sksnodepool"));
-utilities.lazyLoad(exports, ["SSHKey"], () => require("./sshkey"));
 utilities.lazyLoad(exports, ["SSHKeypair"], () => require("./sshkeypair"));
+
 
 // Export sub-modules:
 import * as config from "./config";
