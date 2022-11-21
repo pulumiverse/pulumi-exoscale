@@ -8,11 +8,8 @@ import * as utilities from "./utilities";
  * !> **WARNING:** This data source is **DEPRECATED** and will be removed in the next major version. Please use exoscale.PrivateNetwork instead.
  */
 export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getNetwork:getNetwork", {
         "id": args.id,
         "name": args.name,

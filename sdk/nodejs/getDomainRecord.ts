@@ -7,11 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getDomainRecord(args: GetDomainRecordArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainRecordResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getDomainRecord:getDomainRecord", {
         "domain": args.domain,
         "filter": args.filter,

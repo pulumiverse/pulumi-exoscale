@@ -7,11 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getComputeInstanceList(args: GetComputeInstanceListArgs, opts?: pulumi.InvokeOptions): Promise<GetComputeInstanceListResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getComputeInstanceList:getComputeInstanceList", {
         "zone": args.zone,
     }, opts);

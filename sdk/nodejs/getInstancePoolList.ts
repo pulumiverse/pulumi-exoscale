@@ -7,11 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getInstancePoolList(args: GetInstancePoolListArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancePoolListResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getInstancePoolList:getInstancePoolList", {
         "zone": args.zone,
     }, opts);
