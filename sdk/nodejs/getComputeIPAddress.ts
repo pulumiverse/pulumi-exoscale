@@ -8,11 +8,8 @@ import * as utilities from "./utilities";
  * !> **WARNING:** This data source is **DEPRECATED** and will be removed in the next major version. Please use exoscale.ElasticIP instead.
  */
 export function getComputeIPAddress(args: GetComputeIPAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetComputeIPAddressResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getComputeIPAddress:getComputeIPAddress", {
         "description": args.description,
         "id": args.id,

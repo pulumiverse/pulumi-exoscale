@@ -9,11 +9,8 @@ import * as utilities from "./utilities";
  */
 export function getCompute(args?: GetComputeArgs, opts?: pulumi.InvokeOptions): Promise<GetComputeResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getCompute:getCompute", {
         "hostname": args.hostname,
         "id": args.id,

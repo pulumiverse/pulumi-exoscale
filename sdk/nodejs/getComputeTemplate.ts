@@ -5,11 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 export function getComputeTemplate(args: GetComputeTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetComputeTemplateResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getComputeTemplate:getComputeTemplate", {
         "filter": args.filter,
         "id": args.id,

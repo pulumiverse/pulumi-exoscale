@@ -7,11 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getElasticIP(args: GetElasticIPArgs, opts?: pulumi.InvokeOptions): Promise<GetElasticIPResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getElasticIP:getElasticIP", {
         "id": args.id,
         "ipAddress": args.ipAddress,

@@ -5,11 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 export function getComputeInstance(args: GetComputeInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetComputeInstanceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getComputeInstance:getComputeInstance", {
         "antiAffinityGroupIds": args.antiAffinityGroupIds,
         "id": args.id,

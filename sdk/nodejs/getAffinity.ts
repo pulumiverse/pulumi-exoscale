@@ -9,11 +9,8 @@ import * as utilities from "./utilities";
  */
 export function getAffinity(args?: GetAffinityArgs, opts?: pulumi.InvokeOptions): Promise<GetAffinityResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getAffinity:getAffinity", {
         "id": args.id,
         "name": args.name,
