@@ -42,7 +42,9 @@ type LookupElasticIPResult struct {
 	Healthchecks []GetElasticIPHealthcheck `pulumi:"healthchecks"`
 	Id           *string                   `pulumi:"id"`
 	IpAddress    *string                   `pulumi:"ipAddress"`
-	Zone         string                    `pulumi:"zone"`
+	// A map of key/value labels.
+	Labels map[string]string `pulumi:"labels"`
+	Zone   string            `pulumi:"zone"`
 }
 
 func LookupElasticIPOutput(ctx *pulumi.Context, args LookupElasticIPOutputArgs, opts ...pulumi.InvokeOption) LookupElasticIPResultOutput {
@@ -113,6 +115,11 @@ func (o LookupElasticIPResultOutput) Id() pulumi.StringPtrOutput {
 
 func (o LookupElasticIPResultOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupElasticIPResult) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// A map of key/value labels.
+func (o LookupElasticIPResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupElasticIPResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupElasticIPResultOutput) Zone() pulumi.StringOutput {

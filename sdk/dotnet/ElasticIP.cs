@@ -61,6 +61,12 @@ namespace Pulumiverse.Exoscale
         public Output<string> IpAddress { get; private set; } = null!;
 
         /// <summary>
+        /// A map of key/value labels.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+
+        /// <summary>
         /// The Exoscale [Zone][zone] name.
         /// </summary>
         [Output("zone")]
@@ -131,6 +137,18 @@ namespace Pulumiverse.Exoscale
         [Input("healthcheck")]
         public Input<Inputs.ElasticIPHealthcheckArgs>? Healthcheck { get; set; }
 
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// A map of key/value labels.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// The Exoscale [Zone][zone] name.
         /// </summary>
@@ -174,6 +192,18 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// A map of key/value labels.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// The Exoscale [Zone][zone] name.

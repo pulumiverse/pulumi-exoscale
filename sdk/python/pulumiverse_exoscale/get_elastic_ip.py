@@ -22,7 +22,7 @@ class GetElasticIPResult:
     """
     A collection of values returned by getElasticIP.
     """
-    def __init__(__self__, address_family=None, cidr=None, description=None, healthchecks=None, id=None, ip_address=None, zone=None):
+    def __init__(__self__, address_family=None, cidr=None, description=None, healthchecks=None, id=None, ip_address=None, labels=None, zone=None):
         if address_family and not isinstance(address_family, str):
             raise TypeError("Expected argument 'address_family' to be a str")
         pulumi.set(__self__, "address_family", address_family)
@@ -41,6 +41,9 @@ class GetElasticIPResult:
         if ip_address and not isinstance(ip_address, str):
             raise TypeError("Expected argument 'ip_address' to be a str")
         pulumi.set(__self__, "ip_address", ip_address)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         pulumi.set(__self__, "zone", zone)
@@ -89,6 +92,14 @@ class GetElasticIPResult:
 
     @property
     @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        A map of key/value labels.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
     def zone(self) -> str:
         return pulumi.get(self, "zone")
 
@@ -105,6 +116,7 @@ class AwaitableGetElasticIPResult(GetElasticIPResult):
             healthchecks=self.healthchecks,
             id=self.id,
             ip_address=self.ip_address,
+            labels=self.labels,
             zone=self.zone)
 
 
@@ -133,6 +145,7 @@ def get_elastic_ip(id: Optional[str] = None,
         healthchecks=__ret__.healthchecks,
         id=__ret__.id,
         ip_address=__ret__.ip_address,
+        labels=__ret__.labels,
         zone=__ret__.zone)
 
 

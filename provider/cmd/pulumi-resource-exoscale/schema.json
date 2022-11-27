@@ -3272,6 +3272,13 @@
                     "type": "string",
                     "description": "The Elastic IP (EIP) IPv4 or IPv6 address.\n"
                 },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of key/value labels.\n"
+                },
                 "zone": {
                     "type": "string",
                     "description": "The Exoscale [Zone][zone] name.\n"
@@ -3299,6 +3306,13 @@
                 "healthcheck": {
                     "$ref": "#/types/exoscale:index/ElasticIPHealthcheck:ElasticIPHealthcheck",
                     "description": "Healthcheck configuration for *managed* EIPs. Structure is documented below.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of key/value labels.\n"
                 },
                 "zone": {
                     "type": "string",
@@ -3333,6 +3347,13 @@
                     "ipAddress": {
                         "type": "string",
                         "description": "The Elastic IP (EIP) IPv4 or IPv6 address.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A map of key/value labels.\n"
                     },
                     "zone": {
                         "type": "string",
@@ -6398,6 +6419,13 @@
                     "ipAddress": {
                         "type": "string"
                     },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A map of key/value labels.\n"
+                    },
                     "zone": {
                         "type": "string"
                     }
@@ -6408,6 +6436,7 @@
                     "cidr",
                     "description",
                     "healthchecks",
+                    "labels",
                     "zone"
                 ]
             }
