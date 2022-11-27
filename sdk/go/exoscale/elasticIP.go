@@ -41,6 +41,8 @@ type ElasticIP struct {
 	Healthcheck ElasticIPHealthcheckOutput `pulumi:"healthcheck"`
 	// The Elastic IP (EIP) IPv4 or IPv6 address.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
+	// A map of key/value labels.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The Exoscale [Zone][zone] name.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
@@ -88,6 +90,8 @@ type elasticIPState struct {
 	Healthcheck *ElasticIPHealthcheck `pulumi:"healthcheck"`
 	// The Elastic IP (EIP) IPv4 or IPv6 address.
 	IpAddress *string `pulumi:"ipAddress"`
+	// A map of key/value labels.
+	Labels map[string]string `pulumi:"labels"`
 	// The Exoscale [Zone][zone] name.
 	Zone *string `pulumi:"zone"`
 }
@@ -103,6 +107,8 @@ type ElasticIPState struct {
 	Healthcheck ElasticIPHealthcheckPtrInput
 	// The Elastic IP (EIP) IPv4 or IPv6 address.
 	IpAddress pulumi.StringPtrInput
+	// A map of key/value labels.
+	Labels pulumi.StringMapInput
 	// The Exoscale [Zone][zone] name.
 	Zone pulumi.StringPtrInput
 }
@@ -118,6 +124,8 @@ type elasticIPArgs struct {
 	Description *string `pulumi:"description"`
 	// Healthcheck configuration for *managed* EIPs. Structure is documented below.
 	Healthcheck *ElasticIPHealthcheck `pulumi:"healthcheck"`
+	// A map of key/value labels.
+	Labels map[string]string `pulumi:"labels"`
 	// The Exoscale [Zone][zone] name.
 	Zone string `pulumi:"zone"`
 }
@@ -130,6 +138,8 @@ type ElasticIPArgs struct {
 	Description pulumi.StringPtrInput
 	// Healthcheck configuration for *managed* EIPs. Structure is documented below.
 	Healthcheck ElasticIPHealthcheckPtrInput
+	// A map of key/value labels.
+	Labels pulumi.StringMapInput
 	// The Exoscale [Zone][zone] name.
 	Zone pulumi.StringInput
 }
@@ -244,6 +254,11 @@ func (o ElasticIPOutput) Healthcheck() ElasticIPHealthcheckOutput {
 // The Elastic IP (EIP) IPv4 or IPv6 address.
 func (o ElasticIPOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElasticIP) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// A map of key/value labels.
+func (o ElasticIPOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ElasticIP) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The Exoscale [Zone][zone] name.

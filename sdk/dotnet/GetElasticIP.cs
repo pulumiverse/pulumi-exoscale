@@ -94,6 +94,10 @@ namespace Pulumiverse.Exoscale
         public readonly ImmutableArray<Outputs.GetElasticIPHealthcheckResult> Healthchecks;
         public readonly string? Id;
         public readonly string? IpAddress;
+        /// <summary>
+        /// A map of key/value labels.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Zone;
 
         [OutputConstructor]
@@ -110,6 +114,8 @@ namespace Pulumiverse.Exoscale
 
             string? ipAddress,
 
+            ImmutableDictionary<string, string> labels,
+
             string zone)
         {
             AddressFamily = addressFamily;
@@ -118,6 +124,7 @@ namespace Pulumiverse.Exoscale
             Healthchecks = healthchecks;
             Id = id;
             IpAddress = ipAddress;
+            Labels = labels;
             Zone = zone;
         }
     }

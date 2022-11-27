@@ -56,6 +56,10 @@ export interface GetElasticIPResult {
     readonly healthchecks: outputs.GetElasticIPHealthcheck[];
     readonly id?: string;
     readonly ipAddress?: string;
+    /**
+     * A map of key/value labels.
+     */
+    readonly labels: {[key: string]: string};
     readonly zone: string;
 }
 
