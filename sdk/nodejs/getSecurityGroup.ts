@@ -35,9 +35,8 @@ export interface GetSecurityGroupResult {
     readonly id?: string;
     readonly name?: string;
 }
-
 export function getSecurityGroupOutput(args?: GetSecurityGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityGroupResult> {
-    return pulumi.output(args).apply(a => getSecurityGroup(a, opts))
+    return pulumi.output(args).apply((a: any) => getSecurityGroup(a, opts))
 }
 
 /**

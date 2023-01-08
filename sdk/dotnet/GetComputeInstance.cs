@@ -161,6 +161,10 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly string PublicIpAddress;
         /// <summary>
+        /// Domain name for reverse DNS record.
+        /// </summary>
+        public readonly string ReverseDns;
+        /// <summary>
         /// The list of attached exoscale.SecurityGroup (IDs).
         /// </summary>
         public readonly ImmutableArray<string> SecurityGroupIds;
@@ -216,6 +220,8 @@ namespace Pulumiverse.Exoscale
 
             string publicIpAddress,
 
+            string reverseDns,
+
             ImmutableArray<string> securityGroupIds,
 
             string sshKey,
@@ -244,6 +250,7 @@ namespace Pulumiverse.Exoscale
             Name = name;
             PrivateNetworkIds = privateNetworkIds;
             PublicIpAddress = publicIpAddress;
+            ReverseDns = reverseDns;
             SecurityGroupIds = securityGroupIds;
             SshKey = sshKey;
             State = state;

@@ -3015,6 +3015,7 @@ type GetComputeInstanceListInstance struct {
 	Name                 *string           `pulumi:"name"`
 	PrivateNetworkIds    []string          `pulumi:"privateNetworkIds"`
 	PublicIpAddress      string            `pulumi:"publicIpAddress"`
+	ReverseDns           string            `pulumi:"reverseDns"`
 	SecurityGroupIds     []string          `pulumi:"securityGroupIds"`
 	SshKey               string            `pulumi:"sshKey"`
 	State                string            `pulumi:"state"`
@@ -3051,6 +3052,7 @@ type GetComputeInstanceListInstanceArgs struct {
 	Name                 pulumi.StringPtrInput   `pulumi:"name"`
 	PrivateNetworkIds    pulumi.StringArrayInput `pulumi:"privateNetworkIds"`
 	PublicIpAddress      pulumi.StringInput      `pulumi:"publicIpAddress"`
+	ReverseDns           pulumi.StringInput      `pulumi:"reverseDns"`
 	SecurityGroupIds     pulumi.StringArrayInput `pulumi:"securityGroupIds"`
 	SshKey               pulumi.StringInput      `pulumi:"sshKey"`
 	State                pulumi.StringInput      `pulumi:"state"`
@@ -3166,6 +3168,10 @@ func (o GetComputeInstanceListInstanceOutput) PrivateNetworkIds() pulumi.StringA
 
 func (o GetComputeInstanceListInstanceOutput) PublicIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.PublicIpAddress }).(pulumi.StringOutput)
+}
+
+func (o GetComputeInstanceListInstanceOutput) ReverseDns() pulumi.StringOutput {
+	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.ReverseDns }).(pulumi.StringOutput)
 }
 
 func (o GetComputeInstanceListInstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput {

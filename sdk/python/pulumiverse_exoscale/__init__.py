@@ -29,6 +29,7 @@ from .get_network import *
 from .get_nlb import *
 from .get_private_network import *
 from .get_security_group import *
+from .get_template import *
 from .iam_access_key import *
 from .instance_pool import *
 from .ip_address import *

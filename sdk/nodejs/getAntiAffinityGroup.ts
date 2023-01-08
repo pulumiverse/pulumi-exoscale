@@ -39,9 +39,8 @@ export interface GetAntiAffinityGroupResult {
     readonly instances: string[];
     readonly name?: string;
 }
-
 export function getAntiAffinityGroupOutput(args?: GetAntiAffinityGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAntiAffinityGroupResult> {
-    return pulumi.output(args).apply(a => getAntiAffinityGroup(a, opts))
+    return pulumi.output(args).apply((a: any) => getAntiAffinityGroup(a, opts))
 }
 
 /**

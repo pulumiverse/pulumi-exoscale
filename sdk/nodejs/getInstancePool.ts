@@ -121,9 +121,8 @@ export interface GetInstancePoolResult {
     readonly userData: string;
     readonly zone: string;
 }
-
 export function getInstancePoolOutput(args: GetInstancePoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancePoolResult> {
-    return pulumi.output(args).apply(a => getInstancePool(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstancePool(a, opts))
 }
 
 /**

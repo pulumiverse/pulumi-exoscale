@@ -1272,6 +1272,14 @@
                         }
                     }
                 },
+                "reverseDns": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "securityGroupIds": {
                     "type": "array",
                     "items": {
@@ -1345,6 +1353,7 @@
                 "managerType",
                 "privateNetworkIds",
                 "publicIpAddress",
+                "reverseDns",
                 "securityGroupIds",
                 "sshKey",
                 "state",
@@ -2571,6 +2580,10 @@
                     "type": "string",
                     "description": "The instance (main network interface) IPv4 address.\n"
                 },
+                "reverseDns": {
+                    "type": "string",
+                    "description": "Domain name for reverse DNS record.\n"
+                },
                 "securityGroupIds": {
                     "type": "array",
                     "items": {
@@ -2621,7 +2634,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of exoscale.AntiAffinityGroup (IDs) to attach to the instance (may only be set at creation time).\n"
+                    "description": "A list of exoscale.AntiAffinityGroup (IDs) to attach to the instance (may only be set at creation time).\n",
+                    "willReplaceOnChanges": true
                 },
                 "deployTargetId": {
                     "type": "string",
@@ -2660,6 +2674,10 @@
                         "$ref": "#/types/exoscale:index/ComputeInstanceNetworkInterface:ComputeInstanceNetworkInterface"
                     },
                     "description": "Private network interfaces (may be specified multiple times). Structure is documented below.\n"
+                },
+                "reverseDns": {
+                    "type": "string",
+                    "description": "Domain name for reverse DNS record.\n"
                 },
                 "securityGroupIds": {
                     "type": "array",
@@ -2708,7 +2726,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of exoscale.AntiAffinityGroup (IDs) to attach to the instance (may only be set at creation time).\n"
+                        "description": "A list of exoscale.AntiAffinityGroup (IDs) to attach to the instance (may only be set at creation time).\n",
+                        "willReplaceOnChanges": true
                     },
                     "createdAt": {
                         "type": "string",
@@ -2767,6 +2786,10 @@
                     "publicIpAddress": {
                         "type": "string",
                         "description": "The instance (main network interface) IPv4 address.\n"
+                    },
+                    "reverseDns": {
+                        "type": "string",
+                        "description": "Domain name for reverse DNS record.\n"
                     },
                     "securityGroupIds": {
                         "type": "array",
@@ -3279,6 +3302,10 @@
                     },
                     "description": "A map of key/value labels.\n"
                 },
+                "reverseDns": {
+                    "type": "string",
+                    "description": "Domain name for reverse DNS record.\n"
+                },
                 "zone": {
                     "type": "string",
                     "description": "The Exoscale [Zone][zone] name.\n"
@@ -3313,6 +3340,10 @@
                         "type": "string"
                     },
                     "description": "A map of key/value labels.\n"
+                },
+                "reverseDns": {
+                    "type": "string",
+                    "description": "Domain name for reverse DNS record.\n"
                 },
                 "zone": {
                     "type": "string",
@@ -3354,6 +3385,10 @@
                             "type": "string"
                         },
                         "description": "A map of key/value labels.\n"
+                    },
+                    "reverseDns": {
+                        "type": "string",
+                        "description": "Domain name for reverse DNS record.\n"
                     },
                     "zone": {
                         "type": "string",
@@ -6143,6 +6178,10 @@
                         "type": "string",
                         "description": "The instance (main network interface) IPv4 address.\n"
                     },
+                    "reverseDns": {
+                        "type": "string",
+                        "description": "Domain name for reverse DNS record.\n"
+                    },
                     "securityGroupIds": {
                         "type": "array",
                         "items": {
@@ -6186,6 +6225,7 @@
                     "managerType",
                     "privateNetworkIds",
                     "publicIpAddress",
+                    "reverseDns",
                     "securityGroupIds",
                     "sshKey",
                     "state",
@@ -6426,6 +6466,10 @@
                         },
                         "description": "A map of key/value labels.\n"
                     },
+                    "reverseDns": {
+                        "type": "string",
+                        "description": "Domain name for reverse DNS record.\n"
+                    },
                     "zone": {
                         "type": "string"
                     }
@@ -6437,6 +6481,7 @@
                     "description",
                     "healthchecks",
                     "labels",
+                    "reverseDns",
                     "zone"
                 ]
             }
@@ -6842,6 +6887,59 @@
                     }
                 },
                 "type": "object"
+            }
+        },
+        "exoscale:index/getTemplate:getTemplate": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getTemplate.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The compute instance template ID to match (conflicts with `name`).\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The template name to match (conflicts with `id`) (when multiple templates have the same name, the newest one will be returned).\n"
+                    },
+                    "visibility": {
+                        "type": "string",
+                        "description": "A template category filter (default: `public`); among:\n"
+                    },
+                    "zone": {
+                        "type": "string",
+                        "description": "The Exoscale [Zone][zone] name.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "zone"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getTemplate.\n",
+                "properties": {
+                    "defaultUser": {
+                        "type": "string",
+                        "description": "Username to use to log into a compute instance based on this template\n"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "visibility": {
+                        "type": "string"
+                    },
+                    "zone": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "defaultUser",
+                    "zone"
+                ]
             }
         }
     }

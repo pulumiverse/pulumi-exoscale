@@ -99,6 +99,12 @@ namespace Pulumiverse.Exoscale
         public Output<string> PublicIpAddress { get; private set; } = null!;
 
         /// <summary>
+        /// Domain name for reverse DNS record.
+        /// </summary>
+        [Output("reverseDns")]
+        public Output<string?> ReverseDns { get; private set; } = null!;
+
+        /// <summary>
         /// A list of exoscale.SecurityGroup (IDs) to attach to the instance.
         /// </summary>
         [Output("securityGroupIds")]
@@ -259,6 +265,12 @@ namespace Pulumiverse.Exoscale
             set => _networkInterfaces = value;
         }
 
+        /// <summary>
+        /// Domain name for reverse DNS record.
+        /// </summary>
+        [Input("reverseDns")]
+        public Input<string>? ReverseDns { get; set; }
+
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
 
@@ -417,6 +429,12 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         [Input("publicIpAddress")]
         public Input<string>? PublicIpAddress { get; set; }
+
+        /// <summary>
+        /// Domain name for reverse DNS record.
+        /// </summary>
+        [Input("reverseDns")]
+        public Input<string>? ReverseDns { get; set; }
 
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;

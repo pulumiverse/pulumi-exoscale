@@ -98,6 +98,10 @@ namespace Pulumiverse.Exoscale
         /// A map of key/value labels.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
+        /// Domain name for reverse DNS record.
+        /// </summary>
+        public readonly string ReverseDns;
         public readonly string Zone;
 
         [OutputConstructor]
@@ -116,6 +120,8 @@ namespace Pulumiverse.Exoscale
 
             ImmutableDictionary<string, string> labels,
 
+            string reverseDns,
+
             string zone)
         {
             AddressFamily = addressFamily;
@@ -125,6 +131,7 @@ namespace Pulumiverse.Exoscale
             Id = id;
             IpAddress = ipAddress;
             Labels = labels;
+            ReverseDns = reverseDns;
             Zone = zone;
         }
     }

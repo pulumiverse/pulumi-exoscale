@@ -20,7 +20,8 @@ class ElasticIPArgs:
                  address_family: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  healthcheck: Optional[pulumi.Input['ElasticIPHealthcheckArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 reverse_dns: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ElasticIP resource.
         :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
@@ -28,6 +29,7 @@ class ElasticIPArgs:
         :param pulumi.Input[str] description: A free-form text describing the Elastic IP (EIP).
         :param pulumi.Input['ElasticIPHealthcheckArgs'] healthcheck: Healthcheck configuration for *managed* EIPs. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
+        :param pulumi.Input[str] reverse_dns: Domain name for reverse DNS record.
         """
         pulumi.set(__self__, "zone", zone)
         if address_family is not None:
@@ -38,6 +40,8 @@ class ElasticIPArgs:
             pulumi.set(__self__, "healthcheck", healthcheck)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if reverse_dns is not None:
+            pulumi.set(__self__, "reverse_dns", reverse_dns)
 
     @property
     @pulumi.getter
@@ -99,6 +103,18 @@ class ElasticIPArgs:
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
+    @property
+    @pulumi.getter(name="reverseDns")
+    def reverse_dns(self) -> Optional[pulumi.Input[str]]:
+        """
+        Domain name for reverse DNS record.
+        """
+        return pulumi.get(self, "reverse_dns")
+
+    @reverse_dns.setter
+    def reverse_dns(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reverse_dns", value)
+
 
 @pulumi.input_type
 class _ElasticIPState:
@@ -109,6 +125,7 @@ class _ElasticIPState:
                  healthcheck: Optional[pulumi.Input['ElasticIPHealthcheckArgs']] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 reverse_dns: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ElasticIP resources.
@@ -118,6 +135,7 @@ class _ElasticIPState:
         :param pulumi.Input['ElasticIPHealthcheckArgs'] healthcheck: Healthcheck configuration for *managed* EIPs. Structure is documented below.
         :param pulumi.Input[str] ip_address: The Elastic IP (EIP) IPv4 or IPv6 address.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
+        :param pulumi.Input[str] reverse_dns: Domain name for reverse DNS record.
         :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
         """
         if address_family is not None:
@@ -132,6 +150,8 @@ class _ElasticIPState:
             pulumi.set(__self__, "ip_address", ip_address)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if reverse_dns is not None:
+            pulumi.set(__self__, "reverse_dns", reverse_dns)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -208,6 +228,18 @@ class _ElasticIPState:
         pulumi.set(self, "labels", value)
 
     @property
+    @pulumi.getter(name="reverseDns")
+    def reverse_dns(self) -> Optional[pulumi.Input[str]]:
+        """
+        Domain name for reverse DNS record.
+        """
+        return pulumi.get(self, "reverse_dns")
+
+    @reverse_dns.setter
+    def reverse_dns(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reverse_dns", value)
+
+    @property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
@@ -229,6 +261,7 @@ class ElasticIP(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  healthcheck: Optional[pulumi.Input[pulumi.InputType['ElasticIPHealthcheckArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 reverse_dns: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -254,6 +287,7 @@ class ElasticIP(pulumi.CustomResource):
         :param pulumi.Input[str] description: A free-form text describing the Elastic IP (EIP).
         :param pulumi.Input[pulumi.InputType['ElasticIPHealthcheckArgs']] healthcheck: Healthcheck configuration for *managed* EIPs. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
+        :param pulumi.Input[str] reverse_dns: Domain name for reverse DNS record.
         :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
         """
         ...
@@ -298,6 +332,7 @@ class ElasticIP(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  healthcheck: Optional[pulumi.Input[pulumi.InputType['ElasticIPHealthcheckArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 reverse_dns: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -312,6 +347,7 @@ class ElasticIP(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["healthcheck"] = healthcheck
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["reverse_dns"] = reverse_dns
             if zone is None and not opts.urn:
                 raise TypeError("Missing required property 'zone'")
             __props__.__dict__["zone"] = zone
@@ -333,6 +369,7 @@ class ElasticIP(pulumi.CustomResource):
             healthcheck: Optional[pulumi.Input[pulumi.InputType['ElasticIPHealthcheckArgs']]] = None,
             ip_address: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            reverse_dns: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'ElasticIP':
         """
         Get an existing ElasticIP resource's state with the given name, id, and optional extra
@@ -347,6 +384,7 @@ class ElasticIP(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ElasticIPHealthcheckArgs']] healthcheck: Healthcheck configuration for *managed* EIPs. Structure is documented below.
         :param pulumi.Input[str] ip_address: The Elastic IP (EIP) IPv4 or IPv6 address.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
+        :param pulumi.Input[str] reverse_dns: Domain name for reverse DNS record.
         :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -359,6 +397,7 @@ class ElasticIP(pulumi.CustomResource):
         __props__.__dict__["healthcheck"] = healthcheck
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["reverse_dns"] = reverse_dns
         __props__.__dict__["zone"] = zone
         return ElasticIP(resource_name, opts=opts, __props__=__props__)
 
@@ -409,6 +448,14 @@ class ElasticIP(pulumi.CustomResource):
         A map of key/value labels.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="reverseDns")
+    def reverse_dns(self) -> pulumi.Output[Optional[str]]:
+        """
+        Domain name for reverse DNS record.
+        """
+        return pulumi.get(self, "reverse_dns")
 
     @property
     @pulumi.getter

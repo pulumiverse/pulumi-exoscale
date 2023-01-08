@@ -32,9 +32,8 @@ export interface GetDomainResult {
     readonly id: string;
     readonly name: string;
 }
-
 export function getDomainOutput(args: GetDomainOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainResult> {
-    return pulumi.output(args).apply(a => getDomain(a, opts))
+    return pulumi.output(args).apply((a: any) => getDomain(a, opts))
 }
 
 /**

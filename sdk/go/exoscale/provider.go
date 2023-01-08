@@ -51,7 +51,7 @@ func NewProvider(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Timeout'")
 	}
 	if args.Secret != nil {
-		args.Secret = pulumi.ToSecret(args.Secret).(pulumi.StringPtrOutput)
+		args.Secret = pulumi.ToSecret(args.Secret).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"secret",

@@ -44,9 +44,8 @@ export interface GetDomainRecordResult {
      */
     readonly records: outputs.GetDomainRecordRecord[];
 }
-
 export function getDomainRecordOutput(args: GetDomainRecordOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainRecordResult> {
-    return pulumi.output(args).apply(a => getDomainRecord(a, opts))
+    return pulumi.output(args).apply((a: any) => getDomainRecord(a, opts))
 }
 
 /**

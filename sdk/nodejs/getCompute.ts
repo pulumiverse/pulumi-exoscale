@@ -88,9 +88,11 @@ export interface GetComputeResult {
      */
     readonly zone: string;
 }
-
+/**
+ * !> **WARNING:** This data source is **DEPRECATED** and will be removed in the next major version. Please use exoscale.ComputeInstance instead.
+ */
 export function getComputeOutput(args?: GetComputeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeResult> {
-    return pulumi.output(args).apply(a => getCompute(a, opts))
+    return pulumi.output(args).apply((a: any) => getCompute(a, opts))
 }
 
 /**

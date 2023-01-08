@@ -4,7 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
-import * as utilities from "../utilities";
 
 export interface ComputeInstanceNetworkInterface {
     /**
@@ -276,6 +275,7 @@ export interface GetComputeInstanceListInstance {
     name?: string;
     privateNetworkIds: string[];
     publicIpAddress: string;
+    reverseDns: string;
     securityGroupIds: string[];
     sshKey: string;
     state: string;

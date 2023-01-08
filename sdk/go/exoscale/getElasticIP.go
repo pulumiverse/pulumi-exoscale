@@ -44,7 +44,9 @@ type LookupElasticIPResult struct {
 	IpAddress    *string                   `pulumi:"ipAddress"`
 	// A map of key/value labels.
 	Labels map[string]string `pulumi:"labels"`
-	Zone   string            `pulumi:"zone"`
+	// Domain name for reverse DNS record.
+	ReverseDns string `pulumi:"reverseDns"`
+	Zone       string `pulumi:"zone"`
 }
 
 func LookupElasticIPOutput(ctx *pulumi.Context, args LookupElasticIPOutputArgs, opts ...pulumi.InvokeOption) LookupElasticIPResultOutput {
@@ -120,6 +122,11 @@ func (o LookupElasticIPResultOutput) IpAddress() pulumi.StringPtrOutput {
 // A map of key/value labels.
 func (o LookupElasticIPResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupElasticIPResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Domain name for reverse DNS record.
+func (o LookupElasticIPResultOutput) ReverseDns() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupElasticIPResult) string { return v.ReverseDns }).(pulumi.StringOutput)
 }
 
 func (o LookupElasticIPResultOutput) Zone() pulumi.StringOutput {

@@ -98,6 +98,10 @@ export class ComputeInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly publicIpAddress!: pulumi.Output<string>;
     /**
+     * Domain name for reverse DNS record.
+     */
+    public readonly reverseDns!: pulumi.Output<string | undefined>;
+    /**
      * A list of exoscale.SecurityGroup (IDs) to attach to the instance.
      */
     public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
@@ -151,6 +155,7 @@ export class ComputeInstance extends pulumi.CustomResource {
             resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             resourceInputs["privateNetworkIds"] = state ? state.privateNetworkIds : undefined;
             resourceInputs["publicIpAddress"] = state ? state.publicIpAddress : undefined;
+            resourceInputs["reverseDns"] = state ? state.reverseDns : undefined;
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             resourceInputs["sshKey"] = state ? state.sshKey : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
@@ -177,6 +182,7 @@ export class ComputeInstance extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
+            resourceInputs["reverseDns"] = args ? args.reverseDns : undefined;
             resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             resourceInputs["sshKey"] = args ? args.sshKey : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
@@ -249,6 +255,10 @@ export interface ComputeInstanceState {
      */
     publicIpAddress?: pulumi.Input<string>;
     /**
+     * Domain name for reverse DNS record.
+     */
+    reverseDns?: pulumi.Input<string>;
+    /**
      * A list of exoscale.SecurityGroup (IDs) to attach to the instance.
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -314,6 +324,10 @@ export interface ComputeInstanceArgs {
      * Private network interfaces (may be specified multiple times). Structure is documented below.
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceNetworkInterface>[]>;
+    /**
+     * Domain name for reverse DNS record.
+     */
+    reverseDns?: pulumi.Input<string>;
     /**
      * A list of exoscale.SecurityGroup (IDs) to attach to the instance.
      */

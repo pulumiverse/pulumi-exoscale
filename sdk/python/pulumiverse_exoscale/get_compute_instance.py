@@ -21,7 +21,7 @@ class GetComputeInstanceResult:
     """
     A collection of values returned by getComputeInstance.
     """
-    def __init__(__self__, anti_affinity_group_ids=None, created_at=None, deploy_target_id=None, disk_size=None, elastic_ip_ids=None, id=None, ipv6=None, ipv6_address=None, labels=None, manager_id=None, manager_type=None, name=None, private_network_ids=None, public_ip_address=None, security_group_ids=None, ssh_key=None, state=None, template_id=None, type=None, user_data=None, zone=None):
+    def __init__(__self__, anti_affinity_group_ids=None, created_at=None, deploy_target_id=None, disk_size=None, elastic_ip_ids=None, id=None, ipv6=None, ipv6_address=None, labels=None, manager_id=None, manager_type=None, name=None, private_network_ids=None, public_ip_address=None, reverse_dns=None, security_group_ids=None, ssh_key=None, state=None, template_id=None, type=None, user_data=None, zone=None):
         if anti_affinity_group_ids and not isinstance(anti_affinity_group_ids, list):
             raise TypeError("Expected argument 'anti_affinity_group_ids' to be a list")
         pulumi.set(__self__, "anti_affinity_group_ids", anti_affinity_group_ids)
@@ -64,6 +64,9 @@ class GetComputeInstanceResult:
         if public_ip_address and not isinstance(public_ip_address, str):
             raise TypeError("Expected argument 'public_ip_address' to be a str")
         pulumi.set(__self__, "public_ip_address", public_ip_address)
+        if reverse_dns and not isinstance(reverse_dns, str):
+            raise TypeError("Expected argument 'reverse_dns' to be a str")
+        pulumi.set(__self__, "reverse_dns", reverse_dns)
         if security_group_ids and not isinstance(security_group_ids, list):
             raise TypeError("Expected argument 'security_group_ids' to be a list")
         pulumi.set(__self__, "security_group_ids", security_group_ids)
@@ -187,6 +190,14 @@ class GetComputeInstanceResult:
         return pulumi.get(self, "public_ip_address")
 
     @property
+    @pulumi.getter(name="reverseDns")
+    def reverse_dns(self) -> str:
+        """
+        Domain name for reverse DNS record.
+        """
+        return pulumi.get(self, "reverse_dns")
+
+    @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Sequence[str]:
         """
@@ -260,6 +271,7 @@ class AwaitableGetComputeInstanceResult(GetComputeInstanceResult):
             name=self.name,
             private_network_ids=self.private_network_ids,
             public_ip_address=self.public_ip_address,
+            reverse_dns=self.reverse_dns,
             security_group_ids=self.security_group_ids,
             ssh_key=self.ssh_key,
             state=self.state,
@@ -307,6 +319,7 @@ def get_compute_instance(anti_affinity_group_ids: Optional[Sequence[str]] = None
         name=__ret__.name,
         private_network_ids=__ret__.private_network_ids,
         public_ip_address=__ret__.public_ip_address,
+        reverse_dns=__ret__.reverse_dns,
         security_group_ids=__ret__.security_group_ids,
         ssh_key=__ret__.ssh_key,
         state=__ret__.state,
