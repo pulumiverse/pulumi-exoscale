@@ -154,6 +154,7 @@ func Provider() tfbridge.ProviderInfo {
 			"exoscale_nlb":                   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getNLB")},
 			"exoscale_private_network":       {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getPrivateNetwork")},
 			"exoscale_security_group":        {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSecurityGroup")},
+			"exoscale_template":              {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTemplate")},
 			// Deprecated DataSources, will be removed with next major version
 			"exoscale_affinity":          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAffinity")},
 			"exoscale_compute":           {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getCompute")},

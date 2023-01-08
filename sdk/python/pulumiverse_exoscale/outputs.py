@@ -1566,6 +1566,7 @@ class GetComputeInstanceListInstanceResult(dict):
                  manager_type: str,
                  private_network_ids: Sequence[str],
                  public_ip_address: str,
+                 reverse_dns: str,
                  security_group_ids: Sequence[str],
                  ssh_key: str,
                  state: str,
@@ -1590,6 +1591,7 @@ class GetComputeInstanceListInstanceResult(dict):
         pulumi.set(__self__, "manager_type", manager_type)
         pulumi.set(__self__, "private_network_ids", private_network_ids)
         pulumi.set(__self__, "public_ip_address", public_ip_address)
+        pulumi.set(__self__, "reverse_dns", reverse_dns)
         pulumi.set(__self__, "security_group_ids", security_group_ids)
         pulumi.set(__self__, "ssh_key", ssh_key)
         pulumi.set(__self__, "state", state)
@@ -1655,6 +1657,11 @@ class GetComputeInstanceListInstanceResult(dict):
     @pulumi.getter(name="publicIpAddress")
     def public_ip_address(self) -> str:
         return pulumi.get(self, "public_ip_address")
+
+    @property
+    @pulumi.getter(name="reverseDns")
+    def reverse_dns(self) -> str:
+        return pulumi.get(self, "reverse_dns")
 
     @property
     @pulumi.getter(name="securityGroupIds")

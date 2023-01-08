@@ -67,6 +67,12 @@ namespace Pulumiverse.Exoscale
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
+        /// Domain name for reverse DNS record.
+        /// </summary>
+        [Output("reverseDns")]
+        public Output<string?> ReverseDns { get; private set; } = null!;
+
+        /// <summary>
         /// The Exoscale [Zone][zone] name.
         /// </summary>
         [Output("zone")]
@@ -150,6 +156,12 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
+        /// Domain name for reverse DNS record.
+        /// </summary>
+        [Input("reverseDns")]
+        public Input<string>? ReverseDns { get; set; }
+
+        /// <summary>
         /// The Exoscale [Zone][zone] name.
         /// </summary>
         [Input("zone", required: true)]
@@ -204,6 +216,12 @@ namespace Pulumiverse.Exoscale
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Domain name for reverse DNS record.
+        /// </summary>
+        [Input("reverseDns")]
+        public Input<string>? ReverseDns { get; set; }
 
         /// <summary>
         /// The Exoscale [Zone][zone] name.

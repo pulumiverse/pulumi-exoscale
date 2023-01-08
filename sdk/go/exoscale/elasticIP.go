@@ -43,6 +43,8 @@ type ElasticIP struct {
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
 	// A map of key/value labels.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Domain name for reverse DNS record.
+	ReverseDns pulumi.StringPtrOutput `pulumi:"reverseDns"`
 	// The Exoscale [Zone][zone] name.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
@@ -92,6 +94,8 @@ type elasticIPState struct {
 	IpAddress *string `pulumi:"ipAddress"`
 	// A map of key/value labels.
 	Labels map[string]string `pulumi:"labels"`
+	// Domain name for reverse DNS record.
+	ReverseDns *string `pulumi:"reverseDns"`
 	// The Exoscale [Zone][zone] name.
 	Zone *string `pulumi:"zone"`
 }
@@ -109,6 +113,8 @@ type ElasticIPState struct {
 	IpAddress pulumi.StringPtrInput
 	// A map of key/value labels.
 	Labels pulumi.StringMapInput
+	// Domain name for reverse DNS record.
+	ReverseDns pulumi.StringPtrInput
 	// The Exoscale [Zone][zone] name.
 	Zone pulumi.StringPtrInput
 }
@@ -126,6 +132,8 @@ type elasticIPArgs struct {
 	Healthcheck *ElasticIPHealthcheck `pulumi:"healthcheck"`
 	// A map of key/value labels.
 	Labels map[string]string `pulumi:"labels"`
+	// Domain name for reverse DNS record.
+	ReverseDns *string `pulumi:"reverseDns"`
 	// The Exoscale [Zone][zone] name.
 	Zone string `pulumi:"zone"`
 }
@@ -140,6 +148,8 @@ type ElasticIPArgs struct {
 	Healthcheck ElasticIPHealthcheckPtrInput
 	// A map of key/value labels.
 	Labels pulumi.StringMapInput
+	// Domain name for reverse DNS record.
+	ReverseDns pulumi.StringPtrInput
 	// The Exoscale [Zone][zone] name.
 	Zone pulumi.StringInput
 }
@@ -259,6 +269,11 @@ func (o ElasticIPOutput) IpAddress() pulumi.StringOutput {
 // A map of key/value labels.
 func (o ElasticIPOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ElasticIP) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Domain name for reverse DNS record.
+func (o ElasticIPOutput) ReverseDns() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticIP) pulumi.StringPtrOutput { return v.ReverseDns }).(pulumi.StringPtrOutput)
 }
 
 // The Exoscale [Zone][zone] name.

@@ -50,9 +50,8 @@ export interface GetComputeTemplateResult {
     readonly username: string;
     readonly zone: string;
 }
-
 export function getComputeTemplateOutput(args: GetComputeTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeTemplateResult> {
-    return pulumi.output(args).apply(a => getComputeTemplate(a, opts))
+    return pulumi.output(args).apply((a: any) => getComputeTemplate(a, opts))
 }
 
 /**

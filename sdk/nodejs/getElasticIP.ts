@@ -60,11 +60,14 @@ export interface GetElasticIPResult {
      * A map of key/value labels.
      */
     readonly labels: {[key: string]: string};
+    /**
+     * Domain name for reverse DNS record.
+     */
+    readonly reverseDns: string;
     readonly zone: string;
 }
-
 export function getElasticIPOutput(args: GetElasticIPOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetElasticIPResult> {
-    return pulumi.output(args).apply(a => getElasticIP(a, opts))
+    return pulumi.output(args).apply((a: any) => getElasticIP(a, opts))
 }
 
 /**

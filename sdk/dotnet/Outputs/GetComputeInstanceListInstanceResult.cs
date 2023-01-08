@@ -28,6 +28,7 @@ namespace Pulumiverse.Exoscale.Outputs
         public readonly string? Name;
         public readonly ImmutableArray<string> PrivateNetworkIds;
         public readonly string PublicIpAddress;
+        public readonly string ReverseDns;
         public readonly ImmutableArray<string> SecurityGroupIds;
         public readonly string SshKey;
         public readonly string State;
@@ -69,6 +70,8 @@ namespace Pulumiverse.Exoscale.Outputs
 
             string publicIpAddress,
 
+            string reverseDns,
+
             ImmutableArray<string> securityGroupIds,
 
             string sshKey,
@@ -97,6 +100,7 @@ namespace Pulumiverse.Exoscale.Outputs
             Name = name;
             PrivateNetworkIds = privateNetworkIds;
             PublicIpAddress = publicIpAddress;
+            ReverseDns = reverseDns;
             SecurityGroupIds = securityGroupIds;
             SshKey = sshKey;
             State = state;

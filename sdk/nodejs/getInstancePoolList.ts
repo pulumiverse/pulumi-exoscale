@@ -38,9 +38,8 @@ export interface GetInstancePoolListResult {
     readonly pools: outputs.GetInstancePoolListPool[];
     readonly zone: string;
 }
-
 export function getInstancePoolListOutput(args: GetInstancePoolListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancePoolListResult> {
-    return pulumi.output(args).apply(a => getInstancePoolList(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstancePoolList(a, opts))
 }
 
 /**

@@ -88,6 +88,10 @@ export interface GetComputeInstanceResult {
      */
     readonly publicIpAddress: string;
     /**
+     * Domain name for reverse DNS record.
+     */
+    readonly reverseDns: string;
+    /**
      * The list of attached exoscale.SecurityGroup (IDs).
      */
     readonly securityGroupIds: string[];
@@ -113,9 +117,8 @@ export interface GetComputeInstanceResult {
     readonly userData: string;
     readonly zone: string;
 }
-
 export function getComputeInstanceOutput(args: GetComputeInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeInstanceResult> {
-    return pulumi.output(args).apply(a => getComputeInstance(a, opts))
+    return pulumi.output(args).apply((a: any) => getComputeInstance(a, opts))
 }
 
 /**

@@ -53,6 +53,8 @@ type ComputeInstance struct {
 	PrivateNetworkIds pulumi.StringArrayOutput `pulumi:"privateNetworkIds"`
 	// The instance (main network interface) IPv4 address.
 	PublicIpAddress pulumi.StringOutput `pulumi:"publicIpAddress"`
+	// Domain name for reverse DNS record.
+	ReverseDns pulumi.StringPtrOutput `pulumi:"reverseDns"`
 	// A list of SecurityGroup (IDs) to attach to the instance.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// The SSHKey (name) to authorize in the instance (may only be set at creation time).
@@ -134,6 +136,8 @@ type computeInstanceState struct {
 	PrivateNetworkIds []string `pulumi:"privateNetworkIds"`
 	// The instance (main network interface) IPv4 address.
 	PublicIpAddress *string `pulumi:"publicIpAddress"`
+	// Domain name for reverse DNS record.
+	ReverseDns *string `pulumi:"reverseDns"`
 	// A list of SecurityGroup (IDs) to attach to the instance.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// The SSHKey (name) to authorize in the instance (may only be set at creation time).
@@ -177,6 +181,8 @@ type ComputeInstanceState struct {
 	PrivateNetworkIds pulumi.StringArrayInput
 	// The instance (main network interface) IPv4 address.
 	PublicIpAddress pulumi.StringPtrInput
+	// Domain name for reverse DNS record.
+	ReverseDns pulumi.StringPtrInput
 	// A list of SecurityGroup (IDs) to attach to the instance.
 	SecurityGroupIds pulumi.StringArrayInput
 	// The SSHKey (name) to authorize in the instance (may only be set at creation time).
@@ -214,6 +220,8 @@ type computeInstanceArgs struct {
 	Name *string `pulumi:"name"`
 	// Private network interfaces (may be specified multiple times). Structure is documented below.
 	NetworkInterfaces []ComputeInstanceNetworkInterface `pulumi:"networkInterfaces"`
+	// Domain name for reverse DNS record.
+	ReverseDns *string `pulumi:"reverseDns"`
 	// A list of SecurityGroup (IDs) to attach to the instance.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// The SSHKey (name) to authorize in the instance (may only be set at creation time).
@@ -248,6 +256,8 @@ type ComputeInstanceArgs struct {
 	Name pulumi.StringPtrInput
 	// Private network interfaces (may be specified multiple times). Structure is documented below.
 	NetworkInterfaces ComputeInstanceNetworkInterfaceArrayInput
+	// Domain name for reverse DNS record.
+	ReverseDns pulumi.StringPtrInput
 	// A list of SecurityGroup (IDs) to attach to the instance.
 	SecurityGroupIds pulumi.StringArrayInput
 	// The SSHKey (name) to authorize in the instance (may only be set at creation time).
@@ -411,6 +421,11 @@ func (o ComputeInstanceOutput) PrivateNetworkIds() pulumi.StringArrayOutput {
 // The instance (main network interface) IPv4 address.
 func (o ComputeInstanceOutput) PublicIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *ComputeInstance) pulumi.StringOutput { return v.PublicIpAddress }).(pulumi.StringOutput)
+}
+
+// Domain name for reverse DNS record.
+func (o ComputeInstanceOutput) ReverseDns() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeInstance) pulumi.StringPtrOutput { return v.ReverseDns }).(pulumi.StringPtrOutput)
 }
 
 // A list of SecurityGroup (IDs) to attach to the instance.

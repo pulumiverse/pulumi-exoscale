@@ -56,9 +56,8 @@ export interface GetPrivateNetworkResult {
     readonly startIp: string;
     readonly zone: string;
 }
-
 export function getPrivateNetworkOutput(args: GetPrivateNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateNetworkResult> {
-    return pulumi.output(args).apply(a => getPrivateNetwork(a, opts))
+    return pulumi.output(args).apply((a: any) => getPrivateNetwork(a, opts))
 }
 
 /**

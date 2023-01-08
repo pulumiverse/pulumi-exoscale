@@ -22,7 +22,7 @@ class GetElasticIPResult:
     """
     A collection of values returned by getElasticIP.
     """
-    def __init__(__self__, address_family=None, cidr=None, description=None, healthchecks=None, id=None, ip_address=None, labels=None, zone=None):
+    def __init__(__self__, address_family=None, cidr=None, description=None, healthchecks=None, id=None, ip_address=None, labels=None, reverse_dns=None, zone=None):
         if address_family and not isinstance(address_family, str):
             raise TypeError("Expected argument 'address_family' to be a str")
         pulumi.set(__self__, "address_family", address_family)
@@ -44,6 +44,9 @@ class GetElasticIPResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
+        if reverse_dns and not isinstance(reverse_dns, str):
+            raise TypeError("Expected argument 'reverse_dns' to be a str")
+        pulumi.set(__self__, "reverse_dns", reverse_dns)
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         pulumi.set(__self__, "zone", zone)
@@ -99,6 +102,14 @@ class GetElasticIPResult:
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter(name="reverseDns")
+    def reverse_dns(self) -> str:
+        """
+        Domain name for reverse DNS record.
+        """
+        return pulumi.get(self, "reverse_dns")
+
+    @property
     @pulumi.getter
     def zone(self) -> str:
         return pulumi.get(self, "zone")
@@ -117,6 +128,7 @@ class AwaitableGetElasticIPResult(GetElasticIPResult):
             id=self.id,
             ip_address=self.ip_address,
             labels=self.labels,
+            reverse_dns=self.reverse_dns,
             zone=self.zone)
 
 
@@ -146,6 +158,7 @@ def get_elastic_ip(id: Optional[str] = None,
         id=__ret__.id,
         ip_address=__ret__.ip_address,
         labels=__ret__.labels,
+        reverse_dns=__ret__.reverse_dns,
         zone=__ret__.zone)
 
 

@@ -38,9 +38,11 @@ export interface GetAffinityResult {
     readonly id?: string;
     readonly name?: string;
 }
-
+/**
+ * !> **WARNING:** This data source is DEPRECATED and will be removed in the next major version. Please use exoscale.AntiAffinityGroup instead.
+ */
 export function getAffinityOutput(args?: GetAffinityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAffinityResult> {
-    return pulumi.output(args).apply(a => getAffinity(a, opts))
+    return pulumi.output(args).apply((a: any) => getAffinity(a, opts))
 }
 
 /**

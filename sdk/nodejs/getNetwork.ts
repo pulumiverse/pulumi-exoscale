@@ -54,9 +54,11 @@ export interface GetNetworkResult {
     readonly startIp: string;
     readonly zone: string;
 }
-
+/**
+ * !> **WARNING:** This data source is **DEPRECATED** and will be removed in the next major version. Please use exoscale.PrivateNetwork instead.
+ */
 export function getNetworkOutput(args: GetNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkResult> {
-    return pulumi.output(args).apply(a => getNetwork(a, opts))
+    return pulumi.output(args).apply((a: any) => getNetwork(a, opts))
 }
 
 /**

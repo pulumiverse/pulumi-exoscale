@@ -125,6 +125,11 @@ export const getSecurityGroup: typeof import("./getSecurityGroup").getSecurityGr
 export const getSecurityGroupOutput: typeof import("./getSecurityGroup").getSecurityGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getSecurityGroup","getSecurityGroupOutput"], () => require("./getSecurityGroup"));
 
+export { GetTemplateArgs, GetTemplateResult, GetTemplateOutputArgs } from "./getTemplate";
+export const getTemplate: typeof import("./getTemplate").getTemplate = null as any;
+export const getTemplateOutput: typeof import("./getTemplate").getTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getTemplate","getTemplateOutput"], () => require("./getTemplate"));
+
 export { IAMAccessKeyArgs, IAMAccessKeyState } from "./iamaccessKey";
 export type IAMAccessKey = import("./iamaccessKey").IAMAccessKey;
 export const IAMAccessKey: typeof import("./iamaccessKey").IAMAccessKey = null as any;

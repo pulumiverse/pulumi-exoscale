@@ -56,9 +56,8 @@ export interface GetNLBResult {
     readonly state: string;
     readonly zone: string;
 }
-
 export function getNLBOutput(args: GetNLBOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNLBResult> {
-    return pulumi.output(args).apply(a => getNLB(a, opts))
+    return pulumi.output(args).apply((a: any) => getNLB(a, opts))
 }
 
 /**

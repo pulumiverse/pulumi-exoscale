@@ -55,9 +55,11 @@ export interface GetComputeIPAddressResult {
     readonly tags?: {[key: string]: string};
     readonly zone: string;
 }
-
+/**
+ * !> **WARNING:** This data source is **DEPRECATED** and will be removed in the next major version. Please use exoscale.ElasticIP instead.
+ */
 export function getComputeIPAddressOutput(args: GetComputeIPAddressOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeIPAddressResult> {
-    return pulumi.output(args).apply(a => getComputeIPAddress(a, opts))
+    return pulumi.output(args).apply((a: any) => getComputeIPAddress(a, opts))
 }
 
 /**

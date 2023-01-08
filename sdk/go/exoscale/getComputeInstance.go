@@ -59,6 +59,8 @@ type LookupComputeInstanceResult struct {
 	PrivateNetworkIds []string `pulumi:"privateNetworkIds"`
 	// The instance (main network interface) IPv4 address.
 	PublicIpAddress string `pulumi:"publicIpAddress"`
+	// Domain name for reverse DNS record.
+	ReverseDns string `pulumi:"reverseDns"`
 	// The list of attached SecurityGroup (IDs).
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// The SSHKey (name) authorized on the instance.
@@ -183,6 +185,11 @@ func (o LookupComputeInstanceResultOutput) PrivateNetworkIds() pulumi.StringArra
 // The instance (main network interface) IPv4 address.
 func (o LookupComputeInstanceResultOutput) PublicIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.PublicIpAddress }).(pulumi.StringOutput)
+}
+
+// Domain name for reverse DNS record.
+func (o LookupComputeInstanceResultOutput) ReverseDns() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.ReverseDns }).(pulumi.StringOutput)
 }
 
 // The list of attached SecurityGroup (IDs).

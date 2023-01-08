@@ -35,9 +35,8 @@ export interface GetComputeInstanceListResult {
     readonly instances: outputs.GetComputeInstanceListInstance[];
     readonly zone: string;
 }
-
 export function getComputeInstanceListOutput(args: GetComputeInstanceListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeInstanceListResult> {
-    return pulumi.output(args).apply(a => getComputeInstanceList(a, opts))
+    return pulumi.output(args).apply((a: any) => getComputeInstanceList(a, opts))
 }
 
 /**

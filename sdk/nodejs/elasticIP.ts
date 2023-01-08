@@ -76,6 +76,10 @@ export class ElasticIP extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Domain name for reverse DNS record.
+     */
+    public readonly reverseDns!: pulumi.Output<string | undefined>;
+    /**
      * The Exoscale [Zone][zone] name.
      */
     public readonly zone!: pulumi.Output<string>;
@@ -99,6 +103,7 @@ export class ElasticIP extends pulumi.CustomResource {
             resourceInputs["healthcheck"] = state ? state.healthcheck : undefined;
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["reverseDns"] = state ? state.reverseDns : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as ElasticIPArgs | undefined;
@@ -109,6 +114,7 @@ export class ElasticIP extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["healthcheck"] = args ? args.healthcheck : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["reverseDns"] = args ? args.reverseDns : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["cidr"] = undefined /*out*/;
             resourceInputs["ipAddress"] = undefined /*out*/;
@@ -147,6 +153,10 @@ export interface ElasticIPState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Domain name for reverse DNS record.
+     */
+    reverseDns?: pulumi.Input<string>;
+    /**
      * The Exoscale [Zone][zone] name.
      */
     zone?: pulumi.Input<string>;
@@ -172,6 +182,10 @@ export interface ElasticIPArgs {
      * A map of key/value labels.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Domain name for reverse DNS record.
+     */
+    reverseDns?: pulumi.Input<string>;
     /**
      * The Exoscale [Zone][zone] name.
      */
