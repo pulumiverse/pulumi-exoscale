@@ -5,7 +5,7 @@ go 1.19
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220824175045-450992f2f5b9
 
 require (
-	github.com/exoscale/terraform-provider-exoscale v0.42.0
+	github.com/exoscale/terraform-provider-exoscale v0.43.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.33.1-0.20221104131001-330791e758b8
 	github.com/pulumi/pulumi/sdk/v3 v3.51.0
 )
@@ -78,7 +78,7 @@ require (
 	github.com/edsrzf/mmap-go v1.1.0 // indirect
 	github.com/emirpasic/gods v1.12.0 // indirect
 	github.com/ettle/strcase v0.1.1 // indirect
-	github.com/exoscale/egoscale v0.91.0 // indirect
+	github.com/exoscale/egoscale v0.94.0 // indirect
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/gedex/inflector v0.0.0-20170307190818-16278e9db813 // indirect
 	github.com/go-git/gcfg v1.5.0 // indirect
