@@ -27,7 +27,7 @@ class ElasticIPArgs:
         :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
         :param pulumi.Input[str] address_family: The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
         :param pulumi.Input[str] description: A free-form text describing the Elastic IP (EIP).
-        :param pulumi.Input['ElasticIPHealthcheckArgs'] healthcheck: Healthcheck configuration for *managed* EIPs. Structure is documented below.
+        :param pulumi.Input['ElasticIPHealthcheckArgs'] healthcheck: Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[str] reverse_dns: Domain name for reverse DNS record.
         """
@@ -83,7 +83,7 @@ class ElasticIPArgs:
     @pulumi.getter
     def healthcheck(self) -> Optional[pulumi.Input['ElasticIPHealthcheckArgs']]:
         """
-        Healthcheck configuration for *managed* EIPs. Structure is documented below.
+        Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
         """
         return pulumi.get(self, "healthcheck")
 
@@ -132,7 +132,7 @@ class _ElasticIPState:
         :param pulumi.Input[str] address_family: The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
         :param pulumi.Input[str] cidr: The Elastic IP (EIP) CIDR.
         :param pulumi.Input[str] description: A free-form text describing the Elastic IP (EIP).
-        :param pulumi.Input['ElasticIPHealthcheckArgs'] healthcheck: Healthcheck configuration for *managed* EIPs. Structure is documented below.
+        :param pulumi.Input['ElasticIPHealthcheckArgs'] healthcheck: Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
         :param pulumi.Input[str] ip_address: The Elastic IP (EIP) IPv4 or IPv6 address.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[str] reverse_dns: Domain name for reverse DNS record.
@@ -195,7 +195,7 @@ class _ElasticIPState:
     @pulumi.getter
     def healthcheck(self) -> Optional[pulumi.Input['ElasticIPHealthcheckArgs']]:
         """
-        Healthcheck configuration for *managed* EIPs. Structure is documented below.
+        Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
         """
         return pulumi.get(self, "healthcheck")
 
@@ -285,7 +285,7 @@ class ElasticIP(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address_family: The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
         :param pulumi.Input[str] description: A free-form text describing the Elastic IP (EIP).
-        :param pulumi.Input[pulumi.InputType['ElasticIPHealthcheckArgs']] healthcheck: Healthcheck configuration for *managed* EIPs. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ElasticIPHealthcheckArgs']] healthcheck: Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[str] reverse_dns: Domain name for reverse DNS record.
         :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
@@ -381,7 +381,7 @@ class ElasticIP(pulumi.CustomResource):
         :param pulumi.Input[str] address_family: The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
         :param pulumi.Input[str] cidr: The Elastic IP (EIP) CIDR.
         :param pulumi.Input[str] description: A free-form text describing the Elastic IP (EIP).
-        :param pulumi.Input[pulumi.InputType['ElasticIPHealthcheckArgs']] healthcheck: Healthcheck configuration for *managed* EIPs. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ElasticIPHealthcheckArgs']] healthcheck: Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
         :param pulumi.Input[str] ip_address: The Elastic IP (EIP) IPv4 or IPv6 address.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[str] reverse_dns: Domain name for reverse DNS record.
@@ -429,7 +429,7 @@ class ElasticIP(pulumi.CustomResource):
     @pulumi.getter
     def healthcheck(self) -> pulumi.Output['outputs.ElasticIPHealthcheck']:
         """
-        Healthcheck configuration for *managed* EIPs. Structure is documented below.
+        Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
         """
         return pulumi.get(self, "healthcheck")
 

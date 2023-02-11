@@ -23,16 +23,28 @@ namespace Pulumiverse.Exoscale
     public sealed class GetElasticIPArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The Elastic IP (EIP) ID to match (conflicts with `ip_address`).
+        /// The Elastic IP (EIP) ID to match (conflicts with `ip_address` and `labels`).
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// The EIP IPv4 or IPv6 address to match (conflicts with `id`).
+        /// The EIP IPv4 or IPv6 address to match (conflicts with `id` and `labels`).
         /// </summary>
         [Input("ipAddress")]
         public string? IpAddress { get; set; }
+
+        [Input("labels")]
+        private Dictionary<string, string>? _labels;
+
+        /// <summary>
+        /// The EIP labels to match (conflicts with `ip_address` and `id`).
+        /// </summary>
+        public Dictionary<string, string> Labels
+        {
+            get => _labels ?? (_labels = new Dictionary<string, string>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// The Exocale [Zone][zone] name.
@@ -49,16 +61,28 @@ namespace Pulumiverse.Exoscale
     public sealed class GetElasticIPInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The Elastic IP (EIP) ID to match (conflicts with `ip_address`).
+        /// The Elastic IP (EIP) ID to match (conflicts with `ip_address` and `labels`).
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The EIP IPv4 or IPv6 address to match (conflicts with `id`).
+        /// The EIP IPv4 or IPv6 address to match (conflicts with `id` and `labels`).
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// The EIP labels to match (conflicts with `ip_address` and `id`).
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// The Exocale [Zone][zone] name.
@@ -97,7 +121,7 @@ namespace Pulumiverse.Exoscale
         /// <summary>
         /// A map of key/value labels.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Labels;
+        public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>
         /// Domain name for reverse DNS record.
         /// </summary>
@@ -118,7 +142,7 @@ namespace Pulumiverse.Exoscale
 
             string? ipAddress,
 
-            ImmutableDictionary<string, string> labels,
+            ImmutableDictionary<string, string>? labels,
 
             string reverseDns,
 

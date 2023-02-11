@@ -12,6 +12,7 @@ export function getElasticIP(args: GetElasticIPArgs, opts?: pulumi.InvokeOptions
     return pulumi.runtime.invoke("exoscale:index/getElasticIP:getElasticIP", {
         "id": args.id,
         "ipAddress": args.ipAddress,
+        "labels": args.labels,
         "zone": args.zone,
     }, opts);
 }
@@ -21,13 +22,17 @@ export function getElasticIP(args: GetElasticIPArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetElasticIPArgs {
     /**
-     * The Elastic IP (EIP) ID to match (conflicts with `ipAddress`).
+     * The Elastic IP (EIP) ID to match (conflicts with `ipAddress` and `labels`).
      */
     id?: string;
     /**
-     * The EIP IPv4 or IPv6 address to match (conflicts with `id`).
+     * The EIP IPv4 or IPv6 address to match (conflicts with `id` and `labels`).
      */
     ipAddress?: string;
+    /**
+     * The EIP labels to match (conflicts with `ipAddress` and `id`).
+     */
+    labels?: {[key: string]: string};
     /**
      * The Exocale [Zone][zone] name.
      */
@@ -59,7 +64,7 @@ export interface GetElasticIPResult {
     /**
      * A map of key/value labels.
      */
-    readonly labels: {[key: string]: string};
+    readonly labels?: {[key: string]: string};
     /**
      * Domain name for reverse DNS record.
      */
@@ -75,13 +80,17 @@ export function getElasticIPOutput(args: GetElasticIPOutputArgs, opts?: pulumi.I
  */
 export interface GetElasticIPOutputArgs {
     /**
-     * The Elastic IP (EIP) ID to match (conflicts with `ipAddress`).
+     * The Elastic IP (EIP) ID to match (conflicts with `ipAddress` and `labels`).
      */
     id?: pulumi.Input<string>;
     /**
-     * The EIP IPv4 or IPv6 address to match (conflicts with `id`).
+     * The EIP IPv4 or IPv6 address to match (conflicts with `id` and `labels`).
      */
     ipAddress?: pulumi.Input<string>;
+    /**
+     * The EIP labels to match (conflicts with `ipAddress` and `id`).
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The Exocale [Zone][zone] name.
      */

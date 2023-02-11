@@ -64,7 +64,7 @@ export class ElasticIP extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Healthcheck configuration for *managed* EIPs. Structure is documented below.
+     * Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
      */
     public readonly healthcheck!: pulumi.Output<outputs.ElasticIPHealthcheck>;
     /**
@@ -141,7 +141,7 @@ export interface ElasticIPState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Healthcheck configuration for *managed* EIPs. Structure is documented below.
+     * Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
      */
     healthcheck?: pulumi.Input<inputs.ElasticIPHealthcheck>;
     /**
@@ -175,7 +175,7 @@ export interface ElasticIPArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Healthcheck configuration for *managed* EIPs. Structure is documented below.
+     * Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
      */
     healthcheck?: pulumi.Input<inputs.ElasticIPHealthcheck>;
     /**

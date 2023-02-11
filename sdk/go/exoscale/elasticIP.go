@@ -37,7 +37,7 @@ type ElasticIP struct {
 	Cidr pulumi.StringOutput `pulumi:"cidr"`
 	// A free-form text describing the Elastic IP (EIP).
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Healthcheck configuration for *managed* EIPs. Structure is documented below.
+	// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
 	Healthcheck ElasticIPHealthcheckOutput `pulumi:"healthcheck"`
 	// The Elastic IP (EIP) IPv4 or IPv6 address.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
@@ -88,7 +88,7 @@ type elasticIPState struct {
 	Cidr *string `pulumi:"cidr"`
 	// A free-form text describing the Elastic IP (EIP).
 	Description *string `pulumi:"description"`
-	// Healthcheck configuration for *managed* EIPs. Structure is documented below.
+	// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
 	Healthcheck *ElasticIPHealthcheck `pulumi:"healthcheck"`
 	// The Elastic IP (EIP) IPv4 or IPv6 address.
 	IpAddress *string `pulumi:"ipAddress"`
@@ -107,7 +107,7 @@ type ElasticIPState struct {
 	Cidr pulumi.StringPtrInput
 	// A free-form text describing the Elastic IP (EIP).
 	Description pulumi.StringPtrInput
-	// Healthcheck configuration for *managed* EIPs. Structure is documented below.
+	// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
 	Healthcheck ElasticIPHealthcheckPtrInput
 	// The Elastic IP (EIP) IPv4 or IPv6 address.
 	IpAddress pulumi.StringPtrInput
@@ -128,7 +128,7 @@ type elasticIPArgs struct {
 	AddressFamily *string `pulumi:"addressFamily"`
 	// A free-form text describing the Elastic IP (EIP).
 	Description *string `pulumi:"description"`
-	// Healthcheck configuration for *managed* EIPs. Structure is documented below.
+	// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
 	Healthcheck *ElasticIPHealthcheck `pulumi:"healthcheck"`
 	// A map of key/value labels.
 	Labels map[string]string `pulumi:"labels"`
@@ -144,7 +144,7 @@ type ElasticIPArgs struct {
 	AddressFamily pulumi.StringPtrInput
 	// A free-form text describing the Elastic IP (EIP).
 	Description pulumi.StringPtrInput
-	// Healthcheck configuration for *managed* EIPs. Structure is documented below.
+	// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
 	Healthcheck ElasticIPHealthcheckPtrInput
 	// A map of key/value labels.
 	Labels pulumi.StringMapInput
@@ -256,7 +256,7 @@ func (o ElasticIPOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElasticIP) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Healthcheck configuration for *managed* EIPs. Structure is documented below.
+// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
 func (o ElasticIPOutput) Healthcheck() ElasticIPHealthcheckOutput {
 	return o.ApplyT(func(v *ElasticIP) ElasticIPHealthcheckOutput { return v.Healthcheck }).(ElasticIPHealthcheckOutput)
 }

@@ -49,7 +49,7 @@ namespace Pulumiverse.Exoscale
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Healthcheck configuration for *managed* EIPs. Structure is documented below.
+        /// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
         /// </summary>
         [Output("healthcheck")]
         public Output<Outputs.ElasticIPHealthcheck> Healthcheck { get; private set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Healthcheck configuration for *managed* EIPs. Structure is documented below.
+        /// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
         /// </summary>
         [Input("healthcheck")]
         public Input<Inputs.ElasticIPHealthcheckArgs>? Healthcheck { get; set; }
@@ -194,7 +194,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Healthcheck configuration for *managed* EIPs. Structure is documented below.
+        /// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
         /// </summary>
         [Input("healthcheck")]
         public Input<Inputs.ElasticIPHealthcheckGetArgs>? Healthcheck { get; set; }
