@@ -95,7 +95,7 @@ class GetElasticIPResult:
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, str]:
+    def labels(self) -> Optional[Mapping[str, str]]:
         """
         A map of key/value labels.
         """
@@ -134,18 +134,21 @@ class AwaitableGetElasticIPResult(GetElasticIPResult):
 
 def get_elastic_ip(id: Optional[str] = None,
                    ip_address: Optional[str] = None,
+                   labels: Optional[Mapping[str, str]] = None,
                    zone: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetElasticIPResult:
     """
     Use this data source to access information about an existing resource.
 
-    :param str id: The Elastic IP (EIP) ID to match (conflicts with `ip_address`).
-    :param str ip_address: The EIP IPv4 or IPv6 address to match (conflicts with `id`).
+    :param str id: The Elastic IP (EIP) ID to match (conflicts with `ip_address` and `labels`).
+    :param str ip_address: The EIP IPv4 or IPv6 address to match (conflicts with `id` and `labels`).
+    :param Mapping[str, str] labels: The EIP labels to match (conflicts with `ip_address` and `id`).
     :param str zone: The Exocale [Zone][zone] name.
     """
     __args__ = dict()
     __args__['id'] = id
     __args__['ipAddress'] = ip_address
+    __args__['labels'] = labels
     __args__['zone'] = zone
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('exoscale:index/getElasticIP:getElasticIP', __args__, opts=opts, typ=GetElasticIPResult).value
@@ -165,13 +168,15 @@ def get_elastic_ip(id: Optional[str] = None,
 @_utilities.lift_output_func(get_elastic_ip)
 def get_elastic_ip_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                           ip_address: Optional[pulumi.Input[Optional[str]]] = None,
+                          labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                           zone: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetElasticIPResult]:
     """
     Use this data source to access information about an existing resource.
 
-    :param str id: The Elastic IP (EIP) ID to match (conflicts with `ip_address`).
-    :param str ip_address: The EIP IPv4 or IPv6 address to match (conflicts with `id`).
+    :param str id: The Elastic IP (EIP) ID to match (conflicts with `ip_address` and `labels`).
+    :param str ip_address: The EIP IPv4 or IPv6 address to match (conflicts with `id` and `labels`).
+    :param Mapping[str, str] labels: The EIP labels to match (conflicts with `ip_address` and `id`).
     :param str zone: The Exocale [Zone][zone] name.
     """
     ...

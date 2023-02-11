@@ -22,10 +22,12 @@ func LookupElasticIP(ctx *pulumi.Context, args *LookupElasticIPArgs, opts ...pul
 
 // A collection of arguments for invoking getElasticIP.
 type LookupElasticIPArgs struct {
-	// The Elastic IP (EIP) ID to match (conflicts with `ipAddress`).
+	// The Elastic IP (EIP) ID to match (conflicts with `ipAddress` and `labels`).
 	Id *string `pulumi:"id"`
-	// The EIP IPv4 or IPv6 address to match (conflicts with `id`).
+	// The EIP IPv4 or IPv6 address to match (conflicts with `id` and `labels`).
 	IpAddress *string `pulumi:"ipAddress"`
+	// The EIP labels to match (conflicts with `ipAddress` and `id`).
+	Labels map[string]string `pulumi:"labels"`
 	// The Exocale [Zone][zone] name.
 	Zone string `pulumi:"zone"`
 }
@@ -64,10 +66,12 @@ func LookupElasticIPOutput(ctx *pulumi.Context, args LookupElasticIPOutputArgs, 
 
 // A collection of arguments for invoking getElasticIP.
 type LookupElasticIPOutputArgs struct {
-	// The Elastic IP (EIP) ID to match (conflicts with `ipAddress`).
+	// The Elastic IP (EIP) ID to match (conflicts with `ipAddress` and `labels`).
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The EIP IPv4 or IPv6 address to match (conflicts with `id`).
+	// The EIP IPv4 or IPv6 address to match (conflicts with `id` and `labels`).
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// The EIP labels to match (conflicts with `ipAddress` and `id`).
+	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The Exocale [Zone][zone] name.
 	Zone pulumi.StringInput `pulumi:"zone"`
 }

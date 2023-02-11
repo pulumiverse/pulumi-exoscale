@@ -3289,7 +3289,7 @@
                 },
                 "healthcheck": {
                     "$ref": "#/types/exoscale:index/ElasticIPHealthcheck:ElasticIPHealthcheck",
-                    "description": "Healthcheck configuration for *managed* EIPs. Structure is documented below.\n"
+                    "description": "Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:\n"
                 },
                 "ipAddress": {
                     "type": "string",
@@ -3327,12 +3327,11 @@
                 },
                 "description": {
                     "type": "string",
-                    "description": "A free-form text describing the Elastic IP (EIP).\n",
-                    "willReplaceOnChanges": true
+                    "description": "A free-form text describing the Elastic IP (EIP).\n"
                 },
                 "healthcheck": {
                     "$ref": "#/types/exoscale:index/ElasticIPHealthcheck:ElasticIPHealthcheck",
-                    "description": "Healthcheck configuration for *managed* EIPs. Structure is documented below.\n"
+                    "description": "Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:\n"
                 },
                 "labels": {
                     "type": "object",
@@ -3368,12 +3367,11 @@
                     },
                     "description": {
                         "type": "string",
-                        "description": "A free-form text describing the Elastic IP (EIP).\n",
-                        "willReplaceOnChanges": true
+                        "description": "A free-form text describing the Elastic IP (EIP).\n"
                     },
                     "healthcheck": {
                         "$ref": "#/types/exoscale:index/ElasticIPHealthcheck:ElasticIPHealthcheck",
-                        "description": "Healthcheck configuration for *managed* EIPs. Structure is documented below.\n"
+                        "description": "Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:\n"
                     },
                     "ipAddress": {
                         "type": "string",
@@ -6415,11 +6413,18 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "The Elastic IP (EIP) ID to match (conflicts with `ip_address`).\n"
+                        "description": "The Elastic IP (EIP) ID to match (conflicts with `ip_address` and `labels`).\n"
                     },
                     "ipAddress": {
                         "type": "string",
-                        "description": "The EIP IPv4 or IPv6 address to match (conflicts with `id`).\n"
+                        "description": "The EIP IPv4 or IPv6 address to match (conflicts with `id` and `labels`).\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "The EIP labels to match (conflicts with `ip_address` and `id`).\n"
                     },
                     "zone": {
                         "type": "string",
@@ -6480,7 +6485,6 @@
                     "cidr",
                     "description",
                     "healthchecks",
-                    "labels",
                     "reverseDns",
                     "zone"
                 ]
