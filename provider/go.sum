@@ -600,8 +600,8 @@ github.com/evanphx/json-patch v4.12.0+incompatible/go.mod h1:50XU6AFN0ol/bzJsmQL
 github.com/evanphx/json-patch/v5 v5.5.0/go.mod h1:G79N1coSVB93tBe7j6PhzjmR3/2VvlbKOFpnXhI9Bw4=
 github.com/exoscale/egoscale v0.94.0 h1:ZkOnt+J9k3DB/1NFOIoq2Bp6b259fMrahnrYwauFyjk=
 github.com/exoscale/egoscale v0.94.0/go.mod h1:BAb9p4rmyU+Wl400CJZO5270H2sXtdsZjLcm5xMKkz4=
-github.com/exoscale/terraform-provider-exoscale v0.44.0 h1:dpqWvP4rITWKBoSQE3obPB05f2JsLh40dv0P24R51xk=
-github.com/exoscale/terraform-provider-exoscale v0.44.0/go.mod h1:T0HNjUcp6QTzUJ5A46jnG1fkRCKcsSt3ong9pwtSt+M=
+github.com/exoscale/terraform-provider-exoscale v0.45.0 h1:/U8kDacJVZFY+5KAPfNrZl62FtKI78LshtPzhy6W89Q=
+github.com/exoscale/terraform-provider-exoscale v0.45.0/go.mod h1:T0HNjUcp6QTzUJ5A46jnG1fkRCKcsSt3ong9pwtSt+M=
 github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
 github.com/fatih/color v1.9.0/go.mod h1:eQcE1qtQxscV5RaZvpXrrb8Drkc3/DdQ+uUYCNjL+zU=
 github.com/fatih/color v1.10.0/go.mod h1:ELkj/draVOlAH/xkhN6mQ50Qd0MPOk5AAr3maGEBuJM=
