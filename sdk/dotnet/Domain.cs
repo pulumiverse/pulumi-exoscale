@@ -13,7 +13,7 @@ namespace Pulumiverse.Exoscale
     /// <summary>
     /// ## Import
     /// 
-    /// An existing DNS domain may be imported by `&lt;name&gt;`console
+    /// An existing DNS domain may be imported by `ID`console
     /// 
     /// ```sh
     ///  $ pulumi import exoscale:index/domain:Domain \
@@ -21,7 +21,7 @@ namespace Pulumiverse.Exoscale
     /// 
     ///  exoscale_domain.my_domain \
     /// 
-    ///  my.domain
+    ///  89083a5c-b648-474a-0000-0000000f67bd
     /// </summary>
     [ExoscaleResourceType("exoscale:index/domain:Domain")]
     public partial class Domain : global::Pulumi.CustomResource

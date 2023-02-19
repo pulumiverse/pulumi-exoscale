@@ -3088,7 +3088,7 @@
             }
         },
         "exoscale:index/domain:Domain": {
-            "description": "\n\n\n## Import\n\nAn existing DNS domain may be imported by `\u003cname\u003e`console\n\n```sh\n $ pulumi import exoscale:index/domain:Domain \\\n```\n\n\n\n exoscale_domain.my_domain \\\n\n my.domain ",
+            "description": "\n\n\n## Import\n\nAn existing DNS domain may be imported by `ID`console\n\n```sh\n $ pulumi import exoscale:index/domain:Domain \\\n```\n\n\n\n exoscale_domain.my_domain \\\n\n 89083a5c-b648-474a-0000-0000000f67bd ",
             "properties": {
                 "autoRenew": {
                     "type": "boolean",
