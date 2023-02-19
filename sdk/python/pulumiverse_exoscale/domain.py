@@ -145,7 +145,7 @@ class Domain(pulumi.CustomResource):
         """
         ## Import
 
-        An existing DNS domain may be imported by `<name>`console
+        An existing DNS domain may be imported by `ID`console
 
         ```sh
          $ pulumi import exoscale:index/domain:Domain \\
@@ -153,7 +153,7 @@ class Domain(pulumi.CustomResource):
 
          exoscale_domain.my_domain \\
 
-         my.domain
+         89083a5c-b648-474a-0000-0000000f67bd
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -168,7 +168,7 @@ class Domain(pulumi.CustomResource):
         """
         ## Import
 
-        An existing DNS domain may be imported by `<name>`console
+        An existing DNS domain may be imported by `ID`console
 
         ```sh
          $ pulumi import exoscale:index/domain:Domain \\
@@ -176,7 +176,7 @@ class Domain(pulumi.CustomResource):
 
          exoscale_domain.my_domain \\
 
-         my.domain
+         89083a5c-b648-474a-0000-0000000f67bd
 
         :param str resource_name: The name of the resource.
         :param DomainArgs args: The arguments to use to populate this resource's properties.

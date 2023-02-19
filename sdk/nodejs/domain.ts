@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * An existing DNS domain may be imported by `<name>`console
+ * An existing DNS domain may be imported by `ID`console
  *
  * ```sh
  *  $ pulumi import exoscale:index/domain:Domain \
@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  *  exoscale_domain.my_domain \
  *
- *  my.domain
+ *  89083a5c-b648-474a-0000-0000000f67bd
  */
 export class Domain extends pulumi.CustomResource {
     /**

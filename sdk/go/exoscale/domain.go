@@ -12,7 +12,7 @@ import (
 
 // ## Import
 //
-// An existing DNS domain may be imported by `<name>`console
+// # An existing DNS domain may be imported by `ID`console
 //
 // ```sh
 //
@@ -22,7 +22,7 @@ import (
 //
 //	exoscale_domain.my_domain \
 //
-//	my.domain
+//	89083a5c-b648-474a-0000-0000000f67bd
 type Domain struct {
 	pulumi.CustomResourceState
 

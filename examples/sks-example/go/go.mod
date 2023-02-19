@@ -7,6 +7,10 @@ require (
 	github.com/pulumiverse/pulumi-exoscale/sdk v0.0.0-20220929062616-96b53b3e8c8a
 )
 
+replace (
+	github.com/pulumiverse/pulumi-exoscale/sdk  => ../../../sdk
+)
+
 require (
 	github.com/Microsoft/go-winio v0.5.2 // indirect
 	github.com/ProtonMail/go-crypto v0.0.0-20210428141323-04723f9f07d7 // indirect
