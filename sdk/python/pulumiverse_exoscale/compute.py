@@ -52,7 +52,7 @@ class ComputeArgs:
         :param pulumi.Input[str] state: The instance state (`Running` or `Stopped`; default: `Running`)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags (key/value). To remove all tags, set `tags = {}`.
         :param pulumi.Input[str] template: The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `template_id` attribute instead.
-        :param pulumi.Input[str] template_id: The compute instance template (ID). Usage of the `get_compute_template` data source is recommended.
+        :param pulumi.Input[str] template_id: The compute instance template (ID). Usage of the _get_compute_template_ data source is recommended.
         :param pulumi.Input[str] user_data: cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
         """
         pulumi.set(__self__, "disk_size", disk_size)
@@ -300,7 +300,7 @@ class ComputeArgs:
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The compute instance template (ID). Usage of the `get_compute_template` data source is recommended.
+        The compute instance template (ID). Usage of the _get_compute_template_ data source is recommended.
         """
         return pulumi.get(self, "template_id")
 
@@ -373,10 +373,10 @@ class _ComputeState:
         :param pulumi.Input[str] state: The instance state (`Running` or `Stopped`; default: `Running`)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags (key/value). To remove all tags, set `tags = {}`.
         :param pulumi.Input[str] template: The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `template_id` attribute instead.
-        :param pulumi.Input[str] template_id: The compute instance template (ID). Usage of the `get_compute_template` data source is recommended.
+        :param pulumi.Input[str] template_id: The compute instance template (ID). Usage of the _get_compute_template_ data source is recommended.
         :param pulumi.Input[str] user_data: cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
         :param pulumi.Input[bool] user_data_base64: was the cloud-init configuration base64 encoded
-        :param pulumi.Input[str] username: The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the `get_compute_template` data source `username` attribute instead.
+        :param pulumi.Input[str] username: The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the _get_compute_template_ data source `username` attribute instead.
         :param pulumi.Input[str] zone: The Exoscale Zone name.
         """
         if affinity_group_ids is not None:
@@ -702,7 +702,7 @@ class _ComputeState:
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The compute instance template (ID). Usage of the `get_compute_template` data source is recommended.
+        The compute instance template (ID). Usage of the _get_compute_template_ data source is recommended.
         """
         return pulumi.get(self, "template_id")
 
@@ -738,7 +738,7 @@ class _ComputeState:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the `get_compute_template` data source `username` attribute instead.
+        The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the _get_compute_template_ data source `username` attribute instead.
         """
         return pulumi.get(self, "username")
 
@@ -805,7 +805,7 @@ class Compute(pulumi.CustomResource):
         :param pulumi.Input[str] state: The instance state (`Running` or `Stopped`; default: `Running`)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags (key/value). To remove all tags, set `tags = {}`.
         :param pulumi.Input[str] template: The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `template_id` attribute instead.
-        :param pulumi.Input[str] template_id: The compute instance template (ID). Usage of the `get_compute_template` data source is recommended.
+        :param pulumi.Input[str] template_id: The compute instance template (ID). Usage of the _get_compute_template_ data source is recommended.
         :param pulumi.Input[str] user_data: cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
         :param pulumi.Input[str] zone: The Exoscale Zone name.
         """
@@ -958,10 +958,10 @@ class Compute(pulumi.CustomResource):
         :param pulumi.Input[str] state: The instance state (`Running` or `Stopped`; default: `Running`)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags (key/value). To remove all tags, set `tags = {}`.
         :param pulumi.Input[str] template: The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `template_id` attribute instead.
-        :param pulumi.Input[str] template_id: The compute instance template (ID). Usage of the `get_compute_template` data source is recommended.
+        :param pulumi.Input[str] template_id: The compute instance template (ID). Usage of the _get_compute_template_ data source is recommended.
         :param pulumi.Input[str] user_data: cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
         :param pulumi.Input[bool] user_data_base64: was the cloud-init configuration base64 encoded
-        :param pulumi.Input[str] username: The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the `get_compute_template` data source `username` attribute instead.
+        :param pulumi.Input[str] username: The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the _get_compute_template_ data source `username` attribute instead.
         :param pulumi.Input[str] zone: The Exoscale Zone name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1171,7 +1171,7 @@ class Compute(pulumi.CustomResource):
     @pulumi.getter(name="templateId")
     def template_id(self) -> pulumi.Output[str]:
         """
-        The compute instance template (ID). Usage of the `get_compute_template` data source is recommended.
+        The compute instance template (ID). Usage of the _get_compute_template_ data source is recommended.
         """
         return pulumi.get(self, "template_id")
 
@@ -1195,7 +1195,7 @@ class Compute(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[str]:
         """
-        The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the `get_compute_template` data source `username` attribute instead.
+        The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the _get_compute_template_ data source `username` attribute instead.
         """
         return pulumi.get(self, "username")
 

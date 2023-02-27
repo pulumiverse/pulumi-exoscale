@@ -242,7 +242,7 @@
                 },
                 "version": {
                     "type": "string",
-                    "description": "PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).\n",
+                    "description": "Kafka major version (`exo dbaas type show kafka` for reference; may only be set at creation time).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -319,7 +319,7 @@
                 },
                 "version": {
                     "type": "string",
-                    "description": "PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).\n",
+                    "description": "MySQL major version (`exo dbaas type show mysql` for reference; may only be set at creation time).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -387,7 +387,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of CIDR blocks to allow incoming connections from.\n",
+                    "description": "Allow incoming connections from this list of CIDR address block, e.g. `[\"10.20.0.0/16\"]`\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -405,7 +405,7 @@
                 },
                 "maxIndexCount": {
                     "type": "integer",
-                    "description": "Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)\n* `dashboards`\n",
+                    "description": "Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -414,7 +414,6 @@
                 },
                 "recoveryBackupName": {
                     "type": "string",
-                    "description": "-\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -432,7 +431,7 @@
                 },
                 "version": {
                     "type": "string",
-                    "description": "PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).\n",
+                    "description": "OpenSearch major version.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -445,6 +444,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "ipFilters",
                         "version"
                     ]
                 }
@@ -486,7 +486,7 @@
             "properties": {
                 "maxIndexCount": {
                     "type": "integer",
-                    "description": "Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)\n* `dashboards`\n",
+                    "description": "Maximum number of indexes to keep (Minimum value is `0`)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -976,7 +976,7 @@
                 },
                 "description": {
                     "type": "string",
-                    "description": "A free-form text describing the block.\n* `icmp_type`/`icmp_code` - An ICMP/ICMPv6 type/code to match.\n",
+                    "description": "A free-form text describing the block.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -993,6 +993,7 @@
                 },
                 "icmpType": {
                     "type": "integer",
+                    "description": "/`icmp_code` - An ICMP/ICMPv6 type/code to match.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1069,7 +1070,7 @@
                 },
                 "description": {
                     "type": "string",
-                    "description": "A free-form text describing the block.\n* `icmp_type`/`icmp_code` - An ICMP/ICMPv6 type/code to match.\n",
+                    "description": "A free-form text describing the block.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1086,6 +1087,7 @@
                 },
                 "icmpType": {
                     "type": "integer",
+                    "description": "/`icmp_code` - An ICMP/ICMPv6 type/code to match.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4312,7 +4314,7 @@
                 },
                 "port": {
                     "type": "integer",
-                    "description": "The healthcheck port.\n"
+                    "description": "The NLB service (TCP/UPP) port.\n"
                 },
                 "protocol": {
                     "type": "string",
@@ -4371,7 +4373,7 @@
                 },
                 "port": {
                     "type": "integer",
-                    "description": "The healthcheck port.\n"
+                    "description": "The NLB service (TCP/UPP) port.\n"
                 },
                 "protocol": {
                     "type": "string",
@@ -4428,7 +4430,7 @@
                     },
                     "port": {
                         "type": "integer",
-                        "description": "The healthcheck port.\n"
+                        "description": "The NLB service (TCP/UPP) port.\n"
                     },
                     "protocol": {
                         "type": "string",
@@ -4470,14 +4472,15 @@
                 },
                 "netmask": {
                     "type": "string",
-                    "description": "The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.\n* `start_ip`/`end_ip` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.\n"
+                    "description": "The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.\n"
                 },
                 "networkOffering": {
                     "type": "string",
                     "deprecationMessage": "This attribute is deprecated, please remove it from your configuration."
                 },
                 "startIp": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "/`end_ip` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -4511,14 +4514,15 @@
                 },
                 "netmask": {
                     "type": "string",
-                    "description": "The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.\n* `start_ip`/`end_ip` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.\n"
+                    "description": "The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.\n"
                 },
                 "networkOffering": {
                     "type": "string",
                     "deprecationMessage": "This attribute is deprecated, please remove it from your configuration."
                 },
                 "startIp": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "/`end_ip` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -4552,14 +4556,15 @@
                     },
                     "netmask": {
                         "type": "string",
-                        "description": "The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.\n* `start_ip`/`end_ip` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.\n"
+                        "description": "The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.\n"
                     },
                     "networkOffering": {
                         "type": "string",
                         "deprecationMessage": "This attribute is deprecated, please remove it from your configuration."
                     },
                     "startIp": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "/`end_ip` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.\n"
                     },
                     "tags": {
                         "type": "object",
@@ -4593,10 +4598,11 @@
                 },
                 "netmask": {
                     "type": "string",
-                    "description": "The network mask defining the IPv4 network allowed for static leases.\n* `start_ip`/`end_ip` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.\n"
+                    "description": "The network mask defining the IPv4 network allowed for static leases.\n"
                 },
                 "startIp": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "/`end_ip` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.\n"
                 },
                 "zone": {
                     "type": "string",
@@ -4621,10 +4627,11 @@
                 },
                 "netmask": {
                     "type": "string",
-                    "description": "The network mask defining the IPv4 network allowed for static leases.\n* `start_ip`/`end_ip` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.\n"
+                    "description": "The network mask defining the IPv4 network allowed for static leases.\n"
                 },
                 "startIp": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "/`end_ip` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.\n"
                 },
                 "zone": {
                     "type": "string",
@@ -4651,10 +4658,11 @@
                     },
                     "netmask": {
                         "type": "string",
-                        "description": "The network mask defining the IPv4 network allowed for static leases.\n* `start_ip`/`end_ip` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.\n"
+                        "description": "The network mask defining the IPv4 network allowed for static leases.\n"
                     },
                     "startIp": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "/`end_ip` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.\n"
                     },
                     "zone": {
                         "type": "string",
@@ -5587,7 +5595,7 @@
             "properties": {
                 "cidr": {
                     "type": "string",
-                    "description": "An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation][cidr]) to match (conflicts with `user_security_group`/`user_security_group_id`).\n* `start_port`/`end_port` - A `TCP`/`UDP` port range to match.\n* `icmp_type`/`icmp_code` - An ICMP/ICMPv6 [type/code][icmp] to match.\n"
+                    "description": "An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation][cidr]) to match (conflicts with `user_security_group`/`user_security_group_id`).\n"
                 },
                 "description": {
                     "type": "string",
@@ -5600,7 +5608,8 @@
                     "type": "integer"
                 },
                 "icmpType": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "/`icmp_code` - An ICMP/ICMPv6 [type/code][icmp] to match.\n"
                 },
                 "protocol": {
                     "type": "string",
@@ -5615,7 +5624,8 @@
                     "description": "The parent exoscale.SecurityGroup ID.\n"
                 },
                 "startPort": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "/`end_port` - A `TCP`/`UDP` port range to match.\n"
                 },
                 "type": {
                     "type": "string",
@@ -5639,7 +5649,7 @@
             "inputProperties": {
                 "cidr": {
                     "type": "string",
-                    "description": "An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation][cidr]) to match (conflicts with `user_security_group`/`user_security_group_id`).\n* `start_port`/`end_port` - A `TCP`/`UDP` port range to match.\n* `icmp_type`/`icmp_code` - An ICMP/ICMPv6 [type/code][icmp] to match.\n",
+                    "description": "An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation][cidr]) to match (conflicts with `user_security_group`/`user_security_group_id`).\n",
                     "willReplaceOnChanges": true
                 },
                 "description": {
@@ -5657,6 +5667,7 @@
                 },
                 "icmpType": {
                     "type": "integer",
+                    "description": "/`icmp_code` - An ICMP/ICMPv6 [type/code][icmp] to match.\n",
                     "willReplaceOnChanges": true
                 },
                 "protocol": {
@@ -5676,6 +5687,7 @@
                 },
                 "startPort": {
                     "type": "integer",
+                    "description": "/`end_port` - A `TCP`/`UDP` port range to match.\n",
                     "willReplaceOnChanges": true
                 },
                 "type": {
@@ -5702,7 +5714,7 @@
                 "properties": {
                     "cidr": {
                         "type": "string",
-                        "description": "An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation][cidr]) to match (conflicts with `user_security_group`/`user_security_group_id`).\n* `start_port`/`end_port` - A `TCP`/`UDP` port range to match.\n* `icmp_type`/`icmp_code` - An ICMP/ICMPv6 [type/code][icmp] to match.\n",
+                        "description": "An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation][cidr]) to match (conflicts with `user_security_group`/`user_security_group_id`).\n",
                         "willReplaceOnChanges": true
                     },
                     "description": {
@@ -5720,6 +5732,7 @@
                     },
                     "icmpType": {
                         "type": "integer",
+                        "description": "/`icmp_code` - An ICMP/ICMPv6 [type/code][icmp] to match.\n",
                         "willReplaceOnChanges": true
                     },
                     "protocol": {
@@ -5739,6 +5752,7 @@
                     },
                     "startPort": {
                         "type": "integer",
+                        "description": "/`end_port` - A `TCP`/`UDP` port range to match.\n",
                         "willReplaceOnChanges": true
                     },
                     "type": {
@@ -5773,7 +5787,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/exoscale:index/SecurityGroupRulesIngress:SecurityGroupRulesIngress"
-                    }
+                    },
+                    "description": "/`egress` - (Block) A security group rule definition (can be specified multiple times).\n"
                 },
                 "securityGroup": {
                     "type": "string",
@@ -5799,7 +5814,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/exoscale:index/SecurityGroupRulesIngress:SecurityGroupRulesIngress"
-                    }
+                    },
+                    "description": "/`egress` - (Block) A security group rule definition (can be specified multiple times).\n"
                 },
                 "securityGroup": {
                     "type": "string",
@@ -5825,7 +5841,8 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/exoscale:index/SecurityGroupRulesIngress:SecurityGroupRulesIngress"
-                        }
+                        },
+                        "description": "/`egress` - (Block) A security group rule definition (can be specified multiple times).\n"
                     },
                     "securityGroup": {
                         "type": "string",
@@ -6238,22 +6255,81 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getComputeInstanceList.\n",
                 "properties": {
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "deployTargetId": {
+                        "type": "string"
+                    },
+                    "diskSize": {
+                        "type": "integer"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "ipv6": {
+                        "type": "boolean"
+                    },
+                    "ipv6Address": {
+                        "type": "string"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "managerId": {
+                        "type": "string"
+                    },
+                    "managerType": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "publicIpAddress": {
+                        "type": "string"
+                    },
+                    "reverseDns": {
+                        "type": "string"
+                    },
+                    "sshKey": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "templateId": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "userData": {
+                        "type": "string"
+                    },
                     "zone": {
                         "type": "string",
                         "description": "The Exoscale [Zone][zone] name.\n"
                     }
                 },
-                "type": "object",
-                "required": [
-                    "zone"
-                ]
+                "type": "object"
             },
             "outputs": {
                 "description": "A collection of values returned by getComputeInstanceList.\n",
                 "properties": {
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "deployTargetId": {
+                        "type": "string"
+                    },
+                    "diskSize": {
+                        "type": "integer"
+                    },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "type": "string"
                     },
                     "instances": {
                         "type": "array",
@@ -6261,15 +6337,55 @@
                             "$ref": "#/types/exoscale:index/getComputeInstanceListInstance:getComputeInstanceListInstance"
                         }
                     },
+                    "ipv6": {
+                        "type": "boolean"
+                    },
+                    "ipv6Address": {
+                        "type": "string"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "managerId": {
+                        "type": "string"
+                    },
+                    "managerType": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "publicIpAddress": {
+                        "type": "string"
+                    },
+                    "reverseDns": {
+                        "type": "string"
+                    },
+                    "sshKey": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "templateId": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "userData": {
+                        "type": "string"
+                    },
                     "zone": {
                         "type": "string"
                     }
                 },
                 "type": "object",
                 "required": [
-                    "instances",
-                    "zone",
-                    "id"
+                    "instances"
                 ]
             }
         },
@@ -6784,10 +6900,11 @@
                     },
                     "netmask": {
                         "type": "string",
-                        "description": "The network mask defining the IPv4 network allowed for static leases.\n* `start_ip`/`end_ip` - The first/last IPv4 addresses used by the DHCP service for dynamic leases.\n"
+                        "description": "The network mask defining the IPv4 network allowed for static leases.\n"
                     },
                     "startIp": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "/`end_ip` - The first/last IPv4 addresses used by the DHCP service for dynamic leases.\n"
                     },
                     "zone": {
                         "type": "string"
@@ -6847,10 +6964,11 @@
                     },
                     "netmask": {
                         "type": "string",
-                        "description": "The network mask defining the IPv4 network allowed for static leases.\n* `start_ip`/`end_ip` - The first/last IPv4 addresses used by the DHCP service for dynamic leases.\n"
+                        "description": "The network mask defining the IPv4 network allowed for static leases.\n"
                     },
                     "startIp": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "/`end_ip` - The first/last IPv4 addresses used by the DHCP service for dynamic leases.\n"
                     },
                     "zone": {
                         "type": "string"

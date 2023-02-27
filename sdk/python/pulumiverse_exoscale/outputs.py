@@ -144,7 +144,7 @@ class DatabaseKafka(dict):
         :param str kafka_rest_settings: Kafka REST configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka-rest` for reference).
         :param str kafka_settings: Kafka configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka` for reference).
         :param str schema_registry_settings: Schema Registry configuration settings in JSON format (`exo dbaas type show kafka --settings=schema-registry` for reference)
-        :param str version: PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+        :param str version: Kafka major version (`exo dbaas type show kafka` for reference; may only be set at creation time).
         """
         if enable_cert_auth is not None:
             pulumi.set(__self__, "enable_cert_auth", enable_cert_auth)
@@ -253,7 +253,7 @@ class DatabaseKafka(dict):
     @pulumi.getter
     def version(self) -> Optional[str]:
         """
-        PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+        Kafka major version (`exo dbaas type show kafka` for reference; may only be set at creation time).
         """
         return pulumi.get(self, "version")
 
@@ -298,7 +298,7 @@ class DatabaseMysql(dict):
         :param str backup_schedule: The automated backup schedule (`HH:MM`).
         :param Sequence[str] ip_filters: A list of CIDR blocks to allow incoming connections from.
         :param str mysql_settings: MySQL configuration settings in JSON format (`exo dbaas type show mysql --settings=mysql` for reference).
-        :param str version: PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+        :param str version: MySQL major version (`exo dbaas type show mysql` for reference; may only be set at creation time).
         """
         if admin_password is not None:
             pulumi.set(__self__, "admin_password", admin_password)
@@ -357,7 +357,7 @@ class DatabaseMysql(dict):
     @pulumi.getter
     def version(self) -> Optional[str]:
         """
-        PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+        MySQL major version (`exo dbaas type show mysql` for reference; may only be set at creation time).
         """
         return pulumi.get(self, "version")
 
@@ -408,12 +408,10 @@ class DatabaseOpensearch(dict):
         :param str fork_from_service: Service name
         :param Sequence['DatabaseOpensearchIndexPatternArgs'] index_patterns: Allows you to create glob style patterns and set a max number of indexes matching this pattern you want to keep. Creating indexes exceeding this value will cause the oldest one to get deleted. You could for example create a pattern looking like 'logs.?' and then create index logs.1, logs.2 etc, it will delete logs.1 once you create logs.6. Do note 'logs.?' does not apply to logs.10. Note: Setting max_index_count to 0 will do nothing and the pattern gets ignored.
         :param 'DatabaseOpensearchIndexTemplateArgs' index_template: Template settings for all new indexes
-        :param Sequence[str] ip_filters: A list of CIDR blocks to allow incoming connections from.
+        :param Sequence[str] ip_filters: Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
         :param bool keep_index_refresh_interval: Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
         :param int max_index_count: Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
-               * `dashboards`
-        :param str recovery_backup_name: -
-        :param str version: PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+        :param str version: OpenSearch major version.
         """
         if dashboards is not None:
             pulumi.set(__self__, "dashboards", dashboards)
@@ -469,7 +467,7 @@ class DatabaseOpensearch(dict):
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
-        A list of CIDR blocks to allow incoming connections from.
+        Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
         """
         return pulumi.get(self, "ip_filters")
 
@@ -486,16 +484,12 @@ class DatabaseOpensearch(dict):
     def max_index_count(self) -> Optional[int]:
         """
         Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
-        * `dashboards`
         """
         return pulumi.get(self, "max_index_count")
 
     @property
     @pulumi.getter(name="recoveryBackupName")
     def recovery_backup_name(self) -> Optional[str]:
-        """
-        -
-        """
         return pulumi.get(self, "recovery_backup_name")
 
     @property
@@ -507,7 +501,7 @@ class DatabaseOpensearch(dict):
     @pulumi.getter
     def version(self) -> Optional[str]:
         """
-        PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+        OpenSearch major version.
         """
         return pulumi.get(self, "version")
 
@@ -602,8 +596,7 @@ class DatabaseOpensearchIndexPattern(dict):
                  pattern: Optional[str] = None,
                  sorting_algorithm: Optional[str] = None):
         """
-        :param int max_index_count: Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
-               * `dashboards`
+        :param int max_index_count: Maximum number of indexes to keep (Minimum value is `0`)
         :param str pattern: fnmatch pattern
         :param str sorting_algorithm: `alphabetical` or `creation_date`.
         """
@@ -618,8 +611,7 @@ class DatabaseOpensearchIndexPattern(dict):
     @pulumi.getter(name="maxIndexCount")
     def max_index_count(self) -> Optional[int]:
         """
-        Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
-        * `dashboards`
+        Maximum number of indexes to keep (Minimum value is `0`)
         """
         return pulumi.get(self, "max_index_count")
 
@@ -1358,7 +1350,7 @@ class SecurityGroupRulesEgress(dict):
         """
         :param Sequence[str] cidr_lists: A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
         :param str description: A free-form text describing the block.
-               * `icmp_type`/`icmp_code` - An ICMP/ICMPv6 type/code to match.
+        :param int icmp_type: /`icmp_code` - An ICMP/ICMPv6 type/code to match.
         :param Sequence[str] ports: A list of ports or port ranges (`<start_port>-<end_port>`).
         :param str protocol: The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
         :param Sequence[str] user_security_group_lists: A list of source (for ingress)/destination (for egress) identified by a security group.
@@ -1393,7 +1385,6 @@ class SecurityGroupRulesEgress(dict):
     def description(self) -> Optional[str]:
         """
         A free-form text describing the block.
-        * `icmp_type`/`icmp_code` - An ICMP/ICMPv6 type/code to match.
         """
         return pulumi.get(self, "description")
 
@@ -1405,6 +1396,9 @@ class SecurityGroupRulesEgress(dict):
     @property
     @pulumi.getter(name="icmpType")
     def icmp_type(self) -> Optional[int]:
+        """
+        /`icmp_code` - An ICMP/ICMPv6 type/code to match.
+        """
         return pulumi.get(self, "icmp_type")
 
     @property
@@ -1474,7 +1468,7 @@ class SecurityGroupRulesIngress(dict):
         """
         :param Sequence[str] cidr_lists: A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
         :param str description: A free-form text describing the block.
-               * `icmp_type`/`icmp_code` - An ICMP/ICMPv6 type/code to match.
+        :param int icmp_type: /`icmp_code` - An ICMP/ICMPv6 type/code to match.
         :param Sequence[str] ports: A list of ports or port ranges (`<start_port>-<end_port>`).
         :param str protocol: The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
         :param Sequence[str] user_security_group_lists: A list of source (for ingress)/destination (for egress) identified by a security group.
@@ -1509,7 +1503,6 @@ class SecurityGroupRulesIngress(dict):
     def description(self) -> Optional[str]:
         """
         A free-form text describing the block.
-        * `icmp_type`/`icmp_code` - An ICMP/ICMPv6 type/code to match.
         """
         return pulumi.get(self, "description")
 
@@ -1521,6 +1514,9 @@ class SecurityGroupRulesIngress(dict):
     @property
     @pulumi.getter(name="icmpType")
     def icmp_type(self) -> Optional[int]:
+        """
+        /`icmp_code` - An ICMP/ICMPv6 type/code to match.
+        """
         return pulumi.get(self, "icmp_type")
 
     @property

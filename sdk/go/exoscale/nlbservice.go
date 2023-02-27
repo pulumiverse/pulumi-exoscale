@@ -37,7 +37,7 @@ type NLBService struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent NLB ID.
 	NlbId pulumi.StringOutput `pulumi:"nlbId"`
-	// The healthcheck port.
+	// The NLB service (TCP/UPP) port.
 	Port pulumi.IntOutput `pulumi:"port"`
 	// The protocol (`tcp`|`udp`; default: `tcp`).
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
@@ -108,7 +108,7 @@ type nlbserviceState struct {
 	Name *string `pulumi:"name"`
 	// The parent NLB ID.
 	NlbId *string `pulumi:"nlbId"`
-	// The healthcheck port.
+	// The NLB service (TCP/UPP) port.
 	Port *int `pulumi:"port"`
 	// The protocol (`tcp`|`udp`; default: `tcp`).
 	Protocol *string `pulumi:"protocol"`
@@ -132,7 +132,7 @@ type NLBServiceState struct {
 	Name pulumi.StringPtrInput
 	// The parent NLB ID.
 	NlbId pulumi.StringPtrInput
-	// The healthcheck port.
+	// The NLB service (TCP/UPP) port.
 	Port pulumi.IntPtrInput
 	// The protocol (`tcp`|`udp`; default: `tcp`).
 	Protocol pulumi.StringPtrInput
@@ -160,7 +160,7 @@ type nlbserviceArgs struct {
 	Name *string `pulumi:"name"`
 	// The parent NLB ID.
 	NlbId string `pulumi:"nlbId"`
-	// The healthcheck port.
+	// The NLB service (TCP/UPP) port.
 	Port int `pulumi:"port"`
 	// The protocol (`tcp`|`udp`; default: `tcp`).
 	Protocol *string `pulumi:"protocol"`
@@ -184,7 +184,7 @@ type NLBServiceArgs struct {
 	Name pulumi.StringPtrInput
 	// The parent NLB ID.
 	NlbId pulumi.StringInput
-	// The healthcheck port.
+	// The NLB service (TCP/UPP) port.
 	Port pulumi.IntInput
 	// The protocol (`tcp`|`udp`; default: `tcp`).
 	Protocol pulumi.StringPtrInput
@@ -308,7 +308,7 @@ func (o NLBServiceOutput) NlbId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NLBService) pulumi.StringOutput { return v.NlbId }).(pulumi.StringOutput)
 }
 
-// The healthcheck port.
+// The NLB service (TCP/UPP) port.
 func (o NLBServiceOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v *NLBService) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
 }

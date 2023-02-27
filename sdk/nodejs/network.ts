@@ -46,13 +46,15 @@ export class Network extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.
-     * * `startIp`/`endIp` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
      */
     public readonly netmask!: pulumi.Output<string | undefined>;
     /**
      * @deprecated This attribute is deprecated, please remove it from your configuration.
      */
     public readonly networkOffering!: pulumi.Output<string | undefined>;
+    /**
+     * /`endIp` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+     */
     public readonly startIp!: pulumi.Output<string | undefined>;
     /**
      * A map of tags (key/value). To remove all tags, set `tags = {}`.
@@ -118,13 +120,15 @@ export interface NetworkState {
     name?: pulumi.Input<string>;
     /**
      * The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.
-     * * `startIp`/`endIp` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
      */
     netmask?: pulumi.Input<string>;
     /**
      * @deprecated This attribute is deprecated, please remove it from your configuration.
      */
     networkOffering?: pulumi.Input<string>;
+    /**
+     * /`endIp` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+     */
     startIp?: pulumi.Input<string>;
     /**
      * A map of tags (key/value). To remove all tags, set `tags = {}`.
@@ -151,13 +155,15 @@ export interface NetworkArgs {
     name?: pulumi.Input<string>;
     /**
      * The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.
-     * * `startIp`/`endIp` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
      */
     netmask?: pulumi.Input<string>;
     /**
      * @deprecated This attribute is deprecated, please remove it from your configuration.
      */
     networkOffering?: pulumi.Input<string>;
+    /**
+     * /`endIp` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+     */
     startIp?: pulumi.Input<string>;
     /**
      * A map of tags (key/value). To remove all tags, set `tags = {}`.

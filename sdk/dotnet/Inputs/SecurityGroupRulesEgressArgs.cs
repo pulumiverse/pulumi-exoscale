@@ -27,7 +27,6 @@ namespace Pulumiverse.Exoscale.Inputs
 
         /// <summary>
         /// A free-form text describing the block.
-        /// * `icmp_type`/`icmp_code` - An ICMP/ICMPv6 type/code to match.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -35,6 +34,9 @@ namespace Pulumiverse.Exoscale.Inputs
         [Input("icmpCode")]
         public Input<int>? IcmpCode { get; set; }
 
+        /// <summary>
+        /// /`icmp_code` - An ICMP/ICMPv6 type/code to match.
+        /// </summary>
         [Input("icmpType")]
         public Input<int>? IcmpType { get; set; }
 

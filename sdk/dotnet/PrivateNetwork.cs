@@ -43,11 +43,13 @@ namespace Pulumiverse.Exoscale
 
         /// <summary>
         /// The network mask defining the IPv4 network allowed for static leases.
-        /// * `start_ip`/`end_ip` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
         /// </summary>
         [Output("netmask")]
         public Output<string?> Netmask { get; private set; } = null!;
 
+        /// <summary>
+        /// /`end_ip` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        /// </summary>
         [Output("startIp")]
         public Output<string?> StartIp { get; private set; } = null!;
 
@@ -121,11 +123,13 @@ namespace Pulumiverse.Exoscale
 
         /// <summary>
         /// The network mask defining the IPv4 network allowed for static leases.
-        /// * `start_ip`/`end_ip` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
 
+        /// <summary>
+        /// /`end_ip` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        /// </summary>
         [Input("startIp")]
         public Input<string>? StartIp { get; set; }
 
@@ -160,11 +164,13 @@ namespace Pulumiverse.Exoscale
 
         /// <summary>
         /// The network mask defining the IPv4 network allowed for static leases.
-        /// * `start_ip`/`end_ip` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
 
+        /// <summary>
+        /// /`end_ip` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        /// </summary>
         [Input("startIp")]
         public Input<string>? StartIp { get; set; }
 

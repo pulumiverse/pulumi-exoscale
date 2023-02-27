@@ -15,8 +15,7 @@ namespace Pulumiverse.Exoscale.Outputs
     public sealed class DatabaseOpensearchIndexPattern
     {
         /// <summary>
-        /// Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
-        /// * `dashboards`
+        /// Maximum number of indexes to keep (Minimum value is `0`)
         /// </summary>
         public readonly int? MaxIndexCount;
         /// <summary>

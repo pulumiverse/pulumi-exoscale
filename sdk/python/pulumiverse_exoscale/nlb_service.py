@@ -31,7 +31,7 @@ class NLBServiceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['NLBServiceHealthcheckArgs']]] healthchecks: The service health checking configuration (may only bet set at creation time). Structure is documented below.
         :param pulumi.Input[str] instance_pool_id: The InstancePool (ID) to forward traffic to.
         :param pulumi.Input[str] nlb_id: The parent NLB ID.
-        :param pulumi.Input[int] port: The healthcheck port.
+        :param pulumi.Input[int] port: The NLB service (TCP/UPP) port.
         :param pulumi.Input[int] target_port: The (TCP/UDP) port to forward traffic to (on target instance pool members).
         :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
         :param pulumi.Input[str] description: A free-form text describing the NLB service.
@@ -94,7 +94,7 @@ class NLBServiceArgs:
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
         """
-        The healthcheck port.
+        The NLB service (TCP/UPP) port.
         """
         return pulumi.get(self, "port")
 
@@ -196,7 +196,7 @@ class _NLBServiceState:
         :param pulumi.Input[str] instance_pool_id: The InstancePool (ID) to forward traffic to.
         :param pulumi.Input[str] name: The NLB service name.
         :param pulumi.Input[str] nlb_id: The parent NLB ID.
-        :param pulumi.Input[int] port: The healthcheck port.
+        :param pulumi.Input[int] port: The NLB service (TCP/UPP) port.
         :param pulumi.Input[str] protocol: The protocol (`tcp`|`udp`; default: `tcp`).
         :param pulumi.Input[str] strategy: The strategy (`round-robin`|`source-hash`; default: `round-robin`).
         :param pulumi.Input[int] target_port: The (TCP/UDP) port to forward traffic to (on target instance pool members).
@@ -289,7 +289,7 @@ class _NLBServiceState:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
-        The healthcheck port.
+        The NLB service (TCP/UPP) port.
         """
         return pulumi.get(self, "port")
 
@@ -391,7 +391,7 @@ class NLBService(pulumi.CustomResource):
         :param pulumi.Input[str] instance_pool_id: The InstancePool (ID) to forward traffic to.
         :param pulumi.Input[str] name: The NLB service name.
         :param pulumi.Input[str] nlb_id: The parent NLB ID.
-        :param pulumi.Input[int] port: The healthcheck port.
+        :param pulumi.Input[int] port: The NLB service (TCP/UPP) port.
         :param pulumi.Input[str] protocol: The protocol (`tcp`|`udp`; default: `tcp`).
         :param pulumi.Input[str] strategy: The strategy (`round-robin`|`source-hash`; default: `round-robin`).
         :param pulumi.Input[int] target_port: The (TCP/UDP) port to forward traffic to (on target instance pool members).
@@ -506,7 +506,7 @@ class NLBService(pulumi.CustomResource):
         :param pulumi.Input[str] instance_pool_id: The InstancePool (ID) to forward traffic to.
         :param pulumi.Input[str] name: The NLB service name.
         :param pulumi.Input[str] nlb_id: The parent NLB ID.
-        :param pulumi.Input[int] port: The healthcheck port.
+        :param pulumi.Input[int] port: The NLB service (TCP/UPP) port.
         :param pulumi.Input[str] protocol: The protocol (`tcp`|`udp`; default: `tcp`).
         :param pulumi.Input[str] strategy: The strategy (`round-robin`|`source-hash`; default: `round-robin`).
         :param pulumi.Input[int] target_port: The (TCP/UDP) port to forward traffic to (on target instance pool members).
@@ -573,7 +573,7 @@ class NLBService(pulumi.CustomResource):
     @pulumi.getter
     def port(self) -> pulumi.Output[int]:
         """
-        The healthcheck port.
+        The NLB service (TCP/UPP) port.
         """
         return pulumi.get(self, "port")
 

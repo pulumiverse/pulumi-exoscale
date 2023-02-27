@@ -14,7 +14,8 @@ import (
 type SecurityGroupRules struct {
 	pulumi.CustomResourceState
 
-	Egresses  SecurityGroupRulesEgressArrayOutput  `pulumi:"egresses"`
+	Egresses SecurityGroupRulesEgressArrayOutput `pulumi:"egresses"`
+	// /`egress` - (Block) A security group rule definition (can be specified multiple times).
 	Ingresses SecurityGroupRulesIngressArrayOutput `pulumi:"ingresses"`
 	// The security group (name) the rules apply to (conflicts with `securityGroupId`).
 	SecurityGroup pulumi.StringOutput `pulumi:"securityGroup"`
@@ -52,7 +53,8 @@ func GetSecurityGroupRules(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecurityGroupRules resources.
 type securityGroupRulesState struct {
-	Egresses  []SecurityGroupRulesEgress  `pulumi:"egresses"`
+	Egresses []SecurityGroupRulesEgress `pulumi:"egresses"`
+	// /`egress` - (Block) A security group rule definition (can be specified multiple times).
 	Ingresses []SecurityGroupRulesIngress `pulumi:"ingresses"`
 	// The security group (name) the rules apply to (conflicts with `securityGroupId`).
 	SecurityGroup *string `pulumi:"securityGroup"`
@@ -61,7 +63,8 @@ type securityGroupRulesState struct {
 }
 
 type SecurityGroupRulesState struct {
-	Egresses  SecurityGroupRulesEgressArrayInput
+	Egresses SecurityGroupRulesEgressArrayInput
+	// /`egress` - (Block) A security group rule definition (can be specified multiple times).
 	Ingresses SecurityGroupRulesIngressArrayInput
 	// The security group (name) the rules apply to (conflicts with `securityGroupId`).
 	SecurityGroup pulumi.StringPtrInput
@@ -74,7 +77,8 @@ func (SecurityGroupRulesState) ElementType() reflect.Type {
 }
 
 type securityGroupRulesArgs struct {
-	Egresses  []SecurityGroupRulesEgress  `pulumi:"egresses"`
+	Egresses []SecurityGroupRulesEgress `pulumi:"egresses"`
+	// /`egress` - (Block) A security group rule definition (can be specified multiple times).
 	Ingresses []SecurityGroupRulesIngress `pulumi:"ingresses"`
 	// The security group (name) the rules apply to (conflicts with `securityGroupId`).
 	SecurityGroup *string `pulumi:"securityGroup"`
@@ -84,7 +88,8 @@ type securityGroupRulesArgs struct {
 
 // The set of arguments for constructing a SecurityGroupRules resource.
 type SecurityGroupRulesArgs struct {
-	Egresses  SecurityGroupRulesEgressArrayInput
+	Egresses SecurityGroupRulesEgressArrayInput
+	// /`egress` - (Block) A security group rule definition (can be specified multiple times).
 	Ingresses SecurityGroupRulesIngressArrayInput
 	// The security group (name) the rules apply to (conflicts with `securityGroupId`).
 	SecurityGroup pulumi.StringPtrInput
@@ -183,6 +188,7 @@ func (o SecurityGroupRulesOutput) Egresses() SecurityGroupRulesEgressArrayOutput
 	return o.ApplyT(func(v *SecurityGroupRules) SecurityGroupRulesEgressArrayOutput { return v.Egresses }).(SecurityGroupRulesEgressArrayOutput)
 }
 
+// /`egress` - (Block) A security group rule definition (can be specified multiple times).
 func (o SecurityGroupRulesOutput) Ingresses() SecurityGroupRulesIngressArrayOutput {
 	return o.ApplyT(func(v *SecurityGroupRules) SecurityGroupRulesIngressArrayOutput { return v.Ingresses }).(SecurityGroupRulesIngressArrayOutput)
 }

@@ -12,21 +12,77 @@ namespace Pulumiverse.Exoscale
 {
     public static class GetComputeInstanceList
     {
-        public static Task<GetComputeInstanceListResult> InvokeAsync(GetComputeInstanceListArgs args, InvokeOptions? options = null)
+        public static Task<GetComputeInstanceListResult> InvokeAsync(GetComputeInstanceListArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetComputeInstanceListResult>("exoscale:index/getComputeInstanceList:getComputeInstanceList", args ?? new GetComputeInstanceListArgs(), options.WithDefaults());
 
-        public static Output<GetComputeInstanceListResult> Invoke(GetComputeInstanceListInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetComputeInstanceListResult> Invoke(GetComputeInstanceListInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetComputeInstanceListResult>("exoscale:index/getComputeInstanceList:getComputeInstanceList", args ?? new GetComputeInstanceListInvokeArgs(), options.WithDefaults());
     }
 
 
     public sealed class GetComputeInstanceListArgs : global::Pulumi.InvokeArgs
     {
+        [Input("createdAt")]
+        public string? CreatedAt { get; set; }
+
+        [Input("deployTargetId")]
+        public string? DeployTargetId { get; set; }
+
+        [Input("diskSize")]
+        public int? DiskSize { get; set; }
+
+        [Input("id")]
+        public string? Id { get; set; }
+
+        [Input("ipv6")]
+        public bool? Ipv6 { get; set; }
+
+        [Input("ipv6Address")]
+        public string? Ipv6Address { get; set; }
+
+        [Input("labels")]
+        private Dictionary<string, string>? _labels;
+        public Dictionary<string, string> Labels
+        {
+            get => _labels ?? (_labels = new Dictionary<string, string>());
+            set => _labels = value;
+        }
+
+        [Input("managerId")]
+        public string? ManagerId { get; set; }
+
+        [Input("managerType")]
+        public string? ManagerType { get; set; }
+
+        [Input("name")]
+        public string? Name { get; set; }
+
+        [Input("publicIpAddress")]
+        public string? PublicIpAddress { get; set; }
+
+        [Input("reverseDns")]
+        public string? ReverseDns { get; set; }
+
+        [Input("sshKey")]
+        public string? SshKey { get; set; }
+
+        [Input("state")]
+        public string? State { get; set; }
+
+        [Input("templateId")]
+        public string? TemplateId { get; set; }
+
+        [Input("type")]
+        public string? Type { get; set; }
+
+        [Input("userData")]
+        public string? UserData { get; set; }
+
         /// <summary>
         /// The Exoscale [Zone][zone] name.
         /// </summary>
-        [Input("zone", required: true)]
-        public string Zone { get; set; } = null!;
+        [Input("zone")]
+        public string? Zone { get; set; }
 
         public GetComputeInstanceListArgs()
         {
@@ -36,11 +92,67 @@ namespace Pulumiverse.Exoscale
 
     public sealed class GetComputeInstanceListInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
+        [Input("deployTargetId")]
+        public Input<string>? DeployTargetId { get; set; }
+
+        [Input("diskSize")]
+        public Input<int>? DiskSize { get; set; }
+
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        [Input("ipv6")]
+        public Input<bool>? Ipv6 { get; set; }
+
+        [Input("ipv6Address")]
+        public Input<string>? Ipv6Address { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
+        [Input("managerId")]
+        public Input<string>? ManagerId { get; set; }
+
+        [Input("managerType")]
+        public Input<string>? ManagerType { get; set; }
+
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("publicIpAddress")]
+        public Input<string>? PublicIpAddress { get; set; }
+
+        [Input("reverseDns")]
+        public Input<string>? ReverseDns { get; set; }
+
+        [Input("sshKey")]
+        public Input<string>? SshKey { get; set; }
+
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        [Input("templateId")]
+        public Input<string>? TemplateId { get; set; }
+
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        [Input("userData")]
+        public Input<string>? UserData { get; set; }
+
         /// <summary>
         /// The Exoscale [Zone][zone] name.
         /// </summary>
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public GetComputeInstanceListInvokeArgs()
         {
@@ -52,23 +164,84 @@ namespace Pulumiverse.Exoscale
     [OutputType]
     public sealed class GetComputeInstanceListResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly string? CreatedAt;
+        public readonly string? DeployTargetId;
+        public readonly int? DiskSize;
+        public readonly string? Id;
         public readonly ImmutableArray<Outputs.GetComputeInstanceListInstanceResult> Instances;
-        public readonly string Zone;
+        public readonly bool? Ipv6;
+        public readonly string? Ipv6Address;
+        public readonly ImmutableDictionary<string, string>? Labels;
+        public readonly string? ManagerId;
+        public readonly string? ManagerType;
+        public readonly string? Name;
+        public readonly string? PublicIpAddress;
+        public readonly string? ReverseDns;
+        public readonly string? SshKey;
+        public readonly string? State;
+        public readonly string? TemplateId;
+        public readonly string? Type;
+        public readonly string? UserData;
+        public readonly string? Zone;
 
         [OutputConstructor]
         private GetComputeInstanceListResult(
-            string id,
+            string? createdAt,
+
+            string? deployTargetId,
+
+            int? diskSize,
+
+            string? id,
 
             ImmutableArray<Outputs.GetComputeInstanceListInstanceResult> instances,
 
-            string zone)
+            bool? ipv6,
+
+            string? ipv6Address,
+
+            ImmutableDictionary<string, string>? labels,
+
+            string? managerId,
+
+            string? managerType,
+
+            string? name,
+
+            string? publicIpAddress,
+
+            string? reverseDns,
+
+            string? sshKey,
+
+            string? state,
+
+            string? templateId,
+
+            string? type,
+
+            string? userData,
+
+            string? zone)
         {
+            CreatedAt = createdAt;
+            DeployTargetId = deployTargetId;
+            DiskSize = diskSize;
             Id = id;
             Instances = instances;
+            Ipv6 = ipv6;
+            Ipv6Address = ipv6Address;
+            Labels = labels;
+            ManagerId = managerId;
+            ManagerType = managerType;
+            Name = name;
+            PublicIpAddress = publicIpAddress;
+            ReverseDns = reverseDns;
+            SshKey = sshKey;
+            State = state;
+            TemplateId = templateId;
+            Type = type;
+            UserData = userData;
             Zone = zone;
         }
     }

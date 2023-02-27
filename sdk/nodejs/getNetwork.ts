@@ -48,9 +48,11 @@ export interface GetNetworkResult {
     readonly name?: string;
     /**
      * The network mask defining the IPv4 network allowed for static leases.
-     * * `startIp`/`endIp` - The first/last IPv4 addresses used by the DHCP service for dynamic leases.
      */
     readonly netmask: string;
+    /**
+     * /`endIp` - The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+     */
     readonly startIp: string;
     readonly zone: string;
 }

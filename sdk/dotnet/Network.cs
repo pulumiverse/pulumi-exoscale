@@ -33,7 +33,6 @@ namespace Pulumiverse.Exoscale
 
         /// <summary>
         /// The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.
-        /// * `start_ip`/`end_ip` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
         /// </summary>
         [Output("netmask")]
         public Output<string?> Netmask { get; private set; } = null!;
@@ -41,6 +40,9 @@ namespace Pulumiverse.Exoscale
         [Output("networkOffering")]
         public Output<string?> NetworkOffering { get; private set; } = null!;
 
+        /// <summary>
+        /// /`end_ip` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+        /// </summary>
         [Output("startIp")]
         public Output<string?> StartIp { get; private set; } = null!;
 
@@ -120,7 +122,6 @@ namespace Pulumiverse.Exoscale
 
         /// <summary>
         /// The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.
-        /// * `start_ip`/`end_ip` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
@@ -128,6 +129,9 @@ namespace Pulumiverse.Exoscale
         [Input("networkOffering")]
         public Input<string>? NetworkOffering { get; set; }
 
+        /// <summary>
+        /// /`end_ip` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+        /// </summary>
         [Input("startIp")]
         public Input<string>? StartIp { get; set; }
 
@@ -174,7 +178,6 @@ namespace Pulumiverse.Exoscale
 
         /// <summary>
         /// The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.
-        /// * `start_ip`/`end_ip` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
@@ -182,6 +185,9 @@ namespace Pulumiverse.Exoscale
         [Input("networkOffering")]
         public Input<string>? NetworkOffering { get; set; }
 
+        /// <summary>
+        /// /`end_ip` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+        /// </summary>
         [Input("startIp")]
         public Input<string>? StartIp { get; set; }
 

@@ -40,7 +40,7 @@ class InstancePoolArgs:
         """
         The set of arguments for constructing a InstancePool resource.
         :param pulumi.Input[int] size: The number of managed instances.
-        :param pulumi.Input[str] template_id: The get_compute_template (ID) to use when creating the managed instances.
+        :param pulumi.Input[str] template_id: The_get_compute_template_(ID) to use when creating the managed instances.
         :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_group_ids: A list of AntiAffinityGroup (IDs; may only be set at creation time).
         :param pulumi.Input[str] deploy_target_id: A deploy target ID.
@@ -122,7 +122,7 @@ class InstancePoolArgs:
     @pulumi.getter(name="templateId")
     def template_id(self) -> pulumi.Input[str]:
         """
-        The get_compute_template (ID) to use when creating the managed instances.
+        The_get_compute_template_(ID) to use when creating the managed instances.
         """
         return pulumi.get(self, "template_id")
 
@@ -398,7 +398,7 @@ class _InstancePoolState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of SecurityGroup (IDs).
         :param pulumi.Input[str] service_offering: The managed instances type. Please use the `instance_type` argument instead.
         :param pulumi.Input[int] size: The number of managed instances.
-        :param pulumi.Input[str] template_id: The get_compute_template (ID) to use when creating the managed instances.
+        :param pulumi.Input[str] template_id: The_get_compute_template_(ID) to use when creating the managed instances.
         :param pulumi.Input[str] user_data: [cloud-init][cloud-init] configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machines: (Deprecated) The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
         :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
@@ -657,7 +657,7 @@ class _InstancePoolState:
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The get_compute_template (ID) to use when creating the managed instances.
+        The_get_compute_template_(ID) to use when creating the managed instances.
         """
         return pulumi.get(self, "template_id")
 
@@ -760,7 +760,7 @@ class InstancePool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of SecurityGroup (IDs).
         :param pulumi.Input[str] service_offering: The managed instances type. Please use the `instance_type` argument instead.
         :param pulumi.Input[int] size: The number of managed instances.
-        :param pulumi.Input[str] template_id: The get_compute_template (ID) to use when creating the managed instances.
+        :param pulumi.Input[str] template_id: The_get_compute_template_(ID) to use when creating the managed instances.
         :param pulumi.Input[str] user_data: [cloud-init][cloud-init] configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machines: (Deprecated) The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
         :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
@@ -916,7 +916,7 @@ class InstancePool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of SecurityGroup (IDs).
         :param pulumi.Input[str] service_offering: The managed instances type. Please use the `instance_type` argument instead.
         :param pulumi.Input[int] size: The number of managed instances.
-        :param pulumi.Input[str] template_id: The get_compute_template (ID) to use when creating the managed instances.
+        :param pulumi.Input[str] template_id: The_get_compute_template_(ID) to use when creating the managed instances.
         :param pulumi.Input[str] user_data: [cloud-init][cloud-init] configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machines: (Deprecated) The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
         :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
@@ -1085,7 +1085,7 @@ class InstancePool(pulumi.CustomResource):
     @pulumi.getter(name="templateId")
     def template_id(self) -> pulumi.Output[str]:
         """
-        The get_compute_template (ID) to use when creating the managed instances.
+        The_get_compute_template_(ID) to use when creating the managed instances.
         """
         return pulumi.get(self, "template_id")
 

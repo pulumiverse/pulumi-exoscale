@@ -58,7 +58,7 @@ export interface DatabaseKafka {
      */
     schemaRegistrySettings?: pulumi.Input<string>;
     /**
-     * PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+     * Kafka major version (`exo dbaas type show kafka` for reference; may only be set at creation time).
      */
     version?: pulumi.Input<string>;
 }
@@ -85,7 +85,7 @@ export interface DatabaseMysql {
      */
     mysqlSettings?: pulumi.Input<string>;
     /**
-     * PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+     * MySQL major version (`exo dbaas type show mysql` for reference; may only be set at creation time).
      */
     version?: pulumi.Input<string>;
 }
@@ -105,7 +105,7 @@ export interface DatabaseOpensearch {
      */
     indexTemplate?: pulumi.Input<inputs.DatabaseOpensearchIndexTemplate>;
     /**
-     * A list of CIDR blocks to allow incoming connections from.
+     * Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -114,16 +114,12 @@ export interface DatabaseOpensearch {
     keepIndexRefreshInterval?: pulumi.Input<boolean>;
     /**
      * Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
-     * * `dashboards`
      */
     maxIndexCount?: pulumi.Input<number>;
-    /**
-     * -
-     */
     recoveryBackupName?: pulumi.Input<string>;
     settings?: pulumi.Input<string>;
     /**
-     * PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+     * OpenSearch major version.
      */
     version?: pulumi.Input<string>;
 }
@@ -146,8 +142,7 @@ export interface DatabaseOpensearchDashboards {
 
 export interface DatabaseOpensearchIndexPattern {
     /**
-     * Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
-     * * `dashboards`
+     * Maximum number of indexes to keep (Minimum value is `0`)
      */
     maxIndexCount?: pulumi.Input<number>;
     /**
@@ -386,10 +381,12 @@ export interface SecurityGroupRulesEgress {
     cidrLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A free-form text describing the block.
-     * * `icmpType`/`icmpCode` - An ICMP/ICMPv6 type/code to match.
      */
     description?: pulumi.Input<string>;
     icmpCode?: pulumi.Input<number>;
+    /**
+     * /`icmpCode` - An ICMP/ICMPv6 type/code to match.
+     */
     icmpType?: pulumi.Input<number>;
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -413,10 +410,12 @@ export interface SecurityGroupRulesIngress {
     cidrLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A free-form text describing the block.
-     * * `icmpType`/`icmpCode` - An ICMP/ICMPv6 type/code to match.
      */
     description?: pulumi.Input<string>;
     icmpCode?: pulumi.Input<number>;
+    /**
+     * /`icmpCode` - An ICMP/ICMPv6 type/code to match.
+     */
     icmpType?: pulumi.Input<number>;
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**

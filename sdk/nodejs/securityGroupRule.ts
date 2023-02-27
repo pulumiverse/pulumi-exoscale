@@ -66,8 +66,6 @@ export class SecurityGroupRule extends pulumi.CustomResource {
 
     /**
      * An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation][cidr]) to match (conflicts with `userSecurityGroup`/`userSecurityGroupId`).
-     * * `startPort`/`endPort` - A `TCP`/`UDP` port range to match.
-     * * `icmpType`/`icmpCode` - An ICMP/ICMPv6 [type/code][icmp] to match.
      */
     public readonly cidr!: pulumi.Output<string | undefined>;
     /**
@@ -76,6 +74,9 @@ export class SecurityGroupRule extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly endPort!: pulumi.Output<number | undefined>;
     public readonly icmpCode!: pulumi.Output<number | undefined>;
+    /**
+     * /`icmpCode` - An ICMP/ICMPv6 [type/code][icmp] to match.
+     */
     public readonly icmpType!: pulumi.Output<number | undefined>;
     /**
      * The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)
@@ -89,6 +90,9 @@ export class SecurityGroupRule extends pulumi.CustomResource {
      * The parent exoscale.SecurityGroup ID.
      */
     public readonly securityGroupId!: pulumi.Output<string>;
+    /**
+     * /`endPort` - A `TCP`/`UDP` port range to match.
+     */
     public readonly startPort!: pulumi.Output<number | undefined>;
     /**
      * The traffic direction to match (`INGRESS` or `EGRESS`).
@@ -157,8 +161,6 @@ export class SecurityGroupRule extends pulumi.CustomResource {
 export interface SecurityGroupRuleState {
     /**
      * An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation][cidr]) to match (conflicts with `userSecurityGroup`/`userSecurityGroupId`).
-     * * `startPort`/`endPort` - A `TCP`/`UDP` port range to match.
-     * * `icmpType`/`icmpCode` - An ICMP/ICMPv6 [type/code][icmp] to match.
      */
     cidr?: pulumi.Input<string>;
     /**
@@ -167,6 +169,9 @@ export interface SecurityGroupRuleState {
     description?: pulumi.Input<string>;
     endPort?: pulumi.Input<number>;
     icmpCode?: pulumi.Input<number>;
+    /**
+     * /`icmpCode` - An ICMP/ICMPv6 [type/code][icmp] to match.
+     */
     icmpType?: pulumi.Input<number>;
     /**
      * The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)
@@ -180,6 +185,9 @@ export interface SecurityGroupRuleState {
      * The parent exoscale.SecurityGroup ID.
      */
     securityGroupId?: pulumi.Input<string>;
+    /**
+     * /`endPort` - A `TCP`/`UDP` port range to match.
+     */
     startPort?: pulumi.Input<number>;
     /**
      * The traffic direction to match (`INGRESS` or `EGRESS`).
@@ -201,8 +209,6 @@ export interface SecurityGroupRuleState {
 export interface SecurityGroupRuleArgs {
     /**
      * An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation][cidr]) to match (conflicts with `userSecurityGroup`/`userSecurityGroupId`).
-     * * `startPort`/`endPort` - A `TCP`/`UDP` port range to match.
-     * * `icmpType`/`icmpCode` - An ICMP/ICMPv6 [type/code][icmp] to match.
      */
     cidr?: pulumi.Input<string>;
     /**
@@ -211,6 +217,9 @@ export interface SecurityGroupRuleArgs {
     description?: pulumi.Input<string>;
     endPort?: pulumi.Input<number>;
     icmpCode?: pulumi.Input<number>;
+    /**
+     * /`icmpCode` - An ICMP/ICMPv6 [type/code][icmp] to match.
+     */
     icmpType?: pulumi.Input<number>;
     /**
      * The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)
@@ -224,6 +233,9 @@ export interface SecurityGroupRuleArgs {
      * The parent exoscale.SecurityGroup ID.
      */
     securityGroupId?: pulumi.Input<string>;
+    /**
+     * /`endPort` - A `TCP`/`UDP` port range to match.
+     */
     startPort?: pulumi.Input<number>;
     /**
      * The traffic direction to match (`INGRESS` or `EGRESS`).

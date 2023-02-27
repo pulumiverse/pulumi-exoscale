@@ -56,9 +56,11 @@ export class PrivateNetwork extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The network mask defining the IPv4 network allowed for static leases.
-     * * `startIp`/`endIp` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
      */
     public readonly netmask!: pulumi.Output<string | undefined>;
+    /**
+     * /`endIp` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+     */
     public readonly startIp!: pulumi.Output<string | undefined>;
     /**
      * The Exoscale [Zone][zone] name.
@@ -116,9 +118,11 @@ export interface PrivateNetworkState {
     name?: pulumi.Input<string>;
     /**
      * The network mask defining the IPv4 network allowed for static leases.
-     * * `startIp`/`endIp` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
      */
     netmask?: pulumi.Input<string>;
+    /**
+     * /`endIp` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+     */
     startIp?: pulumi.Input<string>;
     /**
      * The Exoscale [Zone][zone] name.
@@ -141,9 +145,11 @@ export interface PrivateNetworkArgs {
     name?: pulumi.Input<string>;
     /**
      * The network mask defining the IPv4 network allowed for static leases.
-     * * `startIp`/`endIp` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
      */
     netmask?: pulumi.Input<string>;
+    /**
+     * /`endIp` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+     */
     startIp?: pulumi.Input<string>;
     /**
      * The Exoscale [Zone][zone] name.

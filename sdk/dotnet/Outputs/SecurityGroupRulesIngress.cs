@@ -20,10 +20,12 @@ namespace Pulumiverse.Exoscale.Outputs
         public readonly ImmutableArray<string> CidrLists;
         /// <summary>
         /// A free-form text describing the block.
-        /// * `icmp_type`/`icmp_code` - An ICMP/ICMPv6 type/code to match.
         /// </summary>
         public readonly string? Description;
         public readonly int? IcmpCode;
+        /// <summary>
+        /// /`icmp_code` - An ICMP/ICMPv6 type/code to match.
+        /// </summary>
         public readonly int? IcmpType;
         public readonly ImmutableArray<string> Ids;
         /// <summary>

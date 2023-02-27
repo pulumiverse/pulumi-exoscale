@@ -54,8 +54,6 @@ namespace Pulumiverse.Exoscale
     {
         /// <summary>
         /// An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation][cidr]) to match (conflicts with `user_security_group`/`user_security_group_id`).
-        /// * `start_port`/`end_port` - A `TCP`/`UDP` port range to match.
-        /// * `icmp_type`/`icmp_code` - An ICMP/ICMPv6 [type/code][icmp] to match.
         /// </summary>
         [Output("cidr")]
         public Output<string?> Cidr { get; private set; } = null!;
@@ -72,6 +70,9 @@ namespace Pulumiverse.Exoscale
         [Output("icmpCode")]
         public Output<int?> IcmpCode { get; private set; } = null!;
 
+        /// <summary>
+        /// /`icmp_code` - An ICMP/ICMPv6 [type/code][icmp] to match.
+        /// </summary>
         [Output("icmpType")]
         public Output<int?> IcmpType { get; private set; } = null!;
 
@@ -93,6 +94,9 @@ namespace Pulumiverse.Exoscale
         [Output("securityGroupId")]
         public Output<string> SecurityGroupId { get; private set; } = null!;
 
+        /// <summary>
+        /// /`end_port` - A `TCP`/`UDP` port range to match.
+        /// </summary>
         [Output("startPort")]
         public Output<int?> StartPort { get; private set; } = null!;
 
@@ -163,8 +167,6 @@ namespace Pulumiverse.Exoscale
     {
         /// <summary>
         /// An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation][cidr]) to match (conflicts with `user_security_group`/`user_security_group_id`).
-        /// * `start_port`/`end_port` - A `TCP`/`UDP` port range to match.
-        /// * `icmp_type`/`icmp_code` - An ICMP/ICMPv6 [type/code][icmp] to match.
         /// </summary>
         [Input("cidr")]
         public Input<string>? Cidr { get; set; }
@@ -181,6 +183,9 @@ namespace Pulumiverse.Exoscale
         [Input("icmpCode")]
         public Input<int>? IcmpCode { get; set; }
 
+        /// <summary>
+        /// /`icmp_code` - An ICMP/ICMPv6 [type/code][icmp] to match.
+        /// </summary>
         [Input("icmpType")]
         public Input<int>? IcmpType { get; set; }
 
@@ -202,6 +207,9 @@ namespace Pulumiverse.Exoscale
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
 
+        /// <summary>
+        /// /`end_port` - A `TCP`/`UDP` port range to match.
+        /// </summary>
         [Input("startPort")]
         public Input<int>? StartPort { get; set; }
 
@@ -233,8 +241,6 @@ namespace Pulumiverse.Exoscale
     {
         /// <summary>
         /// An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation][cidr]) to match (conflicts with `user_security_group`/`user_security_group_id`).
-        /// * `start_port`/`end_port` - A `TCP`/`UDP` port range to match.
-        /// * `icmp_type`/`icmp_code` - An ICMP/ICMPv6 [type/code][icmp] to match.
         /// </summary>
         [Input("cidr")]
         public Input<string>? Cidr { get; set; }
@@ -251,6 +257,9 @@ namespace Pulumiverse.Exoscale
         [Input("icmpCode")]
         public Input<int>? IcmpCode { get; set; }
 
+        /// <summary>
+        /// /`icmp_code` - An ICMP/ICMPv6 [type/code][icmp] to match.
+        /// </summary>
         [Input("icmpType")]
         public Input<int>? IcmpType { get; set; }
 
@@ -272,6 +281,9 @@ namespace Pulumiverse.Exoscale
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
 
+        /// <summary>
+        /// /`end_port` - A `TCP`/`UDP` port range to match.
+        /// </summary>
         [Input("startPort")]
         public Input<int>? StartPort { get; set; }
 

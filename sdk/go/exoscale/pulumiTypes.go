@@ -137,7 +137,7 @@ type DatabaseKafka struct {
 	KafkaSettings *string `pulumi:"kafkaSettings"`
 	// Schema Registry configuration settings in JSON format (`exo dbaas type show kafka --settings=schema-registry` for reference)
 	SchemaRegistrySettings *string `pulumi:"schemaRegistrySettings"`
-	// PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+	// Kafka major version (`exo dbaas type show kafka` for reference; may only be set at creation time).
 	Version *string `pulumi:"version"`
 }
 
@@ -173,7 +173,7 @@ type DatabaseKafkaArgs struct {
 	KafkaSettings pulumi.StringPtrInput `pulumi:"kafkaSettings"`
 	// Schema Registry configuration settings in JSON format (`exo dbaas type show kafka --settings=schema-registry` for reference)
 	SchemaRegistrySettings pulumi.StringPtrInput `pulumi:"schemaRegistrySettings"`
-	// PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+	// Kafka major version (`exo dbaas type show kafka` for reference; may only be set at creation time).
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -304,7 +304,7 @@ func (o DatabaseKafkaOutput) SchemaRegistrySettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseKafka) *string { return v.SchemaRegistrySettings }).(pulumi.StringPtrOutput)
 }
 
-// PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+// Kafka major version (`exo dbaas type show kafka` for reference; may only be set at creation time).
 func (o DatabaseKafkaOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseKafka) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -433,7 +433,7 @@ func (o DatabaseKafkaPtrOutput) SchemaRegistrySettings() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+// Kafka major version (`exo dbaas type show kafka` for reference; may only be set at creation time).
 func (o DatabaseKafkaPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseKafka) *string {
 		if v == nil {
@@ -454,7 +454,7 @@ type DatabaseMysql struct {
 	IpFilters []string `pulumi:"ipFilters"`
 	// MySQL configuration settings in JSON format (`exo dbaas type show mysql --settings=mysql` for reference).
 	MysqlSettings *string `pulumi:"mysqlSettings"`
-	// PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+	// MySQL major version (`exo dbaas type show mysql` for reference; may only be set at creation time).
 	Version *string `pulumi:"version"`
 }
 
@@ -480,7 +480,7 @@ type DatabaseMysqlArgs struct {
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// MySQL configuration settings in JSON format (`exo dbaas type show mysql --settings=mysql` for reference).
 	MysqlSettings pulumi.StringPtrInput `pulumi:"mysqlSettings"`
-	// PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+	// MySQL major version (`exo dbaas type show mysql` for reference; may only be set at creation time).
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -586,7 +586,7 @@ func (o DatabaseMysqlOutput) MysqlSettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseMysql) *string { return v.MysqlSettings }).(pulumi.StringPtrOutput)
 }
 
-// PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+// MySQL major version (`exo dbaas type show mysql` for reference; may only be set at creation time).
 func (o DatabaseMysqlOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseMysql) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -665,7 +665,7 @@ func (o DatabaseMysqlPtrOutput) MysqlSettings() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+// MySQL major version (`exo dbaas type show mysql` for reference; may only be set at creation time).
 func (o DatabaseMysqlPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseMysql) *string {
 		if v == nil {
@@ -683,17 +683,15 @@ type DatabaseOpensearch struct {
 	IndexPatterns []DatabaseOpensearchIndexPattern `pulumi:"indexPatterns"`
 	// Template settings for all new indexes
 	IndexTemplate *DatabaseOpensearchIndexTemplate `pulumi:"indexTemplate"`
-	// A list of CIDR blocks to allow incoming connections from.
+	// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
 	IpFilters []string `pulumi:"ipFilters"`
 	// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
 	KeepIndexRefreshInterval *bool `pulumi:"keepIndexRefreshInterval"`
 	// Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
-	// * `dashboards`
-	MaxIndexCount *int `pulumi:"maxIndexCount"`
-	// -
+	MaxIndexCount      *int    `pulumi:"maxIndexCount"`
 	RecoveryBackupName *string `pulumi:"recoveryBackupName"`
 	Settings           *string `pulumi:"settings"`
-	// PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+	// OpenSearch major version.
 	Version *string `pulumi:"version"`
 }
 
@@ -716,17 +714,15 @@ type DatabaseOpensearchArgs struct {
 	IndexPatterns DatabaseOpensearchIndexPatternArrayInput `pulumi:"indexPatterns"`
 	// Template settings for all new indexes
 	IndexTemplate DatabaseOpensearchIndexTemplatePtrInput `pulumi:"indexTemplate"`
-	// A list of CIDR blocks to allow incoming connections from.
+	// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
 	KeepIndexRefreshInterval pulumi.BoolPtrInput `pulumi:"keepIndexRefreshInterval"`
 	// Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
-	// * `dashboards`
-	MaxIndexCount pulumi.IntPtrInput `pulumi:"maxIndexCount"`
-	// -
+	MaxIndexCount      pulumi.IntPtrInput    `pulumi:"maxIndexCount"`
 	RecoveryBackupName pulumi.StringPtrInput `pulumi:"recoveryBackupName"`
 	Settings           pulumi.StringPtrInput `pulumi:"settings"`
-	// PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+	// OpenSearch major version.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -826,7 +822,7 @@ func (o DatabaseOpensearchOutput) IndexTemplate() DatabaseOpensearchIndexTemplat
 	return o.ApplyT(func(v DatabaseOpensearch) *DatabaseOpensearchIndexTemplate { return v.IndexTemplate }).(DatabaseOpensearchIndexTemplatePtrOutput)
 }
 
-// A list of CIDR blocks to allow incoming connections from.
+// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
 func (o DatabaseOpensearchOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -837,12 +833,10 @@ func (o DatabaseOpensearchOutput) KeepIndexRefreshInterval() pulumi.BoolPtrOutpu
 }
 
 // Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
-// * `dashboards`
 func (o DatabaseOpensearchOutput) MaxIndexCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) *int { return v.MaxIndexCount }).(pulumi.IntPtrOutput)
 }
 
-// -
 func (o DatabaseOpensearchOutput) RecoveryBackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) *string { return v.RecoveryBackupName }).(pulumi.StringPtrOutput)
 }
@@ -851,7 +845,7 @@ func (o DatabaseOpensearchOutput) Settings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) *string { return v.Settings }).(pulumi.StringPtrOutput)
 }
 
-// PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+// OpenSearch major version.
 func (o DatabaseOpensearchOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -919,7 +913,7 @@ func (o DatabaseOpensearchPtrOutput) IndexTemplate() DatabaseOpensearchIndexTemp
 	}).(DatabaseOpensearchIndexTemplatePtrOutput)
 }
 
-// A list of CIDR blocks to allow incoming connections from.
+// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
 func (o DatabaseOpensearchPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DatabaseOpensearch) []string {
 		if v == nil {
@@ -940,7 +934,6 @@ func (o DatabaseOpensearchPtrOutput) KeepIndexRefreshInterval() pulumi.BoolPtrOu
 }
 
 // Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
-// * `dashboards`
 func (o DatabaseOpensearchPtrOutput) MaxIndexCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseOpensearch) *int {
 		if v == nil {
@@ -950,7 +943,6 @@ func (o DatabaseOpensearchPtrOutput) MaxIndexCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// -
 func (o DatabaseOpensearchPtrOutput) RecoveryBackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseOpensearch) *string {
 		if v == nil {
@@ -969,7 +961,7 @@ func (o DatabaseOpensearchPtrOutput) Settings() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+// OpenSearch major version.
 func (o DatabaseOpensearchPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseOpensearch) *string {
 		if v == nil {
@@ -1159,8 +1151,7 @@ func (o DatabaseOpensearchDashboardsPtrOutput) RequestTimeout() pulumi.IntPtrOut
 }
 
 type DatabaseOpensearchIndexPattern struct {
-	// Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
-	// * `dashboards`
+	// Maximum number of indexes to keep (Minimum value is `0`)
 	MaxIndexCount *int `pulumi:"maxIndexCount"`
 	// fnmatch pattern
 	Pattern *string `pulumi:"pattern"`
@@ -1180,8 +1171,7 @@ type DatabaseOpensearchIndexPatternInput interface {
 }
 
 type DatabaseOpensearchIndexPatternArgs struct {
-	// Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
-	// * `dashboards`
+	// Maximum number of indexes to keep (Minimum value is `0`)
 	MaxIndexCount pulumi.IntPtrInput `pulumi:"maxIndexCount"`
 	// fnmatch pattern
 	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
@@ -1240,8 +1230,7 @@ func (o DatabaseOpensearchIndexPatternOutput) ToDatabaseOpensearchIndexPatternOu
 	return o
 }
 
-// Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
-// * `dashboards`
+// Maximum number of indexes to keep (Minimum value is `0`)
 func (o DatabaseOpensearchIndexPatternOutput) MaxIndexCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearchIndexPattern) *int { return v.MaxIndexCount }).(pulumi.IntPtrOutput)
 }
@@ -2696,11 +2685,11 @@ type SecurityGroupRulesEgress struct {
 	// A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
 	CidrLists []string `pulumi:"cidrLists"`
 	// A free-form text describing the block.
-	// * `icmpType`/`icmpCode` - An ICMP/ICMPv6 type/code to match.
-	Description *string  `pulumi:"description"`
-	IcmpCode    *int     `pulumi:"icmpCode"`
-	IcmpType    *int     `pulumi:"icmpType"`
-	Ids         []string `pulumi:"ids"`
+	Description *string `pulumi:"description"`
+	IcmpCode    *int    `pulumi:"icmpCode"`
+	// /`icmpCode` - An ICMP/ICMPv6 type/code to match.
+	IcmpType *int     `pulumi:"icmpType"`
+	Ids      []string `pulumi:"ids"`
 	// A list of ports or port ranges (`<start_port>-<end_port>`).
 	Ports []string `pulumi:"ports"`
 	// The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
@@ -2724,11 +2713,11 @@ type SecurityGroupRulesEgressArgs struct {
 	// A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
 	CidrLists pulumi.StringArrayInput `pulumi:"cidrLists"`
 	// A free-form text describing the block.
-	// * `icmpType`/`icmpCode` - An ICMP/ICMPv6 type/code to match.
-	Description pulumi.StringPtrInput   `pulumi:"description"`
-	IcmpCode    pulumi.IntPtrInput      `pulumi:"icmpCode"`
-	IcmpType    pulumi.IntPtrInput      `pulumi:"icmpType"`
-	Ids         pulumi.StringArrayInput `pulumi:"ids"`
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	IcmpCode    pulumi.IntPtrInput    `pulumi:"icmpCode"`
+	// /`icmpCode` - An ICMP/ICMPv6 type/code to match.
+	IcmpType pulumi.IntPtrInput      `pulumi:"icmpType"`
+	Ids      pulumi.StringArrayInput `pulumi:"ids"`
 	// A list of ports or port ranges (`<start_port>-<end_port>`).
 	Ports pulumi.StringArrayInput `pulumi:"ports"`
 	// The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
@@ -2794,7 +2783,6 @@ func (o SecurityGroupRulesEgressOutput) CidrLists() pulumi.StringArrayOutput {
 }
 
 // A free-form text describing the block.
-// * `icmpType`/`icmpCode` - An ICMP/ICMPv6 type/code to match.
 func (o SecurityGroupRulesEgressOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityGroupRulesEgress) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -2803,6 +2791,7 @@ func (o SecurityGroupRulesEgressOutput) IcmpCode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SecurityGroupRulesEgress) *int { return v.IcmpCode }).(pulumi.IntPtrOutput)
 }
 
+// /`icmpCode` - An ICMP/ICMPv6 type/code to match.
 func (o SecurityGroupRulesEgressOutput) IcmpType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SecurityGroupRulesEgress) *int { return v.IcmpType }).(pulumi.IntPtrOutput)
 }
@@ -2850,11 +2839,11 @@ type SecurityGroupRulesIngress struct {
 	// A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
 	CidrLists []string `pulumi:"cidrLists"`
 	// A free-form text describing the block.
-	// * `icmpType`/`icmpCode` - An ICMP/ICMPv6 type/code to match.
-	Description *string  `pulumi:"description"`
-	IcmpCode    *int     `pulumi:"icmpCode"`
-	IcmpType    *int     `pulumi:"icmpType"`
-	Ids         []string `pulumi:"ids"`
+	Description *string `pulumi:"description"`
+	IcmpCode    *int    `pulumi:"icmpCode"`
+	// /`icmpCode` - An ICMP/ICMPv6 type/code to match.
+	IcmpType *int     `pulumi:"icmpType"`
+	Ids      []string `pulumi:"ids"`
 	// A list of ports or port ranges (`<start_port>-<end_port>`).
 	Ports []string `pulumi:"ports"`
 	// The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
@@ -2878,11 +2867,11 @@ type SecurityGroupRulesIngressArgs struct {
 	// A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
 	CidrLists pulumi.StringArrayInput `pulumi:"cidrLists"`
 	// A free-form text describing the block.
-	// * `icmpType`/`icmpCode` - An ICMP/ICMPv6 type/code to match.
-	Description pulumi.StringPtrInput   `pulumi:"description"`
-	IcmpCode    pulumi.IntPtrInput      `pulumi:"icmpCode"`
-	IcmpType    pulumi.IntPtrInput      `pulumi:"icmpType"`
-	Ids         pulumi.StringArrayInput `pulumi:"ids"`
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	IcmpCode    pulumi.IntPtrInput    `pulumi:"icmpCode"`
+	// /`icmpCode` - An ICMP/ICMPv6 type/code to match.
+	IcmpType pulumi.IntPtrInput      `pulumi:"icmpType"`
+	Ids      pulumi.StringArrayInput `pulumi:"ids"`
 	// A list of ports or port ranges (`<start_port>-<end_port>`).
 	Ports pulumi.StringArrayInput `pulumi:"ports"`
 	// The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
@@ -2948,7 +2937,6 @@ func (o SecurityGroupRulesIngressOutput) CidrLists() pulumi.StringArrayOutput {
 }
 
 // A free-form text describing the block.
-// * `icmpType`/`icmpCode` - An ICMP/ICMPv6 type/code to match.
 func (o SecurityGroupRulesIngressOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityGroupRulesIngress) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -2957,6 +2945,7 @@ func (o SecurityGroupRulesIngressOutput) IcmpCode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SecurityGroupRulesIngress) *int { return v.IcmpCode }).(pulumi.IntPtrOutput)
 }
 
+// /`icmpCode` - An ICMP/ICMPv6 type/code to match.
 func (o SecurityGroupRulesIngressOutput) IcmpType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SecurityGroupRulesIngress) *int { return v.IcmpType }).(pulumi.IntPtrOutput)
 }

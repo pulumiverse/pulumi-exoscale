@@ -55,7 +55,7 @@ namespace Pulumiverse.Exoscale.Outputs
         /// </summary>
         public readonly string? SchemaRegistrySettings;
         /// <summary>
-        /// PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+        /// Kafka major version (`exo dbaas type show kafka` for reference; may only be set at creation time).
         /// </summary>
         public readonly string? Version;
 

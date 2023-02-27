@@ -14,8 +14,7 @@ namespace Pulumiverse.Exoscale.Inputs
     public sealed class DatabaseOpensearchIndexPatternArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
-        /// * `dashboards`
+        /// Maximum number of indexes to keep (Minimum value is `0`)
         /// </summary>
         [Input("maxIndexCount")]
         public Input<int>? MaxIndexCount { get; set; }
