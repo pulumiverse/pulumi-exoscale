@@ -35,7 +35,7 @@ namespace Pulumiverse.Exoscale.Outputs
         /// </summary>
         public readonly string? MysqlSettings;
         /// <summary>
-        /// PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+        /// MySQL major version (`exo dbaas type show mysql` for reference; may only be set at creation time).
         /// </summary>
         public readonly string? Version;
 

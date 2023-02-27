@@ -68,7 +68,7 @@ export class NLBService extends pulumi.CustomResource {
      */
     public readonly nlbId!: pulumi.Output<string>;
     /**
-     * The healthcheck port.
+     * The NLB service (TCP/UPP) port.
      */
     public readonly port!: pulumi.Output<number>;
     /**
@@ -175,7 +175,7 @@ export interface NLBServiceState {
      */
     nlbId?: pulumi.Input<string>;
     /**
-     * The healthcheck port.
+     * The NLB service (TCP/UPP) port.
      */
     port?: pulumi.Input<number>;
     /**
@@ -222,7 +222,7 @@ export interface NLBServiceArgs {
      */
     nlbId: pulumi.Input<string>;
     /**
-     * The healthcheck port.
+     * The NLB service (TCP/UPP) port.
      */
     port: pulumi.Input<number>;
     /**

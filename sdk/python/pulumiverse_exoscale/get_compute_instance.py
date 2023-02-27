@@ -225,7 +225,7 @@ class GetComputeInstanceResult:
     @pulumi.getter(name="templateId")
     def template_id(self) -> str:
         """
-        The instance get_compute_template ID.
+        The instance_get_compute_template_ID.
         """
         return pulumi.get(self, "template_id")
 

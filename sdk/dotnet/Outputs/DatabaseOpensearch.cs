@@ -28,7 +28,7 @@ namespace Pulumiverse.Exoscale.Outputs
         /// </summary>
         public readonly Outputs.DatabaseOpensearchIndexTemplate? IndexTemplate;
         /// <summary>
-        /// A list of CIDR blocks to allow incoming connections from.
+        /// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
@@ -37,16 +37,12 @@ namespace Pulumiverse.Exoscale.Outputs
         public readonly bool? KeepIndexRefreshInterval;
         /// <summary>
         /// Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
-        /// * `dashboards`
         /// </summary>
         public readonly int? MaxIndexCount;
-        /// <summary>
-        /// -
-        /// </summary>
         public readonly string? RecoveryBackupName;
         public readonly string? Settings;
         /// <summary>
-        /// PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+        /// OpenSearch major version.
         /// </summary>
         public readonly string? Version;
 

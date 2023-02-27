@@ -224,7 +224,7 @@ class GetInstancePoolResult:
     @pulumi.getter(name="templateId")
     def template_id(self) -> str:
         """
-        The managed instances get_compute_template ID.
+        The managed instances_get_compute_template_ID.
         """
         return pulumi.get(self, "template_id")
 

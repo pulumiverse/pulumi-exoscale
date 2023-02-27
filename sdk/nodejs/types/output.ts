@@ -58,7 +58,7 @@ export interface DatabaseKafka {
      */
     schemaRegistrySettings: string;
     /**
-     * PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+     * Kafka major version (`exo dbaas type show kafka` for reference; may only be set at creation time).
      */
     version: string;
 }
@@ -85,7 +85,7 @@ export interface DatabaseMysql {
      */
     mysqlSettings: string;
     /**
-     * PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+     * MySQL major version (`exo dbaas type show mysql` for reference; may only be set at creation time).
      */
     version: string;
 }
@@ -105,25 +105,21 @@ export interface DatabaseOpensearch {
      */
     indexTemplate?: outputs.DatabaseOpensearchIndexTemplate;
     /**
-     * A list of CIDR blocks to allow incoming connections from.
+     * Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
      */
-    ipFilters?: string[];
+    ipFilters: string[];
     /**
      * Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
      */
     keepIndexRefreshInterval?: boolean;
     /**
      * Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
-     * * `dashboards`
      */
     maxIndexCount?: number;
-    /**
-     * -
-     */
     recoveryBackupName?: string;
     settings?: string;
     /**
-     * PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+     * OpenSearch major version.
      */
     version: string;
 }
@@ -146,8 +142,7 @@ export interface DatabaseOpensearchDashboards {
 
 export interface DatabaseOpensearchIndexPattern {
     /**
-     * Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
-     * * `dashboards`
+     * Maximum number of indexes to keep (Minimum value is `0`)
      */
     maxIndexCount?: number;
     /**
@@ -517,10 +512,12 @@ export interface SecurityGroupRulesEgress {
     cidrLists?: string[];
     /**
      * A free-form text describing the block.
-     * * `icmpType`/`icmpCode` - An ICMP/ICMPv6 type/code to match.
      */
     description?: string;
     icmpCode?: number;
+    /**
+     * /`icmpCode` - An ICMP/ICMPv6 type/code to match.
+     */
     icmpType?: number;
     ids: string[];
     /**
@@ -544,10 +541,12 @@ export interface SecurityGroupRulesIngress {
     cidrLists?: string[];
     /**
      * A free-form text describing the block.
-     * * `icmpType`/`icmpCode` - An ICMP/ICMPv6 type/code to match.
      */
     description?: string;
     icmpCode?: number;
+    /**
+     * /`icmpCode` - An ICMP/ICMPv6 type/code to match.
+     */
     icmpType?: number;
     ids: string[];
     /**

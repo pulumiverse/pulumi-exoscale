@@ -80,7 +80,7 @@ namespace Pulumiverse.Exoscale.Inputs
         public Input<string>? SchemaRegistrySettings { get; set; }
 
         /// <summary>
-        /// PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+        /// Kafka major version (`exo dbaas type show kafka` for reference; may only be set at creation time).
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

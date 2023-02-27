@@ -38,6 +38,9 @@ export class SecurityGroupRules extends pulumi.CustomResource {
     }
 
     public readonly egresses!: pulumi.Output<outputs.SecurityGroupRulesEgress[] | undefined>;
+    /**
+     * /`egress` - (Block) A security group rule definition (can be specified multiple times).
+     */
     public readonly ingresses!: pulumi.Output<outputs.SecurityGroupRulesIngress[] | undefined>;
     /**
      * The security group (name) the rules apply to (conflicts with `securityGroupId`).
@@ -82,6 +85,9 @@ export class SecurityGroupRules extends pulumi.CustomResource {
  */
 export interface SecurityGroupRulesState {
     egresses?: pulumi.Input<pulumi.Input<inputs.SecurityGroupRulesEgress>[]>;
+    /**
+     * /`egress` - (Block) A security group rule definition (can be specified multiple times).
+     */
     ingresses?: pulumi.Input<pulumi.Input<inputs.SecurityGroupRulesIngress>[]>;
     /**
      * The security group (name) the rules apply to (conflicts with `securityGroupId`).
@@ -98,6 +104,9 @@ export interface SecurityGroupRulesState {
  */
 export interface SecurityGroupRulesArgs {
     egresses?: pulumi.Input<pulumi.Input<inputs.SecurityGroupRulesEgress>[]>;
+    /**
+     * /`egress` - (Block) A security group rule definition (can be specified multiple times).
+     */
     ingresses?: pulumi.Input<pulumi.Input<inputs.SecurityGroupRulesIngress>[]>;
     /**
      * The security group (name) the rules apply to (conflicts with `securityGroupId`).

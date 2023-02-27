@@ -39,8 +39,8 @@ type LookupNetworkResult struct {
 	Id          *string `pulumi:"id"`
 	Name        *string `pulumi:"name"`
 	// The network mask defining the IPv4 network allowed for static leases.
-	// * `startIp`/`endIp` - The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	Netmask string `pulumi:"netmask"`
+	// /`endIp` - The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	StartIp string `pulumi:"startIp"`
 	Zone    string `pulumi:"zone"`
 }
@@ -105,11 +105,11 @@ func (o LookupNetworkResultOutput) Name() pulumi.StringPtrOutput {
 }
 
 // The network mask defining the IPv4 network allowed for static leases.
-// * `startIp`/`endIp` - The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 func (o LookupNetworkResultOutput) Netmask() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.Netmask }).(pulumi.StringOutput)
 }
 
+// /`endIp` - The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 func (o LookupNetworkResultOutput) StartIp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.StartIp }).(pulumi.StringOutput)
 }

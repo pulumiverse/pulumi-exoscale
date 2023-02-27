@@ -44,7 +44,7 @@ namespace Pulumiverse.Exoscale.Inputs
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// A list of CIDR blocks to allow incoming connections from.
+        /// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
         /// </summary>
         public InputList<string> IpFilters
         {
@@ -60,14 +60,10 @@ namespace Pulumiverse.Exoscale.Inputs
 
         /// <summary>
         /// Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
-        /// * `dashboards`
         /// </summary>
         [Input("maxIndexCount")]
         public Input<int>? MaxIndexCount { get; set; }
 
-        /// <summary>
-        /// -
-        /// </summary>
         [Input("recoveryBackupName")]
         public Input<string>? RecoveryBackupName { get; set; }
 
@@ -75,7 +71,7 @@ namespace Pulumiverse.Exoscale.Inputs
         public Input<string>? Settings { get; set; }
 
         /// <summary>
-        /// PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+        /// OpenSearch major version.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

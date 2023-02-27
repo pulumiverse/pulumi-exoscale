@@ -22,16 +22,48 @@ func GetComputeInstanceList(ctx *pulumi.Context, args *GetComputeInstanceListArg
 
 // A collection of arguments for invoking getComputeInstanceList.
 type GetComputeInstanceListArgs struct {
+	CreatedAt       *string           `pulumi:"createdAt"`
+	DeployTargetId  *string           `pulumi:"deployTargetId"`
+	DiskSize        *int              `pulumi:"diskSize"`
+	Id              *string           `pulumi:"id"`
+	Ipv6            *bool             `pulumi:"ipv6"`
+	Ipv6Address     *string           `pulumi:"ipv6Address"`
+	Labels          map[string]string `pulumi:"labels"`
+	ManagerId       *string           `pulumi:"managerId"`
+	ManagerType     *string           `pulumi:"managerType"`
+	Name            *string           `pulumi:"name"`
+	PublicIpAddress *string           `pulumi:"publicIpAddress"`
+	ReverseDns      *string           `pulumi:"reverseDns"`
+	SshKey          *string           `pulumi:"sshKey"`
+	State           *string           `pulumi:"state"`
+	TemplateId      *string           `pulumi:"templateId"`
+	Type            *string           `pulumi:"type"`
+	UserData        *string           `pulumi:"userData"`
 	// The Exoscale [Zone][zone] name.
-	Zone string `pulumi:"zone"`
+	Zone *string `pulumi:"zone"`
 }
 
 // A collection of values returned by getComputeInstanceList.
 type GetComputeInstanceListResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id        string                           `pulumi:"id"`
-	Instances []GetComputeInstanceListInstance `pulumi:"instances"`
-	Zone      string                           `pulumi:"zone"`
+	CreatedAt       *string                          `pulumi:"createdAt"`
+	DeployTargetId  *string                          `pulumi:"deployTargetId"`
+	DiskSize        *int                             `pulumi:"diskSize"`
+	Id              *string                          `pulumi:"id"`
+	Instances       []GetComputeInstanceListInstance `pulumi:"instances"`
+	Ipv6            *bool                            `pulumi:"ipv6"`
+	Ipv6Address     *string                          `pulumi:"ipv6Address"`
+	Labels          map[string]string                `pulumi:"labels"`
+	ManagerId       *string                          `pulumi:"managerId"`
+	ManagerType     *string                          `pulumi:"managerType"`
+	Name            *string                          `pulumi:"name"`
+	PublicIpAddress *string                          `pulumi:"publicIpAddress"`
+	ReverseDns      *string                          `pulumi:"reverseDns"`
+	SshKey          *string                          `pulumi:"sshKey"`
+	State           *string                          `pulumi:"state"`
+	TemplateId      *string                          `pulumi:"templateId"`
+	Type            *string                          `pulumi:"type"`
+	UserData        *string                          `pulumi:"userData"`
+	Zone            *string                          `pulumi:"zone"`
 }
 
 func GetComputeInstanceListOutput(ctx *pulumi.Context, args GetComputeInstanceListOutputArgs, opts ...pulumi.InvokeOption) GetComputeInstanceListResultOutput {
@@ -49,8 +81,25 @@ func GetComputeInstanceListOutput(ctx *pulumi.Context, args GetComputeInstanceLi
 
 // A collection of arguments for invoking getComputeInstanceList.
 type GetComputeInstanceListOutputArgs struct {
+	CreatedAt       pulumi.StringPtrInput `pulumi:"createdAt"`
+	DeployTargetId  pulumi.StringPtrInput `pulumi:"deployTargetId"`
+	DiskSize        pulumi.IntPtrInput    `pulumi:"diskSize"`
+	Id              pulumi.StringPtrInput `pulumi:"id"`
+	Ipv6            pulumi.BoolPtrInput   `pulumi:"ipv6"`
+	Ipv6Address     pulumi.StringPtrInput `pulumi:"ipv6Address"`
+	Labels          pulumi.StringMapInput `pulumi:"labels"`
+	ManagerId       pulumi.StringPtrInput `pulumi:"managerId"`
+	ManagerType     pulumi.StringPtrInput `pulumi:"managerType"`
+	Name            pulumi.StringPtrInput `pulumi:"name"`
+	PublicIpAddress pulumi.StringPtrInput `pulumi:"publicIpAddress"`
+	ReverseDns      pulumi.StringPtrInput `pulumi:"reverseDns"`
+	SshKey          pulumi.StringPtrInput `pulumi:"sshKey"`
+	State           pulumi.StringPtrInput `pulumi:"state"`
+	TemplateId      pulumi.StringPtrInput `pulumi:"templateId"`
+	Type            pulumi.StringPtrInput `pulumi:"type"`
+	UserData        pulumi.StringPtrInput `pulumi:"userData"`
 	// The Exoscale [Zone][zone] name.
-	Zone pulumi.StringInput `pulumi:"zone"`
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
 
 func (GetComputeInstanceListOutputArgs) ElementType() reflect.Type {
@@ -72,17 +121,80 @@ func (o GetComputeInstanceListResultOutput) ToGetComputeInstanceListResultOutput
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
-func (o GetComputeInstanceListResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetComputeInstanceListResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetComputeInstanceListResultOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetComputeInstanceListResult) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+func (o GetComputeInstanceListResultOutput) DeployTargetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetComputeInstanceListResult) *string { return v.DeployTargetId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetComputeInstanceListResultOutput) DiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetComputeInstanceListResult) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetComputeInstanceListResultOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetComputeInstanceListResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 func (o GetComputeInstanceListResultOutput) Instances() GetComputeInstanceListInstanceArrayOutput {
 	return o.ApplyT(func(v GetComputeInstanceListResult) []GetComputeInstanceListInstance { return v.Instances }).(GetComputeInstanceListInstanceArrayOutput)
 }
 
-func (o GetComputeInstanceListResultOutput) Zone() pulumi.StringOutput {
-	return o.ApplyT(func(v GetComputeInstanceListResult) string { return v.Zone }).(pulumi.StringOutput)
+func (o GetComputeInstanceListResultOutput) Ipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetComputeInstanceListResult) *bool { return v.Ipv6 }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetComputeInstanceListResultOutput) Ipv6Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetComputeInstanceListResult) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
+}
+
+func (o GetComputeInstanceListResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetComputeInstanceListResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o GetComputeInstanceListResultOutput) ManagerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetComputeInstanceListResult) *string { return v.ManagerId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetComputeInstanceListResultOutput) ManagerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetComputeInstanceListResult) *string { return v.ManagerType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetComputeInstanceListResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetComputeInstanceListResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetComputeInstanceListResultOutput) PublicIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetComputeInstanceListResult) *string { return v.PublicIpAddress }).(pulumi.StringPtrOutput)
+}
+
+func (o GetComputeInstanceListResultOutput) ReverseDns() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetComputeInstanceListResult) *string { return v.ReverseDns }).(pulumi.StringPtrOutput)
+}
+
+func (o GetComputeInstanceListResultOutput) SshKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetComputeInstanceListResult) *string { return v.SshKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetComputeInstanceListResultOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetComputeInstanceListResult) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+func (o GetComputeInstanceListResultOutput) TemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetComputeInstanceListResult) *string { return v.TemplateId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetComputeInstanceListResultOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetComputeInstanceListResult) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o GetComputeInstanceListResultOutput) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetComputeInstanceListResult) *string { return v.UserData }).(pulumi.StringPtrOutput)
+}
+
+func (o GetComputeInstanceListResultOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetComputeInstanceListResult) *string { return v.Zone }).(pulumi.StringPtrOutput)
 }
 
 func init() {

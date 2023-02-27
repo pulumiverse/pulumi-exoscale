@@ -40,8 +40,8 @@ type LookupPrivateNetworkResult struct {
 	Id          *string `pulumi:"id"`
 	Name        *string `pulumi:"name"`
 	// The network mask defining the IPv4 network allowed for static leases.
-	// * `startIp`/`endIp` - The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	Netmask string `pulumi:"netmask"`
+	// /`endIp` - The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	StartIp string `pulumi:"startIp"`
 	Zone    string `pulumi:"zone"`
 }
@@ -108,11 +108,11 @@ func (o LookupPrivateNetworkResultOutput) Name() pulumi.StringPtrOutput {
 }
 
 // The network mask defining the IPv4 network allowed for static leases.
-// * `startIp`/`endIp` - The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 func (o LookupPrivateNetworkResultOutput) Netmask() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateNetworkResult) string { return v.Netmask }).(pulumi.StringOutput)
 }
 
+// /`endIp` - The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 func (o LookupPrivateNetworkResultOutput) StartIp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateNetworkResult) string { return v.StartIp }).(pulumi.StringOutput)
 }

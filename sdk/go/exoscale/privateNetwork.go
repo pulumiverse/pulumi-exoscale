@@ -33,8 +33,8 @@ type PrivateNetwork struct {
 	// The private network name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The network mask defining the IPv4 network allowed for static leases.
-	// * `startIp`/`endIp` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	Netmask pulumi.StringPtrOutput `pulumi:"netmask"`
+	// /`endIp` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	StartIp pulumi.StringPtrOutput `pulumi:"startIp"`
 	// The Exoscale [Zone][zone] name.
 	Zone pulumi.StringOutput `pulumi:"zone"`
@@ -79,8 +79,8 @@ type privateNetworkState struct {
 	// The private network name.
 	Name *string `pulumi:"name"`
 	// The network mask defining the IPv4 network allowed for static leases.
-	// * `startIp`/`endIp` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	Netmask *string `pulumi:"netmask"`
+	// /`endIp` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	StartIp *string `pulumi:"startIp"`
 	// The Exoscale [Zone][zone] name.
 	Zone *string `pulumi:"zone"`
@@ -93,8 +93,8 @@ type PrivateNetworkState struct {
 	// The private network name.
 	Name pulumi.StringPtrInput
 	// The network mask defining the IPv4 network allowed for static leases.
-	// * `startIp`/`endIp` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	Netmask pulumi.StringPtrInput
+	// /`endIp` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	StartIp pulumi.StringPtrInput
 	// The Exoscale [Zone][zone] name.
 	Zone pulumi.StringPtrInput
@@ -111,8 +111,8 @@ type privateNetworkArgs struct {
 	// The private network name.
 	Name *string `pulumi:"name"`
 	// The network mask defining the IPv4 network allowed for static leases.
-	// * `startIp`/`endIp` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	Netmask *string `pulumi:"netmask"`
+	// /`endIp` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	StartIp *string `pulumi:"startIp"`
 	// The Exoscale [Zone][zone] name.
 	Zone string `pulumi:"zone"`
@@ -126,8 +126,8 @@ type PrivateNetworkArgs struct {
 	// The private network name.
 	Name pulumi.StringPtrInput
 	// The network mask defining the IPv4 network allowed for static leases.
-	// * `startIp`/`endIp` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	Netmask pulumi.StringPtrInput
+	// /`endIp` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	StartIp pulumi.StringPtrInput
 	// The Exoscale [Zone][zone] name.
 	Zone pulumi.StringInput
@@ -235,11 +235,11 @@ func (o PrivateNetworkOutput) Name() pulumi.StringOutput {
 }
 
 // The network mask defining the IPv4 network allowed for static leases.
-// * `startIp`/`endIp` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 func (o PrivateNetworkOutput) Netmask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateNetwork) pulumi.StringPtrOutput { return v.Netmask }).(pulumi.StringPtrOutput)
 }
 
+// /`endIp` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 func (o PrivateNetworkOutput) StartIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateNetwork) pulumi.StringPtrOutput { return v.StartIp }).(pulumi.StringPtrOutput)
 }
