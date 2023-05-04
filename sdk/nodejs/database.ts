@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * An existing database service may be imported by `<name>@<zone>`console
+ * An existing database service may be imported by `<name>@<zone>`
  *
  * ```sh
  *  $ pulumi import exoscale:index/database:Database \
@@ -60,11 +60,12 @@ export class Database extends pulumi.CustomResource {
      */
     public /*out*/ readonly diskSize!: pulumi.Output<number>;
     /**
-     * *kafka* database service type specific arguments. Structure is documented below.
+     * *kafka* database service type specific arguments.
      */
     public readonly kafka!: pulumi.Output<outputs.DatabaseKafka | undefined>;
     /**
-     * The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
+     * The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
+     * `thursday`, `friday`, `saturday`, `sunday`).
      */
     public readonly maintenanceDow!: pulumi.Output<string>;
     /**
@@ -72,7 +73,7 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly maintenanceTime!: pulumi.Output<string>;
     /**
-     * *mysql* database service type specific arguments. Structure is documented below.
+     * *mysql* database service type specific arguments.
      */
     public readonly mysql!: pulumi.Output<outputs.DatabaseMysql | undefined>;
     /**
@@ -92,7 +93,7 @@ export class Database extends pulumi.CustomResource {
      */
     public /*out*/ readonly nodes!: pulumi.Output<number>;
     /**
-     * *opensearch* database service type specific arguments. Structure is documented below.
+     * *opensearch* database service type specific arguments.
      */
     public readonly opensearch!: pulumi.Output<outputs.DatabaseOpensearch | undefined>;
     /**
@@ -100,7 +101,8 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly pg!: pulumi.Output<outputs.DatabasePg | undefined>;
     /**
-     * The plan of the database service (use the [Exoscale CLI][cli] - `exo dbaas type show <TYPE>` - for reference).
+     * The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
+     * <TYPE>` - for reference).
      */
     public readonly plan!: pulumi.Output<string>;
     /**
@@ -128,7 +130,7 @@ export class Database extends pulumi.CustomResource {
      */
     public /*out*/ readonly uri!: pulumi.Output<string>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -223,11 +225,12 @@ export interface DatabaseState {
      */
     diskSize?: pulumi.Input<number>;
     /**
-     * *kafka* database service type specific arguments. Structure is documented below.
+     * *kafka* database service type specific arguments.
      */
     kafka?: pulumi.Input<inputs.DatabaseKafka>;
     /**
-     * The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
+     * The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
+     * `thursday`, `friday`, `saturday`, `sunday`).
      */
     maintenanceDow?: pulumi.Input<string>;
     /**
@@ -235,7 +238,7 @@ export interface DatabaseState {
      */
     maintenanceTime?: pulumi.Input<string>;
     /**
-     * *mysql* database service type specific arguments. Structure is documented below.
+     * *mysql* database service type specific arguments.
      */
     mysql?: pulumi.Input<inputs.DatabaseMysql>;
     /**
@@ -255,7 +258,7 @@ export interface DatabaseState {
      */
     nodes?: pulumi.Input<number>;
     /**
-     * *opensearch* database service type specific arguments. Structure is documented below.
+     * *opensearch* database service type specific arguments.
      */
     opensearch?: pulumi.Input<inputs.DatabaseOpensearch>;
     /**
@@ -263,7 +266,8 @@ export interface DatabaseState {
      */
     pg?: pulumi.Input<inputs.DatabasePg>;
     /**
-     * The plan of the database service (use the [Exoscale CLI][cli] - `exo dbaas type show <TYPE>` - for reference).
+     * The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
+     * <TYPE>` - for reference).
      */
     plan?: pulumi.Input<string>;
     /**
@@ -291,7 +295,7 @@ export interface DatabaseState {
      */
     uri?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone?: pulumi.Input<string>;
 }
@@ -301,11 +305,12 @@ export interface DatabaseState {
  */
 export interface DatabaseArgs {
     /**
-     * *kafka* database service type specific arguments. Structure is documented below.
+     * *kafka* database service type specific arguments.
      */
     kafka?: pulumi.Input<inputs.DatabaseKafka>;
     /**
-     * The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
+     * The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
+     * `thursday`, `friday`, `saturday`, `sunday`).
      */
     maintenanceDow?: pulumi.Input<string>;
     /**
@@ -313,7 +318,7 @@ export interface DatabaseArgs {
      */
     maintenanceTime?: pulumi.Input<string>;
     /**
-     * *mysql* database service type specific arguments. Structure is documented below.
+     * *mysql* database service type specific arguments.
      */
     mysql?: pulumi.Input<inputs.DatabaseMysql>;
     /**
@@ -321,7 +326,7 @@ export interface DatabaseArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * *opensearch* database service type specific arguments. Structure is documented below.
+     * *opensearch* database service type specific arguments.
      */
     opensearch?: pulumi.Input<inputs.DatabaseOpensearch>;
     /**
@@ -329,7 +334,8 @@ export interface DatabaseArgs {
      */
     pg?: pulumi.Input<inputs.DatabasePg>;
     /**
-     * The plan of the database service (use the [Exoscale CLI][cli] - `exo dbaas type show <TYPE>` - for reference).
+     * The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
+     * <TYPE>` - for reference).
      */
     plan: pulumi.Input<string>;
     /**
@@ -345,7 +351,7 @@ export interface DatabaseArgs {
      */
     type: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: pulumi.Input<string>;
 }

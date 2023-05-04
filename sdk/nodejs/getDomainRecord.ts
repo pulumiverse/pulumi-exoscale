@@ -24,7 +24,7 @@ export interface GetDomainRecordArgs {
      */
     domain: string;
     /**
-     * Filter to apply when looking up domain records. Structure is documented below.
+     * Filter to apply when looking up domain records.
      */
     filter: inputs.GetDomainRecordFilter;
 }
@@ -33,7 +33,13 @@ export interface GetDomainRecordArgs {
  * A collection of values returned by getDomainRecord.
  */
 export interface GetDomainRecordResult {
+    /**
+     * The exoscale.Domain name to match.
+     */
     readonly domain: string;
+    /**
+     * Filter to apply when looking up domain records.
+     */
     readonly filter: outputs.GetDomainRecordFilter;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -57,7 +63,7 @@ export interface GetDomainRecordOutputArgs {
      */
     domain: pulumi.Input<string>;
     /**
-     * Filter to apply when looking up domain records. Structure is documented below.
+     * Filter to apply when looking up domain records.
      */
     filter: pulumi.Input<inputs.GetDomainRecordFilterArgs>;
 }

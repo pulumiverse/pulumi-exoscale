@@ -13,7 +13,7 @@ import (
 
 // ## Import
 //
-// An existing DNS domain record may be imported by `<ID>`console
+// An existing DNS domain record may be imported by `<ID>`
 //
 // ```sh
 //
@@ -29,7 +29,7 @@ type DomainRecord struct {
 
 	// The record value.
 	Content pulumi.StringOutput `pulumi:"content"`
-	// The parent Domain to attach the record to.
+	// The parent [exoscale_domain](./domain.md) to attach the record to.
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// The record *Fully Qualified Domain Name* (FQDN). Useful for aliasing `A`/`AAAA` records with `CNAME`.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
@@ -37,7 +37,8 @@ type DomainRecord struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The record priority (for types that support it; minimum `0`).
 	Prio pulumi.IntOutput `pulumi:"prio"`
-	// The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`, `TXT`, `URL`).
+	// The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`,
+	// `TXT`, `URL`).
 	RecordType pulumi.StringOutput `pulumi:"recordType"`
 	// The record TTL (seconds; minimum `0`; default: `3600`).
 	Ttl pulumi.IntOutput `pulumi:"ttl"`
@@ -84,7 +85,7 @@ func GetDomainRecord(ctx *pulumi.Context,
 type domainRecordState struct {
 	// The record value.
 	Content *string `pulumi:"content"`
-	// The parent Domain to attach the record to.
+	// The parent [exoscale_domain](./domain.md) to attach the record to.
 	Domain *string `pulumi:"domain"`
 	// The record *Fully Qualified Domain Name* (FQDN). Useful for aliasing `A`/`AAAA` records with `CNAME`.
 	Hostname *string `pulumi:"hostname"`
@@ -92,7 +93,8 @@ type domainRecordState struct {
 	Name *string `pulumi:"name"`
 	// The record priority (for types that support it; minimum `0`).
 	Prio *int `pulumi:"prio"`
-	// The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`, `TXT`, `URL`).
+	// The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`,
+	// `TXT`, `URL`).
 	RecordType *string `pulumi:"recordType"`
 	// The record TTL (seconds; minimum `0`; default: `3600`).
 	Ttl *int `pulumi:"ttl"`
@@ -101,7 +103,7 @@ type domainRecordState struct {
 type DomainRecordState struct {
 	// The record value.
 	Content pulumi.StringPtrInput
-	// The parent Domain to attach the record to.
+	// The parent [exoscale_domain](./domain.md) to attach the record to.
 	Domain pulumi.StringPtrInput
 	// The record *Fully Qualified Domain Name* (FQDN). Useful for aliasing `A`/`AAAA` records with `CNAME`.
 	Hostname pulumi.StringPtrInput
@@ -109,7 +111,8 @@ type DomainRecordState struct {
 	Name pulumi.StringPtrInput
 	// The record priority (for types that support it; minimum `0`).
 	Prio pulumi.IntPtrInput
-	// The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`, `TXT`, `URL`).
+	// The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`,
+	// `TXT`, `URL`).
 	RecordType pulumi.StringPtrInput
 	// The record TTL (seconds; minimum `0`; default: `3600`).
 	Ttl pulumi.IntPtrInput
@@ -122,13 +125,14 @@ func (DomainRecordState) ElementType() reflect.Type {
 type domainRecordArgs struct {
 	// The record value.
 	Content string `pulumi:"content"`
-	// The parent Domain to attach the record to.
+	// The parent [exoscale_domain](./domain.md) to attach the record to.
 	Domain string `pulumi:"domain"`
 	// The record name, Leave blank (`""`) to create a root record (similar to using `@` in a DNS zone file).
 	Name *string `pulumi:"name"`
 	// The record priority (for types that support it; minimum `0`).
 	Prio *int `pulumi:"prio"`
-	// The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`, `TXT`, `URL`).
+	// The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`,
+	// `TXT`, `URL`).
 	RecordType string `pulumi:"recordType"`
 	// The record TTL (seconds; minimum `0`; default: `3600`).
 	Ttl *int `pulumi:"ttl"`
@@ -138,13 +142,14 @@ type domainRecordArgs struct {
 type DomainRecordArgs struct {
 	// The record value.
 	Content pulumi.StringInput
-	// The parent Domain to attach the record to.
+	// The parent [exoscale_domain](./domain.md) to attach the record to.
 	Domain pulumi.StringInput
 	// The record name, Leave blank (`""`) to create a root record (similar to using `@` in a DNS zone file).
 	Name pulumi.StringPtrInput
 	// The record priority (for types that support it; minimum `0`).
 	Prio pulumi.IntPtrInput
-	// The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`, `TXT`, `URL`).
+	// The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`,
+	// `TXT`, `URL`).
 	RecordType pulumi.StringInput
 	// The record TTL (seconds; minimum `0`; default: `3600`).
 	Ttl pulumi.IntPtrInput
@@ -242,7 +247,7 @@ func (o DomainRecordOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainRecord) pulumi.StringOutput { return v.Content }).(pulumi.StringOutput)
 }
 
-// The parent Domain to attach the record to.
+// The parent [exoscale_domain](./domain.md) to attach the record to.
 func (o DomainRecordOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainRecord) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
@@ -262,7 +267,8 @@ func (o DomainRecordOutput) Prio() pulumi.IntOutput {
 	return o.ApplyT(func(v *DomainRecord) pulumi.IntOutput { return v.Prio }).(pulumi.IntOutput)
 }
 
-// The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`, `TXT`, `URL`).
+// The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`,
+// `TXT`, `URL`).
 func (o DomainRecordOutput) RecordType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainRecord) pulumi.StringOutput { return v.RecordType }).(pulumi.StringOutput)
 }

@@ -31,7 +31,9 @@ type LookupAffinityArgs struct {
 
 // A collection of values returned by getAffinity.
 type LookupAffinityResult struct {
-	Id   *string `pulumi:"id"`
+	// The anti-affinity group ID to match (conflicts with `name`)
+	Id *string `pulumi:"id"`
+	// The group name to match (conflicts with `id`)
 	Name *string `pulumi:"name"`
 }
 
@@ -75,10 +77,12 @@ func (o LookupAffinityResultOutput) ToLookupAffinityResultOutputWithContext(ctx 
 	return o
 }
 
+// The anti-affinity group ID to match (conflicts with `name`)
 func (o LookupAffinityResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAffinityResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The group name to match (conflicts with `id`)
 func (o LookupAffinityResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAffinityResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

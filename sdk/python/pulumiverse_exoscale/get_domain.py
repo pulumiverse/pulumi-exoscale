@@ -40,6 +40,9 @@ class GetDomainResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The DNS domain name to match.
+        """
         return pulumi.get(self, "name")
 
 

@@ -45,13 +45,16 @@ class GetInstancePoolListResult:
     @pulumi.getter
     def pools(self) -> Sequence['outputs.GetInstancePoolListPoolResult']:
         """
-        The list of exoscale_instance_pool.
+        The list of exoscale*instance*pool.
         """
         return pulumi.get(self, "pools")
 
     @property
     @pulumi.getter
     def zone(self) -> str:
+        """
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        """
         return pulumi.get(self, "zone")
 
 
@@ -71,7 +74,7 @@ def get_instance_pool_list(zone: Optional[str] = None,
     """
     Use this data source to access information about an existing resource.
 
-    :param str zone: The Exoscale [Zone][zone] name.
+    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     __args__ = dict()
     __args__['zone'] = zone
@@ -90,6 +93,6 @@ def get_instance_pool_list_output(zone: Optional[pulumi.Input[str]] = None,
     """
     Use this data source to access information about an existing resource.
 
-    :param str zone: The Exoscale [Zone][zone] name.
+    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     ...

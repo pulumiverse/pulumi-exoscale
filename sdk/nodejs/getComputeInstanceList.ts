@@ -36,25 +36,76 @@ export function getComputeInstanceList(args?: GetComputeInstanceListArgs, opts?:
  * A collection of arguments for invoking getComputeInstanceList.
  */
 export interface GetComputeInstanceListArgs {
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     createdAt?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     deployTargetId?: string;
+    /**
+     * Match against this int
+     */
     diskSize?: number;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     id?: string;
+    /**
+     * Match against this bool
+     */
     ipv6?: boolean;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     ipv6Address?: string;
+    /**
+     * Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
+     */
     labels?: {[key: string]: string};
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     managerId?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     managerType?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     name?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     publicIpAddress?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     reverseDns?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     sshKey?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     state?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     templateId?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     type?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     userData?: string;
     /**
-     * The Exoscale [Zone][zone] name.
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
      */
     zone?: string;
 }
@@ -63,24 +114,81 @@ export interface GetComputeInstanceListArgs {
  * A collection of values returned by getComputeInstanceList.
  */
 export interface GetComputeInstanceListResult {
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     readonly createdAt?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     readonly deployTargetId?: string;
+    /**
+     * Match against this int
+     */
     readonly diskSize?: number;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     readonly id?: string;
+    /**
+     * The list of exoscale*compute*instance.
+     */
     readonly instances: outputs.GetComputeInstanceListInstance[];
+    /**
+     * Match against this bool
+     */
     readonly ipv6?: boolean;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     readonly ipv6Address?: string;
+    /**
+     * Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
+     */
     readonly labels?: {[key: string]: string};
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     readonly managerId?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     readonly managerType?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     readonly name?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     readonly publicIpAddress?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     readonly reverseDns?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     readonly sshKey?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     readonly state?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     readonly templateId?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     readonly type?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     readonly userData?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     readonly zone?: string;
 }
 export function getComputeInstanceListOutput(args?: GetComputeInstanceListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeInstanceListResult> {
@@ -91,25 +199,76 @@ export function getComputeInstanceListOutput(args?: GetComputeInstanceListOutput
  * A collection of arguments for invoking getComputeInstanceList.
  */
 export interface GetComputeInstanceListOutputArgs {
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     createdAt?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     deployTargetId?: pulumi.Input<string>;
+    /**
+     * Match against this int
+     */
     diskSize?: pulumi.Input<number>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     id?: pulumi.Input<string>;
+    /**
+     * Match against this bool
+     */
     ipv6?: pulumi.Input<boolean>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     ipv6Address?: pulumi.Input<string>;
+    /**
+     * Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
+     */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     managerId?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     managerType?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     publicIpAddress?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     reverseDns?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     sshKey?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     state?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     templateId?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     type?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     userData?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
      */
     zone?: pulumi.Input<string>;
 }

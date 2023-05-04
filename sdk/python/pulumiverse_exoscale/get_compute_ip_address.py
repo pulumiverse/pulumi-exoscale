@@ -41,26 +41,41 @@ class GetComputeIPAddressResult:
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        The EIP description to match.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        The Elastic IP (EIP) ID to match.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[str]:
+        """
+        The EIP IPv4 address to match.
+        """
         return pulumi.get(self, "ip_address")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        The EIP tags to match.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def zone(self) -> str:
+        """
+        The Exoscale Zone name.
+        """
         return pulumi.get(self, "zone")
 
 

@@ -49,21 +49,33 @@ class GetTemplateResult:
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        The compute instance template ID to match (conflicts with `name`).
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        The template name to match (conflicts with `id`) (when multiple templates have the same name, the newest one will be returned).
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def visibility(self) -> Optional[str]:
+        """
+        A template category filter (default: `public`); among: - `public` - official Exoscale templates - `private` - custom templates private to my organization
+        """
         return pulumi.get(self, "visibility")
 
     @property
     @pulumi.getter
     def zone(self) -> str:
+        """
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        """
         return pulumi.get(self, "zone")
 
 
@@ -90,8 +102,8 @@ def get_template(id: Optional[str] = None,
 
     :param str id: The compute instance template ID to match (conflicts with `name`).
     :param str name: The template name to match (conflicts with `id`) (when multiple templates have the same name, the newest one will be returned).
-    :param str visibility: A template category filter (default: `public`); among:
-    :param str zone: The Exoscale [Zone][zone] name.
+    :param str visibility: A template category filter (default: `public`); among: - `public` - official Exoscale templates - `private` - custom templates private to my organization
+    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -120,7 +132,7 @@ def get_template_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str id: The compute instance template ID to match (conflicts with `name`).
     :param str name: The template name to match (conflicts with `id`) (when multiple templates have the same name, the newest one will be returned).
-    :param str visibility: A template category filter (default: `public`); among:
-    :param str zone: The Exoscale [Zone][zone] name.
+    :param str visibility: A template category filter (default: `public`); among: - `public` - official Exoscale templates - `private` - custom templates private to my organization
+    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     ...

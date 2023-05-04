@@ -55,16 +55,25 @@ class GetPrivateNetworkResult:
     @property
     @pulumi.getter(name="endIp")
     def end_ip(self) -> str:
+        """
+        The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        """
         return pulumi.get(self, "end_ip")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        The private network ID to match (conflicts with `name`).
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        The network name to match (conflicts with `id`).
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -79,13 +88,16 @@ class GetPrivateNetworkResult:
     @pulumi.getter(name="startIp")
     def start_ip(self) -> str:
         """
-        /`end_ip` - The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        The first/last IPv4 addresses used by the DHCP service for dynamic leases.
         """
         return pulumi.get(self, "start_ip")
 
     @property
     @pulumi.getter
     def zone(self) -> str:
+        """
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        """
         return pulumi.get(self, "zone")
 
 
@@ -115,7 +127,7 @@ def get_private_network(description: Optional[str] = None,
     :param str description: The private network description.
     :param str id: The private network ID to match (conflicts with `name`).
     :param str name: The network name to match (conflicts with `id`).
-    :param str zone: The Exoscale [Zone][zone] name.
+    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     __args__ = dict()
     __args__['description'] = description
@@ -147,6 +159,6 @@ def get_private_network_output(description: Optional[pulumi.Input[Optional[str]]
     :param str description: The private network description.
     :param str id: The private network ID to match (conflicts with `name`).
     :param str name: The network name to match (conflicts with `id`).
-    :param str zone: The Exoscale [Zone][zone] name.
+    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     ...

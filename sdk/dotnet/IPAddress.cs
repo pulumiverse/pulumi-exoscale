@@ -65,13 +65,15 @@ namespace Pulumiverse.Exoscale
         public Output<int?> HealthcheckTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+        /// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
+        /// to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
         /// </summary>
         [Output("healthcheckTlsSkipVerify")]
         public Output<bool?> HealthcheckTlsSkipVerify { get; private set; } = null!;
 
         /// <summary>
-        /// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+        /// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
+        /// value, it cannot be reset to its default empty value later on (requires a resource re-creation).
         /// </summary>
         [Output("healthcheckTlsSni")]
         public Output<string?> HealthcheckTlsSni { get; private set; } = null!;
@@ -89,7 +91,7 @@ namespace Pulumiverse.Exoscale
         public Output<string?> ReverseDns { get; private set; } = null!;
 
         /// <summary>
-        /// A dictionary of tags (key/value). To remove all tags, set `tags = {}`.
+        /// Map of tags (key/value). To remove all tags, set `tags = {}`.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>> Tags { get; private set; } = null!;
@@ -196,13 +198,15 @@ namespace Pulumiverse.Exoscale
         public Input<int>? HealthcheckTimeout { get; set; }
 
         /// <summary>
-        /// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+        /// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
+        /// to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
         /// </summary>
         [Input("healthcheckTlsSkipVerify")]
         public Input<bool>? HealthcheckTlsSkipVerify { get; set; }
 
         /// <summary>
-        /// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+        /// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
+        /// value, it cannot be reset to its default empty value later on (requires a resource re-creation).
         /// </summary>
         [Input("healthcheckTlsSni")]
         public Input<string>? HealthcheckTlsSni { get; set; }
@@ -217,7 +221,7 @@ namespace Pulumiverse.Exoscale
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A dictionary of tags (key/value). To remove all tags, set `tags = {}`.
+        /// Map of tags (key/value). To remove all tags, set `tags = {}`.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -288,13 +292,15 @@ namespace Pulumiverse.Exoscale
         public Input<int>? HealthcheckTimeout { get; set; }
 
         /// <summary>
-        /// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+        /// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
+        /// to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
         /// </summary>
         [Input("healthcheckTlsSkipVerify")]
         public Input<bool>? HealthcheckTlsSkipVerify { get; set; }
 
         /// <summary>
-        /// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+        /// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
+        /// value, it cannot be reset to its default empty value later on (requires a resource re-creation).
         /// </summary>
         [Input("healthcheckTlsSni")]
         public Input<string>? HealthcheckTlsSni { get; set; }
@@ -315,7 +321,7 @@ namespace Pulumiverse.Exoscale
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A dictionary of tags (key/value). To remove all tags, set `tags = {}`.
+        /// Map of tags (key/value). To remove all tags, set `tags = {}`.
         /// </summary>
         public InputMap<string> Tags
         {

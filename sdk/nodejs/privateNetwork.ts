@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * An existing private network may be imported by `<ID>@<zone>`console
+ * An existing private network may be imported by `<ID>@<zone>`
  *
  * ```sh
  *  $ pulumi import exoscale:index/privateNetwork:PrivateNetwork \
@@ -49,21 +49,24 @@ export class PrivateNetwork extends pulumi.CustomResource {
      * A free-form text describing the network.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+     */
     public readonly endIp!: pulumi.Output<string | undefined>;
     /**
      * The private network name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The network mask defining the IPv4 network allowed for static leases.
+     * (For managed Privnets) The network mask defining the IPv4 network allowed for static leases.
      */
     public readonly netmask!: pulumi.Output<string | undefined>;
     /**
-     * /`endIp` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+     * (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
      */
     public readonly startIp!: pulumi.Output<string | undefined>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -111,21 +114,24 @@ export interface PrivateNetworkState {
      * A free-form text describing the network.
      */
     description?: pulumi.Input<string>;
+    /**
+     * (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+     */
     endIp?: pulumi.Input<string>;
     /**
      * The private network name.
      */
     name?: pulumi.Input<string>;
     /**
-     * The network mask defining the IPv4 network allowed for static leases.
+     * (For managed Privnets) The network mask defining the IPv4 network allowed for static leases.
      */
     netmask?: pulumi.Input<string>;
     /**
-     * /`endIp` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+     * (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
      */
     startIp?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone?: pulumi.Input<string>;
 }
@@ -138,21 +144,24 @@ export interface PrivateNetworkArgs {
      * A free-form text describing the network.
      */
     description?: pulumi.Input<string>;
+    /**
+     * (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+     */
     endIp?: pulumi.Input<string>;
     /**
      * The private network name.
      */
     name?: pulumi.Input<string>;
     /**
-     * The network mask defining the IPv4 network allowed for static leases.
+     * (For managed Privnets) The network mask defining the IPv4 network allowed for static leases.
      */
     netmask?: pulumi.Input<string>;
     /**
-     * /`endIp` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+     * (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
      */
     startIp?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: pulumi.Input<string>;
 }

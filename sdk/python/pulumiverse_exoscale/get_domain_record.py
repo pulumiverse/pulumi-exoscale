@@ -40,11 +40,17 @@ class GetDomainRecordResult:
     @property
     @pulumi.getter
     def domain(self) -> str:
+        """
+        The Domain name to match.
+        """
         return pulumi.get(self, "domain")
 
     @property
     @pulumi.getter
     def filter(self) -> 'outputs.GetDomainRecordFilterResult':
+        """
+        Filter to apply when looking up domain records.
+        """
         return pulumi.get(self, "filter")
 
     @property
@@ -83,7 +89,7 @@ def get_domain_record(domain: Optional[str] = None,
     Use this data source to access information about an existing resource.
 
     :param str domain: The Domain name to match.
-    :param pulumi.InputType['GetDomainRecordFilterArgs'] filter: Filter to apply when looking up domain records. Structure is documented below.
+    :param pulumi.InputType['GetDomainRecordFilterArgs'] filter: Filter to apply when looking up domain records.
     """
     __args__ = dict()
     __args__['domain'] = domain
@@ -106,6 +112,6 @@ def get_domain_record_output(domain: Optional[pulumi.Input[str]] = None,
     Use this data source to access information about an existing resource.
 
     :param str domain: The Domain name to match.
-    :param pulumi.InputType['GetDomainRecordFilterArgs'] filter: Filter to apply when looking up domain records. Structure is documented below.
+    :param pulumi.InputType['GetDomainRecordFilterArgs'] filter: Filter to apply when looking up domain records.
     """
     ...

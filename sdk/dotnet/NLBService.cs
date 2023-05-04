@@ -13,7 +13,7 @@ namespace Pulumiverse.Exoscale
     /// <summary>
     /// ## Import
     /// 
-    /// An existing NLB service may be imported by `&lt;nlb-ID&gt;/&lt;service-ID&gt;@&lt;zone&gt;`console
+    /// An existing NLB service may be imported by `&lt;nlb-ID&gt;/&lt;service-ID&gt;@&lt;zone&gt;`
     /// 
     /// ```sh
     ///  $ pulumi import exoscale:index/nLBService:NLBService \
@@ -33,13 +33,13 @@ namespace Pulumiverse.Exoscale
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The service health checking configuration (may only bet set at creation time). Structure is documented below.
+        /// The service health checking configuration (may only bet set at creation time).
         /// </summary>
         [Output("healthchecks")]
         public Output<ImmutableArray<Outputs.NLBServiceHealthcheck>> Healthchecks { get; private set; } = null!;
 
         /// <summary>
-        /// The exoscale.InstancePool (ID) to forward traffic to.
+        /// The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
         /// </summary>
         [Output("instancePoolId")]
         public Output<string> InstancePoolId { get; private set; } = null!;
@@ -51,13 +51,13 @@ namespace Pulumiverse.Exoscale
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The parent exoscale.NLB ID.
+        /// The parent [exoscale_nlb](./nlb.md) ID.
         /// </summary>
         [Output("nlbId")]
         public Output<string> NlbId { get; private set; } = null!;
 
         /// <summary>
-        /// The NLB service (TCP/UPP) port.
+        /// The healthcheck port.
         /// </summary>
         [Output("port")]
         public Output<int> Port { get; private set; } = null!;
@@ -84,7 +84,7 @@ namespace Pulumiverse.Exoscale
         public Output<int> TargetPort { get; private set; } = null!;
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -146,7 +146,7 @@ namespace Pulumiverse.Exoscale
         private InputList<Inputs.NLBServiceHealthcheckArgs>? _healthchecks;
 
         /// <summary>
-        /// The service health checking configuration (may only bet set at creation time). Structure is documented below.
+        /// The service health checking configuration (may only bet set at creation time).
         /// </summary>
         public InputList<Inputs.NLBServiceHealthcheckArgs> Healthchecks
         {
@@ -155,7 +155,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The exoscale.InstancePool (ID) to forward traffic to.
+        /// The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
         /// </summary>
         [Input("instancePoolId", required: true)]
         public Input<string> InstancePoolId { get; set; } = null!;
@@ -167,13 +167,13 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The parent exoscale.NLB ID.
+        /// The parent [exoscale_nlb](./nlb.md) ID.
         /// </summary>
         [Input("nlbId", required: true)]
         public Input<string> NlbId { get; set; } = null!;
 
         /// <summary>
-        /// The NLB service (TCP/UPP) port.
+        /// The healthcheck port.
         /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
@@ -197,7 +197,7 @@ namespace Pulumiverse.Exoscale
         public Input<int> TargetPort { get; set; } = null!;
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -220,7 +220,7 @@ namespace Pulumiverse.Exoscale
         private InputList<Inputs.NLBServiceHealthcheckGetArgs>? _healthchecks;
 
         /// <summary>
-        /// The service health checking configuration (may only bet set at creation time). Structure is documented below.
+        /// The service health checking configuration (may only bet set at creation time).
         /// </summary>
         public InputList<Inputs.NLBServiceHealthcheckGetArgs> Healthchecks
         {
@@ -229,7 +229,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The exoscale.InstancePool (ID) to forward traffic to.
+        /// The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
         /// </summary>
         [Input("instancePoolId")]
         public Input<string>? InstancePoolId { get; set; }
@@ -241,13 +241,13 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The parent exoscale.NLB ID.
+        /// The parent [exoscale_nlb](./nlb.md) ID.
         /// </summary>
         [Input("nlbId")]
         public Input<string>? NlbId { get; set; }
 
         /// <summary>
-        /// The NLB service (TCP/UPP) port.
+        /// The healthcheck port.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
@@ -274,7 +274,7 @@ namespace Pulumiverse.Exoscale
         public Input<int>? TargetPort { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

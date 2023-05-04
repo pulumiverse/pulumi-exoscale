@@ -13,7 +13,7 @@ namespace Pulumiverse.Exoscale
     /// <summary>
     /// ## Import
     /// 
-    /// An existing instance pool may be imported by `&lt;ID&gt;@&lt;zone&gt;`console
+    /// An existing instance pool may be imported by `&lt;ID&gt;@&lt;zone&gt;`
     /// 
     /// ```sh
     ///  $ pulumi import exoscale:index/instancePool:InstancePool \
@@ -27,7 +27,7 @@ namespace Pulumiverse.Exoscale
     public partial class InstancePool : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A list of exoscale.AntiAffinityGroup (IDs; may only be set at creation time).
+        /// A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs; may only be set at creation time).
         /// </summary>
         [Output("affinityGroupIds")]
         public Output<ImmutableArray<string>> AffinityGroupIds { get; private set; } = null!;
@@ -51,7 +51,7 @@ namespace Pulumiverse.Exoscale
         public Output<int> DiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// A list of exoscale.ElasticIP (IDs).
+        /// A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs).
         /// </summary>
         [Output("elasticIpIds")]
         public Output<ImmutableArray<string>> ElasticIpIds { get; private set; } = null!;
@@ -63,7 +63,8 @@ namespace Pulumiverse.Exoscale
         public Output<string?> InstancePrefix { get; private set; } = null!;
 
         /// <summary>
-        /// The managed compute instances type (`&lt;family&gt;.&lt;size&gt;`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types).
+        /// The managed compute instances type (`&lt;family&gt;.&lt;size&gt;`, e.g. `standard.medium`; use the [Exoscale
+        /// CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -81,7 +82,7 @@ namespace Pulumiverse.Exoscale
         public Output<bool?> Ipv6 { get; private set; } = null!;
 
         /// <summary>
-        /// The exoscale.SSHKey (name) to authorize in the managed instances.
+        /// The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the managed instances.
         /// </summary>
         [Output("keyPair")]
         public Output<string?> KeyPair { get; private set; } = null!;
@@ -99,13 +100,13 @@ namespace Pulumiverse.Exoscale
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A list of exoscale.PrivateNetwork (IDs).
+        /// A list of [exoscale_private_network](./private_network.md) (IDs).
         /// </summary>
         [Output("networkIds")]
         public Output<ImmutableArray<string>> NetworkIds { get; private set; } = null!;
 
         /// <summary>
-        /// A list of exoscale.SecurityGroup (IDs).
+        /// A list of [exoscale_security_group](./security_groups.md) (IDs).
         /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
@@ -126,25 +127,26 @@ namespace Pulumiverse.Exoscale
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// The exoscale.getComputeTemplate (ID) to use when creating the managed instances.
+        /// The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the managed instances.
         /// </summary>
         [Output("templateId")]
         public Output<string> TemplateId { get; private set; } = null!;
 
         /// <summary>
-        /// [cloud-init][cloud-init] configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
+        /// [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode
+        /// or gzip it as the provider will take care of it).
         /// </summary>
         [Output("userData")]
         public Output<string?> UserData { get; private set; } = null!;
 
         /// <summary>
-        /// (Deprecated) The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
+        /// The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
         /// </summary>
         [Output("virtualMachines")]
         public Output<ImmutableArray<string>> VirtualMachines { get; private set; } = null!;
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -200,7 +202,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _affinityGroupIds;
 
         /// <summary>
-        /// A list of exoscale.AntiAffinityGroup (IDs; may only be set at creation time).
+        /// A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs; may only be set at creation time).
         /// </summary>
         public InputList<string> AffinityGroupIds
         {
@@ -230,7 +232,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _elasticIpIds;
 
         /// <summary>
-        /// A list of exoscale.ElasticIP (IDs).
+        /// A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs).
         /// </summary>
         public InputList<string> ElasticIpIds
         {
@@ -245,7 +247,8 @@ namespace Pulumiverse.Exoscale
         public Input<string>? InstancePrefix { get; set; }
 
         /// <summary>
-        /// The managed compute instances type (`&lt;family&gt;.&lt;size&gt;`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types).
+        /// The managed compute instances type (`&lt;family&gt;.&lt;size&gt;`, e.g. `standard.medium`; use the [Exoscale
+        /// CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -269,7 +272,7 @@ namespace Pulumiverse.Exoscale
         public Input<bool>? Ipv6 { get; set; }
 
         /// <summary>
-        /// The exoscale.SSHKey (name) to authorize in the managed instances.
+        /// The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the managed instances.
         /// </summary>
         [Input("keyPair")]
         public Input<string>? KeyPair { get; set; }
@@ -296,7 +299,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _networkIds;
 
         /// <summary>
-        /// A list of exoscale.PrivateNetwork (IDs).
+        /// A list of [exoscale_private_network](./private_network.md) (IDs).
         /// </summary>
         public InputList<string> NetworkIds
         {
@@ -308,7 +311,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// A list of exoscale.SecurityGroup (IDs).
+        /// A list of [exoscale_security_group](./security_groups.md) (IDs).
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -332,13 +335,14 @@ namespace Pulumiverse.Exoscale
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// The exoscale.getComputeTemplate (ID) to use when creating the managed instances.
+        /// The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the managed instances.
         /// </summary>
         [Input("templateId", required: true)]
         public Input<string> TemplateId { get; set; } = null!;
 
         /// <summary>
-        /// [cloud-init][cloud-init] configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
+        /// [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode
+        /// or gzip it as the provider will take care of it).
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
@@ -347,7 +351,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _virtualMachines;
 
         /// <summary>
-        /// (Deprecated) The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
+        /// The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
         /// </summary>
         [Obsolete(@"Use the instances exported attribute instead.")]
         public InputList<string> VirtualMachines
@@ -357,7 +361,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -374,7 +378,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _affinityGroupIds;
 
         /// <summary>
-        /// A list of exoscale.AntiAffinityGroup (IDs; may only be set at creation time).
+        /// A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs; may only be set at creation time).
         /// </summary>
         public InputList<string> AffinityGroupIds
         {
@@ -404,7 +408,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _elasticIpIds;
 
         /// <summary>
-        /// A list of exoscale.ElasticIP (IDs).
+        /// A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs).
         /// </summary>
         public InputList<string> ElasticIpIds
         {
@@ -419,7 +423,8 @@ namespace Pulumiverse.Exoscale
         public Input<string>? InstancePrefix { get; set; }
 
         /// <summary>
-        /// The managed compute instances type (`&lt;family&gt;.&lt;size&gt;`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types).
+        /// The managed compute instances type (`&lt;family&gt;.&lt;size&gt;`, e.g. `standard.medium`; use the [Exoscale
+        /// CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -443,7 +448,7 @@ namespace Pulumiverse.Exoscale
         public Input<bool>? Ipv6 { get; set; }
 
         /// <summary>
-        /// The exoscale.SSHKey (name) to authorize in the managed instances.
+        /// The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the managed instances.
         /// </summary>
         [Input("keyPair")]
         public Input<string>? KeyPair { get; set; }
@@ -470,7 +475,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _networkIds;
 
         /// <summary>
-        /// A list of exoscale.PrivateNetwork (IDs).
+        /// A list of [exoscale_private_network](./private_network.md) (IDs).
         /// </summary>
         public InputList<string> NetworkIds
         {
@@ -482,7 +487,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// A list of exoscale.SecurityGroup (IDs).
+        /// A list of [exoscale_security_group](./security_groups.md) (IDs).
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -506,13 +511,14 @@ namespace Pulumiverse.Exoscale
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// The exoscale.getComputeTemplate (ID) to use when creating the managed instances.
+        /// The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the managed instances.
         /// </summary>
         [Input("templateId")]
         public Input<string>? TemplateId { get; set; }
 
         /// <summary>
-        /// [cloud-init][cloud-init] configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
+        /// [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode
+        /// or gzip it as the provider will take care of it).
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
@@ -521,7 +527,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _virtualMachines;
 
         /// <summary>
-        /// (Deprecated) The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
+        /// The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
         /// </summary>
         [Obsolete(@"Use the instances exported attribute instead.")]
         public InputList<string> VirtualMachines
@@ -531,7 +537,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

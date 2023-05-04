@@ -47,7 +47,7 @@ namespace Pulumiverse.Exoscale
         public string? Name { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone", required: true)]
         public string Zone { get; set; } = null!;
@@ -85,7 +85,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -101,7 +101,7 @@ namespace Pulumiverse.Exoscale
     public sealed class GetInstancePoolResult
     {
         /// <summary>
-        /// The list of attached exoscale.AntiAffinityGroup (IDs).
+        /// The list of attached exoscale*anti*affinity_group (IDs).
         /// </summary>
         public readonly ImmutableArray<string> AffinityGroupIds;
         /// <summary>
@@ -117,11 +117,11 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly int DiskSize;
         /// <summary>
-        /// The list of attached exoscale.ElasticIP (IDs).
+        /// The list of attached exoscale*elastic*ip (IDs).
         /// </summary>
         public readonly ImmutableArray<string> ElasticIpIds;
         /// <summary>
-        /// The compute instance ID.
+        /// The instance pool ID to match (conflicts with `name`).
         /// </summary>
         public readonly string? Id;
         /// <summary>
@@ -141,7 +141,7 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly bool Ipv6;
         /// <summary>
-        /// The exoscale.SSHKey (name) authorized on the managed instances.
+        /// The exoscale*ssh*key (name) authorized on the managed instances.
         /// </summary>
         public readonly string KeyPair;
         /// <summary>
@@ -149,15 +149,15 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>
-        /// The instance name.
+        /// The pool name to match (conflicts with `id`).
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The list of attached exoscale.PrivateNetwork (IDs).
+        /// The list of attached exoscale*private*network (IDs).
         /// </summary>
         public readonly ImmutableArray<string> NetworkIds;
         /// <summary>
-        /// The list of attached exoscale.SecurityGroup (IDs).
+        /// The list of attached exoscale*security*group (IDs).
         /// </summary>
         public readonly ImmutableArray<string> SecurityGroupIds;
         /// <summary>
@@ -169,13 +169,16 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// The managed instances exoscale.getComputeTemplate ID.
+        /// The managed instances exoscale*compute*template ID.
         /// </summary>
         public readonly string TemplateId;
         /// <summary>
-        /// [cloud-init][cloud-init] configuration.
+        /// [cloud-init](http://cloudinit.readthedocs.io/en/latest/) configuration.
         /// </summary>
         public readonly string UserData;
+        /// <summary>
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// </summary>
         public readonly string Zone;
 
         [OutputConstructor]

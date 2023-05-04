@@ -11,13 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manage Exoscale [Elastic IPs (EIP)](https://community.exoscale.com/documentation/compute/eip/).
-//
-// Corresponding data source: exoscale_elastic_ip.
-//
 // ## Import
 //
-// An existing Elastic IP (EIP) may be imported by `<ID>@<zone>`console
+// An existing Elastic IP (EIP) may be imported by `<ID>@<zone>`
 //
 // ```sh
 //
@@ -37,7 +33,7 @@ type ElasticIP struct {
 	Cidr pulumi.StringOutput `pulumi:"cidr"`
 	// A free-form text describing the Elastic IP (EIP).
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
+	// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP.
 	Healthcheck ElasticIPHealthcheckOutput `pulumi:"healthcheck"`
 	// The Elastic IP (EIP) IPv4 or IPv6 address.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
@@ -45,7 +41,7 @@ type ElasticIP struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Domain name for reverse DNS record.
 	ReverseDns pulumi.StringPtrOutput `pulumi:"reverseDns"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -88,7 +84,7 @@ type elasticIPState struct {
 	Cidr *string `pulumi:"cidr"`
 	// A free-form text describing the Elastic IP (EIP).
 	Description *string `pulumi:"description"`
-	// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
+	// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP.
 	Healthcheck *ElasticIPHealthcheck `pulumi:"healthcheck"`
 	// The Elastic IP (EIP) IPv4 or IPv6 address.
 	IpAddress *string `pulumi:"ipAddress"`
@@ -96,7 +92,7 @@ type elasticIPState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Domain name for reverse DNS record.
 	ReverseDns *string `pulumi:"reverseDns"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone *string `pulumi:"zone"`
 }
 
@@ -107,7 +103,7 @@ type ElasticIPState struct {
 	Cidr pulumi.StringPtrInput
 	// A free-form text describing the Elastic IP (EIP).
 	Description pulumi.StringPtrInput
-	// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
+	// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP.
 	Healthcheck ElasticIPHealthcheckPtrInput
 	// The Elastic IP (EIP) IPv4 or IPv6 address.
 	IpAddress pulumi.StringPtrInput
@@ -115,7 +111,7 @@ type ElasticIPState struct {
 	Labels pulumi.StringMapInput
 	// Domain name for reverse DNS record.
 	ReverseDns pulumi.StringPtrInput
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringPtrInput
 }
 
@@ -128,13 +124,13 @@ type elasticIPArgs struct {
 	AddressFamily *string `pulumi:"addressFamily"`
 	// A free-form text describing the Elastic IP (EIP).
 	Description *string `pulumi:"description"`
-	// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
+	// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP.
 	Healthcheck *ElasticIPHealthcheck `pulumi:"healthcheck"`
 	// A map of key/value labels.
 	Labels map[string]string `pulumi:"labels"`
 	// Domain name for reverse DNS record.
 	ReverseDns *string `pulumi:"reverseDns"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone string `pulumi:"zone"`
 }
 
@@ -144,13 +140,13 @@ type ElasticIPArgs struct {
 	AddressFamily pulumi.StringPtrInput
 	// A free-form text describing the Elastic IP (EIP).
 	Description pulumi.StringPtrInput
-	// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
+	// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP.
 	Healthcheck ElasticIPHealthcheckPtrInput
 	// A map of key/value labels.
 	Labels pulumi.StringMapInput
 	// Domain name for reverse DNS record.
 	ReverseDns pulumi.StringPtrInput
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringInput
 }
 
@@ -256,7 +252,7 @@ func (o ElasticIPOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElasticIP) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
+// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP.
 func (o ElasticIPOutput) Healthcheck() ElasticIPHealthcheckOutput {
 	return o.ApplyT(func(v *ElasticIP) ElasticIPHealthcheckOutput { return v.Healthcheck }).(ElasticIPHealthcheckOutput)
 }
@@ -276,7 +272,7 @@ func (o ElasticIPOutput) ReverseDns() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticIP) pulumi.StringPtrOutput { return v.ReverseDns }).(pulumi.StringPtrOutput)
 }
 
-// The Exoscale [Zone][zone] name.
+// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o ElasticIPOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElasticIP) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

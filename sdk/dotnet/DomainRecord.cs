@@ -13,7 +13,7 @@ namespace Pulumiverse.Exoscale
     /// <summary>
     /// ## Import
     /// 
-    /// An existing DNS domain record may be imported by `&lt;ID&gt;`console
+    /// An existing DNS domain record may be imported by `&lt;ID&gt;`
     /// 
     /// ```sh
     ///  $ pulumi import exoscale:index/domainRecord:DomainRecord \
@@ -33,7 +33,7 @@ namespace Pulumiverse.Exoscale
         public Output<string> Content { get; private set; } = null!;
 
         /// <summary>
-        /// The parent exoscale.Domain to attach the record to.
+        /// The parent [exoscale_domain](./domain.md) to attach the record to.
         /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
@@ -57,7 +57,8 @@ namespace Pulumiverse.Exoscale
         public Output<int> Prio { get; private set; } = null!;
 
         /// <summary>
-        /// The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`, `TXT`, `URL`).
+        /// The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`,
+        /// `TXT`, `URL`).
         /// </summary>
         [Output("recordType")]
         public Output<string> RecordType { get; private set; } = null!;
@@ -122,7 +123,7 @@ namespace Pulumiverse.Exoscale
         public Input<string> Content { get; set; } = null!;
 
         /// <summary>
-        /// The parent exoscale.Domain to attach the record to.
+        /// The parent [exoscale_domain](./domain.md) to attach the record to.
         /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
@@ -140,7 +141,8 @@ namespace Pulumiverse.Exoscale
         public Input<int>? Prio { get; set; }
 
         /// <summary>
-        /// The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`, `TXT`, `URL`).
+        /// The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`,
+        /// `TXT`, `URL`).
         /// </summary>
         [Input("recordType", required: true)]
         public Input<string> RecordType { get; set; } = null!;
@@ -166,7 +168,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// The parent exoscale.Domain to attach the record to.
+        /// The parent [exoscale_domain](./domain.md) to attach the record to.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
@@ -190,7 +192,8 @@ namespace Pulumiverse.Exoscale
         public Input<int>? Prio { get; set; }
 
         /// <summary>
-        /// The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`, `TXT`, `URL`).
+        /// The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`,
+        /// `TXT`, `URL`).
         /// </summary>
         [Input("recordType")]
         public Input<string>? RecordType { get; set; }

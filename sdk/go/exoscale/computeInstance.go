@@ -13,7 +13,7 @@ import (
 
 // ## Import
 //
-// An existing compute instance may be imported by `<ID>@<zone>`console
+// An existing compute instance may be imported by `<ID>@<zone>`
 //
 // ```sh
 //
@@ -27,7 +27,8 @@ import (
 type ComputeInstance struct {
 	pulumi.CustomResourceState
 
-	// A list of AntiAffinityGroup (IDs) to attach to the instance (may only be set at creation time).
+	// A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to attach to the instance (may only be set at
+	// creation time).
 	AntiAffinityGroupIds pulumi.StringArrayOutput `pulumi:"antiAffinityGroupIds"`
 	// The instance creation date.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
@@ -35,7 +36,7 @@ type ComputeInstance struct {
 	DeployTargetId pulumi.StringPtrOutput `pulumi:"deployTargetId"`
 	// The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
 	DiskSize pulumi.IntOutput `pulumi:"diskSize"`
-	// A list of ElasticIP (IDs) to attach to the instance.
+	// A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs) to attach to the instance.
 	ElasticIpIds pulumi.StringArrayOutput `pulumi:"elasticIpIds"`
 	// Enable IPv6 on the instance (boolean; default: `false`).
 	Ipv6 pulumi.BoolPtrOutput `pulumi:"ipv6"`
@@ -47,7 +48,8 @@ type ComputeInstance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Private network interfaces (may be specified multiple times). Structure is documented below.
 	NetworkInterfaces ComputeInstanceNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
-	// (Deprecated) A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument instead.
+	// A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument
+	// instead.
 	//
 	// Deprecated: Use the network_interface block instead.
 	PrivateNetworkIds pulumi.StringArrayOutput `pulumi:"privateNetworkIds"`
@@ -55,19 +57,22 @@ type ComputeInstance struct {
 	PublicIpAddress pulumi.StringOutput `pulumi:"publicIpAddress"`
 	// Domain name for reverse DNS record.
 	ReverseDns pulumi.StringPtrOutput `pulumi:"reverseDns"`
-	// A list of SecurityGroup (IDs) to attach to the instance.
+	// A list of [exoscale_security_group](./security_group.md) (IDs) to attach to the instance.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	// The SSHKey (name) to authorize in the instance (may only be set at creation time).
+	// The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the instance (may only be set at creation time).
 	SshKey pulumi.StringPtrOutput `pulumi:"sshKey"`
 	// The instance state (`running` or `stopped`; default: `running`).
 	State pulumi.StringOutput `pulumi:"state"`
-	// The getComputeTemplate (ID) to use when creating the instance.
+	// The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the instance.
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
-	// The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
+	// The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) -
+	// `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts
+	// the instance.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// [cloud-init][cloud-init] configuration (no need to base64-encode or gzip it as the provider will take care of it).
+	// [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will
+	// take care of it).
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -110,7 +115,8 @@ func GetComputeInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ComputeInstance resources.
 type computeInstanceState struct {
-	// A list of AntiAffinityGroup (IDs) to attach to the instance (may only be set at creation time).
+	// A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to attach to the instance (may only be set at
+	// creation time).
 	AntiAffinityGroupIds []string `pulumi:"antiAffinityGroupIds"`
 	// The instance creation date.
 	CreatedAt *string `pulumi:"createdAt"`
@@ -118,7 +124,7 @@ type computeInstanceState struct {
 	DeployTargetId *string `pulumi:"deployTargetId"`
 	// The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
 	DiskSize *int `pulumi:"diskSize"`
-	// A list of ElasticIP (IDs) to attach to the instance.
+	// A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs) to attach to the instance.
 	ElasticIpIds []string `pulumi:"elasticIpIds"`
 	// Enable IPv6 on the instance (boolean; default: `false`).
 	Ipv6 *bool `pulumi:"ipv6"`
@@ -130,7 +136,8 @@ type computeInstanceState struct {
 	Name *string `pulumi:"name"`
 	// Private network interfaces (may be specified multiple times). Structure is documented below.
 	NetworkInterfaces []ComputeInstanceNetworkInterface `pulumi:"networkInterfaces"`
-	// (Deprecated) A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument instead.
+	// A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument
+	// instead.
 	//
 	// Deprecated: Use the network_interface block instead.
 	PrivateNetworkIds []string `pulumi:"privateNetworkIds"`
@@ -138,24 +145,28 @@ type computeInstanceState struct {
 	PublicIpAddress *string `pulumi:"publicIpAddress"`
 	// Domain name for reverse DNS record.
 	ReverseDns *string `pulumi:"reverseDns"`
-	// A list of SecurityGroup (IDs) to attach to the instance.
+	// A list of [exoscale_security_group](./security_group.md) (IDs) to attach to the instance.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// The SSHKey (name) to authorize in the instance (may only be set at creation time).
+	// The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the instance (may only be set at creation time).
 	SshKey *string `pulumi:"sshKey"`
 	// The instance state (`running` or `stopped`; default: `running`).
 	State *string `pulumi:"state"`
-	// The getComputeTemplate (ID) to use when creating the instance.
+	// The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the instance.
 	TemplateId *string `pulumi:"templateId"`
-	// The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
+	// The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) -
+	// `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts
+	// the instance.
 	Type *string `pulumi:"type"`
-	// [cloud-init][cloud-init] configuration (no need to base64-encode or gzip it as the provider will take care of it).
+	// [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will
+	// take care of it).
 	UserData *string `pulumi:"userData"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone *string `pulumi:"zone"`
 }
 
 type ComputeInstanceState struct {
-	// A list of AntiAffinityGroup (IDs) to attach to the instance (may only be set at creation time).
+	// A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to attach to the instance (may only be set at
+	// creation time).
 	AntiAffinityGroupIds pulumi.StringArrayInput
 	// The instance creation date.
 	CreatedAt pulumi.StringPtrInput
@@ -163,7 +174,7 @@ type ComputeInstanceState struct {
 	DeployTargetId pulumi.StringPtrInput
 	// The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
 	DiskSize pulumi.IntPtrInput
-	// A list of ElasticIP (IDs) to attach to the instance.
+	// A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs) to attach to the instance.
 	ElasticIpIds pulumi.StringArrayInput
 	// Enable IPv6 on the instance (boolean; default: `false`).
 	Ipv6 pulumi.BoolPtrInput
@@ -175,7 +186,8 @@ type ComputeInstanceState struct {
 	Name pulumi.StringPtrInput
 	// Private network interfaces (may be specified multiple times). Structure is documented below.
 	NetworkInterfaces ComputeInstanceNetworkInterfaceArrayInput
-	// (Deprecated) A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument instead.
+	// A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument
+	// instead.
 	//
 	// Deprecated: Use the network_interface block instead.
 	PrivateNetworkIds pulumi.StringArrayInput
@@ -183,19 +195,22 @@ type ComputeInstanceState struct {
 	PublicIpAddress pulumi.StringPtrInput
 	// Domain name for reverse DNS record.
 	ReverseDns pulumi.StringPtrInput
-	// A list of SecurityGroup (IDs) to attach to the instance.
+	// A list of [exoscale_security_group](./security_group.md) (IDs) to attach to the instance.
 	SecurityGroupIds pulumi.StringArrayInput
-	// The SSHKey (name) to authorize in the instance (may only be set at creation time).
+	// The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the instance (may only be set at creation time).
 	SshKey pulumi.StringPtrInput
 	// The instance state (`running` or `stopped`; default: `running`).
 	State pulumi.StringPtrInput
-	// The getComputeTemplate (ID) to use when creating the instance.
+	// The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the instance.
 	TemplateId pulumi.StringPtrInput
-	// The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
+	// The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) -
+	// `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts
+	// the instance.
 	Type pulumi.StringPtrInput
-	// [cloud-init][cloud-init] configuration (no need to base64-encode or gzip it as the provider will take care of it).
+	// [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will
+	// take care of it).
 	UserData pulumi.StringPtrInput
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringPtrInput
 }
 
@@ -204,13 +219,14 @@ func (ComputeInstanceState) ElementType() reflect.Type {
 }
 
 type computeInstanceArgs struct {
-	// A list of AntiAffinityGroup (IDs) to attach to the instance (may only be set at creation time).
+	// A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to attach to the instance (may only be set at
+	// creation time).
 	AntiAffinityGroupIds []string `pulumi:"antiAffinityGroupIds"`
 	// A deploy target ID.
 	DeployTargetId *string `pulumi:"deployTargetId"`
 	// The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
 	DiskSize *int `pulumi:"diskSize"`
-	// A list of ElasticIP (IDs) to attach to the instance.
+	// A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs) to attach to the instance.
 	ElasticIpIds []string `pulumi:"elasticIpIds"`
 	// Enable IPv6 on the instance (boolean; default: `false`).
 	Ipv6 *bool `pulumi:"ipv6"`
@@ -222,31 +238,35 @@ type computeInstanceArgs struct {
 	NetworkInterfaces []ComputeInstanceNetworkInterface `pulumi:"networkInterfaces"`
 	// Domain name for reverse DNS record.
 	ReverseDns *string `pulumi:"reverseDns"`
-	// A list of SecurityGroup (IDs) to attach to the instance.
+	// A list of [exoscale_security_group](./security_group.md) (IDs) to attach to the instance.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// The SSHKey (name) to authorize in the instance (may only be set at creation time).
+	// The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the instance (may only be set at creation time).
 	SshKey *string `pulumi:"sshKey"`
 	// The instance state (`running` or `stopped`; default: `running`).
 	State *string `pulumi:"state"`
-	// The getComputeTemplate (ID) to use when creating the instance.
+	// The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the instance.
 	TemplateId string `pulumi:"templateId"`
-	// The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
+	// The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) -
+	// `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts
+	// the instance.
 	Type string `pulumi:"type"`
-	// [cloud-init][cloud-init] configuration (no need to base64-encode or gzip it as the provider will take care of it).
+	// [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will
+	// take care of it).
 	UserData *string `pulumi:"userData"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a ComputeInstance resource.
 type ComputeInstanceArgs struct {
-	// A list of AntiAffinityGroup (IDs) to attach to the instance (may only be set at creation time).
+	// A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to attach to the instance (may only be set at
+	// creation time).
 	AntiAffinityGroupIds pulumi.StringArrayInput
 	// A deploy target ID.
 	DeployTargetId pulumi.StringPtrInput
 	// The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
 	DiskSize pulumi.IntPtrInput
-	// A list of ElasticIP (IDs) to attach to the instance.
+	// A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs) to attach to the instance.
 	ElasticIpIds pulumi.StringArrayInput
 	// Enable IPv6 on the instance (boolean; default: `false`).
 	Ipv6 pulumi.BoolPtrInput
@@ -258,19 +278,22 @@ type ComputeInstanceArgs struct {
 	NetworkInterfaces ComputeInstanceNetworkInterfaceArrayInput
 	// Domain name for reverse DNS record.
 	ReverseDns pulumi.StringPtrInput
-	// A list of SecurityGroup (IDs) to attach to the instance.
+	// A list of [exoscale_security_group](./security_group.md) (IDs) to attach to the instance.
 	SecurityGroupIds pulumi.StringArrayInput
-	// The SSHKey (name) to authorize in the instance (may only be set at creation time).
+	// The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the instance (may only be set at creation time).
 	SshKey pulumi.StringPtrInput
 	// The instance state (`running` or `stopped`; default: `running`).
 	State pulumi.StringPtrInput
-	// The getComputeTemplate (ID) to use when creating the instance.
+	// The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the instance.
 	TemplateId pulumi.StringInput
-	// The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
+	// The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) -
+	// `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts
+	// the instance.
 	Type pulumi.StringInput
-	// [cloud-init][cloud-init] configuration (no need to base64-encode or gzip it as the provider will take care of it).
+	// [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will
+	// take care of it).
 	UserData pulumi.StringPtrInput
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringInput
 }
 
@@ -361,7 +384,8 @@ func (o ComputeInstanceOutput) ToComputeInstanceOutputWithContext(ctx context.Co
 	return o
 }
 
-// A list of AntiAffinityGroup (IDs) to attach to the instance (may only be set at creation time).
+// A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to attach to the instance (may only be set at
+// creation time).
 func (o ComputeInstanceOutput) AntiAffinityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ComputeInstance) pulumi.StringArrayOutput { return v.AntiAffinityGroupIds }).(pulumi.StringArrayOutput)
 }
@@ -381,7 +405,7 @@ func (o ComputeInstanceOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *ComputeInstance) pulumi.IntOutput { return v.DiskSize }).(pulumi.IntOutput)
 }
 
-// A list of ElasticIP (IDs) to attach to the instance.
+// A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs) to attach to the instance.
 func (o ComputeInstanceOutput) ElasticIpIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ComputeInstance) pulumi.StringArrayOutput { return v.ElasticIpIds }).(pulumi.StringArrayOutput)
 }
@@ -411,7 +435,8 @@ func (o ComputeInstanceOutput) NetworkInterfaces() ComputeInstanceNetworkInterfa
 	return o.ApplyT(func(v *ComputeInstance) ComputeInstanceNetworkInterfaceArrayOutput { return v.NetworkInterfaces }).(ComputeInstanceNetworkInterfaceArrayOutput)
 }
 
-// (Deprecated) A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument instead.
+// A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument
+// instead.
 //
 // Deprecated: Use the network_interface block instead.
 func (o ComputeInstanceOutput) PrivateNetworkIds() pulumi.StringArrayOutput {
@@ -428,12 +453,12 @@ func (o ComputeInstanceOutput) ReverseDns() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeInstance) pulumi.StringPtrOutput { return v.ReverseDns }).(pulumi.StringPtrOutput)
 }
 
-// A list of SecurityGroup (IDs) to attach to the instance.
+// A list of [exoscale_security_group](./security_group.md) (IDs) to attach to the instance.
 func (o ComputeInstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ComputeInstance) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// The SSHKey (name) to authorize in the instance (may only be set at creation time).
+// The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the instance (may only be set at creation time).
 func (o ComputeInstanceOutput) SshKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeInstance) pulumi.StringPtrOutput { return v.SshKey }).(pulumi.StringPtrOutput)
 }
@@ -443,22 +468,25 @@ func (o ComputeInstanceOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *ComputeInstance) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// The getComputeTemplate (ID) to use when creating the instance.
+// The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the instance.
 func (o ComputeInstanceOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ComputeInstance) pulumi.StringOutput { return v.TemplateId }).(pulumi.StringOutput)
 }
 
-// The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
+// The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) -
+// `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts
+// the instance.
 func (o ComputeInstanceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ComputeInstance) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// [cloud-init][cloud-init] configuration (no need to base64-encode or gzip it as the provider will take care of it).
+// [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will
+// take care of it).
 func (o ComputeInstanceOutput) UserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeInstance) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
 }
 
-// The Exoscale [Zone][zone] name.
+// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o ComputeInstanceOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *ComputeInstance) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

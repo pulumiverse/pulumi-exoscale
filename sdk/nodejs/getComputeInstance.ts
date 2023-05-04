@@ -20,6 +20,9 @@ export function getComputeInstance(args: GetComputeInstanceArgs, opts?: pulumi.I
  * A collection of arguments for invoking getComputeInstance.
  */
 export interface GetComputeInstanceArgs {
+    /**
+     * The list of attached exoscale*anti*affinity_group (IDs).
+     */
     antiAffinityGroupIds?: string[];
     /**
      * The compute instance ID to match (conflicts with `name`).
@@ -34,7 +37,7 @@ export interface GetComputeInstanceArgs {
      */
     name?: string;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: string;
 }
@@ -43,6 +46,9 @@ export interface GetComputeInstanceArgs {
  * A collection of values returned by getComputeInstance.
  */
 export interface GetComputeInstanceResult {
+    /**
+     * The list of attached exoscale*anti*affinity_group (IDs).
+     */
     readonly antiAffinityGroupIds?: string[];
     /**
      * The compute instance creation date.
@@ -57,9 +63,12 @@ export interface GetComputeInstanceResult {
      */
     readonly diskSize: number;
     /**
-     * The list of attached exoscale.ElasticIP (IDs).
+     * The list of attached exoscale*elastic*ip (IDs).
      */
     readonly elasticIpIds: string[];
+    /**
+     * The compute instance ID to match (conflicts with `name`).
+     */
     readonly id?: string;
     /**
      * Whether IPv6 is enabled on the instance.
@@ -81,7 +90,13 @@ export interface GetComputeInstanceResult {
      * The instance manager type (instance pool, SKS node pool, etc.), if any.
      */
     readonly managerType: string;
+    /**
+     * The instance name to match (conflicts with `id`).
+     */
     readonly name?: string;
+    /**
+     * The list of attached exoscale*private*network (IDs).
+     */
     readonly privateNetworkIds: string[];
     /**
      * The instance (main network interface) IPv4 address.
@@ -92,11 +107,11 @@ export interface GetComputeInstanceResult {
      */
     readonly reverseDns: string;
     /**
-     * The list of attached exoscale.SecurityGroup (IDs).
+     * The list of attached exoscale*security*group (IDs).
      */
     readonly securityGroupIds: string[];
     /**
-     * The exoscale.SSHKey (name) authorized on the instance.
+     * The exoscale*ssh*key (name) authorized on the instance.
      */
     readonly sshKey: string;
     /**
@@ -104,7 +119,7 @@ export interface GetComputeInstanceResult {
      */
     readonly state: string;
     /**
-     * The instance exoscale.getComputeTemplate ID.
+     * The instance exoscale*compute*template ID.
      */
     readonly templateId: string;
     /**
@@ -112,9 +127,12 @@ export interface GetComputeInstanceResult {
      */
     readonly type: string;
     /**
-     * The instance [cloud-init][cloud-init] configuration.
+     * The instance [cloud-init](http://cloudinit.readthedocs.io/en/latest/) configuration.
      */
     readonly userData: string;
+    /**
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     */
     readonly zone: string;
 }
 export function getComputeInstanceOutput(args: GetComputeInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeInstanceResult> {
@@ -125,6 +143,9 @@ export function getComputeInstanceOutput(args: GetComputeInstanceOutputArgs, opt
  * A collection of arguments for invoking getComputeInstance.
  */
 export interface GetComputeInstanceOutputArgs {
+    /**
+     * The list of attached exoscale*anti*affinity_group (IDs).
+     */
     antiAffinityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The compute instance ID to match (conflicts with `name`).
@@ -139,7 +160,7 @@ export interface GetComputeInstanceOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: pulumi.Input<string>;
 }

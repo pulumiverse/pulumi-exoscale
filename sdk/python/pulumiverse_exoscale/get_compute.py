@@ -69,7 +69,7 @@ class GetComputeResult:
     @pulumi.getter
     def cpu(self) -> int:
         """
-        The compute instance number of CPUs.
+        Number of cpu the Compute instance is running with
         """
         return pulumi.get(self, "cpu")
 
@@ -77,7 +77,7 @@ class GetComputeResult:
     @pulumi.getter
     def created(self) -> str:
         """
-        The instance creation date.
+        Date when the Compute instance was created
         """
         return pulumi.get(self, "created")
 
@@ -85,25 +85,31 @@ class GetComputeResult:
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> int:
         """
-        The instance disk size (GiB).
+        Size of the Compute instance disk
         """
         return pulumi.get(self, "disk_size")
 
     @property
     @pulumi.getter
     def hostname(self) -> Optional[str]:
+        """
+        The instance hostname to match.
+        """
         return pulumi.get(self, "hostname")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        The compute instance ID to match.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="ip6Address")
     def ip6_address(self) -> str:
         """
-        The instance (main network interface) IPv6 address (if enabled).
+        Compute instance public ipv6 address (if ipv6 is enabled)
         """
         return pulumi.get(self, "ip6_address")
 
@@ -111,7 +117,7 @@ class GetComputeResult:
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> str:
         """
-        The instance (main network interface) IPv4 address.
+        Compute instance public ipv4 address
         """
         return pulumi.get(self, "ip_address")
 
@@ -119,7 +125,7 @@ class GetComputeResult:
     @pulumi.getter
     def memory(self) -> int:
         """
-        The instance allocated memory.
+        Memory allocated for the Compute instance
         """
         return pulumi.get(self, "memory")
 
@@ -127,7 +133,7 @@ class GetComputeResult:
     @pulumi.getter(name="privateNetworkIpAddresses")
     def private_network_ip_addresses(self) -> Sequence[str]:
         """
-        List of compute private IPv4 addresses (in *managed* private networks only).
+        List of Compute instance private IP addresses (in managed Private Networks only)
         """
         return pulumi.get(self, "private_network_ip_addresses")
 
@@ -135,7 +141,7 @@ class GetComputeResult:
     @pulumi.getter
     def size(self) -> str:
         """
-        The instance size.
+        Current size of the Compute instance
         """
         return pulumi.get(self, "size")
 
@@ -143,20 +149,23 @@ class GetComputeResult:
     @pulumi.getter
     def state(self) -> str:
         """
-        The current instance state.
+        State of the Compute instance
         """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        The instance tags to match (map of key/value).
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def template(self) -> str:
         """
-        The instance template.
+        Name of the template for the Compute instance
         """
         return pulumi.get(self, "template")
 
@@ -164,7 +173,7 @@ class GetComputeResult:
     @pulumi.getter
     def zone(self) -> str:
         """
-        Exoscale Zone name.
+        Name of the availability zone for the Compute instance
         """
         return pulumi.get(self, "zone")
 

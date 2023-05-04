@@ -32,13 +32,15 @@ namespace Pulumiverse.Exoscale
         public Output<ImmutableArray<string>> Operations { get; private set; } = null!;
 
         /// <summary>
-        /// A list of API [resources][iam-resource] to restrict the key to (`&lt;domain&gt;/&lt;type&gt;:&lt;name&gt;`).
+        /// A list of API
+        /// [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to
+        /// restrict the key to (`&lt;domain&gt;/&lt;type&gt;:&lt;name&gt;`).
         /// </summary>
         [Output("resources")]
         public Output<ImmutableArray<string>> Resources { get; private set; } = null!;
 
         /// <summary>
-        /// (Sensitive) The key secret.
+        /// The key secret.
         /// </summary>
         [Output("secret")]
         public Output<string> Secret { get; private set; } = null!;
@@ -126,7 +128,9 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _resources;
 
         /// <summary>
-        /// A list of API [resources][iam-resource] to restrict the key to (`&lt;domain&gt;/&lt;type&gt;:&lt;name&gt;`).
+        /// A list of API
+        /// [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to
+        /// restrict the key to (`&lt;domain&gt;/&lt;type&gt;:&lt;name&gt;`).
         /// </summary>
         public InputList<string> Resources
         {
@@ -192,7 +196,9 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _resources;
 
         /// <summary>
-        /// A list of API [resources][iam-resource] to restrict the key to (`&lt;domain&gt;/&lt;type&gt;:&lt;name&gt;`).
+        /// A list of API
+        /// [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to
+        /// restrict the key to (`&lt;domain&gt;/&lt;type&gt;:&lt;name&gt;`).
         /// </summary>
         public InputList<string> Resources
         {
@@ -204,7 +210,7 @@ namespace Pulumiverse.Exoscale
         private Input<string>? _secret;
 
         /// <summary>
-        /// (Sensitive) The key secret.
+        /// The key secret.
         /// </summary>
         public Input<string>? Secret
         {

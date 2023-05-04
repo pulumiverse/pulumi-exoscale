@@ -20,7 +20,7 @@ export function getComputeTemplate(args: GetComputeTemplateArgs, opts?: pulumi.I
  */
 export interface GetComputeTemplateArgs {
     /**
-     * A template category filter (default: `featured`); among:
+     * A template category filter (default: `featured`); among: - `featured` - official Exoscale templates - `community` - community-contributed templates - `mine` - custom templates private to my organization
      */
     filter?: string;
     /**
@@ -32,7 +32,7 @@ export interface GetComputeTemplateArgs {
      */
     name?: string;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: string;
 }
@@ -41,13 +41,25 @@ export interface GetComputeTemplateArgs {
  * A collection of values returned by getComputeTemplate.
  */
 export interface GetComputeTemplateResult {
+    /**
+     * A template category filter (default: `featured`); among: - `featured` - official Exoscale templates - `community` - community-contributed templates - `mine` - custom templates private to my organization
+     */
     readonly filter?: string;
+    /**
+     * The compute instance template ID to match (conflicts with `name`).
+     */
     readonly id?: string;
+    /**
+     * The template name to match (conflicts with `id`).
+     */
     readonly name?: string;
     /**
-     * Username to use to log into a compute instance based on this template
+     * Username for logging into a compute instance based on this template
      */
     readonly username: string;
+    /**
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     */
     readonly zone: string;
 }
 export function getComputeTemplateOutput(args: GetComputeTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeTemplateResult> {
@@ -59,7 +71,7 @@ export function getComputeTemplateOutput(args: GetComputeTemplateOutputArgs, opt
  */
 export interface GetComputeTemplateOutputArgs {
     /**
-     * A template category filter (default: `featured`); among:
+     * A template category filter (default: `featured`); among: - `featured` - official Exoscale templates - `community` - community-contributed templates - `mine` - custom templates private to my organization
      */
     filter?: pulumi.Input<string>;
     /**
@@ -71,7 +83,7 @@ export interface GetComputeTemplateOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: pulumi.Input<string>;
 }

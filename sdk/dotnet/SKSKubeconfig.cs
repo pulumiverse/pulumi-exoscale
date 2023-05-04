@@ -14,16 +14,24 @@ namespace Pulumiverse.Exoscale
     public partial class SKSKubeconfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The parent exoscale.SKSCluster ID.
+        /// The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
+        /// <summary>
+        /// If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
+        /// certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
+        /// expiration of its internal current certificate. Note however that the old certificate remains valid until its true
+        /// expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
+        /// take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
+        /// </summary>
         [Output("earlyRenewalSeconds")]
         public Output<int?> EarlyRenewalSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
+        /// Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the
+        /// Organization field.
         /// </summary>
         [Output("groups")]
         public Output<ImmutableArray<string>> Groups { get; private set; } = null!;
@@ -44,13 +52,14 @@ namespace Pulumiverse.Exoscale
         public Output<double?> TtlSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.
+        /// User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN
+        /// field.
         /// </summary>
         [Output("user")]
         public Output<string> User { get; private set; } = null!;
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -107,11 +116,18 @@ namespace Pulumiverse.Exoscale
     public sealed class SKSKubeconfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The parent exoscale.SKSCluster ID.
+        /// The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
+        /// <summary>
+        /// If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
+        /// certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
+        /// expiration of its internal current certificate. Note however that the old certificate remains valid until its true
+        /// expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
+        /// take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
+        /// </summary>
         [Input("earlyRenewalSeconds")]
         public Input<int>? EarlyRenewalSeconds { get; set; }
 
@@ -119,7 +135,8 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _groups;
 
         /// <summary>
-        /// Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
+        /// Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the
+        /// Organization field.
         /// </summary>
         public InputList<string> Groups
         {
@@ -134,13 +151,14 @@ namespace Pulumiverse.Exoscale
         public Input<double>? TtlSeconds { get; set; }
 
         /// <summary>
-        /// User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.
+        /// User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN
+        /// field.
         /// </summary>
         [Input("user", required: true)]
         public Input<string> User { get; set; } = null!;
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -154,11 +172,18 @@ namespace Pulumiverse.Exoscale
     public sealed class SKSKubeconfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The parent exoscale.SKSCluster ID.
+        /// The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
+        /// <summary>
+        /// If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
+        /// certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
+        /// expiration of its internal current certificate. Note however that the old certificate remains valid until its true
+        /// expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
+        /// take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
+        /// </summary>
         [Input("earlyRenewalSeconds")]
         public Input<int>? EarlyRenewalSeconds { get; set; }
 
@@ -166,7 +191,8 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _groups;
 
         /// <summary>
-        /// Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
+        /// Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the
+        /// Organization field.
         /// </summary>
         public InputList<string> Groups
         {
@@ -200,13 +226,14 @@ namespace Pulumiverse.Exoscale
         public Input<double>? TtlSeconds { get; set; }
 
         /// <summary>
-        /// User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.
+        /// User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN
+        /// field.
         /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

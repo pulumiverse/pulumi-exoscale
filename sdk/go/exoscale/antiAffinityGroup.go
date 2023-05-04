@@ -12,7 +12,7 @@ import (
 
 // ## Import
 //
-// An existing anti-affinity group may be imported by `<ID>`console
+// An existing anti-affinity group may be imported by `<ID>`
 //
 // ```sh
 //

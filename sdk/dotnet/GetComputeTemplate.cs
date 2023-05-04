@@ -23,7 +23,7 @@ namespace Pulumiverse.Exoscale
     public sealed class GetComputeTemplateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// A template category filter (default: `featured`); among:
+        /// A template category filter (default: `featured`); among: - `featured` - official Exoscale templates - `community` - community-contributed templates - `mine` - custom templates private to my organization
         /// </summary>
         [Input("filter")]
         public string? Filter { get; set; }
@@ -41,7 +41,7 @@ namespace Pulumiverse.Exoscale
         public string? Name { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone", required: true)]
         public string Zone { get; set; } = null!;
@@ -55,7 +55,7 @@ namespace Pulumiverse.Exoscale
     public sealed class GetComputeTemplateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// A template category filter (default: `featured`); among:
+        /// A template category filter (default: `featured`); among: - `featured` - official Exoscale templates - `community` - community-contributed templates - `mine` - custom templates private to my organization
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }
@@ -73,7 +73,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -88,13 +88,25 @@ namespace Pulumiverse.Exoscale
     [OutputType]
     public sealed class GetComputeTemplateResult
     {
+        /// <summary>
+        /// A template category filter (default: `featured`); among: - `featured` - official Exoscale templates - `community` - community-contributed templates - `mine` - custom templates private to my organization
+        /// </summary>
         public readonly string? Filter;
+        /// <summary>
+        /// The compute instance template ID to match (conflicts with `name`).
+        /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// The template name to match (conflicts with `id`).
+        /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Username to use to log into a compute instance based on this template
+        /// Username for logging into a compute instance based on this template
         /// </summary>
         public readonly string Username;
+        /// <summary>
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// </summary>
         public readonly string Zone;
 
         [OutputConstructor]

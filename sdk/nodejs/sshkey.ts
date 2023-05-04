@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * An existing SSH key may be imported as a resource by `<name>`console
+ * An existing SSH key may be imported as a resource by `<name>`
  *
  * ```sh
  *  $ pulumi import exoscale:index/sSHKey:SSHKey \

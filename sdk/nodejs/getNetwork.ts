@@ -30,7 +30,7 @@ export interface GetNetworkArgs {
      */
     name?: string;
     /**
-     * The Exoscale Zone name.
+     * (Required) The Exoscale Zone name.
      */
     zone: string;
 }
@@ -43,17 +43,29 @@ export interface GetNetworkResult {
      * The private network description.
      */
     readonly description: string;
+    /**
+     * The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+     */
     readonly endIp: string;
+    /**
+     * The private network ID to match (conflicts with `name`).
+     */
     readonly id?: string;
+    /**
+     * The network name to match (conflicts with `id`).
+     */
     readonly name?: string;
     /**
      * The network mask defining the IPv4 network allowed for static leases.
      */
     readonly netmask: string;
     /**
-     * /`endIp` - The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+     * The first/last IPv4 addresses used by the DHCP service for dynamic leases.
      */
     readonly startIp: string;
+    /**
+     * (Required) The Exoscale Zone name.
+     */
     readonly zone: string;
 }
 /**
@@ -76,7 +88,7 @@ export interface GetNetworkOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The Exoscale Zone name.
+     * (Required) The Exoscale Zone name.
      */
     zone: pulumi.Input<string>;
 }

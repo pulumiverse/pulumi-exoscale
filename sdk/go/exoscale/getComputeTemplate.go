@@ -22,24 +22,28 @@ func GetComputeTemplate(ctx *pulumi.Context, args *GetComputeTemplateArgs, opts 
 
 // A collection of arguments for invoking getComputeTemplate.
 type GetComputeTemplateArgs struct {
-	// A template category filter (default: `featured`); among:
+	// A template category filter (default: `featured`); among: - `featured` - official Exoscale templates - `community` - community-contributed templates - `mine` - custom templates private to my organization
 	Filter *string `pulumi:"filter"`
 	// The compute instance template ID to match (conflicts with `name`).
 	Id *string `pulumi:"id"`
 	// The template name to match (conflicts with `id`).
 	Name *string `pulumi:"name"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone string `pulumi:"zone"`
 }
 
 // A collection of values returned by getComputeTemplate.
 type GetComputeTemplateResult struct {
+	// A template category filter (default: `featured`); among: - `featured` - official Exoscale templates - `community` - community-contributed templates - `mine` - custom templates private to my organization
 	Filter *string `pulumi:"filter"`
-	Id     *string `pulumi:"id"`
-	Name   *string `pulumi:"name"`
-	// Username to use to log into a compute instance based on this template
+	// The compute instance template ID to match (conflicts with `name`).
+	Id *string `pulumi:"id"`
+	// The template name to match (conflicts with `id`).
+	Name *string `pulumi:"name"`
+	// Username for logging into a compute instance based on this template
 	Username string `pulumi:"username"`
-	Zone     string `pulumi:"zone"`
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	Zone string `pulumi:"zone"`
 }
 
 func GetComputeTemplateOutput(ctx *pulumi.Context, args GetComputeTemplateOutputArgs, opts ...pulumi.InvokeOption) GetComputeTemplateResultOutput {
@@ -57,13 +61,13 @@ func GetComputeTemplateOutput(ctx *pulumi.Context, args GetComputeTemplateOutput
 
 // A collection of arguments for invoking getComputeTemplate.
 type GetComputeTemplateOutputArgs struct {
-	// A template category filter (default: `featured`); among:
+	// A template category filter (default: `featured`); among: - `featured` - official Exoscale templates - `community` - community-contributed templates - `mine` - custom templates private to my organization
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 	// The compute instance template ID to match (conflicts with `name`).
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The template name to match (conflicts with `id`).
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
@@ -86,23 +90,27 @@ func (o GetComputeTemplateResultOutput) ToGetComputeTemplateResultOutputWithCont
 	return o
 }
 
+// A template category filter (default: `featured`); among: - `featured` - official Exoscale templates - `community` - community-contributed templates - `mine` - custom templates private to my organization
 func (o GetComputeTemplateResultOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetComputeTemplateResult) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
+// The compute instance template ID to match (conflicts with `name`).
 func (o GetComputeTemplateResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetComputeTemplateResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The template name to match (conflicts with `id`).
 func (o GetComputeTemplateResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetComputeTemplateResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Username to use to log into a compute instance based on this template
+// Username for logging into a compute instance based on this template
 func (o GetComputeTemplateResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeTemplateResult) string { return v.Username }).(pulumi.StringOutput)
 }
 
+// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o GetComputeTemplateResultOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeTemplateResult) string { return v.Zone }).(pulumi.StringOutput)
 }

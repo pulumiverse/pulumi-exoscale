@@ -45,7 +45,8 @@ export class SSHKeypair extends pulumi.CustomResource {
      */
     public /*out*/ readonly privateKey!: pulumi.Output<string>;
     /**
-     * A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `privateKey` attribute).
+     * A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the
+     * *private* key) is generated and saved locally (see the `private_key` attribute).
      */
     public readonly publicKey!: pulumi.Output<string | undefined>;
 
@@ -97,7 +98,8 @@ export interface SSHKeypairState {
      */
     privateKey?: pulumi.Input<string>;
     /**
-     * A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `privateKey` attribute).
+     * A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the
+     * *private* key) is generated and saved locally (see the `private_key` attribute).
      */
     publicKey?: pulumi.Input<string>;
 }
@@ -111,7 +113,8 @@ export interface SSHKeypairArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `privateKey` attribute).
+     * A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the
+     * *private* key) is generated and saved locally (see the `private_key` attribute).
      */
     publicKey?: pulumi.Input<string>;
 }

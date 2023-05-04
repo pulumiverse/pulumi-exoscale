@@ -32,11 +32,17 @@ class GetSecurityGroupResult:
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        The security group ID to match (conflicts with `name`)
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        The name to match (conflicts with `id`)
+        """
         return pulumi.get(self, "name")
 
 

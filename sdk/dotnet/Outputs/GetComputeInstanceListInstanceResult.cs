@@ -15,28 +15,79 @@ namespace Pulumiverse.Exoscale.Outputs
     public sealed class GetComputeInstanceListInstanceResult
     {
         public readonly ImmutableArray<string> AntiAffinityGroupIds;
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         public readonly string DeployTargetId;
+        /// <summary>
+        /// Match against this int
+        /// </summary>
         public readonly int DiskSize;
         public readonly ImmutableArray<string> ElasticIpIds;
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// Match against this bool
+        /// </summary>
         public readonly bool Ipv6;
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         public readonly string Ipv6Address;
+        /// <summary>
+        /// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         public readonly string ManagerId;
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         public readonly string ManagerType;
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         public readonly string? Name;
         public readonly ImmutableArray<string> PrivateNetworkIds;
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         public readonly string PublicIpAddress;
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         public readonly string ReverseDns;
         public readonly ImmutableArray<string> SecurityGroupIds;
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         public readonly string SshKey;
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         public readonly string State;
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         public readonly string TemplateId;
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         public readonly string UserData;
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
         /// </summary>
         public readonly string Zone;
 

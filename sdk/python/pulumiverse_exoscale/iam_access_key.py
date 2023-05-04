@@ -22,7 +22,9 @@ class IAMAccessKeyArgs:
         The set of arguments for constructing a IAMAccessKey resource.
         :param pulumi.Input[str] name: The IAM access key name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] operations: A list of API operations to restrict the key to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: A list of API [resources][iam-resource] to restrict the key to (`<domain>/<type>:<name>`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: A list of API
+               [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to
+               restrict the key to (`<domain>/<type>:<name>`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags to restrict the key to.
         """
         if name is not None:
@@ -62,7 +64,9 @@ class IAMAccessKeyArgs:
     @pulumi.getter
     def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of API [resources][iam-resource] to restrict the key to (`<domain>/<type>:<name>`).
+        A list of API
+        [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to
+        restrict the key to (`<domain>/<type>:<name>`).
         """
         return pulumi.get(self, "resources")
 
@@ -98,8 +102,10 @@ class _IAMAccessKeyState:
         :param pulumi.Input[str] key: The IAM access key (identifier).
         :param pulumi.Input[str] name: The IAM access key name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] operations: A list of API operations to restrict the key to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: A list of API [resources][iam-resource] to restrict the key to (`<domain>/<type>:<name>`).
-        :param pulumi.Input[str] secret: (Sensitive) The key secret.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: A list of API
+               [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to
+               restrict the key to (`<domain>/<type>:<name>`).
+        :param pulumi.Input[str] secret: The key secret.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags to restrict the key to.
         """
         if key is not None:
@@ -157,7 +163,9 @@ class _IAMAccessKeyState:
     @pulumi.getter
     def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of API [resources][iam-resource] to restrict the key to (`<domain>/<type>:<name>`).
+        A list of API
+        [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to
+        restrict the key to (`<domain>/<type>:<name>`).
         """
         return pulumi.get(self, "resources")
 
@@ -169,7 +177,7 @@ class _IAMAccessKeyState:
     @pulumi.getter
     def secret(self) -> Optional[pulumi.Input[str]]:
         """
-        (Sensitive) The key secret.
+        The key secret.
         """
         return pulumi.get(self, "secret")
 
@@ -215,7 +223,9 @@ class IAMAccessKey(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The IAM access key name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] operations: A list of API operations to restrict the key to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: A list of API [resources][iam-resource] to restrict the key to (`<domain>/<type>:<name>`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: A list of API
+               [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to
+               restrict the key to (`<domain>/<type>:<name>`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags to restrict the key to.
         """
         ...
@@ -290,8 +300,10 @@ class IAMAccessKey(pulumi.CustomResource):
         :param pulumi.Input[str] key: The IAM access key (identifier).
         :param pulumi.Input[str] name: The IAM access key name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] operations: A list of API operations to restrict the key to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: A list of API [resources][iam-resource] to restrict the key to (`<domain>/<type>:<name>`).
-        :param pulumi.Input[str] secret: (Sensitive) The key secret.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: A list of API
+               [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to
+               restrict the key to (`<domain>/<type>:<name>`).
+        :param pulumi.Input[str] secret: The key secret.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags to restrict the key to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -335,7 +347,9 @@ class IAMAccessKey(pulumi.CustomResource):
     @pulumi.getter
     def resources(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A list of API [resources][iam-resource] to restrict the key to (`<domain>/<type>:<name>`).
+        A list of API
+        [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to
+        restrict the key to (`<domain>/<type>:<name>`).
         """
         return pulumi.get(self, "resources")
 
@@ -343,7 +357,7 @@ class IAMAccessKey(pulumi.CustomResource):
     @pulumi.getter
     def secret(self) -> pulumi.Output[str]:
         """
-        (Sensitive) The key secret.
+        The key secret.
         """
         return pulumi.get(self, "secret")
 

@@ -26,7 +26,7 @@ type LookupNLBArgs struct {
 	Id *string `pulumi:"id"`
 	// The NLB name to match (conflicts with `id`).
 	Name *string `pulumi:"name"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone string `pulumi:"zone"`
 }
 
@@ -35,14 +35,17 @@ type LookupNLBResult struct {
 	// The NLB creation date.
 	CreatedAt string `pulumi:"createdAt"`
 	// The Network Load Balancers (NLB) description.
-	Description string  `pulumi:"description"`
-	Id          *string `pulumi:"id"`
+	Description string `pulumi:"description"`
+	// The Network Load Balancers (NLB) ID to match (conflicts with `name`).
+	Id *string `pulumi:"id"`
 	// The NLB public IPv4 address.
-	IpAddress string  `pulumi:"ipAddress"`
-	Name      *string `pulumi:"name"`
+	IpAddress string `pulumi:"ipAddress"`
+	// The NLB name to match (conflicts with `id`).
+	Name *string `pulumi:"name"`
 	// The current NLB state.
 	State string `pulumi:"state"`
-	Zone  string `pulumi:"zone"`
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	Zone string `pulumi:"zone"`
 }
 
 func LookupNLBOutput(ctx *pulumi.Context, args LookupNLBOutputArgs, opts ...pulumi.InvokeOption) LookupNLBResultOutput {
@@ -64,7 +67,7 @@ type LookupNLBOutputArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The NLB name to match (conflicts with `id`).
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
@@ -97,6 +100,7 @@ func (o LookupNLBResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNLBResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The Network Load Balancers (NLB) ID to match (conflicts with `name`).
 func (o LookupNLBResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNLBResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -106,6 +110,7 @@ func (o LookupNLBResultOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNLBResult) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
+// The NLB name to match (conflicts with `id`).
 func (o LookupNLBResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNLBResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -115,6 +120,7 @@ func (o LookupNLBResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNLBResult) string { return v.State }).(pulumi.StringOutput)
 }
 
+// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o LookupNLBResultOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNLBResult) string { return v.Zone }).(pulumi.StringOutput)
 }

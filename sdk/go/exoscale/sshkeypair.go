@@ -19,7 +19,8 @@ type SSHKeypair struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The SSH *private* key generated if no public key was provided.
 	PrivateKey pulumi.StringOutput `pulumi:"privateKey"`
-	// A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `privateKey` attribute).
+	// A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the
+	// *private* key) is generated and saved locally (see the `private_key` attribute).
 	PublicKey pulumi.StringPtrOutput `pulumi:"publicKey"`
 }
 
@@ -63,7 +64,8 @@ type sshkeypairState struct {
 	Name *string `pulumi:"name"`
 	// The SSH *private* key generated if no public key was provided.
 	PrivateKey *string `pulumi:"privateKey"`
-	// A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `privateKey` attribute).
+	// A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the
+	// *private* key) is generated and saved locally (see the `private_key` attribute).
 	PublicKey *string `pulumi:"publicKey"`
 }
 
@@ -74,7 +76,8 @@ type SSHKeypairState struct {
 	Name pulumi.StringPtrInput
 	// The SSH *private* key generated if no public key was provided.
 	PrivateKey pulumi.StringPtrInput
-	// A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `privateKey` attribute).
+	// A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the
+	// *private* key) is generated and saved locally (see the `private_key` attribute).
 	PublicKey pulumi.StringPtrInput
 }
 
@@ -85,7 +88,8 @@ func (SSHKeypairState) ElementType() reflect.Type {
 type sshkeypairArgs struct {
 	// The SSH keypair name.
 	Name *string `pulumi:"name"`
-	// A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `privateKey` attribute).
+	// A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the
+	// *private* key) is generated and saved locally (see the `private_key` attribute).
 	PublicKey *string `pulumi:"publicKey"`
 }
 
@@ -93,7 +97,8 @@ type sshkeypairArgs struct {
 type SSHKeypairArgs struct {
 	// The SSH keypair name.
 	Name pulumi.StringPtrInput
-	// A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `privateKey` attribute).
+	// A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the
+	// *private* key) is generated and saved locally (see the `private_key` attribute).
 	PublicKey pulumi.StringPtrInput
 }
 
@@ -199,7 +204,8 @@ func (o SSHKeypairOutput) PrivateKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *SSHKeypair) pulumi.StringOutput { return v.PrivateKey }).(pulumi.StringOutput)
 }
 
-// A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `privateKey` attribute).
+// A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the
+// *private* key) is generated and saved locally (see the `private_key` attribute).
 func (o SSHKeypairOutput) PublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SSHKeypair) pulumi.StringPtrOutput { return v.PublicKey }).(pulumi.StringPtrOutput)
 }

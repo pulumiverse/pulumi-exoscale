@@ -30,15 +30,17 @@ class DatabaseArgs:
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Database resource.
-        :param pulumi.Input[str] plan: The plan of the database service (use the [Exoscale CLI][cli] - `exo dbaas type show <TYPE>` - for reference).
+        :param pulumi.Input[str] plan: The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
+               <TYPE>` - for reference).
         :param pulumi.Input[str] type: The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
-        :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
-        :param pulumi.Input['DatabaseKafkaArgs'] kafka: *kafka* database service type specific arguments. Structure is documented below.
-        :param pulumi.Input[str] maintenance_dow: The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
+        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        :param pulumi.Input['DatabaseKafkaArgs'] kafka: *kafka* database service type specific arguments.
+        :param pulumi.Input[str] maintenance_dow: The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
+               `thursday`, `friday`, `saturday`, `sunday`).
         :param pulumi.Input[str] maintenance_time: The time of day to perform the automated database service maintenance (`HH:MM:SS`)
-        :param pulumi.Input['DatabaseMysqlArgs'] mysql: *mysql* database service type specific arguments. Structure is documented below.
+        :param pulumi.Input['DatabaseMysqlArgs'] mysql: *mysql* database service type specific arguments.
         :param pulumi.Input[str] name: The name of the database service.
-        :param pulumi.Input['DatabaseOpensearchArgs'] opensearch: *opensearch* database service type specific arguments. Structure is documented below.
+        :param pulumi.Input['DatabaseOpensearchArgs'] opensearch: *opensearch* database service type specific arguments.
         :param pulumi.Input['DatabasePgArgs'] pg: *pg* database service type specific arguments. Structure is documented below.
         :param pulumi.Input['DatabaseRedisArgs'] redis: *redis* database service type specific arguments. Structure is documented below.
         :param pulumi.Input[bool] termination_protection: The database service protection boolean flag against termination/power-off.
@@ -69,7 +71,8 @@ class DatabaseArgs:
     @pulumi.getter
     def plan(self) -> pulumi.Input[str]:
         """
-        The plan of the database service (use the [Exoscale CLI][cli] - `exo dbaas type show <TYPE>` - for reference).
+        The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
+        <TYPE>` - for reference).
         """
         return pulumi.get(self, "plan")
 
@@ -93,7 +96,7 @@ class DatabaseArgs:
     @pulumi.getter
     def zone(self) -> pulumi.Input[str]:
         """
-        The Exoscale [Zone][zone] name.
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 
@@ -105,7 +108,7 @@ class DatabaseArgs:
     @pulumi.getter
     def kafka(self) -> Optional[pulumi.Input['DatabaseKafkaArgs']]:
         """
-        *kafka* database service type specific arguments. Structure is documented below.
+        *kafka* database service type specific arguments.
         """
         return pulumi.get(self, "kafka")
 
@@ -117,7 +120,8 @@ class DatabaseArgs:
     @pulumi.getter(name="maintenanceDow")
     def maintenance_dow(self) -> Optional[pulumi.Input[str]]:
         """
-        The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
+        The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
+        `thursday`, `friday`, `saturday`, `sunday`).
         """
         return pulumi.get(self, "maintenance_dow")
 
@@ -141,7 +145,7 @@ class DatabaseArgs:
     @pulumi.getter
     def mysql(self) -> Optional[pulumi.Input['DatabaseMysqlArgs']]:
         """
-        *mysql* database service type specific arguments. Structure is documented below.
+        *mysql* database service type specific arguments.
         """
         return pulumi.get(self, "mysql")
 
@@ -165,7 +169,7 @@ class DatabaseArgs:
     @pulumi.getter
     def opensearch(self) -> Optional[pulumi.Input['DatabaseOpensearchArgs']]:
         """
-        *opensearch* database service type specific arguments. Structure is documented below.
+        *opensearch* database service type specific arguments.
         """
         return pulumi.get(self, "opensearch")
 
@@ -239,24 +243,26 @@ class _DatabaseState:
         :param pulumi.Input[str] ca_certificate: CA Certificate required to reach a DBaaS service through a TLS-protected connection.
         :param pulumi.Input[str] created_at: The creation date of the database service.
         :param pulumi.Input[int] disk_size: The disk size of the database service.
-        :param pulumi.Input['DatabaseKafkaArgs'] kafka: *kafka* database service type specific arguments. Structure is documented below.
-        :param pulumi.Input[str] maintenance_dow: The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
+        :param pulumi.Input['DatabaseKafkaArgs'] kafka: *kafka* database service type specific arguments.
+        :param pulumi.Input[str] maintenance_dow: The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
+               `thursday`, `friday`, `saturday`, `sunday`).
         :param pulumi.Input[str] maintenance_time: The time of day to perform the automated database service maintenance (`HH:MM:SS`)
-        :param pulumi.Input['DatabaseMysqlArgs'] mysql: *mysql* database service type specific arguments. Structure is documented below.
+        :param pulumi.Input['DatabaseMysqlArgs'] mysql: *mysql* database service type specific arguments.
         :param pulumi.Input[str] name: The name of the database service.
         :param pulumi.Input[int] node_cpus: The number of CPUs of the database service.
         :param pulumi.Input[int] node_memory: The amount of memory of the database service.
         :param pulumi.Input[int] nodes: The number of nodes of the database service.
-        :param pulumi.Input['DatabaseOpensearchArgs'] opensearch: *opensearch* database service type specific arguments. Structure is documented below.
+        :param pulumi.Input['DatabaseOpensearchArgs'] opensearch: *opensearch* database service type specific arguments.
         :param pulumi.Input['DatabasePgArgs'] pg: *pg* database service type specific arguments. Structure is documented below.
-        :param pulumi.Input[str] plan: The plan of the database service (use the [Exoscale CLI][cli] - `exo dbaas type show <TYPE>` - for reference).
+        :param pulumi.Input[str] plan: The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
+               <TYPE>` - for reference).
         :param pulumi.Input['DatabaseRedisArgs'] redis: *redis* database service type specific arguments. Structure is documented below.
         :param pulumi.Input[str] state: The current state of the database service.
         :param pulumi.Input[bool] termination_protection: The database service protection boolean flag against termination/power-off.
         :param pulumi.Input[str] type: The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
         :param pulumi.Input[str] updated_at: The date of the latest database service update.
         :param pulumi.Input[str] uri: The database service connection URI.
-        :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
+        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         if ca_certificate is not None:
             pulumi.set(__self__, "ca_certificate", ca_certificate)
@@ -341,7 +347,7 @@ class _DatabaseState:
     @pulumi.getter
     def kafka(self) -> Optional[pulumi.Input['DatabaseKafkaArgs']]:
         """
-        *kafka* database service type specific arguments. Structure is documented below.
+        *kafka* database service type specific arguments.
         """
         return pulumi.get(self, "kafka")
 
@@ -353,7 +359,8 @@ class _DatabaseState:
     @pulumi.getter(name="maintenanceDow")
     def maintenance_dow(self) -> Optional[pulumi.Input[str]]:
         """
-        The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
+        The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
+        `thursday`, `friday`, `saturday`, `sunday`).
         """
         return pulumi.get(self, "maintenance_dow")
 
@@ -377,7 +384,7 @@ class _DatabaseState:
     @pulumi.getter
     def mysql(self) -> Optional[pulumi.Input['DatabaseMysqlArgs']]:
         """
-        *mysql* database service type specific arguments. Structure is documented below.
+        *mysql* database service type specific arguments.
         """
         return pulumi.get(self, "mysql")
 
@@ -437,7 +444,7 @@ class _DatabaseState:
     @pulumi.getter
     def opensearch(self) -> Optional[pulumi.Input['DatabaseOpensearchArgs']]:
         """
-        *opensearch* database service type specific arguments. Structure is documented below.
+        *opensearch* database service type specific arguments.
         """
         return pulumi.get(self, "opensearch")
 
@@ -461,7 +468,8 @@ class _DatabaseState:
     @pulumi.getter
     def plan(self) -> Optional[pulumi.Input[str]]:
         """
-        The plan of the database service (use the [Exoscale CLI][cli] - `exo dbaas type show <TYPE>` - for reference).
+        The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
+        <TYPE>` - for reference).
         """
         return pulumi.get(self, "plan")
 
@@ -545,7 +553,7 @@ class _DatabaseState:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The Exoscale [Zone][zone] name.
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 
@@ -575,7 +583,7 @@ class Database(pulumi.CustomResource):
         """
         ## Import
 
-        An existing database service may be imported by `<name>@<zone>`console
+        An existing database service may be imported by `<name>@<zone>`
 
         ```sh
          $ pulumi import exoscale:index/database:Database \\
@@ -587,18 +595,20 @@ class Database(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DatabaseKafkaArgs']] kafka: *kafka* database service type specific arguments. Structure is documented below.
-        :param pulumi.Input[str] maintenance_dow: The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
+        :param pulumi.Input[pulumi.InputType['DatabaseKafkaArgs']] kafka: *kafka* database service type specific arguments.
+        :param pulumi.Input[str] maintenance_dow: The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
+               `thursday`, `friday`, `saturday`, `sunday`).
         :param pulumi.Input[str] maintenance_time: The time of day to perform the automated database service maintenance (`HH:MM:SS`)
-        :param pulumi.Input[pulumi.InputType['DatabaseMysqlArgs']] mysql: *mysql* database service type specific arguments. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['DatabaseMysqlArgs']] mysql: *mysql* database service type specific arguments.
         :param pulumi.Input[str] name: The name of the database service.
-        :param pulumi.Input[pulumi.InputType['DatabaseOpensearchArgs']] opensearch: *opensearch* database service type specific arguments. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['DatabaseOpensearchArgs']] opensearch: *opensearch* database service type specific arguments.
         :param pulumi.Input[pulumi.InputType['DatabasePgArgs']] pg: *pg* database service type specific arguments. Structure is documented below.
-        :param pulumi.Input[str] plan: The plan of the database service (use the [Exoscale CLI][cli] - `exo dbaas type show <TYPE>` - for reference).
+        :param pulumi.Input[str] plan: The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
+               <TYPE>` - for reference).
         :param pulumi.Input[pulumi.InputType['DatabaseRedisArgs']] redis: *redis* database service type specific arguments. Structure is documented below.
         :param pulumi.Input[bool] termination_protection: The database service protection boolean flag against termination/power-off.
         :param pulumi.Input[str] type: The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
-        :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
+        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         ...
     @overload
@@ -609,7 +619,7 @@ class Database(pulumi.CustomResource):
         """
         ## Import
 
-        An existing database service may be imported by `<name>@<zone>`console
+        An existing database service may be imported by `<name>@<zone>`
 
         ```sh
          $ pulumi import exoscale:index/database:Database \\
@@ -725,24 +735,26 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] ca_certificate: CA Certificate required to reach a DBaaS service through a TLS-protected connection.
         :param pulumi.Input[str] created_at: The creation date of the database service.
         :param pulumi.Input[int] disk_size: The disk size of the database service.
-        :param pulumi.Input[pulumi.InputType['DatabaseKafkaArgs']] kafka: *kafka* database service type specific arguments. Structure is documented below.
-        :param pulumi.Input[str] maintenance_dow: The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
+        :param pulumi.Input[pulumi.InputType['DatabaseKafkaArgs']] kafka: *kafka* database service type specific arguments.
+        :param pulumi.Input[str] maintenance_dow: The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
+               `thursday`, `friday`, `saturday`, `sunday`).
         :param pulumi.Input[str] maintenance_time: The time of day to perform the automated database service maintenance (`HH:MM:SS`)
-        :param pulumi.Input[pulumi.InputType['DatabaseMysqlArgs']] mysql: *mysql* database service type specific arguments. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['DatabaseMysqlArgs']] mysql: *mysql* database service type specific arguments.
         :param pulumi.Input[str] name: The name of the database service.
         :param pulumi.Input[int] node_cpus: The number of CPUs of the database service.
         :param pulumi.Input[int] node_memory: The amount of memory of the database service.
         :param pulumi.Input[int] nodes: The number of nodes of the database service.
-        :param pulumi.Input[pulumi.InputType['DatabaseOpensearchArgs']] opensearch: *opensearch* database service type specific arguments. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['DatabaseOpensearchArgs']] opensearch: *opensearch* database service type specific arguments.
         :param pulumi.Input[pulumi.InputType['DatabasePgArgs']] pg: *pg* database service type specific arguments. Structure is documented below.
-        :param pulumi.Input[str] plan: The plan of the database service (use the [Exoscale CLI][cli] - `exo dbaas type show <TYPE>` - for reference).
+        :param pulumi.Input[str] plan: The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
+               <TYPE>` - for reference).
         :param pulumi.Input[pulumi.InputType['DatabaseRedisArgs']] redis: *redis* database service type specific arguments. Structure is documented below.
         :param pulumi.Input[str] state: The current state of the database service.
         :param pulumi.Input[bool] termination_protection: The database service protection boolean flag against termination/power-off.
         :param pulumi.Input[str] type: The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
         :param pulumi.Input[str] updated_at: The date of the latest database service update.
         :param pulumi.Input[str] uri: The database service connection URI.
-        :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
+        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -799,7 +811,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def kafka(self) -> pulumi.Output[Optional['outputs.DatabaseKafka']]:
         """
-        *kafka* database service type specific arguments. Structure is documented below.
+        *kafka* database service type specific arguments.
         """
         return pulumi.get(self, "kafka")
 
@@ -807,7 +819,8 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="maintenanceDow")
     def maintenance_dow(self) -> pulumi.Output[str]:
         """
-        The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
+        The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
+        `thursday`, `friday`, `saturday`, `sunday`).
         """
         return pulumi.get(self, "maintenance_dow")
 
@@ -823,7 +836,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def mysql(self) -> pulumi.Output[Optional['outputs.DatabaseMysql']]:
         """
-        *mysql* database service type specific arguments. Structure is documented below.
+        *mysql* database service type specific arguments.
         """
         return pulumi.get(self, "mysql")
 
@@ -863,7 +876,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def opensearch(self) -> pulumi.Output[Optional['outputs.DatabaseOpensearch']]:
         """
-        *opensearch* database service type specific arguments. Structure is documented below.
+        *opensearch* database service type specific arguments.
         """
         return pulumi.get(self, "opensearch")
 
@@ -879,7 +892,8 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def plan(self) -> pulumi.Output[str]:
         """
-        The plan of the database service (use the [Exoscale CLI][cli] - `exo dbaas type show <TYPE>` - for reference).
+        The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
+        <TYPE>` - for reference).
         """
         return pulumi.get(self, "plan")
 
@@ -935,7 +949,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         """
-        The Exoscale [Zone][zone] name.
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 

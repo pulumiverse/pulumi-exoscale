@@ -37,11 +37,11 @@ type NLB struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The network load balancer (NLB) name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The list of the NLBService (names).
+	// The list of the [exoscale_nlb_service](./nlb_service.md) (names).
 	Services pulumi.StringArrayOutput `pulumi:"services"`
 	// The current NLB state.
 	State pulumi.StringOutput `pulumi:"state"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -88,11 +88,11 @@ type nlbState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The network load balancer (NLB) name.
 	Name *string `pulumi:"name"`
-	// The list of the NLBService (names).
+	// The list of the [exoscale_nlb_service](./nlb_service.md) (names).
 	Services []string `pulumi:"services"`
 	// The current NLB state.
 	State *string `pulumi:"state"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone *string `pulumi:"zone"`
 }
 
@@ -107,11 +107,11 @@ type NLBState struct {
 	Labels pulumi.StringMapInput
 	// The network load balancer (NLB) name.
 	Name pulumi.StringPtrInput
-	// The list of the NLBService (names).
+	// The list of the [exoscale_nlb_service](./nlb_service.md) (names).
 	Services pulumi.StringArrayInput
 	// The current NLB state.
 	State pulumi.StringPtrInput
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringPtrInput
 }
 
@@ -126,7 +126,7 @@ type nlbArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The network load balancer (NLB) name.
 	Name *string `pulumi:"name"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone string `pulumi:"zone"`
 }
 
@@ -138,7 +138,7 @@ type NLBArgs struct {
 	Labels pulumi.StringMapInput
 	// The network load balancer (NLB) name.
 	Name pulumi.StringPtrInput
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringInput
 }
 
@@ -254,7 +254,7 @@ func (o NLBOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NLB) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The list of the NLBService (names).
+// The list of the [exoscale_nlb_service](./nlb_service.md) (names).
 func (o NLBOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NLB) pulumi.StringArrayOutput { return v.Services }).(pulumi.StringArrayOutput)
 }
@@ -264,7 +264,7 @@ func (o NLBOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *NLB) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// The Exoscale [Zone][zone] name.
+// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o NLBOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *NLB) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

@@ -13,7 +13,7 @@ namespace Pulumiverse.Exoscale
     /// <summary>
     /// ## Import
     /// 
-    /// An existing SKS cluster may be imported by `&lt;ID&gt;@&lt;zone&gt;`console
+    /// An existing SKS cluster may be imported by `&lt;ID&gt;@&lt;zone&gt;`
     /// 
     /// ```sh
     ///  $ pulumi import exoscale:index/sKSCluster:SKSCluster \
@@ -30,13 +30,14 @@ namespace Pulumiverse.Exoscale
         public Output<ImmutableArray<string>> Addons { get; private set; } = null!;
 
         /// <summary>
-        /// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
+        /// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g.
+        /// `metrics-server`).
         /// </summary>
         [Output("aggregationCa")]
         public Output<string> AggregationCa { get; private set; } = null!;
 
         /// <summary>
-        /// Enable automatic upgrading of the control plane version (boolean; default: `false`).
+        /// Enable automatic upgrading of the control plane version.
         /// </summary>
         [Output("autoUpgrade")]
         public Output<bool?> AutoUpgrade { get; private set; } = null!;
@@ -69,7 +70,8 @@ namespace Pulumiverse.Exoscale
         public Output<string> Endpoint { get; private set; } = null!;
 
         /// <summary>
-        /// Deploy the Exoscale [Cloud Controller Manager][ccm] in the control plane (boolean; default: `true`; may only be set at creation time).
+        /// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the
+        /// control plane (boolean; default: `true`; may only be set at creation time).
         /// </summary>
         [Output("exoscaleCcm")]
         public Output<bool?> ExoscaleCcm { get; private set; } = null!;
@@ -87,7 +89,8 @@ namespace Pulumiverse.Exoscale
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Deploy the [Kubernetes Metrics Server][ms] in the control plane (boolean; default: `true`; may only be set at creation time).
+        /// Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane
+        /// (boolean; default: `true`; may only be set at creation time).
         /// </summary>
         [Output("metricsServer")]
         public Output<bool?> MetricsServer { get; private set; } = null!;
@@ -99,13 +102,14 @@ namespace Pulumiverse.Exoscale
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The list of exoscale.SKSNodepool (IDs) attached to the cluster.
+        /// The list of [exoscale_sks_nodepool](./sks_nodepool.md) (IDs) attached to the cluster.
         /// </summary>
         [Output("nodepools")]
         public Output<ImmutableArray<string>> Nodepools { get; private set; } = null!;
 
         /// <summary>
-        /// An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
+        /// An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is
+        /// documented below.
         /// </summary>
         [Output("oidc")]
         public Output<Outputs.SKSClusterOidc> Oidc { get; private set; } = null!;
@@ -123,13 +127,14 @@ namespace Pulumiverse.Exoscale
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
+        /// The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for
+        /// reference; may only be set at creation time).
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -191,7 +196,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// Enable automatic upgrading of the control plane version (boolean; default: `false`).
+        /// Enable automatic upgrading of the control plane version.
         /// </summary>
         [Input("autoUpgrade")]
         public Input<bool>? AutoUpgrade { get; set; }
@@ -206,7 +211,8 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Deploy the Exoscale [Cloud Controller Manager][ccm] in the control plane (boolean; default: `true`; may only be set at creation time).
+        /// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the
+        /// control plane (boolean; default: `true`; may only be set at creation time).
         /// </summary>
         [Input("exoscaleCcm")]
         public Input<bool>? ExoscaleCcm { get; set; }
@@ -224,7 +230,8 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// Deploy the [Kubernetes Metrics Server][ms] in the control plane (boolean; default: `true`; may only be set at creation time).
+        /// Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane
+        /// (boolean; default: `true`; may only be set at creation time).
         /// </summary>
         [Input("metricsServer")]
         public Input<bool>? MetricsServer { get; set; }
@@ -236,7 +243,8 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
+        /// An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is
+        /// documented below.
         /// </summary>
         [Input("oidc")]
         public Input<Inputs.SKSClusterOidcArgs>? Oidc { get; set; }
@@ -248,13 +256,14 @@ namespace Pulumiverse.Exoscale
         public Input<string>? ServiceLevel { get; set; }
 
         /// <summary>
-        /// The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
+        /// The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for
+        /// reference; may only be set at creation time).
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -277,13 +286,14 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
+        /// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g.
+        /// `metrics-server`).
         /// </summary>
         [Input("aggregationCa")]
         public Input<string>? AggregationCa { get; set; }
 
         /// <summary>
-        /// Enable automatic upgrading of the control plane version (boolean; default: `false`).
+        /// Enable automatic upgrading of the control plane version.
         /// </summary>
         [Input("autoUpgrade")]
         public Input<bool>? AutoUpgrade { get; set; }
@@ -316,7 +326,8 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Endpoint { get; set; }
 
         /// <summary>
-        /// Deploy the Exoscale [Cloud Controller Manager][ccm] in the control plane (boolean; default: `true`; may only be set at creation time).
+        /// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the
+        /// control plane (boolean; default: `true`; may only be set at creation time).
         /// </summary>
         [Input("exoscaleCcm")]
         public Input<bool>? ExoscaleCcm { get; set; }
@@ -340,7 +351,8 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// Deploy the [Kubernetes Metrics Server][ms] in the control plane (boolean; default: `true`; may only be set at creation time).
+        /// Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane
+        /// (boolean; default: `true`; may only be set at creation time).
         /// </summary>
         [Input("metricsServer")]
         public Input<bool>? MetricsServer { get; set; }
@@ -355,7 +367,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _nodepools;
 
         /// <summary>
-        /// The list of exoscale.SKSNodepool (IDs) attached to the cluster.
+        /// The list of [exoscale_sks_nodepool](./sks_nodepool.md) (IDs) attached to the cluster.
         /// </summary>
         public InputList<string> Nodepools
         {
@@ -364,7 +376,8 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
+        /// An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is
+        /// documented below.
         /// </summary>
         [Input("oidc")]
         public Input<Inputs.SKSClusterOidcGetArgs>? Oidc { get; set; }
@@ -382,13 +395,14 @@ namespace Pulumiverse.Exoscale
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
+        /// The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for
+        /// reference; may only be set at creation time).
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

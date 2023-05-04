@@ -15,19 +15,12 @@ namespace Pulumiverse.Exoscale.Inputs
     {
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
-
-        /// <summary>
-        /// A list of CIDR blocks to allow incoming connections from.
-        /// </summary>
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
-        /// <summary>
-        /// Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
-        /// </summary>
         [Input("redisSettings")]
         public Input<string>? RedisSettings { get; set; }
 

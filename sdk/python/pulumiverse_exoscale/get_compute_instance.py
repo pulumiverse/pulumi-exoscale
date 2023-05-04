@@ -92,6 +92,9 @@ class GetComputeInstanceResult:
     @property
     @pulumi.getter(name="antiAffinityGroupIds")
     def anti_affinity_group_ids(self) -> Optional[Sequence[str]]:
+        """
+        The list of attached exoscale*anti*affinity_group (IDs).
+        """
         return pulumi.get(self, "anti_affinity_group_ids")
 
     @property
@@ -122,13 +125,16 @@ class GetComputeInstanceResult:
     @pulumi.getter(name="elasticIpIds")
     def elastic_ip_ids(self) -> Sequence[str]:
         """
-        The list of attached ElasticIP (IDs).
+        The list of attached exoscale*elastic*ip (IDs).
         """
         return pulumi.get(self, "elastic_ip_ids")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        The compute instance ID to match (conflicts with `name`).
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -174,11 +180,17 @@ class GetComputeInstanceResult:
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        The instance name to match (conflicts with `id`).
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="privateNetworkIds")
     def private_network_ids(self) -> Sequence[str]:
+        """
+        The list of attached exoscale*private*network (IDs).
+        """
         return pulumi.get(self, "private_network_ids")
 
     @property
@@ -201,7 +213,7 @@ class GetComputeInstanceResult:
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Sequence[str]:
         """
-        The list of attached SecurityGroup (IDs).
+        The list of attached exoscale*security*group (IDs).
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -209,7 +221,7 @@ class GetComputeInstanceResult:
     @pulumi.getter(name="sshKey")
     def ssh_key(self) -> str:
         """
-        The SSHKey (name) authorized on the instance.
+        The exoscale*ssh*key (name) authorized on the instance.
         """
         return pulumi.get(self, "ssh_key")
 
@@ -225,7 +237,7 @@ class GetComputeInstanceResult:
     @pulumi.getter(name="templateId")
     def template_id(self) -> str:
         """
-        The instance_get_compute_template_ID.
+        The instance exoscale*compute*template ID.
         """
         return pulumi.get(self, "template_id")
 
@@ -241,13 +253,16 @@ class GetComputeInstanceResult:
     @pulumi.getter(name="userData")
     def user_data(self) -> str:
         """
-        The instance [cloud-init][cloud-init] configuration.
+        The instance [cloud-init](http://cloudinit.readthedocs.io/en/latest/) configuration.
         """
         return pulumi.get(self, "user_data")
 
     @property
     @pulumi.getter
     def zone(self) -> str:
+        """
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        """
         return pulumi.get(self, "zone")
 
 
@@ -290,10 +305,11 @@ def get_compute_instance(anti_affinity_group_ids: Optional[Sequence[str]] = None
     """
     Use this data source to access information about an existing resource.
 
+    :param Sequence[str] anti_affinity_group_ids: The list of attached exoscale*anti*affinity_group (IDs).
     :param str id: The compute instance ID to match (conflicts with `name`).
     :param Mapping[str, str] labels: A map of key/value labels.
     :param str name: The instance name to match (conflicts with `id`).
-    :param str zone: The Exoscale [Zone][zone] name.
+    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     __args__ = dict()
     __args__['antiAffinityGroupIds'] = anti_affinity_group_ids
@@ -339,9 +355,10 @@ def get_compute_instance_output(anti_affinity_group_ids: Optional[pulumi.Input[O
     """
     Use this data source to access information about an existing resource.
 
+    :param Sequence[str] anti_affinity_group_ids: The list of attached exoscale*anti*affinity_group (IDs).
     :param str id: The compute instance ID to match (conflicts with `name`).
     :param Mapping[str, str] labels: A map of key/value labels.
     :param str name: The instance name to match (conflicts with `id`).
-    :param str zone: The Exoscale [Zone][zone] name.
+    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     ...

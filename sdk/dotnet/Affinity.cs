@@ -11,7 +11,7 @@ using Pulumi;
 namespace Pulumiverse.Exoscale
 {
     /// <summary>
-    /// !&gt; **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use exoscale.AntiAffinityGroup instead.
+    /// **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use exoscale.AntiAffinityGroup instead.
     /// </summary>
     [ExoscaleResourceType("exoscale:index/affinity:Affinity")]
     public partial class Affinity : global::Pulumi.CustomResource

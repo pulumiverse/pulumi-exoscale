@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * An existing SKS cluster may be imported by `<ID>@<zone>`console
+ * An existing SKS cluster may be imported by `<ID>@<zone>`
  *
  * ```sh
  *  $ pulumi import exoscale:index/sKSCluster:SKSCluster \
@@ -52,11 +52,12 @@ export class SKSCluster extends pulumi.CustomResource {
      */
     public readonly addons!: pulumi.Output<string[]>;
     /**
-     * The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
+     * The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g.
+     * `metrics-server`).
      */
     public /*out*/ readonly aggregationCa!: pulumi.Output<string>;
     /**
-     * Enable automatic upgrading of the control plane version (boolean; default: `false`).
+     * Enable automatic upgrading of the control plane version.
      */
     public readonly autoUpgrade!: pulumi.Output<boolean | undefined>;
     public readonly cni!: pulumi.Output<string | undefined>;
@@ -77,7 +78,8 @@ export class SKSCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly endpoint!: pulumi.Output<string>;
     /**
-     * Deploy the Exoscale [Cloud Controller Manager][ccm] in the control plane (boolean; default: `true`; may only be set at creation time).
+     * Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the
+     * control plane (boolean; default: `true`; may only be set at creation time).
      */
     public readonly exoscaleCcm!: pulumi.Output<boolean | undefined>;
     /**
@@ -89,7 +91,8 @@ export class SKSCluster extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Deploy the [Kubernetes Metrics Server][ms] in the control plane (boolean; default: `true`; may only be set at creation time).
+     * Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane
+     * (boolean; default: `true`; may only be set at creation time).
      */
     public readonly metricsServer!: pulumi.Output<boolean | undefined>;
     /**
@@ -97,11 +100,12 @@ export class SKSCluster extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The list of exoscale.SKSNodepool (IDs) attached to the cluster.
+     * The list of [exoscale_sks_nodepool](./sks_nodepool.md) (IDs) attached to the cluster.
      */
     public /*out*/ readonly nodepools!: pulumi.Output<string[]>;
     /**
-     * An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
+     * An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is
+     * documented below.
      */
     public readonly oidc!: pulumi.Output<outputs.SKSClusterOidc>;
     /**
@@ -113,11 +117,12 @@ export class SKSCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
+     * The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for
+     * reference; may only be set at creation time).
      */
     public readonly version!: pulumi.Output<string>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -192,11 +197,12 @@ export interface SKSClusterState {
      */
     addons?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
+     * The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g.
+     * `metrics-server`).
      */
     aggregationCa?: pulumi.Input<string>;
     /**
-     * Enable automatic upgrading of the control plane version (boolean; default: `false`).
+     * Enable automatic upgrading of the control plane version.
      */
     autoUpgrade?: pulumi.Input<boolean>;
     cni?: pulumi.Input<string>;
@@ -217,7 +223,8 @@ export interface SKSClusterState {
      */
     endpoint?: pulumi.Input<string>;
     /**
-     * Deploy the Exoscale [Cloud Controller Manager][ccm] in the control plane (boolean; default: `true`; may only be set at creation time).
+     * Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the
+     * control plane (boolean; default: `true`; may only be set at creation time).
      */
     exoscaleCcm?: pulumi.Input<boolean>;
     /**
@@ -229,7 +236,8 @@ export interface SKSClusterState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Deploy the [Kubernetes Metrics Server][ms] in the control plane (boolean; default: `true`; may only be set at creation time).
+     * Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane
+     * (boolean; default: `true`; may only be set at creation time).
      */
     metricsServer?: pulumi.Input<boolean>;
     /**
@@ -237,11 +245,12 @@ export interface SKSClusterState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The list of exoscale.SKSNodepool (IDs) attached to the cluster.
+     * The list of [exoscale_sks_nodepool](./sks_nodepool.md) (IDs) attached to the cluster.
      */
     nodepools?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
+     * An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is
+     * documented below.
      */
     oidc?: pulumi.Input<inputs.SKSClusterOidc>;
     /**
@@ -253,11 +262,12 @@ export interface SKSClusterState {
      */
     state?: pulumi.Input<string>;
     /**
-     * The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
+     * The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for
+     * reference; may only be set at creation time).
      */
     version?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone?: pulumi.Input<string>;
 }
@@ -271,7 +281,7 @@ export interface SKSClusterArgs {
      */
     addons?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Enable automatic upgrading of the control plane version (boolean; default: `false`).
+     * Enable automatic upgrading of the control plane version.
      */
     autoUpgrade?: pulumi.Input<boolean>;
     cni?: pulumi.Input<string>;
@@ -280,7 +290,8 @@ export interface SKSClusterArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Deploy the Exoscale [Cloud Controller Manager][ccm] in the control plane (boolean; default: `true`; may only be set at creation time).
+     * Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the
+     * control plane (boolean; default: `true`; may only be set at creation time).
      */
     exoscaleCcm?: pulumi.Input<boolean>;
     /**
@@ -288,7 +299,8 @@ export interface SKSClusterArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Deploy the [Kubernetes Metrics Server][ms] in the control plane (boolean; default: `true`; may only be set at creation time).
+     * Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane
+     * (boolean; default: `true`; may only be set at creation time).
      */
     metricsServer?: pulumi.Input<boolean>;
     /**
@@ -296,7 +308,8 @@ export interface SKSClusterArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
+     * An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is
+     * documented below.
      */
     oidc?: pulumi.Input<inputs.SKSClusterOidc>;
     /**
@@ -304,11 +317,12 @@ export interface SKSClusterArgs {
      */
     serviceLevel?: pulumi.Input<string>;
     /**
-     * The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
+     * The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for
+     * reference; may only be set at creation time).
      */
     version?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: pulumi.Input<string>;
 }

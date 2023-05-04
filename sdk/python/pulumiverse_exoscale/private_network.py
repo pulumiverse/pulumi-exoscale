@@ -22,11 +22,12 @@ class PrivateNetworkArgs:
                  start_ip: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PrivateNetwork resource.
-        :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
+        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         :param pulumi.Input[str] description: A free-form text describing the network.
+        :param pulumi.Input[str] end_ip: (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
         :param pulumi.Input[str] name: The private network name.
-        :param pulumi.Input[str] netmask: The network mask defining the IPv4 network allowed for static leases.
-        :param pulumi.Input[str] start_ip: /`end_ip` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        :param pulumi.Input[str] netmask: (For managed Privnets) The network mask defining the IPv4 network allowed for static leases.
+        :param pulumi.Input[str] start_ip: (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
         """
         pulumi.set(__self__, "zone", zone)
         if description is not None:
@@ -44,7 +45,7 @@ class PrivateNetworkArgs:
     @pulumi.getter
     def zone(self) -> pulumi.Input[str]:
         """
-        The Exoscale [Zone][zone] name.
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 
@@ -67,6 +68,9 @@ class PrivateNetworkArgs:
     @property
     @pulumi.getter(name="endIp")
     def end_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        """
         return pulumi.get(self, "end_ip")
 
     @end_ip.setter
@@ -89,7 +93,7 @@ class PrivateNetworkArgs:
     @pulumi.getter
     def netmask(self) -> Optional[pulumi.Input[str]]:
         """
-        The network mask defining the IPv4 network allowed for static leases.
+        (For managed Privnets) The network mask defining the IPv4 network allowed for static leases.
         """
         return pulumi.get(self, "netmask")
 
@@ -101,7 +105,7 @@ class PrivateNetworkArgs:
     @pulumi.getter(name="startIp")
     def start_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        /`end_ip` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
         """
         return pulumi.get(self, "start_ip")
 
@@ -122,10 +126,11 @@ class _PrivateNetworkState:
         """
         Input properties used for looking up and filtering PrivateNetwork resources.
         :param pulumi.Input[str] description: A free-form text describing the network.
+        :param pulumi.Input[str] end_ip: (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
         :param pulumi.Input[str] name: The private network name.
-        :param pulumi.Input[str] netmask: The network mask defining the IPv4 network allowed for static leases.
-        :param pulumi.Input[str] start_ip: /`end_ip` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
-        :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
+        :param pulumi.Input[str] netmask: (For managed Privnets) The network mask defining the IPv4 network allowed for static leases.
+        :param pulumi.Input[str] start_ip: (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -155,6 +160,9 @@ class _PrivateNetworkState:
     @property
     @pulumi.getter(name="endIp")
     def end_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        """
         return pulumi.get(self, "end_ip")
 
     @end_ip.setter
@@ -177,7 +185,7 @@ class _PrivateNetworkState:
     @pulumi.getter
     def netmask(self) -> Optional[pulumi.Input[str]]:
         """
-        The network mask defining the IPv4 network allowed for static leases.
+        (For managed Privnets) The network mask defining the IPv4 network allowed for static leases.
         """
         return pulumi.get(self, "netmask")
 
@@ -189,7 +197,7 @@ class _PrivateNetworkState:
     @pulumi.getter(name="startIp")
     def start_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        /`end_ip` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
         """
         return pulumi.get(self, "start_ip")
 
@@ -201,7 +209,7 @@ class _PrivateNetworkState:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The Exoscale [Zone][zone] name.
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 
@@ -225,7 +233,7 @@ class PrivateNetwork(pulumi.CustomResource):
         """
         ## Import
 
-        An existing private network may be imported by `<ID>@<zone>`console
+        An existing private network may be imported by `<ID>@<zone>`
 
         ```sh
          $ pulumi import exoscale:index/privateNetwork:PrivateNetwork \\
@@ -238,10 +246,11 @@ class PrivateNetwork(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free-form text describing the network.
+        :param pulumi.Input[str] end_ip: (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
         :param pulumi.Input[str] name: The private network name.
-        :param pulumi.Input[str] netmask: The network mask defining the IPv4 network allowed for static leases.
-        :param pulumi.Input[str] start_ip: /`end_ip` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
-        :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
+        :param pulumi.Input[str] netmask: (For managed Privnets) The network mask defining the IPv4 network allowed for static leases.
+        :param pulumi.Input[str] start_ip: (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         ...
     @overload
@@ -252,7 +261,7 @@ class PrivateNetwork(pulumi.CustomResource):
         """
         ## Import
 
-        An existing private network may be imported by `<ID>@<zone>`console
+        An existing private network may be imported by `<ID>@<zone>`
 
         ```sh
          $ pulumi import exoscale:index/privateNetwork:PrivateNetwork \\
@@ -324,10 +333,11 @@ class PrivateNetwork(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free-form text describing the network.
+        :param pulumi.Input[str] end_ip: (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
         :param pulumi.Input[str] name: The private network name.
-        :param pulumi.Input[str] netmask: The network mask defining the IPv4 network allowed for static leases.
-        :param pulumi.Input[str] start_ip: /`end_ip` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
-        :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
+        :param pulumi.Input[str] netmask: (For managed Privnets) The network mask defining the IPv4 network allowed for static leases.
+        :param pulumi.Input[str] start_ip: (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -352,6 +362,9 @@ class PrivateNetwork(pulumi.CustomResource):
     @property
     @pulumi.getter(name="endIp")
     def end_ip(self) -> pulumi.Output[Optional[str]]:
+        """
+        (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        """
         return pulumi.get(self, "end_ip")
 
     @property
@@ -366,7 +379,7 @@ class PrivateNetwork(pulumi.CustomResource):
     @pulumi.getter
     def netmask(self) -> pulumi.Output[Optional[str]]:
         """
-        The network mask defining the IPv4 network allowed for static leases.
+        (For managed Privnets) The network mask defining the IPv4 network allowed for static leases.
         """
         return pulumi.get(self, "netmask")
 
@@ -374,7 +387,7 @@ class PrivateNetwork(pulumi.CustomResource):
     @pulumi.getter(name="startIp")
     def start_ip(self) -> pulumi.Output[Optional[str]]:
         """
-        /`end_ip` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
         """
         return pulumi.get(self, "start_ip")
 
@@ -382,7 +395,7 @@ class PrivateNetwork(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         """
-        The Exoscale [Zone][zone] name.
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 

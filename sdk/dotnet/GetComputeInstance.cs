@@ -24,6 +24,10 @@ namespace Pulumiverse.Exoscale
     {
         [Input("antiAffinityGroupIds")]
         private List<string>? _antiAffinityGroupIds;
+
+        /// <summary>
+        /// The list of attached exoscale*anti*affinity_group (IDs).
+        /// </summary>
         public List<string> AntiAffinityGroupIds
         {
             get => _antiAffinityGroupIds ?? (_antiAffinityGroupIds = new List<string>());
@@ -55,7 +59,7 @@ namespace Pulumiverse.Exoscale
         public string? Name { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone", required: true)]
         public string Zone { get; set; } = null!;
@@ -70,6 +74,10 @@ namespace Pulumiverse.Exoscale
     {
         [Input("antiAffinityGroupIds")]
         private InputList<string>? _antiAffinityGroupIds;
+
+        /// <summary>
+        /// The list of attached exoscale*anti*affinity_group (IDs).
+        /// </summary>
         public InputList<string> AntiAffinityGroupIds
         {
             get => _antiAffinityGroupIds ?? (_antiAffinityGroupIds = new InputList<string>());
@@ -101,7 +109,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -116,6 +124,9 @@ namespace Pulumiverse.Exoscale
     [OutputType]
     public sealed class GetComputeInstanceResult
     {
+        /// <summary>
+        /// The list of attached exoscale*anti*affinity_group (IDs).
+        /// </summary>
         public readonly ImmutableArray<string> AntiAffinityGroupIds;
         /// <summary>
         /// The compute instance creation date.
@@ -130,9 +141,12 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly int DiskSize;
         /// <summary>
-        /// The list of attached exoscale.ElasticIP (IDs).
+        /// The list of attached exoscale*elastic*ip (IDs).
         /// </summary>
         public readonly ImmutableArray<string> ElasticIpIds;
+        /// <summary>
+        /// The compute instance ID to match (conflicts with `name`).
+        /// </summary>
         public readonly string? Id;
         /// <summary>
         /// Whether IPv6 is enabled on the instance.
@@ -154,7 +168,13 @@ namespace Pulumiverse.Exoscale
         /// The instance manager type (instance pool, SKS node pool, etc.), if any.
         /// </summary>
         public readonly string ManagerType;
+        /// <summary>
+        /// The instance name to match (conflicts with `id`).
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// The list of attached exoscale*private*network (IDs).
+        /// </summary>
         public readonly ImmutableArray<string> PrivateNetworkIds;
         /// <summary>
         /// The instance (main network interface) IPv4 address.
@@ -165,11 +185,11 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly string ReverseDns;
         /// <summary>
-        /// The list of attached exoscale.SecurityGroup (IDs).
+        /// The list of attached exoscale*security*group (IDs).
         /// </summary>
         public readonly ImmutableArray<string> SecurityGroupIds;
         /// <summary>
-        /// The exoscale.SSHKey (name) authorized on the instance.
+        /// The exoscale*ssh*key (name) authorized on the instance.
         /// </summary>
         public readonly string SshKey;
         /// <summary>
@@ -177,7 +197,7 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// The instance exoscale.getComputeTemplate ID.
+        /// The instance exoscale*compute*template ID.
         /// </summary>
         public readonly string TemplateId;
         /// <summary>
@@ -185,9 +205,12 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The instance [cloud-init][cloud-init] configuration.
+        /// The instance [cloud-init](http://cloudinit.readthedocs.io/en/latest/) configuration.
         /// </summary>
         public readonly string UserData;
+        /// <summary>
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// </summary>
         public readonly string Zone;
 
         [OutputConstructor]

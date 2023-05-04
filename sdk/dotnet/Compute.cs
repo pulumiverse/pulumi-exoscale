@@ -12,6 +12,8 @@ namespace Pulumiverse.Exoscale
 {
     /// <summary>
     /// !&gt; **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use exoscale.ComputeInstance instead.
+    /// 
+    /// Manage Exoscale Compute Instances.
     /// </summary>
     [ExoscaleResourceType("exoscale:index/compute:Compute")]
     public partial class Compute : global::Pulumi.CustomResource
@@ -35,7 +37,10 @@ namespace Pulumiverse.Exoscale
         public Output<int> DiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen ("-") characters; it can be changed to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically.
+        /// The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'
+        /// *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed
+        /// to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will
+        /// be generated automatically.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -44,19 +49,21 @@ namespace Pulumiverse.Exoscale
         public Output<string> Gateway { get; private set; } = null!;
 
         /// <summary>
-        /// The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.
+        /// The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or
+        /// `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value
+        /// requires to reboot the instance.
         /// </summary>
         [Output("hostname")]
         public Output<string> Hostname { get; private set; } = null!;
 
         /// <summary>
-        /// Enable IPv4 on the instance (only supported value is `true`).
+        /// Request an IPv4 address on the default NIC
         /// </summary>
         [Output("ip4")]
         public Output<bool?> Ip4 { get; private set; } = null!;
 
         /// <summary>
-        /// Enable IPv6 on the instance (boolean; default: `false`).
+        /// Request an IPv6 address on the default NIC
         /// </summary>
         [Output("ip6")]
         public Output<bool?> Ip6 { get; private set; } = null!;
@@ -83,13 +90,14 @@ namespace Pulumiverse.Exoscale
         public Output<string?> KeyPair { get; private set; } = null!;
 
         /// <summary>
-        /// The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).
+        /// The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,
+        /// `pt`, `uk`, `us`; at creation time only).
         /// </summary>
         [Output("keyboard")]
         public Output<string?> Keyboard { get; private set; } = null!;
 
         /// <summary>
-        /// (Deprecated) The instance hostname. Please use the `hostname` argument instead.
+        /// The instance hostname. Please use the `hostname` argument instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -131,19 +139,20 @@ namespace Pulumiverse.Exoscale
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// A map of tags (key/value). To remove all tags, set `tags = {}`.
+        /// Map of tags (key/value). To remove all tags, set `tags = {}`.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `template_id` attribute instead.
+        /// The compute instance template (name). Only *featured* templates are available, if you want to reference *custom
+        /// templates* use the `template_id` attribute instead.
         /// </summary>
         [Output("template")]
         public Output<string> Template { get; private set; } = null!;
 
         /// <summary>
-        /// The compute instance template (ID). Usage of the `exoscale.getComputeTemplate` data source is recommended.
+        /// The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.
         /// </summary>
         [Output("templateId")]
         public Output<string> TemplateId { get; private set; } = null!;
@@ -161,7 +170,8 @@ namespace Pulumiverse.Exoscale
         public Output<bool> UserDataBase64 { get; private set; } = null!;
 
         /// <summary>
-        /// The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the `exoscale.getComputeTemplate` data source `username` attribute instead.
+        /// The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the
+        /// `exoscale_compute_template` data source `username` attribute instead.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -254,25 +264,30 @@ namespace Pulumiverse.Exoscale
         public Input<int> DiskSize { get; set; } = null!;
 
         /// <summary>
-        /// The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen ("-") characters; it can be changed to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically.
+        /// The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'
+        /// *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed
+        /// to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will
+        /// be generated automatically.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.
+        /// The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or
+        /// `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value
+        /// requires to reboot the instance.
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// Enable IPv4 on the instance (only supported value is `true`).
+        /// Request an IPv4 address on the default NIC
         /// </summary>
         [Input("ip4")]
         public Input<bool>? Ip4 { get; set; }
 
         /// <summary>
-        /// Enable IPv6 on the instance (boolean; default: `false`).
+        /// Request an IPv6 address on the default NIC
         /// </summary>
         [Input("ip6")]
         public Input<bool>? Ip6 { get; set; }
@@ -284,7 +299,8 @@ namespace Pulumiverse.Exoscale
         public Input<string>? KeyPair { get; set; }
 
         /// <summary>
-        /// The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).
+        /// The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,
+        /// `pt`, `uk`, `us`; at creation time only).
         /// </summary>
         [Input("keyboard")]
         public Input<string>? Keyboard { get; set; }
@@ -335,7 +351,7 @@ namespace Pulumiverse.Exoscale
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A map of tags (key/value). To remove all tags, set `tags = {}`.
+        /// Map of tags (key/value). To remove all tags, set `tags = {}`.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -344,13 +360,14 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `template_id` attribute instead.
+        /// The compute instance template (name). Only *featured* templates are available, if you want to reference *custom
+        /// templates* use the `template_id` attribute instead.
         /// </summary>
         [Input("template")]
         public Input<string>? Template { get; set; }
 
         /// <summary>
-        /// The compute instance template (ID). Usage of the `exoscale.getComputeTemplate` data source is recommended.
+        /// The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.
         /// </summary>
         [Input("templateId")]
         public Input<string>? TemplateId { get; set; }
@@ -406,7 +423,10 @@ namespace Pulumiverse.Exoscale
         public Input<int>? DiskSize { get; set; }
 
         /// <summary>
-        /// The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen ("-") characters; it can be changed to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically.
+        /// The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'
+        /// *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed
+        /// to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will
+        /// be generated automatically.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -415,19 +435,21 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Gateway { get; set; }
 
         /// <summary>
-        /// The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.
+        /// The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or
+        /// `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value
+        /// requires to reboot the instance.
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// Enable IPv4 on the instance (only supported value is `true`).
+        /// Request an IPv4 address on the default NIC
         /// </summary>
         [Input("ip4")]
         public Input<bool>? Ip4 { get; set; }
 
         /// <summary>
-        /// Enable IPv6 on the instance (boolean; default: `false`).
+        /// Request an IPv6 address on the default NIC
         /// </summary>
         [Input("ip6")]
         public Input<bool>? Ip6 { get; set; }
@@ -454,13 +476,14 @@ namespace Pulumiverse.Exoscale
         public Input<string>? KeyPair { get; set; }
 
         /// <summary>
-        /// The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).
+        /// The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,
+        /// `pt`, `uk`, `us`; at creation time only).
         /// </summary>
         [Input("keyboard")]
         public Input<string>? Keyboard { get; set; }
 
         /// <summary>
-        /// (Deprecated) The instance hostname. Please use the `hostname` argument instead.
+        /// The instance hostname. Please use the `hostname` argument instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -527,7 +550,7 @@ namespace Pulumiverse.Exoscale
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A map of tags (key/value). To remove all tags, set `tags = {}`.
+        /// Map of tags (key/value). To remove all tags, set `tags = {}`.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -536,13 +559,14 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `template_id` attribute instead.
+        /// The compute instance template (name). Only *featured* templates are available, if you want to reference *custom
+        /// templates* use the `template_id` attribute instead.
         /// </summary>
         [Input("template")]
         public Input<string>? Template { get; set; }
 
         /// <summary>
-        /// The compute instance template (ID). Usage of the `exoscale.getComputeTemplate` data source is recommended.
+        /// The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.
         /// </summary>
         [Input("templateId")]
         public Input<string>? TemplateId { get; set; }
@@ -560,7 +584,8 @@ namespace Pulumiverse.Exoscale
         public Input<bool>? UserDataBase64 { get; set; }
 
         /// <summary>
-        /// The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the `exoscale.getComputeTemplate` data source `username` attribute instead.
+        /// The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the
+        /// `exoscale_compute_template` data source `username` attribute instead.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

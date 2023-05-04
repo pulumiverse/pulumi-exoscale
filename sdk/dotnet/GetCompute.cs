@@ -95,50 +95,59 @@ namespace Pulumiverse.Exoscale
     public sealed class GetComputeResult
     {
         /// <summary>
-        /// The compute instance number of CPUs.
+        /// Number of cpu the Compute instance is running with
         /// </summary>
         public readonly int Cpu;
         /// <summary>
-        /// The instance creation date.
+        /// Date when the Compute instance was created
         /// </summary>
         public readonly string Created;
         /// <summary>
-        /// The instance disk size (GiB).
+        /// Size of the Compute instance disk
         /// </summary>
         public readonly int DiskSize;
+        /// <summary>
+        /// The instance hostname to match.
+        /// </summary>
         public readonly string? Hostname;
+        /// <summary>
+        /// The compute instance ID to match.
+        /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// The instance (main network interface) IPv6 address (if enabled).
+        /// Compute instance public ipv6 address (if ipv6 is enabled)
         /// </summary>
         public readonly string Ip6Address;
         /// <summary>
-        /// The instance (main network interface) IPv4 address.
+        /// Compute instance public ipv4 address
         /// </summary>
         public readonly string IpAddress;
         /// <summary>
-        /// The instance allocated memory.
+        /// Memory allocated for the Compute instance
         /// </summary>
         public readonly int Memory;
         /// <summary>
-        /// List of compute private IPv4 addresses (in *managed* private networks only).
+        /// List of Compute instance private IP addresses (in managed Private Networks only)
         /// </summary>
         public readonly ImmutableArray<string> PrivateNetworkIpAddresses;
         /// <summary>
-        /// The instance size.
+        /// Current size of the Compute instance
         /// </summary>
         public readonly string Size;
         /// <summary>
-        /// The current instance state.
+        /// State of the Compute instance
         /// </summary>
         public readonly string State;
+        /// <summary>
+        /// The instance tags to match (map of key/value).
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
-        /// The instance template.
+        /// Name of the template for the Compute instance
         /// </summary>
         public readonly string Template;
         /// <summary>
-        /// Exoscale Zone name.
+        /// Name of the availability zone for the Compute instance
         /// </summary>
         public readonly string Zone;
 

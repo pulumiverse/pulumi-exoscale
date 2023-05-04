@@ -19,7 +19,7 @@ export function getInstancePoolList(args: GetInstancePoolListArgs, opts?: pulumi
  */
 export interface GetInstancePoolListArgs {
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: string;
 }
@@ -33,9 +33,12 @@ export interface GetInstancePoolListResult {
      */
     readonly id: string;
     /**
-     * The list of exoscale_instance_pool.
+     * The list of exoscale*instance*pool.
      */
     readonly pools: outputs.GetInstancePoolListPool[];
+    /**
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     */
     readonly zone: string;
 }
 export function getInstancePoolListOutput(args: GetInstancePoolListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancePoolListResult> {
@@ -47,7 +50,7 @@ export function getInstancePoolListOutput(args: GetInstancePoolListOutputArgs, o
  */
 export interface GetInstancePoolListOutputArgs {
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: pulumi.Input<string>;
 }

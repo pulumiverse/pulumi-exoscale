@@ -37,11 +37,16 @@ type GetComputeIPAddressArgs struct {
 
 // A collection of values returned by getComputeIPAddress.
 type GetComputeIPAddressResult struct {
-	Description *string           `pulumi:"description"`
-	Id          *string           `pulumi:"id"`
-	IpAddress   *string           `pulumi:"ipAddress"`
-	Tags        map[string]string `pulumi:"tags"`
-	Zone        string            `pulumi:"zone"`
+	// The EIP description to match.
+	Description *string `pulumi:"description"`
+	// The Elastic IP (EIP) ID to match.
+	Id *string `pulumi:"id"`
+	// The EIP IPv4 address to match.
+	IpAddress *string `pulumi:"ipAddress"`
+	// The EIP tags to match.
+	Tags map[string]string `pulumi:"tags"`
+	// The Exoscale Zone name.
+	Zone string `pulumi:"zone"`
 }
 
 func GetComputeIPAddressOutput(ctx *pulumi.Context, args GetComputeIPAddressOutputArgs, opts ...pulumi.InvokeOption) GetComputeIPAddressResultOutput {
@@ -90,22 +95,27 @@ func (o GetComputeIPAddressResultOutput) ToGetComputeIPAddressResultOutputWithCo
 	return o
 }
 
+// The EIP description to match.
 func (o GetComputeIPAddressResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetComputeIPAddressResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The Elastic IP (EIP) ID to match.
 func (o GetComputeIPAddressResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetComputeIPAddressResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The EIP IPv4 address to match.
 func (o GetComputeIPAddressResultOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetComputeIPAddressResult) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
+// The EIP tags to match.
 func (o GetComputeIPAddressResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetComputeIPAddressResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The Exoscale Zone name.
 func (o GetComputeIPAddressResultOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeIPAddressResult) string { return v.Zone }).(pulumi.StringOutput)
 }

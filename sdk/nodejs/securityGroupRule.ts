@@ -5,28 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Manage Exoscale [Security Group](https://community.exoscale.com/documentation/compute/security-groups/) Rules.
- *
- * ## Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as exoscale from "@pulumiverse/exoscale";
- *
- * const mySecurityGroup = new exoscale.SecurityGroup("mySecurityGroup", {});
- * const mySecurityGroupRule = new exoscale.SecurityGroupRule("mySecurityGroupRule", {
- *     securityGroupId: mySecurityGroup.id,
- *     type: "INGRESS",
- *     protocol: "TCP",
- *     cidr: "0.0.0.0/0",
- *     startPort: 80,
- *     endPort: 80,
- * });
- * ```
- *
  * ## Import
  *
- * An existing security group rule may be imported by `<security-group-ID>/<security-group-rule-ID>`console
+ * An existing security group rule may be imported by `<security-group-ID>/<security-group-rule-ID>`
  *
  * ```sh
  *  $ pulumi import exoscale:index/securityGroupRule:SecurityGroupRule \
@@ -65,17 +46,25 @@ export class SecurityGroupRule extends pulumi.CustomResource {
     }
 
     /**
-     * An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation][cidr]) to match (conflicts with `userSecurityGroup`/`userSecurityGroupId`).
+     * An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR
+     * notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with
+     * `user_security_group`/`user_security_group_id`).
      */
     public readonly cidr!: pulumi.Output<string | undefined>;
     /**
      * A free-form text describing the security group rule.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * A `TCP`/`UDP` port range to match.
+     */
     public readonly endPort!: pulumi.Output<number | undefined>;
+    /**
+     * An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
+     */
     public readonly icmpCode!: pulumi.Output<number | undefined>;
     /**
-     * /`icmpCode` - An ICMP/ICMPv6 [type/code][icmp] to match.
+     * An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
      */
     public readonly icmpType!: pulumi.Output<number | undefined>;
     /**
@@ -83,15 +72,18 @@ export class SecurityGroupRule extends pulumi.CustomResource {
      */
     public readonly protocol!: pulumi.Output<string | undefined>;
     /**
-     * The parent security group name. Please use the `securityGroupId` argument along the exoscale.SecurityGroup data source instead.
+     * The parent security group name. Please use the `security_group_id` argument along the
+     * [exoscale_security_group](../data-sources/security_group.md) data source instead.
+     *
+     * @deprecated Deprecated in favor of `security_group_id`
      */
     public readonly securityGroup!: pulumi.Output<string>;
     /**
-     * The parent exoscale.SecurityGroup ID.
+     * The parent [exoscale_security_group](./security_group.md) ID.
      */
     public readonly securityGroupId!: pulumi.Output<string>;
     /**
-     * /`endPort` - A `TCP`/`UDP` port range to match.
+     * A `TCP`/`UDP` port range to match.
      */
     public readonly startPort!: pulumi.Output<number | undefined>;
     /**
@@ -99,11 +91,16 @@ export class SecurityGroupRule extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`userSecurityGroupId`). Please use the `userSecurityGroupId` argument along the exoscale.SecurityGroup data source instead.
+     * An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with
+     * `cidr`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
+     * [exoscale_security_group](../data-sources/security_group.md) data source instead.
+     *
+     * @deprecated Deprecated in favor of `user_security_group_id`
      */
     public readonly userSecurityGroup!: pulumi.Output<string>;
     /**
-     * An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with `cidr`/`user_security_group)`).
+     * An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with
+     * `cidr`/`user_security_group)`).
      */
     public readonly userSecurityGroupId!: pulumi.Output<string | undefined>;
 
@@ -160,17 +157,25 @@ export class SecurityGroupRule extends pulumi.CustomResource {
  */
 export interface SecurityGroupRuleState {
     /**
-     * An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation][cidr]) to match (conflicts with `userSecurityGroup`/`userSecurityGroupId`).
+     * An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR
+     * notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with
+     * `user_security_group`/`user_security_group_id`).
      */
     cidr?: pulumi.Input<string>;
     /**
      * A free-form text describing the security group rule.
      */
     description?: pulumi.Input<string>;
+    /**
+     * A `TCP`/`UDP` port range to match.
+     */
     endPort?: pulumi.Input<number>;
+    /**
+     * An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
+     */
     icmpCode?: pulumi.Input<number>;
     /**
-     * /`icmpCode` - An ICMP/ICMPv6 [type/code][icmp] to match.
+     * An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
      */
     icmpType?: pulumi.Input<number>;
     /**
@@ -178,15 +183,18 @@ export interface SecurityGroupRuleState {
      */
     protocol?: pulumi.Input<string>;
     /**
-     * The parent security group name. Please use the `securityGroupId` argument along the exoscale.SecurityGroup data source instead.
+     * The parent security group name. Please use the `security_group_id` argument along the
+     * [exoscale_security_group](../data-sources/security_group.md) data source instead.
+     *
+     * @deprecated Deprecated in favor of `security_group_id`
      */
     securityGroup?: pulumi.Input<string>;
     /**
-     * The parent exoscale.SecurityGroup ID.
+     * The parent [exoscale_security_group](./security_group.md) ID.
      */
     securityGroupId?: pulumi.Input<string>;
     /**
-     * /`endPort` - A `TCP`/`UDP` port range to match.
+     * A `TCP`/`UDP` port range to match.
      */
     startPort?: pulumi.Input<number>;
     /**
@@ -194,11 +202,16 @@ export interface SecurityGroupRuleState {
      */
     type?: pulumi.Input<string>;
     /**
-     * An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`userSecurityGroupId`). Please use the `userSecurityGroupId` argument along the exoscale.SecurityGroup data source instead.
+     * An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with
+     * `cidr`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
+     * [exoscale_security_group](../data-sources/security_group.md) data source instead.
+     *
+     * @deprecated Deprecated in favor of `user_security_group_id`
      */
     userSecurityGroup?: pulumi.Input<string>;
     /**
-     * An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with `cidr`/`user_security_group)`).
+     * An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with
+     * `cidr`/`user_security_group)`).
      */
     userSecurityGroupId?: pulumi.Input<string>;
 }
@@ -208,17 +221,25 @@ export interface SecurityGroupRuleState {
  */
 export interface SecurityGroupRuleArgs {
     /**
-     * An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation][cidr]) to match (conflicts with `userSecurityGroup`/`userSecurityGroupId`).
+     * An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR
+     * notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with
+     * `user_security_group`/`user_security_group_id`).
      */
     cidr?: pulumi.Input<string>;
     /**
      * A free-form text describing the security group rule.
      */
     description?: pulumi.Input<string>;
+    /**
+     * A `TCP`/`UDP` port range to match.
+     */
     endPort?: pulumi.Input<number>;
+    /**
+     * An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
+     */
     icmpCode?: pulumi.Input<number>;
     /**
-     * /`icmpCode` - An ICMP/ICMPv6 [type/code][icmp] to match.
+     * An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
      */
     icmpType?: pulumi.Input<number>;
     /**
@@ -226,15 +247,18 @@ export interface SecurityGroupRuleArgs {
      */
     protocol?: pulumi.Input<string>;
     /**
-     * The parent security group name. Please use the `securityGroupId` argument along the exoscale.SecurityGroup data source instead.
+     * The parent security group name. Please use the `security_group_id` argument along the
+     * [exoscale_security_group](../data-sources/security_group.md) data source instead.
+     *
+     * @deprecated Deprecated in favor of `security_group_id`
      */
     securityGroup?: pulumi.Input<string>;
     /**
-     * The parent exoscale.SecurityGroup ID.
+     * The parent [exoscale_security_group](./security_group.md) ID.
      */
     securityGroupId?: pulumi.Input<string>;
     /**
-     * /`endPort` - A `TCP`/`UDP` port range to match.
+     * A `TCP`/`UDP` port range to match.
      */
     startPort?: pulumi.Input<number>;
     /**
@@ -242,11 +266,16 @@ export interface SecurityGroupRuleArgs {
      */
     type: pulumi.Input<string>;
     /**
-     * An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`userSecurityGroupId`). Please use the `userSecurityGroupId` argument along the exoscale.SecurityGroup data source instead.
+     * An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with
+     * `cidr`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
+     * [exoscale_security_group](../data-sources/security_group.md) data source instead.
+     *
+     * @deprecated Deprecated in favor of `user_security_group_id`
      */
     userSecurityGroup?: pulumi.Input<string>;
     /**
-     * An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with `cidr`/`user_security_group)`).
+     * An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with
+     * `cidr`/`user_security_group)`).
      */
     userSecurityGroupId?: pulumi.Input<string>;
 }

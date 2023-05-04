@@ -29,7 +29,7 @@ namespace Pulumiverse.Exoscale
         public string Domain { get; set; } = null!;
 
         /// <summary>
-        /// Filter to apply when looking up domain records. Structure is documented below.
+        /// Filter to apply when looking up domain records.
         /// </summary>
         [Input("filter", required: true)]
         public Inputs.GetDomainRecordFilterArgs Filter { get; set; } = null!;
@@ -49,7 +49,7 @@ namespace Pulumiverse.Exoscale
         public Input<string> Domain { get; set; } = null!;
 
         /// <summary>
-        /// Filter to apply when looking up domain records. Structure is documented below.
+        /// Filter to apply when looking up domain records.
         /// </summary>
         [Input("filter", required: true)]
         public Input<Inputs.GetDomainRecordFilterInputArgs> Filter { get; set; } = null!;
@@ -64,7 +64,13 @@ namespace Pulumiverse.Exoscale
     [OutputType]
     public sealed class GetDomainRecordResult
     {
+        /// <summary>
+        /// The exoscale.Domain name to match.
+        /// </summary>
         public readonly string Domain;
+        /// <summary>
+        /// Filter to apply when looking up domain records.
+        /// </summary>
         public readonly Outputs.GetDomainRecordFilterResult Filter;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

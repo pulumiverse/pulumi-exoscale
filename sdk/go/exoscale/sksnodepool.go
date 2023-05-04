@@ -13,7 +13,7 @@ import (
 
 // ## Import
 //
-// An existing SKS node pool may be imported by `<cluster-ID>/<nodepool-ID>@<zone>`console
+// An existing SKS node pool may be imported by `<cluster-ID>/<nodepool-ID>@<zone>`
 //
 // ```sh
 //
@@ -27,9 +27,9 @@ import (
 type SKSNodepool struct {
 	pulumi.CustomResourceState
 
-	// A list of AntiAffinityGroup (IDs) to be attached to the managed instances.
+	// A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to be attached to the managed instances.
 	AntiAffinityGroupIds pulumi.StringArrayOutput `pulumi:"antiAffinityGroupIds"`
-	// The parent SKSCluster ID.
+	// The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The pool creation date.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
@@ -39,30 +39,32 @@ type SKSNodepool struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The managed instances disk size (GiB; default: `50`).
 	DiskSize pulumi.IntPtrOutput `pulumi:"diskSize"`
-	// The underlying InstancePool ID.
+	// The underlying [exoscale_instance_pool](./instance_pool.md) ID.
 	InstancePoolId pulumi.StringOutput `pulumi:"instancePoolId"`
 	// The string used to prefix the managed instances name (default `pool`).
 	InstancePrefix pulumi.StringPtrOutput `pulumi:"instancePrefix"`
-	// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types).
+	// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale
+	// CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// A map of key/value labels.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The SKS node pool name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A list of PrivateNetwork (IDs) to be attached to the managed instances.
+	// A list of [exoscale_private_network](./private_network.md) (IDs) to be attached to the managed instances.
 	PrivateNetworkIds pulumi.StringArrayOutput `pulumi:"privateNetworkIds"`
-	// A list of SecurityGroup (IDs) to be attached to the managed instances.
+	// A list of [exoscale_security_group](./security_group.md) (IDs) to be attached to the managed instances.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	Size             pulumi.IntOutput         `pulumi:"size"`
 	// The current pool state.
 	State pulumi.StringOutput `pulumi:"state"`
-	// A map of key/value Kubernetes [taints][taints] (`<value>:<effect>`).
+	// A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
+	// (`<value>:<effect>`).
 	Taints pulumi.StringMapOutput `pulumi:"taints"`
 	// The managed instances template ID.
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
 	// The managed instances version.
 	Version pulumi.StringOutput `pulumi:"version"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -108,9 +110,9 @@ func GetSKSNodepool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SKSNodepool resources.
 type sksnodepoolState struct {
-	// A list of AntiAffinityGroup (IDs) to be attached to the managed instances.
+	// A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to be attached to the managed instances.
 	AntiAffinityGroupIds []string `pulumi:"antiAffinityGroupIds"`
-	// The parent SKSCluster ID.
+	// The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
 	ClusterId *string `pulumi:"clusterId"`
 	// The pool creation date.
 	CreatedAt *string `pulumi:"createdAt"`
@@ -120,37 +122,39 @@ type sksnodepoolState struct {
 	Description *string `pulumi:"description"`
 	// The managed instances disk size (GiB; default: `50`).
 	DiskSize *int `pulumi:"diskSize"`
-	// The underlying InstancePool ID.
+	// The underlying [exoscale_instance_pool](./instance_pool.md) ID.
 	InstancePoolId *string `pulumi:"instancePoolId"`
 	// The string used to prefix the managed instances name (default `pool`).
 	InstancePrefix *string `pulumi:"instancePrefix"`
-	// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types).
+	// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale
+	// CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
 	InstanceType *string `pulumi:"instanceType"`
 	// A map of key/value labels.
 	Labels map[string]string `pulumi:"labels"`
 	// The SKS node pool name.
 	Name *string `pulumi:"name"`
-	// A list of PrivateNetwork (IDs) to be attached to the managed instances.
+	// A list of [exoscale_private_network](./private_network.md) (IDs) to be attached to the managed instances.
 	PrivateNetworkIds []string `pulumi:"privateNetworkIds"`
-	// A list of SecurityGroup (IDs) to be attached to the managed instances.
+	// A list of [exoscale_security_group](./security_group.md) (IDs) to be attached to the managed instances.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	Size             *int     `pulumi:"size"`
 	// The current pool state.
 	State *string `pulumi:"state"`
-	// A map of key/value Kubernetes [taints][taints] (`<value>:<effect>`).
+	// A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
+	// (`<value>:<effect>`).
 	Taints map[string]string `pulumi:"taints"`
 	// The managed instances template ID.
 	TemplateId *string `pulumi:"templateId"`
 	// The managed instances version.
 	Version *string `pulumi:"version"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone *string `pulumi:"zone"`
 }
 
 type SKSNodepoolState struct {
-	// A list of AntiAffinityGroup (IDs) to be attached to the managed instances.
+	// A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to be attached to the managed instances.
 	AntiAffinityGroupIds pulumi.StringArrayInput
-	// The parent SKSCluster ID.
+	// The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
 	ClusterId pulumi.StringPtrInput
 	// The pool creation date.
 	CreatedAt pulumi.StringPtrInput
@@ -160,30 +164,32 @@ type SKSNodepoolState struct {
 	Description pulumi.StringPtrInput
 	// The managed instances disk size (GiB; default: `50`).
 	DiskSize pulumi.IntPtrInput
-	// The underlying InstancePool ID.
+	// The underlying [exoscale_instance_pool](./instance_pool.md) ID.
 	InstancePoolId pulumi.StringPtrInput
 	// The string used to prefix the managed instances name (default `pool`).
 	InstancePrefix pulumi.StringPtrInput
-	// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types).
+	// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale
+	// CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
 	InstanceType pulumi.StringPtrInput
 	// A map of key/value labels.
 	Labels pulumi.StringMapInput
 	// The SKS node pool name.
 	Name pulumi.StringPtrInput
-	// A list of PrivateNetwork (IDs) to be attached to the managed instances.
+	// A list of [exoscale_private_network](./private_network.md) (IDs) to be attached to the managed instances.
 	PrivateNetworkIds pulumi.StringArrayInput
-	// A list of SecurityGroup (IDs) to be attached to the managed instances.
+	// A list of [exoscale_security_group](./security_group.md) (IDs) to be attached to the managed instances.
 	SecurityGroupIds pulumi.StringArrayInput
 	Size             pulumi.IntPtrInput
 	// The current pool state.
 	State pulumi.StringPtrInput
-	// A map of key/value Kubernetes [taints][taints] (`<value>:<effect>`).
+	// A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
+	// (`<value>:<effect>`).
 	Taints pulumi.StringMapInput
 	// The managed instances template ID.
 	TemplateId pulumi.StringPtrInput
 	// The managed instances version.
 	Version pulumi.StringPtrInput
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringPtrInput
 }
 
@@ -192,9 +198,9 @@ func (SKSNodepoolState) ElementType() reflect.Type {
 }
 
 type sksnodepoolArgs struct {
-	// A list of AntiAffinityGroup (IDs) to be attached to the managed instances.
+	// A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to be attached to the managed instances.
 	AntiAffinityGroupIds []string `pulumi:"antiAffinityGroupIds"`
-	// The parent SKSCluster ID.
+	// The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
 	ClusterId string `pulumi:"clusterId"`
 	// A deploy target ID.
 	DeployTargetId *string `pulumi:"deployTargetId"`
@@ -204,28 +210,30 @@ type sksnodepoolArgs struct {
 	DiskSize *int `pulumi:"diskSize"`
 	// The string used to prefix the managed instances name (default `pool`).
 	InstancePrefix *string `pulumi:"instancePrefix"`
-	// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types).
+	// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale
+	// CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
 	InstanceType string `pulumi:"instanceType"`
 	// A map of key/value labels.
 	Labels map[string]string `pulumi:"labels"`
 	// The SKS node pool name.
 	Name *string `pulumi:"name"`
-	// A list of PrivateNetwork (IDs) to be attached to the managed instances.
+	// A list of [exoscale_private_network](./private_network.md) (IDs) to be attached to the managed instances.
 	PrivateNetworkIds []string `pulumi:"privateNetworkIds"`
-	// A list of SecurityGroup (IDs) to be attached to the managed instances.
+	// A list of [exoscale_security_group](./security_group.md) (IDs) to be attached to the managed instances.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	Size             int      `pulumi:"size"`
-	// A map of key/value Kubernetes [taints][taints] (`<value>:<effect>`).
+	// A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
+	// (`<value>:<effect>`).
 	Taints map[string]string `pulumi:"taints"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a SKSNodepool resource.
 type SKSNodepoolArgs struct {
-	// A list of AntiAffinityGroup (IDs) to be attached to the managed instances.
+	// A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to be attached to the managed instances.
 	AntiAffinityGroupIds pulumi.StringArrayInput
-	// The parent SKSCluster ID.
+	// The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
 	ClusterId pulumi.StringInput
 	// A deploy target ID.
 	DeployTargetId pulumi.StringPtrInput
@@ -235,20 +243,22 @@ type SKSNodepoolArgs struct {
 	DiskSize pulumi.IntPtrInput
 	// The string used to prefix the managed instances name (default `pool`).
 	InstancePrefix pulumi.StringPtrInput
-	// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types).
+	// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale
+	// CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
 	InstanceType pulumi.StringInput
 	// A map of key/value labels.
 	Labels pulumi.StringMapInput
 	// The SKS node pool name.
 	Name pulumi.StringPtrInput
-	// A list of PrivateNetwork (IDs) to be attached to the managed instances.
+	// A list of [exoscale_private_network](./private_network.md) (IDs) to be attached to the managed instances.
 	PrivateNetworkIds pulumi.StringArrayInput
-	// A list of SecurityGroup (IDs) to be attached to the managed instances.
+	// A list of [exoscale_security_group](./security_group.md) (IDs) to be attached to the managed instances.
 	SecurityGroupIds pulumi.StringArrayInput
 	Size             pulumi.IntInput
-	// A map of key/value Kubernetes [taints][taints] (`<value>:<effect>`).
+	// A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
+	// (`<value>:<effect>`).
 	Taints pulumi.StringMapInput
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringInput
 }
 
@@ -339,12 +349,12 @@ func (o SKSNodepoolOutput) ToSKSNodepoolOutputWithContext(ctx context.Context) S
 	return o
 }
 
-// A list of AntiAffinityGroup (IDs) to be attached to the managed instances.
+// A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to be attached to the managed instances.
 func (o SKSNodepoolOutput) AntiAffinityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SKSNodepool) pulumi.StringArrayOutput { return v.AntiAffinityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// The parent SKSCluster ID.
+// The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
 func (o SKSNodepoolOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SKSNodepool) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
@@ -369,7 +379,7 @@ func (o SKSNodepoolOutput) DiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SKSNodepool) pulumi.IntPtrOutput { return v.DiskSize }).(pulumi.IntPtrOutput)
 }
 
-// The underlying InstancePool ID.
+// The underlying [exoscale_instance_pool](./instance_pool.md) ID.
 func (o SKSNodepoolOutput) InstancePoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SKSNodepool) pulumi.StringOutput { return v.InstancePoolId }).(pulumi.StringOutput)
 }
@@ -379,7 +389,8 @@ func (o SKSNodepoolOutput) InstancePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SKSNodepool) pulumi.StringPtrOutput { return v.InstancePrefix }).(pulumi.StringPtrOutput)
 }
 
-// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types).
+// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale
+// CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
 func (o SKSNodepoolOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *SKSNodepool) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
@@ -394,12 +405,12 @@ func (o SKSNodepoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SKSNodepool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// A list of PrivateNetwork (IDs) to be attached to the managed instances.
+// A list of [exoscale_private_network](./private_network.md) (IDs) to be attached to the managed instances.
 func (o SKSNodepoolOutput) PrivateNetworkIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SKSNodepool) pulumi.StringArrayOutput { return v.PrivateNetworkIds }).(pulumi.StringArrayOutput)
 }
 
-// A list of SecurityGroup (IDs) to be attached to the managed instances.
+// A list of [exoscale_security_group](./security_group.md) (IDs) to be attached to the managed instances.
 func (o SKSNodepoolOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SKSNodepool) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
@@ -413,7 +424,8 @@ func (o SKSNodepoolOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *SKSNodepool) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// A map of key/value Kubernetes [taints][taints] (`<value>:<effect>`).
+// A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
+// (`<value>:<effect>`).
 func (o SKSNodepoolOutput) Taints() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SKSNodepool) pulumi.StringMapOutput { return v.Taints }).(pulumi.StringMapOutput)
 }
@@ -428,7 +440,7 @@ func (o SKSNodepoolOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *SKSNodepool) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }
 
-// The Exoscale [Zone][zone] name.
+// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o SKSNodepoolOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *SKSNodepool) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

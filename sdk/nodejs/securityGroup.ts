@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * An existing security group may be imported by `<ID>`console
+ * An existing security group may be imported by `<ID>`
  *
  * ```sh
  *  $ pulumi import exoscale:index/securityGroup:SecurityGroup \
@@ -50,7 +50,8 @@ export class SecurityGroup extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * A list of external network sources, in [CIDR][cidr] notation.
+     * A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
+     * notation.
      */
     public readonly externalSources!: pulumi.Output<string[] | undefined>;
     /**
@@ -94,7 +95,8 @@ export interface SecurityGroupState {
      */
     description?: pulumi.Input<string>;
     /**
-     * A list of external network sources, in [CIDR][cidr] notation.
+     * A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
+     * notation.
      */
     externalSources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -112,7 +114,8 @@ export interface SecurityGroupArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * A list of external network sources, in [CIDR][cidr] notation.
+     * A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
+     * notation.
      */
     externalSources?: pulumi.Input<pulumi.Input<string>[]>;
     /**

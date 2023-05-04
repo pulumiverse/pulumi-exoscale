@@ -13,21 +13,12 @@ namespace Pulumiverse.Exoscale.Inputs
 
     public sealed class DatabaseOpensearchIndexPatternGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Maximum number of indexes to keep (Minimum value is `0`)
-        /// </summary>
         [Input("maxIndexCount")]
         public Input<int>? MaxIndexCount { get; set; }
 
-        /// <summary>
-        /// fnmatch pattern
-        /// </summary>
         [Input("pattern")]
         public Input<string>? Pattern { get; set; }
 
-        /// <summary>
-        /// `alphabetical` or `creation_date`.
-        /// </summary>
         [Input("sortingAlgorithm")]
         public Input<string>? SortingAlgorithm { get; set; }
 

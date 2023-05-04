@@ -70,7 +70,13 @@ namespace Pulumiverse.Exoscale
     [OutputType]
     public sealed class GetAffinityResult
     {
+        /// <summary>
+        /// The anti-affinity group ID to match (conflicts with `name`)
+        /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// The group name to match (conflicts with `id`)
+        /// </summary>
         public readonly string? Name;
 
         [OutputConstructor]

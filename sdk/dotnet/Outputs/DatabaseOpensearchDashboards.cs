@@ -14,18 +14,8 @@ namespace Pulumiverse.Exoscale.Outputs
     [OutputType]
     public sealed class DatabaseOpensearchDashboards
     {
-        /// <summary>
-        /// {Type -  schema.TypeBool, Optional -  true, Default -  true},
-        /// </summary>
         public readonly bool? Enabled;
-        /// <summary>
-        /// {Type -  schema.TypeInt, Optional -  true, Default -  128},
-        /// </summary>
         public readonly int? MaxOldSpaceSize;
-        /// <summary>
-        /// {Type -  schema.TypeInt, Optional -  true, Default -  30000},
-        /// `settings` -  OpenSearch-specific settings, in json. e.g.`jsonencode({thread_pool_search_size: 64})`. Use `exo x get-dbaas-settings-opensearch` to get a list of available settings.
-        /// </summary>
         public readonly int? RequestTimeout;
 
         [OutputConstructor]

@@ -30,6 +30,9 @@ export interface GetDomainResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The DNS domain name to match.
+     */
     readonly name: string;
 }
 export function getDomainOutput(args: GetDomainOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainResult> {

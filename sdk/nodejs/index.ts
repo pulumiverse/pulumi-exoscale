@@ -120,6 +120,26 @@ export const getPrivateNetwork: typeof import("./getPrivateNetwork").getPrivateN
 export const getPrivateNetworkOutput: typeof import("./getPrivateNetwork").getPrivateNetworkOutput = null as any;
 utilities.lazyLoad(exports, ["getPrivateNetwork","getPrivateNetworkOutput"], () => require("./getPrivateNetwork"));
 
+export { GetSKSClusterArgs, GetSKSClusterResult, GetSKSClusterOutputArgs } from "./getSKSCluster";
+export const getSKSCluster: typeof import("./getSKSCluster").getSKSCluster = null as any;
+export const getSKSClusterOutput: typeof import("./getSKSCluster").getSKSClusterOutput = null as any;
+utilities.lazyLoad(exports, ["getSKSCluster","getSKSClusterOutput"], () => require("./getSKSCluster"));
+
+export { GetSKSClusterListArgs, GetSKSClusterListResult, GetSKSClusterListOutputArgs } from "./getSKSClusterList";
+export const getSKSClusterList: typeof import("./getSKSClusterList").getSKSClusterList = null as any;
+export const getSKSClusterListOutput: typeof import("./getSKSClusterList").getSKSClusterListOutput = null as any;
+utilities.lazyLoad(exports, ["getSKSClusterList","getSKSClusterListOutput"], () => require("./getSKSClusterList"));
+
+export { GetSKSNodepoolArgs, GetSKSNodepoolResult, GetSKSNodepoolOutputArgs } from "./getSKSNodepool";
+export const getSKSNodepool: typeof import("./getSKSNodepool").getSKSNodepool = null as any;
+export const getSKSNodepoolOutput: typeof import("./getSKSNodepool").getSKSNodepoolOutput = null as any;
+utilities.lazyLoad(exports, ["getSKSNodepool","getSKSNodepoolOutput"], () => require("./getSKSNodepool"));
+
+export { GetSKSNodepoolListArgs, GetSKSNodepoolListResult, GetSKSNodepoolListOutputArgs } from "./getSKSNodepoolList";
+export const getSKSNodepoolList: typeof import("./getSKSNodepoolList").getSKSNodepoolList = null as any;
+export const getSKSNodepoolListOutput: typeof import("./getSKSNodepoolList").getSKSNodepoolListOutput = null as any;
+utilities.lazyLoad(exports, ["getSKSNodepoolList","getSKSNodepoolListOutput"], () => require("./getSKSNodepoolList"));
+
 export { GetSecurityGroupArgs, GetSecurityGroupResult, GetSecurityGroupOutputArgs } from "./getSecurityGroup";
 export const getSecurityGroup: typeof import("./getSecurityGroup").getSecurityGroup = null as any;
 export const getSecurityGroupOutput: typeof import("./getSecurityGroup").getSecurityGroupOutput = null as any;

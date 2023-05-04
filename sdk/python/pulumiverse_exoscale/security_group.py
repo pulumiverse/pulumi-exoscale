@@ -20,7 +20,8 @@ class SecurityGroupArgs:
         """
         The set of arguments for constructing a SecurityGroup resource.
         :param pulumi.Input[str] description: A free-form text describing the group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_sources: A list of external network sources, in [CIDR][cidr] notation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_sources: A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
+               notation.
         :param pulumi.Input[str] name: The security group name.
         """
         if description is not None:
@@ -46,7 +47,8 @@ class SecurityGroupArgs:
     @pulumi.getter(name="externalSources")
     def external_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of external network sources, in [CIDR][cidr] notation.
+        A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
+        notation.
         """
         return pulumi.get(self, "external_sources")
 
@@ -76,7 +78,8 @@ class _SecurityGroupState:
         """
         Input properties used for looking up and filtering SecurityGroup resources.
         :param pulumi.Input[str] description: A free-form text describing the group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_sources: A list of external network sources, in [CIDR][cidr] notation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_sources: A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
+               notation.
         :param pulumi.Input[str] name: The security group name.
         """
         if description is not None:
@@ -102,7 +105,8 @@ class _SecurityGroupState:
     @pulumi.getter(name="externalSources")
     def external_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of external network sources, in [CIDR][cidr] notation.
+        A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
+        notation.
         """
         return pulumi.get(self, "external_sources")
 
@@ -135,7 +139,7 @@ class SecurityGroup(pulumi.CustomResource):
         """
         ## Import
 
-        An existing security group may be imported by `<ID>`console
+        An existing security group may be imported by `<ID>`
 
         ```sh
          $ pulumi import exoscale:index/securityGroup:SecurityGroup \\
@@ -148,7 +152,8 @@ class SecurityGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free-form text describing the group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_sources: A list of external network sources, in [CIDR][cidr] notation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_sources: A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
+               notation.
         :param pulumi.Input[str] name: The security group name.
         """
         ...
@@ -160,7 +165,7 @@ class SecurityGroup(pulumi.CustomResource):
         """
         ## Import
 
-        An existing security group may be imported by `<ID>`console
+        An existing security group may be imported by `<ID>`
 
         ```sh
          $ pulumi import exoscale:index/securityGroup:SecurityGroup \\
@@ -221,7 +226,8 @@ class SecurityGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free-form text describing the group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_sources: A list of external network sources, in [CIDR][cidr] notation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_sources: A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
+               notation.
         :param pulumi.Input[str] name: The security group name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -245,7 +251,8 @@ class SecurityGroup(pulumi.CustomResource):
     @pulumi.getter(name="externalSources")
     def external_sources(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A list of external network sources, in [CIDR][cidr] notation.
+        A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
+        notation.
         """
         return pulumi.get(self, "external_sources")
 

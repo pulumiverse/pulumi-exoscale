@@ -18,17 +18,11 @@ namespace Pulumiverse.Exoscale.Outputs
         /// The instance pool ID to match (conflicts with `name`).
         /// </summary>
         public readonly string? Id;
-        /// <summary>
-        /// The instance (main network interface) IPv6 address.
-        /// </summary>
         public readonly string Ipv6Address;
         /// <summary>
         /// The pool name to match (conflicts with `id`).
         /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// The instance (main network interface) IPv4 address.
-        /// </summary>
         public readonly string PublicIpAddress;
 
         [OutputConstructor]

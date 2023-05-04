@@ -7,13 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Manage Exoscale [Elastic IPs (EIP)](https://community.exoscale.com/documentation/compute/eip/).
- *
- * Corresponding data source: exoscale_elastic_ip.
- *
  * ## Import
  *
- * An existing Elastic IP (EIP) may be imported by `<ID>@<zone>`console
+ * An existing Elastic IP (EIP) may be imported by `<ID>@<zone>`
  *
  * ```sh
  *  $ pulumi import exoscale:index/elasticIP:ElasticIP \
@@ -64,7 +60,7 @@ export class ElasticIP extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
+     * Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP.
      */
     public readonly healthcheck!: pulumi.Output<outputs.ElasticIPHealthcheck>;
     /**
@@ -80,7 +76,7 @@ export class ElasticIP extends pulumi.CustomResource {
      */
     public readonly reverseDns!: pulumi.Output<string | undefined>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -141,7 +137,7 @@ export interface ElasticIPState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
+     * Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP.
      */
     healthcheck?: pulumi.Input<inputs.ElasticIPHealthcheck>;
     /**
@@ -157,7 +153,7 @@ export interface ElasticIPState {
      */
     reverseDns?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone?: pulumi.Input<string>;
 }
@@ -175,7 +171,7 @@ export interface ElasticIPArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
+     * Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP.
      */
     healthcheck?: pulumi.Input<inputs.ElasticIPHealthcheck>;
     /**
@@ -187,7 +183,7 @@ export interface ElasticIPArgs {
      */
     reverseDns?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: pulumi.Input<string>;
 }

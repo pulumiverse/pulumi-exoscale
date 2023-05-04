@@ -14,33 +14,18 @@ namespace Pulumiverse.Exoscale.Outputs
     [OutputType]
     public sealed class GetDomainRecordRecordResult
     {
-        /// <summary>
-        /// The domain record content.
-        /// </summary>
         public readonly string? Content;
         /// <summary>
         /// The exoscale.Domain name to match.
         /// </summary>
         public readonly string? Domain;
         /// <summary>
-        /// The record ID to match.
+        /// The ID of this resource.
         /// </summary>
         public readonly string? Id;
-        /// <summary>
-        /// The domain record name to match.
-        /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// The record priority.
-        /// </summary>
         public readonly int? Prio;
-        /// <summary>
-        /// The record type to match.
-        /// </summary>
         public readonly string? RecordType;
-        /// <summary>
-        /// The record TTL.
-        /// </summary>
         public readonly int? Ttl;
 
         [OutputConstructor]

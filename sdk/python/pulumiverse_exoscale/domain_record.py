@@ -23,8 +23,9 @@ class DomainRecordArgs:
         """
         The set of arguments for constructing a DomainRecord resource.
         :param pulumi.Input[str] content: The record value.
-        :param pulumi.Input[str] domain: The parent Domain to attach the record to.
-        :param pulumi.Input[str] record_type: The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`, `TXT`, `URL`).
+        :param pulumi.Input[str] domain: The parent [exoscale_domain](./domain.md) to attach the record to.
+        :param pulumi.Input[str] record_type: The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`,
+               `TXT`, `URL`).
         :param pulumi.Input[str] name: The record name, Leave blank (`""`) to create a root record (similar to using `@` in a DNS zone file).
         :param pulumi.Input[int] prio: The record priority (for types that support it; minimum `0`).
         :param pulumi.Input[int] ttl: The record TTL (seconds; minimum `0`; default: `3600`).
@@ -55,7 +56,7 @@ class DomainRecordArgs:
     @pulumi.getter
     def domain(self) -> pulumi.Input[str]:
         """
-        The parent Domain to attach the record to.
+        The parent [exoscale_domain](./domain.md) to attach the record to.
         """
         return pulumi.get(self, "domain")
 
@@ -67,7 +68,8 @@ class DomainRecordArgs:
     @pulumi.getter(name="recordType")
     def record_type(self) -> pulumi.Input[str]:
         """
-        The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`, `TXT`, `URL`).
+        The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`,
+        `TXT`, `URL`).
         """
         return pulumi.get(self, "record_type")
 
@@ -125,11 +127,12 @@ class _DomainRecordState:
         """
         Input properties used for looking up and filtering DomainRecord resources.
         :param pulumi.Input[str] content: The record value.
-        :param pulumi.Input[str] domain: The parent Domain to attach the record to.
+        :param pulumi.Input[str] domain: The parent [exoscale_domain](./domain.md) to attach the record to.
         :param pulumi.Input[str] hostname: The record *Fully Qualified Domain Name* (FQDN). Useful for aliasing `A`/`AAAA` records with `CNAME`.
         :param pulumi.Input[str] name: The record name, Leave blank (`""`) to create a root record (similar to using `@` in a DNS zone file).
         :param pulumi.Input[int] prio: The record priority (for types that support it; minimum `0`).
-        :param pulumi.Input[str] record_type: The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`, `TXT`, `URL`).
+        :param pulumi.Input[str] record_type: The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`,
+               `TXT`, `URL`).
         :param pulumi.Input[int] ttl: The record TTL (seconds; minimum `0`; default: `3600`).
         """
         if content is not None:
@@ -163,7 +166,7 @@ class _DomainRecordState:
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
-        The parent Domain to attach the record to.
+        The parent [exoscale_domain](./domain.md) to attach the record to.
         """
         return pulumi.get(self, "domain")
 
@@ -211,7 +214,8 @@ class _DomainRecordState:
     @pulumi.getter(name="recordType")
     def record_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`, `TXT`, `URL`).
+        The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`,
+        `TXT`, `URL`).
         """
         return pulumi.get(self, "record_type")
 
@@ -247,7 +251,7 @@ class DomainRecord(pulumi.CustomResource):
         """
         ## Import
 
-        An existing DNS domain record may be imported by `<ID>`console
+        An existing DNS domain record may be imported by `<ID>`
 
         ```sh
          $ pulumi import exoscale:index/domainRecord:DomainRecord \\
@@ -260,10 +264,11 @@ class DomainRecord(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content: The record value.
-        :param pulumi.Input[str] domain: The parent Domain to attach the record to.
+        :param pulumi.Input[str] domain: The parent [exoscale_domain](./domain.md) to attach the record to.
         :param pulumi.Input[str] name: The record name, Leave blank (`""`) to create a root record (similar to using `@` in a DNS zone file).
         :param pulumi.Input[int] prio: The record priority (for types that support it; minimum `0`).
-        :param pulumi.Input[str] record_type: The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`, `TXT`, `URL`).
+        :param pulumi.Input[str] record_type: The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`,
+               `TXT`, `URL`).
         :param pulumi.Input[int] ttl: The record TTL (seconds; minimum `0`; default: `3600`).
         """
         ...
@@ -275,7 +280,7 @@ class DomainRecord(pulumi.CustomResource):
         """
         ## Import
 
-        An existing DNS domain record may be imported by `<ID>`console
+        An existing DNS domain record may be imported by `<ID>`
 
         ```sh
          $ pulumi import exoscale:index/domainRecord:DomainRecord \\
@@ -353,11 +358,12 @@ class DomainRecord(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content: The record value.
-        :param pulumi.Input[str] domain: The parent Domain to attach the record to.
+        :param pulumi.Input[str] domain: The parent [exoscale_domain](./domain.md) to attach the record to.
         :param pulumi.Input[str] hostname: The record *Fully Qualified Domain Name* (FQDN). Useful for aliasing `A`/`AAAA` records with `CNAME`.
         :param pulumi.Input[str] name: The record name, Leave blank (`""`) to create a root record (similar to using `@` in a DNS zone file).
         :param pulumi.Input[int] prio: The record priority (for types that support it; minimum `0`).
-        :param pulumi.Input[str] record_type: The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`, `TXT`, `URL`).
+        :param pulumi.Input[str] record_type: The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`,
+               `TXT`, `URL`).
         :param pulumi.Input[int] ttl: The record TTL (seconds; minimum `0`; default: `3600`).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -385,7 +391,7 @@ class DomainRecord(pulumi.CustomResource):
     @pulumi.getter
     def domain(self) -> pulumi.Output[str]:
         """
-        The parent Domain to attach the record to.
+        The parent [exoscale_domain](./domain.md) to attach the record to.
         """
         return pulumi.get(self, "domain")
 
@@ -417,7 +423,8 @@ class DomainRecord(pulumi.CustomResource):
     @pulumi.getter(name="recordType")
     def record_type(self) -> pulumi.Output[str]:
         """
-        The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`, `TXT`, `URL`).
+        The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`,
+        `TXT`, `URL`).
         """
         return pulumi.get(self, "record_type")
 

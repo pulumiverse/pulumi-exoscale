@@ -13,45 +13,24 @@ namespace Pulumiverse.Exoscale.Inputs
 
     public sealed class NLBServiceHealthcheckGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The healthcheck interval in seconds (default: `10`).
-        /// </summary>
         [Input("interval")]
         public Input<int>? Interval { get; set; }
 
-        /// <summary>
-        /// The healthcheck mode (`tcp`|`http`|`https`; default: `tcp`).
-        /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 
-        /// <summary>
-        /// The healthcheck port.
-        /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 
-        /// <summary>
-        /// The healthcheck retries (default: `1`).
-        /// </summary>
         [Input("retries")]
         public Input<int>? Retries { get; set; }
 
-        /// <summary>
-        /// The healthcheck timeout (seconds; default: `5`).
-        /// </summary>
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }
 
-        /// <summary>
-        /// The healthcheck TLS SNI server name (only if `mode` is `https`).
-        /// </summary>
         [Input("tlsSni")]
         public Input<string>? TlsSni { get; set; }
 
-        /// <summary>
-        /// The healthcheck URI (must be set only if `mode` is `http(s)`).
-        /// </summary>
         [Input("uri")]
         public Input<string>? Uri { get; set; }
 

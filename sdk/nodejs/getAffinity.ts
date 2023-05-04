@@ -35,7 +35,13 @@ export interface GetAffinityArgs {
  * A collection of values returned by getAffinity.
  */
 export interface GetAffinityResult {
+    /**
+     * The anti-affinity group ID to match (conflicts with `name`)
+     */
     readonly id?: string;
+    /**
+     * The group name to match (conflicts with `id`)
+     */
     readonly name?: string;
 }
 /**

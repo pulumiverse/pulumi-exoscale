@@ -32,11 +32,17 @@ export interface GetAntiAffinityGroupArgs {
  * A collection of values returned by getAntiAffinityGroup.
  */
 export interface GetAntiAffinityGroupResult {
+    /**
+     * The anti-affinity group ID to match (conflicts with `name`).
+     */
     readonly id?: string;
     /**
-     * The list of attached exoscale.ComputeInstance (IDs).
+     * The list of attached exoscale*compute*instance (IDs).
      */
     readonly instances: string[];
+    /**
+     * The group name to match (conflicts with `id`).
+     */
     readonly name?: string;
 }
 export function getAntiAffinityGroupOutput(args?: GetAntiAffinityGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAntiAffinityGroupResult> {

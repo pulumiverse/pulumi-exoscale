@@ -13,7 +13,7 @@ namespace Pulumiverse.Exoscale
     /// <summary>
     /// ## Import
     /// 
-    /// An existing security group may be imported by `&lt;ID&gt;`console
+    /// An existing security group may be imported by `&lt;ID&gt;`
     /// 
     /// ```sh
     ///  $ pulumi import exoscale:index/securityGroup:SecurityGroup \
@@ -33,7 +33,8 @@ namespace Pulumiverse.Exoscale
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A list of external network sources, in [CIDR][cidr] notation.
+        /// A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
+        /// notation.
         /// </summary>
         [Output("externalSources")]
         public Output<ImmutableArray<string>> ExternalSources { get; private set; } = null!;
@@ -101,7 +102,8 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _externalSources;
 
         /// <summary>
-        /// A list of external network sources, in [CIDR][cidr] notation.
+        /// A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
+        /// notation.
         /// </summary>
         public InputList<string> ExternalSources
         {
@@ -133,7 +135,8 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _externalSources;
 
         /// <summary>
-        /// A list of external network sources, in [CIDR][cidr] notation.
+        /// A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
+        /// notation.
         /// </summary>
         public InputList<string> ExternalSources
         {

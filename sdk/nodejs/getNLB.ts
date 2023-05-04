@@ -27,7 +27,7 @@ export interface GetNLBArgs {
      */
     name?: string;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: string;
 }
@@ -44,16 +44,25 @@ export interface GetNLBResult {
      * The Network Load Balancers (NLB) description.
      */
     readonly description: string;
+    /**
+     * The Network Load Balancers (NLB) ID to match (conflicts with `name`).
+     */
     readonly id?: string;
     /**
      * The NLB public IPv4 address.
      */
     readonly ipAddress: string;
+    /**
+     * The NLB name to match (conflicts with `id`).
+     */
     readonly name?: string;
     /**
      * The current NLB state.
      */
     readonly state: string;
+    /**
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     */
     readonly zone: string;
 }
 export function getNLBOutput(args: GetNLBOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNLBResult> {
@@ -73,7 +82,7 @@ export interface GetNLBOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: pulumi.Input<string>;
 }

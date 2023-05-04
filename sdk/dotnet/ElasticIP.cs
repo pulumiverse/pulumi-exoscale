@@ -11,13 +11,9 @@ using Pulumi;
 namespace Pulumiverse.Exoscale
 {
     /// <summary>
-    /// Manage Exoscale [Elastic IPs (EIP)](https://community.exoscale.com/documentation/compute/eip/).
-    /// 
-    /// Corresponding data source: exoscale_elastic_ip.
-    /// 
     /// ## Import
     /// 
-    /// An existing Elastic IP (EIP) may be imported by `&lt;ID&gt;@&lt;zone&gt;`console
+    /// An existing Elastic IP (EIP) may be imported by `&lt;ID&gt;@&lt;zone&gt;`
     /// 
     /// ```sh
     ///  $ pulumi import exoscale:index/elasticIP:ElasticIP \
@@ -49,7 +45,7 @@ namespace Pulumiverse.Exoscale
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
+        /// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP.
         /// </summary>
         [Output("healthcheck")]
         public Output<Outputs.ElasticIPHealthcheck> Healthcheck { get; private set; } = null!;
@@ -73,7 +69,7 @@ namespace Pulumiverse.Exoscale
         public Output<string?> ReverseDns { get; private set; } = null!;
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -138,7 +134,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
+        /// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP.
         /// </summary>
         [Input("healthcheck")]
         public Input<Inputs.ElasticIPHealthcheckArgs>? Healthcheck { get; set; }
@@ -162,7 +158,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? ReverseDns { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -194,7 +190,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP. Structure is documented below:
+        /// Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP.
         /// </summary>
         [Input("healthcheck")]
         public Input<Inputs.ElasticIPHealthcheckGetArgs>? Healthcheck { get; set; }
@@ -224,7 +220,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? ReverseDns { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

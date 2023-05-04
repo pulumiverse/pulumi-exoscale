@@ -34,7 +34,7 @@ export interface GetInstancePoolArgs {
      */
     name?: string;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: string;
 }
@@ -44,7 +44,7 @@ export interface GetInstancePoolArgs {
  */
 export interface GetInstancePoolResult {
     /**
-     * The list of attached exoscale.AntiAffinityGroup (IDs).
+     * The list of attached exoscale*anti*affinity_group (IDs).
      */
     readonly affinityGroupIds: string[];
     /**
@@ -60,11 +60,11 @@ export interface GetInstancePoolResult {
      */
     readonly diskSize: number;
     /**
-     * The list of attached exoscale.ElasticIP (IDs).
+     * The list of attached exoscale*elastic*ip (IDs).
      */
     readonly elasticIpIds: string[];
     /**
-     * The compute instance ID.
+     * The instance pool ID to match (conflicts with `name`).
      */
     readonly id?: string;
     /**
@@ -84,7 +84,7 @@ export interface GetInstancePoolResult {
      */
     readonly ipv6: boolean;
     /**
-     * The exoscale.SSHKey (name) authorized on the managed instances.
+     * The exoscale*ssh*key (name) authorized on the managed instances.
      */
     readonly keyPair: string;
     /**
@@ -92,15 +92,15 @@ export interface GetInstancePoolResult {
      */
     readonly labels?: {[key: string]: string};
     /**
-     * The instance name.
+     * The pool name to match (conflicts with `id`).
      */
     readonly name?: string;
     /**
-     * The list of attached exoscale.PrivateNetwork (IDs).
+     * The list of attached exoscale*private*network (IDs).
      */
     readonly networkIds: string[];
     /**
-     * The list of attached exoscale.SecurityGroup (IDs).
+     * The list of attached exoscale*security*group (IDs).
      */
     readonly securityGroupIds: string[];
     /**
@@ -112,13 +112,16 @@ export interface GetInstancePoolResult {
      */
     readonly state: string;
     /**
-     * The managed instances exoscale.getComputeTemplate ID.
+     * The managed instances exoscale*compute*template ID.
      */
     readonly templateId: string;
     /**
-     * [cloud-init][cloud-init] configuration.
+     * [cloud-init](http://cloudinit.readthedocs.io/en/latest/) configuration.
      */
     readonly userData: string;
+    /**
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     */
     readonly zone: string;
 }
 export function getInstancePoolOutput(args: GetInstancePoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancePoolResult> {
@@ -142,7 +145,7 @@ export interface GetInstancePoolOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: pulumi.Input<string>;
 }

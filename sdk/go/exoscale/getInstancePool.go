@@ -28,13 +28,13 @@ type LookupInstancePoolArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The pool name to match (conflicts with `id`).
 	Name *string `pulumi:"name"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone string `pulumi:"zone"`
 }
 
 // A collection of values returned by getInstancePool.
 type LookupInstancePoolResult struct {
-	// The list of attached AntiAffinityGroup (IDs).
+	// The list of attached exoscale*anti*affinity_group (IDs).
 	AffinityGroupIds []string `pulumi:"affinityGroupIds"`
 	// The deploy target ID.
 	DeployTargetId string `pulumi:"deployTargetId"`
@@ -42,9 +42,9 @@ type LookupInstancePoolResult struct {
 	Description string `pulumi:"description"`
 	// The managed instances disk size.
 	DiskSize int `pulumi:"diskSize"`
-	// The list of attached ElasticIP (IDs).
+	// The list of attached exoscale*elastic*ip (IDs).
 	ElasticIpIds []string `pulumi:"elasticIpIds"`
-	// The compute instance ID.
+	// The instance pool ID to match (conflicts with `name`).
 	Id *string `pulumi:"id"`
 	// The string used to prefix the managed instances name.
 	InstancePrefix string `pulumi:"instancePrefix"`
@@ -54,25 +54,26 @@ type LookupInstancePoolResult struct {
 	Instances []GetInstancePoolInstance `pulumi:"instances"`
 	// Whether IPv6 is enabled on managed instances.
 	Ipv6 bool `pulumi:"ipv6"`
-	// The SSHKey (name) authorized on the managed instances.
+	// The exoscale*ssh*key (name) authorized on the managed instances.
 	KeyPair string `pulumi:"keyPair"`
 	// A map of key/value labels.
 	Labels map[string]string `pulumi:"labels"`
-	// The instance name.
+	// The pool name to match (conflicts with `id`).
 	Name *string `pulumi:"name"`
-	// The list of attached PrivateNetwork (IDs).
+	// The list of attached exoscale*private*network (IDs).
 	NetworkIds []string `pulumi:"networkIds"`
-	// The list of attached SecurityGroup (IDs).
+	// The list of attached exoscale*security*group (IDs).
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// The number managed instances.
 	Size int `pulumi:"size"`
 	// The pool state.
 	State string `pulumi:"state"`
-	// The managed instances getComputeTemplate ID.
+	// The managed instances exoscale*compute*template ID.
 	TemplateId string `pulumi:"templateId"`
-	// [cloud-init][cloud-init] configuration.
+	// [cloud-init](http://cloudinit.readthedocs.io/en/latest/) configuration.
 	UserData string `pulumi:"userData"`
-	Zone     string `pulumi:"zone"`
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	Zone string `pulumi:"zone"`
 }
 
 func LookupInstancePoolOutput(ctx *pulumi.Context, args LookupInstancePoolOutputArgs, opts ...pulumi.InvokeOption) LookupInstancePoolResultOutput {
@@ -96,7 +97,7 @@ type LookupInstancePoolOutputArgs struct {
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The pool name to match (conflicts with `id`).
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
@@ -119,7 +120,7 @@ func (o LookupInstancePoolResultOutput) ToLookupInstancePoolResultOutputWithCont
 	return o
 }
 
-// The list of attached AntiAffinityGroup (IDs).
+// The list of attached exoscale*anti*affinity_group (IDs).
 func (o LookupInstancePoolResultOutput) AffinityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) []string { return v.AffinityGroupIds }).(pulumi.StringArrayOutput)
 }
@@ -139,12 +140,12 @@ func (o LookupInstancePoolResultOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) int { return v.DiskSize }).(pulumi.IntOutput)
 }
 
-// The list of attached ElasticIP (IDs).
+// The list of attached exoscale*elastic*ip (IDs).
 func (o LookupInstancePoolResultOutput) ElasticIpIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) []string { return v.ElasticIpIds }).(pulumi.StringArrayOutput)
 }
 
-// The compute instance ID.
+// The instance pool ID to match (conflicts with `name`).
 func (o LookupInstancePoolResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -169,7 +170,7 @@ func (o LookupInstancePoolResultOutput) Ipv6() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) bool { return v.Ipv6 }).(pulumi.BoolOutput)
 }
 
-// The SSHKey (name) authorized on the managed instances.
+// The exoscale*ssh*key (name) authorized on the managed instances.
 func (o LookupInstancePoolResultOutput) KeyPair() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) string { return v.KeyPair }).(pulumi.StringOutput)
 }
@@ -179,17 +180,17 @@ func (o LookupInstancePoolResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The instance name.
+// The pool name to match (conflicts with `id`).
 func (o LookupInstancePoolResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The list of attached PrivateNetwork (IDs).
+// The list of attached exoscale*private*network (IDs).
 func (o LookupInstancePoolResultOutput) NetworkIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) []string { return v.NetworkIds }).(pulumi.StringArrayOutput)
 }
 
-// The list of attached SecurityGroup (IDs).
+// The list of attached exoscale*security*group (IDs).
 func (o LookupInstancePoolResultOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
@@ -204,16 +205,17 @@ func (o LookupInstancePoolResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// The managed instances getComputeTemplate ID.
+// The managed instances exoscale*compute*template ID.
 func (o LookupInstancePoolResultOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) string { return v.TemplateId }).(pulumi.StringOutput)
 }
 
-// [cloud-init][cloud-init] configuration.
+// [cloud-init](http://cloudinit.readthedocs.io/en/latest/) configuration.
 func (o LookupInstancePoolResultOutput) UserData() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) string { return v.UserData }).(pulumi.StringOutput)
 }
 
+// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o LookupInstancePoolResultOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) string { return v.Zone }).(pulumi.StringOutput)
 }

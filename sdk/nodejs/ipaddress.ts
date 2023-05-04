@@ -68,11 +68,13 @@ export class IPAddress extends pulumi.CustomResource {
      */
     public readonly healthcheckTimeout!: pulumi.Output<number | undefined>;
     /**
-     * Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+     * Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
+     * to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
      */
     public readonly healthcheckTlsSkipVerify!: pulumi.Output<boolean | undefined>;
     /**
-     * The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+     * The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
+     * value, it cannot be reset to its default empty value later on (requires a resource re-creation).
      */
     public readonly healthcheckTlsSni!: pulumi.Output<string | undefined>;
     /**
@@ -84,7 +86,7 @@ export class IPAddress extends pulumi.CustomResource {
      */
     public readonly reverseDns!: pulumi.Output<string | undefined>;
     /**
-     * A dictionary of tags (key/value). To remove all tags, set `tags = {}`.
+     * Map of tags (key/value). To remove all tags, set `tags = {}`.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -181,11 +183,13 @@ export interface IPAddressState {
      */
     healthcheckTimeout?: pulumi.Input<number>;
     /**
-     * Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+     * Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
+     * to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
      */
     healthcheckTlsSkipVerify?: pulumi.Input<boolean>;
     /**
-     * The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+     * The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
+     * value, it cannot be reset to its default empty value later on (requires a resource re-creation).
      */
     healthcheckTlsSni?: pulumi.Input<string>;
     /**
@@ -197,7 +201,7 @@ export interface IPAddressState {
      */
     reverseDns?: pulumi.Input<string>;
     /**
-     * A dictionary of tags (key/value). To remove all tags, set `tags = {}`.
+     * Map of tags (key/value). To remove all tags, set `tags = {}`.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -243,11 +247,13 @@ export interface IPAddressArgs {
      */
     healthcheckTimeout?: pulumi.Input<number>;
     /**
-     * Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+     * Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
+     * to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
      */
     healthcheckTlsSkipVerify?: pulumi.Input<boolean>;
     /**
-     * The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+     * The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
+     * value, it cannot be reset to its default empty value later on (requires a resource re-creation).
      */
     healthcheckTlsSni?: pulumi.Input<string>;
     /**
@@ -255,7 +261,7 @@ export interface IPAddressArgs {
      */
     reverseDns?: pulumi.Input<string>;
     /**
-     * A dictionary of tags (key/value). To remove all tags, set `tags = {}`.
+     * Map of tags (key/value). To remove all tags, set `tags = {}`.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
