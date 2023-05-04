@@ -11,35 +11,9 @@ using Pulumi;
 namespace Pulumiverse.Exoscale
 {
     /// <summary>
-    /// Manage Exoscale [Security Group](https://community.exoscale.com/documentation/compute/security-groups/) Rules.
-    /// 
-    /// ## Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Exoscale = Pulumiverse.Exoscale;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var mySecurityGroup = new Exoscale.SecurityGroup("mySecurityGroup");
-    /// 
-    ///     var mySecurityGroupRule = new Exoscale.SecurityGroupRule("mySecurityGroupRule", new()
-    ///     {
-    ///         SecurityGroupId = mySecurityGroup.Id,
-    ///         Type = "INGRESS",
-    ///         Protocol = "TCP",
-    ///         Cidr = "0.0.0.0/0",
-    ///         StartPort = 80,
-    ///         EndPort = 80,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// An existing security group rule may be imported by `&lt;security-group-ID&gt;/&lt;security-group-rule-ID&gt;`console
+    /// An existing security group rule may be imported by `&lt;security-group-ID&gt;/&lt;security-group-rule-ID&gt;`
     /// 
     /// ```sh
     ///  $ pulumi import exoscale:index/securityGroupRule:SecurityGroupRule \
@@ -53,7 +27,9 @@ namespace Pulumiverse.Exoscale
     public partial class SecurityGroupRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation][cidr]) to match (conflicts with `user_security_group`/`user_security_group_id`).
+        /// An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR
+        /// notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with
+        /// `user_security_group`/`user_security_group_id`).
         /// </summary>
         [Output("cidr")]
         public Output<string?> Cidr { get; private set; } = null!;
@@ -64,14 +40,20 @@ namespace Pulumiverse.Exoscale
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// A `TCP`/`UDP` port range to match.
+        /// </summary>
         [Output("endPort")]
         public Output<int?> EndPort { get; private set; } = null!;
 
+        /// <summary>
+        /// An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
+        /// </summary>
         [Output("icmpCode")]
         public Output<int?> IcmpCode { get; private set; } = null!;
 
         /// <summary>
-        /// /`icmp_code` - An ICMP/ICMPv6 [type/code][icmp] to match.
+        /// An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
         /// </summary>
         [Output("icmpType")]
         public Output<int?> IcmpType { get; private set; } = null!;
@@ -83,19 +65,20 @@ namespace Pulumiverse.Exoscale
         public Output<string?> Protocol { get; private set; } = null!;
 
         /// <summary>
-        /// The parent security group name. Please use the `security_group_id` argument along the exoscale.SecurityGroup data source instead.
+        /// The parent security group name. Please use the `security_group_id` argument along the
+        /// [exoscale_security_group](../data-sources/security_group.md) data source instead.
         /// </summary>
         [Output("securityGroup")]
         public Output<string> SecurityGroup { get; private set; } = null!;
 
         /// <summary>
-        /// The parent exoscale.SecurityGroup ID.
+        /// The parent [exoscale_security_group](./security_group.md) ID.
         /// </summary>
         [Output("securityGroupId")]
         public Output<string> SecurityGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// /`end_port` - A `TCP`/`UDP` port range to match.
+        /// A `TCP`/`UDP` port range to match.
         /// </summary>
         [Output("startPort")]
         public Output<int?> StartPort { get; private set; } = null!;
@@ -107,13 +90,16 @@ namespace Pulumiverse.Exoscale
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`user_security_group_id`). Please use the `user_security_group_id` argument along the exoscale.SecurityGroup data source instead.
+        /// An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with
+        /// `cidr`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
+        /// [exoscale_security_group](../data-sources/security_group.md) data source instead.
         /// </summary>
         [Output("userSecurityGroup")]
         public Output<string> UserSecurityGroup { get; private set; } = null!;
 
         /// <summary>
-        /// An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with `cidr`/`user_security_group)`).
+        /// An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with
+        /// `cidr`/`user_security_group)`).
         /// </summary>
         [Output("userSecurityGroupId")]
         public Output<string?> UserSecurityGroupId { get; private set; } = null!;
@@ -166,7 +152,9 @@ namespace Pulumiverse.Exoscale
     public sealed class SecurityGroupRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation][cidr]) to match (conflicts with `user_security_group`/`user_security_group_id`).
+        /// An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR
+        /// notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with
+        /// `user_security_group`/`user_security_group_id`).
         /// </summary>
         [Input("cidr")]
         public Input<string>? Cidr { get; set; }
@@ -177,14 +165,20 @@ namespace Pulumiverse.Exoscale
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// A `TCP`/`UDP` port range to match.
+        /// </summary>
         [Input("endPort")]
         public Input<int>? EndPort { get; set; }
 
+        /// <summary>
+        /// An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
+        /// </summary>
         [Input("icmpCode")]
         public Input<int>? IcmpCode { get; set; }
 
         /// <summary>
-        /// /`icmp_code` - An ICMP/ICMPv6 [type/code][icmp] to match.
+        /// An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
         /// </summary>
         [Input("icmpType")]
         public Input<int>? IcmpType { get; set; }
@@ -196,19 +190,20 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The parent security group name. Please use the `security_group_id` argument along the exoscale.SecurityGroup data source instead.
+        /// The parent security group name. Please use the `security_group_id` argument along the
+        /// [exoscale_security_group](../data-sources/security_group.md) data source instead.
         /// </summary>
         [Input("securityGroup")]
         public Input<string>? SecurityGroup { get; set; }
 
         /// <summary>
-        /// The parent exoscale.SecurityGroup ID.
+        /// The parent [exoscale_security_group](./security_group.md) ID.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
 
         /// <summary>
-        /// /`end_port` - A `TCP`/`UDP` port range to match.
+        /// A `TCP`/`UDP` port range to match.
         /// </summary>
         [Input("startPort")]
         public Input<int>? StartPort { get; set; }
@@ -220,13 +215,16 @@ namespace Pulumiverse.Exoscale
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`user_security_group_id`). Please use the `user_security_group_id` argument along the exoscale.SecurityGroup data source instead.
+        /// An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with
+        /// `cidr`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
+        /// [exoscale_security_group](../data-sources/security_group.md) data source instead.
         /// </summary>
         [Input("userSecurityGroup")]
         public Input<string>? UserSecurityGroup { get; set; }
 
         /// <summary>
-        /// An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with `cidr`/`user_security_group)`).
+        /// An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with
+        /// `cidr`/`user_security_group)`).
         /// </summary>
         [Input("userSecurityGroupId")]
         public Input<string>? UserSecurityGroupId { get; set; }
@@ -240,7 +238,9 @@ namespace Pulumiverse.Exoscale
     public sealed class SecurityGroupRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation][cidr]) to match (conflicts with `user_security_group`/`user_security_group_id`).
+        /// An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR
+        /// notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with
+        /// `user_security_group`/`user_security_group_id`).
         /// </summary>
         [Input("cidr")]
         public Input<string>? Cidr { get; set; }
@@ -251,14 +251,20 @@ namespace Pulumiverse.Exoscale
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// A `TCP`/`UDP` port range to match.
+        /// </summary>
         [Input("endPort")]
         public Input<int>? EndPort { get; set; }
 
+        /// <summary>
+        /// An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
+        /// </summary>
         [Input("icmpCode")]
         public Input<int>? IcmpCode { get; set; }
 
         /// <summary>
-        /// /`icmp_code` - An ICMP/ICMPv6 [type/code][icmp] to match.
+        /// An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
         /// </summary>
         [Input("icmpType")]
         public Input<int>? IcmpType { get; set; }
@@ -270,19 +276,20 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The parent security group name. Please use the `security_group_id` argument along the exoscale.SecurityGroup data source instead.
+        /// The parent security group name. Please use the `security_group_id` argument along the
+        /// [exoscale_security_group](../data-sources/security_group.md) data source instead.
         /// </summary>
         [Input("securityGroup")]
         public Input<string>? SecurityGroup { get; set; }
 
         /// <summary>
-        /// The parent exoscale.SecurityGroup ID.
+        /// The parent [exoscale_security_group](./security_group.md) ID.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
 
         /// <summary>
-        /// /`end_port` - A `TCP`/`UDP` port range to match.
+        /// A `TCP`/`UDP` port range to match.
         /// </summary>
         [Input("startPort")]
         public Input<int>? StartPort { get; set; }
@@ -294,13 +301,16 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`user_security_group_id`). Please use the `user_security_group_id` argument along the exoscale.SecurityGroup data source instead.
+        /// An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with
+        /// `cidr`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
+        /// [exoscale_security_group](../data-sources/security_group.md) data source instead.
         /// </summary>
         [Input("userSecurityGroup")]
         public Input<string>? UserSecurityGroup { get; set; }
 
         /// <summary>
-        /// An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with `cidr`/`user_security_group)`).
+        /// An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with
+        /// `cidr`/`user_security_group)`).
         /// </summary>
         [Input("userSecurityGroupId")]
         public Input<string>? UserSecurityGroupId { get; set; }

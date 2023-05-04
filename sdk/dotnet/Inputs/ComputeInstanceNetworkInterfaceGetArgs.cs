@@ -13,15 +13,9 @@ namespace Pulumiverse.Exoscale.Inputs
 
     public sealed class ComputeInstanceNetworkInterfaceGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
-        /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
-        /// <summary>
-        /// The exoscale.PrivateNetwork (ID) to attach to the instance.
-        /// </summary>
         [Input("networkId", required: true)]
         public Input<string> NetworkId { get; set; } = null!;
 

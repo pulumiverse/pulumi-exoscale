@@ -22,7 +22,7 @@ func GetInstancePoolList(ctx *pulumi.Context, args *GetInstancePoolListArgs, opt
 
 // A collection of arguments for invoking getInstancePoolList.
 type GetInstancePoolListArgs struct {
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone string `pulumi:"zone"`
 }
 
@@ -30,9 +30,10 @@ type GetInstancePoolListArgs struct {
 type GetInstancePoolListResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The list of exoscale_instance_pool.
+	// The list of exoscale*instance*pool.
 	Pools []GetInstancePoolListPool `pulumi:"pools"`
-	Zone  string                    `pulumi:"zone"`
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	Zone string `pulumi:"zone"`
 }
 
 func GetInstancePoolListOutput(ctx *pulumi.Context, args GetInstancePoolListOutputArgs, opts ...pulumi.InvokeOption) GetInstancePoolListResultOutput {
@@ -50,7 +51,7 @@ func GetInstancePoolListOutput(ctx *pulumi.Context, args GetInstancePoolListOutp
 
 // A collection of arguments for invoking getInstancePoolList.
 type GetInstancePoolListOutputArgs struct {
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
@@ -78,11 +79,12 @@ func (o GetInstancePoolListResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancePoolListResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The list of exoscale_instance_pool.
+// The list of exoscale*instance*pool.
 func (o GetInstancePoolListResultOutput) Pools() GetInstancePoolListPoolArrayOutput {
 	return o.ApplyT(func(v GetInstancePoolListResult) []GetInstancePoolListPool { return v.Pools }).(GetInstancePoolListPoolArrayOutput)
 }
 
+// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o GetInstancePoolListResultOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancePoolListResult) string { return v.Zone }).(pulumi.StringOutput)
 }

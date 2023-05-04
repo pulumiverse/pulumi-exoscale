@@ -12,7 +12,7 @@ import (
 
 // ## Import
 //
-// An existing security group may be imported by `<ID>`console
+// An existing security group may be imported by `<ID>`
 //
 // ```sh
 //
@@ -28,7 +28,8 @@ type SecurityGroup struct {
 
 	// A free-form text describing the group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A list of external network sources, in [CIDR][cidr] notation.
+	// A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
+	// notation.
 	ExternalSources pulumi.StringArrayOutput `pulumi:"externalSources"`
 	// The security group name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -66,7 +67,8 @@ func GetSecurityGroup(ctx *pulumi.Context,
 type securityGroupState struct {
 	// A free-form text describing the group.
 	Description *string `pulumi:"description"`
-	// A list of external network sources, in [CIDR][cidr] notation.
+	// A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
+	// notation.
 	ExternalSources []string `pulumi:"externalSources"`
 	// The security group name.
 	Name *string `pulumi:"name"`
@@ -75,7 +77,8 @@ type securityGroupState struct {
 type SecurityGroupState struct {
 	// A free-form text describing the group.
 	Description pulumi.StringPtrInput
-	// A list of external network sources, in [CIDR][cidr] notation.
+	// A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
+	// notation.
 	ExternalSources pulumi.StringArrayInput
 	// The security group name.
 	Name pulumi.StringPtrInput
@@ -88,7 +91,8 @@ func (SecurityGroupState) ElementType() reflect.Type {
 type securityGroupArgs struct {
 	// A free-form text describing the group.
 	Description *string `pulumi:"description"`
-	// A list of external network sources, in [CIDR][cidr] notation.
+	// A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
+	// notation.
 	ExternalSources []string `pulumi:"externalSources"`
 	// The security group name.
 	Name *string `pulumi:"name"`
@@ -98,7 +102,8 @@ type securityGroupArgs struct {
 type SecurityGroupArgs struct {
 	// A free-form text describing the group.
 	Description pulumi.StringPtrInput
-	// A list of external network sources, in [CIDR][cidr] notation.
+	// A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
+	// notation.
 	ExternalSources pulumi.StringArrayInput
 	// The security group name.
 	Name pulumi.StringPtrInput
@@ -196,7 +201,8 @@ func (o SecurityGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// A list of external network sources, in [CIDR][cidr] notation.
+// A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
+// notation.
 func (o SecurityGroupOutput) ExternalSources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringArrayOutput { return v.ExternalSources }).(pulumi.StringArrayOutput)
 }

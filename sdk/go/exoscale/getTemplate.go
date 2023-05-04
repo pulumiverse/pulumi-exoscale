@@ -26,20 +26,24 @@ type GetTemplateArgs struct {
 	Id *string `pulumi:"id"`
 	// The template name to match (conflicts with `id`) (when multiple templates have the same name, the newest one will be returned).
 	Name *string `pulumi:"name"`
-	// A template category filter (default: `public`); among:
+	// A template category filter (default: `public`); among: - `public` - official Exoscale templates - `private` - custom templates private to my organization
 	Visibility *string `pulumi:"visibility"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone string `pulumi:"zone"`
 }
 
 // A collection of values returned by getTemplate.
 type GetTemplateResult struct {
 	// Username to use to log into a compute instance based on this template
-	DefaultUser string  `pulumi:"defaultUser"`
-	Id          *string `pulumi:"id"`
-	Name        *string `pulumi:"name"`
-	Visibility  *string `pulumi:"visibility"`
-	Zone        string  `pulumi:"zone"`
+	DefaultUser string `pulumi:"defaultUser"`
+	// The compute instance template ID to match (conflicts with `name`).
+	Id *string `pulumi:"id"`
+	// The template name to match (conflicts with `id`) (when multiple templates have the same name, the newest one will be returned).
+	Name *string `pulumi:"name"`
+	// A template category filter (default: `public`); among: - `public` - official Exoscale templates - `private` - custom templates private to my organization
+	Visibility *string `pulumi:"visibility"`
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	Zone string `pulumi:"zone"`
 }
 
 func GetTemplateOutput(ctx *pulumi.Context, args GetTemplateOutputArgs, opts ...pulumi.InvokeOption) GetTemplateResultOutput {
@@ -61,9 +65,9 @@ type GetTemplateOutputArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The template name to match (conflicts with `id`) (when multiple templates have the same name, the newest one will be returned).
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// A template category filter (default: `public`); among:
+	// A template category filter (default: `public`); among: - `public` - official Exoscale templates - `private` - custom templates private to my organization
 	Visibility pulumi.StringPtrInput `pulumi:"visibility"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
@@ -91,18 +95,22 @@ func (o GetTemplateResultOutput) DefaultUser() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTemplateResult) string { return v.DefaultUser }).(pulumi.StringOutput)
 }
 
+// The compute instance template ID to match (conflicts with `name`).
 func (o GetTemplateResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTemplateResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The template name to match (conflicts with `id`) (when multiple templates have the same name, the newest one will be returned).
 func (o GetTemplateResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTemplateResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// A template category filter (default: `public`); among: - `public` - official Exoscale templates - `private` - custom templates private to my organization
 func (o GetTemplateResultOutput) Visibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTemplateResult) *string { return v.Visibility }).(pulumi.StringPtrOutput)
 }
 
+// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o GetTemplateResultOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTemplateResult) string { return v.Zone }).(pulumi.StringOutput)
 }

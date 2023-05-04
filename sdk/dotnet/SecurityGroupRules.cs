@@ -16,11 +16,14 @@ namespace Pulumiverse.Exoscale
     [ExoscaleResourceType("exoscale:index/securityGroupRules:SecurityGroupRules")]
     public partial class SecurityGroupRules : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// A security group rule definition (can be specified multiple times).
+        /// </summary>
         [Output("egresses")]
         public Output<ImmutableArray<Outputs.SecurityGroupRulesEgress>> Egresses { get; private set; } = null!;
 
         /// <summary>
-        /// /`egress` - (Block) A security group rule definition (can be specified multiple times).
+        /// A security group rule definition (can be specified multiple times).
         /// </summary>
         [Output("ingresses")]
         public Output<ImmutableArray<Outputs.SecurityGroupRulesIngress>> Ingresses { get; private set; } = null!;
@@ -86,6 +89,10 @@ namespace Pulumiverse.Exoscale
     {
         [Input("egresses")]
         private InputList<Inputs.SecurityGroupRulesEgressArgs>? _egresses;
+
+        /// <summary>
+        /// A security group rule definition (can be specified multiple times).
+        /// </summary>
         public InputList<Inputs.SecurityGroupRulesEgressArgs> Egresses
         {
             get => _egresses ?? (_egresses = new InputList<Inputs.SecurityGroupRulesEgressArgs>());
@@ -96,7 +103,7 @@ namespace Pulumiverse.Exoscale
         private InputList<Inputs.SecurityGroupRulesIngressArgs>? _ingresses;
 
         /// <summary>
-        /// /`egress` - (Block) A security group rule definition (can be specified multiple times).
+        /// A security group rule definition (can be specified multiple times).
         /// </summary>
         public InputList<Inputs.SecurityGroupRulesIngressArgs> Ingresses
         {
@@ -126,6 +133,10 @@ namespace Pulumiverse.Exoscale
     {
         [Input("egresses")]
         private InputList<Inputs.SecurityGroupRulesEgressGetArgs>? _egresses;
+
+        /// <summary>
+        /// A security group rule definition (can be specified multiple times).
+        /// </summary>
         public InputList<Inputs.SecurityGroupRulesEgressGetArgs> Egresses
         {
             get => _egresses ?? (_egresses = new InputList<Inputs.SecurityGroupRulesEgressGetArgs>());
@@ -136,7 +147,7 @@ namespace Pulumiverse.Exoscale
         private InputList<Inputs.SecurityGroupRulesIngressGetArgs>? _ingresses;
 
         /// <summary>
-        /// /`egress` - (Block) A security group rule definition (can be specified multiple times).
+        /// A security group rule definition (can be specified multiple times).
         /// </summary>
         public InputList<Inputs.SecurityGroupRulesIngressGetArgs> Ingresses
         {

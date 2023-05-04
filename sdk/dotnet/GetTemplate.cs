@@ -35,13 +35,13 @@ namespace Pulumiverse.Exoscale
         public string? Name { get; set; }
 
         /// <summary>
-        /// A template category filter (default: `public`); among:
+        /// A template category filter (default: `public`); among: - `public` - official Exoscale templates - `private` - custom templates private to my organization
         /// </summary>
         [Input("visibility")]
         public string? Visibility { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone", required: true)]
         public string Zone { get; set; } = null!;
@@ -67,13 +67,13 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A template category filter (default: `public`); among:
+        /// A template category filter (default: `public`); among: - `public` - official Exoscale templates - `private` - custom templates private to my organization
         /// </summary>
         [Input("visibility")]
         public Input<string>? Visibility { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -92,9 +92,21 @@ namespace Pulumiverse.Exoscale
         /// Username to use to log into a compute instance based on this template
         /// </summary>
         public readonly string DefaultUser;
+        /// <summary>
+        /// The compute instance template ID to match (conflicts with `name`).
+        /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// The template name to match (conflicts with `id`) (when multiple templates have the same name, the newest one will be returned).
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// A template category filter (default: `public`); among: - `public` - official Exoscale templates - `private` - custom templates private to my organization
+        /// </summary>
         public readonly string? Visibility;
+        /// <summary>
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// </summary>
         public readonly string Zone;
 
         [OutputConstructor]

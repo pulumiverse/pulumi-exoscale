@@ -88,7 +88,7 @@ class GetInstancePoolResult:
     @pulumi.getter(name="affinityGroupIds")
     def affinity_group_ids(self) -> Sequence[str]:
         """
-        The list of attached AntiAffinityGroup (IDs).
+        The list of attached exoscale*anti*affinity_group (IDs).
         """
         return pulumi.get(self, "affinity_group_ids")
 
@@ -120,7 +120,7 @@ class GetInstancePoolResult:
     @pulumi.getter(name="elasticIpIds")
     def elastic_ip_ids(self) -> Sequence[str]:
         """
-        The list of attached ElasticIP (IDs).
+        The list of attached exoscale*elastic*ip (IDs).
         """
         return pulumi.get(self, "elastic_ip_ids")
 
@@ -128,7 +128,7 @@ class GetInstancePoolResult:
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        The compute instance ID.
+        The instance pool ID to match (conflicts with `name`).
         """
         return pulumi.get(self, "id")
 
@@ -168,7 +168,7 @@ class GetInstancePoolResult:
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> str:
         """
-        The SSHKey (name) authorized on the managed instances.
+        The exoscale*ssh*key (name) authorized on the managed instances.
         """
         return pulumi.get(self, "key_pair")
 
@@ -184,7 +184,7 @@ class GetInstancePoolResult:
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The instance name.
+        The pool name to match (conflicts with `id`).
         """
         return pulumi.get(self, "name")
 
@@ -192,7 +192,7 @@ class GetInstancePoolResult:
     @pulumi.getter(name="networkIds")
     def network_ids(self) -> Sequence[str]:
         """
-        The list of attached PrivateNetwork (IDs).
+        The list of attached exoscale*private*network (IDs).
         """
         return pulumi.get(self, "network_ids")
 
@@ -200,7 +200,7 @@ class GetInstancePoolResult:
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Sequence[str]:
         """
-        The list of attached SecurityGroup (IDs).
+        The list of attached exoscale*security*group (IDs).
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -224,7 +224,7 @@ class GetInstancePoolResult:
     @pulumi.getter(name="templateId")
     def template_id(self) -> str:
         """
-        The managed instances_get_compute_template_ID.
+        The managed instances exoscale*compute*template ID.
         """
         return pulumi.get(self, "template_id")
 
@@ -232,13 +232,16 @@ class GetInstancePoolResult:
     @pulumi.getter(name="userData")
     def user_data(self) -> str:
         """
-        [cloud-init][cloud-init] configuration.
+        [cloud-init](http://cloudinit.readthedocs.io/en/latest/) configuration.
         """
         return pulumi.get(self, "user_data")
 
     @property
     @pulumi.getter
     def zone(self) -> str:
+        """
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        """
         return pulumi.get(self, "zone")
 
 
@@ -281,7 +284,7 @@ def get_instance_pool(id: Optional[str] = None,
     :param str id: The instance pool ID to match (conflicts with `name`).
     :param Mapping[str, str] labels: A map of key/value labels.
     :param str name: The pool name to match (conflicts with `id`).
-    :param str zone: The Exoscale [Zone][zone] name.
+    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -326,6 +329,6 @@ def get_instance_pool_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str id: The instance pool ID to match (conflicts with `name`).
     :param Mapping[str, str] labels: A map of key/value labels.
     :param str name: The pool name to match (conflicts with `id`).
-    :param str zone: The Exoscale [Zone][zone] name.
+    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     ...

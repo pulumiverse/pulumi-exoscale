@@ -55,16 +55,25 @@ class GetNetworkResult:
     @property
     @pulumi.getter(name="endIp")
     def end_ip(self) -> str:
+        """
+        The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        """
         return pulumi.get(self, "end_ip")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        The private network ID to match (conflicts with `name`).
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        The network name to match (conflicts with `id`).
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -79,13 +88,16 @@ class GetNetworkResult:
     @pulumi.getter(name="startIp")
     def start_ip(self) -> str:
         """
-        /`end_ip` - The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        The first/last IPv4 addresses used by the DHCP service for dynamic leases.
         """
         return pulumi.get(self, "start_ip")
 
     @property
     @pulumi.getter
     def zone(self) -> str:
+        """
+        (Required) The Exoscale Zone name.
+        """
         return pulumi.get(self, "zone")
 
 
@@ -114,7 +126,7 @@ def get_network(id: Optional[str] = None,
 
     :param str id: The private network ID to match (conflicts with `name`).
     :param str name: The network name to match (conflicts with `id`).
-    :param str zone: The Exoscale Zone name.
+    :param str zone: (Required) The Exoscale Zone name.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -144,6 +156,6 @@ def get_network_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str id: The private network ID to match (conflicts with `name`).
     :param str name: The network name to match (conflicts with `id`).
-    :param str zone: The Exoscale Zone name.
+    :param str zone: (Required) The Exoscale Zone name.
     """
     ...

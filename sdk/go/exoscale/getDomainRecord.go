@@ -24,13 +24,15 @@ func LookupDomainRecord(ctx *pulumi.Context, args *LookupDomainRecordArgs, opts 
 type LookupDomainRecordArgs struct {
 	// The Domain name to match.
 	Domain string `pulumi:"domain"`
-	// Filter to apply when looking up domain records. Structure is documented below.
+	// Filter to apply when looking up domain records.
 	Filter GetDomainRecordFilter `pulumi:"filter"`
 }
 
 // A collection of values returned by getDomainRecord.
 type LookupDomainRecordResult struct {
-	Domain string                `pulumi:"domain"`
+	// The Domain name to match.
+	Domain string `pulumi:"domain"`
+	// Filter to apply when looking up domain records.
 	Filter GetDomainRecordFilter `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -55,7 +57,7 @@ func LookupDomainRecordOutput(ctx *pulumi.Context, args LookupDomainRecordOutput
 type LookupDomainRecordOutputArgs struct {
 	// The Domain name to match.
 	Domain pulumi.StringInput `pulumi:"domain"`
-	// Filter to apply when looking up domain records. Structure is documented below.
+	// Filter to apply when looking up domain records.
 	Filter GetDomainRecordFilterInput `pulumi:"filter"`
 }
 
@@ -78,10 +80,12 @@ func (o LookupDomainRecordResultOutput) ToLookupDomainRecordResultOutputWithCont
 	return o
 }
 
+// The Domain name to match.
 func (o LookupDomainRecordResultOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainRecordResult) string { return v.Domain }).(pulumi.StringOutput)
 }
 
+// Filter to apply when looking up domain records.
 func (o LookupDomainRecordResultOutput) Filter() GetDomainRecordFilterOutput {
 	return o.ApplyT(func(v LookupDomainRecordResult) GetDomainRecordFilter { return v.Filter }).(GetDomainRecordFilterOutput)
 }

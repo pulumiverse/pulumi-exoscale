@@ -14,13 +14,7 @@ namespace Pulumiverse.Exoscale.Outputs
     [OutputType]
     public sealed class ComputeInstanceNetworkInterface
     {
-        /// <summary>
-        /// The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
-        /// </summary>
         public readonly string? IpAddress;
-        /// <summary>
-        /// The exoscale.PrivateNetwork (ID) to attach to the instance.
-        /// </summary>
         public readonly string NetworkId;
 
         [OutputConstructor]

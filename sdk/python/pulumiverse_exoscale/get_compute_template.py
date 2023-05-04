@@ -41,29 +41,41 @@ class GetComputeTemplateResult:
     @property
     @pulumi.getter
     def filter(self) -> Optional[str]:
+        """
+        A template category filter (default: `featured`); among: - `featured` - official Exoscale templates - `community` - community-contributed templates - `mine` - custom templates private to my organization
+        """
         return pulumi.get(self, "filter")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        The compute instance template ID to match (conflicts with `name`).
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        The template name to match (conflicts with `id`).
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def username(self) -> str:
         """
-        Username to use to log into a compute instance based on this template
+        Username for logging into a compute instance based on this template
         """
         return pulumi.get(self, "username")
 
     @property
     @pulumi.getter
     def zone(self) -> str:
+        """
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        """
         return pulumi.get(self, "zone")
 
 
@@ -88,10 +100,10 @@ def get_compute_template(filter: Optional[str] = None,
     """
     Use this data source to access information about an existing resource.
 
-    :param str filter: A template category filter (default: `featured`); among:
+    :param str filter: A template category filter (default: `featured`); among: - `featured` - official Exoscale templates - `community` - community-contributed templates - `mine` - custom templates private to my organization
     :param str id: The compute instance template ID to match (conflicts with `name`).
     :param str name: The template name to match (conflicts with `id`).
-    :param str zone: The Exoscale [Zone][zone] name.
+    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     __args__ = dict()
     __args__['filter'] = filter
@@ -118,9 +130,9 @@ def get_compute_template_output(filter: Optional[pulumi.Input[Optional[str]]] = 
     """
     Use this data source to access information about an existing resource.
 
-    :param str filter: A template category filter (default: `featured`); among:
+    :param str filter: A template category filter (default: `featured`); among: - `featured` - official Exoscale templates - `community` - community-contributed templates - `mine` - custom templates private to my organization
     :param str id: The compute instance template ID to match (conflicts with `name`).
     :param str name: The template name to match (conflicts with `id`).
-    :param str zone: The Exoscale [Zone][zone] name.
+    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     ...

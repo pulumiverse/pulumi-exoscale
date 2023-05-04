@@ -22,6 +22,7 @@ func LookupComputeInstance(ctx *pulumi.Context, args *LookupComputeInstanceArgs,
 
 // A collection of arguments for invoking getComputeInstance.
 type LookupComputeInstanceArgs struct {
+	// The list of attached exoscale*anti*affinity_group (IDs).
 	AntiAffinityGroupIds []string `pulumi:"antiAffinityGroupIds"`
 	// The compute instance ID to match (conflicts with `name`).
 	Id *string `pulumi:"id"`
@@ -29,12 +30,13 @@ type LookupComputeInstanceArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The instance name to match (conflicts with `id`).
 	Name *string `pulumi:"name"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone string `pulumi:"zone"`
 }
 
 // A collection of values returned by getComputeInstance.
 type LookupComputeInstanceResult struct {
+	// The list of attached exoscale*anti*affinity_group (IDs).
 	AntiAffinityGroupIds []string `pulumi:"antiAffinityGroupIds"`
 	// The compute instance creation date.
 	CreatedAt string `pulumi:"createdAt"`
@@ -42,9 +44,10 @@ type LookupComputeInstanceResult struct {
 	DeployTargetId string `pulumi:"deployTargetId"`
 	// The instance disk size (GiB).
 	DiskSize int `pulumi:"diskSize"`
-	// The list of attached ElasticIP (IDs).
+	// The list of attached exoscale*elastic*ip (IDs).
 	ElasticIpIds []string `pulumi:"elasticIpIds"`
-	Id           *string  `pulumi:"id"`
+	// The compute instance ID to match (conflicts with `name`).
+	Id *string `pulumi:"id"`
 	// Whether IPv6 is enabled on the instance.
 	Ipv6 bool `pulumi:"ipv6"`
 	// The instance (main network interface) IPv6 address (if enabled).
@@ -54,26 +57,29 @@ type LookupComputeInstanceResult struct {
 	// The instance manager ID, if any.
 	ManagerId string `pulumi:"managerId"`
 	// The instance manager type (instance pool, SKS node pool, etc.), if any.
-	ManagerType       string   `pulumi:"managerType"`
-	Name              *string  `pulumi:"name"`
+	ManagerType string `pulumi:"managerType"`
+	// The instance name to match (conflicts with `id`).
+	Name *string `pulumi:"name"`
+	// The list of attached exoscale*private*network (IDs).
 	PrivateNetworkIds []string `pulumi:"privateNetworkIds"`
 	// The instance (main network interface) IPv4 address.
 	PublicIpAddress string `pulumi:"publicIpAddress"`
 	// Domain name for reverse DNS record.
 	ReverseDns string `pulumi:"reverseDns"`
-	// The list of attached SecurityGroup (IDs).
+	// The list of attached exoscale*security*group (IDs).
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// The SSHKey (name) authorized on the instance.
+	// The exoscale*ssh*key (name) authorized on the instance.
 	SshKey string `pulumi:"sshKey"`
 	// The instance state.
 	State string `pulumi:"state"`
-	// The instance getComputeTemplate ID.
+	// The instance exoscale*compute*template ID.
 	TemplateId string `pulumi:"templateId"`
 	// The instance type.
 	Type string `pulumi:"type"`
-	// The instance [cloud-init][cloud-init] configuration.
+	// The instance [cloud-init](http://cloudinit.readthedocs.io/en/latest/) configuration.
 	UserData string `pulumi:"userData"`
-	Zone     string `pulumi:"zone"`
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	Zone string `pulumi:"zone"`
 }
 
 func LookupComputeInstanceOutput(ctx *pulumi.Context, args LookupComputeInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupComputeInstanceResultOutput {
@@ -91,6 +97,7 @@ func LookupComputeInstanceOutput(ctx *pulumi.Context, args LookupComputeInstance
 
 // A collection of arguments for invoking getComputeInstance.
 type LookupComputeInstanceOutputArgs struct {
+	// The list of attached exoscale*anti*affinity_group (IDs).
 	AntiAffinityGroupIds pulumi.StringArrayInput `pulumi:"antiAffinityGroupIds"`
 	// The compute instance ID to match (conflicts with `name`).
 	Id pulumi.StringPtrInput `pulumi:"id"`
@@ -98,7 +105,7 @@ type LookupComputeInstanceOutputArgs struct {
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The instance name to match (conflicts with `id`).
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
@@ -121,6 +128,7 @@ func (o LookupComputeInstanceResultOutput) ToLookupComputeInstanceResultOutputWi
 	return o
 }
 
+// The list of attached exoscale*anti*affinity_group (IDs).
 func (o LookupComputeInstanceResultOutput) AntiAffinityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupComputeInstanceResult) []string { return v.AntiAffinityGroupIds }).(pulumi.StringArrayOutput)
 }
@@ -140,11 +148,12 @@ func (o LookupComputeInstanceResultOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupComputeInstanceResult) int { return v.DiskSize }).(pulumi.IntOutput)
 }
 
-// The list of attached ElasticIP (IDs).
+// The list of attached exoscale*elastic*ip (IDs).
 func (o LookupComputeInstanceResultOutput) ElasticIpIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupComputeInstanceResult) []string { return v.ElasticIpIds }).(pulumi.StringArrayOutput)
 }
 
+// The compute instance ID to match (conflicts with `name`).
 func (o LookupComputeInstanceResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupComputeInstanceResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -174,10 +183,12 @@ func (o LookupComputeInstanceResultOutput) ManagerType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.ManagerType }).(pulumi.StringOutput)
 }
 
+// The instance name to match (conflicts with `id`).
 func (o LookupComputeInstanceResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupComputeInstanceResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The list of attached exoscale*private*network (IDs).
 func (o LookupComputeInstanceResultOutput) PrivateNetworkIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupComputeInstanceResult) []string { return v.PrivateNetworkIds }).(pulumi.StringArrayOutput)
 }
@@ -192,12 +203,12 @@ func (o LookupComputeInstanceResultOutput) ReverseDns() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.ReverseDns }).(pulumi.StringOutput)
 }
 
-// The list of attached SecurityGroup (IDs).
+// The list of attached exoscale*security*group (IDs).
 func (o LookupComputeInstanceResultOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupComputeInstanceResult) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// The SSHKey (name) authorized on the instance.
+// The exoscale*ssh*key (name) authorized on the instance.
 func (o LookupComputeInstanceResultOutput) SshKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.SshKey }).(pulumi.StringOutput)
 }
@@ -207,7 +218,7 @@ func (o LookupComputeInstanceResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// The instance getComputeTemplate ID.
+// The instance exoscale*compute*template ID.
 func (o LookupComputeInstanceResultOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.TemplateId }).(pulumi.StringOutput)
 }
@@ -217,11 +228,12 @@ func (o LookupComputeInstanceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The instance [cloud-init][cloud-init] configuration.
+// The instance [cloud-init](http://cloudinit.readthedocs.io/en/latest/) configuration.
 func (o LookupComputeInstanceResultOutput) UserData() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.UserData }).(pulumi.StringOutput)
 }
 
+// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o LookupComputeInstanceResultOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.Zone }).(pulumi.StringOutput)
 }

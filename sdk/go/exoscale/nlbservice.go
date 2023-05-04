@@ -13,7 +13,7 @@ import (
 
 // ## Import
 //
-// An existing NLB service may be imported by `<nlb-ID>/<service-ID>@<zone>`console
+// An existing NLB service may be imported by `<nlb-ID>/<service-ID>@<zone>`
 //
 // ```sh
 //
@@ -29,15 +29,15 @@ type NLBService struct {
 
 	// A free-form text describing the NLB service.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The service health checking configuration (may only bet set at creation time). Structure is documented below.
+	// The service health checking configuration (may only bet set at creation time).
 	Healthchecks NLBServiceHealthcheckArrayOutput `pulumi:"healthchecks"`
-	// The InstancePool (ID) to forward traffic to.
+	// The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
 	InstancePoolId pulumi.StringOutput `pulumi:"instancePoolId"`
 	// The NLB service name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The parent NLB ID.
+	// The parent [exoscale_nlb](./nlb.md) ID.
 	NlbId pulumi.StringOutput `pulumi:"nlbId"`
-	// The NLB service (TCP/UPP) port.
+	// The healthcheck port.
 	Port pulumi.IntOutput `pulumi:"port"`
 	// The protocol (`tcp`|`udp`; default: `tcp`).
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
@@ -46,7 +46,7 @@ type NLBService struct {
 	Strategy pulumi.StringPtrOutput `pulumi:"strategy"`
 	// The (TCP/UDP) port to forward traffic to (on target instance pool members).
 	TargetPort pulumi.IntOutput `pulumi:"targetPort"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -100,15 +100,15 @@ func GetNLBService(ctx *pulumi.Context,
 type nlbserviceState struct {
 	// A free-form text describing the NLB service.
 	Description *string `pulumi:"description"`
-	// The service health checking configuration (may only bet set at creation time). Structure is documented below.
+	// The service health checking configuration (may only bet set at creation time).
 	Healthchecks []NLBServiceHealthcheck `pulumi:"healthchecks"`
-	// The InstancePool (ID) to forward traffic to.
+	// The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
 	InstancePoolId *string `pulumi:"instancePoolId"`
 	// The NLB service name.
 	Name *string `pulumi:"name"`
-	// The parent NLB ID.
+	// The parent [exoscale_nlb](./nlb.md) ID.
 	NlbId *string `pulumi:"nlbId"`
-	// The NLB service (TCP/UPP) port.
+	// The healthcheck port.
 	Port *int `pulumi:"port"`
 	// The protocol (`tcp`|`udp`; default: `tcp`).
 	Protocol *string `pulumi:"protocol"`
@@ -117,22 +117,22 @@ type nlbserviceState struct {
 	Strategy *string `pulumi:"strategy"`
 	// The (TCP/UDP) port to forward traffic to (on target instance pool members).
 	TargetPort *int `pulumi:"targetPort"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone *string `pulumi:"zone"`
 }
 
 type NLBServiceState struct {
 	// A free-form text describing the NLB service.
 	Description pulumi.StringPtrInput
-	// The service health checking configuration (may only bet set at creation time). Structure is documented below.
+	// The service health checking configuration (may only bet set at creation time).
 	Healthchecks NLBServiceHealthcheckArrayInput
-	// The InstancePool (ID) to forward traffic to.
+	// The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
 	InstancePoolId pulumi.StringPtrInput
 	// The NLB service name.
 	Name pulumi.StringPtrInput
-	// The parent NLB ID.
+	// The parent [exoscale_nlb](./nlb.md) ID.
 	NlbId pulumi.StringPtrInput
-	// The NLB service (TCP/UPP) port.
+	// The healthcheck port.
 	Port pulumi.IntPtrInput
 	// The protocol (`tcp`|`udp`; default: `tcp`).
 	Protocol pulumi.StringPtrInput
@@ -141,7 +141,7 @@ type NLBServiceState struct {
 	Strategy pulumi.StringPtrInput
 	// The (TCP/UDP) port to forward traffic to (on target instance pool members).
 	TargetPort pulumi.IntPtrInput
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringPtrInput
 }
 
@@ -152,15 +152,15 @@ func (NLBServiceState) ElementType() reflect.Type {
 type nlbserviceArgs struct {
 	// A free-form text describing the NLB service.
 	Description *string `pulumi:"description"`
-	// The service health checking configuration (may only bet set at creation time). Structure is documented below.
+	// The service health checking configuration (may only bet set at creation time).
 	Healthchecks []NLBServiceHealthcheck `pulumi:"healthchecks"`
-	// The InstancePool (ID) to forward traffic to.
+	// The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
 	InstancePoolId string `pulumi:"instancePoolId"`
 	// The NLB service name.
 	Name *string `pulumi:"name"`
-	// The parent NLB ID.
+	// The parent [exoscale_nlb](./nlb.md) ID.
 	NlbId string `pulumi:"nlbId"`
-	// The NLB service (TCP/UPP) port.
+	// The healthcheck port.
 	Port int `pulumi:"port"`
 	// The protocol (`tcp`|`udp`; default: `tcp`).
 	Protocol *string `pulumi:"protocol"`
@@ -168,7 +168,7 @@ type nlbserviceArgs struct {
 	Strategy *string `pulumi:"strategy"`
 	// The (TCP/UDP) port to forward traffic to (on target instance pool members).
 	TargetPort int `pulumi:"targetPort"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone string `pulumi:"zone"`
 }
 
@@ -176,15 +176,15 @@ type nlbserviceArgs struct {
 type NLBServiceArgs struct {
 	// A free-form text describing the NLB service.
 	Description pulumi.StringPtrInput
-	// The service health checking configuration (may only bet set at creation time). Structure is documented below.
+	// The service health checking configuration (may only bet set at creation time).
 	Healthchecks NLBServiceHealthcheckArrayInput
-	// The InstancePool (ID) to forward traffic to.
+	// The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
 	InstancePoolId pulumi.StringInput
 	// The NLB service name.
 	Name pulumi.StringPtrInput
-	// The parent NLB ID.
+	// The parent [exoscale_nlb](./nlb.md) ID.
 	NlbId pulumi.StringInput
-	// The NLB service (TCP/UPP) port.
+	// The healthcheck port.
 	Port pulumi.IntInput
 	// The protocol (`tcp`|`udp`; default: `tcp`).
 	Protocol pulumi.StringPtrInput
@@ -192,7 +192,7 @@ type NLBServiceArgs struct {
 	Strategy pulumi.StringPtrInput
 	// The (TCP/UDP) port to forward traffic to (on target instance pool members).
 	TargetPort pulumi.IntInput
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringInput
 }
 
@@ -288,12 +288,12 @@ func (o NLBServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NLBService) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The service health checking configuration (may only bet set at creation time). Structure is documented below.
+// The service health checking configuration (may only bet set at creation time).
 func (o NLBServiceOutput) Healthchecks() NLBServiceHealthcheckArrayOutput {
 	return o.ApplyT(func(v *NLBService) NLBServiceHealthcheckArrayOutput { return v.Healthchecks }).(NLBServiceHealthcheckArrayOutput)
 }
 
-// The InstancePool (ID) to forward traffic to.
+// The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
 func (o NLBServiceOutput) InstancePoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NLBService) pulumi.StringOutput { return v.InstancePoolId }).(pulumi.StringOutput)
 }
@@ -303,12 +303,12 @@ func (o NLBServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NLBService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The parent NLB ID.
+// The parent [exoscale_nlb](./nlb.md) ID.
 func (o NLBServiceOutput) NlbId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NLBService) pulumi.StringOutput { return v.NlbId }).(pulumi.StringOutput)
 }
 
-// The NLB service (TCP/UPP) port.
+// The healthcheck port.
 func (o NLBServiceOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v *NLBService) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
 }
@@ -332,7 +332,7 @@ func (o NLBServiceOutput) TargetPort() pulumi.IntOutput {
 	return o.ApplyT(func(v *NLBService) pulumi.IntOutput { return v.TargetPort }).(pulumi.IntOutput)
 }
 
-// The Exoscale [Zone][zone] name.
+// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o NLBServiceOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *NLBService) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

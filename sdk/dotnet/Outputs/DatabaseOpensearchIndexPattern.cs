@@ -14,17 +14,8 @@ namespace Pulumiverse.Exoscale.Outputs
     [OutputType]
     public sealed class DatabaseOpensearchIndexPattern
     {
-        /// <summary>
-        /// Maximum number of indexes to keep (Minimum value is `0`)
-        /// </summary>
         public readonly int? MaxIndexCount;
-        /// <summary>
-        /// fnmatch pattern
-        /// </summary>
         public readonly string? Pattern;
-        /// <summary>
-        /// `alphabetical` or `creation_date`.
-        /// </summary>
         public readonly string? SortingAlgorithm;
 
         [OutputConstructor]

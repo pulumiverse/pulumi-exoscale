@@ -29,7 +29,8 @@ type LookupDomainArgs struct {
 // A collection of values returned by getDomain.
 type LookupDomainResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id   string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The DNS domain name to match.
 	Name string `pulumi:"name"`
 }
 
@@ -76,6 +77,7 @@ func (o LookupDomainResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The DNS domain name to match.
 func (o LookupDomainResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainResult) string { return v.Name }).(pulumi.StringOutput)
 }

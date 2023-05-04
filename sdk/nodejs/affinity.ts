@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * !> **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use exoscale.AntiAffinityGroup instead.
+ * **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use exoscale.AntiAffinityGroup instead.
  */
 export class Affinity extends pulumi.CustomResource {
     /**

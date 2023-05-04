@@ -6,6 +6,8 @@ import * as utilities from "./utilities";
 
 /**
  * !> **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use exoscale.ComputeInstance instead.
+ *
+ * Manage Exoscale Compute Instances.
  */
 export class Compute extends pulumi.CustomResource {
     /**
@@ -36,11 +38,11 @@ export class Compute extends pulumi.CustomResource {
     }
 
     /**
-     * A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinityGroups`).
+     * A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
      */
     public readonly affinityGroupIds!: pulumi.Output<string[]>;
     /**
-     * A list of anti-affinity groups (names; at creation time only; conflicts with `affinityGroupIds`).
+     * A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
      */
     public readonly affinityGroups!: pulumi.Output<string[]>;
     /**
@@ -48,20 +50,25 @@ export class Compute extends pulumi.CustomResource {
      */
     public readonly diskSize!: pulumi.Output<number>;
     /**
-     * The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen ("-") characters; it can be changed to any character during a later update. If neither `displayName` or `hostname` attributes are set, a random value will be generated automatically.
+     * The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'
+     * *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed
+     * to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will
+     * be generated automatically.
      */
     public readonly displayName!: pulumi.Output<string>;
     public /*out*/ readonly gateway!: pulumi.Output<string>;
     /**
-     * The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `displayName` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.
+     * The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or
+     * `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value
+     * requires to reboot the instance.
      */
     public readonly hostname!: pulumi.Output<string>;
     /**
-     * Enable IPv4 on the instance (only supported value is `true`).
+     * Request an IPv4 address on the default NIC
      */
     public readonly ip4!: pulumi.Output<boolean | undefined>;
     /**
-     * Enable IPv6 on the instance (boolean; default: `false`).
+     * Request an IPv6 address on the default NIC
      */
     public readonly ip6!: pulumi.Output<boolean | undefined>;
     /**
@@ -78,11 +85,12 @@ export class Compute extends pulumi.CustomResource {
      */
     public readonly keyPair!: pulumi.Output<string | undefined>;
     /**
-     * The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).
+     * The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,
+     * `pt`, `uk`, `us`; at creation time only).
      */
     public readonly keyboard!: pulumi.Output<string | undefined>;
     /**
-     * (Deprecated) The instance hostname. Please use the `hostname` argument instead.
+     * The instance hostname. Please use the `hostname` argument instead.
      *
      * @deprecated use `hostname` attribute instead
      */
@@ -96,11 +104,11 @@ export class Compute extends pulumi.CustomResource {
      */
     public readonly reverseDns!: pulumi.Output<string | undefined>;
     /**
-     * A list of security groups (IDs; conflicts with `securityGroups`).
+     * A list of security groups (IDs; conflicts with `security_groups`).
      */
     public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
-     * A list of security groups (names; conflicts with `securityGroupIds`).
+     * A list of security groups (names; conflicts with `security_group_ids`).
      */
     public readonly securityGroups!: pulumi.Output<string[]>;
     /**
@@ -112,15 +120,16 @@ export class Compute extends pulumi.CustomResource {
      */
     public readonly state!: pulumi.Output<string>;
     /**
-     * A map of tags (key/value). To remove all tags, set `tags = {}`.
+     * Map of tags (key/value). To remove all tags, set `tags = {}`.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `templateId` attribute instead.
+     * The compute instance template (name). Only *featured* templates are available, if you want to reference *custom
+     * templates* use the `template_id` attribute instead.
      */
     public readonly template!: pulumi.Output<string>;
     /**
-     * The compute instance template (ID). Usage of the `exoscale.getComputeTemplate` data source is recommended.
+     * The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.
      */
     public readonly templateId!: pulumi.Output<string>;
     /**
@@ -132,7 +141,8 @@ export class Compute extends pulumi.CustomResource {
      */
     public /*out*/ readonly userDataBase64!: pulumi.Output<boolean>;
     /**
-     * The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the `exoscale.getComputeTemplate` data source `username` attribute instead.
+     * The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the
+     * `exoscale_compute_template` data source `username` attribute instead.
      *
      * @deprecated broken, use `compute_template` data source `username` attribute
      */
@@ -230,11 +240,11 @@ export class Compute extends pulumi.CustomResource {
  */
 export interface ComputeState {
     /**
-     * A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinityGroups`).
+     * A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
      */
     affinityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of anti-affinity groups (names; at creation time only; conflicts with `affinityGroupIds`).
+     * A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
      */
     affinityGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -242,20 +252,25 @@ export interface ComputeState {
      */
     diskSize?: pulumi.Input<number>;
     /**
-     * The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen ("-") characters; it can be changed to any character during a later update. If neither `displayName` or `hostname` attributes are set, a random value will be generated automatically.
+     * The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'
+     * *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed
+     * to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will
+     * be generated automatically.
      */
     displayName?: pulumi.Input<string>;
     gateway?: pulumi.Input<string>;
     /**
-     * The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `displayName` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.
+     * The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or
+     * `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value
+     * requires to reboot the instance.
      */
     hostname?: pulumi.Input<string>;
     /**
-     * Enable IPv4 on the instance (only supported value is `true`).
+     * Request an IPv4 address on the default NIC
      */
     ip4?: pulumi.Input<boolean>;
     /**
-     * Enable IPv6 on the instance (boolean; default: `false`).
+     * Request an IPv6 address on the default NIC
      */
     ip6?: pulumi.Input<boolean>;
     /**
@@ -272,11 +287,12 @@ export interface ComputeState {
      */
     keyPair?: pulumi.Input<string>;
     /**
-     * The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).
+     * The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,
+     * `pt`, `uk`, `us`; at creation time only).
      */
     keyboard?: pulumi.Input<string>;
     /**
-     * (Deprecated) The instance hostname. Please use the `hostname` argument instead.
+     * The instance hostname. Please use the `hostname` argument instead.
      *
      * @deprecated use `hostname` attribute instead
      */
@@ -290,11 +306,11 @@ export interface ComputeState {
      */
     reverseDns?: pulumi.Input<string>;
     /**
-     * A list of security groups (IDs; conflicts with `securityGroups`).
+     * A list of security groups (IDs; conflicts with `security_groups`).
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of security groups (names; conflicts with `securityGroupIds`).
+     * A list of security groups (names; conflicts with `security_group_ids`).
      */
     securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -306,15 +322,16 @@ export interface ComputeState {
      */
     state?: pulumi.Input<string>;
     /**
-     * A map of tags (key/value). To remove all tags, set `tags = {}`.
+     * Map of tags (key/value). To remove all tags, set `tags = {}`.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `templateId` attribute instead.
+     * The compute instance template (name). Only *featured* templates are available, if you want to reference *custom
+     * templates* use the `template_id` attribute instead.
      */
     template?: pulumi.Input<string>;
     /**
-     * The compute instance template (ID). Usage of the `exoscale.getComputeTemplate` data source is recommended.
+     * The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.
      */
     templateId?: pulumi.Input<string>;
     /**
@@ -326,7 +343,8 @@ export interface ComputeState {
      */
     userDataBase64?: pulumi.Input<boolean>;
     /**
-     * The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the `exoscale.getComputeTemplate` data source `username` attribute instead.
+     * The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the
+     * `exoscale_compute_template` data source `username` attribute instead.
      *
      * @deprecated broken, use `compute_template` data source `username` attribute
      */
@@ -342,11 +360,11 @@ export interface ComputeState {
  */
 export interface ComputeArgs {
     /**
-     * A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinityGroups`).
+     * A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
      */
     affinityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of anti-affinity groups (names; at creation time only; conflicts with `affinityGroupIds`).
+     * A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
      */
     affinityGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -354,19 +372,24 @@ export interface ComputeArgs {
      */
     diskSize: pulumi.Input<number>;
     /**
-     * The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen ("-") characters; it can be changed to any character during a later update. If neither `displayName` or `hostname` attributes are set, a random value will be generated automatically.
+     * The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'
+     * *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed
+     * to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will
+     * be generated automatically.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `displayName` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.
+     * The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or
+     * `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value
+     * requires to reboot the instance.
      */
     hostname?: pulumi.Input<string>;
     /**
-     * Enable IPv4 on the instance (only supported value is `true`).
+     * Request an IPv4 address on the default NIC
      */
     ip4?: pulumi.Input<boolean>;
     /**
-     * Enable IPv6 on the instance (boolean; default: `false`).
+     * Request an IPv6 address on the default NIC
      */
     ip6?: pulumi.Input<boolean>;
     /**
@@ -374,7 +397,8 @@ export interface ComputeArgs {
      */
     keyPair?: pulumi.Input<string>;
     /**
-     * The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).
+     * The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,
+     * `pt`, `uk`, `us`; at creation time only).
      */
     keyboard?: pulumi.Input<string>;
     /**
@@ -382,11 +406,11 @@ export interface ComputeArgs {
      */
     reverseDns?: pulumi.Input<string>;
     /**
-     * A list of security groups (IDs; conflicts with `securityGroups`).
+     * A list of security groups (IDs; conflicts with `security_groups`).
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of security groups (names; conflicts with `securityGroupIds`).
+     * A list of security groups (names; conflicts with `security_group_ids`).
      */
     securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -398,15 +422,16 @@ export interface ComputeArgs {
      */
     state?: pulumi.Input<string>;
     /**
-     * A map of tags (key/value). To remove all tags, set `tags = {}`.
+     * Map of tags (key/value). To remove all tags, set `tags = {}`.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `templateId` attribute instead.
+     * The compute instance template (name). Only *featured* templates are available, if you want to reference *custom
+     * templates* use the `template_id` attribute instead.
      */
     template?: pulumi.Input<string>;
     /**
-     * The compute instance template (ID). Usage of the `exoscale.getComputeTemplate` data source is recommended.
+     * The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.
      */
     templateId?: pulumi.Input<string>;
     /**

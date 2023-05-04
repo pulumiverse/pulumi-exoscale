@@ -64,7 +64,13 @@ namespace Pulumiverse.Exoscale
     [OutputType]
     public sealed class GetSecurityGroupResult
     {
+        /// <summary>
+        /// The security group ID to match (conflicts with `name`)
+        /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// The name to match (conflicts with `id`)
+        /// </summary>
         public readonly string? Name;
 
         [OutputConstructor]

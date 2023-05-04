@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * An existing compute instance may be imported by `<ID>@<zone>`console
+ * An existing compute instance may be imported by `<ID>@<zone>`
  *
  * ```sh
  *  $ pulumi import exoscale:index/computeInstance:ComputeInstance \
@@ -48,7 +48,8 @@ export class ComputeInstance extends pulumi.CustomResource {
     }
 
     /**
-     * A list of exoscale.AntiAffinityGroup (IDs) to attach to the instance (may only be set at creation time).
+     * A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to attach to the instance (may only be set at
+     * creation time).
      */
     public readonly antiAffinityGroupIds!: pulumi.Output<string[] | undefined>;
     /**
@@ -64,7 +65,7 @@ export class ComputeInstance extends pulumi.CustomResource {
      */
     public readonly diskSize!: pulumi.Output<number>;
     /**
-     * A list of exoscale.ElasticIP (IDs) to attach to the instance.
+     * A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs) to attach to the instance.
      */
     public readonly elasticIpIds!: pulumi.Output<string[] | undefined>;
     /**
@@ -88,7 +89,8 @@ export class ComputeInstance extends pulumi.CustomResource {
      */
     public readonly networkInterfaces!: pulumi.Output<outputs.ComputeInstanceNetworkInterface[] | undefined>;
     /**
-     * (Deprecated) A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument instead.
+     * A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument
+     * instead.
      *
      * @deprecated Use the network_interface block instead.
      */
@@ -102,11 +104,11 @@ export class ComputeInstance extends pulumi.CustomResource {
      */
     public readonly reverseDns!: pulumi.Output<string | undefined>;
     /**
-     * A list of exoscale.SecurityGroup (IDs) to attach to the instance.
+     * A list of [exoscale_security_group](./security_group.md) (IDs) to attach to the instance.
      */
     public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
     /**
-     * The exoscale.SSHKey (name) to authorize in the instance (may only be set at creation time).
+     * The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the instance (may only be set at creation time).
      */
     public readonly sshKey!: pulumi.Output<string | undefined>;
     /**
@@ -114,19 +116,22 @@ export class ComputeInstance extends pulumi.CustomResource {
      */
     public readonly state!: pulumi.Output<string>;
     /**
-     * The exoscale.getComputeTemplate (ID) to use when creating the instance.
+     * The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the instance.
      */
     public readonly templateId!: pulumi.Output<string>;
     /**
-     * The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
+     * The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) -
+     * `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts
+     * the instance.
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * [cloud-init][cloud-init] configuration (no need to base64-encode or gzip it as the provider will take care of it).
+     * [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will
+     * take care of it).
      */
     public readonly userData!: pulumi.Output<string | undefined>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -205,7 +210,8 @@ export class ComputeInstance extends pulumi.CustomResource {
  */
 export interface ComputeInstanceState {
     /**
-     * A list of exoscale.AntiAffinityGroup (IDs) to attach to the instance (may only be set at creation time).
+     * A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to attach to the instance (may only be set at
+     * creation time).
      */
     antiAffinityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -221,7 +227,7 @@ export interface ComputeInstanceState {
      */
     diskSize?: pulumi.Input<number>;
     /**
-     * A list of exoscale.ElasticIP (IDs) to attach to the instance.
+     * A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs) to attach to the instance.
      */
     elasticIpIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -245,7 +251,8 @@ export interface ComputeInstanceState {
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceNetworkInterface>[]>;
     /**
-     * (Deprecated) A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument instead.
+     * A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument
+     * instead.
      *
      * @deprecated Use the network_interface block instead.
      */
@@ -259,11 +266,11 @@ export interface ComputeInstanceState {
      */
     reverseDns?: pulumi.Input<string>;
     /**
-     * A list of exoscale.SecurityGroup (IDs) to attach to the instance.
+     * A list of [exoscale_security_group](./security_group.md) (IDs) to attach to the instance.
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The exoscale.SSHKey (name) to authorize in the instance (may only be set at creation time).
+     * The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the instance (may only be set at creation time).
      */
     sshKey?: pulumi.Input<string>;
     /**
@@ -271,19 +278,22 @@ export interface ComputeInstanceState {
      */
     state?: pulumi.Input<string>;
     /**
-     * The exoscale.getComputeTemplate (ID) to use when creating the instance.
+     * The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the instance.
      */
     templateId?: pulumi.Input<string>;
     /**
-     * The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
+     * The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) -
+     * `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts
+     * the instance.
      */
     type?: pulumi.Input<string>;
     /**
-     * [cloud-init][cloud-init] configuration (no need to base64-encode or gzip it as the provider will take care of it).
+     * [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will
+     * take care of it).
      */
     userData?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone?: pulumi.Input<string>;
 }
@@ -293,7 +303,8 @@ export interface ComputeInstanceState {
  */
 export interface ComputeInstanceArgs {
     /**
-     * A list of exoscale.AntiAffinityGroup (IDs) to attach to the instance (may only be set at creation time).
+     * A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to attach to the instance (may only be set at
+     * creation time).
      */
     antiAffinityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -305,7 +316,7 @@ export interface ComputeInstanceArgs {
      */
     diskSize?: pulumi.Input<number>;
     /**
-     * A list of exoscale.ElasticIP (IDs) to attach to the instance.
+     * A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs) to attach to the instance.
      */
     elasticIpIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -329,11 +340,11 @@ export interface ComputeInstanceArgs {
      */
     reverseDns?: pulumi.Input<string>;
     /**
-     * A list of exoscale.SecurityGroup (IDs) to attach to the instance.
+     * A list of [exoscale_security_group](./security_group.md) (IDs) to attach to the instance.
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The exoscale.SSHKey (name) to authorize in the instance (may only be set at creation time).
+     * The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the instance (may only be set at creation time).
      */
     sshKey?: pulumi.Input<string>;
     /**
@@ -341,19 +352,22 @@ export interface ComputeInstanceArgs {
      */
     state?: pulumi.Input<string>;
     /**
-     * The exoscale.getComputeTemplate (ID) to use when creating the instance.
+     * The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the instance.
      */
     templateId: pulumi.Input<string>;
     /**
-     * The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
+     * The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) -
+     * `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts
+     * the instance.
      */
     type: pulumi.Input<string>;
     /**
-     * [cloud-init][cloud-init] configuration (no need to base64-encode or gzip it as the provider will take care of it).
+     * [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will
+     * take care of it).
      */
     userData?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: pulumi.Input<string>;
 }

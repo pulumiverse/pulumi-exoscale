@@ -16,17 +16,19 @@ type Network struct {
 	pulumi.CustomResourceState
 
 	// A free-form text describing the network.
-	DisplayText pulumi.StringOutput    `pulumi:"displayText"`
-	EndIp       pulumi.StringPtrOutput `pulumi:"endIp"`
+	DisplayText pulumi.StringOutput `pulumi:"displayText"`
+	// The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+	EndIp pulumi.StringPtrOutput `pulumi:"endIp"`
 	// The private network name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
+	// The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
+	// private networks.
 	Netmask pulumi.StringPtrOutput `pulumi:"netmask"`
 	// Deprecated: This attribute is deprecated, please remove it from your configuration.
 	NetworkOffering pulumi.StringPtrOutput `pulumi:"networkOffering"`
-	// /`endIp` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+	// The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
 	StartIp pulumi.StringPtrOutput `pulumi:"startIp"`
-	// A map of tags (key/value). To remove all tags, set `tags = {}`.
+	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The Exoscale Zone name.
 	Zone pulumi.StringOutput `pulumi:"zone"`
@@ -67,16 +69,18 @@ func GetNetwork(ctx *pulumi.Context,
 type networkState struct {
 	// A free-form text describing the network.
 	DisplayText *string `pulumi:"displayText"`
-	EndIp       *string `pulumi:"endIp"`
+	// The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+	EndIp *string `pulumi:"endIp"`
 	// The private network name.
 	Name *string `pulumi:"name"`
-	// The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
+	// The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
+	// private networks.
 	Netmask *string `pulumi:"netmask"`
 	// Deprecated: This attribute is deprecated, please remove it from your configuration.
 	NetworkOffering *string `pulumi:"networkOffering"`
-	// /`endIp` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+	// The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
 	StartIp *string `pulumi:"startIp"`
-	// A map of tags (key/value). To remove all tags, set `tags = {}`.
+	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags map[string]string `pulumi:"tags"`
 	// The Exoscale Zone name.
 	Zone *string `pulumi:"zone"`
@@ -85,16 +89,18 @@ type networkState struct {
 type NetworkState struct {
 	// A free-form text describing the network.
 	DisplayText pulumi.StringPtrInput
-	EndIp       pulumi.StringPtrInput
+	// The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+	EndIp pulumi.StringPtrInput
 	// The private network name.
 	Name pulumi.StringPtrInput
-	// The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
+	// The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
+	// private networks.
 	Netmask pulumi.StringPtrInput
 	// Deprecated: This attribute is deprecated, please remove it from your configuration.
 	NetworkOffering pulumi.StringPtrInput
-	// /`endIp` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+	// The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
 	StartIp pulumi.StringPtrInput
-	// A map of tags (key/value). To remove all tags, set `tags = {}`.
+	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags pulumi.StringMapInput
 	// The Exoscale Zone name.
 	Zone pulumi.StringPtrInput
@@ -107,16 +113,18 @@ func (NetworkState) ElementType() reflect.Type {
 type networkArgs struct {
 	// A free-form text describing the network.
 	DisplayText *string `pulumi:"displayText"`
-	EndIp       *string `pulumi:"endIp"`
+	// The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+	EndIp *string `pulumi:"endIp"`
 	// The private network name.
 	Name *string `pulumi:"name"`
-	// The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
+	// The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
+	// private networks.
 	Netmask *string `pulumi:"netmask"`
 	// Deprecated: This attribute is deprecated, please remove it from your configuration.
 	NetworkOffering *string `pulumi:"networkOffering"`
-	// /`endIp` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+	// The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
 	StartIp *string `pulumi:"startIp"`
-	// A map of tags (key/value). To remove all tags, set `tags = {}`.
+	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags map[string]string `pulumi:"tags"`
 	// The Exoscale Zone name.
 	Zone string `pulumi:"zone"`
@@ -126,16 +134,18 @@ type networkArgs struct {
 type NetworkArgs struct {
 	// A free-form text describing the network.
 	DisplayText pulumi.StringPtrInput
-	EndIp       pulumi.StringPtrInput
+	// The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+	EndIp pulumi.StringPtrInput
 	// The private network name.
 	Name pulumi.StringPtrInput
-	// The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
+	// The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
+	// private networks.
 	Netmask pulumi.StringPtrInput
 	// Deprecated: This attribute is deprecated, please remove it from your configuration.
 	NetworkOffering pulumi.StringPtrInput
-	// /`endIp` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+	// The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
 	StartIp pulumi.StringPtrInput
-	// A map of tags (key/value). To remove all tags, set `tags = {}`.
+	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags pulumi.StringMapInput
 	// The Exoscale Zone name.
 	Zone pulumi.StringInput
@@ -233,6 +243,7 @@ func (o NetworkOutput) DisplayText() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.DisplayText }).(pulumi.StringOutput)
 }
 
+// The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
 func (o NetworkOutput) EndIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.EndIp }).(pulumi.StringPtrOutput)
 }
@@ -242,7 +253,8 @@ func (o NetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
+// The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
+// private networks.
 func (o NetworkOutput) Netmask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.Netmask }).(pulumi.StringPtrOutput)
 }
@@ -252,12 +264,12 @@ func (o NetworkOutput) NetworkOffering() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.NetworkOffering }).(pulumi.StringPtrOutput)
 }
 
-// /`endIp` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+// The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
 func (o NetworkOutput) StartIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.StartIp }).(pulumi.StringPtrOutput)
 }
 
-// A map of tags (key/value). To remove all tags, set `tags = {}`.
+// Map of tags (key/value). To remove all tags, set `tags = {}`.
 func (o NetworkOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

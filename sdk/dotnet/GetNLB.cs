@@ -35,7 +35,7 @@ namespace Pulumiverse.Exoscale
         public string? Name { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone", required: true)]
         public string Zone { get; set; } = null!;
@@ -61,7 +61,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -84,16 +84,25 @@ namespace Pulumiverse.Exoscale
         /// The Network Load Balancers (NLB) description.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The Network Load Balancers (NLB) ID to match (conflicts with `name`).
+        /// </summary>
         public readonly string? Id;
         /// <summary>
         /// The NLB public IPv4 address.
         /// </summary>
         public readonly string IpAddress;
+        /// <summary>
+        /// The NLB name to match (conflicts with `id`).
+        /// </summary>
         public readonly string? Name;
         /// <summary>
         /// The current NLB state.
         /// </summary>
         public readonly string State;
+        /// <summary>
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// </summary>
         public readonly string Zone;
 
         [OutputConstructor]

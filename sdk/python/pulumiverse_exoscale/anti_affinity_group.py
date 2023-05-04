@@ -102,7 +102,7 @@ class AntiAffinityGroup(pulumi.CustomResource):
         """
         ## Import
 
-        An existing anti-affinity group may be imported by `<ID>`console
+        An existing anti-affinity group may be imported by `<ID>`
 
         ```sh
          $ pulumi import exoscale:index/antiAffinityGroup:AntiAffinityGroup \\
@@ -126,7 +126,7 @@ class AntiAffinityGroup(pulumi.CustomResource):
         """
         ## Import
 
-        An existing anti-affinity group may be imported by `<ID>`console
+        An existing anti-affinity group may be imported by `<ID>`
 
         ```sh
          $ pulumi import exoscale:index/antiAffinityGroup:AntiAffinityGroup \\

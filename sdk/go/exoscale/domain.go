@@ -12,7 +12,7 @@ import (
 
 // ## Import
 //
-// # An existing DNS domain may be imported by `ID`console
+// An existing DNS domain may be imported by `ID`
 //
 // ```sh
 //

@@ -35,19 +35,25 @@ class GetAntiAffinityGroupResult:
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        The anti-affinity group ID to match (conflicts with `name`).
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def instances(self) -> Sequence[str]:
         """
-        The list of attached ComputeInstance (IDs).
+        The list of attached exoscale*compute*instance (IDs).
         """
         return pulumi.get(self, "instances")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        The group name to match (conflicts with `id`).
+        """
         return pulumi.get(self, "name")
 
 

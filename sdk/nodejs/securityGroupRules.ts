@@ -37,13 +37,16 @@ export class SecurityGroupRules extends pulumi.CustomResource {
         return obj['__pulumiType'] === SecurityGroupRules.__pulumiType;
     }
 
+    /**
+     * A security group rule definition (can be specified multiple times).
+     */
     public readonly egresses!: pulumi.Output<outputs.SecurityGroupRulesEgress[] | undefined>;
     /**
-     * /`egress` - (Block) A security group rule definition (can be specified multiple times).
+     * A security group rule definition (can be specified multiple times).
      */
     public readonly ingresses!: pulumi.Output<outputs.SecurityGroupRulesIngress[] | undefined>;
     /**
-     * The security group (name) the rules apply to (conflicts with `securityGroupId`).
+     * The security group (name) the rules apply to (conflicts with `security_group_id`).
      */
     public readonly securityGroup!: pulumi.Output<string>;
     /**
@@ -84,13 +87,16 @@ export class SecurityGroupRules extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SecurityGroupRules resources.
  */
 export interface SecurityGroupRulesState {
+    /**
+     * A security group rule definition (can be specified multiple times).
+     */
     egresses?: pulumi.Input<pulumi.Input<inputs.SecurityGroupRulesEgress>[]>;
     /**
-     * /`egress` - (Block) A security group rule definition (can be specified multiple times).
+     * A security group rule definition (can be specified multiple times).
      */
     ingresses?: pulumi.Input<pulumi.Input<inputs.SecurityGroupRulesIngress>[]>;
     /**
-     * The security group (name) the rules apply to (conflicts with `securityGroupId`).
+     * The security group (name) the rules apply to (conflicts with `security_group_id`).
      */
     securityGroup?: pulumi.Input<string>;
     /**
@@ -103,13 +109,16 @@ export interface SecurityGroupRulesState {
  * The set of arguments for constructing a SecurityGroupRules resource.
  */
 export interface SecurityGroupRulesArgs {
+    /**
+     * A security group rule definition (can be specified multiple times).
+     */
     egresses?: pulumi.Input<pulumi.Input<inputs.SecurityGroupRulesEgress>[]>;
     /**
-     * /`egress` - (Block) A security group rule definition (can be specified multiple times).
+     * A security group rule definition (can be specified multiple times).
      */
     ingresses?: pulumi.Input<pulumi.Input<inputs.SecurityGroupRulesIngress>[]>;
     /**
-     * The security group (name) the rules apply to (conflicts with `securityGroupId`).
+     * The security group (name) the rules apply to (conflicts with `security_group_id`).
      */
     securityGroup?: pulumi.Input<string>;
     /**

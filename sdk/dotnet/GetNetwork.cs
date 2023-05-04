@@ -41,7 +41,7 @@ namespace Pulumiverse.Exoscale
         public string? Name { get; set; }
 
         /// <summary>
-        /// The Exoscale Zone name.
+        /// (Required) The Exoscale Zone name.
         /// </summary>
         [Input("zone", required: true)]
         public string Zone { get; set; } = null!;
@@ -67,7 +67,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Exoscale Zone name.
+        /// (Required) The Exoscale Zone name.
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -86,17 +86,29 @@ namespace Pulumiverse.Exoscale
         /// The private network description.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        /// </summary>
         public readonly string EndIp;
+        /// <summary>
+        /// The private network ID to match (conflicts with `name`).
+        /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// The network name to match (conflicts with `id`).
+        /// </summary>
         public readonly string? Name;
         /// <summary>
         /// The network mask defining the IPv4 network allowed for static leases.
         /// </summary>
         public readonly string Netmask;
         /// <summary>
-        /// /`end_ip` - The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        /// The first/last IPv4 addresses used by the DHCP service for dynamic leases.
         /// </summary>
         public readonly string StartIp;
+        /// <summary>
+        /// (Required) The Exoscale Zone name.
+        /// </summary>
         public readonly string Zone;
 
         [OutputConstructor]

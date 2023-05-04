@@ -79,25 +79,31 @@ class GetElasticIPResult:
     @pulumi.getter
     def healthchecks(self) -> Sequence['outputs.GetElasticIPHealthcheckResult']:
         """
-        (Block) The *managed* EIP healthcheck configuration. Structure is documented below.
+        The *managed* EIP healthcheck configuration.
         """
         return pulumi.get(self, "healthchecks")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        The Elastic IP (EIP) ID to match (conflicts with `ip_address` and `labels`).
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[str]:
+        """
+        The EIP IPv4 or IPv6 address to match (conflicts with `id` and `labels`).
+        """
         return pulumi.get(self, "ip_address")
 
     @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
         """
-        A map of key/value labels.
+        The EIP labels to match (conflicts with `ip_address` and `id`).
         """
         return pulumi.get(self, "labels")
 
@@ -112,6 +118,9 @@ class GetElasticIPResult:
     @property
     @pulumi.getter
     def zone(self) -> str:
+        """
+        The Exocale [Zone](https://www.exoscale.com/datacenters/) name.
+        """
         return pulumi.get(self, "zone")
 
 
@@ -143,7 +152,7 @@ def get_elastic_ip(id: Optional[str] = None,
     :param str id: The Elastic IP (EIP) ID to match (conflicts with `ip_address` and `labels`).
     :param str ip_address: The EIP IPv4 or IPv6 address to match (conflicts with `id` and `labels`).
     :param Mapping[str, str] labels: The EIP labels to match (conflicts with `ip_address` and `id`).
-    :param str zone: The Exocale [Zone][zone] name.
+    :param str zone: The Exocale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -177,6 +186,6 @@ def get_elastic_ip_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str id: The Elastic IP (EIP) ID to match (conflicts with `ip_address` and `labels`).
     :param str ip_address: The EIP IPv4 or IPv6 address to match (conflicts with `id` and `labels`).
     :param Mapping[str, str] labels: The EIP labels to match (conflicts with `ip_address` and `id`).
-    :param str zone: The Exocale [Zone][zone] name.
+    :param str zone: The Exocale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     ...

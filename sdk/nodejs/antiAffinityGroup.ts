@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * An existing anti-affinity group may be imported by `<ID>`console
+ * An existing anti-affinity group may be imported by `<ID>`
  *
  * ```sh
  *  $ pulumi import exoscale:index/antiAffinityGroup:AntiAffinityGroup \

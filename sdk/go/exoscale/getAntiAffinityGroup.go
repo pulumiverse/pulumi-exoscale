@@ -30,10 +30,12 @@ type LookupAntiAffinityGroupArgs struct {
 
 // A collection of values returned by getAntiAffinityGroup.
 type LookupAntiAffinityGroupResult struct {
+	// The anti-affinity group ID to match (conflicts with `name`).
 	Id *string `pulumi:"id"`
-	// The list of attached ComputeInstance (IDs).
+	// The list of attached exoscale*compute*instance (IDs).
 	Instances []string `pulumi:"instances"`
-	Name      *string  `pulumi:"name"`
+	// The group name to match (conflicts with `id`).
+	Name *string `pulumi:"name"`
 }
 
 func LookupAntiAffinityGroupOutput(ctx *pulumi.Context, args LookupAntiAffinityGroupOutputArgs, opts ...pulumi.InvokeOption) LookupAntiAffinityGroupResultOutput {
@@ -76,15 +78,17 @@ func (o LookupAntiAffinityGroupResultOutput) ToLookupAntiAffinityGroupResultOutp
 	return o
 }
 
+// The anti-affinity group ID to match (conflicts with `name`).
 func (o LookupAntiAffinityGroupResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAntiAffinityGroupResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The list of attached ComputeInstance (IDs).
+// The list of attached exoscale*compute*instance (IDs).
 func (o LookupAntiAffinityGroupResultOutput) Instances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAntiAffinityGroupResult) []string { return v.Instances }).(pulumi.StringArrayOutput)
 }
 
+// The group name to match (conflicts with `id`).
 func (o LookupAntiAffinityGroupResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAntiAffinityGroupResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

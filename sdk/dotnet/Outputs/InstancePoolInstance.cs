@@ -14,21 +14,9 @@ namespace Pulumiverse.Exoscale.Outputs
     [OutputType]
     public sealed class InstancePoolInstance
     {
-        /// <summary>
-        /// The compute instance ID.
-        /// </summary>
         public readonly string? Id;
-        /// <summary>
-        /// The instance (main network interface) IPv6 address.
-        /// </summary>
         public readonly string? Ipv6Address;
-        /// <summary>
-        /// The instance pool name.
-        /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// The instance (main network interface) IPv4 address.
-        /// </summary>
         public readonly string? PublicIpAddress;
 
         [OutputConstructor]

@@ -63,6 +63,9 @@ class GetNLBResult:
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        The Network Load Balancers (NLB) ID to match (conflicts with `name`).
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -76,6 +79,9 @@ class GetNLBResult:
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        The NLB name to match (conflicts with `id`).
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -89,6 +95,9 @@ class GetNLBResult:
     @property
     @pulumi.getter
     def zone(self) -> str:
+        """
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        """
         return pulumi.get(self, "zone")
 
 
@@ -116,7 +125,7 @@ def get_nlb(id: Optional[str] = None,
 
     :param str id: The Network Load Balancers (NLB) ID to match (conflicts with `name`).
     :param str name: The NLB name to match (conflicts with `id`).
-    :param str zone: The Exoscale [Zone][zone] name.
+    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -145,6 +154,6 @@ def get_nlb_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str id: The Network Load Balancers (NLB) ID to match (conflicts with `name`).
     :param str name: The NLB name to match (conflicts with `id`).
-    :param str zone: The Exoscale [Zone][zone] name.
+    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     ...

@@ -34,22 +34,26 @@ class ComputeInstanceArgs:
                  user_data: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ComputeInstance resource.
-        :param pulumi.Input[str] template_id: The_get_compute_template_(ID) to use when creating the instance.
-        :param pulumi.Input[str] type: The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
-        :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: A list of AntiAffinityGroup (IDs) to attach to the instance (may only be set at creation time).
+        :param pulumi.Input[str] template_id: The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the instance.
+        :param pulumi.Input[str] type: The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) -
+               `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts
+               the instance.
+        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to attach to the instance (may only be set at
+               creation time).
         :param pulumi.Input[str] deploy_target_id: A deploy target ID.
         :param pulumi.Input[int] disk_size: The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of ElasticIP (IDs) to attach to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs) to attach to the instance.
         :param pulumi.Input[bool] ipv6: Enable IPv6 on the instance (boolean; default: `false`).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[str] name: The compute instance name.
         :param pulumi.Input[Sequence[pulumi.Input['ComputeInstanceNetworkInterfaceArgs']]] network_interfaces: Private network interfaces (may be specified multiple times). Structure is documented below.
         :param pulumi.Input[str] reverse_dns: Domain name for reverse DNS record.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of SecurityGroup (IDs) to attach to the instance.
-        :param pulumi.Input[str] ssh_key: The SSHKey (name) to authorize in the instance (may only be set at creation time).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of [exoscale_security_group](./security_group.md) (IDs) to attach to the instance.
+        :param pulumi.Input[str] ssh_key: The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the instance (may only be set at creation time).
         :param pulumi.Input[str] state: The instance state (`running` or `stopped`; default: `running`).
-        :param pulumi.Input[str] user_data: [cloud-init][cloud-init] configuration (no need to base64-encode or gzip it as the provider will take care of it).
+        :param pulumi.Input[str] user_data: [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will
+               take care of it).
         """
         pulumi.set(__self__, "template_id", template_id)
         pulumi.set(__self__, "type", type)
@@ -85,7 +89,7 @@ class ComputeInstanceArgs:
     @pulumi.getter(name="templateId")
     def template_id(self) -> pulumi.Input[str]:
         """
-        The_get_compute_template_(ID) to use when creating the instance.
+        The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the instance.
         """
         return pulumi.get(self, "template_id")
 
@@ -97,7 +101,9 @@ class ComputeInstanceArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
+        The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) -
+        `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts
+        the instance.
         """
         return pulumi.get(self, "type")
 
@@ -109,7 +115,7 @@ class ComputeInstanceArgs:
     @pulumi.getter
     def zone(self) -> pulumi.Input[str]:
         """
-        The Exoscale [Zone][zone] name.
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 
@@ -121,7 +127,8 @@ class ComputeInstanceArgs:
     @pulumi.getter(name="antiAffinityGroupIds")
     def anti_affinity_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of AntiAffinityGroup (IDs) to attach to the instance (may only be set at creation time).
+        A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to attach to the instance (may only be set at
+        creation time).
         """
         return pulumi.get(self, "anti_affinity_group_ids")
 
@@ -157,7 +164,7 @@ class ComputeInstanceArgs:
     @pulumi.getter(name="elasticIpIds")
     def elastic_ip_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of ElasticIP (IDs) to attach to the instance.
+        A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs) to attach to the instance.
         """
         return pulumi.get(self, "elastic_ip_ids")
 
@@ -229,7 +236,7 @@ class ComputeInstanceArgs:
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of SecurityGroup (IDs) to attach to the instance.
+        A list of [exoscale_security_group](./security_group.md) (IDs) to attach to the instance.
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -241,7 +248,7 @@ class ComputeInstanceArgs:
     @pulumi.getter(name="sshKey")
     def ssh_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The SSHKey (name) to authorize in the instance (may only be set at creation time).
+        The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the instance (may only be set at creation time).
         """
         return pulumi.get(self, "ssh_key")
 
@@ -265,7 +272,8 @@ class ComputeInstanceArgs:
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
-        [cloud-init][cloud-init] configuration (no need to base64-encode or gzip it as the provider will take care of it).
+        [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will
+        take care of it).
         """
         return pulumi.get(self, "user_data")
 
@@ -299,26 +307,31 @@ class _ComputeInstanceState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ComputeInstance resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: A list of AntiAffinityGroup (IDs) to attach to the instance (may only be set at creation time).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to attach to the instance (may only be set at
+               creation time).
         :param pulumi.Input[str] created_at: The instance creation date.
         :param pulumi.Input[str] deploy_target_id: A deploy target ID.
         :param pulumi.Input[int] disk_size: The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of ElasticIP (IDs) to attach to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs) to attach to the instance.
         :param pulumi.Input[bool] ipv6: Enable IPv6 on the instance (boolean; default: `false`).
         :param pulumi.Input[str] ipv6_address: The instance (main network interface) IPv6 address (if enabled).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[str] name: The compute instance name.
         :param pulumi.Input[Sequence[pulumi.Input['ComputeInstanceNetworkInterfaceArgs']]] network_interfaces: Private network interfaces (may be specified multiple times). Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] private_network_ids: (Deprecated) A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] private_network_ids: A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument
+               instead.
         :param pulumi.Input[str] public_ip_address: The instance (main network interface) IPv4 address.
         :param pulumi.Input[str] reverse_dns: Domain name for reverse DNS record.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of SecurityGroup (IDs) to attach to the instance.
-        :param pulumi.Input[str] ssh_key: The SSHKey (name) to authorize in the instance (may only be set at creation time).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of [exoscale_security_group](./security_group.md) (IDs) to attach to the instance.
+        :param pulumi.Input[str] ssh_key: The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the instance (may only be set at creation time).
         :param pulumi.Input[str] state: The instance state (`running` or `stopped`; default: `running`).
-        :param pulumi.Input[str] template_id: The_get_compute_template_(ID) to use when creating the instance.
-        :param pulumi.Input[str] type: The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
-        :param pulumi.Input[str] user_data: [cloud-init][cloud-init] configuration (no need to base64-encode or gzip it as the provider will take care of it).
-        :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
+        :param pulumi.Input[str] template_id: The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the instance.
+        :param pulumi.Input[str] type: The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) -
+               `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts
+               the instance.
+        :param pulumi.Input[str] user_data: [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will
+               take care of it).
+        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         if anti_affinity_group_ids is not None:
             pulumi.set(__self__, "anti_affinity_group_ids", anti_affinity_group_ids)
@@ -368,7 +381,8 @@ class _ComputeInstanceState:
     @pulumi.getter(name="antiAffinityGroupIds")
     def anti_affinity_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of AntiAffinityGroup (IDs) to attach to the instance (may only be set at creation time).
+        A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to attach to the instance (may only be set at
+        creation time).
         """
         return pulumi.get(self, "anti_affinity_group_ids")
 
@@ -416,7 +430,7 @@ class _ComputeInstanceState:
     @pulumi.getter(name="elasticIpIds")
     def elastic_ip_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of ElasticIP (IDs) to attach to the instance.
+        A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs) to attach to the instance.
         """
         return pulumi.get(self, "elastic_ip_ids")
 
@@ -488,7 +502,8 @@ class _ComputeInstanceState:
     @pulumi.getter(name="privateNetworkIds")
     def private_network_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        (Deprecated) A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument instead.
+        A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument
+        instead.
         """
         return pulumi.get(self, "private_network_ids")
 
@@ -524,7 +539,7 @@ class _ComputeInstanceState:
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of SecurityGroup (IDs) to attach to the instance.
+        A list of [exoscale_security_group](./security_group.md) (IDs) to attach to the instance.
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -536,7 +551,7 @@ class _ComputeInstanceState:
     @pulumi.getter(name="sshKey")
     def ssh_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The SSHKey (name) to authorize in the instance (may only be set at creation time).
+        The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the instance (may only be set at creation time).
         """
         return pulumi.get(self, "ssh_key")
 
@@ -560,7 +575,7 @@ class _ComputeInstanceState:
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The_get_compute_template_(ID) to use when creating the instance.
+        The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the instance.
         """
         return pulumi.get(self, "template_id")
 
@@ -572,7 +587,9 @@ class _ComputeInstanceState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
+        The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) -
+        `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts
+        the instance.
         """
         return pulumi.get(self, "type")
 
@@ -584,7 +601,8 @@ class _ComputeInstanceState:
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
-        [cloud-init][cloud-init] configuration (no need to base64-encode or gzip it as the provider will take care of it).
+        [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will
+        take care of it).
         """
         return pulumi.get(self, "user_data")
 
@@ -596,7 +614,7 @@ class _ComputeInstanceState:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The Exoscale [Zone][zone] name.
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 
@@ -630,7 +648,7 @@ class ComputeInstance(pulumi.CustomResource):
         """
         ## Import
 
-        An existing compute instance may be imported by `<ID>@<zone>`console
+        An existing compute instance may be imported by `<ID>@<zone>`
 
         ```sh
          $ pulumi import exoscale:index/computeInstance:ComputeInstance \\
@@ -642,22 +660,26 @@ class ComputeInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: A list of AntiAffinityGroup (IDs) to attach to the instance (may only be set at creation time).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to attach to the instance (may only be set at
+               creation time).
         :param pulumi.Input[str] deploy_target_id: A deploy target ID.
         :param pulumi.Input[int] disk_size: The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of ElasticIP (IDs) to attach to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs) to attach to the instance.
         :param pulumi.Input[bool] ipv6: Enable IPv6 on the instance (boolean; default: `false`).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[str] name: The compute instance name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeInstanceNetworkInterfaceArgs']]]] network_interfaces: Private network interfaces (may be specified multiple times). Structure is documented below.
         :param pulumi.Input[str] reverse_dns: Domain name for reverse DNS record.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of SecurityGroup (IDs) to attach to the instance.
-        :param pulumi.Input[str] ssh_key: The SSHKey (name) to authorize in the instance (may only be set at creation time).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of [exoscale_security_group](./security_group.md) (IDs) to attach to the instance.
+        :param pulumi.Input[str] ssh_key: The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the instance (may only be set at creation time).
         :param pulumi.Input[str] state: The instance state (`running` or `stopped`; default: `running`).
-        :param pulumi.Input[str] template_id: The_get_compute_template_(ID) to use when creating the instance.
-        :param pulumi.Input[str] type: The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
-        :param pulumi.Input[str] user_data: [cloud-init][cloud-init] configuration (no need to base64-encode or gzip it as the provider will take care of it).
-        :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
+        :param pulumi.Input[str] template_id: The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the instance.
+        :param pulumi.Input[str] type: The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) -
+               `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts
+               the instance.
+        :param pulumi.Input[str] user_data: [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will
+               take care of it).
+        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         ...
     @overload
@@ -668,7 +690,7 @@ class ComputeInstance(pulumi.CustomResource):
         """
         ## Import
 
-        An existing compute instance may be imported by `<ID>@<zone>`console
+        An existing compute instance may be imported by `<ID>@<zone>`
 
         ```sh
          $ pulumi import exoscale:index/computeInstance:ComputeInstance \\
@@ -781,26 +803,31 @@ class ComputeInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: A list of AntiAffinityGroup (IDs) to attach to the instance (may only be set at creation time).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to attach to the instance (may only be set at
+               creation time).
         :param pulumi.Input[str] created_at: The instance creation date.
         :param pulumi.Input[str] deploy_target_id: A deploy target ID.
         :param pulumi.Input[int] disk_size: The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of ElasticIP (IDs) to attach to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs) to attach to the instance.
         :param pulumi.Input[bool] ipv6: Enable IPv6 on the instance (boolean; default: `false`).
         :param pulumi.Input[str] ipv6_address: The instance (main network interface) IPv6 address (if enabled).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[str] name: The compute instance name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeInstanceNetworkInterfaceArgs']]]] network_interfaces: Private network interfaces (may be specified multiple times). Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] private_network_ids: (Deprecated) A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] private_network_ids: A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument
+               instead.
         :param pulumi.Input[str] public_ip_address: The instance (main network interface) IPv4 address.
         :param pulumi.Input[str] reverse_dns: Domain name for reverse DNS record.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of SecurityGroup (IDs) to attach to the instance.
-        :param pulumi.Input[str] ssh_key: The SSHKey (name) to authorize in the instance (may only be set at creation time).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of [exoscale_security_group](./security_group.md) (IDs) to attach to the instance.
+        :param pulumi.Input[str] ssh_key: The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the instance (may only be set at creation time).
         :param pulumi.Input[str] state: The instance state (`running` or `stopped`; default: `running`).
-        :param pulumi.Input[str] template_id: The_get_compute_template_(ID) to use when creating the instance.
-        :param pulumi.Input[str] type: The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
-        :param pulumi.Input[str] user_data: [cloud-init][cloud-init] configuration (no need to base64-encode or gzip it as the provider will take care of it).
-        :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
+        :param pulumi.Input[str] template_id: The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the instance.
+        :param pulumi.Input[str] type: The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) -
+               `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts
+               the instance.
+        :param pulumi.Input[str] user_data: [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will
+               take care of it).
+        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -832,7 +859,8 @@ class ComputeInstance(pulumi.CustomResource):
     @pulumi.getter(name="antiAffinityGroupIds")
     def anti_affinity_group_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A list of AntiAffinityGroup (IDs) to attach to the instance (may only be set at creation time).
+        A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to attach to the instance (may only be set at
+        creation time).
         """
         return pulumi.get(self, "anti_affinity_group_ids")
 
@@ -864,7 +892,7 @@ class ComputeInstance(pulumi.CustomResource):
     @pulumi.getter(name="elasticIpIds")
     def elastic_ip_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A list of ElasticIP (IDs) to attach to the instance.
+        A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs) to attach to the instance.
         """
         return pulumi.get(self, "elastic_ip_ids")
 
@@ -912,7 +940,8 @@ class ComputeInstance(pulumi.CustomResource):
     @pulumi.getter(name="privateNetworkIds")
     def private_network_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        (Deprecated) A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument instead.
+        A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument
+        instead.
         """
         return pulumi.get(self, "private_network_ids")
 
@@ -936,7 +965,7 @@ class ComputeInstance(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A list of SecurityGroup (IDs) to attach to the instance.
+        A list of [exoscale_security_group](./security_group.md) (IDs) to attach to the instance.
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -944,7 +973,7 @@ class ComputeInstance(pulumi.CustomResource):
     @pulumi.getter(name="sshKey")
     def ssh_key(self) -> pulumi.Output[Optional[str]]:
         """
-        The SSHKey (name) to authorize in the instance (may only be set at creation time).
+        The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the instance (may only be set at creation time).
         """
         return pulumi.get(self, "ssh_key")
 
@@ -960,7 +989,7 @@ class ComputeInstance(pulumi.CustomResource):
     @pulumi.getter(name="templateId")
     def template_id(self) -> pulumi.Output[str]:
         """
-        The_get_compute_template_(ID) to use when creating the instance.
+        The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the instance.
         """
         return pulumi.get(self, "template_id")
 
@@ -968,7 +997,9 @@ class ComputeInstance(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
+        The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) -
+        `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts
+        the instance.
         """
         return pulumi.get(self, "type")
 
@@ -976,7 +1007,8 @@ class ComputeInstance(pulumi.CustomResource):
     @pulumi.getter(name="userData")
     def user_data(self) -> pulumi.Output[Optional[str]]:
         """
-        [cloud-init][cloud-init] configuration (no need to base64-encode or gzip it as the provider will take care of it).
+        [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will
+        take care of it).
         """
         return pulumi.get(self, "user_data")
 
@@ -984,7 +1016,7 @@ class ComputeInstance(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         """
-        The Exoscale [Zone][zone] name.
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 

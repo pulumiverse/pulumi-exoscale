@@ -13,22 +13,12 @@ namespace Pulumiverse.Exoscale.Inputs
 
     public sealed class DatabaseOpensearchDashboardsArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// {Type -  schema.TypeBool, Optional -  true, Default -  true},
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// {Type -  schema.TypeInt, Optional -  true, Default -  128},
-        /// </summary>
         [Input("maxOldSpaceSize")]
         public Input<int>? MaxOldSpaceSize { get; set; }
 
-        /// <summary>
-        /// {Type -  schema.TypeInt, Optional -  true, Default -  30000},
-        /// `settings` -  OpenSearch-specific settings, in json. e.g.`jsonencode({thread_pool_search_size: 64})`. Use `exo x get-dbaas-settings-opensearch` to get a list of available settings.
-        /// </summary>
         [Input("requestTimeout")]
         public Input<int>? RequestTimeout { get; set; }
 

@@ -64,11 +64,17 @@ namespace Pulumiverse.Exoscale
     [OutputType]
     public sealed class GetAntiAffinityGroupResult
     {
+        /// <summary>
+        /// The anti-affinity group ID to match (conflicts with `name`).
+        /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// The list of attached exoscale.ComputeInstance (IDs).
+        /// The list of attached exoscale*compute*instance (IDs).
         /// </summary>
         public readonly ImmutableArray<string> Instances;
+        /// <summary>
+        /// The group name to match (conflicts with `id`).
+        /// </summary>
         public readonly string? Name;
 
         [OutputConstructor]

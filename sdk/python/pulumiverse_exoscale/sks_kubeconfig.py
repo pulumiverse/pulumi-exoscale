@@ -22,10 +22,17 @@ class SKSKubeconfigArgs:
                  ttl_seconds: Optional[pulumi.Input[float]] = None):
         """
         The set of arguments for constructing a SKSKubeconfig resource.
-        :param pulumi.Input[str] cluster_id: The parent SKSCluster ID.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
-        :param pulumi.Input[str] user: User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.
-        :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
+        :param pulumi.Input[str] cluster_id: The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the
+               Organization field.
+        :param pulumi.Input[str] user: User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN
+               field.
+        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        :param pulumi.Input[int] early_renewal_seconds: If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
+               certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
+               expiration of its internal current certificate. Note however that the old certificate remains valid until its true
+               expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
+               take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
         :param pulumi.Input[float] ttl_seconds: The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -41,7 +48,7 @@ class SKSKubeconfigArgs:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Input[str]:
         """
-        The parent SKSCluster ID.
+        The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -53,7 +60,8 @@ class SKSKubeconfigArgs:
     @pulumi.getter
     def groups(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
+        Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the
+        Organization field.
         """
         return pulumi.get(self, "groups")
 
@@ -65,7 +73,8 @@ class SKSKubeconfigArgs:
     @pulumi.getter
     def user(self) -> pulumi.Input[str]:
         """
-        User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.
+        User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN
+        field.
         """
         return pulumi.get(self, "user")
 
@@ -77,7 +86,7 @@ class SKSKubeconfigArgs:
     @pulumi.getter
     def zone(self) -> pulumi.Input[str]:
         """
-        The Exoscale [Zone][zone] name.
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 
@@ -88,6 +97,13 @@ class SKSKubeconfigArgs:
     @property
     @pulumi.getter(name="earlyRenewalSeconds")
     def early_renewal_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
+        certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
+        expiration of its internal current certificate. Note however that the old certificate remains valid until its true
+        expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
+        take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
+        """
         return pulumi.get(self, "early_renewal_seconds")
 
     @early_renewal_seconds.setter
@@ -120,12 +136,19 @@ class _SKSKubeconfigState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SKSKubeconfig resources.
-        :param pulumi.Input[str] cluster_id: The parent SKSCluster ID.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
+        :param pulumi.Input[str] cluster_id: The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
+        :param pulumi.Input[int] early_renewal_seconds: If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
+               certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
+               expiration of its internal current certificate. Note however that the old certificate remains valid until its true
+               expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
+               take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the
+               Organization field.
         :param pulumi.Input[str] kubeconfig: The generated Kubeconfig (YAML content).
         :param pulumi.Input[float] ttl_seconds: The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
-        :param pulumi.Input[str] user: User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.
-        :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
+        :param pulumi.Input[str] user: User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN
+               field.
+        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -148,7 +171,7 @@ class _SKSKubeconfigState:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The parent SKSCluster ID.
+        The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -159,6 +182,13 @@ class _SKSKubeconfigState:
     @property
     @pulumi.getter(name="earlyRenewalSeconds")
     def early_renewal_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
+        certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
+        expiration of its internal current certificate. Note however that the old certificate remains valid until its true
+        expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
+        take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
+        """
         return pulumi.get(self, "early_renewal_seconds")
 
     @early_renewal_seconds.setter
@@ -169,7 +199,8 @@ class _SKSKubeconfigState:
     @pulumi.getter
     def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
+        Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the
+        Organization field.
         """
         return pulumi.get(self, "groups")
 
@@ -214,7 +245,8 @@ class _SKSKubeconfigState:
     @pulumi.getter
     def user(self) -> Optional[pulumi.Input[str]]:
         """
-        User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.
+        User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN
+        field.
         """
         return pulumi.get(self, "user")
 
@@ -226,7 +258,7 @@ class _SKSKubeconfigState:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The Exoscale [Zone][zone] name.
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 
@@ -251,11 +283,18 @@ class SKSKubeconfig(pulumi.CustomResource):
         Create a SKSKubeconfig resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: The parent SKSCluster ID.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
+        :param pulumi.Input[str] cluster_id: The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
+        :param pulumi.Input[int] early_renewal_seconds: If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
+               certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
+               expiration of its internal current certificate. Note however that the old certificate remains valid until its true
+               expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
+               take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the
+               Organization field.
         :param pulumi.Input[float] ttl_seconds: The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
-        :param pulumi.Input[str] user: User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.
-        :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
+        :param pulumi.Input[str] user: User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN
+               field.
+        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         ...
     @overload
@@ -338,12 +377,19 @@ class SKSKubeconfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: The parent SKSCluster ID.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
+        :param pulumi.Input[str] cluster_id: The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
+        :param pulumi.Input[int] early_renewal_seconds: If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
+               certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
+               expiration of its internal current certificate. Note however that the old certificate remains valid until its true
+               expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
+               take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the
+               Organization field.
         :param pulumi.Input[str] kubeconfig: The generated Kubeconfig (YAML content).
         :param pulumi.Input[float] ttl_seconds: The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
-        :param pulumi.Input[str] user: User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.
-        :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
+        :param pulumi.Input[str] user: User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN
+               field.
+        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -363,20 +409,28 @@ class SKSKubeconfig(pulumi.CustomResource):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
         """
-        The parent SKSCluster ID.
+        The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
         """
         return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter(name="earlyRenewalSeconds")
     def early_renewal_seconds(self) -> pulumi.Output[Optional[int]]:
+        """
+        If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
+        certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
+        expiration of its internal current certificate. Note however that the old certificate remains valid until its true
+        expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
+        take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
+        """
         return pulumi.get(self, "early_renewal_seconds")
 
     @property
     @pulumi.getter
     def groups(self) -> pulumi.Output[Sequence[str]]:
         """
-        Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
+        Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the
+        Organization field.
         """
         return pulumi.get(self, "groups")
 
@@ -405,7 +459,8 @@ class SKSKubeconfig(pulumi.CustomResource):
     @pulumi.getter
     def user(self) -> pulumi.Output[str]:
         """
-        User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.
+        User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN
+        field.
         """
         return pulumi.get(self, "user")
 
@@ -413,7 +468,7 @@ class SKSKubeconfig(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         """
-        The Exoscale [Zone][zone] name.
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 

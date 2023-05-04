@@ -118,10 +118,25 @@ namespace Pulumiverse.Exoscale
     [OutputType]
     public sealed class GetComputeIPAddressResult
     {
+        /// <summary>
+        /// The EIP description to match.
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// The Elastic IP (EIP) ID to match.
+        /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// The EIP IPv4 address to match.
+        /// </summary>
         public readonly string? IpAddress;
+        /// <summary>
+        /// The EIP tags to match.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The Exoscale Zone name.
+        /// </summary>
         public readonly string Zone;
 
         [OutputConstructor]

@@ -47,7 +47,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The Exocale [Zone][zone] name.
+        /// The Exocale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone", required: true)]
         public string Zone { get; set; } = null!;
@@ -85,7 +85,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The Exocale [Zone][zone] name.
+        /// The Exocale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -113,19 +113,28 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// (Block) The *managed* EIP healthcheck configuration. Structure is documented below.
+        /// The *managed* EIP healthcheck configuration.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetElasticIPHealthcheckResult> Healthchecks;
+        /// <summary>
+        /// The Elastic IP (EIP) ID to match (conflicts with `ip_address` and `labels`).
+        /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// The EIP IPv4 or IPv6 address to match (conflicts with `id` and `labels`).
+        /// </summary>
         public readonly string? IpAddress;
         /// <summary>
-        /// A map of key/value labels.
+        /// The EIP labels to match (conflicts with `ip_address` and `id`).
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>
         /// Domain name for reverse DNS record.
         /// </summary>
         public readonly string ReverseDns;
+        /// <summary>
+        /// The Exocale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// </summary>
         public readonly string Zone;
 
         [OutputConstructor]

@@ -149,7 +149,7 @@ class Affinity(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        !> **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use AntiAffinityGroup instead.
+        **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use AntiAffinityGroup instead.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -164,7 +164,7 @@ class Affinity(pulumi.CustomResource):
                  args: Optional[AffinityArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        !> **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use AntiAffinityGroup instead.
+        **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use AntiAffinityGroup instead.
 
         :param str resource_name: The name of the resource.
         :param AffinityArgs args: The arguments to use to populate this resource's properties.

@@ -34,7 +34,7 @@ export interface GetElasticIPArgs {
      */
     labels?: {[key: string]: string};
     /**
-     * The Exocale [Zone][zone] name.
+     * The Exocale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: string;
 }
@@ -56,19 +56,28 @@ export interface GetElasticIPResult {
      */
     readonly description: string;
     /**
-     * (Block) The *managed* EIP healthcheck configuration. Structure is documented below.
+     * The *managed* EIP healthcheck configuration.
      */
     readonly healthchecks: outputs.GetElasticIPHealthcheck[];
+    /**
+     * The Elastic IP (EIP) ID to match (conflicts with `ipAddress` and `labels`).
+     */
     readonly id?: string;
+    /**
+     * The EIP IPv4 or IPv6 address to match (conflicts with `id` and `labels`).
+     */
     readonly ipAddress?: string;
     /**
-     * A map of key/value labels.
+     * The EIP labels to match (conflicts with `ipAddress` and `id`).
      */
     readonly labels?: {[key: string]: string};
     /**
      * Domain name for reverse DNS record.
      */
     readonly reverseDns: string;
+    /**
+     * The Exocale [Zone](https://www.exoscale.com/datacenters/) name.
+     */
     readonly zone: string;
 }
 export function getElasticIPOutput(args: GetElasticIPOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetElasticIPResult> {
@@ -92,7 +101,7 @@ export interface GetElasticIPOutputArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The Exocale [Zone][zone] name.
+     * The Exocale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: pulumi.Input<string>;
 }

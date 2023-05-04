@@ -31,15 +31,17 @@ type IPAddress struct {
 	HealthcheckStrikesOk pulumi.IntPtrOutput `pulumi:"healthcheckStrikesOk"`
 	// The time in seconds before considering a healthcheck probing failed (must be between `2` and `60`).
 	HealthcheckTimeout pulumi.IntPtrOutput `pulumi:"healthcheckTimeout"`
-	// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+	// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
+	// to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
 	HealthcheckTlsSkipVerify pulumi.BoolPtrOutput `pulumi:"healthcheckTlsSkipVerify"`
-	// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+	// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
+	// value, it cannot be reset to its default empty value later on (requires a resource re-creation).
 	HealthcheckTlsSni pulumi.StringPtrOutput `pulumi:"healthcheckTlsSni"`
 	// The Elastic IP (EIP) IPv4 address.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
 	// The EIP reverse DNS record (must end with a `.`; e.g: `my-eip.example.net.`).
 	ReverseDns pulumi.StringPtrOutput `pulumi:"reverseDns"`
-	// A dictionary of tags (key/value). To remove all tags, set `tags = {}`.
+	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The Exoscale Zone name
 	Zone pulumi.StringOutput `pulumi:"zone"`
@@ -94,15 +96,17 @@ type ipaddressState struct {
 	HealthcheckStrikesOk *int `pulumi:"healthcheckStrikesOk"`
 	// The time in seconds before considering a healthcheck probing failed (must be between `2` and `60`).
 	HealthcheckTimeout *int `pulumi:"healthcheckTimeout"`
-	// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+	// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
+	// to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
 	HealthcheckTlsSkipVerify *bool `pulumi:"healthcheckTlsSkipVerify"`
-	// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+	// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
+	// value, it cannot be reset to its default empty value later on (requires a resource re-creation).
 	HealthcheckTlsSni *string `pulumi:"healthcheckTlsSni"`
 	// The Elastic IP (EIP) IPv4 address.
 	IpAddress *string `pulumi:"ipAddress"`
 	// The EIP reverse DNS record (must end with a `.`; e.g: `my-eip.example.net.`).
 	ReverseDns *string `pulumi:"reverseDns"`
-	// A dictionary of tags (key/value). To remove all tags, set `tags = {}`.
+	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags map[string]string `pulumi:"tags"`
 	// The Exoscale Zone name
 	Zone *string `pulumi:"zone"`
@@ -125,15 +129,17 @@ type IPAddressState struct {
 	HealthcheckStrikesOk pulumi.IntPtrInput
 	// The time in seconds before considering a healthcheck probing failed (must be between `2` and `60`).
 	HealthcheckTimeout pulumi.IntPtrInput
-	// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+	// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
+	// to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
 	HealthcheckTlsSkipVerify pulumi.BoolPtrInput
-	// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+	// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
+	// value, it cannot be reset to its default empty value later on (requires a resource re-creation).
 	HealthcheckTlsSni pulumi.StringPtrInput
 	// The Elastic IP (EIP) IPv4 address.
 	IpAddress pulumi.StringPtrInput
 	// The EIP reverse DNS record (must end with a `.`; e.g: `my-eip.example.net.`).
 	ReverseDns pulumi.StringPtrInput
-	// A dictionary of tags (key/value). To remove all tags, set `tags = {}`.
+	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags pulumi.StringMapInput
 	// The Exoscale Zone name
 	Zone pulumi.StringPtrInput
@@ -160,13 +166,15 @@ type ipaddressArgs struct {
 	HealthcheckStrikesOk *int `pulumi:"healthcheckStrikesOk"`
 	// The time in seconds before considering a healthcheck probing failed (must be between `2` and `60`).
 	HealthcheckTimeout *int `pulumi:"healthcheckTimeout"`
-	// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+	// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
+	// to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
 	HealthcheckTlsSkipVerify *bool `pulumi:"healthcheckTlsSkipVerify"`
-	// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+	// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
+	// value, it cannot be reset to its default empty value later on (requires a resource re-creation).
 	HealthcheckTlsSni *string `pulumi:"healthcheckTlsSni"`
 	// The EIP reverse DNS record (must end with a `.`; e.g: `my-eip.example.net.`).
 	ReverseDns *string `pulumi:"reverseDns"`
-	// A dictionary of tags (key/value). To remove all tags, set `tags = {}`.
+	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags map[string]string `pulumi:"tags"`
 	// The Exoscale Zone name
 	Zone string `pulumi:"zone"`
@@ -190,13 +198,15 @@ type IPAddressArgs struct {
 	HealthcheckStrikesOk pulumi.IntPtrInput
 	// The time in seconds before considering a healthcheck probing failed (must be between `2` and `60`).
 	HealthcheckTimeout pulumi.IntPtrInput
-	// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+	// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
+	// to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
 	HealthcheckTlsSkipVerify pulumi.BoolPtrInput
-	// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+	// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
+	// value, it cannot be reset to its default empty value later on (requires a resource re-creation).
 	HealthcheckTlsSni pulumi.StringPtrInput
 	// The EIP reverse DNS record (must end with a `.`; e.g: `my-eip.example.net.`).
 	ReverseDns pulumi.StringPtrInput
-	// A dictionary of tags (key/value). To remove all tags, set `tags = {}`.
+	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags pulumi.StringMapInput
 	// The Exoscale Zone name
 	Zone pulumi.StringInput
@@ -329,12 +339,14 @@ func (o IPAddressOutput) HealthcheckTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *IPAddress) pulumi.IntPtrOutput { return v.HealthcheckTimeout }).(pulumi.IntPtrOutput)
 }
 
-// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
+// to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
 func (o IPAddressOutput) HealthcheckTlsSkipVerify() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *IPAddress) pulumi.BoolPtrOutput { return v.HealthcheckTlsSkipVerify }).(pulumi.BoolPtrOutput)
 }
 
-// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
+// value, it cannot be reset to its default empty value later on (requires a resource re-creation).
 func (o IPAddressOutput) HealthcheckTlsSni() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAddress) pulumi.StringPtrOutput { return v.HealthcheckTlsSni }).(pulumi.StringPtrOutput)
 }
@@ -349,7 +361,7 @@ func (o IPAddressOutput) ReverseDns() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAddress) pulumi.StringPtrOutput { return v.ReverseDns }).(pulumi.StringPtrOutput)
 }
 
-// A dictionary of tags (key/value). To remove all tags, set `tags = {}`.
+// Map of tags (key/value). To remove all tags, set `tags = {}`.
 func (o IPAddressOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *IPAddress) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

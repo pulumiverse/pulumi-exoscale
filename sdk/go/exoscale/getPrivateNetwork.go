@@ -28,7 +28,7 @@ type LookupPrivateNetworkArgs struct {
 	Id *string `pulumi:"id"`
 	// The network name to match (conflicts with `id`).
 	Name *string `pulumi:"name"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone string `pulumi:"zone"`
 }
 
@@ -36,14 +36,18 @@ type LookupPrivateNetworkArgs struct {
 type LookupPrivateNetworkResult struct {
 	// The private network description.
 	Description *string `pulumi:"description"`
-	EndIp       string  `pulumi:"endIp"`
-	Id          *string `pulumi:"id"`
-	Name        *string `pulumi:"name"`
+	// The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+	EndIp string `pulumi:"endIp"`
+	// The private network ID to match (conflicts with `name`).
+	Id *string `pulumi:"id"`
+	// The network name to match (conflicts with `id`).
+	Name *string `pulumi:"name"`
 	// The network mask defining the IPv4 network allowed for static leases.
 	Netmask string `pulumi:"netmask"`
-	// /`endIp` - The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+	// The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	StartIp string `pulumi:"startIp"`
-	Zone    string `pulumi:"zone"`
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	Zone string `pulumi:"zone"`
 }
 
 func LookupPrivateNetworkOutput(ctx *pulumi.Context, args LookupPrivateNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateNetworkResultOutput {
@@ -67,7 +71,7 @@ type LookupPrivateNetworkOutputArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The network name to match (conflicts with `id`).
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The Exoscale [Zone][zone] name.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
@@ -95,14 +99,17 @@ func (o LookupPrivateNetworkResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPrivateNetworkResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 func (o LookupPrivateNetworkResultOutput) EndIp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateNetworkResult) string { return v.EndIp }).(pulumi.StringOutput)
 }
 
+// The private network ID to match (conflicts with `name`).
 func (o LookupPrivateNetworkResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPrivateNetworkResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The network name to match (conflicts with `id`).
 func (o LookupPrivateNetworkResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPrivateNetworkResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -112,11 +119,12 @@ func (o LookupPrivateNetworkResultOutput) Netmask() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateNetworkResult) string { return v.Netmask }).(pulumi.StringOutput)
 }
 
-// /`endIp` - The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+// The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 func (o LookupPrivateNetworkResultOutput) StartIp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateNetworkResult) string { return v.StartIp }).(pulumi.StringOutput)
 }
 
+// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o LookupPrivateNetworkResultOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateNetworkResult) string { return v.Zone }).(pulumi.StringOutput)
 }

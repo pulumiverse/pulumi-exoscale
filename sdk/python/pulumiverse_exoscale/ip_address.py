@@ -38,10 +38,12 @@ class IPAddressArgs:
         :param pulumi.Input[int] healthcheck_strikes_fail: The number of unsuccessful healthcheck probes before considering the target unhealthy (must be between `1` and `20`).
         :param pulumi.Input[int] healthcheck_strikes_ok: The number of successful healthcheck probes before considering the target healthy (must be between `1` and `20`).
         :param pulumi.Input[int] healthcheck_timeout: The time in seconds before considering a healthcheck probing failed (must be between `2` and `60`).
-        :param pulumi.Input[bool] healthcheck_tls_skip_verify: Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
-        :param pulumi.Input[str] healthcheck_tls_sni: The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+        :param pulumi.Input[bool] healthcheck_tls_skip_verify: Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
+               to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+        :param pulumi.Input[str] healthcheck_tls_sni: The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
+               value, it cannot be reset to its default empty value later on (requires a resource re-creation).
         :param pulumi.Input[str] reverse_dns: The EIP reverse DNS record (must end with a `.`; e.g: `my-eip.example.net.`).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A dictionary of tags (key/value). To remove all tags, set `tags = {}`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags (key/value). To remove all tags, set `tags = {}`.
         """
         pulumi.set(__self__, "zone", zone)
         if description is not None:
@@ -181,7 +183,8 @@ class IPAddressArgs:
     @pulumi.getter(name="healthcheckTlsSkipVerify")
     def healthcheck_tls_skip_verify(self) -> Optional[pulumi.Input[bool]]:
         """
-        Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+        Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
+        to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
         """
         return pulumi.get(self, "healthcheck_tls_skip_verify")
 
@@ -193,7 +196,8 @@ class IPAddressArgs:
     @pulumi.getter(name="healthcheckTlsSni")
     def healthcheck_tls_sni(self) -> Optional[pulumi.Input[str]]:
         """
-        The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+        The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
+        value, it cannot be reset to its default empty value later on (requires a resource re-creation).
         """
         return pulumi.get(self, "healthcheck_tls_sni")
 
@@ -217,7 +221,7 @@ class IPAddressArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A dictionary of tags (key/value). To remove all tags, set `tags = {}`.
+        Map of tags (key/value). To remove all tags, set `tags = {}`.
         """
         return pulumi.get(self, "tags")
 
@@ -253,11 +257,13 @@ class _IPAddressState:
         :param pulumi.Input[int] healthcheck_strikes_fail: The number of unsuccessful healthcheck probes before considering the target unhealthy (must be between `1` and `20`).
         :param pulumi.Input[int] healthcheck_strikes_ok: The number of successful healthcheck probes before considering the target healthy (must be between `1` and `20`).
         :param pulumi.Input[int] healthcheck_timeout: The time in seconds before considering a healthcheck probing failed (must be between `2` and `60`).
-        :param pulumi.Input[bool] healthcheck_tls_skip_verify: Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
-        :param pulumi.Input[str] healthcheck_tls_sni: The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+        :param pulumi.Input[bool] healthcheck_tls_skip_verify: Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
+               to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+        :param pulumi.Input[str] healthcheck_tls_sni: The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
+               value, it cannot be reset to its default empty value later on (requires a resource re-creation).
         :param pulumi.Input[str] ip_address: The Elastic IP (EIP) IPv4 address.
         :param pulumi.Input[str] reverse_dns: The EIP reverse DNS record (must end with a `.`; e.g: `my-eip.example.net.`).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A dictionary of tags (key/value). To remove all tags, set `tags = {}`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags (key/value). To remove all tags, set `tags = {}`.
         :param pulumi.Input[str] zone: The Exoscale Zone name
         """
         if description is not None:
@@ -389,7 +395,8 @@ class _IPAddressState:
     @pulumi.getter(name="healthcheckTlsSkipVerify")
     def healthcheck_tls_skip_verify(self) -> Optional[pulumi.Input[bool]]:
         """
-        Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+        Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
+        to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
         """
         return pulumi.get(self, "healthcheck_tls_skip_verify")
 
@@ -401,7 +408,8 @@ class _IPAddressState:
     @pulumi.getter(name="healthcheckTlsSni")
     def healthcheck_tls_sni(self) -> Optional[pulumi.Input[str]]:
         """
-        The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+        The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
+        value, it cannot be reset to its default empty value later on (requires a resource re-creation).
         """
         return pulumi.get(self, "healthcheck_tls_sni")
 
@@ -437,7 +445,7 @@ class _IPAddressState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A dictionary of tags (key/value). To remove all tags, set `tags = {}`.
+        Map of tags (key/value). To remove all tags, set `tags = {}`.
         """
         return pulumi.get(self, "tags")
 
@@ -490,10 +498,12 @@ class IPAddress(pulumi.CustomResource):
         :param pulumi.Input[int] healthcheck_strikes_fail: The number of unsuccessful healthcheck probes before considering the target unhealthy (must be between `1` and `20`).
         :param pulumi.Input[int] healthcheck_strikes_ok: The number of successful healthcheck probes before considering the target healthy (must be between `1` and `20`).
         :param pulumi.Input[int] healthcheck_timeout: The time in seconds before considering a healthcheck probing failed (must be between `2` and `60`).
-        :param pulumi.Input[bool] healthcheck_tls_skip_verify: Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
-        :param pulumi.Input[str] healthcheck_tls_sni: The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+        :param pulumi.Input[bool] healthcheck_tls_skip_verify: Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
+               to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+        :param pulumi.Input[str] healthcheck_tls_sni: The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
+               value, it cannot be reset to its default empty value later on (requires a resource re-creation).
         :param pulumi.Input[str] reverse_dns: The EIP reverse DNS record (must end with a `.`; e.g: `my-eip.example.net.`).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A dictionary of tags (key/value). To remove all tags, set `tags = {}`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags (key/value). To remove all tags, set `tags = {}`.
         :param pulumi.Input[str] zone: The Exoscale Zone name
         """
         ...
@@ -597,11 +607,13 @@ class IPAddress(pulumi.CustomResource):
         :param pulumi.Input[int] healthcheck_strikes_fail: The number of unsuccessful healthcheck probes before considering the target unhealthy (must be between `1` and `20`).
         :param pulumi.Input[int] healthcheck_strikes_ok: The number of successful healthcheck probes before considering the target healthy (must be between `1` and `20`).
         :param pulumi.Input[int] healthcheck_timeout: The time in seconds before considering a healthcheck probing failed (must be between `2` and `60`).
-        :param pulumi.Input[bool] healthcheck_tls_skip_verify: Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
-        :param pulumi.Input[str] healthcheck_tls_sni: The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+        :param pulumi.Input[bool] healthcheck_tls_skip_verify: Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
+               to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+        :param pulumi.Input[str] healthcheck_tls_sni: The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
+               value, it cannot be reset to its default empty value later on (requires a resource re-creation).
         :param pulumi.Input[str] ip_address: The Elastic IP (EIP) IPv4 address.
         :param pulumi.Input[str] reverse_dns: The EIP reverse DNS record (must end with a `.`; e.g: `my-eip.example.net.`).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A dictionary of tags (key/value). To remove all tags, set `tags = {}`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags (key/value). To remove all tags, set `tags = {}`.
         :param pulumi.Input[str] zone: The Exoscale Zone name
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -692,7 +704,8 @@ class IPAddress(pulumi.CustomResource):
     @pulumi.getter(name="healthcheckTlsSkipVerify")
     def healthcheck_tls_skip_verify(self) -> pulumi.Output[Optional[bool]]:
         """
-        Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+        Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
+        to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
         """
         return pulumi.get(self, "healthcheck_tls_skip_verify")
 
@@ -700,7 +713,8 @@ class IPAddress(pulumi.CustomResource):
     @pulumi.getter(name="healthcheckTlsSni")
     def healthcheck_tls_sni(self) -> pulumi.Output[Optional[str]]:
         """
-        The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+        The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
+        value, it cannot be reset to its default empty value later on (requires a resource re-creation).
         """
         return pulumi.get(self, "healthcheck_tls_sni")
 
@@ -724,7 +738,7 @@ class IPAddress(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        A dictionary of tags (key/value). To remove all tags, set `tags = {}`.
+        Map of tags (key/value). To remove all tags, set `tags = {}`.
         """
         return pulumi.get(self, "tags")
 

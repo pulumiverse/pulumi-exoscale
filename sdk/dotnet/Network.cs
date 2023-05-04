@@ -22,6 +22,9 @@ namespace Pulumiverse.Exoscale
         [Output("displayText")]
         public Output<string> DisplayText { get; private set; } = null!;
 
+        /// <summary>
+        /// The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+        /// </summary>
         [Output("endIp")]
         public Output<string?> EndIp { get; private set; } = null!;
 
@@ -32,7 +35,8 @@ namespace Pulumiverse.Exoscale
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.
+        /// The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
+        /// private networks.
         /// </summary>
         [Output("netmask")]
         public Output<string?> Netmask { get; private set; } = null!;
@@ -41,13 +45,13 @@ namespace Pulumiverse.Exoscale
         public Output<string?> NetworkOffering { get; private set; } = null!;
 
         /// <summary>
-        /// /`end_ip` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+        /// The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
         /// </summary>
         [Output("startIp")]
         public Output<string?> StartIp { get; private set; } = null!;
 
         /// <summary>
-        /// A map of tags (key/value). To remove all tags, set `tags = {}`.
+        /// Map of tags (key/value). To remove all tags, set `tags = {}`.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>> Tags { get; private set; } = null!;
@@ -111,6 +115,9 @@ namespace Pulumiverse.Exoscale
         [Input("displayText")]
         public Input<string>? DisplayText { get; set; }
 
+        /// <summary>
+        /// The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+        /// </summary>
         [Input("endIp")]
         public Input<string>? EndIp { get; set; }
 
@@ -121,7 +128,8 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.
+        /// The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
+        /// private networks.
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
@@ -130,7 +138,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? NetworkOffering { get; set; }
 
         /// <summary>
-        /// /`end_ip` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+        /// The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
         /// </summary>
         [Input("startIp")]
         public Input<string>? StartIp { get; set; }
@@ -139,7 +147,7 @@ namespace Pulumiverse.Exoscale
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A map of tags (key/value). To remove all tags, set `tags = {}`.
+        /// Map of tags (key/value). To remove all tags, set `tags = {}`.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -167,6 +175,9 @@ namespace Pulumiverse.Exoscale
         [Input("displayText")]
         public Input<string>? DisplayText { get; set; }
 
+        /// <summary>
+        /// The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+        /// </summary>
         [Input("endIp")]
         public Input<string>? EndIp { get; set; }
 
@@ -177,7 +188,8 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.
+        /// The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
+        /// private networks.
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
@@ -186,7 +198,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? NetworkOffering { get; set; }
 
         /// <summary>
-        /// /`end_ip` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+        /// The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
         /// </summary>
         [Input("startIp")]
         public Input<string>? StartIp { get; set; }
@@ -195,7 +207,7 @@ namespace Pulumiverse.Exoscale
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A map of tags (key/value). To remove all tags, set `tags = {}`.
+        /// Map of tags (key/value). To remove all tags, set `tags = {}`.
         /// </summary>
         public InputMap<string> Tags
         {

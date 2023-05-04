@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * An existing NLB service may be imported by `<nlb-ID>/<service-ID>@<zone>`console
+ * An existing NLB service may be imported by `<nlb-ID>/<service-ID>@<zone>`
  *
  * ```sh
  *  $ pulumi import exoscale:index/nLBService:NLBService \
@@ -52,11 +52,11 @@ export class NLBService extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The service health checking configuration (may only bet set at creation time). Structure is documented below.
+     * The service health checking configuration (may only bet set at creation time).
      */
     public readonly healthchecks!: pulumi.Output<outputs.NLBServiceHealthcheck[]>;
     /**
-     * The exoscale.InstancePool (ID) to forward traffic to.
+     * The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
      */
     public readonly instancePoolId!: pulumi.Output<string>;
     /**
@@ -64,11 +64,11 @@ export class NLBService extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The parent exoscale.NLB ID.
+     * The parent [exoscale_nlb](./nlb.md) ID.
      */
     public readonly nlbId!: pulumi.Output<string>;
     /**
-     * The NLB service (TCP/UPP) port.
+     * The healthcheck port.
      */
     public readonly port!: pulumi.Output<number>;
     /**
@@ -85,7 +85,7 @@ export class NLBService extends pulumi.CustomResource {
      */
     public readonly targetPort!: pulumi.Output<number>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -159,11 +159,11 @@ export interface NLBServiceState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The service health checking configuration (may only bet set at creation time). Structure is documented below.
+     * The service health checking configuration (may only bet set at creation time).
      */
     healthchecks?: pulumi.Input<pulumi.Input<inputs.NLBServiceHealthcheck>[]>;
     /**
-     * The exoscale.InstancePool (ID) to forward traffic to.
+     * The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
      */
     instancePoolId?: pulumi.Input<string>;
     /**
@@ -171,11 +171,11 @@ export interface NLBServiceState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The parent exoscale.NLB ID.
+     * The parent [exoscale_nlb](./nlb.md) ID.
      */
     nlbId?: pulumi.Input<string>;
     /**
-     * The NLB service (TCP/UPP) port.
+     * The healthcheck port.
      */
     port?: pulumi.Input<number>;
     /**
@@ -192,7 +192,7 @@ export interface NLBServiceState {
      */
     targetPort?: pulumi.Input<number>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone?: pulumi.Input<string>;
 }
@@ -206,11 +206,11 @@ export interface NLBServiceArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The service health checking configuration (may only bet set at creation time). Structure is documented below.
+     * The service health checking configuration (may only bet set at creation time).
      */
     healthchecks: pulumi.Input<pulumi.Input<inputs.NLBServiceHealthcheck>[]>;
     /**
-     * The exoscale.InstancePool (ID) to forward traffic to.
+     * The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
      */
     instancePoolId: pulumi.Input<string>;
     /**
@@ -218,11 +218,11 @@ export interface NLBServiceArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The parent exoscale.NLB ID.
+     * The parent [exoscale_nlb](./nlb.md) ID.
      */
     nlbId: pulumi.Input<string>;
     /**
-     * The NLB service (TCP/UPP) port.
+     * The healthcheck port.
      */
     port: pulumi.Input<number>;
     /**
@@ -238,7 +238,7 @@ export interface NLBServiceArgs {
      */
     targetPort: pulumi.Input<number>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: pulumi.Input<string>;
 }

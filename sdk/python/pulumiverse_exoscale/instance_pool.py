@@ -40,25 +40,27 @@ class InstancePoolArgs:
         """
         The set of arguments for constructing a InstancePool resource.
         :param pulumi.Input[int] size: The number of managed instances.
-        :param pulumi.Input[str] template_id: The_get_compute_template_(ID) to use when creating the managed instances.
-        :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_group_ids: A list of AntiAffinityGroup (IDs; may only be set at creation time).
+        :param pulumi.Input[str] template_id: The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the managed instances.
+        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_group_ids: A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs; may only be set at creation time).
         :param pulumi.Input[str] deploy_target_id: A deploy target ID.
         :param pulumi.Input[str] description: A free-form text describing the pool.
         :param pulumi.Input[int] disk_size: The managed instances disk size (GiB).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of ElasticIP (IDs).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs).
         :param pulumi.Input[str] instance_prefix: The string used to prefix managed instances name (default: `pool`).
-        :param pulumi.Input[str] instance_type: The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types).
+        :param pulumi.Input[str] instance_type: The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale
+               CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
         :param pulumi.Input[Sequence[pulumi.Input['InstancePoolInstanceArgs']]] instances: The list of managed instances. Structure is documented below.
         :param pulumi.Input[bool] ipv6: Enable IPv6 on managed instances (boolean; default: `false`).
-        :param pulumi.Input[str] key_pair: The SSHKey (name) to authorize in the managed instances.
+        :param pulumi.Input[str] key_pair: The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the managed instances.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[str] name: The instance pool name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_ids: A list of PrivateNetwork (IDs).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of SecurityGroup (IDs).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_ids: A list of [exoscale_private_network](./private_network.md) (IDs).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of [exoscale_security_group](./security_groups.md) (IDs).
         :param pulumi.Input[str] service_offering: The managed instances type. Please use the `instance_type` argument instead.
-        :param pulumi.Input[str] user_data: [cloud-init][cloud-init] configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machines: (Deprecated) The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
+        :param pulumi.Input[str] user_data: [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode
+               or gzip it as the provider will take care of it).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machines: The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
         """
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "template_id", template_id)
@@ -122,7 +124,7 @@ class InstancePoolArgs:
     @pulumi.getter(name="templateId")
     def template_id(self) -> pulumi.Input[str]:
         """
-        The_get_compute_template_(ID) to use when creating the managed instances.
+        The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the managed instances.
         """
         return pulumi.get(self, "template_id")
 
@@ -134,7 +136,7 @@ class InstancePoolArgs:
     @pulumi.getter
     def zone(self) -> pulumi.Input[str]:
         """
-        The Exoscale [Zone][zone] name.
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 
@@ -146,7 +148,7 @@ class InstancePoolArgs:
     @pulumi.getter(name="affinityGroupIds")
     def affinity_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of AntiAffinityGroup (IDs; may only be set at creation time).
+        A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs; may only be set at creation time).
         """
         return pulumi.get(self, "affinity_group_ids")
 
@@ -194,7 +196,7 @@ class InstancePoolArgs:
     @pulumi.getter(name="elasticIpIds")
     def elastic_ip_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of ElasticIP (IDs).
+        A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs).
         """
         return pulumi.get(self, "elastic_ip_ids")
 
@@ -218,7 +220,8 @@ class InstancePoolArgs:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types).
+        The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale
+        CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
         """
         return pulumi.get(self, "instance_type")
 
@@ -254,7 +257,7 @@ class InstancePoolArgs:
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> Optional[pulumi.Input[str]]:
         """
-        The SSHKey (name) to authorize in the managed instances.
+        The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the managed instances.
         """
         return pulumi.get(self, "key_pair")
 
@@ -290,7 +293,7 @@ class InstancePoolArgs:
     @pulumi.getter(name="networkIds")
     def network_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of PrivateNetwork (IDs).
+        A list of [exoscale_private_network](./private_network.md) (IDs).
         """
         return pulumi.get(self, "network_ids")
 
@@ -302,7 +305,7 @@ class InstancePoolArgs:
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of SecurityGroup (IDs).
+        A list of [exoscale_security_group](./security_groups.md) (IDs).
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -335,7 +338,8 @@ class InstancePoolArgs:
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
-        [cloud-init][cloud-init] configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
+        [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode
+        or gzip it as the provider will take care of it).
         """
         return pulumi.get(self, "user_data")
 
@@ -347,7 +351,7 @@ class InstancePoolArgs:
     @pulumi.getter(name="virtualMachines")
     def virtual_machines(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        (Deprecated) The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
+        The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
         """
         return pulumi.get(self, "virtual_machines")
 
@@ -382,26 +386,28 @@ class _InstancePoolState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering InstancePool resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_group_ids: A list of AntiAffinityGroup (IDs; may only be set at creation time).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_group_ids: A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs; may only be set at creation time).
         :param pulumi.Input[str] deploy_target_id: A deploy target ID.
         :param pulumi.Input[str] description: A free-form text describing the pool.
         :param pulumi.Input[int] disk_size: The managed instances disk size (GiB).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of ElasticIP (IDs).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs).
         :param pulumi.Input[str] instance_prefix: The string used to prefix managed instances name (default: `pool`).
-        :param pulumi.Input[str] instance_type: The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types).
+        :param pulumi.Input[str] instance_type: The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale
+               CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
         :param pulumi.Input[Sequence[pulumi.Input['InstancePoolInstanceArgs']]] instances: The list of managed instances. Structure is documented below.
         :param pulumi.Input[bool] ipv6: Enable IPv6 on managed instances (boolean; default: `false`).
-        :param pulumi.Input[str] key_pair: The SSHKey (name) to authorize in the managed instances.
+        :param pulumi.Input[str] key_pair: The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the managed instances.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[str] name: The instance pool name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_ids: A list of PrivateNetwork (IDs).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of SecurityGroup (IDs).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_ids: A list of [exoscale_private_network](./private_network.md) (IDs).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of [exoscale_security_group](./security_groups.md) (IDs).
         :param pulumi.Input[str] service_offering: The managed instances type. Please use the `instance_type` argument instead.
         :param pulumi.Input[int] size: The number of managed instances.
-        :param pulumi.Input[str] template_id: The_get_compute_template_(ID) to use when creating the managed instances.
-        :param pulumi.Input[str] user_data: [cloud-init][cloud-init] configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machines: (Deprecated) The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
-        :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
+        :param pulumi.Input[str] template_id: The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the managed instances.
+        :param pulumi.Input[str] user_data: [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode
+               or gzip it as the provider will take care of it).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machines: The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
+        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         if affinity_group_ids is not None:
             pulumi.set(__self__, "affinity_group_ids", affinity_group_ids)
@@ -456,7 +462,7 @@ class _InstancePoolState:
     @pulumi.getter(name="affinityGroupIds")
     def affinity_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of AntiAffinityGroup (IDs; may only be set at creation time).
+        A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs; may only be set at creation time).
         """
         return pulumi.get(self, "affinity_group_ids")
 
@@ -504,7 +510,7 @@ class _InstancePoolState:
     @pulumi.getter(name="elasticIpIds")
     def elastic_ip_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of ElasticIP (IDs).
+        A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs).
         """
         return pulumi.get(self, "elastic_ip_ids")
 
@@ -528,7 +534,8 @@ class _InstancePoolState:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types).
+        The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale
+        CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
         """
         return pulumi.get(self, "instance_type")
 
@@ -564,7 +571,7 @@ class _InstancePoolState:
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> Optional[pulumi.Input[str]]:
         """
-        The SSHKey (name) to authorize in the managed instances.
+        The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the managed instances.
         """
         return pulumi.get(self, "key_pair")
 
@@ -600,7 +607,7 @@ class _InstancePoolState:
     @pulumi.getter(name="networkIds")
     def network_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of PrivateNetwork (IDs).
+        A list of [exoscale_private_network](./private_network.md) (IDs).
         """
         return pulumi.get(self, "network_ids")
 
@@ -612,7 +619,7 @@ class _InstancePoolState:
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of SecurityGroup (IDs).
+        A list of [exoscale_security_group](./security_groups.md) (IDs).
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -657,7 +664,7 @@ class _InstancePoolState:
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The_get_compute_template_(ID) to use when creating the managed instances.
+        The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the managed instances.
         """
         return pulumi.get(self, "template_id")
 
@@ -669,7 +676,8 @@ class _InstancePoolState:
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
-        [cloud-init][cloud-init] configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
+        [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode
+        or gzip it as the provider will take care of it).
         """
         return pulumi.get(self, "user_data")
 
@@ -681,7 +689,7 @@ class _InstancePoolState:
     @pulumi.getter(name="virtualMachines")
     def virtual_machines(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        (Deprecated) The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
+        The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
         """
         return pulumi.get(self, "virtual_machines")
 
@@ -693,7 +701,7 @@ class _InstancePoolState:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The Exoscale [Zone][zone] name.
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 
@@ -732,7 +740,7 @@ class InstancePool(pulumi.CustomResource):
         """
         ## Import
 
-        An existing instance pool may be imported by `<ID>@<zone>`console
+        An existing instance pool may be imported by `<ID>@<zone>`
 
         ```sh
          $ pulumi import exoscale:index/instancePool:InstancePool \\
@@ -744,26 +752,28 @@ class InstancePool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_group_ids: A list of AntiAffinityGroup (IDs; may only be set at creation time).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_group_ids: A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs; may only be set at creation time).
         :param pulumi.Input[str] deploy_target_id: A deploy target ID.
         :param pulumi.Input[str] description: A free-form text describing the pool.
         :param pulumi.Input[int] disk_size: The managed instances disk size (GiB).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of ElasticIP (IDs).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs).
         :param pulumi.Input[str] instance_prefix: The string used to prefix managed instances name (default: `pool`).
-        :param pulumi.Input[str] instance_type: The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types).
+        :param pulumi.Input[str] instance_type: The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale
+               CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePoolInstanceArgs']]]] instances: The list of managed instances. Structure is documented below.
         :param pulumi.Input[bool] ipv6: Enable IPv6 on managed instances (boolean; default: `false`).
-        :param pulumi.Input[str] key_pair: The SSHKey (name) to authorize in the managed instances.
+        :param pulumi.Input[str] key_pair: The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the managed instances.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[str] name: The instance pool name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_ids: A list of PrivateNetwork (IDs).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of SecurityGroup (IDs).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_ids: A list of [exoscale_private_network](./private_network.md) (IDs).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of [exoscale_security_group](./security_groups.md) (IDs).
         :param pulumi.Input[str] service_offering: The managed instances type. Please use the `instance_type` argument instead.
         :param pulumi.Input[int] size: The number of managed instances.
-        :param pulumi.Input[str] template_id: The_get_compute_template_(ID) to use when creating the managed instances.
-        :param pulumi.Input[str] user_data: [cloud-init][cloud-init] configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machines: (Deprecated) The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
-        :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
+        :param pulumi.Input[str] template_id: The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the managed instances.
+        :param pulumi.Input[str] user_data: [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode
+               or gzip it as the provider will take care of it).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machines: The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
+        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         ...
     @overload
@@ -774,7 +784,7 @@ class InstancePool(pulumi.CustomResource):
         """
         ## Import
 
-        An existing instance pool may be imported by `<ID>@<zone>`console
+        An existing instance pool may be imported by `<ID>@<zone>`
 
         ```sh
          $ pulumi import exoscale:index/instancePool:InstancePool \\
@@ -900,26 +910,28 @@ class InstancePool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_group_ids: A list of AntiAffinityGroup (IDs; may only be set at creation time).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_group_ids: A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs; may only be set at creation time).
         :param pulumi.Input[str] deploy_target_id: A deploy target ID.
         :param pulumi.Input[str] description: A free-form text describing the pool.
         :param pulumi.Input[int] disk_size: The managed instances disk size (GiB).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of ElasticIP (IDs).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs).
         :param pulumi.Input[str] instance_prefix: The string used to prefix managed instances name (default: `pool`).
-        :param pulumi.Input[str] instance_type: The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types).
+        :param pulumi.Input[str] instance_type: The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale
+               CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePoolInstanceArgs']]]] instances: The list of managed instances. Structure is documented below.
         :param pulumi.Input[bool] ipv6: Enable IPv6 on managed instances (boolean; default: `false`).
-        :param pulumi.Input[str] key_pair: The SSHKey (name) to authorize in the managed instances.
+        :param pulumi.Input[str] key_pair: The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the managed instances.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[str] name: The instance pool name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_ids: A list of PrivateNetwork (IDs).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of SecurityGroup (IDs).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_ids: A list of [exoscale_private_network](./private_network.md) (IDs).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of [exoscale_security_group](./security_groups.md) (IDs).
         :param pulumi.Input[str] service_offering: The managed instances type. Please use the `instance_type` argument instead.
         :param pulumi.Input[int] size: The number of managed instances.
-        :param pulumi.Input[str] template_id: The_get_compute_template_(ID) to use when creating the managed instances.
-        :param pulumi.Input[str] user_data: [cloud-init][cloud-init] configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machines: (Deprecated) The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
-        :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
+        :param pulumi.Input[str] template_id: The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the managed instances.
+        :param pulumi.Input[str] user_data: [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode
+               or gzip it as the provider will take care of it).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machines: The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
+        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -952,7 +964,7 @@ class InstancePool(pulumi.CustomResource):
     @pulumi.getter(name="affinityGroupIds")
     def affinity_group_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A list of AntiAffinityGroup (IDs; may only be set at creation time).
+        A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs; may only be set at creation time).
         """
         return pulumi.get(self, "affinity_group_ids")
 
@@ -984,7 +996,7 @@ class InstancePool(pulumi.CustomResource):
     @pulumi.getter(name="elasticIpIds")
     def elastic_ip_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A list of ElasticIP (IDs).
+        A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs).
         """
         return pulumi.get(self, "elastic_ip_ids")
 
@@ -1000,7 +1012,8 @@ class InstancePool(pulumi.CustomResource):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Output[str]:
         """
-        The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI][cli] - `exo compute instance-type list` - for the list of available types).
+        The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale
+        CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
         """
         return pulumi.get(self, "instance_type")
 
@@ -1024,7 +1037,7 @@ class InstancePool(pulumi.CustomResource):
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> pulumi.Output[Optional[str]]:
         """
-        The SSHKey (name) to authorize in the managed instances.
+        The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the managed instances.
         """
         return pulumi.get(self, "key_pair")
 
@@ -1048,7 +1061,7 @@ class InstancePool(pulumi.CustomResource):
     @pulumi.getter(name="networkIds")
     def network_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A list of PrivateNetwork (IDs).
+        A list of [exoscale_private_network](./private_network.md) (IDs).
         """
         return pulumi.get(self, "network_ids")
 
@@ -1056,7 +1069,7 @@ class InstancePool(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A list of SecurityGroup (IDs).
+        A list of [exoscale_security_group](./security_groups.md) (IDs).
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -1085,7 +1098,7 @@ class InstancePool(pulumi.CustomResource):
     @pulumi.getter(name="templateId")
     def template_id(self) -> pulumi.Output[str]:
         """
-        The_get_compute_template_(ID) to use when creating the managed instances.
+        The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the managed instances.
         """
         return pulumi.get(self, "template_id")
 
@@ -1093,7 +1106,8 @@ class InstancePool(pulumi.CustomResource):
     @pulumi.getter(name="userData")
     def user_data(self) -> pulumi.Output[Optional[str]]:
         """
-        [cloud-init][cloud-init] configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
+        [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode
+        or gzip it as the provider will take care of it).
         """
         return pulumi.get(self, "user_data")
 
@@ -1101,7 +1115,7 @@ class InstancePool(pulumi.CustomResource):
     @pulumi.getter(name="virtualMachines")
     def virtual_machines(self) -> pulumi.Output[Sequence[str]]:
         """
-        (Deprecated) The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
+        The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
         """
         return pulumi.get(self, "virtual_machines")
 
@@ -1109,7 +1123,7 @@ class InstancePool(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         """
-        The Exoscale [Zone][zone] name.
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 

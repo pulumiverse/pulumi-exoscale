@@ -14,37 +14,13 @@ namespace Pulumiverse.Exoscale.Outputs
     [OutputType]
     public sealed class DatabasePg
     {
-        /// <summary>
-        /// A custom administrator account password (may only be set at creation time).
-        /// </summary>
         public readonly string? AdminPassword;
-        /// <summary>
-        /// A custom administrator account username (may only be set at creation time).
-        /// </summary>
         public readonly string? AdminUsername;
-        /// <summary>
-        /// The automated backup schedule (`HH:MM`).
-        /// </summary>
         public readonly string? BackupSchedule;
-        /// <summary>
-        /// A list of CIDR blocks to allow incoming connections from.
-        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
-        /// <summary>
-        /// PostgreSQL configuration settings in JSON format (`exo dbaas type show pg --settings=pg` for reference).
-        /// </summary>
         public readonly string? PgSettings;
-        /// <summary>
-        /// PgBouncer configuration settings in JSON format (`exo dbaas type show pg --settings=pgbouncer` for reference).
-        /// </summary>
         public readonly string? PgbouncerSettings;
-        /// <summary>
-        /// pglookout configuration settings in JSON format (`exo dbaas type show pg --settings=pglookout` for reference).
-        /// </summary>
         public readonly string? PglookoutSettings;
-        /// <summary>
-        /// PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
-        /// </summary>
         public readonly string? Version;
 
         [OutputConstructor]

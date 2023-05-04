@@ -6,252 +6,89 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export interface ComputeInstanceNetworkInterface {
-    /**
-     * The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
-     */
     ipAddress?: pulumi.Input<string>;
-    /**
-     * The exoscale.PrivateNetwork (ID) to attach to the instance.
-     */
     networkId: pulumi.Input<string>;
 }
 
 export interface DatabaseKafka {
-    /**
-     * Enable certificate-based authentication method.
-     */
     enableCertAuth?: pulumi.Input<boolean>;
-    /**
-     * Enable Kafka Connect.
-     */
     enableKafkaConnect?: pulumi.Input<boolean>;
-    /**
-     * Enable Kafka REST.
-     */
     enableKafkaRest?: pulumi.Input<boolean>;
-    /**
-     * Enable SASL-based authentication method.
-     */
     enableSaslAuth?: pulumi.Input<boolean>;
-    /**
-     * Enable Schema Registry.
-     */
     enableSchemaRegistry?: pulumi.Input<boolean>;
-    /**
-     * A list of CIDR blocks to allow incoming connections from.
-     */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Kafka Connect configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka-connect` for reference).
-     */
     kafkaConnectSettings?: pulumi.Input<string>;
-    /**
-     * Kafka REST configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka-rest` for reference).
-     */
     kafkaRestSettings?: pulumi.Input<string>;
-    /**
-     * Kafka configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka` for reference).
-     */
     kafkaSettings?: pulumi.Input<string>;
-    /**
-     * Schema Registry configuration settings in JSON format (`exo dbaas type show kafka --settings=schema-registry` for reference)
-     */
     schemaRegistrySettings?: pulumi.Input<string>;
-    /**
-     * Kafka major version (`exo dbaas type show kafka` for reference; may only be set at creation time).
-     */
     version?: pulumi.Input<string>;
 }
 
 export interface DatabaseMysql {
-    /**
-     * A custom administrator account password (may only be set at creation time).
-     */
     adminPassword?: pulumi.Input<string>;
-    /**
-     * A custom administrator account username (may only be set at creation time).
-     */
     adminUsername?: pulumi.Input<string>;
-    /**
-     * The automated backup schedule (`HH:MM`).
-     */
     backupSchedule?: pulumi.Input<string>;
-    /**
-     * A list of CIDR blocks to allow incoming connections from.
-     */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * MySQL configuration settings in JSON format (`exo dbaas type show mysql --settings=mysql` for reference).
-     */
     mysqlSettings?: pulumi.Input<string>;
-    /**
-     * MySQL major version (`exo dbaas type show mysql` for reference; may only be set at creation time).
-     */
     version?: pulumi.Input<string>;
 }
 
 export interface DatabaseOpensearch {
     dashboards?: pulumi.Input<inputs.DatabaseOpensearchDashboards>;
-    /**
-     * Service name
-     */
     forkFromService?: pulumi.Input<string>;
-    /**
-     * Allows you to create glob style patterns and set a max number of indexes matching this pattern you want to keep. Creating indexes exceeding this value will cause the oldest one to get deleted. You could for example create a pattern looking like 'logs.?' and then create index logs.1, logs.2 etc, it will delete logs.1 once you create logs.6. Do note 'logs.?' does not apply to logs.10. Note: Setting maxIndexCount to 0 will do nothing and the pattern gets ignored.
-     */
     indexPatterns?: pulumi.Input<pulumi.Input<inputs.DatabaseOpensearchIndexPattern>[]>;
-    /**
-     * Template settings for all new indexes
-     */
     indexTemplate?: pulumi.Input<inputs.DatabaseOpensearchIndexTemplate>;
-    /**
-     * Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
-     */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
-     */
     keepIndexRefreshInterval?: pulumi.Input<boolean>;
-    /**
-     * Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
-     */
     maxIndexCount?: pulumi.Input<number>;
     recoveryBackupName?: pulumi.Input<string>;
     settings?: pulumi.Input<string>;
-    /**
-     * OpenSearch major version.
-     */
     version?: pulumi.Input<string>;
 }
 
 export interface DatabaseOpensearchDashboards {
-    /**
-     * {Type -  schema.TypeBool, Optional -  true, Default -  true},
-     */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * {Type -  schema.TypeInt, Optional -  true, Default -  128},
-     */
     maxOldSpaceSize?: pulumi.Input<number>;
-    /**
-     * {Type -  schema.TypeInt, Optional -  true, Default -  30000},
-     * `settings` -  OpenSearch-specific settings, in json. e.g.`jsonencode({thread_pool_search_size: 64})`. Use `exo x get-dbaas-settings-opensearch` to get a list of available settings.
-     */
     requestTimeout?: pulumi.Input<number>;
 }
 
 export interface DatabaseOpensearchIndexPattern {
-    /**
-     * Maximum number of indexes to keep (Minimum value is `0`)
-     */
     maxIndexCount?: pulumi.Input<number>;
-    /**
-     * fnmatch pattern
-     */
     pattern?: pulumi.Input<string>;
-    /**
-     * `alphabetical` or `creationDate`.
-     */
     sortingAlgorithm?: pulumi.Input<string>;
 }
 
 export interface DatabaseOpensearchIndexTemplate {
-    /**
-     * The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. (Default is 10000. Minimum value is `0`, maximum value is `100000`.)
-     */
     mappingNestedObjectsLimit?: pulumi.Input<number>;
-    /**
-     * The number of replicas each primary shard has. (Minimum value is `0`, maximum value is `29`)
-     */
     numberOfReplicas?: pulumi.Input<number>;
-    /**
-     * The number of primary shards that an index should have. (Minimum value is `1`, maximum value is `1024`.)
-     */
     numberOfShards?: pulumi.Input<number>;
 }
 
 export interface DatabasePg {
-    /**
-     * A custom administrator account password (may only be set at creation time).
-     */
     adminPassword?: pulumi.Input<string>;
-    /**
-     * A custom administrator account username (may only be set at creation time).
-     */
     adminUsername?: pulumi.Input<string>;
-    /**
-     * The automated backup schedule (`HH:MM`).
-     */
     backupSchedule?: pulumi.Input<string>;
-    /**
-     * A list of CIDR blocks to allow incoming connections from.
-     */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * PostgreSQL configuration settings in JSON format (`exo dbaas type show pg --settings=pg` for reference).
-     */
     pgSettings?: pulumi.Input<string>;
-    /**
-     * PgBouncer configuration settings in JSON format (`exo dbaas type show pg --settings=pgbouncer` for reference).
-     */
     pgbouncerSettings?: pulumi.Input<string>;
-    /**
-     * pglookout configuration settings in JSON format (`exo dbaas type show pg --settings=pglookout` for reference).
-     */
     pglookoutSettings?: pulumi.Input<string>;
-    /**
-     * PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
-     */
     version?: pulumi.Input<string>;
 }
 
 export interface DatabaseRedis {
-    /**
-     * A list of CIDR blocks to allow incoming connections from.
-     */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
-     */
     redisSettings?: pulumi.Input<string>;
 }
 
 export interface ElasticIPHealthcheck {
-    /**
-     * The healthcheck interval (seconds; must be between `5` and `300`; default: `10`).
-     */
     interval?: pulumi.Input<number>;
-    /**
-     * The healthcheck mode (`tcp`, `http` or `https`; may only be set at creation time).
-     */
     mode: pulumi.Input<string>;
-    /**
-     * The healthcheck target port (must be between `1` and `65535`).
-     */
     port: pulumi.Input<number>;
-    /**
-     * The number of failed healthcheck attempts before considering the target unhealthy (must be between `1` and `20`; default: `2`).
-     */
     strikesFail?: pulumi.Input<number>;
-    /**
-     * The number of successful healthcheck attempts before considering the target healthy (must be between `1` and `20`; default: `3`).
-     */
     strikesOk?: pulumi.Input<number>;
-    /**
-     * The time before considering a healthcheck probing failed (seconds; must be between `2` and `60`; default: `3`).
-     */
     timeout?: pulumi.Input<number>;
-    /**
-     * Disable TLS certificate verification for healthcheck in `https` mode (boolean; default: `false`).
-     */
     tlsSkipVerify?: pulumi.Input<boolean>;
-    /**
-     * The healthcheck server name to present with SNI in `https` mode.
-     */
     tlsSni?: pulumi.Input<string>;
-    /**
-     * The healthcheck target URI (required in `http(s)` modes).
-     */
     uri?: pulumi.Input<string>;
 }
 
@@ -293,57 +130,38 @@ export interface GetDomainRecordFilterArgs {
     recordType?: pulumi.Input<string>;
 }
 
-export interface InstancePoolInstance {
+export interface GetSKSClusterOidc {
     /**
-     * The compute instance ID.
+     * The OpenID client ID.
      */
-    id?: pulumi.Input<string>;
+    clientId: string;
     /**
-     * The instance (main network interface) IPv6 address.
+     * An OpenID JWT claim to use as the user's group.
      */
-    ipv6Address?: pulumi.Input<string>;
+    groupsClaim?: string;
     /**
-     * The instance pool name.
+     * An OpenID prefix prepended to group claims.
      */
-    name?: pulumi.Input<string>;
+    groupsPrefix?: string;
     /**
-     * The instance (main network interface) IPv4 address.
+     * The OpenID provider URL.
      */
-    publicIpAddress?: pulumi.Input<string>;
+    issuerUrl: string;
+    /**
+     * A map of key/value pairs that describes a required claim in the OpenID Token.
+     */
+    requiredClaim?: {[key: string]: string};
+    /**
+     * An OpenID JWT claim to use as the user name.
+     */
+    usernameClaim?: string;
+    /**
+     * An OpenID prefix prepended to username claims.
+     */
+    usernamePrefix?: string;
 }
 
-export interface NLBServiceHealthcheck {
-    /**
-     * The healthcheck interval in seconds (default: `10`).
-     */
-    interval?: pulumi.Input<number>;
-    /**
-     * The healthcheck mode (`tcp`|`http`|`https`; default: `tcp`).
-     */
-    mode?: pulumi.Input<string>;
-    /**
-     * The healthcheck port.
-     */
-    port: pulumi.Input<number>;
-    /**
-     * The healthcheck retries (default: `1`).
-     */
-    retries?: pulumi.Input<number>;
-    /**
-     * The healthcheck timeout (seconds; default: `5`).
-     */
-    timeout?: pulumi.Input<number>;
-    /**
-     * The healthcheck TLS SNI server name (only if `mode` is `https`).
-     */
-    tlsSni?: pulumi.Input<string>;
-    /**
-     * The healthcheck URI (must be set only if `mode` is `http(s)`).
-     */
-    uri?: pulumi.Input<string>;
-}
-
-export interface SKSClusterOidc {
+export interface GetSKSClusterOidcArgs {
     /**
      * The OpenID client ID.
      */
@@ -374,60 +192,51 @@ export interface SKSClusterOidc {
     usernamePrefix?: pulumi.Input<string>;
 }
 
+export interface InstancePoolInstance {
+    id?: pulumi.Input<string>;
+    ipv6Address?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    publicIpAddress?: pulumi.Input<string>;
+}
+
+export interface NLBServiceHealthcheck {
+    interval?: pulumi.Input<number>;
+    mode?: pulumi.Input<string>;
+    port: pulumi.Input<number>;
+    retries?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number>;
+    tlsSni?: pulumi.Input<string>;
+    uri?: pulumi.Input<string>;
+}
+
+export interface SKSClusterOidc {
+    clientId: pulumi.Input<string>;
+    groupsClaim?: pulumi.Input<string>;
+    groupsPrefix?: pulumi.Input<string>;
+    issuerUrl: pulumi.Input<string>;
+    requiredClaim?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    usernameClaim?: pulumi.Input<string>;
+    usernamePrefix?: pulumi.Input<string>;
+}
+
 export interface SecurityGroupRulesEgress {
-    /**
-     * A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
-     */
     cidrLists?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A free-form text describing the block.
-     */
     description?: pulumi.Input<string>;
     icmpCode?: pulumi.Input<number>;
-    /**
-     * /`icmpCode` - An ICMP/ICMPv6 type/code to match.
-     */
     icmpType?: pulumi.Input<number>;
     ids?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A list of ports or port ranges (`<start_port>-<end_port>`).
-     */
     ports?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
-     */
     protocol?: pulumi.Input<string>;
-    /**
-     * A list of source (for ingress)/destination (for egress) identified by a security group.
-     */
     userSecurityGroupLists?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface SecurityGroupRulesIngress {
-    /**
-     * A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
-     */
     cidrLists?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A free-form text describing the block.
-     */
     description?: pulumi.Input<string>;
     icmpCode?: pulumi.Input<number>;
-    /**
-     * /`icmpCode` - An ICMP/ICMPv6 type/code to match.
-     */
     icmpType?: pulumi.Input<number>;
     ids?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A list of ports or port ranges (`<start_port>-<end_port>`).
-     */
     ports?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
-     */
     protocol?: pulumi.Input<string>;
-    /**
-     * A list of source (for ingress)/destination (for egress) identified by a security group.
-     */
     userSecurityGroupLists?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -26,10 +26,12 @@ class NetworkArgs:
         The set of arguments for constructing a Network resource.
         :param pulumi.Input[str] zone: The Exoscale Zone name.
         :param pulumi.Input[str] display_text: A free-form text describing the network.
+        :param pulumi.Input[str] end_ip: The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
         :param pulumi.Input[str] name: The private network name.
-        :param pulumi.Input[str] netmask: The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
-        :param pulumi.Input[str] start_ip: /`end_ip` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags (key/value). To remove all tags, set `tags = {}`.
+        :param pulumi.Input[str] netmask: The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
+               private networks.
+        :param pulumi.Input[str] start_ip: The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags (key/value). To remove all tags, set `tags = {}`.
         """
         pulumi.set(__self__, "zone", zone)
         if display_text is not None:
@@ -77,6 +79,9 @@ class NetworkArgs:
     @property
     @pulumi.getter(name="endIp")
     def end_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+        """
         return pulumi.get(self, "end_ip")
 
     @end_ip.setter
@@ -99,7 +104,8 @@ class NetworkArgs:
     @pulumi.getter
     def netmask(self) -> Optional[pulumi.Input[str]]:
         """
-        The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
+        The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
+        private networks.
         """
         return pulumi.get(self, "netmask")
 
@@ -120,7 +126,7 @@ class NetworkArgs:
     @pulumi.getter(name="startIp")
     def start_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        /`end_ip` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+        The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
         """
         return pulumi.get(self, "start_ip")
 
@@ -132,7 +138,7 @@ class NetworkArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A map of tags (key/value). To remove all tags, set `tags = {}`.
+        Map of tags (key/value). To remove all tags, set `tags = {}`.
         """
         return pulumi.get(self, "tags")
 
@@ -155,10 +161,12 @@ class _NetworkState:
         """
         Input properties used for looking up and filtering Network resources.
         :param pulumi.Input[str] display_text: A free-form text describing the network.
+        :param pulumi.Input[str] end_ip: The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
         :param pulumi.Input[str] name: The private network name.
-        :param pulumi.Input[str] netmask: The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
-        :param pulumi.Input[str] start_ip: /`end_ip` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags (key/value). To remove all tags, set `tags = {}`.
+        :param pulumi.Input[str] netmask: The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
+               private networks.
+        :param pulumi.Input[str] start_ip: The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags (key/value). To remove all tags, set `tags = {}`.
         :param pulumi.Input[str] zone: The Exoscale Zone name.
         """
         if display_text is not None:
@@ -196,6 +204,9 @@ class _NetworkState:
     @property
     @pulumi.getter(name="endIp")
     def end_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+        """
         return pulumi.get(self, "end_ip")
 
     @end_ip.setter
@@ -218,7 +229,8 @@ class _NetworkState:
     @pulumi.getter
     def netmask(self) -> Optional[pulumi.Input[str]]:
         """
-        The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
+        The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
+        private networks.
         """
         return pulumi.get(self, "netmask")
 
@@ -239,7 +251,7 @@ class _NetworkState:
     @pulumi.getter(name="startIp")
     def start_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        /`end_ip` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+        The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
         """
         return pulumi.get(self, "start_ip")
 
@@ -251,7 +263,7 @@ class _NetworkState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A map of tags (key/value). To remove all tags, set `tags = {}`.
+        Map of tags (key/value). To remove all tags, set `tags = {}`.
         """
         return pulumi.get(self, "tags")
 
@@ -292,10 +304,12 @@ class Network(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_text: A free-form text describing the network.
+        :param pulumi.Input[str] end_ip: The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
         :param pulumi.Input[str] name: The private network name.
-        :param pulumi.Input[str] netmask: The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
-        :param pulumi.Input[str] start_ip: /`end_ip` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags (key/value). To remove all tags, set `tags = {}`.
+        :param pulumi.Input[str] netmask: The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
+               private networks.
+        :param pulumi.Input[str] start_ip: The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags (key/value). To remove all tags, set `tags = {}`.
         :param pulumi.Input[str] zone: The Exoscale Zone name.
         """
         ...
@@ -378,10 +392,12 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_text: A free-form text describing the network.
+        :param pulumi.Input[str] end_ip: The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
         :param pulumi.Input[str] name: The private network name.
-        :param pulumi.Input[str] netmask: The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
-        :param pulumi.Input[str] start_ip: /`end_ip` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags (key/value). To remove all tags, set `tags = {}`.
+        :param pulumi.Input[str] netmask: The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
+               private networks.
+        :param pulumi.Input[str] start_ip: The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags (key/value). To remove all tags, set `tags = {}`.
         :param pulumi.Input[str] zone: The Exoscale Zone name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -409,6 +425,9 @@ class Network(pulumi.CustomResource):
     @property
     @pulumi.getter(name="endIp")
     def end_ip(self) -> pulumi.Output[Optional[str]]:
+        """
+        The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+        """
         return pulumi.get(self, "end_ip")
 
     @property
@@ -423,7 +442,8 @@ class Network(pulumi.CustomResource):
     @pulumi.getter
     def netmask(self) -> pulumi.Output[Optional[str]]:
         """
-        The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
+        The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
+        private networks.
         """
         return pulumi.get(self, "netmask")
 
@@ -436,7 +456,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter(name="startIp")
     def start_ip(self) -> pulumi.Output[Optional[str]]:
         """
-        /`end_ip` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+        The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
         """
         return pulumi.get(self, "start_ip")
 
@@ -444,7 +464,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        A map of tags (key/value). To remove all tags, set `tags = {}`.
+        Map of tags (key/value). To remove all tags, set `tags = {}`.
         """
         return pulumi.get(self, "tags")
 

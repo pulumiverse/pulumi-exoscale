@@ -32,7 +32,13 @@ export interface GetSecurityGroupArgs {
  * A collection of values returned by getSecurityGroup.
  */
 export interface GetSecurityGroupResult {
+    /**
+     * The security group ID to match (conflicts with `name`)
+     */
     readonly id?: string;
+    /**
+     * The name to match (conflicts with `id`)
+     */
     readonly name?: string;
 }
 export function getSecurityGroupOutput(args?: GetSecurityGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityGroupResult> {

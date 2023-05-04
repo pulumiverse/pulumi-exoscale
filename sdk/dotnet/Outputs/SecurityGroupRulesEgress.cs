@@ -14,31 +14,13 @@ namespace Pulumiverse.Exoscale.Outputs
     [OutputType]
     public sealed class SecurityGroupRulesEgress
     {
-        /// <summary>
-        /// A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
-        /// </summary>
         public readonly ImmutableArray<string> CidrLists;
-        /// <summary>
-        /// A free-form text describing the block.
-        /// </summary>
         public readonly string? Description;
         public readonly int? IcmpCode;
-        /// <summary>
-        /// /`icmp_code` - An ICMP/ICMPv6 type/code to match.
-        /// </summary>
         public readonly int? IcmpType;
         public readonly ImmutableArray<string> Ids;
-        /// <summary>
-        /// A list of ports or port ranges (`&lt;start_port&gt;-&lt;end_port&gt;`).
-        /// </summary>
         public readonly ImmutableArray<string> Ports;
-        /// <summary>
-        /// The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
-        /// </summary>
         public readonly string? Protocol;
-        /// <summary>
-        /// A list of source (for ingress)/destination (for egress) identified by a security group.
-        /// </summary>
         public readonly ImmutableArray<string> UserSecurityGroupLists;
 
         [OutputConstructor]

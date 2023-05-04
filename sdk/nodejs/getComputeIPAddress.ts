@@ -49,10 +49,25 @@ export interface GetComputeIPAddressArgs {
  * A collection of values returned by getComputeIPAddress.
  */
 export interface GetComputeIPAddressResult {
+    /**
+     * The EIP description to match.
+     */
     readonly description?: string;
+    /**
+     * The Elastic IP (EIP) ID to match.
+     */
     readonly id?: string;
+    /**
+     * The EIP IPv4 address to match.
+     */
     readonly ipAddress?: string;
+    /**
+     * The EIP tags to match.
+     */
     readonly tags?: {[key: string]: string};
+    /**
+     * The Exoscale Zone name.
+     */
     readonly zone: string;
 }
 /**

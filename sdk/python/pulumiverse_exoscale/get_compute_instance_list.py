@@ -84,96 +84,153 @@ class GetComputeInstanceListResult:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[str]:
+        """
+        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="deployTargetId")
     def deploy_target_id(self) -> Optional[str]:
+        """
+        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        """
         return pulumi.get(self, "deploy_target_id")
 
     @property
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[int]:
+        """
+        Match against this int
+        """
         return pulumi.get(self, "disk_size")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetComputeInstanceListInstanceResult']:
+        """
+        The list of exoscale*compute*instance.
+        """
         return pulumi.get(self, "instances")
 
     @property
     @pulumi.getter
     def ipv6(self) -> Optional[bool]:
+        """
+        Match against this bool
+        """
         return pulumi.get(self, "ipv6")
 
     @property
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> Optional[str]:
+        """
+        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        """
         return pulumi.get(self, "ipv6_address")
 
     @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
+        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="managerId")
     def manager_id(self) -> Optional[str]:
+        """
+        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        """
         return pulumi.get(self, "manager_id")
 
     @property
     @pulumi.getter(name="managerType")
     def manager_type(self) -> Optional[str]:
+        """
+        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        """
         return pulumi.get(self, "manager_type")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="publicIpAddress")
     def public_ip_address(self) -> Optional[str]:
+        """
+        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        """
         return pulumi.get(self, "public_ip_address")
 
     @property
     @pulumi.getter(name="reverseDns")
     def reverse_dns(self) -> Optional[str]:
+        """
+        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        """
         return pulumi.get(self, "reverse_dns")
 
     @property
     @pulumi.getter(name="sshKey")
     def ssh_key(self) -> Optional[str]:
+        """
+        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        """
         return pulumi.get(self, "ssh_key")
 
     @property
     @pulumi.getter
     def state(self) -> Optional[str]:
+        """
+        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[str]:
+        """
+        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        """
         return pulumi.get(self, "template_id")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[str]:
+        """
+        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        """
         return pulumi.get(self, "user_data")
 
     @property
     @pulumi.getter
     def zone(self) -> Optional[str]:
+        """
+        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        """
         return pulumi.get(self, "zone")
 
 
@@ -226,7 +283,24 @@ def get_compute_instance_list(created_at: Optional[str] = None,
     """
     Use this data source to access information about an existing resource.
 
-    :param str zone: The Exoscale [Zone][zone] name.
+    :param str created_at: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str deploy_target_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param int disk_size: Match against this int
+    :param str id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param bool ipv6: Match against this bool
+    :param str ipv6_address: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param Mapping[str, str] labels: Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
+    :param str manager_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str manager_type: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str name: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str public_ip_address: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str reverse_dns: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str ssh_key: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str state: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str template_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str type: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str user_data: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str zone: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
     """
     __args__ = dict()
     __args__['createdAt'] = created_at
@@ -295,6 +369,23 @@ def get_compute_instance_list_output(created_at: Optional[pulumi.Input[Optional[
     """
     Use this data source to access information about an existing resource.
 
-    :param str zone: The Exoscale [Zone][zone] name.
+    :param str created_at: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str deploy_target_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param int disk_size: Match against this int
+    :param str id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param bool ipv6: Match against this bool
+    :param str ipv6_address: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param Mapping[str, str] labels: Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
+    :param str manager_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str manager_type: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str name: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str public_ip_address: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str reverse_dns: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str ssh_key: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str state: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str template_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str type: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str user_data: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str zone: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
     """
     ...

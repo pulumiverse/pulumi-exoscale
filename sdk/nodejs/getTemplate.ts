@@ -28,11 +28,11 @@ export interface GetTemplateArgs {
      */
     name?: string;
     /**
-     * A template category filter (default: `public`); among:
+     * A template category filter (default: `public`); among: - `public` - official Exoscale templates - `private` - custom templates private to my organization
      */
     visibility?: string;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: string;
 }
@@ -45,9 +45,21 @@ export interface GetTemplateResult {
      * Username to use to log into a compute instance based on this template
      */
     readonly defaultUser: string;
+    /**
+     * The compute instance template ID to match (conflicts with `name`).
+     */
     readonly id?: string;
+    /**
+     * The template name to match (conflicts with `id`) (when multiple templates have the same name, the newest one will be returned).
+     */
     readonly name?: string;
+    /**
+     * A template category filter (default: `public`); among: - `public` - official Exoscale templates - `private` - custom templates private to my organization
+     */
     readonly visibility?: string;
+    /**
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     */
     readonly zone: string;
 }
 export function getTemplateOutput(args: GetTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplateResult> {
@@ -67,11 +79,11 @@ export interface GetTemplateOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * A template category filter (default: `public`); among:
+     * A template category filter (default: `public`); among: - `public` - official Exoscale templates - `private` - custom templates private to my organization
      */
     visibility?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: pulumi.Input<string>;
 }

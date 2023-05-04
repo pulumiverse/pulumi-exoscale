@@ -41,50 +41,59 @@ export interface GetComputeArgs {
  */
 export interface GetComputeResult {
     /**
-     * The compute instance number of CPUs.
+     * Number of cpu the Compute instance is running with
      */
     readonly cpu: number;
     /**
-     * The instance creation date.
+     * Date when the Compute instance was created
      */
     readonly created: string;
     /**
-     * The instance disk size (GiB).
+     * Size of the Compute instance disk
      */
     readonly diskSize: number;
+    /**
+     * The instance hostname to match.
+     */
     readonly hostname?: string;
+    /**
+     * The compute instance ID to match.
+     */
     readonly id?: string;
     /**
-     * The instance (main network interface) IPv6 address (if enabled).
+     * Compute instance public ipv6 address (if ipv6 is enabled)
      */
     readonly ip6Address: string;
     /**
-     * The instance (main network interface) IPv4 address.
+     * Compute instance public ipv4 address
      */
     readonly ipAddress: string;
     /**
-     * The instance allocated memory.
+     * Memory allocated for the Compute instance
      */
     readonly memory: number;
     /**
-     * List of compute private IPv4 addresses (in *managed* private networks only).
+     * List of Compute instance private IP addresses (in managed Private Networks only)
      */
     readonly privateNetworkIpAddresses: string[];
     /**
-     * The instance size.
+     * Current size of the Compute instance
      */
     readonly size: string;
     /**
-     * The current instance state.
+     * State of the Compute instance
      */
     readonly state: string;
+    /**
+     * The instance tags to match (map of key/value).
+     */
     readonly tags?: {[key: string]: string};
     /**
-     * The instance template.
+     * Name of the template for the Compute instance
      */
     readonly template: string;
     /**
-     * Exoscale Zone name.
+     * Name of the availability zone for the Compute instance
      */
     readonly zone: string;
 }

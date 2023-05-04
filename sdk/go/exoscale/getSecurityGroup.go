@@ -30,7 +30,9 @@ type LookupSecurityGroupArgs struct {
 
 // A collection of values returned by getSecurityGroup.
 type LookupSecurityGroupResult struct {
-	Id   *string `pulumi:"id"`
+	// The security group ID to match (conflicts with `name`)
+	Id *string `pulumi:"id"`
+	// The name to match (conflicts with `id`)
 	Name *string `pulumi:"name"`
 }
 
@@ -74,10 +76,12 @@ func (o LookupSecurityGroupResultOutput) ToLookupSecurityGroupResultOutputWithCo
 	return o
 }
 
+// The security group ID to match (conflicts with `name`)
 func (o LookupSecurityGroupResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityGroupResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The name to match (conflicts with `id`)
 func (o LookupSecurityGroupResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityGroupResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

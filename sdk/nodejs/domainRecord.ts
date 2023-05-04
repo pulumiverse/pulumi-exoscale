@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * An existing DNS domain record may be imported by `<ID>`console
+ * An existing DNS domain record may be imported by `<ID>`
  *
  * ```sh
  *  $ pulumi import exoscale:index/domainRecord:DomainRecord \
@@ -50,7 +50,7 @@ export class DomainRecord extends pulumi.CustomResource {
      */
     public readonly content!: pulumi.Output<string>;
     /**
-     * The parent exoscale.Domain to attach the record to.
+     * The parent [exoscale_domain](./domain.md) to attach the record to.
      */
     public readonly domain!: pulumi.Output<string>;
     /**
@@ -66,7 +66,8 @@ export class DomainRecord extends pulumi.CustomResource {
      */
     public readonly prio!: pulumi.Output<number>;
     /**
-     * The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`, `TXT`, `URL`).
+     * The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`,
+     * `TXT`, `URL`).
      */
     public readonly recordType!: pulumi.Output<string>;
     /**
@@ -127,7 +128,7 @@ export interface DomainRecordState {
      */
     content?: pulumi.Input<string>;
     /**
-     * The parent exoscale.Domain to attach the record to.
+     * The parent [exoscale_domain](./domain.md) to attach the record to.
      */
     domain?: pulumi.Input<string>;
     /**
@@ -143,7 +144,8 @@ export interface DomainRecordState {
      */
     prio?: pulumi.Input<number>;
     /**
-     * The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`, `TXT`, `URL`).
+     * The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`,
+     * `TXT`, `URL`).
      */
     recordType?: pulumi.Input<string>;
     /**
@@ -161,7 +163,7 @@ export interface DomainRecordArgs {
      */
     content: pulumi.Input<string>;
     /**
-     * The parent exoscale.Domain to attach the record to.
+     * The parent [exoscale_domain](./domain.md) to attach the record to.
      */
     domain: pulumi.Input<string>;
     /**
@@ -173,7 +175,8 @@ export interface DomainRecordArgs {
      */
     prio?: pulumi.Input<number>;
     /**
-     * The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`, `TXT`, `URL`).
+     * The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`,
+     * `TXT`, `URL`).
      */
     recordType: pulumi.Input<string>;
     /**

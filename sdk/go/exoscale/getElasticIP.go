@@ -28,7 +28,7 @@ type LookupElasticIPArgs struct {
 	IpAddress *string `pulumi:"ipAddress"`
 	// The EIP labels to match (conflicts with `ipAddress` and `id`).
 	Labels map[string]string `pulumi:"labels"`
-	// The Exocale [Zone][zone] name.
+	// The Exocale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone string `pulumi:"zone"`
 }
 
@@ -40,15 +40,18 @@ type LookupElasticIPResult struct {
 	Cidr string `pulumi:"cidr"`
 	// The Elastic IP (EIP) description.
 	Description string `pulumi:"description"`
-	// (Block) The *managed* EIP healthcheck configuration. Structure is documented below.
+	// The *managed* EIP healthcheck configuration.
 	Healthchecks []GetElasticIPHealthcheck `pulumi:"healthchecks"`
-	Id           *string                   `pulumi:"id"`
-	IpAddress    *string                   `pulumi:"ipAddress"`
-	// A map of key/value labels.
+	// The Elastic IP (EIP) ID to match (conflicts with `ipAddress` and `labels`).
+	Id *string `pulumi:"id"`
+	// The EIP IPv4 or IPv6 address to match (conflicts with `id` and `labels`).
+	IpAddress *string `pulumi:"ipAddress"`
+	// The EIP labels to match (conflicts with `ipAddress` and `id`).
 	Labels map[string]string `pulumi:"labels"`
 	// Domain name for reverse DNS record.
 	ReverseDns string `pulumi:"reverseDns"`
-	Zone       string `pulumi:"zone"`
+	// The Exocale [Zone](https://www.exoscale.com/datacenters/) name.
+	Zone string `pulumi:"zone"`
 }
 
 func LookupElasticIPOutput(ctx *pulumi.Context, args LookupElasticIPOutputArgs, opts ...pulumi.InvokeOption) LookupElasticIPResultOutput {
@@ -72,7 +75,7 @@ type LookupElasticIPOutputArgs struct {
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// The EIP labels to match (conflicts with `ipAddress` and `id`).
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// The Exocale [Zone][zone] name.
+	// The Exocale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
@@ -110,20 +113,22 @@ func (o LookupElasticIPResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupElasticIPResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (Block) The *managed* EIP healthcheck configuration. Structure is documented below.
+// The *managed* EIP healthcheck configuration.
 func (o LookupElasticIPResultOutput) Healthchecks() GetElasticIPHealthcheckArrayOutput {
 	return o.ApplyT(func(v LookupElasticIPResult) []GetElasticIPHealthcheck { return v.Healthchecks }).(GetElasticIPHealthcheckArrayOutput)
 }
 
+// The Elastic IP (EIP) ID to match (conflicts with `ipAddress` and `labels`).
 func (o LookupElasticIPResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupElasticIPResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The EIP IPv4 or IPv6 address to match (conflicts with `id` and `labels`).
 func (o LookupElasticIPResultOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupElasticIPResult) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
-// A map of key/value labels.
+// The EIP labels to match (conflicts with `ipAddress` and `id`).
 func (o LookupElasticIPResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupElasticIPResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -133,6 +138,7 @@ func (o LookupElasticIPResultOutput) ReverseDns() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupElasticIPResult) string { return v.ReverseDns }).(pulumi.StringOutput)
 }
 
+// The Exocale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o LookupElasticIPResultOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupElasticIPResult) string { return v.Zone }).(pulumi.StringOutput)
 }

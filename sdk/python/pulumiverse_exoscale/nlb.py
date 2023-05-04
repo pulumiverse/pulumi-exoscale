@@ -20,7 +20,7 @@ class NLBArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NLB resource.
-        :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
+        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         :param pulumi.Input[str] description: A free-form text describing the NLB.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[str] name: The network load balancer (NLB) name.
@@ -37,7 +37,7 @@ class NLBArgs:
     @pulumi.getter
     def zone(self) -> pulumi.Input[str]:
         """
-        The Exoscale [Zone][zone] name.
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 
@@ -100,9 +100,9 @@ class _NLBState:
         :param pulumi.Input[str] ip_address: The NLB IPv4 address.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[str] name: The network load balancer (NLB) name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: The list of the NLBService (names).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: The list of the [exoscale_nlb_service](./nlb_service.md) (names).
         :param pulumi.Input[str] state: The current NLB state.
-        :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
+        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -185,7 +185,7 @@ class _NLBState:
     @pulumi.getter
     def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The list of the NLBService (names).
+        The list of the [exoscale_nlb_service](./nlb_service.md) (names).
         """
         return pulumi.get(self, "services")
 
@@ -209,7 +209,7 @@ class _NLBState:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The Exoscale [Zone][zone] name.
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 
@@ -246,7 +246,7 @@ class NLB(pulumi.CustomResource):
         :param pulumi.Input[str] description: A free-form text describing the NLB.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[str] name: The network load balancer (NLB) name.
-        :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
+        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         ...
     @overload
@@ -335,9 +335,9 @@ class NLB(pulumi.CustomResource):
         :param pulumi.Input[str] ip_address: The NLB IPv4 address.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[str] name: The network load balancer (NLB) name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: The list of the NLBService (names).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: The list of the [exoscale_nlb_service](./nlb_service.md) (names).
         :param pulumi.Input[str] state: The current NLB state.
-        :param pulumi.Input[str] zone: The Exoscale [Zone][zone] name.
+        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -397,7 +397,7 @@ class NLB(pulumi.CustomResource):
     @pulumi.getter
     def services(self) -> pulumi.Output[Sequence[str]]:
         """
-        The list of the NLBService (names).
+        The list of the [exoscale_nlb_service](./nlb_service.md) (names).
         """
         return pulumi.get(self, "services")
 
@@ -413,7 +413,7 @@ class NLB(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         """
-        The Exoscale [Zone][zone] name.
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 

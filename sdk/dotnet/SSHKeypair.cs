@@ -32,7 +32,8 @@ namespace Pulumiverse.Exoscale
         public Output<string> PrivateKey { get; private set; } = null!;
 
         /// <summary>
-        /// A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `private_key` attribute).
+        /// A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the
+        /// *private* key) is generated and saved locally (see the `private_key` attribute).
         /// </summary>
         [Output("publicKey")]
         public Output<string?> PublicKey { get; private set; } = null!;
@@ -95,7 +96,8 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `private_key` attribute).
+        /// A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the
+        /// *private* key) is generated and saved locally (see the `private_key` attribute).
         /// </summary>
         [Input("publicKey")]
         public Input<string>? PublicKey { get; set; }
@@ -137,7 +139,8 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `private_key` attribute).
+        /// A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the
+        /// *private* key) is generated and saved locally (see the `private_key` attribute).
         /// </summary>
         [Input("publicKey")]
         public Input<string>? PublicKey { get; set; }

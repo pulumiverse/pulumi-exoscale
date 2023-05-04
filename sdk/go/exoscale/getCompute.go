@@ -33,30 +33,33 @@ type LookupComputeArgs struct {
 
 // A collection of values returned by getCompute.
 type LookupComputeResult struct {
-	// The compute instance number of CPUs.
+	// Number of cpu the Compute instance is running with
 	Cpu int `pulumi:"cpu"`
-	// The instance creation date.
+	// Date when the Compute instance was created
 	Created string `pulumi:"created"`
-	// The instance disk size (GiB).
-	DiskSize int     `pulumi:"diskSize"`
+	// Size of the Compute instance disk
+	DiskSize int `pulumi:"diskSize"`
+	// The instance hostname to match.
 	Hostname *string `pulumi:"hostname"`
-	Id       *string `pulumi:"id"`
-	// The instance (main network interface) IPv6 address (if enabled).
+	// The compute instance ID to match.
+	Id *string `pulumi:"id"`
+	// Compute instance public ipv6 address (if ipv6 is enabled)
 	Ip6Address string `pulumi:"ip6Address"`
-	// The instance (main network interface) IPv4 address.
+	// Compute instance public ipv4 address
 	IpAddress string `pulumi:"ipAddress"`
-	// The instance allocated memory.
+	// Memory allocated for the Compute instance
 	Memory int `pulumi:"memory"`
-	// List of compute private IPv4 addresses (in *managed* private networks only).
+	// List of Compute instance private IP addresses (in managed Private Networks only)
 	PrivateNetworkIpAddresses []string `pulumi:"privateNetworkIpAddresses"`
-	// The instance size.
+	// Current size of the Compute instance
 	Size string `pulumi:"size"`
-	// The current instance state.
-	State string            `pulumi:"state"`
-	Tags  map[string]string `pulumi:"tags"`
-	// The instance template.
+	// State of the Compute instance
+	State string `pulumi:"state"`
+	// The instance tags to match (map of key/value).
+	Tags map[string]string `pulumi:"tags"`
+	// Name of the template for the Compute instance
 	Template string `pulumi:"template"`
-	// Exoscale Zone name.
+	// Name of the availability zone for the Compute instance
 	Zone string `pulumi:"zone"`
 }
 
@@ -102,69 +105,72 @@ func (o LookupComputeResultOutput) ToLookupComputeResultOutputWithContext(ctx co
 	return o
 }
 
-// The compute instance number of CPUs.
+// Number of cpu the Compute instance is running with
 func (o LookupComputeResultOutput) Cpu() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupComputeResult) int { return v.Cpu }).(pulumi.IntOutput)
 }
 
-// The instance creation date.
+// Date when the Compute instance was created
 func (o LookupComputeResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
-// The instance disk size (GiB).
+// Size of the Compute instance disk
 func (o LookupComputeResultOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupComputeResult) int { return v.DiskSize }).(pulumi.IntOutput)
 }
 
+// The instance hostname to match.
 func (o LookupComputeResultOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupComputeResult) *string { return v.Hostname }).(pulumi.StringPtrOutput)
 }
 
+// The compute instance ID to match.
 func (o LookupComputeResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupComputeResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The instance (main network interface) IPv6 address (if enabled).
+// Compute instance public ipv6 address (if ipv6 is enabled)
 func (o LookupComputeResultOutput) Ip6Address() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeResult) string { return v.Ip6Address }).(pulumi.StringOutput)
 }
 
-// The instance (main network interface) IPv4 address.
+// Compute instance public ipv4 address
 func (o LookupComputeResultOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeResult) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
-// The instance allocated memory.
+// Memory allocated for the Compute instance
 func (o LookupComputeResultOutput) Memory() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupComputeResult) int { return v.Memory }).(pulumi.IntOutput)
 }
 
-// List of compute private IPv4 addresses (in *managed* private networks only).
+// List of Compute instance private IP addresses (in managed Private Networks only)
 func (o LookupComputeResultOutput) PrivateNetworkIpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupComputeResult) []string { return v.PrivateNetworkIpAddresses }).(pulumi.StringArrayOutput)
 }
 
-// The instance size.
+// Current size of the Compute instance
 func (o LookupComputeResultOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeResult) string { return v.Size }).(pulumi.StringOutput)
 }
 
-// The current instance state.
+// State of the Compute instance
 func (o LookupComputeResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeResult) string { return v.State }).(pulumi.StringOutput)
 }
 
+// The instance tags to match (map of key/value).
 func (o LookupComputeResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupComputeResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The instance template.
+// Name of the template for the Compute instance
 func (o LookupComputeResultOutput) Template() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeResult) string { return v.Template }).(pulumi.StringOutput)
 }
 
-// Exoscale Zone name.
+// Name of the availability zone for the Compute instance
 func (o LookupComputeResultOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeResult) string { return v.Zone }).(pulumi.StringOutput)
 }

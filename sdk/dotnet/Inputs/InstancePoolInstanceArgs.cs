@@ -13,27 +13,15 @@ namespace Pulumiverse.Exoscale.Inputs
 
     public sealed class InstancePoolInstanceArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The compute instance ID.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// The instance (main network interface) IPv6 address.
-        /// </summary>
         [Input("ipv6Address")]
         public Input<string>? Ipv6Address { get; set; }
 
-        /// <summary>
-        /// The instance pool name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The instance (main network interface) IPv4 address.
-        /// </summary>
         [Input("publicIpAddress")]
         public Input<string>? PublicIpAddress { get; set; }
 

@@ -13,7 +13,7 @@ namespace Pulumiverse.Exoscale
     /// <summary>
     /// ## Import
     /// 
-    /// An existing private network may be imported by `&lt;ID&gt;@&lt;zone&gt;`console
+    /// An existing private network may be imported by `&lt;ID&gt;@&lt;zone&gt;`
     /// 
     /// ```sh
     ///  $ pulumi import exoscale:index/privateNetwork:PrivateNetwork \
@@ -32,6 +32,9 @@ namespace Pulumiverse.Exoscale
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        /// </summary>
         [Output("endIp")]
         public Output<string?> EndIp { get; private set; } = null!;
 
@@ -42,19 +45,19 @@ namespace Pulumiverse.Exoscale
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The network mask defining the IPv4 network allowed for static leases.
+        /// (For managed Privnets) The network mask defining the IPv4 network allowed for static leases.
         /// </summary>
         [Output("netmask")]
         public Output<string?> Netmask { get; private set; } = null!;
 
         /// <summary>
-        /// /`end_ip` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        /// (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
         /// </summary>
         [Output("startIp")]
         public Output<string?> StartIp { get; private set; } = null!;
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -112,6 +115,9 @@ namespace Pulumiverse.Exoscale
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        /// </summary>
         [Input("endIp")]
         public Input<string>? EndIp { get; set; }
 
@@ -122,19 +128,19 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The network mask defining the IPv4 network allowed for static leases.
+        /// (For managed Privnets) The network mask defining the IPv4 network allowed for static leases.
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
 
         /// <summary>
-        /// /`end_ip` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        /// (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
         /// </summary>
         [Input("startIp")]
         public Input<string>? StartIp { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -153,6 +159,9 @@ namespace Pulumiverse.Exoscale
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        /// </summary>
         [Input("endIp")]
         public Input<string>? EndIp { get; set; }
 
@@ -163,19 +172,19 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The network mask defining the IPv4 network allowed for static leases.
+        /// (For managed Privnets) The network mask defining the IPv4 network allowed for static leases.
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
 
         /// <summary>
-        /// /`end_ip` - (Required) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+        /// (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
         /// </summary>
         [Input("startIp")]
         public Input<string>? StartIp { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

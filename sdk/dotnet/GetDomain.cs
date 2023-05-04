@@ -56,6 +56,9 @@ namespace Pulumiverse.Exoscale
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The DNS domain name to match.
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

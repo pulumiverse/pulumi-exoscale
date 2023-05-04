@@ -14,13 +14,7 @@ namespace Pulumiverse.Exoscale.Outputs
     [OutputType]
     public sealed class DatabaseRedis
     {
-        /// <summary>
-        /// A list of CIDR blocks to allow incoming connections from.
-        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
-        /// <summary>
-        /// Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
-        /// </summary>
         public readonly string? RedisSettings;
 
         [OutputConstructor]

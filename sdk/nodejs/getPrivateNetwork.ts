@@ -32,7 +32,7 @@ export interface GetPrivateNetworkArgs {
      */
     name?: string;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: string;
 }
@@ -45,17 +45,29 @@ export interface GetPrivateNetworkResult {
      * The private network description.
      */
     readonly description?: string;
+    /**
+     * The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+     */
     readonly endIp: string;
+    /**
+     * The private network ID to match (conflicts with `name`).
+     */
     readonly id?: string;
+    /**
+     * The network name to match (conflicts with `id`).
+     */
     readonly name?: string;
     /**
      * The network mask defining the IPv4 network allowed for static leases.
      */
     readonly netmask: string;
     /**
-     * /`endIp` - The first/last IPv4 addresses used by the DHCP service for dynamic leases.
+     * The first/last IPv4 addresses used by the DHCP service for dynamic leases.
      */
     readonly startIp: string;
+    /**
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     */
     readonly zone: string;
 }
 export function getPrivateNetworkOutput(args: GetPrivateNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateNetworkResult> {
@@ -79,7 +91,7 @@ export interface GetPrivateNetworkOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone][zone] name.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: pulumi.Input<string>;
 }

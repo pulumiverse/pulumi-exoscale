@@ -13,7 +13,7 @@ namespace Pulumiverse.Exoscale
     /// <summary>
     /// ## Import
     /// 
-    /// An existing anti-affinity group may be imported by `&lt;ID&gt;`console
+    /// An existing anti-affinity group may be imported by `&lt;ID&gt;`
     /// 
     /// ```sh
     ///  $ pulumi import exoscale:index/antiAffinityGroup:AntiAffinityGroup \

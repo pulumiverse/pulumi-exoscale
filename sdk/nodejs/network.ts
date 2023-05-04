@@ -39,13 +39,17 @@ export class Network extends pulumi.CustomResource {
      * A free-form text describing the network.
      */
     public readonly displayText!: pulumi.Output<string>;
+    /**
+     * The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+     */
     public readonly endIp!: pulumi.Output<string | undefined>;
     /**
      * The private network name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.
+     * The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
+     * private networks.
      */
     public readonly netmask!: pulumi.Output<string | undefined>;
     /**
@@ -53,11 +57,11 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly networkOffering!: pulumi.Output<string | undefined>;
     /**
-     * /`endIp` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+     * The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
      */
     public readonly startIp!: pulumi.Output<string | undefined>;
     /**
-     * A map of tags (key/value). To remove all tags, set `tags = {}`.
+     * Map of tags (key/value). To remove all tags, set `tags = {}`.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -113,13 +117,17 @@ export interface NetworkState {
      * A free-form text describing the network.
      */
     displayText?: pulumi.Input<string>;
+    /**
+     * The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+     */
     endIp?: pulumi.Input<string>;
     /**
      * The private network name.
      */
     name?: pulumi.Input<string>;
     /**
-     * The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.
+     * The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
+     * private networks.
      */
     netmask?: pulumi.Input<string>;
     /**
@@ -127,11 +135,11 @@ export interface NetworkState {
      */
     networkOffering?: pulumi.Input<string>;
     /**
-     * /`endIp` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+     * The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
      */
     startIp?: pulumi.Input<string>;
     /**
-     * A map of tags (key/value). To remove all tags, set `tags = {}`.
+     * Map of tags (key/value). To remove all tags, set `tags = {}`.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -148,13 +156,17 @@ export interface NetworkArgs {
      * A free-form text describing the network.
      */
     displayText?: pulumi.Input<string>;
+    /**
+     * The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+     */
     endIp?: pulumi.Input<string>;
     /**
      * The private network name.
      */
     name?: pulumi.Input<string>;
     /**
-     * The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.
+     * The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
+     * private networks.
      */
     netmask?: pulumi.Input<string>;
     /**
@@ -162,11 +174,11 @@ export interface NetworkArgs {
      */
     networkOffering?: pulumi.Input<string>;
     /**
-     * /`endIp` - The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
+     * The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
      */
     startIp?: pulumi.Input<string>;
     /**
-     * A map of tags (key/value). To remove all tags, set `tags = {}`.
+     * Map of tags (key/value). To remove all tags, set `tags = {}`.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

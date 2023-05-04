@@ -13,7 +13,7 @@ namespace Pulumiverse.Exoscale
     /// <summary>
     /// ## Import
     /// 
-    /// An existing database service may be imported by `&lt;name&gt;@&lt;zone&gt;`console
+    /// An existing database service may be imported by `&lt;name&gt;@&lt;zone&gt;`
     /// 
     /// ```sh
     ///  $ pulumi import exoscale:index/database:Database \
@@ -45,13 +45,14 @@ namespace Pulumiverse.Exoscale
         public Output<int> DiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// *kafka* database service type specific arguments. Structure is documented below.
+        /// *kafka* database service type specific arguments.
         /// </summary>
         [Output("kafka")]
         public Output<Outputs.DatabaseKafka?> Kafka { get; private set; } = null!;
 
         /// <summary>
-        /// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
+        /// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
+        /// `thursday`, `friday`, `saturday`, `sunday`).
         /// </summary>
         [Output("maintenanceDow")]
         public Output<string> MaintenanceDow { get; private set; } = null!;
@@ -63,7 +64,7 @@ namespace Pulumiverse.Exoscale
         public Output<string> MaintenanceTime { get; private set; } = null!;
 
         /// <summary>
-        /// *mysql* database service type specific arguments. Structure is documented below.
+        /// *mysql* database service type specific arguments.
         /// </summary>
         [Output("mysql")]
         public Output<Outputs.DatabaseMysql?> Mysql { get; private set; } = null!;
@@ -93,7 +94,7 @@ namespace Pulumiverse.Exoscale
         public Output<int> Nodes { get; private set; } = null!;
 
         /// <summary>
-        /// *opensearch* database service type specific arguments. Structure is documented below.
+        /// *opensearch* database service type specific arguments.
         /// </summary>
         [Output("opensearch")]
         public Output<Outputs.DatabaseOpensearch?> Opensearch { get; private set; } = null!;
@@ -105,7 +106,8 @@ namespace Pulumiverse.Exoscale
         public Output<Outputs.DatabasePg?> Pg { get; private set; } = null!;
 
         /// <summary>
-        /// The plan of the database service (use the [Exoscale CLI][cli] - `exo dbaas type show &lt;TYPE&gt;` - for reference).
+        /// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
+        /// &lt;TYPE&gt;` - for reference).
         /// </summary>
         [Output("plan")]
         public Output<string> Plan { get; private set; } = null!;
@@ -147,7 +149,7 @@ namespace Pulumiverse.Exoscale
         public Output<string> Uri { get; private set; } = null!;
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -204,13 +206,14 @@ namespace Pulumiverse.Exoscale
     public sealed class DatabaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// *kafka* database service type specific arguments. Structure is documented below.
+        /// *kafka* database service type specific arguments.
         /// </summary>
         [Input("kafka")]
         public Input<Inputs.DatabaseKafkaArgs>? Kafka { get; set; }
 
         /// <summary>
-        /// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
+        /// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
+        /// `thursday`, `friday`, `saturday`, `sunday`).
         /// </summary>
         [Input("maintenanceDow")]
         public Input<string>? MaintenanceDow { get; set; }
@@ -222,7 +225,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? MaintenanceTime { get; set; }
 
         /// <summary>
-        /// *mysql* database service type specific arguments. Structure is documented below.
+        /// *mysql* database service type specific arguments.
         /// </summary>
         [Input("mysql")]
         public Input<Inputs.DatabaseMysqlArgs>? Mysql { get; set; }
@@ -234,7 +237,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// *opensearch* database service type specific arguments. Structure is documented below.
+        /// *opensearch* database service type specific arguments.
         /// </summary>
         [Input("opensearch")]
         public Input<Inputs.DatabaseOpensearchArgs>? Opensearch { get; set; }
@@ -246,7 +249,8 @@ namespace Pulumiverse.Exoscale
         public Input<Inputs.DatabasePgArgs>? Pg { get; set; }
 
         /// <summary>
-        /// The plan of the database service (use the [Exoscale CLI][cli] - `exo dbaas type show &lt;TYPE&gt;` - for reference).
+        /// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
+        /// &lt;TYPE&gt;` - for reference).
         /// </summary>
         [Input("plan", required: true)]
         public Input<string> Plan { get; set; } = null!;
@@ -270,7 +274,7 @@ namespace Pulumiverse.Exoscale
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -302,13 +306,14 @@ namespace Pulumiverse.Exoscale
         public Input<int>? DiskSize { get; set; }
 
         /// <summary>
-        /// *kafka* database service type specific arguments. Structure is documented below.
+        /// *kafka* database service type specific arguments.
         /// </summary>
         [Input("kafka")]
         public Input<Inputs.DatabaseKafkaGetArgs>? Kafka { get; set; }
 
         /// <summary>
-        /// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
+        /// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
+        /// `thursday`, `friday`, `saturday`, `sunday`).
         /// </summary>
         [Input("maintenanceDow")]
         public Input<string>? MaintenanceDow { get; set; }
@@ -320,7 +325,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? MaintenanceTime { get; set; }
 
         /// <summary>
-        /// *mysql* database service type specific arguments. Structure is documented below.
+        /// *mysql* database service type specific arguments.
         /// </summary>
         [Input("mysql")]
         public Input<Inputs.DatabaseMysqlGetArgs>? Mysql { get; set; }
@@ -350,7 +355,7 @@ namespace Pulumiverse.Exoscale
         public Input<int>? Nodes { get; set; }
 
         /// <summary>
-        /// *opensearch* database service type specific arguments. Structure is documented below.
+        /// *opensearch* database service type specific arguments.
         /// </summary>
         [Input("opensearch")]
         public Input<Inputs.DatabaseOpensearchGetArgs>? Opensearch { get; set; }
@@ -362,7 +367,8 @@ namespace Pulumiverse.Exoscale
         public Input<Inputs.DatabasePgGetArgs>? Pg { get; set; }
 
         /// <summary>
-        /// The plan of the database service (use the [Exoscale CLI][cli] - `exo dbaas type show &lt;TYPE&gt;` - for reference).
+        /// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
+        /// &lt;TYPE&gt;` - for reference).
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }
@@ -414,7 +420,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The Exoscale [Zone][zone] name.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
