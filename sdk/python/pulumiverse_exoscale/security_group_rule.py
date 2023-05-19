@@ -21,6 +21,7 @@ class SecurityGroupRuleArgs:
                  icmp_code: Optional[pulumi.Input[int]] = None,
                  icmp_type: Optional[pulumi.Input[int]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
+                 public_security_group: Optional[pulumi.Input[str]] = None,
                  security_group: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  start_port: Optional[pulumi.Input[int]] = None,
@@ -31,21 +32,23 @@ class SecurityGroupRuleArgs:
         :param pulumi.Input[str] type: The traffic direction to match (`INGRESS` or `EGRESS`).
         :param pulumi.Input[str] cidr: An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR
                notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with
-               `user_security_group`/`user_security_group_id`).
+               `public_security_group`/`user_security_group`/`user_security_group_id`).
         :param pulumi.Input[str] description: A free-form text describing the security group rule.
         :param pulumi.Input[int] end_port: A `TCP`/`UDP` port range to match.
         :param pulumi.Input[int] icmp_code: An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
         :param pulumi.Input[int] icmp_type: An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
         :param pulumi.Input[str] protocol: The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)
+        :param pulumi.Input[str] public_security_group: An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with
+               `cidr`/`user_security_group`/`user_security_group_id`).
         :param pulumi.Input[str] security_group: The parent security group name. Please use the `security_group_id` argument along the
                [exoscale_security_group](../data-sources/security_group.md) data source instead.
         :param pulumi.Input[str] security_group_id: The parent [exoscale_security_group](./security_group.md) ID.
         :param pulumi.Input[int] start_port: A `TCP`/`UDP` port range to match.
         :param pulumi.Input[str] user_security_group: An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with
-               `cidr`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
+               `cidr`/`public_security_group`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
                [exoscale_security_group](../data-sources/security_group.md) data source instead.
         :param pulumi.Input[str] user_security_group_id: An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with
-               `cidr`/`user_security_group)`).
+               `cidr`/`public_security_group`/`user_security_group)`).
         """
         pulumi.set(__self__, "type", type)
         if cidr is not None:
@@ -60,6 +63,8 @@ class SecurityGroupRuleArgs:
             pulumi.set(__self__, "icmp_type", icmp_type)
         if protocol is not None:
             pulumi.set(__self__, "protocol", protocol)
+        if public_security_group is not None:
+            pulumi.set(__self__, "public_security_group", public_security_group)
         if security_group is not None:
             warnings.warn("""Deprecated in favor of `security_group_id`""", DeprecationWarning)
             pulumi.log.warn("""security_group is deprecated: Deprecated in favor of `security_group_id`""")
@@ -95,7 +100,7 @@ class SecurityGroupRuleArgs:
         """
         An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR
         notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with
-        `user_security_group`/`user_security_group_id`).
+        `public_security_group`/`user_security_group`/`user_security_group_id`).
         """
         return pulumi.get(self, "cidr")
 
@@ -162,6 +167,19 @@ class SecurityGroupRuleArgs:
     @protocol.setter
     def protocol(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter(name="publicSecurityGroup")
+    def public_security_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with
+        `cidr`/`user_security_group`/`user_security_group_id`).
+        """
+        return pulumi.get(self, "public_security_group")
+
+    @public_security_group.setter
+    def public_security_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_security_group", value)
 
     @property
     @pulumi.getter(name="securityGroup")
@@ -205,7 +223,7 @@ class SecurityGroupRuleArgs:
     def user_security_group(self) -> Optional[pulumi.Input[str]]:
         """
         An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with
-        `cidr`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
+        `cidr`/`public_security_group`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
         [exoscale_security_group](../data-sources/security_group.md) data source instead.
         """
         return pulumi.get(self, "user_security_group")
@@ -219,7 +237,7 @@ class SecurityGroupRuleArgs:
     def user_security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
         An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with
-        `cidr`/`user_security_group)`).
+        `cidr`/`public_security_group`/`user_security_group)`).
         """
         return pulumi.get(self, "user_security_group_id")
 
@@ -237,6 +255,7 @@ class _SecurityGroupRuleState:
                  icmp_code: Optional[pulumi.Input[int]] = None,
                  icmp_type: Optional[pulumi.Input[int]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
+                 public_security_group: Optional[pulumi.Input[str]] = None,
                  security_group: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  start_port: Optional[pulumi.Input[int]] = None,
@@ -247,22 +266,24 @@ class _SecurityGroupRuleState:
         Input properties used for looking up and filtering SecurityGroupRule resources.
         :param pulumi.Input[str] cidr: An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR
                notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with
-               `user_security_group`/`user_security_group_id`).
+               `public_security_group`/`user_security_group`/`user_security_group_id`).
         :param pulumi.Input[str] description: A free-form text describing the security group rule.
         :param pulumi.Input[int] end_port: A `TCP`/`UDP` port range to match.
         :param pulumi.Input[int] icmp_code: An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
         :param pulumi.Input[int] icmp_type: An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
         :param pulumi.Input[str] protocol: The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)
+        :param pulumi.Input[str] public_security_group: An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with
+               `cidr`/`user_security_group`/`user_security_group_id`).
         :param pulumi.Input[str] security_group: The parent security group name. Please use the `security_group_id` argument along the
                [exoscale_security_group](../data-sources/security_group.md) data source instead.
         :param pulumi.Input[str] security_group_id: The parent [exoscale_security_group](./security_group.md) ID.
         :param pulumi.Input[int] start_port: A `TCP`/`UDP` port range to match.
         :param pulumi.Input[str] type: The traffic direction to match (`INGRESS` or `EGRESS`).
         :param pulumi.Input[str] user_security_group: An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with
-               `cidr`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
+               `cidr`/`public_security_group`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
                [exoscale_security_group](../data-sources/security_group.md) data source instead.
         :param pulumi.Input[str] user_security_group_id: An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with
-               `cidr`/`user_security_group)`).
+               `cidr`/`public_security_group`/`user_security_group)`).
         """
         if cidr is not None:
             pulumi.set(__self__, "cidr", cidr)
@@ -276,6 +297,8 @@ class _SecurityGroupRuleState:
             pulumi.set(__self__, "icmp_type", icmp_type)
         if protocol is not None:
             pulumi.set(__self__, "protocol", protocol)
+        if public_security_group is not None:
+            pulumi.set(__self__, "public_security_group", public_security_group)
         if security_group is not None:
             warnings.warn("""Deprecated in favor of `security_group_id`""", DeprecationWarning)
             pulumi.log.warn("""security_group is deprecated: Deprecated in favor of `security_group_id`""")
@@ -301,7 +324,7 @@ class _SecurityGroupRuleState:
         """
         An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR
         notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with
-        `user_security_group`/`user_security_group_id`).
+        `public_security_group`/`user_security_group`/`user_security_group_id`).
         """
         return pulumi.get(self, "cidr")
 
@@ -368,6 +391,19 @@ class _SecurityGroupRuleState:
     @protocol.setter
     def protocol(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter(name="publicSecurityGroup")
+    def public_security_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with
+        `cidr`/`user_security_group`/`user_security_group_id`).
+        """
+        return pulumi.get(self, "public_security_group")
+
+    @public_security_group.setter
+    def public_security_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_security_group", value)
 
     @property
     @pulumi.getter(name="securityGroup")
@@ -423,7 +459,7 @@ class _SecurityGroupRuleState:
     def user_security_group(self) -> Optional[pulumi.Input[str]]:
         """
         An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with
-        `cidr`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
+        `cidr`/`public_security_group`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
         [exoscale_security_group](../data-sources/security_group.md) data source instead.
         """
         return pulumi.get(self, "user_security_group")
@@ -437,7 +473,7 @@ class _SecurityGroupRuleState:
     def user_security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
         An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with
-        `cidr`/`user_security_group)`).
+        `cidr`/`public_security_group`/`user_security_group)`).
         """
         return pulumi.get(self, "user_security_group_id")
 
@@ -457,6 +493,7 @@ class SecurityGroupRule(pulumi.CustomResource):
                  icmp_code: Optional[pulumi.Input[int]] = None,
                  icmp_type: Optional[pulumi.Input[int]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
+                 public_security_group: Optional[pulumi.Input[str]] = None,
                  security_group: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  start_port: Optional[pulumi.Input[int]] = None,
@@ -481,22 +518,24 @@ class SecurityGroupRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cidr: An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR
                notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with
-               `user_security_group`/`user_security_group_id`).
+               `public_security_group`/`user_security_group`/`user_security_group_id`).
         :param pulumi.Input[str] description: A free-form text describing the security group rule.
         :param pulumi.Input[int] end_port: A `TCP`/`UDP` port range to match.
         :param pulumi.Input[int] icmp_code: An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
         :param pulumi.Input[int] icmp_type: An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
         :param pulumi.Input[str] protocol: The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)
+        :param pulumi.Input[str] public_security_group: An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with
+               `cidr`/`user_security_group`/`user_security_group_id`).
         :param pulumi.Input[str] security_group: The parent security group name. Please use the `security_group_id` argument along the
                [exoscale_security_group](../data-sources/security_group.md) data source instead.
         :param pulumi.Input[str] security_group_id: The parent [exoscale_security_group](./security_group.md) ID.
         :param pulumi.Input[int] start_port: A `TCP`/`UDP` port range to match.
         :param pulumi.Input[str] type: The traffic direction to match (`INGRESS` or `EGRESS`).
         :param pulumi.Input[str] user_security_group: An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with
-               `cidr`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
+               `cidr`/`public_security_group`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
                [exoscale_security_group](../data-sources/security_group.md) data source instead.
         :param pulumi.Input[str] user_security_group_id: An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with
-               `cidr`/`user_security_group)`).
+               `cidr`/`public_security_group`/`user_security_group)`).
         """
         ...
     @overload
@@ -538,6 +577,7 @@ class SecurityGroupRule(pulumi.CustomResource):
                  icmp_code: Optional[pulumi.Input[int]] = None,
                  icmp_type: Optional[pulumi.Input[int]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
+                 public_security_group: Optional[pulumi.Input[str]] = None,
                  security_group: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  start_port: Optional[pulumi.Input[int]] = None,
@@ -559,6 +599,7 @@ class SecurityGroupRule(pulumi.CustomResource):
             __props__.__dict__["icmp_code"] = icmp_code
             __props__.__dict__["icmp_type"] = icmp_type
             __props__.__dict__["protocol"] = protocol
+            __props__.__dict__["public_security_group"] = public_security_group
             if security_group is not None and not opts.urn:
                 warnings.warn("""Deprecated in favor of `security_group_id`""", DeprecationWarning)
                 pulumi.log.warn("""security_group is deprecated: Deprecated in favor of `security_group_id`""")
@@ -589,6 +630,7 @@ class SecurityGroupRule(pulumi.CustomResource):
             icmp_code: Optional[pulumi.Input[int]] = None,
             icmp_type: Optional[pulumi.Input[int]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
+            public_security_group: Optional[pulumi.Input[str]] = None,
             security_group: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             start_port: Optional[pulumi.Input[int]] = None,
@@ -604,22 +646,24 @@ class SecurityGroupRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cidr: An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR
                notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with
-               `user_security_group`/`user_security_group_id`).
+               `public_security_group`/`user_security_group`/`user_security_group_id`).
         :param pulumi.Input[str] description: A free-form text describing the security group rule.
         :param pulumi.Input[int] end_port: A `TCP`/`UDP` port range to match.
         :param pulumi.Input[int] icmp_code: An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
         :param pulumi.Input[int] icmp_type: An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
         :param pulumi.Input[str] protocol: The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)
+        :param pulumi.Input[str] public_security_group: An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with
+               `cidr`/`user_security_group`/`user_security_group_id`).
         :param pulumi.Input[str] security_group: The parent security group name. Please use the `security_group_id` argument along the
                [exoscale_security_group](../data-sources/security_group.md) data source instead.
         :param pulumi.Input[str] security_group_id: The parent [exoscale_security_group](./security_group.md) ID.
         :param pulumi.Input[int] start_port: A `TCP`/`UDP` port range to match.
         :param pulumi.Input[str] type: The traffic direction to match (`INGRESS` or `EGRESS`).
         :param pulumi.Input[str] user_security_group: An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with
-               `cidr`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
+               `cidr`/`public_security_group`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
                [exoscale_security_group](../data-sources/security_group.md) data source instead.
         :param pulumi.Input[str] user_security_group_id: An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with
-               `cidr`/`user_security_group)`).
+               `cidr`/`public_security_group`/`user_security_group)`).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -631,6 +675,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         __props__.__dict__["icmp_code"] = icmp_code
         __props__.__dict__["icmp_type"] = icmp_type
         __props__.__dict__["protocol"] = protocol
+        __props__.__dict__["public_security_group"] = public_security_group
         __props__.__dict__["security_group"] = security_group
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["start_port"] = start_port
@@ -645,7 +690,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         """
         An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR
         notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with
-        `user_security_group`/`user_security_group_id`).
+        `public_security_group`/`user_security_group`/`user_security_group_id`).
         """
         return pulumi.get(self, "cidr")
 
@@ -690,6 +735,15 @@ class SecurityGroupRule(pulumi.CustomResource):
         return pulumi.get(self, "protocol")
 
     @property
+    @pulumi.getter(name="publicSecurityGroup")
+    def public_security_group(self) -> pulumi.Output[str]:
+        """
+        An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with
+        `cidr`/`user_security_group`/`user_security_group_id`).
+        """
+        return pulumi.get(self, "public_security_group")
+
+    @property
     @pulumi.getter(name="securityGroup")
     def security_group(self) -> pulumi.Output[str]:
         """
@@ -727,7 +781,7 @@ class SecurityGroupRule(pulumi.CustomResource):
     def user_security_group(self) -> pulumi.Output[str]:
         """
         An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with
-        `cidr`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
+        `cidr`/`public_security_group`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
         [exoscale_security_group](../data-sources/security_group.md) data source instead.
         """
         return pulumi.get(self, "user_security_group")
@@ -737,7 +791,7 @@ class SecurityGroupRule(pulumi.CustomResource):
     def user_security_group_id(self) -> pulumi.Output[Optional[str]]:
         """
         An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with
-        `cidr`/`user_security_group)`).
+        `cidr`/`public_security_group`/`user_security_group)`).
         """
         return pulumi.get(self, "user_security_group_id")
 

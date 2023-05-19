@@ -48,6 +48,8 @@ type ComputeInstance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Private network interfaces (may be specified multiple times). Structure is documented below.
 	NetworkInterfaces ComputeInstanceNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
+	// Whether the instance is private (no public IP addresses; default: false)
+	Private pulumi.BoolPtrOutput `pulumi:"private"`
 	// A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument
 	// instead.
 	//
@@ -136,6 +138,8 @@ type computeInstanceState struct {
 	Name *string `pulumi:"name"`
 	// Private network interfaces (may be specified multiple times). Structure is documented below.
 	NetworkInterfaces []ComputeInstanceNetworkInterface `pulumi:"networkInterfaces"`
+	// Whether the instance is private (no public IP addresses; default: false)
+	Private *bool `pulumi:"private"`
 	// A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument
 	// instead.
 	//
@@ -186,6 +190,8 @@ type ComputeInstanceState struct {
 	Name pulumi.StringPtrInput
 	// Private network interfaces (may be specified multiple times). Structure is documented below.
 	NetworkInterfaces ComputeInstanceNetworkInterfaceArrayInput
+	// Whether the instance is private (no public IP addresses; default: false)
+	Private pulumi.BoolPtrInput
 	// A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument
 	// instead.
 	//
@@ -236,6 +242,8 @@ type computeInstanceArgs struct {
 	Name *string `pulumi:"name"`
 	// Private network interfaces (may be specified multiple times). Structure is documented below.
 	NetworkInterfaces []ComputeInstanceNetworkInterface `pulumi:"networkInterfaces"`
+	// Whether the instance is private (no public IP addresses; default: false)
+	Private *bool `pulumi:"private"`
 	// Domain name for reverse DNS record.
 	ReverseDns *string `pulumi:"reverseDns"`
 	// A list of [exoscale_security_group](./security_group.md) (IDs) to attach to the instance.
@@ -276,6 +284,8 @@ type ComputeInstanceArgs struct {
 	Name pulumi.StringPtrInput
 	// Private network interfaces (may be specified multiple times). Structure is documented below.
 	NetworkInterfaces ComputeInstanceNetworkInterfaceArrayInput
+	// Whether the instance is private (no public IP addresses; default: false)
+	Private pulumi.BoolPtrInput
 	// Domain name for reverse DNS record.
 	ReverseDns pulumi.StringPtrInput
 	// A list of [exoscale_security_group](./security_group.md) (IDs) to attach to the instance.
@@ -433,6 +443,11 @@ func (o ComputeInstanceOutput) Name() pulumi.StringOutput {
 // Private network interfaces (may be specified multiple times). Structure is documented below.
 func (o ComputeInstanceOutput) NetworkInterfaces() ComputeInstanceNetworkInterfaceArrayOutput {
 	return o.ApplyT(func(v *ComputeInstance) ComputeInstanceNetworkInterfaceArrayOutput { return v.NetworkInterfaces }).(ComputeInstanceNetworkInterfaceArrayOutput)
+}
+
+// Whether the instance is private (no public IP addresses; default: false)
+func (o ComputeInstanceOutput) Private() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeInstance) pulumi.BoolPtrOutput { return v.Private }).(pulumi.BoolPtrOutput)
 }
 
 // A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument

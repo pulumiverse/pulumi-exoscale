@@ -27,6 +27,7 @@ class ComputeInstanceArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeInstanceNetworkInterfaceArgs']]]] = None,
+                 private: Optional[pulumi.Input[bool]] = None,
                  reverse_dns: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssh_key: Optional[pulumi.Input[str]] = None,
@@ -48,6 +49,7 @@ class ComputeInstanceArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[str] name: The compute instance name.
         :param pulumi.Input[Sequence[pulumi.Input['ComputeInstanceNetworkInterfaceArgs']]] network_interfaces: Private network interfaces (may be specified multiple times). Structure is documented below.
+        :param pulumi.Input[bool] private: Whether the instance is private (no public IP addresses; default: false)
         :param pulumi.Input[str] reverse_dns: Domain name for reverse DNS record.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of [exoscale_security_group](./security_group.md) (IDs) to attach to the instance.
         :param pulumi.Input[str] ssh_key: The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the instance (may only be set at creation time).
@@ -74,6 +76,8 @@ class ComputeInstanceArgs:
             pulumi.set(__self__, "name", name)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if private is not None:
+            pulumi.set(__self__, "private", private)
         if reverse_dns is not None:
             pulumi.set(__self__, "reverse_dns", reverse_dns)
         if security_group_ids is not None:
@@ -221,6 +225,18 @@ class ComputeInstanceArgs:
         pulumi.set(self, "network_interfaces", value)
 
     @property
+    @pulumi.getter
+    def private(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the instance is private (no public IP addresses; default: false)
+        """
+        return pulumi.get(self, "private")
+
+    @private.setter
+    def private(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "private", value)
+
+    @property
     @pulumi.getter(name="reverseDns")
     def reverse_dns(self) -> Optional[pulumi.Input[str]]:
         """
@@ -295,6 +311,7 @@ class _ComputeInstanceState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeInstanceNetworkInterfaceArgs']]]] = None,
+                 private: Optional[pulumi.Input[bool]] = None,
                  private_network_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  public_ip_address: Optional[pulumi.Input[str]] = None,
                  reverse_dns: Optional[pulumi.Input[str]] = None,
@@ -318,6 +335,7 @@ class _ComputeInstanceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[str] name: The compute instance name.
         :param pulumi.Input[Sequence[pulumi.Input['ComputeInstanceNetworkInterfaceArgs']]] network_interfaces: Private network interfaces (may be specified multiple times). Structure is documented below.
+        :param pulumi.Input[bool] private: Whether the instance is private (no public IP addresses; default: false)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_network_ids: A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument
                instead.
         :param pulumi.Input[str] public_ip_address: The instance (main network interface) IPv4 address.
@@ -353,6 +371,8 @@ class _ComputeInstanceState:
             pulumi.set(__self__, "name", name)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if private is not None:
+            pulumi.set(__self__, "private", private)
         if private_network_ids is not None:
             warnings.warn("""Use the network_interface block instead.""", DeprecationWarning)
             pulumi.log.warn("""private_network_ids is deprecated: Use the network_interface block instead.""")
@@ -499,6 +519,18 @@ class _ComputeInstanceState:
         pulumi.set(self, "network_interfaces", value)
 
     @property
+    @pulumi.getter
+    def private(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the instance is private (no public IP addresses; default: false)
+        """
+        return pulumi.get(self, "private")
+
+    @private.setter
+    def private(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "private", value)
+
+    @property
     @pulumi.getter(name="privateNetworkIds")
     def private_network_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -636,6 +668,7 @@ class ComputeInstance(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeInstanceNetworkInterfaceArgs']]]]] = None,
+                 private: Optional[pulumi.Input[bool]] = None,
                  reverse_dns: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssh_key: Optional[pulumi.Input[str]] = None,
@@ -669,6 +702,7 @@ class ComputeInstance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[str] name: The compute instance name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeInstanceNetworkInterfaceArgs']]]] network_interfaces: Private network interfaces (may be specified multiple times). Structure is documented below.
+        :param pulumi.Input[bool] private: Whether the instance is private (no public IP addresses; default: false)
         :param pulumi.Input[str] reverse_dns: Domain name for reverse DNS record.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of [exoscale_security_group](./security_group.md) (IDs) to attach to the instance.
         :param pulumi.Input[str] ssh_key: The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the instance (may only be set at creation time).
@@ -723,6 +757,7 @@ class ComputeInstance(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeInstanceNetworkInterfaceArgs']]]]] = None,
+                 private: Optional[pulumi.Input[bool]] = None,
                  reverse_dns: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssh_key: Optional[pulumi.Input[str]] = None,
@@ -748,6 +783,7 @@ class ComputeInstance(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["network_interfaces"] = network_interfaces
+            __props__.__dict__["private"] = private
             __props__.__dict__["reverse_dns"] = reverse_dns
             __props__.__dict__["security_group_ids"] = security_group_ids
             __props__.__dict__["ssh_key"] = ssh_key
@@ -786,6 +822,7 @@ class ComputeInstance(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeInstanceNetworkInterfaceArgs']]]]] = None,
+            private: Optional[pulumi.Input[bool]] = None,
             private_network_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             public_ip_address: Optional[pulumi.Input[str]] = None,
             reverse_dns: Optional[pulumi.Input[str]] = None,
@@ -814,6 +851,7 @@ class ComputeInstance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[str] name: The compute instance name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeInstanceNetworkInterfaceArgs']]]] network_interfaces: Private network interfaces (may be specified multiple times). Structure is documented below.
+        :param pulumi.Input[bool] private: Whether the instance is private (no public IP addresses; default: false)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_network_ids: A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument
                instead.
         :param pulumi.Input[str] public_ip_address: The instance (main network interface) IPv4 address.
@@ -843,6 +881,7 @@ class ComputeInstance(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["network_interfaces"] = network_interfaces
+        __props__.__dict__["private"] = private
         __props__.__dict__["private_network_ids"] = private_network_ids
         __props__.__dict__["public_ip_address"] = public_ip_address
         __props__.__dict__["reverse_dns"] = reverse_dns
@@ -935,6 +974,14 @@ class ComputeInstance(pulumi.CustomResource):
         Private network interfaces (may be specified multiple times). Structure is documented below.
         """
         return pulumi.get(self, "network_interfaces")
+
+    @property
+    @pulumi.getter
+    def private(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether the instance is private (no public IP addresses; default: false)
+        """
+        return pulumi.get(self, "private")
 
     @property
     @pulumi.getter(name="privateNetworkIds")
