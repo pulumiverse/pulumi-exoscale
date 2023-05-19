@@ -730,10 +730,10 @@ github.com/evanphx/json-patch v4.9.0+incompatible/go.mod h1:50XU6AFN0ol/bzJsmQLi
 github.com/evanphx/json-patch v4.11.0+incompatible/go.mod h1:50XU6AFN0ol/bzJsmQLiYLvXMP4fmwYFNcr97nuDLSk=
 github.com/evanphx/json-patch v4.12.0+incompatible/go.mod h1:50XU6AFN0ol/bzJsmQLiYLvXMP4fmwYFNcr97nuDLSk=
 github.com/evanphx/json-patch/v5 v5.5.0/go.mod h1:G79N1coSVB93tBe7j6PhzjmR3/2VvlbKOFpnXhI9Bw4=
-github.com/exoscale/egoscale v0.94.0 h1:ZkOnt+J9k3DB/1NFOIoq2Bp6b259fMrahnrYwauFyjk=
-github.com/exoscale/egoscale v0.94.0/go.mod h1:BAb9p4rmyU+Wl400CJZO5270H2sXtdsZjLcm5xMKkz4=
-github.com/exoscale/terraform-provider-exoscale v0.47.0 h1:6FsbXdQO4iliH0hbKx5rKtoKRSVCTQ5iYL8iEgTtxJ8=
-github.com/exoscale/terraform-provider-exoscale v0.47.0/go.mod h1:iBW17yrQjFBpN9oxcGP1A4Rh4/qmwFfXRepgBGqrc+0=
+github.com/exoscale/egoscale v0.100.0 h1:QQGL4nwpN07iCIE3TbGHx67ItLZtN4j9GcsigVg0ZZk=
+github.com/exoscale/egoscale v0.100.0/go.mod h1:BAb9p4rmyU+Wl400CJZO5270H2sXtdsZjLcm5xMKkz4=
+github.com/exoscale/terraform-provider-exoscale v0.48.0 h1:W2JsENLtRMGZhVIIB3F9igPIp+HnhoXWhc4vFv/lVX8=
+github.com/exoscale/terraform-provider-exoscale v0.48.0/go.mod h1:0Y9gMxzCwRlOa1w5xthBBXkFqRhQ68/kMoSspxLNcjU=
 github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
 github.com/fatih/color v1.9.0/go.mod h1:eQcE1qtQxscV5RaZvpXrrb8Drkc3/DdQ+uUYCNjL+zU=
 github.com/fatih/color v1.10.0/go.mod h1:ELkj/draVOlAH/xkhN6mQ50Qd0MPOk5AAr3maGEBuJM=
@@ -1701,8 +1701,8 @@ github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.3 h1:1SmRVwRnrplcdBVVgoKY
 github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.3/go.mod h1:n0TS1WsPjOfto6hyDZbXfNZQuLli2X9iDWt2nzmQJsg=
 github.com/pulumi/pulumi-yaml v1.1.1 h1:8pyBNIU8+ym0wYpjhsCqN+cutygfK1XbhY2YEeNfyXY=
 github.com/pulumi/pulumi-yaml v1.1.1/go.mod h1:GhpdS6rFpwqvUtKdA+fQy8P28iNvncng39IXh5q68vE=
-github.com/pulumi/pulumi/pkg/v3 v3.66.0 h1:S9hvJvxL3cfiBvQ1rK7JMkO6CMyXXZVLrIXAEgujtys=
-github.com/pulumi/pulumi/pkg/v3 v3.66.0/go.mod h1:Ns4GxBLXW8arENazM3gjRA++Gp5cPXFsF9obEEdomLU=
+github.com/pulumi/pulumi/pkg/v3 v3.67.0 h1:lazKzFT+aHd6I32TnBr66TKnMlVRgcc5YaY55MVcoR8=
+github.com/pulumi/pulumi/pkg/v3 v3.67.0/go.mod h1:vyXT0rEsMTla3MSR4JIdXEoff9KOqwtuwsrU7faDa7k=
 github.com/pulumi/pulumi/sdk/v3 v3.67.0 h1:ED5eeIlLIaZdn5+wMoNS30ihVJJeA/c9hgTsOREVtpE=
 github.com/pulumi/pulumi/sdk/v3 v3.67.0/go.mod h1:RbSUT1ZWIbOtMk6vjNwBbRGIS9mlcI78sY56KDZyAd8=
 github.com/pulumi/schema-tools v0.1.2 h1:Fd9xvUjgck4NA+7/jSk7InqCUT4Kj940+EcnbQKpfZo=

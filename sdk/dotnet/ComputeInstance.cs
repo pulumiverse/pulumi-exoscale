@@ -88,6 +88,12 @@ namespace Pulumiverse.Exoscale
         public Output<ImmutableArray<Outputs.ComputeInstanceNetworkInterface>> NetworkInterfaces { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the instance is private (no public IP addresses; default: false)
+        /// </summary>
+        [Output("private")]
+        public Output<bool?> Private { get; private set; } = null!;
+
+        /// <summary>
         /// A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument
         /// instead.
         /// </summary>
@@ -272,6 +278,12 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
+        /// Whether the instance is private (no public IP addresses; default: false)
+        /// </summary>
+        [Input("private")]
+        public Input<bool>? Private { get; set; }
+
+        /// <summary>
         /// Domain name for reverse DNS record.
         /// </summary>
         [Input("reverseDns")]
@@ -420,6 +432,12 @@ namespace Pulumiverse.Exoscale
             get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.ComputeInstanceNetworkInterfaceGetArgs>());
             set => _networkInterfaces = value;
         }
+
+        /// <summary>
+        /// Whether the instance is private (no public IP addresses; default: false)
+        /// </summary>
+        [Input("private")]
+        public Input<bool>? Private { get; set; }
 
         [Input("privateNetworkIds")]
         private InputList<string>? _privateNetworkIds;

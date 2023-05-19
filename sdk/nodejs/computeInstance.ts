@@ -89,6 +89,10 @@ export class ComputeInstance extends pulumi.CustomResource {
      */
     public readonly networkInterfaces!: pulumi.Output<outputs.ComputeInstanceNetworkInterface[] | undefined>;
     /**
+     * Whether the instance is private (no public IP addresses; default: false)
+     */
+    public readonly private!: pulumi.Output<boolean | undefined>;
+    /**
      * A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument
      * instead.
      *
@@ -158,6 +162,7 @@ export class ComputeInstance extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
+            resourceInputs["private"] = state ? state.private : undefined;
             resourceInputs["privateNetworkIds"] = state ? state.privateNetworkIds : undefined;
             resourceInputs["publicIpAddress"] = state ? state.publicIpAddress : undefined;
             resourceInputs["reverseDns"] = state ? state.reverseDns : undefined;
@@ -187,6 +192,7 @@ export class ComputeInstance extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
+            resourceInputs["private"] = args ? args.private : undefined;
             resourceInputs["reverseDns"] = args ? args.reverseDns : undefined;
             resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             resourceInputs["sshKey"] = args ? args.sshKey : undefined;
@@ -250,6 +256,10 @@ export interface ComputeInstanceState {
      * Private network interfaces (may be specified multiple times). Structure is documented below.
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceNetworkInterface>[]>;
+    /**
+     * Whether the instance is private (no public IP addresses; default: false)
+     */
+    private?: pulumi.Input<boolean>;
     /**
      * A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument
      * instead.
@@ -335,6 +345,10 @@ export interface ComputeInstanceArgs {
      * Private network interfaces (may be specified multiple times). Structure is documented below.
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceNetworkInterface>[]>;
+    /**
+     * Whether the instance is private (no public IP addresses; default: false)
+     */
+    private?: pulumi.Input<boolean>;
     /**
      * Domain name for reverse DNS record.
      */
