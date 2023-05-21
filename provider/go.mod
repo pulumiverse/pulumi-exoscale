@@ -7,7 +7,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 require (
 	github.com/exoscale/terraform-provider-exoscale v0.48.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.47.2
-	github.com/pulumi/pulumi/sdk/v3 v3.67.0
+	github.com/pulumi/pulumi/sdk/v3 v3.68.0
 )
 
 require (
@@ -73,7 +73,7 @@ require (
 	github.com/blang/semver v3.5.1+incompatible // indirect
 	github.com/cenkalti/backoff/v3 v3.2.2 // indirect
 	github.com/cheggaaa/pb v1.0.29 // indirect
-	github.com/cloudflare/circl v1.1.0 // indirect
+	github.com/cloudflare/circl v1.3.3 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/deepmap/oapi-codegen v1.9.1 // indirect
 	github.com/dimchansky/utfbom v1.1.1 // indirect
