@@ -42,6 +42,9 @@ namespace Pulumiverse.Exoscale
         [Output("autoUpgrade")]
         public Output<bool?> AutoUpgrade { get; private set; } = null!;
 
+        /// <summary>
+        /// The CNI plugin that is to be used. Defaults to "calico".
+        /// </summary>
         [Output("cni")]
         public Output<string?> Cni { get; private set; } = null!;
 
@@ -201,6 +204,9 @@ namespace Pulumiverse.Exoscale
         [Input("autoUpgrade")]
         public Input<bool>? AutoUpgrade { get; set; }
 
+        /// <summary>
+        /// The CNI plugin that is to be used. Defaults to "calico".
+        /// </summary>
         [Input("cni")]
         public Input<string>? Cni { get; set; }
 
@@ -298,6 +304,9 @@ namespace Pulumiverse.Exoscale
         [Input("autoUpgrade")]
         public Input<bool>? AutoUpgrade { get; set; }
 
+        /// <summary>
+        /// The CNI plugin that is to be used. Defaults to "calico".
+        /// </summary>
         [Input("cni")]
         public Input<string>? Cni { get; set; }
 

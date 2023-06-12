@@ -65,6 +65,10 @@ namespace Pulumiverse.Exoscale
     public sealed class GetSecurityGroupResult
     {
         /// <summary>
+        /// The list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio) notation.
+        /// </summary>
+        public readonly ImmutableArray<string> ExternalSources;
+        /// <summary>
         /// The security group ID to match (conflicts with `name`)
         /// </summary>
         public readonly string? Id;
@@ -75,10 +79,13 @@ namespace Pulumiverse.Exoscale
 
         [OutputConstructor]
         private GetSecurityGroupResult(
+            ImmutableArray<string> externalSources,
+
             string? id,
 
             string? name)
         {
+            ExternalSources = externalSources;
             Id = id;
             Name = name;
         }

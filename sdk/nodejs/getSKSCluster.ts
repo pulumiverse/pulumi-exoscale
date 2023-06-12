@@ -49,6 +49,9 @@ export interface GetSKSClusterArgs {
      * Enable automatic upgrading of the control plane version.
      */
     autoUpgrade?: boolean;
+    /**
+     * The CNI plugin that is to be used. Defaults to "calico".
+     */
     cni?: string;
     /**
      * The CA certificate (in PEM format) for TLS communications between control plane components.
@@ -126,6 +129,9 @@ export interface GetSKSClusterResult {
      * Enable automatic upgrading of the control plane version.
      */
     readonly autoUpgrade?: boolean;
+    /**
+     * The CNI plugin that is to be used. Defaults to "calico".
+     */
     readonly cni?: string;
     /**
      * The CA certificate (in PEM format) for TLS communications between control plane components.
@@ -206,6 +212,9 @@ export interface GetSKSClusterOutputArgs {
      * Enable automatic upgrading of the control plane version.
      */
     autoUpgrade?: pulumi.Input<boolean>;
+    /**
+     * The CNI plugin that is to be used. Defaults to "calico".
+     */
     cni?: pulumi.Input<string>;
     /**
      * The CA certificate (in PEM format) for TLS communications between control plane components.

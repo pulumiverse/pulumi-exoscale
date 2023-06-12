@@ -43,6 +43,9 @@ namespace Pulumiverse.Exoscale
         [Input("autoUpgrade")]
         public bool? AutoUpgrade { get; set; }
 
+        /// <summary>
+        /// The CNI plugin that is to be used. Defaults to "calico".
+        /// </summary>
         [Input("cni")]
         public string? Cni { get; set; }
 
@@ -177,6 +180,9 @@ namespace Pulumiverse.Exoscale
         [Input("autoUpgrade")]
         public Input<bool>? AutoUpgrade { get; set; }
 
+        /// <summary>
+        /// The CNI plugin that is to be used. Defaults to "calico".
+        /// </summary>
         [Input("cni")]
         public Input<string>? Cni { get; set; }
 
@@ -301,6 +307,9 @@ namespace Pulumiverse.Exoscale
         /// Enable automatic upgrading of the control plane version.
         /// </summary>
         public readonly bool? AutoUpgrade;
+        /// <summary>
+        /// The CNI plugin that is to be used. Defaults to "calico".
+        /// </summary>
         public readonly string? Cni;
         /// <summary>
         /// The CA certificate (in PEM format) for TLS communications between control plane components.

@@ -21,13 +21,24 @@ class GetSecurityGroupResult:
     """
     A collection of values returned by getSecurityGroup.
     """
-    def __init__(__self__, id=None, name=None):
+    def __init__(__self__, external_sources=None, id=None, name=None):
+        if external_sources and not isinstance(external_sources, list):
+            raise TypeError("Expected argument 'external_sources' to be a list")
+        pulumi.set(__self__, "external_sources", external_sources)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="externalSources")
+    def external_sources(self) -> Sequence[str]:
+        """
+        The list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio) notation.
+        """
+        return pulumi.get(self, "external_sources")
 
     @property
     @pulumi.getter
@@ -52,6 +63,7 @@ class AwaitableGetSecurityGroupResult(GetSecurityGroupResult):
         if False:
             yield self
         return GetSecurityGroupResult(
+            external_sources=self.external_sources,
             id=self.id,
             name=self.name)
 
@@ -72,6 +84,7 @@ def get_security_group(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('exoscale:index/getSecurityGroup:getSecurityGroup', __args__, opts=opts, typ=GetSecurityGroupResult).value
 
     return AwaitableGetSecurityGroupResult(
+        external_sources=__ret__.external_sources,
         id=__ret__.id,
         name=__ret__.name)
 

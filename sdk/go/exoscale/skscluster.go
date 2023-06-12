@@ -33,8 +33,9 @@ type SKSCluster struct {
 	// `metrics-server`).
 	AggregationCa pulumi.StringOutput `pulumi:"aggregationCa"`
 	// Enable automatic upgrading of the control plane version.
-	AutoUpgrade pulumi.BoolPtrOutput   `pulumi:"autoUpgrade"`
-	Cni         pulumi.StringPtrOutput `pulumi:"cni"`
+	AutoUpgrade pulumi.BoolPtrOutput `pulumi:"autoUpgrade"`
+	// The CNI plugin that is to be used. Defaults to "calico".
+	Cni pulumi.StringPtrOutput `pulumi:"cni"`
 	// The CA certificate (in PEM format) for TLS communications between control plane components.
 	ControlPlaneCa pulumi.StringOutput `pulumi:"controlPlaneCa"`
 	// The cluster creation date.
@@ -110,8 +111,9 @@ type sksclusterState struct {
 	// `metrics-server`).
 	AggregationCa *string `pulumi:"aggregationCa"`
 	// Enable automatic upgrading of the control plane version.
-	AutoUpgrade *bool   `pulumi:"autoUpgrade"`
-	Cni         *string `pulumi:"cni"`
+	AutoUpgrade *bool `pulumi:"autoUpgrade"`
+	// The CNI plugin that is to be used. Defaults to "calico".
+	Cni *string `pulumi:"cni"`
 	// The CA certificate (in PEM format) for TLS communications between control plane components.
 	ControlPlaneCa *string `pulumi:"controlPlaneCa"`
 	// The cluster creation date.
@@ -156,7 +158,8 @@ type SKSClusterState struct {
 	AggregationCa pulumi.StringPtrInput
 	// Enable automatic upgrading of the control plane version.
 	AutoUpgrade pulumi.BoolPtrInput
-	Cni         pulumi.StringPtrInput
+	// The CNI plugin that is to be used. Defaults to "calico".
+	Cni pulumi.StringPtrInput
 	// The CA certificate (in PEM format) for TLS communications between control plane components.
 	ControlPlaneCa pulumi.StringPtrInput
 	// The cluster creation date.
@@ -201,8 +204,9 @@ type sksclusterArgs struct {
 	// Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
 	Addons []string `pulumi:"addons"`
 	// Enable automatic upgrading of the control plane version.
-	AutoUpgrade *bool   `pulumi:"autoUpgrade"`
-	Cni         *string `pulumi:"cni"`
+	AutoUpgrade *bool `pulumi:"autoUpgrade"`
+	// The CNI plugin that is to be used. Defaults to "calico".
+	Cni *string `pulumi:"cni"`
 	// A free-form text describing the cluster.
 	Description *string `pulumi:"description"`
 	// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the
@@ -233,7 +237,8 @@ type SKSClusterArgs struct {
 	Addons pulumi.StringArrayInput
 	// Enable automatic upgrading of the control plane version.
 	AutoUpgrade pulumi.BoolPtrInput
-	Cni         pulumi.StringPtrInput
+	// The CNI plugin that is to be used. Defaults to "calico".
+	Cni pulumi.StringPtrInput
 	// A free-form text describing the cluster.
 	Description pulumi.StringPtrInput
 	// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the
@@ -361,6 +366,7 @@ func (o SKSClusterOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SKSCluster) pulumi.BoolPtrOutput { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
 }
 
+// The CNI plugin that is to be used. Defaults to "calico".
 func (o SKSClusterOutput) Cni() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SKSCluster) pulumi.StringPtrOutput { return v.Cni }).(pulumi.StringPtrOutput)
 }

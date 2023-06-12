@@ -36,7 +36,7 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
      */
-    public readonly dnsEndpoint!: pulumi.Output<string>;
+    public readonly dnsEndpoint!: pulumi.Output<string | undefined>;
     public readonly environment!: pulumi.Output<string | undefined>;
     /**
      * Exoscale API key
@@ -66,16 +66,10 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if ((!args || args.dnsEndpoint === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'dnsEndpoint'");
-            }
-            if ((!args || args.timeout === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'timeout'");
-            }
             resourceInputs["computeEndpoint"] = args ? args.computeEndpoint : undefined;
             resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["delay"] = pulumi.output(args ? args.delay : undefined).apply(JSON.stringify);
@@ -115,7 +109,7 @@ export interface ProviderArgs {
     /**
      * Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
      */
-    dnsEndpoint: pulumi.Input<string>;
+    dnsEndpoint?: pulumi.Input<string>;
     environment?: pulumi.Input<string>;
     /**
      * Defines if the user-data of compute instances should be gzipped (by default: true)
@@ -140,7 +134,7 @@ export interface ProviderArgs {
     /**
      * Timeout in seconds for waiting on compute resources to become available (by default: 300)
      */
-    timeout: pulumi.Input<number>;
+    timeout?: pulumi.Input<number>;
     /**
      * @deprecated Use key instead
      */

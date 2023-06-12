@@ -67,8 +67,6 @@ type Database struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The date of the latest database service update.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
-	// The database service connection URI.
-	Uri pulumi.StringOutput `pulumi:"uri"`
 	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
@@ -89,10 +87,6 @@ func NewDatabase(ctx *pulumi.Context,
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
-	secrets := pulumi.AdditionalSecretOutputs([]string{
-		"uri",
-	})
-	opts = append(opts, secrets)
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Database
 	err := ctx.RegisterResource("exoscale:index/database:Database", name, args, &resource, opts...)
@@ -156,8 +150,6 @@ type databaseState struct {
 	Type *string `pulumi:"type"`
 	// The date of the latest database service update.
 	UpdatedAt *string `pulumi:"updatedAt"`
-	// The database service connection URI.
-	Uri *string `pulumi:"uri"`
 	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone *string `pulumi:"zone"`
 }
@@ -203,8 +195,6 @@ type DatabaseState struct {
 	Type pulumi.StringPtrInput
 	// The date of the latest database service update.
 	UpdatedAt pulumi.StringPtrInput
-	// The database service connection URI.
-	Uri pulumi.StringPtrInput
 	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringPtrInput
 }
@@ -454,11 +444,6 @@ func (o DatabaseOutput) Type() pulumi.StringOutput {
 // The date of the latest database service update.
 func (o DatabaseOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
-}
-
-// The database service connection URI.
-func (o DatabaseOutput) Uri() pulumi.StringOutput {
-	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Uri }).(pulumi.StringOutput)
 }
 
 // The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.

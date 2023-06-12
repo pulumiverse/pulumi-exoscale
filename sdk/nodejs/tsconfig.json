@@ -30,6 +30,7 @@
         "getComputeInstance.ts",
         "getComputeInstanceList.ts",
         "getComputeTemplate.ts",
+        "getDatabaseURI.ts",
         "getDomain.ts",
         "getDomainRecord.ts",
         "getElasticIP.ts",

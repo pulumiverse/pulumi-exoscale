@@ -27,8 +27,9 @@ type LookupSKSClusterArgs struct {
 	// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
 	AggregationCa *string `pulumi:"aggregationCa"`
 	// Enable automatic upgrading of the control plane version.
-	AutoUpgrade *bool   `pulumi:"autoUpgrade"`
-	Cni         *string `pulumi:"cni"`
+	AutoUpgrade *bool `pulumi:"autoUpgrade"`
+	// The CNI plugin that is to be used. Defaults to "calico".
+	Cni *string `pulumi:"cni"`
 	// The CA certificate (in PEM format) for TLS communications between control plane components.
 	ControlPlaneCa *string `pulumi:"controlPlaneCa"`
 	// The cluster creation date.
@@ -68,8 +69,9 @@ type LookupSKSClusterResult struct {
 	// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
 	AggregationCa string `pulumi:"aggregationCa"`
 	// Enable automatic upgrading of the control plane version.
-	AutoUpgrade *bool   `pulumi:"autoUpgrade"`
-	Cni         *string `pulumi:"cni"`
+	AutoUpgrade *bool `pulumi:"autoUpgrade"`
+	// The CNI plugin that is to be used. Defaults to "calico".
+	Cni *string `pulumi:"cni"`
 	// The CA certificate (in PEM format) for TLS communications between control plane components.
 	ControlPlaneCa string `pulumi:"controlPlaneCa"`
 	// The cluster creation date.
@@ -122,8 +124,9 @@ type LookupSKSClusterOutputArgs struct {
 	// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
 	AggregationCa pulumi.StringPtrInput `pulumi:"aggregationCa"`
 	// Enable automatic upgrading of the control plane version.
-	AutoUpgrade pulumi.BoolPtrInput   `pulumi:"autoUpgrade"`
-	Cni         pulumi.StringPtrInput `pulumi:"cni"`
+	AutoUpgrade pulumi.BoolPtrInput `pulumi:"autoUpgrade"`
+	// The CNI plugin that is to be used. Defaults to "calico".
+	Cni pulumi.StringPtrInput `pulumi:"cni"`
 	// The CA certificate (in PEM format) for TLS communications between control plane components.
 	ControlPlaneCa pulumi.StringPtrInput `pulumi:"controlPlaneCa"`
 	// The cluster creation date.
@@ -190,6 +193,7 @@ func (o LookupSKSClusterResultOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupSKSClusterResult) *bool { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
 }
 
+// The CNI plugin that is to be used. Defaults to "calico".
 func (o LookupSKSClusterResultOutput) Cni() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSKSClusterResult) *string { return v.Cni }).(pulumi.StringPtrOutput)
 }

@@ -35,7 +35,7 @@ namespace Pulumiverse.Exoscale
         /// Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
         /// </summary>
         [Output("dnsEndpoint")]
-        public Output<string> DnsEndpoint { get; private set; } = null!;
+        public Output<string?> DnsEndpoint { get; private set; } = null!;
 
         [Output("environment")]
         public Output<string?> Environment { get; private set; } = null!;
@@ -72,7 +72,7 @@ namespace Pulumiverse.Exoscale
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
             : base("exoscale", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -115,8 +115,8 @@ namespace Pulumiverse.Exoscale
         /// <summary>
         /// Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
         /// </summary>
-        [Input("dnsEndpoint", required: true)]
-        public Input<string> DnsEndpoint { get; set; } = null!;
+        [Input("dnsEndpoint")]
+        public Input<string>? DnsEndpoint { get; set; }
 
         [Input("environment")]
         public Input<string>? Environment { get; set; }
@@ -161,8 +161,8 @@ namespace Pulumiverse.Exoscale
         /// <summary>
         /// Timeout in seconds for waiting on compute resources to become available (by default: 300)
         /// </summary>
-        [Input("timeout", required: true, json: true)]
-        public Input<int> Timeout { get; set; } = null!;
+        [Input("timeout", json: true)]
+        public Input<int>? Timeout { get; set; }
 
         [Input("token")]
         public Input<string>? Token { get; set; }

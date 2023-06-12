@@ -113,6 +113,9 @@ class GetSKSClusterResult:
     @property
     @pulumi.getter
     def cni(self) -> Optional[str]:
+        """
+        The CNI plugin that is to be used. Defaults to "calico".
+        """
         return pulumi.get(self, "cni")
 
     @property
@@ -292,6 +295,7 @@ def get_sks_cluster(addons: Optional[Sequence[str]] = None,
 
     :param str aggregation_ca: The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
     :param bool auto_upgrade: Enable automatic upgrading of the control plane version.
+    :param str cni: The CNI plugin that is to be used. Defaults to "calico".
     :param str control_plane_ca: The CA certificate (in PEM format) for TLS communications between control plane components.
     :param str created_at: The cluster creation date.
     :param str description: A free-form text describing the cluster.
@@ -381,6 +385,7 @@ def get_sks_cluster_output(addons: Optional[pulumi.Input[Optional[Sequence[str]]
 
     :param str aggregation_ca: The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
     :param bool auto_upgrade: Enable automatic upgrading of the control plane version.
+    :param str cni: The CNI plugin that is to be used. Defaults to "calico".
     :param str control_plane_ca: The CA certificate (in PEM format) for TLS communications between control plane components.
     :param str created_at: The cluster creation date.
     :param str description: A free-form text describing the cluster.

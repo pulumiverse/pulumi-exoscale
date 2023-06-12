@@ -126,10 +126,6 @@ export class Database extends pulumi.CustomResource {
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
-     * The database service connection URI.
-     */
-    public /*out*/ readonly uri!: pulumi.Output<string>;
-    /**
      * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     public readonly zone!: pulumi.Output<string>;
@@ -166,7 +162,6 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["terminationProtection"] = state ? state.terminationProtection : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["uri"] = state ? state.uri : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
@@ -199,11 +194,8 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["nodes"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
-            resourceInputs["uri"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["uri"] };
-        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Database.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -290,10 +282,6 @@ export interface DatabaseState {
      * The date of the latest database service update.
      */
     updatedAt?: pulumi.Input<string>;
-    /**
-     * The database service connection URI.
-     */
-    uri?: pulumi.Input<string>;
     /**
      * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */

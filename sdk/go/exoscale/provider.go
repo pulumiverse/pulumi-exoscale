@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +22,7 @@ type Provider struct {
 	// CloudStack ini configuration filename (by default: cloudstack.ini)
 	Config pulumi.StringPtrOutput `pulumi:"config"`
 	// Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
-	DnsEndpoint pulumi.StringOutput    `pulumi:"dnsEndpoint"`
+	DnsEndpoint pulumi.StringPtrOutput `pulumi:"dnsEndpoint"`
 	Environment pulumi.StringPtrOutput `pulumi:"environment"`
 	// Exoscale API key
 	Key pulumi.StringPtrOutput `pulumi:"key"`
@@ -41,15 +40,9 @@ type Provider struct {
 func NewProvider(ctx *pulumi.Context,
 	name string, args *ProviderArgs, opts ...pulumi.ResourceOption) (*Provider, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProviderArgs{}
 	}
 
-	if args.DnsEndpoint == nil {
-		return nil, errors.New("invalid value for required argument 'DnsEndpoint'")
-	}
-	if args.Timeout == nil {
-		return nil, errors.New("invalid value for required argument 'Timeout'")
-	}
 	if args.Secret != nil {
 		args.Secret = pulumi.ToSecret(args.Secret).(pulumi.StringPtrInput)
 	}
@@ -74,7 +67,7 @@ type providerArgs struct {
 	// Deprecated: Does nothing
 	Delay *int `pulumi:"delay"`
 	// Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
-	DnsEndpoint string  `pulumi:"dnsEndpoint"`
+	DnsEndpoint *string `pulumi:"dnsEndpoint"`
 	Environment *string `pulumi:"environment"`
 	// Defines if the user-data of compute instances should be gzipped (by default: true)
 	GzipUserData *bool `pulumi:"gzipUserData"`
@@ -87,7 +80,7 @@ type providerArgs struct {
 	// Exoscale API secret
 	Secret *string `pulumi:"secret"`
 	// Timeout in seconds for waiting on compute resources to become available (by default: 300)
-	Timeout int `pulumi:"timeout"`
+	Timeout *int `pulumi:"timeout"`
 	// Deprecated: Use key instead
 	Token *string `pulumi:"token"`
 }
@@ -101,7 +94,7 @@ type ProviderArgs struct {
 	// Deprecated: Does nothing
 	Delay pulumi.IntPtrInput
 	// Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
-	DnsEndpoint pulumi.StringInput
+	DnsEndpoint pulumi.StringPtrInput
 	Environment pulumi.StringPtrInput
 	// Defines if the user-data of compute instances should be gzipped (by default: true)
 	GzipUserData pulumi.BoolPtrInput
@@ -114,7 +107,7 @@ type ProviderArgs struct {
 	// Exoscale API secret
 	Secret pulumi.StringPtrInput
 	// Timeout in seconds for waiting on compute resources to become available (by default: 300)
-	Timeout pulumi.IntInput
+	Timeout pulumi.IntPtrInput
 	// Deprecated: Use key instead
 	Token pulumi.StringPtrInput
 }
@@ -167,8 +160,8 @@ func (o ProviderOutput) Config() pulumi.StringPtrOutput {
 }
 
 // Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
-func (o ProviderOutput) DnsEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.DnsEndpoint }).(pulumi.StringOutput)
+func (o ProviderOutput) DnsEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DnsEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) Environment() pulumi.StringPtrOutput {

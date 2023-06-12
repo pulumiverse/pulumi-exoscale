@@ -159,6 +159,7 @@ func Provider() tfbridge.ProviderInfo {
 			"exoscale_sks_cluster_list":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSKSClusterList")},
 			"exoscale_sks_nodepool":          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSKSNodepool")},
 			"exoscale_sks_nodepool_list":     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSKSNodepoolList")},
+			"exoscale_database_uri":          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDatabaseURI")},
 			// Deprecated DataSources, will be removed with next major version
 			"exoscale_affinity":          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAffinity")},
 			"exoscale_compute":           {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getCompute")},

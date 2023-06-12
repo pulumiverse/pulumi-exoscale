@@ -80,6 +80,11 @@ export const getComputeTemplate: typeof import("./getComputeTemplate").getComput
 export const getComputeTemplateOutput: typeof import("./getComputeTemplate").getComputeTemplateOutput = null as any;
 utilities.lazyLoad(exports, ["getComputeTemplate","getComputeTemplateOutput"], () => require("./getComputeTemplate"));
 
+export { GetDatabaseURIArgs, GetDatabaseURIResult, GetDatabaseURIOutputArgs } from "./getDatabaseURI";
+export const getDatabaseURI: typeof import("./getDatabaseURI").getDatabaseURI = null as any;
+export const getDatabaseURIOutput: typeof import("./getDatabaseURI").getDatabaseURIOutput = null as any;
+utilities.lazyLoad(exports, ["getDatabaseURI","getDatabaseURIOutput"], () => require("./getDatabaseURI"));
+
 export { GetDomainArgs, GetDomainResult, GetDomainOutputArgs } from "./getDomain";
 export const getDomain: typeof import("./getDomain").getDomain = null as any;
 export const getDomainOutput: typeof import("./getDomain").getDomainOutput = null as any;
