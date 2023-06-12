@@ -114,11 +114,7 @@
                 "type": "string",
                 "deprecationMessage": "Use key instead"
             }
-        },
-        "defaults": [
-            "dnsEndpoint",
-            "timeout"
-        ]
+        }
     },
     "types": {
         "exoscale:index/ComputeInstanceNetworkInterface:ComputeInstanceNetworkInterface": {
@@ -133,7 +129,15 @@
             "type": "object",
             "required": [
                 "networkId"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "ipAddress",
+                        "networkId"
+                    ]
+                }
+            }
         },
         "exoscale:index/DatabaseKafka:DatabaseKafka": {
             "properties": {
@@ -1358,10 +1362,6 @@
                 "deprecationMessage": "Use key instead"
             }
         },
-        "required": [
-            "dnsEndpoint",
-            "timeout"
-        ],
         "inputProperties": {
             "computeEndpoint": {
                 "type": "string",
@@ -1416,11 +1416,7 @@
                 "type": "string",
                 "deprecationMessage": "Use key instead"
             }
-        },
-        "requiredInputs": [
-            "dnsEndpoint",
-            "timeout"
-        ]
+        }
     },
     "resources": {
         "exoscale:index/affinity:Affinity": {
@@ -2336,11 +2332,6 @@
                     "type": "string",
                     "description": "The date of the latest database service update.\n"
                 },
-                "uri": {
-                    "type": "string",
-                    "description": "The database service connection URI.\n",
-                    "secret": true
-                },
                 "zone": {
                     "type": "string",
                     "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
@@ -2360,7 +2351,6 @@
                 "state",
                 "type",
                 "updatedAt",
-                "uri",
                 "zone"
             ],
             "inputProperties": {
@@ -2501,11 +2491,6 @@
                     "updatedAt": {
                         "type": "string",
                         "description": "The date of the latest database service update.\n"
-                    },
-                    "uri": {
-                        "type": "string",
-                        "description": "The database service connection URI.\n",
-                        "secret": true
                     },
                     "zone": {
                         "type": "string",
@@ -4125,7 +4110,8 @@
                     "description": "Enable automatic upgrading of the control plane version.\n"
                 },
                 "cni": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The CNI plugin that is to be used. Defaults to \"calico\".\n"
                 },
                 "controlPlaneCa": {
                     "type": "string",
@@ -4221,7 +4207,8 @@
                     "description": "Enable automatic upgrading of the control plane version.\n"
                 },
                 "cni": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The CNI plugin that is to be used. Defaults to \"calico\".\n"
                 },
                 "description": {
                     "type": "string",
@@ -4286,7 +4273,8 @@
                         "description": "Enable automatic upgrading of the control plane version.\n"
                     },
                     "cni": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The CNI plugin that is to be used. Defaults to \"calico\".\n"
                     },
                     "controlPlaneCa": {
                         "type": "string",
@@ -5966,6 +5954,66 @@
                 ]
             }
         },
+        "exoscale:index/getDatabaseURI:getDatabaseURI": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as exoscale from \"@pulumi/exoscale\";\nimport * as exoscale from \"@pulumiverse/exoscale\";\n\nconst myDatabaseDatabase = new exoscale.Database(\"myDatabaseDatabase\", {\n    zone: \"ch-gva-2\",\n    type: \"pg\",\n    plan: \"startup-4\",\n    maintenanceDow: \"sunday\",\n    maintenanceTime: \"23:00:00\",\n    terminationProtection: true,\n    pg: {\n        version: \"13\",\n        backupSchedule: \"04:00\",\n        ipFilters: [\n            \"1.2.3.4/32\",\n            \"5.6.7.8/32\",\n        ],\n        pgSettings: JSON.stringify({\n            timezone: \"Europe/Zurich\",\n        }),\n    },\n});\nconst myDatabaseDatabaseURI = exoscale.getDatabaseURI({\n    name: \"my-database\",\n    type: \"pg\",\n});\nexport const myDatabaseUri = myDatabaseDatabaseURI.then(myDatabaseDatabaseURI =\u003e myDatabaseDatabaseURI.uri);\n```\n```python\nimport pulumi\nimport json\nimport pulumi_exoscale as exoscale\nimport pulumiverse_exoscale as exoscale\n\nmy_database_database = exoscale.Database(\"myDatabaseDatabase\",\n    zone=\"ch-gva-2\",\n    type=\"pg\",\n    plan=\"startup-4\",\n    maintenance_dow=\"sunday\",\n    maintenance_time=\"23:00:00\",\n    termination_protection=True,\n    pg=exoscale.DatabasePgArgs(\n        version=\"13\",\n        backup_schedule=\"04:00\",\n        ip_filters=[\n            \"1.2.3.4/32\",\n            \"5.6.7.8/32\",\n        ],\n        pg_settings=json.dumps({\n            \"timezone\": \"Europe/Zurich\",\n        }),\n    ))\nmy_database_database_uri = exoscale.get_database_uri(name=\"my-database\",\n    type=\"pg\")\npulumi.export(\"myDatabaseUri\", my_database_database_uri.uri)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Exoscale = Pulumi.Exoscale;\nusing Exoscale = Pulumiverse.Exoscale;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myDatabaseDatabase = new Exoscale.Database(\"myDatabaseDatabase\", new()\n    {\n        Zone = \"ch-gva-2\",\n        Type = \"pg\",\n        Plan = \"startup-4\",\n        MaintenanceDow = \"sunday\",\n        MaintenanceTime = \"23:00:00\",\n        TerminationProtection = true,\n        Pg = new Exoscale.Inputs.DatabasePgArgs\n        {\n            Version = \"13\",\n            BackupSchedule = \"04:00\",\n            IpFilters = new[]\n            {\n                \"1.2.3.4/32\",\n                \"5.6.7.8/32\",\n            },\n            PgSettings = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                [\"timezone\"] = \"Europe/Zurich\",\n            }),\n        },\n    });\n\n    var myDatabaseDatabaseURI = Exoscale.GetDatabaseURI.Invoke(new()\n    {\n        Name = \"my-database\",\n        Type = \"pg\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"myDatabaseUri\"] = myDatabaseDatabaseURI.Apply(getDatabaseURIResult =\u003e getDatabaseURIResult.Uri),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"timezone\": \"Europe/Zurich\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err = exoscale.NewDatabase(ctx, \"myDatabaseDatabase\", \u0026exoscale.DatabaseArgs{\n\t\t\tZone:                  pulumi.String(\"ch-gva-2\"),\n\t\t\tType:                  pulumi.String(\"pg\"),\n\t\t\tPlan:                  pulumi.String(\"startup-4\"),\n\t\t\tMaintenanceDow:        pulumi.String(\"sunday\"),\n\t\t\tMaintenanceTime:       pulumi.String(\"23:00:00\"),\n\t\t\tTerminationProtection: pulumi.Bool(true),\n\t\t\tPg: \u0026exoscale.DatabasePgArgs{\n\t\t\t\tVersion:        pulumi.String(\"13\"),\n\t\t\t\tBackupSchedule: pulumi.String(\"04:00\"),\n\t\t\t\tIpFilters: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"1.2.3.4/32\"),\n\t\t\t\t\tpulumi.String(\"5.6.7.8/32\"),\n\t\t\t\t},\n\t\t\t\tPgSettings: pulumi.String(json0),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyDatabaseDatabaseURI, err := exoscale.GetDatabaseURI(ctx, \u0026exoscale.GetDatabaseURIArgs{\n\t\t\tName: \"my-database\",\n\t\t\tType: \"pg\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"myDatabaseUri\", myDatabaseDatabaseURI.Uri)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.exoscale.Database;\nimport com.pulumi.exoscale.DatabaseArgs;\nimport com.pulumi.exoscale.inputs.DatabasePgArgs;\nimport com.pulumi.exoscale.ExoscaleFunctions;\nimport com.pulumi.exoscale.inputs.GetDatabaseURIArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myDatabaseDatabase = new Database(\"myDatabaseDatabase\", DatabaseArgs.builder()        \n            .zone(\"ch-gva-2\")\n            .type(\"pg\")\n            .plan(\"startup-4\")\n            .maintenanceDow(\"sunday\")\n            .maintenanceTime(\"23:00:00\")\n            .terminationProtection(true)\n            .pg(DatabasePgArgs.builder()\n                .version(\"13\")\n                .backupSchedule(\"04:00\")\n                .ipFilters(                \n                    \"1.2.3.4/32\",\n                    \"5.6.7.8/32\")\n                .pgSettings(serializeJson(\n                    jsonObject(\n                        jsonProperty(\"timezone\", \"Europe/Zurich\")\n                    )))\n                .build())\n            .build());\n\n        final var myDatabaseDatabaseURI = ExoscaleFunctions.getDatabaseURI(GetDatabaseURIArgs.builder()\n            .name(\"my-database\")\n            .type(\"pg\")\n            .build());\n\n        ctx.export(\"myDatabaseUri\", myDatabaseDatabaseURI.applyValue(getDatabaseURIResult -\u003e getDatabaseURIResult.uri()));\n    }\n}\n```\n```yaml\nresources:\n  myDatabaseDatabase:\n    type: exoscale:Database\n    properties:\n      zone: ch-gva-2\n      type: pg\n      plan: startup-4\n      maintenanceDow: sunday\n      maintenanceTime: 23:00:00\n      terminationProtection: true\n      pg:\n        version: '13'\n        backupSchedule: 04:00\n        ipFilters:\n          - 1.2.3.4/32\n          - 5.6.7.8/32\n        pgSettings:\n          fn::toJSON:\n            timezone: Europe/Zurich\nvariables:\n  myDatabaseDatabaseURI:\n    fn::invoke:\n      Function: exoscale:getDatabaseURI\n      Arguments:\n        name: my-database\n        type: pg\noutputs:\n  myDatabaseUri: ${myDatabaseDatabaseURI.uri}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getDatabaseURI.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The database name to match.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).\n"
+                    },
+                    "zone": {
+                        "type": "string",
+                        "description": "(Required) The Exoscale Zone name.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "type",
+                    "zone"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDatabaseURI.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The database name to match.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).\n"
+                    },
+                    "uri": {
+                        "type": "string",
+                        "description": "The database service connection URI.\n",
+                        "secret": true
+                    },
+                    "zone": {
+                        "type": "string",
+                        "description": "(Required) The Exoscale Zone name.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "type",
+                    "uri",
+                    "zone",
+                    "id"
+                ]
+            }
+        },
         "exoscale:index/getDomain:getDomain": {
             "inputs": {
                 "description": "A collection of arguments for invoking getDomain.\n",
@@ -6546,7 +6594,8 @@
                         "description": "Enable automatic upgrading of the control plane version.\n"
                     },
                     "cni": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The CNI plugin that is to be used. Defaults to \"calico\".\n"
                     },
                     "controlPlaneCa": {
                         "type": "string",
@@ -6641,7 +6690,8 @@
                         "description": "Enable automatic upgrading of the control plane version.\n"
                     },
                     "cni": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The CNI plugin that is to be used. Defaults to \"calico\".\n"
                     },
                     "controlPlaneCa": {
                         "type": "string",
@@ -7291,6 +7341,13 @@
             "outputs": {
                 "description": "A collection of values returned by getSecurityGroup.\n",
                 "properties": {
+                    "externalSources": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio) notation.\n"
+                    },
                     "id": {
                         "type": "string",
                         "description": "The security group ID to match (conflicts with `name`)\n"
@@ -7300,7 +7357,10 @@
                         "description": "The name to match (conflicts with `id`)\n"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "required": [
+                    "externalSources"
+                ]
             }
         },
         "exoscale:index/getTemplate:getTemplate": {

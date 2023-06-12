@@ -60,6 +60,9 @@ export class SKSCluster extends pulumi.CustomResource {
      * Enable automatic upgrading of the control plane version.
      */
     public readonly autoUpgrade!: pulumi.Output<boolean | undefined>;
+    /**
+     * The CNI plugin that is to be used. Defaults to "calico".
+     */
     public readonly cni!: pulumi.Output<string | undefined>;
     /**
      * The CA certificate (in PEM format) for TLS communications between control plane components.
@@ -205,6 +208,9 @@ export interface SKSClusterState {
      * Enable automatic upgrading of the control plane version.
      */
     autoUpgrade?: pulumi.Input<boolean>;
+    /**
+     * The CNI plugin that is to be used. Defaults to "calico".
+     */
     cni?: pulumi.Input<string>;
     /**
      * The CA certificate (in PEM format) for TLS communications between control plane components.
@@ -284,6 +290,9 @@ export interface SKSClusterArgs {
      * Enable automatic upgrading of the control plane version.
      */
     autoUpgrade?: pulumi.Input<boolean>;
+    /**
+     * The CNI plugin that is to be used. Defaults to "calico".
+     */
     cni?: pulumi.Input<string>;
     /**
      * A free-form text describing the cluster.

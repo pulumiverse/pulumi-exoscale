@@ -33,6 +33,10 @@ export interface GetSecurityGroupArgs {
  */
 export interface GetSecurityGroupResult {
     /**
+     * The list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio) notation.
+     */
+    readonly externalSources: string[];
+    /**
      * The security group ID to match (conflicts with `name`)
      */
     readonly id?: string;

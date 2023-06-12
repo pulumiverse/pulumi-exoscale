@@ -30,6 +30,8 @@ type LookupSecurityGroupArgs struct {
 
 // A collection of values returned by getSecurityGroup.
 type LookupSecurityGroupResult struct {
+	// The list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio) notation.
+	ExternalSources []string `pulumi:"externalSources"`
 	// The security group ID to match (conflicts with `name`)
 	Id *string `pulumi:"id"`
 	// The name to match (conflicts with `id`)
@@ -74,6 +76,11 @@ func (o LookupSecurityGroupResultOutput) ToLookupSecurityGroupResultOutput() Loo
 
 func (o LookupSecurityGroupResultOutput) ToLookupSecurityGroupResultOutputWithContext(ctx context.Context) LookupSecurityGroupResultOutput {
 	return o
+}
+
+// The list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio) notation.
+func (o LookupSecurityGroupResultOutput) ExternalSources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupSecurityGroupResult) []string { return v.ExternalSources }).(pulumi.StringArrayOutput)
 }
 
 // The security group ID to match (conflicts with `name`)

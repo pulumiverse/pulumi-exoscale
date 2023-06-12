@@ -20,6 +20,7 @@ from .get_compute_instance import *
 from .get_compute_instance_list import *
 from .get_compute_ip_address import *
 from .get_compute_template import *
+from .get_database_uri import *
 from .get_domain import *
 from .get_domain_record import *
 from .get_elastic_ip import *

@@ -14,31 +14,29 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 dns_endpoint: pulumi.Input[str],
-                 timeout: pulumi.Input[int],
                  compute_endpoint: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  delay: Optional[pulumi.Input[int]] = None,
+                 dns_endpoint: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  gzip_user_data: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
+                 timeout: Optional[pulumi.Input[int]] = None,
                  token: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[str] dns_endpoint: Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
-        :param pulumi.Input[int] timeout: Timeout in seconds for waiting on compute resources to become available (by default: 300)
         :param pulumi.Input[str] compute_endpoint: Exoscale CloudStack API endpoint (by default: https://api.exoscale.com/v1)
         :param pulumi.Input[str] config: CloudStack ini configuration filename (by default: cloudstack.ini)
+        :param pulumi.Input[str] dns_endpoint: Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
         :param pulumi.Input[bool] gzip_user_data: Defines if the user-data of compute instances should be gzipped (by default: true)
         :param pulumi.Input[str] key: Exoscale API key
         :param pulumi.Input[str] region: CloudStack ini configuration section name (by default: cloudstack)
         :param pulumi.Input[str] secret: Exoscale API secret
+        :param pulumi.Input[int] timeout: Timeout in seconds for waiting on compute resources to become available (by default: 300)
         """
-        pulumi.set(__self__, "dns_endpoint", dns_endpoint)
-        pulumi.set(__self__, "timeout", timeout)
         if compute_endpoint is not None:
             pulumi.set(__self__, "compute_endpoint", compute_endpoint)
         if config is not None:
@@ -48,6 +46,8 @@ class ProviderArgs:
             pulumi.log.warn("""delay is deprecated: Does nothing""")
         if delay is not None:
             pulumi.set(__self__, "delay", delay)
+        if dns_endpoint is not None:
+            pulumi.set(__self__, "dns_endpoint", dns_endpoint)
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
         if gzip_user_data is not None:
@@ -63,35 +63,13 @@ class ProviderArgs:
             pulumi.set(__self__, "region", region)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
         if token is not None:
             warnings.warn("""Use key instead""", DeprecationWarning)
             pulumi.log.warn("""token is deprecated: Use key instead""")
         if token is not None:
             pulumi.set(__self__, "token", token)
-
-    @property
-    @pulumi.getter(name="dnsEndpoint")
-    def dns_endpoint(self) -> pulumi.Input[str]:
-        """
-        Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
-        """
-        return pulumi.get(self, "dns_endpoint")
-
-    @dns_endpoint.setter
-    def dns_endpoint(self, value: pulumi.Input[str]):
-        pulumi.set(self, "dns_endpoint", value)
-
-    @property
-    @pulumi.getter
-    def timeout(self) -> pulumi.Input[int]:
-        """
-        Timeout in seconds for waiting on compute resources to become available (by default: 300)
-        """
-        return pulumi.get(self, "timeout")
-
-    @timeout.setter
-    def timeout(self, value: pulumi.Input[int]):
-        pulumi.set(self, "timeout", value)
 
     @property
     @pulumi.getter(name="computeEndpoint")
@@ -125,6 +103,18 @@ class ProviderArgs:
     @delay.setter
     def delay(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "delay", value)
+
+    @property
+    @pulumi.getter(name="dnsEndpoint")
+    def dns_endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
+        """
+        return pulumi.get(self, "dns_endpoint")
+
+    @dns_endpoint.setter
+    def dns_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dns_endpoint", value)
 
     @property
     @pulumi.getter
@@ -194,6 +184,18 @@ class ProviderArgs:
 
     @property
     @pulumi.getter
+    def timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout in seconds for waiting on compute resources to become available (by default: 300)
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout", value)
+
+    @property
+    @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "token")
 
@@ -241,7 +243,7 @@ class Provider(pulumi.ProviderResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProviderArgs,
+                 args: Optional[ProviderArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The provider type for the exoscale package. By default, resources use package-wide configuration
@@ -291,8 +293,6 @@ class Provider(pulumi.ProviderResource):
                 warnings.warn("""Does nothing""", DeprecationWarning)
                 pulumi.log.warn("""delay is deprecated: Does nothing""")
             __props__.__dict__["delay"] = pulumi.Output.from_input(delay).apply(pulumi.runtime.to_json) if delay is not None else None
-            if dns_endpoint is None and not opts.urn:
-                raise TypeError("Missing required property 'dns_endpoint'")
             __props__.__dict__["dns_endpoint"] = dns_endpoint
             __props__.__dict__["environment"] = environment
             __props__.__dict__["gzip_user_data"] = pulumi.Output.from_input(gzip_user_data).apply(pulumi.runtime.to_json) if gzip_user_data is not None else None
@@ -303,8 +303,6 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["profile"] = profile
             __props__.__dict__["region"] = region
             __props__.__dict__["secret"] = None if secret is None else pulumi.Output.secret(secret)
-            if timeout is None and not opts.urn:
-                raise TypeError("Missing required property 'timeout'")
             __props__.__dict__["timeout"] = pulumi.Output.from_input(timeout).apply(pulumi.runtime.to_json) if timeout is not None else None
             if token is not None and not opts.urn:
                 warnings.warn("""Use key instead""", DeprecationWarning)
@@ -336,7 +334,7 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter(name="dnsEndpoint")
-    def dns_endpoint(self) -> pulumi.Output[str]:
+    def dns_endpoint(self) -> pulumi.Output[Optional[str]]:
         """
         Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
         """

@@ -236,7 +236,6 @@ class _DatabaseState:
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
-                 uri: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
@@ -261,7 +260,6 @@ class _DatabaseState:
         :param pulumi.Input[bool] termination_protection: The database service protection boolean flag against termination/power-off.
         :param pulumi.Input[str] type: The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
         :param pulumi.Input[str] updated_at: The date of the latest database service update.
-        :param pulumi.Input[str] uri: The database service connection URI.
         :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         if ca_certificate is not None:
@@ -302,8 +300,6 @@ class _DatabaseState:
             pulumi.set(__self__, "type", type)
         if updated_at is not None:
             pulumi.set(__self__, "updated_at", updated_at)
-        if uri is not None:
-            pulumi.set(__self__, "uri", uri)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -539,18 +535,6 @@ class _DatabaseState:
 
     @property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        The database service connection URI.
-        """
-        return pulumi.get(self, "uri")
-
-    @uri.setter
-    def uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "uri", value)
-
-    @property
-    @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
         The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
@@ -691,9 +675,6 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["nodes"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["updated_at"] = None
-            __props__.__dict__["uri"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["uri"])
-        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Database, __self__).__init__(
             'exoscale:index/database:Database',
             resource_name,
@@ -723,7 +704,6 @@ class Database(pulumi.CustomResource):
             termination_protection: Optional[pulumi.Input[bool]] = None,
             type: Optional[pulumi.Input[str]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
-            uri: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'Database':
         """
         Get an existing Database resource's state with the given name, id, and optional extra
@@ -753,7 +733,6 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[bool] termination_protection: The database service protection boolean flag against termination/power-off.
         :param pulumi.Input[str] type: The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
         :param pulumi.Input[str] updated_at: The date of the latest database service update.
-        :param pulumi.Input[str] uri: The database service connection URI.
         :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -779,7 +758,6 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["termination_protection"] = termination_protection
         __props__.__dict__["type"] = type
         __props__.__dict__["updated_at"] = updated_at
-        __props__.__dict__["uri"] = uri
         __props__.__dict__["zone"] = zone
         return Database(resource_name, opts=opts, __props__=__props__)
 
@@ -936,14 +914,6 @@ class Database(pulumi.CustomResource):
         The date of the latest database service update.
         """
         return pulumi.get(self, "updated_at")
-
-    @property
-    @pulumi.getter
-    def uri(self) -> pulumi.Output[str]:
-        """
-        The database service connection URI.
-        """
-        return pulumi.get(self, "uri")
 
     @property
     @pulumi.getter

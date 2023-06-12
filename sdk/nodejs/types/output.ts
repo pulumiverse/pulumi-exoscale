@@ -6,7 +6,7 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export interface ComputeInstanceNetworkInterface {
-    ipAddress?: string;
+    ipAddress: string;
     networkId: string;
 }
 
