@@ -27,42 +27,35 @@ import (
 type SecurityGroupRule struct {
 	pulumi.CustomResourceState
 
-	// An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR
-	// notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with
-	// `public_security_group`/`user_security_group`/`user_security_group_id`).
+	// ❗ An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with `publicSecurityGroup`/`userSecurityGroup`/`userSecurityGroupId`).
 	Cidr pulumi.StringPtrOutput `pulumi:"cidr"`
-	// A free-form text describing the security group rule.
+	// ❗ A free-form text describing the security group rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A `TCP`/`UDP` port range to match.
+	// ❗ A `TCP`/`UDP` port range to match.
 	EndPort pulumi.IntPtrOutput `pulumi:"endPort"`
-	// An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
+	// ❗ An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
 	IcmpCode pulumi.IntPtrOutput `pulumi:"icmpCode"`
-	// An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
+	// ❗ An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
 	IcmpType pulumi.IntPtrOutput `pulumi:"icmpType"`
-	// The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)
+	// ❗ The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
-	// An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with
-	// `cidr`/`user_security_group`/`user_security_group_id`).
+	// ❗ An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with `cidr`/`userSecurityGroup`/`userSecurityGroupId`).
 	PublicSecurityGroup pulumi.StringOutput `pulumi:"publicSecurityGroup"`
-	// The parent security group name. Please use the `security_group_id` argument along the
-	// [exoscale_security_group](../data-sources/security_group.md) data source instead.
+	// ❗ The parent security group name. Please use the `securityGroupId` argument along the exoscale*security*group data source instead.
 	//
 	// Deprecated: Deprecated in favor of `security_group_id`
 	SecurityGroup pulumi.StringOutput `pulumi:"securityGroup"`
-	// The parent [exoscale_security_group](./security_group.md) ID.
+	// ❗ The parent exoscale*security*group ID.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
-	// A `TCP`/`UDP` port range to match.
+	// ❗ A `TCP`/`UDP` port range to match.
 	StartPort pulumi.IntPtrOutput `pulumi:"startPort"`
-	// The traffic direction to match (`INGRESS` or `EGRESS`).
+	// ❗ The traffic direction to match (`INGRESS` or `EGRESS`).
 	Type pulumi.StringOutput `pulumi:"type"`
-	// An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with
-	// `cidr`/`public_security_group`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
-	// [exoscale_security_group](../data-sources/security_group.md) data source instead.
+	// ❗ An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`publicSecurityGroup`/`userSecurityGroupId`). Please use the `userSecurityGroupId` argument along the exoscale*security*group data source instead.
 	//
 	// Deprecated: Deprecated in favor of `user_security_group_id`
 	UserSecurityGroup pulumi.StringOutput `pulumi:"userSecurityGroup"`
-	// An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with
-	// `cidr`/`public_security_group`/`user_security_group)`).
+	// ❗ An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with `cidr`/`publicSecurityGroup`/`user_security_group)`).
 	UserSecurityGroupId pulumi.StringPtrOutput `pulumi:"userSecurityGroupId"`
 }
 
@@ -99,82 +92,68 @@ func GetSecurityGroupRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecurityGroupRule resources.
 type securityGroupRuleState struct {
-	// An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR
-	// notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with
-	// `public_security_group`/`user_security_group`/`user_security_group_id`).
+	// ❗ An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with `publicSecurityGroup`/`userSecurityGroup`/`userSecurityGroupId`).
 	Cidr *string `pulumi:"cidr"`
-	// A free-form text describing the security group rule.
+	// ❗ A free-form text describing the security group rule.
 	Description *string `pulumi:"description"`
-	// A `TCP`/`UDP` port range to match.
+	// ❗ A `TCP`/`UDP` port range to match.
 	EndPort *int `pulumi:"endPort"`
-	// An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
+	// ❗ An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
 	IcmpCode *int `pulumi:"icmpCode"`
-	// An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
+	// ❗ An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
 	IcmpType *int `pulumi:"icmpType"`
-	// The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)
+	// ❗ The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)
 	Protocol *string `pulumi:"protocol"`
-	// An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with
-	// `cidr`/`user_security_group`/`user_security_group_id`).
+	// ❗ An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with `cidr`/`userSecurityGroup`/`userSecurityGroupId`).
 	PublicSecurityGroup *string `pulumi:"publicSecurityGroup"`
-	// The parent security group name. Please use the `security_group_id` argument along the
-	// [exoscale_security_group](../data-sources/security_group.md) data source instead.
+	// ❗ The parent security group name. Please use the `securityGroupId` argument along the exoscale*security*group data source instead.
 	//
 	// Deprecated: Deprecated in favor of `security_group_id`
 	SecurityGroup *string `pulumi:"securityGroup"`
-	// The parent [exoscale_security_group](./security_group.md) ID.
+	// ❗ The parent exoscale*security*group ID.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// A `TCP`/`UDP` port range to match.
+	// ❗ A `TCP`/`UDP` port range to match.
 	StartPort *int `pulumi:"startPort"`
-	// The traffic direction to match (`INGRESS` or `EGRESS`).
+	// ❗ The traffic direction to match (`INGRESS` or `EGRESS`).
 	Type *string `pulumi:"type"`
-	// An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with
-	// `cidr`/`public_security_group`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
-	// [exoscale_security_group](../data-sources/security_group.md) data source instead.
+	// ❗ An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`publicSecurityGroup`/`userSecurityGroupId`). Please use the `userSecurityGroupId` argument along the exoscale*security*group data source instead.
 	//
 	// Deprecated: Deprecated in favor of `user_security_group_id`
 	UserSecurityGroup *string `pulumi:"userSecurityGroup"`
-	// An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with
-	// `cidr`/`public_security_group`/`user_security_group)`).
+	// ❗ An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with `cidr`/`publicSecurityGroup`/`user_security_group)`).
 	UserSecurityGroupId *string `pulumi:"userSecurityGroupId"`
 }
 
 type SecurityGroupRuleState struct {
-	// An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR
-	// notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with
-	// `public_security_group`/`user_security_group`/`user_security_group_id`).
+	// ❗ An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with `publicSecurityGroup`/`userSecurityGroup`/`userSecurityGroupId`).
 	Cidr pulumi.StringPtrInput
-	// A free-form text describing the security group rule.
+	// ❗ A free-form text describing the security group rule.
 	Description pulumi.StringPtrInput
-	// A `TCP`/`UDP` port range to match.
+	// ❗ A `TCP`/`UDP` port range to match.
 	EndPort pulumi.IntPtrInput
-	// An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
+	// ❗ An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
 	IcmpCode pulumi.IntPtrInput
-	// An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
+	// ❗ An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
 	IcmpType pulumi.IntPtrInput
-	// The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)
+	// ❗ The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)
 	Protocol pulumi.StringPtrInput
-	// An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with
-	// `cidr`/`user_security_group`/`user_security_group_id`).
+	// ❗ An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with `cidr`/`userSecurityGroup`/`userSecurityGroupId`).
 	PublicSecurityGroup pulumi.StringPtrInput
-	// The parent security group name. Please use the `security_group_id` argument along the
-	// [exoscale_security_group](../data-sources/security_group.md) data source instead.
+	// ❗ The parent security group name. Please use the `securityGroupId` argument along the exoscale*security*group data source instead.
 	//
 	// Deprecated: Deprecated in favor of `security_group_id`
 	SecurityGroup pulumi.StringPtrInput
-	// The parent [exoscale_security_group](./security_group.md) ID.
+	// ❗ The parent exoscale*security*group ID.
 	SecurityGroupId pulumi.StringPtrInput
-	// A `TCP`/`UDP` port range to match.
+	// ❗ A `TCP`/`UDP` port range to match.
 	StartPort pulumi.IntPtrInput
-	// The traffic direction to match (`INGRESS` or `EGRESS`).
+	// ❗ The traffic direction to match (`INGRESS` or `EGRESS`).
 	Type pulumi.StringPtrInput
-	// An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with
-	// `cidr`/`public_security_group`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
-	// [exoscale_security_group](../data-sources/security_group.md) data source instead.
+	// ❗ An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`publicSecurityGroup`/`userSecurityGroupId`). Please use the `userSecurityGroupId` argument along the exoscale*security*group data source instead.
 	//
 	// Deprecated: Deprecated in favor of `user_security_group_id`
 	UserSecurityGroup pulumi.StringPtrInput
-	// An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with
-	// `cidr`/`public_security_group`/`user_security_group)`).
+	// ❗ An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with `cidr`/`publicSecurityGroup`/`user_security_group)`).
 	UserSecurityGroupId pulumi.StringPtrInput
 }
 
@@ -183,83 +162,69 @@ func (SecurityGroupRuleState) ElementType() reflect.Type {
 }
 
 type securityGroupRuleArgs struct {
-	// An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR
-	// notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with
-	// `public_security_group`/`user_security_group`/`user_security_group_id`).
+	// ❗ An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with `publicSecurityGroup`/`userSecurityGroup`/`userSecurityGroupId`).
 	Cidr *string `pulumi:"cidr"`
-	// A free-form text describing the security group rule.
+	// ❗ A free-form text describing the security group rule.
 	Description *string `pulumi:"description"`
-	// A `TCP`/`UDP` port range to match.
+	// ❗ A `TCP`/`UDP` port range to match.
 	EndPort *int `pulumi:"endPort"`
-	// An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
+	// ❗ An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
 	IcmpCode *int `pulumi:"icmpCode"`
-	// An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
+	// ❗ An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
 	IcmpType *int `pulumi:"icmpType"`
-	// The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)
+	// ❗ The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)
 	Protocol *string `pulumi:"protocol"`
-	// An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with
-	// `cidr`/`user_security_group`/`user_security_group_id`).
+	// ❗ An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with `cidr`/`userSecurityGroup`/`userSecurityGroupId`).
 	PublicSecurityGroup *string `pulumi:"publicSecurityGroup"`
-	// The parent security group name. Please use the `security_group_id` argument along the
-	// [exoscale_security_group](../data-sources/security_group.md) data source instead.
+	// ❗ The parent security group name. Please use the `securityGroupId` argument along the exoscale*security*group data source instead.
 	//
 	// Deprecated: Deprecated in favor of `security_group_id`
 	SecurityGroup *string `pulumi:"securityGroup"`
-	// The parent [exoscale_security_group](./security_group.md) ID.
+	// ❗ The parent exoscale*security*group ID.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// A `TCP`/`UDP` port range to match.
+	// ❗ A `TCP`/`UDP` port range to match.
 	StartPort *int `pulumi:"startPort"`
-	// The traffic direction to match (`INGRESS` or `EGRESS`).
+	// ❗ The traffic direction to match (`INGRESS` or `EGRESS`).
 	Type string `pulumi:"type"`
-	// An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with
-	// `cidr`/`public_security_group`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
-	// [exoscale_security_group](../data-sources/security_group.md) data source instead.
+	// ❗ An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`publicSecurityGroup`/`userSecurityGroupId`). Please use the `userSecurityGroupId` argument along the exoscale*security*group data source instead.
 	//
 	// Deprecated: Deprecated in favor of `user_security_group_id`
 	UserSecurityGroup *string `pulumi:"userSecurityGroup"`
-	// An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with
-	// `cidr`/`public_security_group`/`user_security_group)`).
+	// ❗ An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with `cidr`/`publicSecurityGroup`/`user_security_group)`).
 	UserSecurityGroupId *string `pulumi:"userSecurityGroupId"`
 }
 
 // The set of arguments for constructing a SecurityGroupRule resource.
 type SecurityGroupRuleArgs struct {
-	// An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR
-	// notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with
-	// `public_security_group`/`user_security_group`/`user_security_group_id`).
+	// ❗ An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with `publicSecurityGroup`/`userSecurityGroup`/`userSecurityGroupId`).
 	Cidr pulumi.StringPtrInput
-	// A free-form text describing the security group rule.
+	// ❗ A free-form text describing the security group rule.
 	Description pulumi.StringPtrInput
-	// A `TCP`/`UDP` port range to match.
+	// ❗ A `TCP`/`UDP` port range to match.
 	EndPort pulumi.IntPtrInput
-	// An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
+	// ❗ An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
 	IcmpCode pulumi.IntPtrInput
-	// An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
+	// ❗ An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
 	IcmpType pulumi.IntPtrInput
-	// The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)
+	// ❗ The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)
 	Protocol pulumi.StringPtrInput
-	// An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with
-	// `cidr`/`user_security_group`/`user_security_group_id`).
+	// ❗ An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with `cidr`/`userSecurityGroup`/`userSecurityGroupId`).
 	PublicSecurityGroup pulumi.StringPtrInput
-	// The parent security group name. Please use the `security_group_id` argument along the
-	// [exoscale_security_group](../data-sources/security_group.md) data source instead.
+	// ❗ The parent security group name. Please use the `securityGroupId` argument along the exoscale*security*group data source instead.
 	//
 	// Deprecated: Deprecated in favor of `security_group_id`
 	SecurityGroup pulumi.StringPtrInput
-	// The parent [exoscale_security_group](./security_group.md) ID.
+	// ❗ The parent exoscale*security*group ID.
 	SecurityGroupId pulumi.StringPtrInput
-	// A `TCP`/`UDP` port range to match.
+	// ❗ A `TCP`/`UDP` port range to match.
 	StartPort pulumi.IntPtrInput
-	// The traffic direction to match (`INGRESS` or `EGRESS`).
+	// ❗ The traffic direction to match (`INGRESS` or `EGRESS`).
 	Type pulumi.StringInput
-	// An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with
-	// `cidr`/`public_security_group`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
-	// [exoscale_security_group](../data-sources/security_group.md) data source instead.
+	// ❗ An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`publicSecurityGroup`/`userSecurityGroupId`). Please use the `userSecurityGroupId` argument along the exoscale*security*group data source instead.
 	//
 	// Deprecated: Deprecated in favor of `user_security_group_id`
 	UserSecurityGroup pulumi.StringPtrInput
-	// An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with
-	// `cidr`/`public_security_group`/`user_security_group)`).
+	// ❗ An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with `cidr`/`publicSecurityGroup`/`user_security_group)`).
 	UserSecurityGroupId pulumi.StringPtrInput
 }
 
@@ -350,78 +315,71 @@ func (o SecurityGroupRuleOutput) ToSecurityGroupRuleOutputWithContext(ctx contex
 	return o
 }
 
-// An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR
-// notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with
-// `public_security_group`/`user_security_group`/`user_security_group_id`).
+// ❗ An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with `publicSecurityGroup`/`userSecurityGroup`/`userSecurityGroupId`).
 func (o SecurityGroupRuleOutput) Cidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringPtrOutput { return v.Cidr }).(pulumi.StringPtrOutput)
 }
 
-// A free-form text describing the security group rule.
+// ❗ A free-form text describing the security group rule.
 func (o SecurityGroupRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// A `TCP`/`UDP` port range to match.
+// ❗ A `TCP`/`UDP` port range to match.
 func (o SecurityGroupRuleOutput) EndPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.IntPtrOutput { return v.EndPort }).(pulumi.IntPtrOutput)
 }
 
-// An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
+// ❗ An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
 func (o SecurityGroupRuleOutput) IcmpCode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.IntPtrOutput { return v.IcmpCode }).(pulumi.IntPtrOutput)
 }
 
-// An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
+// ❗ An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
 func (o SecurityGroupRuleOutput) IcmpType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.IntPtrOutput { return v.IcmpType }).(pulumi.IntPtrOutput)
 }
 
-// The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)
+// ❗ The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)
 func (o SecurityGroupRuleOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringPtrOutput { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
-// An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with
-// `cidr`/`user_security_group`/`user_security_group_id`).
+// ❗ An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with `cidr`/`userSecurityGroup`/`userSecurityGroupId`).
 func (o SecurityGroupRuleOutput) PublicSecurityGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringOutput { return v.PublicSecurityGroup }).(pulumi.StringOutput)
 }
 
-// The parent security group name. Please use the `security_group_id` argument along the
-// [exoscale_security_group](../data-sources/security_group.md) data source instead.
+// ❗ The parent security group name. Please use the `securityGroupId` argument along the exoscale*security*group data source instead.
 //
 // Deprecated: Deprecated in favor of `security_group_id`
 func (o SecurityGroupRuleOutput) SecurityGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringOutput { return v.SecurityGroup }).(pulumi.StringOutput)
 }
 
-// The parent [exoscale_security_group](./security_group.md) ID.
+// ❗ The parent exoscale*security*group ID.
 func (o SecurityGroupRuleOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// A `TCP`/`UDP` port range to match.
+// ❗ A `TCP`/`UDP` port range to match.
 func (o SecurityGroupRuleOutput) StartPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.IntPtrOutput { return v.StartPort }).(pulumi.IntPtrOutput)
 }
 
-// The traffic direction to match (`INGRESS` or `EGRESS`).
+// ❗ The traffic direction to match (`INGRESS` or `EGRESS`).
 func (o SecurityGroupRuleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with
-// `cidr`/`public_security_group`/`user_security_group_id`). Please use the `user_security_group_id` argument along the
-// [exoscale_security_group](../data-sources/security_group.md) data source instead.
+// ❗ An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`publicSecurityGroup`/`userSecurityGroupId`). Please use the `userSecurityGroupId` argument along the exoscale*security*group data source instead.
 //
 // Deprecated: Deprecated in favor of `user_security_group_id`
 func (o SecurityGroupRuleOutput) UserSecurityGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringOutput { return v.UserSecurityGroup }).(pulumi.StringOutput)
 }
 
-// An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with
-// `cidr`/`public_security_group`/`user_security_group)`).
+// ❗ An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with `cidr`/`publicSecurityGroup`/`user_security_group)`).
 func (o SecurityGroupRuleOutput) UserSecurityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringPtrOutput { return v.UserSecurityGroupId }).(pulumi.StringPtrOutput)
 }

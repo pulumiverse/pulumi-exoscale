@@ -58,7 +58,7 @@ export class Domain extends pulumi.CustomResource {
      */
     public /*out*/ readonly expiresOn!: pulumi.Output<string>;
     /**
-     * The DNS domain name.
+     * ❗ The DNS domain name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -122,7 +122,7 @@ export interface DomainState {
      */
     expiresOn?: pulumi.Input<string>;
     /**
-     * The DNS domain name.
+     * ❗ The DNS domain name.
      */
     name?: pulumi.Input<string>;
     /**
@@ -144,7 +144,7 @@ export interface DomainState {
  */
 export interface DomainArgs {
     /**
-     * The DNS domain name.
+     * ❗ The DNS domain name.
      */
     name?: pulumi.Input<string>;
 }

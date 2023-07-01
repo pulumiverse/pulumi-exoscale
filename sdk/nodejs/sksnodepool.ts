@@ -46,11 +46,11 @@ export class SKSNodepool extends pulumi.CustomResource {
     }
 
     /**
-     * A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to be attached to the managed instances.
+     * A list of exoscale*anti*affinity_group (IDs) to be attached to the managed instances.
      */
     public readonly antiAffinityGroupIds!: pulumi.Output<string[] | undefined>;
     /**
-     * The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
+     * ❗ The parent exoscale*sks*cluster ID.
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
@@ -70,7 +70,7 @@ export class SKSNodepool extends pulumi.CustomResource {
      */
     public readonly diskSize!: pulumi.Output<number | undefined>;
     /**
-     * The underlying [exoscale_instance_pool](./instance_pool.md) ID.
+     * The underlying exoscale*instance*pool ID.
      */
     public /*out*/ readonly instancePoolId!: pulumi.Output<string>;
     /**
@@ -78,8 +78,7 @@ export class SKSNodepool extends pulumi.CustomResource {
      */
     public readonly instancePrefix!: pulumi.Output<string | undefined>;
     /**
-     * The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale
-     * CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
+     * The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
      */
     public readonly instanceType!: pulumi.Output<string>;
     /**
@@ -91,11 +90,11 @@ export class SKSNodepool extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A list of [exoscale_private_network](./private_network.md) (IDs) to be attached to the managed instances.
+     * A list of exoscale*private*network (IDs) to be attached to the managed instances.
      */
     public readonly privateNetworkIds!: pulumi.Output<string[] | undefined>;
     /**
-     * A list of [exoscale_security_group](./security_group.md) (IDs) to be attached to the managed instances.
+     * A list of exoscale*security*group (IDs) to be attached to the managed instances.
      */
     public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
     public readonly size!: pulumi.Output<number>;
@@ -104,8 +103,7 @@ export class SKSNodepool extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
-     * (`<value>:<effect>`).
+     * A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
      */
     public readonly taints!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -117,7 +115,7 @@ export class SKSNodepool extends pulumi.CustomResource {
      */
     public /*out*/ readonly version!: pulumi.Output<string>;
     /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -197,11 +195,11 @@ export class SKSNodepool extends pulumi.CustomResource {
  */
 export interface SKSNodepoolState {
     /**
-     * A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to be attached to the managed instances.
+     * A list of exoscale*anti*affinity_group (IDs) to be attached to the managed instances.
      */
     antiAffinityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
+     * ❗ The parent exoscale*sks*cluster ID.
      */
     clusterId?: pulumi.Input<string>;
     /**
@@ -221,7 +219,7 @@ export interface SKSNodepoolState {
      */
     diskSize?: pulumi.Input<number>;
     /**
-     * The underlying [exoscale_instance_pool](./instance_pool.md) ID.
+     * The underlying exoscale*instance*pool ID.
      */
     instancePoolId?: pulumi.Input<string>;
     /**
@@ -229,8 +227,7 @@ export interface SKSNodepoolState {
      */
     instancePrefix?: pulumi.Input<string>;
     /**
-     * The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale
-     * CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
+     * The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
      */
     instanceType?: pulumi.Input<string>;
     /**
@@ -242,11 +239,11 @@ export interface SKSNodepoolState {
      */
     name?: pulumi.Input<string>;
     /**
-     * A list of [exoscale_private_network](./private_network.md) (IDs) to be attached to the managed instances.
+     * A list of exoscale*private*network (IDs) to be attached to the managed instances.
      */
     privateNetworkIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of [exoscale_security_group](./security_group.md) (IDs) to be attached to the managed instances.
+     * A list of exoscale*security*group (IDs) to be attached to the managed instances.
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     size?: pulumi.Input<number>;
@@ -255,8 +252,7 @@ export interface SKSNodepoolState {
      */
     state?: pulumi.Input<string>;
     /**
-     * A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
-     * (`<value>:<effect>`).
+     * A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
      */
     taints?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -268,7 +264,7 @@ export interface SKSNodepoolState {
      */
     version?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone?: pulumi.Input<string>;
 }
@@ -278,11 +274,11 @@ export interface SKSNodepoolState {
  */
 export interface SKSNodepoolArgs {
     /**
-     * A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to be attached to the managed instances.
+     * A list of exoscale*anti*affinity_group (IDs) to be attached to the managed instances.
      */
     antiAffinityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
+     * ❗ The parent exoscale*sks*cluster ID.
      */
     clusterId: pulumi.Input<string>;
     /**
@@ -302,8 +298,7 @@ export interface SKSNodepoolArgs {
      */
     instancePrefix?: pulumi.Input<string>;
     /**
-     * The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale
-     * CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
+     * The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
      */
     instanceType: pulumi.Input<string>;
     /**
@@ -315,21 +310,20 @@ export interface SKSNodepoolArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * A list of [exoscale_private_network](./private_network.md) (IDs) to be attached to the managed instances.
+     * A list of exoscale*private*network (IDs) to be attached to the managed instances.
      */
     privateNetworkIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of [exoscale_security_group](./security_group.md) (IDs) to be attached to the managed instances.
+     * A list of exoscale*security*group (IDs) to be attached to the managed instances.
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     size: pulumi.Input<number>;
     /**
-     * A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
-     * (`<value>:<effect>`).
+     * A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
      */
     taints?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: pulumi.Input<string>;
 }

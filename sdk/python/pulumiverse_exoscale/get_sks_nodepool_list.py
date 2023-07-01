@@ -307,24 +307,24 @@ def get_sks_nodepool_list(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('exoscale:index/getSKSNodepoolList:getSKSNodepoolList', __args__, opts=opts, typ=GetSKSNodepoolListResult).value
 
     return AwaitableGetSKSNodepoolListResult(
-        cluster_id=__ret__.cluster_id,
-        created_at=__ret__.created_at,
-        deploy_target_id=__ret__.deploy_target_id,
-        description=__ret__.description,
-        disk_size=__ret__.disk_size,
-        id=__ret__.id,
-        instance_pool_id=__ret__.instance_pool_id,
-        instance_prefix=__ret__.instance_prefix,
-        instance_type=__ret__.instance_type,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        nodepools=__ret__.nodepools,
-        size=__ret__.size,
-        state=__ret__.state,
-        taints=__ret__.taints,
-        template_id=__ret__.template_id,
-        version=__ret__.version,
-        zone=__ret__.zone)
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        deploy_target_id=pulumi.get(__ret__, 'deploy_target_id'),
+        description=pulumi.get(__ret__, 'description'),
+        disk_size=pulumi.get(__ret__, 'disk_size'),
+        id=pulumi.get(__ret__, 'id'),
+        instance_pool_id=pulumi.get(__ret__, 'instance_pool_id'),
+        instance_prefix=pulumi.get(__ret__, 'instance_prefix'),
+        instance_type=pulumi.get(__ret__, 'instance_type'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        nodepools=pulumi.get(__ret__, 'nodepools'),
+        size=pulumi.get(__ret__, 'size'),
+        state=pulumi.get(__ret__, 'state'),
+        taints=pulumi.get(__ret__, 'taints'),
+        template_id=pulumi.get(__ret__, 'template_id'),
+        version=pulumi.get(__ret__, 'version'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_sks_nodepool_list)

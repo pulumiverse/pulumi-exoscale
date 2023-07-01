@@ -21,8 +21,7 @@ type Network struct {
 	EndIp pulumi.StringPtrOutput `pulumi:"endIp"`
 	// The private network name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
-	// private networks.
+	// The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
 	Netmask pulumi.StringPtrOutput `pulumi:"netmask"`
 	// Deprecated: This attribute is deprecated, please remove it from your configuration.
 	NetworkOffering pulumi.StringPtrOutput `pulumi:"networkOffering"`
@@ -30,7 +29,7 @@ type Network struct {
 	StartIp pulumi.StringPtrOutput `pulumi:"startIp"`
 	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The Exoscale Zone name.
+	// ❗ The Exoscale Zone name.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -73,8 +72,7 @@ type networkState struct {
 	EndIp *string `pulumi:"endIp"`
 	// The private network name.
 	Name *string `pulumi:"name"`
-	// The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
-	// private networks.
+	// The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
 	Netmask *string `pulumi:"netmask"`
 	// Deprecated: This attribute is deprecated, please remove it from your configuration.
 	NetworkOffering *string `pulumi:"networkOffering"`
@@ -82,7 +80,7 @@ type networkState struct {
 	StartIp *string `pulumi:"startIp"`
 	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags map[string]string `pulumi:"tags"`
-	// The Exoscale Zone name.
+	// ❗ The Exoscale Zone name.
 	Zone *string `pulumi:"zone"`
 }
 
@@ -93,8 +91,7 @@ type NetworkState struct {
 	EndIp pulumi.StringPtrInput
 	// The private network name.
 	Name pulumi.StringPtrInput
-	// The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
-	// private networks.
+	// The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
 	Netmask pulumi.StringPtrInput
 	// Deprecated: This attribute is deprecated, please remove it from your configuration.
 	NetworkOffering pulumi.StringPtrInput
@@ -102,7 +99,7 @@ type NetworkState struct {
 	StartIp pulumi.StringPtrInput
 	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags pulumi.StringMapInput
-	// The Exoscale Zone name.
+	// ❗ The Exoscale Zone name.
 	Zone pulumi.StringPtrInput
 }
 
@@ -117,8 +114,7 @@ type networkArgs struct {
 	EndIp *string `pulumi:"endIp"`
 	// The private network name.
 	Name *string `pulumi:"name"`
-	// The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
-	// private networks.
+	// The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
 	Netmask *string `pulumi:"netmask"`
 	// Deprecated: This attribute is deprecated, please remove it from your configuration.
 	NetworkOffering *string `pulumi:"networkOffering"`
@@ -126,7 +122,7 @@ type networkArgs struct {
 	StartIp *string `pulumi:"startIp"`
 	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags map[string]string `pulumi:"tags"`
-	// The Exoscale Zone name.
+	// ❗ The Exoscale Zone name.
 	Zone string `pulumi:"zone"`
 }
 
@@ -138,8 +134,7 @@ type NetworkArgs struct {
 	EndIp pulumi.StringPtrInput
 	// The private network name.
 	Name pulumi.StringPtrInput
-	// The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
-	// private networks.
+	// The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
 	Netmask pulumi.StringPtrInput
 	// Deprecated: This attribute is deprecated, please remove it from your configuration.
 	NetworkOffering pulumi.StringPtrInput
@@ -147,7 +142,7 @@ type NetworkArgs struct {
 	StartIp pulumi.StringPtrInput
 	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags pulumi.StringMapInput
-	// The Exoscale Zone name.
+	// ❗ The Exoscale Zone name.
 	Zone pulumi.StringInput
 }
 
@@ -253,8 +248,7 @@ func (o NetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
-// private networks.
+// The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
 func (o NetworkOutput) Netmask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.Netmask }).(pulumi.StringPtrOutput)
 }
@@ -274,7 +268,7 @@ func (o NetworkOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The Exoscale Zone name.
+// ❗ The Exoscale Zone name.
 func (o NetworkOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

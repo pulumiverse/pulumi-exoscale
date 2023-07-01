@@ -29,19 +29,17 @@ class IPAddressArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a IPAddress resource.
-        :param pulumi.Input[str] zone: The Exoscale Zone name
+        :param pulumi.Input[str] zone: ❗ The Exoscale Zone name
         :param pulumi.Input[str] description: A free-form text describing the Elastic IP (EIP).
         :param pulumi.Input[int] healthcheck_interval: The healthcheck probing interval (seconds; must be between `5` and `300`).
-        :param pulumi.Input[str] healthcheck_mode: The healthcheck probing mode (must be `tcp`, `http` or `https`).
+        :param pulumi.Input[str] healthcheck_mode: ❗ The healthcheck probing mode (must be `tcp`, `http` or `https`).
         :param pulumi.Input[str] healthcheck_path: The healthcheck probe HTTP request path (must be specified in `http`/`https` modes).
         :param pulumi.Input[int] healthcheck_port: The healthcheck service port to probe (must be between `1` and `65535`).
         :param pulumi.Input[int] healthcheck_strikes_fail: The number of unsuccessful healthcheck probes before considering the target unhealthy (must be between `1` and `20`).
         :param pulumi.Input[int] healthcheck_strikes_ok: The number of successful healthcheck probes before considering the target healthy (must be between `1` and `20`).
         :param pulumi.Input[int] healthcheck_timeout: The time in seconds before considering a healthcheck probing failed (must be between `2` and `60`).
-        :param pulumi.Input[bool] healthcheck_tls_skip_verify: Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
-               to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
-        :param pulumi.Input[str] healthcheck_tls_sni: The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
-               value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+        :param pulumi.Input[bool] healthcheck_tls_skip_verify: Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+        :param pulumi.Input[str] healthcheck_tls_sni: The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
         :param pulumi.Input[str] reverse_dns: The EIP reverse DNS record (must end with a `.`; e.g: `my-eip.example.net.`).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags (key/value). To remove all tags, set `tags = {}`.
         """
@@ -75,7 +73,7 @@ class IPAddressArgs:
     @pulumi.getter
     def zone(self) -> pulumi.Input[str]:
         """
-        The Exoscale Zone name
+        ❗ The Exoscale Zone name
         """
         return pulumi.get(self, "zone")
 
@@ -111,7 +109,7 @@ class IPAddressArgs:
     @pulumi.getter(name="healthcheckMode")
     def healthcheck_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The healthcheck probing mode (must be `tcp`, `http` or `https`).
+        ❗ The healthcheck probing mode (must be `tcp`, `http` or `https`).
         """
         return pulumi.get(self, "healthcheck_mode")
 
@@ -183,8 +181,7 @@ class IPAddressArgs:
     @pulumi.getter(name="healthcheckTlsSkipVerify")
     def healthcheck_tls_skip_verify(self) -> Optional[pulumi.Input[bool]]:
         """
-        Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
-        to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+        Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
         """
         return pulumi.get(self, "healthcheck_tls_skip_verify")
 
@@ -196,8 +193,7 @@ class IPAddressArgs:
     @pulumi.getter(name="healthcheckTlsSni")
     def healthcheck_tls_sni(self) -> Optional[pulumi.Input[str]]:
         """
-        The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
-        value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+        The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
         """
         return pulumi.get(self, "healthcheck_tls_sni")
 
@@ -251,20 +247,18 @@ class _IPAddressState:
         Input properties used for looking up and filtering IPAddress resources.
         :param pulumi.Input[str] description: A free-form text describing the Elastic IP (EIP).
         :param pulumi.Input[int] healthcheck_interval: The healthcheck probing interval (seconds; must be between `5` and `300`).
-        :param pulumi.Input[str] healthcheck_mode: The healthcheck probing mode (must be `tcp`, `http` or `https`).
+        :param pulumi.Input[str] healthcheck_mode: ❗ The healthcheck probing mode (must be `tcp`, `http` or `https`).
         :param pulumi.Input[str] healthcheck_path: The healthcheck probe HTTP request path (must be specified in `http`/`https` modes).
         :param pulumi.Input[int] healthcheck_port: The healthcheck service port to probe (must be between `1` and `65535`).
         :param pulumi.Input[int] healthcheck_strikes_fail: The number of unsuccessful healthcheck probes before considering the target unhealthy (must be between `1` and `20`).
         :param pulumi.Input[int] healthcheck_strikes_ok: The number of successful healthcheck probes before considering the target healthy (must be between `1` and `20`).
         :param pulumi.Input[int] healthcheck_timeout: The time in seconds before considering a healthcheck probing failed (must be between `2` and `60`).
-        :param pulumi.Input[bool] healthcheck_tls_skip_verify: Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
-               to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
-        :param pulumi.Input[str] healthcheck_tls_sni: The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
-               value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+        :param pulumi.Input[bool] healthcheck_tls_skip_verify: Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+        :param pulumi.Input[str] healthcheck_tls_sni: The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
         :param pulumi.Input[str] ip_address: The Elastic IP (EIP) IPv4 address.
         :param pulumi.Input[str] reverse_dns: The EIP reverse DNS record (must end with a `.`; e.g: `my-eip.example.net.`).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags (key/value). To remove all tags, set `tags = {}`.
-        :param pulumi.Input[str] zone: The Exoscale Zone name
+        :param pulumi.Input[str] zone: ❗ The Exoscale Zone name
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -323,7 +317,7 @@ class _IPAddressState:
     @pulumi.getter(name="healthcheckMode")
     def healthcheck_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The healthcheck probing mode (must be `tcp`, `http` or `https`).
+        ❗ The healthcheck probing mode (must be `tcp`, `http` or `https`).
         """
         return pulumi.get(self, "healthcheck_mode")
 
@@ -395,8 +389,7 @@ class _IPAddressState:
     @pulumi.getter(name="healthcheckTlsSkipVerify")
     def healthcheck_tls_skip_verify(self) -> Optional[pulumi.Input[bool]]:
         """
-        Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
-        to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+        Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
         """
         return pulumi.get(self, "healthcheck_tls_skip_verify")
 
@@ -408,8 +401,7 @@ class _IPAddressState:
     @pulumi.getter(name="healthcheckTlsSni")
     def healthcheck_tls_sni(self) -> Optional[pulumi.Input[str]]:
         """
-        The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
-        value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+        The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
         """
         return pulumi.get(self, "healthcheck_tls_sni")
 
@@ -457,7 +449,7 @@ class _IPAddressState:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The Exoscale Zone name
+        ❗ The Exoscale Zone name
         """
         return pulumi.get(self, "zone")
 
@@ -492,19 +484,17 @@ class IPAddress(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free-form text describing the Elastic IP (EIP).
         :param pulumi.Input[int] healthcheck_interval: The healthcheck probing interval (seconds; must be between `5` and `300`).
-        :param pulumi.Input[str] healthcheck_mode: The healthcheck probing mode (must be `tcp`, `http` or `https`).
+        :param pulumi.Input[str] healthcheck_mode: ❗ The healthcheck probing mode (must be `tcp`, `http` or `https`).
         :param pulumi.Input[str] healthcheck_path: The healthcheck probe HTTP request path (must be specified in `http`/`https` modes).
         :param pulumi.Input[int] healthcheck_port: The healthcheck service port to probe (must be between `1` and `65535`).
         :param pulumi.Input[int] healthcheck_strikes_fail: The number of unsuccessful healthcheck probes before considering the target unhealthy (must be between `1` and `20`).
         :param pulumi.Input[int] healthcheck_strikes_ok: The number of successful healthcheck probes before considering the target healthy (must be between `1` and `20`).
         :param pulumi.Input[int] healthcheck_timeout: The time in seconds before considering a healthcheck probing failed (must be between `2` and `60`).
-        :param pulumi.Input[bool] healthcheck_tls_skip_verify: Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
-               to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
-        :param pulumi.Input[str] healthcheck_tls_sni: The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
-               value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+        :param pulumi.Input[bool] healthcheck_tls_skip_verify: Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+        :param pulumi.Input[str] healthcheck_tls_sni: The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
         :param pulumi.Input[str] reverse_dns: The EIP reverse DNS record (must end with a `.`; e.g: `my-eip.example.net.`).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags (key/value). To remove all tags, set `tags = {}`.
-        :param pulumi.Input[str] zone: The Exoscale Zone name
+        :param pulumi.Input[str] zone: ❗ The Exoscale Zone name
         """
         ...
     @overload
@@ -601,20 +591,18 @@ class IPAddress(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free-form text describing the Elastic IP (EIP).
         :param pulumi.Input[int] healthcheck_interval: The healthcheck probing interval (seconds; must be between `5` and `300`).
-        :param pulumi.Input[str] healthcheck_mode: The healthcheck probing mode (must be `tcp`, `http` or `https`).
+        :param pulumi.Input[str] healthcheck_mode: ❗ The healthcheck probing mode (must be `tcp`, `http` or `https`).
         :param pulumi.Input[str] healthcheck_path: The healthcheck probe HTTP request path (must be specified in `http`/`https` modes).
         :param pulumi.Input[int] healthcheck_port: The healthcheck service port to probe (must be between `1` and `65535`).
         :param pulumi.Input[int] healthcheck_strikes_fail: The number of unsuccessful healthcheck probes before considering the target unhealthy (must be between `1` and `20`).
         :param pulumi.Input[int] healthcheck_strikes_ok: The number of successful healthcheck probes before considering the target healthy (must be between `1` and `20`).
         :param pulumi.Input[int] healthcheck_timeout: The time in seconds before considering a healthcheck probing failed (must be between `2` and `60`).
-        :param pulumi.Input[bool] healthcheck_tls_skip_verify: Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
-               to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
-        :param pulumi.Input[str] healthcheck_tls_sni: The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
-               value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+        :param pulumi.Input[bool] healthcheck_tls_skip_verify: Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+        :param pulumi.Input[str] healthcheck_tls_sni: The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
         :param pulumi.Input[str] ip_address: The Elastic IP (EIP) IPv4 address.
         :param pulumi.Input[str] reverse_dns: The EIP reverse DNS record (must end with a `.`; e.g: `my-eip.example.net.`).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags (key/value). To remove all tags, set `tags = {}`.
-        :param pulumi.Input[str] zone: The Exoscale Zone name
+        :param pulumi.Input[str] zone: ❗ The Exoscale Zone name
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -656,7 +644,7 @@ class IPAddress(pulumi.CustomResource):
     @pulumi.getter(name="healthcheckMode")
     def healthcheck_mode(self) -> pulumi.Output[Optional[str]]:
         """
-        The healthcheck probing mode (must be `tcp`, `http` or `https`).
+        ❗ The healthcheck probing mode (must be `tcp`, `http` or `https`).
         """
         return pulumi.get(self, "healthcheck_mode")
 
@@ -704,8 +692,7 @@ class IPAddress(pulumi.CustomResource):
     @pulumi.getter(name="healthcheckTlsSkipVerify")
     def healthcheck_tls_skip_verify(self) -> pulumi.Output[Optional[bool]]:
         """
-        Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
-        to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+        Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
         """
         return pulumi.get(self, "healthcheck_tls_skip_verify")
 
@@ -713,8 +700,7 @@ class IPAddress(pulumi.CustomResource):
     @pulumi.getter(name="healthcheckTlsSni")
     def healthcheck_tls_sni(self) -> pulumi.Output[Optional[str]]:
         """
-        The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
-        value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+        The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
         """
         return pulumi.get(self, "healthcheck_tls_sni")
 
@@ -746,7 +732,7 @@ class IPAddress(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         """
-        The Exoscale Zone name
+        ❗ The Exoscale Zone name
         """
         return pulumi.get(self, "zone")
 

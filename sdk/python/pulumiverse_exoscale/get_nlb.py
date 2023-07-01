@@ -135,13 +135,13 @@ def get_nlb(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('exoscale:index/getNLB:getNLB', __args__, opts=opts, typ=GetNLBResult).value
 
     return AwaitableGetNLBResult(
-        created_at=__ret__.created_at,
-        description=__ret__.description,
-        id=__ret__.id,
-        ip_address=__ret__.ip_address,
-        name=__ret__.name,
-        state=__ret__.state,
-        zone=__ret__.zone)
+        created_at=pulumi.get(__ret__, 'created_at'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        ip_address=pulumi.get(__ret__, 'ip_address'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_nlb)

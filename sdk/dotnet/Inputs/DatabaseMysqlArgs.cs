@@ -15,6 +15,10 @@ namespace Pulumiverse.Exoscale.Inputs
     {
         [Input("adminPassword")]
         private Input<string>? _adminPassword;
+
+        /// <summary>
+        /// A custom administrator account password (may only be set at creation time).
+        /// </summary>
         public Input<string>? AdminPassword
         {
             get => _adminPassword;
@@ -25,23 +29,39 @@ namespace Pulumiverse.Exoscale.Inputs
             }
         }
 
+        /// <summary>
+        /// A custom administrator account username (may only be set at creation time).
+        /// </summary>
         [Input("adminUsername")]
         public Input<string>? AdminUsername { get; set; }
 
+        /// <summary>
+        /// The automated backup schedule (`HH:MM`).
+        /// </summary>
         [Input("backupSchedule")]
         public Input<string>? BackupSchedule { get; set; }
 
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
+
+        /// <summary>
+        /// A list of CIDR blocks to allow incoming connections from.
+        /// </summary>
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
+        /// <summary>
+        /// MySQL configuration settings in JSON format (`exo dbaas type show mysql --settings=mysql` for reference).
+        /// </summary>
         [Input("mysqlSettings")]
         public Input<string>? MysqlSettings { get; set; }
 
+        /// <summary>
+        /// MySQL major version (`exo dbaas type show mysql` for reference; may only be set at creation time).
+        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 

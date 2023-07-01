@@ -15,7 +15,7 @@ import (
 type NIC struct {
 	pulumi.CustomResourceState
 
-	// The compute instance ID.
+	// ❗ The compute instance ID.
 	ComputeId pulumi.StringOutput `pulumi:"computeId"`
 	Gateway   pulumi.StringOutput `pulumi:"gateway"`
 	// The IPv4 address to request as static DHCP lease if the NIC is attached to a *managed* private network.
@@ -23,7 +23,7 @@ type NIC struct {
 	// The NIC MAC address.
 	MacAddress pulumi.StringOutput `pulumi:"macAddress"`
 	Netmask    pulumi.StringOutput `pulumi:"netmask"`
-	// The private network ID.
+	// ❗ The private network ID.
 	NetworkId pulumi.StringOutput `pulumi:"networkId"`
 }
 
@@ -63,7 +63,7 @@ func GetNIC(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NIC resources.
 type nicState struct {
-	// The compute instance ID.
+	// ❗ The compute instance ID.
 	ComputeId *string `pulumi:"computeId"`
 	Gateway   *string `pulumi:"gateway"`
 	// The IPv4 address to request as static DHCP lease if the NIC is attached to a *managed* private network.
@@ -71,12 +71,12 @@ type nicState struct {
 	// The NIC MAC address.
 	MacAddress *string `pulumi:"macAddress"`
 	Netmask    *string `pulumi:"netmask"`
-	// The private network ID.
+	// ❗ The private network ID.
 	NetworkId *string `pulumi:"networkId"`
 }
 
 type NICState struct {
-	// The compute instance ID.
+	// ❗ The compute instance ID.
 	ComputeId pulumi.StringPtrInput
 	Gateway   pulumi.StringPtrInput
 	// The IPv4 address to request as static DHCP lease if the NIC is attached to a *managed* private network.
@@ -84,7 +84,7 @@ type NICState struct {
 	// The NIC MAC address.
 	MacAddress pulumi.StringPtrInput
 	Netmask    pulumi.StringPtrInput
-	// The private network ID.
+	// ❗ The private network ID.
 	NetworkId pulumi.StringPtrInput
 }
 
@@ -93,21 +93,21 @@ func (NICState) ElementType() reflect.Type {
 }
 
 type nicArgs struct {
-	// The compute instance ID.
+	// ❗ The compute instance ID.
 	ComputeId string `pulumi:"computeId"`
 	// The IPv4 address to request as static DHCP lease if the NIC is attached to a *managed* private network.
 	IpAddress *string `pulumi:"ipAddress"`
-	// The private network ID.
+	// ❗ The private network ID.
 	NetworkId string `pulumi:"networkId"`
 }
 
 // The set of arguments for constructing a NIC resource.
 type NICArgs struct {
-	// The compute instance ID.
+	// ❗ The compute instance ID.
 	ComputeId pulumi.StringInput
 	// The IPv4 address to request as static DHCP lease if the NIC is attached to a *managed* private network.
 	IpAddress pulumi.StringPtrInput
-	// The private network ID.
+	// ❗ The private network ID.
 	NetworkId pulumi.StringInput
 }
 
@@ -198,7 +198,7 @@ func (o NICOutput) ToNICOutputWithContext(ctx context.Context) NICOutput {
 	return o
 }
 
-// The compute instance ID.
+// ❗ The compute instance ID.
 func (o NICOutput) ComputeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NIC) pulumi.StringOutput { return v.ComputeId }).(pulumi.StringOutput)
 }
@@ -221,7 +221,7 @@ func (o NICOutput) Netmask() pulumi.StringOutput {
 	return o.ApplyT(func(v *NIC) pulumi.StringOutput { return v.Netmask }).(pulumi.StringOutput)
 }
 
-// The private network ID.
+// ❗ The private network ID.
 func (o NICOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NIC) pulumi.StringOutput { return v.NetworkId }).(pulumi.StringOutput)
 }

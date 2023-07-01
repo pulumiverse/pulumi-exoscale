@@ -18,8 +18,8 @@ class AntiAffinityGroupArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AntiAffinityGroup resource.
-        :param pulumi.Input[str] description: A free-form text describing the group.
-        :param pulumi.Input[str] name: The anti-affinity group name.
+        :param pulumi.Input[str] description: ❗ A free-form text describing the group.
+        :param pulumi.Input[str] name: ❗ The anti-affinity group name.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -30,7 +30,7 @@ class AntiAffinityGroupArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A free-form text describing the group.
+        ❗ A free-form text describing the group.
         """
         return pulumi.get(self, "description")
 
@@ -42,7 +42,7 @@ class AntiAffinityGroupArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The anti-affinity group name.
+        ❗ The anti-affinity group name.
         """
         return pulumi.get(self, "name")
 
@@ -58,8 +58,8 @@ class _AntiAffinityGroupState:
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AntiAffinityGroup resources.
-        :param pulumi.Input[str] description: A free-form text describing the group.
-        :param pulumi.Input[str] name: The anti-affinity group name.
+        :param pulumi.Input[str] description: ❗ A free-form text describing the group.
+        :param pulumi.Input[str] name: ❗ The anti-affinity group name.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -70,7 +70,7 @@ class _AntiAffinityGroupState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A free-form text describing the group.
+        ❗ A free-form text describing the group.
         """
         return pulumi.get(self, "description")
 
@@ -82,7 +82,7 @@ class _AntiAffinityGroupState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The anti-affinity group name.
+        ❗ The anti-affinity group name.
         """
         return pulumi.get(self, "name")
 
@@ -114,8 +114,8 @@ class AntiAffinityGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A free-form text describing the group.
-        :param pulumi.Input[str] name: The anti-affinity group name.
+        :param pulumi.Input[str] description: ❗ A free-form text describing the group.
+        :param pulumi.Input[str] name: ❗ The anti-affinity group name.
         """
         ...
     @overload
@@ -183,8 +183,8 @@ class AntiAffinityGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A free-form text describing the group.
-        :param pulumi.Input[str] name: The anti-affinity group name.
+        :param pulumi.Input[str] description: ❗ A free-form text describing the group.
+        :param pulumi.Input[str] name: ❗ The anti-affinity group name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -198,7 +198,7 @@ class AntiAffinityGroup(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        A free-form text describing the group.
+        ❗ A free-form text describing the group.
         """
         return pulumi.get(self, "description")
 
@@ -206,7 +206,7 @@ class AntiAffinityGroup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The anti-affinity group name.
+        ❗ The anti-affinity group name.
         """
         return pulumi.get(self, "name")
 

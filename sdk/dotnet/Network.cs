@@ -35,8 +35,7 @@ namespace Pulumiverse.Exoscale
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
-        /// private networks.
+        /// The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.
         /// </summary>
         [Output("netmask")]
         public Output<string?> Netmask { get; private set; } = null!;
@@ -57,7 +56,7 @@ namespace Pulumiverse.Exoscale
         public Output<ImmutableDictionary<string, string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The Exoscale Zone name.
+        /// ❗ The Exoscale Zone name.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -128,8 +127,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
-        /// private networks.
+        /// The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
@@ -156,7 +154,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The Exoscale Zone name.
+        /// ❗ The Exoscale Zone name.
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -188,8 +186,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
-        /// private networks.
+        /// The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
@@ -216,7 +213,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The Exoscale Zone name.
+        /// ❗ The Exoscale Zone name.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

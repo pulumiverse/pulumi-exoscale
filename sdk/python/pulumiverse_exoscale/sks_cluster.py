@@ -30,21 +30,17 @@ class SKSClusterArgs:
                  version: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SKSCluster resource.
-        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         :param pulumi.Input[bool] auto_upgrade: Enable automatic upgrading of the control plane version.
         :param pulumi.Input[str] cni: The CNI plugin that is to be used. Defaults to "calico".
         :param pulumi.Input[str] description: A free-form text describing the cluster.
-        :param pulumi.Input[bool] exoscale_ccm: Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the
-               control plane (boolean; default: `true`; may only be set at creation time).
+        :param pulumi.Input[bool] exoscale_ccm: Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
-        :param pulumi.Input[bool] metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane
-               (boolean; default: `true`; may only be set at creation time).
+        :param pulumi.Input[bool] metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
         :param pulumi.Input[str] name: The SKS cluster name.
-        :param pulumi.Input['SKSClusterOidcArgs'] oidc: An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is
-               documented below.
+        :param pulumi.Input['SKSClusterOidcArgs'] oidc: An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
         :param pulumi.Input[str] service_level: The service level of the control plane (`pro` or `starter`; default: `pro`; may only be set at creation time).
-        :param pulumi.Input[str] version: The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for
-               reference; may only be set at creation time).
+        :param pulumi.Input[str] version: The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
         """
         pulumi.set(__self__, "zone", zone)
         if addons is not None:
@@ -77,7 +73,7 @@ class SKSClusterArgs:
     @pulumi.getter
     def zone(self) -> pulumi.Input[str]:
         """
-        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 
@@ -88,6 +84,9 @@ class SKSClusterArgs:
     @property
     @pulumi.getter
     def addons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        warnings.warn("""This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""", DeprecationWarning)
+        pulumi.log.warn("""addons is deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""")
+
         return pulumi.get(self, "addons")
 
     @addons.setter
@@ -134,8 +133,7 @@ class SKSClusterArgs:
     @pulumi.getter(name="exoscaleCcm")
     def exoscale_ccm(self) -> Optional[pulumi.Input[bool]]:
         """
-        Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the
-        control plane (boolean; default: `true`; may only be set at creation time).
+        Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
         """
         return pulumi.get(self, "exoscale_ccm")
 
@@ -159,8 +157,7 @@ class SKSClusterArgs:
     @pulumi.getter(name="metricsServer")
     def metrics_server(self) -> Optional[pulumi.Input[bool]]:
         """
-        Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane
-        (boolean; default: `true`; may only be set at creation time).
+        Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
         """
         return pulumi.get(self, "metrics_server")
 
@@ -184,8 +181,7 @@ class SKSClusterArgs:
     @pulumi.getter
     def oidc(self) -> Optional[pulumi.Input['SKSClusterOidcArgs']]:
         """
-        An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is
-        documented below.
+        An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
         """
         return pulumi.get(self, "oidc")
 
@@ -209,8 +205,7 @@ class SKSClusterArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for
-        reference; may only be set at creation time).
+        The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
         """
         return pulumi.get(self, "version")
 
@@ -243,29 +238,24 @@ class _SKSClusterState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SKSCluster resources.
-        :param pulumi.Input[str] aggregation_ca: The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g.
-               `metrics-server`).
+        :param pulumi.Input[str] aggregation_ca: The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
         :param pulumi.Input[bool] auto_upgrade: Enable automatic upgrading of the control plane version.
         :param pulumi.Input[str] cni: The CNI plugin that is to be used. Defaults to "calico".
         :param pulumi.Input[str] control_plane_ca: The CA certificate (in PEM format) for TLS communications between control plane components.
         :param pulumi.Input[str] created_at: The cluster creation date.
         :param pulumi.Input[str] description: A free-form text describing the cluster.
         :param pulumi.Input[str] endpoint: The cluster API endpoint.
-        :param pulumi.Input[bool] exoscale_ccm: Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the
-               control plane (boolean; default: `true`; may only be set at creation time).
+        :param pulumi.Input[bool] exoscale_ccm: Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
         :param pulumi.Input[str] kubelet_ca: The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
-        :param pulumi.Input[bool] metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane
-               (boolean; default: `true`; may only be set at creation time).
+        :param pulumi.Input[bool] metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
         :param pulumi.Input[str] name: The SKS cluster name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] nodepools: The list of [exoscale_sks_nodepool](./sks_nodepool.md) (IDs) attached to the cluster.
-        :param pulumi.Input['SKSClusterOidcArgs'] oidc: An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is
-               documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] nodepools: The list of exoscale*sks*nodepool (IDs) attached to the cluster.
+        :param pulumi.Input['SKSClusterOidcArgs'] oidc: An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
         :param pulumi.Input[str] service_level: The service level of the control plane (`pro` or `starter`; default: `pro`; may only be set at creation time).
         :param pulumi.Input[str] state: The cluster state.
-        :param pulumi.Input[str] version: The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for
-               reference; may only be set at creation time).
-        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        :param pulumi.Input[str] version: The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
+        :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         if addons is not None:
             warnings.warn("""This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""", DeprecationWarning)
@@ -312,6 +302,9 @@ class _SKSClusterState:
     @property
     @pulumi.getter
     def addons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        warnings.warn("""This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""", DeprecationWarning)
+        pulumi.log.warn("""addons is deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""")
+
         return pulumi.get(self, "addons")
 
     @addons.setter
@@ -322,8 +315,7 @@ class _SKSClusterState:
     @pulumi.getter(name="aggregationCa")
     def aggregation_ca(self) -> Optional[pulumi.Input[str]]:
         """
-        The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g.
-        `metrics-server`).
+        The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
         """
         return pulumi.get(self, "aggregation_ca")
 
@@ -407,8 +399,7 @@ class _SKSClusterState:
     @pulumi.getter(name="exoscaleCcm")
     def exoscale_ccm(self) -> Optional[pulumi.Input[bool]]:
         """
-        Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the
-        control plane (boolean; default: `true`; may only be set at creation time).
+        Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
         """
         return pulumi.get(self, "exoscale_ccm")
 
@@ -444,8 +435,7 @@ class _SKSClusterState:
     @pulumi.getter(name="metricsServer")
     def metrics_server(self) -> Optional[pulumi.Input[bool]]:
         """
-        Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane
-        (boolean; default: `true`; may only be set at creation time).
+        Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
         """
         return pulumi.get(self, "metrics_server")
 
@@ -469,7 +459,7 @@ class _SKSClusterState:
     @pulumi.getter
     def nodepools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The list of [exoscale_sks_nodepool](./sks_nodepool.md) (IDs) attached to the cluster.
+        The list of exoscale*sks*nodepool (IDs) attached to the cluster.
         """
         return pulumi.get(self, "nodepools")
 
@@ -481,8 +471,7 @@ class _SKSClusterState:
     @pulumi.getter
     def oidc(self) -> Optional[pulumi.Input['SKSClusterOidcArgs']]:
         """
-        An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is
-        documented below.
+        An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
         """
         return pulumi.get(self, "oidc")
 
@@ -518,8 +507,7 @@ class _SKSClusterState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for
-        reference; may only be set at creation time).
+        The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
         """
         return pulumi.get(self, "version")
 
@@ -531,7 +519,7 @@ class _SKSClusterState:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 
@@ -576,18 +564,14 @@ class SKSCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_upgrade: Enable automatic upgrading of the control plane version.
         :param pulumi.Input[str] cni: The CNI plugin that is to be used. Defaults to "calico".
         :param pulumi.Input[str] description: A free-form text describing the cluster.
-        :param pulumi.Input[bool] exoscale_ccm: Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the
-               control plane (boolean; default: `true`; may only be set at creation time).
+        :param pulumi.Input[bool] exoscale_ccm: Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
-        :param pulumi.Input[bool] metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane
-               (boolean; default: `true`; may only be set at creation time).
+        :param pulumi.Input[bool] metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
         :param pulumi.Input[str] name: The SKS cluster name.
-        :param pulumi.Input[pulumi.InputType['SKSClusterOidcArgs']] oidc: An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is
-               documented below.
+        :param pulumi.Input[pulumi.InputType['SKSClusterOidcArgs']] oidc: An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
         :param pulumi.Input[str] service_level: The service level of the control plane (`pro` or `starter`; default: `pro`; may only be set at creation time).
-        :param pulumi.Input[str] version: The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for
-               reference; may only be set at creation time).
-        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        :param pulumi.Input[str] version: The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
+        :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         ...
     @overload
@@ -704,29 +688,24 @@ class SKSCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] aggregation_ca: The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g.
-               `metrics-server`).
+        :param pulumi.Input[str] aggregation_ca: The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
         :param pulumi.Input[bool] auto_upgrade: Enable automatic upgrading of the control plane version.
         :param pulumi.Input[str] cni: The CNI plugin that is to be used. Defaults to "calico".
         :param pulumi.Input[str] control_plane_ca: The CA certificate (in PEM format) for TLS communications between control plane components.
         :param pulumi.Input[str] created_at: The cluster creation date.
         :param pulumi.Input[str] description: A free-form text describing the cluster.
         :param pulumi.Input[str] endpoint: The cluster API endpoint.
-        :param pulumi.Input[bool] exoscale_ccm: Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the
-               control plane (boolean; default: `true`; may only be set at creation time).
+        :param pulumi.Input[bool] exoscale_ccm: Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
         :param pulumi.Input[str] kubelet_ca: The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
-        :param pulumi.Input[bool] metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane
-               (boolean; default: `true`; may only be set at creation time).
+        :param pulumi.Input[bool] metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
         :param pulumi.Input[str] name: The SKS cluster name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] nodepools: The list of [exoscale_sks_nodepool](./sks_nodepool.md) (IDs) attached to the cluster.
-        :param pulumi.Input[pulumi.InputType['SKSClusterOidcArgs']] oidc: An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is
-               documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] nodepools: The list of exoscale*sks*nodepool (IDs) attached to the cluster.
+        :param pulumi.Input[pulumi.InputType['SKSClusterOidcArgs']] oidc: An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
         :param pulumi.Input[str] service_level: The service level of the control plane (`pro` or `starter`; default: `pro`; may only be set at creation time).
         :param pulumi.Input[str] state: The cluster state.
-        :param pulumi.Input[str] version: The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for
-               reference; may only be set at creation time).
-        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        :param pulumi.Input[str] version: The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
+        :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -756,14 +735,16 @@ class SKSCluster(pulumi.CustomResource):
     @property
     @pulumi.getter
     def addons(self) -> pulumi.Output[Sequence[str]]:
+        warnings.warn("""This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""", DeprecationWarning)
+        pulumi.log.warn("""addons is deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""")
+
         return pulumi.get(self, "addons")
 
     @property
     @pulumi.getter(name="aggregationCa")
     def aggregation_ca(self) -> pulumi.Output[str]:
         """
-        The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g.
-        `metrics-server`).
+        The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
         """
         return pulumi.get(self, "aggregation_ca")
 
@@ -819,8 +800,7 @@ class SKSCluster(pulumi.CustomResource):
     @pulumi.getter(name="exoscaleCcm")
     def exoscale_ccm(self) -> pulumi.Output[Optional[bool]]:
         """
-        Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the
-        control plane (boolean; default: `true`; may only be set at creation time).
+        Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
         """
         return pulumi.get(self, "exoscale_ccm")
 
@@ -844,8 +824,7 @@ class SKSCluster(pulumi.CustomResource):
     @pulumi.getter(name="metricsServer")
     def metrics_server(self) -> pulumi.Output[Optional[bool]]:
         """
-        Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane
-        (boolean; default: `true`; may only be set at creation time).
+        Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
         """
         return pulumi.get(self, "metrics_server")
 
@@ -861,7 +840,7 @@ class SKSCluster(pulumi.CustomResource):
     @pulumi.getter
     def nodepools(self) -> pulumi.Output[Sequence[str]]:
         """
-        The list of [exoscale_sks_nodepool](./sks_nodepool.md) (IDs) attached to the cluster.
+        The list of exoscale*sks*nodepool (IDs) attached to the cluster.
         """
         return pulumi.get(self, "nodepools")
 
@@ -869,8 +848,7 @@ class SKSCluster(pulumi.CustomResource):
     @pulumi.getter
     def oidc(self) -> pulumi.Output['outputs.SKSClusterOidc']:
         """
-        An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is
-        documented below.
+        An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
         """
         return pulumi.get(self, "oidc")
 
@@ -894,8 +872,7 @@ class SKSCluster(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[str]:
         """
-        The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for
-        reference; may only be set at creation time).
+        The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
         """
         return pulumi.get(self, "version")
 
@@ -903,7 +880,7 @@ class SKSCluster(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         """
-        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 

@@ -29,11 +29,11 @@ class NLBServiceArgs:
         """
         The set of arguments for constructing a NLBService resource.
         :param pulumi.Input[Sequence[pulumi.Input['NLBServiceHealthcheckArgs']]] healthchecks: The service health checking configuration (may only bet set at creation time).
-        :param pulumi.Input[str] instance_pool_id: The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
-        :param pulumi.Input[str] nlb_id: The parent [exoscale_nlb](./nlb.md) ID.
+        :param pulumi.Input[str] instance_pool_id: The exoscale*instance*pool (ID) to forward traffic to.
+        :param pulumi.Input[str] nlb_id: ❗ The parent NLB ID.
         :param pulumi.Input[int] port: The healthcheck port.
         :param pulumi.Input[int] target_port: The (TCP/UDP) port to forward traffic to (on target instance pool members).
-        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         :param pulumi.Input[str] description: A free-form text describing the NLB service.
         :param pulumi.Input[str] name: The NLB service name.
         :param pulumi.Input[str] protocol: The protocol (`tcp`|`udp`; default: `tcp`).
@@ -70,7 +70,7 @@ class NLBServiceArgs:
     @pulumi.getter(name="instancePoolId")
     def instance_pool_id(self) -> pulumi.Input[str]:
         """
-        The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
+        The exoscale*instance*pool (ID) to forward traffic to.
         """
         return pulumi.get(self, "instance_pool_id")
 
@@ -82,7 +82,7 @@ class NLBServiceArgs:
     @pulumi.getter(name="nlbId")
     def nlb_id(self) -> pulumi.Input[str]:
         """
-        The parent [exoscale_nlb](./nlb.md) ID.
+        ❗ The parent NLB ID.
         """
         return pulumi.get(self, "nlb_id")
 
@@ -118,7 +118,7 @@ class NLBServiceArgs:
     @pulumi.getter
     def zone(self) -> pulumi.Input[str]:
         """
-        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 
@@ -193,14 +193,14 @@ class _NLBServiceState:
         Input properties used for looking up and filtering NLBService resources.
         :param pulumi.Input[str] description: A free-form text describing the NLB service.
         :param pulumi.Input[Sequence[pulumi.Input['NLBServiceHealthcheckArgs']]] healthchecks: The service health checking configuration (may only bet set at creation time).
-        :param pulumi.Input[str] instance_pool_id: The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
+        :param pulumi.Input[str] instance_pool_id: The exoscale*instance*pool (ID) to forward traffic to.
         :param pulumi.Input[str] name: The NLB service name.
-        :param pulumi.Input[str] nlb_id: The parent [exoscale_nlb](./nlb.md) ID.
+        :param pulumi.Input[str] nlb_id: ❗ The parent NLB ID.
         :param pulumi.Input[int] port: The healthcheck port.
         :param pulumi.Input[str] protocol: The protocol (`tcp`|`udp`; default: `tcp`).
         :param pulumi.Input[str] strategy: The strategy (`round-robin`|`source-hash`; default: `round-robin`).
         :param pulumi.Input[int] target_port: The (TCP/UDP) port to forward traffic to (on target instance pool members).
-        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -253,7 +253,7 @@ class _NLBServiceState:
     @pulumi.getter(name="instancePoolId")
     def instance_pool_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
+        The exoscale*instance*pool (ID) to forward traffic to.
         """
         return pulumi.get(self, "instance_pool_id")
 
@@ -277,7 +277,7 @@ class _NLBServiceState:
     @pulumi.getter(name="nlbId")
     def nlb_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The parent [exoscale_nlb](./nlb.md) ID.
+        ❗ The parent NLB ID.
         """
         return pulumi.get(self, "nlb_id")
 
@@ -346,7 +346,7 @@ class _NLBServiceState:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 
@@ -388,14 +388,14 @@ class NLBService(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free-form text describing the NLB service.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NLBServiceHealthcheckArgs']]]] healthchecks: The service health checking configuration (may only bet set at creation time).
-        :param pulumi.Input[str] instance_pool_id: The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
+        :param pulumi.Input[str] instance_pool_id: The exoscale*instance*pool (ID) to forward traffic to.
         :param pulumi.Input[str] name: The NLB service name.
-        :param pulumi.Input[str] nlb_id: The parent [exoscale_nlb](./nlb.md) ID.
+        :param pulumi.Input[str] nlb_id: ❗ The parent NLB ID.
         :param pulumi.Input[int] port: The healthcheck port.
         :param pulumi.Input[str] protocol: The protocol (`tcp`|`udp`; default: `tcp`).
         :param pulumi.Input[str] strategy: The strategy (`round-robin`|`source-hash`; default: `round-robin`).
         :param pulumi.Input[int] target_port: The (TCP/UDP) port to forward traffic to (on target instance pool members).
-        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         ...
     @overload
@@ -503,14 +503,14 @@ class NLBService(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free-form text describing the NLB service.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NLBServiceHealthcheckArgs']]]] healthchecks: The service health checking configuration (may only bet set at creation time).
-        :param pulumi.Input[str] instance_pool_id: The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
+        :param pulumi.Input[str] instance_pool_id: The exoscale*instance*pool (ID) to forward traffic to.
         :param pulumi.Input[str] name: The NLB service name.
-        :param pulumi.Input[str] nlb_id: The parent [exoscale_nlb](./nlb.md) ID.
+        :param pulumi.Input[str] nlb_id: ❗ The parent NLB ID.
         :param pulumi.Input[int] port: The healthcheck port.
         :param pulumi.Input[str] protocol: The protocol (`tcp`|`udp`; default: `tcp`).
         :param pulumi.Input[str] strategy: The strategy (`round-robin`|`source-hash`; default: `round-robin`).
         :param pulumi.Input[int] target_port: The (TCP/UDP) port to forward traffic to (on target instance pool members).
-        :param pulumi.Input[str] zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -549,7 +549,7 @@ class NLBService(pulumi.CustomResource):
     @pulumi.getter(name="instancePoolId")
     def instance_pool_id(self) -> pulumi.Output[str]:
         """
-        The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
+        The exoscale*instance*pool (ID) to forward traffic to.
         """
         return pulumi.get(self, "instance_pool_id")
 
@@ -565,7 +565,7 @@ class NLBService(pulumi.CustomResource):
     @pulumi.getter(name="nlbId")
     def nlb_id(self) -> pulumi.Output[str]:
         """
-        The parent [exoscale_nlb](./nlb.md) ID.
+        ❗ The parent NLB ID.
         """
         return pulumi.get(self, "nlb_id")
 
@@ -610,7 +610,7 @@ class NLBService(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         """
-        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 

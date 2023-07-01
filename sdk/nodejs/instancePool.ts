@@ -48,7 +48,7 @@ export class InstancePool extends pulumi.CustomResource {
     }
 
     /**
-     * A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs; may only be set at creation time).
+     * A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
      */
     public readonly affinityGroupIds!: pulumi.Output<string[] | undefined>;
     /**
@@ -64,7 +64,7 @@ export class InstancePool extends pulumi.CustomResource {
      */
     public readonly diskSize!: pulumi.Output<number>;
     /**
-     * A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs).
+     * A list of exoscale*elastic*ip (IDs).
      */
     public readonly elasticIpIds!: pulumi.Output<string[] | undefined>;
     /**
@@ -72,8 +72,7 @@ export class InstancePool extends pulumi.CustomResource {
      */
     public readonly instancePrefix!: pulumi.Output<string | undefined>;
     /**
-     * The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale
-     * CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
+     * The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
      */
     public readonly instanceType!: pulumi.Output<string>;
     /**
@@ -85,7 +84,7 @@ export class InstancePool extends pulumi.CustomResource {
      */
     public readonly ipv6!: pulumi.Output<boolean | undefined>;
     /**
-     * The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the managed instances.
+     * The exoscale*ssh*key (name) to authorize in the managed instances.
      */
     public readonly keyPair!: pulumi.Output<string | undefined>;
     /**
@@ -97,15 +96,15 @@ export class InstancePool extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A list of [exoscale_private_network](./private_network.md) (IDs).
+     * A list of exoscale*private*network (IDs).
      */
     public readonly networkIds!: pulumi.Output<string[] | undefined>;
     /**
-     * A list of [exoscale_security_group](./security_groups.md) (IDs).
+     * A list of exoscale*security*group (IDs).
      */
     public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
     /**
-     * The managed instances type. Please use the `instance_type` argument instead.
+     * The managed instances type. Please use the `instanceType` argument instead.
      *
      * @deprecated This attribute has been replaced by "instance_type".
      */
@@ -116,12 +115,11 @@ export class InstancePool extends pulumi.CustomResource {
     public readonly size!: pulumi.Output<number>;
     public readonly state!: pulumi.Output<string>;
     /**
-     * The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the managed instances.
+     * The exoscale*compute*template (ID) to use when creating the managed instances.
      */
     public readonly templateId!: pulumi.Output<string>;
     /**
-     * [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode
-     * or gzip it as the provider will take care of it).
+     * [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
      */
     public readonly userData!: pulumi.Output<string | undefined>;
     /**
@@ -131,7 +129,7 @@ export class InstancePool extends pulumi.CustomResource {
      */
     public readonly virtualMachines!: pulumi.Output<string[]>;
     /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -212,7 +210,7 @@ export class InstancePool extends pulumi.CustomResource {
  */
 export interface InstancePoolState {
     /**
-     * A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs; may only be set at creation time).
+     * A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
      */
     affinityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -228,7 +226,7 @@ export interface InstancePoolState {
      */
     diskSize?: pulumi.Input<number>;
     /**
-     * A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs).
+     * A list of exoscale*elastic*ip (IDs).
      */
     elasticIpIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -236,8 +234,7 @@ export interface InstancePoolState {
      */
     instancePrefix?: pulumi.Input<string>;
     /**
-     * The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale
-     * CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
+     * The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
      */
     instanceType?: pulumi.Input<string>;
     /**
@@ -249,7 +246,7 @@ export interface InstancePoolState {
      */
     ipv6?: pulumi.Input<boolean>;
     /**
-     * The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the managed instances.
+     * The exoscale*ssh*key (name) to authorize in the managed instances.
      */
     keyPair?: pulumi.Input<string>;
     /**
@@ -261,15 +258,15 @@ export interface InstancePoolState {
      */
     name?: pulumi.Input<string>;
     /**
-     * A list of [exoscale_private_network](./private_network.md) (IDs).
+     * A list of exoscale*private*network (IDs).
      */
     networkIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of [exoscale_security_group](./security_groups.md) (IDs).
+     * A list of exoscale*security*group (IDs).
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The managed instances type. Please use the `instance_type` argument instead.
+     * The managed instances type. Please use the `instanceType` argument instead.
      *
      * @deprecated This attribute has been replaced by "instance_type".
      */
@@ -280,12 +277,11 @@ export interface InstancePoolState {
     size?: pulumi.Input<number>;
     state?: pulumi.Input<string>;
     /**
-     * The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the managed instances.
+     * The exoscale*compute*template (ID) to use when creating the managed instances.
      */
     templateId?: pulumi.Input<string>;
     /**
-     * [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode
-     * or gzip it as the provider will take care of it).
+     * [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
      */
     userData?: pulumi.Input<string>;
     /**
@@ -295,7 +291,7 @@ export interface InstancePoolState {
      */
     virtualMachines?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone?: pulumi.Input<string>;
 }
@@ -305,7 +301,7 @@ export interface InstancePoolState {
  */
 export interface InstancePoolArgs {
     /**
-     * A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs; may only be set at creation time).
+     * A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
      */
     affinityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -321,7 +317,7 @@ export interface InstancePoolArgs {
      */
     diskSize?: pulumi.Input<number>;
     /**
-     * A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs).
+     * A list of exoscale*elastic*ip (IDs).
      */
     elasticIpIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -329,8 +325,7 @@ export interface InstancePoolArgs {
      */
     instancePrefix?: pulumi.Input<string>;
     /**
-     * The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale
-     * CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
+     * The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
      */
     instanceType?: pulumi.Input<string>;
     /**
@@ -342,7 +337,7 @@ export interface InstancePoolArgs {
      */
     ipv6?: pulumi.Input<boolean>;
     /**
-     * The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the managed instances.
+     * The exoscale*ssh*key (name) to authorize in the managed instances.
      */
     keyPair?: pulumi.Input<string>;
     /**
@@ -354,15 +349,15 @@ export interface InstancePoolArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * A list of [exoscale_private_network](./private_network.md) (IDs).
+     * A list of exoscale*private*network (IDs).
      */
     networkIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of [exoscale_security_group](./security_groups.md) (IDs).
+     * A list of exoscale*security*group (IDs).
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The managed instances type. Please use the `instance_type` argument instead.
+     * The managed instances type. Please use the `instanceType` argument instead.
      *
      * @deprecated This attribute has been replaced by "instance_type".
      */
@@ -373,12 +368,11 @@ export interface InstancePoolArgs {
     size: pulumi.Input<number>;
     state?: pulumi.Input<string>;
     /**
-     * The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the managed instances.
+     * The exoscale*compute*template (ID) to use when creating the managed instances.
      */
     templateId: pulumi.Input<string>;
     /**
-     * [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode
-     * or gzip it as the provider will take care of it).
+     * [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
      */
     userData?: pulumi.Input<string>;
     /**
@@ -388,7 +382,7 @@ export interface InstancePoolArgs {
      */
     virtualMachines?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: pulumi.Input<string>;
 }

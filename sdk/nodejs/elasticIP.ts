@@ -48,7 +48,7 @@ export class ElasticIP extends pulumi.CustomResource {
     }
 
     /**
-     * The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
+     * ❗ The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
      */
     public readonly addressFamily!: pulumi.Output<string>;
     /**
@@ -76,7 +76,7 @@ export class ElasticIP extends pulumi.CustomResource {
      */
     public readonly reverseDns!: pulumi.Output<string | undefined>;
     /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -125,7 +125,7 @@ export class ElasticIP extends pulumi.CustomResource {
  */
 export interface ElasticIPState {
     /**
-     * The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
+     * ❗ The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
      */
     addressFamily?: pulumi.Input<string>;
     /**
@@ -153,7 +153,7 @@ export interface ElasticIPState {
      */
     reverseDns?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone?: pulumi.Input<string>;
 }
@@ -163,7 +163,7 @@ export interface ElasticIPState {
  */
 export interface ElasticIPArgs {
     /**
-     * The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
+     * ❗ The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
      */
     addressFamily?: pulumi.Input<string>;
     /**
@@ -183,7 +183,7 @@ export interface ElasticIPArgs {
      */
     reverseDns?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: pulumi.Input<string>;
 }

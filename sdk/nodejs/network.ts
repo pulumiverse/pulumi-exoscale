@@ -48,8 +48,7 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
-     * private networks.
+     * The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.
      */
     public readonly netmask!: pulumi.Output<string | undefined>;
     /**
@@ -65,7 +64,7 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The Exoscale Zone name.
+     * ❗ The Exoscale Zone name.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -126,8 +125,7 @@ export interface NetworkState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
-     * private networks.
+     * The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.
      */
     netmask?: pulumi.Input<string>;
     /**
@@ -143,7 +141,7 @@ export interface NetworkState {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The Exoscale Zone name.
+     * ❗ The Exoscale Zone name.
      */
     zone?: pulumi.Input<string>;
 }
@@ -165,8 +163,7 @@ export interface NetworkArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
-     * private networks.
+     * The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.
      */
     netmask?: pulumi.Input<string>;
     /**
@@ -182,7 +179,7 @@ export interface NetworkArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The Exoscale Zone name.
+     * ❗ The Exoscale Zone name.
      */
     zone: pulumi.Input<string>;
 }

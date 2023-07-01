@@ -57,7 +57,7 @@ namespace Pulumiverse.Exoscale
         public Output<string?> StartIp { get; private set; } = null!;
 
         /// <summary>
-        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? StartIp { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? StartIp { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

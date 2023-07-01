@@ -114,11 +114,11 @@ def get_template(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('exoscale:index/getTemplate:getTemplate', __args__, opts=opts, typ=GetTemplateResult).value
 
     return AwaitableGetTemplateResult(
-        default_user=__ret__.default_user,
-        id=__ret__.id,
-        name=__ret__.name,
-        visibility=__ret__.visibility,
-        zone=__ret__.zone)
+        default_user=pulumi.get(__ret__, 'default_user'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        visibility=pulumi.get(__ret__, 'visibility'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_template)

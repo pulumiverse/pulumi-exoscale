@@ -14,11 +14,29 @@ namespace Pulumiverse.Exoscale.Outputs
     [OutputType]
     public sealed class DatabaseMysql
     {
+        /// <summary>
+        /// A custom administrator account password (may only be set at creation time).
+        /// </summary>
         public readonly string? AdminPassword;
+        /// <summary>
+        /// A custom administrator account username (may only be set at creation time).
+        /// </summary>
         public readonly string? AdminUsername;
+        /// <summary>
+        /// The automated backup schedule (`HH:MM`).
+        /// </summary>
         public readonly string? BackupSchedule;
+        /// <summary>
+        /// A list of CIDR blocks to allow incoming connections from.
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        /// <summary>
+        /// MySQL configuration settings in JSON format (`exo dbaas type show mysql --settings=mysql` for reference).
+        /// </summary>
         public readonly string? MysqlSettings;
+        /// <summary>
+        /// MySQL major version (`exo dbaas type show mysql` for reference; may only be set at creation time).
+        /// </summary>
         public readonly string? Version;
 
         [OutputConstructor]

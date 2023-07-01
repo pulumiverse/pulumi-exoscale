@@ -98,10 +98,10 @@ def get_domain_record(domain: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('exoscale:index/getDomainRecord:getDomainRecord', __args__, opts=opts, typ=GetDomainRecordResult).value
 
     return AwaitableGetDomainRecordResult(
-        domain=__ret__.domain,
-        filter=__ret__.filter,
-        id=__ret__.id,
-        records=__ret__.records)
+        domain=pulumi.get(__ret__, 'domain'),
+        filter=pulumi.get(__ret__, 'filter'),
+        id=pulumi.get(__ret__, 'id'),
+        records=pulumi.get(__ret__, 'records'))
 
 
 @_utilities.lift_output_func(get_domain_record)

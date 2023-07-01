@@ -17,21 +17,16 @@ import (
 type Compute struct {
 	pulumi.CustomResourceState
 
-	// A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
+	// ❗ A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinityGroups`).
 	AffinityGroupIds pulumi.StringArrayOutput `pulumi:"affinityGroupIds"`
-	// A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
+	// ❗ A list of anti-affinity groups (names; at creation time only; conflicts with `affinityGroupIds`).
 	AffinityGroups pulumi.StringArrayOutput `pulumi:"affinityGroups"`
 	// The instance disk size (GiB; at least `10`).
 	DiskSize pulumi.IntOutput `pulumi:"diskSize"`
-	// The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'
-	// *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed
-	// to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will
-	// be generated automatically.
+	// The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed to any character during a later update. If neither `displayName` or `hostname` attributes are set, a random value will be generated automatically.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	Gateway     pulumi.StringOutput `pulumi:"gateway"`
-	// The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or
-	// `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value
-	// requires to reboot the instance.
+	// The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `displayName` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// Request an IPv4 address on the default NIC
 	Ip4 pulumi.BoolPtrOutput `pulumi:"ip4"`
@@ -42,10 +37,9 @@ type Compute struct {
 	Ip6Cidr    pulumi.StringOutput `pulumi:"ip6Cidr"`
 	// The instance (main network interface) IPv4 address.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
-	// The SSH keypair (name) to authorize in the instance.
+	// ❗ The SSH keypair (name) to authorize in the instance.
 	KeyPair pulumi.StringPtrOutput `pulumi:"keyPair"`
-	// The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,
-	// `pt`, `uk`, `us`; at creation time only).
+	// The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).
 	Keyboard pulumi.StringPtrOutput `pulumi:"keyboard"`
 	// The instance hostname. Please use the `hostname` argument instead.
 	//
@@ -55,9 +49,9 @@ type Compute struct {
 	Password pulumi.StringOutput `pulumi:"password"`
 	// The instance reverse DNS record (must end with a `.`; e.g: `my-instance.example.net.`).
 	ReverseDns pulumi.StringPtrOutput `pulumi:"reverseDns"`
-	// A list of security groups (IDs; conflicts with `security_groups`).
+	// A list of security groups (IDs; conflicts with `securityGroups`).
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	// A list of security groups (names; conflicts with `security_group_ids`).
+	// A list of security groups (names; conflicts with `securityGroupIds`).
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
 	// The instance size (`Tiny`, `Small`, `Medium`, `Large`, etc.)
 	Size pulumi.StringPtrOutput `pulumi:"size"`
@@ -65,21 +59,19 @@ type Compute struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The compute instance template (name). Only *featured* templates are available, if you want to reference *custom
-	// templates* use the `template_id` attribute instead.
+	// ❗ The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `templateId` attribute instead.
 	Template pulumi.StringOutput `pulumi:"template"`
-	// The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.
+	// ❗ The compute instance template (ID). Usage of the `getComputeTemplate` data source is recommended.
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
 	// cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// was the cloud-init configuration base64 encoded
 	UserDataBase64 pulumi.BoolOutput `pulumi:"userDataBase64"`
-	// The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the
-	// `exoscale_compute_template` data source `username` attribute instead.
+	// The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the `getComputeTemplate` data source `username` attribute instead.
 	//
 	// Deprecated: broken, use `compute_template` data source `username` attribute
 	Username pulumi.StringOutput `pulumi:"username"`
-	// The Exoscale Zone name.
+	// ❗ The Exoscale Zone name.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -123,21 +115,16 @@ func GetCompute(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Compute resources.
 type computeState struct {
-	// A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
+	// ❗ A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinityGroups`).
 	AffinityGroupIds []string `pulumi:"affinityGroupIds"`
-	// A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
+	// ❗ A list of anti-affinity groups (names; at creation time only; conflicts with `affinityGroupIds`).
 	AffinityGroups []string `pulumi:"affinityGroups"`
 	// The instance disk size (GiB; at least `10`).
 	DiskSize *int `pulumi:"diskSize"`
-	// The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'
-	// *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed
-	// to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will
-	// be generated automatically.
+	// The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed to any character during a later update. If neither `displayName` or `hostname` attributes are set, a random value will be generated automatically.
 	DisplayName *string `pulumi:"displayName"`
 	Gateway     *string `pulumi:"gateway"`
-	// The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or
-	// `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value
-	// requires to reboot the instance.
+	// The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `displayName` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.
 	Hostname *string `pulumi:"hostname"`
 	// Request an IPv4 address on the default NIC
 	Ip4 *bool `pulumi:"ip4"`
@@ -148,10 +135,9 @@ type computeState struct {
 	Ip6Cidr    *string `pulumi:"ip6Cidr"`
 	// The instance (main network interface) IPv4 address.
 	IpAddress *string `pulumi:"ipAddress"`
-	// The SSH keypair (name) to authorize in the instance.
+	// ❗ The SSH keypair (name) to authorize in the instance.
 	KeyPair *string `pulumi:"keyPair"`
-	// The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,
-	// `pt`, `uk`, `us`; at creation time only).
+	// The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).
 	Keyboard *string `pulumi:"keyboard"`
 	// The instance hostname. Please use the `hostname` argument instead.
 	//
@@ -161,9 +147,9 @@ type computeState struct {
 	Password *string `pulumi:"password"`
 	// The instance reverse DNS record (must end with a `.`; e.g: `my-instance.example.net.`).
 	ReverseDns *string `pulumi:"reverseDns"`
-	// A list of security groups (IDs; conflicts with `security_groups`).
+	// A list of security groups (IDs; conflicts with `securityGroups`).
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// A list of security groups (names; conflicts with `security_group_ids`).
+	// A list of security groups (names; conflicts with `securityGroupIds`).
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// The instance size (`Tiny`, `Small`, `Medium`, `Large`, etc.)
 	Size *string `pulumi:"size"`
@@ -171,40 +157,33 @@ type computeState struct {
 	State *string `pulumi:"state"`
 	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags map[string]string `pulumi:"tags"`
-	// The compute instance template (name). Only *featured* templates are available, if you want to reference *custom
-	// templates* use the `template_id` attribute instead.
+	// ❗ The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `templateId` attribute instead.
 	Template *string `pulumi:"template"`
-	// The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.
+	// ❗ The compute instance template (ID). Usage of the `getComputeTemplate` data source is recommended.
 	TemplateId *string `pulumi:"templateId"`
 	// cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
 	UserData *string `pulumi:"userData"`
 	// was the cloud-init configuration base64 encoded
 	UserDataBase64 *bool `pulumi:"userDataBase64"`
-	// The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the
-	// `exoscale_compute_template` data source `username` attribute instead.
+	// The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the `getComputeTemplate` data source `username` attribute instead.
 	//
 	// Deprecated: broken, use `compute_template` data source `username` attribute
 	Username *string `pulumi:"username"`
-	// The Exoscale Zone name.
+	// ❗ The Exoscale Zone name.
 	Zone *string `pulumi:"zone"`
 }
 
 type ComputeState struct {
-	// A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
+	// ❗ A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinityGroups`).
 	AffinityGroupIds pulumi.StringArrayInput
-	// A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
+	// ❗ A list of anti-affinity groups (names; at creation time only; conflicts with `affinityGroupIds`).
 	AffinityGroups pulumi.StringArrayInput
 	// The instance disk size (GiB; at least `10`).
 	DiskSize pulumi.IntPtrInput
-	// The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'
-	// *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed
-	// to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will
-	// be generated automatically.
+	// The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed to any character during a later update. If neither `displayName` or `hostname` attributes are set, a random value will be generated automatically.
 	DisplayName pulumi.StringPtrInput
 	Gateway     pulumi.StringPtrInput
-	// The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or
-	// `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value
-	// requires to reboot the instance.
+	// The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `displayName` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.
 	Hostname pulumi.StringPtrInput
 	// Request an IPv4 address on the default NIC
 	Ip4 pulumi.BoolPtrInput
@@ -215,10 +194,9 @@ type ComputeState struct {
 	Ip6Cidr    pulumi.StringPtrInput
 	// The instance (main network interface) IPv4 address.
 	IpAddress pulumi.StringPtrInput
-	// The SSH keypair (name) to authorize in the instance.
+	// ❗ The SSH keypair (name) to authorize in the instance.
 	KeyPair pulumi.StringPtrInput
-	// The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,
-	// `pt`, `uk`, `us`; at creation time only).
+	// The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).
 	Keyboard pulumi.StringPtrInput
 	// The instance hostname. Please use the `hostname` argument instead.
 	//
@@ -228,9 +206,9 @@ type ComputeState struct {
 	Password pulumi.StringPtrInput
 	// The instance reverse DNS record (must end with a `.`; e.g: `my-instance.example.net.`).
 	ReverseDns pulumi.StringPtrInput
-	// A list of security groups (IDs; conflicts with `security_groups`).
+	// A list of security groups (IDs; conflicts with `securityGroups`).
 	SecurityGroupIds pulumi.StringArrayInput
-	// A list of security groups (names; conflicts with `security_group_ids`).
+	// A list of security groups (names; conflicts with `securityGroupIds`).
 	SecurityGroups pulumi.StringArrayInput
 	// The instance size (`Tiny`, `Small`, `Medium`, `Large`, etc.)
 	Size pulumi.StringPtrInput
@@ -238,21 +216,19 @@ type ComputeState struct {
 	State pulumi.StringPtrInput
 	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags pulumi.StringMapInput
-	// The compute instance template (name). Only *featured* templates are available, if you want to reference *custom
-	// templates* use the `template_id` attribute instead.
+	// ❗ The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `templateId` attribute instead.
 	Template pulumi.StringPtrInput
-	// The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.
+	// ❗ The compute instance template (ID). Usage of the `getComputeTemplate` data source is recommended.
 	TemplateId pulumi.StringPtrInput
 	// cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
 	UserData pulumi.StringPtrInput
 	// was the cloud-init configuration base64 encoded
 	UserDataBase64 pulumi.BoolPtrInput
-	// The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the
-	// `exoscale_compute_template` data source `username` attribute instead.
+	// The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the `getComputeTemplate` data source `username` attribute instead.
 	//
 	// Deprecated: broken, use `compute_template` data source `username` attribute
 	Username pulumi.StringPtrInput
-	// The Exoscale Zone name.
+	// ❗ The Exoscale Zone name.
 	Zone pulumi.StringPtrInput
 }
 
@@ -261,35 +237,29 @@ func (ComputeState) ElementType() reflect.Type {
 }
 
 type computeArgs struct {
-	// A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
+	// ❗ A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinityGroups`).
 	AffinityGroupIds []string `pulumi:"affinityGroupIds"`
-	// A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
+	// ❗ A list of anti-affinity groups (names; at creation time only; conflicts with `affinityGroupIds`).
 	AffinityGroups []string `pulumi:"affinityGroups"`
 	// The instance disk size (GiB; at least `10`).
 	DiskSize int `pulumi:"diskSize"`
-	// The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'
-	// *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed
-	// to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will
-	// be generated automatically.
+	// The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed to any character during a later update. If neither `displayName` or `hostname` attributes are set, a random value will be generated automatically.
 	DisplayName *string `pulumi:"displayName"`
-	// The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or
-	// `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value
-	// requires to reboot the instance.
+	// The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `displayName` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.
 	Hostname *string `pulumi:"hostname"`
 	// Request an IPv4 address on the default NIC
 	Ip4 *bool `pulumi:"ip4"`
 	// Request an IPv6 address on the default NIC
 	Ip6 *bool `pulumi:"ip6"`
-	// The SSH keypair (name) to authorize in the instance.
+	// ❗ The SSH keypair (name) to authorize in the instance.
 	KeyPair *string `pulumi:"keyPair"`
-	// The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,
-	// `pt`, `uk`, `us`; at creation time only).
+	// The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).
 	Keyboard *string `pulumi:"keyboard"`
 	// The instance reverse DNS record (must end with a `.`; e.g: `my-instance.example.net.`).
 	ReverseDns *string `pulumi:"reverseDns"`
-	// A list of security groups (IDs; conflicts with `security_groups`).
+	// A list of security groups (IDs; conflicts with `securityGroups`).
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// A list of security groups (names; conflicts with `security_group_ids`).
+	// A list of security groups (names; conflicts with `securityGroupIds`).
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// The instance size (`Tiny`, `Small`, `Medium`, `Large`, etc.)
 	Size *string `pulumi:"size"`
@@ -297,48 +267,41 @@ type computeArgs struct {
 	State *string `pulumi:"state"`
 	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags map[string]string `pulumi:"tags"`
-	// The compute instance template (name). Only *featured* templates are available, if you want to reference *custom
-	// templates* use the `template_id` attribute instead.
+	// ❗ The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `templateId` attribute instead.
 	Template *string `pulumi:"template"`
-	// The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.
+	// ❗ The compute instance template (ID). Usage of the `getComputeTemplate` data source is recommended.
 	TemplateId *string `pulumi:"templateId"`
 	// cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
 	UserData *string `pulumi:"userData"`
-	// The Exoscale Zone name.
+	// ❗ The Exoscale Zone name.
 	Zone string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Compute resource.
 type ComputeArgs struct {
-	// A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
+	// ❗ A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinityGroups`).
 	AffinityGroupIds pulumi.StringArrayInput
-	// A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
+	// ❗ A list of anti-affinity groups (names; at creation time only; conflicts with `affinityGroupIds`).
 	AffinityGroups pulumi.StringArrayInput
 	// The instance disk size (GiB; at least `10`).
 	DiskSize pulumi.IntInput
-	// The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'
-	// *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed
-	// to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will
-	// be generated automatically.
+	// The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed to any character during a later update. If neither `displayName` or `hostname` attributes are set, a random value will be generated automatically.
 	DisplayName pulumi.StringPtrInput
-	// The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or
-	// `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value
-	// requires to reboot the instance.
+	// The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `displayName` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.
 	Hostname pulumi.StringPtrInput
 	// Request an IPv4 address on the default NIC
 	Ip4 pulumi.BoolPtrInput
 	// Request an IPv6 address on the default NIC
 	Ip6 pulumi.BoolPtrInput
-	// The SSH keypair (name) to authorize in the instance.
+	// ❗ The SSH keypair (name) to authorize in the instance.
 	KeyPair pulumi.StringPtrInput
-	// The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,
-	// `pt`, `uk`, `us`; at creation time only).
+	// The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).
 	Keyboard pulumi.StringPtrInput
 	// The instance reverse DNS record (must end with a `.`; e.g: `my-instance.example.net.`).
 	ReverseDns pulumi.StringPtrInput
-	// A list of security groups (IDs; conflicts with `security_groups`).
+	// A list of security groups (IDs; conflicts with `securityGroups`).
 	SecurityGroupIds pulumi.StringArrayInput
-	// A list of security groups (names; conflicts with `security_group_ids`).
+	// A list of security groups (names; conflicts with `securityGroupIds`).
 	SecurityGroups pulumi.StringArrayInput
 	// The instance size (`Tiny`, `Small`, `Medium`, `Large`, etc.)
 	Size pulumi.StringPtrInput
@@ -346,14 +309,13 @@ type ComputeArgs struct {
 	State pulumi.StringPtrInput
 	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags pulumi.StringMapInput
-	// The compute instance template (name). Only *featured* templates are available, if you want to reference *custom
-	// templates* use the `template_id` attribute instead.
+	// ❗ The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `templateId` attribute instead.
 	Template pulumi.StringPtrInput
-	// The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.
+	// ❗ The compute instance template (ID). Usage of the `getComputeTemplate` data source is recommended.
 	TemplateId pulumi.StringPtrInput
 	// cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
 	UserData pulumi.StringPtrInput
-	// The Exoscale Zone name.
+	// ❗ The Exoscale Zone name.
 	Zone pulumi.StringInput
 }
 
@@ -444,12 +406,12 @@ func (o ComputeOutput) ToComputeOutputWithContext(ctx context.Context) ComputeOu
 	return o
 }
 
-// A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
+// ❗ A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinityGroups`).
 func (o ComputeOutput) AffinityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Compute) pulumi.StringArrayOutput { return v.AffinityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
+// ❗ A list of anti-affinity groups (names; at creation time only; conflicts with `affinityGroupIds`).
 func (o ComputeOutput) AffinityGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Compute) pulumi.StringArrayOutput { return v.AffinityGroups }).(pulumi.StringArrayOutput)
 }
@@ -459,10 +421,7 @@ func (o ComputeOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *Compute) pulumi.IntOutput { return v.DiskSize }).(pulumi.IntOutput)
 }
 
-// The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'
-// *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed
-// to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will
-// be generated automatically.
+// The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed to any character during a later update. If neither `displayName` or `hostname` attributes are set, a random value will be generated automatically.
 func (o ComputeOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Compute) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -471,9 +430,7 @@ func (o ComputeOutput) Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v *Compute) pulumi.StringOutput { return v.Gateway }).(pulumi.StringOutput)
 }
 
-// The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or
-// `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value
-// requires to reboot the instance.
+// The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `displayName` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.
 func (o ComputeOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *Compute) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }
@@ -502,13 +459,12 @@ func (o ComputeOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *Compute) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
 }
 
-// The SSH keypair (name) to authorize in the instance.
+// ❗ The SSH keypair (name) to authorize in the instance.
 func (o ComputeOutput) KeyPair() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Compute) pulumi.StringPtrOutput { return v.KeyPair }).(pulumi.StringPtrOutput)
 }
 
-// The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,
-// `pt`, `uk`, `us`; at creation time only).
+// The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).
 func (o ComputeOutput) Keyboard() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Compute) pulumi.StringPtrOutput { return v.Keyboard }).(pulumi.StringPtrOutput)
 }
@@ -530,12 +486,12 @@ func (o ComputeOutput) ReverseDns() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Compute) pulumi.StringPtrOutput { return v.ReverseDns }).(pulumi.StringPtrOutput)
 }
 
-// A list of security groups (IDs; conflicts with `security_groups`).
+// A list of security groups (IDs; conflicts with `securityGroups`).
 func (o ComputeOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Compute) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// A list of security groups (names; conflicts with `security_group_ids`).
+// A list of security groups (names; conflicts with `securityGroupIds`).
 func (o ComputeOutput) SecurityGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Compute) pulumi.StringArrayOutput { return v.SecurityGroups }).(pulumi.StringArrayOutput)
 }
@@ -555,13 +511,12 @@ func (o ComputeOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Compute) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The compute instance template (name). Only *featured* templates are available, if you want to reference *custom
-// templates* use the `template_id` attribute instead.
+// ❗ The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `templateId` attribute instead.
 func (o ComputeOutput) Template() pulumi.StringOutput {
 	return o.ApplyT(func(v *Compute) pulumi.StringOutput { return v.Template }).(pulumi.StringOutput)
 }
 
-// The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.
+// ❗ The compute instance template (ID). Usage of the `getComputeTemplate` data source is recommended.
 func (o ComputeOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Compute) pulumi.StringOutput { return v.TemplateId }).(pulumi.StringOutput)
 }
@@ -576,15 +531,14 @@ func (o ComputeOutput) UserDataBase64() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Compute) pulumi.BoolOutput { return v.UserDataBase64 }).(pulumi.BoolOutput)
 }
 
-// The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the
-// `exoscale_compute_template` data source `username` attribute instead.
+// The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the `getComputeTemplate` data source `username` attribute instead.
 //
 // Deprecated: broken, use `compute_template` data source `username` attribute
 func (o ComputeOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *Compute) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }
 
-// The Exoscale Zone name.
+// ❗ The Exoscale Zone name.
 func (o ComputeOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Compute) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

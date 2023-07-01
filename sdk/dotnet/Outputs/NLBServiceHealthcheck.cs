@@ -14,12 +14,33 @@ namespace Pulumiverse.Exoscale.Outputs
     [OutputType]
     public sealed class NLBServiceHealthcheck
     {
+        /// <summary>
+        /// The healthcheck interval in seconds (default: `10`).
+        /// </summary>
         public readonly int? Interval;
+        /// <summary>
+        /// The healthcheck mode (`tcp`|`http`|`https`; default: `tcp`).
+        /// </summary>
         public readonly string? Mode;
+        /// <summary>
+        /// The NLB service (TCP/UDP) port.
+        /// </summary>
         public readonly int Port;
+        /// <summary>
+        /// The healthcheck retries (default: `1`).
+        /// </summary>
         public readonly int? Retries;
+        /// <summary>
+        /// The healthcheck timeout (seconds; default: `5`).
+        /// </summary>
         public readonly int? Timeout;
+        /// <summary>
+        /// The healthcheck TLS SNI server name (only if `mode` is `https`).
+        /// </summary>
         public readonly string? TlsSni;
+        /// <summary>
+        /// The healthcheck URI (must be set only if `mode` is `http(s)`).
+        /// </summary>
         public readonly string? Uri;
 
         [OutputConstructor]

@@ -36,7 +36,7 @@ export class NIC extends pulumi.CustomResource {
     }
 
     /**
-     * The compute instance ID.
+     * ❗ The compute instance ID.
      */
     public readonly computeId!: pulumi.Output<string>;
     public /*out*/ readonly gateway!: pulumi.Output<string>;
@@ -50,7 +50,7 @@ export class NIC extends pulumi.CustomResource {
     public /*out*/ readonly macAddress!: pulumi.Output<string>;
     public /*out*/ readonly netmask!: pulumi.Output<string>;
     /**
-     * The private network ID.
+     * ❗ The private network ID.
      */
     public readonly networkId!: pulumi.Output<string>;
 
@@ -98,7 +98,7 @@ export class NIC extends pulumi.CustomResource {
  */
 export interface NICState {
     /**
-     * The compute instance ID.
+     * ❗ The compute instance ID.
      */
     computeId?: pulumi.Input<string>;
     gateway?: pulumi.Input<string>;
@@ -112,7 +112,7 @@ export interface NICState {
     macAddress?: pulumi.Input<string>;
     netmask?: pulumi.Input<string>;
     /**
-     * The private network ID.
+     * ❗ The private network ID.
      */
     networkId?: pulumi.Input<string>;
 }
@@ -122,7 +122,7 @@ export interface NICState {
  */
 export interface NICArgs {
     /**
-     * The compute instance ID.
+     * ❗ The compute instance ID.
      */
     computeId: pulumi.Input<string>;
     /**
@@ -130,7 +130,7 @@ export interface NICArgs {
      */
     ipAddress?: pulumi.Input<string>;
     /**
-     * The private network ID.
+     * ❗ The private network ID.
      */
     networkId: pulumi.Input<string>;
 }

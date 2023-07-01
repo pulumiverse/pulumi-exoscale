@@ -14,7 +14,7 @@ import (
 type SKSKubeconfig struct {
 	pulumi.CustomResourceState
 
-	// The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
+	// ❗ The parent exoscale*sks*cluster ID.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
 	// certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
@@ -22,18 +22,16 @@ type SKSKubeconfig struct {
 	// expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
 	// take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
 	EarlyRenewalSeconds pulumi.IntPtrOutput `pulumi:"earlyRenewalSeconds"`
-	// Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the
-	// Organization field.
+	// ❗ Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
 	Groups pulumi.StringArrayOutput `pulumi:"groups"`
 	// The generated Kubeconfig (YAML content).
 	Kubeconfig      pulumi.StringOutput `pulumi:"kubeconfig"`
 	ReadyForRenewal pulumi.BoolOutput   `pulumi:"readyForRenewal"`
-	// The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
+	// ❗ The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
 	TtlSeconds pulumi.Float64PtrOutput `pulumi:"ttlSeconds"`
-	// User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN
-	// field.
+	// ❗ User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.
 	User pulumi.StringOutput `pulumi:"user"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -83,7 +81,7 @@ func GetSKSKubeconfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SKSKubeconfig resources.
 type skskubeconfigState struct {
-	// The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
+	// ❗ The parent exoscale*sks*cluster ID.
 	ClusterId *string `pulumi:"clusterId"`
 	// If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
 	// certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
@@ -91,23 +89,21 @@ type skskubeconfigState struct {
 	// expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
 	// take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
 	EarlyRenewalSeconds *int `pulumi:"earlyRenewalSeconds"`
-	// Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the
-	// Organization field.
+	// ❗ Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
 	Groups []string `pulumi:"groups"`
 	// The generated Kubeconfig (YAML content).
 	Kubeconfig      *string `pulumi:"kubeconfig"`
 	ReadyForRenewal *bool   `pulumi:"readyForRenewal"`
-	// The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
+	// ❗ The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
 	TtlSeconds *float64 `pulumi:"ttlSeconds"`
-	// User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN
-	// field.
+	// ❗ User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.
 	User *string `pulumi:"user"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone *string `pulumi:"zone"`
 }
 
 type SKSKubeconfigState struct {
-	// The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
+	// ❗ The parent exoscale*sks*cluster ID.
 	ClusterId pulumi.StringPtrInput
 	// If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
 	// certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
@@ -115,18 +111,16 @@ type SKSKubeconfigState struct {
 	// expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
 	// take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
 	EarlyRenewalSeconds pulumi.IntPtrInput
-	// Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the
-	// Organization field.
+	// ❗ Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
 	Groups pulumi.StringArrayInput
 	// The generated Kubeconfig (YAML content).
 	Kubeconfig      pulumi.StringPtrInput
 	ReadyForRenewal pulumi.BoolPtrInput
-	// The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
+	// ❗ The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
 	TtlSeconds pulumi.Float64PtrInput
-	// User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN
-	// field.
+	// ❗ User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.
 	User pulumi.StringPtrInput
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringPtrInput
 }
 
@@ -135,7 +129,7 @@ func (SKSKubeconfigState) ElementType() reflect.Type {
 }
 
 type skskubeconfigArgs struct {
-	// The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
+	// ❗ The parent exoscale*sks*cluster ID.
 	ClusterId string `pulumi:"clusterId"`
 	// If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
 	// certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
@@ -143,21 +137,19 @@ type skskubeconfigArgs struct {
 	// expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
 	// take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
 	EarlyRenewalSeconds *int `pulumi:"earlyRenewalSeconds"`
-	// Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the
-	// Organization field.
+	// ❗ Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
 	Groups []string `pulumi:"groups"`
-	// The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
+	// ❗ The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
 	TtlSeconds *float64 `pulumi:"ttlSeconds"`
-	// User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN
-	// field.
+	// ❗ User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.
 	User string `pulumi:"user"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a SKSKubeconfig resource.
 type SKSKubeconfigArgs struct {
-	// The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
+	// ❗ The parent exoscale*sks*cluster ID.
 	ClusterId pulumi.StringInput
 	// If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
 	// certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
@@ -165,15 +157,13 @@ type SKSKubeconfigArgs struct {
 	// expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
 	// take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
 	EarlyRenewalSeconds pulumi.IntPtrInput
-	// Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the
-	// Organization field.
+	// ❗ Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
 	Groups pulumi.StringArrayInput
-	// The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
+	// ❗ The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
 	TtlSeconds pulumi.Float64PtrInput
-	// User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN
-	// field.
+	// ❗ User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.
 	User pulumi.StringInput
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringInput
 }
 
@@ -264,7 +254,7 @@ func (o SKSKubeconfigOutput) ToSKSKubeconfigOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
+// ❗ The parent exoscale*sks*cluster ID.
 func (o SKSKubeconfigOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SKSKubeconfig) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
@@ -278,8 +268,7 @@ func (o SKSKubeconfigOutput) EarlyRenewalSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SKSKubeconfig) pulumi.IntPtrOutput { return v.EarlyRenewalSeconds }).(pulumi.IntPtrOutput)
 }
 
-// Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the
-// Organization field.
+// ❗ Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
 func (o SKSKubeconfigOutput) Groups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SKSKubeconfig) pulumi.StringArrayOutput { return v.Groups }).(pulumi.StringArrayOutput)
 }
@@ -293,18 +282,17 @@ func (o SKSKubeconfigOutput) ReadyForRenewal() pulumi.BoolOutput {
 	return o.ApplyT(func(v *SKSKubeconfig) pulumi.BoolOutput { return v.ReadyForRenewal }).(pulumi.BoolOutput)
 }
 
-// The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
+// ❗ The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
 func (o SKSKubeconfigOutput) TtlSeconds() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *SKSKubeconfig) pulumi.Float64PtrOutput { return v.TtlSeconds }).(pulumi.Float64PtrOutput)
 }
 
-// User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN
-// field.
+// ❗ User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.
 func (o SKSKubeconfigOutput) User() pulumi.StringOutput {
 	return o.ApplyT(func(v *SKSKubeconfig) pulumi.StringOutput { return v.User }).(pulumi.StringOutput)
 }
 
-// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o SKSKubeconfigOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *SKSKubeconfig) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

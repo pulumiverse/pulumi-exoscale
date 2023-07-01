@@ -138,13 +138,13 @@ def get_private_network(description: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('exoscale:index/getPrivateNetwork:getPrivateNetwork', __args__, opts=opts, typ=GetPrivateNetworkResult).value
 
     return AwaitableGetPrivateNetworkResult(
-        description=__ret__.description,
-        end_ip=__ret__.end_ip,
-        id=__ret__.id,
-        name=__ret__.name,
-        netmask=__ret__.netmask,
-        start_ip=__ret__.start_ip,
-        zone=__ret__.zone)
+        description=pulumi.get(__ret__, 'description'),
+        end_ip=pulumi.get(__ret__, 'end_ip'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        netmask=pulumi.get(__ret__, 'netmask'),
+        start_ip=pulumi.get(__ret__, 'start_ip'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_private_network)

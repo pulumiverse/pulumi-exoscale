@@ -37,17 +37,15 @@ export class IAMAccessKey extends pulumi.CustomResource {
      */
     public /*out*/ readonly key!: pulumi.Output<string>;
     /**
-     * The IAM access key name.
+     * ❗ The IAM access key name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A list of API operations to restrict the key to.
+     * ❗ A list of API operations to restrict the key to.
      */
     public readonly operations!: pulumi.Output<string[] | undefined>;
     /**
-     * A list of API
-     * [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to
-     * restrict the key to (`<domain>/<type>:<name>`).
+     * ❗ A list of API [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to restrict the key to (`<domain>/<type>:<name>`).
      */
     public readonly resources!: pulumi.Output<string[] | undefined>;
     /**
@@ -55,7 +53,7 @@ export class IAMAccessKey extends pulumi.CustomResource {
      */
     public /*out*/ readonly secret!: pulumi.Output<string>;
     /**
-     * A list of tags to restrict the key to.
+     * ❗ A list of tags to restrict the key to.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     public /*out*/ readonly tagsOperations!: pulumi.Output<string[]>;
@@ -106,17 +104,15 @@ export interface IAMAccessKeyState {
      */
     key?: pulumi.Input<string>;
     /**
-     * The IAM access key name.
+     * ❗ The IAM access key name.
      */
     name?: pulumi.Input<string>;
     /**
-     * A list of API operations to restrict the key to.
+     * ❗ A list of API operations to restrict the key to.
      */
     operations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of API
-     * [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to
-     * restrict the key to (`<domain>/<type>:<name>`).
+     * ❗ A list of API [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to restrict the key to (`<domain>/<type>:<name>`).
      */
     resources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -124,7 +120,7 @@ export interface IAMAccessKeyState {
      */
     secret?: pulumi.Input<string>;
     /**
-     * A list of tags to restrict the key to.
+     * ❗ A list of tags to restrict the key to.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     tagsOperations?: pulumi.Input<pulumi.Input<string>[]>;
@@ -135,21 +131,19 @@ export interface IAMAccessKeyState {
  */
 export interface IAMAccessKeyArgs {
     /**
-     * The IAM access key name.
+     * ❗ The IAM access key name.
      */
     name?: pulumi.Input<string>;
     /**
-     * A list of API operations to restrict the key to.
+     * ❗ A list of API operations to restrict the key to.
      */
     operations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of API
-     * [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to
-     * restrict the key to (`<domain>/<type>:<name>`).
+     * ❗ A list of API [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to restrict the key to (`<domain>/<type>:<name>`).
      */
     resources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of tags to restrict the key to.
+     * ❗ A list of tags to restrict the key to.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

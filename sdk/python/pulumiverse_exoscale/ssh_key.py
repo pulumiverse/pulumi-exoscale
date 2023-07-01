@@ -18,8 +18,8 @@ class SSHKeyArgs:
                  public_key: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SSHKey resource.
-        :param pulumi.Input[str] name: The SSH key name.
-        :param pulumi.Input[str] public_key: The SSH *public* key that will be authorized in compute instances.
+        :param pulumi.Input[str] name: ❗ The SSH key name.
+        :param pulumi.Input[str] public_key: ❗ The SSH *public* key that will be authorized in compute instances.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -30,7 +30,7 @@ class SSHKeyArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The SSH key name.
+        ❗ The SSH key name.
         """
         return pulumi.get(self, "name")
 
@@ -42,7 +42,7 @@ class SSHKeyArgs:
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The SSH *public* key that will be authorized in compute instances.
+        ❗ The SSH *public* key that will be authorized in compute instances.
         """
         return pulumi.get(self, "public_key")
 
@@ -60,8 +60,8 @@ class _SSHKeyState:
         """
         Input properties used for looking up and filtering SSHKey resources.
         :param pulumi.Input[str] fingerprint: The SSH key unique identifier.
-        :param pulumi.Input[str] name: The SSH key name.
-        :param pulumi.Input[str] public_key: The SSH *public* key that will be authorized in compute instances.
+        :param pulumi.Input[str] name: ❗ The SSH key name.
+        :param pulumi.Input[str] public_key: ❗ The SSH *public* key that will be authorized in compute instances.
         """
         if fingerprint is not None:
             pulumi.set(__self__, "fingerprint", fingerprint)
@@ -86,7 +86,7 @@ class _SSHKeyState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The SSH key name.
+        ❗ The SSH key name.
         """
         return pulumi.get(self, "name")
 
@@ -98,7 +98,7 @@ class _SSHKeyState:
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The SSH *public* key that will be authorized in compute instances.
+        ❗ The SSH *public* key that will be authorized in compute instances.
         """
         return pulumi.get(self, "public_key")
 
@@ -130,8 +130,8 @@ class SSHKey(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The SSH key name.
-        :param pulumi.Input[str] public_key: The SSH *public* key that will be authorized in compute instances.
+        :param pulumi.Input[str] name: ❗ The SSH key name.
+        :param pulumi.Input[str] public_key: ❗ The SSH *public* key that will be authorized in compute instances.
         """
         ...
     @overload
@@ -202,8 +202,8 @@ class SSHKey(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] fingerprint: The SSH key unique identifier.
-        :param pulumi.Input[str] name: The SSH key name.
-        :param pulumi.Input[str] public_key: The SSH *public* key that will be authorized in compute instances.
+        :param pulumi.Input[str] name: ❗ The SSH key name.
+        :param pulumi.Input[str] public_key: ❗ The SSH *public* key that will be authorized in compute instances.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -226,7 +226,7 @@ class SSHKey(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The SSH key name.
+        ❗ The SSH key name.
         """
         return pulumi.get(self, "name")
 
@@ -234,7 +234,7 @@ class SSHKey(pulumi.CustomResource):
     @pulumi.getter(name="publicKey")
     def public_key(self) -> pulumi.Output[str]:
         """
-        The SSH *public* key that will be authorized in compute instances.
+        ❗ The SSH *public* key that will be authorized in compute instances.
         """
         return pulumi.get(self, "public_key")
 

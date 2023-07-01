@@ -36,15 +36,15 @@ export class Affinity extends pulumi.CustomResource {
     }
 
     /**
-     * A free-form text describing the group.
+     * ❗ A free-form text describing the group.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The anti-affinity group name.
+     * ❗ The anti-affinity group name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The type of the group (`host anti-affinity` is the only supported value).
+     * ❗ The type of the group (`host anti-affinity` is the only supported value).
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
@@ -86,15 +86,15 @@ export class Affinity extends pulumi.CustomResource {
  */
 export interface AffinityState {
     /**
-     * A free-form text describing the group.
+     * ❗ A free-form text describing the group.
      */
     description?: pulumi.Input<string>;
     /**
-     * The anti-affinity group name.
+     * ❗ The anti-affinity group name.
      */
     name?: pulumi.Input<string>;
     /**
-     * The type of the group (`host anti-affinity` is the only supported value).
+     * ❗ The type of the group (`host anti-affinity` is the only supported value).
      */
     type?: pulumi.Input<string>;
     /**
@@ -108,15 +108,15 @@ export interface AffinityState {
  */
 export interface AffinityArgs {
     /**
-     * A free-form text describing the group.
+     * ❗ A free-form text describing the group.
      */
     description?: pulumi.Input<string>;
     /**
-     * The anti-affinity group name.
+     * ❗ The anti-affinity group name.
      */
     name?: pulumi.Input<string>;
     /**
-     * The type of the group (`host anti-affinity` is the only supported value).
+     * ❗ The type of the group (`host anti-affinity` is the only supported value).
      */
     type?: pulumi.Input<string>;
 }

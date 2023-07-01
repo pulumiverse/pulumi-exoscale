@@ -69,8 +69,8 @@ def get_domain(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('exoscale:index/getDomain:getDomain', __args__, opts=opts, typ=GetDomainResult).value
 
     return AwaitableGetDomainResult(
-        id=__ret__.id,
-        name=__ret__.name)
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_domain)

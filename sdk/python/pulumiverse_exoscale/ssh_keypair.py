@@ -18,9 +18,8 @@ class SSHKeypairArgs:
                  public_key: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SSHKeypair resource.
-        :param pulumi.Input[str] name: The SSH keypair name.
-        :param pulumi.Input[str] public_key: A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the
-               *private* key) is generated and saved locally (see the `private_key` attribute).
+        :param pulumi.Input[str] name: ❗ The SSH keypair name.
+        :param pulumi.Input[str] public_key: ❗ A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `private_key` attribute).
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -31,7 +30,7 @@ class SSHKeypairArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The SSH keypair name.
+        ❗ The SSH keypair name.
         """
         return pulumi.get(self, "name")
 
@@ -43,8 +42,7 @@ class SSHKeypairArgs:
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[pulumi.Input[str]]:
         """
-        A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the
-        *private* key) is generated and saved locally (see the `private_key` attribute).
+        ❗ A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `private_key` attribute).
         """
         return pulumi.get(self, "public_key")
 
@@ -63,10 +61,9 @@ class _SSHKeypairState:
         """
         Input properties used for looking up and filtering SSHKeypair resources.
         :param pulumi.Input[str] fingerprint: The SSH keypair unique identifier.
-        :param pulumi.Input[str] name: The SSH keypair name.
+        :param pulumi.Input[str] name: ❗ The SSH keypair name.
         :param pulumi.Input[str] private_key: The SSH *private* key generated if no public key was provided.
-        :param pulumi.Input[str] public_key: A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the
-               *private* key) is generated and saved locally (see the `private_key` attribute).
+        :param pulumi.Input[str] public_key: ❗ A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `private_key` attribute).
         """
         if fingerprint is not None:
             pulumi.set(__self__, "fingerprint", fingerprint)
@@ -93,7 +90,7 @@ class _SSHKeypairState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The SSH keypair name.
+        ❗ The SSH keypair name.
         """
         return pulumi.get(self, "name")
 
@@ -117,8 +114,7 @@ class _SSHKeypairState:
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[pulumi.Input[str]]:
         """
-        A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the
-        *private* key) is generated and saved locally (see the `private_key` attribute).
+        ❗ A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `private_key` attribute).
         """
         return pulumi.get(self, "public_key")
 
@@ -139,9 +135,8 @@ class SSHKeypair(pulumi.CustomResource):
         Create a SSHKeypair resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The SSH keypair name.
-        :param pulumi.Input[str] public_key: A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the
-               *private* key) is generated and saved locally (see the `private_key` attribute).
+        :param pulumi.Input[str] name: ❗ The SSH keypair name.
+        :param pulumi.Input[str] public_key: ❗ A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `private_key` attribute).
         """
         ...
     @overload
@@ -205,10 +200,9 @@ class SSHKeypair(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] fingerprint: The SSH keypair unique identifier.
-        :param pulumi.Input[str] name: The SSH keypair name.
+        :param pulumi.Input[str] name: ❗ The SSH keypair name.
         :param pulumi.Input[str] private_key: The SSH *private* key generated if no public key was provided.
-        :param pulumi.Input[str] public_key: A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the
-               *private* key) is generated and saved locally (see the `private_key` attribute).
+        :param pulumi.Input[str] public_key: ❗ A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `private_key` attribute).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -232,7 +226,7 @@ class SSHKeypair(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The SSH keypair name.
+        ❗ The SSH keypair name.
         """
         return pulumi.get(self, "name")
 
@@ -248,8 +242,7 @@ class SSHKeypair(pulumi.CustomResource):
     @pulumi.getter(name="publicKey")
     def public_key(self) -> pulumi.Output[Optional[str]]:
         """
-        A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the
-        *private* key) is generated and saved locally (see the `private_key` attribute).
+        ❗ A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `private_key` attribute).
         """
         return pulumi.get(self, "public_key")
 

@@ -15,6 +15,10 @@ namespace Pulumiverse.Exoscale.Inputs
     {
         [Input("adminPassword")]
         private Input<string>? _adminPassword;
+
+        /// <summary>
+        /// A custom administrator account password (may only be set at creation time).
+        /// </summary>
         public Input<string>? AdminPassword
         {
             get => _adminPassword;
@@ -25,29 +29,51 @@ namespace Pulumiverse.Exoscale.Inputs
             }
         }
 
+        /// <summary>
+        /// A custom administrator account username (may only be set at creation time).
+        /// </summary>
         [Input("adminUsername")]
         public Input<string>? AdminUsername { get; set; }
 
+        /// <summary>
+        /// The automated backup schedule (`HH:MM`).
+        /// </summary>
         [Input("backupSchedule")]
         public Input<string>? BackupSchedule { get; set; }
 
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
+
+        /// <summary>
+        /// A list of CIDR blocks to allow incoming connections from.
+        /// </summary>
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
+        /// <summary>
+        /// PostgreSQL configuration settings in JSON format (`exo dbaas type show pg --settings=pg` for reference).
+        /// </summary>
         [Input("pgSettings")]
         public Input<string>? PgSettings { get; set; }
 
+        /// <summary>
+        /// PgBouncer configuration settings in JSON format (`exo dbaas type show pg --settings=pgbouncer` for reference).
+        /// </summary>
         [Input("pgbouncerSettings")]
         public Input<string>? PgbouncerSettings { get; set; }
 
+        /// <summary>
+        /// pglookout configuration settings in JSON format (`exo dbaas type show pg --settings=pglookout` for reference).
+        /// </summary>
         [Input("pglookoutSettings")]
         public Input<string>? PglookoutSettings { get; set; }
 
+        /// <summary>
+        /// PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 

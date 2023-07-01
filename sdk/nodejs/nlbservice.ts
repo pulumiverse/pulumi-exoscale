@@ -56,7 +56,7 @@ export class NLBService extends pulumi.CustomResource {
      */
     public readonly healthchecks!: pulumi.Output<outputs.NLBServiceHealthcheck[]>;
     /**
-     * The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
+     * The exoscale*instance*pool (ID) to forward traffic to.
      */
     public readonly instancePoolId!: pulumi.Output<string>;
     /**
@@ -64,7 +64,7 @@ export class NLBService extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The parent [exoscale_nlb](./nlb.md) ID.
+     * ❗ The parent exoscale.NLB ID.
      */
     public readonly nlbId!: pulumi.Output<string>;
     /**
@@ -85,7 +85,7 @@ export class NLBService extends pulumi.CustomResource {
      */
     public readonly targetPort!: pulumi.Output<number>;
     /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -163,7 +163,7 @@ export interface NLBServiceState {
      */
     healthchecks?: pulumi.Input<pulumi.Input<inputs.NLBServiceHealthcheck>[]>;
     /**
-     * The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
+     * The exoscale*instance*pool (ID) to forward traffic to.
      */
     instancePoolId?: pulumi.Input<string>;
     /**
@@ -171,7 +171,7 @@ export interface NLBServiceState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The parent [exoscale_nlb](./nlb.md) ID.
+     * ❗ The parent exoscale.NLB ID.
      */
     nlbId?: pulumi.Input<string>;
     /**
@@ -192,7 +192,7 @@ export interface NLBServiceState {
      */
     targetPort?: pulumi.Input<number>;
     /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone?: pulumi.Input<string>;
 }
@@ -210,7 +210,7 @@ export interface NLBServiceArgs {
      */
     healthchecks: pulumi.Input<pulumi.Input<inputs.NLBServiceHealthcheck>[]>;
     /**
-     * The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
+     * The exoscale*instance*pool (ID) to forward traffic to.
      */
     instancePoolId: pulumi.Input<string>;
     /**
@@ -218,7 +218,7 @@ export interface NLBServiceArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The parent [exoscale_nlb](./nlb.md) ID.
+     * ❗ The parent exoscale.NLB ID.
      */
     nlbId: pulumi.Input<string>;
     /**
@@ -238,7 +238,7 @@ export interface NLBServiceArgs {
      */
     targetPort: pulumi.Input<number>;
     /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: pulumi.Input<string>;
 }

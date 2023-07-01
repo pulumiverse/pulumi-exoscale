@@ -17,7 +17,7 @@ namespace Pulumiverse.Exoscale
     public partial class NIC : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The compute instance ID.
+        /// ❗ The compute instance ID.
         /// </summary>
         [Output("computeId")]
         public Output<string> ComputeId { get; private set; } = null!;
@@ -41,7 +41,7 @@ namespace Pulumiverse.Exoscale
         public Output<string> Netmask { get; private set; } = null!;
 
         /// <summary>
-        /// The private network ID.
+        /// ❗ The private network ID.
         /// </summary>
         [Output("networkId")]
         public Output<string> NetworkId { get; private set; } = null!;
@@ -94,7 +94,7 @@ namespace Pulumiverse.Exoscale
     public sealed class NICArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The compute instance ID.
+        /// ❗ The compute instance ID.
         /// </summary>
         [Input("computeId", required: true)]
         public Input<string> ComputeId { get; set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
-        /// The private network ID.
+        /// ❗ The private network ID.
         /// </summary>
         [Input("networkId", required: true)]
         public Input<string> NetworkId { get; set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumiverse.Exoscale
     public sealed class NICState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The compute instance ID.
+        /// ❗ The compute instance ID.
         /// </summary>
         [Input("computeId")]
         public Input<string>? ComputeId { get; set; }
@@ -144,7 +144,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Netmask { get; set; }
 
         /// <summary>
-        /// The private network ID.
+        /// ❗ The private network ID.
         /// </summary>
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }

@@ -35,14 +35,13 @@ type Database struct {
 	DiskSize pulumi.IntOutput `pulumi:"diskSize"`
 	// *kafka* database service type specific arguments.
 	Kafka DatabaseKafkaPtrOutput `pulumi:"kafka"`
-	// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
-	// `thursday`, `friday`, `saturday`, `sunday`).
+	// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
 	MaintenanceDow pulumi.StringOutput `pulumi:"maintenanceDow"`
 	// The time of day to perform the automated database service maintenance (`HH:MM:SS`)
 	MaintenanceTime pulumi.StringOutput `pulumi:"maintenanceTime"`
 	// *mysql* database service type specific arguments.
 	Mysql DatabaseMysqlPtrOutput `pulumi:"mysql"`
-	// The name of the database service.
+	// ❗ The name of the database service.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of CPUs of the database service.
 	NodeCpus pulumi.IntOutput `pulumi:"nodeCpus"`
@@ -54,8 +53,7 @@ type Database struct {
 	Opensearch DatabaseOpensearchPtrOutput `pulumi:"opensearch"`
 	// *pg* database service type specific arguments. Structure is documented below.
 	Pg DatabasePgPtrOutput `pulumi:"pg"`
-	// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
-	// <TYPE>` - for reference).
+	// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE>` - for reference).
 	Plan pulumi.StringOutput `pulumi:"plan"`
 	// *redis* database service type specific arguments. Structure is documented below.
 	Redis DatabaseRedisPtrOutput `pulumi:"redis"`
@@ -63,11 +61,11 @@ type Database struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// The database service protection boolean flag against termination/power-off.
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
-	// The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+	// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The date of the latest database service update.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -118,14 +116,13 @@ type databaseState struct {
 	DiskSize *int `pulumi:"diskSize"`
 	// *kafka* database service type specific arguments.
 	Kafka *DatabaseKafka `pulumi:"kafka"`
-	// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
-	// `thursday`, `friday`, `saturday`, `sunday`).
+	// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
 	MaintenanceDow *string `pulumi:"maintenanceDow"`
 	// The time of day to perform the automated database service maintenance (`HH:MM:SS`)
 	MaintenanceTime *string `pulumi:"maintenanceTime"`
 	// *mysql* database service type specific arguments.
 	Mysql *DatabaseMysql `pulumi:"mysql"`
-	// The name of the database service.
+	// ❗ The name of the database service.
 	Name *string `pulumi:"name"`
 	// The number of CPUs of the database service.
 	NodeCpus *int `pulumi:"nodeCpus"`
@@ -137,8 +134,7 @@ type databaseState struct {
 	Opensearch *DatabaseOpensearch `pulumi:"opensearch"`
 	// *pg* database service type specific arguments. Structure is documented below.
 	Pg *DatabasePg `pulumi:"pg"`
-	// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
-	// <TYPE>` - for reference).
+	// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE>` - for reference).
 	Plan *string `pulumi:"plan"`
 	// *redis* database service type specific arguments. Structure is documented below.
 	Redis *DatabaseRedis `pulumi:"redis"`
@@ -146,11 +142,11 @@ type databaseState struct {
 	State *string `pulumi:"state"`
 	// The database service protection boolean flag against termination/power-off.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
-	// The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+	// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
 	Type *string `pulumi:"type"`
 	// The date of the latest database service update.
 	UpdatedAt *string `pulumi:"updatedAt"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone *string `pulumi:"zone"`
 }
 
@@ -163,14 +159,13 @@ type DatabaseState struct {
 	DiskSize pulumi.IntPtrInput
 	// *kafka* database service type specific arguments.
 	Kafka DatabaseKafkaPtrInput
-	// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
-	// `thursday`, `friday`, `saturday`, `sunday`).
+	// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
 	MaintenanceDow pulumi.StringPtrInput
 	// The time of day to perform the automated database service maintenance (`HH:MM:SS`)
 	MaintenanceTime pulumi.StringPtrInput
 	// *mysql* database service type specific arguments.
 	Mysql DatabaseMysqlPtrInput
-	// The name of the database service.
+	// ❗ The name of the database service.
 	Name pulumi.StringPtrInput
 	// The number of CPUs of the database service.
 	NodeCpus pulumi.IntPtrInput
@@ -182,8 +177,7 @@ type DatabaseState struct {
 	Opensearch DatabaseOpensearchPtrInput
 	// *pg* database service type specific arguments. Structure is documented below.
 	Pg DatabasePgPtrInput
-	// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
-	// <TYPE>` - for reference).
+	// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE>` - for reference).
 	Plan pulumi.StringPtrInput
 	// *redis* database service type specific arguments. Structure is documented below.
 	Redis DatabaseRedisPtrInput
@@ -191,11 +185,11 @@ type DatabaseState struct {
 	State pulumi.StringPtrInput
 	// The database service protection boolean flag against termination/power-off.
 	TerminationProtection pulumi.BoolPtrInput
-	// The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+	// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
 	Type pulumi.StringPtrInput
 	// The date of the latest database service update.
 	UpdatedAt pulumi.StringPtrInput
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringPtrInput
 }
 
@@ -206,29 +200,27 @@ func (DatabaseState) ElementType() reflect.Type {
 type databaseArgs struct {
 	// *kafka* database service type specific arguments.
 	Kafka *DatabaseKafka `pulumi:"kafka"`
-	// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
-	// `thursday`, `friday`, `saturday`, `sunday`).
+	// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
 	MaintenanceDow *string `pulumi:"maintenanceDow"`
 	// The time of day to perform the automated database service maintenance (`HH:MM:SS`)
 	MaintenanceTime *string `pulumi:"maintenanceTime"`
 	// *mysql* database service type specific arguments.
 	Mysql *DatabaseMysql `pulumi:"mysql"`
-	// The name of the database service.
+	// ❗ The name of the database service.
 	Name *string `pulumi:"name"`
 	// *opensearch* database service type specific arguments.
 	Opensearch *DatabaseOpensearch `pulumi:"opensearch"`
 	// *pg* database service type specific arguments. Structure is documented below.
 	Pg *DatabasePg `pulumi:"pg"`
-	// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
-	// <TYPE>` - for reference).
+	// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE>` - for reference).
 	Plan string `pulumi:"plan"`
 	// *redis* database service type specific arguments. Structure is documented below.
 	Redis *DatabaseRedis `pulumi:"redis"`
 	// The database service protection boolean flag against termination/power-off.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
-	// The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+	// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
 	Type string `pulumi:"type"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone string `pulumi:"zone"`
 }
 
@@ -236,29 +228,27 @@ type databaseArgs struct {
 type DatabaseArgs struct {
 	// *kafka* database service type specific arguments.
 	Kafka DatabaseKafkaPtrInput
-	// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
-	// `thursday`, `friday`, `saturday`, `sunday`).
+	// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
 	MaintenanceDow pulumi.StringPtrInput
 	// The time of day to perform the automated database service maintenance (`HH:MM:SS`)
 	MaintenanceTime pulumi.StringPtrInput
 	// *mysql* database service type specific arguments.
 	Mysql DatabaseMysqlPtrInput
-	// The name of the database service.
+	// ❗ The name of the database service.
 	Name pulumi.StringPtrInput
 	// *opensearch* database service type specific arguments.
 	Opensearch DatabaseOpensearchPtrInput
 	// *pg* database service type specific arguments. Structure is documented below.
 	Pg DatabasePgPtrInput
-	// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
-	// <TYPE>` - for reference).
+	// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE>` - for reference).
 	Plan pulumi.StringInput
 	// *redis* database service type specific arguments. Structure is documented below.
 	Redis DatabaseRedisPtrInput
 	// The database service protection boolean flag against termination/power-off.
 	TerminationProtection pulumi.BoolPtrInput
-	// The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+	// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
 	Type pulumi.StringInput
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringInput
 }
 
@@ -369,8 +359,7 @@ func (o DatabaseOutput) Kafka() DatabaseKafkaPtrOutput {
 	return o.ApplyT(func(v *Database) DatabaseKafkaPtrOutput { return v.Kafka }).(DatabaseKafkaPtrOutput)
 }
 
-// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
-// `thursday`, `friday`, `saturday`, `sunday`).
+// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
 func (o DatabaseOutput) MaintenanceDow() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.MaintenanceDow }).(pulumi.StringOutput)
 }
@@ -385,7 +374,7 @@ func (o DatabaseOutput) Mysql() DatabaseMysqlPtrOutput {
 	return o.ApplyT(func(v *Database) DatabaseMysqlPtrOutput { return v.Mysql }).(DatabaseMysqlPtrOutput)
 }
 
-// The name of the database service.
+// ❗ The name of the database service.
 func (o DatabaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -415,8 +404,7 @@ func (o DatabaseOutput) Pg() DatabasePgPtrOutput {
 	return o.ApplyT(func(v *Database) DatabasePgPtrOutput { return v.Pg }).(DatabasePgPtrOutput)
 }
 
-// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
-// <TYPE>` - for reference).
+// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE>` - for reference).
 func (o DatabaseOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Plan }).(pulumi.StringOutput)
 }
@@ -436,7 +424,7 @@ func (o DatabaseOutput) TerminationProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.BoolPtrOutput { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
 }
 
-// The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
 func (o DatabaseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
@@ -446,7 +434,7 @@ func (o DatabaseOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o DatabaseOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

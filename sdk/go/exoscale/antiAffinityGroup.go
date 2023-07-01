@@ -26,9 +26,9 @@ import (
 type AntiAffinityGroup struct {
 	pulumi.CustomResourceState
 
-	// A free-form text describing the group.
+	// ❗ A free-form text describing the group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The anti-affinity group name.
+	// ❗ The anti-affinity group name.
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -62,16 +62,16 @@ func GetAntiAffinityGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AntiAffinityGroup resources.
 type antiAffinityGroupState struct {
-	// A free-form text describing the group.
+	// ❗ A free-form text describing the group.
 	Description *string `pulumi:"description"`
-	// The anti-affinity group name.
+	// ❗ The anti-affinity group name.
 	Name *string `pulumi:"name"`
 }
 
 type AntiAffinityGroupState struct {
-	// A free-form text describing the group.
+	// ❗ A free-form text describing the group.
 	Description pulumi.StringPtrInput
-	// The anti-affinity group name.
+	// ❗ The anti-affinity group name.
 	Name pulumi.StringPtrInput
 }
 
@@ -80,17 +80,17 @@ func (AntiAffinityGroupState) ElementType() reflect.Type {
 }
 
 type antiAffinityGroupArgs struct {
-	// A free-form text describing the group.
+	// ❗ A free-form text describing the group.
 	Description *string `pulumi:"description"`
-	// The anti-affinity group name.
+	// ❗ The anti-affinity group name.
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a AntiAffinityGroup resource.
 type AntiAffinityGroupArgs struct {
-	// A free-form text describing the group.
+	// ❗ A free-form text describing the group.
 	Description pulumi.StringPtrInput
-	// The anti-affinity group name.
+	// ❗ The anti-affinity group name.
 	Name pulumi.StringPtrInput
 }
 
@@ -181,12 +181,12 @@ func (o AntiAffinityGroupOutput) ToAntiAffinityGroupOutputWithContext(ctx contex
 	return o
 }
 
-// A free-form text describing the group.
+// ❗ A free-form text describing the group.
 func (o AntiAffinityGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AntiAffinityGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The anti-affinity group name.
+// ❗ The anti-affinity group name.
 func (o AntiAffinityGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AntiAffinityGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

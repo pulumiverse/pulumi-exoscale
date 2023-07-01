@@ -66,7 +66,7 @@ export class NLB extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The list of the [exoscale_nlb_service](./nlb_service.md) (names).
+     * The list of the exoscale*nlb*service (names).
      */
     public /*out*/ readonly services!: pulumi.Output<string[]>;
     /**
@@ -74,7 +74,7 @@ export class NLB extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -143,7 +143,7 @@ export interface NLBState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The list of the [exoscale_nlb_service](./nlb_service.md) (names).
+     * The list of the exoscale*nlb*service (names).
      */
     services?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -151,7 +151,7 @@ export interface NLBState {
      */
     state?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone?: pulumi.Input<string>;
 }
@@ -173,7 +173,7 @@ export interface NLBArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: pulumi.Input<string>;
 }

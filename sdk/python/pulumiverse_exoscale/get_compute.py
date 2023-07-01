@@ -220,20 +220,20 @@ def get_compute(hostname: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('exoscale:index/getCompute:getCompute', __args__, opts=opts, typ=GetComputeResult).value
 
     return AwaitableGetComputeResult(
-        cpu=__ret__.cpu,
-        created=__ret__.created,
-        disk_size=__ret__.disk_size,
-        hostname=__ret__.hostname,
-        id=__ret__.id,
-        ip6_address=__ret__.ip6_address,
-        ip_address=__ret__.ip_address,
-        memory=__ret__.memory,
-        private_network_ip_addresses=__ret__.private_network_ip_addresses,
-        size=__ret__.size,
-        state=__ret__.state,
-        tags=__ret__.tags,
-        template=__ret__.template,
-        zone=__ret__.zone)
+        cpu=pulumi.get(__ret__, 'cpu'),
+        created=pulumi.get(__ret__, 'created'),
+        disk_size=pulumi.get(__ret__, 'disk_size'),
+        hostname=pulumi.get(__ret__, 'hostname'),
+        id=pulumi.get(__ret__, 'id'),
+        ip6_address=pulumi.get(__ret__, 'ip6_address'),
+        ip_address=pulumi.get(__ret__, 'ip_address'),
+        memory=pulumi.get(__ret__, 'memory'),
+        private_network_ip_addresses=pulumi.get(__ret__, 'private_network_ip_addresses'),
+        size=pulumi.get(__ret__, 'size'),
+        state=pulumi.get(__ret__, 'state'),
+        tags=pulumi.get(__ret__, 'tags'),
+        template=pulumi.get(__ret__, 'template'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_compute)

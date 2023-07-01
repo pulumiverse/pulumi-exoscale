@@ -46,11 +46,11 @@ export class SecurityGroupRules extends pulumi.CustomResource {
      */
     public readonly ingresses!: pulumi.Output<outputs.SecurityGroupRulesIngress[] | undefined>;
     /**
-     * The security group (name) the rules apply to (conflicts with `security_group_id`).
+     * ❗ The security group (name) the rules apply to (conflicts with `securityGroupId`).
      */
     public readonly securityGroup!: pulumi.Output<string>;
     /**
-     * The security group (ID) the rules apply to (conficts with `security_group)`.
+     * ❗ The security group (ID) the rules apply to (conficts with `security_group)`.
      */
     public readonly securityGroupId!: pulumi.Output<string>;
 
@@ -96,11 +96,11 @@ export interface SecurityGroupRulesState {
      */
     ingresses?: pulumi.Input<pulumi.Input<inputs.SecurityGroupRulesIngress>[]>;
     /**
-     * The security group (name) the rules apply to (conflicts with `security_group_id`).
+     * ❗ The security group (name) the rules apply to (conflicts with `securityGroupId`).
      */
     securityGroup?: pulumi.Input<string>;
     /**
-     * The security group (ID) the rules apply to (conficts with `security_group)`.
+     * ❗ The security group (ID) the rules apply to (conficts with `security_group)`.
      */
     securityGroupId?: pulumi.Input<string>;
 }
@@ -118,11 +118,11 @@ export interface SecurityGroupRulesArgs {
      */
     ingresses?: pulumi.Input<pulumi.Input<inputs.SecurityGroupRulesIngress>[]>;
     /**
-     * The security group (name) the rules apply to (conflicts with `security_group_id`).
+     * ❗ The security group (name) the rules apply to (conflicts with `securityGroupId`).
      */
     securityGroup?: pulumi.Input<string>;
     /**
-     * The security group (ID) the rules apply to (conficts with `security_group)`.
+     * ❗ The security group (ID) the rules apply to (conficts with `security_group)`.
      */
     securityGroupId?: pulumi.Input<string>;
 }

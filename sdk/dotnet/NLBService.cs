@@ -39,7 +39,7 @@ namespace Pulumiverse.Exoscale
         public Output<ImmutableArray<Outputs.NLBServiceHealthcheck>> Healthchecks { get; private set; } = null!;
 
         /// <summary>
-        /// The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
+        /// The exoscale*instance*pool (ID) to forward traffic to.
         /// </summary>
         [Output("instancePoolId")]
         public Output<string> InstancePoolId { get; private set; } = null!;
@@ -51,7 +51,7 @@ namespace Pulumiverse.Exoscale
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The parent [exoscale_nlb](./nlb.md) ID.
+        /// ❗ The parent exoscale.NLB ID.
         /// </summary>
         [Output("nlbId")]
         public Output<string> NlbId { get; private set; } = null!;
@@ -84,7 +84,7 @@ namespace Pulumiverse.Exoscale
         public Output<int> TargetPort { get; private set; } = null!;
 
         /// <summary>
-        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -155,7 +155,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
+        /// The exoscale*instance*pool (ID) to forward traffic to.
         /// </summary>
         [Input("instancePoolId", required: true)]
         public Input<string> InstancePoolId { get; set; } = null!;
@@ -167,7 +167,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The parent [exoscale_nlb](./nlb.md) ID.
+        /// ❗ The parent exoscale.NLB ID.
         /// </summary>
         [Input("nlbId", required: true)]
         public Input<string> NlbId { get; set; } = null!;
@@ -197,7 +197,7 @@ namespace Pulumiverse.Exoscale
         public Input<int> TargetPort { get; set; } = null!;
 
         /// <summary>
-        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -229,7 +229,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.
+        /// The exoscale*instance*pool (ID) to forward traffic to.
         /// </summary>
         [Input("instancePoolId")]
         public Input<string>? InstancePoolId { get; set; }
@@ -241,7 +241,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The parent [exoscale_nlb](./nlb.md) ID.
+        /// ❗ The parent exoscale.NLB ID.
         /// </summary>
         [Input("nlbId")]
         public Input<string>? NlbId { get; set; }
@@ -274,7 +274,7 @@ namespace Pulumiverse.Exoscale
         public Input<int>? TargetPort { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

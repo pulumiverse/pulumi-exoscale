@@ -19,10 +19,9 @@ class SecurityGroupArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SecurityGroup resource.
-        :param pulumi.Input[str] description: A free-form text describing the group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_sources: A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
-               notation.
-        :param pulumi.Input[str] name: The security group name.
+        :param pulumi.Input[str] description: ❗ A free-form text describing the group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_sources: A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio) notation.
+        :param pulumi.Input[str] name: ❗ The security group name.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -35,7 +34,7 @@ class SecurityGroupArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A free-form text describing the group.
+        ❗ A free-form text describing the group.
         """
         return pulumi.get(self, "description")
 
@@ -47,8 +46,7 @@ class SecurityGroupArgs:
     @pulumi.getter(name="externalSources")
     def external_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
-        notation.
+        A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio) notation.
         """
         return pulumi.get(self, "external_sources")
 
@@ -60,7 +58,7 @@ class SecurityGroupArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The security group name.
+        ❗ The security group name.
         """
         return pulumi.get(self, "name")
 
@@ -77,10 +75,9 @@ class _SecurityGroupState:
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SecurityGroup resources.
-        :param pulumi.Input[str] description: A free-form text describing the group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_sources: A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
-               notation.
-        :param pulumi.Input[str] name: The security group name.
+        :param pulumi.Input[str] description: ❗ A free-form text describing the group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_sources: A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio) notation.
+        :param pulumi.Input[str] name: ❗ The security group name.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -93,7 +90,7 @@ class _SecurityGroupState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A free-form text describing the group.
+        ❗ A free-form text describing the group.
         """
         return pulumi.get(self, "description")
 
@@ -105,8 +102,7 @@ class _SecurityGroupState:
     @pulumi.getter(name="externalSources")
     def external_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
-        notation.
+        A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio) notation.
         """
         return pulumi.get(self, "external_sources")
 
@@ -118,7 +114,7 @@ class _SecurityGroupState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The security group name.
+        ❗ The security group name.
         """
         return pulumi.get(self, "name")
 
@@ -151,10 +147,9 @@ class SecurityGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A free-form text describing the group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_sources: A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
-               notation.
-        :param pulumi.Input[str] name: The security group name.
+        :param pulumi.Input[str] description: ❗ A free-form text describing the group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_sources: A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio) notation.
+        :param pulumi.Input[str] name: ❗ The security group name.
         """
         ...
     @overload
@@ -225,10 +220,9 @@ class SecurityGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A free-form text describing the group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_sources: A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
-               notation.
-        :param pulumi.Input[str] name: The security group name.
+        :param pulumi.Input[str] description: ❗ A free-form text describing the group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_sources: A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio) notation.
+        :param pulumi.Input[str] name: ❗ The security group name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -243,7 +237,7 @@ class SecurityGroup(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        A free-form text describing the group.
+        ❗ A free-form text describing the group.
         """
         return pulumi.get(self, "description")
 
@@ -251,8 +245,7 @@ class SecurityGroup(pulumi.CustomResource):
     @pulumi.getter(name="externalSources")
     def external_sources(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
-        notation.
+        A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio) notation.
         """
         return pulumi.get(self, "external_sources")
 
@@ -260,7 +253,7 @@ class SecurityGroup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The security group name.
+        ❗ The security group name.
         """
         return pulumi.get(self, "name")
 

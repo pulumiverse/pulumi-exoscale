@@ -14,11 +14,11 @@ import (
 type Affinity struct {
 	pulumi.CustomResourceState
 
-	// A free-form text describing the group.
+	// ❗ A free-form text describing the group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The anti-affinity group name.
+	// ❗ The anti-affinity group name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The type of the group (`host anti-affinity` is the only supported value).
+	// ❗ The type of the group (`host anti-affinity` is the only supported value).
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// The compute instances (IDs) members of the group.
 	VirtualMachineIds pulumi.StringArrayOutput `pulumi:"virtualMachineIds"`
@@ -54,22 +54,22 @@ func GetAffinity(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Affinity resources.
 type affinityState struct {
-	// A free-form text describing the group.
+	// ❗ A free-form text describing the group.
 	Description *string `pulumi:"description"`
-	// The anti-affinity group name.
+	// ❗ The anti-affinity group name.
 	Name *string `pulumi:"name"`
-	// The type of the group (`host anti-affinity` is the only supported value).
+	// ❗ The type of the group (`host anti-affinity` is the only supported value).
 	Type *string `pulumi:"type"`
 	// The compute instances (IDs) members of the group.
 	VirtualMachineIds []string `pulumi:"virtualMachineIds"`
 }
 
 type AffinityState struct {
-	// A free-form text describing the group.
+	// ❗ A free-form text describing the group.
 	Description pulumi.StringPtrInput
-	// The anti-affinity group name.
+	// ❗ The anti-affinity group name.
 	Name pulumi.StringPtrInput
-	// The type of the group (`host anti-affinity` is the only supported value).
+	// ❗ The type of the group (`host anti-affinity` is the only supported value).
 	Type pulumi.StringPtrInput
 	// The compute instances (IDs) members of the group.
 	VirtualMachineIds pulumi.StringArrayInput
@@ -80,21 +80,21 @@ func (AffinityState) ElementType() reflect.Type {
 }
 
 type affinityArgs struct {
-	// A free-form text describing the group.
+	// ❗ A free-form text describing the group.
 	Description *string `pulumi:"description"`
-	// The anti-affinity group name.
+	// ❗ The anti-affinity group name.
 	Name *string `pulumi:"name"`
-	// The type of the group (`host anti-affinity` is the only supported value).
+	// ❗ The type of the group (`host anti-affinity` is the only supported value).
 	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Affinity resource.
 type AffinityArgs struct {
-	// A free-form text describing the group.
+	// ❗ A free-form text describing the group.
 	Description pulumi.StringPtrInput
-	// The anti-affinity group name.
+	// ❗ The anti-affinity group name.
 	Name pulumi.StringPtrInput
-	// The type of the group (`host anti-affinity` is the only supported value).
+	// ❗ The type of the group (`host anti-affinity` is the only supported value).
 	Type pulumi.StringPtrInput
 }
 
@@ -185,17 +185,17 @@ func (o AffinityOutput) ToAffinityOutputWithContext(ctx context.Context) Affinit
 	return o
 }
 
-// A free-form text describing the group.
+// ❗ A free-form text describing the group.
 func (o AffinityOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Affinity) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The anti-affinity group name.
+// ❗ The anti-affinity group name.
 func (o AffinityOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Affinity) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The type of the group (`host anti-affinity` is the only supported value).
+// ❗ The type of the group (`host anti-affinity` is the only supported value).
 func (o AffinityOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Affinity) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

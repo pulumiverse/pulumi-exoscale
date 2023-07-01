@@ -33,7 +33,7 @@ export class SKSKubeconfig extends pulumi.CustomResource {
     }
 
     /**
-     * The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
+     * ❗ The parent exoscale*sks*cluster ID.
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
@@ -45,8 +45,7 @@ export class SKSKubeconfig extends pulumi.CustomResource {
      */
     public readonly earlyRenewalSeconds!: pulumi.Output<number | undefined>;
     /**
-     * Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the
-     * Organization field.
+     * ❗ Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
      */
     public readonly groups!: pulumi.Output<string[]>;
     /**
@@ -55,16 +54,15 @@ export class SKSKubeconfig extends pulumi.CustomResource {
     public /*out*/ readonly kubeconfig!: pulumi.Output<string>;
     public /*out*/ readonly readyForRenewal!: pulumi.Output<boolean>;
     /**
-     * The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
+     * ❗ The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
      */
     public readonly ttlSeconds!: pulumi.Output<number | undefined>;
     /**
-     * User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN
-     * field.
+     * ❗ User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.
      */
     public readonly user!: pulumi.Output<string>;
     /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -124,7 +122,7 @@ export class SKSKubeconfig extends pulumi.CustomResource {
  */
 export interface SKSKubeconfigState {
     /**
-     * The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
+     * ❗ The parent exoscale*sks*cluster ID.
      */
     clusterId?: pulumi.Input<string>;
     /**
@@ -136,8 +134,7 @@ export interface SKSKubeconfigState {
      */
     earlyRenewalSeconds?: pulumi.Input<number>;
     /**
-     * Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the
-     * Organization field.
+     * ❗ Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
      */
     groups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -146,16 +143,15 @@ export interface SKSKubeconfigState {
     kubeconfig?: pulumi.Input<string>;
     readyForRenewal?: pulumi.Input<boolean>;
     /**
-     * The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
+     * ❗ The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
      */
     ttlSeconds?: pulumi.Input<number>;
     /**
-     * User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN
-     * field.
+     * ❗ User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.
      */
     user?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone?: pulumi.Input<string>;
 }
@@ -165,7 +161,7 @@ export interface SKSKubeconfigState {
  */
 export interface SKSKubeconfigArgs {
     /**
-     * The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
+     * ❗ The parent exoscale*sks*cluster ID.
      */
     clusterId: pulumi.Input<string>;
     /**
@@ -177,21 +173,19 @@ export interface SKSKubeconfigArgs {
      */
     earlyRenewalSeconds?: pulumi.Input<number>;
     /**
-     * Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the
-     * Organization field.
+     * ❗ Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
      */
     groups: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
+     * ❗ The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
      */
     ttlSeconds?: pulumi.Input<number>;
     /**
-     * User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN
-     * field.
+     * ❗ User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.
      */
     user: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: pulumi.Input<string>;
 }

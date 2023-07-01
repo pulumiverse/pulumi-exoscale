@@ -27,13 +27,13 @@ namespace Pulumiverse.Exoscale
     public partial class AntiAffinityGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A free-form text describing the group.
+        /// ❗ A free-form text describing the group.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The anti-affinity group name.
+        /// ❗ The anti-affinity group name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -86,13 +86,13 @@ namespace Pulumiverse.Exoscale
     public sealed class AntiAffinityGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A free-form text describing the group.
+        /// ❗ A free-form text describing the group.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The anti-affinity group name.
+        /// ❗ The anti-affinity group name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -106,13 +106,13 @@ namespace Pulumiverse.Exoscale
     public sealed class AntiAffinityGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A free-form text describing the group.
+        /// ❗ A free-form text describing the group.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The anti-affinity group name.
+        /// ❗ The anti-affinity group name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

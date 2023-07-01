@@ -47,6 +47,8 @@
             "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing exoscale cloud resources.",
             "packageName": "@pulumiverse/exoscale",
+            "pluginName": "",
+            "pluginVersion": "",
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/exoscale/terraform-provider-exoscale)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-exoscale` repo](https://github.com/pulumiverse/pulumi-exoscale/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-exoscale` repo](https://github.com/exoscale/terraform-provider-exoscale/issues).",
             "typescriptVersion": ""
         },
@@ -120,10 +122,12 @@
         "exoscale:index/ComputeInstanceNetworkInterface:ComputeInstanceNetworkInterface": {
             "properties": {
                 "ipAddress": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.\n"
                 },
                 "networkId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The exoscale*private*network (ID) to attach to the instance.\n"
                 }
             },
             "type": "object",
@@ -142,40 +146,51 @@
         "exoscale:index/DatabaseKafka:DatabaseKafka": {
             "properties": {
                 "enableCertAuth": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable certificate-based authentication method.\n"
                 },
                 "enableKafkaConnect": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable Kafka Connect.\n"
                 },
                 "enableKafkaRest": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable Kafka REST.\n"
                 },
                 "enableSaslAuth": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable SASL-based authentication method.\n"
                 },
                 "enableSchemaRegistry": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable Schema Registry.\n"
                 },
                 "ipFilters": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of CIDR blocks to allow incoming connections from.\n"
                 },
                 "kafkaConnectSettings": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Kafka Connect configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka-connect` for reference).\n"
                 },
                 "kafkaRestSettings": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Kafka REST configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka-rest` for reference).\n"
                 },
                 "kafkaSettings": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Kafka configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka` for reference).\n"
                 },
                 "schemaRegistrySettings": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Schema Registry configuration settings in JSON format (`exo dbaas type show kafka --settings=schema-registry` for reference)\n"
                 },
                 "version": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Kafka major version (`exo dbaas type show kafka` for reference; may only be set at creation time).\n"
                 }
             },
             "type": "object",
@@ -198,25 +213,31 @@
             "properties": {
                 "adminPassword": {
                     "type": "string",
+                    "description": "A custom administrator account password (may only be set at creation time).\n",
                     "secret": true
                 },
                 "adminUsername": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A custom administrator account username (may only be set at creation time).\n"
                 },
                 "backupSchedule": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The automated backup schedule (`HH:MM`).\n"
                 },
                 "ipFilters": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of CIDR blocks to allow incoming connections from.\n"
                 },
                 "mysqlSettings": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "MySQL configuration settings in JSON format (`exo dbaas type show mysql --settings=mysql` for reference).\n"
                 },
                 "version": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "MySQL major version (`exo dbaas type show mysql` for reference; may only be set at creation time).\n"
                 }
             },
             "type": "object",
@@ -240,38 +261,47 @@
                 },
                 "forkFromService": {
                     "type": "string",
+                    "description": "❗ Service name\n",
                     "willReplaceOnChanges": true
                 },
                 "indexPatterns": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/exoscale:index/DatabaseOpensearchIndexPattern:DatabaseOpensearchIndexPattern"
-                    }
+                    },
+                    "description": "(can be used multiple times) Allows you to create glob style patterns and set a max number of indexes matching this pattern you want to keep. Creating indexes exceeding this value will cause the oldest one to get deleted. You could for example create a pattern looking like 'logs.?' and then create index logs.1, logs.2 etc, it will delete logs.1 once you create logs.6. Do note 'logs.?' does not apply to logs.10. Note: Setting max*index*count to 0 will do nothing and the pattern gets ignored.\n"
                 },
                 "indexTemplate": {
-                    "$ref": "#/types/exoscale:index/DatabaseOpensearchIndexTemplate:DatabaseOpensearchIndexTemplate"
+                    "$ref": "#/types/exoscale:index/DatabaseOpensearchIndexTemplate:DatabaseOpensearchIndexTemplate",
+                    "description": "Template settings for all new indexes\n"
                 },
                 "ipFilters": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Allow incoming connections from this list of CIDR address block, e.g. `[\"10.20.0.0/16\"]`\n"
                 },
                 "keepIndexRefreshInterval": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.\n"
                 },
                 "maxIndexCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum number of indexes to keep (Minimum value is `0`)\n"
                 },
                 "recoveryBackupName": {
                     "type": "string",
+                    "description": "❗\n",
                     "willReplaceOnChanges": true
                 },
                 "settings": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "OpenSearch-specific settings, in json. e.g.`jsonencode({thread_pool_search_size: 64})`. Use `exo x get-dbaas-settings-opensearch` to get a list of available settings.\n"
                 },
                 "version": {
                     "type": "string",
+                    "description": "❗ OpenSearch major version.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -331,31 +361,39 @@
             "properties": {
                 "adminPassword": {
                     "type": "string",
+                    "description": "A custom administrator account password (may only be set at creation time).\n",
                     "secret": true
                 },
                 "adminUsername": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A custom administrator account username (may only be set at creation time).\n"
                 },
                 "backupSchedule": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The automated backup schedule (`HH:MM`).\n"
                 },
                 "ipFilters": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of CIDR blocks to allow incoming connections from.\n"
                 },
                 "pgSettings": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "PostgreSQL configuration settings in JSON format (`exo dbaas type show pg --settings=pg` for reference).\n"
                 },
                 "pgbouncerSettings": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "PgBouncer configuration settings in JSON format (`exo dbaas type show pg --settings=pgbouncer` for reference).\n"
                 },
                 "pglookoutSettings": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "pglookout configuration settings in JSON format (`exo dbaas type show pg --settings=pglookout` for reference).\n"
                 },
                 "version": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).\n"
                 }
             },
             "type": "object",
@@ -380,10 +418,12 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of CIDR blocks to allow incoming connections from.\n"
                 },
                 "redisSettings": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).\n"
                 }
             },
             "type": "object",
@@ -399,31 +439,40 @@
         "exoscale:index/ElasticIPHealthcheck:ElasticIPHealthcheck": {
             "properties": {
                 "interval": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The healthcheck interval (seconds; must be between `5` and `300`; default: `10`).\n"
                 },
                 "mode": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The healthcheck mode (`tcp`, `http` or `https`; may only be set at creation time).\n"
                 },
                 "port": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The healthcheck target port (must be between `1` and `65535`).\n"
                 },
                 "strikesFail": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of failed healthcheck attempts before considering the target unhealthy (must be between `1` and `20`; default: `2`).\n"
                 },
                 "strikesOk": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of successful healthcheck attempts before considering the target healthy (must be between `1` and `20`; default: `3`).\n"
                 },
                 "timeout": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The time before considering a healthcheck probing failed (seconds; must be between `2` and `60`; default: `3`).\n"
                 },
                 "tlsSkipVerify": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Disable TLS certificate verification for healthcheck in `https` mode (boolean; default: `false`).\n"
                 },
                 "tlsSni": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The healthcheck server name to present with SNI in `https` mode.\n"
                 },
                 "uri": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The healthcheck target URI (required in `http(s)` modes).\n"
                 }
             },
             "type": "object",
@@ -435,16 +484,20 @@
         "exoscale:index/InstancePoolInstance:InstancePoolInstance": {
             "properties": {
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ID of this resource.\n"
                 },
                 "ipv6Address": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The instance (main network interface) IPv6 address.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The instance name.\n"
                 },
                 "publicIpAddress": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The instance (main network interface) IPv4 address.\n"
                 }
             },
             "type": "object",
@@ -460,25 +513,32 @@
         "exoscale:index/NLBServiceHealthcheck:NLBServiceHealthcheck": {
             "properties": {
                 "interval": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The healthcheck interval in seconds (default: `10`).\n"
                 },
                 "mode": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The healthcheck mode (`tcp`|`http`|`https`; default: `tcp`).\n"
                 },
                 "port": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The NLB service (TCP/UDP) port.\n"
                 },
                 "retries": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The healthcheck retries (default: `1`).\n"
                 },
                 "timeout": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The healthcheck timeout (seconds; default: `5`).\n"
                 },
                 "tlsSni": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The healthcheck TLS SNI server name (only if `mode` is `https`).\n"
                 },
                 "uri": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The healthcheck URI (must be set only if `mode` is `http(s)`).\n"
                 }
             },
             "type": "object",
@@ -489,28 +549,35 @@
         "exoscale:index/SKSClusterOidc:SKSClusterOidc": {
             "properties": {
                 "clientId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The OpenID client ID.\n"
                 },
                 "groupsClaim": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "An OpenID JWT claim to use as the user's group.\n"
                 },
                 "groupsPrefix": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "An OpenID prefix prepended to group claims.\n"
                 },
                 "issuerUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The OpenID provider URL.\n"
                 },
                 "requiredClaim": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A map of key/value pairs that describes a required claim in the OpenID Token.\n"
                 },
                 "usernameClaim": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "An OpenID JWT claim to use as the user name.\n"
                 },
                 "usernamePrefix": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "An OpenID prefix prepended to username claims.\n"
                 }
             },
             "type": "object",
@@ -525,16 +592,20 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.\n"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A free-form text describing the block.\n"
                 },
                 "icmpCode": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "An ICMP/ICMPv6 type/code to match.\n"
                 },
                 "icmpType": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "An ICMP/ICMPv6 type/code to match.\n"
                 },
                 "ids": {
                     "type": "array",
@@ -546,16 +617,19 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of ports or port ranges (`\u003cstart_port\u003e-\u003cend_port\u003e`).\n"
                 },
                 "protocol": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).\n"
                 },
                 "userSecurityGroupLists": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of source (for ingress)/destination (for egress) identified by a security group.\n"
                 }
             },
             "type": "object",
@@ -573,16 +647,20 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.\n"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A free-form text describing the block.\n"
                 },
                 "icmpCode": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "An ICMP/ICMPv6 type/code to match.\n"
                 },
                 "icmpType": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "An ICMP/ICMPv6 type/code to match.\n"
                 },
                 "ids": {
                     "type": "array",
@@ -594,16 +672,19 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of ports or port ranges (`\u003cstart_port\u003e-\u003cend_port\u003e`).\n"
                 },
                 "protocol": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).\n"
                 },
                 "userSecurityGroupLists": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of source (for ingress)/destination (for egress) identified by a security group.\n"
                 }
             },
             "type": "object",
@@ -1424,15 +1505,15 @@
             "properties": {
                 "description": {
                     "type": "string",
-                    "description": "A free-form text describing the group.\n"
+                    "description": "❗ A free-form text describing the group.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The anti-affinity group name.\n"
+                    "description": "❗ The anti-affinity group name.\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the group (`host anti-affinity` is the only supported value).\n"
+                    "description": "❗ The type of the group (`host anti-affinity` is the only supported value).\n"
                 },
                 "virtualMachineIds": {
                     "type": "array",
@@ -1449,17 +1530,17 @@
             "inputProperties": {
                 "description": {
                     "type": "string",
-                    "description": "A free-form text describing the group.\n",
+                    "description": "❗ A free-form text describing the group.\n",
                     "willReplaceOnChanges": true
                 },
                 "name": {
                     "type": "string",
-                    "description": "The anti-affinity group name.\n",
+                    "description": "❗ The anti-affinity group name.\n",
                     "willReplaceOnChanges": true
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the group (`host anti-affinity` is the only supported value).\n",
+                    "description": "❗ The type of the group (`host anti-affinity` is the only supported value).\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -1468,17 +1549,17 @@
                 "properties": {
                     "description": {
                         "type": "string",
-                        "description": "A free-form text describing the group.\n",
+                        "description": "❗ A free-form text describing the group.\n",
                         "willReplaceOnChanges": true
                     },
                     "name": {
                         "type": "string",
-                        "description": "The anti-affinity group name.\n",
+                        "description": "❗ The anti-affinity group name.\n",
                         "willReplaceOnChanges": true
                     },
                     "type": {
                         "type": "string",
-                        "description": "The type of the group (`host anti-affinity` is the only supported value).\n",
+                        "description": "❗ The type of the group (`host anti-affinity` is the only supported value).\n",
                         "willReplaceOnChanges": true
                     },
                     "virtualMachineIds": {
@@ -1497,11 +1578,11 @@
             "properties": {
                 "description": {
                     "type": "string",
-                    "description": "A free-form text describing the group.\n"
+                    "description": "❗ A free-form text describing the group.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The anti-affinity group name.\n"
+                    "description": "❗ The anti-affinity group name.\n"
                 }
             },
             "required": [
@@ -1510,12 +1591,12 @@
             "inputProperties": {
                 "description": {
                     "type": "string",
-                    "description": "A free-form text describing the group.\n",
+                    "description": "❗ A free-form text describing the group.\n",
                     "willReplaceOnChanges": true
                 },
                 "name": {
                     "type": "string",
-                    "description": "The anti-affinity group name.\n",
+                    "description": "❗ The anti-affinity group name.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -1524,12 +1605,12 @@
                 "properties": {
                     "description": {
                         "type": "string",
-                        "description": "A free-form text describing the group.\n",
+                        "description": "❗ A free-form text describing the group.\n",
                         "willReplaceOnChanges": true
                     },
                     "name": {
                         "type": "string",
-                        "description": "The anti-affinity group name.\n",
+                        "description": "❗ The anti-affinity group name.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -1544,14 +1625,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).\n"
+                    "description": "❗ A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).\n"
                 },
                 "affinityGroups": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).\n"
+                    "description": "❗ A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).\n"
                 },
                 "diskSize": {
                     "type": "integer",
@@ -1559,14 +1640,14 @@
                 },
                 "displayName": {
                     "type": "string",
-                    "description": "The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'\n*hostname* during creation, so the value must contain only alphanumeric and hyphen (\" - \") characters; it can be changed\nto any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will\nbe generated automatically.\n"
+                    "description": "The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen (\" - \") characters; it can be changed to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically.\n"
                 },
                 "gateway": {
                     "type": "string"
                 },
                 "hostname": {
                     "type": "string",
-                    "description": "The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or\n`hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value\nrequires to reboot the instance.\n"
+                    "description": "The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.\n"
                 },
                 "ip4": {
                     "type": "boolean",
@@ -1589,11 +1670,11 @@
                 },
                 "keyPair": {
                     "type": "string",
-                    "description": "The SSH keypair (name) to authorize in the instance.\n"
+                    "description": "❗ The SSH keypair (name) to authorize in the instance.\n"
                 },
                 "keyboard": {
                     "type": "string",
-                    "description": "The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,\n`pt`, `uk`, `us`; at creation time only).\n"
+                    "description": "The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).\n"
                 },
                 "name": {
                     "type": "string",
@@ -1640,11 +1721,11 @@
                 },
                 "template": {
                     "type": "string",
-                    "description": "The compute instance template (name). Only *featured* templates are available, if you want to reference *custom\ntemplates* use the `template_id` attribute instead.\n"
+                    "description": "❗ The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `template_id` attribute instead.\n"
                 },
                 "templateId": {
                     "type": "string",
-                    "description": "The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.\n"
+                    "description": "❗ The compute instance template (ID). Usage of the `exoscale.getComputeTemplate` data source is recommended.\n"
                 },
                 "userData": {
                     "type": "string",
@@ -1656,12 +1737,12 @@
                 },
                 "username": {
                     "type": "string",
-                    "description": "The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the\n`exoscale_compute_template` data source `username` attribute instead.\n",
+                    "description": "The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the `exoscale.getComputeTemplate` data source `username` attribute instead.\n",
                     "deprecationMessage": "broken, use `compute_template` data source `username` attribute"
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale Zone name.\n"
+                    "description": "❗ The Exoscale Zone name.\n"
                 }
             },
             "required": [
@@ -1692,7 +1773,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).\n",
+                    "description": "❗ A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).\n",
                     "willReplaceOnChanges": true
                 },
                 "affinityGroups": {
@@ -1700,7 +1781,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).\n",
+                    "description": "❗ A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).\n",
                     "willReplaceOnChanges": true
                 },
                 "diskSize": {
@@ -1709,11 +1790,11 @@
                 },
                 "displayName": {
                     "type": "string",
-                    "description": "The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'\n*hostname* during creation, so the value must contain only alphanumeric and hyphen (\" - \") characters; it can be changed\nto any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will\nbe generated automatically.\n"
+                    "description": "The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen (\" - \") characters; it can be changed to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically.\n"
                 },
                 "hostname": {
                     "type": "string",
-                    "description": "The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or\n`hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value\nrequires to reboot the instance.\n"
+                    "description": "The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.\n"
                 },
                 "ip4": {
                     "type": "boolean",
@@ -1725,12 +1806,12 @@
                 },
                 "keyPair": {
                     "type": "string",
-                    "description": "The SSH keypair (name) to authorize in the instance.\n",
+                    "description": "❗ The SSH keypair (name) to authorize in the instance.\n",
                     "willReplaceOnChanges": true
                 },
                 "keyboard": {
                     "type": "string",
-                    "description": "The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,\n`pt`, `uk`, `us`; at creation time only).\n"
+                    "description": "The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).\n"
                 },
                 "reverseDns": {
                     "type": "string",
@@ -1767,12 +1848,12 @@
                 },
                 "template": {
                     "type": "string",
-                    "description": "The compute instance template (name). Only *featured* templates are available, if you want to reference *custom\ntemplates* use the `template_id` attribute instead.\n",
+                    "description": "❗ The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `template_id` attribute instead.\n",
                     "willReplaceOnChanges": true
                 },
                 "templateId": {
                     "type": "string",
-                    "description": "The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.\n",
+                    "description": "❗ The compute instance template (ID). Usage of the `exoscale.getComputeTemplate` data source is recommended.\n",
                     "willReplaceOnChanges": true
                 },
                 "userData": {
@@ -1781,7 +1862,7 @@
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale Zone name.\n",
+                    "description": "❗ The Exoscale Zone name.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -1797,7 +1878,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).\n",
+                        "description": "❗ A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).\n",
                         "willReplaceOnChanges": true
                     },
                     "affinityGroups": {
@@ -1805,7 +1886,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).\n",
+                        "description": "❗ A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).\n",
                         "willReplaceOnChanges": true
                     },
                     "diskSize": {
@@ -1814,14 +1895,14 @@
                     },
                     "displayName": {
                         "type": "string",
-                        "description": "The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'\n*hostname* during creation, so the value must contain only alphanumeric and hyphen (\" - \") characters; it can be changed\nto any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will\nbe generated automatically.\n"
+                        "description": "The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen (\" - \") characters; it can be changed to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically.\n"
                     },
                     "gateway": {
                         "type": "string"
                     },
                     "hostname": {
                         "type": "string",
-                        "description": "The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or\n`hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value\nrequires to reboot the instance.\n"
+                        "description": "The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.\n"
                     },
                     "ip4": {
                         "type": "boolean",
@@ -1844,12 +1925,12 @@
                     },
                     "keyPair": {
                         "type": "string",
-                        "description": "The SSH keypair (name) to authorize in the instance.\n",
+                        "description": "❗ The SSH keypair (name) to authorize in the instance.\n",
                         "willReplaceOnChanges": true
                     },
                     "keyboard": {
                         "type": "string",
-                        "description": "The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,\n`pt`, `uk`, `us`; at creation time only).\n"
+                        "description": "The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).\n"
                     },
                     "name": {
                         "type": "string",
@@ -1896,12 +1977,12 @@
                     },
                     "template": {
                         "type": "string",
-                        "description": "The compute instance template (name). Only *featured* templates are available, if you want to reference *custom\ntemplates* use the `template_id` attribute instead.\n",
+                        "description": "❗ The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `template_id` attribute instead.\n",
                         "willReplaceOnChanges": true
                     },
                     "templateId": {
                         "type": "string",
-                        "description": "The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.\n",
+                        "description": "❗ The compute instance template (ID). Usage of the `exoscale.getComputeTemplate` data source is recommended.\n",
                         "willReplaceOnChanges": true
                     },
                     "userData": {
@@ -1914,12 +1995,12 @@
                     },
                     "username": {
                         "type": "string",
-                        "description": "The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the\n`exoscale_compute_template` data source `username` attribute instead.\n",
+                        "description": "The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the `exoscale.getComputeTemplate` data source `username` attribute instead.\n",
                         "deprecationMessage": "broken, use `compute_template` data source `username` attribute"
                     },
                     "zone": {
                         "type": "string",
-                        "description": "The Exoscale Zone name.\n",
+                        "description": "❗ The Exoscale Zone name.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -1934,7 +2015,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to attach to the instance (may only be set at\ncreation time).\n"
+                    "description": "❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).\n"
                 },
                 "createdAt": {
                     "type": "string",
@@ -1942,7 +2023,7 @@
                 },
                 "deployTargetId": {
                     "type": "string",
-                    "description": "A deploy target ID.\n"
+                    "description": "❗ A deploy target ID.\n"
                 },
                 "diskSize": {
                     "type": "integer",
@@ -1953,7 +2034,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs) to attach to the instance.\n"
+                    "description": "A list of exoscale*elastic*ip (IDs) to attach to the instance.\n"
                 },
                 "ipv6": {
                     "type": "boolean",
@@ -1990,7 +2071,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument\ninstead.\n",
+                    "description": "A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument instead.\n",
                     "deprecationMessage": "Use the network_interface block instead."
                 },
                 "publicIpAddress": {
@@ -2006,11 +2087,11 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of [exoscale_security_group](./security_group.md) (IDs) to attach to the instance.\n"
+                    "description": "A list of exoscale*security*group (IDs) to attach to the instance.\n"
                 },
                 "sshKey": {
                     "type": "string",
-                    "description": "The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the instance (may only be set at creation time).\n"
+                    "description": "The exoscale*ssh*key (name) to authorize in the instance (may only be set at creation time).\n"
                 },
                 "state": {
                     "type": "string",
@@ -2018,19 +2099,19 @@
                 },
                 "templateId": {
                     "type": "string",
-                    "description": "The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the instance.\n"
+                    "description": "❗ The exoscale*compute*template (ID) to use when creating the instance.\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "The instance type (`\u003cfamily\u003e.\u003csize\u003e`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) -\n`exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts\nthe instance.\n"
+                    "description": "The instance type (`\u003cfamily\u003e.\u003csize\u003e`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.\n"
                 },
                 "userData": {
                     "type": "string",
-                    "description": "[cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will\ntake care of it).\n"
+                    "description": "[cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).\n"
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                 }
             },
             "required": [
@@ -2051,12 +2132,12 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to attach to the instance (may only be set at\ncreation time).\n",
+                    "description": "❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).\n",
                     "willReplaceOnChanges": true
                 },
                 "deployTargetId": {
                     "type": "string",
-                    "description": "A deploy target ID.\n",
+                    "description": "❗ A deploy target ID.\n",
                     "willReplaceOnChanges": true
                 },
                 "diskSize": {
@@ -2068,7 +2149,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs) to attach to the instance.\n"
+                    "description": "A list of exoscale*elastic*ip (IDs) to attach to the instance.\n"
                 },
                 "ipv6": {
                     "type": "boolean",
@@ -2105,11 +2186,11 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of [exoscale_security_group](./security_group.md) (IDs) to attach to the instance.\n"
+                    "description": "A list of exoscale*security*group (IDs) to attach to the instance.\n"
                 },
                 "sshKey": {
                     "type": "string",
-                    "description": "The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the instance (may only be set at creation time).\n"
+                    "description": "The exoscale*ssh*key (name) to authorize in the instance (may only be set at creation time).\n"
                 },
                 "state": {
                     "type": "string",
@@ -2117,20 +2198,20 @@
                 },
                 "templateId": {
                     "type": "string",
-                    "description": "The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the instance.\n",
+                    "description": "❗ The exoscale*compute*template (ID) to use when creating the instance.\n",
                     "willReplaceOnChanges": true
                 },
                 "type": {
                     "type": "string",
-                    "description": "The instance type (`\u003cfamily\u003e.\u003csize\u003e`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) -\n`exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts\nthe instance.\n"
+                    "description": "The instance type (`\u003cfamily\u003e.\u003csize\u003e`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.\n"
                 },
                 "userData": {
                     "type": "string",
-                    "description": "[cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will\ntake care of it).\n"
+                    "description": "[cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).\n"
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -2147,7 +2228,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to attach to the instance (may only be set at\ncreation time).\n",
+                        "description": "❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).\n",
                         "willReplaceOnChanges": true
                     },
                     "createdAt": {
@@ -2156,7 +2237,7 @@
                     },
                     "deployTargetId": {
                         "type": "string",
-                        "description": "A deploy target ID.\n",
+                        "description": "❗ A deploy target ID.\n",
                         "willReplaceOnChanges": true
                     },
                     "diskSize": {
@@ -2168,7 +2249,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs) to attach to the instance.\n"
+                        "description": "A list of exoscale*elastic*ip (IDs) to attach to the instance.\n"
                     },
                     "ipv6": {
                         "type": "boolean",
@@ -2205,7 +2286,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument\ninstead.\n",
+                        "description": "A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument instead.\n",
                         "deprecationMessage": "Use the network_interface block instead."
                     },
                     "publicIpAddress": {
@@ -2221,11 +2302,11 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of [exoscale_security_group](./security_group.md) (IDs) to attach to the instance.\n"
+                        "description": "A list of exoscale*security*group (IDs) to attach to the instance.\n"
                     },
                     "sshKey": {
                         "type": "string",
-                        "description": "The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the instance (may only be set at creation time).\n"
+                        "description": "The exoscale*ssh*key (name) to authorize in the instance (may only be set at creation time).\n"
                     },
                     "state": {
                         "type": "string",
@@ -2233,20 +2314,20 @@
                     },
                     "templateId": {
                         "type": "string",
-                        "description": "The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the instance.\n",
+                        "description": "❗ The exoscale*compute*template (ID) to use when creating the instance.\n",
                         "willReplaceOnChanges": true
                     },
                     "type": {
                         "type": "string",
-                        "description": "The instance type (`\u003cfamily\u003e.\u003csize\u003e`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) -\n`exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts\nthe instance.\n"
+                        "description": "The instance type (`\u003cfamily\u003e.\u003csize\u003e`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.\n"
                     },
                     "userData": {
                         "type": "string",
-                        "description": "[cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will\ntake care of it).\n"
+                        "description": "[cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).\n"
                     },
                     "zone": {
                         "type": "string",
-                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
+                        "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -2274,7 +2355,7 @@
                 },
                 "maintenanceDow": {
                     "type": "string",
-                    "description": "The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,\n`thursday`, `friday`, `saturday`, `sunday`).\n"
+                    "description": "The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).\n"
                 },
                 "maintenanceTime": {
                     "type": "string",
@@ -2286,7 +2367,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the database service.\n"
+                    "description": "❗ The name of the database service.\n"
                 },
                 "nodeCpus": {
                     "type": "integer",
@@ -2310,7 +2391,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show\n\u003cTYPE\u003e` - for reference).\n"
+                    "description": "The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show \u003cTYPE\u003e` - for reference).\n"
                 },
                 "redis": {
                     "$ref": "#/types/exoscale:index/DatabaseRedis:DatabaseRedis",
@@ -2326,7 +2407,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).\n"
+                    "description": "❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).\n"
                 },
                 "updatedAt": {
                     "type": "string",
@@ -2334,7 +2415,7 @@
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                 }
             },
             "required": [
@@ -2360,7 +2441,7 @@
                 },
                 "maintenanceDow": {
                     "type": "string",
-                    "description": "The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,\n`thursday`, `friday`, `saturday`, `sunday`).\n"
+                    "description": "The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).\n"
                 },
                 "maintenanceTime": {
                     "type": "string",
@@ -2372,7 +2453,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the database service.\n",
+                    "description": "❗ The name of the database service.\n",
                     "willReplaceOnChanges": true
                 },
                 "opensearch": {
@@ -2385,7 +2466,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show\n\u003cTYPE\u003e` - for reference).\n"
+                    "description": "The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show \u003cTYPE\u003e` - for reference).\n"
                 },
                 "redis": {
                     "$ref": "#/types/exoscale:index/DatabaseRedis:DatabaseRedis",
@@ -2397,12 +2478,12 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).\n",
+                    "description": "❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).\n",
                     "willReplaceOnChanges": true
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -2432,7 +2513,7 @@
                     },
                     "maintenanceDow": {
                         "type": "string",
-                        "description": "The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,\n`thursday`, `friday`, `saturday`, `sunday`).\n"
+                        "description": "The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).\n"
                     },
                     "maintenanceTime": {
                         "type": "string",
@@ -2444,7 +2525,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the database service.\n",
+                        "description": "❗ The name of the database service.\n",
                         "willReplaceOnChanges": true
                     },
                     "nodeCpus": {
@@ -2469,7 +2550,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show\n\u003cTYPE\u003e` - for reference).\n"
+                        "description": "The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show \u003cTYPE\u003e` - for reference).\n"
                     },
                     "redis": {
                         "$ref": "#/types/exoscale:index/DatabaseRedis:DatabaseRedis",
@@ -2485,7 +2566,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).\n",
+                        "description": "❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).\n",
                         "willReplaceOnChanges": true
                     },
                     "updatedAt": {
@@ -2494,7 +2575,7 @@
                     },
                     "zone": {
                         "type": "string",
-                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
+                        "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -2516,7 +2597,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The DNS domain name.\n"
+                    "description": "❗ The DNS domain name.\n"
                 },
                 "state": {
                     "type": "string",
@@ -2539,7 +2620,7 @@
             "inputProperties": {
                 "name": {
                     "type": "string",
-                    "description": "The DNS domain name.\n",
+                    "description": "❗ The DNS domain name.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -2558,7 +2639,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The DNS domain name.\n",
+                        "description": "❗ The DNS domain name.\n",
                         "willReplaceOnChanges": true
                     },
                     "state": {
@@ -2584,7 +2665,7 @@
                 },
                 "domain": {
                     "type": "string",
-                    "description": "The parent [exoscale_domain](./domain.md) to attach the record to.\n"
+                    "description": "❗ The parent exoscale.Domain to attach the record to.\n"
                 },
                 "hostname": {
                     "type": "string",
@@ -2600,7 +2681,7 @@
                 },
                 "recordType": {
                     "type": "string",
-                    "description": "The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`,\n`TXT`, `URL`).\n"
+                    "description": "❗ The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`, `TXT`, `URL`).\n"
                 },
                 "ttl": {
                     "type": "integer",
@@ -2623,7 +2704,7 @@
                 },
                 "domain": {
                     "type": "string",
-                    "description": "The parent [exoscale_domain](./domain.md) to attach the record to.\n",
+                    "description": "❗ The parent exoscale.Domain to attach the record to.\n",
                     "willReplaceOnChanges": true
                 },
                 "name": {
@@ -2636,7 +2717,7 @@
                 },
                 "recordType": {
                     "type": "string",
-                    "description": "The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`,\n`TXT`, `URL`).\n",
+                    "description": "❗ The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`, `TXT`, `URL`).\n",
                     "willReplaceOnChanges": true
                 },
                 "ttl": {
@@ -2658,7 +2739,7 @@
                     },
                     "domain": {
                         "type": "string",
-                        "description": "The parent [exoscale_domain](./domain.md) to attach the record to.\n",
+                        "description": "❗ The parent exoscale.Domain to attach the record to.\n",
                         "willReplaceOnChanges": true
                     },
                     "hostname": {
@@ -2675,7 +2756,7 @@
                     },
                     "recordType": {
                         "type": "string",
-                        "description": "The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`,\n`TXT`, `URL`).\n",
+                        "description": "❗ The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`, `TXT`, `URL`).\n",
                         "willReplaceOnChanges": true
                     },
                     "ttl": {
@@ -2691,7 +2772,7 @@
             "properties": {
                 "addressFamily": {
                     "type": "string",
-                    "description": "The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).\n"
+                    "description": "❗ The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).\n"
                 },
                 "cidr": {
                     "type": "string",
@@ -2722,7 +2803,7 @@
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                 }
             },
             "required": [
@@ -2736,7 +2817,7 @@
             "inputProperties": {
                 "addressFamily": {
                     "type": "string",
-                    "description": "The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).\n",
+                    "description": "❗ The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).\n",
                     "willReplaceOnChanges": true
                 },
                 "description": {
@@ -2760,7 +2841,7 @@
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -2772,7 +2853,7 @@
                 "properties": {
                     "addressFamily": {
                         "type": "string",
-                        "description": "The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).\n",
+                        "description": "❗ The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).\n",
                         "willReplaceOnChanges": true
                     },
                     "cidr": {
@@ -2804,7 +2885,7 @@
                     },
                     "zone": {
                         "type": "string",
-                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
+                        "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -2820,21 +2901,21 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The IAM access key name.\n"
+                    "description": "❗ The IAM access key name.\n"
                 },
                 "operations": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of API operations to restrict the key to.\n"
+                    "description": "❗ A list of API operations to restrict the key to.\n"
                 },
                 "resources": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of API\n[resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to\nrestrict the key to (`\u003cdomain\u003e/\u003ctype\u003e:\u003cname\u003e`).\n"
+                    "description": "❗ A list of API [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to restrict the key to (`\u003cdomain\u003e/\u003ctype\u003e:\u003cname\u003e`).\n"
                 },
                 "secret": {
                     "type": "string",
@@ -2846,7 +2927,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of tags to restrict the key to.\n"
+                    "description": "❗ A list of tags to restrict the key to.\n"
                 },
                 "tagsOperations": {
                     "type": "array",
@@ -2864,7 +2945,7 @@
             "inputProperties": {
                 "name": {
                     "type": "string",
-                    "description": "The IAM access key name.\n",
+                    "description": "❗ The IAM access key name.\n",
                     "willReplaceOnChanges": true
                 },
                 "operations": {
@@ -2872,7 +2953,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of API operations to restrict the key to.\n",
+                    "description": "❗ A list of API operations to restrict the key to.\n",
                     "willReplaceOnChanges": true
                 },
                 "resources": {
@@ -2880,7 +2961,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of API\n[resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to\nrestrict the key to (`\u003cdomain\u003e/\u003ctype\u003e:\u003cname\u003e`).\n",
+                    "description": "❗ A list of API [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to restrict the key to (`\u003cdomain\u003e/\u003ctype\u003e:\u003cname\u003e`).\n",
                     "willReplaceOnChanges": true
                 },
                 "tags": {
@@ -2888,7 +2969,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of tags to restrict the key to.\n",
+                    "description": "❗ A list of tags to restrict the key to.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -2902,7 +2983,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The IAM access key name.\n",
+                        "description": "❗ The IAM access key name.\n",
                         "willReplaceOnChanges": true
                     },
                     "operations": {
@@ -2910,7 +2991,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of API operations to restrict the key to.\n",
+                        "description": "❗ A list of API operations to restrict the key to.\n",
                         "willReplaceOnChanges": true
                     },
                     "resources": {
@@ -2918,7 +2999,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of API\n[resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to\nrestrict the key to (`\u003cdomain\u003e/\u003ctype\u003e:\u003cname\u003e`).\n",
+                        "description": "❗ A list of API [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to restrict the key to (`\u003cdomain\u003e/\u003ctype\u003e:\u003cname\u003e`).\n",
                         "willReplaceOnChanges": true
                     },
                     "secret": {
@@ -2931,7 +3012,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of tags to restrict the key to.\n",
+                        "description": "❗ A list of tags to restrict the key to.\n",
                         "willReplaceOnChanges": true
                     },
                     "tagsOperations": {
@@ -2957,7 +3038,7 @@
                 },
                 "healthcheckMode": {
                     "type": "string",
-                    "description": "The healthcheck probing mode (must be `tcp`, `http` or `https`).\n"
+                    "description": "❗ The healthcheck probing mode (must be `tcp`, `http` or `https`).\n"
                 },
                 "healthcheckPath": {
                     "type": "string",
@@ -2981,11 +3062,11 @@
                 },
                 "healthcheckTlsSkipVerify": {
                     "type": "boolean",
-                    "description": "Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed\nto `true`, it cannot be reset to `false` later on (requires a resource re-creation).\n"
+                    "description": "Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).\n"
                 },
                 "healthcheckTlsSni": {
                     "type": "string",
-                    "description": "The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty\nvalue, it cannot be reset to its default empty value later on (requires a resource re-creation).\n"
+                    "description": "The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).\n"
                 },
                 "ipAddress": {
                     "type": "string",
@@ -3004,7 +3085,7 @@
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale Zone name\n"
+                    "description": "❗ The Exoscale Zone name\n"
                 }
             },
             "required": [
@@ -3023,7 +3104,7 @@
                 },
                 "healthcheckMode": {
                     "type": "string",
-                    "description": "The healthcheck probing mode (must be `tcp`, `http` or `https`).\n",
+                    "description": "❗ The healthcheck probing mode (must be `tcp`, `http` or `https`).\n",
                     "willReplaceOnChanges": true
                 },
                 "healthcheckPath": {
@@ -3048,11 +3129,11 @@
                 },
                 "healthcheckTlsSkipVerify": {
                     "type": "boolean",
-                    "description": "Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed\nto `true`, it cannot be reset to `false` later on (requires a resource re-creation).\n"
+                    "description": "Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).\n"
                 },
                 "healthcheckTlsSni": {
                     "type": "string",
-                    "description": "The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty\nvalue, it cannot be reset to its default empty value later on (requires a resource re-creation).\n"
+                    "description": "The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).\n"
                 },
                 "reverseDns": {
                     "type": "string",
@@ -3067,7 +3148,7 @@
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale Zone name\n",
+                    "description": "❗ The Exoscale Zone name\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -3087,7 +3168,7 @@
                     },
                     "healthcheckMode": {
                         "type": "string",
-                        "description": "The healthcheck probing mode (must be `tcp`, `http` or `https`).\n",
+                        "description": "❗ The healthcheck probing mode (must be `tcp`, `http` or `https`).\n",
                         "willReplaceOnChanges": true
                     },
                     "healthcheckPath": {
@@ -3112,11 +3193,11 @@
                     },
                     "healthcheckTlsSkipVerify": {
                         "type": "boolean",
-                        "description": "Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed\nto `true`, it cannot be reset to `false` later on (requires a resource re-creation).\n"
+                        "description": "Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).\n"
                     },
                     "healthcheckTlsSni": {
                         "type": "string",
-                        "description": "The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty\nvalue, it cannot be reset to its default empty value later on (requires a resource re-creation).\n"
+                        "description": "The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).\n"
                     },
                     "ipAddress": {
                         "type": "string",
@@ -3135,7 +3216,7 @@
                     },
                     "zone": {
                         "type": "string",
-                        "description": "The Exoscale Zone name\n",
+                        "description": "❗ The Exoscale Zone name\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -3150,7 +3231,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs; may only be set at creation time).\n"
+                    "description": "A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).\n"
                 },
                 "deployTargetId": {
                     "type": "string",
@@ -3169,7 +3250,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs).\n"
+                    "description": "A list of exoscale*elastic*ip (IDs).\n"
                 },
                 "instancePrefix": {
                     "type": "string",
@@ -3177,7 +3258,7 @@
                 },
                 "instanceType": {
                     "type": "string",
-                    "description": "The managed compute instances type (`\u003cfamily\u003e.\u003csize\u003e`, e.g. `standard.medium`; use the [Exoscale\nCLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).\n"
+                    "description": "The managed compute instances type (`\u003cfamily\u003e.\u003csize\u003e`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).\n"
                 },
                 "instances": {
                     "type": "array",
@@ -3192,7 +3273,7 @@
                 },
                 "keyPair": {
                     "type": "string",
-                    "description": "The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the managed instances.\n"
+                    "description": "The exoscale*ssh*key (name) to authorize in the managed instances.\n"
                 },
                 "labels": {
                     "type": "object",
@@ -3210,14 +3291,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of [exoscale_private_network](./private_network.md) (IDs).\n"
+                    "description": "A list of exoscale*private*network (IDs).\n"
                 },
                 "securityGroupIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of [exoscale_security_group](./security_groups.md) (IDs).\n"
+                    "description": "A list of exoscale*security*group (IDs).\n"
                 },
                 "serviceOffering": {
                     "type": "string",
@@ -3233,11 +3314,11 @@
                 },
                 "templateId": {
                     "type": "string",
-                    "description": "The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the managed instances.\n"
+                    "description": "The exoscale*compute*template (ID) to use when creating the managed instances.\n"
                 },
                 "userData": {
                     "type": "string",
-                    "description": "[cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode\nor gzip it as the provider will take care of it).\n"
+                    "description": "[cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).\n"
                 },
                 "virtualMachines": {
                     "type": "array",
@@ -3249,7 +3330,7 @@
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                 }
             },
             "required": [
@@ -3270,7 +3351,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs; may only be set at creation time).\n"
+                    "description": "A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).\n"
                 },
                 "deployTargetId": {
                     "type": "string",
@@ -3289,7 +3370,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs).\n"
+                    "description": "A list of exoscale*elastic*ip (IDs).\n"
                 },
                 "instancePrefix": {
                     "type": "string",
@@ -3297,7 +3378,7 @@
                 },
                 "instanceType": {
                     "type": "string",
-                    "description": "The managed compute instances type (`\u003cfamily\u003e.\u003csize\u003e`, e.g. `standard.medium`; use the [Exoscale\nCLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).\n"
+                    "description": "The managed compute instances type (`\u003cfamily\u003e.\u003csize\u003e`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).\n"
                 },
                 "instances": {
                     "type": "array",
@@ -3312,7 +3393,7 @@
                 },
                 "keyPair": {
                     "type": "string",
-                    "description": "The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the managed instances.\n"
+                    "description": "The exoscale*ssh*key (name) to authorize in the managed instances.\n"
                 },
                 "labels": {
                     "type": "object",
@@ -3330,14 +3411,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of [exoscale_private_network](./private_network.md) (IDs).\n"
+                    "description": "A list of exoscale*private*network (IDs).\n"
                 },
                 "securityGroupIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of [exoscale_security_group](./security_groups.md) (IDs).\n"
+                    "description": "A list of exoscale*security*group (IDs).\n"
                 },
                 "serviceOffering": {
                     "type": "string",
@@ -3353,11 +3434,11 @@
                 },
                 "templateId": {
                     "type": "string",
-                    "description": "The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the managed instances.\n"
+                    "description": "The exoscale*compute*template (ID) to use when creating the managed instances.\n"
                 },
                 "userData": {
                     "type": "string",
-                    "description": "[cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode\nor gzip it as the provider will take care of it).\n"
+                    "description": "[cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).\n"
                 },
                 "virtualMachines": {
                     "type": "array",
@@ -3369,7 +3450,7 @@
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -3386,7 +3467,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs; may only be set at creation time).\n"
+                        "description": "A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).\n"
                     },
                     "deployTargetId": {
                         "type": "string",
@@ -3405,7 +3486,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of [exoscale_elastic_ip](./elastic_ip.md) (IDs).\n"
+                        "description": "A list of exoscale*elastic*ip (IDs).\n"
                     },
                     "instancePrefix": {
                         "type": "string",
@@ -3413,7 +3494,7 @@
                     },
                     "instanceType": {
                         "type": "string",
-                        "description": "The managed compute instances type (`\u003cfamily\u003e.\u003csize\u003e`, e.g. `standard.medium`; use the [Exoscale\nCLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).\n"
+                        "description": "The managed compute instances type (`\u003cfamily\u003e.\u003csize\u003e`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).\n"
                     },
                     "instances": {
                         "type": "array",
@@ -3428,7 +3509,7 @@
                     },
                     "keyPair": {
                         "type": "string",
-                        "description": "The [exoscale_ssh_key](./ssh_key.md) (name) to authorize in the managed instances.\n"
+                        "description": "The exoscale*ssh*key (name) to authorize in the managed instances.\n"
                     },
                     "labels": {
                         "type": "object",
@@ -3446,14 +3527,14 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of [exoscale_private_network](./private_network.md) (IDs).\n"
+                        "description": "A list of exoscale*private*network (IDs).\n"
                     },
                     "securityGroupIds": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of [exoscale_security_group](./security_groups.md) (IDs).\n"
+                        "description": "A list of exoscale*security*group (IDs).\n"
                     },
                     "serviceOffering": {
                         "type": "string",
@@ -3469,11 +3550,11 @@
                     },
                     "templateId": {
                         "type": "string",
-                        "description": "The [exoscale_compute_template](../data-sources/compute_template.md) (ID) to use when creating the managed instances.\n"
+                        "description": "The exoscale*compute*template (ID) to use when creating the managed instances.\n"
                     },
                     "userData": {
                         "type": "string",
-                        "description": "[cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode\nor gzip it as the provider will take care of it).\n"
+                        "description": "[cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).\n"
                     },
                     "virtualMachines": {
                         "type": "array",
@@ -3485,7 +3566,7 @@
                     },
                     "zone": {
                         "type": "string",
-                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
+                        "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -3497,7 +3578,7 @@
             "properties": {
                 "computeId": {
                     "type": "string",
-                    "description": "The compute instance ID.\n"
+                    "description": "❗ The compute instance ID.\n"
                 },
                 "gateway": {
                     "type": "string"
@@ -3515,7 +3596,7 @@
                 },
                 "networkId": {
                     "type": "string",
-                    "description": "The private network ID.\n"
+                    "description": "❗ The private network ID.\n"
                 }
             },
             "required": [
@@ -3529,7 +3610,7 @@
             "inputProperties": {
                 "computeId": {
                     "type": "string",
-                    "description": "The compute instance ID.\n",
+                    "description": "❗ The compute instance ID.\n",
                     "willReplaceOnChanges": true
                 },
                 "ipAddress": {
@@ -3538,7 +3619,7 @@
                 },
                 "networkId": {
                     "type": "string",
-                    "description": "The private network ID.\n",
+                    "description": "❗ The private network ID.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -3551,7 +3632,7 @@
                 "properties": {
                     "computeId": {
                         "type": "string",
-                        "description": "The compute instance ID.\n",
+                        "description": "❗ The compute instance ID.\n",
                         "willReplaceOnChanges": true
                     },
                     "gateway": {
@@ -3570,7 +3651,7 @@
                     },
                     "networkId": {
                         "type": "string",
-                        "description": "The private network ID.\n",
+                        "description": "❗ The private network ID.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -3608,7 +3689,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of the [exoscale_nlb_service](./nlb_service.md) (names).\n"
+                    "description": "The list of the exoscale*nlb*service (names).\n"
                 },
                 "state": {
                     "type": "string",
@@ -3616,7 +3697,7 @@
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                 }
             },
             "required": [
@@ -3645,7 +3726,7 @@
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -3683,7 +3764,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The list of the [exoscale_nlb_service](./nlb_service.md) (names).\n"
+                        "description": "The list of the exoscale*nlb*service (names).\n"
                     },
                     "state": {
                         "type": "string",
@@ -3691,7 +3772,7 @@
                     },
                     "zone": {
                         "type": "string",
-                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
+                        "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -3714,7 +3795,7 @@
                 },
                 "instancePoolId": {
                     "type": "string",
-                    "description": "The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.\n"
+                    "description": "The exoscale*instance*pool (ID) to forward traffic to.\n"
                 },
                 "name": {
                     "type": "string",
@@ -3722,7 +3803,7 @@
                 },
                 "nlbId": {
                     "type": "string",
-                    "description": "The parent [exoscale_nlb](./nlb.md) ID.\n"
+                    "description": "❗ The parent exoscale.NLB ID.\n"
                 },
                 "port": {
                     "type": "integer",
@@ -3745,7 +3826,7 @@
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                 }
             },
             "required": [
@@ -3772,7 +3853,7 @@
                 },
                 "instancePoolId": {
                     "type": "string",
-                    "description": "The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.\n"
+                    "description": "The exoscale*instance*pool (ID) to forward traffic to.\n"
                 },
                 "name": {
                     "type": "string",
@@ -3780,7 +3861,7 @@
                 },
                 "nlbId": {
                     "type": "string",
-                    "description": "The parent [exoscale_nlb](./nlb.md) ID.\n",
+                    "description": "❗ The parent exoscale.NLB ID.\n",
                     "willReplaceOnChanges": true
                 },
                 "port": {
@@ -3801,7 +3882,7 @@
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -3829,7 +3910,7 @@
                     },
                     "instancePoolId": {
                         "type": "string",
-                        "description": "The [exoscale_instance_pool](./instance_pool.md) (ID) to forward traffic to.\n"
+                        "description": "The exoscale*instance*pool (ID) to forward traffic to.\n"
                     },
                     "name": {
                         "type": "string",
@@ -3837,7 +3918,7 @@
                     },
                     "nlbId": {
                         "type": "string",
-                        "description": "The parent [exoscale_nlb](./nlb.md) ID.\n",
+                        "description": "❗ The parent exoscale.NLB ID.\n",
                         "willReplaceOnChanges": true
                     },
                     "port": {
@@ -3861,7 +3942,7 @@
                     },
                     "zone": {
                         "type": "string",
-                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
+                        "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -3885,7 +3966,7 @@
                 },
                 "netmask": {
                     "type": "string",
-                    "description": "The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*\nprivate networks.\n"
+                    "description": "The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.\n"
                 },
                 "networkOffering": {
                     "type": "string",
@@ -3904,7 +3985,7 @@
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale Zone name.\n"
+                    "description": "❗ The Exoscale Zone name.\n"
                 }
             },
             "required": [
@@ -3928,7 +4009,7 @@
                 },
                 "netmask": {
                     "type": "string",
-                    "description": "The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*\nprivate networks.\n"
+                    "description": "The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.\n"
                 },
                 "networkOffering": {
                     "type": "string",
@@ -3947,7 +4028,7 @@
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale Zone name.\n",
+                    "description": "❗ The Exoscale Zone name.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -3971,7 +4052,7 @@
                     },
                     "netmask": {
                         "type": "string",
-                        "description": "The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*\nprivate networks.\n"
+                        "description": "The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.\n"
                     },
                     "networkOffering": {
                         "type": "string",
@@ -3990,7 +4071,7 @@
                     },
                     "zone": {
                         "type": "string",
-                        "description": "The Exoscale Zone name.\n",
+                        "description": "❗ The Exoscale Zone name.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -4022,7 +4103,7 @@
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                 }
             },
             "required": [
@@ -4052,7 +4133,7 @@
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -4084,7 +4165,7 @@
                     },
                     "zone": {
                         "type": "string",
-                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
+                        "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -4103,7 +4184,7 @@
                 },
                 "aggregationCa": {
                     "type": "string",
-                    "description": "The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g.\n`metrics-server`).\n"
+                    "description": "The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).\n"
                 },
                 "autoUpgrade": {
                     "type": "boolean",
@@ -4131,7 +4212,7 @@
                 },
                 "exoscaleCcm": {
                     "type": "boolean",
-                    "description": "Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the\ncontrol plane (boolean; default: `true`; may only be set at creation time).\n"
+                    "description": "Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).\n"
                 },
                 "kubeletCa": {
                     "type": "string",
@@ -4146,7 +4227,7 @@
                 },
                 "metricsServer": {
                     "type": "boolean",
-                    "description": "Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane\n(boolean; default: `true`; may only be set at creation time).\n"
+                    "description": "Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).\n"
                 },
                 "name": {
                     "type": "string",
@@ -4157,11 +4238,11 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of [exoscale_sks_nodepool](./sks_nodepool.md) (IDs) attached to the cluster.\n"
+                    "description": "The list of exoscale*sks*nodepool (IDs) attached to the cluster.\n"
                 },
                 "oidc": {
                     "$ref": "#/types/exoscale:index/SKSClusterOidc:SKSClusterOidc",
-                    "description": "An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is\ndocumented below.\n"
+                    "description": "An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.\n"
                 },
                 "serviceLevel": {
                     "type": "string",
@@ -4173,11 +4254,11 @@
                 },
                 "version": {
                     "type": "string",
-                    "description": "The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for\nreference; may only be set at creation time).\n"
+                    "description": "The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).\n"
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                 }
             },
             "required": [
@@ -4216,7 +4297,7 @@
                 },
                 "exoscaleCcm": {
                     "type": "boolean",
-                    "description": "Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the\ncontrol plane (boolean; default: `true`; may only be set at creation time).\n"
+                    "description": "Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).\n"
                 },
                 "labels": {
                     "type": "object",
@@ -4227,7 +4308,7 @@
                 },
                 "metricsServer": {
                     "type": "boolean",
-                    "description": "Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane\n(boolean; default: `true`; may only be set at creation time).\n"
+                    "description": "Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).\n"
                 },
                 "name": {
                     "type": "string",
@@ -4235,7 +4316,7 @@
                 },
                 "oidc": {
                     "$ref": "#/types/exoscale:index/SKSClusterOidc:SKSClusterOidc",
-                    "description": "An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is\ndocumented below.\n"
+                    "description": "An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.\n"
                 },
                 "serviceLevel": {
                     "type": "string",
@@ -4243,11 +4324,11 @@
                 },
                 "version": {
                     "type": "string",
-                    "description": "The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for\nreference; may only be set at creation time).\n"
+                    "description": "The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).\n"
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -4266,7 +4347,7 @@
                     },
                     "aggregationCa": {
                         "type": "string",
-                        "description": "The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g.\n`metrics-server`).\n"
+                        "description": "The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).\n"
                     },
                     "autoUpgrade": {
                         "type": "boolean",
@@ -4294,7 +4375,7 @@
                     },
                     "exoscaleCcm": {
                         "type": "boolean",
-                        "description": "Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the\ncontrol plane (boolean; default: `true`; may only be set at creation time).\n"
+                        "description": "Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).\n"
                     },
                     "kubeletCa": {
                         "type": "string",
@@ -4309,7 +4390,7 @@
                     },
                     "metricsServer": {
                         "type": "boolean",
-                        "description": "Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane\n(boolean; default: `true`; may only be set at creation time).\n"
+                        "description": "Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).\n"
                     },
                     "name": {
                         "type": "string",
@@ -4320,11 +4401,11 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The list of [exoscale_sks_nodepool](./sks_nodepool.md) (IDs) attached to the cluster.\n"
+                        "description": "The list of exoscale*sks*nodepool (IDs) attached to the cluster.\n"
                     },
                     "oidc": {
                         "$ref": "#/types/exoscale:index/SKSClusterOidc:SKSClusterOidc",
-                        "description": "An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is\ndocumented below.\n"
+                        "description": "An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.\n"
                     },
                     "serviceLevel": {
                         "type": "string",
@@ -4336,11 +4417,11 @@
                     },
                     "version": {
                         "type": "string",
-                        "description": "The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for\nreference; may only be set at creation time).\n"
+                        "description": "The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).\n"
                     },
                     "zone": {
                         "type": "string",
-                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
+                        "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -4351,7 +4432,7 @@
             "properties": {
                 "clusterId": {
                     "type": "string",
-                    "description": "The parent [exoscale_sks_cluster](./sks_cluster.md) ID.\n"
+                    "description": "❗ The parent exoscale*sks*cluster ID.\n"
                 },
                 "earlyRenewalSeconds": {
                     "type": "integer",
@@ -4362,7 +4443,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the\nOrganization field.\n"
+                    "description": "❗ Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.\n"
                 },
                 "kubeconfig": {
                     "type": "string",
@@ -4374,15 +4455,15 @@
                 },
                 "ttlSeconds": {
                     "type": "number",
-                    "description": "The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).\n"
+                    "description": "❗ The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).\n"
                 },
                 "user": {
                     "type": "string",
-                    "description": "User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN\nfield.\n"
+                    "description": "❗ User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.\n"
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                 }
             },
             "required": [
@@ -4396,7 +4477,7 @@
             "inputProperties": {
                 "clusterId": {
                     "type": "string",
-                    "description": "The parent [exoscale_sks_cluster](./sks_cluster.md) ID.\n",
+                    "description": "❗ The parent exoscale*sks*cluster ID.\n",
                     "willReplaceOnChanges": true
                 },
                 "earlyRenewalSeconds": {
@@ -4408,22 +4489,22 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the\nOrganization field.\n",
+                    "description": "❗ Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.\n",
                     "willReplaceOnChanges": true
                 },
                 "ttlSeconds": {
                     "type": "number",
-                    "description": "The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).\n",
+                    "description": "❗ The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).\n",
                     "willReplaceOnChanges": true
                 },
                 "user": {
                     "type": "string",
-                    "description": "User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN\nfield.\n",
+                    "description": "❗ User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.\n",
                     "willReplaceOnChanges": true
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -4438,7 +4519,7 @@
                 "properties": {
                     "clusterId": {
                         "type": "string",
-                        "description": "The parent [exoscale_sks_cluster](./sks_cluster.md) ID.\n",
+                        "description": "❗ The parent exoscale*sks*cluster ID.\n",
                         "willReplaceOnChanges": true
                     },
                     "earlyRenewalSeconds": {
@@ -4450,7 +4531,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the\nOrganization field.\n",
+                        "description": "❗ Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.\n",
                         "willReplaceOnChanges": true
                     },
                     "kubeconfig": {
@@ -4463,17 +4544,17 @@
                     },
                     "ttlSeconds": {
                         "type": "number",
-                        "description": "The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).\n",
+                        "description": "❗ The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).\n",
                         "willReplaceOnChanges": true
                     },
                     "user": {
                         "type": "string",
-                        "description": "User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN\nfield.\n",
+                        "description": "❗ User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.\n",
                         "willReplaceOnChanges": true
                     },
                     "zone": {
                         "type": "string",
-                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
+                        "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -4488,11 +4569,11 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to be attached to the managed instances.\n"
+                    "description": "A list of exoscale*anti*affinity_group (IDs) to be attached to the managed instances.\n"
                 },
                 "clusterId": {
                     "type": "string",
-                    "description": "The parent [exoscale_sks_cluster](./sks_cluster.md) ID.\n"
+                    "description": "❗ The parent exoscale*sks*cluster ID.\n"
                 },
                 "createdAt": {
                     "type": "string",
@@ -4512,7 +4593,7 @@
                 },
                 "instancePoolId": {
                     "type": "string",
-                    "description": "The underlying [exoscale_instance_pool](./instance_pool.md) ID.\n"
+                    "description": "The underlying exoscale*instance*pool ID.\n"
                 },
                 "instancePrefix": {
                     "type": "string",
@@ -4520,7 +4601,7 @@
                 },
                 "instanceType": {
                     "type": "string",
-                    "description": "The managed compute instances type (`\u003cfamily\u003e.\u003csize\u003e`, e.g. `standard.medium`; use the [Exoscale\nCLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).\n"
+                    "description": "The managed compute instances type (`\u003cfamily\u003e.\u003csize\u003e`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).\n"
                 },
                 "labels": {
                     "type": "object",
@@ -4538,14 +4619,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of [exoscale_private_network](./private_network.md) (IDs) to be attached to the managed instances.\n"
+                    "description": "A list of exoscale*private*network (IDs) to be attached to the managed instances.\n"
                 },
                 "securityGroupIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of [exoscale_security_group](./security_group.md) (IDs) to be attached to the managed instances.\n"
+                    "description": "A list of exoscale*security*group (IDs) to be attached to the managed instances.\n"
                 },
                 "size": {
                     "type": "integer"
@@ -4559,7 +4640,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)\n(`\u003cvalue\u003e:\u003ceffect\u003e`).\n"
+                    "description": "A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`\u003cvalue\u003e:\u003ceffect\u003e`).\n"
                 },
                 "templateId": {
                     "type": "string",
@@ -4571,7 +4652,7 @@
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                 }
             },
             "required": [
@@ -4592,11 +4673,11 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to be attached to the managed instances.\n"
+                    "description": "A list of exoscale*anti*affinity_group (IDs) to be attached to the managed instances.\n"
                 },
                 "clusterId": {
                     "type": "string",
-                    "description": "The parent [exoscale_sks_cluster](./sks_cluster.md) ID.\n",
+                    "description": "❗ The parent exoscale*sks*cluster ID.\n",
                     "willReplaceOnChanges": true
                 },
                 "deployTargetId": {
@@ -4617,7 +4698,7 @@
                 },
                 "instanceType": {
                     "type": "string",
-                    "description": "The managed compute instances type (`\u003cfamily\u003e.\u003csize\u003e`, e.g. `standard.medium`; use the [Exoscale\nCLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).\n"
+                    "description": "The managed compute instances type (`\u003cfamily\u003e.\u003csize\u003e`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).\n"
                 },
                 "labels": {
                     "type": "object",
@@ -4635,14 +4716,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of [exoscale_private_network](./private_network.md) (IDs) to be attached to the managed instances.\n"
+                    "description": "A list of exoscale*private*network (IDs) to be attached to the managed instances.\n"
                 },
                 "securityGroupIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of [exoscale_security_group](./security_group.md) (IDs) to be attached to the managed instances.\n"
+                    "description": "A list of exoscale*security*group (IDs) to be attached to the managed instances.\n"
                 },
                 "size": {
                     "type": "integer"
@@ -4652,11 +4733,11 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)\n(`\u003cvalue\u003e:\u003ceffect\u003e`).\n"
+                    "description": "A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`\u003cvalue\u003e:\u003ceffect\u003e`).\n"
                 },
                 "zone": {
                     "type": "string",
-                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -4674,11 +4755,11 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to be attached to the managed instances.\n"
+                        "description": "A list of exoscale*anti*affinity_group (IDs) to be attached to the managed instances.\n"
                     },
                     "clusterId": {
                         "type": "string",
-                        "description": "The parent [exoscale_sks_cluster](./sks_cluster.md) ID.\n",
+                        "description": "❗ The parent exoscale*sks*cluster ID.\n",
                         "willReplaceOnChanges": true
                     },
                     "createdAt": {
@@ -4699,7 +4780,7 @@
                     },
                     "instancePoolId": {
                         "type": "string",
-                        "description": "The underlying [exoscale_instance_pool](./instance_pool.md) ID.\n"
+                        "description": "The underlying exoscale*instance*pool ID.\n"
                     },
                     "instancePrefix": {
                         "type": "string",
@@ -4707,7 +4788,7 @@
                     },
                     "instanceType": {
                         "type": "string",
-                        "description": "The managed compute instances type (`\u003cfamily\u003e.\u003csize\u003e`, e.g. `standard.medium`; use the [Exoscale\nCLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).\n"
+                        "description": "The managed compute instances type (`\u003cfamily\u003e.\u003csize\u003e`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).\n"
                     },
                     "labels": {
                         "type": "object",
@@ -4725,14 +4806,14 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of [exoscale_private_network](./private_network.md) (IDs) to be attached to the managed instances.\n"
+                        "description": "A list of exoscale*private*network (IDs) to be attached to the managed instances.\n"
                     },
                     "securityGroupIds": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of [exoscale_security_group](./security_group.md) (IDs) to be attached to the managed instances.\n"
+                        "description": "A list of exoscale*security*group (IDs) to be attached to the managed instances.\n"
                     },
                     "size": {
                         "type": "integer"
@@ -4746,7 +4827,7 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)\n(`\u003cvalue\u003e:\u003ceffect\u003e`).\n"
+                        "description": "A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`\u003cvalue\u003e:\u003ceffect\u003e`).\n"
                     },
                     "templateId": {
                         "type": "string",
@@ -4758,7 +4839,7 @@
                     },
                     "zone": {
                         "type": "string",
-                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
+                        "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -4774,11 +4855,11 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The SSH key name.\n"
+                    "description": "❗ The SSH key name.\n"
                 },
                 "publicKey": {
                     "type": "string",
-                    "description": "The SSH *public* key that will be authorized in compute instances.\n"
+                    "description": "❗ The SSH *public* key that will be authorized in compute instances.\n"
                 }
             },
             "required": [
@@ -4789,12 +4870,12 @@
             "inputProperties": {
                 "name": {
                     "type": "string",
-                    "description": "The SSH key name.\n",
+                    "description": "❗ The SSH key name.\n",
                     "willReplaceOnChanges": true
                 },
                 "publicKey": {
                     "type": "string",
-                    "description": "The SSH *public* key that will be authorized in compute instances.\n",
+                    "description": "❗ The SSH *public* key that will be authorized in compute instances.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -4807,12 +4888,12 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The SSH key name.\n",
+                        "description": "❗ The SSH key name.\n",
                         "willReplaceOnChanges": true
                     },
                     "publicKey": {
                         "type": "string",
-                        "description": "The SSH *public* key that will be authorized in compute instances.\n",
+                        "description": "❗ The SSH *public* key that will be authorized in compute instances.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -4827,7 +4908,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The SSH keypair name.\n"
+                    "description": "❗ The SSH keypair name.\n"
                 },
                 "privateKey": {
                     "type": "string",
@@ -4836,7 +4917,7 @@
                 },
                 "publicKey": {
                     "type": "string",
-                    "description": "A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the\n*private* key) is generated and saved locally (see the `private_key` attribute).\n"
+                    "description": "❗ A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `private_key` attribute).\n"
                 }
             },
             "required": [
@@ -4847,12 +4928,12 @@
             "inputProperties": {
                 "name": {
                     "type": "string",
-                    "description": "The SSH keypair name.\n",
+                    "description": "❗ The SSH keypair name.\n",
                     "willReplaceOnChanges": true
                 },
                 "publicKey": {
                     "type": "string",
-                    "description": "A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the\n*private* key) is generated and saved locally (see the `private_key` attribute).\n",
+                    "description": "❗ A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `private_key` attribute).\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -4865,7 +4946,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The SSH keypair name.\n",
+                        "description": "❗ The SSH keypair name.\n",
                         "willReplaceOnChanges": true
                     },
                     "privateKey": {
@@ -4875,7 +4956,7 @@
                     },
                     "publicKey": {
                         "type": "string",
-                        "description": "A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the\n*private* key) is generated and saved locally (see the `private_key` attribute).\n",
+                        "description": "❗ A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `private_key` attribute).\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -4887,11 +4968,11 @@
             "properties": {
                 "computeId": {
                     "type": "string",
-                    "description": "The compute instance ID.\n"
+                    "description": "❗ The compute instance ID.\n"
                 },
                 "ipAddress": {
                     "type": "string",
-                    "description": "The Elastic IP (EIP) address.\n"
+                    "description": "❗ The Elastic IP (EIP) address.\n"
                 },
                 "networkId": {
                     "type": "string",
@@ -4911,12 +4992,12 @@
             "inputProperties": {
                 "computeId": {
                     "type": "string",
-                    "description": "The compute instance ID.\n",
+                    "description": "❗ The compute instance ID.\n",
                     "willReplaceOnChanges": true
                 },
                 "ipAddress": {
                     "type": "string",
-                    "description": "The Elastic IP (EIP) address.\n",
+                    "description": "❗ The Elastic IP (EIP) address.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -4929,12 +5010,12 @@
                 "properties": {
                     "computeId": {
                         "type": "string",
-                        "description": "The compute instance ID.\n",
+                        "description": "❗ The compute instance ID.\n",
                         "willReplaceOnChanges": true
                     },
                     "ipAddress": {
                         "type": "string",
-                        "description": "The Elastic IP (EIP) address.\n",
+                        "description": "❗ The Elastic IP (EIP) address.\n",
                         "willReplaceOnChanges": true
                     },
                     "networkId": {
@@ -4954,18 +5035,18 @@
             "properties": {
                 "description": {
                     "type": "string",
-                    "description": "A free-form text describing the group.\n"
+                    "description": "❗ A free-form text describing the group.\n"
                 },
                 "externalSources": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)\nnotation.\n"
+                    "description": "A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio) notation.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The security group name.\n"
+                    "description": "❗ The security group name.\n"
                 }
             },
             "required": [
@@ -4974,7 +5055,7 @@
             "inputProperties": {
                 "description": {
                     "type": "string",
-                    "description": "A free-form text describing the group.\n",
+                    "description": "❗ A free-form text describing the group.\n",
                     "willReplaceOnChanges": true
                 },
                 "externalSources": {
@@ -4982,11 +5063,11 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)\nnotation.\n"
+                    "description": "A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio) notation.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The security group name.\n",
+                    "description": "❗ The security group name.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -4995,7 +5076,7 @@
                 "properties": {
                     "description": {
                         "type": "string",
-                        "description": "A free-form text describing the group.\n",
+                        "description": "❗ A free-form text describing the group.\n",
                         "willReplaceOnChanges": true
                     },
                     "externalSources": {
@@ -5003,11 +5084,11 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)\nnotation.\n"
+                        "description": "A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio) notation.\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "The security group name.\n",
+                        "description": "❗ The security group name.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -5019,57 +5100,57 @@
             "properties": {
                 "cidr": {
                     "type": "string",
-                    "description": "An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR\nnotation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with\n`public_security_group`/`user_security_group`/`user_security_group_id`).\n"
+                    "description": "❗ An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with `public_security_group`/`user_security_group`/`user_security_group_id`).\n"
                 },
                 "description": {
                     "type": "string",
-                    "description": "A free-form text describing the security group rule.\n"
+                    "description": "❗ A free-form text describing the security group rule.\n"
                 },
                 "endPort": {
                     "type": "integer",
-                    "description": "A `TCP`/`UDP` port range to match.\n"
+                    "description": "❗ A `TCP`/`UDP` port range to match.\n"
                 },
                 "icmpCode": {
                     "type": "integer",
-                    "description": "An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.\n"
+                    "description": "❗ An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.\n"
                 },
                 "icmpType": {
                     "type": "integer",
-                    "description": "An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.\n"
+                    "description": "❗ An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.\n"
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)\n"
+                    "description": "❗ The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)\n"
                 },
                 "publicSecurityGroup": {
                     "type": "string",
-                    "description": "An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with\n`cidr`/`user_security_group`/`user_security_group_id`).\n"
+                    "description": "❗ An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with `cidr`/`user_security_group`/`user_security_group_id`).\n"
                 },
                 "securityGroup": {
                     "type": "string",
-                    "description": "The parent security group name. Please use the `security_group_id` argument along the\n[exoscale_security_group](../data-sources/security_group.md) data source instead.\n",
+                    "description": "❗ The parent security group name. Please use the `security_group_id` argument along the exoscale*security*group data source instead.\n",
                     "deprecationMessage": "Deprecated in favor of `security_group_id`"
                 },
                 "securityGroupId": {
                     "type": "string",
-                    "description": "The parent [exoscale_security_group](./security_group.md) ID.\n"
+                    "description": "❗ The parent exoscale*security*group ID.\n"
                 },
                 "startPort": {
                     "type": "integer",
-                    "description": "A `TCP`/`UDP` port range to match.\n"
+                    "description": "❗ A `TCP`/`UDP` port range to match.\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "The traffic direction to match (`INGRESS` or `EGRESS`).\n"
+                    "description": "❗ The traffic direction to match (`INGRESS` or `EGRESS`).\n"
                 },
                 "userSecurityGroup": {
                     "type": "string",
-                    "description": "An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with\n`cidr`/`public_security_group`/`user_security_group_id`). Please use the `user_security_group_id` argument along the\n[exoscale_security_group](../data-sources/security_group.md) data source instead.\n",
+                    "description": "❗ An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`public_security_group`/`user_security_group_id`). Please use the `user_security_group_id` argument along the exoscale*security*group data source instead.\n",
                     "deprecationMessage": "Deprecated in favor of `user_security_group_id`"
                 },
                 "userSecurityGroupId": {
                     "type": "string",
-                    "description": "An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with\n`cidr`/`public_security_group`/`user_security_group)`).\n"
+                    "description": "❗ An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with `cidr`/`public_security_group`/`user_security_group)`).\n"
                 }
             },
             "required": [
@@ -5082,69 +5163,69 @@
             "inputProperties": {
                 "cidr": {
                     "type": "string",
-                    "description": "An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR\nnotation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with\n`public_security_group`/`user_security_group`/`user_security_group_id`).\n",
+                    "description": "❗ An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with `public_security_group`/`user_security_group`/`user_security_group_id`).\n",
                     "willReplaceOnChanges": true
                 },
                 "description": {
                     "type": "string",
-                    "description": "A free-form text describing the security group rule.\n",
+                    "description": "❗ A free-form text describing the security group rule.\n",
                     "willReplaceOnChanges": true
                 },
                 "endPort": {
                     "type": "integer",
-                    "description": "A `TCP`/`UDP` port range to match.\n",
+                    "description": "❗ A `TCP`/`UDP` port range to match.\n",
                     "willReplaceOnChanges": true
                 },
                 "icmpCode": {
                     "type": "integer",
-                    "description": "An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.\n",
+                    "description": "❗ An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.\n",
                     "willReplaceOnChanges": true
                 },
                 "icmpType": {
                     "type": "integer",
-                    "description": "An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.\n",
+                    "description": "❗ An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.\n",
                     "willReplaceOnChanges": true
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)\n",
+                    "description": "❗ The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)\n",
                     "willReplaceOnChanges": true
                 },
                 "publicSecurityGroup": {
                     "type": "string",
-                    "description": "An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with\n`cidr`/`user_security_group`/`user_security_group_id`).\n",
+                    "description": "❗ An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with `cidr`/`user_security_group`/`user_security_group_id`).\n",
                     "willReplaceOnChanges": true
                 },
                 "securityGroup": {
                     "type": "string",
-                    "description": "The parent security group name. Please use the `security_group_id` argument along the\n[exoscale_security_group](../data-sources/security_group.md) data source instead.\n",
+                    "description": "❗ The parent security group name. Please use the `security_group_id` argument along the exoscale*security*group data source instead.\n",
                     "deprecationMessage": "Deprecated in favor of `security_group_id`",
                     "willReplaceOnChanges": true
                 },
                 "securityGroupId": {
                     "type": "string",
-                    "description": "The parent [exoscale_security_group](./security_group.md) ID.\n",
+                    "description": "❗ The parent exoscale*security*group ID.\n",
                     "willReplaceOnChanges": true
                 },
                 "startPort": {
                     "type": "integer",
-                    "description": "A `TCP`/`UDP` port range to match.\n",
+                    "description": "❗ A `TCP`/`UDP` port range to match.\n",
                     "willReplaceOnChanges": true
                 },
                 "type": {
                     "type": "string",
-                    "description": "The traffic direction to match (`INGRESS` or `EGRESS`).\n",
+                    "description": "❗ The traffic direction to match (`INGRESS` or `EGRESS`).\n",
                     "willReplaceOnChanges": true
                 },
                 "userSecurityGroup": {
                     "type": "string",
-                    "description": "An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with\n`cidr`/`public_security_group`/`user_security_group_id`). Please use the `user_security_group_id` argument along the\n[exoscale_security_group](../data-sources/security_group.md) data source instead.\n",
+                    "description": "❗ An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`public_security_group`/`user_security_group_id`). Please use the `user_security_group_id` argument along the exoscale*security*group data source instead.\n",
                     "deprecationMessage": "Deprecated in favor of `user_security_group_id`",
                     "willReplaceOnChanges": true
                 },
                 "userSecurityGroupId": {
                     "type": "string",
-                    "description": "An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with\n`cidr`/`public_security_group`/`user_security_group)`).\n",
+                    "description": "❗ An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with `cidr`/`public_security_group`/`user_security_group)`).\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -5156,69 +5237,69 @@
                 "properties": {
                     "cidr": {
                         "type": "string",
-                        "description": "An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR\nnotation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with\n`public_security_group`/`user_security_group`/`user_security_group_id`).\n",
+                        "description": "❗ An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with `public_security_group`/`user_security_group`/`user_security_group_id`).\n",
                         "willReplaceOnChanges": true
                     },
                     "description": {
                         "type": "string",
-                        "description": "A free-form text describing the security group rule.\n",
+                        "description": "❗ A free-form text describing the security group rule.\n",
                         "willReplaceOnChanges": true
                     },
                     "endPort": {
                         "type": "integer",
-                        "description": "A `TCP`/`UDP` port range to match.\n",
+                        "description": "❗ A `TCP`/`UDP` port range to match.\n",
                         "willReplaceOnChanges": true
                     },
                     "icmpCode": {
                         "type": "integer",
-                        "description": "An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.\n",
+                        "description": "❗ An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.\n",
                         "willReplaceOnChanges": true
                     },
                     "icmpType": {
                         "type": "integer",
-                        "description": "An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.\n",
+                        "description": "❗ An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.\n",
                         "willReplaceOnChanges": true
                     },
                     "protocol": {
                         "type": "string",
-                        "description": "The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)\n",
+                        "description": "❗ The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)\n",
                         "willReplaceOnChanges": true
                     },
                     "publicSecurityGroup": {
                         "type": "string",
-                        "description": "An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with\n`cidr`/`user_security_group`/`user_security_group_id`).\n",
+                        "description": "❗ An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with `cidr`/`user_security_group`/`user_security_group_id`).\n",
                         "willReplaceOnChanges": true
                     },
                     "securityGroup": {
                         "type": "string",
-                        "description": "The parent security group name. Please use the `security_group_id` argument along the\n[exoscale_security_group](../data-sources/security_group.md) data source instead.\n",
+                        "description": "❗ The parent security group name. Please use the `security_group_id` argument along the exoscale*security*group data source instead.\n",
                         "deprecationMessage": "Deprecated in favor of `security_group_id`",
                         "willReplaceOnChanges": true
                     },
                     "securityGroupId": {
                         "type": "string",
-                        "description": "The parent [exoscale_security_group](./security_group.md) ID.\n",
+                        "description": "❗ The parent exoscale*security*group ID.\n",
                         "willReplaceOnChanges": true
                     },
                     "startPort": {
                         "type": "integer",
-                        "description": "A `TCP`/`UDP` port range to match.\n",
+                        "description": "❗ A `TCP`/`UDP` port range to match.\n",
                         "willReplaceOnChanges": true
                     },
                     "type": {
                         "type": "string",
-                        "description": "The traffic direction to match (`INGRESS` or `EGRESS`).\n",
+                        "description": "❗ The traffic direction to match (`INGRESS` or `EGRESS`).\n",
                         "willReplaceOnChanges": true
                     },
                     "userSecurityGroup": {
                         "type": "string",
-                        "description": "An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with\n`cidr`/`public_security_group`/`user_security_group_id`). Please use the `user_security_group_id` argument along the\n[exoscale_security_group](../data-sources/security_group.md) data source instead.\n",
+                        "description": "❗ An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`public_security_group`/`user_security_group_id`). Please use the `user_security_group_id` argument along the exoscale*security*group data source instead.\n",
                         "deprecationMessage": "Deprecated in favor of `user_security_group_id`",
                         "willReplaceOnChanges": true
                     },
                     "userSecurityGroupId": {
                         "type": "string",
-                        "description": "An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with\n`cidr`/`public_security_group`/`user_security_group)`).\n",
+                        "description": "❗ An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with `cidr`/`public_security_group`/`user_security_group)`).\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -5244,11 +5325,11 @@
                 },
                 "securityGroup": {
                     "type": "string",
-                    "description": "The security group (name) the rules apply to (conflicts with `security_group_id`).\n"
+                    "description": "❗ The security group (name) the rules apply to (conflicts with `security_group_id`).\n"
                 },
                 "securityGroupId": {
                     "type": "string",
-                    "description": "The security group (ID) the rules apply to (conficts with `security_group)`.\n"
+                    "description": "❗ The security group (ID) the rules apply to (conficts with `security_group)`.\n"
                 }
             },
             "required": [
@@ -5272,12 +5353,12 @@
                 },
                 "securityGroup": {
                     "type": "string",
-                    "description": "The security group (name) the rules apply to (conflicts with `security_group_id`).\n",
+                    "description": "❗ The security group (name) the rules apply to (conflicts with `security_group_id`).\n",
                     "willReplaceOnChanges": true
                 },
                 "securityGroupId": {
                     "type": "string",
-                    "description": "The security group (ID) the rules apply to (conficts with `security_group)`.\n",
+                    "description": "❗ The security group (ID) the rules apply to (conficts with `security_group)`.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -5300,12 +5381,12 @@
                     },
                     "securityGroup": {
                         "type": "string",
-                        "description": "The security group (name) the rules apply to (conflicts with `security_group_id`).\n",
+                        "description": "❗ The security group (name) the rules apply to (conflicts with `security_group_id`).\n",
                         "willReplaceOnChanges": true
                     },
                     "securityGroupId": {
                         "type": "string",
-                        "description": "The security group (ID) the rules apply to (conficts with `security_group)`.\n",
+                        "description": "❗ The security group (ID) the rules apply to (conficts with `security_group)`.\n",
                         "willReplaceOnChanges": true
                     }
                 },
