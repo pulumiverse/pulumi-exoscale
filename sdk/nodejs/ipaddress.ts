@@ -44,7 +44,7 @@ export class IPAddress extends pulumi.CustomResource {
      */
     public readonly healthcheckInterval!: pulumi.Output<number | undefined>;
     /**
-     * The healthcheck probing mode (must be `tcp`, `http` or `https`).
+     * ❗ The healthcheck probing mode (must be `tcp`, `http` or `https`).
      */
     public readonly healthcheckMode!: pulumi.Output<string | undefined>;
     /**
@@ -68,13 +68,11 @@ export class IPAddress extends pulumi.CustomResource {
      */
     public readonly healthcheckTimeout!: pulumi.Output<number | undefined>;
     /**
-     * Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
-     * to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+     * Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
      */
     public readonly healthcheckTlsSkipVerify!: pulumi.Output<boolean | undefined>;
     /**
-     * The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
-     * value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+     * The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
      */
     public readonly healthcheckTlsSni!: pulumi.Output<string | undefined>;
     /**
@@ -90,7 +88,7 @@ export class IPAddress extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The Exoscale Zone name
+     * ❗ The Exoscale Zone name
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -159,7 +157,7 @@ export interface IPAddressState {
      */
     healthcheckInterval?: pulumi.Input<number>;
     /**
-     * The healthcheck probing mode (must be `tcp`, `http` or `https`).
+     * ❗ The healthcheck probing mode (must be `tcp`, `http` or `https`).
      */
     healthcheckMode?: pulumi.Input<string>;
     /**
@@ -183,13 +181,11 @@ export interface IPAddressState {
      */
     healthcheckTimeout?: pulumi.Input<number>;
     /**
-     * Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
-     * to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+     * Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
      */
     healthcheckTlsSkipVerify?: pulumi.Input<boolean>;
     /**
-     * The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
-     * value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+     * The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
      */
     healthcheckTlsSni?: pulumi.Input<string>;
     /**
@@ -205,7 +201,7 @@ export interface IPAddressState {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The Exoscale Zone name
+     * ❗ The Exoscale Zone name
      */
     zone?: pulumi.Input<string>;
 }
@@ -223,7 +219,7 @@ export interface IPAddressArgs {
      */
     healthcheckInterval?: pulumi.Input<number>;
     /**
-     * The healthcheck probing mode (must be `tcp`, `http` or `https`).
+     * ❗ The healthcheck probing mode (must be `tcp`, `http` or `https`).
      */
     healthcheckMode?: pulumi.Input<string>;
     /**
@@ -247,13 +243,11 @@ export interface IPAddressArgs {
      */
     healthcheckTimeout?: pulumi.Input<number>;
     /**
-     * Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
-     * to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+     * Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
      */
     healthcheckTlsSkipVerify?: pulumi.Input<boolean>;
     /**
-     * The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
-     * value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+     * The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
      */
     healthcheckTlsSni?: pulumi.Input<string>;
     /**
@@ -265,7 +259,7 @@ export interface IPAddressArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The Exoscale Zone name
+     * ❗ The Exoscale Zone name
      */
     zone: pulumi.Input<string>;
 }

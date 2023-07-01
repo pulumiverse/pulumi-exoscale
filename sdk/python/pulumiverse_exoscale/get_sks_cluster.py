@@ -26,10 +26,6 @@ class GetSKSClusterResult:
     def __init__(__self__, addons=None, aggregation_ca=None, auto_upgrade=None, cni=None, control_plane_ca=None, created_at=None, description=None, endpoint=None, exoscale_ccm=None, id=None, kubelet_ca=None, labels=None, metrics_server=None, name=None, nodepools=None, oidc=None, service_level=None, state=None, version=None, zone=None):
         if addons and not isinstance(addons, list):
             raise TypeError("Expected argument 'addons' to be a list")
-        if addons is not None:
-            warnings.warn("""This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""", DeprecationWarning)
-            pulumi.log.warn("""addons is deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""")
-
         pulumi.set(__self__, "addons", addons)
         if aggregation_ca and not isinstance(aggregation_ca, str):
             raise TypeError("Expected argument 'aggregation_ca' to be a str")
@@ -92,6 +88,9 @@ class GetSKSClusterResult:
     @property
     @pulumi.getter
     def addons(self) -> Sequence[str]:
+        warnings.warn("""This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""", DeprecationWarning)
+        pulumi.log.warn("""addons is deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""")
+
         return pulumi.get(self, "addons")
 
     @property
@@ -336,26 +335,26 @@ def get_sks_cluster(addons: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('exoscale:index/getSKSCluster:getSKSCluster', __args__, opts=opts, typ=GetSKSClusterResult).value
 
     return AwaitableGetSKSClusterResult(
-        addons=__ret__.addons,
-        aggregation_ca=__ret__.aggregation_ca,
-        auto_upgrade=__ret__.auto_upgrade,
-        cni=__ret__.cni,
-        control_plane_ca=__ret__.control_plane_ca,
-        created_at=__ret__.created_at,
-        description=__ret__.description,
-        endpoint=__ret__.endpoint,
-        exoscale_ccm=__ret__.exoscale_ccm,
-        id=__ret__.id,
-        kubelet_ca=__ret__.kubelet_ca,
-        labels=__ret__.labels,
-        metrics_server=__ret__.metrics_server,
-        name=__ret__.name,
-        nodepools=__ret__.nodepools,
-        oidc=__ret__.oidc,
-        service_level=__ret__.service_level,
-        state=__ret__.state,
-        version=__ret__.version,
-        zone=__ret__.zone)
+        addons=pulumi.get(__ret__, 'addons'),
+        aggregation_ca=pulumi.get(__ret__, 'aggregation_ca'),
+        auto_upgrade=pulumi.get(__ret__, 'auto_upgrade'),
+        cni=pulumi.get(__ret__, 'cni'),
+        control_plane_ca=pulumi.get(__ret__, 'control_plane_ca'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        description=pulumi.get(__ret__, 'description'),
+        endpoint=pulumi.get(__ret__, 'endpoint'),
+        exoscale_ccm=pulumi.get(__ret__, 'exoscale_ccm'),
+        id=pulumi.get(__ret__, 'id'),
+        kubelet_ca=pulumi.get(__ret__, 'kubelet_ca'),
+        labels=pulumi.get(__ret__, 'labels'),
+        metrics_server=pulumi.get(__ret__, 'metrics_server'),
+        name=pulumi.get(__ret__, 'name'),
+        nodepools=pulumi.get(__ret__, 'nodepools'),
+        oidc=pulumi.get(__ret__, 'oidc'),
+        service_level=pulumi.get(__ret__, 'service_level'),
+        state=pulumi.get(__ret__, 'state'),
+        version=pulumi.get(__ret__, 'version'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_sks_cluster)

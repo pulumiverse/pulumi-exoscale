@@ -36,30 +36,23 @@ class ComputeArgs:
         """
         The set of arguments for constructing a Compute resource.
         :param pulumi.Input[int] disk_size: The instance disk size (GiB; at least `10`).
-        :param pulumi.Input[str] zone: The Exoscale Zone name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_group_ids: A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_groups: A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
-        :param pulumi.Input[str] display_name: The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'
-               *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed
-               to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will
-               be generated automatically.
-        :param pulumi.Input[str] hostname: The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or
-               `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value
-               requires to reboot the instance.
+        :param pulumi.Input[str] zone: ❗ The Exoscale Zone name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_group_ids: ❗ A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_groups: ❗ A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
+        :param pulumi.Input[str] display_name: The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically.
+        :param pulumi.Input[str] hostname: The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.
         :param pulumi.Input[bool] ip4: Request an IPv4 address on the default NIC
         :param pulumi.Input[bool] ip6: Request an IPv6 address on the default NIC
-        :param pulumi.Input[str] key_pair: The SSH keypair (name) to authorize in the instance.
-        :param pulumi.Input[str] keyboard: The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,
-               `pt`, `uk`, `us`; at creation time only).
+        :param pulumi.Input[str] key_pair: ❗ The SSH keypair (name) to authorize in the instance.
+        :param pulumi.Input[str] keyboard: The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).
         :param pulumi.Input[str] reverse_dns: The instance reverse DNS record (must end with a `.`; e.g: `my-instance.example.net.`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security groups (IDs; conflicts with `security_groups`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of security groups (names; conflicts with `security_group_ids`).
         :param pulumi.Input[str] size: The instance size (`Tiny`, `Small`, `Medium`, `Large`, etc.)
         :param pulumi.Input[str] state: The instance state (`Running` or `Stopped`; default: `Running`)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags (key/value). To remove all tags, set `tags = {}`.
-        :param pulumi.Input[str] template: The compute instance template (name). Only *featured* templates are available, if you want to reference *custom
-               templates* use the `template_id` attribute instead.
-        :param pulumi.Input[str] template_id: The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.
+        :param pulumi.Input[str] template: ❗ The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `template_id` attribute instead.
+        :param pulumi.Input[str] template_id: ❗ The compute instance template (ID). Usage of the `get_compute_template` data source is recommended.
         :param pulumi.Input[str] user_data: cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
         """
         pulumi.set(__self__, "disk_size", disk_size)
@@ -115,7 +108,7 @@ class ComputeArgs:
     @pulumi.getter
     def zone(self) -> pulumi.Input[str]:
         """
-        The Exoscale Zone name.
+        ❗ The Exoscale Zone name.
         """
         return pulumi.get(self, "zone")
 
@@ -127,7 +120,7 @@ class ComputeArgs:
     @pulumi.getter(name="affinityGroupIds")
     def affinity_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
+        ❗ A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
         """
         return pulumi.get(self, "affinity_group_ids")
 
@@ -139,7 +132,7 @@ class ComputeArgs:
     @pulumi.getter(name="affinityGroups")
     def affinity_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
+        ❗ A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
         """
         return pulumi.get(self, "affinity_groups")
 
@@ -151,10 +144,7 @@ class ComputeArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'
-        *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed
-        to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will
-        be generated automatically.
+        The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically.
         """
         return pulumi.get(self, "display_name")
 
@@ -166,9 +156,7 @@ class ComputeArgs:
     @pulumi.getter
     def hostname(self) -> Optional[pulumi.Input[str]]:
         """
-        The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or
-        `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value
-        requires to reboot the instance.
+        The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.
         """
         return pulumi.get(self, "hostname")
 
@@ -204,7 +192,7 @@ class ComputeArgs:
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> Optional[pulumi.Input[str]]:
         """
-        The SSH keypair (name) to authorize in the instance.
+        ❗ The SSH keypair (name) to authorize in the instance.
         """
         return pulumi.get(self, "key_pair")
 
@@ -216,8 +204,7 @@ class ComputeArgs:
     @pulumi.getter
     def keyboard(self) -> Optional[pulumi.Input[str]]:
         """
-        The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,
-        `pt`, `uk`, `us`; at creation time only).
+        The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).
         """
         return pulumi.get(self, "keyboard")
 
@@ -301,8 +288,7 @@ class ComputeArgs:
     @pulumi.getter
     def template(self) -> Optional[pulumi.Input[str]]:
         """
-        The compute instance template (name). Only *featured* templates are available, if you want to reference *custom
-        templates* use the `template_id` attribute instead.
+        ❗ The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `template_id` attribute instead.
         """
         return pulumi.get(self, "template")
 
@@ -314,7 +300,7 @@ class ComputeArgs:
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.
+        ❗ The compute instance template (ID). Usage of the `get_compute_template` data source is recommended.
         """
         return pulumi.get(self, "template_id")
 
@@ -367,23 +353,17 @@ class _ComputeState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Compute resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_group_ids: A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_groups: A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_group_ids: ❗ A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_groups: ❗ A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
         :param pulumi.Input[int] disk_size: The instance disk size (GiB; at least `10`).
-        :param pulumi.Input[str] display_name: The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'
-               *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed
-               to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will
-               be generated automatically.
-        :param pulumi.Input[str] hostname: The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or
-               `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value
-               requires to reboot the instance.
+        :param pulumi.Input[str] display_name: The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically.
+        :param pulumi.Input[str] hostname: The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.
         :param pulumi.Input[bool] ip4: Request an IPv4 address on the default NIC
         :param pulumi.Input[bool] ip6: Request an IPv6 address on the default NIC
         :param pulumi.Input[str] ip6_address: The instance (main network interface) IPv6 address (if enabled).
         :param pulumi.Input[str] ip_address: The instance (main network interface) IPv4 address.
-        :param pulumi.Input[str] key_pair: The SSH keypair (name) to authorize in the instance.
-        :param pulumi.Input[str] keyboard: The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,
-               `pt`, `uk`, `us`; at creation time only).
+        :param pulumi.Input[str] key_pair: ❗ The SSH keypair (name) to authorize in the instance.
+        :param pulumi.Input[str] keyboard: The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).
         :param pulumi.Input[str] name: The instance hostname. Please use the `hostname` argument instead.
         :param pulumi.Input[str] password: The instance initial password and/or encrypted password.
         :param pulumi.Input[str] reverse_dns: The instance reverse DNS record (must end with a `.`; e.g: `my-instance.example.net.`).
@@ -392,14 +372,12 @@ class _ComputeState:
         :param pulumi.Input[str] size: The instance size (`Tiny`, `Small`, `Medium`, `Large`, etc.)
         :param pulumi.Input[str] state: The instance state (`Running` or `Stopped`; default: `Running`)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags (key/value). To remove all tags, set `tags = {}`.
-        :param pulumi.Input[str] template: The compute instance template (name). Only *featured* templates are available, if you want to reference *custom
-               templates* use the `template_id` attribute instead.
-        :param pulumi.Input[str] template_id: The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.
+        :param pulumi.Input[str] template: ❗ The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `template_id` attribute instead.
+        :param pulumi.Input[str] template_id: ❗ The compute instance template (ID). Usage of the `get_compute_template` data source is recommended.
         :param pulumi.Input[str] user_data: cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
         :param pulumi.Input[bool] user_data_base64: was the cloud-init configuration base64 encoded
-        :param pulumi.Input[str] username: The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the
-               `exoscale_compute_template` data source `username` attribute instead.
-        :param pulumi.Input[str] zone: The Exoscale Zone name.
+        :param pulumi.Input[str] username: The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the `get_compute_template` data source `username` attribute instead.
+        :param pulumi.Input[str] zone: ❗ The Exoscale Zone name.
         """
         if affinity_group_ids is not None:
             pulumi.set(__self__, "affinity_group_ids", affinity_group_ids)
@@ -466,7 +444,7 @@ class _ComputeState:
     @pulumi.getter(name="affinityGroupIds")
     def affinity_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
+        ❗ A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
         """
         return pulumi.get(self, "affinity_group_ids")
 
@@ -478,7 +456,7 @@ class _ComputeState:
     @pulumi.getter(name="affinityGroups")
     def affinity_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
+        ❗ A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
         """
         return pulumi.get(self, "affinity_groups")
 
@@ -502,10 +480,7 @@ class _ComputeState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'
-        *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed
-        to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will
-        be generated automatically.
+        The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically.
         """
         return pulumi.get(self, "display_name")
 
@@ -526,9 +501,7 @@ class _ComputeState:
     @pulumi.getter
     def hostname(self) -> Optional[pulumi.Input[str]]:
         """
-        The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or
-        `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value
-        requires to reboot the instance.
+        The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.
         """
         return pulumi.get(self, "hostname")
 
@@ -597,7 +570,7 @@ class _ComputeState:
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> Optional[pulumi.Input[str]]:
         """
-        The SSH keypair (name) to authorize in the instance.
+        ❗ The SSH keypair (name) to authorize in the instance.
         """
         return pulumi.get(self, "key_pair")
 
@@ -609,8 +582,7 @@ class _ComputeState:
     @pulumi.getter
     def keyboard(self) -> Optional[pulumi.Input[str]]:
         """
-        The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,
-        `pt`, `uk`, `us`; at creation time only).
+        The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).
         """
         return pulumi.get(self, "keyboard")
 
@@ -624,6 +596,9 @@ class _ComputeState:
         """
         The instance hostname. Please use the `hostname` argument instead.
         """
+        warnings.warn("""use `hostname` attribute instead""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: use `hostname` attribute instead""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -718,8 +693,7 @@ class _ComputeState:
     @pulumi.getter
     def template(self) -> Optional[pulumi.Input[str]]:
         """
-        The compute instance template (name). Only *featured* templates are available, if you want to reference *custom
-        templates* use the `template_id` attribute instead.
+        ❗ The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `template_id` attribute instead.
         """
         return pulumi.get(self, "template")
 
@@ -731,7 +705,7 @@ class _ComputeState:
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.
+        ❗ The compute instance template (ID). Usage of the `get_compute_template` data source is recommended.
         """
         return pulumi.get(self, "template_id")
 
@@ -767,9 +741,11 @@ class _ComputeState:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the
-        `exoscale_compute_template` data source `username` attribute instead.
+        The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the `get_compute_template` data source `username` attribute instead.
         """
+        warnings.warn("""broken, use `compute_template` data source `username` attribute""", DeprecationWarning)
+        pulumi.log.warn("""username is deprecated: broken, use `compute_template` data source `username` attribute""")
+
         return pulumi.get(self, "username")
 
     @username.setter
@@ -780,7 +756,7 @@ class _ComputeState:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The Exoscale Zone name.
+        ❗ The Exoscale Zone name.
         """
         return pulumi.get(self, "zone")
 
@@ -821,32 +797,25 @@ class Compute(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_group_ids: A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_groups: A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_group_ids: ❗ A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_groups: ❗ A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
         :param pulumi.Input[int] disk_size: The instance disk size (GiB; at least `10`).
-        :param pulumi.Input[str] display_name: The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'
-               *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed
-               to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will
-               be generated automatically.
-        :param pulumi.Input[str] hostname: The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or
-               `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value
-               requires to reboot the instance.
+        :param pulumi.Input[str] display_name: The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically.
+        :param pulumi.Input[str] hostname: The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.
         :param pulumi.Input[bool] ip4: Request an IPv4 address on the default NIC
         :param pulumi.Input[bool] ip6: Request an IPv6 address on the default NIC
-        :param pulumi.Input[str] key_pair: The SSH keypair (name) to authorize in the instance.
-        :param pulumi.Input[str] keyboard: The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,
-               `pt`, `uk`, `us`; at creation time only).
+        :param pulumi.Input[str] key_pair: ❗ The SSH keypair (name) to authorize in the instance.
+        :param pulumi.Input[str] keyboard: The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).
         :param pulumi.Input[str] reverse_dns: The instance reverse DNS record (must end with a `.`; e.g: `my-instance.example.net.`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security groups (IDs; conflicts with `security_groups`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of security groups (names; conflicts with `security_group_ids`).
         :param pulumi.Input[str] size: The instance size (`Tiny`, `Small`, `Medium`, `Large`, etc.)
         :param pulumi.Input[str] state: The instance state (`Running` or `Stopped`; default: `Running`)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags (key/value). To remove all tags, set `tags = {}`.
-        :param pulumi.Input[str] template: The compute instance template (name). Only *featured* templates are available, if you want to reference *custom
-               templates* use the `template_id` attribute instead.
-        :param pulumi.Input[str] template_id: The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.
+        :param pulumi.Input[str] template: ❗ The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `template_id` attribute instead.
+        :param pulumi.Input[str] template_id: ❗ The compute instance template (ID). Usage of the `get_compute_template` data source is recommended.
         :param pulumi.Input[str] user_data: cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
-        :param pulumi.Input[str] zone: The Exoscale Zone name.
+        :param pulumi.Input[str] zone: ❗ The Exoscale Zone name.
         """
         ...
     @overload
@@ -979,23 +948,17 @@ class Compute(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_group_ids: A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_groups: A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_group_ids: ❗ A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_groups: ❗ A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
         :param pulumi.Input[int] disk_size: The instance disk size (GiB; at least `10`).
-        :param pulumi.Input[str] display_name: The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'
-               *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed
-               to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will
-               be generated automatically.
-        :param pulumi.Input[str] hostname: The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or
-               `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value
-               requires to reboot the instance.
+        :param pulumi.Input[str] display_name: The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically.
+        :param pulumi.Input[str] hostname: The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.
         :param pulumi.Input[bool] ip4: Request an IPv4 address on the default NIC
         :param pulumi.Input[bool] ip6: Request an IPv6 address on the default NIC
         :param pulumi.Input[str] ip6_address: The instance (main network interface) IPv6 address (if enabled).
         :param pulumi.Input[str] ip_address: The instance (main network interface) IPv4 address.
-        :param pulumi.Input[str] key_pair: The SSH keypair (name) to authorize in the instance.
-        :param pulumi.Input[str] keyboard: The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,
-               `pt`, `uk`, `us`; at creation time only).
+        :param pulumi.Input[str] key_pair: ❗ The SSH keypair (name) to authorize in the instance.
+        :param pulumi.Input[str] keyboard: The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).
         :param pulumi.Input[str] name: The instance hostname. Please use the `hostname` argument instead.
         :param pulumi.Input[str] password: The instance initial password and/or encrypted password.
         :param pulumi.Input[str] reverse_dns: The instance reverse DNS record (must end with a `.`; e.g: `my-instance.example.net.`).
@@ -1004,14 +967,12 @@ class Compute(pulumi.CustomResource):
         :param pulumi.Input[str] size: The instance size (`Tiny`, `Small`, `Medium`, `Large`, etc.)
         :param pulumi.Input[str] state: The instance state (`Running` or `Stopped`; default: `Running`)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags (key/value). To remove all tags, set `tags = {}`.
-        :param pulumi.Input[str] template: The compute instance template (name). Only *featured* templates are available, if you want to reference *custom
-               templates* use the `template_id` attribute instead.
-        :param pulumi.Input[str] template_id: The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.
+        :param pulumi.Input[str] template: ❗ The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `template_id` attribute instead.
+        :param pulumi.Input[str] template_id: ❗ The compute instance template (ID). Usage of the `get_compute_template` data source is recommended.
         :param pulumi.Input[str] user_data: cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
         :param pulumi.Input[bool] user_data_base64: was the cloud-init configuration base64 encoded
-        :param pulumi.Input[str] username: The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the
-               `exoscale_compute_template` data source `username` attribute instead.
-        :param pulumi.Input[str] zone: The Exoscale Zone name.
+        :param pulumi.Input[str] username: The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the `get_compute_template` data source `username` attribute instead.
+        :param pulumi.Input[str] zone: ❗ The Exoscale Zone name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1050,7 +1011,7 @@ class Compute(pulumi.CustomResource):
     @pulumi.getter(name="affinityGroupIds")
     def affinity_group_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
+        ❗ A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
         """
         return pulumi.get(self, "affinity_group_ids")
 
@@ -1058,7 +1019,7 @@ class Compute(pulumi.CustomResource):
     @pulumi.getter(name="affinityGroups")
     def affinity_groups(self) -> pulumi.Output[Sequence[str]]:
         """
-        A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
+        ❗ A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
         """
         return pulumi.get(self, "affinity_groups")
 
@@ -1074,10 +1035,7 @@ class Compute(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'
-        *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed
-        to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will
-        be generated automatically.
+        The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically.
         """
         return pulumi.get(self, "display_name")
 
@@ -1090,9 +1048,7 @@ class Compute(pulumi.CustomResource):
     @pulumi.getter
     def hostname(self) -> pulumi.Output[str]:
         """
-        The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or
-        `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value
-        requires to reboot the instance.
+        The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.
         """
         return pulumi.get(self, "hostname")
 
@@ -1137,7 +1093,7 @@ class Compute(pulumi.CustomResource):
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> pulumi.Output[Optional[str]]:
         """
-        The SSH keypair (name) to authorize in the instance.
+        ❗ The SSH keypair (name) to authorize in the instance.
         """
         return pulumi.get(self, "key_pair")
 
@@ -1145,8 +1101,7 @@ class Compute(pulumi.CustomResource):
     @pulumi.getter
     def keyboard(self) -> pulumi.Output[Optional[str]]:
         """
-        The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,
-        `pt`, `uk`, `us`; at creation time only).
+        The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).
         """
         return pulumi.get(self, "keyboard")
 
@@ -1156,6 +1111,9 @@ class Compute(pulumi.CustomResource):
         """
         The instance hostname. Please use the `hostname` argument instead.
         """
+        warnings.warn("""use `hostname` attribute instead""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: use `hostname` attribute instead""")
+
         return pulumi.get(self, "name")
 
     @property
@@ -1218,8 +1176,7 @@ class Compute(pulumi.CustomResource):
     @pulumi.getter
     def template(self) -> pulumi.Output[str]:
         """
-        The compute instance template (name). Only *featured* templates are available, if you want to reference *custom
-        templates* use the `template_id` attribute instead.
+        ❗ The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `template_id` attribute instead.
         """
         return pulumi.get(self, "template")
 
@@ -1227,7 +1184,7 @@ class Compute(pulumi.CustomResource):
     @pulumi.getter(name="templateId")
     def template_id(self) -> pulumi.Output[str]:
         """
-        The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.
+        ❗ The compute instance template (ID). Usage of the `get_compute_template` data source is recommended.
         """
         return pulumi.get(self, "template_id")
 
@@ -1251,16 +1208,18 @@ class Compute(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[str]:
         """
-        The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the
-        `exoscale_compute_template` data source `username` attribute instead.
+        The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the `get_compute_template` data source `username` attribute instead.
         """
+        warnings.warn("""broken, use `compute_template` data source `username` attribute""", DeprecationWarning)
+        pulumi.log.warn("""username is deprecated: broken, use `compute_template` data source `username` attribute""")
+
         return pulumi.get(self, "username")
 
     @property
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         """
-        The Exoscale Zone name.
+        ❗ The Exoscale Zone name.
         """
         return pulumi.get(self, "zone")
 

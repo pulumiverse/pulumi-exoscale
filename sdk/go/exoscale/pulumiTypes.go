@@ -11,8 +11,10 @@ import (
 )
 
 type ComputeInstanceNetworkInterface struct {
+	// The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
 	IpAddress *string `pulumi:"ipAddress"`
-	NetworkId string  `pulumi:"networkId"`
+	// The exoscale*private*network (ID) to attach to the instance.
+	NetworkId string `pulumi:"networkId"`
 }
 
 // ComputeInstanceNetworkInterfaceInput is an input type that accepts ComputeInstanceNetworkInterfaceArgs and ComputeInstanceNetworkInterfaceOutput values.
@@ -27,8 +29,10 @@ type ComputeInstanceNetworkInterfaceInput interface {
 }
 
 type ComputeInstanceNetworkInterfaceArgs struct {
+	// The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
-	NetworkId pulumi.StringInput    `pulumi:"networkId"`
+	// The exoscale*private*network (ID) to attach to the instance.
+	NetworkId pulumi.StringInput `pulumi:"networkId"`
 }
 
 func (ComputeInstanceNetworkInterfaceArgs) ElementType() reflect.Type {
@@ -82,10 +86,12 @@ func (o ComputeInstanceNetworkInterfaceOutput) ToComputeInstanceNetworkInterface
 	return o
 }
 
+// The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
 func (o ComputeInstanceNetworkInterfaceOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeInstanceNetworkInterface) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
+// The exoscale*private*network (ID) to attach to the instance.
 func (o ComputeInstanceNetworkInterfaceOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v ComputeInstanceNetworkInterface) string { return v.NetworkId }).(pulumi.StringOutput)
 }
@@ -111,17 +117,28 @@ func (o ComputeInstanceNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) Com
 }
 
 type DatabaseKafka struct {
-	EnableCertAuth         *bool    `pulumi:"enableCertAuth"`
-	EnableKafkaConnect     *bool    `pulumi:"enableKafkaConnect"`
-	EnableKafkaRest        *bool    `pulumi:"enableKafkaRest"`
-	EnableSaslAuth         *bool    `pulumi:"enableSaslAuth"`
-	EnableSchemaRegistry   *bool    `pulumi:"enableSchemaRegistry"`
-	IpFilters              []string `pulumi:"ipFilters"`
-	KafkaConnectSettings   *string  `pulumi:"kafkaConnectSettings"`
-	KafkaRestSettings      *string  `pulumi:"kafkaRestSettings"`
-	KafkaSettings          *string  `pulumi:"kafkaSettings"`
-	SchemaRegistrySettings *string  `pulumi:"schemaRegistrySettings"`
-	Version                *string  `pulumi:"version"`
+	// Enable certificate-based authentication method.
+	EnableCertAuth *bool `pulumi:"enableCertAuth"`
+	// Enable Kafka Connect.
+	EnableKafkaConnect *bool `pulumi:"enableKafkaConnect"`
+	// Enable Kafka REST.
+	EnableKafkaRest *bool `pulumi:"enableKafkaRest"`
+	// Enable SASL-based authentication method.
+	EnableSaslAuth *bool `pulumi:"enableSaslAuth"`
+	// Enable Schema Registry.
+	EnableSchemaRegistry *bool `pulumi:"enableSchemaRegistry"`
+	// A list of CIDR blocks to allow incoming connections from.
+	IpFilters []string `pulumi:"ipFilters"`
+	// Kafka Connect configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka-connect` for reference).
+	KafkaConnectSettings *string `pulumi:"kafkaConnectSettings"`
+	// Kafka REST configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka-rest` for reference).
+	KafkaRestSettings *string `pulumi:"kafkaRestSettings"`
+	// Kafka configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka` for reference).
+	KafkaSettings *string `pulumi:"kafkaSettings"`
+	// Schema Registry configuration settings in JSON format (`exo dbaas type show kafka --settings=schema-registry` for reference)
+	SchemaRegistrySettings *string `pulumi:"schemaRegistrySettings"`
+	// Kafka major version (`exo dbaas type show kafka` for reference; may only be set at creation time).
+	Version *string `pulumi:"version"`
 }
 
 // DatabaseKafkaInput is an input type that accepts DatabaseKafkaArgs and DatabaseKafkaOutput values.
@@ -136,17 +153,28 @@ type DatabaseKafkaInput interface {
 }
 
 type DatabaseKafkaArgs struct {
-	EnableCertAuth         pulumi.BoolPtrInput     `pulumi:"enableCertAuth"`
-	EnableKafkaConnect     pulumi.BoolPtrInput     `pulumi:"enableKafkaConnect"`
-	EnableKafkaRest        pulumi.BoolPtrInput     `pulumi:"enableKafkaRest"`
-	EnableSaslAuth         pulumi.BoolPtrInput     `pulumi:"enableSaslAuth"`
-	EnableSchemaRegistry   pulumi.BoolPtrInput     `pulumi:"enableSchemaRegistry"`
-	IpFilters              pulumi.StringArrayInput `pulumi:"ipFilters"`
-	KafkaConnectSettings   pulumi.StringPtrInput   `pulumi:"kafkaConnectSettings"`
-	KafkaRestSettings      pulumi.StringPtrInput   `pulumi:"kafkaRestSettings"`
-	KafkaSettings          pulumi.StringPtrInput   `pulumi:"kafkaSettings"`
-	SchemaRegistrySettings pulumi.StringPtrInput   `pulumi:"schemaRegistrySettings"`
-	Version                pulumi.StringPtrInput   `pulumi:"version"`
+	// Enable certificate-based authentication method.
+	EnableCertAuth pulumi.BoolPtrInput `pulumi:"enableCertAuth"`
+	// Enable Kafka Connect.
+	EnableKafkaConnect pulumi.BoolPtrInput `pulumi:"enableKafkaConnect"`
+	// Enable Kafka REST.
+	EnableKafkaRest pulumi.BoolPtrInput `pulumi:"enableKafkaRest"`
+	// Enable SASL-based authentication method.
+	EnableSaslAuth pulumi.BoolPtrInput `pulumi:"enableSaslAuth"`
+	// Enable Schema Registry.
+	EnableSchemaRegistry pulumi.BoolPtrInput `pulumi:"enableSchemaRegistry"`
+	// A list of CIDR blocks to allow incoming connections from.
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Kafka Connect configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka-connect` for reference).
+	KafkaConnectSettings pulumi.StringPtrInput `pulumi:"kafkaConnectSettings"`
+	// Kafka REST configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka-rest` for reference).
+	KafkaRestSettings pulumi.StringPtrInput `pulumi:"kafkaRestSettings"`
+	// Kafka configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka` for reference).
+	KafkaSettings pulumi.StringPtrInput `pulumi:"kafkaSettings"`
+	// Schema Registry configuration settings in JSON format (`exo dbaas type show kafka --settings=schema-registry` for reference)
+	SchemaRegistrySettings pulumi.StringPtrInput `pulumi:"schemaRegistrySettings"`
+	// Kafka major version (`exo dbaas type show kafka` for reference; may only be set at creation time).
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (DatabaseKafkaArgs) ElementType() reflect.Type {
@@ -226,46 +254,57 @@ func (o DatabaseKafkaOutput) ToDatabaseKafkaPtrOutputWithContext(ctx context.Con
 	}).(DatabaseKafkaPtrOutput)
 }
 
+// Enable certificate-based authentication method.
 func (o DatabaseKafkaOutput) EnableCertAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseKafka) *bool { return v.EnableCertAuth }).(pulumi.BoolPtrOutput)
 }
 
+// Enable Kafka Connect.
 func (o DatabaseKafkaOutput) EnableKafkaConnect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseKafka) *bool { return v.EnableKafkaConnect }).(pulumi.BoolPtrOutput)
 }
 
+// Enable Kafka REST.
 func (o DatabaseKafkaOutput) EnableKafkaRest() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseKafka) *bool { return v.EnableKafkaRest }).(pulumi.BoolPtrOutput)
 }
 
+// Enable SASL-based authentication method.
 func (o DatabaseKafkaOutput) EnableSaslAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseKafka) *bool { return v.EnableSaslAuth }).(pulumi.BoolPtrOutput)
 }
 
+// Enable Schema Registry.
 func (o DatabaseKafkaOutput) EnableSchemaRegistry() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseKafka) *bool { return v.EnableSchemaRegistry }).(pulumi.BoolPtrOutput)
 }
 
+// A list of CIDR blocks to allow incoming connections from.
 func (o DatabaseKafkaOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DatabaseKafka) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Kafka Connect configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka-connect` for reference).
 func (o DatabaseKafkaOutput) KafkaConnectSettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseKafka) *string { return v.KafkaConnectSettings }).(pulumi.StringPtrOutput)
 }
 
+// Kafka REST configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka-rest` for reference).
 func (o DatabaseKafkaOutput) KafkaRestSettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseKafka) *string { return v.KafkaRestSettings }).(pulumi.StringPtrOutput)
 }
 
+// Kafka configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka` for reference).
 func (o DatabaseKafkaOutput) KafkaSettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseKafka) *string { return v.KafkaSettings }).(pulumi.StringPtrOutput)
 }
 
+// Schema Registry configuration settings in JSON format (`exo dbaas type show kafka --settings=schema-registry` for reference)
 func (o DatabaseKafkaOutput) SchemaRegistrySettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseKafka) *string { return v.SchemaRegistrySettings }).(pulumi.StringPtrOutput)
 }
 
+// Kafka major version (`exo dbaas type show kafka` for reference; may only be set at creation time).
 func (o DatabaseKafkaOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseKafka) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -294,6 +333,7 @@ func (o DatabaseKafkaPtrOutput) Elem() DatabaseKafkaOutput {
 	}).(DatabaseKafkaOutput)
 }
 
+// Enable certificate-based authentication method.
 func (o DatabaseKafkaPtrOutput) EnableCertAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseKafka) *bool {
 		if v == nil {
@@ -303,6 +343,7 @@ func (o DatabaseKafkaPtrOutput) EnableCertAuth() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Enable Kafka Connect.
 func (o DatabaseKafkaPtrOutput) EnableKafkaConnect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseKafka) *bool {
 		if v == nil {
@@ -312,6 +353,7 @@ func (o DatabaseKafkaPtrOutput) EnableKafkaConnect() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Enable Kafka REST.
 func (o DatabaseKafkaPtrOutput) EnableKafkaRest() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseKafka) *bool {
 		if v == nil {
@@ -321,6 +363,7 @@ func (o DatabaseKafkaPtrOutput) EnableKafkaRest() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Enable SASL-based authentication method.
 func (o DatabaseKafkaPtrOutput) EnableSaslAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseKafka) *bool {
 		if v == nil {
@@ -330,6 +373,7 @@ func (o DatabaseKafkaPtrOutput) EnableSaslAuth() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Enable Schema Registry.
 func (o DatabaseKafkaPtrOutput) EnableSchemaRegistry() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseKafka) *bool {
 		if v == nil {
@@ -339,6 +383,7 @@ func (o DatabaseKafkaPtrOutput) EnableSchemaRegistry() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// A list of CIDR blocks to allow incoming connections from.
 func (o DatabaseKafkaPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DatabaseKafka) []string {
 		if v == nil {
@@ -348,6 +393,7 @@ func (o DatabaseKafkaPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Kafka Connect configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka-connect` for reference).
 func (o DatabaseKafkaPtrOutput) KafkaConnectSettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseKafka) *string {
 		if v == nil {
@@ -357,6 +403,7 @@ func (o DatabaseKafkaPtrOutput) KafkaConnectSettings() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Kafka REST configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka-rest` for reference).
 func (o DatabaseKafkaPtrOutput) KafkaRestSettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseKafka) *string {
 		if v == nil {
@@ -366,6 +413,7 @@ func (o DatabaseKafkaPtrOutput) KafkaRestSettings() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Kafka configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka` for reference).
 func (o DatabaseKafkaPtrOutput) KafkaSettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseKafka) *string {
 		if v == nil {
@@ -375,6 +423,7 @@ func (o DatabaseKafkaPtrOutput) KafkaSettings() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Schema Registry configuration settings in JSON format (`exo dbaas type show kafka --settings=schema-registry` for reference)
 func (o DatabaseKafkaPtrOutput) SchemaRegistrySettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseKafka) *string {
 		if v == nil {
@@ -384,6 +433,7 @@ func (o DatabaseKafkaPtrOutput) SchemaRegistrySettings() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Kafka major version (`exo dbaas type show kafka` for reference; may only be set at creation time).
 func (o DatabaseKafkaPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseKafka) *string {
 		if v == nil {
@@ -394,12 +444,18 @@ func (o DatabaseKafkaPtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type DatabaseMysql struct {
-	AdminPassword  *string  `pulumi:"adminPassword"`
-	AdminUsername  *string  `pulumi:"adminUsername"`
-	BackupSchedule *string  `pulumi:"backupSchedule"`
-	IpFilters      []string `pulumi:"ipFilters"`
-	MysqlSettings  *string  `pulumi:"mysqlSettings"`
-	Version        *string  `pulumi:"version"`
+	// A custom administrator account password (may only be set at creation time).
+	AdminPassword *string `pulumi:"adminPassword"`
+	// A custom administrator account username (may only be set at creation time).
+	AdminUsername *string `pulumi:"adminUsername"`
+	// The automated backup schedule (`HH:MM`).
+	BackupSchedule *string `pulumi:"backupSchedule"`
+	// A list of CIDR blocks to allow incoming connections from.
+	IpFilters []string `pulumi:"ipFilters"`
+	// MySQL configuration settings in JSON format (`exo dbaas type show mysql --settings=mysql` for reference).
+	MysqlSettings *string `pulumi:"mysqlSettings"`
+	// MySQL major version (`exo dbaas type show mysql` for reference; may only be set at creation time).
+	Version *string `pulumi:"version"`
 }
 
 // DatabaseMysqlInput is an input type that accepts DatabaseMysqlArgs and DatabaseMysqlOutput values.
@@ -414,12 +470,18 @@ type DatabaseMysqlInput interface {
 }
 
 type DatabaseMysqlArgs struct {
-	AdminPassword  pulumi.StringPtrInput   `pulumi:"adminPassword"`
-	AdminUsername  pulumi.StringPtrInput   `pulumi:"adminUsername"`
-	BackupSchedule pulumi.StringPtrInput   `pulumi:"backupSchedule"`
-	IpFilters      pulumi.StringArrayInput `pulumi:"ipFilters"`
-	MysqlSettings  pulumi.StringPtrInput   `pulumi:"mysqlSettings"`
-	Version        pulumi.StringPtrInput   `pulumi:"version"`
+	// A custom administrator account password (may only be set at creation time).
+	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
+	// A custom administrator account username (may only be set at creation time).
+	AdminUsername pulumi.StringPtrInput `pulumi:"adminUsername"`
+	// The automated backup schedule (`HH:MM`).
+	BackupSchedule pulumi.StringPtrInput `pulumi:"backupSchedule"`
+	// A list of CIDR blocks to allow incoming connections from.
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// MySQL configuration settings in JSON format (`exo dbaas type show mysql --settings=mysql` for reference).
+	MysqlSettings pulumi.StringPtrInput `pulumi:"mysqlSettings"`
+	// MySQL major version (`exo dbaas type show mysql` for reference; may only be set at creation time).
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (DatabaseMysqlArgs) ElementType() reflect.Type {
@@ -499,26 +561,32 @@ func (o DatabaseMysqlOutput) ToDatabaseMysqlPtrOutputWithContext(ctx context.Con
 	}).(DatabaseMysqlPtrOutput)
 }
 
+// A custom administrator account password (may only be set at creation time).
 func (o DatabaseMysqlOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseMysql) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
 }
 
+// A custom administrator account username (may only be set at creation time).
 func (o DatabaseMysqlOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseMysql) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
 }
 
+// The automated backup schedule (`HH:MM`).
 func (o DatabaseMysqlOutput) BackupSchedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseMysql) *string { return v.BackupSchedule }).(pulumi.StringPtrOutput)
 }
 
+// A list of CIDR blocks to allow incoming connections from.
 func (o DatabaseMysqlOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DatabaseMysql) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// MySQL configuration settings in JSON format (`exo dbaas type show mysql --settings=mysql` for reference).
 func (o DatabaseMysqlOutput) MysqlSettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseMysql) *string { return v.MysqlSettings }).(pulumi.StringPtrOutput)
 }
 
+// MySQL major version (`exo dbaas type show mysql` for reference; may only be set at creation time).
 func (o DatabaseMysqlOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseMysql) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -547,6 +615,7 @@ func (o DatabaseMysqlPtrOutput) Elem() DatabaseMysqlOutput {
 	}).(DatabaseMysqlOutput)
 }
 
+// A custom administrator account password (may only be set at creation time).
 func (o DatabaseMysqlPtrOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseMysql) *string {
 		if v == nil {
@@ -556,6 +625,7 @@ func (o DatabaseMysqlPtrOutput) AdminPassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A custom administrator account username (may only be set at creation time).
 func (o DatabaseMysqlPtrOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseMysql) *string {
 		if v == nil {
@@ -565,6 +635,7 @@ func (o DatabaseMysqlPtrOutput) AdminUsername() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The automated backup schedule (`HH:MM`).
 func (o DatabaseMysqlPtrOutput) BackupSchedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseMysql) *string {
 		if v == nil {
@@ -574,6 +645,7 @@ func (o DatabaseMysqlPtrOutput) BackupSchedule() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A list of CIDR blocks to allow incoming connections from.
 func (o DatabaseMysqlPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DatabaseMysql) []string {
 		if v == nil {
@@ -583,6 +655,7 @@ func (o DatabaseMysqlPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// MySQL configuration settings in JSON format (`exo dbaas type show mysql --settings=mysql` for reference).
 func (o DatabaseMysqlPtrOutput) MysqlSettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseMysql) *string {
 		if v == nil {
@@ -592,6 +665,7 @@ func (o DatabaseMysqlPtrOutput) MysqlSettings() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// MySQL major version (`exo dbaas type show mysql` for reference; may only be set at creation time).
 func (o DatabaseMysqlPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseMysql) *string {
 		if v == nil {
@@ -602,16 +676,25 @@ func (o DatabaseMysqlPtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type DatabaseOpensearch struct {
-	Dashboards               *DatabaseOpensearchDashboards    `pulumi:"dashboards"`
-	ForkFromService          *string                          `pulumi:"forkFromService"`
-	IndexPatterns            []DatabaseOpensearchIndexPattern `pulumi:"indexPatterns"`
-	IndexTemplate            *DatabaseOpensearchIndexTemplate `pulumi:"indexTemplate"`
-	IpFilters                []string                         `pulumi:"ipFilters"`
-	KeepIndexRefreshInterval *bool                            `pulumi:"keepIndexRefreshInterval"`
-	MaxIndexCount            *int                             `pulumi:"maxIndexCount"`
-	RecoveryBackupName       *string                          `pulumi:"recoveryBackupName"`
-	Settings                 *string                          `pulumi:"settings"`
-	Version                  *string                          `pulumi:"version"`
+	Dashboards *DatabaseOpensearchDashboards `pulumi:"dashboards"`
+	// ❗ Service name
+	ForkFromService *string `pulumi:"forkFromService"`
+	// (can be used multiple times) Allows you to create glob style patterns and set a max number of indexes matching this pattern you want to keep. Creating indexes exceeding this value will cause the oldest one to get deleted. You could for example create a pattern looking like 'logs.?' and then create index logs.1, logs.2 etc, it will delete logs.1 once you create logs.6. Do note 'logs.?' does not apply to logs.10. Note: Setting max*index*count to 0 will do nothing and the pattern gets ignored.
+	IndexPatterns []DatabaseOpensearchIndexPattern `pulumi:"indexPatterns"`
+	// Template settings for all new indexes
+	IndexTemplate *DatabaseOpensearchIndexTemplate `pulumi:"indexTemplate"`
+	// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
+	IpFilters []string `pulumi:"ipFilters"`
+	// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
+	KeepIndexRefreshInterval *bool `pulumi:"keepIndexRefreshInterval"`
+	// Maximum number of indexes to keep (Minimum value is `0`)
+	MaxIndexCount *int `pulumi:"maxIndexCount"`
+	// ❗
+	RecoveryBackupName *string `pulumi:"recoveryBackupName"`
+	// OpenSearch-specific settings, in json. e.g.`jsonencode({thread_pool_search_size: 64})`. Use `exo x get-dbaas-settings-opensearch` to get a list of available settings.
+	Settings *string `pulumi:"settings"`
+	// ❗ OpenSearch major version.
+	Version *string `pulumi:"version"`
 }
 
 // DatabaseOpensearchInput is an input type that accepts DatabaseOpensearchArgs and DatabaseOpensearchOutput values.
@@ -626,16 +709,25 @@ type DatabaseOpensearchInput interface {
 }
 
 type DatabaseOpensearchArgs struct {
-	Dashboards               DatabaseOpensearchDashboardsPtrInput     `pulumi:"dashboards"`
-	ForkFromService          pulumi.StringPtrInput                    `pulumi:"forkFromService"`
-	IndexPatterns            DatabaseOpensearchIndexPatternArrayInput `pulumi:"indexPatterns"`
-	IndexTemplate            DatabaseOpensearchIndexTemplatePtrInput  `pulumi:"indexTemplate"`
-	IpFilters                pulumi.StringArrayInput                  `pulumi:"ipFilters"`
-	KeepIndexRefreshInterval pulumi.BoolPtrInput                      `pulumi:"keepIndexRefreshInterval"`
-	MaxIndexCount            pulumi.IntPtrInput                       `pulumi:"maxIndexCount"`
-	RecoveryBackupName       pulumi.StringPtrInput                    `pulumi:"recoveryBackupName"`
-	Settings                 pulumi.StringPtrInput                    `pulumi:"settings"`
-	Version                  pulumi.StringPtrInput                    `pulumi:"version"`
+	Dashboards DatabaseOpensearchDashboardsPtrInput `pulumi:"dashboards"`
+	// ❗ Service name
+	ForkFromService pulumi.StringPtrInput `pulumi:"forkFromService"`
+	// (can be used multiple times) Allows you to create glob style patterns and set a max number of indexes matching this pattern you want to keep. Creating indexes exceeding this value will cause the oldest one to get deleted. You could for example create a pattern looking like 'logs.?' and then create index logs.1, logs.2 etc, it will delete logs.1 once you create logs.6. Do note 'logs.?' does not apply to logs.10. Note: Setting max*index*count to 0 will do nothing and the pattern gets ignored.
+	IndexPatterns DatabaseOpensearchIndexPatternArrayInput `pulumi:"indexPatterns"`
+	// Template settings for all new indexes
+	IndexTemplate DatabaseOpensearchIndexTemplatePtrInput `pulumi:"indexTemplate"`
+	// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
+	KeepIndexRefreshInterval pulumi.BoolPtrInput `pulumi:"keepIndexRefreshInterval"`
+	// Maximum number of indexes to keep (Minimum value is `0`)
+	MaxIndexCount pulumi.IntPtrInput `pulumi:"maxIndexCount"`
+	// ❗
+	RecoveryBackupName pulumi.StringPtrInput `pulumi:"recoveryBackupName"`
+	// OpenSearch-specific settings, in json. e.g.`jsonencode({thread_pool_search_size: 64})`. Use `exo x get-dbaas-settings-opensearch` to get a list of available settings.
+	Settings pulumi.StringPtrInput `pulumi:"settings"`
+	// ❗ OpenSearch major version.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (DatabaseOpensearchArgs) ElementType() reflect.Type {
@@ -719,38 +811,47 @@ func (o DatabaseOpensearchOutput) Dashboards() DatabaseOpensearchDashboardsPtrOu
 	return o.ApplyT(func(v DatabaseOpensearch) *DatabaseOpensearchDashboards { return v.Dashboards }).(DatabaseOpensearchDashboardsPtrOutput)
 }
 
+// ❗ Service name
 func (o DatabaseOpensearchOutput) ForkFromService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) *string { return v.ForkFromService }).(pulumi.StringPtrOutput)
 }
 
+// (can be used multiple times) Allows you to create glob style patterns and set a max number of indexes matching this pattern you want to keep. Creating indexes exceeding this value will cause the oldest one to get deleted. You could for example create a pattern looking like 'logs.?' and then create index logs.1, logs.2 etc, it will delete logs.1 once you create logs.6. Do note 'logs.?' does not apply to logs.10. Note: Setting max*index*count to 0 will do nothing and the pattern gets ignored.
 func (o DatabaseOpensearchOutput) IndexPatterns() DatabaseOpensearchIndexPatternArrayOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) []DatabaseOpensearchIndexPattern { return v.IndexPatterns }).(DatabaseOpensearchIndexPatternArrayOutput)
 }
 
+// Template settings for all new indexes
 func (o DatabaseOpensearchOutput) IndexTemplate() DatabaseOpensearchIndexTemplatePtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) *DatabaseOpensearchIndexTemplate { return v.IndexTemplate }).(DatabaseOpensearchIndexTemplatePtrOutput)
 }
 
+// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
 func (o DatabaseOpensearchOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
 func (o DatabaseOpensearchOutput) KeepIndexRefreshInterval() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) *bool { return v.KeepIndexRefreshInterval }).(pulumi.BoolPtrOutput)
 }
 
+// Maximum number of indexes to keep (Minimum value is `0`)
 func (o DatabaseOpensearchOutput) MaxIndexCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) *int { return v.MaxIndexCount }).(pulumi.IntPtrOutput)
 }
 
+// ❗
 func (o DatabaseOpensearchOutput) RecoveryBackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) *string { return v.RecoveryBackupName }).(pulumi.StringPtrOutput)
 }
 
+// OpenSearch-specific settings, in json. e.g.`jsonencode({thread_pool_search_size: 64})`. Use `exo x get-dbaas-settings-opensearch` to get a list of available settings.
 func (o DatabaseOpensearchOutput) Settings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) *string { return v.Settings }).(pulumi.StringPtrOutput)
 }
 
+// ❗ OpenSearch major version.
 func (o DatabaseOpensearchOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -788,6 +889,7 @@ func (o DatabaseOpensearchPtrOutput) Dashboards() DatabaseOpensearchDashboardsPt
 	}).(DatabaseOpensearchDashboardsPtrOutput)
 }
 
+// ❗ Service name
 func (o DatabaseOpensearchPtrOutput) ForkFromService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseOpensearch) *string {
 		if v == nil {
@@ -797,6 +899,7 @@ func (o DatabaseOpensearchPtrOutput) ForkFromService() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// (can be used multiple times) Allows you to create glob style patterns and set a max number of indexes matching this pattern you want to keep. Creating indexes exceeding this value will cause the oldest one to get deleted. You could for example create a pattern looking like 'logs.?' and then create index logs.1, logs.2 etc, it will delete logs.1 once you create logs.6. Do note 'logs.?' does not apply to logs.10. Note: Setting max*index*count to 0 will do nothing and the pattern gets ignored.
 func (o DatabaseOpensearchPtrOutput) IndexPatterns() DatabaseOpensearchIndexPatternArrayOutput {
 	return o.ApplyT(func(v *DatabaseOpensearch) []DatabaseOpensearchIndexPattern {
 		if v == nil {
@@ -806,6 +909,7 @@ func (o DatabaseOpensearchPtrOutput) IndexPatterns() DatabaseOpensearchIndexPatt
 	}).(DatabaseOpensearchIndexPatternArrayOutput)
 }
 
+// Template settings for all new indexes
 func (o DatabaseOpensearchPtrOutput) IndexTemplate() DatabaseOpensearchIndexTemplatePtrOutput {
 	return o.ApplyT(func(v *DatabaseOpensearch) *DatabaseOpensearchIndexTemplate {
 		if v == nil {
@@ -815,6 +919,7 @@ func (o DatabaseOpensearchPtrOutput) IndexTemplate() DatabaseOpensearchIndexTemp
 	}).(DatabaseOpensearchIndexTemplatePtrOutput)
 }
 
+// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
 func (o DatabaseOpensearchPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DatabaseOpensearch) []string {
 		if v == nil {
@@ -824,6 +929,7 @@ func (o DatabaseOpensearchPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
 func (o DatabaseOpensearchPtrOutput) KeepIndexRefreshInterval() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseOpensearch) *bool {
 		if v == nil {
@@ -833,6 +939,7 @@ func (o DatabaseOpensearchPtrOutput) KeepIndexRefreshInterval() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Maximum number of indexes to keep (Minimum value is `0`)
 func (o DatabaseOpensearchPtrOutput) MaxIndexCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseOpensearch) *int {
 		if v == nil {
@@ -842,6 +949,7 @@ func (o DatabaseOpensearchPtrOutput) MaxIndexCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ❗
 func (o DatabaseOpensearchPtrOutput) RecoveryBackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseOpensearch) *string {
 		if v == nil {
@@ -851,6 +959,7 @@ func (o DatabaseOpensearchPtrOutput) RecoveryBackupName() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// OpenSearch-specific settings, in json. e.g.`jsonencode({thread_pool_search_size: 64})`. Use `exo x get-dbaas-settings-opensearch` to get a list of available settings.
 func (o DatabaseOpensearchPtrOutput) Settings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseOpensearch) *string {
 		if v == nil {
@@ -860,6 +969,7 @@ func (o DatabaseOpensearchPtrOutput) Settings() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// ❗ OpenSearch major version.
 func (o DatabaseOpensearchPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseOpensearch) *string {
 		if v == nil {
@@ -1302,14 +1412,22 @@ func (o DatabaseOpensearchIndexTemplatePtrOutput) NumberOfShards() pulumi.IntPtr
 }
 
 type DatabasePg struct {
-	AdminPassword     *string  `pulumi:"adminPassword"`
-	AdminUsername     *string  `pulumi:"adminUsername"`
-	BackupSchedule    *string  `pulumi:"backupSchedule"`
-	IpFilters         []string `pulumi:"ipFilters"`
-	PgSettings        *string  `pulumi:"pgSettings"`
-	PgbouncerSettings *string  `pulumi:"pgbouncerSettings"`
-	PglookoutSettings *string  `pulumi:"pglookoutSettings"`
-	Version           *string  `pulumi:"version"`
+	// A custom administrator account password (may only be set at creation time).
+	AdminPassword *string `pulumi:"adminPassword"`
+	// A custom administrator account username (may only be set at creation time).
+	AdminUsername *string `pulumi:"adminUsername"`
+	// The automated backup schedule (`HH:MM`).
+	BackupSchedule *string `pulumi:"backupSchedule"`
+	// A list of CIDR blocks to allow incoming connections from.
+	IpFilters []string `pulumi:"ipFilters"`
+	// PostgreSQL configuration settings in JSON format (`exo dbaas type show pg --settings=pg` for reference).
+	PgSettings *string `pulumi:"pgSettings"`
+	// PgBouncer configuration settings in JSON format (`exo dbaas type show pg --settings=pgbouncer` for reference).
+	PgbouncerSettings *string `pulumi:"pgbouncerSettings"`
+	// pglookout configuration settings in JSON format (`exo dbaas type show pg --settings=pglookout` for reference).
+	PglookoutSettings *string `pulumi:"pglookoutSettings"`
+	// PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+	Version *string `pulumi:"version"`
 }
 
 // DatabasePgInput is an input type that accepts DatabasePgArgs and DatabasePgOutput values.
@@ -1324,14 +1442,22 @@ type DatabasePgInput interface {
 }
 
 type DatabasePgArgs struct {
-	AdminPassword     pulumi.StringPtrInput   `pulumi:"adminPassword"`
-	AdminUsername     pulumi.StringPtrInput   `pulumi:"adminUsername"`
-	BackupSchedule    pulumi.StringPtrInput   `pulumi:"backupSchedule"`
-	IpFilters         pulumi.StringArrayInput `pulumi:"ipFilters"`
-	PgSettings        pulumi.StringPtrInput   `pulumi:"pgSettings"`
-	PgbouncerSettings pulumi.StringPtrInput   `pulumi:"pgbouncerSettings"`
-	PglookoutSettings pulumi.StringPtrInput   `pulumi:"pglookoutSettings"`
-	Version           pulumi.StringPtrInput   `pulumi:"version"`
+	// A custom administrator account password (may only be set at creation time).
+	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
+	// A custom administrator account username (may only be set at creation time).
+	AdminUsername pulumi.StringPtrInput `pulumi:"adminUsername"`
+	// The automated backup schedule (`HH:MM`).
+	BackupSchedule pulumi.StringPtrInput `pulumi:"backupSchedule"`
+	// A list of CIDR blocks to allow incoming connections from.
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// PostgreSQL configuration settings in JSON format (`exo dbaas type show pg --settings=pg` for reference).
+	PgSettings pulumi.StringPtrInput `pulumi:"pgSettings"`
+	// PgBouncer configuration settings in JSON format (`exo dbaas type show pg --settings=pgbouncer` for reference).
+	PgbouncerSettings pulumi.StringPtrInput `pulumi:"pgbouncerSettings"`
+	// pglookout configuration settings in JSON format (`exo dbaas type show pg --settings=pglookout` for reference).
+	PglookoutSettings pulumi.StringPtrInput `pulumi:"pglookoutSettings"`
+	// PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (DatabasePgArgs) ElementType() reflect.Type {
@@ -1411,34 +1537,42 @@ func (o DatabasePgOutput) ToDatabasePgPtrOutputWithContext(ctx context.Context) 
 	}).(DatabasePgPtrOutput)
 }
 
+// A custom administrator account password (may only be set at creation time).
 func (o DatabasePgOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabasePg) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
 }
 
+// A custom administrator account username (may only be set at creation time).
 func (o DatabasePgOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabasePg) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
 }
 
+// The automated backup schedule (`HH:MM`).
 func (o DatabasePgOutput) BackupSchedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabasePg) *string { return v.BackupSchedule }).(pulumi.StringPtrOutput)
 }
 
+// A list of CIDR blocks to allow incoming connections from.
 func (o DatabasePgOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DatabasePg) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// PostgreSQL configuration settings in JSON format (`exo dbaas type show pg --settings=pg` for reference).
 func (o DatabasePgOutput) PgSettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabasePg) *string { return v.PgSettings }).(pulumi.StringPtrOutput)
 }
 
+// PgBouncer configuration settings in JSON format (`exo dbaas type show pg --settings=pgbouncer` for reference).
 func (o DatabasePgOutput) PgbouncerSettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabasePg) *string { return v.PgbouncerSettings }).(pulumi.StringPtrOutput)
 }
 
+// pglookout configuration settings in JSON format (`exo dbaas type show pg --settings=pglookout` for reference).
 func (o DatabasePgOutput) PglookoutSettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabasePg) *string { return v.PglookoutSettings }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
 func (o DatabasePgOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabasePg) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -1467,6 +1601,7 @@ func (o DatabasePgPtrOutput) Elem() DatabasePgOutput {
 	}).(DatabasePgOutput)
 }
 
+// A custom administrator account password (may only be set at creation time).
 func (o DatabasePgPtrOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabasePg) *string {
 		if v == nil {
@@ -1476,6 +1611,7 @@ func (o DatabasePgPtrOutput) AdminPassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A custom administrator account username (may only be set at creation time).
 func (o DatabasePgPtrOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabasePg) *string {
 		if v == nil {
@@ -1485,6 +1621,7 @@ func (o DatabasePgPtrOutput) AdminUsername() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The automated backup schedule (`HH:MM`).
 func (o DatabasePgPtrOutput) BackupSchedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabasePg) *string {
 		if v == nil {
@@ -1494,6 +1631,7 @@ func (o DatabasePgPtrOutput) BackupSchedule() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A list of CIDR blocks to allow incoming connections from.
 func (o DatabasePgPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DatabasePg) []string {
 		if v == nil {
@@ -1503,6 +1641,7 @@ func (o DatabasePgPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// PostgreSQL configuration settings in JSON format (`exo dbaas type show pg --settings=pg` for reference).
 func (o DatabasePgPtrOutput) PgSettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabasePg) *string {
 		if v == nil {
@@ -1512,6 +1651,7 @@ func (o DatabasePgPtrOutput) PgSettings() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// PgBouncer configuration settings in JSON format (`exo dbaas type show pg --settings=pgbouncer` for reference).
 func (o DatabasePgPtrOutput) PgbouncerSettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabasePg) *string {
 		if v == nil {
@@ -1521,6 +1661,7 @@ func (o DatabasePgPtrOutput) PgbouncerSettings() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// pglookout configuration settings in JSON format (`exo dbaas type show pg --settings=pglookout` for reference).
 func (o DatabasePgPtrOutput) PglookoutSettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabasePg) *string {
 		if v == nil {
@@ -1530,6 +1671,7 @@ func (o DatabasePgPtrOutput) PglookoutSettings() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
 func (o DatabasePgPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabasePg) *string {
 		if v == nil {
@@ -1540,8 +1682,10 @@ func (o DatabasePgPtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type DatabaseRedis struct {
-	IpFilters     []string `pulumi:"ipFilters"`
-	RedisSettings *string  `pulumi:"redisSettings"`
+	// A list of CIDR blocks to allow incoming connections from.
+	IpFilters []string `pulumi:"ipFilters"`
+	// Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
+	RedisSettings *string `pulumi:"redisSettings"`
 }
 
 // DatabaseRedisInput is an input type that accepts DatabaseRedisArgs and DatabaseRedisOutput values.
@@ -1556,8 +1700,10 @@ type DatabaseRedisInput interface {
 }
 
 type DatabaseRedisArgs struct {
-	IpFilters     pulumi.StringArrayInput `pulumi:"ipFilters"`
-	RedisSettings pulumi.StringPtrInput   `pulumi:"redisSettings"`
+	// A list of CIDR blocks to allow incoming connections from.
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
+	RedisSettings pulumi.StringPtrInput `pulumi:"redisSettings"`
 }
 
 func (DatabaseRedisArgs) ElementType() reflect.Type {
@@ -1637,10 +1783,12 @@ func (o DatabaseRedisOutput) ToDatabaseRedisPtrOutputWithContext(ctx context.Con
 	}).(DatabaseRedisPtrOutput)
 }
 
+// A list of CIDR blocks to allow incoming connections from.
 func (o DatabaseRedisOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DatabaseRedis) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
 func (o DatabaseRedisOutput) RedisSettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseRedis) *string { return v.RedisSettings }).(pulumi.StringPtrOutput)
 }
@@ -1669,6 +1817,7 @@ func (o DatabaseRedisPtrOutput) Elem() DatabaseRedisOutput {
 	}).(DatabaseRedisOutput)
 }
 
+// A list of CIDR blocks to allow incoming connections from.
 func (o DatabaseRedisPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DatabaseRedis) []string {
 		if v == nil {
@@ -1678,6 +1827,7 @@ func (o DatabaseRedisPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
 func (o DatabaseRedisPtrOutput) RedisSettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseRedis) *string {
 		if v == nil {
@@ -1688,15 +1838,24 @@ func (o DatabaseRedisPtrOutput) RedisSettings() pulumi.StringPtrOutput {
 }
 
 type ElasticIPHealthcheck struct {
-	Interval      *int    `pulumi:"interval"`
-	Mode          string  `pulumi:"mode"`
-	Port          int     `pulumi:"port"`
-	StrikesFail   *int    `pulumi:"strikesFail"`
-	StrikesOk     *int    `pulumi:"strikesOk"`
-	Timeout       *int    `pulumi:"timeout"`
-	TlsSkipVerify *bool   `pulumi:"tlsSkipVerify"`
-	TlsSni        *string `pulumi:"tlsSni"`
-	Uri           *string `pulumi:"uri"`
+	// The healthcheck interval (seconds; must be between `5` and `300`; default: `10`).
+	Interval *int `pulumi:"interval"`
+	// The healthcheck mode (`tcp`, `http` or `https`; may only be set at creation time).
+	Mode string `pulumi:"mode"`
+	// The healthcheck target port (must be between `1` and `65535`).
+	Port int `pulumi:"port"`
+	// The number of failed healthcheck attempts before considering the target unhealthy (must be between `1` and `20`; default: `2`).
+	StrikesFail *int `pulumi:"strikesFail"`
+	// The number of successful healthcheck attempts before considering the target healthy (must be between `1` and `20`; default: `3`).
+	StrikesOk *int `pulumi:"strikesOk"`
+	// The time before considering a healthcheck probing failed (seconds; must be between `2` and `60`; default: `3`).
+	Timeout *int `pulumi:"timeout"`
+	// Disable TLS certificate verification for healthcheck in `https` mode (boolean; default: `false`).
+	TlsSkipVerify *bool `pulumi:"tlsSkipVerify"`
+	// The healthcheck server name to present with SNI in `https` mode.
+	TlsSni *string `pulumi:"tlsSni"`
+	// The healthcheck target URI (required in `http(s)` modes).
+	Uri *string `pulumi:"uri"`
 }
 
 // ElasticIPHealthcheckInput is an input type that accepts ElasticIPHealthcheckArgs and ElasticIPHealthcheckOutput values.
@@ -1711,15 +1870,24 @@ type ElasticIPHealthcheckInput interface {
 }
 
 type ElasticIPHealthcheckArgs struct {
-	Interval      pulumi.IntPtrInput    `pulumi:"interval"`
-	Mode          pulumi.StringInput    `pulumi:"mode"`
-	Port          pulumi.IntInput       `pulumi:"port"`
-	StrikesFail   pulumi.IntPtrInput    `pulumi:"strikesFail"`
-	StrikesOk     pulumi.IntPtrInput    `pulumi:"strikesOk"`
-	Timeout       pulumi.IntPtrInput    `pulumi:"timeout"`
-	TlsSkipVerify pulumi.BoolPtrInput   `pulumi:"tlsSkipVerify"`
-	TlsSni        pulumi.StringPtrInput `pulumi:"tlsSni"`
-	Uri           pulumi.StringPtrInput `pulumi:"uri"`
+	// The healthcheck interval (seconds; must be between `5` and `300`; default: `10`).
+	Interval pulumi.IntPtrInput `pulumi:"interval"`
+	// The healthcheck mode (`tcp`, `http` or `https`; may only be set at creation time).
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// The healthcheck target port (must be between `1` and `65535`).
+	Port pulumi.IntInput `pulumi:"port"`
+	// The number of failed healthcheck attempts before considering the target unhealthy (must be between `1` and `20`; default: `2`).
+	StrikesFail pulumi.IntPtrInput `pulumi:"strikesFail"`
+	// The number of successful healthcheck attempts before considering the target healthy (must be between `1` and `20`; default: `3`).
+	StrikesOk pulumi.IntPtrInput `pulumi:"strikesOk"`
+	// The time before considering a healthcheck probing failed (seconds; must be between `2` and `60`; default: `3`).
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+	// Disable TLS certificate verification for healthcheck in `https` mode (boolean; default: `false`).
+	TlsSkipVerify pulumi.BoolPtrInput `pulumi:"tlsSkipVerify"`
+	// The healthcheck server name to present with SNI in `https` mode.
+	TlsSni pulumi.StringPtrInput `pulumi:"tlsSni"`
+	// The healthcheck target URI (required in `http(s)` modes).
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
 
 func (ElasticIPHealthcheckArgs) ElementType() reflect.Type {
@@ -1799,38 +1967,47 @@ func (o ElasticIPHealthcheckOutput) ToElasticIPHealthcheckPtrOutputWithContext(c
 	}).(ElasticIPHealthcheckPtrOutput)
 }
 
+// The healthcheck interval (seconds; must be between `5` and `300`; default: `10`).
 func (o ElasticIPHealthcheckOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElasticIPHealthcheck) *int { return v.Interval }).(pulumi.IntPtrOutput)
 }
 
+// The healthcheck mode (`tcp`, `http` or `https`; may only be set at creation time).
 func (o ElasticIPHealthcheckOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v ElasticIPHealthcheck) string { return v.Mode }).(pulumi.StringOutput)
 }
 
+// The healthcheck target port (must be between `1` and `65535`).
 func (o ElasticIPHealthcheckOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v ElasticIPHealthcheck) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// The number of failed healthcheck attempts before considering the target unhealthy (must be between `1` and `20`; default: `2`).
 func (o ElasticIPHealthcheckOutput) StrikesFail() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElasticIPHealthcheck) *int { return v.StrikesFail }).(pulumi.IntPtrOutput)
 }
 
+// The number of successful healthcheck attempts before considering the target healthy (must be between `1` and `20`; default: `3`).
 func (o ElasticIPHealthcheckOutput) StrikesOk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElasticIPHealthcheck) *int { return v.StrikesOk }).(pulumi.IntPtrOutput)
 }
 
+// The time before considering a healthcheck probing failed (seconds; must be between `2` and `60`; default: `3`).
 func (o ElasticIPHealthcheckOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElasticIPHealthcheck) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
 
+// Disable TLS certificate verification for healthcheck in `https` mode (boolean; default: `false`).
 func (o ElasticIPHealthcheckOutput) TlsSkipVerify() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElasticIPHealthcheck) *bool { return v.TlsSkipVerify }).(pulumi.BoolPtrOutput)
 }
 
+// The healthcheck server name to present with SNI in `https` mode.
 func (o ElasticIPHealthcheckOutput) TlsSni() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticIPHealthcheck) *string { return v.TlsSni }).(pulumi.StringPtrOutput)
 }
 
+// The healthcheck target URI (required in `http(s)` modes).
 func (o ElasticIPHealthcheckOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticIPHealthcheck) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -1859,6 +2036,7 @@ func (o ElasticIPHealthcheckPtrOutput) Elem() ElasticIPHealthcheckOutput {
 	}).(ElasticIPHealthcheckOutput)
 }
 
+// The healthcheck interval (seconds; must be between `5` and `300`; default: `10`).
 func (o ElasticIPHealthcheckPtrOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElasticIPHealthcheck) *int {
 		if v == nil {
@@ -1868,6 +2046,7 @@ func (o ElasticIPHealthcheckPtrOutput) Interval() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The healthcheck mode (`tcp`, `http` or `https`; may only be set at creation time).
 func (o ElasticIPHealthcheckPtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticIPHealthcheck) *string {
 		if v == nil {
@@ -1877,6 +2056,7 @@ func (o ElasticIPHealthcheckPtrOutput) Mode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The healthcheck target port (must be between `1` and `65535`).
 func (o ElasticIPHealthcheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElasticIPHealthcheck) *int {
 		if v == nil {
@@ -1886,6 +2066,7 @@ func (o ElasticIPHealthcheckPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The number of failed healthcheck attempts before considering the target unhealthy (must be between `1` and `20`; default: `2`).
 func (o ElasticIPHealthcheckPtrOutput) StrikesFail() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElasticIPHealthcheck) *int {
 		if v == nil {
@@ -1895,6 +2076,7 @@ func (o ElasticIPHealthcheckPtrOutput) StrikesFail() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The number of successful healthcheck attempts before considering the target healthy (must be between `1` and `20`; default: `3`).
 func (o ElasticIPHealthcheckPtrOutput) StrikesOk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElasticIPHealthcheck) *int {
 		if v == nil {
@@ -1904,6 +2086,7 @@ func (o ElasticIPHealthcheckPtrOutput) StrikesOk() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The time before considering a healthcheck probing failed (seconds; must be between `2` and `60`; default: `3`).
 func (o ElasticIPHealthcheckPtrOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElasticIPHealthcheck) *int {
 		if v == nil {
@@ -1913,6 +2096,7 @@ func (o ElasticIPHealthcheckPtrOutput) Timeout() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Disable TLS certificate verification for healthcheck in `https` mode (boolean; default: `false`).
 func (o ElasticIPHealthcheckPtrOutput) TlsSkipVerify() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ElasticIPHealthcheck) *bool {
 		if v == nil {
@@ -1922,6 +2106,7 @@ func (o ElasticIPHealthcheckPtrOutput) TlsSkipVerify() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The healthcheck server name to present with SNI in `https` mode.
 func (o ElasticIPHealthcheckPtrOutput) TlsSni() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticIPHealthcheck) *string {
 		if v == nil {
@@ -1931,6 +2116,7 @@ func (o ElasticIPHealthcheckPtrOutput) TlsSni() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The healthcheck target URI (required in `http(s)` modes).
 func (o ElasticIPHealthcheckPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticIPHealthcheck) *string {
 		if v == nil {
@@ -1941,9 +2127,13 @@ func (o ElasticIPHealthcheckPtrOutput) Uri() pulumi.StringPtrOutput {
 }
 
 type InstancePoolInstance struct {
-	Id              *string `pulumi:"id"`
-	Ipv6Address     *string `pulumi:"ipv6Address"`
-	Name            *string `pulumi:"name"`
+	// The ID of this resource.
+	Id *string `pulumi:"id"`
+	// The instance (main network interface) IPv6 address.
+	Ipv6Address *string `pulumi:"ipv6Address"`
+	// The instance name.
+	Name *string `pulumi:"name"`
+	// The instance (main network interface) IPv4 address.
 	PublicIpAddress *string `pulumi:"publicIpAddress"`
 }
 
@@ -1959,9 +2149,13 @@ type InstancePoolInstanceInput interface {
 }
 
 type InstancePoolInstanceArgs struct {
-	Id              pulumi.StringPtrInput `pulumi:"id"`
-	Ipv6Address     pulumi.StringPtrInput `pulumi:"ipv6Address"`
-	Name            pulumi.StringPtrInput `pulumi:"name"`
+	// The ID of this resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The instance (main network interface) IPv6 address.
+	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
+	// The instance name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The instance (main network interface) IPv4 address.
 	PublicIpAddress pulumi.StringPtrInput `pulumi:"publicIpAddress"`
 }
 
@@ -2016,18 +2210,22 @@ func (o InstancePoolInstanceOutput) ToInstancePoolInstanceOutputWithContext(ctx 
 	return o
 }
 
+// The ID of this resource.
 func (o InstancePoolInstanceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstancePoolInstance) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The instance (main network interface) IPv6 address.
 func (o InstancePoolInstanceOutput) Ipv6Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstancePoolInstance) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
 }
 
+// The instance name.
 func (o InstancePoolInstanceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstancePoolInstance) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The instance (main network interface) IPv4 address.
 func (o InstancePoolInstanceOutput) PublicIpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstancePoolInstance) *string { return v.PublicIpAddress }).(pulumi.StringPtrOutput)
 }
@@ -2053,13 +2251,20 @@ func (o InstancePoolInstanceArrayOutput) Index(i pulumi.IntInput) InstancePoolIn
 }
 
 type NLBServiceHealthcheck struct {
-	Interval *int    `pulumi:"interval"`
-	Mode     *string `pulumi:"mode"`
-	Port     int     `pulumi:"port"`
-	Retries  *int    `pulumi:"retries"`
-	Timeout  *int    `pulumi:"timeout"`
-	TlsSni   *string `pulumi:"tlsSni"`
-	Uri      *string `pulumi:"uri"`
+	// The healthcheck interval in seconds (default: `10`).
+	Interval *int `pulumi:"interval"`
+	// The healthcheck mode (`tcp`|`http`|`https`; default: `tcp`).
+	Mode *string `pulumi:"mode"`
+	// The NLB service (TCP/UDP) port.
+	Port int `pulumi:"port"`
+	// The healthcheck retries (default: `1`).
+	Retries *int `pulumi:"retries"`
+	// The healthcheck timeout (seconds; default: `5`).
+	Timeout *int `pulumi:"timeout"`
+	// The healthcheck TLS SNI server name (only if `mode` is `https`).
+	TlsSni *string `pulumi:"tlsSni"`
+	// The healthcheck URI (must be set only if `mode` is `http(s)`).
+	Uri *string `pulumi:"uri"`
 }
 
 // NLBServiceHealthcheckInput is an input type that accepts NLBServiceHealthcheckArgs and NLBServiceHealthcheckOutput values.
@@ -2074,13 +2279,20 @@ type NLBServiceHealthcheckInput interface {
 }
 
 type NLBServiceHealthcheckArgs struct {
-	Interval pulumi.IntPtrInput    `pulumi:"interval"`
-	Mode     pulumi.StringPtrInput `pulumi:"mode"`
-	Port     pulumi.IntInput       `pulumi:"port"`
-	Retries  pulumi.IntPtrInput    `pulumi:"retries"`
-	Timeout  pulumi.IntPtrInput    `pulumi:"timeout"`
-	TlsSni   pulumi.StringPtrInput `pulumi:"tlsSni"`
-	Uri      pulumi.StringPtrInput `pulumi:"uri"`
+	// The healthcheck interval in seconds (default: `10`).
+	Interval pulumi.IntPtrInput `pulumi:"interval"`
+	// The healthcheck mode (`tcp`|`http`|`https`; default: `tcp`).
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The NLB service (TCP/UDP) port.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The healthcheck retries (default: `1`).
+	Retries pulumi.IntPtrInput `pulumi:"retries"`
+	// The healthcheck timeout (seconds; default: `5`).
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+	// The healthcheck TLS SNI server name (only if `mode` is `https`).
+	TlsSni pulumi.StringPtrInput `pulumi:"tlsSni"`
+	// The healthcheck URI (must be set only if `mode` is `http(s)`).
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
 
 func (NLBServiceHealthcheckArgs) ElementType() reflect.Type {
@@ -2134,30 +2346,37 @@ func (o NLBServiceHealthcheckOutput) ToNLBServiceHealthcheckOutputWithContext(ct
 	return o
 }
 
+// The healthcheck interval in seconds (default: `10`).
 func (o NLBServiceHealthcheckOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NLBServiceHealthcheck) *int { return v.Interval }).(pulumi.IntPtrOutput)
 }
 
+// The healthcheck mode (`tcp`|`http`|`https`; default: `tcp`).
 func (o NLBServiceHealthcheckOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NLBServiceHealthcheck) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
+// The NLB service (TCP/UDP) port.
 func (o NLBServiceHealthcheckOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v NLBServiceHealthcheck) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// The healthcheck retries (default: `1`).
 func (o NLBServiceHealthcheckOutput) Retries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NLBServiceHealthcheck) *int { return v.Retries }).(pulumi.IntPtrOutput)
 }
 
+// The healthcheck timeout (seconds; default: `5`).
 func (o NLBServiceHealthcheckOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NLBServiceHealthcheck) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
 
+// The healthcheck TLS SNI server name (only if `mode` is `https`).
 func (o NLBServiceHealthcheckOutput) TlsSni() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NLBServiceHealthcheck) *string { return v.TlsSni }).(pulumi.StringPtrOutput)
 }
 
+// The healthcheck URI (must be set only if `mode` is `http(s)`).
 func (o NLBServiceHealthcheckOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NLBServiceHealthcheck) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -2183,13 +2402,20 @@ func (o NLBServiceHealthcheckArrayOutput) Index(i pulumi.IntInput) NLBServiceHea
 }
 
 type SKSClusterOidc struct {
-	ClientId       string            `pulumi:"clientId"`
-	GroupsClaim    *string           `pulumi:"groupsClaim"`
-	GroupsPrefix   *string           `pulumi:"groupsPrefix"`
-	IssuerUrl      string            `pulumi:"issuerUrl"`
-	RequiredClaim  map[string]string `pulumi:"requiredClaim"`
-	UsernameClaim  *string           `pulumi:"usernameClaim"`
-	UsernamePrefix *string           `pulumi:"usernamePrefix"`
+	// The OpenID client ID.
+	ClientId string `pulumi:"clientId"`
+	// An OpenID JWT claim to use as the user's group.
+	GroupsClaim *string `pulumi:"groupsClaim"`
+	// An OpenID prefix prepended to group claims.
+	GroupsPrefix *string `pulumi:"groupsPrefix"`
+	// The OpenID provider URL.
+	IssuerUrl string `pulumi:"issuerUrl"`
+	// A map of key/value pairs that describes a required claim in the OpenID Token.
+	RequiredClaim map[string]string `pulumi:"requiredClaim"`
+	// An OpenID JWT claim to use as the user name.
+	UsernameClaim *string `pulumi:"usernameClaim"`
+	// An OpenID prefix prepended to username claims.
+	UsernamePrefix *string `pulumi:"usernamePrefix"`
 }
 
 // SKSClusterOidcInput is an input type that accepts SKSClusterOidcArgs and SKSClusterOidcOutput values.
@@ -2204,12 +2430,19 @@ type SKSClusterOidcInput interface {
 }
 
 type SKSClusterOidcArgs struct {
-	ClientId       pulumi.StringInput    `pulumi:"clientId"`
-	GroupsClaim    pulumi.StringPtrInput `pulumi:"groupsClaim"`
-	GroupsPrefix   pulumi.StringPtrInput `pulumi:"groupsPrefix"`
-	IssuerUrl      pulumi.StringInput    `pulumi:"issuerUrl"`
-	RequiredClaim  pulumi.StringMapInput `pulumi:"requiredClaim"`
-	UsernameClaim  pulumi.StringPtrInput `pulumi:"usernameClaim"`
+	// The OpenID client ID.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// An OpenID JWT claim to use as the user's group.
+	GroupsClaim pulumi.StringPtrInput `pulumi:"groupsClaim"`
+	// An OpenID prefix prepended to group claims.
+	GroupsPrefix pulumi.StringPtrInput `pulumi:"groupsPrefix"`
+	// The OpenID provider URL.
+	IssuerUrl pulumi.StringInput `pulumi:"issuerUrl"`
+	// A map of key/value pairs that describes a required claim in the OpenID Token.
+	RequiredClaim pulumi.StringMapInput `pulumi:"requiredClaim"`
+	// An OpenID JWT claim to use as the user name.
+	UsernameClaim pulumi.StringPtrInput `pulumi:"usernameClaim"`
+	// An OpenID prefix prepended to username claims.
 	UsernamePrefix pulumi.StringPtrInput `pulumi:"usernamePrefix"`
 }
 
@@ -2290,30 +2523,37 @@ func (o SKSClusterOidcOutput) ToSKSClusterOidcPtrOutputWithContext(ctx context.C
 	}).(SKSClusterOidcPtrOutput)
 }
 
+// The OpenID client ID.
 func (o SKSClusterOidcOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v SKSClusterOidc) string { return v.ClientId }).(pulumi.StringOutput)
 }
 
+// An OpenID JWT claim to use as the user's group.
 func (o SKSClusterOidcOutput) GroupsClaim() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SKSClusterOidc) *string { return v.GroupsClaim }).(pulumi.StringPtrOutput)
 }
 
+// An OpenID prefix prepended to group claims.
 func (o SKSClusterOidcOutput) GroupsPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SKSClusterOidc) *string { return v.GroupsPrefix }).(pulumi.StringPtrOutput)
 }
 
+// The OpenID provider URL.
 func (o SKSClusterOidcOutput) IssuerUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v SKSClusterOidc) string { return v.IssuerUrl }).(pulumi.StringOutput)
 }
 
+// A map of key/value pairs that describes a required claim in the OpenID Token.
 func (o SKSClusterOidcOutput) RequiredClaim() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SKSClusterOidc) map[string]string { return v.RequiredClaim }).(pulumi.StringMapOutput)
 }
 
+// An OpenID JWT claim to use as the user name.
 func (o SKSClusterOidcOutput) UsernameClaim() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SKSClusterOidc) *string { return v.UsernameClaim }).(pulumi.StringPtrOutput)
 }
 
+// An OpenID prefix prepended to username claims.
 func (o SKSClusterOidcOutput) UsernamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SKSClusterOidc) *string { return v.UsernamePrefix }).(pulumi.StringPtrOutput)
 }
@@ -2342,6 +2582,7 @@ func (o SKSClusterOidcPtrOutput) Elem() SKSClusterOidcOutput {
 	}).(SKSClusterOidcOutput)
 }
 
+// The OpenID client ID.
 func (o SKSClusterOidcPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SKSClusterOidc) *string {
 		if v == nil {
@@ -2351,6 +2592,7 @@ func (o SKSClusterOidcPtrOutput) ClientId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// An OpenID JWT claim to use as the user's group.
 func (o SKSClusterOidcPtrOutput) GroupsClaim() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SKSClusterOidc) *string {
 		if v == nil {
@@ -2360,6 +2602,7 @@ func (o SKSClusterOidcPtrOutput) GroupsClaim() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// An OpenID prefix prepended to group claims.
 func (o SKSClusterOidcPtrOutput) GroupsPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SKSClusterOidc) *string {
 		if v == nil {
@@ -2369,6 +2612,7 @@ func (o SKSClusterOidcPtrOutput) GroupsPrefix() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The OpenID provider URL.
 func (o SKSClusterOidcPtrOutput) IssuerUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SKSClusterOidc) *string {
 		if v == nil {
@@ -2378,6 +2622,7 @@ func (o SKSClusterOidcPtrOutput) IssuerUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A map of key/value pairs that describes a required claim in the OpenID Token.
 func (o SKSClusterOidcPtrOutput) RequiredClaim() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SKSClusterOidc) map[string]string {
 		if v == nil {
@@ -2387,6 +2632,7 @@ func (o SKSClusterOidcPtrOutput) RequiredClaim() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// An OpenID JWT claim to use as the user name.
 func (o SKSClusterOidcPtrOutput) UsernameClaim() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SKSClusterOidc) *string {
 		if v == nil {
@@ -2396,6 +2642,7 @@ func (o SKSClusterOidcPtrOutput) UsernameClaim() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// An OpenID prefix prepended to username claims.
 func (o SKSClusterOidcPtrOutput) UsernamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SKSClusterOidc) *string {
 		if v == nil {
@@ -2406,13 +2653,20 @@ func (o SKSClusterOidcPtrOutput) UsernamePrefix() pulumi.StringPtrOutput {
 }
 
 type SecurityGroupRulesEgress struct {
-	CidrLists              []string `pulumi:"cidrLists"`
-	Description            *string  `pulumi:"description"`
-	IcmpCode               *int     `pulumi:"icmpCode"`
-	IcmpType               *int     `pulumi:"icmpType"`
-	Ids                    []string `pulumi:"ids"`
-	Ports                  []string `pulumi:"ports"`
-	Protocol               *string  `pulumi:"protocol"`
+	// A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
+	CidrLists []string `pulumi:"cidrLists"`
+	// A free-form text describing the block.
+	Description *string `pulumi:"description"`
+	// An ICMP/ICMPv6 type/code to match.
+	IcmpCode *int `pulumi:"icmpCode"`
+	// An ICMP/ICMPv6 type/code to match.
+	IcmpType *int     `pulumi:"icmpType"`
+	Ids      []string `pulumi:"ids"`
+	// A list of ports or port ranges (`<start_port>-<end_port>`).
+	Ports []string `pulumi:"ports"`
+	// The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
+	Protocol *string `pulumi:"protocol"`
+	// A list of source (for ingress)/destination (for egress) identified by a security group.
 	UserSecurityGroupLists []string `pulumi:"userSecurityGroupLists"`
 }
 
@@ -2428,13 +2682,20 @@ type SecurityGroupRulesEgressInput interface {
 }
 
 type SecurityGroupRulesEgressArgs struct {
-	CidrLists              pulumi.StringArrayInput `pulumi:"cidrLists"`
-	Description            pulumi.StringPtrInput   `pulumi:"description"`
-	IcmpCode               pulumi.IntPtrInput      `pulumi:"icmpCode"`
-	IcmpType               pulumi.IntPtrInput      `pulumi:"icmpType"`
-	Ids                    pulumi.StringArrayInput `pulumi:"ids"`
-	Ports                  pulumi.StringArrayInput `pulumi:"ports"`
-	Protocol               pulumi.StringPtrInput   `pulumi:"protocol"`
+	// A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
+	CidrLists pulumi.StringArrayInput `pulumi:"cidrLists"`
+	// A free-form text describing the block.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// An ICMP/ICMPv6 type/code to match.
+	IcmpCode pulumi.IntPtrInput `pulumi:"icmpCode"`
+	// An ICMP/ICMPv6 type/code to match.
+	IcmpType pulumi.IntPtrInput      `pulumi:"icmpType"`
+	Ids      pulumi.StringArrayInput `pulumi:"ids"`
+	// A list of ports or port ranges (`<start_port>-<end_port>`).
+	Ports pulumi.StringArrayInput `pulumi:"ports"`
+	// The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// A list of source (for ingress)/destination (for egress) identified by a security group.
 	UserSecurityGroupLists pulumi.StringArrayInput `pulumi:"userSecurityGroupLists"`
 }
 
@@ -2489,18 +2750,22 @@ func (o SecurityGroupRulesEgressOutput) ToSecurityGroupRulesEgressOutputWithCont
 	return o
 }
 
+// A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
 func (o SecurityGroupRulesEgressOutput) CidrLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecurityGroupRulesEgress) []string { return v.CidrLists }).(pulumi.StringArrayOutput)
 }
 
+// A free-form text describing the block.
 func (o SecurityGroupRulesEgressOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityGroupRulesEgress) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// An ICMP/ICMPv6 type/code to match.
 func (o SecurityGroupRulesEgressOutput) IcmpCode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SecurityGroupRulesEgress) *int { return v.IcmpCode }).(pulumi.IntPtrOutput)
 }
 
+// An ICMP/ICMPv6 type/code to match.
 func (o SecurityGroupRulesEgressOutput) IcmpType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SecurityGroupRulesEgress) *int { return v.IcmpType }).(pulumi.IntPtrOutput)
 }
@@ -2509,14 +2774,17 @@ func (o SecurityGroupRulesEgressOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecurityGroupRulesEgress) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of ports or port ranges (`<start_port>-<end_port>`).
 func (o SecurityGroupRulesEgressOutput) Ports() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecurityGroupRulesEgress) []string { return v.Ports }).(pulumi.StringArrayOutput)
 }
 
+// The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
 func (o SecurityGroupRulesEgressOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityGroupRulesEgress) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
+// A list of source (for ingress)/destination (for egress) identified by a security group.
 func (o SecurityGroupRulesEgressOutput) UserSecurityGroupLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecurityGroupRulesEgress) []string { return v.UserSecurityGroupLists }).(pulumi.StringArrayOutput)
 }
@@ -2542,13 +2810,20 @@ func (o SecurityGroupRulesEgressArrayOutput) Index(i pulumi.IntInput) SecurityGr
 }
 
 type SecurityGroupRulesIngress struct {
-	CidrLists              []string `pulumi:"cidrLists"`
-	Description            *string  `pulumi:"description"`
-	IcmpCode               *int     `pulumi:"icmpCode"`
-	IcmpType               *int     `pulumi:"icmpType"`
-	Ids                    []string `pulumi:"ids"`
-	Ports                  []string `pulumi:"ports"`
-	Protocol               *string  `pulumi:"protocol"`
+	// A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
+	CidrLists []string `pulumi:"cidrLists"`
+	// A free-form text describing the block.
+	Description *string `pulumi:"description"`
+	// An ICMP/ICMPv6 type/code to match.
+	IcmpCode *int `pulumi:"icmpCode"`
+	// An ICMP/ICMPv6 type/code to match.
+	IcmpType *int     `pulumi:"icmpType"`
+	Ids      []string `pulumi:"ids"`
+	// A list of ports or port ranges (`<start_port>-<end_port>`).
+	Ports []string `pulumi:"ports"`
+	// The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
+	Protocol *string `pulumi:"protocol"`
+	// A list of source (for ingress)/destination (for egress) identified by a security group.
 	UserSecurityGroupLists []string `pulumi:"userSecurityGroupLists"`
 }
 
@@ -2564,13 +2839,20 @@ type SecurityGroupRulesIngressInput interface {
 }
 
 type SecurityGroupRulesIngressArgs struct {
-	CidrLists              pulumi.StringArrayInput `pulumi:"cidrLists"`
-	Description            pulumi.StringPtrInput   `pulumi:"description"`
-	IcmpCode               pulumi.IntPtrInput      `pulumi:"icmpCode"`
-	IcmpType               pulumi.IntPtrInput      `pulumi:"icmpType"`
-	Ids                    pulumi.StringArrayInput `pulumi:"ids"`
-	Ports                  pulumi.StringArrayInput `pulumi:"ports"`
-	Protocol               pulumi.StringPtrInput   `pulumi:"protocol"`
+	// A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
+	CidrLists pulumi.StringArrayInput `pulumi:"cidrLists"`
+	// A free-form text describing the block.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// An ICMP/ICMPv6 type/code to match.
+	IcmpCode pulumi.IntPtrInput `pulumi:"icmpCode"`
+	// An ICMP/ICMPv6 type/code to match.
+	IcmpType pulumi.IntPtrInput      `pulumi:"icmpType"`
+	Ids      pulumi.StringArrayInput `pulumi:"ids"`
+	// A list of ports or port ranges (`<start_port>-<end_port>`).
+	Ports pulumi.StringArrayInput `pulumi:"ports"`
+	// The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// A list of source (for ingress)/destination (for egress) identified by a security group.
 	UserSecurityGroupLists pulumi.StringArrayInput `pulumi:"userSecurityGroupLists"`
 }
 
@@ -2625,18 +2907,22 @@ func (o SecurityGroupRulesIngressOutput) ToSecurityGroupRulesIngressOutputWithCo
 	return o
 }
 
+// A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
 func (o SecurityGroupRulesIngressOutput) CidrLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecurityGroupRulesIngress) []string { return v.CidrLists }).(pulumi.StringArrayOutput)
 }
 
+// A free-form text describing the block.
 func (o SecurityGroupRulesIngressOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityGroupRulesIngress) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// An ICMP/ICMPv6 type/code to match.
 func (o SecurityGroupRulesIngressOutput) IcmpCode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SecurityGroupRulesIngress) *int { return v.IcmpCode }).(pulumi.IntPtrOutput)
 }
 
+// An ICMP/ICMPv6 type/code to match.
 func (o SecurityGroupRulesIngressOutput) IcmpType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SecurityGroupRulesIngress) *int { return v.IcmpType }).(pulumi.IntPtrOutput)
 }
@@ -2645,14 +2931,17 @@ func (o SecurityGroupRulesIngressOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecurityGroupRulesIngress) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of ports or port ranges (`<start_port>-<end_port>`).
 func (o SecurityGroupRulesIngressOutput) Ports() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecurityGroupRulesIngress) []string { return v.Ports }).(pulumi.StringArrayOutput)
 }
 
+// The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
 func (o SecurityGroupRulesIngressOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityGroupRulesIngress) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
+// A list of source (for ingress)/destination (for egress) identified by a security group.
 func (o SecurityGroupRulesIngressOutput) UserSecurityGroupLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecurityGroupRulesIngress) []string { return v.UserSecurityGroupLists }).(pulumi.StringArrayOutput)
 }

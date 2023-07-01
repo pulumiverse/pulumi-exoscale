@@ -19,13 +19,13 @@ namespace Pulumiverse.Exoscale
     public partial class Compute : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
+        /// ❗ A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
         /// </summary>
         [Output("affinityGroupIds")]
         public Output<ImmutableArray<string>> AffinityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
+        /// ❗ A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
         /// </summary>
         [Output("affinityGroups")]
         public Output<ImmutableArray<string>> AffinityGroups { get; private set; } = null!;
@@ -37,10 +37,7 @@ namespace Pulumiverse.Exoscale
         public Output<int> DiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'
-        /// *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed
-        /// to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will
-        /// be generated automatically.
+        /// The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -49,9 +46,7 @@ namespace Pulumiverse.Exoscale
         public Output<string> Gateway { get; private set; } = null!;
 
         /// <summary>
-        /// The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or
-        /// `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value
-        /// requires to reboot the instance.
+        /// The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.
         /// </summary>
         [Output("hostname")]
         public Output<string> Hostname { get; private set; } = null!;
@@ -84,14 +79,13 @@ namespace Pulumiverse.Exoscale
         public Output<string> IpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// The SSH keypair (name) to authorize in the instance.
+        /// ❗ The SSH keypair (name) to authorize in the instance.
         /// </summary>
         [Output("keyPair")]
         public Output<string?> KeyPair { get; private set; } = null!;
 
         /// <summary>
-        /// The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,
-        /// `pt`, `uk`, `us`; at creation time only).
+        /// The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).
         /// </summary>
         [Output("keyboard")]
         public Output<string?> Keyboard { get; private set; } = null!;
@@ -145,14 +139,13 @@ namespace Pulumiverse.Exoscale
         public Output<ImmutableDictionary<string, string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The compute instance template (name). Only *featured* templates are available, if you want to reference *custom
-        /// templates* use the `template_id` attribute instead.
+        /// ❗ The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `template_id` attribute instead.
         /// </summary>
         [Output("template")]
         public Output<string> Template { get; private set; } = null!;
 
         /// <summary>
-        /// The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.
+        /// ❗ The compute instance template (ID). Usage of the `exoscale.getComputeTemplate` data source is recommended.
         /// </summary>
         [Output("templateId")]
         public Output<string> TemplateId { get; private set; } = null!;
@@ -170,14 +163,13 @@ namespace Pulumiverse.Exoscale
         public Output<bool> UserDataBase64 { get; private set; } = null!;
 
         /// <summary>
-        /// The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the
-        /// `exoscale_compute_template` data source `username` attribute instead.
+        /// The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the `exoscale.getComputeTemplate` data source `username` attribute instead.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
 
         /// <summary>
-        /// The Exoscale Zone name.
+        /// ❗ The Exoscale Zone name.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -237,7 +229,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _affinityGroupIds;
 
         /// <summary>
-        /// A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
+        /// ❗ A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
         /// </summary>
         public InputList<string> AffinityGroupIds
         {
@@ -249,7 +241,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _affinityGroups;
 
         /// <summary>
-        /// A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
+        /// ❗ A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
         /// </summary>
         public InputList<string> AffinityGroups
         {
@@ -264,18 +256,13 @@ namespace Pulumiverse.Exoscale
         public Input<int> DiskSize { get; set; } = null!;
 
         /// <summary>
-        /// The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'
-        /// *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed
-        /// to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will
-        /// be generated automatically.
+        /// The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or
-        /// `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value
-        /// requires to reboot the instance.
+        /// The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
@@ -293,14 +280,13 @@ namespace Pulumiverse.Exoscale
         public Input<bool>? Ip6 { get; set; }
 
         /// <summary>
-        /// The SSH keypair (name) to authorize in the instance.
+        /// ❗ The SSH keypair (name) to authorize in the instance.
         /// </summary>
         [Input("keyPair")]
         public Input<string>? KeyPair { get; set; }
 
         /// <summary>
-        /// The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,
-        /// `pt`, `uk`, `us`; at creation time only).
+        /// The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).
         /// </summary>
         [Input("keyboard")]
         public Input<string>? Keyboard { get; set; }
@@ -360,14 +346,13 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The compute instance template (name). Only *featured* templates are available, if you want to reference *custom
-        /// templates* use the `template_id` attribute instead.
+        /// ❗ The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `template_id` attribute instead.
         /// </summary>
         [Input("template")]
         public Input<string>? Template { get; set; }
 
         /// <summary>
-        /// The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.
+        /// ❗ The compute instance template (ID). Usage of the `exoscale.getComputeTemplate` data source is recommended.
         /// </summary>
         [Input("templateId")]
         public Input<string>? TemplateId { get; set; }
@@ -379,7 +364,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? UserData { get; set; }
 
         /// <summary>
-        /// The Exoscale Zone name.
+        /// ❗ The Exoscale Zone name.
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -396,7 +381,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _affinityGroupIds;
 
         /// <summary>
-        /// A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
+        /// ❗ A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).
         /// </summary>
         public InputList<string> AffinityGroupIds
         {
@@ -408,7 +393,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _affinityGroups;
 
         /// <summary>
-        /// A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
+        /// ❗ A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).
         /// </summary>
         public InputList<string> AffinityGroups
         {
@@ -423,10 +408,7 @@ namespace Pulumiverse.Exoscale
         public Input<int>? DiskSize { get; set; }
 
         /// <summary>
-        /// The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS'
-        /// *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed
-        /// to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will
-        /// be generated automatically.
+        /// The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen (" - ") characters; it can be changed to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -435,9 +417,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Gateway { get; set; }
 
         /// <summary>
-        /// The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or
-        /// `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value
-        /// requires to reboot the instance.
+        /// The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
@@ -470,14 +450,13 @@ namespace Pulumiverse.Exoscale
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
-        /// The SSH keypair (name) to authorize in the instance.
+        /// ❗ The SSH keypair (name) to authorize in the instance.
         /// </summary>
         [Input("keyPair")]
         public Input<string>? KeyPair { get; set; }
 
         /// <summary>
-        /// The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`,
-        /// `pt`, `uk`, `us`; at creation time only).
+        /// The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).
         /// </summary>
         [Input("keyboard")]
         public Input<string>? Keyboard { get; set; }
@@ -559,14 +538,13 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The compute instance template (name). Only *featured* templates are available, if you want to reference *custom
-        /// templates* use the `template_id` attribute instead.
+        /// ❗ The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `template_id` attribute instead.
         /// </summary>
         [Input("template")]
         public Input<string>? Template { get; set; }
 
         /// <summary>
-        /// The compute instance template (ID). Usage of the `exoscale_compute_template` data source is recommended.
+        /// ❗ The compute instance template (ID). Usage of the `exoscale.getComputeTemplate` data source is recommended.
         /// </summary>
         [Input("templateId")]
         public Input<string>? TemplateId { get; set; }
@@ -584,14 +562,13 @@ namespace Pulumiverse.Exoscale
         public Input<bool>? UserDataBase64 { get; set; }
 
         /// <summary>
-        /// The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the
-        /// `exoscale_compute_template` data source `username` attribute instead.
+        /// The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the `exoscale.getComputeTemplate` data source `username` attribute instead.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// The Exoscale Zone name.
+        /// ❗ The Exoscale Zone name.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

@@ -46,11 +46,11 @@ export class AntiAffinityGroup extends pulumi.CustomResource {
     }
 
     /**
-     * A free-form text describing the group.
+     * ❗ A free-form text describing the group.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The anti-affinity group name.
+     * ❗ The anti-affinity group name.
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -84,11 +84,11 @@ export class AntiAffinityGroup extends pulumi.CustomResource {
  */
 export interface AntiAffinityGroupState {
     /**
-     * A free-form text describing the group.
+     * ❗ A free-form text describing the group.
      */
     description?: pulumi.Input<string>;
     /**
-     * The anti-affinity group name.
+     * ❗ The anti-affinity group name.
      */
     name?: pulumi.Input<string>;
 }
@@ -98,11 +98,11 @@ export interface AntiAffinityGroupState {
  */
 export interface AntiAffinityGroupArgs {
     /**
-     * A free-form text describing the group.
+     * ❗ A free-form text describing the group.
      */
     description?: pulumi.Input<string>;
     /**
-     * The anti-affinity group name.
+     * ❗ The anti-affinity group name.
      */
     name?: pulumi.Input<string>;
 }

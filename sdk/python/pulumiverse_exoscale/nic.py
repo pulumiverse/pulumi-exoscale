@@ -19,8 +19,8 @@ class NICArgs:
                  ip_address: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NIC resource.
-        :param pulumi.Input[str] compute_id: The compute instance ID.
-        :param pulumi.Input[str] network_id: The private network ID.
+        :param pulumi.Input[str] compute_id: ❗ The compute instance ID.
+        :param pulumi.Input[str] network_id: ❗ The private network ID.
         :param pulumi.Input[str] ip_address: The IPv4 address to request as static DHCP lease if the NIC is attached to a *managed* private network.
         """
         pulumi.set(__self__, "compute_id", compute_id)
@@ -32,7 +32,7 @@ class NICArgs:
     @pulumi.getter(name="computeId")
     def compute_id(self) -> pulumi.Input[str]:
         """
-        The compute instance ID.
+        ❗ The compute instance ID.
         """
         return pulumi.get(self, "compute_id")
 
@@ -44,7 +44,7 @@ class NICArgs:
     @pulumi.getter(name="networkId")
     def network_id(self) -> pulumi.Input[str]:
         """
-        The private network ID.
+        ❗ The private network ID.
         """
         return pulumi.get(self, "network_id")
 
@@ -76,10 +76,10 @@ class _NICState:
                  network_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering NIC resources.
-        :param pulumi.Input[str] compute_id: The compute instance ID.
+        :param pulumi.Input[str] compute_id: ❗ The compute instance ID.
         :param pulumi.Input[str] ip_address: The IPv4 address to request as static DHCP lease if the NIC is attached to a *managed* private network.
         :param pulumi.Input[str] mac_address: The NIC MAC address.
-        :param pulumi.Input[str] network_id: The private network ID.
+        :param pulumi.Input[str] network_id: ❗ The private network ID.
         """
         if compute_id is not None:
             pulumi.set(__self__, "compute_id", compute_id)
@@ -98,7 +98,7 @@ class _NICState:
     @pulumi.getter(name="computeId")
     def compute_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The compute instance ID.
+        ❗ The compute instance ID.
         """
         return pulumi.get(self, "compute_id")
 
@@ -152,7 +152,7 @@ class _NICState:
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The private network ID.
+        ❗ The private network ID.
         """
         return pulumi.get(self, "network_id")
 
@@ -175,9 +175,9 @@ class NIC(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compute_id: The compute instance ID.
+        :param pulumi.Input[str] compute_id: ❗ The compute instance ID.
         :param pulumi.Input[str] ip_address: The IPv4 address to request as static DHCP lease if the NIC is attached to a *managed* private network.
-        :param pulumi.Input[str] network_id: The private network ID.
+        :param pulumi.Input[str] network_id: ❗ The private network ID.
         """
         ...
     @overload
@@ -248,10 +248,10 @@ class NIC(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compute_id: The compute instance ID.
+        :param pulumi.Input[str] compute_id: ❗ The compute instance ID.
         :param pulumi.Input[str] ip_address: The IPv4 address to request as static DHCP lease if the NIC is attached to a *managed* private network.
         :param pulumi.Input[str] mac_address: The NIC MAC address.
-        :param pulumi.Input[str] network_id: The private network ID.
+        :param pulumi.Input[str] network_id: ❗ The private network ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -269,7 +269,7 @@ class NIC(pulumi.CustomResource):
     @pulumi.getter(name="computeId")
     def compute_id(self) -> pulumi.Output[str]:
         """
-        The compute instance ID.
+        ❗ The compute instance ID.
         """
         return pulumi.get(self, "compute_id")
 
@@ -303,7 +303,7 @@ class NIC(pulumi.CustomResource):
     @pulumi.getter(name="networkId")
     def network_id(self) -> pulumi.Output[str]:
         """
-        The private network ID.
+        ❗ The private network ID.
         """
         return pulumi.get(self, "network_id")
 

@@ -27,13 +27,13 @@ namespace Pulumiverse.Exoscale
     public partial class SKSNodepool : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to be attached to the managed instances.
+        /// A list of exoscale*anti*affinity_group (IDs) to be attached to the managed instances.
         /// </summary>
         [Output("antiAffinityGroupIds")]
         public Output<ImmutableArray<string>> AntiAffinityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
+        /// ❗ The parent exoscale*sks*cluster ID.
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
@@ -63,7 +63,7 @@ namespace Pulumiverse.Exoscale
         public Output<int?> DiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// The underlying [exoscale_instance_pool](./instance_pool.md) ID.
+        /// The underlying exoscale*instance*pool ID.
         /// </summary>
         [Output("instancePoolId")]
         public Output<string> InstancePoolId { get; private set; } = null!;
@@ -75,8 +75,7 @@ namespace Pulumiverse.Exoscale
         public Output<string?> InstancePrefix { get; private set; } = null!;
 
         /// <summary>
-        /// The managed compute instances type (`&lt;family&gt;.&lt;size&gt;`, e.g. `standard.medium`; use the [Exoscale
-        /// CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
+        /// The managed compute instances type (`&lt;family&gt;.&lt;size&gt;`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -94,13 +93,13 @@ namespace Pulumiverse.Exoscale
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A list of [exoscale_private_network](./private_network.md) (IDs) to be attached to the managed instances.
+        /// A list of exoscale*private*network (IDs) to be attached to the managed instances.
         /// </summary>
         [Output("privateNetworkIds")]
         public Output<ImmutableArray<string>> PrivateNetworkIds { get; private set; } = null!;
 
         /// <summary>
-        /// A list of [exoscale_security_group](./security_group.md) (IDs) to be attached to the managed instances.
+        /// A list of exoscale*security*group (IDs) to be attached to the managed instances.
         /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
@@ -115,8 +114,7 @@ namespace Pulumiverse.Exoscale
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
-        /// (`&lt;value&gt;:&lt;effect&gt;`).
+        /// A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`&lt;value&gt;:&lt;effect&gt;`).
         /// </summary>
         [Output("taints")]
         public Output<ImmutableDictionary<string, string>?> Taints { get; private set; } = null!;
@@ -134,7 +132,7 @@ namespace Pulumiverse.Exoscale
         public Output<string> Version { get; private set; } = null!;
 
         /// <summary>
-        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -190,7 +188,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _antiAffinityGroupIds;
 
         /// <summary>
-        /// A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to be attached to the managed instances.
+        /// A list of exoscale*anti*affinity_group (IDs) to be attached to the managed instances.
         /// </summary>
         public InputList<string> AntiAffinityGroupIds
         {
@@ -199,7 +197,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
+        /// ❗ The parent exoscale*sks*cluster ID.
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
@@ -229,8 +227,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? InstancePrefix { get; set; }
 
         /// <summary>
-        /// The managed compute instances type (`&lt;family&gt;.&lt;size&gt;`, e.g. `standard.medium`; use the [Exoscale
-        /// CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
+        /// The managed compute instances type (`&lt;family&gt;.&lt;size&gt;`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
@@ -257,7 +254,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _privateNetworkIds;
 
         /// <summary>
-        /// A list of [exoscale_private_network](./private_network.md) (IDs) to be attached to the managed instances.
+        /// A list of exoscale*private*network (IDs) to be attached to the managed instances.
         /// </summary>
         public InputList<string> PrivateNetworkIds
         {
@@ -269,7 +266,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// A list of [exoscale_security_group](./security_group.md) (IDs) to be attached to the managed instances.
+        /// A list of exoscale*security*group (IDs) to be attached to the managed instances.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -284,8 +281,7 @@ namespace Pulumiverse.Exoscale
         private InputMap<string>? _taints;
 
         /// <summary>
-        /// A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
-        /// (`&lt;value&gt;:&lt;effect&gt;`).
+        /// A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`&lt;value&gt;:&lt;effect&gt;`).
         /// </summary>
         public InputMap<string> Taints
         {
@@ -294,7 +290,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -311,7 +307,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _antiAffinityGroupIds;
 
         /// <summary>
-        /// A list of [exoscale_anti_affinity_group](./anti_affinity_group.md) (IDs) to be attached to the managed instances.
+        /// A list of exoscale*anti*affinity_group (IDs) to be attached to the managed instances.
         /// </summary>
         public InputList<string> AntiAffinityGroupIds
         {
@@ -320,7 +316,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The parent [exoscale_sks_cluster](./sks_cluster.md) ID.
+        /// ❗ The parent exoscale*sks*cluster ID.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
@@ -350,7 +346,7 @@ namespace Pulumiverse.Exoscale
         public Input<int>? DiskSize { get; set; }
 
         /// <summary>
-        /// The underlying [exoscale_instance_pool](./instance_pool.md) ID.
+        /// The underlying exoscale*instance*pool ID.
         /// </summary>
         [Input("instancePoolId")]
         public Input<string>? InstancePoolId { get; set; }
@@ -362,8 +358,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? InstancePrefix { get; set; }
 
         /// <summary>
-        /// The managed compute instances type (`&lt;family&gt;.&lt;size&gt;`, e.g. `standard.medium`; use the [Exoscale
-        /// CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
+        /// The managed compute instances type (`&lt;family&gt;.&lt;size&gt;`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -390,7 +385,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _privateNetworkIds;
 
         /// <summary>
-        /// A list of [exoscale_private_network](./private_network.md) (IDs) to be attached to the managed instances.
+        /// A list of exoscale*private*network (IDs) to be attached to the managed instances.
         /// </summary>
         public InputList<string> PrivateNetworkIds
         {
@@ -402,7 +397,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// A list of [exoscale_security_group](./security_group.md) (IDs) to be attached to the managed instances.
+        /// A list of exoscale*security*group (IDs) to be attached to the managed instances.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -423,8 +418,7 @@ namespace Pulumiverse.Exoscale
         private InputMap<string>? _taints;
 
         /// <summary>
-        /// A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
-        /// (`&lt;value&gt;:&lt;effect&gt;`).
+        /// A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`&lt;value&gt;:&lt;effect&gt;`).
         /// </summary>
         public InputMap<string> Taints
         {
@@ -445,7 +439,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Version { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

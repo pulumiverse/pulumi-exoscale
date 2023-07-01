@@ -17,7 +17,7 @@ class DomainArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Domain resource.
-        :param pulumi.Input[str] name: The DNS domain name.
+        :param pulumi.Input[str] name: ❗ The DNS domain name.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -26,7 +26,7 @@ class DomainArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The DNS domain name.
+        ❗ The DNS domain name.
         """
         return pulumi.get(self, "name")
 
@@ -47,7 +47,7 @@ class _DomainState:
         Input properties used for looking up and filtering Domain resources.
         :param pulumi.Input[bool] auto_renew: Whether the DNS domain has automatic renewal enabled (boolean).
         :param pulumi.Input[str] expires_on: The domain expiration date, if known.
-        :param pulumi.Input[str] name: The DNS domain name.
+        :param pulumi.Input[str] name: ❗ The DNS domain name.
         :param pulumi.Input[str] state: The domain state.
         :param pulumi.Input[str] token: A security token that can be used as an alternative way to manage DNS domains via the Exoscale API.
         """
@@ -80,6 +80,9 @@ class _DomainState:
         """
         Whether the DNS domain has automatic renewal enabled (boolean).
         """
+        warnings.warn("""Not used, will be removed in the future""", DeprecationWarning)
+        pulumi.log.warn("""auto_renew is deprecated: Not used, will be removed in the future""")
+
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -92,6 +95,9 @@ class _DomainState:
         """
         The domain expiration date, if known.
         """
+        warnings.warn("""Not used, will be removed in the future""", DeprecationWarning)
+        pulumi.log.warn("""expires_on is deprecated: Not used, will be removed in the future""")
+
         return pulumi.get(self, "expires_on")
 
     @expires_on.setter
@@ -102,7 +108,7 @@ class _DomainState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The DNS domain name.
+        ❗ The DNS domain name.
         """
         return pulumi.get(self, "name")
 
@@ -116,6 +122,9 @@ class _DomainState:
         """
         The domain state.
         """
+        warnings.warn("""Not used, will be removed in the future""", DeprecationWarning)
+        pulumi.log.warn("""state is deprecated: Not used, will be removed in the future""")
+
         return pulumi.get(self, "state")
 
     @state.setter
@@ -128,6 +137,9 @@ class _DomainState:
         """
         A security token that can be used as an alternative way to manage DNS domains via the Exoscale API.
         """
+        warnings.warn("""Not used, will be removed in the future""", DeprecationWarning)
+        pulumi.log.warn("""token is deprecated: Not used, will be removed in the future""")
+
         return pulumi.get(self, "token")
 
     @token.setter
@@ -157,7 +169,7 @@ class Domain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The DNS domain name.
+        :param pulumi.Input[str] name: ❗ The DNS domain name.
         """
         ...
     @overload
@@ -232,7 +244,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Whether the DNS domain has automatic renewal enabled (boolean).
         :param pulumi.Input[str] expires_on: The domain expiration date, if known.
-        :param pulumi.Input[str] name: The DNS domain name.
+        :param pulumi.Input[str] name: ❗ The DNS domain name.
         :param pulumi.Input[str] state: The domain state.
         :param pulumi.Input[str] token: A security token that can be used as an alternative way to manage DNS domains via the Exoscale API.
         """
@@ -253,6 +265,9 @@ class Domain(pulumi.CustomResource):
         """
         Whether the DNS domain has automatic renewal enabled (boolean).
         """
+        warnings.warn("""Not used, will be removed in the future""", DeprecationWarning)
+        pulumi.log.warn("""auto_renew is deprecated: Not used, will be removed in the future""")
+
         return pulumi.get(self, "auto_renew")
 
     @property
@@ -261,13 +276,16 @@ class Domain(pulumi.CustomResource):
         """
         The domain expiration date, if known.
         """
+        warnings.warn("""Not used, will be removed in the future""", DeprecationWarning)
+        pulumi.log.warn("""expires_on is deprecated: Not used, will be removed in the future""")
+
         return pulumi.get(self, "expires_on")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The DNS domain name.
+        ❗ The DNS domain name.
         """
         return pulumi.get(self, "name")
 
@@ -277,6 +295,9 @@ class Domain(pulumi.CustomResource):
         """
         The domain state.
         """
+        warnings.warn("""Not used, will be removed in the future""", DeprecationWarning)
+        pulumi.log.warn("""state is deprecated: Not used, will be removed in the future""")
+
         return pulumi.get(self, "state")
 
     @property
@@ -285,5 +306,8 @@ class Domain(pulumi.CustomResource):
         """
         A security token that can be used as an alternative way to manage DNS domains via the Exoscale API.
         """
+        warnings.warn("""Not used, will be removed in the future""", DeprecationWarning)
+        pulumi.log.warn("""token is deprecated: Not used, will be removed in the future""")
+
         return pulumi.get(self, "token")
 

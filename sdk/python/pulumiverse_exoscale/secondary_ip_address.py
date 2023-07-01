@@ -18,8 +18,8 @@ class SecondaryIPAddressArgs:
                  ip_address: pulumi.Input[str]):
         """
         The set of arguments for constructing a SecondaryIPAddress resource.
-        :param pulumi.Input[str] compute_id: The compute instance ID.
-        :param pulumi.Input[str] ip_address: The Elastic IP (EIP) address.
+        :param pulumi.Input[str] compute_id: ❗ The compute instance ID.
+        :param pulumi.Input[str] ip_address: ❗ The Elastic IP (EIP) address.
         """
         pulumi.set(__self__, "compute_id", compute_id)
         pulumi.set(__self__, "ip_address", ip_address)
@@ -28,7 +28,7 @@ class SecondaryIPAddressArgs:
     @pulumi.getter(name="computeId")
     def compute_id(self) -> pulumi.Input[str]:
         """
-        The compute instance ID.
+        ❗ The compute instance ID.
         """
         return pulumi.get(self, "compute_id")
 
@@ -40,7 +40,7 @@ class SecondaryIPAddressArgs:
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> pulumi.Input[str]:
         """
-        The Elastic IP (EIP) address.
+        ❗ The Elastic IP (EIP) address.
         """
         return pulumi.get(self, "ip_address")
 
@@ -58,8 +58,8 @@ class _SecondaryIPAddressState:
                  nic_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SecondaryIPAddress resources.
-        :param pulumi.Input[str] compute_id: The compute instance ID.
-        :param pulumi.Input[str] ip_address: The Elastic IP (EIP) address.
+        :param pulumi.Input[str] compute_id: ❗ The compute instance ID.
+        :param pulumi.Input[str] ip_address: ❗ The Elastic IP (EIP) address.
         :param pulumi.Input[str] network_id: The network (ID) the compute instance NIC is attached to.
         :param pulumi.Input[str] nic_id: The network interface (NIC) ID.
         """
@@ -76,7 +76,7 @@ class _SecondaryIPAddressState:
     @pulumi.getter(name="computeId")
     def compute_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The compute instance ID.
+        ❗ The compute instance ID.
         """
         return pulumi.get(self, "compute_id")
 
@@ -88,7 +88,7 @@ class _SecondaryIPAddressState:
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[pulumi.Input[str]]:
         """
-        The Elastic IP (EIP) address.
+        ❗ The Elastic IP (EIP) address.
         """
         return pulumi.get(self, "ip_address")
 
@@ -134,8 +134,8 @@ class SecondaryIPAddress(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compute_id: The compute instance ID.
-        :param pulumi.Input[str] ip_address: The Elastic IP (EIP) address.
+        :param pulumi.Input[str] compute_id: ❗ The compute instance ID.
+        :param pulumi.Input[str] ip_address: ❗ The Elastic IP (EIP) address.
         """
         ...
     @overload
@@ -201,8 +201,8 @@ class SecondaryIPAddress(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compute_id: The compute instance ID.
-        :param pulumi.Input[str] ip_address: The Elastic IP (EIP) address.
+        :param pulumi.Input[str] compute_id: ❗ The compute instance ID.
+        :param pulumi.Input[str] ip_address: ❗ The Elastic IP (EIP) address.
         :param pulumi.Input[str] network_id: The network (ID) the compute instance NIC is attached to.
         :param pulumi.Input[str] nic_id: The network interface (NIC) ID.
         """
@@ -220,7 +220,7 @@ class SecondaryIPAddress(pulumi.CustomResource):
     @pulumi.getter(name="computeId")
     def compute_id(self) -> pulumi.Output[str]:
         """
-        The compute instance ID.
+        ❗ The compute instance ID.
         """
         return pulumi.get(self, "compute_id")
 
@@ -228,7 +228,7 @@ class SecondaryIPAddress(pulumi.CustomResource):
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> pulumi.Output[str]:
         """
-        The Elastic IP (EIP) address.
+        ❗ The Elastic IP (EIP) address.
         """
         return pulumi.get(self, "ip_address")
 

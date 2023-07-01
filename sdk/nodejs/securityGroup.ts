@@ -46,16 +46,15 @@ export class SecurityGroup extends pulumi.CustomResource {
     }
 
     /**
-     * A free-form text describing the group.
+     * ❗ A free-form text describing the group.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
-     * notation.
+     * A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio) notation.
      */
     public readonly externalSources!: pulumi.Output<string[] | undefined>;
     /**
-     * The security group name.
+     * ❗ The security group name.
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -91,16 +90,15 @@ export class SecurityGroup extends pulumi.CustomResource {
  */
 export interface SecurityGroupState {
     /**
-     * A free-form text describing the group.
+     * ❗ A free-form text describing the group.
      */
     description?: pulumi.Input<string>;
     /**
-     * A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
-     * notation.
+     * A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio) notation.
      */
     externalSources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The security group name.
+     * ❗ The security group name.
      */
     name?: pulumi.Input<string>;
 }
@@ -110,16 +108,15 @@ export interface SecurityGroupState {
  */
 export interface SecurityGroupArgs {
     /**
-     * A free-form text describing the group.
+     * ❗ A free-form text describing the group.
      */
     description?: pulumi.Input<string>;
     /**
-     * A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
-     * notation.
+     * A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio) notation.
      */
     externalSources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The security group name.
+     * ❗ The security group name.
      */
     name?: pulumi.Input<string>;
 }

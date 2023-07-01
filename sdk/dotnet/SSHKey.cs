@@ -33,13 +33,13 @@ namespace Pulumiverse.Exoscale
         public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// The SSH key name.
+        /// ❗ The SSH key name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The SSH *public* key that will be authorized in compute instances.
+        /// ❗ The SSH *public* key that will be authorized in compute instances.
         /// </summary>
         [Output("publicKey")]
         public Output<string> PublicKey { get; private set; } = null!;
@@ -92,13 +92,13 @@ namespace Pulumiverse.Exoscale
     public sealed class SSHKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The SSH key name.
+        /// ❗ The SSH key name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The SSH *public* key that will be authorized in compute instances.
+        /// ❗ The SSH *public* key that will be authorized in compute instances.
         /// </summary>
         [Input("publicKey")]
         public Input<string>? PublicKey { get; set; }
@@ -118,13 +118,13 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Fingerprint { get; set; }
 
         /// <summary>
-        /// The SSH key name.
+        /// ❗ The SSH key name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The SSH *public* key that will be authorized in compute instances.
+        /// ❗ The SSH *public* key that will be authorized in compute instances.
         /// </summary>
         [Input("publicKey")]
         public Input<string>? PublicKey { get; set; }

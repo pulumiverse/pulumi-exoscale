@@ -19,9 +19,9 @@ class AffinityArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Affinity resource.
-        :param pulumi.Input[str] description: A free-form text describing the group.
-        :param pulumi.Input[str] name: The anti-affinity group name.
-        :param pulumi.Input[str] type: The type of the group (`host anti-affinity` is the only supported value).
+        :param pulumi.Input[str] description: ❗ A free-form text describing the group.
+        :param pulumi.Input[str] name: ❗ The anti-affinity group name.
+        :param pulumi.Input[str] type: ❗ The type of the group (`host anti-affinity` is the only supported value).
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -34,7 +34,7 @@ class AffinityArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A free-form text describing the group.
+        ❗ A free-form text describing the group.
         """
         return pulumi.get(self, "description")
 
@@ -46,7 +46,7 @@ class AffinityArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The anti-affinity group name.
+        ❗ The anti-affinity group name.
         """
         return pulumi.get(self, "name")
 
@@ -58,7 +58,7 @@ class AffinityArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the group (`host anti-affinity` is the only supported value).
+        ❗ The type of the group (`host anti-affinity` is the only supported value).
         """
         return pulumi.get(self, "type")
 
@@ -76,9 +76,9 @@ class _AffinityState:
                  virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Affinity resources.
-        :param pulumi.Input[str] description: A free-form text describing the group.
-        :param pulumi.Input[str] name: The anti-affinity group name.
-        :param pulumi.Input[str] type: The type of the group (`host anti-affinity` is the only supported value).
+        :param pulumi.Input[str] description: ❗ A free-form text describing the group.
+        :param pulumi.Input[str] name: ❗ The anti-affinity group name.
+        :param pulumi.Input[str] type: ❗ The type of the group (`host anti-affinity` is the only supported value).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machine_ids: The compute instances (IDs) members of the group.
         """
         if description is not None:
@@ -94,7 +94,7 @@ class _AffinityState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A free-form text describing the group.
+        ❗ A free-form text describing the group.
         """
         return pulumi.get(self, "description")
 
@@ -106,7 +106,7 @@ class _AffinityState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The anti-affinity group name.
+        ❗ The anti-affinity group name.
         """
         return pulumi.get(self, "name")
 
@@ -118,7 +118,7 @@ class _AffinityState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the group (`host anti-affinity` is the only supported value).
+        ❗ The type of the group (`host anti-affinity` is the only supported value).
         """
         return pulumi.get(self, "type")
 
@@ -153,9 +153,9 @@ class Affinity(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A free-form text describing the group.
-        :param pulumi.Input[str] name: The anti-affinity group name.
-        :param pulumi.Input[str] type: The type of the group (`host anti-affinity` is the only supported value).
+        :param pulumi.Input[str] description: ❗ A free-form text describing the group.
+        :param pulumi.Input[str] name: ❗ The anti-affinity group name.
+        :param pulumi.Input[str] type: ❗ The type of the group (`host anti-affinity` is the only supported value).
         """
         ...
     @overload
@@ -218,9 +218,9 @@ class Affinity(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A free-form text describing the group.
-        :param pulumi.Input[str] name: The anti-affinity group name.
-        :param pulumi.Input[str] type: The type of the group (`host anti-affinity` is the only supported value).
+        :param pulumi.Input[str] description: ❗ A free-form text describing the group.
+        :param pulumi.Input[str] name: ❗ The anti-affinity group name.
+        :param pulumi.Input[str] type: ❗ The type of the group (`host anti-affinity` is the only supported value).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machine_ids: The compute instances (IDs) members of the group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -237,7 +237,7 @@ class Affinity(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        A free-form text describing the group.
+        ❗ A free-form text describing the group.
         """
         return pulumi.get(self, "description")
 
@@ -245,7 +245,7 @@ class Affinity(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The anti-affinity group name.
+        ❗ The anti-affinity group name.
         """
         return pulumi.get(self, "name")
 
@@ -253,7 +253,7 @@ class Affinity(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
         """
-        The type of the group (`host anti-affinity` is the only supported value).
+        ❗ The type of the group (`host anti-affinity` is the only supported value).
         """
         return pulumi.get(self, "type")
 

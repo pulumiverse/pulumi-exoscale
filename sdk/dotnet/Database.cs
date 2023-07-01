@@ -51,8 +51,7 @@ namespace Pulumiverse.Exoscale
         public Output<Outputs.DatabaseKafka?> Kafka { get; private set; } = null!;
 
         /// <summary>
-        /// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
-        /// `thursday`, `friday`, `saturday`, `sunday`).
+        /// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
         /// </summary>
         [Output("maintenanceDow")]
         public Output<string> MaintenanceDow { get; private set; } = null!;
@@ -70,7 +69,7 @@ namespace Pulumiverse.Exoscale
         public Output<Outputs.DatabaseMysql?> Mysql { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the database service.
+        /// ❗ The name of the database service.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -106,8 +105,7 @@ namespace Pulumiverse.Exoscale
         public Output<Outputs.DatabasePg?> Pg { get; private set; } = null!;
 
         /// <summary>
-        /// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
-        /// &lt;TYPE&gt;` - for reference).
+        /// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show &lt;TYPE&gt;` - for reference).
         /// </summary>
         [Output("plan")]
         public Output<string> Plan { get; private set; } = null!;
@@ -131,7 +129,7 @@ namespace Pulumiverse.Exoscale
         public Output<bool?> TerminationProtection { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+        /// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -143,7 +141,7 @@ namespace Pulumiverse.Exoscale
         public Output<string> UpdatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -202,8 +200,7 @@ namespace Pulumiverse.Exoscale
         public Input<Inputs.DatabaseKafkaArgs>? Kafka { get; set; }
 
         /// <summary>
-        /// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
-        /// `thursday`, `friday`, `saturday`, `sunday`).
+        /// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
         /// </summary>
         [Input("maintenanceDow")]
         public Input<string>? MaintenanceDow { get; set; }
@@ -221,7 +218,7 @@ namespace Pulumiverse.Exoscale
         public Input<Inputs.DatabaseMysqlArgs>? Mysql { get; set; }
 
         /// <summary>
-        /// The name of the database service.
+        /// ❗ The name of the database service.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -239,8 +236,7 @@ namespace Pulumiverse.Exoscale
         public Input<Inputs.DatabasePgArgs>? Pg { get; set; }
 
         /// <summary>
-        /// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
-        /// &lt;TYPE&gt;` - for reference).
+        /// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show &lt;TYPE&gt;` - for reference).
         /// </summary>
         [Input("plan", required: true)]
         public Input<string> Plan { get; set; } = null!;
@@ -258,13 +254,13 @@ namespace Pulumiverse.Exoscale
         public Input<bool>? TerminationProtection { get; set; }
 
         /// <summary>
-        /// The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+        /// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -302,8 +298,7 @@ namespace Pulumiverse.Exoscale
         public Input<Inputs.DatabaseKafkaGetArgs>? Kafka { get; set; }
 
         /// <summary>
-        /// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
-        /// `thursday`, `friday`, `saturday`, `sunday`).
+        /// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
         /// </summary>
         [Input("maintenanceDow")]
         public Input<string>? MaintenanceDow { get; set; }
@@ -321,7 +316,7 @@ namespace Pulumiverse.Exoscale
         public Input<Inputs.DatabaseMysqlGetArgs>? Mysql { get; set; }
 
         /// <summary>
-        /// The name of the database service.
+        /// ❗ The name of the database service.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -357,8 +352,7 @@ namespace Pulumiverse.Exoscale
         public Input<Inputs.DatabasePgGetArgs>? Pg { get; set; }
 
         /// <summary>
-        /// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
-        /// &lt;TYPE&gt;` - for reference).
+        /// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show &lt;TYPE&gt;` - for reference).
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }
@@ -382,7 +376,7 @@ namespace Pulumiverse.Exoscale
         public Input<bool>? TerminationProtection { get; set; }
 
         /// <summary>
-        /// The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+        /// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -394,7 +388,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? UpdatedAt { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

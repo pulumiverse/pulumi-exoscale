@@ -15,9 +15,9 @@ import (
 type SecondaryIPAddress struct {
 	pulumi.CustomResourceState
 
-	// The compute instance ID.
+	// ❗ The compute instance ID.
 	ComputeId pulumi.StringOutput `pulumi:"computeId"`
-	// The Elastic IP (EIP) address.
+	// ❗ The Elastic IP (EIP) address.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
 	// The network (ID) the compute instance NIC is attached to.
 	NetworkId pulumi.StringOutput `pulumi:"networkId"`
@@ -61,9 +61,9 @@ func GetSecondaryIPAddress(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecondaryIPAddress resources.
 type secondaryIPAddressState struct {
-	// The compute instance ID.
+	// ❗ The compute instance ID.
 	ComputeId *string `pulumi:"computeId"`
-	// The Elastic IP (EIP) address.
+	// ❗ The Elastic IP (EIP) address.
 	IpAddress *string `pulumi:"ipAddress"`
 	// The network (ID) the compute instance NIC is attached to.
 	NetworkId *string `pulumi:"networkId"`
@@ -72,9 +72,9 @@ type secondaryIPAddressState struct {
 }
 
 type SecondaryIPAddressState struct {
-	// The compute instance ID.
+	// ❗ The compute instance ID.
 	ComputeId pulumi.StringPtrInput
-	// The Elastic IP (EIP) address.
+	// ❗ The Elastic IP (EIP) address.
 	IpAddress pulumi.StringPtrInput
 	// The network (ID) the compute instance NIC is attached to.
 	NetworkId pulumi.StringPtrInput
@@ -87,17 +87,17 @@ func (SecondaryIPAddressState) ElementType() reflect.Type {
 }
 
 type secondaryIPAddressArgs struct {
-	// The compute instance ID.
+	// ❗ The compute instance ID.
 	ComputeId string `pulumi:"computeId"`
-	// The Elastic IP (EIP) address.
+	// ❗ The Elastic IP (EIP) address.
 	IpAddress string `pulumi:"ipAddress"`
 }
 
 // The set of arguments for constructing a SecondaryIPAddress resource.
 type SecondaryIPAddressArgs struct {
-	// The compute instance ID.
+	// ❗ The compute instance ID.
 	ComputeId pulumi.StringInput
-	// The Elastic IP (EIP) address.
+	// ❗ The Elastic IP (EIP) address.
 	IpAddress pulumi.StringInput
 }
 
@@ -188,12 +188,12 @@ func (o SecondaryIPAddressOutput) ToSecondaryIPAddressOutputWithContext(ctx cont
 	return o
 }
 
-// The compute instance ID.
+// ❗ The compute instance ID.
 func (o SecondaryIPAddressOutput) ComputeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecondaryIPAddress) pulumi.StringOutput { return v.ComputeId }).(pulumi.StringOutput)
 }
 
-// The Elastic IP (EIP) address.
+// ❗ The Elastic IP (EIP) address.
 func (o SecondaryIPAddressOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecondaryIPAddress) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
 }

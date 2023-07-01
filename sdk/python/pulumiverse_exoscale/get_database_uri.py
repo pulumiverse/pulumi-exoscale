@@ -141,11 +141,11 @@ def get_database_uri(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('exoscale:index/getDatabaseURI:getDatabaseURI', __args__, opts=opts, typ=GetDatabaseURIResult).value
 
     return AwaitableGetDatabaseURIResult(
-        id=__ret__.id,
-        name=__ret__.name,
-        type=__ret__.type,
-        uri=__ret__.uri,
-        zone=__ret__.zone)
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        type=pulumi.get(__ret__, 'type'),
+        uri=pulumi.get(__ret__, 'uri'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_database_uri)

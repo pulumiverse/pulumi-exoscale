@@ -27,7 +27,7 @@ import (
 type ElasticIP struct {
 	pulumi.CustomResourceState
 
-	// The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
+	// ❗ The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
 	AddressFamily pulumi.StringOutput `pulumi:"addressFamily"`
 	// The Elastic IP (EIP) CIDR.
 	Cidr pulumi.StringOutput `pulumi:"cidr"`
@@ -41,7 +41,7 @@ type ElasticIP struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Domain name for reverse DNS record.
 	ReverseDns pulumi.StringPtrOutput `pulumi:"reverseDns"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -78,7 +78,7 @@ func GetElasticIP(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ElasticIP resources.
 type elasticIPState struct {
-	// The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
+	// ❗ The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
 	AddressFamily *string `pulumi:"addressFamily"`
 	// The Elastic IP (EIP) CIDR.
 	Cidr *string `pulumi:"cidr"`
@@ -92,12 +92,12 @@ type elasticIPState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Domain name for reverse DNS record.
 	ReverseDns *string `pulumi:"reverseDns"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone *string `pulumi:"zone"`
 }
 
 type ElasticIPState struct {
-	// The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
+	// ❗ The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
 	AddressFamily pulumi.StringPtrInput
 	// The Elastic IP (EIP) CIDR.
 	Cidr pulumi.StringPtrInput
@@ -111,7 +111,7 @@ type ElasticIPState struct {
 	Labels pulumi.StringMapInput
 	// Domain name for reverse DNS record.
 	ReverseDns pulumi.StringPtrInput
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringPtrInput
 }
 
@@ -120,7 +120,7 @@ func (ElasticIPState) ElementType() reflect.Type {
 }
 
 type elasticIPArgs struct {
-	// The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
+	// ❗ The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
 	AddressFamily *string `pulumi:"addressFamily"`
 	// A free-form text describing the Elastic IP (EIP).
 	Description *string `pulumi:"description"`
@@ -130,13 +130,13 @@ type elasticIPArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Domain name for reverse DNS record.
 	ReverseDns *string `pulumi:"reverseDns"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a ElasticIP resource.
 type ElasticIPArgs struct {
-	// The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
+	// ❗ The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
 	AddressFamily pulumi.StringPtrInput
 	// A free-form text describing the Elastic IP (EIP).
 	Description pulumi.StringPtrInput
@@ -146,7 +146,7 @@ type ElasticIPArgs struct {
 	Labels pulumi.StringMapInput
 	// Domain name for reverse DNS record.
 	ReverseDns pulumi.StringPtrInput
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringInput
 }
 
@@ -237,7 +237,7 @@ func (o ElasticIPOutput) ToElasticIPOutputWithContext(ctx context.Context) Elast
 	return o
 }
 
-// The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
+// ❗ The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
 func (o ElasticIPOutput) AddressFamily() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElasticIP) pulumi.StringOutput { return v.AddressFamily }).(pulumi.StringOutput)
 }
@@ -272,7 +272,7 @@ func (o ElasticIPOutput) ReverseDns() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticIP) pulumi.StringPtrOutput { return v.ReverseDns }).(pulumi.StringPtrOutput)
 }
 
-// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o ElasticIPOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElasticIP) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

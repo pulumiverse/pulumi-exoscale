@@ -66,7 +66,7 @@ export class PrivateNetwork extends pulumi.CustomResource {
      */
     public readonly startIp!: pulumi.Output<string | undefined>;
     /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -131,7 +131,7 @@ export interface PrivateNetworkState {
      */
     startIp?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone?: pulumi.Input<string>;
 }
@@ -161,7 +161,7 @@ export interface PrivateNetworkArgs {
      */
     startIp?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: pulumi.Input<string>;
 }

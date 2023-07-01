@@ -84,9 +84,9 @@ def get_anti_affinity_group(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('exoscale:index/getAntiAffinityGroup:getAntiAffinityGroup', __args__, opts=opts, typ=GetAntiAffinityGroupResult).value
 
     return AwaitableGetAntiAffinityGroupResult(
-        id=__ret__.id,
-        instances=__ret__.instances,
-        name=__ret__.name)
+        id=pulumi.get(__ret__, 'id'),
+        instances=pulumi.get(__ret__, 'instances'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_anti_affinity_group)

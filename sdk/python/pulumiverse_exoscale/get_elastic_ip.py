@@ -163,15 +163,15 @@ def get_elastic_ip(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('exoscale:index/getElasticIP:getElasticIP', __args__, opts=opts, typ=GetElasticIPResult).value
 
     return AwaitableGetElasticIPResult(
-        address_family=__ret__.address_family,
-        cidr=__ret__.cidr,
-        description=__ret__.description,
-        healthchecks=__ret__.healthchecks,
-        id=__ret__.id,
-        ip_address=__ret__.ip_address,
-        labels=__ret__.labels,
-        reverse_dns=__ret__.reverse_dns,
-        zone=__ret__.zone)
+        address_family=pulumi.get(__ret__, 'address_family'),
+        cidr=pulumi.get(__ret__, 'cidr'),
+        description=pulumi.get(__ret__, 'description'),
+        healthchecks=pulumi.get(__ret__, 'healthchecks'),
+        id=pulumi.get(__ret__, 'id'),
+        ip_address=pulumi.get(__ret__, 'ip_address'),
+        labels=pulumi.get(__ret__, 'labels'),
+        reverse_dns=pulumi.get(__ret__, 'reverse_dns'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_elastic_ip)

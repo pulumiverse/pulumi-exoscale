@@ -118,11 +118,11 @@ def get_compute_ip_address(description: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('exoscale:index/getComputeIPAddress:getComputeIPAddress', __args__, opts=opts, typ=GetComputeIPAddressResult).value
 
     return AwaitableGetComputeIPAddressResult(
-        description=__ret__.description,
-        id=__ret__.id,
-        ip_address=__ret__.ip_address,
-        tags=__ret__.tags,
-        zone=__ret__.zone)
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        ip_address=pulumi.get(__ret__, 'ip_address'),
+        tags=pulumi.get(__ret__, 'tags'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_compute_ip_address)

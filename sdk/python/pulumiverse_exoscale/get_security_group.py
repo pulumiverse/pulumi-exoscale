@@ -84,9 +84,9 @@ def get_security_group(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('exoscale:index/getSecurityGroup:getSecurityGroup', __args__, opts=opts, typ=GetSecurityGroupResult).value
 
     return AwaitableGetSecurityGroupResult(
-        external_sources=__ret__.external_sources,
-        id=__ret__.id,
-        name=__ret__.name)
+        external_sources=pulumi.get(__ret__, 'external_sources'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_security_group)

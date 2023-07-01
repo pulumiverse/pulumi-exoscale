@@ -19,7 +19,7 @@ type IPAddress struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The healthcheck probing interval (seconds; must be between `5` and `300`).
 	HealthcheckInterval pulumi.IntPtrOutput `pulumi:"healthcheckInterval"`
-	// The healthcheck probing mode (must be `tcp`, `http` or `https`).
+	// ❗ The healthcheck probing mode (must be `tcp`, `http` or `https`).
 	HealthcheckMode pulumi.StringPtrOutput `pulumi:"healthcheckMode"`
 	// The healthcheck probe HTTP request path (must be specified in `http`/`https` modes).
 	HealthcheckPath pulumi.StringPtrOutput `pulumi:"healthcheckPath"`
@@ -31,11 +31,9 @@ type IPAddress struct {
 	HealthcheckStrikesOk pulumi.IntPtrOutput `pulumi:"healthcheckStrikesOk"`
 	// The time in seconds before considering a healthcheck probing failed (must be between `2` and `60`).
 	HealthcheckTimeout pulumi.IntPtrOutput `pulumi:"healthcheckTimeout"`
-	// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
-	// to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+	// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
 	HealthcheckTlsSkipVerify pulumi.BoolPtrOutput `pulumi:"healthcheckTlsSkipVerify"`
-	// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
-	// value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+	// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
 	HealthcheckTlsSni pulumi.StringPtrOutput `pulumi:"healthcheckTlsSni"`
 	// The Elastic IP (EIP) IPv4 address.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
@@ -43,7 +41,7 @@ type IPAddress struct {
 	ReverseDns pulumi.StringPtrOutput `pulumi:"reverseDns"`
 	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The Exoscale Zone name
+	// ❗ The Exoscale Zone name
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -84,7 +82,7 @@ type ipaddressState struct {
 	Description *string `pulumi:"description"`
 	// The healthcheck probing interval (seconds; must be between `5` and `300`).
 	HealthcheckInterval *int `pulumi:"healthcheckInterval"`
-	// The healthcheck probing mode (must be `tcp`, `http` or `https`).
+	// ❗ The healthcheck probing mode (must be `tcp`, `http` or `https`).
 	HealthcheckMode *string `pulumi:"healthcheckMode"`
 	// The healthcheck probe HTTP request path (must be specified in `http`/`https` modes).
 	HealthcheckPath *string `pulumi:"healthcheckPath"`
@@ -96,11 +94,9 @@ type ipaddressState struct {
 	HealthcheckStrikesOk *int `pulumi:"healthcheckStrikesOk"`
 	// The time in seconds before considering a healthcheck probing failed (must be between `2` and `60`).
 	HealthcheckTimeout *int `pulumi:"healthcheckTimeout"`
-	// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
-	// to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+	// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
 	HealthcheckTlsSkipVerify *bool `pulumi:"healthcheckTlsSkipVerify"`
-	// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
-	// value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+	// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
 	HealthcheckTlsSni *string `pulumi:"healthcheckTlsSni"`
 	// The Elastic IP (EIP) IPv4 address.
 	IpAddress *string `pulumi:"ipAddress"`
@@ -108,7 +104,7 @@ type ipaddressState struct {
 	ReverseDns *string `pulumi:"reverseDns"`
 	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags map[string]string `pulumi:"tags"`
-	// The Exoscale Zone name
+	// ❗ The Exoscale Zone name
 	Zone *string `pulumi:"zone"`
 }
 
@@ -117,7 +113,7 @@ type IPAddressState struct {
 	Description pulumi.StringPtrInput
 	// The healthcheck probing interval (seconds; must be between `5` and `300`).
 	HealthcheckInterval pulumi.IntPtrInput
-	// The healthcheck probing mode (must be `tcp`, `http` or `https`).
+	// ❗ The healthcheck probing mode (must be `tcp`, `http` or `https`).
 	HealthcheckMode pulumi.StringPtrInput
 	// The healthcheck probe HTTP request path (must be specified in `http`/`https` modes).
 	HealthcheckPath pulumi.StringPtrInput
@@ -129,11 +125,9 @@ type IPAddressState struct {
 	HealthcheckStrikesOk pulumi.IntPtrInput
 	// The time in seconds before considering a healthcheck probing failed (must be between `2` and `60`).
 	HealthcheckTimeout pulumi.IntPtrInput
-	// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
-	// to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+	// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
 	HealthcheckTlsSkipVerify pulumi.BoolPtrInput
-	// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
-	// value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+	// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
 	HealthcheckTlsSni pulumi.StringPtrInput
 	// The Elastic IP (EIP) IPv4 address.
 	IpAddress pulumi.StringPtrInput
@@ -141,7 +135,7 @@ type IPAddressState struct {
 	ReverseDns pulumi.StringPtrInput
 	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags pulumi.StringMapInput
-	// The Exoscale Zone name
+	// ❗ The Exoscale Zone name
 	Zone pulumi.StringPtrInput
 }
 
@@ -154,7 +148,7 @@ type ipaddressArgs struct {
 	Description *string `pulumi:"description"`
 	// The healthcheck probing interval (seconds; must be between `5` and `300`).
 	HealthcheckInterval *int `pulumi:"healthcheckInterval"`
-	// The healthcheck probing mode (must be `tcp`, `http` or `https`).
+	// ❗ The healthcheck probing mode (must be `tcp`, `http` or `https`).
 	HealthcheckMode *string `pulumi:"healthcheckMode"`
 	// The healthcheck probe HTTP request path (must be specified in `http`/`https` modes).
 	HealthcheckPath *string `pulumi:"healthcheckPath"`
@@ -166,17 +160,15 @@ type ipaddressArgs struct {
 	HealthcheckStrikesOk *int `pulumi:"healthcheckStrikesOk"`
 	// The time in seconds before considering a healthcheck probing failed (must be between `2` and `60`).
 	HealthcheckTimeout *int `pulumi:"healthcheckTimeout"`
-	// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
-	// to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+	// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
 	HealthcheckTlsSkipVerify *bool `pulumi:"healthcheckTlsSkipVerify"`
-	// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
-	// value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+	// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
 	HealthcheckTlsSni *string `pulumi:"healthcheckTlsSni"`
 	// The EIP reverse DNS record (must end with a `.`; e.g: `my-eip.example.net.`).
 	ReverseDns *string `pulumi:"reverseDns"`
 	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags map[string]string `pulumi:"tags"`
-	// The Exoscale Zone name
+	// ❗ The Exoscale Zone name
 	Zone string `pulumi:"zone"`
 }
 
@@ -186,7 +178,7 @@ type IPAddressArgs struct {
 	Description pulumi.StringPtrInput
 	// The healthcheck probing interval (seconds; must be between `5` and `300`).
 	HealthcheckInterval pulumi.IntPtrInput
-	// The healthcheck probing mode (must be `tcp`, `http` or `https`).
+	// ❗ The healthcheck probing mode (must be `tcp`, `http` or `https`).
 	HealthcheckMode pulumi.StringPtrInput
 	// The healthcheck probe HTTP request path (must be specified in `http`/`https` modes).
 	HealthcheckPath pulumi.StringPtrInput
@@ -198,17 +190,15 @@ type IPAddressArgs struct {
 	HealthcheckStrikesOk pulumi.IntPtrInput
 	// The time in seconds before considering a healthcheck probing failed (must be between `2` and `60`).
 	HealthcheckTimeout pulumi.IntPtrInput
-	// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
-	// to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+	// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
 	HealthcheckTlsSkipVerify pulumi.BoolPtrInput
-	// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
-	// value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+	// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
 	HealthcheckTlsSni pulumi.StringPtrInput
 	// The EIP reverse DNS record (must end with a `.`; e.g: `my-eip.example.net.`).
 	ReverseDns pulumi.StringPtrInput
 	// Map of tags (key/value). To remove all tags, set `tags = {}`.
 	Tags pulumi.StringMapInput
-	// The Exoscale Zone name
+	// ❗ The Exoscale Zone name
 	Zone pulumi.StringInput
 }
 
@@ -309,7 +299,7 @@ func (o IPAddressOutput) HealthcheckInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *IPAddress) pulumi.IntPtrOutput { return v.HealthcheckInterval }).(pulumi.IntPtrOutput)
 }
 
-// The healthcheck probing mode (must be `tcp`, `http` or `https`).
+// ❗ The healthcheck probing mode (must be `tcp`, `http` or `https`).
 func (o IPAddressOutput) HealthcheckMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAddress) pulumi.StringPtrOutput { return v.HealthcheckMode }).(pulumi.StringPtrOutput)
 }
@@ -339,14 +329,12 @@ func (o IPAddressOutput) HealthcheckTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *IPAddress) pulumi.IntPtrOutput { return v.HealthcheckTimeout }).(pulumi.IntPtrOutput)
 }
 
-// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed
-// to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
+// Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).
 func (o IPAddressOutput) HealthcheckTlsSkipVerify() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *IPAddress) pulumi.BoolPtrOutput { return v.HealthcheckTlsSkipVerify }).(pulumi.BoolPtrOutput)
 }
 
-// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty
-// value, it cannot be reset to its default empty value later on (requires a resource re-creation).
+// The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).
 func (o IPAddressOutput) HealthcheckTlsSni() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAddress) pulumi.StringPtrOutput { return v.HealthcheckTlsSni }).(pulumi.StringPtrOutput)
 }
@@ -366,7 +354,7 @@ func (o IPAddressOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *IPAddress) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The Exoscale Zone name
+// ❗ The Exoscale Zone name
 func (o IPAddressOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *IPAddress) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

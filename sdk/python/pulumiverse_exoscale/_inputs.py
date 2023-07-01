@@ -34,6 +34,10 @@ class ComputeInstanceNetworkInterfaceArgs:
     def __init__(__self__, *,
                  network_id: pulumi.Input[str],
                  ip_address: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] network_id: The exoscale*private*network (ID) to attach to the instance.
+        :param pulumi.Input[str] ip_address: The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
+        """
         pulumi.set(__self__, "network_id", network_id)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
@@ -41,6 +45,9 @@ class ComputeInstanceNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="networkId")
     def network_id(self) -> pulumi.Input[str]:
+        """
+        The exoscale*private*network (ID) to attach to the instance.
+        """
         return pulumi.get(self, "network_id")
 
     @network_id.setter
@@ -50,6 +57,9 @@ class ComputeInstanceNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
+        """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
@@ -71,6 +81,19 @@ class DatabaseKafkaArgs:
                  kafka_settings: Optional[pulumi.Input[str]] = None,
                  schema_registry_settings: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enable_cert_auth: Enable certificate-based authentication method.
+        :param pulumi.Input[bool] enable_kafka_connect: Enable Kafka Connect.
+        :param pulumi.Input[bool] enable_kafka_rest: Enable Kafka REST.
+        :param pulumi.Input[bool] enable_sasl_auth: Enable SASL-based authentication method.
+        :param pulumi.Input[bool] enable_schema_registry: Enable Schema Registry.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: A list of CIDR blocks to allow incoming connections from.
+        :param pulumi.Input[str] kafka_connect_settings: Kafka Connect configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka-connect` for reference).
+        :param pulumi.Input[str] kafka_rest_settings: Kafka REST configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka-rest` for reference).
+        :param pulumi.Input[str] kafka_settings: Kafka configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka` for reference).
+        :param pulumi.Input[str] schema_registry_settings: Schema Registry configuration settings in JSON format (`exo dbaas type show kafka --settings=schema-registry` for reference)
+        :param pulumi.Input[str] version: Kafka major version (`exo dbaas type show kafka` for reference; may only be set at creation time).
+        """
         if enable_cert_auth is not None:
             pulumi.set(__self__, "enable_cert_auth", enable_cert_auth)
         if enable_kafka_connect is not None:
@@ -97,6 +120,9 @@ class DatabaseKafkaArgs:
     @property
     @pulumi.getter(name="enableCertAuth")
     def enable_cert_auth(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable certificate-based authentication method.
+        """
         return pulumi.get(self, "enable_cert_auth")
 
     @enable_cert_auth.setter
@@ -106,6 +132,9 @@ class DatabaseKafkaArgs:
     @property
     @pulumi.getter(name="enableKafkaConnect")
     def enable_kafka_connect(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Kafka Connect.
+        """
         return pulumi.get(self, "enable_kafka_connect")
 
     @enable_kafka_connect.setter
@@ -115,6 +144,9 @@ class DatabaseKafkaArgs:
     @property
     @pulumi.getter(name="enableKafkaRest")
     def enable_kafka_rest(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Kafka REST.
+        """
         return pulumi.get(self, "enable_kafka_rest")
 
     @enable_kafka_rest.setter
@@ -124,6 +156,9 @@ class DatabaseKafkaArgs:
     @property
     @pulumi.getter(name="enableSaslAuth")
     def enable_sasl_auth(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable SASL-based authentication method.
+        """
         return pulumi.get(self, "enable_sasl_auth")
 
     @enable_sasl_auth.setter
@@ -133,6 +168,9 @@ class DatabaseKafkaArgs:
     @property
     @pulumi.getter(name="enableSchemaRegistry")
     def enable_schema_registry(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Schema Registry.
+        """
         return pulumi.get(self, "enable_schema_registry")
 
     @enable_schema_registry.setter
@@ -142,6 +180,9 @@ class DatabaseKafkaArgs:
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of CIDR blocks to allow incoming connections from.
+        """
         return pulumi.get(self, "ip_filters")
 
     @ip_filters.setter
@@ -151,6 +192,9 @@ class DatabaseKafkaArgs:
     @property
     @pulumi.getter(name="kafkaConnectSettings")
     def kafka_connect_settings(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kafka Connect configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka-connect` for reference).
+        """
         return pulumi.get(self, "kafka_connect_settings")
 
     @kafka_connect_settings.setter
@@ -160,6 +204,9 @@ class DatabaseKafkaArgs:
     @property
     @pulumi.getter(name="kafkaRestSettings")
     def kafka_rest_settings(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kafka REST configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka-rest` for reference).
+        """
         return pulumi.get(self, "kafka_rest_settings")
 
     @kafka_rest_settings.setter
@@ -169,6 +216,9 @@ class DatabaseKafkaArgs:
     @property
     @pulumi.getter(name="kafkaSettings")
     def kafka_settings(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kafka configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka` for reference).
+        """
         return pulumi.get(self, "kafka_settings")
 
     @kafka_settings.setter
@@ -178,6 +228,9 @@ class DatabaseKafkaArgs:
     @property
     @pulumi.getter(name="schemaRegistrySettings")
     def schema_registry_settings(self) -> Optional[pulumi.Input[str]]:
+        """
+        Schema Registry configuration settings in JSON format (`exo dbaas type show kafka --settings=schema-registry` for reference)
+        """
         return pulumi.get(self, "schema_registry_settings")
 
     @schema_registry_settings.setter
@@ -187,6 +240,9 @@ class DatabaseKafkaArgs:
     @property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kafka major version (`exo dbaas type show kafka` for reference; may only be set at creation time).
+        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -203,6 +259,14 @@ class DatabaseMysqlArgs:
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  mysql_settings: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] admin_password: A custom administrator account password (may only be set at creation time).
+        :param pulumi.Input[str] admin_username: A custom administrator account username (may only be set at creation time).
+        :param pulumi.Input[str] backup_schedule: The automated backup schedule (`HH:MM`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: A list of CIDR blocks to allow incoming connections from.
+        :param pulumi.Input[str] mysql_settings: MySQL configuration settings in JSON format (`exo dbaas type show mysql --settings=mysql` for reference).
+        :param pulumi.Input[str] version: MySQL major version (`exo dbaas type show mysql` for reference; may only be set at creation time).
+        """
         if admin_password is not None:
             pulumi.set(__self__, "admin_password", admin_password)
         if admin_username is not None:
@@ -219,6 +283,9 @@ class DatabaseMysqlArgs:
     @property
     @pulumi.getter(name="adminPassword")
     def admin_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        A custom administrator account password (may only be set at creation time).
+        """
         return pulumi.get(self, "admin_password")
 
     @admin_password.setter
@@ -228,6 +295,9 @@ class DatabaseMysqlArgs:
     @property
     @pulumi.getter(name="adminUsername")
     def admin_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        A custom administrator account username (may only be set at creation time).
+        """
         return pulumi.get(self, "admin_username")
 
     @admin_username.setter
@@ -237,6 +307,9 @@ class DatabaseMysqlArgs:
     @property
     @pulumi.getter(name="backupSchedule")
     def backup_schedule(self) -> Optional[pulumi.Input[str]]:
+        """
+        The automated backup schedule (`HH:MM`).
+        """
         return pulumi.get(self, "backup_schedule")
 
     @backup_schedule.setter
@@ -246,6 +319,9 @@ class DatabaseMysqlArgs:
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of CIDR blocks to allow incoming connections from.
+        """
         return pulumi.get(self, "ip_filters")
 
     @ip_filters.setter
@@ -255,6 +331,9 @@ class DatabaseMysqlArgs:
     @property
     @pulumi.getter(name="mysqlSettings")
     def mysql_settings(self) -> Optional[pulumi.Input[str]]:
+        """
+        MySQL configuration settings in JSON format (`exo dbaas type show mysql --settings=mysql` for reference).
+        """
         return pulumi.get(self, "mysql_settings")
 
     @mysql_settings.setter
@@ -264,6 +343,9 @@ class DatabaseMysqlArgs:
     @property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        MySQL major version (`exo dbaas type show mysql` for reference; may only be set at creation time).
+        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -284,6 +366,17 @@ class DatabaseOpensearchArgs:
                  recovery_backup_name: Optional[pulumi.Input[str]] = None,
                  settings: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] fork_from_service: ❗ Service name
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseOpensearchIndexPatternArgs']]] index_patterns: (can be used multiple times) Allows you to create glob style patterns and set a max number of indexes matching this pattern you want to keep. Creating indexes exceeding this value will cause the oldest one to get deleted. You could for example create a pattern looking like 'logs.?' and then create index logs.1, logs.2 etc, it will delete logs.1 once you create logs.6. Do note 'logs.?' does not apply to logs.10. Note: Setting max*index*count to 0 will do nothing and the pattern gets ignored.
+        :param pulumi.Input['DatabaseOpensearchIndexTemplateArgs'] index_template: Template settings for all new indexes
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
+        :param pulumi.Input[bool] keep_index_refresh_interval: Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
+        :param pulumi.Input[int] max_index_count: Maximum number of indexes to keep (Minimum value is `0`)
+        :param pulumi.Input[str] recovery_backup_name: ❗
+        :param pulumi.Input[str] settings: OpenSearch-specific settings, in json. e.g.`jsonencode({thread_pool_search_size: 64})`. Use `exo x get-dbaas-settings-opensearch` to get a list of available settings.
+        :param pulumi.Input[str] version: ❗ OpenSearch major version.
+        """
         if dashboards is not None:
             pulumi.set(__self__, "dashboards", dashboards)
         if fork_from_service is not None:
@@ -317,6 +410,9 @@ class DatabaseOpensearchArgs:
     @property
     @pulumi.getter(name="forkFromService")
     def fork_from_service(self) -> Optional[pulumi.Input[str]]:
+        """
+        ❗ Service name
+        """
         return pulumi.get(self, "fork_from_service")
 
     @fork_from_service.setter
@@ -326,6 +422,9 @@ class DatabaseOpensearchArgs:
     @property
     @pulumi.getter(name="indexPatterns")
     def index_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseOpensearchIndexPatternArgs']]]]:
+        """
+        (can be used multiple times) Allows you to create glob style patterns and set a max number of indexes matching this pattern you want to keep. Creating indexes exceeding this value will cause the oldest one to get deleted. You could for example create a pattern looking like 'logs.?' and then create index logs.1, logs.2 etc, it will delete logs.1 once you create logs.6. Do note 'logs.?' does not apply to logs.10. Note: Setting max*index*count to 0 will do nothing and the pattern gets ignored.
+        """
         return pulumi.get(self, "index_patterns")
 
     @index_patterns.setter
@@ -335,6 +434,9 @@ class DatabaseOpensearchArgs:
     @property
     @pulumi.getter(name="indexTemplate")
     def index_template(self) -> Optional[pulumi.Input['DatabaseOpensearchIndexTemplateArgs']]:
+        """
+        Template settings for all new indexes
+        """
         return pulumi.get(self, "index_template")
 
     @index_template.setter
@@ -344,6 +446,9 @@ class DatabaseOpensearchArgs:
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
+        """
         return pulumi.get(self, "ip_filters")
 
     @ip_filters.setter
@@ -353,6 +458,9 @@ class DatabaseOpensearchArgs:
     @property
     @pulumi.getter(name="keepIndexRefreshInterval")
     def keep_index_refresh_interval(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
+        """
         return pulumi.get(self, "keep_index_refresh_interval")
 
     @keep_index_refresh_interval.setter
@@ -362,6 +470,9 @@ class DatabaseOpensearchArgs:
     @property
     @pulumi.getter(name="maxIndexCount")
     def max_index_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of indexes to keep (Minimum value is `0`)
+        """
         return pulumi.get(self, "max_index_count")
 
     @max_index_count.setter
@@ -371,6 +482,9 @@ class DatabaseOpensearchArgs:
     @property
     @pulumi.getter(name="recoveryBackupName")
     def recovery_backup_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        ❗
+        """
         return pulumi.get(self, "recovery_backup_name")
 
     @recovery_backup_name.setter
@@ -380,6 +494,9 @@ class DatabaseOpensearchArgs:
     @property
     @pulumi.getter
     def settings(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenSearch-specific settings, in json. e.g.`jsonencode({thread_pool_search_size: 64})`. Use `exo x get-dbaas-settings-opensearch` to get a list of available settings.
+        """
         return pulumi.get(self, "settings")
 
     @settings.setter
@@ -389,6 +506,9 @@ class DatabaseOpensearchArgs:
     @property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        ❗ OpenSearch major version.
+        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -530,6 +650,16 @@ class DatabasePgArgs:
                  pgbouncer_settings: Optional[pulumi.Input[str]] = None,
                  pglookout_settings: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] admin_password: A custom administrator account password (may only be set at creation time).
+        :param pulumi.Input[str] admin_username: A custom administrator account username (may only be set at creation time).
+        :param pulumi.Input[str] backup_schedule: The automated backup schedule (`HH:MM`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: A list of CIDR blocks to allow incoming connections from.
+        :param pulumi.Input[str] pg_settings: PostgreSQL configuration settings in JSON format (`exo dbaas type show pg --settings=pg` for reference).
+        :param pulumi.Input[str] pgbouncer_settings: PgBouncer configuration settings in JSON format (`exo dbaas type show pg --settings=pgbouncer` for reference).
+        :param pulumi.Input[str] pglookout_settings: pglookout configuration settings in JSON format (`exo dbaas type show pg --settings=pglookout` for reference).
+        :param pulumi.Input[str] version: PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+        """
         if admin_password is not None:
             pulumi.set(__self__, "admin_password", admin_password)
         if admin_username is not None:
@@ -550,6 +680,9 @@ class DatabasePgArgs:
     @property
     @pulumi.getter(name="adminPassword")
     def admin_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        A custom administrator account password (may only be set at creation time).
+        """
         return pulumi.get(self, "admin_password")
 
     @admin_password.setter
@@ -559,6 +692,9 @@ class DatabasePgArgs:
     @property
     @pulumi.getter(name="adminUsername")
     def admin_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        A custom administrator account username (may only be set at creation time).
+        """
         return pulumi.get(self, "admin_username")
 
     @admin_username.setter
@@ -568,6 +704,9 @@ class DatabasePgArgs:
     @property
     @pulumi.getter(name="backupSchedule")
     def backup_schedule(self) -> Optional[pulumi.Input[str]]:
+        """
+        The automated backup schedule (`HH:MM`).
+        """
         return pulumi.get(self, "backup_schedule")
 
     @backup_schedule.setter
@@ -577,6 +716,9 @@ class DatabasePgArgs:
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of CIDR blocks to allow incoming connections from.
+        """
         return pulumi.get(self, "ip_filters")
 
     @ip_filters.setter
@@ -586,6 +728,9 @@ class DatabasePgArgs:
     @property
     @pulumi.getter(name="pgSettings")
     def pg_settings(self) -> Optional[pulumi.Input[str]]:
+        """
+        PostgreSQL configuration settings in JSON format (`exo dbaas type show pg --settings=pg` for reference).
+        """
         return pulumi.get(self, "pg_settings")
 
     @pg_settings.setter
@@ -595,6 +740,9 @@ class DatabasePgArgs:
     @property
     @pulumi.getter(name="pgbouncerSettings")
     def pgbouncer_settings(self) -> Optional[pulumi.Input[str]]:
+        """
+        PgBouncer configuration settings in JSON format (`exo dbaas type show pg --settings=pgbouncer` for reference).
+        """
         return pulumi.get(self, "pgbouncer_settings")
 
     @pgbouncer_settings.setter
@@ -604,6 +752,9 @@ class DatabasePgArgs:
     @property
     @pulumi.getter(name="pglookoutSettings")
     def pglookout_settings(self) -> Optional[pulumi.Input[str]]:
+        """
+        pglookout configuration settings in JSON format (`exo dbaas type show pg --settings=pglookout` for reference).
+        """
         return pulumi.get(self, "pglookout_settings")
 
     @pglookout_settings.setter
@@ -613,6 +764,9 @@ class DatabasePgArgs:
     @property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -625,6 +779,10 @@ class DatabaseRedisArgs:
     def __init__(__self__, *,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  redis_settings: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: A list of CIDR blocks to allow incoming connections from.
+        :param pulumi.Input[str] redis_settings: Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
+        """
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if redis_settings is not None:
@@ -633,6 +791,9 @@ class DatabaseRedisArgs:
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of CIDR blocks to allow incoming connections from.
+        """
         return pulumi.get(self, "ip_filters")
 
     @ip_filters.setter
@@ -642,6 +803,9 @@ class DatabaseRedisArgs:
     @property
     @pulumi.getter(name="redisSettings")
     def redis_settings(self) -> Optional[pulumi.Input[str]]:
+        """
+        Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
+        """
         return pulumi.get(self, "redis_settings")
 
     @redis_settings.setter
@@ -661,6 +825,17 @@ class ElasticIPHealthcheckArgs:
                  tls_skip_verify: Optional[pulumi.Input[bool]] = None,
                  tls_sni: Optional[pulumi.Input[str]] = None,
                  uri: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] mode: The healthcheck mode (`tcp`, `http` or `https`; may only be set at creation time).
+        :param pulumi.Input[int] port: The healthcheck target port (must be between `1` and `65535`).
+        :param pulumi.Input[int] interval: The healthcheck interval (seconds; must be between `5` and `300`; default: `10`).
+        :param pulumi.Input[int] strikes_fail: The number of failed healthcheck attempts before considering the target unhealthy (must be between `1` and `20`; default: `2`).
+        :param pulumi.Input[int] strikes_ok: The number of successful healthcheck attempts before considering the target healthy (must be between `1` and `20`; default: `3`).
+        :param pulumi.Input[int] timeout: The time before considering a healthcheck probing failed (seconds; must be between `2` and `60`; default: `3`).
+        :param pulumi.Input[bool] tls_skip_verify: Disable TLS certificate verification for healthcheck in `https` mode (boolean; default: `false`).
+        :param pulumi.Input[str] tls_sni: The healthcheck server name to present with SNI in `https` mode.
+        :param pulumi.Input[str] uri: The healthcheck target URI (required in `http(s)` modes).
+        """
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "port", port)
         if interval is not None:
@@ -681,6 +856,9 @@ class ElasticIPHealthcheckArgs:
     @property
     @pulumi.getter
     def mode(self) -> pulumi.Input[str]:
+        """
+        The healthcheck mode (`tcp`, `http` or `https`; may only be set at creation time).
+        """
         return pulumi.get(self, "mode")
 
     @mode.setter
@@ -690,6 +868,9 @@ class ElasticIPHealthcheckArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
+        """
+        The healthcheck target port (must be between `1` and `65535`).
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -699,6 +880,9 @@ class ElasticIPHealthcheckArgs:
     @property
     @pulumi.getter
     def interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        The healthcheck interval (seconds; must be between `5` and `300`; default: `10`).
+        """
         return pulumi.get(self, "interval")
 
     @interval.setter
@@ -708,6 +892,9 @@ class ElasticIPHealthcheckArgs:
     @property
     @pulumi.getter(name="strikesFail")
     def strikes_fail(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of failed healthcheck attempts before considering the target unhealthy (must be between `1` and `20`; default: `2`).
+        """
         return pulumi.get(self, "strikes_fail")
 
     @strikes_fail.setter
@@ -717,6 +904,9 @@ class ElasticIPHealthcheckArgs:
     @property
     @pulumi.getter(name="strikesOk")
     def strikes_ok(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of successful healthcheck attempts before considering the target healthy (must be between `1` and `20`; default: `3`).
+        """
         return pulumi.get(self, "strikes_ok")
 
     @strikes_ok.setter
@@ -726,6 +916,9 @@ class ElasticIPHealthcheckArgs:
     @property
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The time before considering a healthcheck probing failed (seconds; must be between `2` and `60`; default: `3`).
+        """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
@@ -735,6 +928,9 @@ class ElasticIPHealthcheckArgs:
     @property
     @pulumi.getter(name="tlsSkipVerify")
     def tls_skip_verify(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable TLS certificate verification for healthcheck in `https` mode (boolean; default: `false`).
+        """
         return pulumi.get(self, "tls_skip_verify")
 
     @tls_skip_verify.setter
@@ -744,6 +940,9 @@ class ElasticIPHealthcheckArgs:
     @property
     @pulumi.getter(name="tlsSni")
     def tls_sni(self) -> Optional[pulumi.Input[str]]:
+        """
+        The healthcheck server name to present with SNI in `https` mode.
+        """
         return pulumi.get(self, "tls_sni")
 
     @tls_sni.setter
@@ -753,6 +952,9 @@ class ElasticIPHealthcheckArgs:
     @property
     @pulumi.getter
     def uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The healthcheck target URI (required in `http(s)` modes).
+        """
         return pulumi.get(self, "uri")
 
     @uri.setter
@@ -767,6 +969,12 @@ class InstancePoolInstanceArgs:
                  ipv6_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  public_ip_address: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] id: The ID of this resource.
+        :param pulumi.Input[str] ipv6_address: The instance (main network interface) IPv6 address.
+        :param pulumi.Input[str] name: The instance name.
+        :param pulumi.Input[str] public_ip_address: The instance (main network interface) IPv4 address.
+        """
         if id is not None:
             pulumi.set(__self__, "id", id)
         if ipv6_address is not None:
@@ -779,6 +987,9 @@ class InstancePoolInstanceArgs:
     @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of this resource.
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -788,6 +999,9 @@ class InstancePoolInstanceArgs:
     @property
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance (main network interface) IPv6 address.
+        """
         return pulumi.get(self, "ipv6_address")
 
     @ipv6_address.setter
@@ -797,6 +1011,9 @@ class InstancePoolInstanceArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance name.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -806,6 +1023,9 @@ class InstancePoolInstanceArgs:
     @property
     @pulumi.getter(name="publicIpAddress")
     def public_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance (main network interface) IPv4 address.
+        """
         return pulumi.get(self, "public_ip_address")
 
     @public_ip_address.setter
@@ -823,6 +1043,15 @@ class NLBServiceHealthcheckArgs:
                  timeout: Optional[pulumi.Input[int]] = None,
                  tls_sni: Optional[pulumi.Input[str]] = None,
                  uri: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] port: The NLB service (TCP/UDP) port.
+        :param pulumi.Input[int] interval: The healthcheck interval in seconds (default: `10`).
+        :param pulumi.Input[str] mode: The healthcheck mode (`tcp`|`http`|`https`; default: `tcp`).
+        :param pulumi.Input[int] retries: The healthcheck retries (default: `1`).
+        :param pulumi.Input[int] timeout: The healthcheck timeout (seconds; default: `5`).
+        :param pulumi.Input[str] tls_sni: The healthcheck TLS SNI server name (only if `mode` is `https`).
+        :param pulumi.Input[str] uri: The healthcheck URI (must be set only if `mode` is `http(s)`).
+        """
         pulumi.set(__self__, "port", port)
         if interval is not None:
             pulumi.set(__self__, "interval", interval)
@@ -840,6 +1069,9 @@ class NLBServiceHealthcheckArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
+        """
+        The NLB service (TCP/UDP) port.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -849,6 +1081,9 @@ class NLBServiceHealthcheckArgs:
     @property
     @pulumi.getter
     def interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        The healthcheck interval in seconds (default: `10`).
+        """
         return pulumi.get(self, "interval")
 
     @interval.setter
@@ -858,6 +1093,9 @@ class NLBServiceHealthcheckArgs:
     @property
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The healthcheck mode (`tcp`|`http`|`https`; default: `tcp`).
+        """
         return pulumi.get(self, "mode")
 
     @mode.setter
@@ -867,6 +1105,9 @@ class NLBServiceHealthcheckArgs:
     @property
     @pulumi.getter
     def retries(self) -> Optional[pulumi.Input[int]]:
+        """
+        The healthcheck retries (default: `1`).
+        """
         return pulumi.get(self, "retries")
 
     @retries.setter
@@ -876,6 +1117,9 @@ class NLBServiceHealthcheckArgs:
     @property
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The healthcheck timeout (seconds; default: `5`).
+        """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
@@ -885,6 +1129,9 @@ class NLBServiceHealthcheckArgs:
     @property
     @pulumi.getter(name="tlsSni")
     def tls_sni(self) -> Optional[pulumi.Input[str]]:
+        """
+        The healthcheck TLS SNI server name (only if `mode` is `https`).
+        """
         return pulumi.get(self, "tls_sni")
 
     @tls_sni.setter
@@ -894,6 +1141,9 @@ class NLBServiceHealthcheckArgs:
     @property
     @pulumi.getter
     def uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The healthcheck URI (must be set only if `mode` is `http(s)`).
+        """
         return pulumi.get(self, "uri")
 
     @uri.setter
@@ -911,6 +1161,15 @@ class SKSClusterOidcArgs:
                  required_claim: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username_claim: Optional[pulumi.Input[str]] = None,
                  username_prefix: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] client_id: The OpenID client ID.
+        :param pulumi.Input[str] issuer_url: The OpenID provider URL.
+        :param pulumi.Input[str] groups_claim: An OpenID JWT claim to use as the user's group.
+        :param pulumi.Input[str] groups_prefix: An OpenID prefix prepended to group claims.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] required_claim: A map of key/value pairs that describes a required claim in the OpenID Token.
+        :param pulumi.Input[str] username_claim: An OpenID JWT claim to use as the user name.
+        :param pulumi.Input[str] username_prefix: An OpenID prefix prepended to username claims.
+        """
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "issuer_url", issuer_url)
         if groups_claim is not None:
@@ -927,6 +1186,9 @@ class SKSClusterOidcArgs:
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> pulumi.Input[str]:
+        """
+        The OpenID client ID.
+        """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
@@ -936,6 +1198,9 @@ class SKSClusterOidcArgs:
     @property
     @pulumi.getter(name="issuerUrl")
     def issuer_url(self) -> pulumi.Input[str]:
+        """
+        The OpenID provider URL.
+        """
         return pulumi.get(self, "issuer_url")
 
     @issuer_url.setter
@@ -945,6 +1210,9 @@ class SKSClusterOidcArgs:
     @property
     @pulumi.getter(name="groupsClaim")
     def groups_claim(self) -> Optional[pulumi.Input[str]]:
+        """
+        An OpenID JWT claim to use as the user's group.
+        """
         return pulumi.get(self, "groups_claim")
 
     @groups_claim.setter
@@ -954,6 +1222,9 @@ class SKSClusterOidcArgs:
     @property
     @pulumi.getter(name="groupsPrefix")
     def groups_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        An OpenID prefix prepended to group claims.
+        """
         return pulumi.get(self, "groups_prefix")
 
     @groups_prefix.setter
@@ -963,6 +1234,9 @@ class SKSClusterOidcArgs:
     @property
     @pulumi.getter(name="requiredClaim")
     def required_claim(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of key/value pairs that describes a required claim in the OpenID Token.
+        """
         return pulumi.get(self, "required_claim")
 
     @required_claim.setter
@@ -972,6 +1246,9 @@ class SKSClusterOidcArgs:
     @property
     @pulumi.getter(name="usernameClaim")
     def username_claim(self) -> Optional[pulumi.Input[str]]:
+        """
+        An OpenID JWT claim to use as the user name.
+        """
         return pulumi.get(self, "username_claim")
 
     @username_claim.setter
@@ -981,6 +1258,9 @@ class SKSClusterOidcArgs:
     @property
     @pulumi.getter(name="usernamePrefix")
     def username_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        An OpenID prefix prepended to username claims.
+        """
         return pulumi.get(self, "username_prefix")
 
     @username_prefix.setter
@@ -999,6 +1279,15 @@ class SecurityGroupRulesEgressArgs:
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  user_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cidr_lists: A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
+        :param pulumi.Input[str] description: A free-form text describing the block.
+        :param pulumi.Input[int] icmp_code: An ICMP/ICMPv6 type/code to match.
+        :param pulumi.Input[int] icmp_type: An ICMP/ICMPv6 type/code to match.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: A list of ports or port ranges (`<start_port>-<end_port>`).
+        :param pulumi.Input[str] protocol: The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_security_group_lists: A list of source (for ingress)/destination (for egress) identified by a security group.
+        """
         if cidr_lists is not None:
             pulumi.set(__self__, "cidr_lists", cidr_lists)
         if description is not None:
@@ -1019,6 +1308,9 @@ class SecurityGroupRulesEgressArgs:
     @property
     @pulumi.getter(name="cidrLists")
     def cidr_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
+        """
         return pulumi.get(self, "cidr_lists")
 
     @cidr_lists.setter
@@ -1028,6 +1320,9 @@ class SecurityGroupRulesEgressArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A free-form text describing the block.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -1037,6 +1332,9 @@ class SecurityGroupRulesEgressArgs:
     @property
     @pulumi.getter(name="icmpCode")
     def icmp_code(self) -> Optional[pulumi.Input[int]]:
+        """
+        An ICMP/ICMPv6 type/code to match.
+        """
         return pulumi.get(self, "icmp_code")
 
     @icmp_code.setter
@@ -1046,6 +1344,9 @@ class SecurityGroupRulesEgressArgs:
     @property
     @pulumi.getter(name="icmpType")
     def icmp_type(self) -> Optional[pulumi.Input[int]]:
+        """
+        An ICMP/ICMPv6 type/code to match.
+        """
         return pulumi.get(self, "icmp_type")
 
     @icmp_type.setter
@@ -1064,6 +1365,9 @@ class SecurityGroupRulesEgressArgs:
     @property
     @pulumi.getter
     def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of ports or port ranges (`<start_port>-<end_port>`).
+        """
         return pulumi.get(self, "ports")
 
     @ports.setter
@@ -1073,6 +1377,9 @@ class SecurityGroupRulesEgressArgs:
     @property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
+        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -1082,6 +1389,9 @@ class SecurityGroupRulesEgressArgs:
     @property
     @pulumi.getter(name="userSecurityGroupLists")
     def user_security_group_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of source (for ingress)/destination (for egress) identified by a security group.
+        """
         return pulumi.get(self, "user_security_group_lists")
 
     @user_security_group_lists.setter
@@ -1100,6 +1410,15 @@ class SecurityGroupRulesIngressArgs:
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  user_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cidr_lists: A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
+        :param pulumi.Input[str] description: A free-form text describing the block.
+        :param pulumi.Input[int] icmp_code: An ICMP/ICMPv6 type/code to match.
+        :param pulumi.Input[int] icmp_type: An ICMP/ICMPv6 type/code to match.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: A list of ports or port ranges (`<start_port>-<end_port>`).
+        :param pulumi.Input[str] protocol: The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_security_group_lists: A list of source (for ingress)/destination (for egress) identified by a security group.
+        """
         if cidr_lists is not None:
             pulumi.set(__self__, "cidr_lists", cidr_lists)
         if description is not None:
@@ -1120,6 +1439,9 @@ class SecurityGroupRulesIngressArgs:
     @property
     @pulumi.getter(name="cidrLists")
     def cidr_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
+        """
         return pulumi.get(self, "cidr_lists")
 
     @cidr_lists.setter
@@ -1129,6 +1451,9 @@ class SecurityGroupRulesIngressArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A free-form text describing the block.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -1138,6 +1463,9 @@ class SecurityGroupRulesIngressArgs:
     @property
     @pulumi.getter(name="icmpCode")
     def icmp_code(self) -> Optional[pulumi.Input[int]]:
+        """
+        An ICMP/ICMPv6 type/code to match.
+        """
         return pulumi.get(self, "icmp_code")
 
     @icmp_code.setter
@@ -1147,6 +1475,9 @@ class SecurityGroupRulesIngressArgs:
     @property
     @pulumi.getter(name="icmpType")
     def icmp_type(self) -> Optional[pulumi.Input[int]]:
+        """
+        An ICMP/ICMPv6 type/code to match.
+        """
         return pulumi.get(self, "icmp_type")
 
     @icmp_type.setter
@@ -1165,6 +1496,9 @@ class SecurityGroupRulesIngressArgs:
     @property
     @pulumi.getter
     def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of ports or port ranges (`<start_port>-<end_port>`).
+        """
         return pulumi.get(self, "ports")
 
     @ports.setter
@@ -1174,6 +1508,9 @@ class SecurityGroupRulesIngressArgs:
     @property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
+        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -1183,6 +1520,9 @@ class SecurityGroupRulesIngressArgs:
     @property
     @pulumi.getter(name="userSecurityGroupLists")
     def user_security_group_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of source (for ingress)/destination (for egress) identified by a security group.
+        """
         return pulumi.get(self, "user_security_group_lists")
 
     @user_security_group_lists.setter

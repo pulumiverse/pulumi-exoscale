@@ -114,11 +114,11 @@ def get_compute_template(filter: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('exoscale:index/getComputeTemplate:getComputeTemplate', __args__, opts=opts, typ=GetComputeTemplateResult).value
 
     return AwaitableGetComputeTemplateResult(
-        filter=__ret__.filter,
-        id=__ret__.id,
-        name=__ret__.name,
-        username=__ret__.username,
-        zone=__ret__.zone)
+        filter=pulumi.get(__ret__, 'filter'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        username=pulumi.get(__ret__, 'username'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_compute_template)

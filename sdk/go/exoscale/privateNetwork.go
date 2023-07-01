@@ -37,7 +37,7 @@ type PrivateNetwork struct {
 	Netmask pulumi.StringPtrOutput `pulumi:"netmask"`
 	// (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	StartIp pulumi.StringPtrOutput `pulumi:"startIp"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -84,7 +84,7 @@ type privateNetworkState struct {
 	Netmask *string `pulumi:"netmask"`
 	// (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	StartIp *string `pulumi:"startIp"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone *string `pulumi:"zone"`
 }
 
@@ -99,7 +99,7 @@ type PrivateNetworkState struct {
 	Netmask pulumi.StringPtrInput
 	// (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	StartIp pulumi.StringPtrInput
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringPtrInput
 }
 
@@ -118,7 +118,7 @@ type privateNetworkArgs struct {
 	Netmask *string `pulumi:"netmask"`
 	// (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	StartIp *string `pulumi:"startIp"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone string `pulumi:"zone"`
 }
 
@@ -134,7 +134,7 @@ type PrivateNetworkArgs struct {
 	Netmask pulumi.StringPtrInput
 	// (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	StartIp pulumi.StringPtrInput
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringInput
 }
 
@@ -250,7 +250,7 @@ func (o PrivateNetworkOutput) StartIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateNetwork) pulumi.StringPtrOutput { return v.StartIp }).(pulumi.StringPtrOutput)
 }
 
-// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o PrivateNetworkOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateNetwork) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

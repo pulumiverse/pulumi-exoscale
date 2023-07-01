@@ -24,8 +24,8 @@ class SecurityGroupRulesArgs:
         The set of arguments for constructing a SecurityGroupRules resource.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGroupRulesEgressArgs']]] egresses: A security group rule definition (can be specified multiple times).
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGroupRulesIngressArgs']]] ingresses: A security group rule definition (can be specified multiple times).
-        :param pulumi.Input[str] security_group: The security group (name) the rules apply to (conflicts with `security_group_id`).
-        :param pulumi.Input[str] security_group_id: The security group (ID) the rules apply to (conficts with `security_group)`.
+        :param pulumi.Input[str] security_group: ❗ The security group (name) the rules apply to (conflicts with `security_group_id`).
+        :param pulumi.Input[str] security_group_id: ❗ The security group (ID) the rules apply to (conficts with `security_group)`.
         """
         if egresses is not None:
             pulumi.set(__self__, "egresses", egresses)
@@ -64,7 +64,7 @@ class SecurityGroupRulesArgs:
     @pulumi.getter(name="securityGroup")
     def security_group(self) -> Optional[pulumi.Input[str]]:
         """
-        The security group (name) the rules apply to (conflicts with `security_group_id`).
+        ❗ The security group (name) the rules apply to (conflicts with `security_group_id`).
         """
         return pulumi.get(self, "security_group")
 
@@ -76,7 +76,7 @@ class SecurityGroupRulesArgs:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The security group (ID) the rules apply to (conficts with `security_group)`.
+        ❗ The security group (ID) the rules apply to (conficts with `security_group)`.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -96,8 +96,8 @@ class _SecurityGroupRulesState:
         Input properties used for looking up and filtering SecurityGroupRules resources.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGroupRulesEgressArgs']]] egresses: A security group rule definition (can be specified multiple times).
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGroupRulesIngressArgs']]] ingresses: A security group rule definition (can be specified multiple times).
-        :param pulumi.Input[str] security_group: The security group (name) the rules apply to (conflicts with `security_group_id`).
-        :param pulumi.Input[str] security_group_id: The security group (ID) the rules apply to (conficts with `security_group)`.
+        :param pulumi.Input[str] security_group: ❗ The security group (name) the rules apply to (conflicts with `security_group_id`).
+        :param pulumi.Input[str] security_group_id: ❗ The security group (ID) the rules apply to (conficts with `security_group)`.
         """
         if egresses is not None:
             pulumi.set(__self__, "egresses", egresses)
@@ -136,7 +136,7 @@ class _SecurityGroupRulesState:
     @pulumi.getter(name="securityGroup")
     def security_group(self) -> Optional[pulumi.Input[str]]:
         """
-        The security group (name) the rules apply to (conflicts with `security_group_id`).
+        ❗ The security group (name) the rules apply to (conflicts with `security_group_id`).
         """
         return pulumi.get(self, "security_group")
 
@@ -148,7 +148,7 @@ class _SecurityGroupRulesState:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The security group (ID) the rules apply to (conficts with `security_group)`.
+        ❗ The security group (ID) the rules apply to (conficts with `security_group)`.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -174,8 +174,8 @@ class SecurityGroupRules(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityGroupRulesEgressArgs']]]] egresses: A security group rule definition (can be specified multiple times).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityGroupRulesIngressArgs']]]] ingresses: A security group rule definition (can be specified multiple times).
-        :param pulumi.Input[str] security_group: The security group (name) the rules apply to (conflicts with `security_group_id`).
-        :param pulumi.Input[str] security_group_id: The security group (ID) the rules apply to (conficts with `security_group)`.
+        :param pulumi.Input[str] security_group: ❗ The security group (name) the rules apply to (conflicts with `security_group_id`).
+        :param pulumi.Input[str] security_group_id: ❗ The security group (ID) the rules apply to (conficts with `security_group)`.
         """
         ...
     @overload
@@ -241,8 +241,8 @@ class SecurityGroupRules(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityGroupRulesEgressArgs']]]] egresses: A security group rule definition (can be specified multiple times).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityGroupRulesIngressArgs']]]] ingresses: A security group rule definition (can be specified multiple times).
-        :param pulumi.Input[str] security_group: The security group (name) the rules apply to (conflicts with `security_group_id`).
-        :param pulumi.Input[str] security_group_id: The security group (ID) the rules apply to (conficts with `security_group)`.
+        :param pulumi.Input[str] security_group: ❗ The security group (name) the rules apply to (conflicts with `security_group_id`).
+        :param pulumi.Input[str] security_group_id: ❗ The security group (ID) the rules apply to (conficts with `security_group)`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -274,7 +274,7 @@ class SecurityGroupRules(pulumi.CustomResource):
     @pulumi.getter(name="securityGroup")
     def security_group(self) -> pulumi.Output[str]:
         """
-        The security group (name) the rules apply to (conflicts with `security_group_id`).
+        ❗ The security group (name) the rules apply to (conflicts with `security_group_id`).
         """
         return pulumi.get(self, "security_group")
 
@@ -282,7 +282,7 @@ class SecurityGroupRules(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[str]:
         """
-        The security group (ID) the rules apply to (conficts with `security_group)`.
+        ❗ The security group (ID) the rules apply to (conficts with `security_group)`.
         """
         return pulumi.get(self, "security_group_id")
 

@@ -98,6 +98,9 @@ class ProviderArgs:
     @property
     @pulumi.getter
     def delay(self) -> Optional[pulumi.Input[int]]:
+        warnings.warn("""Does nothing""", DeprecationWarning)
+        pulumi.log.warn("""delay is deprecated: Does nothing""")
+
         return pulumi.get(self, "delay")
 
     @delay.setter
@@ -152,6 +155,9 @@ class ProviderArgs:
     @property
     @pulumi.getter
     def profile(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Use region instead""", DeprecationWarning)
+        pulumi.log.warn("""profile is deprecated: Use region instead""")
+
         return pulumi.get(self, "profile")
 
     @profile.setter
@@ -197,6 +203,9 @@ class ProviderArgs:
     @property
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Use key instead""", DeprecationWarning)
+        pulumi.log.warn("""token is deprecated: Use key instead""")
+
         return pulumi.get(self, "token")
 
     @token.setter
@@ -356,6 +365,9 @@ class Provider(pulumi.ProviderResource):
     @property
     @pulumi.getter
     def profile(self) -> pulumi.Output[Optional[str]]:
+        warnings.warn("""Use region instead""", DeprecationWarning)
+        pulumi.log.warn("""profile is deprecated: Use region instead""")
+
         return pulumi.get(self, "profile")
 
     @property
@@ -377,5 +389,8 @@ class Provider(pulumi.ProviderResource):
     @property
     @pulumi.getter
     def token(self) -> pulumi.Output[Optional[str]]:
+        warnings.warn("""Use key instead""", DeprecationWarning)
+        pulumi.log.warn("""token is deprecated: Use key instead""")
+
         return pulumi.get(self, "token")
 

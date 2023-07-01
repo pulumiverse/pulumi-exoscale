@@ -14,16 +14,49 @@ namespace Pulumiverse.Exoscale.Outputs
     [OutputType]
     public sealed class DatabaseKafka
     {
+        /// <summary>
+        /// Enable certificate-based authentication method.
+        /// </summary>
         public readonly bool? EnableCertAuth;
+        /// <summary>
+        /// Enable Kafka Connect.
+        /// </summary>
         public readonly bool? EnableKafkaConnect;
+        /// <summary>
+        /// Enable Kafka REST.
+        /// </summary>
         public readonly bool? EnableKafkaRest;
+        /// <summary>
+        /// Enable SASL-based authentication method.
+        /// </summary>
         public readonly bool? EnableSaslAuth;
+        /// <summary>
+        /// Enable Schema Registry.
+        /// </summary>
         public readonly bool? EnableSchemaRegistry;
+        /// <summary>
+        /// A list of CIDR blocks to allow incoming connections from.
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        /// <summary>
+        /// Kafka Connect configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka-connect` for reference).
+        /// </summary>
         public readonly string? KafkaConnectSettings;
+        /// <summary>
+        /// Kafka REST configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka-rest` for reference).
+        /// </summary>
         public readonly string? KafkaRestSettings;
+        /// <summary>
+        /// Kafka configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka` for reference).
+        /// </summary>
         public readonly string? KafkaSettings;
+        /// <summary>
+        /// Schema Registry configuration settings in JSON format (`exo dbaas type show kafka --settings=schema-registry` for reference)
+        /// </summary>
         public readonly string? SchemaRegistrySettings;
+        /// <summary>
+        /// Kafka major version (`exo dbaas type show kafka` for reference; may only be set at creation time).
+        /// </summary>
         public readonly string? Version;
 
         [OutputConstructor]

@@ -29,13 +29,13 @@ namespace Pulumiverse.Exoscale
         public Output<ImmutableArray<Outputs.SecurityGroupRulesIngress>> Ingresses { get; private set; } = null!;
 
         /// <summary>
-        /// The security group (name) the rules apply to (conflicts with `security_group_id`).
+        /// ❗ The security group (name) the rules apply to (conflicts with `security_group_id`).
         /// </summary>
         [Output("securityGroup")]
         public Output<string> SecurityGroup { get; private set; } = null!;
 
         /// <summary>
-        /// The security group (ID) the rules apply to (conficts with `security_group)`.
+        /// ❗ The security group (ID) the rules apply to (conficts with `security_group)`.
         /// </summary>
         [Output("securityGroupId")]
         public Output<string> SecurityGroupId { get; private set; } = null!;
@@ -112,13 +112,13 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The security group (name) the rules apply to (conflicts with `security_group_id`).
+        /// ❗ The security group (name) the rules apply to (conflicts with `security_group_id`).
         /// </summary>
         [Input("securityGroup")]
         public Input<string>? SecurityGroup { get; set; }
 
         /// <summary>
-        /// The security group (ID) the rules apply to (conficts with `security_group)`.
+        /// ❗ The security group (ID) the rules apply to (conficts with `security_group)`.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -156,13 +156,13 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The security group (name) the rules apply to (conflicts with `security_group_id`).
+        /// ❗ The security group (name) the rules apply to (conflicts with `security_group_id`).
         /// </summary>
         [Input("securityGroup")]
         public Input<string>? SecurityGroup { get; set; }
 
         /// <summary>
-        /// The security group (ID) the rules apply to (conficts with `security_group)`.
+        /// ❗ The security group (ID) the rules apply to (conficts with `security_group)`.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }

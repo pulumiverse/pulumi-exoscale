@@ -17,13 +17,13 @@ namespace Pulumiverse.Exoscale
     public partial class SecondaryIPAddress : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The compute instance ID.
+        /// ❗ The compute instance ID.
         /// </summary>
         [Output("computeId")]
         public Output<string> ComputeId { get; private set; } = null!;
 
         /// <summary>
-        /// The Elastic IP (EIP) address.
+        /// ❗ The Elastic IP (EIP) address.
         /// </summary>
         [Output("ipAddress")]
         public Output<string> IpAddress { get; private set; } = null!;
@@ -88,13 +88,13 @@ namespace Pulumiverse.Exoscale
     public sealed class SecondaryIPAddressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The compute instance ID.
+        /// ❗ The compute instance ID.
         /// </summary>
         [Input("computeId", required: true)]
         public Input<string> ComputeId { get; set; } = null!;
 
         /// <summary>
-        /// The Elastic IP (EIP) address.
+        /// ❗ The Elastic IP (EIP) address.
         /// </summary>
         [Input("ipAddress", required: true)]
         public Input<string> IpAddress { get; set; } = null!;
@@ -108,13 +108,13 @@ namespace Pulumiverse.Exoscale
     public sealed class SecondaryIPAddressState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The compute instance ID.
+        /// ❗ The compute instance ID.
         /// </summary>
         [Input("computeId")]
         public Input<string>? ComputeId { get; set; }
 
         /// <summary>
-        /// The Elastic IP (EIP) address.
+        /// ❗ The Elastic IP (EIP) address.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }

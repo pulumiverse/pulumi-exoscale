@@ -17,19 +17,19 @@ namespace Pulumiverse.Exoscale
     public partial class Affinity : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A free-form text describing the group.
+        /// ❗ A free-form text describing the group.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The anti-affinity group name.
+        /// ❗ The anti-affinity group name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the group (`host anti-affinity` is the only supported value).
+        /// ❗ The type of the group (`host anti-affinity` is the only supported value).
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -88,19 +88,19 @@ namespace Pulumiverse.Exoscale
     public sealed class AffinityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A free-form text describing the group.
+        /// ❗ A free-form text describing the group.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The anti-affinity group name.
+        /// ❗ The anti-affinity group name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The type of the group (`host anti-affinity` is the only supported value).
+        /// ❗ The type of the group (`host anti-affinity` is the only supported value).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -114,19 +114,19 @@ namespace Pulumiverse.Exoscale
     public sealed class AffinityState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A free-form text describing the group.
+        /// ❗ A free-form text describing the group.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The anti-affinity group name.
+        /// ❗ The anti-affinity group name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The type of the group (`host anti-affinity` is the only supported value).
+        /// ❗ The type of the group (`host anti-affinity` is the only supported value).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

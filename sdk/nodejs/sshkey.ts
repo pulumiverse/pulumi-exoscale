@@ -50,11 +50,11 @@ export class SSHKey extends pulumi.CustomResource {
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
-     * The SSH key name.
+     * ❗ The SSH key name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The SSH *public* key that will be authorized in compute instances.
+     * ❗ The SSH *public* key that will be authorized in compute instances.
      */
     public readonly publicKey!: pulumi.Output<string>;
 
@@ -94,11 +94,11 @@ export interface SSHKeyState {
      */
     fingerprint?: pulumi.Input<string>;
     /**
-     * The SSH key name.
+     * ❗ The SSH key name.
      */
     name?: pulumi.Input<string>;
     /**
-     * The SSH *public* key that will be authorized in compute instances.
+     * ❗ The SSH *public* key that will be authorized in compute instances.
      */
     publicKey?: pulumi.Input<string>;
 }
@@ -108,11 +108,11 @@ export interface SSHKeyState {
  */
 export interface SSHKeyArgs {
     /**
-     * The SSH key name.
+     * ❗ The SSH key name.
      */
     name?: pulumi.Input<string>;
     /**
-     * The SSH *public* key that will be authorized in compute instances.
+     * ❗ The SSH *public* key that will be authorized in compute instances.
      */
     publicKey?: pulumi.Input<string>;
 }

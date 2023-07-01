@@ -36,11 +36,11 @@ export class SecondaryIPAddress extends pulumi.CustomResource {
     }
 
     /**
-     * The compute instance ID.
+     * ❗ The compute instance ID.
      */
     public readonly computeId!: pulumi.Output<string>;
     /**
-     * The Elastic IP (EIP) address.
+     * ❗ The Elastic IP (EIP) address.
      */
     public readonly ipAddress!: pulumi.Output<string>;
     /**
@@ -92,11 +92,11 @@ export class SecondaryIPAddress extends pulumi.CustomResource {
  */
 export interface SecondaryIPAddressState {
     /**
-     * The compute instance ID.
+     * ❗ The compute instance ID.
      */
     computeId?: pulumi.Input<string>;
     /**
-     * The Elastic IP (EIP) address.
+     * ❗ The Elastic IP (EIP) address.
      */
     ipAddress?: pulumi.Input<string>;
     /**
@@ -114,11 +114,11 @@ export interface SecondaryIPAddressState {
  */
 export interface SecondaryIPAddressArgs {
     /**
-     * The compute instance ID.
+     * ❗ The compute instance ID.
      */
     computeId: pulumi.Input<string>;
     /**
-     * The Elastic IP (EIP) address.
+     * ❗ The Elastic IP (EIP) address.
      */
     ipAddress: pulumi.Input<string>;
 }

@@ -15,17 +15,15 @@ type IAMAccessKey struct {
 
 	// The IAM access key (identifier).
 	Key pulumi.StringOutput `pulumi:"key"`
-	// The IAM access key name.
+	// ❗ The IAM access key name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A list of API operations to restrict the key to.
+	// ❗ A list of API operations to restrict the key to.
 	Operations pulumi.StringArrayOutput `pulumi:"operations"`
-	// A list of API
-	// [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to
-	// restrict the key to (`<domain>/<type>:<name>`).
+	// ❗ A list of API [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to restrict the key to (`<domain>/<type>:<name>`).
 	Resources pulumi.StringArrayOutput `pulumi:"resources"`
 	// The key secret.
 	Secret pulumi.StringOutput `pulumi:"secret"`
-	// A list of tags to restrict the key to.
+	// ❗ A list of tags to restrict the key to.
 	Tags           pulumi.StringArrayOutput `pulumi:"tags"`
 	TagsOperations pulumi.StringArrayOutput `pulumi:"tagsOperations"`
 }
@@ -67,17 +65,15 @@ func GetIAMAccessKey(ctx *pulumi.Context,
 type iamaccessKeyState struct {
 	// The IAM access key (identifier).
 	Key *string `pulumi:"key"`
-	// The IAM access key name.
+	// ❗ The IAM access key name.
 	Name *string `pulumi:"name"`
-	// A list of API operations to restrict the key to.
+	// ❗ A list of API operations to restrict the key to.
 	Operations []string `pulumi:"operations"`
-	// A list of API
-	// [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to
-	// restrict the key to (`<domain>/<type>:<name>`).
+	// ❗ A list of API [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to restrict the key to (`<domain>/<type>:<name>`).
 	Resources []string `pulumi:"resources"`
 	// The key secret.
 	Secret *string `pulumi:"secret"`
-	// A list of tags to restrict the key to.
+	// ❗ A list of tags to restrict the key to.
 	Tags           []string `pulumi:"tags"`
 	TagsOperations []string `pulumi:"tagsOperations"`
 }
@@ -85,17 +81,15 @@ type iamaccessKeyState struct {
 type IAMAccessKeyState struct {
 	// The IAM access key (identifier).
 	Key pulumi.StringPtrInput
-	// The IAM access key name.
+	// ❗ The IAM access key name.
 	Name pulumi.StringPtrInput
-	// A list of API operations to restrict the key to.
+	// ❗ A list of API operations to restrict the key to.
 	Operations pulumi.StringArrayInput
-	// A list of API
-	// [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to
-	// restrict the key to (`<domain>/<type>:<name>`).
+	// ❗ A list of API [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to restrict the key to (`<domain>/<type>:<name>`).
 	Resources pulumi.StringArrayInput
 	// The key secret.
 	Secret pulumi.StringPtrInput
-	// A list of tags to restrict the key to.
+	// ❗ A list of tags to restrict the key to.
 	Tags           pulumi.StringArrayInput
 	TagsOperations pulumi.StringArrayInput
 }
@@ -105,29 +99,25 @@ func (IAMAccessKeyState) ElementType() reflect.Type {
 }
 
 type iamaccessKeyArgs struct {
-	// The IAM access key name.
+	// ❗ The IAM access key name.
 	Name *string `pulumi:"name"`
-	// A list of API operations to restrict the key to.
+	// ❗ A list of API operations to restrict the key to.
 	Operations []string `pulumi:"operations"`
-	// A list of API
-	// [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to
-	// restrict the key to (`<domain>/<type>:<name>`).
+	// ❗ A list of API [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to restrict the key to (`<domain>/<type>:<name>`).
 	Resources []string `pulumi:"resources"`
-	// A list of tags to restrict the key to.
+	// ❗ A list of tags to restrict the key to.
 	Tags []string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a IAMAccessKey resource.
 type IAMAccessKeyArgs struct {
-	// The IAM access key name.
+	// ❗ The IAM access key name.
 	Name pulumi.StringPtrInput
-	// A list of API operations to restrict the key to.
+	// ❗ A list of API operations to restrict the key to.
 	Operations pulumi.StringArrayInput
-	// A list of API
-	// [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to
-	// restrict the key to (`<domain>/<type>:<name>`).
+	// ❗ A list of API [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to restrict the key to (`<domain>/<type>:<name>`).
 	Resources pulumi.StringArrayInput
-	// A list of tags to restrict the key to.
+	// ❗ A list of tags to restrict the key to.
 	Tags pulumi.StringArrayInput
 }
 
@@ -223,19 +213,17 @@ func (o IAMAccessKeyOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *IAMAccessKey) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
 
-// The IAM access key name.
+// ❗ The IAM access key name.
 func (o IAMAccessKeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *IAMAccessKey) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// A list of API operations to restrict the key to.
+// ❗ A list of API operations to restrict the key to.
 func (o IAMAccessKeyOutput) Operations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *IAMAccessKey) pulumi.StringArrayOutput { return v.Operations }).(pulumi.StringArrayOutput)
 }
 
-// A list of API
-// [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to
-// restrict the key to (`<domain>/<type>:<name>`).
+// ❗ A list of API [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to restrict the key to (`<domain>/<type>:<name>`).
 func (o IAMAccessKeyOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *IAMAccessKey) pulumi.StringArrayOutput { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -245,7 +233,7 @@ func (o IAMAccessKeyOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v *IAMAccessKey) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
 }
 
-// A list of tags to restrict the key to.
+// ❗ A list of tags to restrict the key to.
 func (o IAMAccessKeyOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *IAMAccessKey) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

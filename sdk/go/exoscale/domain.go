@@ -34,7 +34,7 @@ type Domain struct {
 	//
 	// Deprecated: Not used, will be removed in the future
 	ExpiresOn pulumi.StringOutput `pulumi:"expiresOn"`
-	// The DNS domain name.
+	// ❗ The DNS domain name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The domain state.
 	//
@@ -84,7 +84,7 @@ type domainState struct {
 	//
 	// Deprecated: Not used, will be removed in the future
 	ExpiresOn *string `pulumi:"expiresOn"`
-	// The DNS domain name.
+	// ❗ The DNS domain name.
 	Name *string `pulumi:"name"`
 	// The domain state.
 	//
@@ -105,7 +105,7 @@ type DomainState struct {
 	//
 	// Deprecated: Not used, will be removed in the future
 	ExpiresOn pulumi.StringPtrInput
-	// The DNS domain name.
+	// ❗ The DNS domain name.
 	Name pulumi.StringPtrInput
 	// The domain state.
 	//
@@ -122,13 +122,13 @@ func (DomainState) ElementType() reflect.Type {
 }
 
 type domainArgs struct {
-	// The DNS domain name.
+	// ❗ The DNS domain name.
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a Domain resource.
 type DomainArgs struct {
-	// The DNS domain name.
+	// ❗ The DNS domain name.
 	Name pulumi.StringPtrInput
 }
 
@@ -233,7 +233,7 @@ func (o DomainOutput) ExpiresOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.ExpiresOn }).(pulumi.StringOutput)
 }
 
-// The DNS domain name.
+// ❗ The DNS domain name.
 func (o DomainOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

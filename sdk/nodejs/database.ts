@@ -64,8 +64,7 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly kafka!: pulumi.Output<outputs.DatabaseKafka | undefined>;
     /**
-     * The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
-     * `thursday`, `friday`, `saturday`, `sunday`).
+     * The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
      */
     public readonly maintenanceDow!: pulumi.Output<string>;
     /**
@@ -77,7 +76,7 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly mysql!: pulumi.Output<outputs.DatabaseMysql | undefined>;
     /**
-     * The name of the database service.
+     * ❗ The name of the database service.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -101,8 +100,7 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly pg!: pulumi.Output<outputs.DatabasePg | undefined>;
     /**
-     * The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
-     * <TYPE>` - for reference).
+     * The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE>` - for reference).
      */
     public readonly plan!: pulumi.Output<string>;
     /**
@@ -118,7 +116,7 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly terminationProtection!: pulumi.Output<boolean | undefined>;
     /**
-     * The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+     * ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -126,7 +124,7 @@ export class Database extends pulumi.CustomResource {
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -221,8 +219,7 @@ export interface DatabaseState {
      */
     kafka?: pulumi.Input<inputs.DatabaseKafka>;
     /**
-     * The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
-     * `thursday`, `friday`, `saturday`, `sunday`).
+     * The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
      */
     maintenanceDow?: pulumi.Input<string>;
     /**
@@ -234,7 +231,7 @@ export interface DatabaseState {
      */
     mysql?: pulumi.Input<inputs.DatabaseMysql>;
     /**
-     * The name of the database service.
+     * ❗ The name of the database service.
      */
     name?: pulumi.Input<string>;
     /**
@@ -258,8 +255,7 @@ export interface DatabaseState {
      */
     pg?: pulumi.Input<inputs.DatabasePg>;
     /**
-     * The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
-     * <TYPE>` - for reference).
+     * The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE>` - for reference).
      */
     plan?: pulumi.Input<string>;
     /**
@@ -275,7 +271,7 @@ export interface DatabaseState {
      */
     terminationProtection?: pulumi.Input<boolean>;
     /**
-     * The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+     * ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
      */
     type?: pulumi.Input<string>;
     /**
@@ -283,7 +279,7 @@ export interface DatabaseState {
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone?: pulumi.Input<string>;
 }
@@ -297,8 +293,7 @@ export interface DatabaseArgs {
      */
     kafka?: pulumi.Input<inputs.DatabaseKafka>;
     /**
-     * The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`,
-     * `thursday`, `friday`, `saturday`, `sunday`).
+     * The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
      */
     maintenanceDow?: pulumi.Input<string>;
     /**
@@ -310,7 +305,7 @@ export interface DatabaseArgs {
      */
     mysql?: pulumi.Input<inputs.DatabaseMysql>;
     /**
-     * The name of the database service.
+     * ❗ The name of the database service.
      */
     name?: pulumi.Input<string>;
     /**
@@ -322,8 +317,7 @@ export interface DatabaseArgs {
      */
     pg?: pulumi.Input<inputs.DatabasePg>;
     /**
-     * The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show
-     * <TYPE>` - for reference).
+     * The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE>` - for reference).
      */
     plan: pulumi.Input<string>;
     /**
@@ -335,11 +329,11 @@ export interface DatabaseArgs {
      */
     terminationProtection?: pulumi.Input<boolean>;
     /**
-     * The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+     * ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
      */
     type: pulumi.Input<string>;
     /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: pulumi.Input<string>;
 }

@@ -307,24 +307,24 @@ def get_sks_cluster_list(aggregation_ca: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('exoscale:index/getSKSClusterList:getSKSClusterList', __args__, opts=opts, typ=GetSKSClusterListResult).value
 
     return AwaitableGetSKSClusterListResult(
-        aggregation_ca=__ret__.aggregation_ca,
-        auto_upgrade=__ret__.auto_upgrade,
-        clusters=__ret__.clusters,
-        cni=__ret__.cni,
-        control_plane_ca=__ret__.control_plane_ca,
-        created_at=__ret__.created_at,
-        description=__ret__.description,
-        endpoint=__ret__.endpoint,
-        exoscale_ccm=__ret__.exoscale_ccm,
-        id=__ret__.id,
-        kubelet_ca=__ret__.kubelet_ca,
-        labels=__ret__.labels,
-        metrics_server=__ret__.metrics_server,
-        name=__ret__.name,
-        service_level=__ret__.service_level,
-        state=__ret__.state,
-        version=__ret__.version,
-        zone=__ret__.zone)
+        aggregation_ca=pulumi.get(__ret__, 'aggregation_ca'),
+        auto_upgrade=pulumi.get(__ret__, 'auto_upgrade'),
+        clusters=pulumi.get(__ret__, 'clusters'),
+        cni=pulumi.get(__ret__, 'cni'),
+        control_plane_ca=pulumi.get(__ret__, 'control_plane_ca'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        description=pulumi.get(__ret__, 'description'),
+        endpoint=pulumi.get(__ret__, 'endpoint'),
+        exoscale_ccm=pulumi.get(__ret__, 'exoscale_ccm'),
+        id=pulumi.get(__ret__, 'id'),
+        kubelet_ca=pulumi.get(__ret__, 'kubelet_ca'),
+        labels=pulumi.get(__ret__, 'labels'),
+        metrics_server=pulumi.get(__ret__, 'metrics_server'),
+        name=pulumi.get(__ret__, 'name'),
+        service_level=pulumi.get(__ret__, 'service_level'),
+        state=pulumi.get(__ret__, 'state'),
+        version=pulumi.get(__ret__, 'version'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_sks_cluster_list)

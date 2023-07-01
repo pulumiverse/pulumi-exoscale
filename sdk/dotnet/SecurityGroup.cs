@@ -27,20 +27,19 @@ namespace Pulumiverse.Exoscale
     public partial class SecurityGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A free-form text describing the group.
+        /// ❗ A free-form text describing the group.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
-        /// notation.
+        /// A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio) notation.
         /// </summary>
         [Output("externalSources")]
         public Output<ImmutableArray<string>> ExternalSources { get; private set; } = null!;
 
         /// <summary>
-        /// The security group name.
+        /// ❗ The security group name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -93,7 +92,7 @@ namespace Pulumiverse.Exoscale
     public sealed class SecurityGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A free-form text describing the group.
+        /// ❗ A free-form text describing the group.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -102,8 +101,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _externalSources;
 
         /// <summary>
-        /// A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
-        /// notation.
+        /// A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio) notation.
         /// </summary>
         public InputList<string> ExternalSources
         {
@@ -112,7 +110,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The security group name.
+        /// ❗ The security group name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -126,7 +124,7 @@ namespace Pulumiverse.Exoscale
     public sealed class SecurityGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A free-form text describing the group.
+        /// ❗ A free-form text describing the group.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -135,8 +133,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _externalSources;
 
         /// <summary>
-        /// A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio)
-        /// notation.
+        /// A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio) notation.
         /// </summary>
         public InputList<string> ExternalSources
         {
@@ -145,7 +142,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The security group name.
+        /// ❗ The security group name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

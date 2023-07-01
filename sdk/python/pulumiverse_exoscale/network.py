@@ -24,12 +24,11 @@ class NetworkArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Network resource.
-        :param pulumi.Input[str] zone: The Exoscale Zone name.
+        :param pulumi.Input[str] zone: ❗ The Exoscale Zone name.
         :param pulumi.Input[str] display_text: A free-form text describing the network.
         :param pulumi.Input[str] end_ip: The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
         :param pulumi.Input[str] name: The private network name.
-        :param pulumi.Input[str] netmask: The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
-               private networks.
+        :param pulumi.Input[str] netmask: The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
         :param pulumi.Input[str] start_ip: The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags (key/value). To remove all tags, set `tags = {}`.
         """
@@ -56,7 +55,7 @@ class NetworkArgs:
     @pulumi.getter
     def zone(self) -> pulumi.Input[str]:
         """
-        The Exoscale Zone name.
+        ❗ The Exoscale Zone name.
         """
         return pulumi.get(self, "zone")
 
@@ -104,8 +103,7 @@ class NetworkArgs:
     @pulumi.getter
     def netmask(self) -> Optional[pulumi.Input[str]]:
         """
-        The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
-        private networks.
+        The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
         """
         return pulumi.get(self, "netmask")
 
@@ -116,6 +114,9 @@ class NetworkArgs:
     @property
     @pulumi.getter(name="networkOffering")
     def network_offering(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""This attribute is deprecated, please remove it from your configuration.""", DeprecationWarning)
+        pulumi.log.warn("""network_offering is deprecated: This attribute is deprecated, please remove it from your configuration.""")
+
         return pulumi.get(self, "network_offering")
 
     @network_offering.setter
@@ -163,11 +164,10 @@ class _NetworkState:
         :param pulumi.Input[str] display_text: A free-form text describing the network.
         :param pulumi.Input[str] end_ip: The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
         :param pulumi.Input[str] name: The private network name.
-        :param pulumi.Input[str] netmask: The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
-               private networks.
+        :param pulumi.Input[str] netmask: The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
         :param pulumi.Input[str] start_ip: The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags (key/value). To remove all tags, set `tags = {}`.
-        :param pulumi.Input[str] zone: The Exoscale Zone name.
+        :param pulumi.Input[str] zone: ❗ The Exoscale Zone name.
         """
         if display_text is not None:
             pulumi.set(__self__, "display_text", display_text)
@@ -229,8 +229,7 @@ class _NetworkState:
     @pulumi.getter
     def netmask(self) -> Optional[pulumi.Input[str]]:
         """
-        The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
-        private networks.
+        The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
         """
         return pulumi.get(self, "netmask")
 
@@ -241,6 +240,9 @@ class _NetworkState:
     @property
     @pulumi.getter(name="networkOffering")
     def network_offering(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""This attribute is deprecated, please remove it from your configuration.""", DeprecationWarning)
+        pulumi.log.warn("""network_offering is deprecated: This attribute is deprecated, please remove it from your configuration.""")
+
         return pulumi.get(self, "network_offering")
 
     @network_offering.setter
@@ -275,7 +277,7 @@ class _NetworkState:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The Exoscale Zone name.
+        ❗ The Exoscale Zone name.
         """
         return pulumi.get(self, "zone")
 
@@ -306,11 +308,10 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] display_text: A free-form text describing the network.
         :param pulumi.Input[str] end_ip: The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
         :param pulumi.Input[str] name: The private network name.
-        :param pulumi.Input[str] netmask: The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
-               private networks.
+        :param pulumi.Input[str] netmask: The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
         :param pulumi.Input[str] start_ip: The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags (key/value). To remove all tags, set `tags = {}`.
-        :param pulumi.Input[str] zone: The Exoscale Zone name.
+        :param pulumi.Input[str] zone: ❗ The Exoscale Zone name.
         """
         ...
     @overload
@@ -394,11 +395,10 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] display_text: A free-form text describing the network.
         :param pulumi.Input[str] end_ip: The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
         :param pulumi.Input[str] name: The private network name.
-        :param pulumi.Input[str] netmask: The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
-               private networks.
+        :param pulumi.Input[str] netmask: The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
         :param pulumi.Input[str] start_ip: The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags (key/value). To remove all tags, set `tags = {}`.
-        :param pulumi.Input[str] zone: The Exoscale Zone name.
+        :param pulumi.Input[str] zone: ❗ The Exoscale Zone name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -442,14 +442,16 @@ class Network(pulumi.CustomResource):
     @pulumi.getter
     def netmask(self) -> pulumi.Output[Optional[str]]:
         """
-        The network mask defining the IP network allowed for static leases (see `exoscale_nic` resource). Required for *managed*
-        private networks.
+        The network mask defining the IP network allowed for static leases (see `NIC` resource). Required for *managed* private networks.
         """
         return pulumi.get(self, "netmask")
 
     @property
     @pulumi.getter(name="networkOffering")
     def network_offering(self) -> pulumi.Output[Optional[str]]:
+        warnings.warn("""This attribute is deprecated, please remove it from your configuration.""", DeprecationWarning)
+        pulumi.log.warn("""network_offering is deprecated: This attribute is deprecated, please remove it from your configuration.""")
+
         return pulumi.get(self, "network_offering")
 
     @property
@@ -472,7 +474,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         """
-        The Exoscale Zone name.
+        ❗ The Exoscale Zone name.
         """
         return pulumi.get(self, "zone")
 

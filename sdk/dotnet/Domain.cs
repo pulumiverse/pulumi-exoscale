@@ -39,7 +39,7 @@ namespace Pulumiverse.Exoscale
         public Output<string> ExpiresOn { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS domain name.
+        /// ❗ The DNS domain name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -104,7 +104,7 @@ namespace Pulumiverse.Exoscale
     public sealed class DomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The DNS domain name.
+        /// ❗ The DNS domain name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -130,7 +130,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? ExpiresOn { get; set; }
 
         /// <summary>
-        /// The DNS domain name.
+        /// ❗ The DNS domain name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

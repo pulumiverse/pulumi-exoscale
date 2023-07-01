@@ -27,7 +27,7 @@ namespace Pulumiverse.Exoscale
     public partial class ElasticIP : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
+        /// ❗ The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
         /// </summary>
         [Output("addressFamily")]
         public Output<string> AddressFamily { get; private set; } = null!;
@@ -69,7 +69,7 @@ namespace Pulumiverse.Exoscale
         public Output<string?> ReverseDns { get; private set; } = null!;
 
         /// <summary>
-        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumiverse.Exoscale
     public sealed class ElasticIPArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
+        /// ❗ The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
         /// </summary>
         [Input("addressFamily")]
         public Input<string>? AddressFamily { get; set; }
@@ -158,7 +158,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? ReverseDns { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -172,7 +172,7 @@ namespace Pulumiverse.Exoscale
     public sealed class ElasticIPState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
+        /// ❗ The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
         /// </summary>
         [Input("addressFamily")]
         public Input<string>? AddressFamily { get; set; }
@@ -220,7 +220,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? ReverseDns { get; set; }
 
         /// <summary>
-        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

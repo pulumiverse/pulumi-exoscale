@@ -28,9 +28,9 @@ type SSHKey struct {
 
 	// The SSH key unique identifier.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
-	// The SSH key name.
+	// ❗ The SSH key name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The SSH *public* key that will be authorized in compute instances.
+	// ❗ The SSH *public* key that will be authorized in compute instances.
 	PublicKey pulumi.StringOutput `pulumi:"publicKey"`
 }
 
@@ -66,18 +66,18 @@ func GetSSHKey(ctx *pulumi.Context,
 type sshkeyState struct {
 	// The SSH key unique identifier.
 	Fingerprint *string `pulumi:"fingerprint"`
-	// The SSH key name.
+	// ❗ The SSH key name.
 	Name *string `pulumi:"name"`
-	// The SSH *public* key that will be authorized in compute instances.
+	// ❗ The SSH *public* key that will be authorized in compute instances.
 	PublicKey *string `pulumi:"publicKey"`
 }
 
 type SSHKeyState struct {
 	// The SSH key unique identifier.
 	Fingerprint pulumi.StringPtrInput
-	// The SSH key name.
+	// ❗ The SSH key name.
 	Name pulumi.StringPtrInput
-	// The SSH *public* key that will be authorized in compute instances.
+	// ❗ The SSH *public* key that will be authorized in compute instances.
 	PublicKey pulumi.StringPtrInput
 }
 
@@ -86,17 +86,17 @@ func (SSHKeyState) ElementType() reflect.Type {
 }
 
 type sshkeyArgs struct {
-	// The SSH key name.
+	// ❗ The SSH key name.
 	Name *string `pulumi:"name"`
-	// The SSH *public* key that will be authorized in compute instances.
+	// ❗ The SSH *public* key that will be authorized in compute instances.
 	PublicKey *string `pulumi:"publicKey"`
 }
 
 // The set of arguments for constructing a SSHKey resource.
 type SSHKeyArgs struct {
-	// The SSH key name.
+	// ❗ The SSH key name.
 	Name pulumi.StringPtrInput
-	// The SSH *public* key that will be authorized in compute instances.
+	// ❗ The SSH *public* key that will be authorized in compute instances.
 	PublicKey pulumi.StringPtrInput
 }
 
@@ -192,12 +192,12 @@ func (o SSHKeyOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *SSHKey) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
-// The SSH key name.
+// ❗ The SSH key name.
 func (o SSHKeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SSHKey) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The SSH *public* key that will be authorized in compute instances.
+// ❗ The SSH *public* key that will be authorized in compute instances.
 func (o SSHKeyOutput) PublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *SSHKey) pulumi.StringOutput { return v.PublicKey }).(pulumi.StringOutput)
 }

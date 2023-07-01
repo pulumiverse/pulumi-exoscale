@@ -73,8 +73,8 @@ def get_affinity(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('exoscale:index/getAffinity:getAffinity', __args__, opts=opts, typ=GetAffinityResult).value
 
     return AwaitableGetAffinityResult(
-        id=__ret__.id,
-        name=__ret__.name)
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_affinity)

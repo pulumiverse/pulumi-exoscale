@@ -82,9 +82,9 @@ def get_instance_pool_list(zone: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('exoscale:index/getInstancePoolList:getInstancePoolList', __args__, opts=opts, typ=GetInstancePoolListResult).value
 
     return AwaitableGetInstancePoolListResult(
-        id=__ret__.id,
-        pools=__ret__.pools,
-        zone=__ret__.zone)
+        id=pulumi.get(__ret__, 'id'),
+        pools=pulumi.get(__ret__, 'pools'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_instance_pool_list)

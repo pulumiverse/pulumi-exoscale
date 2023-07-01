@@ -20,21 +20,19 @@ namespace Pulumiverse.Exoscale
         public Output<string> Key { get; private set; } = null!;
 
         /// <summary>
-        /// The IAM access key name.
+        /// ❗ The IAM access key name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A list of API operations to restrict the key to.
+        /// ❗ A list of API operations to restrict the key to.
         /// </summary>
         [Output("operations")]
         public Output<ImmutableArray<string>> Operations { get; private set; } = null!;
 
         /// <summary>
-        /// A list of API
-        /// [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to
-        /// restrict the key to (`&lt;domain&gt;/&lt;type&gt;:&lt;name&gt;`).
+        /// ❗ A list of API [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to restrict the key to (`&lt;domain&gt;/&lt;type&gt;:&lt;name&gt;`).
         /// </summary>
         [Output("resources")]
         public Output<ImmutableArray<string>> Resources { get; private set; } = null!;
@@ -46,7 +44,7 @@ namespace Pulumiverse.Exoscale
         public Output<string> Secret { get; private set; } = null!;
 
         /// <summary>
-        /// A list of tags to restrict the key to.
+        /// ❗ A list of tags to restrict the key to.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -107,7 +105,7 @@ namespace Pulumiverse.Exoscale
     public sealed class IAMAccessKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IAM access key name.
+        /// ❗ The IAM access key name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -116,7 +114,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _operations;
 
         /// <summary>
-        /// A list of API operations to restrict the key to.
+        /// ❗ A list of API operations to restrict the key to.
         /// </summary>
         public InputList<string> Operations
         {
@@ -128,9 +126,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _resources;
 
         /// <summary>
-        /// A list of API
-        /// [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to
-        /// restrict the key to (`&lt;domain&gt;/&lt;type&gt;:&lt;name&gt;`).
+        /// ❗ A list of API [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to restrict the key to (`&lt;domain&gt;/&lt;type&gt;:&lt;name&gt;`).
         /// </summary>
         public InputList<string> Resources
         {
@@ -142,7 +138,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A list of tags to restrict the key to.
+        /// ❗ A list of tags to restrict the key to.
         /// </summary>
         public InputList<string> Tags
         {
@@ -175,7 +171,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The IAM access key name.
+        /// ❗ The IAM access key name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -184,7 +180,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _operations;
 
         /// <summary>
-        /// A list of API operations to restrict the key to.
+        /// ❗ A list of API operations to restrict the key to.
         /// </summary>
         public InputList<string> Operations
         {
@@ -196,9 +192,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _resources;
 
         /// <summary>
-        /// A list of API
-        /// [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to
-        /// restrict the key to (`&lt;domain&gt;/&lt;type&gt;:&lt;name&gt;`).
+        /// ❗ A list of API [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to restrict the key to (`&lt;domain&gt;/&lt;type&gt;:&lt;name&gt;`).
         /// </summary>
         public InputList<string> Resources
         {
@@ -226,7 +220,7 @@ namespace Pulumiverse.Exoscale
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A list of tags to restrict the key to.
+        /// ❗ A list of tags to restrict the key to.
         /// </summary>
         public InputList<string> Tags
         {
