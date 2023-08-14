@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
 // ## Example Usage
@@ -56,6 +57,7 @@ import (
 //			myDatabaseDatabaseURI, err := exoscale.GetDatabaseURI(ctx, &exoscale.GetDatabaseURIArgs{
 //				Name: "my-database",
 //				Type: "pg",
+//				Zone: "ch-gva-2",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -67,7 +69,7 @@ import (
 //
 // ```
 func GetDatabaseURI(ctx *pulumi.Context, args *GetDatabaseURIArgs, opts ...pulumi.InvokeOption) (*GetDatabaseURIResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseURIResult
 	err := ctx.Invoke("exoscale:index/getDatabaseURI:getDatabaseURI", args, &rv, opts...)
 	if err != nil {

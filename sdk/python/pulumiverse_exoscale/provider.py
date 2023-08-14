@@ -19,7 +19,6 @@ class ProviderArgs:
                  delay: Optional[pulumi.Input[int]] = None,
                  dns_endpoint: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
-                 gzip_user_data: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -31,7 +30,6 @@ class ProviderArgs:
         :param pulumi.Input[str] compute_endpoint: Exoscale CloudStack API endpoint (by default: https://api.exoscale.com/v1)
         :param pulumi.Input[str] config: CloudStack ini configuration filename (by default: cloudstack.ini)
         :param pulumi.Input[str] dns_endpoint: Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
-        :param pulumi.Input[bool] gzip_user_data: Defines if the user-data of compute instances should be gzipped (by default: true)
         :param pulumi.Input[str] key: Exoscale API key
         :param pulumi.Input[str] region: CloudStack ini configuration section name (by default: cloudstack)
         :param pulumi.Input[str] secret: Exoscale API secret
@@ -50,8 +48,6 @@ class ProviderArgs:
             pulumi.set(__self__, "dns_endpoint", dns_endpoint)
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
-        if gzip_user_data is not None:
-            pulumi.set(__self__, "gzip_user_data", gzip_user_data)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if profile is not None:
@@ -127,18 +123,6 @@ class ProviderArgs:
     @environment.setter
     def environment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "environment", value)
-
-    @property
-    @pulumi.getter(name="gzipUserData")
-    def gzip_user_data(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Defines if the user-data of compute instances should be gzipped (by default: true)
-        """
-        return pulumi.get(self, "gzip_user_data")
-
-    @gzip_user_data.setter
-    def gzip_user_data(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "gzip_user_data", value)
 
     @property
     @pulumi.getter
@@ -223,7 +207,6 @@ class Provider(pulumi.ProviderResource):
                  delay: Optional[pulumi.Input[int]] = None,
                  dns_endpoint: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
-                 gzip_user_data: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -242,7 +225,6 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] compute_endpoint: Exoscale CloudStack API endpoint (by default: https://api.exoscale.com/v1)
         :param pulumi.Input[str] config: CloudStack ini configuration filename (by default: cloudstack.ini)
         :param pulumi.Input[str] dns_endpoint: Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
-        :param pulumi.Input[bool] gzip_user_data: Defines if the user-data of compute instances should be gzipped (by default: true)
         :param pulumi.Input[str] key: Exoscale API key
         :param pulumi.Input[str] region: CloudStack ini configuration section name (by default: cloudstack)
         :param pulumi.Input[str] secret: Exoscale API secret
@@ -280,7 +262,6 @@ class Provider(pulumi.ProviderResource):
                  delay: Optional[pulumi.Input[int]] = None,
                  dns_endpoint: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
-                 gzip_user_data: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -304,7 +285,6 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["delay"] = pulumi.Output.from_input(delay).apply(pulumi.runtime.to_json) if delay is not None else None
             __props__.__dict__["dns_endpoint"] = dns_endpoint
             __props__.__dict__["environment"] = environment
-            __props__.__dict__["gzip_user_data"] = pulumi.Output.from_input(gzip_user_data).apply(pulumi.runtime.to_json) if gzip_user_data is not None else None
             __props__.__dict__["key"] = key
             if profile is not None and not opts.urn:
                 warnings.warn("""Use region instead""", DeprecationWarning)

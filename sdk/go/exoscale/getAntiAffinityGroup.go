@@ -8,10 +8,11 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
 func LookupAntiAffinityGroup(ctx *pulumi.Context, args *LookupAntiAffinityGroupArgs, opts ...pulumi.InvokeOption) (*LookupAntiAffinityGroupResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAntiAffinityGroupResult
 	err := ctx.Invoke("exoscale:index/getAntiAffinityGroup:getAntiAffinityGroup", args, &rv, opts...)
 	if err != nil {

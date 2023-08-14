@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
 // !> **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use the SecurityGroupRule instead (or refer to the ad-hoc migration guide).
@@ -31,7 +32,7 @@ func NewSecurityGroupRules(ctx *pulumi.Context,
 		args = &SecurityGroupRulesArgs{}
 	}
 
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SecurityGroupRules
 	err := ctx.RegisterResource("exoscale:index/securityGroupRules:SecurityGroupRules", name, args, &resource, opts...)
 	if err != nil {

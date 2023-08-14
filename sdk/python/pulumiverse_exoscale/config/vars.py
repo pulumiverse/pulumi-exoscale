@@ -45,13 +45,6 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('environment')
 
     @property
-    def gzip_user_data(self) -> Optional[bool]:
-        """
-        Defines if the user-data of compute instances should be gzipped (by default: true)
-        """
-        return __config__.get_bool('gzipUserData')
-
-    @property
     def key(self) -> Optional[str]:
         """
         Exoscale API key

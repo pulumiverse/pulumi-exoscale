@@ -22,7 +22,7 @@ class GetSKSNodepoolListResult:
     """
     A collection of values returned by getSKSNodepoolList.
     """
-    def __init__(__self__, cluster_id=None, created_at=None, deploy_target_id=None, description=None, disk_size=None, id=None, instance_pool_id=None, instance_prefix=None, instance_type=None, labels=None, name=None, nodepools=None, size=None, state=None, taints=None, template_id=None, version=None, zone=None):
+    def __init__(__self__, cluster_id=None, created_at=None, deploy_target_id=None, description=None, disk_size=None, id=None, instance_pool_id=None, instance_prefix=None, instance_type=None, labels=None, name=None, nodepools=None, size=None, state=None, storage_lvm=None, taints=None, template_id=None, version=None, zone=None):
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -65,6 +65,9 @@ class GetSKSNodepoolListResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if storage_lvm and not isinstance(storage_lvm, bool):
+            raise TypeError("Expected argument 'storage_lvm' to be a bool")
+        pulumi.set(__self__, "storage_lvm", storage_lvm)
         if taints and not isinstance(taints, dict):
             raise TypeError("Expected argument 'taints' to be a dict")
         pulumi.set(__self__, "taints", taints)
@@ -188,6 +191,14 @@ class GetSKSNodepoolListResult:
         return pulumi.get(self, "state")
 
     @property
+    @pulumi.getter(name="storageLvm")
+    def storage_lvm(self) -> Optional[bool]:
+        """
+        Match against this bool
+        """
+        return pulumi.get(self, "storage_lvm")
+
+    @property
     @pulumi.getter
     def taints(self) -> Optional[Mapping[str, str]]:
         """
@@ -240,6 +251,7 @@ class AwaitableGetSKSNodepoolListResult(GetSKSNodepoolListResult):
             nodepools=self.nodepools,
             size=self.size,
             state=self.state,
+            storage_lvm=self.storage_lvm,
             taints=self.taints,
             template_id=self.template_id,
             version=self.version,
@@ -259,6 +271,7 @@ def get_sks_nodepool_list(cluster_id: Optional[str] = None,
                           name: Optional[str] = None,
                           size: Optional[int] = None,
                           state: Optional[str] = None,
+                          storage_lvm: Optional[bool] = None,
                           taints: Optional[Mapping[str, str]] = None,
                           template_id: Optional[str] = None,
                           version: Optional[str] = None,
@@ -280,6 +293,7 @@ def get_sks_nodepool_list(cluster_id: Optional[str] = None,
     :param str name: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
     :param int size: Match against this int
     :param str state: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param bool storage_lvm: Match against this bool
     :param Mapping[str, str] taints: Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
     :param str template_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
     :param str version: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
@@ -299,6 +313,7 @@ def get_sks_nodepool_list(cluster_id: Optional[str] = None,
     __args__['name'] = name
     __args__['size'] = size
     __args__['state'] = state
+    __args__['storageLvm'] = storage_lvm
     __args__['taints'] = taints
     __args__['templateId'] = template_id
     __args__['version'] = version
@@ -321,6 +336,7 @@ def get_sks_nodepool_list(cluster_id: Optional[str] = None,
         nodepools=pulumi.get(__ret__, 'nodepools'),
         size=pulumi.get(__ret__, 'size'),
         state=pulumi.get(__ret__, 'state'),
+        storage_lvm=pulumi.get(__ret__, 'storage_lvm'),
         taints=pulumi.get(__ret__, 'taints'),
         template_id=pulumi.get(__ret__, 'template_id'),
         version=pulumi.get(__ret__, 'version'),
@@ -341,6 +357,7 @@ def get_sks_nodepool_list_output(cluster_id: Optional[pulumi.Input[Optional[str]
                                  name: Optional[pulumi.Input[Optional[str]]] = None,
                                  size: Optional[pulumi.Input[Optional[int]]] = None,
                                  state: Optional[pulumi.Input[Optional[str]]] = None,
+                                 storage_lvm: Optional[pulumi.Input[Optional[bool]]] = None,
                                  taints: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                  template_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  version: Optional[pulumi.Input[Optional[str]]] = None,
@@ -362,6 +379,7 @@ def get_sks_nodepool_list_output(cluster_id: Optional[pulumi.Input[Optional[str]
     :param str name: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
     :param int size: Match against this int
     :param str state: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param bool storage_lvm: Match against this bool
     :param Mapping[str, str] taints: Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
     :param str template_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
     :param str version: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.

@@ -126,7 +126,7 @@ export class ComputeInstance extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).
+     * [cloud-init](https://cloudinit.readthedocs.io/) configuration.
      */
     public readonly userData!: pulumi.Output<string | undefined>;
     /**
@@ -289,7 +289,7 @@ export interface ComputeInstanceState {
      */
     type?: pulumi.Input<string>;
     /**
-     * [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).
+     * [cloud-init](https://cloudinit.readthedocs.io/) configuration.
      */
     userData?: pulumi.Input<string>;
     /**
@@ -363,7 +363,7 @@ export interface ComputeInstanceArgs {
      */
     type: pulumi.Input<string>;
     /**
-     * [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).
+     * [cloud-init](https://cloudinit.readthedocs.io/) configuration.
      */
     userData?: pulumi.Input<string>;
     /**

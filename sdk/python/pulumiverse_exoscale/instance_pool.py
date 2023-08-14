@@ -57,7 +57,7 @@ class InstancePoolArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] network_ids: A list of exoscale*private*network (IDs).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of exoscale*security*group (IDs).
         :param pulumi.Input[str] service_offering: The managed instances type. Please use the `instance_type` argument instead.
-        :param pulumi.Input[str] user_data: [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
+        :param pulumi.Input[str] user_data: [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machines: The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
         """
         pulumi.set(__self__, "size", size)
@@ -338,7 +338,7 @@ class InstancePoolArgs:
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
-        [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
+        [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances.
         """
         return pulumi.get(self, "user_data")
 
@@ -405,7 +405,7 @@ class _InstancePoolState:
         :param pulumi.Input[str] service_offering: The managed instances type. Please use the `instance_type` argument instead.
         :param pulumi.Input[int] size: The number of managed instances.
         :param pulumi.Input[str] template_id: The exoscale*compute*template (ID) to use when creating the managed instances.
-        :param pulumi.Input[str] user_data: [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
+        :param pulumi.Input[str] user_data: [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machines: The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
@@ -678,7 +678,7 @@ class _InstancePoolState:
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
-        [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
+        [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances.
         """
         return pulumi.get(self, "user_data")
 
@@ -773,7 +773,7 @@ class InstancePool(pulumi.CustomResource):
         :param pulumi.Input[str] service_offering: The managed instances type. Please use the `instance_type` argument instead.
         :param pulumi.Input[int] size: The number of managed instances.
         :param pulumi.Input[str] template_id: The exoscale*compute*template (ID) to use when creating the managed instances.
-        :param pulumi.Input[str] user_data: [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
+        :param pulumi.Input[str] user_data: [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machines: The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
@@ -929,7 +929,7 @@ class InstancePool(pulumi.CustomResource):
         :param pulumi.Input[str] service_offering: The managed instances type. Please use the `instance_type` argument instead.
         :param pulumi.Input[int] size: The number of managed instances.
         :param pulumi.Input[str] template_id: The exoscale*compute*template (ID) to use when creating the managed instances.
-        :param pulumi.Input[str] user_data: [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
+        :param pulumi.Input[str] user_data: [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machines: The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
@@ -1108,7 +1108,7 @@ class InstancePool(pulumi.CustomResource):
     @pulumi.getter(name="userData")
     def user_data(self) -> pulumi.Output[Optional[str]]:
         """
-        [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
+        [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances.
         """
         return pulumi.get(self, "user_data")
 

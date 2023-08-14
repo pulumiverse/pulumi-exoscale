@@ -126,7 +126,7 @@ export class Compute extends pulumi.CustomResource {
      */
     public readonly templateId!: pulumi.Output<string>;
     /**
-     * cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
+     * cloud-init configuration.
      */
     public readonly userData!: pulumi.Output<string | undefined>;
     /**
@@ -320,7 +320,7 @@ export interface ComputeState {
      */
     templateId?: pulumi.Input<string>;
     /**
-     * cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
+     * cloud-init configuration.
      */
     userData?: pulumi.Input<string>;
     /**
@@ -412,7 +412,7 @@ export interface ComputeArgs {
      */
     templateId?: pulumi.Input<string>;
     /**
-     * cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
+     * cloud-init configuration.
      */
     userData?: pulumi.Input<string>;
     /**

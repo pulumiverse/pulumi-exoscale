@@ -586,6 +586,10 @@ export interface GetSKSNodepoolListNodepool {
      */
     state: string;
     /**
+     * Match against this bool
+     */
+    storageLvm?: boolean;
+    /**
      * Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
      */
     taints?: {[key: string]: string};

@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
 // !> **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use ComputeInstance instead.
@@ -63,7 +64,7 @@ type Compute struct {
 	Template pulumi.StringOutput `pulumi:"template"`
 	// ❗ The compute instance template (ID). Usage of the `getComputeTemplate` data source is recommended.
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
-	// cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
+	// cloud-init configuration.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// was the cloud-init configuration base64 encoded
 	UserDataBase64 pulumi.BoolOutput `pulumi:"userDataBase64"`
@@ -92,7 +93,7 @@ func NewCompute(ctx *pulumi.Context,
 		"password",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Compute
 	err := ctx.RegisterResource("exoscale:index/compute:Compute", name, args, &resource, opts...)
 	if err != nil {
@@ -161,7 +162,7 @@ type computeState struct {
 	Template *string `pulumi:"template"`
 	// ❗ The compute instance template (ID). Usage of the `getComputeTemplate` data source is recommended.
 	TemplateId *string `pulumi:"templateId"`
-	// cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
+	// cloud-init configuration.
 	UserData *string `pulumi:"userData"`
 	// was the cloud-init configuration base64 encoded
 	UserDataBase64 *bool `pulumi:"userDataBase64"`
@@ -220,7 +221,7 @@ type ComputeState struct {
 	Template pulumi.StringPtrInput
 	// ❗ The compute instance template (ID). Usage of the `getComputeTemplate` data source is recommended.
 	TemplateId pulumi.StringPtrInput
-	// cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
+	// cloud-init configuration.
 	UserData pulumi.StringPtrInput
 	// was the cloud-init configuration base64 encoded
 	UserDataBase64 pulumi.BoolPtrInput
@@ -271,7 +272,7 @@ type computeArgs struct {
 	Template *string `pulumi:"template"`
 	// ❗ The compute instance template (ID). Usage of the `getComputeTemplate` data source is recommended.
 	TemplateId *string `pulumi:"templateId"`
-	// cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
+	// cloud-init configuration.
 	UserData *string `pulumi:"userData"`
 	// ❗ The Exoscale Zone name.
 	Zone string `pulumi:"zone"`
@@ -313,7 +314,7 @@ type ComputeArgs struct {
 	Template pulumi.StringPtrInput
 	// ❗ The compute instance template (ID). Usage of the `getComputeTemplate` data source is recommended.
 	TemplateId pulumi.StringPtrInput
-	// cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
+	// cloud-init configuration.
 	UserData pulumi.StringPtrInput
 	// ❗ The Exoscale Zone name.
 	Zone pulumi.StringInput
@@ -521,7 +522,7 @@ func (o ComputeOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Compute) pulumi.StringOutput { return v.TemplateId }).(pulumi.StringOutput)
 }
 
-// cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
+// cloud-init configuration.
 func (o ComputeOutput) UserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Compute) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
 }

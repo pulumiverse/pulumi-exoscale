@@ -2597,6 +2597,7 @@ class GetSKSNodepoolListNodepoolResult(dict):
                  private_network_ids: Optional[Sequence[str]] = None,
                  security_group_ids: Optional[Sequence[str]] = None,
                  size: Optional[int] = None,
+                 storage_lvm: Optional[bool] = None,
                  taints: Optional[Mapping[str, str]] = None):
         """
         :param str cluster_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
@@ -2615,6 +2616,7 @@ class GetSKSNodepoolListNodepoolResult(dict):
         :param Mapping[str, str] labels: Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
         :param str name: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
         :param int size: Match against this int
+        :param bool storage_lvm: Match against this bool
         :param Mapping[str, str] taints: Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -2648,6 +2650,8 @@ class GetSKSNodepoolListNodepoolResult(dict):
             pulumi.set(__self__, "security_group_ids", security_group_ids)
         if size is not None:
             pulumi.set(__self__, "size", size)
+        if storage_lvm is not None:
+            pulumi.set(__self__, "storage_lvm", storage_lvm)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
 
@@ -2793,6 +2797,14 @@ class GetSKSNodepoolListNodepoolResult(dict):
         Match against this int
         """
         return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="storageLvm")
+    def storage_lvm(self) -> Optional[bool]:
+        """
+        Match against this bool
+        """
+        return pulumi.get(self, "storage_lvm")
 
     @property
     @pulumi.getter

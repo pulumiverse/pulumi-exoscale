@@ -151,7 +151,7 @@ namespace Pulumiverse.Exoscale
         public Output<string> TemplateId { get; private set; } = null!;
 
         /// <summary>
-        /// cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
+        /// cloud-init configuration.
         /// </summary>
         [Output("userData")]
         public Output<string?> UserData { get; private set; } = null!;
@@ -358,7 +358,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? TemplateId { get; set; }
 
         /// <summary>
-        /// cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
+        /// cloud-init configuration.
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
@@ -550,7 +550,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? TemplateId { get; set; }
 
         /// <summary>
-        /// cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).
+        /// cloud-init configuration.
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }

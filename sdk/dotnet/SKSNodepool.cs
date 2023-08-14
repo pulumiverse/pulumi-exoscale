@@ -114,6 +114,12 @@ namespace Pulumiverse.Exoscale
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
+        /// Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+        /// </summary>
+        [Output("storageLvm")]
+        public Output<bool?> StorageLvm { get; private set; } = null!;
+
+        /// <summary>
         /// A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`&lt;value&gt;:&lt;effect&gt;`).
         /// </summary>
         [Output("taints")]
@@ -277,6 +283,12 @@ namespace Pulumiverse.Exoscale
         [Input("size", required: true)]
         public Input<int> Size { get; set; } = null!;
 
+        /// <summary>
+        /// Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+        /// </summary>
+        [Input("storageLvm")]
+        public Input<bool>? StorageLvm { get; set; }
+
         [Input("taints")]
         private InputMap<string>? _taints;
 
@@ -413,6 +425,12 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+        /// </summary>
+        [Input("storageLvm")]
+        public Input<bool>? StorageLvm { get; set; }
 
         [Input("taints")]
         private InputMap<string>? _taints;

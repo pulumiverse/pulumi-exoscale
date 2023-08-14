@@ -6,7 +6,10 @@ package config
 import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // Exoscale CloudStack API endpoint (by default: https://api.exoscale.com/v1)
 func GetComputeEndpoint(ctx *pulumi.Context) string {
@@ -29,11 +32,6 @@ func GetDnsEndpoint(ctx *pulumi.Context) string {
 }
 func GetEnvironment(ctx *pulumi.Context) string {
 	return config.Get(ctx, "exoscale:environment")
-}
-
-// Defines if the user-data of compute instances should be gzipped (by default: true)
-func GetGzipUserData(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "exoscale:gzipUserData")
 }
 
 // Exoscale API key

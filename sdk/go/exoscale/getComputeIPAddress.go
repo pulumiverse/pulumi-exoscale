@@ -8,11 +8,12 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
 // !> **WARNING:** This data source is **DEPRECATED** and will be removed in the next major version. Please use ElasticIP instead.
 func GetComputeIPAddress(ctx *pulumi.Context, args *GetComputeIPAddressArgs, opts ...pulumi.InvokeOption) (*GetComputeIPAddressResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetComputeIPAddressResult
 	err := ctx.Invoke("exoscale:index/getComputeIPAddress:getComputeIPAddress", args, &rv, opts...)
 	if err != nil {

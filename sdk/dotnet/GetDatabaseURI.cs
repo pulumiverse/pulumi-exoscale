@@ -55,6 +55,7 @@ namespace Pulumiverse.Exoscale
         ///     {
         ///         Name = "my-database",
         ///         Type = "pg",
+        ///         Zone = "ch-gva-2",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -112,6 +113,7 @@ namespace Pulumiverse.Exoscale
         ///     {
         ///         Name = "my-database",
         ///         Type = "pg",
+        ///         Zone = "ch-gva-2",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

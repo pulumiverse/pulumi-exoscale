@@ -133,6 +133,12 @@ namespace Pulumiverse.Exoscale
         [Input("state")]
         public string? State { get; set; }
 
+        /// <summary>
+        /// Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+        /// </summary>
+        [Input("storageLvm")]
+        public bool? StorageLvm { get; set; }
+
         [Input("taints")]
         private Dictionary<string, string>? _taints;
 
@@ -279,6 +285,12 @@ namespace Pulumiverse.Exoscale
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        /// <summary>
+        /// Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+        /// </summary>
+        [Input("storageLvm")]
+        public Input<bool>? StorageLvm { get; set; }
+
         [Input("taints")]
         private InputMap<string>? _taints;
 
@@ -372,6 +384,10 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly string State;
         /// <summary>
+        /// Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+        /// </summary>
+        public readonly bool? StorageLvm;
+        /// <summary>
         /// A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`&lt;value&gt;:&lt;effect&gt;`).
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Taints;
@@ -419,6 +435,8 @@ namespace Pulumiverse.Exoscale
 
             string state,
 
+            bool? storageLvm,
+
             ImmutableDictionary<string, string>? taints,
 
             string templateId,
@@ -443,6 +461,7 @@ namespace Pulumiverse.Exoscale
             SecurityGroupIds = securityGroupIds;
             Size = size;
             State = state;
+            StorageLvm = storageLvm;
             Taints = taints;
             TemplateId = templateId;
             Version = version;

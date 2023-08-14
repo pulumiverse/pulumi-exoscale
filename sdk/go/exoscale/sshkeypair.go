@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
 type SSHKeypair struct {
@@ -34,7 +35,7 @@ func NewSSHKeypair(ctx *pulumi.Context,
 		"privateKey",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SSHKeypair
 	err := ctx.RegisterResource("exoscale:index/sSHKeypair:SSHKeypair", name, args, &resource, opts...)
 	if err != nil {

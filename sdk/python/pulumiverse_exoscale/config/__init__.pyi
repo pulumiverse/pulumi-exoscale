@@ -28,11 +28,6 @@ Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
 
 environment: Optional[str]
 
-gzipUserData: Optional[bool]
-"""
-Defines if the user-data of compute instances should be gzipped (by default: true)
-"""
-
 key: Optional[str]
 """
 Exoscale API key

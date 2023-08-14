@@ -75,7 +75,6 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["delay"] = pulumi.output(args ? args.delay : undefined).apply(JSON.stringify);
             resourceInputs["dnsEndpoint"] = args ? args.dnsEndpoint : undefined;
             resourceInputs["environment"] = args ? args.environment : undefined;
-            resourceInputs["gzipUserData"] = pulumi.output(args ? args.gzipUserData : undefined).apply(JSON.stringify);
             resourceInputs["key"] = args ? args.key : undefined;
             resourceInputs["profile"] = args ? args.profile : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
@@ -111,10 +110,6 @@ export interface ProviderArgs {
      */
     dnsEndpoint?: pulumi.Input<string>;
     environment?: pulumi.Input<string>;
-    /**
-     * Defines if the user-data of compute instances should be gzipped (by default: true)
-     */
-    gzipUserData?: pulumi.Input<boolean>;
     /**
      * Exoscale API key
      */

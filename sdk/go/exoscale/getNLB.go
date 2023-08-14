@@ -8,10 +8,11 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
 func LookupNLB(ctx *pulumi.Context, args *LookupNLBArgs, opts ...pulumi.InvokeOption) (*LookupNLBResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNLBResult
 	err := ctx.Invoke("exoscale:index/getNLB:getNLB", args, &rv, opts...)
 	if err != nil {

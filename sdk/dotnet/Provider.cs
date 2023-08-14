@@ -122,12 +122,6 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Environment { get; set; }
 
         /// <summary>
-        /// Defines if the user-data of compute instances should be gzipped (by default: true)
-        /// </summary>
-        [Input("gzipUserData", json: true)]
-        public Input<bool>? GzipUserData { get; set; }
-
-        /// <summary>
         /// Exoscale API key
         /// </summary>
         [Input("key")]
