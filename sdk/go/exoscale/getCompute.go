@@ -8,11 +8,12 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
 // !> **WARNING:** This data source is **DEPRECATED** and will be removed in the next major version. Please use ComputeInstance instead.
 func LookupCompute(ctx *pulumi.Context, args *LookupComputeArgs, opts ...pulumi.InvokeOption) (*LookupComputeResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupComputeResult
 	err := ctx.Invoke("exoscale:index/getCompute:getCompute", args, &rv, opts...)
 	if err != nil {

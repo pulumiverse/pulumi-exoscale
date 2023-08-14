@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
 // ## Import
@@ -64,7 +65,7 @@ type InstancePool struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// The exoscale*compute*template (ID) to use when creating the managed instances.
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
-	// [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
+	// [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
 	//
@@ -90,7 +91,7 @@ func NewInstancePool(ctx *pulumi.Context,
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InstancePool
 	err := ctx.RegisterResource("exoscale:index/instancePool:InstancePool", name, args, &resource, opts...)
 	if err != nil {
@@ -150,7 +151,7 @@ type instancePoolState struct {
 	State *string `pulumi:"state"`
 	// The exoscale*compute*template (ID) to use when creating the managed instances.
 	TemplateId *string `pulumi:"templateId"`
-	// [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
+	// [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances.
 	UserData *string `pulumi:"userData"`
 	// The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
 	//
@@ -198,7 +199,7 @@ type InstancePoolState struct {
 	State pulumi.StringPtrInput
 	// The exoscale*compute*template (ID) to use when creating the managed instances.
 	TemplateId pulumi.StringPtrInput
-	// [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
+	// [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances.
 	UserData pulumi.StringPtrInput
 	// The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
 	//
@@ -250,7 +251,7 @@ type instancePoolArgs struct {
 	State *string `pulumi:"state"`
 	// The exoscale*compute*template (ID) to use when creating the managed instances.
 	TemplateId string `pulumi:"templateId"`
-	// [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
+	// [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances.
 	UserData *string `pulumi:"userData"`
 	// The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
 	//
@@ -299,7 +300,7 @@ type InstancePoolArgs struct {
 	State pulumi.StringPtrInput
 	// The exoscale*compute*template (ID) to use when creating the managed instances.
 	TemplateId pulumi.StringInput
-	// [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
+	// [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances.
 	UserData pulumi.StringPtrInput
 	// The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
 	//
@@ -487,7 +488,7 @@ func (o InstancePoolOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstancePool) pulumi.StringOutput { return v.TemplateId }).(pulumi.StringOutput)
 }
 
-// [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
+// [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances.
 func (o InstancePoolOutput) UserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstancePool) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
 }

@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
 type SKSKubeconfig struct {
@@ -58,7 +59,7 @@ func NewSKSKubeconfig(ctx *pulumi.Context,
 		"kubeconfig",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SKSKubeconfig
 	err := ctx.RegisterResource("exoscale:index/sKSKubeconfig:SKSKubeconfig", name, args, &resource, opts...)
 	if err != nil {

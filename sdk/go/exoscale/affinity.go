@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
 // **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use AntiAffinityGroup instead.
@@ -31,7 +32,7 @@ func NewAffinity(ctx *pulumi.Context,
 		args = &AffinityArgs{}
 	}
 
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Affinity
 	err := ctx.RegisterResource("exoscale:index/affinity:Affinity", name, args, &resource, opts...)
 	if err != nil {

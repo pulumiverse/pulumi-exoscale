@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
 // ## Import
@@ -56,6 +57,8 @@ type SKSNodepool struct {
 	Size             pulumi.IntOutput         `pulumi:"size"`
 	// The current pool state.
 	State pulumi.StringOutput `pulumi:"state"`
+	// Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+	StorageLvm pulumi.BoolPtrOutput `pulumi:"storageLvm"`
 	// A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
 	Taints pulumi.StringMapOutput `pulumi:"taints"`
 	// The managed instances template ID.
@@ -85,7 +88,7 @@ func NewSKSNodepool(ctx *pulumi.Context,
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SKSNodepool
 	err := ctx.RegisterResource("exoscale:index/sKSNodepool:SKSNodepool", name, args, &resource, opts...)
 	if err != nil {
@@ -137,6 +140,8 @@ type sksnodepoolState struct {
 	Size             *int     `pulumi:"size"`
 	// The current pool state.
 	State *string `pulumi:"state"`
+	// Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+	StorageLvm *bool `pulumi:"storageLvm"`
 	// A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
 	Taints map[string]string `pulumi:"taints"`
 	// The managed instances template ID.
@@ -177,6 +182,8 @@ type SKSNodepoolState struct {
 	Size             pulumi.IntPtrInput
 	// The current pool state.
 	State pulumi.StringPtrInput
+	// Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+	StorageLvm pulumi.BoolPtrInput
 	// A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
 	Taints pulumi.StringMapInput
 	// The managed instances template ID.
@@ -215,6 +222,8 @@ type sksnodepoolArgs struct {
 	// A list of exoscale*security*group (IDs) to be attached to the managed instances.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	Size             int      `pulumi:"size"`
+	// Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+	StorageLvm *bool `pulumi:"storageLvm"`
 	// A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
 	Taints map[string]string `pulumi:"taints"`
 	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
@@ -246,6 +255,8 @@ type SKSNodepoolArgs struct {
 	// A list of exoscale*security*group (IDs) to be attached to the managed instances.
 	SecurityGroupIds pulumi.StringArrayInput
 	Size             pulumi.IntInput
+	// Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+	StorageLvm pulumi.BoolPtrInput
 	// A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
 	Taints pulumi.StringMapInput
 	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
@@ -411,6 +422,11 @@ func (o SKSNodepoolOutput) Size() pulumi.IntOutput {
 // The current pool state.
 func (o SKSNodepoolOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *SKSNodepool) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+func (o SKSNodepoolOutput) StorageLvm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SKSNodepool) pulumi.BoolPtrOutput { return v.StorageLvm }).(pulumi.BoolPtrOutput)
 }
 
 // A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).

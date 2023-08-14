@@ -27,6 +27,7 @@ class SKSNodepoolArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  private_network_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 storage_lvm: Optional[pulumi.Input[bool]] = None,
                  taints: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a SKSNodepool resource.
@@ -42,6 +43,7 @@ class SKSNodepoolArgs:
         :param pulumi.Input[str] name: The SKS node pool name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_network_ids: A list of exoscale*private*network (IDs) to be attached to the managed instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of exoscale*security*group (IDs) to be attached to the managed instances.
+        :param pulumi.Input[bool] storage_lvm: Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] taints: A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -66,6 +68,8 @@ class SKSNodepoolArgs:
             pulumi.set(__self__, "private_network_ids", private_network_ids)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if storage_lvm is not None:
+            pulumi.set(__self__, "storage_lvm", storage_lvm)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
 
@@ -223,6 +227,18 @@ class SKSNodepoolArgs:
         pulumi.set(self, "security_group_ids", value)
 
     @property
+    @pulumi.getter(name="storageLvm")
+    def storage_lvm(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+        """
+        return pulumi.get(self, "storage_lvm")
+
+    @storage_lvm.setter
+    def storage_lvm(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "storage_lvm", value)
+
+    @property
     @pulumi.getter
     def taints(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -253,6 +269,7 @@ class _SKSNodepoolState:
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  state: Optional[pulumi.Input[str]] = None,
+                 storage_lvm: Optional[pulumi.Input[bool]] = None,
                  taints: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -273,6 +290,7 @@ class _SKSNodepoolState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_network_ids: A list of exoscale*private*network (IDs) to be attached to the managed instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of exoscale*security*group (IDs) to be attached to the managed instances.
         :param pulumi.Input[str] state: The current pool state.
+        :param pulumi.Input[bool] storage_lvm: Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] taints: A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
         :param pulumi.Input[str] template_id: The managed instances template ID.
         :param pulumi.Input[str] version: The managed instances version.
@@ -308,6 +326,8 @@ class _SKSNodepoolState:
             pulumi.set(__self__, "size", size)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if storage_lvm is not None:
+            pulumi.set(__self__, "storage_lvm", storage_lvm)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
         if template_id is not None:
@@ -495,6 +515,18 @@ class _SKSNodepoolState:
         pulumi.set(self, "state", value)
 
     @property
+    @pulumi.getter(name="storageLvm")
+    def storage_lvm(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+        """
+        return pulumi.get(self, "storage_lvm")
+
+    @storage_lvm.setter
+    def storage_lvm(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "storage_lvm", value)
+
+    @property
     @pulumi.getter
     def taints(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -560,6 +592,7 @@ class SKSNodepool(pulumi.CustomResource):
                  private_network_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
+                 storage_lvm: Optional[pulumi.Input[bool]] = None,
                  taints: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -589,6 +622,7 @@ class SKSNodepool(pulumi.CustomResource):
         :param pulumi.Input[str] name: The SKS node pool name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_network_ids: A list of exoscale*private*network (IDs) to be attached to the managed instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of exoscale*security*group (IDs) to be attached to the managed instances.
+        :param pulumi.Input[bool] storage_lvm: Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] taints: A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
@@ -638,6 +672,7 @@ class SKSNodepool(pulumi.CustomResource):
                  private_network_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
+                 storage_lvm: Optional[pulumi.Input[bool]] = None,
                  taints: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -667,6 +702,7 @@ class SKSNodepool(pulumi.CustomResource):
             if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
             __props__.__dict__["size"] = size
+            __props__.__dict__["storage_lvm"] = storage_lvm
             __props__.__dict__["taints"] = taints
             if zone is None and not opts.urn:
                 raise TypeError("Missing required property 'zone'")
@@ -701,6 +737,7 @@ class SKSNodepool(pulumi.CustomResource):
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             size: Optional[pulumi.Input[int]] = None,
             state: Optional[pulumi.Input[str]] = None,
+            storage_lvm: Optional[pulumi.Input[bool]] = None,
             taints: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             template_id: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None,
@@ -726,6 +763,7 @@ class SKSNodepool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_network_ids: A list of exoscale*private*network (IDs) to be attached to the managed instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of exoscale*security*group (IDs) to be attached to the managed instances.
         :param pulumi.Input[str] state: The current pool state.
+        :param pulumi.Input[bool] storage_lvm: Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] taints: A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
         :param pulumi.Input[str] template_id: The managed instances template ID.
         :param pulumi.Input[str] version: The managed instances version.
@@ -750,6 +788,7 @@ class SKSNodepool(pulumi.CustomResource):
         __props__.__dict__["security_group_ids"] = security_group_ids
         __props__.__dict__["size"] = size
         __props__.__dict__["state"] = state
+        __props__.__dict__["storage_lvm"] = storage_lvm
         __props__.__dict__["taints"] = taints
         __props__.__dict__["template_id"] = template_id
         __props__.__dict__["version"] = version
@@ -872,6 +911,14 @@ class SKSNodepool(pulumi.CustomResource):
         The current pool state.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="storageLvm")
+    def storage_lvm(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+        """
+        return pulumi.get(self, "storage_lvm")
 
     @property
     @pulumi.getter

@@ -106,6 +106,12 @@ namespace Pulumiverse.Exoscale
         [Input("state")]
         public string? State { get; set; }
 
+        /// <summary>
+        /// Match against this bool
+        /// </summary>
+        [Input("storageLvm")]
+        public bool? StorageLvm { get; set; }
+
         [Input("taints")]
         private Dictionary<string, string>? _taints;
 
@@ -228,6 +234,12 @@ namespace Pulumiverse.Exoscale
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        /// <summary>
+        /// Match against this bool
+        /// </summary>
+        [Input("storageLvm")]
+        public Input<bool>? StorageLvm { get; set; }
+
         [Input("taints")]
         private InputMap<string>? _taints;
 
@@ -322,6 +334,10 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly string? State;
         /// <summary>
+        /// Match against this bool
+        /// </summary>
+        public readonly bool? StorageLvm;
+        /// <summary>
         /// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Taints;
@@ -368,6 +384,8 @@ namespace Pulumiverse.Exoscale
 
             string? state,
 
+            bool? storageLvm,
+
             ImmutableDictionary<string, string>? taints,
 
             string? templateId,
@@ -390,6 +408,7 @@ namespace Pulumiverse.Exoscale
             Nodepools = nodepools;
             Size = size;
             State = state;
+            StorageLvm = storageLvm;
             Taints = taints;
             TemplateId = templateId;
             Version = version;

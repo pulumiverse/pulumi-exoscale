@@ -8,7 +8,10 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type ComputeInstanceNetworkInterface struct {
 	// The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
@@ -4672,6 +4675,8 @@ type GetSKSNodepoolListNodepool struct {
 	Size *int `pulumi:"size"`
 	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 	State string `pulumi:"state"`
+	// Match against this bool
+	StorageLvm *bool `pulumi:"storageLvm"`
 	// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
 	Taints map[string]string `pulumi:"taints"`
 	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
@@ -4723,6 +4728,8 @@ type GetSKSNodepoolListNodepoolArgs struct {
 	Size pulumi.IntPtrInput `pulumi:"size"`
 	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 	State pulumi.StringInput `pulumi:"state"`
+	// Match against this bool
+	StorageLvm pulumi.BoolPtrInput `pulumi:"storageLvm"`
 	// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
 	Taints pulumi.StringMapInput `pulumi:"taints"`
 	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
@@ -4859,6 +4866,11 @@ func (o GetSKSNodepoolListNodepoolOutput) Size() pulumi.IntPtrOutput {
 // Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSNodepoolListNodepoolOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSKSNodepoolListNodepool) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Match against this bool
+func (o GetSKSNodepoolListNodepoolOutput) StorageLvm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *bool { return v.StorageLvm }).(pulumi.BoolPtrOutput)
 }
 
 // Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"

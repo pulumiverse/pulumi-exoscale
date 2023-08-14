@@ -8,10 +8,11 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
 func GetComputeTemplate(ctx *pulumi.Context, args *GetComputeTemplateArgs, opts ...pulumi.InvokeOption) (*GetComputeTemplateResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetComputeTemplateResult
 	err := ctx.Invoke("exoscale:index/getComputeTemplate:getComputeTemplate", args, &rv, opts...)
 	if err != nil {

@@ -124,7 +124,8 @@ def get_database_uri(name: Optional[str] = None,
             }),
         ))
     my_database_database_uri = exoscale.get_database_uri(name="my-database",
-        type="pg")
+        type="pg",
+        zone="ch-gva-2")
     pulumi.export("myDatabaseUri", my_database_database_uri.uri)
     ```
 
@@ -181,7 +182,8 @@ def get_database_uri_output(name: Optional[pulumi.Input[str]] = None,
             }),
         ))
     my_database_database_uri = exoscale.get_database_uri(name="my-database",
-        type="pg")
+        type="pg",
+        zone="ch-gva-2")
     pulumi.export("myDatabaseUri", my_database_database_uri.uri)
     ```
 

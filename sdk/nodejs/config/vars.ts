@@ -57,17 +57,6 @@ Object.defineProperty(exports, "environment", {
 });
 
 /**
- * Defines if the user-data of compute instances should be gzipped (by default: true)
- */
-export declare const gzipUserData: boolean | undefined;
-Object.defineProperty(exports, "gzipUserData", {
-    get() {
-        return __config.getObject<boolean>("gzipUserData");
-    },
-    enumerable: true,
-});
-
-/**
  * Exoscale API key
  */
 export declare const key: string | undefined;

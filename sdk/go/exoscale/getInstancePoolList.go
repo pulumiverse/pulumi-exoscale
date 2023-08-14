@@ -8,10 +8,11 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
 func GetInstancePoolList(ctx *pulumi.Context, args *GetInstancePoolListArgs, opts ...pulumi.InvokeOption) (*GetInstancePoolListResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstancePoolListResult
 	err := ctx.Invoke("exoscale:index/getInstancePoolList:getInstancePoolList", args, &rv, opts...)
 	if err != nil {

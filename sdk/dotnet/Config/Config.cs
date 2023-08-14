@@ -76,16 +76,6 @@ namespace Pulumiverse.Exoscale
             set => _environment.Set(value);
         }
 
-        private static readonly __Value<bool?> _gzipUserData = new __Value<bool?>(() => __config.GetBoolean("gzipUserData"));
-        /// <summary>
-        /// Defines if the user-data of compute instances should be gzipped (by default: true)
-        /// </summary>
-        public static bool? GzipUserData
-        {
-            get => _gzipUserData.Get();
-            set => _gzipUserData.Set(value);
-        }
-
         private static readonly __Value<string?> _key = new __Value<string?>(() => __config.Get("key"));
         /// <summary>
         /// Exoscale API key

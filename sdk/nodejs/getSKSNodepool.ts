@@ -24,6 +24,7 @@ export function getSKSNodepool(args: GetSKSNodepoolArgs, opts?: pulumi.InvokeOpt
         "securityGroupIds": args.securityGroupIds,
         "size": args.size,
         "state": args.state,
+        "storageLvm": args.storageLvm,
         "taints": args.taints,
         "templateId": args.templateId,
         "version": args.version,
@@ -90,6 +91,10 @@ export interface GetSKSNodepoolArgs {
      * The current pool state.
      */
     state?: string;
+    /**
+     * Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+     */
+    storageLvm?: boolean;
     /**
      * A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
      */
@@ -164,6 +169,10 @@ export interface GetSKSNodepoolResult {
      * The current pool state.
      */
     readonly state: string;
+    /**
+     * Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+     */
+    readonly storageLvm?: boolean;
     /**
      * A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
      */
@@ -241,6 +250,10 @@ export interface GetSKSNodepoolOutputArgs {
      * The current pool state.
      */
     state?: pulumi.Input<string>;
+    /**
+     * Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+     */
+    storageLvm?: pulumi.Input<boolean>;
     /**
      * A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
      */

@@ -51,7 +51,7 @@ class ComputeInstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of exoscale*security*group (IDs) to attach to the instance.
         :param pulumi.Input[str] ssh_key: The exoscale*ssh*key (name) to authorize in the instance (may only be set at creation time).
         :param pulumi.Input[str] state: The instance state (`running` or `stopped`; default: `running`).
-        :param pulumi.Input[str] user_data: [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).
+        :param pulumi.Input[str] user_data: [cloud-init](https://cloudinit.readthedocs.io/) configuration.
         """
         pulumi.set(__self__, "template_id", template_id)
         pulumi.set(__self__, "type", type)
@@ -281,7 +281,7 @@ class ComputeInstanceArgs:
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
-        [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).
+        [cloud-init](https://cloudinit.readthedocs.io/) configuration.
         """
         return pulumi.get(self, "user_data")
 
@@ -335,7 +335,7 @@ class _ComputeInstanceState:
         :param pulumi.Input[str] state: The instance state (`running` or `stopped`; default: `running`).
         :param pulumi.Input[str] template_id: ❗ The exoscale*compute*template (ID) to use when creating the instance.
         :param pulumi.Input[str] type: The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
-        :param pulumi.Input[str] user_data: [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).
+        :param pulumi.Input[str] user_data: [cloud-init](https://cloudinit.readthedocs.io/) configuration.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         if anti_affinity_group_ids is not None:
@@ -619,7 +619,7 @@ class _ComputeInstanceState:
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
-        [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).
+        [cloud-init](https://cloudinit.readthedocs.io/) configuration.
         """
         return pulumi.get(self, "user_data")
 
@@ -693,7 +693,7 @@ class ComputeInstance(pulumi.CustomResource):
         :param pulumi.Input[str] state: The instance state (`running` or `stopped`; default: `running`).
         :param pulumi.Input[str] template_id: ❗ The exoscale*compute*template (ID) to use when creating the instance.
         :param pulumi.Input[str] type: The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
-        :param pulumi.Input[str] user_data: [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).
+        :param pulumi.Input[str] user_data: [cloud-init](https://cloudinit.readthedocs.io/) configuration.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         ...
@@ -840,7 +840,7 @@ class ComputeInstance(pulumi.CustomResource):
         :param pulumi.Input[str] state: The instance state (`running` or `stopped`; default: `running`).
         :param pulumi.Input[str] template_id: ❗ The exoscale*compute*template (ID) to use when creating the instance.
         :param pulumi.Input[str] type: The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
-        :param pulumi.Input[str] user_data: [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).
+        :param pulumi.Input[str] user_data: [cloud-init](https://cloudinit.readthedocs.io/) configuration.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1029,7 +1029,7 @@ class ComputeInstance(pulumi.CustomResource):
     @pulumi.getter(name="userData")
     def user_data(self) -> pulumi.Output[Optional[str]]:
         """
-        [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).
+        [cloud-init](https://cloudinit.readthedocs.io/) configuration.
         """
         return pulumi.get(self, "user_data")
 

@@ -103,6 +103,10 @@ export class SKSNodepool extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
+     * Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+     */
+    public readonly storageLvm!: pulumi.Output<boolean | undefined>;
+    /**
      * A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
      */
     public readonly taints!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -147,6 +151,7 @@ export class SKSNodepool extends pulumi.CustomResource {
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             resourceInputs["size"] = state ? state.size : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["storageLvm"] = state ? state.storageLvm : undefined;
             resourceInputs["taints"] = state ? state.taints : undefined;
             resourceInputs["templateId"] = state ? state.templateId : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
@@ -177,6 +182,7 @@ export class SKSNodepool extends pulumi.CustomResource {
             resourceInputs["privateNetworkIds"] = args ? args.privateNetworkIds : undefined;
             resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["storageLvm"] = args ? args.storageLvm : undefined;
             resourceInputs["taints"] = args ? args.taints : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
@@ -252,6 +258,10 @@ export interface SKSNodepoolState {
      */
     state?: pulumi.Input<string>;
     /**
+     * Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+     */
+    storageLvm?: pulumi.Input<boolean>;
+    /**
      * A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
      */
     taints?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -318,6 +328,10 @@ export interface SKSNodepoolArgs {
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     size: pulumi.Input<number>;
+    /**
+     * Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+     */
+    storageLvm?: pulumi.Input<boolean>;
     /**
      * A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
      */

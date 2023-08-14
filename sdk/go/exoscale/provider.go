@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
 // The provider type for the exoscale package. By default, resources use package-wide configuration
@@ -50,7 +51,7 @@ func NewProvider(ctx *pulumi.Context,
 		"secret",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:exoscale", name, args, &resource, opts...)
 	if err != nil {
@@ -69,8 +70,6 @@ type providerArgs struct {
 	// Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
 	DnsEndpoint *string `pulumi:"dnsEndpoint"`
 	Environment *string `pulumi:"environment"`
-	// Defines if the user-data of compute instances should be gzipped (by default: true)
-	GzipUserData *bool `pulumi:"gzipUserData"`
 	// Exoscale API key
 	Key *string `pulumi:"key"`
 	// Deprecated: Use region instead
@@ -96,8 +95,6 @@ type ProviderArgs struct {
 	// Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
 	DnsEndpoint pulumi.StringPtrInput
 	Environment pulumi.StringPtrInput
-	// Defines if the user-data of compute instances should be gzipped (by default: true)
-	GzipUserData pulumi.BoolPtrInput
 	// Exoscale API key
 	Key pulumi.StringPtrInput
 	// Deprecated: Use region instead

@@ -21,7 +21,7 @@ class GetSKSNodepoolResult:
     """
     A collection of values returned by getSKSNodepool.
     """
-    def __init__(__self__, anti_affinity_group_ids=None, cluster_id=None, created_at=None, deploy_target_id=None, description=None, disk_size=None, id=None, instance_pool_id=None, instance_prefix=None, instance_type=None, labels=None, name=None, private_network_ids=None, security_group_ids=None, size=None, state=None, taints=None, template_id=None, version=None, zone=None):
+    def __init__(__self__, anti_affinity_group_ids=None, cluster_id=None, created_at=None, deploy_target_id=None, description=None, disk_size=None, id=None, instance_pool_id=None, instance_prefix=None, instance_type=None, labels=None, name=None, private_network_ids=None, security_group_ids=None, size=None, state=None, storage_lvm=None, taints=None, template_id=None, version=None, zone=None):
         if anti_affinity_group_ids and not isinstance(anti_affinity_group_ids, list):
             raise TypeError("Expected argument 'anti_affinity_group_ids' to be a list")
         pulumi.set(__self__, "anti_affinity_group_ids", anti_affinity_group_ids)
@@ -70,6 +70,9 @@ class GetSKSNodepoolResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if storage_lvm and not isinstance(storage_lvm, bool):
+            raise TypeError("Expected argument 'storage_lvm' to be a bool")
+        pulumi.set(__self__, "storage_lvm", storage_lvm)
         if taints and not isinstance(taints, dict):
             raise TypeError("Expected argument 'taints' to be a dict")
         pulumi.set(__self__, "taints", taints)
@@ -203,6 +206,14 @@ class GetSKSNodepoolResult:
         return pulumi.get(self, "state")
 
     @property
+    @pulumi.getter(name="storageLvm")
+    def storage_lvm(self) -> Optional[bool]:
+        """
+        Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+        """
+        return pulumi.get(self, "storage_lvm")
+
+    @property
     @pulumi.getter
     def taints(self) -> Optional[Mapping[str, str]]:
         """
@@ -254,6 +265,7 @@ class AwaitableGetSKSNodepoolResult(GetSKSNodepoolResult):
             security_group_ids=self.security_group_ids,
             size=self.size,
             state=self.state,
+            storage_lvm=self.storage_lvm,
             taints=self.taints,
             template_id=self.template_id,
             version=self.version,
@@ -276,6 +288,7 @@ def get_sks_nodepool(anti_affinity_group_ids: Optional[Sequence[str]] = None,
                      security_group_ids: Optional[Sequence[str]] = None,
                      size: Optional[int] = None,
                      state: Optional[str] = None,
+                     storage_lvm: Optional[bool] = None,
                      taints: Optional[Mapping[str, str]] = None,
                      template_id: Optional[str] = None,
                      version: Optional[str] = None,
@@ -297,6 +310,7 @@ def get_sks_nodepool(anti_affinity_group_ids: Optional[Sequence[str]] = None,
     :param Sequence[str] private_network_ids: A list of exoscale*private*network (IDs) to be attached to the managed instances.
     :param Sequence[str] security_group_ids: A list of exoscale*security*group (IDs) to be attached to the managed instances.
     :param str state: The current pool state.
+    :param bool storage_lvm: Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
     :param Mapping[str, str] taints: A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
     :param str template_id: The managed instances template ID.
     :param str version: The managed instances version.
@@ -318,6 +332,7 @@ def get_sks_nodepool(anti_affinity_group_ids: Optional[Sequence[str]] = None,
     __args__['securityGroupIds'] = security_group_ids
     __args__['size'] = size
     __args__['state'] = state
+    __args__['storageLvm'] = storage_lvm
     __args__['taints'] = taints
     __args__['templateId'] = template_id
     __args__['version'] = version
@@ -342,6 +357,7 @@ def get_sks_nodepool(anti_affinity_group_ids: Optional[Sequence[str]] = None,
         security_group_ids=pulumi.get(__ret__, 'security_group_ids'),
         size=pulumi.get(__ret__, 'size'),
         state=pulumi.get(__ret__, 'state'),
+        storage_lvm=pulumi.get(__ret__, 'storage_lvm'),
         taints=pulumi.get(__ret__, 'taints'),
         template_id=pulumi.get(__ret__, 'template_id'),
         version=pulumi.get(__ret__, 'version'),
@@ -365,6 +381,7 @@ def get_sks_nodepool_output(anti_affinity_group_ids: Optional[pulumi.Input[Optio
                             security_group_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             size: Optional[pulumi.Input[Optional[int]]] = None,
                             state: Optional[pulumi.Input[Optional[str]]] = None,
+                            storage_lvm: Optional[pulumi.Input[Optional[bool]]] = None,
                             taints: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                             template_id: Optional[pulumi.Input[Optional[str]]] = None,
                             version: Optional[pulumi.Input[Optional[str]]] = None,
@@ -386,6 +403,7 @@ def get_sks_nodepool_output(anti_affinity_group_ids: Optional[pulumi.Input[Optio
     :param Sequence[str] private_network_ids: A list of exoscale*private*network (IDs) to be attached to the managed instances.
     :param Sequence[str] security_group_ids: A list of exoscale*security*group (IDs) to be attached to the managed instances.
     :param str state: The current pool state.
+    :param bool storage_lvm: Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
     :param Mapping[str, str] taints: A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
     :param str template_id: The managed instances template ID.
     :param str version: The managed instances version.

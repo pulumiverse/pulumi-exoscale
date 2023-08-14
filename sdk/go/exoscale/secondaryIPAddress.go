@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
 // !> **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use ComputeInstance `elasticIpIds` list instead.
@@ -38,7 +39,7 @@ func NewSecondaryIPAddress(ctx *pulumi.Context,
 	if args.IpAddress == nil {
 		return nil, errors.New("invalid value for required argument 'IpAddress'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SecondaryIPAddress
 	err := ctx.RegisterResource("exoscale:index/secondaryIPAddress:SecondaryIPAddress", name, args, &resource, opts...)
 	if err != nil {

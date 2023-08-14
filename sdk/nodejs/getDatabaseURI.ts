@@ -34,6 +34,7 @@ import * as utilities from "./utilities";
  * const myDatabaseDatabaseURI = exoscale.getDatabaseURI({
  *     name: "my-database",
  *     type: "pg",
+ *     zone: "ch-gva-2",
  * });
  * export const myDatabaseUri = myDatabaseDatabaseURI.then(myDatabaseDatabaseURI => myDatabaseDatabaseURI.uri);
  * ```
@@ -121,6 +122,7 @@ export interface GetDatabaseURIResult {
  * const myDatabaseDatabaseURI = exoscale.getDatabaseURI({
  *     name: "my-database",
  *     type: "pg",
+ *     zone: "ch-gva-2",
  * });
  * export const myDatabaseUri = myDatabaseDatabaseURI.then(myDatabaseDatabaseURI => myDatabaseDatabaseURI.uri);
  * ```

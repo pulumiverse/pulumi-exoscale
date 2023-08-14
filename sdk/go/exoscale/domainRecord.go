@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
 // ## Import
@@ -59,7 +60,7 @@ func NewDomainRecord(ctx *pulumi.Context,
 	if args.RecordType == nil {
 		return nil, errors.New("invalid value for required argument 'RecordType'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DomainRecord
 	err := ctx.RegisterResource("exoscale:index/domainRecord:DomainRecord", name, args, &resource, opts...)
 	if err != nil {

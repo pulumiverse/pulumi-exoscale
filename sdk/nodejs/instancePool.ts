@@ -119,7 +119,7 @@ export class InstancePool extends pulumi.CustomResource {
      */
     public readonly templateId!: pulumi.Output<string>;
     /**
-     * [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
+     * [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances.
      */
     public readonly userData!: pulumi.Output<string | undefined>;
     /**
@@ -281,7 +281,7 @@ export interface InstancePoolState {
      */
     templateId?: pulumi.Input<string>;
     /**
-     * [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
+     * [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances.
      */
     userData?: pulumi.Input<string>;
     /**
@@ -372,7 +372,7 @@ export interface InstancePoolArgs {
      */
     templateId: pulumi.Input<string>;
     /**
-     * [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).
+     * [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances.
      */
     userData?: pulumi.Input<string>;
     /**

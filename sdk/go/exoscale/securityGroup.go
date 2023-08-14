@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
 // ## Import
@@ -41,7 +42,7 @@ func NewSecurityGroup(ctx *pulumi.Context,
 		args = &SecurityGroupArgs{}
 	}
 
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SecurityGroup
 	err := ctx.RegisterResource("exoscale:index/securityGroup:SecurityGroup", name, args, &resource, opts...)
 	if err != nil {

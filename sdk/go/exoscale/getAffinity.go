@@ -8,11 +8,12 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
 // !> **WARNING:** This data source is DEPRECATED and will be removed in the next major version. Please use AntiAffinityGroup instead.
 func LookupAffinity(ctx *pulumi.Context, args *LookupAffinityArgs, opts ...pulumi.InvokeOption) (*LookupAffinityResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAffinityResult
 	err := ctx.Invoke("exoscale:index/getAffinity:getAffinity", args, &rv, opts...)
 	if err != nil {

@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
 // ## Import
@@ -67,7 +68,7 @@ type ComputeInstance struct {
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
 	// The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).
+	// [cloud-init](https://cloudinit.readthedocs.io/) configuration.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringOutput `pulumi:"zone"`
@@ -89,7 +90,7 @@ func NewComputeInstance(ctx *pulumi.Context,
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ComputeInstance
 	err := ctx.RegisterResource("exoscale:index/computeInstance:ComputeInstance", name, args, &resource, opts...)
 	if err != nil {
@@ -152,7 +153,7 @@ type computeInstanceState struct {
 	TemplateId *string `pulumi:"templateId"`
 	// The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
 	Type *string `pulumi:"type"`
-	// [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).
+	// [cloud-init](https://cloudinit.readthedocs.io/) configuration.
 	UserData *string `pulumi:"userData"`
 	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone *string `pulumi:"zone"`
@@ -199,7 +200,7 @@ type ComputeInstanceState struct {
 	TemplateId pulumi.StringPtrInput
 	// The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
 	Type pulumi.StringPtrInput
-	// [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).
+	// [cloud-init](https://cloudinit.readthedocs.io/) configuration.
 	UserData pulumi.StringPtrInput
 	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringPtrInput
@@ -240,7 +241,7 @@ type computeInstanceArgs struct {
 	TemplateId string `pulumi:"templateId"`
 	// The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
 	Type string `pulumi:"type"`
-	// [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).
+	// [cloud-init](https://cloudinit.readthedocs.io/) configuration.
 	UserData *string `pulumi:"userData"`
 	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone string `pulumi:"zone"`
@@ -278,7 +279,7 @@ type ComputeInstanceArgs struct {
 	TemplateId pulumi.StringInput
 	// The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
 	Type pulumi.StringInput
-	// [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).
+	// [cloud-init](https://cloudinit.readthedocs.io/) configuration.
 	UserData pulumi.StringPtrInput
 	// ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringInput
@@ -468,7 +469,7 @@ func (o ComputeInstanceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ComputeInstance) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).
+// [cloud-init](https://cloudinit.readthedocs.io/) configuration.
 func (o ComputeInstanceOutput) UserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeInstance) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
 }

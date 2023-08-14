@@ -8,10 +8,11 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
 func GetComputeInstanceList(ctx *pulumi.Context, args *GetComputeInstanceListArgs, opts ...pulumi.InvokeOption) (*GetComputeInstanceListResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetComputeInstanceListResult
 	err := ctx.Invoke("exoscale:index/getComputeInstanceList:getComputeInstanceList", args, &rv, opts...)
 	if err != nil {

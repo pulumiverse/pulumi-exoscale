@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
 type IAMAccessKey struct {
@@ -40,7 +41,7 @@ func NewIAMAccessKey(ctx *pulumi.Context,
 		"secret",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IAMAccessKey
 	err := ctx.RegisterResource("exoscale:index/iAMAccessKey:IAMAccessKey", name, args, &resource, opts...)
 	if err != nil {

@@ -8,10 +8,11 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
 func GetSKSClusterList(ctx *pulumi.Context, args *GetSKSClusterListArgs, opts ...pulumi.InvokeOption) (*GetSKSClusterListResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSKSClusterListResult
 	err := ctx.Invoke("exoscale:index/getSKSClusterList:getSKSClusterList", args, &rv, opts...)
 	if err != nil {

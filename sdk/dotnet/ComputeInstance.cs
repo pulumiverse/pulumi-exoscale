@@ -141,7 +141,7 @@ namespace Pulumiverse.Exoscale
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).
+        /// [cloud-init](https://cloudinit.readthedocs.io/) configuration.
         /// </summary>
         [Output("userData")]
         public Output<string?> UserData { get; private set; } = null!;
@@ -320,7 +320,7 @@ namespace Pulumiverse.Exoscale
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).
+        /// [cloud-init](https://cloudinit.readthedocs.io/) configuration.
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
@@ -491,7 +491,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// [cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).
+        /// [cloud-init](https://cloudinit.readthedocs.io/) configuration.
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }

@@ -8,10 +8,11 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
 func LookupElasticIP(ctx *pulumi.Context, args *LookupElasticIPArgs, opts ...pulumi.InvokeOption) (*LookupElasticIPResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupElasticIPResult
 	err := ctx.Invoke("exoscale:index/getElasticIP:getElasticIP", args, &rv, opts...)
 	if err != nil {

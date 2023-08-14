@@ -24,6 +24,7 @@ export function getSKSNodepoolList(args?: GetSKSNodepoolListArgs, opts?: pulumi.
         "name": args.name,
         "size": args.size,
         "state": args.state,
+        "storageLvm": args.storageLvm,
         "taints": args.taints,
         "templateId": args.templateId,
         "version": args.version,
@@ -87,6 +88,10 @@ export interface GetSKSNodepoolListArgs {
      * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
      */
     state?: string;
+    /**
+     * Match against this bool
+     */
+    storageLvm?: boolean;
     /**
      * Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
      */
@@ -162,6 +167,10 @@ export interface GetSKSNodepoolListResult {
      * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
      */
     readonly state?: string;
+    /**
+     * Match against this bool
+     */
+    readonly storageLvm?: boolean;
     /**
      * Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
      */
@@ -239,6 +248,10 @@ export interface GetSKSNodepoolListOutputArgs {
      * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
      */
     state?: pulumi.Input<string>;
+    /**
+     * Match against this bool
+     */
+    storageLvm?: pulumi.Input<boolean>;
     /**
      * Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
      */
