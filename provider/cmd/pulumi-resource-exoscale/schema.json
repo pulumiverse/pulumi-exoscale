@@ -18,25 +18,27 @@
     },
     "language": {
         "csharp": {
-            "compatibility": "tfbridge20",
-            "namespaces": null,
             "packageReferences": {
                 "Pulumi": "3.*"
             },
+            "compatibility": "tfbridge20",
             "rootNamespace": "Pulumiverse"
         },
         "go": {
-            "generateExtraInputTypes": true,
+            "importBasePath": "github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale",
             "generateResourceContainerTypes": true,
-            "importBasePath": "github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale"
+            "generateExtraInputTypes": true
         },
         "java": {
             "basePackage": "com.pulumiverse",
             "buildFiles": "",
-            "gradleNexusPublishPluginVersion": ""
+            "gradleNexusPublishPluginVersion": "",
+            "gradleTest": ""
         },
         "nodejs": {
-            "compatibility": "tfbridge20",
+            "packageName": "@pulumiverse/exoscale",
+            "packageDescription": "A Pulumi package for creating and managing exoscale cloud resources.",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/exoscale/terraform-provider-exoscale)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-exoscale` repo](https://github.com/pulumiverse/pulumi-exoscale/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-exoscale` repo](https://github.com/exoscale/terraform-provider-exoscale/issues).",
             "dependencies": {
                 "@pulumi/pulumi": "^3.0.0"
             },
@@ -44,21 +46,17 @@
                 "@types/mime": "^2.0.0",
                 "@types/node": "^10.0.0"
             },
-            "disableUnionOutputTypes": true,
-            "packageDescription": "A Pulumi package for creating and managing exoscale cloud resources.",
-            "packageName": "@pulumiverse/exoscale",
-            "pluginName": "",
-            "pluginVersion": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/exoscale/terraform-provider-exoscale)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-exoscale` repo](https://github.com/pulumiverse/pulumi-exoscale/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-exoscale` repo](https://github.com/exoscale/terraform-provider-exoscale/issues).",
-            "typescriptVersion": ""
+            "compatibility": "tfbridge20",
+            "disableUnionOutputTypes": true
         },
         "python": {
-            "compatibility": "tfbridge20",
             "packageName": "pulumiverse_exoscale",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/exoscale/terraform-provider-exoscale)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-exoscale` repo](https://github.com/pulumiverse/pulumi-exoscale/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-exoscale` repo](https://github.com/exoscale/terraform-provider-exoscale/issues).",
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
-            }
+            },
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/exoscale/terraform-provider-exoscale)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-exoscale` repo](https://github.com/pulumiverse/pulumi-exoscale/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-exoscale` repo](https://github.com/exoscale/terraform-provider-exoscale/issues).",
+            "compatibility": "tfbridge20",
+            "pyproject": {}
         }
     },
     "config": {
@@ -86,10 +84,6 @@
             },
             "environment": {
                 "type": "string"
-            },
-            "gzipUserData": {
-                "type": "boolean",
-                "description": "Defines if the user-data of compute instances should be gzipped (by default: true)\n"
             },
             "key": {
                 "type": "string",
@@ -1349,6 +1343,10 @@
                     "type": "string",
                     "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                 },
+                "storageLvm": {
+                    "type": "boolean",
+                    "description": "Match against this bool\n"
+                },
                 "taints": {
                     "type": "object",
                     "additionalProperties": {
@@ -1413,10 +1411,6 @@
             "environment": {
                 "type": "string"
             },
-            "gzipUserData": {
-                "type": "boolean",
-                "description": "Defines if the user-data of compute instances should be gzipped (by default: true)\n"
-            },
             "key": {
                 "type": "string",
                 "description": "Exoscale API key\n"
@@ -1467,10 +1461,6 @@
             },
             "environment": {
                 "type": "string"
-            },
-            "gzipUserData": {
-                "type": "boolean",
-                "description": "Defines if the user-data of compute instances should be gzipped (by default: true)\n"
             },
             "key": {
                 "type": "string",
@@ -1729,7 +1719,7 @@
                 },
                 "userData": {
                     "type": "string",
-                    "description": "cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).\n"
+                    "description": "cloud-init configuration.\n"
                 },
                 "userDataBase64": {
                     "type": "boolean",
@@ -1858,7 +1848,7 @@
                 },
                 "userData": {
                     "type": "string",
-                    "description": "cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).\n"
+                    "description": "cloud-init configuration.\n"
                 },
                 "zone": {
                     "type": "string",
@@ -1987,7 +1977,7 @@
                     },
                     "userData": {
                         "type": "string",
-                        "description": "cloud-init configuration (no need to base64-encode or gzip it as the provider will take care of it).\n"
+                        "description": "cloud-init configuration.\n"
                     },
                     "userDataBase64": {
                         "type": "boolean",
@@ -2107,7 +2097,7 @@
                 },
                 "userData": {
                     "type": "string",
-                    "description": "[cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).\n"
+                    "description": "[cloud-init](https://cloudinit.readthedocs.io/) configuration.\n"
                 },
                 "zone": {
                     "type": "string",
@@ -2207,7 +2197,7 @@
                 },
                 "userData": {
                     "type": "string",
-                    "description": "[cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).\n"
+                    "description": "[cloud-init](https://cloudinit.readthedocs.io/) configuration.\n"
                 },
                 "zone": {
                     "type": "string",
@@ -2323,7 +2313,7 @@
                     },
                     "userData": {
                         "type": "string",
-                        "description": "[cloud-init](https://cloudinit.readthedocs.io/) configuration (no need to base64-encode or gzip it as the provider will take care of it).\n"
+                        "description": "[cloud-init](https://cloudinit.readthedocs.io/) configuration.\n"
                     },
                     "zone": {
                         "type": "string",
@@ -3318,7 +3308,7 @@
                 },
                 "userData": {
                     "type": "string",
-                    "description": "[cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).\n"
+                    "description": "[cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances.\n"
                 },
                 "virtualMachines": {
                     "type": "array",
@@ -3438,7 +3428,7 @@
                 },
                 "userData": {
                     "type": "string",
-                    "description": "[cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).\n"
+                    "description": "[cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances.\n"
                 },
                 "virtualMachines": {
                     "type": "array",
@@ -3554,7 +3544,7 @@
                     },
                     "userData": {
                         "type": "string",
-                        "description": "[cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances (no need to base64-encode or gzip it as the provider will take care of it).\n"
+                        "description": "[cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances.\n"
                     },
                     "virtualMachines": {
                         "type": "array",
@@ -4635,6 +4625,10 @@
                     "type": "string",
                     "description": "The current pool state.\n"
                 },
+                "storageLvm": {
+                    "type": "boolean",
+                    "description": "Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).\n"
+                },
                 "taints": {
                     "type": "object",
                     "additionalProperties": {
@@ -4727,6 +4721,10 @@
                 },
                 "size": {
                     "type": "integer"
+                },
+                "storageLvm": {
+                    "type": "boolean",
+                    "description": "Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).\n"
                 },
                 "taints": {
                     "type": "object",
@@ -4821,6 +4819,10 @@
                     "state": {
                         "type": "string",
                         "description": "The current pool state.\n"
+                    },
+                    "storageLvm": {
+                        "type": "boolean",
+                        "description": "Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).\n"
                     },
                     "taints": {
                         "type": "object",
@@ -6036,7 +6038,7 @@
             }
         },
         "exoscale:index/getDatabaseURI:getDatabaseURI": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as exoscale from \"@pulumi/exoscale\";\nimport * as exoscale from \"@pulumiverse/exoscale\";\n\nconst myDatabaseDatabase = new exoscale.Database(\"myDatabaseDatabase\", {\n    zone: \"ch-gva-2\",\n    type: \"pg\",\n    plan: \"startup-4\",\n    maintenanceDow: \"sunday\",\n    maintenanceTime: \"23:00:00\",\n    terminationProtection: true,\n    pg: {\n        version: \"13\",\n        backupSchedule: \"04:00\",\n        ipFilters: [\n            \"1.2.3.4/32\",\n            \"5.6.7.8/32\",\n        ],\n        pgSettings: JSON.stringify({\n            timezone: \"Europe/Zurich\",\n        }),\n    },\n});\nconst myDatabaseDatabaseURI = exoscale.getDatabaseURI({\n    name: \"my-database\",\n    type: \"pg\",\n});\nexport const myDatabaseUri = myDatabaseDatabaseURI.then(myDatabaseDatabaseURI =\u003e myDatabaseDatabaseURI.uri);\n```\n```python\nimport pulumi\nimport json\nimport pulumi_exoscale as exoscale\nimport pulumiverse_exoscale as exoscale\n\nmy_database_database = exoscale.Database(\"myDatabaseDatabase\",\n    zone=\"ch-gva-2\",\n    type=\"pg\",\n    plan=\"startup-4\",\n    maintenance_dow=\"sunday\",\n    maintenance_time=\"23:00:00\",\n    termination_protection=True,\n    pg=exoscale.DatabasePgArgs(\n        version=\"13\",\n        backup_schedule=\"04:00\",\n        ip_filters=[\n            \"1.2.3.4/32\",\n            \"5.6.7.8/32\",\n        ],\n        pg_settings=json.dumps({\n            \"timezone\": \"Europe/Zurich\",\n        }),\n    ))\nmy_database_database_uri = exoscale.get_database_uri(name=\"my-database\",\n    type=\"pg\")\npulumi.export(\"myDatabaseUri\", my_database_database_uri.uri)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Exoscale = Pulumi.Exoscale;\nusing Exoscale = Pulumiverse.Exoscale;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myDatabaseDatabase = new Exoscale.Database(\"myDatabaseDatabase\", new()\n    {\n        Zone = \"ch-gva-2\",\n        Type = \"pg\",\n        Plan = \"startup-4\",\n        MaintenanceDow = \"sunday\",\n        MaintenanceTime = \"23:00:00\",\n        TerminationProtection = true,\n        Pg = new Exoscale.Inputs.DatabasePgArgs\n        {\n            Version = \"13\",\n            BackupSchedule = \"04:00\",\n            IpFilters = new[]\n            {\n                \"1.2.3.4/32\",\n                \"5.6.7.8/32\",\n            },\n            PgSettings = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                [\"timezone\"] = \"Europe/Zurich\",\n            }),\n        },\n    });\n\n    var myDatabaseDatabaseURI = Exoscale.GetDatabaseURI.Invoke(new()\n    {\n        Name = \"my-database\",\n        Type = \"pg\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"myDatabaseUri\"] = myDatabaseDatabaseURI.Apply(getDatabaseURIResult =\u003e getDatabaseURIResult.Uri),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"timezone\": \"Europe/Zurich\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err = exoscale.NewDatabase(ctx, \"myDatabaseDatabase\", \u0026exoscale.DatabaseArgs{\n\t\t\tZone:                  pulumi.String(\"ch-gva-2\"),\n\t\t\tType:                  pulumi.String(\"pg\"),\n\t\t\tPlan:                  pulumi.String(\"startup-4\"),\n\t\t\tMaintenanceDow:        pulumi.String(\"sunday\"),\n\t\t\tMaintenanceTime:       pulumi.String(\"23:00:00\"),\n\t\t\tTerminationProtection: pulumi.Bool(true),\n\t\t\tPg: \u0026exoscale.DatabasePgArgs{\n\t\t\t\tVersion:        pulumi.String(\"13\"),\n\t\t\t\tBackupSchedule: pulumi.String(\"04:00\"),\n\t\t\t\tIpFilters: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"1.2.3.4/32\"),\n\t\t\t\t\tpulumi.String(\"5.6.7.8/32\"),\n\t\t\t\t},\n\t\t\t\tPgSettings: pulumi.String(json0),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyDatabaseDatabaseURI, err := exoscale.GetDatabaseURI(ctx, \u0026exoscale.GetDatabaseURIArgs{\n\t\t\tName: \"my-database\",\n\t\t\tType: \"pg\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"myDatabaseUri\", myDatabaseDatabaseURI.Uri)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.exoscale.Database;\nimport com.pulumi.exoscale.DatabaseArgs;\nimport com.pulumi.exoscale.inputs.DatabasePgArgs;\nimport com.pulumi.exoscale.ExoscaleFunctions;\nimport com.pulumi.exoscale.inputs.GetDatabaseURIArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myDatabaseDatabase = new Database(\"myDatabaseDatabase\", DatabaseArgs.builder()        \n            .zone(\"ch-gva-2\")\n            .type(\"pg\")\n            .plan(\"startup-4\")\n            .maintenanceDow(\"sunday\")\n            .maintenanceTime(\"23:00:00\")\n            .terminationProtection(true)\n            .pg(DatabasePgArgs.builder()\n                .version(\"13\")\n                .backupSchedule(\"04:00\")\n                .ipFilters(                \n                    \"1.2.3.4/32\",\n                    \"5.6.7.8/32\")\n                .pgSettings(serializeJson(\n                    jsonObject(\n                        jsonProperty(\"timezone\", \"Europe/Zurich\")\n                    )))\n                .build())\n            .build());\n\n        final var myDatabaseDatabaseURI = ExoscaleFunctions.getDatabaseURI(GetDatabaseURIArgs.builder()\n            .name(\"my-database\")\n            .type(\"pg\")\n            .build());\n\n        ctx.export(\"myDatabaseUri\", myDatabaseDatabaseURI.applyValue(getDatabaseURIResult -\u003e getDatabaseURIResult.uri()));\n    }\n}\n```\n```yaml\nresources:\n  myDatabaseDatabase:\n    type: exoscale:Database\n    properties:\n      zone: ch-gva-2\n      type: pg\n      plan: startup-4\n      maintenanceDow: sunday\n      maintenanceTime: 23:00:00\n      terminationProtection: true\n      pg:\n        version: '13'\n        backupSchedule: 04:00\n        ipFilters:\n          - 1.2.3.4/32\n          - 5.6.7.8/32\n        pgSettings:\n          fn::toJSON:\n            timezone: Europe/Zurich\nvariables:\n  myDatabaseDatabaseURI:\n    fn::invoke:\n      Function: exoscale:getDatabaseURI\n      Arguments:\n        name: my-database\n        type: pg\noutputs:\n  myDatabaseUri: ${myDatabaseDatabaseURI.uri}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as exoscale from \"@pulumi/exoscale\";\nimport * as exoscale from \"@pulumiverse/exoscale\";\n\nconst myDatabaseDatabase = new exoscale.Database(\"myDatabaseDatabase\", {\n    zone: \"ch-gva-2\",\n    type: \"pg\",\n    plan: \"startup-4\",\n    maintenanceDow: \"sunday\",\n    maintenanceTime: \"23:00:00\",\n    terminationProtection: true,\n    pg: {\n        version: \"13\",\n        backupSchedule: \"04:00\",\n        ipFilters: [\n            \"1.2.3.4/32\",\n            \"5.6.7.8/32\",\n        ],\n        pgSettings: JSON.stringify({\n            timezone: \"Europe/Zurich\",\n        }),\n    },\n});\nconst myDatabaseDatabaseURI = exoscale.getDatabaseURI({\n    name: \"my-database\",\n    type: \"pg\",\n    zone: \"ch-gva-2\",\n});\nexport const myDatabaseUri = myDatabaseDatabaseURI.then(myDatabaseDatabaseURI =\u003e myDatabaseDatabaseURI.uri);\n```\n```python\nimport pulumi\nimport json\nimport pulumi_exoscale as exoscale\nimport pulumiverse_exoscale as exoscale\n\nmy_database_database = exoscale.Database(\"myDatabaseDatabase\",\n    zone=\"ch-gva-2\",\n    type=\"pg\",\n    plan=\"startup-4\",\n    maintenance_dow=\"sunday\",\n    maintenance_time=\"23:00:00\",\n    termination_protection=True,\n    pg=exoscale.DatabasePgArgs(\n        version=\"13\",\n        backup_schedule=\"04:00\",\n        ip_filters=[\n            \"1.2.3.4/32\",\n            \"5.6.7.8/32\",\n        ],\n        pg_settings=json.dumps({\n            \"timezone\": \"Europe/Zurich\",\n        }),\n    ))\nmy_database_database_uri = exoscale.get_database_uri(name=\"my-database\",\n    type=\"pg\",\n    zone=\"ch-gva-2\")\npulumi.export(\"myDatabaseUri\", my_database_database_uri.uri)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Exoscale = Pulumi.Exoscale;\nusing Exoscale = Pulumiverse.Exoscale;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myDatabaseDatabase = new Exoscale.Database(\"myDatabaseDatabase\", new()\n    {\n        Zone = \"ch-gva-2\",\n        Type = \"pg\",\n        Plan = \"startup-4\",\n        MaintenanceDow = \"sunday\",\n        MaintenanceTime = \"23:00:00\",\n        TerminationProtection = true,\n        Pg = new Exoscale.Inputs.DatabasePgArgs\n        {\n            Version = \"13\",\n            BackupSchedule = \"04:00\",\n            IpFilters = new[]\n            {\n                \"1.2.3.4/32\",\n                \"5.6.7.8/32\",\n            },\n            PgSettings = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                [\"timezone\"] = \"Europe/Zurich\",\n            }),\n        },\n    });\n\n    var myDatabaseDatabaseURI = Exoscale.GetDatabaseURI.Invoke(new()\n    {\n        Name = \"my-database\",\n        Type = \"pg\",\n        Zone = \"ch-gva-2\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"myDatabaseUri\"] = myDatabaseDatabaseURI.Apply(getDatabaseURIResult =\u003e getDatabaseURIResult.Uri),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"timezone\": \"Europe/Zurich\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err = exoscale.NewDatabase(ctx, \"myDatabaseDatabase\", \u0026exoscale.DatabaseArgs{\n\t\t\tZone:                  pulumi.String(\"ch-gva-2\"),\n\t\t\tType:                  pulumi.String(\"pg\"),\n\t\t\tPlan:                  pulumi.String(\"startup-4\"),\n\t\t\tMaintenanceDow:        pulumi.String(\"sunday\"),\n\t\t\tMaintenanceTime:       pulumi.String(\"23:00:00\"),\n\t\t\tTerminationProtection: pulumi.Bool(true),\n\t\t\tPg: \u0026exoscale.DatabasePgArgs{\n\t\t\t\tVersion:        pulumi.String(\"13\"),\n\t\t\t\tBackupSchedule: pulumi.String(\"04:00\"),\n\t\t\t\tIpFilters: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"1.2.3.4/32\"),\n\t\t\t\t\tpulumi.String(\"5.6.7.8/32\"),\n\t\t\t\t},\n\t\t\t\tPgSettings: pulumi.String(json0),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyDatabaseDatabaseURI, err := exoscale.GetDatabaseURI(ctx, \u0026exoscale.GetDatabaseURIArgs{\n\t\t\tName: \"my-database\",\n\t\t\tType: \"pg\",\n\t\t\tZone: \"ch-gva-2\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"myDatabaseUri\", myDatabaseDatabaseURI.Uri)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.exoscale.Database;\nimport com.pulumi.exoscale.DatabaseArgs;\nimport com.pulumi.exoscale.inputs.DatabasePgArgs;\nimport com.pulumi.exoscale.ExoscaleFunctions;\nimport com.pulumi.exoscale.inputs.GetDatabaseURIArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myDatabaseDatabase = new Database(\"myDatabaseDatabase\", DatabaseArgs.builder()        \n            .zone(\"ch-gva-2\")\n            .type(\"pg\")\n            .plan(\"startup-4\")\n            .maintenanceDow(\"sunday\")\n            .maintenanceTime(\"23:00:00\")\n            .terminationProtection(true)\n            .pg(DatabasePgArgs.builder()\n                .version(\"13\")\n                .backupSchedule(\"04:00\")\n                .ipFilters(                \n                    \"1.2.3.4/32\",\n                    \"5.6.7.8/32\")\n                .pgSettings(serializeJson(\n                    jsonObject(\n                        jsonProperty(\"timezone\", \"Europe/Zurich\")\n                    )))\n                .build())\n            .build());\n\n        final var myDatabaseDatabaseURI = ExoscaleFunctions.getDatabaseURI(GetDatabaseURIArgs.builder()\n            .name(\"my-database\")\n            .type(\"pg\")\n            .zone(\"ch-gva-2\")\n            .build());\n\n        ctx.export(\"myDatabaseUri\", myDatabaseDatabaseURI.applyValue(getDatabaseURIResult -\u003e getDatabaseURIResult.uri()));\n    }\n}\n```\n```yaml\nresources:\n  myDatabaseDatabase:\n    type: exoscale:Database\n    properties:\n      zone: ch-gva-2\n      type: pg\n      plan: startup-4\n      maintenanceDow: sunday\n      maintenanceTime: 23:00:00\n      terminationProtection: true\n      pg:\n        version: '13'\n        backupSchedule: 04:00\n        ipFilters:\n          - 1.2.3.4/32\n          - 5.6.7.8/32\n        pgSettings:\n          fn::toJSON:\n            timezone: Europe/Zurich\nvariables:\n  myDatabaseDatabaseURI:\n    fn::invoke:\n      Function: exoscale:getDatabaseURI\n      Arguments:\n        name: my-database\n        type: pg\n        zone: ch-gva-2\noutputs:\n  myDatabaseUri: ${myDatabaseDatabaseURI.uri}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getDatabaseURI.\n",
                 "properties": {
@@ -7101,6 +7103,10 @@
                         "type": "string",
                         "description": "The current pool state.\n"
                     },
+                    "storageLvm": {
+                        "type": "boolean",
+                        "description": "Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).\n"
+                    },
                     "taints": {
                         "type": "object",
                         "additionalProperties": {
@@ -7202,6 +7208,10 @@
                         "type": "string",
                         "description": "The current pool state.\n"
                     },
+                    "storageLvm": {
+                        "type": "boolean",
+                        "description": "Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).\n"
+                    },
                     "taints": {
                         "type": "object",
                         "additionalProperties": {
@@ -7292,6 +7302,10 @@
                         "type": "string",
                         "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
+                    "storageLvm": {
+                        "type": "boolean",
+                        "description": "Match against this bool\n"
+                    },
                     "taints": {
                         "type": "object",
                         "additionalProperties": {
@@ -7377,6 +7391,10 @@
                     "state": {
                         "type": "string",
                         "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    },
+                    "storageLvm": {
+                        "type": "boolean",
+                        "description": "Match against this bool\n"
                     },
                     "taints": {
                         "type": "object",
