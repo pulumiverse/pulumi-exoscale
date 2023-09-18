@@ -1,14 +1,63 @@
 {
     "renames": {
         "resources": {
-            "exoscale:index/database:Database": "exoscale_database"
+            "exoscale:index/affinity:Affinity": "exoscale_affinity",
+            "exoscale:index/antiAffinityGroup:AntiAffinityGroup": "exoscale_anti_affinity_group",
+            "exoscale:index/compute:Compute": "exoscale_compute",
+            "exoscale:index/computeInstance:ComputeInstance": "exoscale_compute_instance",
+            "exoscale:index/database:Database": "exoscale_database",
+            "exoscale:index/domain:Domain": "exoscale_domain",
+            "exoscale:index/domainRecord:DomainRecord": "exoscale_domain_record",
+            "exoscale:index/elasticIP:ElasticIP": "exoscale_elastic_ip",
+            "exoscale:index/iAMAccessKey:IAMAccessKey": "exoscale_iam_access_key",
+            "exoscale:index/iPAddress:IPAddress": "exoscale_ipaddress",
+            "exoscale:index/instancePool:InstancePool": "exoscale_instance_pool",
+            "exoscale:index/nIC:NIC": "exoscale_nic",
+            "exoscale:index/nLB:NLB": "exoscale_nlb",
+            "exoscale:index/nLBService:NLBService": "exoscale_nlb_service",
+            "exoscale:index/network:Network": "exoscale_network",
+            "exoscale:index/privateNetwork:PrivateNetwork": "exoscale_private_network",
+            "exoscale:index/sKSCluster:SKSCluster": "exoscale_sks_cluster",
+            "exoscale:index/sKSKubeconfig:SKSKubeconfig": "exoscale_sks_kubeconfig",
+            "exoscale:index/sKSNodepool:SKSNodepool": "exoscale_sks_nodepool",
+            "exoscale:index/sSHKey:SSHKey": "exoscale_ssh_key",
+            "exoscale:index/sSHKeypair:SSHKeypair": "exoscale_ssh_keypair",
+            "exoscale:index/secondaryIPAddress:SecondaryIPAddress": "exoscale_secondary_ipaddress",
+            "exoscale:index/securityGroup:SecurityGroup": "exoscale_security_group",
+            "exoscale:index/securityGroupRule:SecurityGroupRule": "exoscale_security_group_rule",
+            "exoscale:index/securityGroupRules:SecurityGroupRules": "exoscale_security_group_rules"
         },
         "functions": {
+            "exoscale:index/getAffinity:getAffinity": "exoscale_affinity",
+            "exoscale:index/getAntiAffinityGroup:getAntiAffinityGroup": "exoscale_anti_affinity_group",
+            "exoscale:index/getCompute:getCompute": "exoscale_compute",
+            "exoscale:index/getComputeIPAddress:getComputeIPAddress": "exoscale_compute_ipaddress",
+            "exoscale:index/getComputeInstance:getComputeInstance": "exoscale_compute_instance",
+            "exoscale:index/getComputeInstanceList:getComputeInstanceList": "exoscale_compute_instance_list",
+            "exoscale:index/getComputeTemplate:getComputeTemplate": "exoscale_compute_template",
             "exoscale:index/getDatabaseURI:getDatabaseURI": "exoscale_database_uri",
+            "exoscale:index/getDomain:getDomain": "exoscale_domain",
+            "exoscale:index/getDomainRecord:getDomainRecord": "exoscale_domain_record",
+            "exoscale:index/getElasticIP:getElasticIP": "exoscale_elastic_ip",
+            "exoscale:index/getInstancePool:getInstancePool": "exoscale_instance_pool",
+            "exoscale:index/getInstancePoolList:getInstancePoolList": "exoscale_instance_pool_list",
+            "exoscale:index/getNLB:getNLB": "exoscale_nlb",
             "exoscale:index/getNLBServiceList:getNLBServiceList": "exoscale_nlb_service_list",
+            "exoscale:index/getNetwork:getNetwork": "exoscale_network",
+            "exoscale:index/getPrivateNetwork:getPrivateNetwork": "exoscale_private_network",
+            "exoscale:index/getSKSCluster:getSKSCluster": "exoscale_sks_cluster",
+            "exoscale:index/getSKSClusterList:getSKSClusterList": "exoscale_sks_cluster_list",
+            "exoscale:index/getSKSNodepool:getSKSNodepool": "exoscale_sks_nodepool",
+            "exoscale:index/getSKSNodepoolList:getSKSNodepoolList": "exoscale_sks_nodepool_list",
+            "exoscale:index/getSecurityGroup:getSecurityGroup": "exoscale_security_group",
+            "exoscale:index/getTemplate:getTemplate": "exoscale_template",
             "exoscale:index/getZones:getZones": "exoscale_zones"
         },
         "renamedProperties": {
+            "exoscale:index/ComputeInstanceNetworkInterface:ComputeInstanceNetworkInterface": {
+                "ipAddress": "ip_address",
+                "networkId": "network_id"
+            },
             "exoscale:index/DatabaseGrafana:DatabaseGrafana": {
                 "grafanaSettings": "grafana_settings",
                 "ipFilters": "ip_filter"
@@ -67,6 +116,75 @@
                 "ipFilters": "ip_filter",
                 "redisSettings": "redis_settings"
             },
+            "exoscale:index/ElasticIPHealthcheck:ElasticIPHealthcheck": {
+                "strikesFail": "strikes_fail",
+                "strikesOk": "strikes_ok",
+                "tlsSkipVerify": "tls_skip_verify",
+                "tlsSni": "tls_sni"
+            },
+            "exoscale:index/InstancePoolInstance:InstancePoolInstance": {
+                "ipv6Address": "ipv6_address",
+                "publicIpAddress": "public_ip_address"
+            },
+            "exoscale:index/NLBServiceHealthcheck:NLBServiceHealthcheck": {
+                "tlsSni": "tls_sni"
+            },
+            "exoscale:index/SKSClusterOidc:SKSClusterOidc": {
+                "clientId": "client_id",
+                "groupsClaim": "groups_claim",
+                "groupsPrefix": "groups_prefix",
+                "issuerUrl": "issuer_url",
+                "requiredClaim": "required_claim",
+                "usernameClaim": "username_claim",
+                "usernamePrefix": "username_prefix"
+            },
+            "exoscale:index/SecurityGroupRulesEgress:SecurityGroupRulesEgress": {
+                "cidrLists": "cidr_list",
+                "icmpCode": "icmp_code",
+                "icmpType": "icmp_type",
+                "userSecurityGroupLists": "user_security_group_list"
+            },
+            "exoscale:index/SecurityGroupRulesIngress:SecurityGroupRulesIngress": {
+                "cidrLists": "cidr_list",
+                "icmpCode": "icmp_code",
+                "icmpType": "icmp_type",
+                "userSecurityGroupLists": "user_security_group_list"
+            },
+            "exoscale:index/affinity:Affinity": {
+                "virtualMachineIds": "virtual_machine_ids"
+            },
+            "exoscale:index/compute:Compute": {
+                "affinityGroupIds": "affinity_group_ids",
+                "affinityGroups": "affinity_groups",
+                "diskSize": "disk_size",
+                "displayName": "display_name",
+                "ip6Address": "ip6_address",
+                "ip6Cidr": "ip6_cidr",
+                "ipAddress": "ip_address",
+                "keyPair": "key_pair",
+                "reverseDns": "reverse_dns",
+                "securityGroupIds": "security_group_ids",
+                "securityGroups": "security_groups",
+                "templateId": "template_id",
+                "userData": "user_data",
+                "userDataBase64": "user_data_base64"
+            },
+            "exoscale:index/computeInstance:ComputeInstance": {
+                "antiAffinityGroupIds": "anti_affinity_group_ids",
+                "createdAt": "created_at",
+                "deployTargetId": "deploy_target_id",
+                "diskSize": "disk_size",
+                "elasticIpIds": "elastic_ip_ids",
+                "ipv6Address": "ipv6_address",
+                "networkInterfaces": "network_interface",
+                "privateNetworkIds": "private_network_ids",
+                "publicIpAddress": "public_ip_address",
+                "reverseDns": "reverse_dns",
+                "securityGroupIds": "security_group_ids",
+                "sshKey": "ssh_key",
+                "templateId": "template_id",
+                "userData": "user_data"
+            },
             "exoscale:index/database:Database": {
                 "caCertificate": "ca_certificate",
                 "createdAt": "created_at",
@@ -78,6 +196,131 @@
                 "terminationProtection": "termination_protection",
                 "updatedAt": "updated_at"
             },
+            "exoscale:index/domain:Domain": {
+                "autoRenew": "auto_renew",
+                "expiresOn": "expires_on"
+            },
+            "exoscale:index/domainRecord:DomainRecord": {
+                "recordType": "record_type"
+            },
+            "exoscale:index/elasticIP:ElasticIP": {
+                "addressFamily": "address_family",
+                "ipAddress": "ip_address",
+                "reverseDns": "reverse_dns"
+            },
+            "exoscale:index/getCompute:getCompute": {
+                "diskSize": "disk_size",
+                "ip6Address": "ip6_address",
+                "ipAddress": "ip_address",
+                "privateNetworkIpAddresses": "private_network_ip_addresses"
+            },
+            "exoscale:index/getComputeIPAddress:getComputeIPAddress": {
+                "ipAddress": "ip_address"
+            },
+            "exoscale:index/getComputeInstance:getComputeInstance": {
+                "antiAffinityGroupIds": "anti_affinity_group_ids",
+                "createdAt": "created_at",
+                "deployTargetId": "deploy_target_id",
+                "diskSize": "disk_size",
+                "elasticIpIds": "elastic_ip_ids",
+                "ipv6Address": "ipv6_address",
+                "managerId": "manager_id",
+                "managerType": "manager_type",
+                "privateNetworkIds": "private_network_ids",
+                "publicIpAddress": "public_ip_address",
+                "reverseDns": "reverse_dns",
+                "securityGroupIds": "security_group_ids",
+                "sshKey": "ssh_key",
+                "templateId": "template_id",
+                "userData": "user_data"
+            },
+            "exoscale:index/getComputeInstanceList:getComputeInstanceList": {
+                "createdAt": "created_at",
+                "deployTargetId": "deploy_target_id",
+                "diskSize": "disk_size",
+                "ipv6Address": "ipv6_address",
+                "managerId": "manager_id",
+                "managerType": "manager_type",
+                "publicIpAddress": "public_ip_address",
+                "reverseDns": "reverse_dns",
+                "sshKey": "ssh_key",
+                "templateId": "template_id",
+                "userData": "user_data"
+            },
+            "exoscale:index/getComputeInstanceListInstance:getComputeInstanceListInstance": {
+                "antiAffinityGroupIds": "anti_affinity_group_ids",
+                "createdAt": "created_at",
+                "deployTargetId": "deploy_target_id",
+                "diskSize": "disk_size",
+                "elasticIpIds": "elastic_ip_ids",
+                "ipv6Address": "ipv6_address",
+                "managerId": "manager_id",
+                "managerType": "manager_type",
+                "privateNetworkIds": "private_network_ids",
+                "publicIpAddress": "public_ip_address",
+                "reverseDns": "reverse_dns",
+                "securityGroupIds": "security_group_ids",
+                "sshKey": "ssh_key",
+                "templateId": "template_id",
+                "userData": "user_data"
+            },
+            "exoscale:index/getDomainRecordFilter:getDomainRecordFilter": {
+                "contentRegex": "content_regex",
+                "recordType": "record_type"
+            },
+            "exoscale:index/getDomainRecordRecord:getDomainRecordRecord": {
+                "recordType": "record_type"
+            },
+            "exoscale:index/getElasticIP:getElasticIP": {
+                "addressFamily": "address_family",
+                "healthchecks": "healthcheck",
+                "ipAddress": "ip_address",
+                "reverseDns": "reverse_dns"
+            },
+            "exoscale:index/getElasticIPHealthcheck:getElasticIPHealthcheck": {
+                "strikesFail": "strikes_fail",
+                "strikesOk": "strikes_ok",
+                "tlsSkipVerify": "tls_skip_verify",
+                "tlsSni": "tls_sni"
+            },
+            "exoscale:index/getInstancePool:getInstancePool": {
+                "affinityGroupIds": "affinity_group_ids",
+                "deployTargetId": "deploy_target_id",
+                "diskSize": "disk_size",
+                "elasticIpIds": "elastic_ip_ids",
+                "instancePrefix": "instance_prefix",
+                "instanceType": "instance_type",
+                "keyPair": "key_pair",
+                "networkIds": "network_ids",
+                "securityGroupIds": "security_group_ids",
+                "templateId": "template_id",
+                "userData": "user_data"
+            },
+            "exoscale:index/getInstancePoolInstance:getInstancePoolInstance": {
+                "ipv6Address": "ipv6_address",
+                "publicIpAddress": "public_ip_address"
+            },
+            "exoscale:index/getInstancePoolListPool:getInstancePoolListPool": {
+                "affinityGroupIds": "affinity_group_ids",
+                "deployTargetId": "deploy_target_id",
+                "diskSize": "disk_size",
+                "elasticIpIds": "elastic_ip_ids",
+                "instancePrefix": "instance_prefix",
+                "instanceType": "instance_type",
+                "keyPair": "key_pair",
+                "networkIds": "network_ids",
+                "securityGroupIds": "security_group_ids",
+                "templateId": "template_id",
+                "userData": "user_data"
+            },
+            "exoscale:index/getInstancePoolListPoolInstance:getInstancePoolListPoolInstance": {
+                "ipv6Address": "ipv6_address",
+                "publicIpAddress": "public_ip_address"
+            },
+            "exoscale:index/getNLB:getNLB": {
+                "createdAt": "created_at",
+                "ipAddress": "ip_address"
+            },
             "exoscale:index/getNLBServiceList:getNLBServiceList": {
                 "nlbId": "nlb_id",
                 "nlbName": "nlb_name"
@@ -88,6 +331,227 @@
             },
             "exoscale:index/getNLBServiceListServiceHealthcheck:getNLBServiceListServiceHealthcheck": {
                 "tlsSni": "tls_sni"
+            },
+            "exoscale:index/getNetwork:getNetwork": {
+                "endIp": "end_ip",
+                "startIp": "start_ip"
+            },
+            "exoscale:index/getPrivateNetwork:getPrivateNetwork": {
+                "endIp": "end_ip",
+                "startIp": "start_ip"
+            },
+            "exoscale:index/getSKSCluster:getSKSCluster": {
+                "aggregationCa": "aggregation_ca",
+                "autoUpgrade": "auto_upgrade",
+                "controlPlaneCa": "control_plane_ca",
+                "createdAt": "created_at",
+                "exoscaleCcm": "exoscale_ccm",
+                "kubeletCa": "kubelet_ca",
+                "metricsServer": "metrics_server",
+                "serviceLevel": "service_level"
+            },
+            "exoscale:index/getSKSClusterList:getSKSClusterList": {
+                "aggregationCa": "aggregation_ca",
+                "autoUpgrade": "auto_upgrade",
+                "controlPlaneCa": "control_plane_ca",
+                "createdAt": "created_at",
+                "exoscaleCcm": "exoscale_ccm",
+                "kubeletCa": "kubelet_ca",
+                "metricsServer": "metrics_server",
+                "serviceLevel": "service_level"
+            },
+            "exoscale:index/getSKSClusterListCluster:getSKSClusterListCluster": {
+                "aggregationCa": "aggregation_ca",
+                "autoUpgrade": "auto_upgrade",
+                "controlPlaneCa": "control_plane_ca",
+                "createdAt": "created_at",
+                "exoscaleCcm": "exoscale_ccm",
+                "kubeletCa": "kubelet_ca",
+                "metricsServer": "metrics_server",
+                "serviceLevel": "service_level"
+            },
+            "exoscale:index/getSKSClusterListClusterOidc:getSKSClusterListClusterOidc": {
+                "clientId": "client_id",
+                "groupsClaim": "groups_claim",
+                "groupsPrefix": "groups_prefix",
+                "issuerUrl": "issuer_url",
+                "requiredClaim": "required_claim",
+                "usernameClaim": "username_claim",
+                "usernamePrefix": "username_prefix"
+            },
+            "exoscale:index/getSKSClusterOidc:getSKSClusterOidc": {
+                "clientId": "client_id",
+                "groupsClaim": "groups_claim",
+                "groupsPrefix": "groups_prefix",
+                "issuerUrl": "issuer_url",
+                "requiredClaim": "required_claim",
+                "usernameClaim": "username_claim",
+                "usernamePrefix": "username_prefix"
+            },
+            "exoscale:index/getSKSNodepool:getSKSNodepool": {
+                "antiAffinityGroupIds": "anti_affinity_group_ids",
+                "clusterId": "cluster_id",
+                "createdAt": "created_at",
+                "deployTargetId": "deploy_target_id",
+                "diskSize": "disk_size",
+                "instancePoolId": "instance_pool_id",
+                "instancePrefix": "instance_prefix",
+                "instanceType": "instance_type",
+                "privateNetworkIds": "private_network_ids",
+                "securityGroupIds": "security_group_ids",
+                "storageLvm": "storage_lvm",
+                "templateId": "template_id"
+            },
+            "exoscale:index/getSKSNodepoolList:getSKSNodepoolList": {
+                "clusterId": "cluster_id",
+                "createdAt": "created_at",
+                "deployTargetId": "deploy_target_id",
+                "diskSize": "disk_size",
+                "instancePoolId": "instance_pool_id",
+                "instancePrefix": "instance_prefix",
+                "instanceType": "instance_type",
+                "storageLvm": "storage_lvm",
+                "templateId": "template_id"
+            },
+            "exoscale:index/getSKSNodepoolListNodepool:getSKSNodepoolListNodepool": {
+                "antiAffinityGroupIds": "anti_affinity_group_ids",
+                "clusterId": "cluster_id",
+                "createdAt": "created_at",
+                "deployTargetId": "deploy_target_id",
+                "diskSize": "disk_size",
+                "instancePoolId": "instance_pool_id",
+                "instancePrefix": "instance_prefix",
+                "instanceType": "instance_type",
+                "privateNetworkIds": "private_network_ids",
+                "securityGroupIds": "security_group_ids",
+                "storageLvm": "storage_lvm",
+                "templateId": "template_id"
+            },
+            "exoscale:index/getSecurityGroup:getSecurityGroup": {
+                "externalSources": "external_sources"
+            },
+            "exoscale:index/getTemplate:getTemplate": {
+                "defaultUser": "default_user"
+            },
+            "exoscale:index/iAMAccessKey:IAMAccessKey": {
+                "tagsOperations": "tags_operations"
+            },
+            "exoscale:index/iPAddress:IPAddress": {
+                "healthcheckInterval": "healthcheck_interval",
+                "healthcheckMode": "healthcheck_mode",
+                "healthcheckPath": "healthcheck_path",
+                "healthcheckPort": "healthcheck_port",
+                "healthcheckStrikesFail": "healthcheck_strikes_fail",
+                "healthcheckStrikesOk": "healthcheck_strikes_ok",
+                "healthcheckTimeout": "healthcheck_timeout",
+                "healthcheckTlsSkipVerify": "healthcheck_tls_skip_verify",
+                "healthcheckTlsSni": "healthcheck_tls_sni",
+                "ipAddress": "ip_address",
+                "reverseDns": "reverse_dns"
+            },
+            "exoscale:index/instancePool:InstancePool": {
+                "affinityGroupIds": "affinity_group_ids",
+                "deployTargetId": "deploy_target_id",
+                "diskSize": "disk_size",
+                "elasticIpIds": "elastic_ip_ids",
+                "instancePrefix": "instance_prefix",
+                "instanceType": "instance_type",
+                "keyPair": "key_pair",
+                "networkIds": "network_ids",
+                "securityGroupIds": "security_group_ids",
+                "serviceOffering": "service_offering",
+                "templateId": "template_id",
+                "userData": "user_data",
+                "virtualMachines": "virtual_machines"
+            },
+            "exoscale:index/nIC:NIC": {
+                "computeId": "compute_id",
+                "ipAddress": "ip_address",
+                "macAddress": "mac_address",
+                "networkId": "network_id"
+            },
+            "exoscale:index/nLB:NLB": {
+                "createdAt": "created_at",
+                "ipAddress": "ip_address"
+            },
+            "exoscale:index/nLBService:NLBService": {
+                "healthchecks": "healthcheck",
+                "instancePoolId": "instance_pool_id",
+                "nlbId": "nlb_id",
+                "targetPort": "target_port"
+            },
+            "exoscale:index/network:Network": {
+                "displayText": "display_text",
+                "endIp": "end_ip",
+                "networkOffering": "network_offering",
+                "startIp": "start_ip"
+            },
+            "exoscale:index/privateNetwork:PrivateNetwork": {
+                "endIp": "end_ip",
+                "startIp": "start_ip"
+            },
+            "exoscale:index/sKSCluster:SKSCluster": {
+                "aggregationCa": "aggregation_ca",
+                "autoUpgrade": "auto_upgrade",
+                "controlPlaneCa": "control_plane_ca",
+                "createdAt": "created_at",
+                "exoscaleCcm": "exoscale_ccm",
+                "kubeletCa": "kubelet_ca",
+                "metricsServer": "metrics_server",
+                "serviceLevel": "service_level"
+            },
+            "exoscale:index/sKSKubeconfig:SKSKubeconfig": {
+                "clusterId": "cluster_id",
+                "earlyRenewalSeconds": "early_renewal_seconds",
+                "readyForRenewal": "ready_for_renewal",
+                "ttlSeconds": "ttl_seconds"
+            },
+            "exoscale:index/sKSNodepool:SKSNodepool": {
+                "antiAffinityGroupIds": "anti_affinity_group_ids",
+                "clusterId": "cluster_id",
+                "createdAt": "created_at",
+                "deployTargetId": "deploy_target_id",
+                "diskSize": "disk_size",
+                "instancePoolId": "instance_pool_id",
+                "instancePrefix": "instance_prefix",
+                "instanceType": "instance_type",
+                "privateNetworkIds": "private_network_ids",
+                "securityGroupIds": "security_group_ids",
+                "storageLvm": "storage_lvm",
+                "templateId": "template_id"
+            },
+            "exoscale:index/sSHKey:SSHKey": {
+                "publicKey": "public_key"
+            },
+            "exoscale:index/sSHKeypair:SSHKeypair": {
+                "privateKey": "private_key",
+                "publicKey": "public_key"
+            },
+            "exoscale:index/secondaryIPAddress:SecondaryIPAddress": {
+                "computeId": "compute_id",
+                "ipAddress": "ip_address",
+                "networkId": "network_id",
+                "nicId": "nic_id"
+            },
+            "exoscale:index/securityGroup:SecurityGroup": {
+                "externalSources": "external_sources"
+            },
+            "exoscale:index/securityGroupRule:SecurityGroupRule": {
+                "endPort": "end_port",
+                "icmpCode": "icmp_code",
+                "icmpType": "icmp_type",
+                "publicSecurityGroup": "public_security_group",
+                "securityGroup": "security_group",
+                "securityGroupId": "security_group_id",
+                "startPort": "start_port",
+                "userSecurityGroup": "user_security_group",
+                "userSecurityGroupId": "user_security_group_id"
+            },
+            "exoscale:index/securityGroupRules:SecurityGroupRules": {
+                "egresses": "egress",
+                "ingresses": "ingress",
+                "securityGroup": "security_group",
+                "securityGroupId": "security_group_id"
             },
             "exoscale:index:Provider": {
                 "computeEndpoint": "compute_endpoint",

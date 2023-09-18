@@ -2,12 +2,16 @@ module github.com/pulumiverse/pulumi-exoscale/provider
 
 go 1.19
 
-replace github.com/exoscale/terraform-provider-exoscale/shim => ./shim
+replace (
+	github.com/exoscale/terraform-provider-exoscale/shim => ./shim
+	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20230912190043-e6d96b3b8f7e
+)
 
 require (
 	github.com/exoscale/terraform-provider-exoscale/shim v0.0.0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.16.1
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.59.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.60.0
+	github.com/pulumi/pulumi/sdk/v3 v3.83.0
 )
 
 require (
@@ -197,8 +201,8 @@ require (
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.6 // indirect
 	github.com/pulumi/pulumi-yaml v1.2.2 // indirect
 	github.com/pulumi/pulumi/pkg/v3 v3.83.0 // indirect
-	github.com/pulumi/pulumi/sdk/v3 v3.83.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
+	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/rogpeppe/go-internal v1.9.0 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect

@@ -1,5 +1,0 @@
-{
-  "resource": true,
-  "name": "exoscale",
-  "server": "github://api.github.com/pulumiverse/pulumi-exoscale"
-}
