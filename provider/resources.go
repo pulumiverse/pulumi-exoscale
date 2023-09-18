@@ -67,8 +67,9 @@ func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:    shim.ShimmedProvider(),
-		Name: "exoscale",
+		P:       shim.ShimmedProvider(),
+		Name:    "exoscale",
+		Version: version.Version,
 		// DisplayName is a way to be able to change the casing of the provider
 		// name when being displayed on the Pulumi registry
 		DisplayName: "Exoscale",
