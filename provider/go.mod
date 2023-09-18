@@ -1,6 +1,6 @@
 module github.com/pulumiverse/pulumi-exoscale/provider
 
-go 1.19
+go 1.20
 
 replace (
 	github.com/exoscale/terraform-provider-exoscale/shim => ./shim
