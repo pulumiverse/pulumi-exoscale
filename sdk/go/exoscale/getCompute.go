@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -104,6 +105,12 @@ func (o LookupComputeResultOutput) ToLookupComputeResultOutput() LookupComputeRe
 
 func (o LookupComputeResultOutput) ToLookupComputeResultOutputWithContext(ctx context.Context) LookupComputeResultOutput {
 	return o
+}
+
+func (o LookupComputeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupComputeResult] {
+	return pulumix.Output[LookupComputeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Number of cpu the Compute instance is running with

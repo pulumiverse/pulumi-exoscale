@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -174,6 +175,12 @@ func (i *ElasticIP) ToElasticIPOutputWithContext(ctx context.Context) ElasticIPO
 	return pulumi.ToOutputWithContext(ctx, i).(ElasticIPOutput)
 }
 
+func (i *ElasticIP) ToOutput(ctx context.Context) pulumix.Output[*ElasticIP] {
+	return pulumix.Output[*ElasticIP]{
+		OutputState: i.ToElasticIPOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ElasticIPArrayInput is an input type that accepts ElasticIPArray and ElasticIPArrayOutput values.
 // You can construct a concrete instance of `ElasticIPArrayInput` via:
 //
@@ -197,6 +204,12 @@ func (i ElasticIPArray) ToElasticIPArrayOutput() ElasticIPArrayOutput {
 
 func (i ElasticIPArray) ToElasticIPArrayOutputWithContext(ctx context.Context) ElasticIPArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ElasticIPArrayOutput)
+}
+
+func (i ElasticIPArray) ToOutput(ctx context.Context) pulumix.Output[[]*ElasticIP] {
+	return pulumix.Output[[]*ElasticIP]{
+		OutputState: i.ToElasticIPArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ElasticIPMapInput is an input type that accepts ElasticIPMap and ElasticIPMapOutput values.
@@ -224,6 +237,12 @@ func (i ElasticIPMap) ToElasticIPMapOutputWithContext(ctx context.Context) Elast
 	return pulumi.ToOutputWithContext(ctx, i).(ElasticIPMapOutput)
 }
 
+func (i ElasticIPMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ElasticIP] {
+	return pulumix.Output[map[string]*ElasticIP]{
+		OutputState: i.ToElasticIPMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ElasticIPOutput struct{ *pulumi.OutputState }
 
 func (ElasticIPOutput) ElementType() reflect.Type {
@@ -236,6 +255,12 @@ func (o ElasticIPOutput) ToElasticIPOutput() ElasticIPOutput {
 
 func (o ElasticIPOutput) ToElasticIPOutputWithContext(ctx context.Context) ElasticIPOutput {
 	return o
+}
+
+func (o ElasticIPOutput) ToOutput(ctx context.Context) pulumix.Output[*ElasticIP] {
+	return pulumix.Output[*ElasticIP]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ❗ The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
@@ -292,6 +317,12 @@ func (o ElasticIPArrayOutput) ToElasticIPArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ElasticIPArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ElasticIP] {
+	return pulumix.Output[[]*ElasticIP]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ElasticIPArrayOutput) Index(i pulumi.IntInput) ElasticIPOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ElasticIP {
 		return vs[0].([]*ElasticIP)[vs[1].(int)]
@@ -310,6 +341,12 @@ func (o ElasticIPMapOutput) ToElasticIPMapOutput() ElasticIPMapOutput {
 
 func (o ElasticIPMapOutput) ToElasticIPMapOutputWithContext(ctx context.Context) ElasticIPMapOutput {
 	return o
+}
+
+func (o ElasticIPMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ElasticIP] {
+	return pulumix.Output[map[string]*ElasticIP]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElasticIPMapOutput) MapIndex(k pulumi.StringInput) ElasticIPOutput {

@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -166,6 +167,12 @@ func (i *NLB) ToNLBOutputWithContext(ctx context.Context) NLBOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NLBOutput)
 }
 
+func (i *NLB) ToOutput(ctx context.Context) pulumix.Output[*NLB] {
+	return pulumix.Output[*NLB]{
+		OutputState: i.ToNLBOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NLBArrayInput is an input type that accepts NLBArray and NLBArrayOutput values.
 // You can construct a concrete instance of `NLBArrayInput` via:
 //
@@ -189,6 +196,12 @@ func (i NLBArray) ToNLBArrayOutput() NLBArrayOutput {
 
 func (i NLBArray) ToNLBArrayOutputWithContext(ctx context.Context) NLBArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NLBArrayOutput)
+}
+
+func (i NLBArray) ToOutput(ctx context.Context) pulumix.Output[[]*NLB] {
+	return pulumix.Output[[]*NLB]{
+		OutputState: i.ToNLBArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NLBMapInput is an input type that accepts NLBMap and NLBMapOutput values.
@@ -216,6 +229,12 @@ func (i NLBMap) ToNLBMapOutputWithContext(ctx context.Context) NLBMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NLBMapOutput)
 }
 
+func (i NLBMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NLB] {
+	return pulumix.Output[map[string]*NLB]{
+		OutputState: i.ToNLBMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NLBOutput struct{ *pulumi.OutputState }
 
 func (NLBOutput) ElementType() reflect.Type {
@@ -228,6 +247,12 @@ func (o NLBOutput) ToNLBOutput() NLBOutput {
 
 func (o NLBOutput) ToNLBOutputWithContext(ctx context.Context) NLBOutput {
 	return o
+}
+
+func (o NLBOutput) ToOutput(ctx context.Context) pulumix.Output[*NLB] {
+	return pulumix.Output[*NLB]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The NLB creation date.
@@ -284,6 +309,12 @@ func (o NLBArrayOutput) ToNLBArrayOutputWithContext(ctx context.Context) NLBArra
 	return o
 }
 
+func (o NLBArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NLB] {
+	return pulumix.Output[[]*NLB]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NLBArrayOutput) Index(i pulumi.IntInput) NLBOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NLB {
 		return vs[0].([]*NLB)[vs[1].(int)]
@@ -302,6 +333,12 @@ func (o NLBMapOutput) ToNLBMapOutput() NLBMapOutput {
 
 func (o NLBMapOutput) ToNLBMapOutputWithContext(ctx context.Context) NLBMapOutput {
 	return o
+}
+
+func (o NLBMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NLB] {
+	return pulumix.Output[map[string]*NLB]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NLBMapOutput) MapIndex(k pulumi.StringInput) NLBOutput {

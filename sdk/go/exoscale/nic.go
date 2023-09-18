@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -135,6 +136,12 @@ func (i *NIC) ToNICOutputWithContext(ctx context.Context) NICOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NICOutput)
 }
 
+func (i *NIC) ToOutput(ctx context.Context) pulumix.Output[*NIC] {
+	return pulumix.Output[*NIC]{
+		OutputState: i.ToNICOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NICArrayInput is an input type that accepts NICArray and NICArrayOutput values.
 // You can construct a concrete instance of `NICArrayInput` via:
 //
@@ -158,6 +165,12 @@ func (i NICArray) ToNICArrayOutput() NICArrayOutput {
 
 func (i NICArray) ToNICArrayOutputWithContext(ctx context.Context) NICArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NICArrayOutput)
+}
+
+func (i NICArray) ToOutput(ctx context.Context) pulumix.Output[[]*NIC] {
+	return pulumix.Output[[]*NIC]{
+		OutputState: i.ToNICArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NICMapInput is an input type that accepts NICMap and NICMapOutput values.
@@ -185,6 +198,12 @@ func (i NICMap) ToNICMapOutputWithContext(ctx context.Context) NICMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NICMapOutput)
 }
 
+func (i NICMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NIC] {
+	return pulumix.Output[map[string]*NIC]{
+		OutputState: i.ToNICMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NICOutput struct{ *pulumi.OutputState }
 
 func (NICOutput) ElementType() reflect.Type {
@@ -197,6 +216,12 @@ func (o NICOutput) ToNICOutput() NICOutput {
 
 func (o NICOutput) ToNICOutputWithContext(ctx context.Context) NICOutput {
 	return o
+}
+
+func (o NICOutput) ToOutput(ctx context.Context) pulumix.Output[*NIC] {
+	return pulumix.Output[*NIC]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ❗ The compute instance ID.
@@ -241,6 +266,12 @@ func (o NICArrayOutput) ToNICArrayOutputWithContext(ctx context.Context) NICArra
 	return o
 }
 
+func (o NICArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NIC] {
+	return pulumix.Output[[]*NIC]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NICArrayOutput) Index(i pulumi.IntInput) NICOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NIC {
 		return vs[0].([]*NIC)[vs[1].(int)]
@@ -259,6 +290,12 @@ func (o NICMapOutput) ToNICMapOutput() NICMapOutput {
 
 func (o NICMapOutput) ToNICMapOutputWithContext(ctx context.Context) NICMapOutput {
 	return o
+}
+
+func (o NICMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NIC] {
+	return pulumix.Output[map[string]*NIC]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NICMapOutput) MapIndex(k pulumi.StringInput) NICOutput {

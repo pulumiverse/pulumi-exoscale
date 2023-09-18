@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -89,6 +90,12 @@ func (o GetComputeTemplateResultOutput) ToGetComputeTemplateResultOutput() GetCo
 
 func (o GetComputeTemplateResultOutput) ToGetComputeTemplateResultOutputWithContext(ctx context.Context) GetComputeTemplateResultOutput {
 	return o
+}
+
+func (o GetComputeTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetComputeTemplateResult] {
+	return pulumix.Output[GetComputeTemplateResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A template category filter (default: `featured`); among: - `featured` - official Exoscale templates - `community` - community-contributed templates - `mine` - custom templates private to my organization

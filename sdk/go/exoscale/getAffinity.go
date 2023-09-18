@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -76,6 +77,12 @@ func (o LookupAffinityResultOutput) ToLookupAffinityResultOutput() LookupAffinit
 
 func (o LookupAffinityResultOutput) ToLookupAffinityResultOutputWithContext(ctx context.Context) LookupAffinityResultOutput {
 	return o
+}
+
+func (o LookupAffinityResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAffinityResult] {
+	return pulumix.Output[LookupAffinityResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The anti-affinity group ID to match (conflicts with `name`)

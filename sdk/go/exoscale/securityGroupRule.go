@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -252,6 +253,12 @@ func (i *SecurityGroupRule) ToSecurityGroupRuleOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupRuleOutput)
 }
 
+func (i *SecurityGroupRule) ToOutput(ctx context.Context) pulumix.Output[*SecurityGroupRule] {
+	return pulumix.Output[*SecurityGroupRule]{
+		OutputState: i.ToSecurityGroupRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SecurityGroupRuleArrayInput is an input type that accepts SecurityGroupRuleArray and SecurityGroupRuleArrayOutput values.
 // You can construct a concrete instance of `SecurityGroupRuleArrayInput` via:
 //
@@ -275,6 +282,12 @@ func (i SecurityGroupRuleArray) ToSecurityGroupRuleArrayOutput() SecurityGroupRu
 
 func (i SecurityGroupRuleArray) ToSecurityGroupRuleArrayOutputWithContext(ctx context.Context) SecurityGroupRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupRuleArrayOutput)
+}
+
+func (i SecurityGroupRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*SecurityGroupRule] {
+	return pulumix.Output[[]*SecurityGroupRule]{
+		OutputState: i.ToSecurityGroupRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SecurityGroupRuleMapInput is an input type that accepts SecurityGroupRuleMap and SecurityGroupRuleMapOutput values.
@@ -302,6 +315,12 @@ func (i SecurityGroupRuleMap) ToSecurityGroupRuleMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupRuleMapOutput)
 }
 
+func (i SecurityGroupRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecurityGroupRule] {
+	return pulumix.Output[map[string]*SecurityGroupRule]{
+		OutputState: i.ToSecurityGroupRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecurityGroupRuleOutput struct{ *pulumi.OutputState }
 
 func (SecurityGroupRuleOutput) ElementType() reflect.Type {
@@ -314,6 +333,12 @@ func (o SecurityGroupRuleOutput) ToSecurityGroupRuleOutput() SecurityGroupRuleOu
 
 func (o SecurityGroupRuleOutput) ToSecurityGroupRuleOutputWithContext(ctx context.Context) SecurityGroupRuleOutput {
 	return o
+}
+
+func (o SecurityGroupRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityGroupRule] {
+	return pulumix.Output[*SecurityGroupRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ❗ An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with `publicSecurityGroup`/`userSecurityGroup`/`userSecurityGroupId`).
@@ -399,6 +424,12 @@ func (o SecurityGroupRuleArrayOutput) ToSecurityGroupRuleArrayOutputWithContext(
 	return o
 }
 
+func (o SecurityGroupRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SecurityGroupRule] {
+	return pulumix.Output[[]*SecurityGroupRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecurityGroupRuleArrayOutput) Index(i pulumi.IntInput) SecurityGroupRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecurityGroupRule {
 		return vs[0].([]*SecurityGroupRule)[vs[1].(int)]
@@ -417,6 +448,12 @@ func (o SecurityGroupRuleMapOutput) ToSecurityGroupRuleMapOutput() SecurityGroup
 
 func (o SecurityGroupRuleMapOutput) ToSecurityGroupRuleMapOutputWithContext(ctx context.Context) SecurityGroupRuleMapOutput {
 	return o
+}
+
+func (o SecurityGroupRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecurityGroupRule] {
+	return pulumix.Output[map[string]*SecurityGroupRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityGroupRuleMapOutput) MapIndex(k pulumi.StringInput) SecurityGroupRuleOutput {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -94,6 +95,12 @@ func (o GetComputeIPAddressResultOutput) ToGetComputeIPAddressResultOutput() Get
 
 func (o GetComputeIPAddressResultOutput) ToGetComputeIPAddressResultOutputWithContext(ctx context.Context) GetComputeIPAddressResultOutput {
 	return o
+}
+
+func (o GetComputeIPAddressResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetComputeIPAddressResult] {
+	return pulumix.Output[GetComputeIPAddressResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The EIP description to match.

@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -125,6 +126,12 @@ func (i *SecondaryIPAddress) ToSecondaryIPAddressOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(SecondaryIPAddressOutput)
 }
 
+func (i *SecondaryIPAddress) ToOutput(ctx context.Context) pulumix.Output[*SecondaryIPAddress] {
+	return pulumix.Output[*SecondaryIPAddress]{
+		OutputState: i.ToSecondaryIPAddressOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SecondaryIPAddressArrayInput is an input type that accepts SecondaryIPAddressArray and SecondaryIPAddressArrayOutput values.
 // You can construct a concrete instance of `SecondaryIPAddressArrayInput` via:
 //
@@ -148,6 +155,12 @@ func (i SecondaryIPAddressArray) ToSecondaryIPAddressArrayOutput() SecondaryIPAd
 
 func (i SecondaryIPAddressArray) ToSecondaryIPAddressArrayOutputWithContext(ctx context.Context) SecondaryIPAddressArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecondaryIPAddressArrayOutput)
+}
+
+func (i SecondaryIPAddressArray) ToOutput(ctx context.Context) pulumix.Output[[]*SecondaryIPAddress] {
+	return pulumix.Output[[]*SecondaryIPAddress]{
+		OutputState: i.ToSecondaryIPAddressArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SecondaryIPAddressMapInput is an input type that accepts SecondaryIPAddressMap and SecondaryIPAddressMapOutput values.
@@ -175,6 +188,12 @@ func (i SecondaryIPAddressMap) ToSecondaryIPAddressMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(SecondaryIPAddressMapOutput)
 }
 
+func (i SecondaryIPAddressMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecondaryIPAddress] {
+	return pulumix.Output[map[string]*SecondaryIPAddress]{
+		OutputState: i.ToSecondaryIPAddressMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecondaryIPAddressOutput struct{ *pulumi.OutputState }
 
 func (SecondaryIPAddressOutput) ElementType() reflect.Type {
@@ -187,6 +206,12 @@ func (o SecondaryIPAddressOutput) ToSecondaryIPAddressOutput() SecondaryIPAddres
 
 func (o SecondaryIPAddressOutput) ToSecondaryIPAddressOutputWithContext(ctx context.Context) SecondaryIPAddressOutput {
 	return o
+}
+
+func (o SecondaryIPAddressOutput) ToOutput(ctx context.Context) pulumix.Output[*SecondaryIPAddress] {
+	return pulumix.Output[*SecondaryIPAddress]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ❗ The compute instance ID.
@@ -223,6 +248,12 @@ func (o SecondaryIPAddressArrayOutput) ToSecondaryIPAddressArrayOutputWithContex
 	return o
 }
 
+func (o SecondaryIPAddressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SecondaryIPAddress] {
+	return pulumix.Output[[]*SecondaryIPAddress]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecondaryIPAddressArrayOutput) Index(i pulumi.IntInput) SecondaryIPAddressOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecondaryIPAddress {
 		return vs[0].([]*SecondaryIPAddress)[vs[1].(int)]
@@ -241,6 +272,12 @@ func (o SecondaryIPAddressMapOutput) ToSecondaryIPAddressMapOutput() SecondaryIP
 
 func (o SecondaryIPAddressMapOutput) ToSecondaryIPAddressMapOutputWithContext(ctx context.Context) SecondaryIPAddressMapOutput {
 	return o
+}
+
+func (o SecondaryIPAddressMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecondaryIPAddress] {
+	return pulumix.Output[map[string]*SecondaryIPAddress]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecondaryIPAddressMapOutput) MapIndex(k pulumi.StringInput) SecondaryIPAddressOutput {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -126,6 +127,12 @@ func (i *SecurityGroupRules) ToSecurityGroupRulesOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupRulesOutput)
 }
 
+func (i *SecurityGroupRules) ToOutput(ctx context.Context) pulumix.Output[*SecurityGroupRules] {
+	return pulumix.Output[*SecurityGroupRules]{
+		OutputState: i.ToSecurityGroupRulesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SecurityGroupRulesArrayInput is an input type that accepts SecurityGroupRulesArray and SecurityGroupRulesArrayOutput values.
 // You can construct a concrete instance of `SecurityGroupRulesArrayInput` via:
 //
@@ -149,6 +156,12 @@ func (i SecurityGroupRulesArray) ToSecurityGroupRulesArrayOutput() SecurityGroup
 
 func (i SecurityGroupRulesArray) ToSecurityGroupRulesArrayOutputWithContext(ctx context.Context) SecurityGroupRulesArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupRulesArrayOutput)
+}
+
+func (i SecurityGroupRulesArray) ToOutput(ctx context.Context) pulumix.Output[[]*SecurityGroupRules] {
+	return pulumix.Output[[]*SecurityGroupRules]{
+		OutputState: i.ToSecurityGroupRulesArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SecurityGroupRulesMapInput is an input type that accepts SecurityGroupRulesMap and SecurityGroupRulesMapOutput values.
@@ -176,6 +189,12 @@ func (i SecurityGroupRulesMap) ToSecurityGroupRulesMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupRulesMapOutput)
 }
 
+func (i SecurityGroupRulesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecurityGroupRules] {
+	return pulumix.Output[map[string]*SecurityGroupRules]{
+		OutputState: i.ToSecurityGroupRulesMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecurityGroupRulesOutput struct{ *pulumi.OutputState }
 
 func (SecurityGroupRulesOutput) ElementType() reflect.Type {
@@ -188,6 +207,12 @@ func (o SecurityGroupRulesOutput) ToSecurityGroupRulesOutput() SecurityGroupRule
 
 func (o SecurityGroupRulesOutput) ToSecurityGroupRulesOutputWithContext(ctx context.Context) SecurityGroupRulesOutput {
 	return o
+}
+
+func (o SecurityGroupRulesOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityGroupRules] {
+	return pulumix.Output[*SecurityGroupRules]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A security group rule definition (can be specified multiple times).
@@ -224,6 +249,12 @@ func (o SecurityGroupRulesArrayOutput) ToSecurityGroupRulesArrayOutputWithContex
 	return o
 }
 
+func (o SecurityGroupRulesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SecurityGroupRules] {
+	return pulumix.Output[[]*SecurityGroupRules]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecurityGroupRulesArrayOutput) Index(i pulumi.IntInput) SecurityGroupRulesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecurityGroupRules {
 		return vs[0].([]*SecurityGroupRules)[vs[1].(int)]
@@ -242,6 +273,12 @@ func (o SecurityGroupRulesMapOutput) ToSecurityGroupRulesMapOutput() SecurityGro
 
 func (o SecurityGroupRulesMapOutput) ToSecurityGroupRulesMapOutputWithContext(ctx context.Context) SecurityGroupRulesMapOutput {
 	return o
+}
+
+func (o SecurityGroupRulesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecurityGroupRules] {
+	return pulumix.Output[map[string]*SecurityGroupRules]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityGroupRulesMapOutput) MapIndex(k pulumi.StringInput) SecurityGroupRulesOutput {
