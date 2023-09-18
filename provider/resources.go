@@ -90,6 +90,18 @@ func Provider() tfbridge.ProviderInfo {
 			// 		EnvVars: []string{"AWS_REGION", "AWS_DEFAULT_REGION"},
 			// 	},
 			// },
+			"key": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"EXOSCALE_API_KEY"},
+				},
+				Secret: tfbridge.BoolRef(true),
+			},
+			"secret": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"EXOSCALE_API_SECRET"},
+				},
+				Secret: tfbridge.BoolRef(true),
+			}, 
 			"config": {
 				CSharpName: "CloudStackIniConfig",
 			},
