@@ -27,13 +27,6 @@ import (
 //go:embed schema-embed.json
 var pulumiSchema []byte
 
-//go:embed bridge-metadata.json
-var bridgeMetadata []byte
-
 func main() {
-	meta := tfbridge.ProviderMetadata{
-		PackageSchema:  pulumiSchema,
-		BridgeMetadata: bridgeMetadata,
-	}
-	tfbridge.Main(context.Background(), "exoscale", exoscale.Provider(), meta)
+	tfbridge.MainWithMuxer(context.Background(), "exoscale", exoscale.Provider(), pulumiSchema)
 }
