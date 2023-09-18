@@ -45,10 +45,24 @@ func NewProvider(ctx *pulumi.Context,
 		args = &ProviderArgs{}
 	}
 
+	if args.Key == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "EXOSCALE_API_KEY"); d != nil {
+			args.Key = pulumi.StringPtr(d.(string))
+		}
+	}
+	if args.Secret == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "EXOSCALE_API_SECRET"); d != nil {
+			args.Secret = pulumi.StringPtr(d.(string))
+		}
+	}
+	if args.Key != nil {
+		args.Key = pulumi.ToSecret(args.Key).(pulumi.StringPtrInput)
+	}
 	if args.Secret != nil {
 		args.Secret = pulumi.ToSecret(args.Secret).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"key",
 		"secret",
 	})
 	opts = append(opts, secrets)

@@ -62,7 +62,7 @@ Object.defineProperty(exports, "environment", {
 export declare const key: string | undefined;
 Object.defineProperty(exports, "key", {
     get() {
-        return __config.get("key");
+        return __config.get("key") ?? utilities.getEnv("EXOSCALE_API_KEY");
     },
     enumerable: true,
 });
@@ -92,7 +92,7 @@ Object.defineProperty(exports, "region", {
 export declare const secret: string | undefined;
 Object.defineProperty(exports, "secret", {
     get() {
-        return __config.get("secret");
+        return __config.get("secret") ?? utilities.getEnv("EXOSCALE_API_SECRET");
     },
     enumerable: true,
 });

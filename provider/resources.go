@@ -15,14 +15,15 @@
 package exoscale
 
 import (
+	_ "embed"
 	"fmt"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"path/filepath"
+	"unicode"
 
-	"github.com/exoscale/terraform-provider-exoscale/exoscale"
+	"github.com/exoscale/terraform-provider-exoscale/shim"
+	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
-	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumiverse/pulumi-exoscale/provider/pkg/version"
 )
 
@@ -35,22 +36,39 @@ const (
 	mainMod = "index" // the exoscale module
 )
 
-// preConfigureCallback is called before the providerConfigure function of the underlying provider.
-// It should validate that the provider can be configured, and provide actionable errors in the case
-// it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
-// for example `stringValue(vars, "accessKey")`.
-func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
-	return nil
+// exoscaleMember manufactures a type token for the random package and the given module and type.
+func exoscaleMember(mod string, mem string) tokens.ModuleMember {
+	return tokens.ModuleMember(mainPkg + ":" + mod + ":" + mem)
 }
+
+// exoscaleType manufactures a type token for the random package and the given module and type.
+func exoscaleType(mod string, typ string) tokens.Type {
+	return tokens.Type(exoscaleMember(mod, typ))
+}
+
+// exoscaleResource manufactures a standard resource token given a module and resource name.  It automatically uses the
+// exoscale package and names the file by simply lower casing the resource's first character.
+func exoscaleResource(mod string, res string) tokens.Type {
+	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
+	return exoscaleType(mod+"/"+fn, res)
+}
+
+// exoscaleDataSource manufactures a standard resource token given a module and resource name.  It automatically uses the
+// exoscale package and names the file by simply lower casing the resource's first character.
+func exoscaleDataSource(mod string, res string) tokens.ModuleMember {
+	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
+	return exoscaleMember(mod+"/"+fn, res)
+}
+
+//go:embed cmd/pulumi-resource-exoscale/bridge-metadata.json
+var metadata []byte
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv2.NewProvider(exoscale.Provider())
-
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:    p,
+		P:    pf.ShimProvider(shim.NewProvider()),
 		Name: "exoscale",
 		// DisplayName is a way to be able to change the casing of the provider
 		// name when being displayed on the Pulumi registry
@@ -74,10 +92,11 @@ func Provider() tfbridge.ProviderInfo {
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:   []string{"pulumi", "exoscale", "category/cloud"},
-		License:    "Apache-2.0",
-		Homepage:   "https://www.pulumi.com",
-		Repository: "https://github.com/pulumiverse/pulumi-exoscale",
+		Keywords:     []string{"pulumi", "exoscale", "category/cloud"},
+		License:      "Apache-2.0",
+		Homepage:     "https://www.pulumi.com",
+		Repository:   "https://github.com/pulumiverse/pulumi-exoscale",
+		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
 		GitHubOrg: "exoscale",
@@ -101,7 +120,7 @@ func Provider() tfbridge.ProviderInfo {
 					EnvVars: []string{"EXOSCALE_API_SECRET"},
 				},
 				Secret: tfbridge.BoolRef(true),
-			}, 
+			},
 			"config": {
 				CSharpName: "CloudStackIniConfig",
 			},
@@ -109,7 +128,6 @@ func Provider() tfbridge.ProviderInfo {
 				Type: "integer",
 			},
 		},
-		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi type. Two examples
 			// are below - the single line form is the common case. The multi-line form is
@@ -123,60 +141,17 @@ func Provider() tfbridge.ProviderInfo {
 			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
 			// 	},
 			// },
-			"exoscale_anti_affinity_group": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AntiAffinityGroup")},
-			"exoscale_compute_instance":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ComputeInstance")},
-			"exoscale_database":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Database")},
-			"exoscale_domain":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Domain")},
-			"exoscale_domain_record":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "DomainRecord")},
-			"exoscale_elastic_ip":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ElasticIP")},
-			"exoscale_iam_access_key":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "IAMAccessKey")},
-			"exoscale_instance_pool":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "InstancePool")},
-			"exoscale_nlb":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "NLB")},
-			"exoscale_nlb_service":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "NLBService")},
-			"exoscale_private_network":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "PrivateNetwork")},
-			"exoscale_security_group":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecurityGroup")},
-			"exoscale_security_group_rule": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecurityGroupRule")},
-			"exoscale_sks_cluster":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SKSCluster")},
-			"exoscale_sks_kubeconfig":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SKSKubeconfig")},
-			"exoscale_sks_nodepool":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SKSNodepool")},
-			"exoscale_ssh_key":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SSHKey")},
-			// Deprecated Ressources, will be removed with next major version
-			"exoscale_affinity":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Affinity")},
-			"exoscale_compute":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Compute")},
-			"exoscale_ipaddress":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "IPAddress")},
-			"exoscale_network":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Network")},
-			"exoscale_nic":                  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "NIC")},
-			"exoscale_secondary_ipaddress":  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecondaryIPAddress")},
-			"exoscale_security_group_rules": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecurityGroupRules")},
-			"exoscale_ssh_keypair":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SSHKeypair")},
+
+			"exoscale_database": {Tok: exoscaleResource(mainMod, "Database")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example
 			// is below.
 			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAmi")},
-			"exoscale_anti_affinity_group":   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAntiAffinityGroup")},
-			"exoscale_compute_instance":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getComputeInstance")},
-			"exoscale_compute_instance_list": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getComputeInstanceList")},
-			"exoscale_compute_template":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getComputeTemplate")},
-			"exoscale_domain":                {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDomain")},
-			"exoscale_domain_record":         {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDomainRecord")},
-			"exoscale_elastic_ip":            {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getElasticIP")},
-			"exoscale_instance_pool":         {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getInstancePool")},
-			"exoscale_instance_pool_list":    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getInstancePoolList")},
-			"exoscale_nlb":                   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getNLB")},
-			"exoscale_private_network":       {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getPrivateNetwork")},
-			"exoscale_security_group":        {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSecurityGroup")},
-			"exoscale_template":              {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTemplate")},
-			"exoscale_sks_cluster":           {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSKSCluster")},
-			"exoscale_sks_cluster_list":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSKSClusterList")},
-			"exoscale_sks_nodepool":          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSKSNodepool")},
-			"exoscale_sks_nodepool_list":     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSKSNodepoolList")},
-			"exoscale_database_uri":          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDatabaseURI")},
-			// Deprecated DataSources, will be removed with next major version
-			"exoscale_affinity":          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAffinity")},
-			"exoscale_compute":           {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getCompute")},
-			"exoscale_compute_ipaddress": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getComputeIPAddress")},
-			"exoscale_network":           {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getNetwork")},
+
+			"exoscale_nlb_service_list": {Tok: exoscaleDataSource(mainMod, "getNLBServiceList")},
+			"exoscale_zones":            {Tok: exoscaleDataSource(mainMod, "getZones")},
+			"exoscale_database_uri":     {Tok: exoscaleDataSource(mainMod, "getDatabaseURI")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			PackageName: "@pulumiverse/exoscale",

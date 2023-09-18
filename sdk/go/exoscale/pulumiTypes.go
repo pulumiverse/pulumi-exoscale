@@ -14,134 +14,184 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-type ComputeInstanceNetworkInterface struct {
-	// The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
-	IpAddress *string `pulumi:"ipAddress"`
-	// The exoscale*private*network (ID) to attach to the instance.
-	NetworkId string `pulumi:"networkId"`
+type DatabaseGrafana struct {
+	// Grafana configuration settings in JSON format (`exo dbaas type show grafana --settings=grafana` for reference).
+	GrafanaSettings *string `pulumi:"grafanaSettings"`
+	// A list of CIDR blocks to allow incoming connections from.
+	IpFilters []string `pulumi:"ipFilters"`
 }
 
-// ComputeInstanceNetworkInterfaceInput is an input type that accepts ComputeInstanceNetworkInterfaceArgs and ComputeInstanceNetworkInterfaceOutput values.
-// You can construct a concrete instance of `ComputeInstanceNetworkInterfaceInput` via:
+// DatabaseGrafanaInput is an input type that accepts DatabaseGrafanaArgs and DatabaseGrafanaOutput values.
+// You can construct a concrete instance of `DatabaseGrafanaInput` via:
 //
-//	ComputeInstanceNetworkInterfaceArgs{...}
-type ComputeInstanceNetworkInterfaceInput interface {
+//	DatabaseGrafanaArgs{...}
+type DatabaseGrafanaInput interface {
 	pulumi.Input
 
-	ToComputeInstanceNetworkInterfaceOutput() ComputeInstanceNetworkInterfaceOutput
-	ToComputeInstanceNetworkInterfaceOutputWithContext(context.Context) ComputeInstanceNetworkInterfaceOutput
+	ToDatabaseGrafanaOutput() DatabaseGrafanaOutput
+	ToDatabaseGrafanaOutputWithContext(context.Context) DatabaseGrafanaOutput
 }
 
-type ComputeInstanceNetworkInterfaceArgs struct {
-	// The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
-	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
-	// The exoscale*private*network (ID) to attach to the instance.
-	NetworkId pulumi.StringInput `pulumi:"networkId"`
+type DatabaseGrafanaArgs struct {
+	// Grafana configuration settings in JSON format (`exo dbaas type show grafana --settings=grafana` for reference).
+	GrafanaSettings pulumi.StringPtrInput `pulumi:"grafanaSettings"`
+	// A list of CIDR blocks to allow incoming connections from.
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 }
 
-func (ComputeInstanceNetworkInterfaceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeInstanceNetworkInterface)(nil)).Elem()
+func (DatabaseGrafanaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseGrafana)(nil)).Elem()
 }
 
-func (i ComputeInstanceNetworkInterfaceArgs) ToComputeInstanceNetworkInterfaceOutput() ComputeInstanceNetworkInterfaceOutput {
-	return i.ToComputeInstanceNetworkInterfaceOutputWithContext(context.Background())
+func (i DatabaseGrafanaArgs) ToDatabaseGrafanaOutput() DatabaseGrafanaOutput {
+	return i.ToDatabaseGrafanaOutputWithContext(context.Background())
 }
 
-func (i ComputeInstanceNetworkInterfaceArgs) ToComputeInstanceNetworkInterfaceOutputWithContext(ctx context.Context) ComputeInstanceNetworkInterfaceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceNetworkInterfaceOutput)
+func (i DatabaseGrafanaArgs) ToDatabaseGrafanaOutputWithContext(ctx context.Context) DatabaseGrafanaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseGrafanaOutput)
 }
 
-func (i ComputeInstanceNetworkInterfaceArgs) ToOutput(ctx context.Context) pulumix.Output[ComputeInstanceNetworkInterface] {
-	return pulumix.Output[ComputeInstanceNetworkInterface]{
-		OutputState: i.ToComputeInstanceNetworkInterfaceOutputWithContext(ctx).OutputState,
+func (i DatabaseGrafanaArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseGrafana] {
+	return pulumix.Output[DatabaseGrafana]{
+		OutputState: i.ToDatabaseGrafanaOutputWithContext(ctx).OutputState,
 	}
 }
 
-// ComputeInstanceNetworkInterfaceArrayInput is an input type that accepts ComputeInstanceNetworkInterfaceArray and ComputeInstanceNetworkInterfaceArrayOutput values.
-// You can construct a concrete instance of `ComputeInstanceNetworkInterfaceArrayInput` via:
+func (i DatabaseGrafanaArgs) ToDatabaseGrafanaPtrOutput() DatabaseGrafanaPtrOutput {
+	return i.ToDatabaseGrafanaPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseGrafanaArgs) ToDatabaseGrafanaPtrOutputWithContext(ctx context.Context) DatabaseGrafanaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseGrafanaOutput).ToDatabaseGrafanaPtrOutputWithContext(ctx)
+}
+
+// DatabaseGrafanaPtrInput is an input type that accepts DatabaseGrafanaArgs, DatabaseGrafanaPtr and DatabaseGrafanaPtrOutput values.
+// You can construct a concrete instance of `DatabaseGrafanaPtrInput` via:
 //
-//	ComputeInstanceNetworkInterfaceArray{ ComputeInstanceNetworkInterfaceArgs{...} }
-type ComputeInstanceNetworkInterfaceArrayInput interface {
+//	        DatabaseGrafanaArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabaseGrafanaPtrInput interface {
 	pulumi.Input
 
-	ToComputeInstanceNetworkInterfaceArrayOutput() ComputeInstanceNetworkInterfaceArrayOutput
-	ToComputeInstanceNetworkInterfaceArrayOutputWithContext(context.Context) ComputeInstanceNetworkInterfaceArrayOutput
+	ToDatabaseGrafanaPtrOutput() DatabaseGrafanaPtrOutput
+	ToDatabaseGrafanaPtrOutputWithContext(context.Context) DatabaseGrafanaPtrOutput
 }
 
-type ComputeInstanceNetworkInterfaceArray []ComputeInstanceNetworkInterfaceInput
+type databaseGrafanaPtrType DatabaseGrafanaArgs
 
-func (ComputeInstanceNetworkInterfaceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ComputeInstanceNetworkInterface)(nil)).Elem()
+func DatabaseGrafanaPtr(v *DatabaseGrafanaArgs) DatabaseGrafanaPtrInput {
+	return (*databaseGrafanaPtrType)(v)
 }
 
-func (i ComputeInstanceNetworkInterfaceArray) ToComputeInstanceNetworkInterfaceArrayOutput() ComputeInstanceNetworkInterfaceArrayOutput {
-	return i.ToComputeInstanceNetworkInterfaceArrayOutputWithContext(context.Background())
+func (*databaseGrafanaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseGrafana)(nil)).Elem()
 }
 
-func (i ComputeInstanceNetworkInterfaceArray) ToComputeInstanceNetworkInterfaceArrayOutputWithContext(ctx context.Context) ComputeInstanceNetworkInterfaceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceNetworkInterfaceArrayOutput)
+func (i *databaseGrafanaPtrType) ToDatabaseGrafanaPtrOutput() DatabaseGrafanaPtrOutput {
+	return i.ToDatabaseGrafanaPtrOutputWithContext(context.Background())
 }
 
-func (i ComputeInstanceNetworkInterfaceArray) ToOutput(ctx context.Context) pulumix.Output[[]ComputeInstanceNetworkInterface] {
-	return pulumix.Output[[]ComputeInstanceNetworkInterface]{
-		OutputState: i.ToComputeInstanceNetworkInterfaceArrayOutputWithContext(ctx).OutputState,
+func (i *databaseGrafanaPtrType) ToDatabaseGrafanaPtrOutputWithContext(ctx context.Context) DatabaseGrafanaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseGrafanaPtrOutput)
+}
+
+func (i *databaseGrafanaPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseGrafana] {
+	return pulumix.Output[*DatabaseGrafana]{
+		OutputState: i.ToDatabaseGrafanaPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
-type ComputeInstanceNetworkInterfaceOutput struct{ *pulumi.OutputState }
+type DatabaseGrafanaOutput struct{ *pulumi.OutputState }
 
-func (ComputeInstanceNetworkInterfaceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeInstanceNetworkInterface)(nil)).Elem()
+func (DatabaseGrafanaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseGrafana)(nil)).Elem()
 }
 
-func (o ComputeInstanceNetworkInterfaceOutput) ToComputeInstanceNetworkInterfaceOutput() ComputeInstanceNetworkInterfaceOutput {
+func (o DatabaseGrafanaOutput) ToDatabaseGrafanaOutput() DatabaseGrafanaOutput {
 	return o
 }
 
-func (o ComputeInstanceNetworkInterfaceOutput) ToComputeInstanceNetworkInterfaceOutputWithContext(ctx context.Context) ComputeInstanceNetworkInterfaceOutput {
+func (o DatabaseGrafanaOutput) ToDatabaseGrafanaOutputWithContext(ctx context.Context) DatabaseGrafanaOutput {
 	return o
 }
 
-func (o ComputeInstanceNetworkInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeInstanceNetworkInterface] {
-	return pulumix.Output[ComputeInstanceNetworkInterface]{
+func (o DatabaseGrafanaOutput) ToDatabaseGrafanaPtrOutput() DatabaseGrafanaPtrOutput {
+	return o.ToDatabaseGrafanaPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseGrafanaOutput) ToDatabaseGrafanaPtrOutputWithContext(ctx context.Context) DatabaseGrafanaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseGrafana) *DatabaseGrafana {
+		return &v
+	}).(DatabaseGrafanaPtrOutput)
+}
+
+func (o DatabaseGrafanaOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseGrafana] {
+	return pulumix.Output[DatabaseGrafana]{
 		OutputState: o.OutputState,
 	}
 }
 
-// The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
-func (o ComputeInstanceNetworkInterfaceOutput) IpAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ComputeInstanceNetworkInterface) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+// Grafana configuration settings in JSON format (`exo dbaas type show grafana --settings=grafana` for reference).
+func (o DatabaseGrafanaOutput) GrafanaSettings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseGrafana) *string { return v.GrafanaSettings }).(pulumi.StringPtrOutput)
 }
 
-// The exoscale*private*network (ID) to attach to the instance.
-func (o ComputeInstanceNetworkInterfaceOutput) NetworkId() pulumi.StringOutput {
-	return o.ApplyT(func(v ComputeInstanceNetworkInterface) string { return v.NetworkId }).(pulumi.StringOutput)
+// A list of CIDR blocks to allow incoming connections from.
+func (o DatabaseGrafanaOutput) IpFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatabaseGrafana) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
-type ComputeInstanceNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+type DatabaseGrafanaPtrOutput struct{ *pulumi.OutputState }
 
-func (ComputeInstanceNetworkInterfaceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ComputeInstanceNetworkInterface)(nil)).Elem()
+func (DatabaseGrafanaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseGrafana)(nil)).Elem()
 }
 
-func (o ComputeInstanceNetworkInterfaceArrayOutput) ToComputeInstanceNetworkInterfaceArrayOutput() ComputeInstanceNetworkInterfaceArrayOutput {
+func (o DatabaseGrafanaPtrOutput) ToDatabaseGrafanaPtrOutput() DatabaseGrafanaPtrOutput {
 	return o
 }
 
-func (o ComputeInstanceNetworkInterfaceArrayOutput) ToComputeInstanceNetworkInterfaceArrayOutputWithContext(ctx context.Context) ComputeInstanceNetworkInterfaceArrayOutput {
+func (o DatabaseGrafanaPtrOutput) ToDatabaseGrafanaPtrOutputWithContext(ctx context.Context) DatabaseGrafanaPtrOutput {
 	return o
 }
 
-func (o ComputeInstanceNetworkInterfaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ComputeInstanceNetworkInterface] {
-	return pulumix.Output[[]ComputeInstanceNetworkInterface]{
+func (o DatabaseGrafanaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseGrafana] {
+	return pulumix.Output[*DatabaseGrafana]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o ComputeInstanceNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) ComputeInstanceNetworkInterfaceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComputeInstanceNetworkInterface {
-		return vs[0].([]ComputeInstanceNetworkInterface)[vs[1].(int)]
-	}).(ComputeInstanceNetworkInterfaceOutput)
+func (o DatabaseGrafanaPtrOutput) Elem() DatabaseGrafanaOutput {
+	return o.ApplyT(func(v *DatabaseGrafana) DatabaseGrafana {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseGrafana
+		return ret
+	}).(DatabaseGrafanaOutput)
+}
+
+// Grafana configuration settings in JSON format (`exo dbaas type show grafana --settings=grafana` for reference).
+func (o DatabaseGrafanaPtrOutput) GrafanaSettings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseGrafana) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GrafanaSettings
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of CIDR blocks to allow incoming connections from.
+func (o DatabaseGrafanaPtrOutput) IpFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatabaseGrafana) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilters
+	}).(pulumi.StringArrayOutput)
 }
 
 type DatabaseKafka struct {
@@ -752,6 +802,7 @@ func (o DatabaseMysqlPtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type DatabaseOpensearch struct {
+	// OpenSearch Dashboards settings
 	Dashboards *DatabaseOpensearchDashboards `pulumi:"dashboards"`
 	// ❗ Service name
 	ForkFromService *string `pulumi:"forkFromService"`
@@ -759,17 +810,17 @@ type DatabaseOpensearch struct {
 	IndexPatterns []DatabaseOpensearchIndexPattern `pulumi:"indexPatterns"`
 	// Template settings for all new indexes
 	IndexTemplate *DatabaseOpensearchIndexTemplate `pulumi:"indexTemplate"`
-	// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
+	// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]
 	IpFilters []string `pulumi:"ipFilters"`
 	// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
 	KeepIndexRefreshInterval *bool `pulumi:"keepIndexRefreshInterval"`
 	// Maximum number of indexes to keep (Minimum value is `0`)
 	MaxIndexCount *int `pulumi:"maxIndexCount"`
-	// ❗
+	// ❗ Name of a backup to recover from
 	RecoveryBackupName *string `pulumi:"recoveryBackupName"`
 	// OpenSearch-specific settings, in json. e.g.`jsonencode({thread_pool_search_size: 64})`. Use `exo x get-dbaas-settings-opensearch` to get a list of available settings.
 	Settings *string `pulumi:"settings"`
-	// ❗ OpenSearch major version.
+	// ❗ OpenSearch major version (`exo dbaas type show opensearch` for reference)
 	Version *string `pulumi:"version"`
 }
 
@@ -785,6 +836,7 @@ type DatabaseOpensearchInput interface {
 }
 
 type DatabaseOpensearchArgs struct {
+	// OpenSearch Dashboards settings
 	Dashboards DatabaseOpensearchDashboardsPtrInput `pulumi:"dashboards"`
 	// ❗ Service name
 	ForkFromService pulumi.StringPtrInput `pulumi:"forkFromService"`
@@ -792,17 +844,17 @@ type DatabaseOpensearchArgs struct {
 	IndexPatterns DatabaseOpensearchIndexPatternArrayInput `pulumi:"indexPatterns"`
 	// Template settings for all new indexes
 	IndexTemplate DatabaseOpensearchIndexTemplatePtrInput `pulumi:"indexTemplate"`
-	// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
+	// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
 	KeepIndexRefreshInterval pulumi.BoolPtrInput `pulumi:"keepIndexRefreshInterval"`
 	// Maximum number of indexes to keep (Minimum value is `0`)
 	MaxIndexCount pulumi.IntPtrInput `pulumi:"maxIndexCount"`
-	// ❗
+	// ❗ Name of a backup to recover from
 	RecoveryBackupName pulumi.StringPtrInput `pulumi:"recoveryBackupName"`
 	// OpenSearch-specific settings, in json. e.g.`jsonencode({thread_pool_search_size: 64})`. Use `exo x get-dbaas-settings-opensearch` to get a list of available settings.
 	Settings pulumi.StringPtrInput `pulumi:"settings"`
-	// ❗ OpenSearch major version.
+	// ❗ OpenSearch major version (`exo dbaas type show opensearch` for reference)
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -901,6 +953,7 @@ func (o DatabaseOpensearchOutput) ToOutput(ctx context.Context) pulumix.Output[D
 	}
 }
 
+// OpenSearch Dashboards settings
 func (o DatabaseOpensearchOutput) Dashboards() DatabaseOpensearchDashboardsPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) *DatabaseOpensearchDashboards { return v.Dashboards }).(DatabaseOpensearchDashboardsPtrOutput)
 }
@@ -920,7 +973,7 @@ func (o DatabaseOpensearchOutput) IndexTemplate() DatabaseOpensearchIndexTemplat
 	return o.ApplyT(func(v DatabaseOpensearch) *DatabaseOpensearchIndexTemplate { return v.IndexTemplate }).(DatabaseOpensearchIndexTemplatePtrOutput)
 }
 
-// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
+// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]
 func (o DatabaseOpensearchOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -935,7 +988,7 @@ func (o DatabaseOpensearchOutput) MaxIndexCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) *int { return v.MaxIndexCount }).(pulumi.IntPtrOutput)
 }
 
-// ❗
+// ❗ Name of a backup to recover from
 func (o DatabaseOpensearchOutput) RecoveryBackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) *string { return v.RecoveryBackupName }).(pulumi.StringPtrOutput)
 }
@@ -945,7 +998,7 @@ func (o DatabaseOpensearchOutput) Settings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) *string { return v.Settings }).(pulumi.StringPtrOutput)
 }
 
-// ❗ OpenSearch major version.
+// ❗ OpenSearch major version (`exo dbaas type show opensearch` for reference)
 func (o DatabaseOpensearchOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -980,6 +1033,7 @@ func (o DatabaseOpensearchPtrOutput) Elem() DatabaseOpensearchOutput {
 	}).(DatabaseOpensearchOutput)
 }
 
+// OpenSearch Dashboards settings
 func (o DatabaseOpensearchPtrOutput) Dashboards() DatabaseOpensearchDashboardsPtrOutput {
 	return o.ApplyT(func(v *DatabaseOpensearch) *DatabaseOpensearchDashboards {
 		if v == nil {
@@ -1019,7 +1073,7 @@ func (o DatabaseOpensearchPtrOutput) IndexTemplate() DatabaseOpensearchIndexTemp
 	}).(DatabaseOpensearchIndexTemplatePtrOutput)
 }
 
-// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
+// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]
 func (o DatabaseOpensearchPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DatabaseOpensearch) []string {
 		if v == nil {
@@ -1049,7 +1103,7 @@ func (o DatabaseOpensearchPtrOutput) MaxIndexCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// ❗
+// ❗ Name of a backup to recover from
 func (o DatabaseOpensearchPtrOutput) RecoveryBackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseOpensearch) *string {
 		if v == nil {
@@ -1069,7 +1123,7 @@ func (o DatabaseOpensearchPtrOutput) Settings() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// ❗ OpenSearch major version.
+// ❗ OpenSearch major version (`exo dbaas type show opensearch` for reference)
 func (o DatabaseOpensearchPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseOpensearch) *string {
 		if v == nil {
@@ -2057,3466 +2111,845 @@ func (o DatabaseRedisPtrOutput) RedisSettings() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type ElasticIPHealthcheck struct {
-	// The healthcheck interval (seconds; must be between `5` and `300`; default: `10`).
-	Interval *int `pulumi:"interval"`
-	// The healthcheck mode (`tcp`, `http` or `https`; may only be set at creation time).
-	Mode string `pulumi:"mode"`
-	// The healthcheck target port (must be between `1` and `65535`).
-	Port int `pulumi:"port"`
-	// The number of failed healthcheck attempts before considering the target unhealthy (must be between `1` and `20`; default: `2`).
-	StrikesFail *int `pulumi:"strikesFail"`
-	// The number of successful healthcheck attempts before considering the target healthy (must be between `1` and `20`; default: `3`).
-	StrikesOk *int `pulumi:"strikesOk"`
-	// The time before considering a healthcheck probing failed (seconds; must be between `2` and `60`; default: `3`).
-	Timeout *int `pulumi:"timeout"`
-	// Disable TLS certificate verification for healthcheck in `https` mode (boolean; default: `false`).
-	TlsSkipVerify *bool `pulumi:"tlsSkipVerify"`
-	// The healthcheck server name to present with SNI in `https` mode.
-	TlsSni *string `pulumi:"tlsSni"`
-	// The healthcheck target URI (required in `http(s)` modes).
-	Uri *string `pulumi:"uri"`
+type DatabaseTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
 }
 
-// ElasticIPHealthcheckInput is an input type that accepts ElasticIPHealthcheckArgs and ElasticIPHealthcheckOutput values.
-// You can construct a concrete instance of `ElasticIPHealthcheckInput` via:
+// DatabaseTimeoutsInput is an input type that accepts DatabaseTimeoutsArgs and DatabaseTimeoutsOutput values.
+// You can construct a concrete instance of `DatabaseTimeoutsInput` via:
 //
-//	ElasticIPHealthcheckArgs{...}
-type ElasticIPHealthcheckInput interface {
+//	DatabaseTimeoutsArgs{...}
+type DatabaseTimeoutsInput interface {
 	pulumi.Input
 
-	ToElasticIPHealthcheckOutput() ElasticIPHealthcheckOutput
-	ToElasticIPHealthcheckOutputWithContext(context.Context) ElasticIPHealthcheckOutput
+	ToDatabaseTimeoutsOutput() DatabaseTimeoutsOutput
+	ToDatabaseTimeoutsOutputWithContext(context.Context) DatabaseTimeoutsOutput
 }
 
-type ElasticIPHealthcheckArgs struct {
-	// The healthcheck interval (seconds; must be between `5` and `300`; default: `10`).
-	Interval pulumi.IntPtrInput `pulumi:"interval"`
-	// The healthcheck mode (`tcp`, `http` or `https`; may only be set at creation time).
-	Mode pulumi.StringInput `pulumi:"mode"`
-	// The healthcheck target port (must be between `1` and `65535`).
-	Port pulumi.IntInput `pulumi:"port"`
-	// The number of failed healthcheck attempts before considering the target unhealthy (must be between `1` and `20`; default: `2`).
-	StrikesFail pulumi.IntPtrInput `pulumi:"strikesFail"`
-	// The number of successful healthcheck attempts before considering the target healthy (must be between `1` and `20`; default: `3`).
-	StrikesOk pulumi.IntPtrInput `pulumi:"strikesOk"`
-	// The time before considering a healthcheck probing failed (seconds; must be between `2` and `60`; default: `3`).
-	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
-	// Disable TLS certificate verification for healthcheck in `https` mode (boolean; default: `false`).
-	TlsSkipVerify pulumi.BoolPtrInput `pulumi:"tlsSkipVerify"`
-	// The healthcheck server name to present with SNI in `https` mode.
-	TlsSni pulumi.StringPtrInput `pulumi:"tlsSni"`
-	// The healthcheck target URI (required in `http(s)` modes).
-	Uri pulumi.StringPtrInput `pulumi:"uri"`
+type DatabaseTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
 }
 
-func (ElasticIPHealthcheckArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElasticIPHealthcheck)(nil)).Elem()
+func (DatabaseTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseTimeouts)(nil)).Elem()
 }
 
-func (i ElasticIPHealthcheckArgs) ToElasticIPHealthcheckOutput() ElasticIPHealthcheckOutput {
-	return i.ToElasticIPHealthcheckOutputWithContext(context.Background())
+func (i DatabaseTimeoutsArgs) ToDatabaseTimeoutsOutput() DatabaseTimeoutsOutput {
+	return i.ToDatabaseTimeoutsOutputWithContext(context.Background())
 }
 
-func (i ElasticIPHealthcheckArgs) ToElasticIPHealthcheckOutputWithContext(ctx context.Context) ElasticIPHealthcheckOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElasticIPHealthcheckOutput)
+func (i DatabaseTimeoutsArgs) ToDatabaseTimeoutsOutputWithContext(ctx context.Context) DatabaseTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseTimeoutsOutput)
 }
 
-func (i ElasticIPHealthcheckArgs) ToOutput(ctx context.Context) pulumix.Output[ElasticIPHealthcheck] {
-	return pulumix.Output[ElasticIPHealthcheck]{
-		OutputState: i.ToElasticIPHealthcheckOutputWithContext(ctx).OutputState,
+func (i DatabaseTimeoutsArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseTimeouts] {
+	return pulumix.Output[DatabaseTimeouts]{
+		OutputState: i.ToDatabaseTimeoutsOutputWithContext(ctx).OutputState,
 	}
 }
 
-func (i ElasticIPHealthcheckArgs) ToElasticIPHealthcheckPtrOutput() ElasticIPHealthcheckPtrOutput {
-	return i.ToElasticIPHealthcheckPtrOutputWithContext(context.Background())
+func (i DatabaseTimeoutsArgs) ToDatabaseTimeoutsPtrOutput() DatabaseTimeoutsPtrOutput {
+	return i.ToDatabaseTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (i ElasticIPHealthcheckArgs) ToElasticIPHealthcheckPtrOutputWithContext(ctx context.Context) ElasticIPHealthcheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElasticIPHealthcheckOutput).ToElasticIPHealthcheckPtrOutputWithContext(ctx)
+func (i DatabaseTimeoutsArgs) ToDatabaseTimeoutsPtrOutputWithContext(ctx context.Context) DatabaseTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseTimeoutsOutput).ToDatabaseTimeoutsPtrOutputWithContext(ctx)
 }
 
-// ElasticIPHealthcheckPtrInput is an input type that accepts ElasticIPHealthcheckArgs, ElasticIPHealthcheckPtr and ElasticIPHealthcheckPtrOutput values.
-// You can construct a concrete instance of `ElasticIPHealthcheckPtrInput` via:
+// DatabaseTimeoutsPtrInput is an input type that accepts DatabaseTimeoutsArgs, DatabaseTimeoutsPtr and DatabaseTimeoutsPtrOutput values.
+// You can construct a concrete instance of `DatabaseTimeoutsPtrInput` via:
 //
-//	        ElasticIPHealthcheckArgs{...}
+//	        DatabaseTimeoutsArgs{...}
 //
 //	or:
 //
 //	        nil
-type ElasticIPHealthcheckPtrInput interface {
+type DatabaseTimeoutsPtrInput interface {
 	pulumi.Input
 
-	ToElasticIPHealthcheckPtrOutput() ElasticIPHealthcheckPtrOutput
-	ToElasticIPHealthcheckPtrOutputWithContext(context.Context) ElasticIPHealthcheckPtrOutput
+	ToDatabaseTimeoutsPtrOutput() DatabaseTimeoutsPtrOutput
+	ToDatabaseTimeoutsPtrOutputWithContext(context.Context) DatabaseTimeoutsPtrOutput
 }
 
-type elasticIPHealthcheckPtrType ElasticIPHealthcheckArgs
+type databaseTimeoutsPtrType DatabaseTimeoutsArgs
 
-func ElasticIPHealthcheckPtr(v *ElasticIPHealthcheckArgs) ElasticIPHealthcheckPtrInput {
-	return (*elasticIPHealthcheckPtrType)(v)
+func DatabaseTimeoutsPtr(v *DatabaseTimeoutsArgs) DatabaseTimeoutsPtrInput {
+	return (*databaseTimeoutsPtrType)(v)
 }
 
-func (*elasticIPHealthcheckPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElasticIPHealthcheck)(nil)).Elem()
+func (*databaseTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseTimeouts)(nil)).Elem()
 }
 
-func (i *elasticIPHealthcheckPtrType) ToElasticIPHealthcheckPtrOutput() ElasticIPHealthcheckPtrOutput {
-	return i.ToElasticIPHealthcheckPtrOutputWithContext(context.Background())
+func (i *databaseTimeoutsPtrType) ToDatabaseTimeoutsPtrOutput() DatabaseTimeoutsPtrOutput {
+	return i.ToDatabaseTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (i *elasticIPHealthcheckPtrType) ToElasticIPHealthcheckPtrOutputWithContext(ctx context.Context) ElasticIPHealthcheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElasticIPHealthcheckPtrOutput)
+func (i *databaseTimeoutsPtrType) ToDatabaseTimeoutsPtrOutputWithContext(ctx context.Context) DatabaseTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseTimeoutsPtrOutput)
 }
 
-func (i *elasticIPHealthcheckPtrType) ToOutput(ctx context.Context) pulumix.Output[*ElasticIPHealthcheck] {
-	return pulumix.Output[*ElasticIPHealthcheck]{
-		OutputState: i.ToElasticIPHealthcheckPtrOutputWithContext(ctx).OutputState,
+func (i *databaseTimeoutsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseTimeouts] {
+	return pulumix.Output[*DatabaseTimeouts]{
+		OutputState: i.ToDatabaseTimeoutsPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
-type ElasticIPHealthcheckOutput struct{ *pulumi.OutputState }
+type DatabaseTimeoutsOutput struct{ *pulumi.OutputState }
 
-func (ElasticIPHealthcheckOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElasticIPHealthcheck)(nil)).Elem()
+func (DatabaseTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseTimeouts)(nil)).Elem()
 }
 
-func (o ElasticIPHealthcheckOutput) ToElasticIPHealthcheckOutput() ElasticIPHealthcheckOutput {
+func (o DatabaseTimeoutsOutput) ToDatabaseTimeoutsOutput() DatabaseTimeoutsOutput {
 	return o
 }
 
-func (o ElasticIPHealthcheckOutput) ToElasticIPHealthcheckOutputWithContext(ctx context.Context) ElasticIPHealthcheckOutput {
+func (o DatabaseTimeoutsOutput) ToDatabaseTimeoutsOutputWithContext(ctx context.Context) DatabaseTimeoutsOutput {
 	return o
 }
 
-func (o ElasticIPHealthcheckOutput) ToElasticIPHealthcheckPtrOutput() ElasticIPHealthcheckPtrOutput {
-	return o.ToElasticIPHealthcheckPtrOutputWithContext(context.Background())
+func (o DatabaseTimeoutsOutput) ToDatabaseTimeoutsPtrOutput() DatabaseTimeoutsPtrOutput {
+	return o.ToDatabaseTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (o ElasticIPHealthcheckOutput) ToElasticIPHealthcheckPtrOutputWithContext(ctx context.Context) ElasticIPHealthcheckPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticIPHealthcheck) *ElasticIPHealthcheck {
+func (o DatabaseTimeoutsOutput) ToDatabaseTimeoutsPtrOutputWithContext(ctx context.Context) DatabaseTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseTimeouts) *DatabaseTimeouts {
 		return &v
-	}).(ElasticIPHealthcheckPtrOutput)
+	}).(DatabaseTimeoutsPtrOutput)
 }
 
-func (o ElasticIPHealthcheckOutput) ToOutput(ctx context.Context) pulumix.Output[ElasticIPHealthcheck] {
-	return pulumix.Output[ElasticIPHealthcheck]{
+func (o DatabaseTimeoutsOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseTimeouts] {
+	return pulumix.Output[DatabaseTimeouts]{
 		OutputState: o.OutputState,
 	}
 }
 
-// The healthcheck interval (seconds; must be between `5` and `300`; default: `10`).
-func (o ElasticIPHealthcheckOutput) Interval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElasticIPHealthcheck) *int { return v.Interval }).(pulumi.IntPtrOutput)
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DatabaseTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
 }
 
-// The healthcheck mode (`tcp`, `http` or `https`; may only be set at creation time).
-func (o ElasticIPHealthcheckOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func(v ElasticIPHealthcheck) string { return v.Mode }).(pulumi.StringOutput)
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o DatabaseTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
 }
 
-// The healthcheck target port (must be between `1` and `65535`).
-func (o ElasticIPHealthcheckOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v ElasticIPHealthcheck) int { return v.Port }).(pulumi.IntOutput)
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o DatabaseTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
 }
 
-// The number of failed healthcheck attempts before considering the target unhealthy (must be between `1` and `20`; default: `2`).
-func (o ElasticIPHealthcheckOutput) StrikesFail() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElasticIPHealthcheck) *int { return v.StrikesFail }).(pulumi.IntPtrOutput)
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DatabaseTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
 }
 
-// The number of successful healthcheck attempts before considering the target healthy (must be between `1` and `20`; default: `3`).
-func (o ElasticIPHealthcheckOutput) StrikesOk() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElasticIPHealthcheck) *int { return v.StrikesOk }).(pulumi.IntPtrOutput)
+type DatabaseTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseTimeouts)(nil)).Elem()
 }
 
-// The time before considering a healthcheck probing failed (seconds; must be between `2` and `60`; default: `3`).
-func (o ElasticIPHealthcheckOutput) Timeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElasticIPHealthcheck) *int { return v.Timeout }).(pulumi.IntPtrOutput)
-}
-
-// Disable TLS certificate verification for healthcheck in `https` mode (boolean; default: `false`).
-func (o ElasticIPHealthcheckOutput) TlsSkipVerify() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElasticIPHealthcheck) *bool { return v.TlsSkipVerify }).(pulumi.BoolPtrOutput)
-}
-
-// The healthcheck server name to present with SNI in `https` mode.
-func (o ElasticIPHealthcheckOutput) TlsSni() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElasticIPHealthcheck) *string { return v.TlsSni }).(pulumi.StringPtrOutput)
-}
-
-// The healthcheck target URI (required in `http(s)` modes).
-func (o ElasticIPHealthcheckOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElasticIPHealthcheck) *string { return v.Uri }).(pulumi.StringPtrOutput)
-}
-
-type ElasticIPHealthcheckPtrOutput struct{ *pulumi.OutputState }
-
-func (ElasticIPHealthcheckPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElasticIPHealthcheck)(nil)).Elem()
-}
-
-func (o ElasticIPHealthcheckPtrOutput) ToElasticIPHealthcheckPtrOutput() ElasticIPHealthcheckPtrOutput {
+func (o DatabaseTimeoutsPtrOutput) ToDatabaseTimeoutsPtrOutput() DatabaseTimeoutsPtrOutput {
 	return o
 }
 
-func (o ElasticIPHealthcheckPtrOutput) ToElasticIPHealthcheckPtrOutputWithContext(ctx context.Context) ElasticIPHealthcheckPtrOutput {
+func (o DatabaseTimeoutsPtrOutput) ToDatabaseTimeoutsPtrOutputWithContext(ctx context.Context) DatabaseTimeoutsPtrOutput {
 	return o
 }
 
-func (o ElasticIPHealthcheckPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ElasticIPHealthcheck] {
-	return pulumix.Output[*ElasticIPHealthcheck]{
+func (o DatabaseTimeoutsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseTimeouts] {
+	return pulumix.Output[*DatabaseTimeouts]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o ElasticIPHealthcheckPtrOutput) Elem() ElasticIPHealthcheckOutput {
-	return o.ApplyT(func(v *ElasticIPHealthcheck) ElasticIPHealthcheck {
+func (o DatabaseTimeoutsPtrOutput) Elem() DatabaseTimeoutsOutput {
+	return o.ApplyT(func(v *DatabaseTimeouts) DatabaseTimeouts {
 		if v != nil {
 			return *v
 		}
-		var ret ElasticIPHealthcheck
+		var ret DatabaseTimeouts
 		return ret
-	}).(ElasticIPHealthcheckOutput)
+	}).(DatabaseTimeoutsOutput)
 }
 
-// The healthcheck interval (seconds; must be between `5` and `300`; default: `10`).
-func (o ElasticIPHealthcheckPtrOutput) Interval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ElasticIPHealthcheck) *int {
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DatabaseTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseTimeouts) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Interval
-	}).(pulumi.IntPtrOutput)
-}
-
-// The healthcheck mode (`tcp`, `http` or `https`; may only be set at creation time).
-func (o ElasticIPHealthcheckPtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ElasticIPHealthcheck) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Mode
+		return v.Create
 	}).(pulumi.StringPtrOutput)
 }
 
-// The healthcheck target port (must be between `1` and `65535`).
-func (o ElasticIPHealthcheckPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ElasticIPHealthcheck) *int {
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o DatabaseTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseTimeouts) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Port
-	}).(pulumi.IntPtrOutput)
-}
-
-// The number of failed healthcheck attempts before considering the target unhealthy (must be between `1` and `20`; default: `2`).
-func (o ElasticIPHealthcheckPtrOutput) StrikesFail() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ElasticIPHealthcheck) *int {
-		if v == nil {
-			return nil
-		}
-		return v.StrikesFail
-	}).(pulumi.IntPtrOutput)
-}
-
-// The number of successful healthcheck attempts before considering the target healthy (must be between `1` and `20`; default: `3`).
-func (o ElasticIPHealthcheckPtrOutput) StrikesOk() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ElasticIPHealthcheck) *int {
-		if v == nil {
-			return nil
-		}
-		return v.StrikesOk
-	}).(pulumi.IntPtrOutput)
-}
-
-// The time before considering a healthcheck probing failed (seconds; must be between `2` and `60`; default: `3`).
-func (o ElasticIPHealthcheckPtrOutput) Timeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ElasticIPHealthcheck) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Timeout
-	}).(pulumi.IntPtrOutput)
-}
-
-// Disable TLS certificate verification for healthcheck in `https` mode (boolean; default: `false`).
-func (o ElasticIPHealthcheckPtrOutput) TlsSkipVerify() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ElasticIPHealthcheck) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.TlsSkipVerify
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The healthcheck server name to present with SNI in `https` mode.
-func (o ElasticIPHealthcheckPtrOutput) TlsSni() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ElasticIPHealthcheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TlsSni
+		return v.Delete
 	}).(pulumi.StringPtrOutput)
 }
 
-// The healthcheck target URI (required in `http(s)` modes).
-func (o ElasticIPHealthcheckPtrOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ElasticIPHealthcheck) *string {
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o DatabaseTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseTimeouts) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Uri
+		return v.Read
 	}).(pulumi.StringPtrOutput)
 }
 
-type InstancePoolInstance struct {
-	// The ID of this resource.
-	Id *string `pulumi:"id"`
-	// The instance (main network interface) IPv6 address.
-	Ipv6Address *string `pulumi:"ipv6Address"`
-	// The instance name.
-	Name *string `pulumi:"name"`
-	// The instance (main network interface) IPv4 address.
-	PublicIpAddress *string `pulumi:"publicIpAddress"`
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DatabaseTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
 }
 
-// InstancePoolInstanceInput is an input type that accepts InstancePoolInstanceArgs and InstancePoolInstanceOutput values.
-// You can construct a concrete instance of `InstancePoolInstanceInput` via:
+type GetDatabaseURITimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+}
+
+// GetDatabaseURITimeoutsInput is an input type that accepts GetDatabaseURITimeoutsArgs and GetDatabaseURITimeoutsOutput values.
+// You can construct a concrete instance of `GetDatabaseURITimeoutsInput` via:
 //
-//	InstancePoolInstanceArgs{...}
-type InstancePoolInstanceInput interface {
+//	GetDatabaseURITimeoutsArgs{...}
+type GetDatabaseURITimeoutsInput interface {
 	pulumi.Input
 
-	ToInstancePoolInstanceOutput() InstancePoolInstanceOutput
-	ToInstancePoolInstanceOutputWithContext(context.Context) InstancePoolInstanceOutput
+	ToGetDatabaseURITimeoutsOutput() GetDatabaseURITimeoutsOutput
+	ToGetDatabaseURITimeoutsOutputWithContext(context.Context) GetDatabaseURITimeoutsOutput
 }
 
-type InstancePoolInstanceArgs struct {
-	// The ID of this resource.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The instance (main network interface) IPv6 address.
-	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
-	// The instance name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The instance (main network interface) IPv4 address.
-	PublicIpAddress pulumi.StringPtrInput `pulumi:"publicIpAddress"`
+type GetDatabaseURITimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
 }
 
-func (InstancePoolInstanceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstancePoolInstance)(nil)).Elem()
+func (GetDatabaseURITimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseURITimeouts)(nil)).Elem()
 }
 
-func (i InstancePoolInstanceArgs) ToInstancePoolInstanceOutput() InstancePoolInstanceOutput {
-	return i.ToInstancePoolInstanceOutputWithContext(context.Background())
+func (i GetDatabaseURITimeoutsArgs) ToGetDatabaseURITimeoutsOutput() GetDatabaseURITimeoutsOutput {
+	return i.ToGetDatabaseURITimeoutsOutputWithContext(context.Background())
 }
 
-func (i InstancePoolInstanceArgs) ToInstancePoolInstanceOutputWithContext(ctx context.Context) InstancePoolInstanceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstancePoolInstanceOutput)
+func (i GetDatabaseURITimeoutsArgs) ToGetDatabaseURITimeoutsOutputWithContext(ctx context.Context) GetDatabaseURITimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseURITimeoutsOutput)
 }
 
-func (i InstancePoolInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[InstancePoolInstance] {
-	return pulumix.Output[InstancePoolInstance]{
-		OutputState: i.ToInstancePoolInstanceOutputWithContext(ctx).OutputState,
+func (i GetDatabaseURITimeoutsArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseURITimeouts] {
+	return pulumix.Output[GetDatabaseURITimeouts]{
+		OutputState: i.ToGetDatabaseURITimeoutsOutputWithContext(ctx).OutputState,
 	}
 }
 
-// InstancePoolInstanceArrayInput is an input type that accepts InstancePoolInstanceArray and InstancePoolInstanceArrayOutput values.
-// You can construct a concrete instance of `InstancePoolInstanceArrayInput` via:
+func (i GetDatabaseURITimeoutsArgs) ToGetDatabaseURITimeoutsPtrOutput() GetDatabaseURITimeoutsPtrOutput {
+	return i.ToGetDatabaseURITimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseURITimeoutsArgs) ToGetDatabaseURITimeoutsPtrOutputWithContext(ctx context.Context) GetDatabaseURITimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseURITimeoutsOutput).ToGetDatabaseURITimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetDatabaseURITimeoutsPtrInput is an input type that accepts GetDatabaseURITimeoutsArgs, GetDatabaseURITimeoutsPtr and GetDatabaseURITimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetDatabaseURITimeoutsPtrInput` via:
 //
-//	InstancePoolInstanceArray{ InstancePoolInstanceArgs{...} }
-type InstancePoolInstanceArrayInput interface {
-	pulumi.Input
-
-	ToInstancePoolInstanceArrayOutput() InstancePoolInstanceArrayOutput
-	ToInstancePoolInstanceArrayOutputWithContext(context.Context) InstancePoolInstanceArrayOutput
-}
-
-type InstancePoolInstanceArray []InstancePoolInstanceInput
-
-func (InstancePoolInstanceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstancePoolInstance)(nil)).Elem()
-}
-
-func (i InstancePoolInstanceArray) ToInstancePoolInstanceArrayOutput() InstancePoolInstanceArrayOutput {
-	return i.ToInstancePoolInstanceArrayOutputWithContext(context.Background())
-}
-
-func (i InstancePoolInstanceArray) ToInstancePoolInstanceArrayOutputWithContext(ctx context.Context) InstancePoolInstanceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstancePoolInstanceArrayOutput)
-}
-
-func (i InstancePoolInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]InstancePoolInstance] {
-	return pulumix.Output[[]InstancePoolInstance]{
-		OutputState: i.ToInstancePoolInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type InstancePoolInstanceOutput struct{ *pulumi.OutputState }
-
-func (InstancePoolInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstancePoolInstance)(nil)).Elem()
-}
-
-func (o InstancePoolInstanceOutput) ToInstancePoolInstanceOutput() InstancePoolInstanceOutput {
-	return o
-}
-
-func (o InstancePoolInstanceOutput) ToInstancePoolInstanceOutputWithContext(ctx context.Context) InstancePoolInstanceOutput {
-	return o
-}
-
-func (o InstancePoolInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[InstancePoolInstance] {
-	return pulumix.Output[InstancePoolInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The ID of this resource.
-func (o InstancePoolInstanceOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstancePoolInstance) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// The instance (main network interface) IPv6 address.
-func (o InstancePoolInstanceOutput) Ipv6Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstancePoolInstance) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
-}
-
-// The instance name.
-func (o InstancePoolInstanceOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstancePoolInstance) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The instance (main network interface) IPv4 address.
-func (o InstancePoolInstanceOutput) PublicIpAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstancePoolInstance) *string { return v.PublicIpAddress }).(pulumi.StringPtrOutput)
-}
-
-type InstancePoolInstanceArrayOutput struct{ *pulumi.OutputState }
-
-func (InstancePoolInstanceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstancePoolInstance)(nil)).Elem()
-}
-
-func (o InstancePoolInstanceArrayOutput) ToInstancePoolInstanceArrayOutput() InstancePoolInstanceArrayOutput {
-	return o
-}
-
-func (o InstancePoolInstanceArrayOutput) ToInstancePoolInstanceArrayOutputWithContext(ctx context.Context) InstancePoolInstanceArrayOutput {
-	return o
-}
-
-func (o InstancePoolInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstancePoolInstance] {
-	return pulumix.Output[[]InstancePoolInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o InstancePoolInstanceArrayOutput) Index(i pulumi.IntInput) InstancePoolInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstancePoolInstance {
-		return vs[0].([]InstancePoolInstance)[vs[1].(int)]
-	}).(InstancePoolInstanceOutput)
-}
-
-type NLBServiceHealthcheck struct {
-	// The healthcheck interval in seconds (default: `10`).
-	Interval *int `pulumi:"interval"`
-	// The healthcheck mode (`tcp`|`http`|`https`; default: `tcp`).
-	Mode *string `pulumi:"mode"`
-	// The NLB service (TCP/UDP) port.
-	Port int `pulumi:"port"`
-	// The healthcheck retries (default: `1`).
-	Retries *int `pulumi:"retries"`
-	// The healthcheck timeout (seconds; default: `5`).
-	Timeout *int `pulumi:"timeout"`
-	// The healthcheck TLS SNI server name (only if `mode` is `https`).
-	TlsSni *string `pulumi:"tlsSni"`
-	// The healthcheck URI (must be set only if `mode` is `http(s)`).
-	Uri *string `pulumi:"uri"`
-}
-
-// NLBServiceHealthcheckInput is an input type that accepts NLBServiceHealthcheckArgs and NLBServiceHealthcheckOutput values.
-// You can construct a concrete instance of `NLBServiceHealthcheckInput` via:
-//
-//	NLBServiceHealthcheckArgs{...}
-type NLBServiceHealthcheckInput interface {
-	pulumi.Input
-
-	ToNLBServiceHealthcheckOutput() NLBServiceHealthcheckOutput
-	ToNLBServiceHealthcheckOutputWithContext(context.Context) NLBServiceHealthcheckOutput
-}
-
-type NLBServiceHealthcheckArgs struct {
-	// The healthcheck interval in seconds (default: `10`).
-	Interval pulumi.IntPtrInput `pulumi:"interval"`
-	// The healthcheck mode (`tcp`|`http`|`https`; default: `tcp`).
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
-	// The NLB service (TCP/UDP) port.
-	Port pulumi.IntInput `pulumi:"port"`
-	// The healthcheck retries (default: `1`).
-	Retries pulumi.IntPtrInput `pulumi:"retries"`
-	// The healthcheck timeout (seconds; default: `5`).
-	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
-	// The healthcheck TLS SNI server name (only if `mode` is `https`).
-	TlsSni pulumi.StringPtrInput `pulumi:"tlsSni"`
-	// The healthcheck URI (must be set only if `mode` is `http(s)`).
-	Uri pulumi.StringPtrInput `pulumi:"uri"`
-}
-
-func (NLBServiceHealthcheckArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NLBServiceHealthcheck)(nil)).Elem()
-}
-
-func (i NLBServiceHealthcheckArgs) ToNLBServiceHealthcheckOutput() NLBServiceHealthcheckOutput {
-	return i.ToNLBServiceHealthcheckOutputWithContext(context.Background())
-}
-
-func (i NLBServiceHealthcheckArgs) ToNLBServiceHealthcheckOutputWithContext(ctx context.Context) NLBServiceHealthcheckOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NLBServiceHealthcheckOutput)
-}
-
-func (i NLBServiceHealthcheckArgs) ToOutput(ctx context.Context) pulumix.Output[NLBServiceHealthcheck] {
-	return pulumix.Output[NLBServiceHealthcheck]{
-		OutputState: i.ToNLBServiceHealthcheckOutputWithContext(ctx).OutputState,
-	}
-}
-
-// NLBServiceHealthcheckArrayInput is an input type that accepts NLBServiceHealthcheckArray and NLBServiceHealthcheckArrayOutput values.
-// You can construct a concrete instance of `NLBServiceHealthcheckArrayInput` via:
-//
-//	NLBServiceHealthcheckArray{ NLBServiceHealthcheckArgs{...} }
-type NLBServiceHealthcheckArrayInput interface {
-	pulumi.Input
-
-	ToNLBServiceHealthcheckArrayOutput() NLBServiceHealthcheckArrayOutput
-	ToNLBServiceHealthcheckArrayOutputWithContext(context.Context) NLBServiceHealthcheckArrayOutput
-}
-
-type NLBServiceHealthcheckArray []NLBServiceHealthcheckInput
-
-func (NLBServiceHealthcheckArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NLBServiceHealthcheck)(nil)).Elem()
-}
-
-func (i NLBServiceHealthcheckArray) ToNLBServiceHealthcheckArrayOutput() NLBServiceHealthcheckArrayOutput {
-	return i.ToNLBServiceHealthcheckArrayOutputWithContext(context.Background())
-}
-
-func (i NLBServiceHealthcheckArray) ToNLBServiceHealthcheckArrayOutputWithContext(ctx context.Context) NLBServiceHealthcheckArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NLBServiceHealthcheckArrayOutput)
-}
-
-func (i NLBServiceHealthcheckArray) ToOutput(ctx context.Context) pulumix.Output[[]NLBServiceHealthcheck] {
-	return pulumix.Output[[]NLBServiceHealthcheck]{
-		OutputState: i.ToNLBServiceHealthcheckArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type NLBServiceHealthcheckOutput struct{ *pulumi.OutputState }
-
-func (NLBServiceHealthcheckOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NLBServiceHealthcheck)(nil)).Elem()
-}
-
-func (o NLBServiceHealthcheckOutput) ToNLBServiceHealthcheckOutput() NLBServiceHealthcheckOutput {
-	return o
-}
-
-func (o NLBServiceHealthcheckOutput) ToNLBServiceHealthcheckOutputWithContext(ctx context.Context) NLBServiceHealthcheckOutput {
-	return o
-}
-
-func (o NLBServiceHealthcheckOutput) ToOutput(ctx context.Context) pulumix.Output[NLBServiceHealthcheck] {
-	return pulumix.Output[NLBServiceHealthcheck]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The healthcheck interval in seconds (default: `10`).
-func (o NLBServiceHealthcheckOutput) Interval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NLBServiceHealthcheck) *int { return v.Interval }).(pulumi.IntPtrOutput)
-}
-
-// The healthcheck mode (`tcp`|`http`|`https`; default: `tcp`).
-func (o NLBServiceHealthcheckOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NLBServiceHealthcheck) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-// The NLB service (TCP/UDP) port.
-func (o NLBServiceHealthcheckOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v NLBServiceHealthcheck) int { return v.Port }).(pulumi.IntOutput)
-}
-
-// The healthcheck retries (default: `1`).
-func (o NLBServiceHealthcheckOutput) Retries() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NLBServiceHealthcheck) *int { return v.Retries }).(pulumi.IntPtrOutput)
-}
-
-// The healthcheck timeout (seconds; default: `5`).
-func (o NLBServiceHealthcheckOutput) Timeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NLBServiceHealthcheck) *int { return v.Timeout }).(pulumi.IntPtrOutput)
-}
-
-// The healthcheck TLS SNI server name (only if `mode` is `https`).
-func (o NLBServiceHealthcheckOutput) TlsSni() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NLBServiceHealthcheck) *string { return v.TlsSni }).(pulumi.StringPtrOutput)
-}
-
-// The healthcheck URI (must be set only if `mode` is `http(s)`).
-func (o NLBServiceHealthcheckOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NLBServiceHealthcheck) *string { return v.Uri }).(pulumi.StringPtrOutput)
-}
-
-type NLBServiceHealthcheckArrayOutput struct{ *pulumi.OutputState }
-
-func (NLBServiceHealthcheckArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NLBServiceHealthcheck)(nil)).Elem()
-}
-
-func (o NLBServiceHealthcheckArrayOutput) ToNLBServiceHealthcheckArrayOutput() NLBServiceHealthcheckArrayOutput {
-	return o
-}
-
-func (o NLBServiceHealthcheckArrayOutput) ToNLBServiceHealthcheckArrayOutputWithContext(ctx context.Context) NLBServiceHealthcheckArrayOutput {
-	return o
-}
-
-func (o NLBServiceHealthcheckArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NLBServiceHealthcheck] {
-	return pulumix.Output[[]NLBServiceHealthcheck]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o NLBServiceHealthcheckArrayOutput) Index(i pulumi.IntInput) NLBServiceHealthcheckOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NLBServiceHealthcheck {
-		return vs[0].([]NLBServiceHealthcheck)[vs[1].(int)]
-	}).(NLBServiceHealthcheckOutput)
-}
-
-type SKSClusterOidc struct {
-	// The OpenID client ID.
-	ClientId string `pulumi:"clientId"`
-	// An OpenID JWT claim to use as the user's group.
-	GroupsClaim *string `pulumi:"groupsClaim"`
-	// An OpenID prefix prepended to group claims.
-	GroupsPrefix *string `pulumi:"groupsPrefix"`
-	// The OpenID provider URL.
-	IssuerUrl string `pulumi:"issuerUrl"`
-	// A map of key/value pairs that describes a required claim in the OpenID Token.
-	RequiredClaim map[string]string `pulumi:"requiredClaim"`
-	// An OpenID JWT claim to use as the user name.
-	UsernameClaim *string `pulumi:"usernameClaim"`
-	// An OpenID prefix prepended to username claims.
-	UsernamePrefix *string `pulumi:"usernamePrefix"`
-}
-
-// SKSClusterOidcInput is an input type that accepts SKSClusterOidcArgs and SKSClusterOidcOutput values.
-// You can construct a concrete instance of `SKSClusterOidcInput` via:
-//
-//	SKSClusterOidcArgs{...}
-type SKSClusterOidcInput interface {
-	pulumi.Input
-
-	ToSKSClusterOidcOutput() SKSClusterOidcOutput
-	ToSKSClusterOidcOutputWithContext(context.Context) SKSClusterOidcOutput
-}
-
-type SKSClusterOidcArgs struct {
-	// The OpenID client ID.
-	ClientId pulumi.StringInput `pulumi:"clientId"`
-	// An OpenID JWT claim to use as the user's group.
-	GroupsClaim pulumi.StringPtrInput `pulumi:"groupsClaim"`
-	// An OpenID prefix prepended to group claims.
-	GroupsPrefix pulumi.StringPtrInput `pulumi:"groupsPrefix"`
-	// The OpenID provider URL.
-	IssuerUrl pulumi.StringInput `pulumi:"issuerUrl"`
-	// A map of key/value pairs that describes a required claim in the OpenID Token.
-	RequiredClaim pulumi.StringMapInput `pulumi:"requiredClaim"`
-	// An OpenID JWT claim to use as the user name.
-	UsernameClaim pulumi.StringPtrInput `pulumi:"usernameClaim"`
-	// An OpenID prefix prepended to username claims.
-	UsernamePrefix pulumi.StringPtrInput `pulumi:"usernamePrefix"`
-}
-
-func (SKSClusterOidcArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SKSClusterOidc)(nil)).Elem()
-}
-
-func (i SKSClusterOidcArgs) ToSKSClusterOidcOutput() SKSClusterOidcOutput {
-	return i.ToSKSClusterOidcOutputWithContext(context.Background())
-}
-
-func (i SKSClusterOidcArgs) ToSKSClusterOidcOutputWithContext(ctx context.Context) SKSClusterOidcOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SKSClusterOidcOutput)
-}
-
-func (i SKSClusterOidcArgs) ToOutput(ctx context.Context) pulumix.Output[SKSClusterOidc] {
-	return pulumix.Output[SKSClusterOidc]{
-		OutputState: i.ToSKSClusterOidcOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i SKSClusterOidcArgs) ToSKSClusterOidcPtrOutput() SKSClusterOidcPtrOutput {
-	return i.ToSKSClusterOidcPtrOutputWithContext(context.Background())
-}
-
-func (i SKSClusterOidcArgs) ToSKSClusterOidcPtrOutputWithContext(ctx context.Context) SKSClusterOidcPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SKSClusterOidcOutput).ToSKSClusterOidcPtrOutputWithContext(ctx)
-}
-
-// SKSClusterOidcPtrInput is an input type that accepts SKSClusterOidcArgs, SKSClusterOidcPtr and SKSClusterOidcPtrOutput values.
-// You can construct a concrete instance of `SKSClusterOidcPtrInput` via:
-//
-//	        SKSClusterOidcArgs{...}
+//	        GetDatabaseURITimeoutsArgs{...}
 //
 //	or:
 //
 //	        nil
-type SKSClusterOidcPtrInput interface {
+type GetDatabaseURITimeoutsPtrInput interface {
 	pulumi.Input
 
-	ToSKSClusterOidcPtrOutput() SKSClusterOidcPtrOutput
-	ToSKSClusterOidcPtrOutputWithContext(context.Context) SKSClusterOidcPtrOutput
+	ToGetDatabaseURITimeoutsPtrOutput() GetDatabaseURITimeoutsPtrOutput
+	ToGetDatabaseURITimeoutsPtrOutputWithContext(context.Context) GetDatabaseURITimeoutsPtrOutput
 }
 
-type sksclusterOidcPtrType SKSClusterOidcArgs
+type getDatabaseURITimeoutsPtrType GetDatabaseURITimeoutsArgs
 
-func SKSClusterOidcPtr(v *SKSClusterOidcArgs) SKSClusterOidcPtrInput {
-	return (*sksclusterOidcPtrType)(v)
+func GetDatabaseURITimeoutsPtr(v *GetDatabaseURITimeoutsArgs) GetDatabaseURITimeoutsPtrInput {
+	return (*getDatabaseURITimeoutsPtrType)(v)
 }
 
-func (*sksclusterOidcPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SKSClusterOidc)(nil)).Elem()
+func (*getDatabaseURITimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetDatabaseURITimeouts)(nil)).Elem()
 }
 
-func (i *sksclusterOidcPtrType) ToSKSClusterOidcPtrOutput() SKSClusterOidcPtrOutput {
-	return i.ToSKSClusterOidcPtrOutputWithContext(context.Background())
+func (i *getDatabaseURITimeoutsPtrType) ToGetDatabaseURITimeoutsPtrOutput() GetDatabaseURITimeoutsPtrOutput {
+	return i.ToGetDatabaseURITimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (i *sksclusterOidcPtrType) ToSKSClusterOidcPtrOutputWithContext(ctx context.Context) SKSClusterOidcPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SKSClusterOidcPtrOutput)
+func (i *getDatabaseURITimeoutsPtrType) ToGetDatabaseURITimeoutsPtrOutputWithContext(ctx context.Context) GetDatabaseURITimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseURITimeoutsPtrOutput)
 }
 
-func (i *sksclusterOidcPtrType) ToOutput(ctx context.Context) pulumix.Output[*SKSClusterOidc] {
-	return pulumix.Output[*SKSClusterOidc]{
-		OutputState: i.ToSKSClusterOidcPtrOutputWithContext(ctx).OutputState,
+func (i *getDatabaseURITimeoutsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetDatabaseURITimeouts] {
+	return pulumix.Output[*GetDatabaseURITimeouts]{
+		OutputState: i.ToGetDatabaseURITimeoutsPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
-type SKSClusterOidcOutput struct{ *pulumi.OutputState }
+type GetDatabaseURITimeoutsOutput struct{ *pulumi.OutputState }
 
-func (SKSClusterOidcOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SKSClusterOidc)(nil)).Elem()
+func (GetDatabaseURITimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseURITimeouts)(nil)).Elem()
 }
 
-func (o SKSClusterOidcOutput) ToSKSClusterOidcOutput() SKSClusterOidcOutput {
+func (o GetDatabaseURITimeoutsOutput) ToGetDatabaseURITimeoutsOutput() GetDatabaseURITimeoutsOutput {
 	return o
 }
 
-func (o SKSClusterOidcOutput) ToSKSClusterOidcOutputWithContext(ctx context.Context) SKSClusterOidcOutput {
+func (o GetDatabaseURITimeoutsOutput) ToGetDatabaseURITimeoutsOutputWithContext(ctx context.Context) GetDatabaseURITimeoutsOutput {
 	return o
 }
 
-func (o SKSClusterOidcOutput) ToSKSClusterOidcPtrOutput() SKSClusterOidcPtrOutput {
-	return o.ToSKSClusterOidcPtrOutputWithContext(context.Background())
+func (o GetDatabaseURITimeoutsOutput) ToGetDatabaseURITimeoutsPtrOutput() GetDatabaseURITimeoutsPtrOutput {
+	return o.ToGetDatabaseURITimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (o SKSClusterOidcOutput) ToSKSClusterOidcPtrOutputWithContext(ctx context.Context) SKSClusterOidcPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SKSClusterOidc) *SKSClusterOidc {
+func (o GetDatabaseURITimeoutsOutput) ToGetDatabaseURITimeoutsPtrOutputWithContext(ctx context.Context) GetDatabaseURITimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetDatabaseURITimeouts) *GetDatabaseURITimeouts {
 		return &v
-	}).(SKSClusterOidcPtrOutput)
+	}).(GetDatabaseURITimeoutsPtrOutput)
 }
 
-func (o SKSClusterOidcOutput) ToOutput(ctx context.Context) pulumix.Output[SKSClusterOidc] {
-	return pulumix.Output[SKSClusterOidc]{
+func (o GetDatabaseURITimeoutsOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseURITimeouts] {
+	return pulumix.Output[GetDatabaseURITimeouts]{
 		OutputState: o.OutputState,
 	}
 }
 
-// The OpenID client ID.
-func (o SKSClusterOidcOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v SKSClusterOidc) string { return v.ClientId }).(pulumi.StringOutput)
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o GetDatabaseURITimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDatabaseURITimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
 }
 
-// An OpenID JWT claim to use as the user's group.
-func (o SKSClusterOidcOutput) GroupsClaim() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SKSClusterOidc) *string { return v.GroupsClaim }).(pulumi.StringPtrOutput)
+type GetDatabaseURITimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseURITimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetDatabaseURITimeouts)(nil)).Elem()
 }
 
-// An OpenID prefix prepended to group claims.
-func (o SKSClusterOidcOutput) GroupsPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SKSClusterOidc) *string { return v.GroupsPrefix }).(pulumi.StringPtrOutput)
-}
-
-// The OpenID provider URL.
-func (o SKSClusterOidcOutput) IssuerUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v SKSClusterOidc) string { return v.IssuerUrl }).(pulumi.StringOutput)
-}
-
-// A map of key/value pairs that describes a required claim in the OpenID Token.
-func (o SKSClusterOidcOutput) RequiredClaim() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SKSClusterOidc) map[string]string { return v.RequiredClaim }).(pulumi.StringMapOutput)
-}
-
-// An OpenID JWT claim to use as the user name.
-func (o SKSClusterOidcOutput) UsernameClaim() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SKSClusterOidc) *string { return v.UsernameClaim }).(pulumi.StringPtrOutput)
-}
-
-// An OpenID prefix prepended to username claims.
-func (o SKSClusterOidcOutput) UsernamePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SKSClusterOidc) *string { return v.UsernamePrefix }).(pulumi.StringPtrOutput)
-}
-
-type SKSClusterOidcPtrOutput struct{ *pulumi.OutputState }
-
-func (SKSClusterOidcPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SKSClusterOidc)(nil)).Elem()
-}
-
-func (o SKSClusterOidcPtrOutput) ToSKSClusterOidcPtrOutput() SKSClusterOidcPtrOutput {
+func (o GetDatabaseURITimeoutsPtrOutput) ToGetDatabaseURITimeoutsPtrOutput() GetDatabaseURITimeoutsPtrOutput {
 	return o
 }
 
-func (o SKSClusterOidcPtrOutput) ToSKSClusterOidcPtrOutputWithContext(ctx context.Context) SKSClusterOidcPtrOutput {
+func (o GetDatabaseURITimeoutsPtrOutput) ToGetDatabaseURITimeoutsPtrOutputWithContext(ctx context.Context) GetDatabaseURITimeoutsPtrOutput {
 	return o
 }
 
-func (o SKSClusterOidcPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SKSClusterOidc] {
-	return pulumix.Output[*SKSClusterOidc]{
+func (o GetDatabaseURITimeoutsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetDatabaseURITimeouts] {
+	return pulumix.Output[*GetDatabaseURITimeouts]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o SKSClusterOidcPtrOutput) Elem() SKSClusterOidcOutput {
-	return o.ApplyT(func(v *SKSClusterOidc) SKSClusterOidc {
+func (o GetDatabaseURITimeoutsPtrOutput) Elem() GetDatabaseURITimeoutsOutput {
+	return o.ApplyT(func(v *GetDatabaseURITimeouts) GetDatabaseURITimeouts {
 		if v != nil {
 			return *v
 		}
-		var ret SKSClusterOidc
+		var ret GetDatabaseURITimeouts
 		return ret
-	}).(SKSClusterOidcOutput)
+	}).(GetDatabaseURITimeoutsOutput)
 }
 
-// The OpenID client ID.
-func (o SKSClusterOidcPtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SKSClusterOidc) *string {
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o GetDatabaseURITimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDatabaseURITimeouts) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ClientId
+		return v.Read
 	}).(pulumi.StringPtrOutput)
 }
 
-// An OpenID JWT claim to use as the user's group.
-func (o SKSClusterOidcPtrOutput) GroupsClaim() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SKSClusterOidc) *string {
-		if v == nil {
-			return nil
-		}
-		return v.GroupsClaim
-	}).(pulumi.StringPtrOutput)
-}
-
-// An OpenID prefix prepended to group claims.
-func (o SKSClusterOidcPtrOutput) GroupsPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SKSClusterOidc) *string {
-		if v == nil {
-			return nil
-		}
-		return v.GroupsPrefix
-	}).(pulumi.StringPtrOutput)
-}
-
-// The OpenID provider URL.
-func (o SKSClusterOidcPtrOutput) IssuerUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SKSClusterOidc) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.IssuerUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// A map of key/value pairs that describes a required claim in the OpenID Token.
-func (o SKSClusterOidcPtrOutput) RequiredClaim() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *SKSClusterOidc) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.RequiredClaim
-	}).(pulumi.StringMapOutput)
-}
-
-// An OpenID JWT claim to use as the user name.
-func (o SKSClusterOidcPtrOutput) UsernameClaim() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SKSClusterOidc) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UsernameClaim
-	}).(pulumi.StringPtrOutput)
-}
-
-// An OpenID prefix prepended to username claims.
-func (o SKSClusterOidcPtrOutput) UsernamePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SKSClusterOidc) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UsernamePrefix
-	}).(pulumi.StringPtrOutput)
-}
-
-type SecurityGroupRulesEgress struct {
-	// A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
-	CidrLists []string `pulumi:"cidrLists"`
-	// A free-form text describing the block.
-	Description *string `pulumi:"description"`
-	// An ICMP/ICMPv6 type/code to match.
-	IcmpCode *int `pulumi:"icmpCode"`
-	// An ICMP/ICMPv6 type/code to match.
-	IcmpType *int     `pulumi:"icmpType"`
-	Ids      []string `pulumi:"ids"`
-	// A list of ports or port ranges (`<start_port>-<end_port>`).
-	Ports []string `pulumi:"ports"`
-	// The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
-	Protocol *string `pulumi:"protocol"`
-	// A list of source (for ingress)/destination (for egress) identified by a security group.
-	UserSecurityGroupLists []string `pulumi:"userSecurityGroupLists"`
-}
-
-// SecurityGroupRulesEgressInput is an input type that accepts SecurityGroupRulesEgressArgs and SecurityGroupRulesEgressOutput values.
-// You can construct a concrete instance of `SecurityGroupRulesEgressInput` via:
-//
-//	SecurityGroupRulesEgressArgs{...}
-type SecurityGroupRulesEgressInput interface {
-	pulumi.Input
-
-	ToSecurityGroupRulesEgressOutput() SecurityGroupRulesEgressOutput
-	ToSecurityGroupRulesEgressOutputWithContext(context.Context) SecurityGroupRulesEgressOutput
-}
-
-type SecurityGroupRulesEgressArgs struct {
-	// A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
-	CidrLists pulumi.StringArrayInput `pulumi:"cidrLists"`
-	// A free-form text describing the block.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// An ICMP/ICMPv6 type/code to match.
-	IcmpCode pulumi.IntPtrInput `pulumi:"icmpCode"`
-	// An ICMP/ICMPv6 type/code to match.
-	IcmpType pulumi.IntPtrInput      `pulumi:"icmpType"`
-	Ids      pulumi.StringArrayInput `pulumi:"ids"`
-	// A list of ports or port ranges (`<start_port>-<end_port>`).
-	Ports pulumi.StringArrayInput `pulumi:"ports"`
-	// The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
-	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// A list of source (for ingress)/destination (for egress) identified by a security group.
-	UserSecurityGroupLists pulumi.StringArrayInput `pulumi:"userSecurityGroupLists"`
-}
-
-func (SecurityGroupRulesEgressArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityGroupRulesEgress)(nil)).Elem()
-}
-
-func (i SecurityGroupRulesEgressArgs) ToSecurityGroupRulesEgressOutput() SecurityGroupRulesEgressOutput {
-	return i.ToSecurityGroupRulesEgressOutputWithContext(context.Background())
-}
-
-func (i SecurityGroupRulesEgressArgs) ToSecurityGroupRulesEgressOutputWithContext(ctx context.Context) SecurityGroupRulesEgressOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupRulesEgressOutput)
-}
-
-func (i SecurityGroupRulesEgressArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityGroupRulesEgress] {
-	return pulumix.Output[SecurityGroupRulesEgress]{
-		OutputState: i.ToSecurityGroupRulesEgressOutputWithContext(ctx).OutputState,
-	}
-}
-
-// SecurityGroupRulesEgressArrayInput is an input type that accepts SecurityGroupRulesEgressArray and SecurityGroupRulesEgressArrayOutput values.
-// You can construct a concrete instance of `SecurityGroupRulesEgressArrayInput` via:
-//
-//	SecurityGroupRulesEgressArray{ SecurityGroupRulesEgressArgs{...} }
-type SecurityGroupRulesEgressArrayInput interface {
-	pulumi.Input
-
-	ToSecurityGroupRulesEgressArrayOutput() SecurityGroupRulesEgressArrayOutput
-	ToSecurityGroupRulesEgressArrayOutputWithContext(context.Context) SecurityGroupRulesEgressArrayOutput
-}
-
-type SecurityGroupRulesEgressArray []SecurityGroupRulesEgressInput
-
-func (SecurityGroupRulesEgressArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityGroupRulesEgress)(nil)).Elem()
-}
-
-func (i SecurityGroupRulesEgressArray) ToSecurityGroupRulesEgressArrayOutput() SecurityGroupRulesEgressArrayOutput {
-	return i.ToSecurityGroupRulesEgressArrayOutputWithContext(context.Background())
-}
-
-func (i SecurityGroupRulesEgressArray) ToSecurityGroupRulesEgressArrayOutputWithContext(ctx context.Context) SecurityGroupRulesEgressArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupRulesEgressArrayOutput)
-}
-
-func (i SecurityGroupRulesEgressArray) ToOutput(ctx context.Context) pulumix.Output[[]SecurityGroupRulesEgress] {
-	return pulumix.Output[[]SecurityGroupRulesEgress]{
-		OutputState: i.ToSecurityGroupRulesEgressArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type SecurityGroupRulesEgressOutput struct{ *pulumi.OutputState }
-
-func (SecurityGroupRulesEgressOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityGroupRulesEgress)(nil)).Elem()
-}
-
-func (o SecurityGroupRulesEgressOutput) ToSecurityGroupRulesEgressOutput() SecurityGroupRulesEgressOutput {
-	return o
-}
-
-func (o SecurityGroupRulesEgressOutput) ToSecurityGroupRulesEgressOutputWithContext(ctx context.Context) SecurityGroupRulesEgressOutput {
-	return o
-}
-
-func (o SecurityGroupRulesEgressOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityGroupRulesEgress] {
-	return pulumix.Output[SecurityGroupRulesEgress]{
-		OutputState: o.OutputState,
-	}
-}
-
-// A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
-func (o SecurityGroupRulesEgressOutput) CidrLists() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityGroupRulesEgress) []string { return v.CidrLists }).(pulumi.StringArrayOutput)
-}
-
-// A free-form text describing the block.
-func (o SecurityGroupRulesEgressOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityGroupRulesEgress) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// An ICMP/ICMPv6 type/code to match.
-func (o SecurityGroupRulesEgressOutput) IcmpCode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SecurityGroupRulesEgress) *int { return v.IcmpCode }).(pulumi.IntPtrOutput)
-}
-
-// An ICMP/ICMPv6 type/code to match.
-func (o SecurityGroupRulesEgressOutput) IcmpType() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SecurityGroupRulesEgress) *int { return v.IcmpType }).(pulumi.IntPtrOutput)
-}
-
-func (o SecurityGroupRulesEgressOutput) Ids() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityGroupRulesEgress) []string { return v.Ids }).(pulumi.StringArrayOutput)
-}
-
-// A list of ports or port ranges (`<start_port>-<end_port>`).
-func (o SecurityGroupRulesEgressOutput) Ports() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityGroupRulesEgress) []string { return v.Ports }).(pulumi.StringArrayOutput)
-}
-
-// The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
-func (o SecurityGroupRulesEgressOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityGroupRulesEgress) *string { return v.Protocol }).(pulumi.StringPtrOutput)
-}
-
-// A list of source (for ingress)/destination (for egress) identified by a security group.
-func (o SecurityGroupRulesEgressOutput) UserSecurityGroupLists() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityGroupRulesEgress) []string { return v.UserSecurityGroupLists }).(pulumi.StringArrayOutput)
-}
-
-type SecurityGroupRulesEgressArrayOutput struct{ *pulumi.OutputState }
-
-func (SecurityGroupRulesEgressArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityGroupRulesEgress)(nil)).Elem()
-}
-
-func (o SecurityGroupRulesEgressArrayOutput) ToSecurityGroupRulesEgressArrayOutput() SecurityGroupRulesEgressArrayOutput {
-	return o
-}
-
-func (o SecurityGroupRulesEgressArrayOutput) ToSecurityGroupRulesEgressArrayOutputWithContext(ctx context.Context) SecurityGroupRulesEgressArrayOutput {
-	return o
-}
-
-func (o SecurityGroupRulesEgressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecurityGroupRulesEgress] {
-	return pulumix.Output[[]SecurityGroupRulesEgress]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o SecurityGroupRulesEgressArrayOutput) Index(i pulumi.IntInput) SecurityGroupRulesEgressOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityGroupRulesEgress {
-		return vs[0].([]SecurityGroupRulesEgress)[vs[1].(int)]
-	}).(SecurityGroupRulesEgressOutput)
-}
-
-type SecurityGroupRulesIngress struct {
-	// A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
-	CidrLists []string `pulumi:"cidrLists"`
-	// A free-form text describing the block.
-	Description *string `pulumi:"description"`
-	// An ICMP/ICMPv6 type/code to match.
-	IcmpCode *int `pulumi:"icmpCode"`
-	// An ICMP/ICMPv6 type/code to match.
-	IcmpType *int     `pulumi:"icmpType"`
-	Ids      []string `pulumi:"ids"`
-	// A list of ports or port ranges (`<start_port>-<end_port>`).
-	Ports []string `pulumi:"ports"`
-	// The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
-	Protocol *string `pulumi:"protocol"`
-	// A list of source (for ingress)/destination (for egress) identified by a security group.
-	UserSecurityGroupLists []string `pulumi:"userSecurityGroupLists"`
-}
-
-// SecurityGroupRulesIngressInput is an input type that accepts SecurityGroupRulesIngressArgs and SecurityGroupRulesIngressOutput values.
-// You can construct a concrete instance of `SecurityGroupRulesIngressInput` via:
-//
-//	SecurityGroupRulesIngressArgs{...}
-type SecurityGroupRulesIngressInput interface {
-	pulumi.Input
-
-	ToSecurityGroupRulesIngressOutput() SecurityGroupRulesIngressOutput
-	ToSecurityGroupRulesIngressOutputWithContext(context.Context) SecurityGroupRulesIngressOutput
-}
-
-type SecurityGroupRulesIngressArgs struct {
-	// A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
-	CidrLists pulumi.StringArrayInput `pulumi:"cidrLists"`
-	// A free-form text describing the block.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// An ICMP/ICMPv6 type/code to match.
-	IcmpCode pulumi.IntPtrInput `pulumi:"icmpCode"`
-	// An ICMP/ICMPv6 type/code to match.
-	IcmpType pulumi.IntPtrInput      `pulumi:"icmpType"`
-	Ids      pulumi.StringArrayInput `pulumi:"ids"`
-	// A list of ports or port ranges (`<start_port>-<end_port>`).
-	Ports pulumi.StringArrayInput `pulumi:"ports"`
-	// The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
-	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// A list of source (for ingress)/destination (for egress) identified by a security group.
-	UserSecurityGroupLists pulumi.StringArrayInput `pulumi:"userSecurityGroupLists"`
-}
-
-func (SecurityGroupRulesIngressArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityGroupRulesIngress)(nil)).Elem()
-}
-
-func (i SecurityGroupRulesIngressArgs) ToSecurityGroupRulesIngressOutput() SecurityGroupRulesIngressOutput {
-	return i.ToSecurityGroupRulesIngressOutputWithContext(context.Background())
-}
-
-func (i SecurityGroupRulesIngressArgs) ToSecurityGroupRulesIngressOutputWithContext(ctx context.Context) SecurityGroupRulesIngressOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupRulesIngressOutput)
-}
-
-func (i SecurityGroupRulesIngressArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityGroupRulesIngress] {
-	return pulumix.Output[SecurityGroupRulesIngress]{
-		OutputState: i.ToSecurityGroupRulesIngressOutputWithContext(ctx).OutputState,
-	}
-}
-
-// SecurityGroupRulesIngressArrayInput is an input type that accepts SecurityGroupRulesIngressArray and SecurityGroupRulesIngressArrayOutput values.
-// You can construct a concrete instance of `SecurityGroupRulesIngressArrayInput` via:
-//
-//	SecurityGroupRulesIngressArray{ SecurityGroupRulesIngressArgs{...} }
-type SecurityGroupRulesIngressArrayInput interface {
-	pulumi.Input
-
-	ToSecurityGroupRulesIngressArrayOutput() SecurityGroupRulesIngressArrayOutput
-	ToSecurityGroupRulesIngressArrayOutputWithContext(context.Context) SecurityGroupRulesIngressArrayOutput
-}
-
-type SecurityGroupRulesIngressArray []SecurityGroupRulesIngressInput
-
-func (SecurityGroupRulesIngressArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityGroupRulesIngress)(nil)).Elem()
-}
-
-func (i SecurityGroupRulesIngressArray) ToSecurityGroupRulesIngressArrayOutput() SecurityGroupRulesIngressArrayOutput {
-	return i.ToSecurityGroupRulesIngressArrayOutputWithContext(context.Background())
-}
-
-func (i SecurityGroupRulesIngressArray) ToSecurityGroupRulesIngressArrayOutputWithContext(ctx context.Context) SecurityGroupRulesIngressArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupRulesIngressArrayOutput)
-}
-
-func (i SecurityGroupRulesIngressArray) ToOutput(ctx context.Context) pulumix.Output[[]SecurityGroupRulesIngress] {
-	return pulumix.Output[[]SecurityGroupRulesIngress]{
-		OutputState: i.ToSecurityGroupRulesIngressArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type SecurityGroupRulesIngressOutput struct{ *pulumi.OutputState }
-
-func (SecurityGroupRulesIngressOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityGroupRulesIngress)(nil)).Elem()
-}
-
-func (o SecurityGroupRulesIngressOutput) ToSecurityGroupRulesIngressOutput() SecurityGroupRulesIngressOutput {
-	return o
-}
-
-func (o SecurityGroupRulesIngressOutput) ToSecurityGroupRulesIngressOutputWithContext(ctx context.Context) SecurityGroupRulesIngressOutput {
-	return o
-}
-
-func (o SecurityGroupRulesIngressOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityGroupRulesIngress] {
-	return pulumix.Output[SecurityGroupRulesIngress]{
-		OutputState: o.OutputState,
-	}
-}
-
-// A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
-func (o SecurityGroupRulesIngressOutput) CidrLists() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityGroupRulesIngress) []string { return v.CidrLists }).(pulumi.StringArrayOutput)
-}
-
-// A free-form text describing the block.
-func (o SecurityGroupRulesIngressOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityGroupRulesIngress) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// An ICMP/ICMPv6 type/code to match.
-func (o SecurityGroupRulesIngressOutput) IcmpCode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SecurityGroupRulesIngress) *int { return v.IcmpCode }).(pulumi.IntPtrOutput)
-}
-
-// An ICMP/ICMPv6 type/code to match.
-func (o SecurityGroupRulesIngressOutput) IcmpType() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SecurityGroupRulesIngress) *int { return v.IcmpType }).(pulumi.IntPtrOutput)
-}
-
-func (o SecurityGroupRulesIngressOutput) Ids() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityGroupRulesIngress) []string { return v.Ids }).(pulumi.StringArrayOutput)
-}
-
-// A list of ports or port ranges (`<start_port>-<end_port>`).
-func (o SecurityGroupRulesIngressOutput) Ports() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityGroupRulesIngress) []string { return v.Ports }).(pulumi.StringArrayOutput)
-}
-
-// The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
-func (o SecurityGroupRulesIngressOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityGroupRulesIngress) *string { return v.Protocol }).(pulumi.StringPtrOutput)
-}
-
-// A list of source (for ingress)/destination (for egress) identified by a security group.
-func (o SecurityGroupRulesIngressOutput) UserSecurityGroupLists() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityGroupRulesIngress) []string { return v.UserSecurityGroupLists }).(pulumi.StringArrayOutput)
-}
-
-type SecurityGroupRulesIngressArrayOutput struct{ *pulumi.OutputState }
-
-func (SecurityGroupRulesIngressArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityGroupRulesIngress)(nil)).Elem()
-}
-
-func (o SecurityGroupRulesIngressArrayOutput) ToSecurityGroupRulesIngressArrayOutput() SecurityGroupRulesIngressArrayOutput {
-	return o
-}
-
-func (o SecurityGroupRulesIngressArrayOutput) ToSecurityGroupRulesIngressArrayOutputWithContext(ctx context.Context) SecurityGroupRulesIngressArrayOutput {
-	return o
-}
-
-func (o SecurityGroupRulesIngressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecurityGroupRulesIngress] {
-	return pulumix.Output[[]SecurityGroupRulesIngress]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o SecurityGroupRulesIngressArrayOutput) Index(i pulumi.IntInput) SecurityGroupRulesIngressOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityGroupRulesIngress {
-		return vs[0].([]SecurityGroupRulesIngress)[vs[1].(int)]
-	}).(SecurityGroupRulesIngressOutput)
-}
-
-type GetComputeInstanceListInstance struct {
-	AntiAffinityGroupIds []string `pulumi:"antiAffinityGroupIds"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	CreatedAt string `pulumi:"createdAt"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	DeployTargetId string `pulumi:"deployTargetId"`
-	// Match against this int
-	DiskSize     int      `pulumi:"diskSize"`
-	ElasticIpIds []string `pulumi:"elasticIpIds"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Id *string `pulumi:"id"`
-	// Match against this bool
-	Ipv6 bool `pulumi:"ipv6"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Ipv6Address string `pulumi:"ipv6Address"`
-	// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-	Labels map[string]string `pulumi:"labels"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ManagerId string `pulumi:"managerId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ManagerType string `pulumi:"managerType"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Name              *string  `pulumi:"name"`
-	PrivateNetworkIds []string `pulumi:"privateNetworkIds"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	PublicIpAddress string `pulumi:"publicIpAddress"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ReverseDns       string   `pulumi:"reverseDns"`
-	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	SshKey string `pulumi:"sshKey"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	State string `pulumi:"state"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	TemplateId string `pulumi:"templateId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Type string `pulumi:"type"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	UserData string `pulumi:"userData"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Zone string `pulumi:"zone"`
-}
-
-// GetComputeInstanceListInstanceInput is an input type that accepts GetComputeInstanceListInstanceArgs and GetComputeInstanceListInstanceOutput values.
-// You can construct a concrete instance of `GetComputeInstanceListInstanceInput` via:
-//
-//	GetComputeInstanceListInstanceArgs{...}
-type GetComputeInstanceListInstanceInput interface {
-	pulumi.Input
-
-	ToGetComputeInstanceListInstanceOutput() GetComputeInstanceListInstanceOutput
-	ToGetComputeInstanceListInstanceOutputWithContext(context.Context) GetComputeInstanceListInstanceOutput
-}
-
-type GetComputeInstanceListInstanceArgs struct {
-	AntiAffinityGroupIds pulumi.StringArrayInput `pulumi:"antiAffinityGroupIds"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	DeployTargetId pulumi.StringInput `pulumi:"deployTargetId"`
-	// Match against this int
-	DiskSize     pulumi.IntInput         `pulumi:"diskSize"`
-	ElasticIpIds pulumi.StringArrayInput `pulumi:"elasticIpIds"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Match against this bool
-	Ipv6 pulumi.BoolInput `pulumi:"ipv6"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Ipv6Address pulumi.StringInput `pulumi:"ipv6Address"`
-	// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ManagerId pulumi.StringInput `pulumi:"managerId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ManagerType pulumi.StringInput `pulumi:"managerType"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Name              pulumi.StringPtrInput   `pulumi:"name"`
-	PrivateNetworkIds pulumi.StringArrayInput `pulumi:"privateNetworkIds"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	PublicIpAddress pulumi.StringInput `pulumi:"publicIpAddress"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ReverseDns       pulumi.StringInput      `pulumi:"reverseDns"`
-	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	SshKey pulumi.StringInput `pulumi:"sshKey"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	State pulumi.StringInput `pulumi:"state"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	TemplateId pulumi.StringInput `pulumi:"templateId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	UserData pulumi.StringInput `pulumi:"userData"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Zone pulumi.StringInput `pulumi:"zone"`
-}
-
-func (GetComputeInstanceListInstanceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetComputeInstanceListInstance)(nil)).Elem()
-}
-
-func (i GetComputeInstanceListInstanceArgs) ToGetComputeInstanceListInstanceOutput() GetComputeInstanceListInstanceOutput {
-	return i.ToGetComputeInstanceListInstanceOutputWithContext(context.Background())
-}
-
-func (i GetComputeInstanceListInstanceArgs) ToGetComputeInstanceListInstanceOutputWithContext(ctx context.Context) GetComputeInstanceListInstanceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetComputeInstanceListInstanceOutput)
-}
-
-func (i GetComputeInstanceListInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetComputeInstanceListInstance] {
-	return pulumix.Output[GetComputeInstanceListInstance]{
-		OutputState: i.ToGetComputeInstanceListInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
-// GetComputeInstanceListInstanceArrayInput is an input type that accepts GetComputeInstanceListInstanceArray and GetComputeInstanceListInstanceArrayOutput values.
-// You can construct a concrete instance of `GetComputeInstanceListInstanceArrayInput` via:
-//
-//	GetComputeInstanceListInstanceArray{ GetComputeInstanceListInstanceArgs{...} }
-type GetComputeInstanceListInstanceArrayInput interface {
-	pulumi.Input
-
-	ToGetComputeInstanceListInstanceArrayOutput() GetComputeInstanceListInstanceArrayOutput
-	ToGetComputeInstanceListInstanceArrayOutputWithContext(context.Context) GetComputeInstanceListInstanceArrayOutput
-}
-
-type GetComputeInstanceListInstanceArray []GetComputeInstanceListInstanceInput
-
-func (GetComputeInstanceListInstanceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetComputeInstanceListInstance)(nil)).Elem()
-}
-
-func (i GetComputeInstanceListInstanceArray) ToGetComputeInstanceListInstanceArrayOutput() GetComputeInstanceListInstanceArrayOutput {
-	return i.ToGetComputeInstanceListInstanceArrayOutputWithContext(context.Background())
-}
-
-func (i GetComputeInstanceListInstanceArray) ToGetComputeInstanceListInstanceArrayOutputWithContext(ctx context.Context) GetComputeInstanceListInstanceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetComputeInstanceListInstanceArrayOutput)
-}
-
-func (i GetComputeInstanceListInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetComputeInstanceListInstance] {
-	return pulumix.Output[[]GetComputeInstanceListInstance]{
-		OutputState: i.ToGetComputeInstanceListInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GetComputeInstanceListInstanceOutput struct{ *pulumi.OutputState }
-
-func (GetComputeInstanceListInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetComputeInstanceListInstance)(nil)).Elem()
-}
-
-func (o GetComputeInstanceListInstanceOutput) ToGetComputeInstanceListInstanceOutput() GetComputeInstanceListInstanceOutput {
-	return o
-}
-
-func (o GetComputeInstanceListInstanceOutput) ToGetComputeInstanceListInstanceOutputWithContext(ctx context.Context) GetComputeInstanceListInstanceOutput {
-	return o
-}
-
-func (o GetComputeInstanceListInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetComputeInstanceListInstance] {
-	return pulumix.Output[GetComputeInstanceListInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetComputeInstanceListInstanceOutput) AntiAffinityGroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetComputeInstanceListInstance) []string { return v.AntiAffinityGroupIds }).(pulumi.StringArrayOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetComputeInstanceListInstanceOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetComputeInstanceListInstanceOutput) DeployTargetId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.DeployTargetId }).(pulumi.StringOutput)
-}
-
-// Match against this int
-func (o GetComputeInstanceListInstanceOutput) DiskSize() pulumi.IntOutput {
-	return o.ApplyT(func(v GetComputeInstanceListInstance) int { return v.DiskSize }).(pulumi.IntOutput)
-}
-
-func (o GetComputeInstanceListInstanceOutput) ElasticIpIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetComputeInstanceListInstance) []string { return v.ElasticIpIds }).(pulumi.StringArrayOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetComputeInstanceListInstanceOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetComputeInstanceListInstance) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Match against this bool
-func (o GetComputeInstanceListInstanceOutput) Ipv6() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetComputeInstanceListInstance) bool { return v.Ipv6 }).(pulumi.BoolOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetComputeInstanceListInstanceOutput) Ipv6Address() pulumi.StringOutput {
-	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.Ipv6Address }).(pulumi.StringOutput)
-}
-
-// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-func (o GetComputeInstanceListInstanceOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetComputeInstanceListInstance) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetComputeInstanceListInstanceOutput) ManagerId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.ManagerId }).(pulumi.StringOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetComputeInstanceListInstanceOutput) ManagerType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.ManagerType }).(pulumi.StringOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetComputeInstanceListInstanceOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetComputeInstanceListInstance) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-func (o GetComputeInstanceListInstanceOutput) PrivateNetworkIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetComputeInstanceListInstance) []string { return v.PrivateNetworkIds }).(pulumi.StringArrayOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetComputeInstanceListInstanceOutput) PublicIpAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.PublicIpAddress }).(pulumi.StringOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetComputeInstanceListInstanceOutput) ReverseDns() pulumi.StringOutput {
-	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.ReverseDns }).(pulumi.StringOutput)
-}
-
-func (o GetComputeInstanceListInstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetComputeInstanceListInstance) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetComputeInstanceListInstanceOutput) SshKey() pulumi.StringOutput {
-	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.SshKey }).(pulumi.StringOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetComputeInstanceListInstanceOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.State }).(pulumi.StringOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetComputeInstanceListInstanceOutput) TemplateId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.TemplateId }).(pulumi.StringOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetComputeInstanceListInstanceOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetComputeInstanceListInstanceOutput) UserData() pulumi.StringOutput {
-	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.UserData }).(pulumi.StringOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetComputeInstanceListInstanceOutput) Zone() pulumi.StringOutput {
-	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.Zone }).(pulumi.StringOutput)
-}
-
-type GetComputeInstanceListInstanceArrayOutput struct{ *pulumi.OutputState }
-
-func (GetComputeInstanceListInstanceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetComputeInstanceListInstance)(nil)).Elem()
-}
-
-func (o GetComputeInstanceListInstanceArrayOutput) ToGetComputeInstanceListInstanceArrayOutput() GetComputeInstanceListInstanceArrayOutput {
-	return o
-}
-
-func (o GetComputeInstanceListInstanceArrayOutput) ToGetComputeInstanceListInstanceArrayOutputWithContext(ctx context.Context) GetComputeInstanceListInstanceArrayOutput {
-	return o
-}
-
-func (o GetComputeInstanceListInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetComputeInstanceListInstance] {
-	return pulumix.Output[[]GetComputeInstanceListInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetComputeInstanceListInstanceArrayOutput) Index(i pulumi.IntInput) GetComputeInstanceListInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetComputeInstanceListInstance {
-		return vs[0].([]GetComputeInstanceListInstance)[vs[1].(int)]
-	}).(GetComputeInstanceListInstanceOutput)
-}
-
-type GetDomainRecordFilter struct {
-	// A regular expression to match the record content.
-	ContentRegex *string `pulumi:"contentRegex"`
-	// The record ID to match.
-	Id *string `pulumi:"id"`
-	// The domain record name to match.
-	Name *string `pulumi:"name"`
-	// The record type to match.
-	RecordType *string `pulumi:"recordType"`
-}
-
-// GetDomainRecordFilterInput is an input type that accepts GetDomainRecordFilterArgs and GetDomainRecordFilterOutput values.
-// You can construct a concrete instance of `GetDomainRecordFilterInput` via:
-//
-//	GetDomainRecordFilterArgs{...}
-type GetDomainRecordFilterInput interface {
-	pulumi.Input
-
-	ToGetDomainRecordFilterOutput() GetDomainRecordFilterOutput
-	ToGetDomainRecordFilterOutputWithContext(context.Context) GetDomainRecordFilterOutput
-}
-
-type GetDomainRecordFilterArgs struct {
-	// A regular expression to match the record content.
-	ContentRegex pulumi.StringPtrInput `pulumi:"contentRegex"`
-	// The record ID to match.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The domain record name to match.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The record type to match.
-	RecordType pulumi.StringPtrInput `pulumi:"recordType"`
-}
-
-func (GetDomainRecordFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDomainRecordFilter)(nil)).Elem()
-}
-
-func (i GetDomainRecordFilterArgs) ToGetDomainRecordFilterOutput() GetDomainRecordFilterOutput {
-	return i.ToGetDomainRecordFilterOutputWithContext(context.Background())
-}
-
-func (i GetDomainRecordFilterArgs) ToGetDomainRecordFilterOutputWithContext(ctx context.Context) GetDomainRecordFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDomainRecordFilterOutput)
-}
-
-func (i GetDomainRecordFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GetDomainRecordFilter] {
-	return pulumix.Output[GetDomainRecordFilter]{
-		OutputState: i.ToGetDomainRecordFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GetDomainRecordFilterOutput struct{ *pulumi.OutputState }
-
-func (GetDomainRecordFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDomainRecordFilter)(nil)).Elem()
-}
-
-func (o GetDomainRecordFilterOutput) ToGetDomainRecordFilterOutput() GetDomainRecordFilterOutput {
-	return o
-}
-
-func (o GetDomainRecordFilterOutput) ToGetDomainRecordFilterOutputWithContext(ctx context.Context) GetDomainRecordFilterOutput {
-	return o
-}
-
-func (o GetDomainRecordFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainRecordFilter] {
-	return pulumix.Output[GetDomainRecordFilter]{
-		OutputState: o.OutputState,
-	}
-}
-
-// A regular expression to match the record content.
-func (o GetDomainRecordFilterOutput) ContentRegex() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetDomainRecordFilter) *string { return v.ContentRegex }).(pulumi.StringPtrOutput)
-}
-
-// The record ID to match.
-func (o GetDomainRecordFilterOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetDomainRecordFilter) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// The domain record name to match.
-func (o GetDomainRecordFilterOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetDomainRecordFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The record type to match.
-func (o GetDomainRecordFilterOutput) RecordType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetDomainRecordFilter) *string { return v.RecordType }).(pulumi.StringPtrOutput)
-}
-
-type GetDomainRecordRecord struct {
-	Content *string `pulumi:"content"`
-	// The Domain name to match.
-	Domain *string `pulumi:"domain"`
-	// The ID of this resource.
-	Id         *string `pulumi:"id"`
-	Name       *string `pulumi:"name"`
-	Prio       *int    `pulumi:"prio"`
-	RecordType *string `pulumi:"recordType"`
-	Ttl        *int    `pulumi:"ttl"`
-}
-
-// GetDomainRecordRecordInput is an input type that accepts GetDomainRecordRecordArgs and GetDomainRecordRecordOutput values.
-// You can construct a concrete instance of `GetDomainRecordRecordInput` via:
-//
-//	GetDomainRecordRecordArgs{...}
-type GetDomainRecordRecordInput interface {
-	pulumi.Input
-
-	ToGetDomainRecordRecordOutput() GetDomainRecordRecordOutput
-	ToGetDomainRecordRecordOutputWithContext(context.Context) GetDomainRecordRecordOutput
-}
-
-type GetDomainRecordRecordArgs struct {
-	Content pulumi.StringPtrInput `pulumi:"content"`
-	// The Domain name to match.
-	Domain pulumi.StringPtrInput `pulumi:"domain"`
-	// The ID of this resource.
-	Id         pulumi.StringPtrInput `pulumi:"id"`
-	Name       pulumi.StringPtrInput `pulumi:"name"`
-	Prio       pulumi.IntPtrInput    `pulumi:"prio"`
-	RecordType pulumi.StringPtrInput `pulumi:"recordType"`
-	Ttl        pulumi.IntPtrInput    `pulumi:"ttl"`
-}
-
-func (GetDomainRecordRecordArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDomainRecordRecord)(nil)).Elem()
-}
-
-func (i GetDomainRecordRecordArgs) ToGetDomainRecordRecordOutput() GetDomainRecordRecordOutput {
-	return i.ToGetDomainRecordRecordOutputWithContext(context.Background())
-}
-
-func (i GetDomainRecordRecordArgs) ToGetDomainRecordRecordOutputWithContext(ctx context.Context) GetDomainRecordRecordOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDomainRecordRecordOutput)
-}
-
-func (i GetDomainRecordRecordArgs) ToOutput(ctx context.Context) pulumix.Output[GetDomainRecordRecord] {
-	return pulumix.Output[GetDomainRecordRecord]{
-		OutputState: i.ToGetDomainRecordRecordOutputWithContext(ctx).OutputState,
-	}
-}
-
-// GetDomainRecordRecordArrayInput is an input type that accepts GetDomainRecordRecordArray and GetDomainRecordRecordArrayOutput values.
-// You can construct a concrete instance of `GetDomainRecordRecordArrayInput` via:
-//
-//	GetDomainRecordRecordArray{ GetDomainRecordRecordArgs{...} }
-type GetDomainRecordRecordArrayInput interface {
-	pulumi.Input
-
-	ToGetDomainRecordRecordArrayOutput() GetDomainRecordRecordArrayOutput
-	ToGetDomainRecordRecordArrayOutputWithContext(context.Context) GetDomainRecordRecordArrayOutput
-}
-
-type GetDomainRecordRecordArray []GetDomainRecordRecordInput
-
-func (GetDomainRecordRecordArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDomainRecordRecord)(nil)).Elem()
-}
-
-func (i GetDomainRecordRecordArray) ToGetDomainRecordRecordArrayOutput() GetDomainRecordRecordArrayOutput {
-	return i.ToGetDomainRecordRecordArrayOutputWithContext(context.Background())
-}
-
-func (i GetDomainRecordRecordArray) ToGetDomainRecordRecordArrayOutputWithContext(ctx context.Context) GetDomainRecordRecordArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDomainRecordRecordArrayOutput)
-}
-
-func (i GetDomainRecordRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainRecordRecord] {
-	return pulumix.Output[[]GetDomainRecordRecord]{
-		OutputState: i.ToGetDomainRecordRecordArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GetDomainRecordRecordOutput struct{ *pulumi.OutputState }
-
-func (GetDomainRecordRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDomainRecordRecord)(nil)).Elem()
-}
-
-func (o GetDomainRecordRecordOutput) ToGetDomainRecordRecordOutput() GetDomainRecordRecordOutput {
-	return o
-}
-
-func (o GetDomainRecordRecordOutput) ToGetDomainRecordRecordOutputWithContext(ctx context.Context) GetDomainRecordRecordOutput {
-	return o
-}
-
-func (o GetDomainRecordRecordOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainRecordRecord] {
-	return pulumix.Output[GetDomainRecordRecord]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetDomainRecordRecordOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetDomainRecordRecord) *string { return v.Content }).(pulumi.StringPtrOutput)
-}
-
-// The Domain name to match.
-func (o GetDomainRecordRecordOutput) Domain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetDomainRecordRecord) *string { return v.Domain }).(pulumi.StringPtrOutput)
-}
-
-// The ID of this resource.
-func (o GetDomainRecordRecordOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetDomainRecordRecord) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-func (o GetDomainRecordRecordOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetDomainRecordRecord) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-func (o GetDomainRecordRecordOutput) Prio() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetDomainRecordRecord) *int { return v.Prio }).(pulumi.IntPtrOutput)
-}
-
-func (o GetDomainRecordRecordOutput) RecordType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetDomainRecordRecord) *string { return v.RecordType }).(pulumi.StringPtrOutput)
-}
-
-func (o GetDomainRecordRecordOutput) Ttl() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetDomainRecordRecord) *int { return v.Ttl }).(pulumi.IntPtrOutput)
-}
-
-type GetDomainRecordRecordArrayOutput struct{ *pulumi.OutputState }
-
-func (GetDomainRecordRecordArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDomainRecordRecord)(nil)).Elem()
-}
-
-func (o GetDomainRecordRecordArrayOutput) ToGetDomainRecordRecordArrayOutput() GetDomainRecordRecordArrayOutput {
-	return o
-}
-
-func (o GetDomainRecordRecordArrayOutput) ToGetDomainRecordRecordArrayOutputWithContext(ctx context.Context) GetDomainRecordRecordArrayOutput {
-	return o
-}
-
-func (o GetDomainRecordRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainRecordRecord] {
-	return pulumix.Output[[]GetDomainRecordRecord]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetDomainRecordRecordArrayOutput) Index(i pulumi.IntInput) GetDomainRecordRecordOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainRecordRecord {
-		return vs[0].([]GetDomainRecordRecord)[vs[1].(int)]
-	}).(GetDomainRecordRecordOutput)
-}
-
-type GetElasticIPHealthcheck struct {
-	Interval      int    `pulumi:"interval"`
-	Mode          string `pulumi:"mode"`
-	Port          int    `pulumi:"port"`
-	StrikesFail   int    `pulumi:"strikesFail"`
-	StrikesOk     int    `pulumi:"strikesOk"`
-	Timeout       int    `pulumi:"timeout"`
-	TlsSkipVerify bool   `pulumi:"tlsSkipVerify"`
-	TlsSni        string `pulumi:"tlsSni"`
-	Uri           string `pulumi:"uri"`
-}
-
-// GetElasticIPHealthcheckInput is an input type that accepts GetElasticIPHealthcheckArgs and GetElasticIPHealthcheckOutput values.
-// You can construct a concrete instance of `GetElasticIPHealthcheckInput` via:
-//
-//	GetElasticIPHealthcheckArgs{...}
-type GetElasticIPHealthcheckInput interface {
-	pulumi.Input
-
-	ToGetElasticIPHealthcheckOutput() GetElasticIPHealthcheckOutput
-	ToGetElasticIPHealthcheckOutputWithContext(context.Context) GetElasticIPHealthcheckOutput
-}
-
-type GetElasticIPHealthcheckArgs struct {
-	Interval      pulumi.IntInput    `pulumi:"interval"`
-	Mode          pulumi.StringInput `pulumi:"mode"`
-	Port          pulumi.IntInput    `pulumi:"port"`
-	StrikesFail   pulumi.IntInput    `pulumi:"strikesFail"`
-	StrikesOk     pulumi.IntInput    `pulumi:"strikesOk"`
-	Timeout       pulumi.IntInput    `pulumi:"timeout"`
-	TlsSkipVerify pulumi.BoolInput   `pulumi:"tlsSkipVerify"`
-	TlsSni        pulumi.StringInput `pulumi:"tlsSni"`
-	Uri           pulumi.StringInput `pulumi:"uri"`
-}
-
-func (GetElasticIPHealthcheckArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetElasticIPHealthcheck)(nil)).Elem()
-}
-
-func (i GetElasticIPHealthcheckArgs) ToGetElasticIPHealthcheckOutput() GetElasticIPHealthcheckOutput {
-	return i.ToGetElasticIPHealthcheckOutputWithContext(context.Background())
-}
-
-func (i GetElasticIPHealthcheckArgs) ToGetElasticIPHealthcheckOutputWithContext(ctx context.Context) GetElasticIPHealthcheckOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetElasticIPHealthcheckOutput)
-}
-
-func (i GetElasticIPHealthcheckArgs) ToOutput(ctx context.Context) pulumix.Output[GetElasticIPHealthcheck] {
-	return pulumix.Output[GetElasticIPHealthcheck]{
-		OutputState: i.ToGetElasticIPHealthcheckOutputWithContext(ctx).OutputState,
-	}
-}
-
-// GetElasticIPHealthcheckArrayInput is an input type that accepts GetElasticIPHealthcheckArray and GetElasticIPHealthcheckArrayOutput values.
-// You can construct a concrete instance of `GetElasticIPHealthcheckArrayInput` via:
-//
-//	GetElasticIPHealthcheckArray{ GetElasticIPHealthcheckArgs{...} }
-type GetElasticIPHealthcheckArrayInput interface {
-	pulumi.Input
-
-	ToGetElasticIPHealthcheckArrayOutput() GetElasticIPHealthcheckArrayOutput
-	ToGetElasticIPHealthcheckArrayOutputWithContext(context.Context) GetElasticIPHealthcheckArrayOutput
-}
-
-type GetElasticIPHealthcheckArray []GetElasticIPHealthcheckInput
-
-func (GetElasticIPHealthcheckArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetElasticIPHealthcheck)(nil)).Elem()
-}
-
-func (i GetElasticIPHealthcheckArray) ToGetElasticIPHealthcheckArrayOutput() GetElasticIPHealthcheckArrayOutput {
-	return i.ToGetElasticIPHealthcheckArrayOutputWithContext(context.Background())
-}
-
-func (i GetElasticIPHealthcheckArray) ToGetElasticIPHealthcheckArrayOutputWithContext(ctx context.Context) GetElasticIPHealthcheckArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetElasticIPHealthcheckArrayOutput)
-}
-
-func (i GetElasticIPHealthcheckArray) ToOutput(ctx context.Context) pulumix.Output[[]GetElasticIPHealthcheck] {
-	return pulumix.Output[[]GetElasticIPHealthcheck]{
-		OutputState: i.ToGetElasticIPHealthcheckArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GetElasticIPHealthcheckOutput struct{ *pulumi.OutputState }
-
-func (GetElasticIPHealthcheckOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetElasticIPHealthcheck)(nil)).Elem()
-}
-
-func (o GetElasticIPHealthcheckOutput) ToGetElasticIPHealthcheckOutput() GetElasticIPHealthcheckOutput {
-	return o
-}
-
-func (o GetElasticIPHealthcheckOutput) ToGetElasticIPHealthcheckOutputWithContext(ctx context.Context) GetElasticIPHealthcheckOutput {
-	return o
-}
-
-func (o GetElasticIPHealthcheckOutput) ToOutput(ctx context.Context) pulumix.Output[GetElasticIPHealthcheck] {
-	return pulumix.Output[GetElasticIPHealthcheck]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetElasticIPHealthcheckOutput) Interval() pulumi.IntOutput {
-	return o.ApplyT(func(v GetElasticIPHealthcheck) int { return v.Interval }).(pulumi.IntOutput)
-}
-
-func (o GetElasticIPHealthcheckOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetElasticIPHealthcheck) string { return v.Mode }).(pulumi.StringOutput)
-}
-
-func (o GetElasticIPHealthcheckOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v GetElasticIPHealthcheck) int { return v.Port }).(pulumi.IntOutput)
-}
-
-func (o GetElasticIPHealthcheckOutput) StrikesFail() pulumi.IntOutput {
-	return o.ApplyT(func(v GetElasticIPHealthcheck) int { return v.StrikesFail }).(pulumi.IntOutput)
-}
-
-func (o GetElasticIPHealthcheckOutput) StrikesOk() pulumi.IntOutput {
-	return o.ApplyT(func(v GetElasticIPHealthcheck) int { return v.StrikesOk }).(pulumi.IntOutput)
-}
-
-func (o GetElasticIPHealthcheckOutput) Timeout() pulumi.IntOutput {
-	return o.ApplyT(func(v GetElasticIPHealthcheck) int { return v.Timeout }).(pulumi.IntOutput)
-}
-
-func (o GetElasticIPHealthcheckOutput) TlsSkipVerify() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetElasticIPHealthcheck) bool { return v.TlsSkipVerify }).(pulumi.BoolOutput)
-}
-
-func (o GetElasticIPHealthcheckOutput) TlsSni() pulumi.StringOutput {
-	return o.ApplyT(func(v GetElasticIPHealthcheck) string { return v.TlsSni }).(pulumi.StringOutput)
-}
-
-func (o GetElasticIPHealthcheckOutput) Uri() pulumi.StringOutput {
-	return o.ApplyT(func(v GetElasticIPHealthcheck) string { return v.Uri }).(pulumi.StringOutput)
-}
-
-type GetElasticIPHealthcheckArrayOutput struct{ *pulumi.OutputState }
-
-func (GetElasticIPHealthcheckArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetElasticIPHealthcheck)(nil)).Elem()
-}
-
-func (o GetElasticIPHealthcheckArrayOutput) ToGetElasticIPHealthcheckArrayOutput() GetElasticIPHealthcheckArrayOutput {
-	return o
-}
-
-func (o GetElasticIPHealthcheckArrayOutput) ToGetElasticIPHealthcheckArrayOutputWithContext(ctx context.Context) GetElasticIPHealthcheckArrayOutput {
-	return o
-}
-
-func (o GetElasticIPHealthcheckArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetElasticIPHealthcheck] {
-	return pulumix.Output[[]GetElasticIPHealthcheck]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetElasticIPHealthcheckArrayOutput) Index(i pulumi.IntInput) GetElasticIPHealthcheckOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetElasticIPHealthcheck {
-		return vs[0].([]GetElasticIPHealthcheck)[vs[1].(int)]
-	}).(GetElasticIPHealthcheckOutput)
-}
-
-type GetInstancePoolInstance struct {
-	// The instance pool ID to match (conflicts with `name`).
-	Id          *string `pulumi:"id"`
-	Ipv6Address string  `pulumi:"ipv6Address"`
-	// The pool name to match (conflicts with `id`).
-	Name            *string `pulumi:"name"`
-	PublicIpAddress string  `pulumi:"publicIpAddress"`
-}
-
-// GetInstancePoolInstanceInput is an input type that accepts GetInstancePoolInstanceArgs and GetInstancePoolInstanceOutput values.
-// You can construct a concrete instance of `GetInstancePoolInstanceInput` via:
-//
-//	GetInstancePoolInstanceArgs{...}
-type GetInstancePoolInstanceInput interface {
-	pulumi.Input
-
-	ToGetInstancePoolInstanceOutput() GetInstancePoolInstanceOutput
-	ToGetInstancePoolInstanceOutputWithContext(context.Context) GetInstancePoolInstanceOutput
-}
-
-type GetInstancePoolInstanceArgs struct {
-	// The instance pool ID to match (conflicts with `name`).
-	Id          pulumi.StringPtrInput `pulumi:"id"`
-	Ipv6Address pulumi.StringInput    `pulumi:"ipv6Address"`
-	// The pool name to match (conflicts with `id`).
-	Name            pulumi.StringPtrInput `pulumi:"name"`
-	PublicIpAddress pulumi.StringInput    `pulumi:"publicIpAddress"`
-}
-
-func (GetInstancePoolInstanceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstancePoolInstance)(nil)).Elem()
-}
-
-func (i GetInstancePoolInstanceArgs) ToGetInstancePoolInstanceOutput() GetInstancePoolInstanceOutput {
-	return i.ToGetInstancePoolInstanceOutputWithContext(context.Background())
-}
-
-func (i GetInstancePoolInstanceArgs) ToGetInstancePoolInstanceOutputWithContext(ctx context.Context) GetInstancePoolInstanceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolInstanceOutput)
-}
-
-func (i GetInstancePoolInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstancePoolInstance] {
-	return pulumix.Output[GetInstancePoolInstance]{
-		OutputState: i.ToGetInstancePoolInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
-// GetInstancePoolInstanceArrayInput is an input type that accepts GetInstancePoolInstanceArray and GetInstancePoolInstanceArrayOutput values.
-// You can construct a concrete instance of `GetInstancePoolInstanceArrayInput` via:
-//
-//	GetInstancePoolInstanceArray{ GetInstancePoolInstanceArgs{...} }
-type GetInstancePoolInstanceArrayInput interface {
-	pulumi.Input
-
-	ToGetInstancePoolInstanceArrayOutput() GetInstancePoolInstanceArrayOutput
-	ToGetInstancePoolInstanceArrayOutputWithContext(context.Context) GetInstancePoolInstanceArrayOutput
-}
-
-type GetInstancePoolInstanceArray []GetInstancePoolInstanceInput
-
-func (GetInstancePoolInstanceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstancePoolInstance)(nil)).Elem()
-}
-
-func (i GetInstancePoolInstanceArray) ToGetInstancePoolInstanceArrayOutput() GetInstancePoolInstanceArrayOutput {
-	return i.ToGetInstancePoolInstanceArrayOutputWithContext(context.Background())
-}
-
-func (i GetInstancePoolInstanceArray) ToGetInstancePoolInstanceArrayOutputWithContext(ctx context.Context) GetInstancePoolInstanceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolInstanceArrayOutput)
-}
-
-func (i GetInstancePoolInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancePoolInstance] {
-	return pulumix.Output[[]GetInstancePoolInstance]{
-		OutputState: i.ToGetInstancePoolInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GetInstancePoolInstanceOutput struct{ *pulumi.OutputState }
-
-func (GetInstancePoolInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstancePoolInstance)(nil)).Elem()
-}
-
-func (o GetInstancePoolInstanceOutput) ToGetInstancePoolInstanceOutput() GetInstancePoolInstanceOutput {
-	return o
-}
-
-func (o GetInstancePoolInstanceOutput) ToGetInstancePoolInstanceOutputWithContext(ctx context.Context) GetInstancePoolInstanceOutput {
-	return o
-}
-
-func (o GetInstancePoolInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstancePoolInstance] {
-	return pulumix.Output[GetInstancePoolInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The instance pool ID to match (conflicts with `name`).
-func (o GetInstancePoolInstanceOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetInstancePoolInstance) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-func (o GetInstancePoolInstanceOutput) Ipv6Address() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstancePoolInstance) string { return v.Ipv6Address }).(pulumi.StringOutput)
-}
-
-// The pool name to match (conflicts with `id`).
-func (o GetInstancePoolInstanceOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetInstancePoolInstance) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-func (o GetInstancePoolInstanceOutput) PublicIpAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstancePoolInstance) string { return v.PublicIpAddress }).(pulumi.StringOutput)
-}
-
-type GetInstancePoolInstanceArrayOutput struct{ *pulumi.OutputState }
-
-func (GetInstancePoolInstanceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstancePoolInstance)(nil)).Elem()
-}
-
-func (o GetInstancePoolInstanceArrayOutput) ToGetInstancePoolInstanceArrayOutput() GetInstancePoolInstanceArrayOutput {
-	return o
-}
-
-func (o GetInstancePoolInstanceArrayOutput) ToGetInstancePoolInstanceArrayOutputWithContext(ctx context.Context) GetInstancePoolInstanceArrayOutput {
-	return o
-}
-
-func (o GetInstancePoolInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancePoolInstance] {
-	return pulumix.Output[[]GetInstancePoolInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetInstancePoolInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancePoolInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancePoolInstance {
-		return vs[0].([]GetInstancePoolInstance)[vs[1].(int)]
-	}).(GetInstancePoolInstanceOutput)
-}
-
-type GetInstancePoolListPool struct {
-	AffinityGroupIds []string `pulumi:"affinityGroupIds"`
-	DeployTargetId   string   `pulumi:"deployTargetId"`
-	Description      string   `pulumi:"description"`
-	DiskSize         int      `pulumi:"diskSize"`
-	ElasticIpIds     []string `pulumi:"elasticIpIds"`
-	// The ID of this resource.
-	Id               *string                           `pulumi:"id"`
-	InstancePrefix   string                            `pulumi:"instancePrefix"`
-	InstanceType     string                            `pulumi:"instanceType"`
-	Instances        []GetInstancePoolListPoolInstance `pulumi:"instances"`
-	Ipv6             bool                              `pulumi:"ipv6"`
-	KeyPair          string                            `pulumi:"keyPair"`
-	Labels           map[string]string                 `pulumi:"labels"`
-	Name             *string                           `pulumi:"name"`
-	NetworkIds       []string                          `pulumi:"networkIds"`
-	SecurityGroupIds []string                          `pulumi:"securityGroupIds"`
-	Size             int                               `pulumi:"size"`
-	State            string                            `pulumi:"state"`
-	TemplateId       string                            `pulumi:"templateId"`
-	UserData         string                            `pulumi:"userData"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-	Zone string `pulumi:"zone"`
-}
-
-// GetInstancePoolListPoolInput is an input type that accepts GetInstancePoolListPoolArgs and GetInstancePoolListPoolOutput values.
-// You can construct a concrete instance of `GetInstancePoolListPoolInput` via:
-//
-//	GetInstancePoolListPoolArgs{...}
-type GetInstancePoolListPoolInput interface {
-	pulumi.Input
-
-	ToGetInstancePoolListPoolOutput() GetInstancePoolListPoolOutput
-	ToGetInstancePoolListPoolOutputWithContext(context.Context) GetInstancePoolListPoolOutput
-}
-
-type GetInstancePoolListPoolArgs struct {
-	AffinityGroupIds pulumi.StringArrayInput `pulumi:"affinityGroupIds"`
-	DeployTargetId   pulumi.StringInput      `pulumi:"deployTargetId"`
-	Description      pulumi.StringInput      `pulumi:"description"`
-	DiskSize         pulumi.IntInput         `pulumi:"diskSize"`
-	ElasticIpIds     pulumi.StringArrayInput `pulumi:"elasticIpIds"`
-	// The ID of this resource.
-	Id               pulumi.StringPtrInput                     `pulumi:"id"`
-	InstancePrefix   pulumi.StringInput                        `pulumi:"instancePrefix"`
-	InstanceType     pulumi.StringInput                        `pulumi:"instanceType"`
-	Instances        GetInstancePoolListPoolInstanceArrayInput `pulumi:"instances"`
-	Ipv6             pulumi.BoolInput                          `pulumi:"ipv6"`
-	KeyPair          pulumi.StringInput                        `pulumi:"keyPair"`
-	Labels           pulumi.StringMapInput                     `pulumi:"labels"`
-	Name             pulumi.StringPtrInput                     `pulumi:"name"`
-	NetworkIds       pulumi.StringArrayInput                   `pulumi:"networkIds"`
-	SecurityGroupIds pulumi.StringArrayInput                   `pulumi:"securityGroupIds"`
-	Size             pulumi.IntInput                           `pulumi:"size"`
-	State            pulumi.StringInput                        `pulumi:"state"`
-	TemplateId       pulumi.StringInput                        `pulumi:"templateId"`
-	UserData         pulumi.StringInput                        `pulumi:"userData"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-	Zone pulumi.StringInput `pulumi:"zone"`
-}
-
-func (GetInstancePoolListPoolArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstancePoolListPool)(nil)).Elem()
-}
-
-func (i GetInstancePoolListPoolArgs) ToGetInstancePoolListPoolOutput() GetInstancePoolListPoolOutput {
-	return i.ToGetInstancePoolListPoolOutputWithContext(context.Background())
-}
-
-func (i GetInstancePoolListPoolArgs) ToGetInstancePoolListPoolOutputWithContext(ctx context.Context) GetInstancePoolListPoolOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolListPoolOutput)
-}
-
-func (i GetInstancePoolListPoolArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstancePoolListPool] {
-	return pulumix.Output[GetInstancePoolListPool]{
-		OutputState: i.ToGetInstancePoolListPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
-// GetInstancePoolListPoolArrayInput is an input type that accepts GetInstancePoolListPoolArray and GetInstancePoolListPoolArrayOutput values.
-// You can construct a concrete instance of `GetInstancePoolListPoolArrayInput` via:
-//
-//	GetInstancePoolListPoolArray{ GetInstancePoolListPoolArgs{...} }
-type GetInstancePoolListPoolArrayInput interface {
-	pulumi.Input
-
-	ToGetInstancePoolListPoolArrayOutput() GetInstancePoolListPoolArrayOutput
-	ToGetInstancePoolListPoolArrayOutputWithContext(context.Context) GetInstancePoolListPoolArrayOutput
-}
-
-type GetInstancePoolListPoolArray []GetInstancePoolListPoolInput
-
-func (GetInstancePoolListPoolArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstancePoolListPool)(nil)).Elem()
-}
-
-func (i GetInstancePoolListPoolArray) ToGetInstancePoolListPoolArrayOutput() GetInstancePoolListPoolArrayOutput {
-	return i.ToGetInstancePoolListPoolArrayOutputWithContext(context.Background())
-}
-
-func (i GetInstancePoolListPoolArray) ToGetInstancePoolListPoolArrayOutputWithContext(ctx context.Context) GetInstancePoolListPoolArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolListPoolArrayOutput)
-}
-
-func (i GetInstancePoolListPoolArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancePoolListPool] {
-	return pulumix.Output[[]GetInstancePoolListPool]{
-		OutputState: i.ToGetInstancePoolListPoolArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GetInstancePoolListPoolOutput struct{ *pulumi.OutputState }
-
-func (GetInstancePoolListPoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstancePoolListPool)(nil)).Elem()
-}
-
-func (o GetInstancePoolListPoolOutput) ToGetInstancePoolListPoolOutput() GetInstancePoolListPoolOutput {
-	return o
-}
-
-func (o GetInstancePoolListPoolOutput) ToGetInstancePoolListPoolOutputWithContext(ctx context.Context) GetInstancePoolListPoolOutput {
-	return o
-}
-
-func (o GetInstancePoolListPoolOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstancePoolListPool] {
-	return pulumix.Output[GetInstancePoolListPool]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetInstancePoolListPoolOutput) AffinityGroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetInstancePoolListPool) []string { return v.AffinityGroupIds }).(pulumi.StringArrayOutput)
-}
-
-func (o GetInstancePoolListPoolOutput) DeployTargetId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstancePoolListPool) string { return v.DeployTargetId }).(pulumi.StringOutput)
-}
-
-func (o GetInstancePoolListPoolOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstancePoolListPool) string { return v.Description }).(pulumi.StringOutput)
-}
-
-func (o GetInstancePoolListPoolOutput) DiskSize() pulumi.IntOutput {
-	return o.ApplyT(func(v GetInstancePoolListPool) int { return v.DiskSize }).(pulumi.IntOutput)
-}
-
-func (o GetInstancePoolListPoolOutput) ElasticIpIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetInstancePoolListPool) []string { return v.ElasticIpIds }).(pulumi.StringArrayOutput)
-}
-
-// The ID of this resource.
-func (o GetInstancePoolListPoolOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetInstancePoolListPool) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-func (o GetInstancePoolListPoolOutput) InstancePrefix() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstancePoolListPool) string { return v.InstancePrefix }).(pulumi.StringOutput)
-}
-
-func (o GetInstancePoolListPoolOutput) InstanceType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstancePoolListPool) string { return v.InstanceType }).(pulumi.StringOutput)
-}
-
-func (o GetInstancePoolListPoolOutput) Instances() GetInstancePoolListPoolInstanceArrayOutput {
-	return o.ApplyT(func(v GetInstancePoolListPool) []GetInstancePoolListPoolInstance { return v.Instances }).(GetInstancePoolListPoolInstanceArrayOutput)
-}
-
-func (o GetInstancePoolListPoolOutput) Ipv6() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetInstancePoolListPool) bool { return v.Ipv6 }).(pulumi.BoolOutput)
-}
-
-func (o GetInstancePoolListPoolOutput) KeyPair() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstancePoolListPool) string { return v.KeyPair }).(pulumi.StringOutput)
-}
-
-func (o GetInstancePoolListPoolOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetInstancePoolListPool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
-}
-
-func (o GetInstancePoolListPoolOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetInstancePoolListPool) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-func (o GetInstancePoolListPoolOutput) NetworkIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetInstancePoolListPool) []string { return v.NetworkIds }).(pulumi.StringArrayOutput)
-}
-
-func (o GetInstancePoolListPoolOutput) SecurityGroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetInstancePoolListPool) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
-}
-
-func (o GetInstancePoolListPoolOutput) Size() pulumi.IntOutput {
-	return o.ApplyT(func(v GetInstancePoolListPool) int { return v.Size }).(pulumi.IntOutput)
-}
-
-func (o GetInstancePoolListPoolOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstancePoolListPool) string { return v.State }).(pulumi.StringOutput)
-}
-
-func (o GetInstancePoolListPoolOutput) TemplateId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstancePoolListPool) string { return v.TemplateId }).(pulumi.StringOutput)
-}
-
-func (o GetInstancePoolListPoolOutput) UserData() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstancePoolListPool) string { return v.UserData }).(pulumi.StringOutput)
-}
-
-// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-func (o GetInstancePoolListPoolOutput) Zone() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstancePoolListPool) string { return v.Zone }).(pulumi.StringOutput)
-}
-
-type GetInstancePoolListPoolArrayOutput struct{ *pulumi.OutputState }
-
-func (GetInstancePoolListPoolArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstancePoolListPool)(nil)).Elem()
-}
-
-func (o GetInstancePoolListPoolArrayOutput) ToGetInstancePoolListPoolArrayOutput() GetInstancePoolListPoolArrayOutput {
-	return o
-}
-
-func (o GetInstancePoolListPoolArrayOutput) ToGetInstancePoolListPoolArrayOutputWithContext(ctx context.Context) GetInstancePoolListPoolArrayOutput {
-	return o
-}
-
-func (o GetInstancePoolListPoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancePoolListPool] {
-	return pulumix.Output[[]GetInstancePoolListPool]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetInstancePoolListPoolArrayOutput) Index(i pulumi.IntInput) GetInstancePoolListPoolOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancePoolListPool {
-		return vs[0].([]GetInstancePoolListPool)[vs[1].(int)]
-	}).(GetInstancePoolListPoolOutput)
-}
-
-type GetInstancePoolListPoolInstance struct {
-	// The ID of this resource.
-	Id              *string `pulumi:"id"`
-	Ipv6Address     string  `pulumi:"ipv6Address"`
-	Name            *string `pulumi:"name"`
-	PublicIpAddress string  `pulumi:"publicIpAddress"`
-}
-
-// GetInstancePoolListPoolInstanceInput is an input type that accepts GetInstancePoolListPoolInstanceArgs and GetInstancePoolListPoolInstanceOutput values.
-// You can construct a concrete instance of `GetInstancePoolListPoolInstanceInput` via:
-//
-//	GetInstancePoolListPoolInstanceArgs{...}
-type GetInstancePoolListPoolInstanceInput interface {
-	pulumi.Input
-
-	ToGetInstancePoolListPoolInstanceOutput() GetInstancePoolListPoolInstanceOutput
-	ToGetInstancePoolListPoolInstanceOutputWithContext(context.Context) GetInstancePoolListPoolInstanceOutput
-}
-
-type GetInstancePoolListPoolInstanceArgs struct {
-	// The ID of this resource.
-	Id              pulumi.StringPtrInput `pulumi:"id"`
-	Ipv6Address     pulumi.StringInput    `pulumi:"ipv6Address"`
-	Name            pulumi.StringPtrInput `pulumi:"name"`
-	PublicIpAddress pulumi.StringInput    `pulumi:"publicIpAddress"`
-}
-
-func (GetInstancePoolListPoolInstanceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstancePoolListPoolInstance)(nil)).Elem()
-}
-
-func (i GetInstancePoolListPoolInstanceArgs) ToGetInstancePoolListPoolInstanceOutput() GetInstancePoolListPoolInstanceOutput {
-	return i.ToGetInstancePoolListPoolInstanceOutputWithContext(context.Background())
-}
-
-func (i GetInstancePoolListPoolInstanceArgs) ToGetInstancePoolListPoolInstanceOutputWithContext(ctx context.Context) GetInstancePoolListPoolInstanceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolListPoolInstanceOutput)
-}
-
-func (i GetInstancePoolListPoolInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstancePoolListPoolInstance] {
-	return pulumix.Output[GetInstancePoolListPoolInstance]{
-		OutputState: i.ToGetInstancePoolListPoolInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
-// GetInstancePoolListPoolInstanceArrayInput is an input type that accepts GetInstancePoolListPoolInstanceArray and GetInstancePoolListPoolInstanceArrayOutput values.
-// You can construct a concrete instance of `GetInstancePoolListPoolInstanceArrayInput` via:
-//
-//	GetInstancePoolListPoolInstanceArray{ GetInstancePoolListPoolInstanceArgs{...} }
-type GetInstancePoolListPoolInstanceArrayInput interface {
-	pulumi.Input
-
-	ToGetInstancePoolListPoolInstanceArrayOutput() GetInstancePoolListPoolInstanceArrayOutput
-	ToGetInstancePoolListPoolInstanceArrayOutputWithContext(context.Context) GetInstancePoolListPoolInstanceArrayOutput
-}
-
-type GetInstancePoolListPoolInstanceArray []GetInstancePoolListPoolInstanceInput
-
-func (GetInstancePoolListPoolInstanceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstancePoolListPoolInstance)(nil)).Elem()
-}
-
-func (i GetInstancePoolListPoolInstanceArray) ToGetInstancePoolListPoolInstanceArrayOutput() GetInstancePoolListPoolInstanceArrayOutput {
-	return i.ToGetInstancePoolListPoolInstanceArrayOutputWithContext(context.Background())
-}
-
-func (i GetInstancePoolListPoolInstanceArray) ToGetInstancePoolListPoolInstanceArrayOutputWithContext(ctx context.Context) GetInstancePoolListPoolInstanceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePoolListPoolInstanceArrayOutput)
-}
-
-func (i GetInstancePoolListPoolInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancePoolListPoolInstance] {
-	return pulumix.Output[[]GetInstancePoolListPoolInstance]{
-		OutputState: i.ToGetInstancePoolListPoolInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GetInstancePoolListPoolInstanceOutput struct{ *pulumi.OutputState }
-
-func (GetInstancePoolListPoolInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstancePoolListPoolInstance)(nil)).Elem()
-}
-
-func (o GetInstancePoolListPoolInstanceOutput) ToGetInstancePoolListPoolInstanceOutput() GetInstancePoolListPoolInstanceOutput {
-	return o
-}
-
-func (o GetInstancePoolListPoolInstanceOutput) ToGetInstancePoolListPoolInstanceOutputWithContext(ctx context.Context) GetInstancePoolListPoolInstanceOutput {
-	return o
-}
-
-func (o GetInstancePoolListPoolInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstancePoolListPoolInstance] {
-	return pulumix.Output[GetInstancePoolListPoolInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The ID of this resource.
-func (o GetInstancePoolListPoolInstanceOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetInstancePoolListPoolInstance) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-func (o GetInstancePoolListPoolInstanceOutput) Ipv6Address() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstancePoolListPoolInstance) string { return v.Ipv6Address }).(pulumi.StringOutput)
-}
-
-func (o GetInstancePoolListPoolInstanceOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetInstancePoolListPoolInstance) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-func (o GetInstancePoolListPoolInstanceOutput) PublicIpAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstancePoolListPoolInstance) string { return v.PublicIpAddress }).(pulumi.StringOutput)
-}
-
-type GetInstancePoolListPoolInstanceArrayOutput struct{ *pulumi.OutputState }
-
-func (GetInstancePoolListPoolInstanceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstancePoolListPoolInstance)(nil)).Elem()
-}
-
-func (o GetInstancePoolListPoolInstanceArrayOutput) ToGetInstancePoolListPoolInstanceArrayOutput() GetInstancePoolListPoolInstanceArrayOutput {
-	return o
-}
-
-func (o GetInstancePoolListPoolInstanceArrayOutput) ToGetInstancePoolListPoolInstanceArrayOutputWithContext(ctx context.Context) GetInstancePoolListPoolInstanceArrayOutput {
-	return o
-}
-
-func (o GetInstancePoolListPoolInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancePoolListPoolInstance] {
-	return pulumix.Output[[]GetInstancePoolListPoolInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetInstancePoolListPoolInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancePoolListPoolInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancePoolListPoolInstance {
-		return vs[0].([]GetInstancePoolListPoolInstance)[vs[1].(int)]
-	}).(GetInstancePoolListPoolInstanceOutput)
-}
-
-type GetSKSClusterListCluster struct {
-	// Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
-	Addons []string `pulumi:"addons"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	AggregationCa string `pulumi:"aggregationCa"`
-	// Match against this bool
-	AutoUpgrade *bool `pulumi:"autoUpgrade"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Cni *string `pulumi:"cni"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ControlPlaneCa string `pulumi:"controlPlaneCa"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	CreatedAt string `pulumi:"createdAt"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Description *string `pulumi:"description"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Endpoint string `pulumi:"endpoint"`
-	// Match against this bool
-	ExoscaleCcm *bool `pulumi:"exoscaleCcm"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Id *string `pulumi:"id"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	KubeletCa string `pulumi:"kubeletCa"`
-	// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-	Labels map[string]string `pulumi:"labels"`
-	// Match against this bool
-	MetricsServer *bool `pulumi:"metricsServer"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Name      *string                      `pulumi:"name"`
-	Nodepools []string                     `pulumi:"nodepools"`
-	Oidc      GetSKSClusterListClusterOidc `pulumi:"oidc"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ServiceLevel *string `pulumi:"serviceLevel"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	State string `pulumi:"state"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Version string `pulumi:"version"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Zone string `pulumi:"zone"`
-}
-
-// GetSKSClusterListClusterInput is an input type that accepts GetSKSClusterListClusterArgs and GetSKSClusterListClusterOutput values.
-// You can construct a concrete instance of `GetSKSClusterListClusterInput` via:
-//
-//	GetSKSClusterListClusterArgs{...}
-type GetSKSClusterListClusterInput interface {
-	pulumi.Input
-
-	ToGetSKSClusterListClusterOutput() GetSKSClusterListClusterOutput
-	ToGetSKSClusterListClusterOutputWithContext(context.Context) GetSKSClusterListClusterOutput
-}
-
-type GetSKSClusterListClusterArgs struct {
-	// Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
-	Addons pulumi.StringArrayInput `pulumi:"addons"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	AggregationCa pulumi.StringInput `pulumi:"aggregationCa"`
-	// Match against this bool
-	AutoUpgrade pulumi.BoolPtrInput `pulumi:"autoUpgrade"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Cni pulumi.StringPtrInput `pulumi:"cni"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ControlPlaneCa pulumi.StringInput `pulumi:"controlPlaneCa"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Endpoint pulumi.StringInput `pulumi:"endpoint"`
-	// Match against this bool
-	ExoscaleCcm pulumi.BoolPtrInput `pulumi:"exoscaleCcm"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	KubeletCa pulumi.StringInput `pulumi:"kubeletCa"`
-	// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Match against this bool
-	MetricsServer pulumi.BoolPtrInput `pulumi:"metricsServer"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Name      pulumi.StringPtrInput             `pulumi:"name"`
-	Nodepools pulumi.StringArrayInput           `pulumi:"nodepools"`
-	Oidc      GetSKSClusterListClusterOidcInput `pulumi:"oidc"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ServiceLevel pulumi.StringPtrInput `pulumi:"serviceLevel"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	State pulumi.StringInput `pulumi:"state"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Version pulumi.StringInput `pulumi:"version"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Zone pulumi.StringInput `pulumi:"zone"`
-}
-
-func (GetSKSClusterListClusterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSKSClusterListCluster)(nil)).Elem()
-}
-
-func (i GetSKSClusterListClusterArgs) ToGetSKSClusterListClusterOutput() GetSKSClusterListClusterOutput {
-	return i.ToGetSKSClusterListClusterOutputWithContext(context.Background())
-}
-
-func (i GetSKSClusterListClusterArgs) ToGetSKSClusterListClusterOutputWithContext(ctx context.Context) GetSKSClusterListClusterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSKSClusterListClusterOutput)
-}
-
-func (i GetSKSClusterListClusterArgs) ToOutput(ctx context.Context) pulumix.Output[GetSKSClusterListCluster] {
-	return pulumix.Output[GetSKSClusterListCluster]{
-		OutputState: i.ToGetSKSClusterListClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
-// GetSKSClusterListClusterArrayInput is an input type that accepts GetSKSClusterListClusterArray and GetSKSClusterListClusterArrayOutput values.
-// You can construct a concrete instance of `GetSKSClusterListClusterArrayInput` via:
-//
-//	GetSKSClusterListClusterArray{ GetSKSClusterListClusterArgs{...} }
-type GetSKSClusterListClusterArrayInput interface {
-	pulumi.Input
-
-	ToGetSKSClusterListClusterArrayOutput() GetSKSClusterListClusterArrayOutput
-	ToGetSKSClusterListClusterArrayOutputWithContext(context.Context) GetSKSClusterListClusterArrayOutput
-}
-
-type GetSKSClusterListClusterArray []GetSKSClusterListClusterInput
-
-func (GetSKSClusterListClusterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSKSClusterListCluster)(nil)).Elem()
-}
-
-func (i GetSKSClusterListClusterArray) ToGetSKSClusterListClusterArrayOutput() GetSKSClusterListClusterArrayOutput {
-	return i.ToGetSKSClusterListClusterArrayOutputWithContext(context.Background())
-}
-
-func (i GetSKSClusterListClusterArray) ToGetSKSClusterListClusterArrayOutputWithContext(ctx context.Context) GetSKSClusterListClusterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSKSClusterListClusterArrayOutput)
-}
-
-func (i GetSKSClusterListClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSKSClusterListCluster] {
-	return pulumix.Output[[]GetSKSClusterListCluster]{
-		OutputState: i.ToGetSKSClusterListClusterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GetSKSClusterListClusterOutput struct{ *pulumi.OutputState }
-
-func (GetSKSClusterListClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSKSClusterListCluster)(nil)).Elem()
-}
-
-func (o GetSKSClusterListClusterOutput) ToGetSKSClusterListClusterOutput() GetSKSClusterListClusterOutput {
-	return o
-}
-
-func (o GetSKSClusterListClusterOutput) ToGetSKSClusterListClusterOutputWithContext(ctx context.Context) GetSKSClusterListClusterOutput {
-	return o
-}
-
-func (o GetSKSClusterListClusterOutput) ToOutput(ctx context.Context) pulumix.Output[GetSKSClusterListCluster] {
-	return pulumix.Output[GetSKSClusterListCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
-func (o GetSKSClusterListClusterOutput) Addons() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) []string { return v.Addons }).(pulumi.StringArrayOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSClusterListClusterOutput) AggregationCa() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.AggregationCa }).(pulumi.StringOutput)
-}
-
-// Match against this bool
-func (o GetSKSClusterListClusterOutput) AutoUpgrade() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) *bool { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSClusterListClusterOutput) Cni() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) *string { return v.Cni }).(pulumi.StringPtrOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSClusterListClusterOutput) ControlPlaneCa() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.ControlPlaneCa }).(pulumi.StringOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSClusterListClusterOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSClusterListClusterOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSClusterListClusterOutput) Endpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.Endpoint }).(pulumi.StringOutput)
-}
-
-// Match against this bool
-func (o GetSKSClusterListClusterOutput) ExoscaleCcm() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) *bool { return v.ExoscaleCcm }).(pulumi.BoolPtrOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSClusterListClusterOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSClusterListClusterOutput) KubeletCa() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.KubeletCa }).(pulumi.StringOutput)
-}
-
-// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-func (o GetSKSClusterListClusterOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
-}
-
-// Match against this bool
-func (o GetSKSClusterListClusterOutput) MetricsServer() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) *bool { return v.MetricsServer }).(pulumi.BoolPtrOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSClusterListClusterOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-func (o GetSKSClusterListClusterOutput) Nodepools() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) []string { return v.Nodepools }).(pulumi.StringArrayOutput)
-}
-
-func (o GetSKSClusterListClusterOutput) Oidc() GetSKSClusterListClusterOidcOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) GetSKSClusterListClusterOidc { return v.Oidc }).(GetSKSClusterListClusterOidcOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSClusterListClusterOutput) ServiceLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) *string { return v.ServiceLevel }).(pulumi.StringPtrOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSClusterListClusterOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.State }).(pulumi.StringOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSClusterListClusterOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.Version }).(pulumi.StringOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSClusterListClusterOutput) Zone() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.Zone }).(pulumi.StringOutput)
-}
-
-type GetSKSClusterListClusterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetSKSClusterListClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSKSClusterListCluster)(nil)).Elem()
-}
-
-func (o GetSKSClusterListClusterArrayOutput) ToGetSKSClusterListClusterArrayOutput() GetSKSClusterListClusterArrayOutput {
-	return o
-}
-
-func (o GetSKSClusterListClusterArrayOutput) ToGetSKSClusterListClusterArrayOutputWithContext(ctx context.Context) GetSKSClusterListClusterArrayOutput {
-	return o
-}
-
-func (o GetSKSClusterListClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSKSClusterListCluster] {
-	return pulumix.Output[[]GetSKSClusterListCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetSKSClusterListClusterArrayOutput) Index(i pulumi.IntInput) GetSKSClusterListClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSKSClusterListCluster {
-		return vs[0].([]GetSKSClusterListCluster)[vs[1].(int)]
-	}).(GetSKSClusterListClusterOutput)
-}
-
-type GetSKSClusterListClusterOidc struct {
-	ClientId       string            `pulumi:"clientId"`
-	GroupsClaim    *string           `pulumi:"groupsClaim"`
-	GroupsPrefix   *string           `pulumi:"groupsPrefix"`
-	IssuerUrl      string            `pulumi:"issuerUrl"`
-	RequiredClaim  map[string]string `pulumi:"requiredClaim"`
-	UsernameClaim  *string           `pulumi:"usernameClaim"`
-	UsernamePrefix *string           `pulumi:"usernamePrefix"`
-}
-
-// GetSKSClusterListClusterOidcInput is an input type that accepts GetSKSClusterListClusterOidcArgs and GetSKSClusterListClusterOidcOutput values.
-// You can construct a concrete instance of `GetSKSClusterListClusterOidcInput` via:
-//
-//	GetSKSClusterListClusterOidcArgs{...}
-type GetSKSClusterListClusterOidcInput interface {
-	pulumi.Input
-
-	ToGetSKSClusterListClusterOidcOutput() GetSKSClusterListClusterOidcOutput
-	ToGetSKSClusterListClusterOidcOutputWithContext(context.Context) GetSKSClusterListClusterOidcOutput
-}
-
-type GetSKSClusterListClusterOidcArgs struct {
-	ClientId       pulumi.StringInput    `pulumi:"clientId"`
-	GroupsClaim    pulumi.StringPtrInput `pulumi:"groupsClaim"`
-	GroupsPrefix   pulumi.StringPtrInput `pulumi:"groupsPrefix"`
-	IssuerUrl      pulumi.StringInput    `pulumi:"issuerUrl"`
-	RequiredClaim  pulumi.StringMapInput `pulumi:"requiredClaim"`
-	UsernameClaim  pulumi.StringPtrInput `pulumi:"usernameClaim"`
-	UsernamePrefix pulumi.StringPtrInput `pulumi:"usernamePrefix"`
-}
-
-func (GetSKSClusterListClusterOidcArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSKSClusterListClusterOidc)(nil)).Elem()
-}
-
-func (i GetSKSClusterListClusterOidcArgs) ToGetSKSClusterListClusterOidcOutput() GetSKSClusterListClusterOidcOutput {
-	return i.ToGetSKSClusterListClusterOidcOutputWithContext(context.Background())
-}
-
-func (i GetSKSClusterListClusterOidcArgs) ToGetSKSClusterListClusterOidcOutputWithContext(ctx context.Context) GetSKSClusterListClusterOidcOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSKSClusterListClusterOidcOutput)
-}
-
-func (i GetSKSClusterListClusterOidcArgs) ToOutput(ctx context.Context) pulumix.Output[GetSKSClusterListClusterOidc] {
-	return pulumix.Output[GetSKSClusterListClusterOidc]{
-		OutputState: i.ToGetSKSClusterListClusterOidcOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GetSKSClusterListClusterOidcOutput struct{ *pulumi.OutputState }
-
-func (GetSKSClusterListClusterOidcOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSKSClusterListClusterOidc)(nil)).Elem()
-}
-
-func (o GetSKSClusterListClusterOidcOutput) ToGetSKSClusterListClusterOidcOutput() GetSKSClusterListClusterOidcOutput {
-	return o
-}
-
-func (o GetSKSClusterListClusterOidcOutput) ToGetSKSClusterListClusterOidcOutputWithContext(ctx context.Context) GetSKSClusterListClusterOidcOutput {
-	return o
-}
-
-func (o GetSKSClusterListClusterOidcOutput) ToOutput(ctx context.Context) pulumix.Output[GetSKSClusterListClusterOidc] {
-	return pulumix.Output[GetSKSClusterListClusterOidc]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetSKSClusterListClusterOidcOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSClusterListClusterOidc) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-func (o GetSKSClusterListClusterOidcOutput) GroupsClaim() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterListClusterOidc) *string { return v.GroupsClaim }).(pulumi.StringPtrOutput)
-}
-
-func (o GetSKSClusterListClusterOidcOutput) GroupsPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterListClusterOidc) *string { return v.GroupsPrefix }).(pulumi.StringPtrOutput)
-}
-
-func (o GetSKSClusterListClusterOidcOutput) IssuerUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSClusterListClusterOidc) string { return v.IssuerUrl }).(pulumi.StringOutput)
-}
-
-func (o GetSKSClusterListClusterOidcOutput) RequiredClaim() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetSKSClusterListClusterOidc) map[string]string { return v.RequiredClaim }).(pulumi.StringMapOutput)
-}
-
-func (o GetSKSClusterListClusterOidcOutput) UsernameClaim() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterListClusterOidc) *string { return v.UsernameClaim }).(pulumi.StringPtrOutput)
-}
-
-func (o GetSKSClusterListClusterOidcOutput) UsernamePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterListClusterOidc) *string { return v.UsernamePrefix }).(pulumi.StringPtrOutput)
-}
-
-type GetSKSClusterOidc struct {
-	// The OpenID client ID.
-	ClientId string `pulumi:"clientId"`
-	// An OpenID JWT claim to use as the user's group.
-	GroupsClaim *string `pulumi:"groupsClaim"`
-	// An OpenID prefix prepended to group claims.
-	GroupsPrefix *string `pulumi:"groupsPrefix"`
-	// The OpenID provider URL.
-	IssuerUrl string `pulumi:"issuerUrl"`
-	// A map of key/value pairs that describes a required claim in the OpenID Token.
-	RequiredClaim map[string]string `pulumi:"requiredClaim"`
-	// An OpenID JWT claim to use as the user name.
-	UsernameClaim *string `pulumi:"usernameClaim"`
-	// An OpenID prefix prepended to username claims.
-	UsernamePrefix *string `pulumi:"usernamePrefix"`
-}
-
-// GetSKSClusterOidcInput is an input type that accepts GetSKSClusterOidcArgs and GetSKSClusterOidcOutput values.
-// You can construct a concrete instance of `GetSKSClusterOidcInput` via:
-//
-//	GetSKSClusterOidcArgs{...}
-type GetSKSClusterOidcInput interface {
-	pulumi.Input
-
-	ToGetSKSClusterOidcOutput() GetSKSClusterOidcOutput
-	ToGetSKSClusterOidcOutputWithContext(context.Context) GetSKSClusterOidcOutput
-}
-
-type GetSKSClusterOidcArgs struct {
-	// The OpenID client ID.
-	ClientId pulumi.StringInput `pulumi:"clientId"`
-	// An OpenID JWT claim to use as the user's group.
-	GroupsClaim pulumi.StringPtrInput `pulumi:"groupsClaim"`
-	// An OpenID prefix prepended to group claims.
-	GroupsPrefix pulumi.StringPtrInput `pulumi:"groupsPrefix"`
-	// The OpenID provider URL.
-	IssuerUrl pulumi.StringInput `pulumi:"issuerUrl"`
-	// A map of key/value pairs that describes a required claim in the OpenID Token.
-	RequiredClaim pulumi.StringMapInput `pulumi:"requiredClaim"`
-	// An OpenID JWT claim to use as the user name.
-	UsernameClaim pulumi.StringPtrInput `pulumi:"usernameClaim"`
-	// An OpenID prefix prepended to username claims.
-	UsernamePrefix pulumi.StringPtrInput `pulumi:"usernamePrefix"`
-}
-
-func (GetSKSClusterOidcArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSKSClusterOidc)(nil)).Elem()
-}
-
-func (i GetSKSClusterOidcArgs) ToGetSKSClusterOidcOutput() GetSKSClusterOidcOutput {
-	return i.ToGetSKSClusterOidcOutputWithContext(context.Background())
-}
-
-func (i GetSKSClusterOidcArgs) ToGetSKSClusterOidcOutputWithContext(ctx context.Context) GetSKSClusterOidcOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSKSClusterOidcOutput)
-}
-
-func (i GetSKSClusterOidcArgs) ToOutput(ctx context.Context) pulumix.Output[GetSKSClusterOidc] {
-	return pulumix.Output[GetSKSClusterOidc]{
-		OutputState: i.ToGetSKSClusterOidcOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i GetSKSClusterOidcArgs) ToGetSKSClusterOidcPtrOutput() GetSKSClusterOidcPtrOutput {
-	return i.ToGetSKSClusterOidcPtrOutputWithContext(context.Background())
-}
-
-func (i GetSKSClusterOidcArgs) ToGetSKSClusterOidcPtrOutputWithContext(ctx context.Context) GetSKSClusterOidcPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSKSClusterOidcOutput).ToGetSKSClusterOidcPtrOutputWithContext(ctx)
-}
-
-// GetSKSClusterOidcPtrInput is an input type that accepts GetSKSClusterOidcArgs, GetSKSClusterOidcPtr and GetSKSClusterOidcPtrOutput values.
-// You can construct a concrete instance of `GetSKSClusterOidcPtrInput` via:
-//
-//	        GetSKSClusterOidcArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetSKSClusterOidcPtrInput interface {
-	pulumi.Input
-
-	ToGetSKSClusterOidcPtrOutput() GetSKSClusterOidcPtrOutput
-	ToGetSKSClusterOidcPtrOutputWithContext(context.Context) GetSKSClusterOidcPtrOutput
-}
-
-type getSKSClusterOidcPtrType GetSKSClusterOidcArgs
-
-func GetSKSClusterOidcPtr(v *GetSKSClusterOidcArgs) GetSKSClusterOidcPtrInput {
-	return (*getSKSClusterOidcPtrType)(v)
-}
-
-func (*getSKSClusterOidcPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetSKSClusterOidc)(nil)).Elem()
-}
-
-func (i *getSKSClusterOidcPtrType) ToGetSKSClusterOidcPtrOutput() GetSKSClusterOidcPtrOutput {
-	return i.ToGetSKSClusterOidcPtrOutputWithContext(context.Background())
-}
-
-func (i *getSKSClusterOidcPtrType) ToGetSKSClusterOidcPtrOutputWithContext(ctx context.Context) GetSKSClusterOidcPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSKSClusterOidcPtrOutput)
-}
-
-func (i *getSKSClusterOidcPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetSKSClusterOidc] {
-	return pulumix.Output[*GetSKSClusterOidc]{
-		OutputState: i.ToGetSKSClusterOidcPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GetSKSClusterOidcOutput struct{ *pulumi.OutputState }
-
-func (GetSKSClusterOidcOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSKSClusterOidc)(nil)).Elem()
-}
-
-func (o GetSKSClusterOidcOutput) ToGetSKSClusterOidcOutput() GetSKSClusterOidcOutput {
-	return o
-}
-
-func (o GetSKSClusterOidcOutput) ToGetSKSClusterOidcOutputWithContext(ctx context.Context) GetSKSClusterOidcOutput {
-	return o
-}
-
-func (o GetSKSClusterOidcOutput) ToGetSKSClusterOidcPtrOutput() GetSKSClusterOidcPtrOutput {
-	return o.ToGetSKSClusterOidcPtrOutputWithContext(context.Background())
-}
-
-func (o GetSKSClusterOidcOutput) ToGetSKSClusterOidcPtrOutputWithContext(ctx context.Context) GetSKSClusterOidcPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSKSClusterOidc) *GetSKSClusterOidc {
-		return &v
-	}).(GetSKSClusterOidcPtrOutput)
-}
-
-func (o GetSKSClusterOidcOutput) ToOutput(ctx context.Context) pulumix.Output[GetSKSClusterOidc] {
-	return pulumix.Output[GetSKSClusterOidc]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The OpenID client ID.
-func (o GetSKSClusterOidcOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSClusterOidc) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-// An OpenID JWT claim to use as the user's group.
-func (o GetSKSClusterOidcOutput) GroupsClaim() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterOidc) *string { return v.GroupsClaim }).(pulumi.StringPtrOutput)
-}
-
-// An OpenID prefix prepended to group claims.
-func (o GetSKSClusterOidcOutput) GroupsPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterOidc) *string { return v.GroupsPrefix }).(pulumi.StringPtrOutput)
-}
-
-// The OpenID provider URL.
-func (o GetSKSClusterOidcOutput) IssuerUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSClusterOidc) string { return v.IssuerUrl }).(pulumi.StringOutput)
-}
-
-// A map of key/value pairs that describes a required claim in the OpenID Token.
-func (o GetSKSClusterOidcOutput) RequiredClaim() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetSKSClusterOidc) map[string]string { return v.RequiredClaim }).(pulumi.StringMapOutput)
-}
-
-// An OpenID JWT claim to use as the user name.
-func (o GetSKSClusterOidcOutput) UsernameClaim() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterOidc) *string { return v.UsernameClaim }).(pulumi.StringPtrOutput)
-}
-
-// An OpenID prefix prepended to username claims.
-func (o GetSKSClusterOidcOutput) UsernamePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterOidc) *string { return v.UsernamePrefix }).(pulumi.StringPtrOutput)
-}
-
-type GetSKSClusterOidcPtrOutput struct{ *pulumi.OutputState }
-
-func (GetSKSClusterOidcPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetSKSClusterOidc)(nil)).Elem()
-}
-
-func (o GetSKSClusterOidcPtrOutput) ToGetSKSClusterOidcPtrOutput() GetSKSClusterOidcPtrOutput {
-	return o
-}
-
-func (o GetSKSClusterOidcPtrOutput) ToGetSKSClusterOidcPtrOutputWithContext(ctx context.Context) GetSKSClusterOidcPtrOutput {
-	return o
-}
-
-func (o GetSKSClusterOidcPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetSKSClusterOidc] {
-	return pulumix.Output[*GetSKSClusterOidc]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetSKSClusterOidcPtrOutput) Elem() GetSKSClusterOidcOutput {
-	return o.ApplyT(func(v *GetSKSClusterOidc) GetSKSClusterOidc {
-		if v != nil {
-			return *v
-		}
-		var ret GetSKSClusterOidc
-		return ret
-	}).(GetSKSClusterOidcOutput)
-}
-
-// The OpenID client ID.
-func (o GetSKSClusterOidcPtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetSKSClusterOidc) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientId
-	}).(pulumi.StringPtrOutput)
-}
-
-// An OpenID JWT claim to use as the user's group.
-func (o GetSKSClusterOidcPtrOutput) GroupsClaim() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetSKSClusterOidc) *string {
-		if v == nil {
-			return nil
-		}
-		return v.GroupsClaim
-	}).(pulumi.StringPtrOutput)
-}
-
-// An OpenID prefix prepended to group claims.
-func (o GetSKSClusterOidcPtrOutput) GroupsPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetSKSClusterOidc) *string {
-		if v == nil {
-			return nil
-		}
-		return v.GroupsPrefix
-	}).(pulumi.StringPtrOutput)
-}
-
-// The OpenID provider URL.
-func (o GetSKSClusterOidcPtrOutput) IssuerUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetSKSClusterOidc) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.IssuerUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// A map of key/value pairs that describes a required claim in the OpenID Token.
-func (o GetSKSClusterOidcPtrOutput) RequiredClaim() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GetSKSClusterOidc) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.RequiredClaim
-	}).(pulumi.StringMapOutput)
-}
-
-// An OpenID JWT claim to use as the user name.
-func (o GetSKSClusterOidcPtrOutput) UsernameClaim() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetSKSClusterOidc) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UsernameClaim
-	}).(pulumi.StringPtrOutput)
-}
-
-// An OpenID prefix prepended to username claims.
-func (o GetSKSClusterOidcPtrOutput) UsernamePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetSKSClusterOidc) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UsernamePrefix
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetSKSNodepoolListNodepool struct {
-	AntiAffinityGroupIds []string `pulumi:"antiAffinityGroupIds"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ClusterId string `pulumi:"clusterId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	CreatedAt string `pulumi:"createdAt"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	DeployTargetId *string `pulumi:"deployTargetId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Description *string `pulumi:"description"`
-	// Match against this int
-	DiskSize *int `pulumi:"diskSize"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Id *string `pulumi:"id"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+type GetNLBServiceListService struct {
+	// NLB service description.
+	Description string                              `pulumi:"description"`
+	Healthcheck GetNLBServiceListServiceHealthcheck `pulumi:"healthcheck"`
+	// NLB service ID.
+	Id string `pulumi:"id"`
+	// The exoscale*instance*pool (ID) to forward traffic to.
 	InstancePoolId string `pulumi:"instancePoolId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	InstancePrefix *string `pulumi:"instancePrefix"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	InstanceType *string `pulumi:"instanceType"`
-	// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-	Labels map[string]string `pulumi:"labels"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Name              *string  `pulumi:"name"`
-	PrivateNetworkIds []string `pulumi:"privateNetworkIds"`
-	SecurityGroupIds  []string `pulumi:"securityGroupIds"`
-	// Match against this int
-	Size *int `pulumi:"size"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+	// NLB Service name.
+	Name string `pulumi:"name"`
+	// Port exposed on the NLB's public IP.
+	Port int `pulumi:"port"`
+	// Network traffic protocol.
+	Protocol string `pulumi:"protocol"`
+	// NLB Service State.
 	State string `pulumi:"state"`
-	// Match against this bool
-	StorageLvm *bool `pulumi:"storageLvm"`
-	// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-	Taints map[string]string `pulumi:"taints"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	TemplateId string `pulumi:"templateId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Version string `pulumi:"version"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Zone string `pulumi:"zone"`
+	// The strategy (`round-robin`|`source-hash`).
+	Strategy string `pulumi:"strategy"`
+	// Port on which the network traffic will be forwarded to on the receiving instance.
+	TargetPort int `pulumi:"targetPort"`
 }
 
-// GetSKSNodepoolListNodepoolInput is an input type that accepts GetSKSNodepoolListNodepoolArgs and GetSKSNodepoolListNodepoolOutput values.
-// You can construct a concrete instance of `GetSKSNodepoolListNodepoolInput` via:
+// GetNLBServiceListServiceInput is an input type that accepts GetNLBServiceListServiceArgs and GetNLBServiceListServiceOutput values.
+// You can construct a concrete instance of `GetNLBServiceListServiceInput` via:
 //
-//	GetSKSNodepoolListNodepoolArgs{...}
-type GetSKSNodepoolListNodepoolInput interface {
+//	GetNLBServiceListServiceArgs{...}
+type GetNLBServiceListServiceInput interface {
 	pulumi.Input
 
-	ToGetSKSNodepoolListNodepoolOutput() GetSKSNodepoolListNodepoolOutput
-	ToGetSKSNodepoolListNodepoolOutputWithContext(context.Context) GetSKSNodepoolListNodepoolOutput
+	ToGetNLBServiceListServiceOutput() GetNLBServiceListServiceOutput
+	ToGetNLBServiceListServiceOutputWithContext(context.Context) GetNLBServiceListServiceOutput
 }
 
-type GetSKSNodepoolListNodepoolArgs struct {
-	AntiAffinityGroupIds pulumi.StringArrayInput `pulumi:"antiAffinityGroupIds"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	DeployTargetId pulumi.StringPtrInput `pulumi:"deployTargetId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Match against this int
-	DiskSize pulumi.IntPtrInput `pulumi:"diskSize"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+type GetNLBServiceListServiceArgs struct {
+	// NLB service description.
+	Description pulumi.StringInput                       `pulumi:"description"`
+	Healthcheck GetNLBServiceListServiceHealthcheckInput `pulumi:"healthcheck"`
+	// NLB service ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The exoscale*instance*pool (ID) to forward traffic to.
 	InstancePoolId pulumi.StringInput `pulumi:"instancePoolId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	InstancePrefix pulumi.StringPtrInput `pulumi:"instancePrefix"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
-	// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Name              pulumi.StringPtrInput   `pulumi:"name"`
-	PrivateNetworkIds pulumi.StringArrayInput `pulumi:"privateNetworkIds"`
-	SecurityGroupIds  pulumi.StringArrayInput `pulumi:"securityGroupIds"`
-	// Match against this int
-	Size pulumi.IntPtrInput `pulumi:"size"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+	// NLB Service name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Port exposed on the NLB's public IP.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Network traffic protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// NLB Service State.
 	State pulumi.StringInput `pulumi:"state"`
-	// Match against this bool
-	StorageLvm pulumi.BoolPtrInput `pulumi:"storageLvm"`
-	// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-	Taints pulumi.StringMapInput `pulumi:"taints"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	TemplateId pulumi.StringInput `pulumi:"templateId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Version pulumi.StringInput `pulumi:"version"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Zone pulumi.StringInput `pulumi:"zone"`
+	// The strategy (`round-robin`|`source-hash`).
+	Strategy pulumi.StringInput `pulumi:"strategy"`
+	// Port on which the network traffic will be forwarded to on the receiving instance.
+	TargetPort pulumi.IntInput `pulumi:"targetPort"`
 }
 
-func (GetSKSNodepoolListNodepoolArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSKSNodepoolListNodepool)(nil)).Elem()
+func (GetNLBServiceListServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNLBServiceListService)(nil)).Elem()
 }
 
-func (i GetSKSNodepoolListNodepoolArgs) ToGetSKSNodepoolListNodepoolOutput() GetSKSNodepoolListNodepoolOutput {
-	return i.ToGetSKSNodepoolListNodepoolOutputWithContext(context.Background())
+func (i GetNLBServiceListServiceArgs) ToGetNLBServiceListServiceOutput() GetNLBServiceListServiceOutput {
+	return i.ToGetNLBServiceListServiceOutputWithContext(context.Background())
 }
 
-func (i GetSKSNodepoolListNodepoolArgs) ToGetSKSNodepoolListNodepoolOutputWithContext(ctx context.Context) GetSKSNodepoolListNodepoolOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSKSNodepoolListNodepoolOutput)
+func (i GetNLBServiceListServiceArgs) ToGetNLBServiceListServiceOutputWithContext(ctx context.Context) GetNLBServiceListServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNLBServiceListServiceOutput)
 }
 
-func (i GetSKSNodepoolListNodepoolArgs) ToOutput(ctx context.Context) pulumix.Output[GetSKSNodepoolListNodepool] {
-	return pulumix.Output[GetSKSNodepoolListNodepool]{
-		OutputState: i.ToGetSKSNodepoolListNodepoolOutputWithContext(ctx).OutputState,
+func (i GetNLBServiceListServiceArgs) ToOutput(ctx context.Context) pulumix.Output[GetNLBServiceListService] {
+	return pulumix.Output[GetNLBServiceListService]{
+		OutputState: i.ToGetNLBServiceListServiceOutputWithContext(ctx).OutputState,
 	}
 }
 
-// GetSKSNodepoolListNodepoolArrayInput is an input type that accepts GetSKSNodepoolListNodepoolArray and GetSKSNodepoolListNodepoolArrayOutput values.
-// You can construct a concrete instance of `GetSKSNodepoolListNodepoolArrayInput` via:
+// GetNLBServiceListServiceArrayInput is an input type that accepts GetNLBServiceListServiceArray and GetNLBServiceListServiceArrayOutput values.
+// You can construct a concrete instance of `GetNLBServiceListServiceArrayInput` via:
 //
-//	GetSKSNodepoolListNodepoolArray{ GetSKSNodepoolListNodepoolArgs{...} }
-type GetSKSNodepoolListNodepoolArrayInput interface {
+//	GetNLBServiceListServiceArray{ GetNLBServiceListServiceArgs{...} }
+type GetNLBServiceListServiceArrayInput interface {
 	pulumi.Input
 
-	ToGetSKSNodepoolListNodepoolArrayOutput() GetSKSNodepoolListNodepoolArrayOutput
-	ToGetSKSNodepoolListNodepoolArrayOutputWithContext(context.Context) GetSKSNodepoolListNodepoolArrayOutput
+	ToGetNLBServiceListServiceArrayOutput() GetNLBServiceListServiceArrayOutput
+	ToGetNLBServiceListServiceArrayOutputWithContext(context.Context) GetNLBServiceListServiceArrayOutput
 }
 
-type GetSKSNodepoolListNodepoolArray []GetSKSNodepoolListNodepoolInput
+type GetNLBServiceListServiceArray []GetNLBServiceListServiceInput
 
-func (GetSKSNodepoolListNodepoolArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSKSNodepoolListNodepool)(nil)).Elem()
+func (GetNLBServiceListServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNLBServiceListService)(nil)).Elem()
 }
 
-func (i GetSKSNodepoolListNodepoolArray) ToGetSKSNodepoolListNodepoolArrayOutput() GetSKSNodepoolListNodepoolArrayOutput {
-	return i.ToGetSKSNodepoolListNodepoolArrayOutputWithContext(context.Background())
+func (i GetNLBServiceListServiceArray) ToGetNLBServiceListServiceArrayOutput() GetNLBServiceListServiceArrayOutput {
+	return i.ToGetNLBServiceListServiceArrayOutputWithContext(context.Background())
 }
 
-func (i GetSKSNodepoolListNodepoolArray) ToGetSKSNodepoolListNodepoolArrayOutputWithContext(ctx context.Context) GetSKSNodepoolListNodepoolArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSKSNodepoolListNodepoolArrayOutput)
+func (i GetNLBServiceListServiceArray) ToGetNLBServiceListServiceArrayOutputWithContext(ctx context.Context) GetNLBServiceListServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNLBServiceListServiceArrayOutput)
 }
 
-func (i GetSKSNodepoolListNodepoolArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSKSNodepoolListNodepool] {
-	return pulumix.Output[[]GetSKSNodepoolListNodepool]{
-		OutputState: i.ToGetSKSNodepoolListNodepoolArrayOutputWithContext(ctx).OutputState,
+func (i GetNLBServiceListServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetNLBServiceListService] {
+	return pulumix.Output[[]GetNLBServiceListService]{
+		OutputState: i.ToGetNLBServiceListServiceArrayOutputWithContext(ctx).OutputState,
 	}
 }
 
-type GetSKSNodepoolListNodepoolOutput struct{ *pulumi.OutputState }
+type GetNLBServiceListServiceOutput struct{ *pulumi.OutputState }
 
-func (GetSKSNodepoolListNodepoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSKSNodepoolListNodepool)(nil)).Elem()
+func (GetNLBServiceListServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNLBServiceListService)(nil)).Elem()
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) ToGetSKSNodepoolListNodepoolOutput() GetSKSNodepoolListNodepoolOutput {
+func (o GetNLBServiceListServiceOutput) ToGetNLBServiceListServiceOutput() GetNLBServiceListServiceOutput {
 	return o
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) ToGetSKSNodepoolListNodepoolOutputWithContext(ctx context.Context) GetSKSNodepoolListNodepoolOutput {
+func (o GetNLBServiceListServiceOutput) ToGetNLBServiceListServiceOutputWithContext(ctx context.Context) GetNLBServiceListServiceOutput {
 	return o
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) ToOutput(ctx context.Context) pulumix.Output[GetSKSNodepoolListNodepool] {
-	return pulumix.Output[GetSKSNodepoolListNodepool]{
+func (o GetNLBServiceListServiceOutput) ToOutput(ctx context.Context) pulumix.Output[GetNLBServiceListService] {
+	return pulumix.Output[GetNLBServiceListService]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) AntiAffinityGroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) []string { return v.AntiAffinityGroupIds }).(pulumi.StringArrayOutput)
+// NLB service description.
+func (o GetNLBServiceListServiceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNLBServiceListService) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSNodepoolListNodepoolOutput) ClusterId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) string { return v.ClusterId }).(pulumi.StringOutput)
+func (o GetNLBServiceListServiceOutput) Healthcheck() GetNLBServiceListServiceHealthcheckOutput {
+	return o.ApplyT(func(v GetNLBServiceListService) GetNLBServiceListServiceHealthcheck { return v.Healthcheck }).(GetNLBServiceListServiceHealthcheckOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSNodepoolListNodepoolOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) string { return v.CreatedAt }).(pulumi.StringOutput)
+// NLB service ID.
+func (o GetNLBServiceListServiceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNLBServiceListService) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSNodepoolListNodepoolOutput) DeployTargetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *string { return v.DeployTargetId }).(pulumi.StringPtrOutput)
+// The exoscale*instance*pool (ID) to forward traffic to.
+func (o GetNLBServiceListServiceOutput) InstancePoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNLBServiceListService) string { return v.InstancePoolId }).(pulumi.StringOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSNodepoolListNodepoolOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *string { return v.Description }).(pulumi.StringPtrOutput)
+// NLB Service name.
+func (o GetNLBServiceListServiceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNLBServiceListService) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Match against this int
-func (o GetSKSNodepoolListNodepoolOutput) DiskSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
+// Port exposed on the NLB's public IP.
+func (o GetNLBServiceListServiceOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNLBServiceListService) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSNodepoolListNodepoolOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *string { return v.Id }).(pulumi.StringPtrOutput)
+// Network traffic protocol.
+func (o GetNLBServiceListServiceOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNLBServiceListService) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSNodepoolListNodepoolOutput) InstancePoolId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) string { return v.InstancePoolId }).(pulumi.StringOutput)
+// NLB Service State.
+func (o GetNLBServiceListServiceOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNLBServiceListService) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSNodepoolListNodepoolOutput) InstancePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *string { return v.InstancePrefix }).(pulumi.StringPtrOutput)
+// The strategy (`round-robin`|`source-hash`).
+func (o GetNLBServiceListServiceOutput) Strategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNLBServiceListService) string { return v.Strategy }).(pulumi.StringOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSNodepoolListNodepoolOutput) InstanceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+// Port on which the network traffic will be forwarded to on the receiving instance.
+func (o GetNLBServiceListServiceOutput) TargetPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNLBServiceListService) int { return v.TargetPort }).(pulumi.IntOutput)
 }
 
-// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-func (o GetSKSNodepoolListNodepoolOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+type GetNLBServiceListServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNLBServiceListServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNLBServiceListService)(nil)).Elem()
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSNodepoolListNodepoolOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-func (o GetSKSNodepoolListNodepoolOutput) PrivateNetworkIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) []string { return v.PrivateNetworkIds }).(pulumi.StringArrayOutput)
-}
-
-func (o GetSKSNodepoolListNodepoolOutput) SecurityGroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
-}
-
-// Match against this int
-func (o GetSKSNodepoolListNodepoolOutput) Size() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *int { return v.Size }).(pulumi.IntPtrOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSNodepoolListNodepoolOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) string { return v.State }).(pulumi.StringOutput)
-}
-
-// Match against this bool
-func (o GetSKSNodepoolListNodepoolOutput) StorageLvm() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *bool { return v.StorageLvm }).(pulumi.BoolPtrOutput)
-}
-
-// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-func (o GetSKSNodepoolListNodepoolOutput) Taints() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) map[string]string { return v.Taints }).(pulumi.StringMapOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSNodepoolListNodepoolOutput) TemplateId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) string { return v.TemplateId }).(pulumi.StringOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSNodepoolListNodepoolOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) string { return v.Version }).(pulumi.StringOutput)
-}
-
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSNodepoolListNodepoolOutput) Zone() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) string { return v.Zone }).(pulumi.StringOutput)
-}
-
-type GetSKSNodepoolListNodepoolArrayOutput struct{ *pulumi.OutputState }
-
-func (GetSKSNodepoolListNodepoolArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSKSNodepoolListNodepool)(nil)).Elem()
-}
-
-func (o GetSKSNodepoolListNodepoolArrayOutput) ToGetSKSNodepoolListNodepoolArrayOutput() GetSKSNodepoolListNodepoolArrayOutput {
+func (o GetNLBServiceListServiceArrayOutput) ToGetNLBServiceListServiceArrayOutput() GetNLBServiceListServiceArrayOutput {
 	return o
 }
 
-func (o GetSKSNodepoolListNodepoolArrayOutput) ToGetSKSNodepoolListNodepoolArrayOutputWithContext(ctx context.Context) GetSKSNodepoolListNodepoolArrayOutput {
+func (o GetNLBServiceListServiceArrayOutput) ToGetNLBServiceListServiceArrayOutputWithContext(ctx context.Context) GetNLBServiceListServiceArrayOutput {
 	return o
 }
 
-func (o GetSKSNodepoolListNodepoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSKSNodepoolListNodepool] {
-	return pulumix.Output[[]GetSKSNodepoolListNodepool]{
+func (o GetNLBServiceListServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetNLBServiceListService] {
+	return pulumix.Output[[]GetNLBServiceListService]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o GetSKSNodepoolListNodepoolArrayOutput) Index(i pulumi.IntInput) GetSKSNodepoolListNodepoolOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSKSNodepoolListNodepool {
-		return vs[0].([]GetSKSNodepoolListNodepool)[vs[1].(int)]
-	}).(GetSKSNodepoolListNodepoolOutput)
+func (o GetNLBServiceListServiceArrayOutput) Index(i pulumi.IntInput) GetNLBServiceListServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNLBServiceListService {
+		return vs[0].([]GetNLBServiceListService)[vs[1].(int)]
+	}).(GetNLBServiceListServiceOutput)
+}
+
+type GetNLBServiceListServiceHealthcheck struct {
+	Interval int    `pulumi:"interval"`
+	Mode     string `pulumi:"mode"`
+	Port     int    `pulumi:"port"`
+	Retries  int    `pulumi:"retries"`
+	Timeout  int    `pulumi:"timeout"`
+	TlsSni   string `pulumi:"tlsSni"`
+	Uri      string `pulumi:"uri"`
+}
+
+// GetNLBServiceListServiceHealthcheckInput is an input type that accepts GetNLBServiceListServiceHealthcheckArgs and GetNLBServiceListServiceHealthcheckOutput values.
+// You can construct a concrete instance of `GetNLBServiceListServiceHealthcheckInput` via:
+//
+//	GetNLBServiceListServiceHealthcheckArgs{...}
+type GetNLBServiceListServiceHealthcheckInput interface {
+	pulumi.Input
+
+	ToGetNLBServiceListServiceHealthcheckOutput() GetNLBServiceListServiceHealthcheckOutput
+	ToGetNLBServiceListServiceHealthcheckOutputWithContext(context.Context) GetNLBServiceListServiceHealthcheckOutput
+}
+
+type GetNLBServiceListServiceHealthcheckArgs struct {
+	Interval pulumi.IntInput    `pulumi:"interval"`
+	Mode     pulumi.StringInput `pulumi:"mode"`
+	Port     pulumi.IntInput    `pulumi:"port"`
+	Retries  pulumi.IntInput    `pulumi:"retries"`
+	Timeout  pulumi.IntInput    `pulumi:"timeout"`
+	TlsSni   pulumi.StringInput `pulumi:"tlsSni"`
+	Uri      pulumi.StringInput `pulumi:"uri"`
+}
+
+func (GetNLBServiceListServiceHealthcheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNLBServiceListServiceHealthcheck)(nil)).Elem()
+}
+
+func (i GetNLBServiceListServiceHealthcheckArgs) ToGetNLBServiceListServiceHealthcheckOutput() GetNLBServiceListServiceHealthcheckOutput {
+	return i.ToGetNLBServiceListServiceHealthcheckOutputWithContext(context.Background())
+}
+
+func (i GetNLBServiceListServiceHealthcheckArgs) ToGetNLBServiceListServiceHealthcheckOutputWithContext(ctx context.Context) GetNLBServiceListServiceHealthcheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNLBServiceListServiceHealthcheckOutput)
+}
+
+func (i GetNLBServiceListServiceHealthcheckArgs) ToOutput(ctx context.Context) pulumix.Output[GetNLBServiceListServiceHealthcheck] {
+	return pulumix.Output[GetNLBServiceListServiceHealthcheck]{
+		OutputState: i.ToGetNLBServiceListServiceHealthcheckOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetNLBServiceListServiceHealthcheckOutput struct{ *pulumi.OutputState }
+
+func (GetNLBServiceListServiceHealthcheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNLBServiceListServiceHealthcheck)(nil)).Elem()
+}
+
+func (o GetNLBServiceListServiceHealthcheckOutput) ToGetNLBServiceListServiceHealthcheckOutput() GetNLBServiceListServiceHealthcheckOutput {
+	return o
+}
+
+func (o GetNLBServiceListServiceHealthcheckOutput) ToGetNLBServiceListServiceHealthcheckOutputWithContext(ctx context.Context) GetNLBServiceListServiceHealthcheckOutput {
+	return o
+}
+
+func (o GetNLBServiceListServiceHealthcheckOutput) ToOutput(ctx context.Context) pulumix.Output[GetNLBServiceListServiceHealthcheck] {
+	return pulumix.Output[GetNLBServiceListServiceHealthcheck]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetNLBServiceListServiceHealthcheckOutput) Interval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNLBServiceListServiceHealthcheck) int { return v.Interval }).(pulumi.IntOutput)
+}
+
+func (o GetNLBServiceListServiceHealthcheckOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNLBServiceListServiceHealthcheck) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+func (o GetNLBServiceListServiceHealthcheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNLBServiceListServiceHealthcheck) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o GetNLBServiceListServiceHealthcheckOutput) Retries() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNLBServiceListServiceHealthcheck) int { return v.Retries }).(pulumi.IntOutput)
+}
+
+func (o GetNLBServiceListServiceHealthcheckOutput) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNLBServiceListServiceHealthcheck) int { return v.Timeout }).(pulumi.IntOutput)
+}
+
+func (o GetNLBServiceListServiceHealthcheckOutput) TlsSni() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNLBServiceListServiceHealthcheck) string { return v.TlsSni }).(pulumi.StringOutput)
+}
+
+func (o GetNLBServiceListServiceHealthcheckOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNLBServiceListServiceHealthcheck) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type GetNLBServiceListTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+}
+
+// GetNLBServiceListTimeoutsInput is an input type that accepts GetNLBServiceListTimeoutsArgs and GetNLBServiceListTimeoutsOutput values.
+// You can construct a concrete instance of `GetNLBServiceListTimeoutsInput` via:
+//
+//	GetNLBServiceListTimeoutsArgs{...}
+type GetNLBServiceListTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetNLBServiceListTimeoutsOutput() GetNLBServiceListTimeoutsOutput
+	ToGetNLBServiceListTimeoutsOutputWithContext(context.Context) GetNLBServiceListTimeoutsOutput
+}
+
+type GetNLBServiceListTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetNLBServiceListTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNLBServiceListTimeouts)(nil)).Elem()
+}
+
+func (i GetNLBServiceListTimeoutsArgs) ToGetNLBServiceListTimeoutsOutput() GetNLBServiceListTimeoutsOutput {
+	return i.ToGetNLBServiceListTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetNLBServiceListTimeoutsArgs) ToGetNLBServiceListTimeoutsOutputWithContext(ctx context.Context) GetNLBServiceListTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNLBServiceListTimeoutsOutput)
+}
+
+func (i GetNLBServiceListTimeoutsArgs) ToOutput(ctx context.Context) pulumix.Output[GetNLBServiceListTimeouts] {
+	return pulumix.Output[GetNLBServiceListTimeouts]{
+		OutputState: i.ToGetNLBServiceListTimeoutsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GetNLBServiceListTimeoutsArgs) ToGetNLBServiceListTimeoutsPtrOutput() GetNLBServiceListTimeoutsPtrOutput {
+	return i.ToGetNLBServiceListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetNLBServiceListTimeoutsArgs) ToGetNLBServiceListTimeoutsPtrOutputWithContext(ctx context.Context) GetNLBServiceListTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNLBServiceListTimeoutsOutput).ToGetNLBServiceListTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetNLBServiceListTimeoutsPtrInput is an input type that accepts GetNLBServiceListTimeoutsArgs, GetNLBServiceListTimeoutsPtr and GetNLBServiceListTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetNLBServiceListTimeoutsPtrInput` via:
+//
+//	        GetNLBServiceListTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetNLBServiceListTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetNLBServiceListTimeoutsPtrOutput() GetNLBServiceListTimeoutsPtrOutput
+	ToGetNLBServiceListTimeoutsPtrOutputWithContext(context.Context) GetNLBServiceListTimeoutsPtrOutput
+}
+
+type getNLBServiceListTimeoutsPtrType GetNLBServiceListTimeoutsArgs
+
+func GetNLBServiceListTimeoutsPtr(v *GetNLBServiceListTimeoutsArgs) GetNLBServiceListTimeoutsPtrInput {
+	return (*getNLBServiceListTimeoutsPtrType)(v)
+}
+
+func (*getNLBServiceListTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetNLBServiceListTimeouts)(nil)).Elem()
+}
+
+func (i *getNLBServiceListTimeoutsPtrType) ToGetNLBServiceListTimeoutsPtrOutput() GetNLBServiceListTimeoutsPtrOutput {
+	return i.ToGetNLBServiceListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getNLBServiceListTimeoutsPtrType) ToGetNLBServiceListTimeoutsPtrOutputWithContext(ctx context.Context) GetNLBServiceListTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNLBServiceListTimeoutsPtrOutput)
+}
+
+func (i *getNLBServiceListTimeoutsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetNLBServiceListTimeouts] {
+	return pulumix.Output[*GetNLBServiceListTimeouts]{
+		OutputState: i.ToGetNLBServiceListTimeoutsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetNLBServiceListTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetNLBServiceListTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNLBServiceListTimeouts)(nil)).Elem()
+}
+
+func (o GetNLBServiceListTimeoutsOutput) ToGetNLBServiceListTimeoutsOutput() GetNLBServiceListTimeoutsOutput {
+	return o
+}
+
+func (o GetNLBServiceListTimeoutsOutput) ToGetNLBServiceListTimeoutsOutputWithContext(ctx context.Context) GetNLBServiceListTimeoutsOutput {
+	return o
+}
+
+func (o GetNLBServiceListTimeoutsOutput) ToGetNLBServiceListTimeoutsPtrOutput() GetNLBServiceListTimeoutsPtrOutput {
+	return o.ToGetNLBServiceListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetNLBServiceListTimeoutsOutput) ToGetNLBServiceListTimeoutsPtrOutputWithContext(ctx context.Context) GetNLBServiceListTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetNLBServiceListTimeouts) *GetNLBServiceListTimeouts {
+		return &v
+	}).(GetNLBServiceListTimeoutsPtrOutput)
+}
+
+func (o GetNLBServiceListTimeoutsOutput) ToOutput(ctx context.Context) pulumix.Output[GetNLBServiceListTimeouts] {
+	return pulumix.Output[GetNLBServiceListTimeouts]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o GetNLBServiceListTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNLBServiceListTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetNLBServiceListTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetNLBServiceListTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetNLBServiceListTimeouts)(nil)).Elem()
+}
+
+func (o GetNLBServiceListTimeoutsPtrOutput) ToGetNLBServiceListTimeoutsPtrOutput() GetNLBServiceListTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetNLBServiceListTimeoutsPtrOutput) ToGetNLBServiceListTimeoutsPtrOutputWithContext(ctx context.Context) GetNLBServiceListTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetNLBServiceListTimeoutsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetNLBServiceListTimeouts] {
+	return pulumix.Output[*GetNLBServiceListTimeouts]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetNLBServiceListTimeoutsPtrOutput) Elem() GetNLBServiceListTimeoutsOutput {
+	return o.ApplyT(func(v *GetNLBServiceListTimeouts) GetNLBServiceListTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetNLBServiceListTimeouts
+		return ret
+	}).(GetNLBServiceListTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o GetNLBServiceListTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetNLBServiceListTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceNetworkInterfaceInput)(nil)).Elem(), ComputeInstanceNetworkInterfaceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceNetworkInterfaceArrayInput)(nil)).Elem(), ComputeInstanceNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseGrafanaInput)(nil)).Elem(), DatabaseGrafanaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseGrafanaPtrInput)(nil)).Elem(), DatabaseGrafanaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseKafkaInput)(nil)).Elem(), DatabaseKafkaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseKafkaPtrInput)(nil)).Elem(), DatabaseKafkaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlInput)(nil)).Elem(), DatabaseMysqlArgs{})
@@ -5533,40 +2966,17 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePgPtrInput)(nil)).Elem(), DatabasePgArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseRedisInput)(nil)).Elem(), DatabaseRedisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseRedisPtrInput)(nil)).Elem(), DatabaseRedisArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElasticIPHealthcheckInput)(nil)).Elem(), ElasticIPHealthcheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElasticIPHealthcheckPtrInput)(nil)).Elem(), ElasticIPHealthcheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstancePoolInstanceInput)(nil)).Elem(), InstancePoolInstanceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstancePoolInstanceArrayInput)(nil)).Elem(), InstancePoolInstanceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NLBServiceHealthcheckInput)(nil)).Elem(), NLBServiceHealthcheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NLBServiceHealthcheckArrayInput)(nil)).Elem(), NLBServiceHealthcheckArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SKSClusterOidcInput)(nil)).Elem(), SKSClusterOidcArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SKSClusterOidcPtrInput)(nil)).Elem(), SKSClusterOidcArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupRulesEgressInput)(nil)).Elem(), SecurityGroupRulesEgressArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupRulesEgressArrayInput)(nil)).Elem(), SecurityGroupRulesEgressArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupRulesIngressInput)(nil)).Elem(), SecurityGroupRulesIngressArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupRulesIngressArrayInput)(nil)).Elem(), SecurityGroupRulesIngressArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceListInstanceInput)(nil)).Elem(), GetComputeInstanceListInstanceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceListInstanceArrayInput)(nil)).Elem(), GetComputeInstanceListInstanceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainRecordFilterInput)(nil)).Elem(), GetDomainRecordFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainRecordRecordInput)(nil)).Elem(), GetDomainRecordRecordArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainRecordRecordArrayInput)(nil)).Elem(), GetDomainRecordRecordArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetElasticIPHealthcheckInput)(nil)).Elem(), GetElasticIPHealthcheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetElasticIPHealthcheckArrayInput)(nil)).Elem(), GetElasticIPHealthcheckArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolInstanceInput)(nil)).Elem(), GetInstancePoolInstanceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolInstanceArrayInput)(nil)).Elem(), GetInstancePoolInstanceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolListPoolInput)(nil)).Elem(), GetInstancePoolListPoolArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolListPoolArrayInput)(nil)).Elem(), GetInstancePoolListPoolArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolListPoolInstanceInput)(nil)).Elem(), GetInstancePoolListPoolInstanceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolListPoolInstanceArrayInput)(nil)).Elem(), GetInstancePoolListPoolInstanceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSKSClusterListClusterInput)(nil)).Elem(), GetSKSClusterListClusterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSKSClusterListClusterArrayInput)(nil)).Elem(), GetSKSClusterListClusterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSKSClusterListClusterOidcInput)(nil)).Elem(), GetSKSClusterListClusterOidcArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSKSClusterOidcInput)(nil)).Elem(), GetSKSClusterOidcArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSKSClusterOidcPtrInput)(nil)).Elem(), GetSKSClusterOidcArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSKSNodepoolListNodepoolInput)(nil)).Elem(), GetSKSNodepoolListNodepoolArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSKSNodepoolListNodepoolArrayInput)(nil)).Elem(), GetSKSNodepoolListNodepoolArray{})
-	pulumi.RegisterOutputType(ComputeInstanceNetworkInterfaceOutput{})
-	pulumi.RegisterOutputType(ComputeInstanceNetworkInterfaceArrayOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTimeoutsInput)(nil)).Elem(), DatabaseTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTimeoutsPtrInput)(nil)).Elem(), DatabaseTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseURITimeoutsInput)(nil)).Elem(), GetDatabaseURITimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseURITimeoutsPtrInput)(nil)).Elem(), GetDatabaseURITimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNLBServiceListServiceInput)(nil)).Elem(), GetNLBServiceListServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNLBServiceListServiceArrayInput)(nil)).Elem(), GetNLBServiceListServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNLBServiceListServiceHealthcheckInput)(nil)).Elem(), GetNLBServiceListServiceHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNLBServiceListTimeoutsInput)(nil)).Elem(), GetNLBServiceListTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNLBServiceListTimeoutsPtrInput)(nil)).Elem(), GetNLBServiceListTimeoutsArgs{})
+	pulumi.RegisterOutputType(DatabaseGrafanaOutput{})
+	pulumi.RegisterOutputType(DatabaseGrafanaPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseKafkaOutput{})
 	pulumi.RegisterOutputType(DatabaseKafkaPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseMysqlOutput{})
@@ -5583,36 +2993,13 @@ func init() {
 	pulumi.RegisterOutputType(DatabasePgPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseRedisOutput{})
 	pulumi.RegisterOutputType(DatabaseRedisPtrOutput{})
-	pulumi.RegisterOutputType(ElasticIPHealthcheckOutput{})
-	pulumi.RegisterOutputType(ElasticIPHealthcheckPtrOutput{})
-	pulumi.RegisterOutputType(InstancePoolInstanceOutput{})
-	pulumi.RegisterOutputType(InstancePoolInstanceArrayOutput{})
-	pulumi.RegisterOutputType(NLBServiceHealthcheckOutput{})
-	pulumi.RegisterOutputType(NLBServiceHealthcheckArrayOutput{})
-	pulumi.RegisterOutputType(SKSClusterOidcOutput{})
-	pulumi.RegisterOutputType(SKSClusterOidcPtrOutput{})
-	pulumi.RegisterOutputType(SecurityGroupRulesEgressOutput{})
-	pulumi.RegisterOutputType(SecurityGroupRulesEgressArrayOutput{})
-	pulumi.RegisterOutputType(SecurityGroupRulesIngressOutput{})
-	pulumi.RegisterOutputType(SecurityGroupRulesIngressArrayOutput{})
-	pulumi.RegisterOutputType(GetComputeInstanceListInstanceOutput{})
-	pulumi.RegisterOutputType(GetComputeInstanceListInstanceArrayOutput{})
-	pulumi.RegisterOutputType(GetDomainRecordFilterOutput{})
-	pulumi.RegisterOutputType(GetDomainRecordRecordOutput{})
-	pulumi.RegisterOutputType(GetDomainRecordRecordArrayOutput{})
-	pulumi.RegisterOutputType(GetElasticIPHealthcheckOutput{})
-	pulumi.RegisterOutputType(GetElasticIPHealthcheckArrayOutput{})
-	pulumi.RegisterOutputType(GetInstancePoolInstanceOutput{})
-	pulumi.RegisterOutputType(GetInstancePoolInstanceArrayOutput{})
-	pulumi.RegisterOutputType(GetInstancePoolListPoolOutput{})
-	pulumi.RegisterOutputType(GetInstancePoolListPoolArrayOutput{})
-	pulumi.RegisterOutputType(GetInstancePoolListPoolInstanceOutput{})
-	pulumi.RegisterOutputType(GetInstancePoolListPoolInstanceArrayOutput{})
-	pulumi.RegisterOutputType(GetSKSClusterListClusterOutput{})
-	pulumi.RegisterOutputType(GetSKSClusterListClusterArrayOutput{})
-	pulumi.RegisterOutputType(GetSKSClusterListClusterOidcOutput{})
-	pulumi.RegisterOutputType(GetSKSClusterOidcOutput{})
-	pulumi.RegisterOutputType(GetSKSClusterOidcPtrOutput{})
-	pulumi.RegisterOutputType(GetSKSNodepoolListNodepoolOutput{})
-	pulumi.RegisterOutputType(GetSKSNodepoolListNodepoolArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseTimeoutsOutput{})
+	pulumi.RegisterOutputType(DatabaseTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetDatabaseURITimeoutsOutput{})
+	pulumi.RegisterOutputType(GetDatabaseURITimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetNLBServiceListServiceOutput{})
+	pulumi.RegisterOutputType(GetNLBServiceListServiceArrayOutput{})
+	pulumi.RegisterOutputType(GetNLBServiceListServiceHealthcheckOutput{})
+	pulumi.RegisterOutputType(GetNLBServiceListTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetNLBServiceListTimeoutsPtrOutput{})
 }

@@ -5,15 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
-export interface ComputeInstanceNetworkInterface {
+export interface DatabaseGrafana {
     /**
-     * The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
+     * Grafana configuration settings in JSON format (`exo dbaas type show grafana --settings=grafana` for reference).
      */
-    ipAddress?: pulumi.Input<string>;
+    grafanaSettings?: pulumi.Input<string>;
     /**
-     * The exoscale*private*network (ID) to attach to the instance.
+     * A list of CIDR blocks to allow incoming connections from.
      */
-    networkId: pulumi.Input<string>;
+    ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface DatabaseKafka {
@@ -91,6 +91,9 @@ export interface DatabaseMysql {
 }
 
 export interface DatabaseOpensearch {
+    /**
+     * OpenSearch Dashboards settings
+     */
     dashboards?: pulumi.Input<inputs.DatabaseOpensearchDashboards>;
     /**
      * ❗ Service name
@@ -105,7 +108,7 @@ export interface DatabaseOpensearch {
      */
     indexTemplate?: pulumi.Input<inputs.DatabaseOpensearchIndexTemplate>;
     /**
-     * Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
+     * Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -117,7 +120,7 @@ export interface DatabaseOpensearch {
      */
     maxIndexCount?: pulumi.Input<number>;
     /**
-     * ❗
+     * ❗ Name of a backup to recover from
      */
     recoveryBackupName?: pulumi.Input<string>;
     /**
@@ -125,7 +128,7 @@ export interface DatabaseOpensearch {
      */
     settings?: pulumi.Input<string>;
     /**
-     * ❗ OpenSearch major version.
+     * ❗ OpenSearch major version (`exo dbaas type show opensearch` for reference)
      */
     version?: pulumi.Input<string>;
 }
@@ -194,286 +197,49 @@ export interface DatabaseRedis {
     redisSettings?: pulumi.Input<string>;
 }
 
-export interface ElasticIPHealthcheck {
+export interface DatabaseTimeouts {
     /**
-     * The healthcheck interval (seconds; must be between `5` and `300`; default: `10`).
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    interval?: pulumi.Input<number>;
+    create?: pulumi.Input<string>;
     /**
-     * The healthcheck mode (`tcp`, `http` or `https`; may only be set at creation time).
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    mode: pulumi.Input<string>;
+    delete?: pulumi.Input<string>;
     /**
-     * The healthcheck target port (must be between `1` and `65535`).
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    port: pulumi.Input<number>;
+    read?: pulumi.Input<string>;
     /**
-     * The number of failed healthcheck attempts before considering the target unhealthy (must be between `1` and `20`; default: `2`).
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    strikesFail?: pulumi.Input<number>;
-    /**
-     * The number of successful healthcheck attempts before considering the target healthy (must be between `1` and `20`; default: `3`).
-     */
-    strikesOk?: pulumi.Input<number>;
-    /**
-     * The time before considering a healthcheck probing failed (seconds; must be between `2` and `60`; default: `3`).
-     */
-    timeout?: pulumi.Input<number>;
-    /**
-     * Disable TLS certificate verification for healthcheck in `https` mode (boolean; default: `false`).
-     */
-    tlsSkipVerify?: pulumi.Input<boolean>;
-    /**
-     * The healthcheck server name to present with SNI in `https` mode.
-     */
-    tlsSni?: pulumi.Input<string>;
-    /**
-     * The healthcheck target URI (required in `http(s)` modes).
-     */
-    uri?: pulumi.Input<string>;
+    update?: pulumi.Input<string>;
 }
 
-export interface GetDomainRecordFilter {
+export interface GetDatabaseURITimeouts {
     /**
-     * A regular expression to match the record content.
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    contentRegex?: string;
-    /**
-     * The record ID to match.
-     */
-    id?: string;
-    /**
-     * The domain record name to match.
-     */
-    name?: string;
-    /**
-     * The record type to match.
-     */
-    recordType?: string;
+    read?: string;
 }
 
-export interface GetDomainRecordFilterArgs {
+export interface GetDatabaseURITimeoutsArgs {
     /**
-     * A regular expression to match the record content.
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    contentRegex?: pulumi.Input<string>;
-    /**
-     * The record ID to match.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * The domain record name to match.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * The record type to match.
-     */
-    recordType?: pulumi.Input<string>;
+    read?: pulumi.Input<string>;
 }
 
-export interface GetSKSClusterOidc {
+export interface GetNLBServiceListTimeouts {
     /**
-     * The OpenID client ID.
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    clientId: string;
-    /**
-     * An OpenID JWT claim to use as the user's group.
-     */
-    groupsClaim?: string;
-    /**
-     * An OpenID prefix prepended to group claims.
-     */
-    groupsPrefix?: string;
-    /**
-     * The OpenID provider URL.
-     */
-    issuerUrl: string;
-    /**
-     * A map of key/value pairs that describes a required claim in the OpenID Token.
-     */
-    requiredClaim?: {[key: string]: string};
-    /**
-     * An OpenID JWT claim to use as the user name.
-     */
-    usernameClaim?: string;
-    /**
-     * An OpenID prefix prepended to username claims.
-     */
-    usernamePrefix?: string;
+    read?: string;
 }
 
-export interface GetSKSClusterOidcArgs {
+export interface GetNLBServiceListTimeoutsArgs {
     /**
-     * The OpenID client ID.
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    clientId: pulumi.Input<string>;
-    /**
-     * An OpenID JWT claim to use as the user's group.
-     */
-    groupsClaim?: pulumi.Input<string>;
-    /**
-     * An OpenID prefix prepended to group claims.
-     */
-    groupsPrefix?: pulumi.Input<string>;
-    /**
-     * The OpenID provider URL.
-     */
-    issuerUrl: pulumi.Input<string>;
-    /**
-     * A map of key/value pairs that describes a required claim in the OpenID Token.
-     */
-    requiredClaim?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * An OpenID JWT claim to use as the user name.
-     */
-    usernameClaim?: pulumi.Input<string>;
-    /**
-     * An OpenID prefix prepended to username claims.
-     */
-    usernamePrefix?: pulumi.Input<string>;
-}
-
-export interface InstancePoolInstance {
-    /**
-     * The ID of this resource.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * The instance (main network interface) IPv6 address.
-     */
-    ipv6Address?: pulumi.Input<string>;
-    /**
-     * The instance name.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * The instance (main network interface) IPv4 address.
-     */
-    publicIpAddress?: pulumi.Input<string>;
-}
-
-export interface NLBServiceHealthcheck {
-    /**
-     * The healthcheck interval in seconds (default: `10`).
-     */
-    interval?: pulumi.Input<number>;
-    /**
-     * The healthcheck mode (`tcp`|`http`|`https`; default: `tcp`).
-     */
-    mode?: pulumi.Input<string>;
-    /**
-     * The NLB service (TCP/UDP) port.
-     */
-    port: pulumi.Input<number>;
-    /**
-     * The healthcheck retries (default: `1`).
-     */
-    retries?: pulumi.Input<number>;
-    /**
-     * The healthcheck timeout (seconds; default: `5`).
-     */
-    timeout?: pulumi.Input<number>;
-    /**
-     * The healthcheck TLS SNI server name (only if `mode` is `https`).
-     */
-    tlsSni?: pulumi.Input<string>;
-    /**
-     * The healthcheck URI (must be set only if `mode` is `http(s)`).
-     */
-    uri?: pulumi.Input<string>;
-}
-
-export interface SKSClusterOidc {
-    /**
-     * The OpenID client ID.
-     */
-    clientId: pulumi.Input<string>;
-    /**
-     * An OpenID JWT claim to use as the user's group.
-     */
-    groupsClaim?: pulumi.Input<string>;
-    /**
-     * An OpenID prefix prepended to group claims.
-     */
-    groupsPrefix?: pulumi.Input<string>;
-    /**
-     * The OpenID provider URL.
-     */
-    issuerUrl: pulumi.Input<string>;
-    /**
-     * A map of key/value pairs that describes a required claim in the OpenID Token.
-     */
-    requiredClaim?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * An OpenID JWT claim to use as the user name.
-     */
-    usernameClaim?: pulumi.Input<string>;
-    /**
-     * An OpenID prefix prepended to username claims.
-     */
-    usernamePrefix?: pulumi.Input<string>;
-}
-
-export interface SecurityGroupRulesEgress {
-    /**
-     * A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
-     */
-    cidrLists?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A free-form text describing the block.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * An ICMP/ICMPv6 type/code to match.
-     */
-    icmpCode?: pulumi.Input<number>;
-    /**
-     * An ICMP/ICMPv6 type/code to match.
-     */
-    icmpType?: pulumi.Input<number>;
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A list of ports or port ranges (`<start_port>-<end_port>`).
-     */
-    ports?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
-     */
-    protocol?: pulumi.Input<string>;
-    /**
-     * A list of source (for ingress)/destination (for egress) identified by a security group.
-     */
-    userSecurityGroupLists?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface SecurityGroupRulesIngress {
-    /**
-     * A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
-     */
-    cidrLists?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A free-form text describing the block.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * An ICMP/ICMPv6 type/code to match.
-     */
-    icmpCode?: pulumi.Input<number>;
-    /**
-     * An ICMP/ICMPv6 type/code to match.
-     */
-    icmpType?: pulumi.Input<number>;
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A list of ports or port ranges (`<start_port>-<end_port>`).
-     */
-    ports?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
-     */
-    protocol?: pulumi.Input<string>;
-    /**
-     * A list of source (for ingress)/destination (for egress) identified by a security group.
-     */
-    userSecurityGroupLists?: pulumi.Input<pulumi.Input<string>[]>;
+    read?: pulumi.Input<string>;
 }

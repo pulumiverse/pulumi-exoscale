@@ -6,8 +6,10 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetDatabaseURIResult',
@@ -21,13 +23,16 @@ class GetDatabaseURIResult:
     """
     A collection of values returned by getDatabaseURI.
     """
-    def __init__(__self__, id=None, name=None, type=None, uri=None, zone=None):
+    def __init__(__self__, id=None, name=None, timeouts=None, type=None, uri=None, zone=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -42,7 +47,7 @@ class GetDatabaseURIResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this resource.
         """
         return pulumi.get(self, "id")
 
@@ -53,6 +58,11 @@ class GetDatabaseURIResult:
         The database name to match.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetDatabaseURITimeoutsResult']:
+        return pulumi.get(self, "timeouts")
 
     @property
     @pulumi.getter
@@ -74,7 +84,7 @@ class GetDatabaseURIResult:
     @pulumi.getter
     def zone(self) -> str:
         """
-        (Required) The Exoscale Zone name.
+        The Exoscale Zone name.
         """
         return pulumi.get(self, "zone")
 
@@ -87,55 +97,27 @@ class AwaitableGetDatabaseURIResult(GetDatabaseURIResult):
         return GetDatabaseURIResult(
             id=self.id,
             name=self.name,
+            timeouts=self.timeouts,
             type=self.type,
             uri=self.uri,
             zone=self.zone)
 
 
 def get_database_uri(name: Optional[str] = None,
+                     timeouts: Optional[pulumi.InputType['GetDatabaseURITimeoutsArgs']] = None,
                      type: Optional[str] = None,
                      zone: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseURIResult:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import json
-    import pulumi_exoscale as exoscale
-    import pulumiverse_exoscale as exoscale
-
-    my_database_database = exoscale.Database("myDatabaseDatabase",
-        zone="ch-gva-2",
-        type="pg",
-        plan="startup-4",
-        maintenance_dow="sunday",
-        maintenance_time="23:00:00",
-        termination_protection=True,
-        pg=exoscale.DatabasePgArgs(
-            version="13",
-            backup_schedule="04:00",
-            ip_filters=[
-                "1.2.3.4/32",
-                "5.6.7.8/32",
-            ],
-            pg_settings=json.dumps({
-                "timezone": "Europe/Zurich",
-            }),
-        ))
-    my_database_database_uri = exoscale.get_database_uri(name="my-database",
-        type="pg",
-        zone="ch-gva-2")
-    pulumi.export("myDatabaseUri", my_database_database_uri.uri)
-    ```
-
+    Use this data source to access information about an existing resource.
 
     :param str name: The database name to match.
     :param str type: The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
-    :param str zone: (Required) The Exoscale Zone name.
+    :param str zone: The Exoscale Zone name.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['timeouts'] = timeouts
     __args__['type'] = type
     __args__['zone'] = zone
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -144,6 +126,7 @@ def get_database_uri(name: Optional[str] = None,
     return AwaitableGetDatabaseURIResult(
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
+        timeouts=pulumi.get(__ret__, 'timeouts'),
         type=pulumi.get(__ret__, 'type'),
         uri=pulumi.get(__ret__, 'uri'),
         zone=pulumi.get(__ret__, 'zone'))
@@ -151,45 +134,15 @@ def get_database_uri(name: Optional[str] = None,
 
 @_utilities.lift_output_func(get_database_uri)
 def get_database_uri_output(name: Optional[pulumi.Input[str]] = None,
+                            timeouts: Optional[pulumi.Input[Optional[pulumi.InputType['GetDatabaseURITimeoutsArgs']]]] = None,
                             type: Optional[pulumi.Input[str]] = None,
                             zone: Optional[pulumi.Input[str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseURIResult]:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import json
-    import pulumi_exoscale as exoscale
-    import pulumiverse_exoscale as exoscale
-
-    my_database_database = exoscale.Database("myDatabaseDatabase",
-        zone="ch-gva-2",
-        type="pg",
-        plan="startup-4",
-        maintenance_dow="sunday",
-        maintenance_time="23:00:00",
-        termination_protection=True,
-        pg=exoscale.DatabasePgArgs(
-            version="13",
-            backup_schedule="04:00",
-            ip_filters=[
-                "1.2.3.4/32",
-                "5.6.7.8/32",
-            ],
-            pg_settings=json.dumps({
-                "timezone": "Europe/Zurich",
-            }),
-        ))
-    my_database_database_uri = exoscale.get_database_uri(name="my-database",
-        type="pg",
-        zone="ch-gva-2")
-    pulumi.export("myDatabaseUri", my_database_database_uri.uri)
-    ```
-
+    Use this data source to access information about an existing resource.
 
     :param str name: The database name to match.
     :param str type: The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
-    :param str zone: (Required) The Exoscale Zone name.
+    :param str zone: The Exoscale Zone name.
     """
     ...

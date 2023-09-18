@@ -76,7 +76,7 @@ namespace Pulumiverse.Exoscale
             set => _environment.Set(value);
         }
 
-        private static readonly __Value<string?> _key = new __Value<string?>(() => __config.Get("key"));
+        private static readonly __Value<string?> _key = new __Value<string?>(() => __config.Get("key") ?? Utilities.GetEnv("EXOSCALE_API_KEY"));
         /// <summary>
         /// Exoscale API key
         /// </summary>
@@ -103,7 +103,7 @@ namespace Pulumiverse.Exoscale
             set => _region.Set(value);
         }
 
-        private static readonly __Value<string?> _secret = new __Value<string?>(() => __config.Get("secret"));
+        private static readonly __Value<string?> _secret = new __Value<string?>(() => __config.Get("secret") ?? Utilities.GetEnv("EXOSCALE_API_SECRET"));
         /// <summary>
         /// Exoscale API secret
         /// </summary>

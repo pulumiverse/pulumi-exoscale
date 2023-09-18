@@ -12,119 +12,9 @@ namespace Pulumiverse.Exoscale
 {
     public static class GetDatabaseURI
     {
-        /// <summary>
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using System.Text.Json;
-        /// using Pulumi;
-        /// using Exoscale = Pulumi.Exoscale;
-        /// using Exoscale = Pulumiverse.Exoscale;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myDatabaseDatabase = new Exoscale.Database("myDatabaseDatabase", new()
-        ///     {
-        ///         Zone = "ch-gva-2",
-        ///         Type = "pg",
-        ///         Plan = "startup-4",
-        ///         MaintenanceDow = "sunday",
-        ///         MaintenanceTime = "23:00:00",
-        ///         TerminationProtection = true,
-        ///         Pg = new Exoscale.Inputs.DatabasePgArgs
-        ///         {
-        ///             Version = "13",
-        ///             BackupSchedule = "04:00",
-        ///             IpFilters = new[]
-        ///             {
-        ///                 "1.2.3.4/32",
-        ///                 "5.6.7.8/32",
-        ///             },
-        ///             PgSettings = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-        ///             {
-        ///                 ["timezone"] = "Europe/Zurich",
-        ///             }),
-        ///         },
-        ///     });
-        /// 
-        ///     var myDatabaseDatabaseURI = Exoscale.GetDatabaseURI.Invoke(new()
-        ///     {
-        ///         Name = "my-database",
-        ///         Type = "pg",
-        ///         Zone = "ch-gva-2",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["myDatabaseUri"] = myDatabaseDatabaseURI.Apply(getDatabaseURIResult =&gt; getDatabaseURIResult.Uri),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetDatabaseURIResult> InvokeAsync(GetDatabaseURIArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseURIResult>("exoscale:index/getDatabaseURI:getDatabaseURI", args ?? new GetDatabaseURIArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using System.Text.Json;
-        /// using Pulumi;
-        /// using Exoscale = Pulumi.Exoscale;
-        /// using Exoscale = Pulumiverse.Exoscale;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myDatabaseDatabase = new Exoscale.Database("myDatabaseDatabase", new()
-        ///     {
-        ///         Zone = "ch-gva-2",
-        ///         Type = "pg",
-        ///         Plan = "startup-4",
-        ///         MaintenanceDow = "sunday",
-        ///         MaintenanceTime = "23:00:00",
-        ///         TerminationProtection = true,
-        ///         Pg = new Exoscale.Inputs.DatabasePgArgs
-        ///         {
-        ///             Version = "13",
-        ///             BackupSchedule = "04:00",
-        ///             IpFilters = new[]
-        ///             {
-        ///                 "1.2.3.4/32",
-        ///                 "5.6.7.8/32",
-        ///             },
-        ///             PgSettings = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-        ///             {
-        ///                 ["timezone"] = "Europe/Zurich",
-        ///             }),
-        ///         },
-        ///     });
-        /// 
-        ///     var myDatabaseDatabaseURI = Exoscale.GetDatabaseURI.Invoke(new()
-        ///     {
-        ///         Name = "my-database",
-        ///         Type = "pg",
-        ///         Zone = "ch-gva-2",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["myDatabaseUri"] = myDatabaseDatabaseURI.Apply(getDatabaseURIResult =&gt; getDatabaseURIResult.Uri),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Output<GetDatabaseURIResult> Invoke(GetDatabaseURIInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseURIResult>("exoscale:index/getDatabaseURI:getDatabaseURI", args ?? new GetDatabaseURIInvokeArgs(), options.WithDefaults());
     }
@@ -138,6 +28,9 @@ namespace Pulumiverse.Exoscale
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Inputs.GetDatabaseURITimeoutsArgs? Timeouts { get; set; }
+
         /// <summary>
         /// The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
         /// </summary>
@@ -145,7 +38,7 @@ namespace Pulumiverse.Exoscale
         public string Type { get; set; } = null!;
 
         /// <summary>
-        /// (Required) The Exoscale Zone name.
+        /// The Exoscale Zone name.
         /// </summary>
         [Input("zone", required: true)]
         public string Zone { get; set; } = null!;
@@ -164,6 +57,9 @@ namespace Pulumiverse.Exoscale
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.GetDatabaseURITimeoutsInputArgs>? Timeouts { get; set; }
+
         /// <summary>
         /// The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
         /// </summary>
@@ -171,7 +67,7 @@ namespace Pulumiverse.Exoscale
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// (Required) The Exoscale Zone name.
+        /// The Exoscale Zone name.
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -187,13 +83,14 @@ namespace Pulumiverse.Exoscale
     public sealed class GetDatabaseURIResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
         /// The database name to match.
         /// </summary>
         public readonly string Name;
+        public readonly Outputs.GetDatabaseURITimeoutsResult? Timeouts;
         /// <summary>
         /// The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
         /// </summary>
@@ -203,7 +100,7 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly string Uri;
         /// <summary>
-        /// (Required) The Exoscale Zone name.
+        /// The Exoscale Zone name.
         /// </summary>
         public readonly string Zone;
 
@@ -213,6 +110,8 @@ namespace Pulumiverse.Exoscale
 
             string name,
 
+            Outputs.GetDatabaseURITimeoutsResult? timeouts,
+
             string type,
 
             string uri,
@@ -221,6 +120,7 @@ namespace Pulumiverse.Exoscale
         {
             Id = id;
             Name = name;
+            Timeouts = timeouts;
             Type = type;
             Uri = uri;
             Zone = zone;

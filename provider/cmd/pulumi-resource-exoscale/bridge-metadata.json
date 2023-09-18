@@ -1,0 +1,124 @@
+{
+    "renames": {
+        "resources": {
+            "exoscale:index/database:Database": "exoscale_database"
+        },
+        "functions": {
+            "exoscale:index/getDatabaseURI:getDatabaseURI": "exoscale_database_uri",
+            "exoscale:index/getNLBServiceList:getNLBServiceList": "exoscale_nlb_service_list",
+            "exoscale:index/getZones:getZones": "exoscale_zones"
+        },
+        "renamedProperties": {
+            "exoscale:index/DatabaseGrafana:DatabaseGrafana": {
+                "grafanaSettings": "grafana_settings",
+                "ipFilters": "ip_filter"
+            },
+            "exoscale:index/DatabaseKafka:DatabaseKafka": {
+                "enableCertAuth": "enable_cert_auth",
+                "enableKafkaConnect": "enable_kafka_connect",
+                "enableKafkaRest": "enable_kafka_rest",
+                "enableSaslAuth": "enable_sasl_auth",
+                "enableSchemaRegistry": "enable_schema_registry",
+                "ipFilters": "ip_filter",
+                "kafkaConnectSettings": "kafka_connect_settings",
+                "kafkaRestSettings": "kafka_rest_settings",
+                "kafkaSettings": "kafka_settings",
+                "schemaRegistrySettings": "schema_registry_settings"
+            },
+            "exoscale:index/DatabaseMysql:DatabaseMysql": {
+                "adminPassword": "admin_password",
+                "adminUsername": "admin_username",
+                "backupSchedule": "backup_schedule",
+                "ipFilters": "ip_filter",
+                "mysqlSettings": "mysql_settings"
+            },
+            "exoscale:index/DatabaseOpensearch:DatabaseOpensearch": {
+                "forkFromService": "fork_from_service",
+                "indexPatterns": "index_pattern",
+                "indexTemplate": "index_template",
+                "ipFilters": "ip_filter",
+                "keepIndexRefreshInterval": "keep_index_refresh_interval",
+                "maxIndexCount": "max_index_count",
+                "recoveryBackupName": "recovery_backup_name"
+            },
+            "exoscale:index/DatabaseOpensearchDashboards:DatabaseOpensearchDashboards": {
+                "maxOldSpaceSize": "max_old_space_size",
+                "requestTimeout": "request_timeout"
+            },
+            "exoscale:index/DatabaseOpensearchIndexPattern:DatabaseOpensearchIndexPattern": {
+                "maxIndexCount": "max_index_count",
+                "sortingAlgorithm": "sorting_algorithm"
+            },
+            "exoscale:index/DatabaseOpensearchIndexTemplate:DatabaseOpensearchIndexTemplate": {
+                "mappingNestedObjectsLimit": "mapping_nested_objects_limit",
+                "numberOfReplicas": "number_of_replicas",
+                "numberOfShards": "number_of_shards"
+            },
+            "exoscale:index/DatabasePg:DatabasePg": {
+                "adminPassword": "admin_password",
+                "adminUsername": "admin_username",
+                "backupSchedule": "backup_schedule",
+                "ipFilters": "ip_filter",
+                "pgSettings": "pg_settings",
+                "pgbouncerSettings": "pgbouncer_settings",
+                "pglookoutSettings": "pglookout_settings"
+            },
+            "exoscale:index/DatabaseRedis:DatabaseRedis": {
+                "ipFilters": "ip_filter",
+                "redisSettings": "redis_settings"
+            },
+            "exoscale:index/database:Database": {
+                "caCertificate": "ca_certificate",
+                "createdAt": "created_at",
+                "diskSize": "disk_size",
+                "maintenanceDow": "maintenance_dow",
+                "maintenanceTime": "maintenance_time",
+                "nodeCpus": "node_cpus",
+                "nodeMemory": "node_memory",
+                "terminationProtection": "termination_protection",
+                "updatedAt": "updated_at"
+            },
+            "exoscale:index/getNLBServiceList:getNLBServiceList": {
+                "nlbId": "nlb_id",
+                "nlbName": "nlb_name"
+            },
+            "exoscale:index/getNLBServiceListService:getNLBServiceListService": {
+                "instancePoolId": "instance_pool_id",
+                "targetPort": "target_port"
+            },
+            "exoscale:index/getNLBServiceListServiceHealthcheck:getNLBServiceListServiceHealthcheck": {
+                "tlsSni": "tls_sni"
+            },
+            "exoscale:index:Provider": {
+                "computeEndpoint": "compute_endpoint",
+                "dnsEndpoint": "dns_endpoint"
+            }
+        },
+        "renamedConfigProperties": {
+            "computeEndpoint": "compute_endpoint",
+            "dnsEndpoint": "dns_endpoint"
+        }
+    },
+    "resources": {
+        "exoscale:index/affinity:Affinity": "exoscale_affinity",
+        "exoscale:index/antiAffinityGroup:AntiAffinityGroup": "exoscale_anti_affinity_group",
+        "exoscale:index/compute:Compute": "exoscale_compute",
+        "exoscale:index/computeInstance:ComputeInstance": "exoscale_compute_instance",
+        "exoscale:index/domain:Domain": "exoscale_domain",
+        "exoscale:index/domainRecord:DomainRecord": "exoscale_domain_record",
+        "exoscale:index/elasticIP:ElasticIP": "exoscale_elastic_ip",
+        "exoscale:index/iAMAccessKey:IAMAccessKey": "exoscale_iam_access_key",
+        "exoscale:index/instancePool:InstancePool": "exoscale_instance_pool",
+        "exoscale:index/iPAddress:IPAddress": "exoscale_ip_address",
+        "exoscale:index/network:Network": "exoscale_network",
+        "exoscale:index/nIC:NIC": "exoscale_nic",
+        "exoscale:index/nLB:NLB": "exoscale_nlb",
+        "exoscale:index/nLBService:NLBService": "exoscale_nlb_service",
+        "exoscale:index/privateNetwork:PrivateNetwork": "exoscale_private_network",
+        "exoscale:index/secondaryIPAddress:SecondaryIPAddress": "exoscale_secondary_ip_address",
+        "exoscale:index/securityGroup:SecurityGroup": "exoscale_security_group",
+        "exoscale:index/securityGroupRule:SecurityGroupRule": "exoscale_security_group_rule",
+        "exoscale:index/securityGroupRules:SecurityGroupRules": "exoscale_security_group_rules",
+        "exoscale:index/sKSCluster:SKSCluster": "exoscale_sks_cluster"
+    }
+}

@@ -5,15 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
-export interface ComputeInstanceNetworkInterface {
+export interface DatabaseGrafana {
     /**
-     * The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
+     * Grafana configuration settings in JSON format (`exo dbaas type show grafana --settings=grafana` for reference).
      */
-    ipAddress: string;
+    grafanaSettings: string;
     /**
-     * The exoscale*private*network (ID) to attach to the instance.
+     * A list of CIDR blocks to allow incoming connections from.
      */
-    networkId: string;
+    ipFilters: string[];
 }
 
 export interface DatabaseKafka {
@@ -24,11 +24,11 @@ export interface DatabaseKafka {
     /**
      * Enable Kafka Connect.
      */
-    enableKafkaConnect?: boolean;
+    enableKafkaConnect: boolean;
     /**
      * Enable Kafka REST.
      */
-    enableKafkaRest?: boolean;
+    enableKafkaRest: boolean;
     /**
      * Enable SASL-based authentication method.
      */
@@ -36,7 +36,7 @@ export interface DatabaseKafka {
     /**
      * Enable Schema Registry.
      */
-    enableSchemaRegistry?: boolean;
+    enableSchemaRegistry: boolean;
     /**
      * A list of CIDR blocks to allow incoming connections from.
      */
@@ -67,11 +67,11 @@ export interface DatabaseMysql {
     /**
      * A custom administrator account password (may only be set at creation time).
      */
-    adminPassword: string;
+    adminPassword?: string;
     /**
      * A custom administrator account username (may only be set at creation time).
      */
-    adminUsername: string;
+    adminUsername?: string;
     /**
      * The automated backup schedule (`HH:MM`).
      */
@@ -91,6 +91,9 @@ export interface DatabaseMysql {
 }
 
 export interface DatabaseOpensearch {
+    /**
+     * OpenSearch Dashboards settings
+     */
     dashboards?: outputs.DatabaseOpensearchDashboards;
     /**
      * ❗ Service name
@@ -105,7 +108,7 @@ export interface DatabaseOpensearch {
      */
     indexTemplate?: outputs.DatabaseOpensearchIndexTemplate;
     /**
-     * Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
+     * Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]
      */
     ipFilters: string[];
     /**
@@ -117,15 +120,15 @@ export interface DatabaseOpensearch {
      */
     maxIndexCount?: number;
     /**
-     * ❗
+     * ❗ Name of a backup to recover from
      */
     recoveryBackupName?: string;
     /**
      * OpenSearch-specific settings, in json. e.g.`jsonencode({thread_pool_search_size: 64})`. Use `exo x get-dbaas-settings-opensearch` to get a list of available settings.
      */
-    settings?: string;
+    settings: string;
     /**
-     * ❗ OpenSearch major version.
+     * ❗ OpenSearch major version (`exo dbaas type show opensearch` for reference)
      */
     version: string;
 }
@@ -152,11 +155,11 @@ export interface DatabasePg {
     /**
      * A custom administrator account password (may only be set at creation time).
      */
-    adminPassword: string;
+    adminPassword?: string;
     /**
      * A custom administrator account username (may only be set at creation time).
      */
-    adminUsername: string;
+    adminUsername?: string;
     /**
      * The automated backup schedule (`HH:MM`).
      */
@@ -194,561 +197,86 @@ export interface DatabaseRedis {
     redisSettings: string;
 }
 
-export interface ElasticIPHealthcheck {
+export interface DatabaseTimeouts {
     /**
-     * The healthcheck interval (seconds; must be between `5` and `300`; default: `10`).
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    interval?: number;
+    create?: string;
     /**
-     * The healthcheck mode (`tcp`, `http` or `https`; may only be set at creation time).
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    mode: string;
+    delete?: string;
     /**
-     * The healthcheck target port (must be between `1` and `65535`).
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
+export interface GetDatabaseURITimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+}
+
+export interface GetNLBServiceListService {
+    /**
+     * NLB service description.
+     */
+    description: string;
+    healthcheck: outputs.GetNLBServiceListServiceHealthcheck;
+    /**
+     * NLB service ID.
+     */
+    id: string;
+    /**
+     * The exoscale*instance*pool (ID) to forward traffic to.
+     */
+    instancePoolId: string;
+    /**
+     * NLB Service name.
+     */
+    name: string;
+    /**
+     * Port exposed on the NLB's public IP.
      */
     port: number;
     /**
-     * The number of failed healthcheck attempts before considering the target unhealthy (must be between `1` and `20`; default: `2`).
+     * Network traffic protocol.
      */
-    strikesFail?: number;
+    protocol: string;
     /**
-     * The number of successful healthcheck attempts before considering the target healthy (must be between `1` and `20`; default: `3`).
-     */
-    strikesOk?: number;
-    /**
-     * The time before considering a healthcheck probing failed (seconds; must be between `2` and `60`; default: `3`).
-     */
-    timeout?: number;
-    /**
-     * Disable TLS certificate verification for healthcheck in `https` mode (boolean; default: `false`).
-     */
-    tlsSkipVerify?: boolean;
-    /**
-     * The healthcheck server name to present with SNI in `https` mode.
-     */
-    tlsSni?: string;
-    /**
-     * The healthcheck target URI (required in `http(s)` modes).
-     */
-    uri?: string;
-}
-
-export interface GetComputeInstanceListInstance {
-    antiAffinityGroupIds?: string[];
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    createdAt: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    deployTargetId: string;
-    /**
-     * Match against this int
-     */
-    diskSize: number;
-    elasticIpIds: string[];
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    id?: string;
-    /**
-     * Match against this bool
-     */
-    ipv6: boolean;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    ipv6Address: string;
-    /**
-     * Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-     */
-    labels?: {[key: string]: string};
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    managerId: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    managerType: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    name?: string;
-    privateNetworkIds: string[];
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    publicIpAddress: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    reverseDns: string;
-    securityGroupIds: string[];
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    sshKey: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     * NLB Service State.
      */
     state: string;
     /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     * The strategy (`round-robin`|`source-hash`).
      */
-    templateId: string;
+    strategy: string;
     /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     * Port on which the network traffic will be forwarded to on the receiving instance.
      */
-    type: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    userData: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    zone: string;
+    targetPort: number;
 }
 
-export interface GetDomainRecordFilter {
-    /**
-     * A regular expression to match the record content.
-     */
-    contentRegex?: string;
-    /**
-     * The record ID to match.
-     */
-    id?: string;
-    /**
-     * The domain record name to match.
-     */
-    name?: string;
-    /**
-     * The record type to match.
-     */
-    recordType?: string;
-}
-
-export interface GetDomainRecordRecord {
-    content?: string;
-    /**
-     * The exoscale.Domain name to match.
-     */
-    domain?: string;
-    /**
-     * The ID of this resource.
-     */
-    id?: string;
-    name?: string;
-    prio?: number;
-    recordType?: string;
-    ttl?: number;
-}
-
-export interface GetElasticIPHealthcheck {
+export interface GetNLBServiceListServiceHealthcheck {
     interval: number;
     mode: string;
     port: number;
-    strikesFail: number;
-    strikesOk: number;
+    retries: number;
     timeout: number;
-    tlsSkipVerify: boolean;
     tlsSni: string;
     uri: string;
 }
 
-export interface GetInstancePoolInstance {
+export interface GetNLBServiceListTimeouts {
     /**
-     * The instance pool ID to match (conflicts with `name`).
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    id?: string;
-    ipv6Address: string;
-    /**
-     * The pool name to match (conflicts with `id`).
-     */
-    name?: string;
-    publicIpAddress: string;
-}
-
-export interface GetInstancePoolListPool {
-    affinityGroupIds: string[];
-    deployTargetId: string;
-    description: string;
-    diskSize: number;
-    elasticIpIds: string[];
-    /**
-     * The ID of this resource.
-     */
-    id?: string;
-    instancePrefix: string;
-    instanceType: string;
-    instances: outputs.GetInstancePoolListPoolInstance[];
-    ipv6: boolean;
-    keyPair: string;
-    labels?: {[key: string]: string};
-    name?: string;
-    networkIds: string[];
-    securityGroupIds: string[];
-    size: number;
-    state: string;
-    templateId: string;
-    userData: string;
-    /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-     */
-    zone: string;
-}
-
-export interface GetInstancePoolListPoolInstance {
-    /**
-     * The ID of this resource.
-     */
-    id?: string;
-    ipv6Address: string;
-    name?: string;
-    publicIpAddress: string;
-}
-
-export interface GetSKSClusterListCluster {
-    /**
-     * @deprecated This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
-     */
-    addons: string[];
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    aggregationCa: string;
-    /**
-     * Match against this bool
-     */
-    autoUpgrade?: boolean;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    cni?: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    controlPlaneCa: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    createdAt: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    description?: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    endpoint: string;
-    /**
-     * Match against this bool
-     */
-    exoscaleCcm?: boolean;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    id?: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    kubeletCa: string;
-    /**
-     * Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-     */
-    labels?: {[key: string]: string};
-    /**
-     * Match against this bool
-     */
-    metricsServer?: boolean;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    name?: string;
-    nodepools: string[];
-    oidc: outputs.GetSKSClusterListClusterOidc;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    serviceLevel?: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    state: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    version: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    zone: string;
-}
-
-export interface GetSKSClusterListClusterOidc {
-    clientId: string;
-    groupsClaim?: string;
-    groupsPrefix?: string;
-    issuerUrl: string;
-    requiredClaim?: {[key: string]: string};
-    usernameClaim?: string;
-    usernamePrefix?: string;
-}
-
-export interface GetSKSClusterOidc {
-    /**
-     * The OpenID client ID.
-     */
-    clientId: string;
-    /**
-     * An OpenID JWT claim to use as the user's group.
-     */
-    groupsClaim?: string;
-    /**
-     * An OpenID prefix prepended to group claims.
-     */
-    groupsPrefix?: string;
-    /**
-     * The OpenID provider URL.
-     */
-    issuerUrl: string;
-    /**
-     * A map of key/value pairs that describes a required claim in the OpenID Token.
-     */
-    requiredClaim?: {[key: string]: string};
-    /**
-     * An OpenID JWT claim to use as the user name.
-     */
-    usernameClaim?: string;
-    /**
-     * An OpenID prefix prepended to username claims.
-     */
-    usernamePrefix?: string;
-}
-
-export interface GetSKSNodepoolListNodepool {
-    antiAffinityGroupIds?: string[];
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    clusterId: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    createdAt: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    deployTargetId?: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    description?: string;
-    /**
-     * Match against this int
-     */
-    diskSize?: number;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    id?: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    instancePoolId: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    instancePrefix?: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    instanceType?: string;
-    /**
-     * Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-     */
-    labels?: {[key: string]: string};
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    name?: string;
-    privateNetworkIds?: string[];
-    securityGroupIds?: string[];
-    /**
-     * Match against this int
-     */
-    size?: number;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    state: string;
-    /**
-     * Match against this bool
-     */
-    storageLvm?: boolean;
-    /**
-     * Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-     */
-    taints?: {[key: string]: string};
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    templateId: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    version: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
-    zone: string;
-}
-
-export interface InstancePoolInstance {
-    /**
-     * The ID of this resource.
-     */
-    id?: string;
-    /**
-     * The instance (main network interface) IPv6 address.
-     */
-    ipv6Address: string;
-    /**
-     * The instance name.
-     */
-    name?: string;
-    /**
-     * The instance (main network interface) IPv4 address.
-     */
-    publicIpAddress: string;
-}
-
-export interface NLBServiceHealthcheck {
-    /**
-     * The healthcheck interval in seconds (default: `10`).
-     */
-    interval?: number;
-    /**
-     * The healthcheck mode (`tcp`|`http`|`https`; default: `tcp`).
-     */
-    mode?: string;
-    /**
-     * The NLB service (TCP/UDP) port.
-     */
-    port: number;
-    /**
-     * The healthcheck retries (default: `1`).
-     */
-    retries?: number;
-    /**
-     * The healthcheck timeout (seconds; default: `5`).
-     */
-    timeout?: number;
-    /**
-     * The healthcheck TLS SNI server name (only if `mode` is `https`).
-     */
-    tlsSni?: string;
-    /**
-     * The healthcheck URI (must be set only if `mode` is `http(s)`).
-     */
-    uri?: string;
-}
-
-export interface SKSClusterOidc {
-    /**
-     * The OpenID client ID.
-     */
-    clientId: string;
-    /**
-     * An OpenID JWT claim to use as the user's group.
-     */
-    groupsClaim?: string;
-    /**
-     * An OpenID prefix prepended to group claims.
-     */
-    groupsPrefix?: string;
-    /**
-     * The OpenID provider URL.
-     */
-    issuerUrl: string;
-    /**
-     * A map of key/value pairs that describes a required claim in the OpenID Token.
-     */
-    requiredClaim?: {[key: string]: string};
-    /**
-     * An OpenID JWT claim to use as the user name.
-     */
-    usernameClaim?: string;
-    /**
-     * An OpenID prefix prepended to username claims.
-     */
-    usernamePrefix?: string;
-}
-
-export interface SecurityGroupRulesEgress {
-    /**
-     * A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
-     */
-    cidrLists?: string[];
-    /**
-     * A free-form text describing the block.
-     */
-    description?: string;
-    /**
-     * An ICMP/ICMPv6 type/code to match.
-     */
-    icmpCode?: number;
-    /**
-     * An ICMP/ICMPv6 type/code to match.
-     */
-    icmpType?: number;
-    ids: string[];
-    /**
-     * A list of ports or port ranges (`<start_port>-<end_port>`).
-     */
-    ports?: string[];
-    /**
-     * The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
-     */
-    protocol?: string;
-    /**
-     * A list of source (for ingress)/destination (for egress) identified by a security group.
-     */
-    userSecurityGroupLists?: string[];
-}
-
-export interface SecurityGroupRulesIngress {
-    /**
-     * A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
-     */
-    cidrLists?: string[];
-    /**
-     * A free-form text describing the block.
-     */
-    description?: string;
-    /**
-     * An ICMP/ICMPv6 type/code to match.
-     */
-    icmpCode?: number;
-    /**
-     * An ICMP/ICMPv6 type/code to match.
-     */
-    icmpType?: number;
-    ids: string[];
-    /**
-     * A list of ports or port ranges (`<start_port>-<end_port>`).
-     */
-    ports?: string[];
-    /**
-     * The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
-     */
-    protocol?: string;
-    /**
-     * A list of source (for ingress)/destination (for egress) identified by a security group.
-     */
-    userSecurityGroupLists?: string[];
+    read?: string;
 }
 

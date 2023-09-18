@@ -6,12 +6,12 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
 __all__ = [
-    'ComputeInstanceNetworkInterface',
+    'DatabaseGrafana',
     'DatabaseKafka',
     'DatabaseMysql',
     'DatabaseOpensearch',
@@ -20,72 +20,72 @@ __all__ = [
     'DatabaseOpensearchIndexTemplate',
     'DatabasePg',
     'DatabaseRedis',
-    'ElasticIPHealthcheck',
-    'InstancePoolInstance',
-    'NLBServiceHealthcheck',
-    'SKSClusterOidc',
-    'SecurityGroupRulesEgress',
-    'SecurityGroupRulesIngress',
-    'GetComputeInstanceListInstanceResult',
-    'GetDomainRecordFilterResult',
-    'GetDomainRecordRecordResult',
-    'GetElasticIPHealthcheckResult',
-    'GetInstancePoolInstanceResult',
-    'GetInstancePoolListPoolResult',
-    'GetInstancePoolListPoolInstanceResult',
-    'GetSKSClusterListClusterResult',
-    'GetSKSClusterListClusterOidcResult',
-    'GetSKSClusterOidcResult',
-    'GetSKSNodepoolListNodepoolResult',
+    'DatabaseTimeouts',
+    'GetDatabaseURITimeoutsResult',
+    'GetNLBServiceListServiceResult',
+    'GetNLBServiceListServiceHealthcheckResult',
+    'GetNLBServiceListTimeoutsResult',
 ]
 
 @pulumi.output_type
-class ComputeInstanceNetworkInterface(dict):
+class DatabaseGrafana(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "networkId":
-            suggest = "network_id"
-        elif key == "ipAddress":
-            suggest = "ip_address"
+        if key == "grafanaSettings":
+            suggest = "grafana_settings"
+        elif key == "ipFilters":
+            suggest = "ip_filters"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ComputeInstanceNetworkInterface. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseGrafana. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        ComputeInstanceNetworkInterface.__key_warning(key)
+        DatabaseGrafana.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        ComputeInstanceNetworkInterface.__key_warning(key)
+        DatabaseGrafana.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 network_id: str,
-                 ip_address: Optional[str] = None):
+                 grafana_settings: Optional[str] = None,
+                 ip_filters: Optional[Sequence[str]] = None):
         """
-        :param str network_id: The exoscale*private*network (ID) to attach to the instance.
-        :param str ip_address: The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
+        :param str grafana_settings: Grafana configuration settings in JSON format (`exo dbaas type show grafana --settings=grafana` for reference).
+        :param Sequence[str] ip_filters: A list of CIDR blocks to allow incoming connections from.
         """
-        pulumi.set(__self__, "network_id", network_id)
-        if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+        DatabaseGrafana._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            grafana_settings=grafana_settings,
+            ip_filters=ip_filters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             grafana_settings: Optional[str] = None,
+             ip_filters: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if grafana_settings is not None:
+            _setter("grafana_settings", grafana_settings)
+        if ip_filters is not None:
+            _setter("ip_filters", ip_filters)
 
     @property
-    @pulumi.getter(name="networkId")
-    def network_id(self) -> str:
+    @pulumi.getter(name="grafanaSettings")
+    def grafana_settings(self) -> Optional[str]:
         """
-        The exoscale*private*network (ID) to attach to the instance.
+        Grafana configuration settings in JSON format (`exo dbaas type show grafana --settings=grafana` for reference).
         """
-        return pulumi.get(self, "network_id")
+        return pulumi.get(self, "grafana_settings")
 
     @property
-    @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[str]:
+    @pulumi.getter(name="ipFilters")
+    def ip_filters(self) -> Optional[Sequence[str]]:
         """
-        The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
+        A list of CIDR blocks to allow incoming connections from.
         """
-        return pulumi.get(self, "ip_address")
+        return pulumi.get(self, "ip_filters")
 
 
 @pulumi.output_type
@@ -150,28 +150,57 @@ class DatabaseKafka(dict):
         :param str schema_registry_settings: Schema Registry configuration settings in JSON format (`exo dbaas type show kafka --settings=schema-registry` for reference)
         :param str version: Kafka major version (`exo dbaas type show kafka` for reference; may only be set at creation time).
         """
+        DatabaseKafka._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enable_cert_auth=enable_cert_auth,
+            enable_kafka_connect=enable_kafka_connect,
+            enable_kafka_rest=enable_kafka_rest,
+            enable_sasl_auth=enable_sasl_auth,
+            enable_schema_registry=enable_schema_registry,
+            ip_filters=ip_filters,
+            kafka_connect_settings=kafka_connect_settings,
+            kafka_rest_settings=kafka_rest_settings,
+            kafka_settings=kafka_settings,
+            schema_registry_settings=schema_registry_settings,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enable_cert_auth: Optional[bool] = None,
+             enable_kafka_connect: Optional[bool] = None,
+             enable_kafka_rest: Optional[bool] = None,
+             enable_sasl_auth: Optional[bool] = None,
+             enable_schema_registry: Optional[bool] = None,
+             ip_filters: Optional[Sequence[str]] = None,
+             kafka_connect_settings: Optional[str] = None,
+             kafka_rest_settings: Optional[str] = None,
+             kafka_settings: Optional[str] = None,
+             schema_registry_settings: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enable_cert_auth is not None:
-            pulumi.set(__self__, "enable_cert_auth", enable_cert_auth)
+            _setter("enable_cert_auth", enable_cert_auth)
         if enable_kafka_connect is not None:
-            pulumi.set(__self__, "enable_kafka_connect", enable_kafka_connect)
+            _setter("enable_kafka_connect", enable_kafka_connect)
         if enable_kafka_rest is not None:
-            pulumi.set(__self__, "enable_kafka_rest", enable_kafka_rest)
+            _setter("enable_kafka_rest", enable_kafka_rest)
         if enable_sasl_auth is not None:
-            pulumi.set(__self__, "enable_sasl_auth", enable_sasl_auth)
+            _setter("enable_sasl_auth", enable_sasl_auth)
         if enable_schema_registry is not None:
-            pulumi.set(__self__, "enable_schema_registry", enable_schema_registry)
+            _setter("enable_schema_registry", enable_schema_registry)
         if ip_filters is not None:
-            pulumi.set(__self__, "ip_filters", ip_filters)
+            _setter("ip_filters", ip_filters)
         if kafka_connect_settings is not None:
-            pulumi.set(__self__, "kafka_connect_settings", kafka_connect_settings)
+            _setter("kafka_connect_settings", kafka_connect_settings)
         if kafka_rest_settings is not None:
-            pulumi.set(__self__, "kafka_rest_settings", kafka_rest_settings)
+            _setter("kafka_rest_settings", kafka_rest_settings)
         if kafka_settings is not None:
-            pulumi.set(__self__, "kafka_settings", kafka_settings)
+            _setter("kafka_settings", kafka_settings)
         if schema_registry_settings is not None:
-            pulumi.set(__self__, "schema_registry_settings", schema_registry_settings)
+            _setter("schema_registry_settings", schema_registry_settings)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="enableCertAuth")
@@ -304,18 +333,37 @@ class DatabaseMysql(dict):
         :param str mysql_settings: MySQL configuration settings in JSON format (`exo dbaas type show mysql --settings=mysql` for reference).
         :param str version: MySQL major version (`exo dbaas type show mysql` for reference; may only be set at creation time).
         """
+        DatabaseMysql._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            admin_password=admin_password,
+            admin_username=admin_username,
+            backup_schedule=backup_schedule,
+            ip_filters=ip_filters,
+            mysql_settings=mysql_settings,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             admin_password: Optional[str] = None,
+             admin_username: Optional[str] = None,
+             backup_schedule: Optional[str] = None,
+             ip_filters: Optional[Sequence[str]] = None,
+             mysql_settings: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if admin_password is not None:
-            pulumi.set(__self__, "admin_password", admin_password)
+            _setter("admin_password", admin_password)
         if admin_username is not None:
-            pulumi.set(__self__, "admin_username", admin_username)
+            _setter("admin_username", admin_username)
         if backup_schedule is not None:
-            pulumi.set(__self__, "backup_schedule", backup_schedule)
+            _setter("backup_schedule", backup_schedule)
         if ip_filters is not None:
-            pulumi.set(__self__, "ip_filters", ip_filters)
+            _setter("ip_filters", ip_filters)
         if mysql_settings is not None:
-            pulumi.set(__self__, "mysql_settings", mysql_settings)
+            _setter("mysql_settings", mysql_settings)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="adminPassword")
@@ -409,40 +457,71 @@ class DatabaseOpensearch(dict):
                  settings: Optional[str] = None,
                  version: Optional[str] = None):
         """
+        :param 'DatabaseOpensearchDashboardsArgs' dashboards: OpenSearch Dashboards settings
         :param str fork_from_service: ❗ Service name
         :param Sequence['DatabaseOpensearchIndexPatternArgs'] index_patterns: (can be used multiple times) Allows you to create glob style patterns and set a max number of indexes matching this pattern you want to keep. Creating indexes exceeding this value will cause the oldest one to get deleted. You could for example create a pattern looking like 'logs.?' and then create index logs.1, logs.2 etc, it will delete logs.1 once you create logs.6. Do note 'logs.?' does not apply to logs.10. Note: Setting max*index*count to 0 will do nothing and the pattern gets ignored.
         :param 'DatabaseOpensearchIndexTemplateArgs' index_template: Template settings for all new indexes
-        :param Sequence[str] ip_filters: Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
+        :param Sequence[str] ip_filters: Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]
         :param bool keep_index_refresh_interval: Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
         :param int max_index_count: Maximum number of indexes to keep (Minimum value is `0`)
-        :param str recovery_backup_name: ❗
+        :param str recovery_backup_name: ❗ Name of a backup to recover from
         :param str settings: OpenSearch-specific settings, in json. e.g.`jsonencode({thread_pool_search_size: 64})`. Use `exo x get-dbaas-settings-opensearch` to get a list of available settings.
-        :param str version: ❗ OpenSearch major version.
+        :param str version: ❗ OpenSearch major version (`exo dbaas type show opensearch` for reference)
         """
+        DatabaseOpensearch._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dashboards=dashboards,
+            fork_from_service=fork_from_service,
+            index_patterns=index_patterns,
+            index_template=index_template,
+            ip_filters=ip_filters,
+            keep_index_refresh_interval=keep_index_refresh_interval,
+            max_index_count=max_index_count,
+            recovery_backup_name=recovery_backup_name,
+            settings=settings,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dashboards: Optional['outputs.DatabaseOpensearchDashboards'] = None,
+             fork_from_service: Optional[str] = None,
+             index_patterns: Optional[Sequence['outputs.DatabaseOpensearchIndexPattern']] = None,
+             index_template: Optional['outputs.DatabaseOpensearchIndexTemplate'] = None,
+             ip_filters: Optional[Sequence[str]] = None,
+             keep_index_refresh_interval: Optional[bool] = None,
+             max_index_count: Optional[int] = None,
+             recovery_backup_name: Optional[str] = None,
+             settings: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dashboards is not None:
-            pulumi.set(__self__, "dashboards", dashboards)
+            _setter("dashboards", dashboards)
         if fork_from_service is not None:
-            pulumi.set(__self__, "fork_from_service", fork_from_service)
+            _setter("fork_from_service", fork_from_service)
         if index_patterns is not None:
-            pulumi.set(__self__, "index_patterns", index_patterns)
+            _setter("index_patterns", index_patterns)
         if index_template is not None:
-            pulumi.set(__self__, "index_template", index_template)
+            _setter("index_template", index_template)
         if ip_filters is not None:
-            pulumi.set(__self__, "ip_filters", ip_filters)
+            _setter("ip_filters", ip_filters)
         if keep_index_refresh_interval is not None:
-            pulumi.set(__self__, "keep_index_refresh_interval", keep_index_refresh_interval)
+            _setter("keep_index_refresh_interval", keep_index_refresh_interval)
         if max_index_count is not None:
-            pulumi.set(__self__, "max_index_count", max_index_count)
+            _setter("max_index_count", max_index_count)
         if recovery_backup_name is not None:
-            pulumi.set(__self__, "recovery_backup_name", recovery_backup_name)
+            _setter("recovery_backup_name", recovery_backup_name)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
     def dashboards(self) -> Optional['outputs.DatabaseOpensearchDashboards']:
+        """
+        OpenSearch Dashboards settings
+        """
         return pulumi.get(self, "dashboards")
 
     @property
@@ -473,7 +552,7 @@ class DatabaseOpensearch(dict):
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
-        Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
+        Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]
         """
         return pulumi.get(self, "ip_filters")
 
@@ -497,7 +576,7 @@ class DatabaseOpensearch(dict):
     @pulumi.getter(name="recoveryBackupName")
     def recovery_backup_name(self) -> Optional[str]:
         """
-        ❗
+        ❗ Name of a backup to recover from
         """
         return pulumi.get(self, "recovery_backup_name")
 
@@ -513,7 +592,7 @@ class DatabaseOpensearch(dict):
     @pulumi.getter
     def version(self) -> Optional[str]:
         """
-        ❗ OpenSearch major version.
+        ❗ OpenSearch major version (`exo dbaas type show opensearch` for reference)
         """
         return pulumi.get(self, "version")
 
@@ -543,12 +622,25 @@ class DatabaseOpensearchDashboards(dict):
                  enabled: Optional[bool] = None,
                  max_old_space_size: Optional[int] = None,
                  request_timeout: Optional[int] = None):
+        DatabaseOpensearchDashboards._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            max_old_space_size=max_old_space_size,
+            request_timeout=request_timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[bool] = None,
+             max_old_space_size: Optional[int] = None,
+             request_timeout: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if max_old_space_size is not None:
-            pulumi.set(__self__, "max_old_space_size", max_old_space_size)
+            _setter("max_old_space_size", max_old_space_size)
         if request_timeout is not None:
-            pulumi.set(__self__, "request_timeout", request_timeout)
+            _setter("request_timeout", request_timeout)
 
     @property
     @pulumi.getter
@@ -591,12 +683,25 @@ class DatabaseOpensearchIndexPattern(dict):
                  max_index_count: Optional[int] = None,
                  pattern: Optional[str] = None,
                  sorting_algorithm: Optional[str] = None):
+        DatabaseOpensearchIndexPattern._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_index_count=max_index_count,
+            pattern=pattern,
+            sorting_algorithm=sorting_algorithm,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_index_count: Optional[int] = None,
+             pattern: Optional[str] = None,
+             sorting_algorithm: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if max_index_count is not None:
-            pulumi.set(__self__, "max_index_count", max_index_count)
+            _setter("max_index_count", max_index_count)
         if pattern is not None:
-            pulumi.set(__self__, "pattern", pattern)
+            _setter("pattern", pattern)
         if sorting_algorithm is not None:
-            pulumi.set(__self__, "sorting_algorithm", sorting_algorithm)
+            _setter("sorting_algorithm", sorting_algorithm)
 
     @property
     @pulumi.getter(name="maxIndexCount")
@@ -641,12 +746,25 @@ class DatabaseOpensearchIndexTemplate(dict):
                  mapping_nested_objects_limit: Optional[int] = None,
                  number_of_replicas: Optional[int] = None,
                  number_of_shards: Optional[int] = None):
+        DatabaseOpensearchIndexTemplate._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            mapping_nested_objects_limit=mapping_nested_objects_limit,
+            number_of_replicas=number_of_replicas,
+            number_of_shards=number_of_shards,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             mapping_nested_objects_limit: Optional[int] = None,
+             number_of_replicas: Optional[int] = None,
+             number_of_shards: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if mapping_nested_objects_limit is not None:
-            pulumi.set(__self__, "mapping_nested_objects_limit", mapping_nested_objects_limit)
+            _setter("mapping_nested_objects_limit", mapping_nested_objects_limit)
         if number_of_replicas is not None:
-            pulumi.set(__self__, "number_of_replicas", number_of_replicas)
+            _setter("number_of_replicas", number_of_replicas)
         if number_of_shards is not None:
-            pulumi.set(__self__, "number_of_shards", number_of_shards)
+            _setter("number_of_shards", number_of_shards)
 
     @property
     @pulumi.getter(name="mappingNestedObjectsLimit")
@@ -714,22 +832,45 @@ class DatabasePg(dict):
         :param str pglookout_settings: pglookout configuration settings in JSON format (`exo dbaas type show pg --settings=pglookout` for reference).
         :param str version: PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
         """
+        DatabasePg._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            admin_password=admin_password,
+            admin_username=admin_username,
+            backup_schedule=backup_schedule,
+            ip_filters=ip_filters,
+            pg_settings=pg_settings,
+            pgbouncer_settings=pgbouncer_settings,
+            pglookout_settings=pglookout_settings,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             admin_password: Optional[str] = None,
+             admin_username: Optional[str] = None,
+             backup_schedule: Optional[str] = None,
+             ip_filters: Optional[Sequence[str]] = None,
+             pg_settings: Optional[str] = None,
+             pgbouncer_settings: Optional[str] = None,
+             pglookout_settings: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if admin_password is not None:
-            pulumi.set(__self__, "admin_password", admin_password)
+            _setter("admin_password", admin_password)
         if admin_username is not None:
-            pulumi.set(__self__, "admin_username", admin_username)
+            _setter("admin_username", admin_username)
         if backup_schedule is not None:
-            pulumi.set(__self__, "backup_schedule", backup_schedule)
+            _setter("backup_schedule", backup_schedule)
         if ip_filters is not None:
-            pulumi.set(__self__, "ip_filters", ip_filters)
+            _setter("ip_filters", ip_filters)
         if pg_settings is not None:
-            pulumi.set(__self__, "pg_settings", pg_settings)
+            _setter("pg_settings", pg_settings)
         if pgbouncer_settings is not None:
-            pulumi.set(__self__, "pgbouncer_settings", pgbouncer_settings)
+            _setter("pgbouncer_settings", pgbouncer_settings)
         if pglookout_settings is not None:
-            pulumi.set(__self__, "pglookout_settings", pglookout_settings)
+            _setter("pglookout_settings", pglookout_settings)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="adminPassword")
@@ -824,10 +965,21 @@ class DatabaseRedis(dict):
         :param Sequence[str] ip_filters: A list of CIDR blocks to allow incoming connections from.
         :param str redis_settings: Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
         """
+        DatabaseRedis._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_filters=ip_filters,
+            redis_settings=redis_settings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_filters: Optional[Sequence[str]] = None,
+             redis_settings: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ip_filters is not None:
-            pulumi.set(__self__, "ip_filters", ip_filters)
+            _setter("ip_filters", ip_filters)
         if redis_settings is not None:
-            pulumi.set(__self__, "redis_settings", redis_settings)
+            _setter("redis_settings", redis_settings)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -847,1068 +999,281 @@ class DatabaseRedis(dict):
 
 
 @pulumi.output_type
-class ElasticIPHealthcheck(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "strikesFail":
-            suggest = "strikes_fail"
-        elif key == "strikesOk":
-            suggest = "strikes_ok"
-        elif key == "tlsSkipVerify":
-            suggest = "tls_skip_verify"
-        elif key == "tlsSni":
-            suggest = "tls_sni"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ElasticIPHealthcheck. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ElasticIPHealthcheck.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ElasticIPHealthcheck.__key_warning(key)
-        return super().get(key, default)
-
+class DatabaseTimeouts(dict):
     def __init__(__self__, *,
-                 mode: str,
-                 port: int,
-                 interval: Optional[int] = None,
-                 strikes_fail: Optional[int] = None,
-                 strikes_ok: Optional[int] = None,
-                 timeout: Optional[int] = None,
-                 tls_skip_verify: Optional[bool] = None,
-                 tls_sni: Optional[str] = None,
-                 uri: Optional[str] = None):
+                 create: Optional[str] = None,
+                 delete: Optional[str] = None,
+                 read: Optional[str] = None,
+                 update: Optional[str] = None):
         """
-        :param str mode: The healthcheck mode (`tcp`, `http` or `https`; may only be set at creation time).
-        :param int port: The healthcheck target port (must be between `1` and `65535`).
-        :param int interval: The healthcheck interval (seconds; must be between `5` and `300`; default: `10`).
-        :param int strikes_fail: The number of failed healthcheck attempts before considering the target unhealthy (must be between `1` and `20`; default: `2`).
-        :param int strikes_ok: The number of successful healthcheck attempts before considering the target healthy (must be between `1` and `20`; default: `3`).
-        :param int timeout: The time before considering a healthcheck probing failed (seconds; must be between `2` and `60`; default: `3`).
-        :param bool tls_skip_verify: Disable TLS certificate verification for healthcheck in `https` mode (boolean; default: `false`).
-        :param str tls_sni: The healthcheck server name to present with SNI in `https` mode.
-        :param str uri: The healthcheck target URI (required in `http(s)` modes).
+        :param str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
         """
-        pulumi.set(__self__, "mode", mode)
-        pulumi.set(__self__, "port", port)
-        if interval is not None:
-            pulumi.set(__self__, "interval", interval)
-        if strikes_fail is not None:
-            pulumi.set(__self__, "strikes_fail", strikes_fail)
-        if strikes_ok is not None:
-            pulumi.set(__self__, "strikes_ok", strikes_ok)
-        if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
-        if tls_skip_verify is not None:
-            pulumi.set(__self__, "tls_skip_verify", tls_skip_verify)
-        if tls_sni is not None:
-            pulumi.set(__self__, "tls_sni", tls_sni)
-        if uri is not None:
-            pulumi.set(__self__, "uri", uri)
+        DatabaseTimeouts._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create=create,
+            delete=delete,
+            read=read,
+            update=update,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create: Optional[str] = None,
+             delete: Optional[str] = None,
+             read: Optional[str] = None,
+             update: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if create is not None:
+            _setter("create", create)
+        if delete is not None:
+            _setter("delete", delete)
+        if read is not None:
+            _setter("read", read)
+        if update is not None:
+            _setter("update", update)
 
     @property
     @pulumi.getter
-    def mode(self) -> str:
+    def create(self) -> Optional[str]:
         """
-        The healthcheck mode (`tcp`, `http` or `https`; may only be set at creation time).
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
         """
-        return pulumi.get(self, "mode")
+        return pulumi.get(self, "create")
 
     @property
     @pulumi.getter
-    def port(self) -> int:
+    def delete(self) -> Optional[str]:
         """
-        The healthcheck target port (must be between `1` and `65535`).
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
         """
-        return pulumi.get(self, "port")
+        return pulumi.get(self, "delete")
 
     @property
     @pulumi.getter
-    def interval(self) -> Optional[int]:
+    def read(self) -> Optional[str]:
         """
-        The healthcheck interval (seconds; must be between `5` and `300`; default: `10`).
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
         """
-        return pulumi.get(self, "interval")
-
-    @property
-    @pulumi.getter(name="strikesFail")
-    def strikes_fail(self) -> Optional[int]:
-        """
-        The number of failed healthcheck attempts before considering the target unhealthy (must be between `1` and `20`; default: `2`).
-        """
-        return pulumi.get(self, "strikes_fail")
-
-    @property
-    @pulumi.getter(name="strikesOk")
-    def strikes_ok(self) -> Optional[int]:
-        """
-        The number of successful healthcheck attempts before considering the target healthy (must be between `1` and `20`; default: `3`).
-        """
-        return pulumi.get(self, "strikes_ok")
+        return pulumi.get(self, "read")
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[int]:
+    def update(self) -> Optional[str]:
         """
-        The time before considering a healthcheck probing failed (seconds; must be between `2` and `60`; default: `3`).
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
         """
-        return pulumi.get(self, "timeout")
-
-    @property
-    @pulumi.getter(name="tlsSkipVerify")
-    def tls_skip_verify(self) -> Optional[bool]:
-        """
-        Disable TLS certificate verification for healthcheck in `https` mode (boolean; default: `false`).
-        """
-        return pulumi.get(self, "tls_skip_verify")
-
-    @property
-    @pulumi.getter(name="tlsSni")
-    def tls_sni(self) -> Optional[str]:
-        """
-        The healthcheck server name to present with SNI in `https` mode.
-        """
-        return pulumi.get(self, "tls_sni")
-
-    @property
-    @pulumi.getter
-    def uri(self) -> Optional[str]:
-        """
-        The healthcheck target URI (required in `http(s)` modes).
-        """
-        return pulumi.get(self, "uri")
+        return pulumi.get(self, "update")
 
 
 @pulumi.output_type
-class InstancePoolInstance(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ipv6Address":
-            suggest = "ipv6_address"
-        elif key == "publicIpAddress":
-            suggest = "public_ip_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InstancePoolInstance. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InstancePoolInstance.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InstancePoolInstance.__key_warning(key)
-        return super().get(key, default)
-
+class GetDatabaseURITimeoutsResult(dict):
     def __init__(__self__, *,
-                 id: Optional[str] = None,
-                 ipv6_address: Optional[str] = None,
-                 name: Optional[str] = None,
-                 public_ip_address: Optional[str] = None):
+                 read: Optional[str] = None):
         """
-        :param str id: The ID of this resource.
-        :param str ipv6_address: The instance (main network interface) IPv6 address.
-        :param str name: The instance name.
-        :param str public_ip_address: The instance (main network interface) IPv4 address.
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if ipv6_address is not None:
-            pulumi.set(__self__, "ipv6_address", ipv6_address)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if public_ip_address is not None:
-            pulumi.set(__self__, "public_ip_address", public_ip_address)
+        GetDatabaseURITimeoutsResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            read=read,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             read: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if read is not None:
+            _setter("read", read)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[str]:
+    def read(self) -> Optional[str]:
         """
-        The ID of this resource.
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
+class GetNLBServiceListServiceResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 healthcheck: 'outputs.GetNLBServiceListServiceHealthcheckResult',
+                 id: str,
+                 instance_pool_id: str,
+                 name: str,
+                 port: int,
+                 protocol: str,
+                 state: str,
+                 strategy: str,
+                 target_port: int):
+        """
+        :param str description: NLB service description.
+        :param str id: NLB service ID.
+        :param str instance_pool_id: The exoscale*instance*pool (ID) to forward traffic to.
+        :param str name: NLB Service name.
+        :param int port: Port exposed on the NLB's public IP.
+        :param str protocol: Network traffic protocol.
+        :param str state: NLB Service State.
+        :param str strategy: The strategy (`round-robin`|`source-hash`).
+        :param int target_port: Port on which the network traffic will be forwarded to on the receiving instance.
+        """
+        GetNLBServiceListServiceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            healthcheck=healthcheck,
+            id=id,
+            instance_pool_id=instance_pool_id,
+            name=name,
+            port=port,
+            protocol=protocol,
+            state=state,
+            strategy=strategy,
+            target_port=target_port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             healthcheck: 'outputs.GetNLBServiceListServiceHealthcheckResult',
+             id: str,
+             instance_pool_id: str,
+             name: str,
+             port: int,
+             protocol: str,
+             state: str,
+             strategy: str,
+             target_port: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("healthcheck", healthcheck)
+        _setter("id", id)
+        _setter("instance_pool_id", instance_pool_id)
+        _setter("name", name)
+        _setter("port", port)
+        _setter("protocol", protocol)
+        _setter("state", state)
+        _setter("strategy", strategy)
+        _setter("target_port", target_port)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        NLB service description.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def healthcheck(self) -> 'outputs.GetNLBServiceListServiceHealthcheckResult':
+        return pulumi.get(self, "healthcheck")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        NLB service ID.
         """
         return pulumi.get(self, "id")
 
     @property
-    @pulumi.getter(name="ipv6Address")
-    def ipv6_address(self) -> Optional[str]:
+    @pulumi.getter(name="instancePoolId")
+    def instance_pool_id(self) -> str:
         """
-        The instance (main network interface) IPv6 address.
+        The exoscale*instance*pool (ID) to forward traffic to.
         """
-        return pulumi.get(self, "ipv6_address")
+        return pulumi.get(self, "instance_pool_id")
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def name(self) -> str:
         """
-        The instance name.
+        NLB Service name.
         """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="publicIpAddress")
-    def public_ip_address(self) -> Optional[str]:
-        """
-        The instance (main network interface) IPv4 address.
-        """
-        return pulumi.get(self, "public_ip_address")
-
-
-@pulumi.output_type
-class NLBServiceHealthcheck(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "tlsSni":
-            suggest = "tls_sni"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NLBServiceHealthcheck. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NLBServiceHealthcheck.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NLBServiceHealthcheck.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 port: int,
-                 interval: Optional[int] = None,
-                 mode: Optional[str] = None,
-                 retries: Optional[int] = None,
-                 timeout: Optional[int] = None,
-                 tls_sni: Optional[str] = None,
-                 uri: Optional[str] = None):
-        """
-        :param int port: The NLB service (TCP/UDP) port.
-        :param int interval: The healthcheck interval in seconds (default: `10`).
-        :param str mode: The healthcheck mode (`tcp`|`http`|`https`; default: `tcp`).
-        :param int retries: The healthcheck retries (default: `1`).
-        :param int timeout: The healthcheck timeout (seconds; default: `5`).
-        :param str tls_sni: The healthcheck TLS SNI server name (only if `mode` is `https`).
-        :param str uri: The healthcheck URI (must be set only if `mode` is `http(s)`).
-        """
-        pulumi.set(__self__, "port", port)
-        if interval is not None:
-            pulumi.set(__self__, "interval", interval)
-        if mode is not None:
-            pulumi.set(__self__, "mode", mode)
-        if retries is not None:
-            pulumi.set(__self__, "retries", retries)
-        if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
-        if tls_sni is not None:
-            pulumi.set(__self__, "tls_sni", tls_sni)
-        if uri is not None:
-            pulumi.set(__self__, "uri", uri)
 
     @property
     @pulumi.getter
     def port(self) -> int:
         """
-        The NLB service (TCP/UDP) port.
+        Port exposed on the NLB's public IP.
         """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
-    def interval(self) -> Optional[int]:
+    def protocol(self) -> str:
         """
-        The healthcheck interval in seconds (default: `10`).
-        """
-        return pulumi.get(self, "interval")
-
-    @property
-    @pulumi.getter
-    def mode(self) -> Optional[str]:
-        """
-        The healthcheck mode (`tcp`|`http`|`https`; default: `tcp`).
-        """
-        return pulumi.get(self, "mode")
-
-    @property
-    @pulumi.getter
-    def retries(self) -> Optional[int]:
-        """
-        The healthcheck retries (default: `1`).
-        """
-        return pulumi.get(self, "retries")
-
-    @property
-    @pulumi.getter
-    def timeout(self) -> Optional[int]:
-        """
-        The healthcheck timeout (seconds; default: `5`).
-        """
-        return pulumi.get(self, "timeout")
-
-    @property
-    @pulumi.getter(name="tlsSni")
-    def tls_sni(self) -> Optional[str]:
-        """
-        The healthcheck TLS SNI server name (only if `mode` is `https`).
-        """
-        return pulumi.get(self, "tls_sni")
-
-    @property
-    @pulumi.getter
-    def uri(self) -> Optional[str]:
-        """
-        The healthcheck URI (must be set only if `mode` is `http(s)`).
-        """
-        return pulumi.get(self, "uri")
-
-
-@pulumi.output_type
-class SKSClusterOidc(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "issuerUrl":
-            suggest = "issuer_url"
-        elif key == "groupsClaim":
-            suggest = "groups_claim"
-        elif key == "groupsPrefix":
-            suggest = "groups_prefix"
-        elif key == "requiredClaim":
-            suggest = "required_claim"
-        elif key == "usernameClaim":
-            suggest = "username_claim"
-        elif key == "usernamePrefix":
-            suggest = "username_prefix"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SKSClusterOidc. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SKSClusterOidc.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SKSClusterOidc.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 client_id: str,
-                 issuer_url: str,
-                 groups_claim: Optional[str] = None,
-                 groups_prefix: Optional[str] = None,
-                 required_claim: Optional[Mapping[str, str]] = None,
-                 username_claim: Optional[str] = None,
-                 username_prefix: Optional[str] = None):
-        """
-        :param str client_id: The OpenID client ID.
-        :param str issuer_url: The OpenID provider URL.
-        :param str groups_claim: An OpenID JWT claim to use as the user's group.
-        :param str groups_prefix: An OpenID prefix prepended to group claims.
-        :param Mapping[str, str] required_claim: A map of key/value pairs that describes a required claim in the OpenID Token.
-        :param str username_claim: An OpenID JWT claim to use as the user name.
-        :param str username_prefix: An OpenID prefix prepended to username claims.
-        """
-        pulumi.set(__self__, "client_id", client_id)
-        pulumi.set(__self__, "issuer_url", issuer_url)
-        if groups_claim is not None:
-            pulumi.set(__self__, "groups_claim", groups_claim)
-        if groups_prefix is not None:
-            pulumi.set(__self__, "groups_prefix", groups_prefix)
-        if required_claim is not None:
-            pulumi.set(__self__, "required_claim", required_claim)
-        if username_claim is not None:
-            pulumi.set(__self__, "username_claim", username_claim)
-        if username_prefix is not None:
-            pulumi.set(__self__, "username_prefix", username_prefix)
-
-    @property
-    @pulumi.getter(name="clientId")
-    def client_id(self) -> str:
-        """
-        The OpenID client ID.
-        """
-        return pulumi.get(self, "client_id")
-
-    @property
-    @pulumi.getter(name="issuerUrl")
-    def issuer_url(self) -> str:
-        """
-        The OpenID provider URL.
-        """
-        return pulumi.get(self, "issuer_url")
-
-    @property
-    @pulumi.getter(name="groupsClaim")
-    def groups_claim(self) -> Optional[str]:
-        """
-        An OpenID JWT claim to use as the user's group.
-        """
-        return pulumi.get(self, "groups_claim")
-
-    @property
-    @pulumi.getter(name="groupsPrefix")
-    def groups_prefix(self) -> Optional[str]:
-        """
-        An OpenID prefix prepended to group claims.
-        """
-        return pulumi.get(self, "groups_prefix")
-
-    @property
-    @pulumi.getter(name="requiredClaim")
-    def required_claim(self) -> Optional[Mapping[str, str]]:
-        """
-        A map of key/value pairs that describes a required claim in the OpenID Token.
-        """
-        return pulumi.get(self, "required_claim")
-
-    @property
-    @pulumi.getter(name="usernameClaim")
-    def username_claim(self) -> Optional[str]:
-        """
-        An OpenID JWT claim to use as the user name.
-        """
-        return pulumi.get(self, "username_claim")
-
-    @property
-    @pulumi.getter(name="usernamePrefix")
-    def username_prefix(self) -> Optional[str]:
-        """
-        An OpenID prefix prepended to username claims.
-        """
-        return pulumi.get(self, "username_prefix")
-
-
-@pulumi.output_type
-class SecurityGroupRulesEgress(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "cidrLists":
-            suggest = "cidr_lists"
-        elif key == "icmpCode":
-            suggest = "icmp_code"
-        elif key == "icmpType":
-            suggest = "icmp_type"
-        elif key == "userSecurityGroupLists":
-            suggest = "user_security_group_lists"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SecurityGroupRulesEgress. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SecurityGroupRulesEgress.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SecurityGroupRulesEgress.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 cidr_lists: Optional[Sequence[str]] = None,
-                 description: Optional[str] = None,
-                 icmp_code: Optional[int] = None,
-                 icmp_type: Optional[int] = None,
-                 ids: Optional[Sequence[str]] = None,
-                 ports: Optional[Sequence[str]] = None,
-                 protocol: Optional[str] = None,
-                 user_security_group_lists: Optional[Sequence[str]] = None):
-        """
-        :param Sequence[str] cidr_lists: A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
-        :param str description: A free-form text describing the block.
-        :param int icmp_code: An ICMP/ICMPv6 type/code to match.
-        :param int icmp_type: An ICMP/ICMPv6 type/code to match.
-        :param Sequence[str] ports: A list of ports or port ranges (`<start_port>-<end_port>`).
-        :param str protocol: The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
-        :param Sequence[str] user_security_group_lists: A list of source (for ingress)/destination (for egress) identified by a security group.
-        """
-        if cidr_lists is not None:
-            pulumi.set(__self__, "cidr_lists", cidr_lists)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if icmp_code is not None:
-            pulumi.set(__self__, "icmp_code", icmp_code)
-        if icmp_type is not None:
-            pulumi.set(__self__, "icmp_type", icmp_type)
-        if ids is not None:
-            pulumi.set(__self__, "ids", ids)
-        if ports is not None:
-            pulumi.set(__self__, "ports", ports)
-        if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
-        if user_security_group_lists is not None:
-            pulumi.set(__self__, "user_security_group_lists", user_security_group_lists)
-
-    @property
-    @pulumi.getter(name="cidrLists")
-    def cidr_lists(self) -> Optional[Sequence[str]]:
-        """
-        A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
-        """
-        return pulumi.get(self, "cidr_lists")
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[str]:
-        """
-        A free-form text describing the block.
-        """
-        return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter(name="icmpCode")
-    def icmp_code(self) -> Optional[int]:
-        """
-        An ICMP/ICMPv6 type/code to match.
-        """
-        return pulumi.get(self, "icmp_code")
-
-    @property
-    @pulumi.getter(name="icmpType")
-    def icmp_type(self) -> Optional[int]:
-        """
-        An ICMP/ICMPv6 type/code to match.
-        """
-        return pulumi.get(self, "icmp_type")
-
-    @property
-    @pulumi.getter
-    def ids(self) -> Optional[Sequence[str]]:
-        return pulumi.get(self, "ids")
-
-    @property
-    @pulumi.getter
-    def ports(self) -> Optional[Sequence[str]]:
-        """
-        A list of ports or port ranges (`<start_port>-<end_port>`).
-        """
-        return pulumi.get(self, "ports")
-
-    @property
-    @pulumi.getter
-    def protocol(self) -> Optional[str]:
-        """
-        The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
+        Network traffic protocol.
         """
         return pulumi.get(self, "protocol")
-
-    @property
-    @pulumi.getter(name="userSecurityGroupLists")
-    def user_security_group_lists(self) -> Optional[Sequence[str]]:
-        """
-        A list of source (for ingress)/destination (for egress) identified by a security group.
-        """
-        return pulumi.get(self, "user_security_group_lists")
-
-
-@pulumi.output_type
-class SecurityGroupRulesIngress(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "cidrLists":
-            suggest = "cidr_lists"
-        elif key == "icmpCode":
-            suggest = "icmp_code"
-        elif key == "icmpType":
-            suggest = "icmp_type"
-        elif key == "userSecurityGroupLists":
-            suggest = "user_security_group_lists"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SecurityGroupRulesIngress. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SecurityGroupRulesIngress.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SecurityGroupRulesIngress.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 cidr_lists: Optional[Sequence[str]] = None,
-                 description: Optional[str] = None,
-                 icmp_code: Optional[int] = None,
-                 icmp_type: Optional[int] = None,
-                 ids: Optional[Sequence[str]] = None,
-                 ports: Optional[Sequence[str]] = None,
-                 protocol: Optional[str] = None,
-                 user_security_group_lists: Optional[Sequence[str]] = None):
-        """
-        :param Sequence[str] cidr_lists: A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
-        :param str description: A free-form text describing the block.
-        :param int icmp_code: An ICMP/ICMPv6 type/code to match.
-        :param int icmp_type: An ICMP/ICMPv6 type/code to match.
-        :param Sequence[str] ports: A list of ports or port ranges (`<start_port>-<end_port>`).
-        :param str protocol: The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
-        :param Sequence[str] user_security_group_lists: A list of source (for ingress)/destination (for egress) identified by a security group.
-        """
-        if cidr_lists is not None:
-            pulumi.set(__self__, "cidr_lists", cidr_lists)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if icmp_code is not None:
-            pulumi.set(__self__, "icmp_code", icmp_code)
-        if icmp_type is not None:
-            pulumi.set(__self__, "icmp_type", icmp_type)
-        if ids is not None:
-            pulumi.set(__self__, "ids", ids)
-        if ports is not None:
-            pulumi.set(__self__, "ports", ports)
-        if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
-        if user_security_group_lists is not None:
-            pulumi.set(__self__, "user_security_group_lists", user_security_group_lists)
-
-    @property
-    @pulumi.getter(name="cidrLists")
-    def cidr_lists(self) -> Optional[Sequence[str]]:
-        """
-        A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.
-        """
-        return pulumi.get(self, "cidr_lists")
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[str]:
-        """
-        A free-form text describing the block.
-        """
-        return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter(name="icmpCode")
-    def icmp_code(self) -> Optional[int]:
-        """
-        An ICMP/ICMPv6 type/code to match.
-        """
-        return pulumi.get(self, "icmp_code")
-
-    @property
-    @pulumi.getter(name="icmpType")
-    def icmp_type(self) -> Optional[int]:
-        """
-        An ICMP/ICMPv6 type/code to match.
-        """
-        return pulumi.get(self, "icmp_type")
-
-    @property
-    @pulumi.getter
-    def ids(self) -> Optional[Sequence[str]]:
-        return pulumi.get(self, "ids")
-
-    @property
-    @pulumi.getter
-    def ports(self) -> Optional[Sequence[str]]:
-        """
-        A list of ports or port ranges (`<start_port>-<end_port>`).
-        """
-        return pulumi.get(self, "ports")
-
-    @property
-    @pulumi.getter
-    def protocol(self) -> Optional[str]:
-        """
-        The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
-        """
-        return pulumi.get(self, "protocol")
-
-    @property
-    @pulumi.getter(name="userSecurityGroupLists")
-    def user_security_group_lists(self) -> Optional[Sequence[str]]:
-        """
-        A list of source (for ingress)/destination (for egress) identified by a security group.
-        """
-        return pulumi.get(self, "user_security_group_lists")
-
-
-@pulumi.output_type
-class GetComputeInstanceListInstanceResult(dict):
-    def __init__(__self__, *,
-                 created_at: str,
-                 deploy_target_id: str,
-                 disk_size: int,
-                 elastic_ip_ids: Sequence[str],
-                 ipv6: bool,
-                 ipv6_address: str,
-                 manager_id: str,
-                 manager_type: str,
-                 private_network_ids: Sequence[str],
-                 public_ip_address: str,
-                 reverse_dns: str,
-                 security_group_ids: Sequence[str],
-                 ssh_key: str,
-                 state: str,
-                 template_id: str,
-                 type: str,
-                 user_data: str,
-                 zone: str,
-                 anti_affinity_group_ids: Optional[Sequence[str]] = None,
-                 id: Optional[str] = None,
-                 labels: Optional[Mapping[str, str]] = None,
-                 name: Optional[str] = None):
-        """
-        :param str created_at: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str deploy_target_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param int disk_size: Match against this int
-        :param bool ipv6: Match against this bool
-        :param str ipv6_address: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str manager_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str manager_type: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str public_ip_address: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str reverse_dns: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str ssh_key: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str state: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str template_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str type: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str user_data: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str zone: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param Mapping[str, str] labels: Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-        :param str name: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "deploy_target_id", deploy_target_id)
-        pulumi.set(__self__, "disk_size", disk_size)
-        pulumi.set(__self__, "elastic_ip_ids", elastic_ip_ids)
-        pulumi.set(__self__, "ipv6", ipv6)
-        pulumi.set(__self__, "ipv6_address", ipv6_address)
-        pulumi.set(__self__, "manager_id", manager_id)
-        pulumi.set(__self__, "manager_type", manager_type)
-        pulumi.set(__self__, "private_network_ids", private_network_ids)
-        pulumi.set(__self__, "public_ip_address", public_ip_address)
-        pulumi.set(__self__, "reverse_dns", reverse_dns)
-        pulumi.set(__self__, "security_group_ids", security_group_ids)
-        pulumi.set(__self__, "ssh_key", ssh_key)
-        pulumi.set(__self__, "state", state)
-        pulumi.set(__self__, "template_id", template_id)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "user_data", user_data)
-        pulumi.set(__self__, "zone", zone)
-        if anti_affinity_group_ids is not None:
-            pulumi.set(__self__, "anti_affinity_group_ids", anti_affinity_group_ids)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if labels is not None:
-            pulumi.set(__self__, "labels", labels)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "created_at")
-
-    @property
-    @pulumi.getter(name="deployTargetId")
-    def deploy_target_id(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "deploy_target_id")
-
-    @property
-    @pulumi.getter(name="diskSize")
-    def disk_size(self) -> int:
-        """
-        Match against this int
-        """
-        return pulumi.get(self, "disk_size")
-
-    @property
-    @pulumi.getter(name="elasticIpIds")
-    def elastic_ip_ids(self) -> Sequence[str]:
-        return pulumi.get(self, "elastic_ip_ids")
-
-    @property
-    @pulumi.getter
-    def ipv6(self) -> bool:
-        """
-        Match against this bool
-        """
-        return pulumi.get(self, "ipv6")
-
-    @property
-    @pulumi.getter(name="ipv6Address")
-    def ipv6_address(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "ipv6_address")
-
-    @property
-    @pulumi.getter(name="managerId")
-    def manager_id(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "manager_id")
-
-    @property
-    @pulumi.getter(name="managerType")
-    def manager_type(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "manager_type")
-
-    @property
-    @pulumi.getter(name="privateNetworkIds")
-    def private_network_ids(self) -> Sequence[str]:
-        return pulumi.get(self, "private_network_ids")
-
-    @property
-    @pulumi.getter(name="publicIpAddress")
-    def public_ip_address(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "public_ip_address")
-
-    @property
-    @pulumi.getter(name="reverseDns")
-    def reverse_dns(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "reverse_dns")
-
-    @property
-    @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Sequence[str]:
-        return pulumi.get(self, "security_group_ids")
-
-    @property
-    @pulumi.getter(name="sshKey")
-    def ssh_key(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "ssh_key")
 
     @property
     @pulumi.getter
     def state(self) -> str:
         """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        NLB Service State.
         """
         return pulumi.get(self, "state")
 
     @property
-    @pulumi.getter(name="templateId")
-    def template_id(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "template_id")
-
-    @property
     @pulumi.getter
-    def type(self) -> str:
+    def strategy(self) -> str:
         """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        The strategy (`round-robin`|`source-hash`).
         """
-        return pulumi.get(self, "type")
+        return pulumi.get(self, "strategy")
 
     @property
-    @pulumi.getter(name="userData")
-    def user_data(self) -> str:
+    @pulumi.getter(name="targetPort")
+    def target_port(self) -> int:
         """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        Port on which the network traffic will be forwarded to on the receiving instance.
         """
-        return pulumi.get(self, "user_data")
-
-    @property
-    @pulumi.getter
-    def zone(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "zone")
-
-    @property
-    @pulumi.getter(name="antiAffinityGroupIds")
-    def anti_affinity_group_ids(self) -> Optional[Sequence[str]]:
-        return pulumi.get(self, "anti_affinity_group_ids")
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
-        """
-        Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-        """
-        return pulumi.get(self, "labels")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "target_port")
 
 
 @pulumi.output_type
-class GetDomainRecordFilterResult(dict):
-    def __init__(__self__, *,
-                 content_regex: Optional[str] = None,
-                 id: Optional[str] = None,
-                 name: Optional[str] = None,
-                 record_type: Optional[str] = None):
-        """
-        :param str content_regex: A regular expression to match the record content.
-        :param str id: The record ID to match.
-        :param str name: The domain record name to match.
-        :param str record_type: The record type to match.
-        """
-        if content_regex is not None:
-            pulumi.set(__self__, "content_regex", content_regex)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if record_type is not None:
-            pulumi.set(__self__, "record_type", record_type)
-
-    @property
-    @pulumi.getter(name="contentRegex")
-    def content_regex(self) -> Optional[str]:
-        """
-        A regular expression to match the record content.
-        """
-        return pulumi.get(self, "content_regex")
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        """
-        The record ID to match.
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        The domain record name to match.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="recordType")
-    def record_type(self) -> Optional[str]:
-        """
-        The record type to match.
-        """
-        return pulumi.get(self, "record_type")
-
-
-@pulumi.output_type
-class GetDomainRecordRecordResult(dict):
-    def __init__(__self__, *,
-                 content: Optional[str] = None,
-                 domain: Optional[str] = None,
-                 id: Optional[str] = None,
-                 name: Optional[str] = None,
-                 prio: Optional[int] = None,
-                 record_type: Optional[str] = None,
-                 ttl: Optional[int] = None):
-        """
-        :param str domain: The Domain name to match.
-        :param str id: The ID of this resource.
-        """
-        if content is not None:
-            pulumi.set(__self__, "content", content)
-        if domain is not None:
-            pulumi.set(__self__, "domain", domain)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if prio is not None:
-            pulumi.set(__self__, "prio", prio)
-        if record_type is not None:
-            pulumi.set(__self__, "record_type", record_type)
-        if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
-
-    @property
-    @pulumi.getter
-    def content(self) -> Optional[str]:
-        return pulumi.get(self, "content")
-
-    @property
-    @pulumi.getter
-    def domain(self) -> Optional[str]:
-        """
-        The Domain name to match.
-        """
-        return pulumi.get(self, "domain")
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        """
-        The ID of this resource.
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def prio(self) -> Optional[int]:
-        return pulumi.get(self, "prio")
-
-    @property
-    @pulumi.getter(name="recordType")
-    def record_type(self) -> Optional[str]:
-        return pulumi.get(self, "record_type")
-
-    @property
-    @pulumi.getter
-    def ttl(self) -> Optional[int]:
-        return pulumi.get(self, "ttl")
-
-
-@pulumi.output_type
-class GetElasticIPHealthcheckResult(dict):
+class GetNLBServiceListServiceHealthcheckResult(dict):
     def __init__(__self__, *,
                  interval: int,
                  mode: str,
                  port: int,
-                 strikes_fail: int,
-                 strikes_ok: int,
+                 retries: int,
                  timeout: int,
-                 tls_skip_verify: bool,
                  tls_sni: str,
                  uri: str):
-        pulumi.set(__self__, "interval", interval)
-        pulumi.set(__self__, "mode", mode)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "strikes_fail", strikes_fail)
-        pulumi.set(__self__, "strikes_ok", strikes_ok)
-        pulumi.set(__self__, "timeout", timeout)
-        pulumi.set(__self__, "tls_skip_verify", tls_skip_verify)
-        pulumi.set(__self__, "tls_sni", tls_sni)
-        pulumi.set(__self__, "uri", uri)
+        GetNLBServiceListServiceHealthcheckResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            interval=interval,
+            mode=mode,
+            port=port,
+            retries=retries,
+            timeout=timeout,
+            tls_sni=tls_sni,
+            uri=uri,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             interval: int,
+             mode: str,
+             port: int,
+             retries: int,
+             timeout: int,
+             tls_sni: str,
+             uri: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("interval", interval)
+        _setter("mode", mode)
+        _setter("port", port)
+        _setter("retries", retries)
+        _setter("timeout", timeout)
+        _setter("tls_sni", tls_sni)
+        _setter("uri", uri)
 
     @property
     @pulumi.getter
@@ -1926,24 +1291,14 @@ class GetElasticIPHealthcheckResult(dict):
         return pulumi.get(self, "port")
 
     @property
-    @pulumi.getter(name="strikesFail")
-    def strikes_fail(self) -> int:
-        return pulumi.get(self, "strikes_fail")
-
-    @property
-    @pulumi.getter(name="strikesOk")
-    def strikes_ok(self) -> int:
-        return pulumi.get(self, "strikes_ok")
+    @pulumi.getter
+    def retries(self) -> int:
+        return pulumi.get(self, "retries")
 
     @property
     @pulumi.getter
     def timeout(self) -> int:
         return pulumi.get(self, "timeout")
-
-    @property
-    @pulumi.getter(name="tlsSkipVerify")
-    def tls_skip_verify(self) -> bool:
-        return pulumi.get(self, "tls_skip_verify")
 
     @property
     @pulumi.getter(name="tlsSni")
@@ -1957,861 +1312,30 @@ class GetElasticIPHealthcheckResult(dict):
 
 
 @pulumi.output_type
-class GetInstancePoolInstanceResult(dict):
+class GetNLBServiceListTimeoutsResult(dict):
     def __init__(__self__, *,
-                 ipv6_address: str,
-                 public_ip_address: str,
-                 id: Optional[str] = None,
-                 name: Optional[str] = None):
+                 read: Optional[str] = None):
         """
-        :param str id: The instance pool ID to match (conflicts with `name`).
-        :param str name: The pool name to match (conflicts with `id`).
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
         """
-        pulumi.set(__self__, "ipv6_address", ipv6_address)
-        pulumi.set(__self__, "public_ip_address", public_ip_address)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="ipv6Address")
-    def ipv6_address(self) -> str:
-        return pulumi.get(self, "ipv6_address")
-
-    @property
-    @pulumi.getter(name="publicIpAddress")
-    def public_ip_address(self) -> str:
-        return pulumi.get(self, "public_ip_address")
+        GetNLBServiceListTimeoutsResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            read=read,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             read: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if read is not None:
+            _setter("read", read)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[str]:
+    def read(self) -> Optional[str]:
         """
-        The instance pool ID to match (conflicts with `name`).
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
         """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        The pool name to match (conflicts with `id`).
-        """
-        return pulumi.get(self, "name")
-
-
-@pulumi.output_type
-class GetInstancePoolListPoolResult(dict):
-    def __init__(__self__, *,
-                 affinity_group_ids: Sequence[str],
-                 deploy_target_id: str,
-                 description: str,
-                 disk_size: int,
-                 elastic_ip_ids: Sequence[str],
-                 instance_prefix: str,
-                 instance_type: str,
-                 instances: Sequence['outputs.GetInstancePoolListPoolInstanceResult'],
-                 ipv6: bool,
-                 key_pair: str,
-                 network_ids: Sequence[str],
-                 security_group_ids: Sequence[str],
-                 size: int,
-                 state: str,
-                 template_id: str,
-                 user_data: str,
-                 zone: str,
-                 id: Optional[str] = None,
-                 labels: Optional[Mapping[str, str]] = None,
-                 name: Optional[str] = None):
-        """
-        :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-        :param str id: The ID of this resource.
-        """
-        pulumi.set(__self__, "affinity_group_ids", affinity_group_ids)
-        pulumi.set(__self__, "deploy_target_id", deploy_target_id)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "disk_size", disk_size)
-        pulumi.set(__self__, "elastic_ip_ids", elastic_ip_ids)
-        pulumi.set(__self__, "instance_prefix", instance_prefix)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "instances", instances)
-        pulumi.set(__self__, "ipv6", ipv6)
-        pulumi.set(__self__, "key_pair", key_pair)
-        pulumi.set(__self__, "network_ids", network_ids)
-        pulumi.set(__self__, "security_group_ids", security_group_ids)
-        pulumi.set(__self__, "size", size)
-        pulumi.set(__self__, "state", state)
-        pulumi.set(__self__, "template_id", template_id)
-        pulumi.set(__self__, "user_data", user_data)
-        pulumi.set(__self__, "zone", zone)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if labels is not None:
-            pulumi.set(__self__, "labels", labels)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="affinityGroupIds")
-    def affinity_group_ids(self) -> Sequence[str]:
-        return pulumi.get(self, "affinity_group_ids")
-
-    @property
-    @pulumi.getter(name="deployTargetId")
-    def deploy_target_id(self) -> str:
-        return pulumi.get(self, "deploy_target_id")
-
-    @property
-    @pulumi.getter
-    def description(self) -> str:
-        return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter(name="diskSize")
-    def disk_size(self) -> int:
-        return pulumi.get(self, "disk_size")
-
-    @property
-    @pulumi.getter(name="elasticIpIds")
-    def elastic_ip_ids(self) -> Sequence[str]:
-        return pulumi.get(self, "elastic_ip_ids")
-
-    @property
-    @pulumi.getter(name="instancePrefix")
-    def instance_prefix(self) -> str:
-        return pulumi.get(self, "instance_prefix")
-
-    @property
-    @pulumi.getter(name="instanceType")
-    def instance_type(self) -> str:
-        return pulumi.get(self, "instance_type")
-
-    @property
-    @pulumi.getter
-    def instances(self) -> Sequence['outputs.GetInstancePoolListPoolInstanceResult']:
-        return pulumi.get(self, "instances")
-
-    @property
-    @pulumi.getter
-    def ipv6(self) -> bool:
-        return pulumi.get(self, "ipv6")
-
-    @property
-    @pulumi.getter(name="keyPair")
-    def key_pair(self) -> str:
-        return pulumi.get(self, "key_pair")
-
-    @property
-    @pulumi.getter(name="networkIds")
-    def network_ids(self) -> Sequence[str]:
-        return pulumi.get(self, "network_ids")
-
-    @property
-    @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Sequence[str]:
-        return pulumi.get(self, "security_group_ids")
-
-    @property
-    @pulumi.getter
-    def size(self) -> int:
-        return pulumi.get(self, "size")
-
-    @property
-    @pulumi.getter
-    def state(self) -> str:
-        return pulumi.get(self, "state")
-
-    @property
-    @pulumi.getter(name="templateId")
-    def template_id(self) -> str:
-        return pulumi.get(self, "template_id")
-
-    @property
-    @pulumi.getter(name="userData")
-    def user_data(self) -> str:
-        return pulumi.get(self, "user_data")
-
-    @property
-    @pulumi.getter
-    def zone(self) -> str:
-        """
-        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-        """
-        return pulumi.get(self, "zone")
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        """
-        The ID of this resource.
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
-        return pulumi.get(self, "labels")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        return pulumi.get(self, "name")
-
-
-@pulumi.output_type
-class GetInstancePoolListPoolInstanceResult(dict):
-    def __init__(__self__, *,
-                 ipv6_address: str,
-                 public_ip_address: str,
-                 id: Optional[str] = None,
-                 name: Optional[str] = None):
-        """
-        :param str id: The ID of this resource.
-        """
-        pulumi.set(__self__, "ipv6_address", ipv6_address)
-        pulumi.set(__self__, "public_ip_address", public_ip_address)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="ipv6Address")
-    def ipv6_address(self) -> str:
-        return pulumi.get(self, "ipv6_address")
-
-    @property
-    @pulumi.getter(name="publicIpAddress")
-    def public_ip_address(self) -> str:
-        return pulumi.get(self, "public_ip_address")
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        """
-        The ID of this resource.
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        return pulumi.get(self, "name")
-
-
-@pulumi.output_type
-class GetSKSClusterListClusterResult(dict):
-    def __init__(__self__, *,
-                 addons: Sequence[str],
-                 aggregation_ca: str,
-                 control_plane_ca: str,
-                 created_at: str,
-                 endpoint: str,
-                 kubelet_ca: str,
-                 nodepools: Sequence[str],
-                 oidc: 'outputs.GetSKSClusterListClusterOidcResult',
-                 state: str,
-                 version: str,
-                 zone: str,
-                 auto_upgrade: Optional[bool] = None,
-                 cni: Optional[str] = None,
-                 description: Optional[str] = None,
-                 exoscale_ccm: Optional[bool] = None,
-                 id: Optional[str] = None,
-                 labels: Optional[Mapping[str, str]] = None,
-                 metrics_server: Optional[bool] = None,
-                 name: Optional[str] = None,
-                 service_level: Optional[str] = None):
-        """
-        :param str aggregation_ca: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str control_plane_ca: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str created_at: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str endpoint: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str kubelet_ca: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str state: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str version: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str zone: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param bool auto_upgrade: Match against this bool
-        :param str cni: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str description: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param bool exoscale_ccm: Match against this bool
-        :param str id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param Mapping[str, str] labels: Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-        :param bool metrics_server: Match against this bool
-        :param str name: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str service_level: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        pulumi.set(__self__, "addons", addons)
-        pulumi.set(__self__, "aggregation_ca", aggregation_ca)
-        pulumi.set(__self__, "control_plane_ca", control_plane_ca)
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "kubelet_ca", kubelet_ca)
-        pulumi.set(__self__, "nodepools", nodepools)
-        pulumi.set(__self__, "oidc", oidc)
-        pulumi.set(__self__, "state", state)
-        pulumi.set(__self__, "version", version)
-        pulumi.set(__self__, "zone", zone)
-        if auto_upgrade is not None:
-            pulumi.set(__self__, "auto_upgrade", auto_upgrade)
-        if cni is not None:
-            pulumi.set(__self__, "cni", cni)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if exoscale_ccm is not None:
-            pulumi.set(__self__, "exoscale_ccm", exoscale_ccm)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if labels is not None:
-            pulumi.set(__self__, "labels", labels)
-        if metrics_server is not None:
-            pulumi.set(__self__, "metrics_server", metrics_server)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if service_level is not None:
-            pulumi.set(__self__, "service_level", service_level)
-
-    @property
-    @pulumi.getter
-    def addons(self) -> Sequence[str]:
-        warnings.warn("""This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""", DeprecationWarning)
-        pulumi.log.warn("""addons is deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""")
-
-        return pulumi.get(self, "addons")
-
-    @property
-    @pulumi.getter(name="aggregationCa")
-    def aggregation_ca(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "aggregation_ca")
-
-    @property
-    @pulumi.getter(name="controlPlaneCa")
-    def control_plane_ca(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "control_plane_ca")
-
-    @property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "created_at")
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "endpoint")
-
-    @property
-    @pulumi.getter(name="kubeletCa")
-    def kubelet_ca(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "kubelet_ca")
-
-    @property
-    @pulumi.getter
-    def nodepools(self) -> Sequence[str]:
-        return pulumi.get(self, "nodepools")
-
-    @property
-    @pulumi.getter
-    def oidc(self) -> 'outputs.GetSKSClusterListClusterOidcResult':
-        return pulumi.get(self, "oidc")
-
-    @property
-    @pulumi.getter
-    def state(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "state")
-
-    @property
-    @pulumi.getter
-    def version(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "version")
-
-    @property
-    @pulumi.getter
-    def zone(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "zone")
-
-    @property
-    @pulumi.getter(name="autoUpgrade")
-    def auto_upgrade(self) -> Optional[bool]:
-        """
-        Match against this bool
-        """
-        return pulumi.get(self, "auto_upgrade")
-
-    @property
-    @pulumi.getter
-    def cni(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "cni")
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter(name="exoscaleCcm")
-    def exoscale_ccm(self) -> Optional[bool]:
-        """
-        Match against this bool
-        """
-        return pulumi.get(self, "exoscale_ccm")
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
-        """
-        Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-        """
-        return pulumi.get(self, "labels")
-
-    @property
-    @pulumi.getter(name="metricsServer")
-    def metrics_server(self) -> Optional[bool]:
-        """
-        Match against this bool
-        """
-        return pulumi.get(self, "metrics_server")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="serviceLevel")
-    def service_level(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "service_level")
-
-
-@pulumi.output_type
-class GetSKSClusterListClusterOidcResult(dict):
-    def __init__(__self__, *,
-                 client_id: str,
-                 issuer_url: str,
-                 groups_claim: Optional[str] = None,
-                 groups_prefix: Optional[str] = None,
-                 required_claim: Optional[Mapping[str, str]] = None,
-                 username_claim: Optional[str] = None,
-                 username_prefix: Optional[str] = None):
-        pulumi.set(__self__, "client_id", client_id)
-        pulumi.set(__self__, "issuer_url", issuer_url)
-        if groups_claim is not None:
-            pulumi.set(__self__, "groups_claim", groups_claim)
-        if groups_prefix is not None:
-            pulumi.set(__self__, "groups_prefix", groups_prefix)
-        if required_claim is not None:
-            pulumi.set(__self__, "required_claim", required_claim)
-        if username_claim is not None:
-            pulumi.set(__self__, "username_claim", username_claim)
-        if username_prefix is not None:
-            pulumi.set(__self__, "username_prefix", username_prefix)
-
-    @property
-    @pulumi.getter(name="clientId")
-    def client_id(self) -> str:
-        return pulumi.get(self, "client_id")
-
-    @property
-    @pulumi.getter(name="issuerUrl")
-    def issuer_url(self) -> str:
-        return pulumi.get(self, "issuer_url")
-
-    @property
-    @pulumi.getter(name="groupsClaim")
-    def groups_claim(self) -> Optional[str]:
-        return pulumi.get(self, "groups_claim")
-
-    @property
-    @pulumi.getter(name="groupsPrefix")
-    def groups_prefix(self) -> Optional[str]:
-        return pulumi.get(self, "groups_prefix")
-
-    @property
-    @pulumi.getter(name="requiredClaim")
-    def required_claim(self) -> Optional[Mapping[str, str]]:
-        return pulumi.get(self, "required_claim")
-
-    @property
-    @pulumi.getter(name="usernameClaim")
-    def username_claim(self) -> Optional[str]:
-        return pulumi.get(self, "username_claim")
-
-    @property
-    @pulumi.getter(name="usernamePrefix")
-    def username_prefix(self) -> Optional[str]:
-        return pulumi.get(self, "username_prefix")
-
-
-@pulumi.output_type
-class GetSKSClusterOidcResult(dict):
-    def __init__(__self__, *,
-                 client_id: str,
-                 issuer_url: str,
-                 groups_claim: Optional[str] = None,
-                 groups_prefix: Optional[str] = None,
-                 required_claim: Optional[Mapping[str, str]] = None,
-                 username_claim: Optional[str] = None,
-                 username_prefix: Optional[str] = None):
-        """
-        :param str client_id: The OpenID client ID.
-        :param str issuer_url: The OpenID provider URL.
-        :param str groups_claim: An OpenID JWT claim to use as the user's group.
-        :param str groups_prefix: An OpenID prefix prepended to group claims.
-        :param Mapping[str, str] required_claim: A map of key/value pairs that describes a required claim in the OpenID Token.
-        :param str username_claim: An OpenID JWT claim to use as the user name.
-        :param str username_prefix: An OpenID prefix prepended to username claims.
-        """
-        pulumi.set(__self__, "client_id", client_id)
-        pulumi.set(__self__, "issuer_url", issuer_url)
-        if groups_claim is not None:
-            pulumi.set(__self__, "groups_claim", groups_claim)
-        if groups_prefix is not None:
-            pulumi.set(__self__, "groups_prefix", groups_prefix)
-        if required_claim is not None:
-            pulumi.set(__self__, "required_claim", required_claim)
-        if username_claim is not None:
-            pulumi.set(__self__, "username_claim", username_claim)
-        if username_prefix is not None:
-            pulumi.set(__self__, "username_prefix", username_prefix)
-
-    @property
-    @pulumi.getter(name="clientId")
-    def client_id(self) -> str:
-        """
-        The OpenID client ID.
-        """
-        return pulumi.get(self, "client_id")
-
-    @property
-    @pulumi.getter(name="issuerUrl")
-    def issuer_url(self) -> str:
-        """
-        The OpenID provider URL.
-        """
-        return pulumi.get(self, "issuer_url")
-
-    @property
-    @pulumi.getter(name="groupsClaim")
-    def groups_claim(self) -> Optional[str]:
-        """
-        An OpenID JWT claim to use as the user's group.
-        """
-        return pulumi.get(self, "groups_claim")
-
-    @property
-    @pulumi.getter(name="groupsPrefix")
-    def groups_prefix(self) -> Optional[str]:
-        """
-        An OpenID prefix prepended to group claims.
-        """
-        return pulumi.get(self, "groups_prefix")
-
-    @property
-    @pulumi.getter(name="requiredClaim")
-    def required_claim(self) -> Optional[Mapping[str, str]]:
-        """
-        A map of key/value pairs that describes a required claim in the OpenID Token.
-        """
-        return pulumi.get(self, "required_claim")
-
-    @property
-    @pulumi.getter(name="usernameClaim")
-    def username_claim(self) -> Optional[str]:
-        """
-        An OpenID JWT claim to use as the user name.
-        """
-        return pulumi.get(self, "username_claim")
-
-    @property
-    @pulumi.getter(name="usernamePrefix")
-    def username_prefix(self) -> Optional[str]:
-        """
-        An OpenID prefix prepended to username claims.
-        """
-        return pulumi.get(self, "username_prefix")
-
-
-@pulumi.output_type
-class GetSKSNodepoolListNodepoolResult(dict):
-    def __init__(__self__, *,
-                 cluster_id: str,
-                 created_at: str,
-                 instance_pool_id: str,
-                 state: str,
-                 template_id: str,
-                 version: str,
-                 zone: str,
-                 anti_affinity_group_ids: Optional[Sequence[str]] = None,
-                 deploy_target_id: Optional[str] = None,
-                 description: Optional[str] = None,
-                 disk_size: Optional[int] = None,
-                 id: Optional[str] = None,
-                 instance_prefix: Optional[str] = None,
-                 instance_type: Optional[str] = None,
-                 labels: Optional[Mapping[str, str]] = None,
-                 name: Optional[str] = None,
-                 private_network_ids: Optional[Sequence[str]] = None,
-                 security_group_ids: Optional[Sequence[str]] = None,
-                 size: Optional[int] = None,
-                 storage_lvm: Optional[bool] = None,
-                 taints: Optional[Mapping[str, str]] = None):
-        """
-        :param str cluster_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str created_at: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str instance_pool_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str state: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str template_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str version: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str zone: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str deploy_target_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str description: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param int disk_size: Match against this int
-        :param str id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str instance_prefix: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str instance_type: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param Mapping[str, str] labels: Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-        :param str name: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param int size: Match against this int
-        :param bool storage_lvm: Match against this bool
-        :param Mapping[str, str] taints: Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-        """
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "instance_pool_id", instance_pool_id)
-        pulumi.set(__self__, "state", state)
-        pulumi.set(__self__, "template_id", template_id)
-        pulumi.set(__self__, "version", version)
-        pulumi.set(__self__, "zone", zone)
-        if anti_affinity_group_ids is not None:
-            pulumi.set(__self__, "anti_affinity_group_ids", anti_affinity_group_ids)
-        if deploy_target_id is not None:
-            pulumi.set(__self__, "deploy_target_id", deploy_target_id)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if disk_size is not None:
-            pulumi.set(__self__, "disk_size", disk_size)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if instance_prefix is not None:
-            pulumi.set(__self__, "instance_prefix", instance_prefix)
-        if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
-        if labels is not None:
-            pulumi.set(__self__, "labels", labels)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if private_network_ids is not None:
-            pulumi.set(__self__, "private_network_ids", private_network_ids)
-        if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
-        if size is not None:
-            pulumi.set(__self__, "size", size)
-        if storage_lvm is not None:
-            pulumi.set(__self__, "storage_lvm", storage_lvm)
-        if taints is not None:
-            pulumi.set(__self__, "taints", taints)
-
-    @property
-    @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "cluster_id")
-
-    @property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "created_at")
-
-    @property
-    @pulumi.getter(name="instancePoolId")
-    def instance_pool_id(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "instance_pool_id")
-
-    @property
-    @pulumi.getter
-    def state(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "state")
-
-    @property
-    @pulumi.getter(name="templateId")
-    def template_id(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "template_id")
-
-    @property
-    @pulumi.getter
-    def version(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "version")
-
-    @property
-    @pulumi.getter
-    def zone(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "zone")
-
-    @property
-    @pulumi.getter(name="antiAffinityGroupIds")
-    def anti_affinity_group_ids(self) -> Optional[Sequence[str]]:
-        return pulumi.get(self, "anti_affinity_group_ids")
-
-    @property
-    @pulumi.getter(name="deployTargetId")
-    def deploy_target_id(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "deploy_target_id")
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter(name="diskSize")
-    def disk_size(self) -> Optional[int]:
-        """
-        Match against this int
-        """
-        return pulumi.get(self, "disk_size")
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="instancePrefix")
-    def instance_prefix(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "instance_prefix")
-
-    @property
-    @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "instance_type")
-
-    @property
-    @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
-        """
-        Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-        """
-        return pulumi.get(self, "labels")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="privateNetworkIds")
-    def private_network_ids(self) -> Optional[Sequence[str]]:
-        return pulumi.get(self, "private_network_ids")
-
-    @property
-    @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[Sequence[str]]:
-        return pulumi.get(self, "security_group_ids")
-
-    @property
-    @pulumi.getter
-    def size(self) -> Optional[int]:
-        """
-        Match against this int
-        """
-        return pulumi.get(self, "size")
-
-    @property
-    @pulumi.getter(name="storageLvm")
-    def storage_lvm(self) -> Optional[bool]:
-        """
-        Match against this bool
-        """
-        return pulumi.get(self, "storage_lvm")
-
-    @property
-    @pulumi.getter
-    def taints(self) -> Optional[Mapping[str, str]]:
-        """
-        Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-        """
-        return pulumi.get(self, "taints")
+        return pulumi.get(self, "read")
 
 

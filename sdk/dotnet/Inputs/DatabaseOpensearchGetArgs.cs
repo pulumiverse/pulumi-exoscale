@@ -13,6 +13,9 @@ namespace Pulumiverse.Exoscale.Inputs
 
     public sealed class DatabaseOpensearchGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// OpenSearch Dashboards settings
+        /// </summary>
         [Input("dashboards")]
         public Input<Inputs.DatabaseOpensearchDashboardsGetArgs>? Dashboards { get; set; }
 
@@ -44,7 +47,7 @@ namespace Pulumiverse.Exoscale.Inputs
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
+        /// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]
         /// </summary>
         public InputList<string> IpFilters
         {
@@ -65,7 +68,7 @@ namespace Pulumiverse.Exoscale.Inputs
         public Input<int>? MaxIndexCount { get; set; }
 
         /// <summary>
-        /// ❗
+        /// ❗ Name of a backup to recover from
         /// </summary>
         [Input("recoveryBackupName")]
         public Input<string>? RecoveryBackupName { get; set; }
@@ -77,7 +80,7 @@ namespace Pulumiverse.Exoscale.Inputs
         public Input<string>? Settings { get; set; }
 
         /// <summary>
-        /// ❗ OpenSearch major version.
+        /// ❗ OpenSearch major version (`exo dbaas type show opensearch` for reference)
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
