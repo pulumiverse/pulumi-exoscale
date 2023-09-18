@@ -3,16 +3,16 @@
 {
   "name": "TFProvider",
   "build": {
-      "dockerfile": "Dockerfile"
-  }
+    "dockerfile": "Dockerfile"
+  },
   "customizations": {
-		"vscode": {
-			"settings": {},
-			"extensions": [
-				"streetsidesoftware.code-spell-checker",
+    "vscode": {
+      "settings": {},
+      "extensions": [
+        "streetsidesoftware.code-spell-checker",
         "golang.go",
         "GitHub.copilot"
-			]
-		}
-	}
+      ]
+    }
+  }
 }
