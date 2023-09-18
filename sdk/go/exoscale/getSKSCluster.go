@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -177,6 +178,12 @@ func (o LookupSKSClusterResultOutput) ToLookupSKSClusterResultOutput() LookupSKS
 
 func (o LookupSKSClusterResultOutput) ToLookupSKSClusterResultOutputWithContext(ctx context.Context) LookupSKSClusterResultOutput {
 	return o
+}
+
+func (o LookupSKSClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSKSClusterResult] {
+	return pulumix.Output[LookupSKSClusterResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.

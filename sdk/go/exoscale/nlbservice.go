@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -220,6 +221,12 @@ func (i *NLBService) ToNLBServiceOutputWithContext(ctx context.Context) NLBServi
 	return pulumi.ToOutputWithContext(ctx, i).(NLBServiceOutput)
 }
 
+func (i *NLBService) ToOutput(ctx context.Context) pulumix.Output[*NLBService] {
+	return pulumix.Output[*NLBService]{
+		OutputState: i.ToNLBServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NLBServiceArrayInput is an input type that accepts NLBServiceArray and NLBServiceArrayOutput values.
 // You can construct a concrete instance of `NLBServiceArrayInput` via:
 //
@@ -243,6 +250,12 @@ func (i NLBServiceArray) ToNLBServiceArrayOutput() NLBServiceArrayOutput {
 
 func (i NLBServiceArray) ToNLBServiceArrayOutputWithContext(ctx context.Context) NLBServiceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NLBServiceArrayOutput)
+}
+
+func (i NLBServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]*NLBService] {
+	return pulumix.Output[[]*NLBService]{
+		OutputState: i.ToNLBServiceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NLBServiceMapInput is an input type that accepts NLBServiceMap and NLBServiceMapOutput values.
@@ -270,6 +283,12 @@ func (i NLBServiceMap) ToNLBServiceMapOutputWithContext(ctx context.Context) NLB
 	return pulumi.ToOutputWithContext(ctx, i).(NLBServiceMapOutput)
 }
 
+func (i NLBServiceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NLBService] {
+	return pulumix.Output[map[string]*NLBService]{
+		OutputState: i.ToNLBServiceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NLBServiceOutput struct{ *pulumi.OutputState }
 
 func (NLBServiceOutput) ElementType() reflect.Type {
@@ -282,6 +301,12 @@ func (o NLBServiceOutput) ToNLBServiceOutput() NLBServiceOutput {
 
 func (o NLBServiceOutput) ToNLBServiceOutputWithContext(ctx context.Context) NLBServiceOutput {
 	return o
+}
+
+func (o NLBServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*NLBService] {
+	return pulumix.Output[*NLBService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A free-form text describing the NLB service.
@@ -352,6 +377,12 @@ func (o NLBServiceArrayOutput) ToNLBServiceArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o NLBServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NLBService] {
+	return pulumix.Output[[]*NLBService]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NLBServiceArrayOutput) Index(i pulumi.IntInput) NLBServiceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NLBService {
 		return vs[0].([]*NLBService)[vs[1].(int)]
@@ -370,6 +401,12 @@ func (o NLBServiceMapOutput) ToNLBServiceMapOutput() NLBServiceMapOutput {
 
 func (o NLBServiceMapOutput) ToNLBServiceMapOutputWithContext(ctx context.Context) NLBServiceMapOutput {
 	return o
+}
+
+func (o NLBServiceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NLBService] {
+	return pulumix.Output[map[string]*NLBService]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NLBServiceMapOutput) MapIndex(k pulumi.StringInput) NLBServiceOutput {

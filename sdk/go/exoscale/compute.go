@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -343,6 +344,12 @@ func (i *Compute) ToComputeOutputWithContext(ctx context.Context) ComputeOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeOutput)
 }
 
+func (i *Compute) ToOutput(ctx context.Context) pulumix.Output[*Compute] {
+	return pulumix.Output[*Compute]{
+		OutputState: i.ToComputeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ComputeArrayInput is an input type that accepts ComputeArray and ComputeArrayOutput values.
 // You can construct a concrete instance of `ComputeArrayInput` via:
 //
@@ -366,6 +373,12 @@ func (i ComputeArray) ToComputeArrayOutput() ComputeArrayOutput {
 
 func (i ComputeArray) ToComputeArrayOutputWithContext(ctx context.Context) ComputeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeArrayOutput)
+}
+
+func (i ComputeArray) ToOutput(ctx context.Context) pulumix.Output[[]*Compute] {
+	return pulumix.Output[[]*Compute]{
+		OutputState: i.ToComputeArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ComputeMapInput is an input type that accepts ComputeMap and ComputeMapOutput values.
@@ -393,6 +406,12 @@ func (i ComputeMap) ToComputeMapOutputWithContext(ctx context.Context) ComputeMa
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeMapOutput)
 }
 
+func (i ComputeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Compute] {
+	return pulumix.Output[map[string]*Compute]{
+		OutputState: i.ToComputeMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ComputeOutput struct{ *pulumi.OutputState }
 
 func (ComputeOutput) ElementType() reflect.Type {
@@ -405,6 +424,12 @@ func (o ComputeOutput) ToComputeOutput() ComputeOutput {
 
 func (o ComputeOutput) ToComputeOutputWithContext(ctx context.Context) ComputeOutput {
 	return o
+}
+
+func (o ComputeOutput) ToOutput(ctx context.Context) pulumix.Output[*Compute] {
+	return pulumix.Output[*Compute]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ❗ A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinityGroups`).
@@ -558,6 +583,12 @@ func (o ComputeArrayOutput) ToComputeArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o ComputeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Compute] {
+	return pulumix.Output[[]*Compute]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ComputeArrayOutput) Index(i pulumi.IntInput) ComputeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Compute {
 		return vs[0].([]*Compute)[vs[1].(int)]
@@ -576,6 +607,12 @@ func (o ComputeMapOutput) ToComputeMapOutput() ComputeMapOutput {
 
 func (o ComputeMapOutput) ToComputeMapOutputWithContext(ctx context.Context) ComputeMapOutput {
 	return o
+}
+
+func (o ComputeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Compute] {
+	return pulumix.Output[map[string]*Compute]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ComputeMapOutput) MapIndex(k pulumi.StringInput) ComputeOutput {

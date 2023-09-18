@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -121,6 +122,12 @@ func (i *SSHKeypair) ToSSHKeypairOutputWithContext(ctx context.Context) SSHKeypa
 	return pulumi.ToOutputWithContext(ctx, i).(SSHKeypairOutput)
 }
 
+func (i *SSHKeypair) ToOutput(ctx context.Context) pulumix.Output[*SSHKeypair] {
+	return pulumix.Output[*SSHKeypair]{
+		OutputState: i.ToSSHKeypairOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SSHKeypairArrayInput is an input type that accepts SSHKeypairArray and SSHKeypairArrayOutput values.
 // You can construct a concrete instance of `SSHKeypairArrayInput` via:
 //
@@ -144,6 +151,12 @@ func (i SSHKeypairArray) ToSSHKeypairArrayOutput() SSHKeypairArrayOutput {
 
 func (i SSHKeypairArray) ToSSHKeypairArrayOutputWithContext(ctx context.Context) SSHKeypairArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SSHKeypairArrayOutput)
+}
+
+func (i SSHKeypairArray) ToOutput(ctx context.Context) pulumix.Output[[]*SSHKeypair] {
+	return pulumix.Output[[]*SSHKeypair]{
+		OutputState: i.ToSSHKeypairArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SSHKeypairMapInput is an input type that accepts SSHKeypairMap and SSHKeypairMapOutput values.
@@ -171,6 +184,12 @@ func (i SSHKeypairMap) ToSSHKeypairMapOutputWithContext(ctx context.Context) SSH
 	return pulumi.ToOutputWithContext(ctx, i).(SSHKeypairMapOutput)
 }
 
+func (i SSHKeypairMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SSHKeypair] {
+	return pulumix.Output[map[string]*SSHKeypair]{
+		OutputState: i.ToSSHKeypairMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SSHKeypairOutput struct{ *pulumi.OutputState }
 
 func (SSHKeypairOutput) ElementType() reflect.Type {
@@ -183,6 +202,12 @@ func (o SSHKeypairOutput) ToSSHKeypairOutput() SSHKeypairOutput {
 
 func (o SSHKeypairOutput) ToSSHKeypairOutputWithContext(ctx context.Context) SSHKeypairOutput {
 	return o
+}
+
+func (o SSHKeypairOutput) ToOutput(ctx context.Context) pulumix.Output[*SSHKeypair] {
+	return pulumix.Output[*SSHKeypair]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The SSH keypair unique identifier.
@@ -219,6 +244,12 @@ func (o SSHKeypairArrayOutput) ToSSHKeypairArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o SSHKeypairArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SSHKeypair] {
+	return pulumix.Output[[]*SSHKeypair]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SSHKeypairArrayOutput) Index(i pulumi.IntInput) SSHKeypairOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SSHKeypair {
 		return vs[0].([]*SSHKeypair)[vs[1].(int)]
@@ -237,6 +268,12 @@ func (o SSHKeypairMapOutput) ToSSHKeypairMapOutput() SSHKeypairMapOutput {
 
 func (o SSHKeypairMapOutput) ToSSHKeypairMapOutputWithContext(ctx context.Context) SSHKeypairMapOutput {
 	return o
+}
+
+func (o SSHKeypairMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SSHKeypair] {
+	return pulumix.Output[map[string]*SSHKeypair]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SSHKeypairMapOutput) MapIndex(k pulumi.StringInput) SSHKeypairOutput {

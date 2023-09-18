@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -127,6 +128,12 @@ func (o LookupComputeInstanceResultOutput) ToLookupComputeInstanceResultOutput()
 
 func (o LookupComputeInstanceResultOutput) ToLookupComputeInstanceResultOutputWithContext(ctx context.Context) LookupComputeInstanceResultOutput {
 	return o
+}
+
+func (o LookupComputeInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupComputeInstanceResult] {
+	return pulumix.Output[LookupComputeInstanceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of attached exoscale*anti*affinity_group (IDs).

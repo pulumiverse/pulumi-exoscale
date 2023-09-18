@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -122,6 +123,12 @@ func (i *Affinity) ToAffinityOutputWithContext(ctx context.Context) AffinityOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AffinityOutput)
 }
 
+func (i *Affinity) ToOutput(ctx context.Context) pulumix.Output[*Affinity] {
+	return pulumix.Output[*Affinity]{
+		OutputState: i.ToAffinityOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AffinityArrayInput is an input type that accepts AffinityArray and AffinityArrayOutput values.
 // You can construct a concrete instance of `AffinityArrayInput` via:
 //
@@ -145,6 +152,12 @@ func (i AffinityArray) ToAffinityArrayOutput() AffinityArrayOutput {
 
 func (i AffinityArray) ToAffinityArrayOutputWithContext(ctx context.Context) AffinityArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AffinityArrayOutput)
+}
+
+func (i AffinityArray) ToOutput(ctx context.Context) pulumix.Output[[]*Affinity] {
+	return pulumix.Output[[]*Affinity]{
+		OutputState: i.ToAffinityArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AffinityMapInput is an input type that accepts AffinityMap and AffinityMapOutput values.
@@ -172,6 +185,12 @@ func (i AffinityMap) ToAffinityMapOutputWithContext(ctx context.Context) Affinit
 	return pulumi.ToOutputWithContext(ctx, i).(AffinityMapOutput)
 }
 
+func (i AffinityMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Affinity] {
+	return pulumix.Output[map[string]*Affinity]{
+		OutputState: i.ToAffinityMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AffinityOutput struct{ *pulumi.OutputState }
 
 func (AffinityOutput) ElementType() reflect.Type {
@@ -184,6 +203,12 @@ func (o AffinityOutput) ToAffinityOutput() AffinityOutput {
 
 func (o AffinityOutput) ToAffinityOutputWithContext(ctx context.Context) AffinityOutput {
 	return o
+}
+
+func (o AffinityOutput) ToOutput(ctx context.Context) pulumix.Output[*Affinity] {
+	return pulumix.Output[*Affinity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ❗ A free-form text describing the group.
@@ -220,6 +245,12 @@ func (o AffinityArrayOutput) ToAffinityArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o AffinityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Affinity] {
+	return pulumix.Output[[]*Affinity]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AffinityArrayOutput) Index(i pulumi.IntInput) AffinityOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Affinity {
 		return vs[0].([]*Affinity)[vs[1].(int)]
@@ -238,6 +269,12 @@ func (o AffinityMapOutput) ToAffinityMapOutput() AffinityMapOutput {
 
 func (o AffinityMapOutput) ToAffinityMapOutputWithContext(ctx context.Context) AffinityMapOutput {
 	return o
+}
+
+func (o AffinityMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Affinity] {
+	return pulumix.Output[map[string]*Affinity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AffinityMapOutput) MapIndex(k pulumi.StringInput) AffinityOutput {
