@@ -36,7 +36,15 @@ func GetEnvironment(ctx *pulumi.Context) string {
 
 // Exoscale API key
 func GetKey(ctx *pulumi.Context) string {
-	return config.Get(ctx, "exoscale:key")
+	v, err := config.Try(ctx, "exoscale:key")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "EXOSCALE_API_KEY"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // Deprecated: Use region instead
@@ -51,7 +59,15 @@ func GetRegion(ctx *pulumi.Context) string {
 
 // Exoscale API secret
 func GetSecret(ctx *pulumi.Context) string {
-	return config.Get(ctx, "exoscale:secret")
+	v, err := config.Try(ctx, "exoscale:secret")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "EXOSCALE_API_SECRET"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // Timeout in seconds for waiting on compute resources to become available (by default: 300)

@@ -15,14 +15,14 @@
 package exoscale
 
 import (
+	_ "embed"
 	"fmt"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"path/filepath"
+	"unicode"
 
-	"github.com/exoscale/terraform-provider-exoscale/exoscale"
+	"github.com/exoscale/terraform-provider-exoscale/shim"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
-	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumiverse/pulumi-exoscale/provider/pkg/version"
 )
 
@@ -35,22 +35,39 @@ const (
 	mainMod = "index" // the exoscale module
 )
 
-// preConfigureCallback is called before the providerConfigure function of the underlying provider.
-// It should validate that the provider can be configured, and provide actionable errors in the case
-// it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
-// for example `stringValue(vars, "accessKey")`.
-func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
-	return nil
+// exoscaleMember manufactures a type token for the random package and the given module and type.
+func exoscaleMember(mod string, mem string) tokens.ModuleMember {
+	return tokens.ModuleMember(mainPkg + ":" + mod + ":" + mem)
 }
+
+// exoscaleType manufactures a type token for the random package and the given module and type.
+func exoscaleType(mod string, typ string) tokens.Type {
+	return tokens.Type(exoscaleMember(mod, typ))
+}
+
+// exoscaleResource manufactures a standard resource token given a module and resource name.  It automatically uses the
+// exoscale package and names the file by simply lower casing the resource's first character.
+func exoscaleResource(mod string, res string) tokens.Type {
+	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
+	return exoscaleType(mod+"/"+fn, res)
+}
+
+// exoscaleDataSource manufactures a standard resource token given a module and resource name.  It automatically uses the
+// exoscale package and names the file by simply lower casing the resource's first character.
+func exoscaleDataSource(mod string, res string) tokens.ModuleMember {
+	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
+	return exoscaleMember(mod+"/"+fn, res)
+}
+
+//go:embed cmd/pulumi-resource-exoscale/bridge-metadata.json
+var metadata []byte
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv2.NewProvider(exoscale.Provider())
-
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:    p,
+		P:    shim.ShimmedProvider(),
 		Name: "exoscale",
 		// DisplayName is a way to be able to change the casing of the provider
 		// name when being displayed on the Pulumi registry
@@ -74,10 +91,11 @@ func Provider() tfbridge.ProviderInfo {
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:   []string{"pulumi", "exoscale", "category/cloud"},
-		License:    "Apache-2.0",
-		Homepage:   "https://www.pulumi.com",
-		Repository: "https://github.com/pulumiverse/pulumi-exoscale",
+		Keywords:     []string{"pulumi", "exoscale", "category/cloud"},
+		License:      "Apache-2.0",
+		Homepage:     "https://www.pulumi.com",
+		Repository:   "https://github.com/pulumiverse/pulumi-exoscale",
+		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
 		GitHubOrg: "exoscale",
@@ -90,6 +108,18 @@ func Provider() tfbridge.ProviderInfo {
 			// 		EnvVars: []string{"AWS_REGION", "AWS_DEFAULT_REGION"},
 			// 	},
 			// },
+			"key": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"EXOSCALE_API_KEY"},
+				},
+				Secret: tfbridge.BoolRef(true),
+			},
+			"secret": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"EXOSCALE_API_SECRET"},
+				},
+				Secret: tfbridge.BoolRef(true),
+			},
 			"config": {
 				CSharpName: "CloudStackIniConfig",
 			},
@@ -97,7 +127,6 @@ func Provider() tfbridge.ProviderInfo {
 				Type: "integer",
 			},
 		},
-		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi type. Two examples
 			// are below - the single line form is the common case. The multi-line form is
@@ -111,6 +140,7 @@ func Provider() tfbridge.ProviderInfo {
 			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
 			// 	},
 			// },
+
 			"exoscale_anti_affinity_group": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AntiAffinityGroup")},
 			"exoscale_compute_instance":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ComputeInstance")},
 			"exoscale_database":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Database")},
@@ -165,6 +195,8 @@ func Provider() tfbridge.ProviderInfo {
 			"exoscale_compute":           {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getCompute")},
 			"exoscale_compute_ipaddress": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getComputeIPAddress")},
 			"exoscale_network":           {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getNetwork")},
+			"exoscale_nlb_service_list":  {Tok: exoscaleDataSource(mainMod, "getNLBServiceList")},
+			"exoscale_zones":             {Tok: exoscaleDataSource(mainMod, "getZones")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			PackageName: "@pulumiverse/exoscale",

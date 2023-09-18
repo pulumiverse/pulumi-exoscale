@@ -33,6 +33,8 @@ type PrivateNetwork struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	EndIp pulumi.StringPtrOutput `pulumi:"endIp"`
+	// A map of key/value labels.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The private network name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// (For managed Privnets) The network mask defining the IPv4 network allowed for static leases.
@@ -80,6 +82,8 @@ type privateNetworkState struct {
 	Description *string `pulumi:"description"`
 	// (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	EndIp *string `pulumi:"endIp"`
+	// A map of key/value labels.
+	Labels map[string]string `pulumi:"labels"`
 	// The private network name.
 	Name *string `pulumi:"name"`
 	// (For managed Privnets) The network mask defining the IPv4 network allowed for static leases.
@@ -95,6 +99,8 @@ type PrivateNetworkState struct {
 	Description pulumi.StringPtrInput
 	// (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	EndIp pulumi.StringPtrInput
+	// A map of key/value labels.
+	Labels pulumi.StringMapInput
 	// The private network name.
 	Name pulumi.StringPtrInput
 	// (For managed Privnets) The network mask defining the IPv4 network allowed for static leases.
@@ -114,6 +120,8 @@ type privateNetworkArgs struct {
 	Description *string `pulumi:"description"`
 	// (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	EndIp *string `pulumi:"endIp"`
+	// A map of key/value labels.
+	Labels map[string]string `pulumi:"labels"`
 	// The private network name.
 	Name *string `pulumi:"name"`
 	// (For managed Privnets) The network mask defining the IPv4 network allowed for static leases.
@@ -130,6 +138,8 @@ type PrivateNetworkArgs struct {
 	Description pulumi.StringPtrInput
 	// (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 	EndIp pulumi.StringPtrInput
+	// A map of key/value labels.
+	Labels pulumi.StringMapInput
 	// The private network name.
 	Name pulumi.StringPtrInput
 	// (For managed Privnets) The network mask defining the IPv4 network allowed for static leases.
@@ -259,6 +269,11 @@ func (o PrivateNetworkOutput) Description() pulumi.StringPtrOutput {
 // (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
 func (o PrivateNetworkOutput) EndIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateNetwork) pulumi.StringPtrOutput { return v.EndIp }).(pulumi.StringPtrOutput)
+}
+
+// A map of key/value labels.
+func (o PrivateNetworkOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PrivateNetwork) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The private network name.

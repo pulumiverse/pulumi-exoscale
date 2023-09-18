@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 import types
@@ -49,7 +49,7 @@ class _ExportableConfig(types.ModuleType):
         """
         Exoscale API key
         """
-        return __config__.get('key')
+        return __config__.get('key') or _utilities.get_env('EXOSCALE_API_KEY')
 
     @property
     def profile(self) -> Optional[str]:
@@ -67,7 +67,7 @@ class _ExportableConfig(types.ModuleType):
         """
         Exoscale API secret
         """
-        return __config__.get('secret')
+        return __config__.get('secret') or _utilities.get_env('EXOSCALE_API_SECRET')
 
     @property
     def timeout(self) -> Optional[int]:

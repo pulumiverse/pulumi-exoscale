@@ -60,7 +60,11 @@ export class Database extends pulumi.CustomResource {
      */
     public /*out*/ readonly diskSize!: pulumi.Output<number>;
     /**
-     * *kafka* database service type specific arguments.
+     * *grafana* database service type specific arguments. Structure is documented below.
+     */
+    public readonly grafana!: pulumi.Output<outputs.DatabaseGrafana | undefined>;
+    /**
+     * *kafka* database service type specific arguments. Structure is documented below.
      */
     public readonly kafka!: pulumi.Output<outputs.DatabaseKafka | undefined>;
     /**
@@ -72,7 +76,7 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly maintenanceTime!: pulumi.Output<string>;
     /**
-     * *mysql* database service type specific arguments.
+     * *mysql* database service type specific arguments. Structure is documented below.
      */
     public readonly mysql!: pulumi.Output<outputs.DatabaseMysql | undefined>;
     /**
@@ -92,7 +96,7 @@ export class Database extends pulumi.CustomResource {
      */
     public /*out*/ readonly nodes!: pulumi.Output<number>;
     /**
-     * *opensearch* database service type specific arguments.
+     * *opensearch* database service type specific arguments. Structure is documented below.
      */
     public readonly opensearch!: pulumi.Output<outputs.DatabaseOpensearch | undefined>;
     /**
@@ -100,7 +104,7 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly pg!: pulumi.Output<outputs.DatabasePg | undefined>;
     /**
-     * The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE>` - for reference).
+     * The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE> --plans` - for reference).
      */
     public readonly plan!: pulumi.Output<string>;
     /**
@@ -114,9 +118,10 @@ export class Database extends pulumi.CustomResource {
     /**
      * The database service protection boolean flag against termination/power-off.
      */
-    public readonly terminationProtection!: pulumi.Output<boolean | undefined>;
+    public readonly terminationProtection!: pulumi.Output<boolean>;
+    public readonly timeouts!: pulumi.Output<outputs.DatabaseTimeouts | undefined>;
     /**
-     * ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+     * ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `grafana`).
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -144,6 +149,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["caCertificate"] = state ? state.caCertificate : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["diskSize"] = state ? state.diskSize : undefined;
+            resourceInputs["grafana"] = state ? state.grafana : undefined;
             resourceInputs["kafka"] = state ? state.kafka : undefined;
             resourceInputs["maintenanceDow"] = state ? state.maintenanceDow : undefined;
             resourceInputs["maintenanceTime"] = state ? state.maintenanceTime : undefined;
@@ -158,6 +164,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["redis"] = state ? state.redis : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["terminationProtection"] = state ? state.terminationProtection : undefined;
+            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
@@ -172,6 +179,7 @@ export class Database extends pulumi.CustomResource {
             if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
+            resourceInputs["grafana"] = args ? args.grafana : undefined;
             resourceInputs["kafka"] = args ? args.kafka : undefined;
             resourceInputs["maintenanceDow"] = args ? args.maintenanceDow : undefined;
             resourceInputs["maintenanceTime"] = args ? args.maintenanceTime : undefined;
@@ -182,6 +190,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["plan"] = args ? args.plan : undefined;
             resourceInputs["redis"] = args ? args.redis : undefined;
             resourceInputs["terminationProtection"] = args ? args.terminationProtection : undefined;
+            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["caCertificate"] = undefined /*out*/;
@@ -215,7 +224,11 @@ export interface DatabaseState {
      */
     diskSize?: pulumi.Input<number>;
     /**
-     * *kafka* database service type specific arguments.
+     * *grafana* database service type specific arguments. Structure is documented below.
+     */
+    grafana?: pulumi.Input<inputs.DatabaseGrafana>;
+    /**
+     * *kafka* database service type specific arguments. Structure is documented below.
      */
     kafka?: pulumi.Input<inputs.DatabaseKafka>;
     /**
@@ -227,7 +240,7 @@ export interface DatabaseState {
      */
     maintenanceTime?: pulumi.Input<string>;
     /**
-     * *mysql* database service type specific arguments.
+     * *mysql* database service type specific arguments. Structure is documented below.
      */
     mysql?: pulumi.Input<inputs.DatabaseMysql>;
     /**
@@ -247,7 +260,7 @@ export interface DatabaseState {
      */
     nodes?: pulumi.Input<number>;
     /**
-     * *opensearch* database service type specific arguments.
+     * *opensearch* database service type specific arguments. Structure is documented below.
      */
     opensearch?: pulumi.Input<inputs.DatabaseOpensearch>;
     /**
@@ -255,7 +268,7 @@ export interface DatabaseState {
      */
     pg?: pulumi.Input<inputs.DatabasePg>;
     /**
-     * The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE>` - for reference).
+     * The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE> --plans` - for reference).
      */
     plan?: pulumi.Input<string>;
     /**
@@ -270,8 +283,9 @@ export interface DatabaseState {
      * The database service protection boolean flag against termination/power-off.
      */
     terminationProtection?: pulumi.Input<boolean>;
+    timeouts?: pulumi.Input<inputs.DatabaseTimeouts>;
     /**
-     * ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+     * ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `grafana`).
      */
     type?: pulumi.Input<string>;
     /**
@@ -289,7 +303,11 @@ export interface DatabaseState {
  */
 export interface DatabaseArgs {
     /**
-     * *kafka* database service type specific arguments.
+     * *grafana* database service type specific arguments. Structure is documented below.
+     */
+    grafana?: pulumi.Input<inputs.DatabaseGrafana>;
+    /**
+     * *kafka* database service type specific arguments. Structure is documented below.
      */
     kafka?: pulumi.Input<inputs.DatabaseKafka>;
     /**
@@ -301,7 +319,7 @@ export interface DatabaseArgs {
      */
     maintenanceTime?: pulumi.Input<string>;
     /**
-     * *mysql* database service type specific arguments.
+     * *mysql* database service type specific arguments. Structure is documented below.
      */
     mysql?: pulumi.Input<inputs.DatabaseMysql>;
     /**
@@ -309,7 +327,7 @@ export interface DatabaseArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * *opensearch* database service type specific arguments.
+     * *opensearch* database service type specific arguments. Structure is documented below.
      */
     opensearch?: pulumi.Input<inputs.DatabaseOpensearch>;
     /**
@@ -317,7 +335,7 @@ export interface DatabaseArgs {
      */
     pg?: pulumi.Input<inputs.DatabasePg>;
     /**
-     * The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE>` - for reference).
+     * The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE> --plans` - for reference).
      */
     plan: pulumi.Input<string>;
     /**
@@ -328,8 +346,9 @@ export interface DatabaseArgs {
      * The database service protection boolean flag against termination/power-off.
      */
     terminationProtection?: pulumi.Input<boolean>;
+    timeouts?: pulumi.Input<inputs.DatabaseTimeouts>;
     /**
-     * ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+     * ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `grafana`).
      */
     type: pulumi.Input<string>;
     /**

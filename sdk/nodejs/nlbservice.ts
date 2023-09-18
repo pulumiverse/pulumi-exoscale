@@ -52,11 +52,11 @@ export class NLBService extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The service health checking configuration (may only bet set at creation time).
+     * The service health checking configuration.
      */
     public readonly healthchecks!: pulumi.Output<outputs.NLBServiceHealthcheck[]>;
     /**
-     * The exoscale*instance*pool (ID) to forward traffic to.
+     * ❗ The exoscale*instance*pool (ID) to forward traffic to.
      */
     public readonly instancePoolId!: pulumi.Output<string>;
     /**
@@ -159,11 +159,11 @@ export interface NLBServiceState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The service health checking configuration (may only bet set at creation time).
+     * The service health checking configuration.
      */
     healthchecks?: pulumi.Input<pulumi.Input<inputs.NLBServiceHealthcheck>[]>;
     /**
-     * The exoscale*instance*pool (ID) to forward traffic to.
+     * ❗ The exoscale*instance*pool (ID) to forward traffic to.
      */
     instancePoolId?: pulumi.Input<string>;
     /**
@@ -206,11 +206,11 @@ export interface NLBServiceArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The service health checking configuration (may only bet set at creation time).
+     * The service health checking configuration.
      */
     healthchecks: pulumi.Input<pulumi.Input<inputs.NLBServiceHealthcheck>[]>;
     /**
-     * The exoscale*instance*pool (ID) to forward traffic to.
+     * ❗ The exoscale*instance*pool (ID) to forward traffic to.
      */
     instancePoolId: pulumi.Input<string>;
     /**

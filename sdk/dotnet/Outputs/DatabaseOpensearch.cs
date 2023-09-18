@@ -14,6 +14,9 @@ namespace Pulumiverse.Exoscale.Outputs
     [OutputType]
     public sealed class DatabaseOpensearch
     {
+        /// <summary>
+        /// OpenSearch Dashboards settings
+        /// </summary>
         public readonly Outputs.DatabaseOpensearchDashboards? Dashboards;
         /// <summary>
         /// ❗ Service name
@@ -28,7 +31,7 @@ namespace Pulumiverse.Exoscale.Outputs
         /// </summary>
         public readonly Outputs.DatabaseOpensearchIndexTemplate? IndexTemplate;
         /// <summary>
-        /// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
+        /// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
@@ -40,7 +43,7 @@ namespace Pulumiverse.Exoscale.Outputs
         /// </summary>
         public readonly int? MaxIndexCount;
         /// <summary>
-        /// ❗
+        /// ❗ Name of a backup to recover from
         /// </summary>
         public readonly string? RecoveryBackupName;
         /// <summary>
@@ -48,7 +51,7 @@ namespace Pulumiverse.Exoscale.Outputs
         /// </summary>
         public readonly string? Settings;
         /// <summary>
-        /// ❗ OpenSearch major version.
+        /// ❗ OpenSearch major version (`exo dbaas type show opensearch` for reference)
         /// </summary>
         public readonly string? Version;
 

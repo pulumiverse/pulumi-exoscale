@@ -33,13 +33,13 @@ namespace Pulumiverse.Exoscale
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The service health checking configuration (may only bet set at creation time).
+        /// The service health checking configuration.
         /// </summary>
         [Output("healthchecks")]
         public Output<ImmutableArray<Outputs.NLBServiceHealthcheck>> Healthchecks { get; private set; } = null!;
 
         /// <summary>
-        /// The exoscale*instance*pool (ID) to forward traffic to.
+        /// ❗ The exoscale*instance*pool (ID) to forward traffic to.
         /// </summary>
         [Output("instancePoolId")]
         public Output<string> InstancePoolId { get; private set; } = null!;
@@ -146,7 +146,7 @@ namespace Pulumiverse.Exoscale
         private InputList<Inputs.NLBServiceHealthcheckArgs>? _healthchecks;
 
         /// <summary>
-        /// The service health checking configuration (may only bet set at creation time).
+        /// The service health checking configuration.
         /// </summary>
         public InputList<Inputs.NLBServiceHealthcheckArgs> Healthchecks
         {
@@ -155,7 +155,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The exoscale*instance*pool (ID) to forward traffic to.
+        /// ❗ The exoscale*instance*pool (ID) to forward traffic to.
         /// </summary>
         [Input("instancePoolId", required: true)]
         public Input<string> InstancePoolId { get; set; } = null!;
@@ -220,7 +220,7 @@ namespace Pulumiverse.Exoscale
         private InputList<Inputs.NLBServiceHealthcheckGetArgs>? _healthchecks;
 
         /// <summary>
-        /// The service health checking configuration (may only bet set at creation time).
+        /// The service health checking configuration.
         /// </summary>
         public InputList<Inputs.NLBServiceHealthcheckGetArgs> Healthchecks
         {
@@ -229,7 +229,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The exoscale*instance*pool (ID) to forward traffic to.
+        /// ❗ The exoscale*instance*pool (ID) to forward traffic to.
         /// </summary>
         [Input("instancePoolId")]
         public Input<string>? InstancePoolId { get; set; }

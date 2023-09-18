@@ -10,6 +10,7 @@ export function getPrivateNetwork(args: GetPrivateNetworkArgs, opts?: pulumi.Inv
     return pulumi.runtime.invoke("exoscale:index/getPrivateNetwork:getPrivateNetwork", {
         "description": args.description,
         "id": args.id,
+        "labels": args.labels,
         "name": args.name,
         "zone": args.zone,
     }, opts);
@@ -27,6 +28,10 @@ export interface GetPrivateNetworkArgs {
      * The private network ID to match (conflicts with `name`).
      */
     id?: string;
+    /**
+     * A map of key/value labels.
+     */
+    labels?: {[key: string]: string};
     /**
      * The network name to match (conflicts with `id`).
      */
@@ -53,6 +58,10 @@ export interface GetPrivateNetworkResult {
      * The private network ID to match (conflicts with `name`).
      */
     readonly id?: string;
+    /**
+     * A map of key/value labels.
+     */
+    readonly labels?: {[key: string]: string};
     /**
      * The network name to match (conflicts with `id`).
      */
@@ -86,6 +95,10 @@ export interface GetPrivateNetworkOutputArgs {
      * The private network ID to match (conflicts with `name`).
      */
     id?: pulumi.Input<string>;
+    /**
+     * A map of key/value labels.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The network name to match (conflicts with `id`).
      */

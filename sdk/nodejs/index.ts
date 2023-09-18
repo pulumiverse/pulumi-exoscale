@@ -115,6 +115,11 @@ export const getNLB: typeof import("./getNLB").getNLB = null as any;
 export const getNLBOutput: typeof import("./getNLB").getNLBOutput = null as any;
 utilities.lazyLoad(exports, ["getNLB","getNLBOutput"], () => require("./getNLB"));
 
+export { GetNLBServiceListArgs, GetNLBServiceListResult, GetNLBServiceListOutputArgs } from "./getNLBServiceList";
+export const getNLBServiceList: typeof import("./getNLBServiceList").getNLBServiceList = null as any;
+export const getNLBServiceListOutput: typeof import("./getNLBServiceList").getNLBServiceListOutput = null as any;
+utilities.lazyLoad(exports, ["getNLBServiceList","getNLBServiceListOutput"], () => require("./getNLBServiceList"));
+
 export { GetNetworkArgs, GetNetworkResult, GetNetworkOutputArgs } from "./getNetwork";
 export const getNetwork: typeof import("./getNetwork").getNetwork = null as any;
 export const getNetworkOutput: typeof import("./getNetwork").getNetworkOutput = null as any;
@@ -154,6 +159,11 @@ export { GetTemplateArgs, GetTemplateResult, GetTemplateOutputArgs } from "./get
 export const getTemplate: typeof import("./getTemplate").getTemplate = null as any;
 export const getTemplateOutput: typeof import("./getTemplate").getTemplateOutput = null as any;
 utilities.lazyLoad(exports, ["getTemplate","getTemplateOutput"], () => require("./getTemplate"));
+
+export { GetZonesResult } from "./getZones";
+export const getZones: typeof import("./getZones").getZones = null as any;
+export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;
+utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));
 
 export { IAMAccessKeyArgs, IAMAccessKeyState } from "./iamaccessKey";
 export type IAMAccessKey = import("./iamaccessKey").IAMAccessKey;

@@ -39,6 +39,12 @@ namespace Pulumiverse.Exoscale
         public Output<string?> EndIp { get; private set; } = null!;
 
         /// <summary>
+        /// A map of key/value labels.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+
+        /// <summary>
         /// The private network name.
         /// </summary>
         [Output("name")]
@@ -121,6 +127,18 @@ namespace Pulumiverse.Exoscale
         [Input("endIp")]
         public Input<string>? EndIp { get; set; }
 
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// A map of key/value labels.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// The private network name.
         /// </summary>
@@ -164,6 +182,18 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         [Input("endIp")]
         public Input<string>? EndIp { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// A map of key/value labels.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// The private network name.

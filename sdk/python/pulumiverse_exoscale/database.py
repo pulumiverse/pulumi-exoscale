@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -19,6 +19,7 @@ class DatabaseArgs:
                  plan: pulumi.Input[str],
                  type: pulumi.Input[str],
                  zone: pulumi.Input[str],
+                 grafana: Optional[pulumi.Input['DatabaseGrafanaArgs']] = None,
                  kafka: Optional[pulumi.Input['DatabaseKafkaArgs']] = None,
                  maintenance_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_time: Optional[pulumi.Input[str]] = None,
@@ -27,49 +28,90 @@ class DatabaseArgs:
                  opensearch: Optional[pulumi.Input['DatabaseOpensearchArgs']] = None,
                  pg: Optional[pulumi.Input['DatabasePgArgs']] = None,
                  redis: Optional[pulumi.Input['DatabaseRedisArgs']] = None,
-                 termination_protection: Optional[pulumi.Input[bool]] = None):
+                 termination_protection: Optional[pulumi.Input[bool]] = None,
+                 timeouts: Optional[pulumi.Input['DatabaseTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a Database resource.
-        :param pulumi.Input[str] plan: The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE>` - for reference).
-        :param pulumi.Input[str] type: ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+        :param pulumi.Input[str] plan: The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE> --plans` - for reference).
+        :param pulumi.Input[str] type: ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `grafana`).
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-        :param pulumi.Input['DatabaseKafkaArgs'] kafka: *kafka* database service type specific arguments.
+        :param pulumi.Input['DatabaseGrafanaArgs'] grafana: *grafana* database service type specific arguments. Structure is documented below.
+        :param pulumi.Input['DatabaseKafkaArgs'] kafka: *kafka* database service type specific arguments. Structure is documented below.
         :param pulumi.Input[str] maintenance_dow: The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
         :param pulumi.Input[str] maintenance_time: The time of day to perform the automated database service maintenance (`HH:MM:SS`)
-        :param pulumi.Input['DatabaseMysqlArgs'] mysql: *mysql* database service type specific arguments.
+        :param pulumi.Input['DatabaseMysqlArgs'] mysql: *mysql* database service type specific arguments. Structure is documented below.
         :param pulumi.Input[str] name: ❗ The name of the database service.
-        :param pulumi.Input['DatabaseOpensearchArgs'] opensearch: *opensearch* database service type specific arguments.
+        :param pulumi.Input['DatabaseOpensearchArgs'] opensearch: *opensearch* database service type specific arguments. Structure is documented below.
         :param pulumi.Input['DatabasePgArgs'] pg: *pg* database service type specific arguments. Structure is documented below.
         :param pulumi.Input['DatabaseRedisArgs'] redis: *redis* database service type specific arguments. Structure is documented below.
         :param pulumi.Input[bool] termination_protection: The database service protection boolean flag against termination/power-off.
         """
-        pulumi.set(__self__, "plan", plan)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "zone", zone)
+        DatabaseArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            plan=plan,
+            type=type,
+            zone=zone,
+            grafana=grafana,
+            kafka=kafka,
+            maintenance_dow=maintenance_dow,
+            maintenance_time=maintenance_time,
+            mysql=mysql,
+            name=name,
+            opensearch=opensearch,
+            pg=pg,
+            redis=redis,
+            termination_protection=termination_protection,
+            timeouts=timeouts,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             plan: pulumi.Input[str],
+             type: pulumi.Input[str],
+             zone: pulumi.Input[str],
+             grafana: Optional[pulumi.Input['DatabaseGrafanaArgs']] = None,
+             kafka: Optional[pulumi.Input['DatabaseKafkaArgs']] = None,
+             maintenance_dow: Optional[pulumi.Input[str]] = None,
+             maintenance_time: Optional[pulumi.Input[str]] = None,
+             mysql: Optional[pulumi.Input['DatabaseMysqlArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opensearch: Optional[pulumi.Input['DatabaseOpensearchArgs']] = None,
+             pg: Optional[pulumi.Input['DatabasePgArgs']] = None,
+             redis: Optional[pulumi.Input['DatabaseRedisArgs']] = None,
+             termination_protection: Optional[pulumi.Input[bool]] = None,
+             timeouts: Optional[pulumi.Input['DatabaseTimeoutsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("plan", plan)
+        _setter("type", type)
+        _setter("zone", zone)
+        if grafana is not None:
+            _setter("grafana", grafana)
         if kafka is not None:
-            pulumi.set(__self__, "kafka", kafka)
+            _setter("kafka", kafka)
         if maintenance_dow is not None:
-            pulumi.set(__self__, "maintenance_dow", maintenance_dow)
+            _setter("maintenance_dow", maintenance_dow)
         if maintenance_time is not None:
-            pulumi.set(__self__, "maintenance_time", maintenance_time)
+            _setter("maintenance_time", maintenance_time)
         if mysql is not None:
-            pulumi.set(__self__, "mysql", mysql)
+            _setter("mysql", mysql)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if opensearch is not None:
-            pulumi.set(__self__, "opensearch", opensearch)
+            _setter("opensearch", opensearch)
         if pg is not None:
-            pulumi.set(__self__, "pg", pg)
+            _setter("pg", pg)
         if redis is not None:
-            pulumi.set(__self__, "redis", redis)
+            _setter("redis", redis)
         if termination_protection is not None:
-            pulumi.set(__self__, "termination_protection", termination_protection)
+            _setter("termination_protection", termination_protection)
+        if timeouts is not None:
+            _setter("timeouts", timeouts)
 
     @property
     @pulumi.getter
     def plan(self) -> pulumi.Input[str]:
         """
-        The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE>` - for reference).
+        The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE> --plans` - for reference).
         """
         return pulumi.get(self, "plan")
 
@@ -81,7 +123,7 @@ class DatabaseArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+        ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `grafana`).
         """
         return pulumi.get(self, "type")
 
@@ -103,9 +145,21 @@ class DatabaseArgs:
 
     @property
     @pulumi.getter
+    def grafana(self) -> Optional[pulumi.Input['DatabaseGrafanaArgs']]:
+        """
+        *grafana* database service type specific arguments. Structure is documented below.
+        """
+        return pulumi.get(self, "grafana")
+
+    @grafana.setter
+    def grafana(self, value: Optional[pulumi.Input['DatabaseGrafanaArgs']]):
+        pulumi.set(self, "grafana", value)
+
+    @property
+    @pulumi.getter
     def kafka(self) -> Optional[pulumi.Input['DatabaseKafkaArgs']]:
         """
-        *kafka* database service type specific arguments.
+        *kafka* database service type specific arguments. Structure is documented below.
         """
         return pulumi.get(self, "kafka")
 
@@ -141,7 +195,7 @@ class DatabaseArgs:
     @pulumi.getter
     def mysql(self) -> Optional[pulumi.Input['DatabaseMysqlArgs']]:
         """
-        *mysql* database service type specific arguments.
+        *mysql* database service type specific arguments. Structure is documented below.
         """
         return pulumi.get(self, "mysql")
 
@@ -165,7 +219,7 @@ class DatabaseArgs:
     @pulumi.getter
     def opensearch(self) -> Optional[pulumi.Input['DatabaseOpensearchArgs']]:
         """
-        *opensearch* database service type specific arguments.
+        *opensearch* database service type specific arguments. Structure is documented below.
         """
         return pulumi.get(self, "opensearch")
 
@@ -209,6 +263,15 @@ class DatabaseArgs:
     def termination_protection(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "termination_protection", value)
 
+    @property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['DatabaseTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['DatabaseTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.input_type
 class _DatabaseState:
@@ -216,6 +279,7 @@ class _DatabaseState:
                  ca_certificate: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
+                 grafana: Optional[pulumi.Input['DatabaseGrafanaArgs']] = None,
                  kafka: Optional[pulumi.Input['DatabaseKafkaArgs']] = None,
                  maintenance_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_time: Optional[pulumi.Input[str]] = None,
@@ -230,6 +294,7 @@ class _DatabaseState:
                  redis: Optional[pulumi.Input['DatabaseRedisArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
+                 timeouts: Optional[pulumi.Input['DatabaseTimeoutsArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -238,64 +303,120 @@ class _DatabaseState:
         :param pulumi.Input[str] ca_certificate: CA Certificate required to reach a DBaaS service through a TLS-protected connection.
         :param pulumi.Input[str] created_at: The creation date of the database service.
         :param pulumi.Input[int] disk_size: The disk size of the database service.
-        :param pulumi.Input['DatabaseKafkaArgs'] kafka: *kafka* database service type specific arguments.
+        :param pulumi.Input['DatabaseGrafanaArgs'] grafana: *grafana* database service type specific arguments. Structure is documented below.
+        :param pulumi.Input['DatabaseKafkaArgs'] kafka: *kafka* database service type specific arguments. Structure is documented below.
         :param pulumi.Input[str] maintenance_dow: The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
         :param pulumi.Input[str] maintenance_time: The time of day to perform the automated database service maintenance (`HH:MM:SS`)
-        :param pulumi.Input['DatabaseMysqlArgs'] mysql: *mysql* database service type specific arguments.
+        :param pulumi.Input['DatabaseMysqlArgs'] mysql: *mysql* database service type specific arguments. Structure is documented below.
         :param pulumi.Input[str] name: ❗ The name of the database service.
         :param pulumi.Input[int] node_cpus: The number of CPUs of the database service.
         :param pulumi.Input[int] node_memory: The amount of memory of the database service.
         :param pulumi.Input[int] nodes: The number of nodes of the database service.
-        :param pulumi.Input['DatabaseOpensearchArgs'] opensearch: *opensearch* database service type specific arguments.
+        :param pulumi.Input['DatabaseOpensearchArgs'] opensearch: *opensearch* database service type specific arguments. Structure is documented below.
         :param pulumi.Input['DatabasePgArgs'] pg: *pg* database service type specific arguments. Structure is documented below.
-        :param pulumi.Input[str] plan: The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE>` - for reference).
+        :param pulumi.Input[str] plan: The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE> --plans` - for reference).
         :param pulumi.Input['DatabaseRedisArgs'] redis: *redis* database service type specific arguments. Structure is documented below.
         :param pulumi.Input[str] state: The current state of the database service.
         :param pulumi.Input[bool] termination_protection: The database service protection boolean flag against termination/power-off.
-        :param pulumi.Input[str] type: ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+        :param pulumi.Input[str] type: ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `grafana`).
         :param pulumi.Input[str] updated_at: The date of the latest database service update.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
+        _DatabaseState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ca_certificate=ca_certificate,
+            created_at=created_at,
+            disk_size=disk_size,
+            grafana=grafana,
+            kafka=kafka,
+            maintenance_dow=maintenance_dow,
+            maintenance_time=maintenance_time,
+            mysql=mysql,
+            name=name,
+            node_cpus=node_cpus,
+            node_memory=node_memory,
+            nodes=nodes,
+            opensearch=opensearch,
+            pg=pg,
+            plan=plan,
+            redis=redis,
+            state=state,
+            termination_protection=termination_protection,
+            timeouts=timeouts,
+            type=type,
+            updated_at=updated_at,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ca_certificate: Optional[pulumi.Input[str]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             disk_size: Optional[pulumi.Input[int]] = None,
+             grafana: Optional[pulumi.Input['DatabaseGrafanaArgs']] = None,
+             kafka: Optional[pulumi.Input['DatabaseKafkaArgs']] = None,
+             maintenance_dow: Optional[pulumi.Input[str]] = None,
+             maintenance_time: Optional[pulumi.Input[str]] = None,
+             mysql: Optional[pulumi.Input['DatabaseMysqlArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             node_cpus: Optional[pulumi.Input[int]] = None,
+             node_memory: Optional[pulumi.Input[int]] = None,
+             nodes: Optional[pulumi.Input[int]] = None,
+             opensearch: Optional[pulumi.Input['DatabaseOpensearchArgs']] = None,
+             pg: Optional[pulumi.Input['DatabasePgArgs']] = None,
+             plan: Optional[pulumi.Input[str]] = None,
+             redis: Optional[pulumi.Input['DatabaseRedisArgs']] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             termination_protection: Optional[pulumi.Input[bool]] = None,
+             timeouts: Optional[pulumi.Input['DatabaseTimeoutsArgs']] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ca_certificate is not None:
-            pulumi.set(__self__, "ca_certificate", ca_certificate)
+            _setter("ca_certificate", ca_certificate)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if disk_size is not None:
-            pulumi.set(__self__, "disk_size", disk_size)
+            _setter("disk_size", disk_size)
+        if grafana is not None:
+            _setter("grafana", grafana)
         if kafka is not None:
-            pulumi.set(__self__, "kafka", kafka)
+            _setter("kafka", kafka)
         if maintenance_dow is not None:
-            pulumi.set(__self__, "maintenance_dow", maintenance_dow)
+            _setter("maintenance_dow", maintenance_dow)
         if maintenance_time is not None:
-            pulumi.set(__self__, "maintenance_time", maintenance_time)
+            _setter("maintenance_time", maintenance_time)
         if mysql is not None:
-            pulumi.set(__self__, "mysql", mysql)
+            _setter("mysql", mysql)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if node_cpus is not None:
-            pulumi.set(__self__, "node_cpus", node_cpus)
+            _setter("node_cpus", node_cpus)
         if node_memory is not None:
-            pulumi.set(__self__, "node_memory", node_memory)
+            _setter("node_memory", node_memory)
         if nodes is not None:
-            pulumi.set(__self__, "nodes", nodes)
+            _setter("nodes", nodes)
         if opensearch is not None:
-            pulumi.set(__self__, "opensearch", opensearch)
+            _setter("opensearch", opensearch)
         if pg is not None:
-            pulumi.set(__self__, "pg", pg)
+            _setter("pg", pg)
         if plan is not None:
-            pulumi.set(__self__, "plan", plan)
+            _setter("plan", plan)
         if redis is not None:
-            pulumi.set(__self__, "redis", redis)
+            _setter("redis", redis)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if termination_protection is not None:
-            pulumi.set(__self__, "termination_protection", termination_protection)
+            _setter("termination_protection", termination_protection)
+        if timeouts is not None:
+            _setter("timeouts", timeouts)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="caCertificate")
@@ -335,9 +456,21 @@ class _DatabaseState:
 
     @property
     @pulumi.getter
+    def grafana(self) -> Optional[pulumi.Input['DatabaseGrafanaArgs']]:
+        """
+        *grafana* database service type specific arguments. Structure is documented below.
+        """
+        return pulumi.get(self, "grafana")
+
+    @grafana.setter
+    def grafana(self, value: Optional[pulumi.Input['DatabaseGrafanaArgs']]):
+        pulumi.set(self, "grafana", value)
+
+    @property
+    @pulumi.getter
     def kafka(self) -> Optional[pulumi.Input['DatabaseKafkaArgs']]:
         """
-        *kafka* database service type specific arguments.
+        *kafka* database service type specific arguments. Structure is documented below.
         """
         return pulumi.get(self, "kafka")
 
@@ -373,7 +506,7 @@ class _DatabaseState:
     @pulumi.getter
     def mysql(self) -> Optional[pulumi.Input['DatabaseMysqlArgs']]:
         """
-        *mysql* database service type specific arguments.
+        *mysql* database service type specific arguments. Structure is documented below.
         """
         return pulumi.get(self, "mysql")
 
@@ -433,7 +566,7 @@ class _DatabaseState:
     @pulumi.getter
     def opensearch(self) -> Optional[pulumi.Input['DatabaseOpensearchArgs']]:
         """
-        *opensearch* database service type specific arguments.
+        *opensearch* database service type specific arguments. Structure is documented below.
         """
         return pulumi.get(self, "opensearch")
 
@@ -457,7 +590,7 @@ class _DatabaseState:
     @pulumi.getter
     def plan(self) -> Optional[pulumi.Input[str]]:
         """
-        The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE>` - for reference).
+        The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE> --plans` - for reference).
         """
         return pulumi.get(self, "plan")
 
@@ -503,9 +636,18 @@ class _DatabaseState:
 
     @property
     @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['DatabaseTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['DatabaseTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @property
+    @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+        ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `grafana`).
         """
         return pulumi.get(self, "type")
 
@@ -543,6 +685,7 @@ class Database(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 grafana: Optional[pulumi.Input[pulumi.InputType['DatabaseGrafanaArgs']]] = None,
                  kafka: Optional[pulumi.Input[pulumi.InputType['DatabaseKafkaArgs']]] = None,
                  maintenance_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_time: Optional[pulumi.Input[str]] = None,
@@ -553,6 +696,7 @@ class Database(pulumi.CustomResource):
                  plan: Optional[pulumi.Input[str]] = None,
                  redis: Optional[pulumi.Input[pulumi.InputType['DatabaseRedisArgs']]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['DatabaseTimeoutsArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -571,17 +715,18 @@ class Database(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DatabaseKafkaArgs']] kafka: *kafka* database service type specific arguments.
+        :param pulumi.Input[pulumi.InputType['DatabaseGrafanaArgs']] grafana: *grafana* database service type specific arguments. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['DatabaseKafkaArgs']] kafka: *kafka* database service type specific arguments. Structure is documented below.
         :param pulumi.Input[str] maintenance_dow: The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
         :param pulumi.Input[str] maintenance_time: The time of day to perform the automated database service maintenance (`HH:MM:SS`)
-        :param pulumi.Input[pulumi.InputType['DatabaseMysqlArgs']] mysql: *mysql* database service type specific arguments.
+        :param pulumi.Input[pulumi.InputType['DatabaseMysqlArgs']] mysql: *mysql* database service type specific arguments. Structure is documented below.
         :param pulumi.Input[str] name: ❗ The name of the database service.
-        :param pulumi.Input[pulumi.InputType['DatabaseOpensearchArgs']] opensearch: *opensearch* database service type specific arguments.
+        :param pulumi.Input[pulumi.InputType['DatabaseOpensearchArgs']] opensearch: *opensearch* database service type specific arguments. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['DatabasePgArgs']] pg: *pg* database service type specific arguments. Structure is documented below.
-        :param pulumi.Input[str] plan: The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE>` - for reference).
+        :param pulumi.Input[str] plan: The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE> --plans` - for reference).
         :param pulumi.Input[pulumi.InputType['DatabaseRedisArgs']] redis: *redis* database service type specific arguments. Structure is documented below.
         :param pulumi.Input[bool] termination_protection: The database service protection boolean flag against termination/power-off.
-        :param pulumi.Input[str] type: ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+        :param pulumi.Input[str] type: ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `grafana`).
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         ...
@@ -613,11 +758,16 @@ class Database(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DatabaseArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 grafana: Optional[pulumi.Input[pulumi.InputType['DatabaseGrafanaArgs']]] = None,
                  kafka: Optional[pulumi.Input[pulumi.InputType['DatabaseKafkaArgs']]] = None,
                  maintenance_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_time: Optional[pulumi.Input[str]] = None,
@@ -628,6 +778,7 @@ class Database(pulumi.CustomResource):
                  plan: Optional[pulumi.Input[str]] = None,
                  redis: Optional[pulumi.Input[pulumi.InputType['DatabaseRedisArgs']]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['DatabaseTimeoutsArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -639,18 +790,55 @@ class Database(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatabaseArgs.__new__(DatabaseArgs)
 
+            if not isinstance(grafana, DatabaseGrafanaArgs):
+                grafana = grafana or {}
+                def _setter(key, value):
+                    grafana[key] = value
+                DatabaseGrafanaArgs._configure(_setter, **grafana)
+            __props__.__dict__["grafana"] = grafana
+            if not isinstance(kafka, DatabaseKafkaArgs):
+                kafka = kafka or {}
+                def _setter(key, value):
+                    kafka[key] = value
+                DatabaseKafkaArgs._configure(_setter, **kafka)
             __props__.__dict__["kafka"] = kafka
             __props__.__dict__["maintenance_dow"] = maintenance_dow
             __props__.__dict__["maintenance_time"] = maintenance_time
+            if not isinstance(mysql, DatabaseMysqlArgs):
+                mysql = mysql or {}
+                def _setter(key, value):
+                    mysql[key] = value
+                DatabaseMysqlArgs._configure(_setter, **mysql)
             __props__.__dict__["mysql"] = mysql
             __props__.__dict__["name"] = name
+            if not isinstance(opensearch, DatabaseOpensearchArgs):
+                opensearch = opensearch or {}
+                def _setter(key, value):
+                    opensearch[key] = value
+                DatabaseOpensearchArgs._configure(_setter, **opensearch)
             __props__.__dict__["opensearch"] = opensearch
+            if not isinstance(pg, DatabasePgArgs):
+                pg = pg or {}
+                def _setter(key, value):
+                    pg[key] = value
+                DatabasePgArgs._configure(_setter, **pg)
             __props__.__dict__["pg"] = pg
             if plan is None and not opts.urn:
                 raise TypeError("Missing required property 'plan'")
             __props__.__dict__["plan"] = plan
+            if not isinstance(redis, DatabaseRedisArgs):
+                redis = redis or {}
+                def _setter(key, value):
+                    redis[key] = value
+                DatabaseRedisArgs._configure(_setter, **redis)
             __props__.__dict__["redis"] = redis
             __props__.__dict__["termination_protection"] = termination_protection
+            if not isinstance(timeouts, DatabaseTimeoutsArgs):
+                timeouts = timeouts or {}
+                def _setter(key, value):
+                    timeouts[key] = value
+                DatabaseTimeoutsArgs._configure(_setter, **timeouts)
+            __props__.__dict__["timeouts"] = timeouts
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
@@ -678,6 +866,7 @@ class Database(pulumi.CustomResource):
             ca_certificate: Optional[pulumi.Input[str]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             disk_size: Optional[pulumi.Input[int]] = None,
+            grafana: Optional[pulumi.Input[pulumi.InputType['DatabaseGrafanaArgs']]] = None,
             kafka: Optional[pulumi.Input[pulumi.InputType['DatabaseKafkaArgs']]] = None,
             maintenance_dow: Optional[pulumi.Input[str]] = None,
             maintenance_time: Optional[pulumi.Input[str]] = None,
@@ -692,6 +881,7 @@ class Database(pulumi.CustomResource):
             redis: Optional[pulumi.Input[pulumi.InputType['DatabaseRedisArgs']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             termination_protection: Optional[pulumi.Input[bool]] = None,
+            timeouts: Optional[pulumi.Input[pulumi.InputType['DatabaseTimeoutsArgs']]] = None,
             type: Optional[pulumi.Input[str]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'Database':
@@ -705,21 +895,22 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] ca_certificate: CA Certificate required to reach a DBaaS service through a TLS-protected connection.
         :param pulumi.Input[str] created_at: The creation date of the database service.
         :param pulumi.Input[int] disk_size: The disk size of the database service.
-        :param pulumi.Input[pulumi.InputType['DatabaseKafkaArgs']] kafka: *kafka* database service type specific arguments.
+        :param pulumi.Input[pulumi.InputType['DatabaseGrafanaArgs']] grafana: *grafana* database service type specific arguments. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['DatabaseKafkaArgs']] kafka: *kafka* database service type specific arguments. Structure is documented below.
         :param pulumi.Input[str] maintenance_dow: The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
         :param pulumi.Input[str] maintenance_time: The time of day to perform the automated database service maintenance (`HH:MM:SS`)
-        :param pulumi.Input[pulumi.InputType['DatabaseMysqlArgs']] mysql: *mysql* database service type specific arguments.
+        :param pulumi.Input[pulumi.InputType['DatabaseMysqlArgs']] mysql: *mysql* database service type specific arguments. Structure is documented below.
         :param pulumi.Input[str] name: ❗ The name of the database service.
         :param pulumi.Input[int] node_cpus: The number of CPUs of the database service.
         :param pulumi.Input[int] node_memory: The amount of memory of the database service.
         :param pulumi.Input[int] nodes: The number of nodes of the database service.
-        :param pulumi.Input[pulumi.InputType['DatabaseOpensearchArgs']] opensearch: *opensearch* database service type specific arguments.
+        :param pulumi.Input[pulumi.InputType['DatabaseOpensearchArgs']] opensearch: *opensearch* database service type specific arguments. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['DatabasePgArgs']] pg: *pg* database service type specific arguments. Structure is documented below.
-        :param pulumi.Input[str] plan: The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE>` - for reference).
+        :param pulumi.Input[str] plan: The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE> --plans` - for reference).
         :param pulumi.Input[pulumi.InputType['DatabaseRedisArgs']] redis: *redis* database service type specific arguments. Structure is documented below.
         :param pulumi.Input[str] state: The current state of the database service.
         :param pulumi.Input[bool] termination_protection: The database service protection boolean flag against termination/power-off.
-        :param pulumi.Input[str] type: ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+        :param pulumi.Input[str] type: ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `grafana`).
         :param pulumi.Input[str] updated_at: The date of the latest database service update.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
@@ -730,6 +921,7 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["ca_certificate"] = ca_certificate
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["disk_size"] = disk_size
+        __props__.__dict__["grafana"] = grafana
         __props__.__dict__["kafka"] = kafka
         __props__.__dict__["maintenance_dow"] = maintenance_dow
         __props__.__dict__["maintenance_time"] = maintenance_time
@@ -744,6 +936,7 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["redis"] = redis
         __props__.__dict__["state"] = state
         __props__.__dict__["termination_protection"] = termination_protection
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["type"] = type
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["zone"] = zone
@@ -775,9 +968,17 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def grafana(self) -> pulumi.Output[Optional['outputs.DatabaseGrafana']]:
+        """
+        *grafana* database service type specific arguments. Structure is documented below.
+        """
+        return pulumi.get(self, "grafana")
+
+    @property
+    @pulumi.getter
     def kafka(self) -> pulumi.Output[Optional['outputs.DatabaseKafka']]:
         """
-        *kafka* database service type specific arguments.
+        *kafka* database service type specific arguments. Structure is documented below.
         """
         return pulumi.get(self, "kafka")
 
@@ -801,7 +1002,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def mysql(self) -> pulumi.Output[Optional['outputs.DatabaseMysql']]:
         """
-        *mysql* database service type specific arguments.
+        *mysql* database service type specific arguments. Structure is documented below.
         """
         return pulumi.get(self, "mysql")
 
@@ -841,7 +1042,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def opensearch(self) -> pulumi.Output[Optional['outputs.DatabaseOpensearch']]:
         """
-        *opensearch* database service type specific arguments.
+        *opensearch* database service type specific arguments. Structure is documented below.
         """
         return pulumi.get(self, "opensearch")
 
@@ -857,7 +1058,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def plan(self) -> pulumi.Output[str]:
         """
-        The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE>` - for reference).
+        The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE> --plans` - for reference).
         """
         return pulumi.get(self, "plan")
 
@@ -879,7 +1080,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="terminationProtection")
-    def termination_protection(self) -> pulumi.Output[Optional[bool]]:
+    def termination_protection(self) -> pulumi.Output[bool]:
         """
         The database service protection boolean flag against termination/power-off.
         """
@@ -887,9 +1088,14 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.DatabaseTimeouts']]:
+        return pulumi.get(self, "timeouts")
+
+    @property
+    @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+        ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `grafana`).
         """
         return pulumi.get(self, "type")
 

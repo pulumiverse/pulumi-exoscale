@@ -58,8 +58,8 @@ type GetComputeInstanceListArgs struct {
 	Type *string `pulumi:"type"`
 	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 	UserData *string `pulumi:"userData"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Zone *string `pulumi:"zone"`
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	Zone string `pulumi:"zone"`
 }
 
 // A collection of values returned by getComputeInstanceList.
@@ -100,8 +100,8 @@ type GetComputeInstanceListResult struct {
 	Type *string `pulumi:"type"`
 	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 	UserData *string `pulumi:"userData"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Zone *string `pulumi:"zone"`
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	Zone string `pulumi:"zone"`
 }
 
 func GetComputeInstanceListOutput(ctx *pulumi.Context, args GetComputeInstanceListOutputArgs, opts ...pulumi.InvokeOption) GetComputeInstanceListResultOutput {
@@ -153,8 +153,8 @@ type GetComputeInstanceListOutputArgs struct {
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 	UserData pulumi.StringPtrInput `pulumi:"userData"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Zone pulumi.StringPtrInput `pulumi:"zone"`
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
 func (GetComputeInstanceListOutputArgs) ElementType() reflect.Type {
@@ -272,9 +272,9 @@ func (o GetComputeInstanceListResultOutput) UserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetComputeInstanceListResult) *string { return v.UserData }).(pulumi.StringPtrOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetComputeInstanceListResultOutput) Zone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetComputeInstanceListResult) *string { return v.Zone }).(pulumi.StringPtrOutput)
+// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+func (o GetComputeInstanceListResultOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetComputeInstanceListResult) string { return v.Zone }).(pulumi.StringOutput)
 }
 
 func init() {

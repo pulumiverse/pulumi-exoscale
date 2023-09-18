@@ -12,10 +12,10 @@ namespace Pulumiverse.Exoscale
 {
     public static class GetComputeInstanceList
     {
-        public static Task<GetComputeInstanceListResult> InvokeAsync(GetComputeInstanceListArgs? args = null, InvokeOptions? options = null)
+        public static Task<GetComputeInstanceListResult> InvokeAsync(GetComputeInstanceListArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetComputeInstanceListResult>("exoscale:index/getComputeInstanceList:getComputeInstanceList", args ?? new GetComputeInstanceListArgs(), options.WithDefaults());
 
-        public static Output<GetComputeInstanceListResult> Invoke(GetComputeInstanceListInvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetComputeInstanceListResult> Invoke(GetComputeInstanceListInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetComputeInstanceListResult>("exoscale:index/getComputeInstanceList:getComputeInstanceList", args ?? new GetComputeInstanceListInvokeArgs(), options.WithDefaults());
     }
 
@@ -131,10 +131,10 @@ namespace Pulumiverse.Exoscale
         public string? UserData { get; set; }
 
         /// <summary>
-        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
-        [Input("zone")]
-        public string? Zone { get; set; }
+        [Input("zone", required: true)]
+        public string Zone { get; set; } = null!;
 
         public GetComputeInstanceListArgs()
         {
@@ -253,10 +253,10 @@ namespace Pulumiverse.Exoscale
         public Input<string>? UserData { get; set; }
 
         /// <summary>
-        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
-        [Input("zone")]
-        public Input<string>? Zone { get; set; }
+        [Input("zone", required: true)]
+        public Input<string> Zone { get; set; } = null!;
 
         public GetComputeInstanceListInvokeArgs()
         {
@@ -341,9 +341,9 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly string? UserData;
         /// <summary>
-        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
-        public readonly string? Zone;
+        public readonly string Zone;
 
         [OutputConstructor]
         private GetComputeInstanceListResult(
@@ -383,7 +383,7 @@ namespace Pulumiverse.Exoscale
 
             string? userData,
 
-            string? zone)
+            string zone)
         {
             CreatedAt = createdAt;
             DeployTargetId = deployTargetId;

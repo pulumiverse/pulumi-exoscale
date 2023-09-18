@@ -75,15 +75,15 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["delay"] = pulumi.output(args ? args.delay : undefined).apply(JSON.stringify);
             resourceInputs["dnsEndpoint"] = args ? args.dnsEndpoint : undefined;
             resourceInputs["environment"] = args ? args.environment : undefined;
-            resourceInputs["key"] = args ? args.key : undefined;
+            resourceInputs["key"] = (args?.key ? pulumi.secret(args.key) : undefined) ?? utilities.getEnv("EXOSCALE_API_KEY");
             resourceInputs["profile"] = args ? args.profile : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
+            resourceInputs["secret"] = (args?.secret ? pulumi.secret(args.secret) : undefined) ?? utilities.getEnv("EXOSCALE_API_SECRET");
             resourceInputs["timeout"] = pulumi.output(args ? args.timeout : undefined).apply(JSON.stringify);
             resourceInputs["token"] = args ? args.token : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["secret"] };
+        const secretOpts = { additionalSecretOutputs: ["key", "secret"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }

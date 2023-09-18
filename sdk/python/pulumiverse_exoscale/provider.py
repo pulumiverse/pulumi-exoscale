@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -35,37 +35,70 @@ class ProviderArgs:
         :param pulumi.Input[str] secret: Exoscale API secret
         :param pulumi.Input[int] timeout: Timeout in seconds for waiting on compute resources to become available (by default: 300)
         """
+        ProviderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compute_endpoint=compute_endpoint,
+            config=config,
+            delay=delay,
+            dns_endpoint=dns_endpoint,
+            environment=environment,
+            key=key,
+            profile=profile,
+            region=region,
+            secret=secret,
+            timeout=timeout,
+            token=token,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compute_endpoint: Optional[pulumi.Input[str]] = None,
+             config: Optional[pulumi.Input[str]] = None,
+             delay: Optional[pulumi.Input[int]] = None,
+             dns_endpoint: Optional[pulumi.Input[str]] = None,
+             environment: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             profile: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             secret: Optional[pulumi.Input[str]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if compute_endpoint is not None:
-            pulumi.set(__self__, "compute_endpoint", compute_endpoint)
+            _setter("compute_endpoint", compute_endpoint)
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if delay is not None:
             warnings.warn("""Does nothing""", DeprecationWarning)
             pulumi.log.warn("""delay is deprecated: Does nothing""")
         if delay is not None:
-            pulumi.set(__self__, "delay", delay)
+            _setter("delay", delay)
         if dns_endpoint is not None:
-            pulumi.set(__self__, "dns_endpoint", dns_endpoint)
+            _setter("dns_endpoint", dns_endpoint)
         if environment is not None:
-            pulumi.set(__self__, "environment", environment)
+            _setter("environment", environment)
+        if key is None:
+            key = _utilities.get_env('EXOSCALE_API_KEY')
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if profile is not None:
             warnings.warn("""Use region instead""", DeprecationWarning)
             pulumi.log.warn("""profile is deprecated: Use region instead""")
         if profile is not None:
-            pulumi.set(__self__, "profile", profile)
+            _setter("profile", profile)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
+        if secret is None:
+            secret = _utilities.get_env('EXOSCALE_API_SECRET')
         if secret is not None:
-            pulumi.set(__self__, "secret", secret)
+            _setter("secret", secret)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
         if token is not None:
             warnings.warn("""Use key instead""", DeprecationWarning)
             pulumi.log.warn("""token is deprecated: Use key instead""")
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
 
     @property
     @pulumi.getter(name="computeEndpoint")
@@ -252,6 +285,10 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -279,25 +316,20 @@ class Provider(pulumi.ProviderResource):
 
             __props__.__dict__["compute_endpoint"] = compute_endpoint
             __props__.__dict__["config"] = config
-            if delay is not None and not opts.urn:
-                warnings.warn("""Does nothing""", DeprecationWarning)
-                pulumi.log.warn("""delay is deprecated: Does nothing""")
             __props__.__dict__["delay"] = pulumi.Output.from_input(delay).apply(pulumi.runtime.to_json) if delay is not None else None
             __props__.__dict__["dns_endpoint"] = dns_endpoint
             __props__.__dict__["environment"] = environment
-            __props__.__dict__["key"] = key
-            if profile is not None and not opts.urn:
-                warnings.warn("""Use region instead""", DeprecationWarning)
-                pulumi.log.warn("""profile is deprecated: Use region instead""")
+            if key is None:
+                key = _utilities.get_env('EXOSCALE_API_KEY')
+            __props__.__dict__["key"] = None if key is None else pulumi.Output.secret(key)
             __props__.__dict__["profile"] = profile
             __props__.__dict__["region"] = region
+            if secret is None:
+                secret = _utilities.get_env('EXOSCALE_API_SECRET')
             __props__.__dict__["secret"] = None if secret is None else pulumi.Output.secret(secret)
             __props__.__dict__["timeout"] = pulumi.Output.from_input(timeout).apply(pulumi.runtime.to_json) if timeout is not None else None
-            if token is not None and not opts.urn:
-                warnings.warn("""Use key instead""", DeprecationWarning)
-                pulumi.log.warn("""token is deprecated: Use key instead""")
             __props__.__dict__["token"] = token
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secret"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["key", "secret"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'exoscale',

@@ -22,35 +22,11 @@ namespace Pulumiverse.Exoscale
 
     public sealed class GetComputeInstanceArgs : global::Pulumi.InvokeArgs
     {
-        [Input("antiAffinityGroupIds")]
-        private List<string>? _antiAffinityGroupIds;
-
-        /// <summary>
-        /// The list of attached exoscale*anti*affinity_group (IDs).
-        /// </summary>
-        public List<string> AntiAffinityGroupIds
-        {
-            get => _antiAffinityGroupIds ?? (_antiAffinityGroupIds = new List<string>());
-            set => _antiAffinityGroupIds = value;
-        }
-
         /// <summary>
         /// The compute instance ID to match (conflicts with `name`).
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
-
-        [Input("labels")]
-        private Dictionary<string, string>? _labels;
-
-        /// <summary>
-        /// A map of key/value labels.
-        /// </summary>
-        public Dictionary<string, string> Labels
-        {
-            get => _labels ?? (_labels = new Dictionary<string, string>());
-            set => _labels = value;
-        }
 
         /// <summary>
         /// The instance name to match (conflicts with `id`).
@@ -72,35 +48,11 @@ namespace Pulumiverse.Exoscale
 
     public sealed class GetComputeInstanceInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("antiAffinityGroupIds")]
-        private InputList<string>? _antiAffinityGroupIds;
-
-        /// <summary>
-        /// The list of attached exoscale*anti*affinity_group (IDs).
-        /// </summary>
-        public InputList<string> AntiAffinityGroupIds
-        {
-            get => _antiAffinityGroupIds ?? (_antiAffinityGroupIds = new InputList<string>());
-            set => _antiAffinityGroupIds = value;
-        }
-
         /// <summary>
         /// The compute instance ID to match (conflicts with `name`).
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
-
-        [Input("labels")]
-        private InputMap<string>? _labels;
-
-        /// <summary>
-        /// A map of key/value labels.
-        /// </summary>
-        public InputMap<string> Labels
-        {
-            get => _labels ?? (_labels = new InputMap<string>());
-            set => _labels = value;
-        }
 
         /// <summary>
         /// The instance name to match (conflicts with `id`).
@@ -159,7 +111,7 @@ namespace Pulumiverse.Exoscale
         /// <summary>
         /// A map of key/value labels.
         /// </summary>
-        public readonly ImmutableDictionary<string, string>? Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// The instance manager ID, if any.
         /// </summary>
@@ -231,7 +183,7 @@ namespace Pulumiverse.Exoscale
 
             string ipv6Address,
 
-            ImmutableDictionary<string, string>? labels,
+            ImmutableDictionary<string, string> labels,
 
             string managerId,
 

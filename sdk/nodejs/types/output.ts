@@ -16,6 +16,17 @@ export interface ComputeInstanceNetworkInterface {
     networkId: string;
 }
 
+export interface DatabaseGrafana {
+    /**
+     * Grafana configuration settings in JSON format (`exo dbaas type show grafana --settings=grafana` for reference).
+     */
+    grafanaSettings: string;
+    /**
+     * A list of CIDR blocks to allow incoming connections from.
+     */
+    ipFilters: string[];
+}
+
 export interface DatabaseKafka {
     /**
      * Enable certificate-based authentication method.
@@ -24,11 +35,11 @@ export interface DatabaseKafka {
     /**
      * Enable Kafka Connect.
      */
-    enableKafkaConnect?: boolean;
+    enableKafkaConnect: boolean;
     /**
      * Enable Kafka REST.
      */
-    enableKafkaRest?: boolean;
+    enableKafkaRest: boolean;
     /**
      * Enable SASL-based authentication method.
      */
@@ -36,7 +47,7 @@ export interface DatabaseKafka {
     /**
      * Enable Schema Registry.
      */
-    enableSchemaRegistry?: boolean;
+    enableSchemaRegistry: boolean;
     /**
      * A list of CIDR blocks to allow incoming connections from.
      */
@@ -67,11 +78,11 @@ export interface DatabaseMysql {
     /**
      * A custom administrator account password (may only be set at creation time).
      */
-    adminPassword: string;
+    adminPassword?: string;
     /**
      * A custom administrator account username (may only be set at creation time).
      */
-    adminUsername: string;
+    adminUsername?: string;
     /**
      * The automated backup schedule (`HH:MM`).
      */
@@ -91,6 +102,9 @@ export interface DatabaseMysql {
 }
 
 export interface DatabaseOpensearch {
+    /**
+     * OpenSearch Dashboards settings
+     */
     dashboards?: outputs.DatabaseOpensearchDashboards;
     /**
      * ❗ Service name
@@ -105,7 +119,7 @@ export interface DatabaseOpensearch {
      */
     indexTemplate?: outputs.DatabaseOpensearchIndexTemplate;
     /**
-     * Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
+     * Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]
      */
     ipFilters: string[];
     /**
@@ -117,15 +131,15 @@ export interface DatabaseOpensearch {
      */
     maxIndexCount?: number;
     /**
-     * ❗
+     * ❗ Name of a backup to recover from
      */
     recoveryBackupName?: string;
     /**
      * OpenSearch-specific settings, in json. e.g.`jsonencode({thread_pool_search_size: 64})`. Use `exo x get-dbaas-settings-opensearch` to get a list of available settings.
      */
-    settings?: string;
+    settings: string;
     /**
-     * ❗ OpenSearch major version.
+     * ❗ OpenSearch major version (`exo dbaas type show opensearch` for reference)
      */
     version: string;
 }
@@ -152,11 +166,11 @@ export interface DatabasePg {
     /**
      * A custom administrator account password (may only be set at creation time).
      */
-    adminPassword: string;
+    adminPassword?: string;
     /**
      * A custom administrator account username (may only be set at creation time).
      */
-    adminUsername: string;
+    adminUsername?: string;
     /**
      * The automated backup schedule (`HH:MM`).
      */
@@ -192,6 +206,25 @@ export interface DatabaseRedis {
      * Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
      */
     redisSettings: string;
+}
+
+export interface DatabaseTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
 }
 
 export interface ElasticIPHealthcheck {
@@ -234,7 +267,7 @@ export interface ElasticIPHealthcheck {
 }
 
 export interface GetComputeInstanceListInstance {
-    antiAffinityGroupIds?: string[];
+    antiAffinityGroupIds: string[];
     /**
      * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
      */
@@ -263,7 +296,7 @@ export interface GetComputeInstanceListInstance {
     /**
      * Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
      */
-    labels?: {[key: string]: string};
+    labels: {[key: string]: string};
     /**
      * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
      */
@@ -307,9 +340,16 @@ export interface GetComputeInstanceListInstance {
      */
     userData: string;
     /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: string;
+}
+
+export interface GetDatabaseURITimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
 }
 
 export interface GetDomainRecordFilter {
@@ -411,6 +451,63 @@ export interface GetInstancePoolListPoolInstance {
     publicIpAddress: string;
 }
 
+export interface GetNLBServiceListService {
+    /**
+     * NLB service description.
+     */
+    description: string;
+    healthcheck: outputs.GetNLBServiceListServiceHealthcheck;
+    /**
+     * NLB service ID.
+     */
+    id: string;
+    /**
+     * The exoscale*instance*pool (ID) to forward traffic to.
+     */
+    instancePoolId: string;
+    /**
+     * NLB Service name.
+     */
+    name: string;
+    /**
+     * Port exposed on the NLB's public IP.
+     */
+    port: number;
+    /**
+     * Network traffic protocol.
+     */
+    protocol: string;
+    /**
+     * NLB Service State.
+     */
+    state: string;
+    /**
+     * The strategy (`round-robin`|`source-hash`).
+     */
+    strategy: string;
+    /**
+     * Port on which the network traffic will be forwarded to on the receiving instance.
+     */
+    targetPort: number;
+}
+
+export interface GetNLBServiceListServiceHealthcheck {
+    interval: number;
+    mode: string;
+    port: number;
+    retries: number;
+    timeout: number;
+    tlsSni: string;
+    uri: string;
+}
+
+export interface GetNLBServiceListTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+}
+
 export interface GetSKSClusterListCluster {
     /**
      * @deprecated This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
@@ -483,7 +580,7 @@ export interface GetSKSClusterListCluster {
      */
     version: string;
     /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: string;
 }
@@ -602,7 +699,7 @@ export interface GetSKSNodepoolListNodepool {
      */
     version: string;
     /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
     zone: string;
 }

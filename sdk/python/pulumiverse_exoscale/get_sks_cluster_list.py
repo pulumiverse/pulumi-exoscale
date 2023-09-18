@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -213,9 +213,9 @@ class GetSKSClusterListResult:
 
     @property
     @pulumi.getter
-    def zone(self) -> Optional[str]:
+    def zone(self) -> str:
         """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 
@@ -283,7 +283,7 @@ def get_sks_cluster_list(aggregation_ca: Optional[str] = None,
     :param str service_level: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
     :param str state: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
     :param str version: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str zone: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     __args__ = dict()
     __args__['aggregationCa'] = aggregation_ca
@@ -344,7 +344,7 @@ def get_sks_cluster_list_output(aggregation_ca: Optional[pulumi.Input[Optional[s
                                 service_level: Optional[pulumi.Input[Optional[str]]] = None,
                                 state: Optional[pulumi.Input[Optional[str]]] = None,
                                 version: Optional[pulumi.Input[Optional[str]]] = None,
-                                zone: Optional[pulumi.Input[Optional[str]]] = None,
+                                zone: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSKSClusterListResult]:
     """
     Use this data source to access information about an existing resource.
@@ -365,6 +365,6 @@ def get_sks_cluster_list_output(aggregation_ca: Optional[pulumi.Input[Optional[s
     :param str service_level: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
     :param str state: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
     :param str version: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str zone: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     ...

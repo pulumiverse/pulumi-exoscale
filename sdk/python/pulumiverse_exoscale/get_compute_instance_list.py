@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -227,9 +227,9 @@ class GetComputeInstanceListResult:
 
     @property
     @pulumi.getter
-    def zone(self) -> Optional[str]:
+    def zone(self) -> str:
         """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 
@@ -300,7 +300,7 @@ def get_compute_instance_list(created_at: Optional[str] = None,
     :param str template_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
     :param str type: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
     :param str user_data: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str zone: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     __args__ = dict()
     __args__['createdAt'] = created_at
@@ -364,7 +364,7 @@ def get_compute_instance_list_output(created_at: Optional[pulumi.Input[Optional[
                                      template_id: Optional[pulumi.Input[Optional[str]]] = None,
                                      type: Optional[pulumi.Input[Optional[str]]] = None,
                                      user_data: Optional[pulumi.Input[Optional[str]]] = None,
-                                     zone: Optional[pulumi.Input[Optional[str]]] = None,
+                                     zone: Optional[pulumi.Input[str]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetComputeInstanceListResult]:
     """
     Use this data source to access information about an existing resource.
@@ -386,6 +386,6 @@ def get_compute_instance_list_output(created_at: Optional[pulumi.Input[Optional[
     :param str template_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
     :param str type: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
     :param str user_data: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str zone: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     ...

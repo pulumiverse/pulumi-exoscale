@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['NICArgs', 'NIC']
@@ -23,10 +23,23 @@ class NICArgs:
         :param pulumi.Input[str] network_id: ❗ The private network ID.
         :param pulumi.Input[str] ip_address: The IPv4 address to request as static DHCP lease if the NIC is attached to a *managed* private network.
         """
-        pulumi.set(__self__, "compute_id", compute_id)
-        pulumi.set(__self__, "network_id", network_id)
+        NICArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compute_id=compute_id,
+            network_id=network_id,
+            ip_address=ip_address,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compute_id: pulumi.Input[str],
+             network_id: pulumi.Input[str],
+             ip_address: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("compute_id", compute_id)
+        _setter("network_id", network_id)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
 
     @property
     @pulumi.getter(name="computeId")
@@ -81,18 +94,37 @@ class _NICState:
         :param pulumi.Input[str] mac_address: The NIC MAC address.
         :param pulumi.Input[str] network_id: ❗ The private network ID.
         """
+        _NICState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compute_id=compute_id,
+            gateway=gateway,
+            ip_address=ip_address,
+            mac_address=mac_address,
+            netmask=netmask,
+            network_id=network_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compute_id: Optional[pulumi.Input[str]] = None,
+             gateway: Optional[pulumi.Input[str]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             mac_address: Optional[pulumi.Input[str]] = None,
+             netmask: Optional[pulumi.Input[str]] = None,
+             network_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if compute_id is not None:
-            pulumi.set(__self__, "compute_id", compute_id)
+            _setter("compute_id", compute_id)
         if gateway is not None:
-            pulumi.set(__self__, "gateway", gateway)
+            _setter("gateway", gateway)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if mac_address is not None:
-            pulumi.set(__self__, "mac_address", mac_address)
+            _setter("mac_address", mac_address)
         if netmask is not None:
-            pulumi.set(__self__, "netmask", netmask)
+            _setter("netmask", netmask)
         if network_id is not None:
-            pulumi.set(__self__, "network_id", network_id)
+            _setter("network_id", network_id)
 
     @property
     @pulumi.getter(name="computeId")
@@ -198,6 +230,10 @@ class NIC(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NICArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

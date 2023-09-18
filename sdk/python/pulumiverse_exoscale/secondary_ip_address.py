@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['SecondaryIPAddressArgs', 'SecondaryIPAddress']
@@ -21,8 +21,19 @@ class SecondaryIPAddressArgs:
         :param pulumi.Input[str] compute_id: ❗ The compute instance ID.
         :param pulumi.Input[str] ip_address: ❗ The Elastic IP (EIP) address.
         """
-        pulumi.set(__self__, "compute_id", compute_id)
-        pulumi.set(__self__, "ip_address", ip_address)
+        SecondaryIPAddressArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compute_id=compute_id,
+            ip_address=ip_address,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compute_id: pulumi.Input[str],
+             ip_address: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("compute_id", compute_id)
+        _setter("ip_address", ip_address)
 
     @property
     @pulumi.getter(name="computeId")
@@ -63,14 +74,29 @@ class _SecondaryIPAddressState:
         :param pulumi.Input[str] network_id: The network (ID) the compute instance NIC is attached to.
         :param pulumi.Input[str] nic_id: The network interface (NIC) ID.
         """
+        _SecondaryIPAddressState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compute_id=compute_id,
+            ip_address=ip_address,
+            network_id=network_id,
+            nic_id=nic_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compute_id: Optional[pulumi.Input[str]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             network_id: Optional[pulumi.Input[str]] = None,
+             nic_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if compute_id is not None:
-            pulumi.set(__self__, "compute_id", compute_id)
+            _setter("compute_id", compute_id)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if network_id is not None:
-            pulumi.set(__self__, "network_id", network_id)
+            _setter("network_id", network_id)
         if nic_id is not None:
-            pulumi.set(__self__, "nic_id", nic_id)
+            _setter("nic_id", nic_id)
 
     @property
     @pulumi.getter(name="computeId")
@@ -156,6 +182,10 @@ class SecondaryIPAddress(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SecondaryIPAddressArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

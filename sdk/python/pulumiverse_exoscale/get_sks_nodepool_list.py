@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -224,9 +224,9 @@ class GetSKSNodepoolListResult:
 
     @property
     @pulumi.getter
-    def zone(self) -> Optional[str]:
+    def zone(self) -> str:
         """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         return pulumi.get(self, "zone")
 
@@ -297,7 +297,7 @@ def get_sks_nodepool_list(cluster_id: Optional[str] = None,
     :param Mapping[str, str] taints: Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
     :param str template_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
     :param str version: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str zone: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -361,7 +361,7 @@ def get_sks_nodepool_list_output(cluster_id: Optional[pulumi.Input[Optional[str]
                                  taints: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                  template_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  version: Optional[pulumi.Input[Optional[str]]] = None,
-                                 zone: Optional[pulumi.Input[Optional[str]]] = None,
+                                 zone: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSKSNodepoolListResult]:
     """
     Use this data source to access information about an existing resource.
@@ -383,6 +383,6 @@ def get_sks_nodepool_list_output(cluster_id: Optional[pulumi.Input[Optional[str]
     :param Mapping[str, str] taints: Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
     :param str template_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
     :param str version: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str zone: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     ...

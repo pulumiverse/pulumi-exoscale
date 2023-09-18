@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,17 +31,36 @@ class ElasticIPArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[str] reverse_dns: Domain name for reverse DNS record.
         """
-        pulumi.set(__self__, "zone", zone)
+        ElasticIPArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            zone=zone,
+            address_family=address_family,
+            description=description,
+            healthcheck=healthcheck,
+            labels=labels,
+            reverse_dns=reverse_dns,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             zone: pulumi.Input[str],
+             address_family: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             healthcheck: Optional[pulumi.Input['ElasticIPHealthcheckArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             reverse_dns: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("zone", zone)
         if address_family is not None:
-            pulumi.set(__self__, "address_family", address_family)
+            _setter("address_family", address_family)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if healthcheck is not None:
-            pulumi.set(__self__, "healthcheck", healthcheck)
+            _setter("healthcheck", healthcheck)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if reverse_dns is not None:
-            pulumi.set(__self__, "reverse_dns", reverse_dns)
+            _setter("reverse_dns", reverse_dns)
 
     @property
     @pulumi.getter
@@ -138,22 +157,45 @@ class _ElasticIPState:
         :param pulumi.Input[str] reverse_dns: Domain name for reverse DNS record.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
+        _ElasticIPState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address_family=address_family,
+            cidr=cidr,
+            description=description,
+            healthcheck=healthcheck,
+            ip_address=ip_address,
+            labels=labels,
+            reverse_dns=reverse_dns,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address_family: Optional[pulumi.Input[str]] = None,
+             cidr: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             healthcheck: Optional[pulumi.Input['ElasticIPHealthcheckArgs']] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             reverse_dns: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if address_family is not None:
-            pulumi.set(__self__, "address_family", address_family)
+            _setter("address_family", address_family)
         if cidr is not None:
-            pulumi.set(__self__, "cidr", cidr)
+            _setter("cidr", cidr)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if healthcheck is not None:
-            pulumi.set(__self__, "healthcheck", healthcheck)
+            _setter("healthcheck", healthcheck)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if reverse_dns is not None:
-            pulumi.set(__self__, "reverse_dns", reverse_dns)
+            _setter("reverse_dns", reverse_dns)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="addressFamily")
@@ -315,6 +357,10 @@ class ElasticIP(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ElasticIPArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -337,6 +383,11 @@ class ElasticIP(pulumi.CustomResource):
 
             __props__.__dict__["address_family"] = address_family
             __props__.__dict__["description"] = description
+            if not isinstance(healthcheck, ElasticIPHealthcheckArgs):
+                healthcheck = healthcheck or {}
+                def _setter(key, value):
+                    healthcheck[key] = value
+                ElasticIPHealthcheckArgs._configure(_setter, **healthcheck)
             __props__.__dict__["healthcheck"] = healthcheck
             __props__.__dict__["labels"] = labels
             __props__.__dict__["reverse_dns"] = reverse_dns

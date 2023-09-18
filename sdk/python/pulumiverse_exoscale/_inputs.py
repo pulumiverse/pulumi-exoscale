@@ -6,11 +6,12 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
     'ComputeInstanceNetworkInterfaceArgs',
+    'DatabaseGrafanaArgs',
     'DatabaseKafkaArgs',
     'DatabaseMysqlArgs',
     'DatabaseOpensearchArgs',
@@ -19,13 +20,16 @@ __all__ = [
     'DatabaseOpensearchIndexTemplateArgs',
     'DatabasePgArgs',
     'DatabaseRedisArgs',
+    'DatabaseTimeoutsArgs',
     'ElasticIPHealthcheckArgs',
     'InstancePoolInstanceArgs',
     'NLBServiceHealthcheckArgs',
     'SKSClusterOidcArgs',
     'SecurityGroupRulesEgressArgs',
     'SecurityGroupRulesIngressArgs',
+    'GetDatabaseURITimeoutsArgs',
     'GetDomainRecordFilterArgs',
+    'GetNLBServiceListTimeoutsArgs',
     'GetSKSClusterOidcArgs',
 ]
 
@@ -38,9 +42,20 @@ class ComputeInstanceNetworkInterfaceArgs:
         :param pulumi.Input[str] network_id: The exoscale*private*network (ID) to attach to the instance.
         :param pulumi.Input[str] ip_address: The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
         """
-        pulumi.set(__self__, "network_id", network_id)
+        ComputeInstanceNetworkInterfaceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network_id=network_id,
+            ip_address=ip_address,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network_id: pulumi.Input[str],
+             ip_address: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("network_id", network_id)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
 
     @property
     @pulumi.getter(name="networkId")
@@ -65,6 +80,56 @@ class ComputeInstanceNetworkInterfaceArgs:
     @ip_address.setter
     def ip_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_address", value)
+
+
+@pulumi.input_type
+class DatabaseGrafanaArgs:
+    def __init__(__self__, *,
+                 grafana_settings: Optional[pulumi.Input[str]] = None,
+                 ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] grafana_settings: Grafana configuration settings in JSON format (`exo dbaas type show grafana --settings=grafana` for reference).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: A list of CIDR blocks to allow incoming connections from.
+        """
+        DatabaseGrafanaArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            grafana_settings=grafana_settings,
+            ip_filters=ip_filters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             grafana_settings: Optional[pulumi.Input[str]] = None,
+             ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if grafana_settings is not None:
+            _setter("grafana_settings", grafana_settings)
+        if ip_filters is not None:
+            _setter("ip_filters", ip_filters)
+
+    @property
+    @pulumi.getter(name="grafanaSettings")
+    def grafana_settings(self) -> Optional[pulumi.Input[str]]:
+        """
+        Grafana configuration settings in JSON format (`exo dbaas type show grafana --settings=grafana` for reference).
+        """
+        return pulumi.get(self, "grafana_settings")
+
+    @grafana_settings.setter
+    def grafana_settings(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "grafana_settings", value)
+
+    @property
+    @pulumi.getter(name="ipFilters")
+    def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of CIDR blocks to allow incoming connections from.
+        """
+        return pulumi.get(self, "ip_filters")
+
+    @ip_filters.setter
+    def ip_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_filters", value)
 
 
 @pulumi.input_type
@@ -94,28 +159,57 @@ class DatabaseKafkaArgs:
         :param pulumi.Input[str] schema_registry_settings: Schema Registry configuration settings in JSON format (`exo dbaas type show kafka --settings=schema-registry` for reference)
         :param pulumi.Input[str] version: Kafka major version (`exo dbaas type show kafka` for reference; may only be set at creation time).
         """
+        DatabaseKafkaArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enable_cert_auth=enable_cert_auth,
+            enable_kafka_connect=enable_kafka_connect,
+            enable_kafka_rest=enable_kafka_rest,
+            enable_sasl_auth=enable_sasl_auth,
+            enable_schema_registry=enable_schema_registry,
+            ip_filters=ip_filters,
+            kafka_connect_settings=kafka_connect_settings,
+            kafka_rest_settings=kafka_rest_settings,
+            kafka_settings=kafka_settings,
+            schema_registry_settings=schema_registry_settings,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enable_cert_auth: Optional[pulumi.Input[bool]] = None,
+             enable_kafka_connect: Optional[pulumi.Input[bool]] = None,
+             enable_kafka_rest: Optional[pulumi.Input[bool]] = None,
+             enable_sasl_auth: Optional[pulumi.Input[bool]] = None,
+             enable_schema_registry: Optional[pulumi.Input[bool]] = None,
+             ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             kafka_connect_settings: Optional[pulumi.Input[str]] = None,
+             kafka_rest_settings: Optional[pulumi.Input[str]] = None,
+             kafka_settings: Optional[pulumi.Input[str]] = None,
+             schema_registry_settings: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enable_cert_auth is not None:
-            pulumi.set(__self__, "enable_cert_auth", enable_cert_auth)
+            _setter("enable_cert_auth", enable_cert_auth)
         if enable_kafka_connect is not None:
-            pulumi.set(__self__, "enable_kafka_connect", enable_kafka_connect)
+            _setter("enable_kafka_connect", enable_kafka_connect)
         if enable_kafka_rest is not None:
-            pulumi.set(__self__, "enable_kafka_rest", enable_kafka_rest)
+            _setter("enable_kafka_rest", enable_kafka_rest)
         if enable_sasl_auth is not None:
-            pulumi.set(__self__, "enable_sasl_auth", enable_sasl_auth)
+            _setter("enable_sasl_auth", enable_sasl_auth)
         if enable_schema_registry is not None:
-            pulumi.set(__self__, "enable_schema_registry", enable_schema_registry)
+            _setter("enable_schema_registry", enable_schema_registry)
         if ip_filters is not None:
-            pulumi.set(__self__, "ip_filters", ip_filters)
+            _setter("ip_filters", ip_filters)
         if kafka_connect_settings is not None:
-            pulumi.set(__self__, "kafka_connect_settings", kafka_connect_settings)
+            _setter("kafka_connect_settings", kafka_connect_settings)
         if kafka_rest_settings is not None:
-            pulumi.set(__self__, "kafka_rest_settings", kafka_rest_settings)
+            _setter("kafka_rest_settings", kafka_rest_settings)
         if kafka_settings is not None:
-            pulumi.set(__self__, "kafka_settings", kafka_settings)
+            _setter("kafka_settings", kafka_settings)
         if schema_registry_settings is not None:
-            pulumi.set(__self__, "schema_registry_settings", schema_registry_settings)
+            _setter("schema_registry_settings", schema_registry_settings)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="enableCertAuth")
@@ -267,18 +361,37 @@ class DatabaseMysqlArgs:
         :param pulumi.Input[str] mysql_settings: MySQL configuration settings in JSON format (`exo dbaas type show mysql --settings=mysql` for reference).
         :param pulumi.Input[str] version: MySQL major version (`exo dbaas type show mysql` for reference; may only be set at creation time).
         """
+        DatabaseMysqlArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            admin_password=admin_password,
+            admin_username=admin_username,
+            backup_schedule=backup_schedule,
+            ip_filters=ip_filters,
+            mysql_settings=mysql_settings,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             admin_password: Optional[pulumi.Input[str]] = None,
+             admin_username: Optional[pulumi.Input[str]] = None,
+             backup_schedule: Optional[pulumi.Input[str]] = None,
+             ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             mysql_settings: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if admin_password is not None:
-            pulumi.set(__self__, "admin_password", admin_password)
+            _setter("admin_password", admin_password)
         if admin_username is not None:
-            pulumi.set(__self__, "admin_username", admin_username)
+            _setter("admin_username", admin_username)
         if backup_schedule is not None:
-            pulumi.set(__self__, "backup_schedule", backup_schedule)
+            _setter("backup_schedule", backup_schedule)
         if ip_filters is not None:
-            pulumi.set(__self__, "ip_filters", ip_filters)
+            _setter("ip_filters", ip_filters)
         if mysql_settings is not None:
-            pulumi.set(__self__, "mysql_settings", mysql_settings)
+            _setter("mysql_settings", mysql_settings)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="adminPassword")
@@ -367,40 +480,71 @@ class DatabaseOpensearchArgs:
                  settings: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input['DatabaseOpensearchDashboardsArgs'] dashboards: OpenSearch Dashboards settings
         :param pulumi.Input[str] fork_from_service: ❗ Service name
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseOpensearchIndexPatternArgs']]] index_patterns: (can be used multiple times) Allows you to create glob style patterns and set a max number of indexes matching this pattern you want to keep. Creating indexes exceeding this value will cause the oldest one to get deleted. You could for example create a pattern looking like 'logs.?' and then create index logs.1, logs.2 etc, it will delete logs.1 once you create logs.6. Do note 'logs.?' does not apply to logs.10. Note: Setting max*index*count to 0 will do nothing and the pattern gets ignored.
         :param pulumi.Input['DatabaseOpensearchIndexTemplateArgs'] index_template: Template settings for all new indexes
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]
         :param pulumi.Input[bool] keep_index_refresh_interval: Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
         :param pulumi.Input[int] max_index_count: Maximum number of indexes to keep (Minimum value is `0`)
-        :param pulumi.Input[str] recovery_backup_name: ❗
+        :param pulumi.Input[str] recovery_backup_name: ❗ Name of a backup to recover from
         :param pulumi.Input[str] settings: OpenSearch-specific settings, in json. e.g.`jsonencode({thread_pool_search_size: 64})`. Use `exo x get-dbaas-settings-opensearch` to get a list of available settings.
-        :param pulumi.Input[str] version: ❗ OpenSearch major version.
+        :param pulumi.Input[str] version: ❗ OpenSearch major version (`exo dbaas type show opensearch` for reference)
         """
+        DatabaseOpensearchArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dashboards=dashboards,
+            fork_from_service=fork_from_service,
+            index_patterns=index_patterns,
+            index_template=index_template,
+            ip_filters=ip_filters,
+            keep_index_refresh_interval=keep_index_refresh_interval,
+            max_index_count=max_index_count,
+            recovery_backup_name=recovery_backup_name,
+            settings=settings,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dashboards: Optional[pulumi.Input['DatabaseOpensearchDashboardsArgs']] = None,
+             fork_from_service: Optional[pulumi.Input[str]] = None,
+             index_patterns: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseOpensearchIndexPatternArgs']]]] = None,
+             index_template: Optional[pulumi.Input['DatabaseOpensearchIndexTemplateArgs']] = None,
+             ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             keep_index_refresh_interval: Optional[pulumi.Input[bool]] = None,
+             max_index_count: Optional[pulumi.Input[int]] = None,
+             recovery_backup_name: Optional[pulumi.Input[str]] = None,
+             settings: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dashboards is not None:
-            pulumi.set(__self__, "dashboards", dashboards)
+            _setter("dashboards", dashboards)
         if fork_from_service is not None:
-            pulumi.set(__self__, "fork_from_service", fork_from_service)
+            _setter("fork_from_service", fork_from_service)
         if index_patterns is not None:
-            pulumi.set(__self__, "index_patterns", index_patterns)
+            _setter("index_patterns", index_patterns)
         if index_template is not None:
-            pulumi.set(__self__, "index_template", index_template)
+            _setter("index_template", index_template)
         if ip_filters is not None:
-            pulumi.set(__self__, "ip_filters", ip_filters)
+            _setter("ip_filters", ip_filters)
         if keep_index_refresh_interval is not None:
-            pulumi.set(__self__, "keep_index_refresh_interval", keep_index_refresh_interval)
+            _setter("keep_index_refresh_interval", keep_index_refresh_interval)
         if max_index_count is not None:
-            pulumi.set(__self__, "max_index_count", max_index_count)
+            _setter("max_index_count", max_index_count)
         if recovery_backup_name is not None:
-            pulumi.set(__self__, "recovery_backup_name", recovery_backup_name)
+            _setter("recovery_backup_name", recovery_backup_name)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
     def dashboards(self) -> Optional[pulumi.Input['DatabaseOpensearchDashboardsArgs']]:
+        """
+        OpenSearch Dashboards settings
+        """
         return pulumi.get(self, "dashboards")
 
     @dashboards.setter
@@ -447,7 +591,7 @@ class DatabaseOpensearchArgs:
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
+        Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]
         """
         return pulumi.get(self, "ip_filters")
 
@@ -483,7 +627,7 @@ class DatabaseOpensearchArgs:
     @pulumi.getter(name="recoveryBackupName")
     def recovery_backup_name(self) -> Optional[pulumi.Input[str]]:
         """
-        ❗
+        ❗ Name of a backup to recover from
         """
         return pulumi.get(self, "recovery_backup_name")
 
@@ -507,7 +651,7 @@ class DatabaseOpensearchArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        ❗ OpenSearch major version.
+        ❗ OpenSearch major version (`exo dbaas type show opensearch` for reference)
         """
         return pulumi.get(self, "version")
 
@@ -522,12 +666,25 @@ class DatabaseOpensearchDashboardsArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  max_old_space_size: Optional[pulumi.Input[int]] = None,
                  request_timeout: Optional[pulumi.Input[int]] = None):
+        DatabaseOpensearchDashboardsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            max_old_space_size=max_old_space_size,
+            request_timeout=request_timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             max_old_space_size: Optional[pulumi.Input[int]] = None,
+             request_timeout: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if max_old_space_size is not None:
-            pulumi.set(__self__, "max_old_space_size", max_old_space_size)
+            _setter("max_old_space_size", max_old_space_size)
         if request_timeout is not None:
-            pulumi.set(__self__, "request_timeout", request_timeout)
+            _setter("request_timeout", request_timeout)
 
     @property
     @pulumi.getter
@@ -563,12 +720,25 @@ class DatabaseOpensearchIndexPatternArgs:
                  max_index_count: Optional[pulumi.Input[int]] = None,
                  pattern: Optional[pulumi.Input[str]] = None,
                  sorting_algorithm: Optional[pulumi.Input[str]] = None):
+        DatabaseOpensearchIndexPatternArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_index_count=max_index_count,
+            pattern=pattern,
+            sorting_algorithm=sorting_algorithm,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_index_count: Optional[pulumi.Input[int]] = None,
+             pattern: Optional[pulumi.Input[str]] = None,
+             sorting_algorithm: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if max_index_count is not None:
-            pulumi.set(__self__, "max_index_count", max_index_count)
+            _setter("max_index_count", max_index_count)
         if pattern is not None:
-            pulumi.set(__self__, "pattern", pattern)
+            _setter("pattern", pattern)
         if sorting_algorithm is not None:
-            pulumi.set(__self__, "sorting_algorithm", sorting_algorithm)
+            _setter("sorting_algorithm", sorting_algorithm)
 
     @property
     @pulumi.getter(name="maxIndexCount")
@@ -604,12 +774,25 @@ class DatabaseOpensearchIndexTemplateArgs:
                  mapping_nested_objects_limit: Optional[pulumi.Input[int]] = None,
                  number_of_replicas: Optional[pulumi.Input[int]] = None,
                  number_of_shards: Optional[pulumi.Input[int]] = None):
+        DatabaseOpensearchIndexTemplateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            mapping_nested_objects_limit=mapping_nested_objects_limit,
+            number_of_replicas=number_of_replicas,
+            number_of_shards=number_of_shards,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             mapping_nested_objects_limit: Optional[pulumi.Input[int]] = None,
+             number_of_replicas: Optional[pulumi.Input[int]] = None,
+             number_of_shards: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if mapping_nested_objects_limit is not None:
-            pulumi.set(__self__, "mapping_nested_objects_limit", mapping_nested_objects_limit)
+            _setter("mapping_nested_objects_limit", mapping_nested_objects_limit)
         if number_of_replicas is not None:
-            pulumi.set(__self__, "number_of_replicas", number_of_replicas)
+            _setter("number_of_replicas", number_of_replicas)
         if number_of_shards is not None:
-            pulumi.set(__self__, "number_of_shards", number_of_shards)
+            _setter("number_of_shards", number_of_shards)
 
     @property
     @pulumi.getter(name="mappingNestedObjectsLimit")
@@ -660,22 +843,45 @@ class DatabasePgArgs:
         :param pulumi.Input[str] pglookout_settings: pglookout configuration settings in JSON format (`exo dbaas type show pg --settings=pglookout` for reference).
         :param pulumi.Input[str] version: PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
         """
+        DatabasePgArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            admin_password=admin_password,
+            admin_username=admin_username,
+            backup_schedule=backup_schedule,
+            ip_filters=ip_filters,
+            pg_settings=pg_settings,
+            pgbouncer_settings=pgbouncer_settings,
+            pglookout_settings=pglookout_settings,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             admin_password: Optional[pulumi.Input[str]] = None,
+             admin_username: Optional[pulumi.Input[str]] = None,
+             backup_schedule: Optional[pulumi.Input[str]] = None,
+             ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             pg_settings: Optional[pulumi.Input[str]] = None,
+             pgbouncer_settings: Optional[pulumi.Input[str]] = None,
+             pglookout_settings: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if admin_password is not None:
-            pulumi.set(__self__, "admin_password", admin_password)
+            _setter("admin_password", admin_password)
         if admin_username is not None:
-            pulumi.set(__self__, "admin_username", admin_username)
+            _setter("admin_username", admin_username)
         if backup_schedule is not None:
-            pulumi.set(__self__, "backup_schedule", backup_schedule)
+            _setter("backup_schedule", backup_schedule)
         if ip_filters is not None:
-            pulumi.set(__self__, "ip_filters", ip_filters)
+            _setter("ip_filters", ip_filters)
         if pg_settings is not None:
-            pulumi.set(__self__, "pg_settings", pg_settings)
+            _setter("pg_settings", pg_settings)
         if pgbouncer_settings is not None:
-            pulumi.set(__self__, "pgbouncer_settings", pgbouncer_settings)
+            _setter("pgbouncer_settings", pgbouncer_settings)
         if pglookout_settings is not None:
-            pulumi.set(__self__, "pglookout_settings", pglookout_settings)
+            _setter("pglookout_settings", pglookout_settings)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="adminPassword")
@@ -783,10 +989,21 @@ class DatabaseRedisArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: A list of CIDR blocks to allow incoming connections from.
         :param pulumi.Input[str] redis_settings: Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
         """
+        DatabaseRedisArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_filters=ip_filters,
+            redis_settings=redis_settings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             redis_settings: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ip_filters is not None:
-            pulumi.set(__self__, "ip_filters", ip_filters)
+            _setter("ip_filters", ip_filters)
         if redis_settings is not None:
-            pulumi.set(__self__, "redis_settings", redis_settings)
+            _setter("redis_settings", redis_settings)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -814,6 +1031,92 @@ class DatabaseRedisArgs:
 
 
 @pulumi.input_type
+class DatabaseTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[str]] = None,
+                 delete: Optional[pulumi.Input[str]] = None,
+                 read: Optional[pulumi.Input[str]] = None,
+                 update: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        DatabaseTimeoutsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create=create,
+            delete=delete,
+            read=read,
+            update=update,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create: Optional[pulumi.Input[str]] = None,
+             delete: Optional[pulumi.Input[str]] = None,
+             read: Optional[pulumi.Input[str]] = None,
+             update: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if create is not None:
+            _setter("create", create)
+        if delete is not None:
+            _setter("delete", delete)
+        if read is not None:
+            _setter("read", read)
+        if update is not None:
+            _setter("update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create", value)
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete", value)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read", value)
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update", value)
+
+
+@pulumi.input_type
 class ElasticIPHealthcheckArgs:
     def __init__(__self__, *,
                  mode: pulumi.Input[str],
@@ -836,22 +1139,47 @@ class ElasticIPHealthcheckArgs:
         :param pulumi.Input[str] tls_sni: The healthcheck server name to present with SNI in `https` mode.
         :param pulumi.Input[str] uri: The healthcheck target URI (required in `http(s)` modes).
         """
-        pulumi.set(__self__, "mode", mode)
-        pulumi.set(__self__, "port", port)
+        ElasticIPHealthcheckArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            mode=mode,
+            port=port,
+            interval=interval,
+            strikes_fail=strikes_fail,
+            strikes_ok=strikes_ok,
+            timeout=timeout,
+            tls_skip_verify=tls_skip_verify,
+            tls_sni=tls_sni,
+            uri=uri,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             mode: pulumi.Input[str],
+             port: pulumi.Input[int],
+             interval: Optional[pulumi.Input[int]] = None,
+             strikes_fail: Optional[pulumi.Input[int]] = None,
+             strikes_ok: Optional[pulumi.Input[int]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             tls_skip_verify: Optional[pulumi.Input[bool]] = None,
+             tls_sni: Optional[pulumi.Input[str]] = None,
+             uri: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("mode", mode)
+        _setter("port", port)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if strikes_fail is not None:
-            pulumi.set(__self__, "strikes_fail", strikes_fail)
+            _setter("strikes_fail", strikes_fail)
         if strikes_ok is not None:
-            pulumi.set(__self__, "strikes_ok", strikes_ok)
+            _setter("strikes_ok", strikes_ok)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
         if tls_skip_verify is not None:
-            pulumi.set(__self__, "tls_skip_verify", tls_skip_verify)
+            _setter("tls_skip_verify", tls_skip_verify)
         if tls_sni is not None:
-            pulumi.set(__self__, "tls_sni", tls_sni)
+            _setter("tls_sni", tls_sni)
         if uri is not None:
-            pulumi.set(__self__, "uri", uri)
+            _setter("uri", uri)
 
     @property
     @pulumi.getter
@@ -975,14 +1303,29 @@ class InstancePoolInstanceArgs:
         :param pulumi.Input[str] name: The instance name.
         :param pulumi.Input[str] public_ip_address: The instance (main network interface) IPv4 address.
         """
+        InstancePoolInstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            ipv6_address=ipv6_address,
+            name=name,
+            public_ip_address=public_ip_address,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[pulumi.Input[str]] = None,
+             ipv6_address: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             public_ip_address: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if ipv6_address is not None:
-            pulumi.set(__self__, "ipv6_address", ipv6_address)
+            _setter("ipv6_address", ipv6_address)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if public_ip_address is not None:
-            pulumi.set(__self__, "public_ip_address", public_ip_address)
+            _setter("public_ip_address", public_ip_address)
 
     @property
     @pulumi.getter
@@ -1052,19 +1395,40 @@ class NLBServiceHealthcheckArgs:
         :param pulumi.Input[str] tls_sni: The healthcheck TLS SNI server name (only if `mode` is `https`).
         :param pulumi.Input[str] uri: The healthcheck URI (must be set only if `mode` is `http(s)`).
         """
-        pulumi.set(__self__, "port", port)
+        NLBServiceHealthcheckArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            port=port,
+            interval=interval,
+            mode=mode,
+            retries=retries,
+            timeout=timeout,
+            tls_sni=tls_sni,
+            uri=uri,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             port: pulumi.Input[int],
+             interval: Optional[pulumi.Input[int]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             retries: Optional[pulumi.Input[int]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             tls_sni: Optional[pulumi.Input[str]] = None,
+             uri: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("port", port)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if retries is not None:
-            pulumi.set(__self__, "retries", retries)
+            _setter("retries", retries)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
         if tls_sni is not None:
-            pulumi.set(__self__, "tls_sni", tls_sni)
+            _setter("tls_sni", tls_sni)
         if uri is not None:
-            pulumi.set(__self__, "uri", uri)
+            _setter("uri", uri)
 
     @property
     @pulumi.getter
@@ -1170,18 +1534,39 @@ class SKSClusterOidcArgs:
         :param pulumi.Input[str] username_claim: An OpenID JWT claim to use as the user name.
         :param pulumi.Input[str] username_prefix: An OpenID prefix prepended to username claims.
         """
-        pulumi.set(__self__, "client_id", client_id)
-        pulumi.set(__self__, "issuer_url", issuer_url)
+        SKSClusterOidcArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            client_id=client_id,
+            issuer_url=issuer_url,
+            groups_claim=groups_claim,
+            groups_prefix=groups_prefix,
+            required_claim=required_claim,
+            username_claim=username_claim,
+            username_prefix=username_prefix,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             client_id: pulumi.Input[str],
+             issuer_url: pulumi.Input[str],
+             groups_claim: Optional[pulumi.Input[str]] = None,
+             groups_prefix: Optional[pulumi.Input[str]] = None,
+             required_claim: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             username_claim: Optional[pulumi.Input[str]] = None,
+             username_prefix: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("client_id", client_id)
+        _setter("issuer_url", issuer_url)
         if groups_claim is not None:
-            pulumi.set(__self__, "groups_claim", groups_claim)
+            _setter("groups_claim", groups_claim)
         if groups_prefix is not None:
-            pulumi.set(__self__, "groups_prefix", groups_prefix)
+            _setter("groups_prefix", groups_prefix)
         if required_claim is not None:
-            pulumi.set(__self__, "required_claim", required_claim)
+            _setter("required_claim", required_claim)
         if username_claim is not None:
-            pulumi.set(__self__, "username_claim", username_claim)
+            _setter("username_claim", username_claim)
         if username_prefix is not None:
-            pulumi.set(__self__, "username_prefix", username_prefix)
+            _setter("username_prefix", username_prefix)
 
     @property
     @pulumi.getter(name="clientId")
@@ -1288,22 +1673,45 @@ class SecurityGroupRulesEgressArgs:
         :param pulumi.Input[str] protocol: The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_security_group_lists: A list of source (for ingress)/destination (for egress) identified by a security group.
         """
+        SecurityGroupRulesEgressArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_lists=cidr_lists,
+            description=description,
+            icmp_code=icmp_code,
+            icmp_type=icmp_type,
+            ids=ids,
+            ports=ports,
+            protocol=protocol,
+            user_security_group_lists=user_security_group_lists,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             icmp_code: Optional[pulumi.Input[int]] = None,
+             icmp_type: Optional[pulumi.Input[int]] = None,
+             ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             user_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cidr_lists is not None:
-            pulumi.set(__self__, "cidr_lists", cidr_lists)
+            _setter("cidr_lists", cidr_lists)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if icmp_code is not None:
-            pulumi.set(__self__, "icmp_code", icmp_code)
+            _setter("icmp_code", icmp_code)
         if icmp_type is not None:
-            pulumi.set(__self__, "icmp_type", icmp_type)
+            _setter("icmp_type", icmp_type)
         if ids is not None:
-            pulumi.set(__self__, "ids", ids)
+            _setter("ids", ids)
         if ports is not None:
-            pulumi.set(__self__, "ports", ports)
+            _setter("ports", ports)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if user_security_group_lists is not None:
-            pulumi.set(__self__, "user_security_group_lists", user_security_group_lists)
+            _setter("user_security_group_lists", user_security_group_lists)
 
     @property
     @pulumi.getter(name="cidrLists")
@@ -1419,22 +1827,45 @@ class SecurityGroupRulesIngressArgs:
         :param pulumi.Input[str] protocol: The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_security_group_lists: A list of source (for ingress)/destination (for egress) identified by a security group.
         """
+        SecurityGroupRulesIngressArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_lists=cidr_lists,
+            description=description,
+            icmp_code=icmp_code,
+            icmp_type=icmp_type,
+            ids=ids,
+            ports=ports,
+            protocol=protocol,
+            user_security_group_lists=user_security_group_lists,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             icmp_code: Optional[pulumi.Input[int]] = None,
+             icmp_type: Optional[pulumi.Input[int]] = None,
+             ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             user_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cidr_lists is not None:
-            pulumi.set(__self__, "cidr_lists", cidr_lists)
+            _setter("cidr_lists", cidr_lists)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if icmp_code is not None:
-            pulumi.set(__self__, "icmp_code", icmp_code)
+            _setter("icmp_code", icmp_code)
         if icmp_type is not None:
-            pulumi.set(__self__, "icmp_type", icmp_type)
+            _setter("icmp_type", icmp_type)
         if ids is not None:
-            pulumi.set(__self__, "ids", ids)
+            _setter("ids", ids)
         if ports is not None:
-            pulumi.set(__self__, "ports", ports)
+            _setter("ports", ports)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if user_security_group_lists is not None:
-            pulumi.set(__self__, "user_security_group_lists", user_security_group_lists)
+            _setter("user_security_group_lists", user_security_group_lists)
 
     @property
     @pulumi.getter(name="cidrLists")
@@ -1531,6 +1962,38 @@ class SecurityGroupRulesIngressArgs:
 
 
 @pulumi.input_type
+class GetDatabaseURITimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[str] = None):
+        """
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        GetDatabaseURITimeoutsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            read=read,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             read: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if read is not None:
+            _setter("read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[str]):
+        pulumi.set(self, "read", value)
+
+
+@pulumi.input_type
 class GetDomainRecordFilterArgs:
     def __init__(__self__, *,
                  content_regex: Optional[str] = None,
@@ -1543,14 +2006,29 @@ class GetDomainRecordFilterArgs:
         :param str name: The domain record name to match.
         :param str record_type: The record type to match.
         """
+        GetDomainRecordFilterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            content_regex=content_regex,
+            id=id,
+            name=name,
+            record_type=record_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             content_regex: Optional[str] = None,
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             record_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if content_regex is not None:
-            pulumi.set(__self__, "content_regex", content_regex)
+            _setter("content_regex", content_regex)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if record_type is not None:
-            pulumi.set(__self__, "record_type", record_type)
+            _setter("record_type", record_type)
 
     @property
     @pulumi.getter(name="contentRegex")
@@ -1602,6 +2080,38 @@ class GetDomainRecordFilterArgs:
 
 
 @pulumi.input_type
+class GetNLBServiceListTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[str] = None):
+        """
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        GetNLBServiceListTimeoutsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            read=read,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             read: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if read is not None:
+            _setter("read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[str]):
+        pulumi.set(self, "read", value)
+
+
+@pulumi.input_type
 class GetSKSClusterOidcArgs:
     def __init__(__self__, *,
                  client_id: str,
@@ -1620,18 +2130,39 @@ class GetSKSClusterOidcArgs:
         :param str username_claim: An OpenID JWT claim to use as the user name.
         :param str username_prefix: An OpenID prefix prepended to username claims.
         """
-        pulumi.set(__self__, "client_id", client_id)
-        pulumi.set(__self__, "issuer_url", issuer_url)
+        GetSKSClusterOidcArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            client_id=client_id,
+            issuer_url=issuer_url,
+            groups_claim=groups_claim,
+            groups_prefix=groups_prefix,
+            required_claim=required_claim,
+            username_claim=username_claim,
+            username_prefix=username_prefix,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             client_id: str,
+             issuer_url: str,
+             groups_claim: Optional[str] = None,
+             groups_prefix: Optional[str] = None,
+             required_claim: Optional[Mapping[str, str]] = None,
+             username_claim: Optional[str] = None,
+             username_prefix: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("client_id", client_id)
+        _setter("issuer_url", issuer_url)
         if groups_claim is not None:
-            pulumi.set(__self__, "groups_claim", groups_claim)
+            _setter("groups_claim", groups_claim)
         if groups_prefix is not None:
-            pulumi.set(__self__, "groups_prefix", groups_prefix)
+            _setter("groups_prefix", groups_prefix)
         if required_claim is not None:
-            pulumi.set(__self__, "required_claim", required_claim)
+            _setter("required_claim", required_claim)
         if username_claim is not None:
-            pulumi.set(__self__, "username_claim", username_claim)
+            _setter("username_claim", username_claim)
         if username_prefix is not None:
-            pulumi.set(__self__, "username_prefix", username_prefix)
+            _setter("username_prefix", username_prefix)
 
     @property
     @pulumi.getter(name="clientId")

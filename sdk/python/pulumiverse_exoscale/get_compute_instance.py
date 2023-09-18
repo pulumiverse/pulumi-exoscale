@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -91,7 +91,7 @@ class GetComputeInstanceResult:
 
     @property
     @pulumi.getter(name="antiAffinityGroupIds")
-    def anti_affinity_group_ids(self) -> Optional[Sequence[str]]:
+    def anti_affinity_group_ids(self) -> Sequence[str]:
         """
         The list of attached exoscale*anti*affinity_group (IDs).
         """
@@ -155,7 +155,7 @@ class GetComputeInstanceResult:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> Mapping[str, str]:
         """
         A map of key/value labels.
         """
@@ -296,25 +296,19 @@ class AwaitableGetComputeInstanceResult(GetComputeInstanceResult):
             zone=self.zone)
 
 
-def get_compute_instance(anti_affinity_group_ids: Optional[Sequence[str]] = None,
-                         id: Optional[str] = None,
-                         labels: Optional[Mapping[str, str]] = None,
+def get_compute_instance(id: Optional[str] = None,
                          name: Optional[str] = None,
                          zone: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetComputeInstanceResult:
     """
     Use this data source to access information about an existing resource.
 
-    :param Sequence[str] anti_affinity_group_ids: The list of attached exoscale*anti*affinity_group (IDs).
     :param str id: The compute instance ID to match (conflicts with `name`).
-    :param Mapping[str, str] labels: A map of key/value labels.
     :param str name: The instance name to match (conflicts with `id`).
     :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     __args__ = dict()
-    __args__['antiAffinityGroupIds'] = anti_affinity_group_ids
     __args__['id'] = id
-    __args__['labels'] = labels
     __args__['name'] = name
     __args__['zone'] = zone
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -346,18 +340,14 @@ def get_compute_instance(anti_affinity_group_ids: Optional[Sequence[str]] = None
 
 
 @_utilities.lift_output_func(get_compute_instance)
-def get_compute_instance_output(anti_affinity_group_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                                id: Optional[pulumi.Input[Optional[str]]] = None,
-                                labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
+def get_compute_instance_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                                 name: Optional[pulumi.Input[Optional[str]]] = None,
                                 zone: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetComputeInstanceResult]:
     """
     Use this data source to access information about an existing resource.
 
-    :param Sequence[str] anti_affinity_group_ids: The list of attached exoscale*anti*affinity_group (IDs).
     :param str id: The compute instance ID to match (conflicts with `name`).
-    :param Mapping[str, str] labels: A map of key/value labels.
     :param str name: The instance name to match (conflicts with `id`).
     :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """

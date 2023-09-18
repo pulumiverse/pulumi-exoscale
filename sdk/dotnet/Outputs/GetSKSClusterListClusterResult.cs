@@ -82,7 +82,7 @@ namespace Pulumiverse.Exoscale.Outputs
         /// </summary>
         public readonly string Version;
         /// <summary>
-        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
         public readonly string Zone;
 

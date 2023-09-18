@@ -13,7 +13,7 @@ import (
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
-// !> **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use ComputeInstance instead.
+// !> **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use ComputeInstance instead (or refer to the ad-hoc migration guide).
 //
 // Manage Exoscale Compute Instances.
 type Compute struct {

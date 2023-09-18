@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -42,32 +42,63 @@ class SKSClusterArgs:
         :param pulumi.Input[str] service_level: The service level of the control plane (`pro` or `starter`; default: `pro`; may only be set at creation time).
         :param pulumi.Input[str] version: The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
         """
-        pulumi.set(__self__, "zone", zone)
+        SKSClusterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            zone=zone,
+            addons=addons,
+            auto_upgrade=auto_upgrade,
+            cni=cni,
+            description=description,
+            exoscale_ccm=exoscale_ccm,
+            labels=labels,
+            metrics_server=metrics_server,
+            name=name,
+            oidc=oidc,
+            service_level=service_level,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             zone: pulumi.Input[str],
+             addons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             auto_upgrade: Optional[pulumi.Input[bool]] = None,
+             cni: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             exoscale_ccm: Optional[pulumi.Input[bool]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             metrics_server: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             oidc: Optional[pulumi.Input['SKSClusterOidcArgs']] = None,
+             service_level: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("zone", zone)
         if addons is not None:
             warnings.warn("""This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""", DeprecationWarning)
             pulumi.log.warn("""addons is deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""")
         if addons is not None:
-            pulumi.set(__self__, "addons", addons)
+            _setter("addons", addons)
         if auto_upgrade is not None:
-            pulumi.set(__self__, "auto_upgrade", auto_upgrade)
+            _setter("auto_upgrade", auto_upgrade)
         if cni is not None:
-            pulumi.set(__self__, "cni", cni)
+            _setter("cni", cni)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if exoscale_ccm is not None:
-            pulumi.set(__self__, "exoscale_ccm", exoscale_ccm)
+            _setter("exoscale_ccm", exoscale_ccm)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if metrics_server is not None:
-            pulumi.set(__self__, "metrics_server", metrics_server)
+            _setter("metrics_server", metrics_server)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if oidc is not None:
-            pulumi.set(__self__, "oidc", oidc)
+            _setter("oidc", oidc)
         if service_level is not None:
-            pulumi.set(__self__, "service_level", service_level)
+            _setter("service_level", service_level)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -257,47 +288,92 @@ class _SKSClusterState:
         :param pulumi.Input[str] version: The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
+        _SKSClusterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            addons=addons,
+            aggregation_ca=aggregation_ca,
+            auto_upgrade=auto_upgrade,
+            cni=cni,
+            control_plane_ca=control_plane_ca,
+            created_at=created_at,
+            description=description,
+            endpoint=endpoint,
+            exoscale_ccm=exoscale_ccm,
+            kubelet_ca=kubelet_ca,
+            labels=labels,
+            metrics_server=metrics_server,
+            name=name,
+            nodepools=nodepools,
+            oidc=oidc,
+            service_level=service_level,
+            state=state,
+            version=version,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             addons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             aggregation_ca: Optional[pulumi.Input[str]] = None,
+             auto_upgrade: Optional[pulumi.Input[bool]] = None,
+             cni: Optional[pulumi.Input[str]] = None,
+             control_plane_ca: Optional[pulumi.Input[str]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             endpoint: Optional[pulumi.Input[str]] = None,
+             exoscale_ccm: Optional[pulumi.Input[bool]] = None,
+             kubelet_ca: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             metrics_server: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             nodepools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             oidc: Optional[pulumi.Input['SKSClusterOidcArgs']] = None,
+             service_level: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if addons is not None:
             warnings.warn("""This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""", DeprecationWarning)
             pulumi.log.warn("""addons is deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""")
         if addons is not None:
-            pulumi.set(__self__, "addons", addons)
+            _setter("addons", addons)
         if aggregation_ca is not None:
-            pulumi.set(__self__, "aggregation_ca", aggregation_ca)
+            _setter("aggregation_ca", aggregation_ca)
         if auto_upgrade is not None:
-            pulumi.set(__self__, "auto_upgrade", auto_upgrade)
+            _setter("auto_upgrade", auto_upgrade)
         if cni is not None:
-            pulumi.set(__self__, "cni", cni)
+            _setter("cni", cni)
         if control_plane_ca is not None:
-            pulumi.set(__self__, "control_plane_ca", control_plane_ca)
+            _setter("control_plane_ca", control_plane_ca)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if endpoint is not None:
-            pulumi.set(__self__, "endpoint", endpoint)
+            _setter("endpoint", endpoint)
         if exoscale_ccm is not None:
-            pulumi.set(__self__, "exoscale_ccm", exoscale_ccm)
+            _setter("exoscale_ccm", exoscale_ccm)
         if kubelet_ca is not None:
-            pulumi.set(__self__, "kubelet_ca", kubelet_ca)
+            _setter("kubelet_ca", kubelet_ca)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if metrics_server is not None:
-            pulumi.set(__self__, "metrics_server", metrics_server)
+            _setter("metrics_server", metrics_server)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if nodepools is not None:
-            pulumi.set(__self__, "nodepools", nodepools)
+            _setter("nodepools", nodepools)
         if oidc is not None:
-            pulumi.set(__self__, "oidc", oidc)
+            _setter("oidc", oidc)
         if service_level is not None:
-            pulumi.set(__self__, "service_level", service_level)
+            _setter("service_level", service_level)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter
@@ -602,6 +678,10 @@ class SKSCluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SKSClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -628,9 +708,6 @@ class SKSCluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SKSClusterArgs.__new__(SKSClusterArgs)
 
-            if addons is not None and not opts.urn:
-                warnings.warn("""This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""", DeprecationWarning)
-                pulumi.log.warn("""addons is deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""")
             __props__.__dict__["addons"] = addons
             __props__.__dict__["auto_upgrade"] = auto_upgrade
             __props__.__dict__["cni"] = cni
@@ -639,6 +716,11 @@ class SKSCluster(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["metrics_server"] = metrics_server
             __props__.__dict__["name"] = name
+            if not isinstance(oidc, SKSClusterOidcArgs):
+                oidc = oidc or {}
+                def _setter(key, value):
+                    oidc[key] = value
+                SKSClusterOidcArgs._configure(_setter, **oidc)
             __props__.__dict__["oidc"] = oidc
             __props__.__dict__["service_level"] = service_level
             __props__.__dict__["version"] = version

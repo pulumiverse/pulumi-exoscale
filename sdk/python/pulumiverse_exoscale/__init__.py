@@ -28,6 +28,7 @@ from .get_instance_pool import *
 from .get_instance_pool_list import *
 from .get_network import *
 from .get_nlb import *
+from .get_nlb_service_list import *
 from .get_private_network import *
 from .get_security_group import *
 from .get_sks_cluster import *
@@ -35,6 +36,7 @@ from .get_sks_cluster_list import *
 from .get_sks_nodepool import *
 from .get_sks_nodepool_list import *
 from .get_template import *
+from .get_zones import *
 from .iam_access_key import *
 from .instance_pool import *
 from .ip_address import *

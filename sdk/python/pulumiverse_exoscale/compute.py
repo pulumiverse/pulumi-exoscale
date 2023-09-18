@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ComputeArgs', 'Compute']
@@ -55,42 +55,87 @@ class ComputeArgs:
         :param pulumi.Input[str] template_id: ❗ The compute instance template (ID). Usage of the `get_compute_template` data source is recommended.
         :param pulumi.Input[str] user_data: cloud-init configuration.
         """
-        pulumi.set(__self__, "disk_size", disk_size)
-        pulumi.set(__self__, "zone", zone)
+        ComputeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_size=disk_size,
+            zone=zone,
+            affinity_group_ids=affinity_group_ids,
+            affinity_groups=affinity_groups,
+            display_name=display_name,
+            hostname=hostname,
+            ip4=ip4,
+            ip6=ip6,
+            key_pair=key_pair,
+            keyboard=keyboard,
+            reverse_dns=reverse_dns,
+            security_group_ids=security_group_ids,
+            security_groups=security_groups,
+            size=size,
+            state=state,
+            tags=tags,
+            template=template,
+            template_id=template_id,
+            user_data=user_data,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_size: pulumi.Input[int],
+             zone: pulumi.Input[str],
+             affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             affinity_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             hostname: Optional[pulumi.Input[str]] = None,
+             ip4: Optional[pulumi.Input[bool]] = None,
+             ip6: Optional[pulumi.Input[bool]] = None,
+             key_pair: Optional[pulumi.Input[str]] = None,
+             keyboard: Optional[pulumi.Input[str]] = None,
+             reverse_dns: Optional[pulumi.Input[str]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             size: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             template: Optional[pulumi.Input[str]] = None,
+             template_id: Optional[pulumi.Input[str]] = None,
+             user_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("disk_size", disk_size)
+        _setter("zone", zone)
         if affinity_group_ids is not None:
-            pulumi.set(__self__, "affinity_group_ids", affinity_group_ids)
+            _setter("affinity_group_ids", affinity_group_ids)
         if affinity_groups is not None:
-            pulumi.set(__self__, "affinity_groups", affinity_groups)
+            _setter("affinity_groups", affinity_groups)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
+            _setter("hostname", hostname)
         if ip4 is not None:
-            pulumi.set(__self__, "ip4", ip4)
+            _setter("ip4", ip4)
         if ip6 is not None:
-            pulumi.set(__self__, "ip6", ip6)
+            _setter("ip6", ip6)
         if key_pair is not None:
-            pulumi.set(__self__, "key_pair", key_pair)
+            _setter("key_pair", key_pair)
         if keyboard is not None:
-            pulumi.set(__self__, "keyboard", keyboard)
+            _setter("keyboard", keyboard)
         if reverse_dns is not None:
-            pulumi.set(__self__, "reverse_dns", reverse_dns)
+            _setter("reverse_dns", reverse_dns)
         if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
+            _setter("security_group_ids", security_group_ids)
         if security_groups is not None:
-            pulumi.set(__self__, "security_groups", security_groups)
+            _setter("security_groups", security_groups)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if template is not None:
-            pulumi.set(__self__, "template", template)
+            _setter("template", template)
         if template_id is not None:
-            pulumi.set(__self__, "template_id", template_id)
+            _setter("template_id", template_id)
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
 
     @property
     @pulumi.getter(name="diskSize")
@@ -379,66 +424,127 @@ class _ComputeState:
         :param pulumi.Input[str] username: The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the `get_compute_template` data source `username` attribute instead.
         :param pulumi.Input[str] zone: ❗ The Exoscale Zone name.
         """
+        _ComputeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            affinity_group_ids=affinity_group_ids,
+            affinity_groups=affinity_groups,
+            disk_size=disk_size,
+            display_name=display_name,
+            gateway=gateway,
+            hostname=hostname,
+            ip4=ip4,
+            ip6=ip6,
+            ip6_address=ip6_address,
+            ip6_cidr=ip6_cidr,
+            ip_address=ip_address,
+            key_pair=key_pair,
+            keyboard=keyboard,
+            name=name,
+            password=password,
+            reverse_dns=reverse_dns,
+            security_group_ids=security_group_ids,
+            security_groups=security_groups,
+            size=size,
+            state=state,
+            tags=tags,
+            template=template,
+            template_id=template_id,
+            user_data=user_data,
+            user_data_base64=user_data_base64,
+            username=username,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             affinity_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             disk_size: Optional[pulumi.Input[int]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             gateway: Optional[pulumi.Input[str]] = None,
+             hostname: Optional[pulumi.Input[str]] = None,
+             ip4: Optional[pulumi.Input[bool]] = None,
+             ip6: Optional[pulumi.Input[bool]] = None,
+             ip6_address: Optional[pulumi.Input[str]] = None,
+             ip6_cidr: Optional[pulumi.Input[str]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             key_pair: Optional[pulumi.Input[str]] = None,
+             keyboard: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             reverse_dns: Optional[pulumi.Input[str]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             size: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             template: Optional[pulumi.Input[str]] = None,
+             template_id: Optional[pulumi.Input[str]] = None,
+             user_data: Optional[pulumi.Input[str]] = None,
+             user_data_base64: Optional[pulumi.Input[bool]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if affinity_group_ids is not None:
-            pulumi.set(__self__, "affinity_group_ids", affinity_group_ids)
+            _setter("affinity_group_ids", affinity_group_ids)
         if affinity_groups is not None:
-            pulumi.set(__self__, "affinity_groups", affinity_groups)
+            _setter("affinity_groups", affinity_groups)
         if disk_size is not None:
-            pulumi.set(__self__, "disk_size", disk_size)
+            _setter("disk_size", disk_size)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if gateway is not None:
-            pulumi.set(__self__, "gateway", gateway)
+            _setter("gateway", gateway)
         if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
+            _setter("hostname", hostname)
         if ip4 is not None:
-            pulumi.set(__self__, "ip4", ip4)
+            _setter("ip4", ip4)
         if ip6 is not None:
-            pulumi.set(__self__, "ip6", ip6)
+            _setter("ip6", ip6)
         if ip6_address is not None:
-            pulumi.set(__self__, "ip6_address", ip6_address)
+            _setter("ip6_address", ip6_address)
         if ip6_cidr is not None:
-            pulumi.set(__self__, "ip6_cidr", ip6_cidr)
+            _setter("ip6_cidr", ip6_cidr)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if key_pair is not None:
-            pulumi.set(__self__, "key_pair", key_pair)
+            _setter("key_pair", key_pair)
         if keyboard is not None:
-            pulumi.set(__self__, "keyboard", keyboard)
+            _setter("keyboard", keyboard)
         if name is not None:
             warnings.warn("""use `hostname` attribute instead""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: use `hostname` attribute instead""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if reverse_dns is not None:
-            pulumi.set(__self__, "reverse_dns", reverse_dns)
+            _setter("reverse_dns", reverse_dns)
         if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
+            _setter("security_group_ids", security_group_ids)
         if security_groups is not None:
-            pulumi.set(__self__, "security_groups", security_groups)
+            _setter("security_groups", security_groups)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if template is not None:
-            pulumi.set(__self__, "template", template)
+            _setter("template", template)
         if template_id is not None:
-            pulumi.set(__self__, "template_id", template_id)
+            _setter("template_id", template_id)
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
         if user_data_base64 is not None:
-            pulumi.set(__self__, "user_data_base64", user_data_base64)
+            _setter("user_data_base64", user_data_base64)
         if username is not None:
             warnings.warn("""broken, use `compute_template` data source `username` attribute""", DeprecationWarning)
             pulumi.log.warn("""username is deprecated: broken, use `compute_template` data source `username` attribute""")
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="affinityGroupIds")
@@ -791,7 +897,7 @@ class Compute(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        !> **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use ComputeInstance instead.
+        !> **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use ComputeInstance instead (or refer to the ad-hoc migration guide).
 
         Manage Exoscale Compute Instances.
 
@@ -824,7 +930,7 @@ class Compute(pulumi.CustomResource):
                  args: ComputeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        !> **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use ComputeInstance instead.
+        !> **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use ComputeInstance instead (or refer to the ad-hoc migration guide).
 
         Manage Exoscale Compute Instances.
 
@@ -838,6 +944,10 @@ class Compute(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ComputeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

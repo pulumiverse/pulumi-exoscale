@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -28,8 +28,8 @@ class NLBServiceArgs:
                  strategy: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NLBService resource.
-        :param pulumi.Input[Sequence[pulumi.Input['NLBServiceHealthcheckArgs']]] healthchecks: The service health checking configuration (may only bet set at creation time).
-        :param pulumi.Input[str] instance_pool_id: The exoscale*instance*pool (ID) to forward traffic to.
+        :param pulumi.Input[Sequence[pulumi.Input['NLBServiceHealthcheckArgs']]] healthchecks: The service health checking configuration.
+        :param pulumi.Input[str] instance_pool_id: ❗ The exoscale*instance*pool (ID) to forward traffic to.
         :param pulumi.Input[str] nlb_id: ❗ The parent NLB ID.
         :param pulumi.Input[int] port: The healthcheck port.
         :param pulumi.Input[int] target_port: The (TCP/UDP) port to forward traffic to (on target instance pool members).
@@ -39,26 +39,53 @@ class NLBServiceArgs:
         :param pulumi.Input[str] protocol: The protocol (`tcp`|`udp`; default: `tcp`).
         :param pulumi.Input[str] strategy: The strategy (`round-robin`|`source-hash`; default: `round-robin`).
         """
-        pulumi.set(__self__, "healthchecks", healthchecks)
-        pulumi.set(__self__, "instance_pool_id", instance_pool_id)
-        pulumi.set(__self__, "nlb_id", nlb_id)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "target_port", target_port)
-        pulumi.set(__self__, "zone", zone)
+        NLBServiceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            healthchecks=healthchecks,
+            instance_pool_id=instance_pool_id,
+            nlb_id=nlb_id,
+            port=port,
+            target_port=target_port,
+            zone=zone,
+            description=description,
+            name=name,
+            protocol=protocol,
+            strategy=strategy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             healthchecks: pulumi.Input[Sequence[pulumi.Input['NLBServiceHealthcheckArgs']]],
+             instance_pool_id: pulumi.Input[str],
+             nlb_id: pulumi.Input[str],
+             port: pulumi.Input[int],
+             target_port: pulumi.Input[int],
+             zone: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             strategy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("healthchecks", healthchecks)
+        _setter("instance_pool_id", instance_pool_id)
+        _setter("nlb_id", nlb_id)
+        _setter("port", port)
+        _setter("target_port", target_port)
+        _setter("zone", zone)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if strategy is not None:
-            pulumi.set(__self__, "strategy", strategy)
+            _setter("strategy", strategy)
 
     @property
     @pulumi.getter
     def healthchecks(self) -> pulumi.Input[Sequence[pulumi.Input['NLBServiceHealthcheckArgs']]]:
         """
-        The service health checking configuration (may only bet set at creation time).
+        The service health checking configuration.
         """
         return pulumi.get(self, "healthchecks")
 
@@ -70,7 +97,7 @@ class NLBServiceArgs:
     @pulumi.getter(name="instancePoolId")
     def instance_pool_id(self) -> pulumi.Input[str]:
         """
-        The exoscale*instance*pool (ID) to forward traffic to.
+        ❗ The exoscale*instance*pool (ID) to forward traffic to.
         """
         return pulumi.get(self, "instance_pool_id")
 
@@ -192,8 +219,8 @@ class _NLBServiceState:
         """
         Input properties used for looking up and filtering NLBService resources.
         :param pulumi.Input[str] description: A free-form text describing the NLB service.
-        :param pulumi.Input[Sequence[pulumi.Input['NLBServiceHealthcheckArgs']]] healthchecks: The service health checking configuration (may only bet set at creation time).
-        :param pulumi.Input[str] instance_pool_id: The exoscale*instance*pool (ID) to forward traffic to.
+        :param pulumi.Input[Sequence[pulumi.Input['NLBServiceHealthcheckArgs']]] healthchecks: The service health checking configuration.
+        :param pulumi.Input[str] instance_pool_id: ❗ The exoscale*instance*pool (ID) to forward traffic to.
         :param pulumi.Input[str] name: The NLB service name.
         :param pulumi.Input[str] nlb_id: ❗ The parent NLB ID.
         :param pulumi.Input[int] port: The healthcheck port.
@@ -202,28 +229,57 @@ class _NLBServiceState:
         :param pulumi.Input[int] target_port: The (TCP/UDP) port to forward traffic to (on target instance pool members).
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
+        _NLBServiceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            healthchecks=healthchecks,
+            instance_pool_id=instance_pool_id,
+            name=name,
+            nlb_id=nlb_id,
+            port=port,
+            protocol=protocol,
+            state=state,
+            strategy=strategy,
+            target_port=target_port,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             healthchecks: Optional[pulumi.Input[Sequence[pulumi.Input['NLBServiceHealthcheckArgs']]]] = None,
+             instance_pool_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             nlb_id: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             strategy: Optional[pulumi.Input[str]] = None,
+             target_port: Optional[pulumi.Input[int]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if healthchecks is not None:
-            pulumi.set(__self__, "healthchecks", healthchecks)
+            _setter("healthchecks", healthchecks)
         if instance_pool_id is not None:
-            pulumi.set(__self__, "instance_pool_id", instance_pool_id)
+            _setter("instance_pool_id", instance_pool_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if nlb_id is not None:
-            pulumi.set(__self__, "nlb_id", nlb_id)
+            _setter("nlb_id", nlb_id)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if strategy is not None:
-            pulumi.set(__self__, "strategy", strategy)
+            _setter("strategy", strategy)
         if target_port is not None:
-            pulumi.set(__self__, "target_port", target_port)
+            _setter("target_port", target_port)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter
@@ -241,7 +297,7 @@ class _NLBServiceState:
     @pulumi.getter
     def healthchecks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NLBServiceHealthcheckArgs']]]]:
         """
-        The service health checking configuration (may only bet set at creation time).
+        The service health checking configuration.
         """
         return pulumi.get(self, "healthchecks")
 
@@ -253,7 +309,7 @@ class _NLBServiceState:
     @pulumi.getter(name="instancePoolId")
     def instance_pool_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The exoscale*instance*pool (ID) to forward traffic to.
+        ❗ The exoscale*instance*pool (ID) to forward traffic to.
         """
         return pulumi.get(self, "instance_pool_id")
 
@@ -387,8 +443,8 @@ class NLBService(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free-form text describing the NLB service.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NLBServiceHealthcheckArgs']]]] healthchecks: The service health checking configuration (may only bet set at creation time).
-        :param pulumi.Input[str] instance_pool_id: The exoscale*instance*pool (ID) to forward traffic to.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NLBServiceHealthcheckArgs']]]] healthchecks: The service health checking configuration.
+        :param pulumi.Input[str] instance_pool_id: ❗ The exoscale*instance*pool (ID) to forward traffic to.
         :param pulumi.Input[str] name: The NLB service name.
         :param pulumi.Input[str] nlb_id: ❗ The parent NLB ID.
         :param pulumi.Input[int] port: The healthcheck port.
@@ -426,6 +482,10 @@ class NLBService(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NLBServiceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -502,8 +562,8 @@ class NLBService(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free-form text describing the NLB service.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NLBServiceHealthcheckArgs']]]] healthchecks: The service health checking configuration (may only bet set at creation time).
-        :param pulumi.Input[str] instance_pool_id: The exoscale*instance*pool (ID) to forward traffic to.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NLBServiceHealthcheckArgs']]]] healthchecks: The service health checking configuration.
+        :param pulumi.Input[str] instance_pool_id: ❗ The exoscale*instance*pool (ID) to forward traffic to.
         :param pulumi.Input[str] name: The NLB service name.
         :param pulumi.Input[str] nlb_id: ❗ The parent NLB ID.
         :param pulumi.Input[int] port: The healthcheck port.
@@ -541,7 +601,7 @@ class NLBService(pulumi.CustomResource):
     @pulumi.getter
     def healthchecks(self) -> pulumi.Output[Sequence['outputs.NLBServiceHealthcheck']]:
         """
-        The service health checking configuration (may only bet set at creation time).
+        The service health checking configuration.
         """
         return pulumi.get(self, "healthchecks")
 
@@ -549,7 +609,7 @@ class NLBService(pulumi.CustomResource):
     @pulumi.getter(name="instancePoolId")
     def instance_pool_id(self) -> pulumi.Output[str]:
         """
-        The exoscale*instance*pool (ID) to forward traffic to.
+        ❗ The exoscale*instance*pool (ID) to forward traffic to.
         """
         return pulumi.get(self, "instance_pool_id")
 

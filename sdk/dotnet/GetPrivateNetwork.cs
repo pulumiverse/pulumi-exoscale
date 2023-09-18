@@ -34,6 +34,18 @@ namespace Pulumiverse.Exoscale
         [Input("id")]
         public string? Id { get; set; }
 
+        [Input("labels")]
+        private Dictionary<string, string>? _labels;
+
+        /// <summary>
+        /// A map of key/value labels.
+        /// </summary>
+        public Dictionary<string, string> Labels
+        {
+            get => _labels ?? (_labels = new Dictionary<string, string>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// The network name to match (conflicts with `id`).
         /// </summary>
@@ -65,6 +77,18 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// A map of key/value labels.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// The network name to match (conflicts with `id`).
@@ -101,6 +125,10 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly string? Id;
         /// <summary>
+        /// A map of key/value labels.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? Labels;
+        /// <summary>
         /// The network name to match (conflicts with `id`).
         /// </summary>
         public readonly string? Name;
@@ -125,6 +153,8 @@ namespace Pulumiverse.Exoscale
 
             string? id,
 
+            ImmutableDictionary<string, string>? labels,
+
             string? name,
 
             string netmask,
@@ -136,6 +166,7 @@ namespace Pulumiverse.Exoscale
             Description = description;
             EndIp = endIp;
             Id = id;
+            Labels = labels;
             Name = name;
             Netmask = netmask;
             StartIp = startIp;

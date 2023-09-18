@@ -45,7 +45,13 @@ namespace Pulumiverse.Exoscale
         public Output<int> DiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// *kafka* database service type specific arguments.
+        /// *grafana* database service type specific arguments. Structure is documented below.
+        /// </summary>
+        [Output("grafana")]
+        public Output<Outputs.DatabaseGrafana?> Grafana { get; private set; } = null!;
+
+        /// <summary>
+        /// *kafka* database service type specific arguments. Structure is documented below.
         /// </summary>
         [Output("kafka")]
         public Output<Outputs.DatabaseKafka?> Kafka { get; private set; } = null!;
@@ -63,7 +69,7 @@ namespace Pulumiverse.Exoscale
         public Output<string> MaintenanceTime { get; private set; } = null!;
 
         /// <summary>
-        /// *mysql* database service type specific arguments.
+        /// *mysql* database service type specific arguments. Structure is documented below.
         /// </summary>
         [Output("mysql")]
         public Output<Outputs.DatabaseMysql?> Mysql { get; private set; } = null!;
@@ -93,7 +99,7 @@ namespace Pulumiverse.Exoscale
         public Output<int> Nodes { get; private set; } = null!;
 
         /// <summary>
-        /// *opensearch* database service type specific arguments.
+        /// *opensearch* database service type specific arguments. Structure is documented below.
         /// </summary>
         [Output("opensearch")]
         public Output<Outputs.DatabaseOpensearch?> Opensearch { get; private set; } = null!;
@@ -105,7 +111,7 @@ namespace Pulumiverse.Exoscale
         public Output<Outputs.DatabasePg?> Pg { get; private set; } = null!;
 
         /// <summary>
-        /// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show &lt;TYPE&gt;` - for reference).
+        /// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show &lt;TYPE&gt; --plans` - for reference).
         /// </summary>
         [Output("plan")]
         public Output<string> Plan { get; private set; } = null!;
@@ -126,10 +132,13 @@ namespace Pulumiverse.Exoscale
         /// The database service protection boolean flag against termination/power-off.
         /// </summary>
         [Output("terminationProtection")]
-        public Output<bool?> TerminationProtection { get; private set; } = null!;
+        public Output<bool> TerminationProtection { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.DatabaseTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
-        /// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+        /// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `grafana`).
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -194,7 +203,13 @@ namespace Pulumiverse.Exoscale
     public sealed class DatabaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// *kafka* database service type specific arguments.
+        /// *grafana* database service type specific arguments. Structure is documented below.
+        /// </summary>
+        [Input("grafana")]
+        public Input<Inputs.DatabaseGrafanaArgs>? Grafana { get; set; }
+
+        /// <summary>
+        /// *kafka* database service type specific arguments. Structure is documented below.
         /// </summary>
         [Input("kafka")]
         public Input<Inputs.DatabaseKafkaArgs>? Kafka { get; set; }
@@ -212,7 +227,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? MaintenanceTime { get; set; }
 
         /// <summary>
-        /// *mysql* database service type specific arguments.
+        /// *mysql* database service type specific arguments. Structure is documented below.
         /// </summary>
         [Input("mysql")]
         public Input<Inputs.DatabaseMysqlArgs>? Mysql { get; set; }
@@ -224,7 +239,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// *opensearch* database service type specific arguments.
+        /// *opensearch* database service type specific arguments. Structure is documented below.
         /// </summary>
         [Input("opensearch")]
         public Input<Inputs.DatabaseOpensearchArgs>? Opensearch { get; set; }
@@ -236,7 +251,7 @@ namespace Pulumiverse.Exoscale
         public Input<Inputs.DatabasePgArgs>? Pg { get; set; }
 
         /// <summary>
-        /// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show &lt;TYPE&gt;` - for reference).
+        /// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show &lt;TYPE&gt; --plans` - for reference).
         /// </summary>
         [Input("plan", required: true)]
         public Input<string> Plan { get; set; } = null!;
@@ -253,8 +268,11 @@ namespace Pulumiverse.Exoscale
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.DatabaseTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+        /// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `grafana`).
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -292,7 +310,13 @@ namespace Pulumiverse.Exoscale
         public Input<int>? DiskSize { get; set; }
 
         /// <summary>
-        /// *kafka* database service type specific arguments.
+        /// *grafana* database service type specific arguments. Structure is documented below.
+        /// </summary>
+        [Input("grafana")]
+        public Input<Inputs.DatabaseGrafanaGetArgs>? Grafana { get; set; }
+
+        /// <summary>
+        /// *kafka* database service type specific arguments. Structure is documented below.
         /// </summary>
         [Input("kafka")]
         public Input<Inputs.DatabaseKafkaGetArgs>? Kafka { get; set; }
@@ -310,7 +334,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? MaintenanceTime { get; set; }
 
         /// <summary>
-        /// *mysql* database service type specific arguments.
+        /// *mysql* database service type specific arguments. Structure is documented below.
         /// </summary>
         [Input("mysql")]
         public Input<Inputs.DatabaseMysqlGetArgs>? Mysql { get; set; }
@@ -340,7 +364,7 @@ namespace Pulumiverse.Exoscale
         public Input<int>? Nodes { get; set; }
 
         /// <summary>
-        /// *opensearch* database service type specific arguments.
+        /// *opensearch* database service type specific arguments. Structure is documented below.
         /// </summary>
         [Input("opensearch")]
         public Input<Inputs.DatabaseOpensearchGetArgs>? Opensearch { get; set; }
@@ -352,7 +376,7 @@ namespace Pulumiverse.Exoscale
         public Input<Inputs.DatabasePgGetArgs>? Pg { get; set; }
 
         /// <summary>
-        /// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show &lt;TYPE&gt;` - for reference).
+        /// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show &lt;TYPE&gt; --plans` - for reference).
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }
@@ -375,8 +399,11 @@ namespace Pulumiverse.Exoscale
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.DatabaseTimeoutsGetArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
+        /// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `grafana`).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

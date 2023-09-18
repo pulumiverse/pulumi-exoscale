@@ -144,6 +144,186 @@ func (o ComputeInstanceNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) Com
 	}).(ComputeInstanceNetworkInterfaceOutput)
 }
 
+type DatabaseGrafana struct {
+	// Grafana configuration settings in JSON format (`exo dbaas type show grafana --settings=grafana` for reference).
+	GrafanaSettings *string `pulumi:"grafanaSettings"`
+	// A list of CIDR blocks to allow incoming connections from.
+	IpFilters []string `pulumi:"ipFilters"`
+}
+
+// DatabaseGrafanaInput is an input type that accepts DatabaseGrafanaArgs and DatabaseGrafanaOutput values.
+// You can construct a concrete instance of `DatabaseGrafanaInput` via:
+//
+//	DatabaseGrafanaArgs{...}
+type DatabaseGrafanaInput interface {
+	pulumi.Input
+
+	ToDatabaseGrafanaOutput() DatabaseGrafanaOutput
+	ToDatabaseGrafanaOutputWithContext(context.Context) DatabaseGrafanaOutput
+}
+
+type DatabaseGrafanaArgs struct {
+	// Grafana configuration settings in JSON format (`exo dbaas type show grafana --settings=grafana` for reference).
+	GrafanaSettings pulumi.StringPtrInput `pulumi:"grafanaSettings"`
+	// A list of CIDR blocks to allow incoming connections from.
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+}
+
+func (DatabaseGrafanaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseGrafana)(nil)).Elem()
+}
+
+func (i DatabaseGrafanaArgs) ToDatabaseGrafanaOutput() DatabaseGrafanaOutput {
+	return i.ToDatabaseGrafanaOutputWithContext(context.Background())
+}
+
+func (i DatabaseGrafanaArgs) ToDatabaseGrafanaOutputWithContext(ctx context.Context) DatabaseGrafanaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseGrafanaOutput)
+}
+
+func (i DatabaseGrafanaArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseGrafana] {
+	return pulumix.Output[DatabaseGrafana]{
+		OutputState: i.ToDatabaseGrafanaOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i DatabaseGrafanaArgs) ToDatabaseGrafanaPtrOutput() DatabaseGrafanaPtrOutput {
+	return i.ToDatabaseGrafanaPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseGrafanaArgs) ToDatabaseGrafanaPtrOutputWithContext(ctx context.Context) DatabaseGrafanaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseGrafanaOutput).ToDatabaseGrafanaPtrOutputWithContext(ctx)
+}
+
+// DatabaseGrafanaPtrInput is an input type that accepts DatabaseGrafanaArgs, DatabaseGrafanaPtr and DatabaseGrafanaPtrOutput values.
+// You can construct a concrete instance of `DatabaseGrafanaPtrInput` via:
+//
+//	        DatabaseGrafanaArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabaseGrafanaPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseGrafanaPtrOutput() DatabaseGrafanaPtrOutput
+	ToDatabaseGrafanaPtrOutputWithContext(context.Context) DatabaseGrafanaPtrOutput
+}
+
+type databaseGrafanaPtrType DatabaseGrafanaArgs
+
+func DatabaseGrafanaPtr(v *DatabaseGrafanaArgs) DatabaseGrafanaPtrInput {
+	return (*databaseGrafanaPtrType)(v)
+}
+
+func (*databaseGrafanaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseGrafana)(nil)).Elem()
+}
+
+func (i *databaseGrafanaPtrType) ToDatabaseGrafanaPtrOutput() DatabaseGrafanaPtrOutput {
+	return i.ToDatabaseGrafanaPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseGrafanaPtrType) ToDatabaseGrafanaPtrOutputWithContext(ctx context.Context) DatabaseGrafanaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseGrafanaPtrOutput)
+}
+
+func (i *databaseGrafanaPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseGrafana] {
+	return pulumix.Output[*DatabaseGrafana]{
+		OutputState: i.ToDatabaseGrafanaPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type DatabaseGrafanaOutput struct{ *pulumi.OutputState }
+
+func (DatabaseGrafanaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseGrafana)(nil)).Elem()
+}
+
+func (o DatabaseGrafanaOutput) ToDatabaseGrafanaOutput() DatabaseGrafanaOutput {
+	return o
+}
+
+func (o DatabaseGrafanaOutput) ToDatabaseGrafanaOutputWithContext(ctx context.Context) DatabaseGrafanaOutput {
+	return o
+}
+
+func (o DatabaseGrafanaOutput) ToDatabaseGrafanaPtrOutput() DatabaseGrafanaPtrOutput {
+	return o.ToDatabaseGrafanaPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseGrafanaOutput) ToDatabaseGrafanaPtrOutputWithContext(ctx context.Context) DatabaseGrafanaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseGrafana) *DatabaseGrafana {
+		return &v
+	}).(DatabaseGrafanaPtrOutput)
+}
+
+func (o DatabaseGrafanaOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseGrafana] {
+	return pulumix.Output[DatabaseGrafana]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Grafana configuration settings in JSON format (`exo dbaas type show grafana --settings=grafana` for reference).
+func (o DatabaseGrafanaOutput) GrafanaSettings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseGrafana) *string { return v.GrafanaSettings }).(pulumi.StringPtrOutput)
+}
+
+// A list of CIDR blocks to allow incoming connections from.
+func (o DatabaseGrafanaOutput) IpFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatabaseGrafana) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+}
+
+type DatabaseGrafanaPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseGrafanaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseGrafana)(nil)).Elem()
+}
+
+func (o DatabaseGrafanaPtrOutput) ToDatabaseGrafanaPtrOutput() DatabaseGrafanaPtrOutput {
+	return o
+}
+
+func (o DatabaseGrafanaPtrOutput) ToDatabaseGrafanaPtrOutputWithContext(ctx context.Context) DatabaseGrafanaPtrOutput {
+	return o
+}
+
+func (o DatabaseGrafanaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseGrafana] {
+	return pulumix.Output[*DatabaseGrafana]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DatabaseGrafanaPtrOutput) Elem() DatabaseGrafanaOutput {
+	return o.ApplyT(func(v *DatabaseGrafana) DatabaseGrafana {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseGrafana
+		return ret
+	}).(DatabaseGrafanaOutput)
+}
+
+// Grafana configuration settings in JSON format (`exo dbaas type show grafana --settings=grafana` for reference).
+func (o DatabaseGrafanaPtrOutput) GrafanaSettings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseGrafana) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GrafanaSettings
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of CIDR blocks to allow incoming connections from.
+func (o DatabaseGrafanaPtrOutput) IpFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatabaseGrafana) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFilters
+	}).(pulumi.StringArrayOutput)
+}
+
 type DatabaseKafka struct {
 	// Enable certificate-based authentication method.
 	EnableCertAuth *bool `pulumi:"enableCertAuth"`
@@ -752,6 +932,7 @@ func (o DatabaseMysqlPtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type DatabaseOpensearch struct {
+	// OpenSearch Dashboards settings
 	Dashboards *DatabaseOpensearchDashboards `pulumi:"dashboards"`
 	// ❗ Service name
 	ForkFromService *string `pulumi:"forkFromService"`
@@ -759,17 +940,17 @@ type DatabaseOpensearch struct {
 	IndexPatterns []DatabaseOpensearchIndexPattern `pulumi:"indexPatterns"`
 	// Template settings for all new indexes
 	IndexTemplate *DatabaseOpensearchIndexTemplate `pulumi:"indexTemplate"`
-	// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
+	// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]
 	IpFilters []string `pulumi:"ipFilters"`
 	// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
 	KeepIndexRefreshInterval *bool `pulumi:"keepIndexRefreshInterval"`
 	// Maximum number of indexes to keep (Minimum value is `0`)
 	MaxIndexCount *int `pulumi:"maxIndexCount"`
-	// ❗
+	// ❗ Name of a backup to recover from
 	RecoveryBackupName *string `pulumi:"recoveryBackupName"`
 	// OpenSearch-specific settings, in json. e.g.`jsonencode({thread_pool_search_size: 64})`. Use `exo x get-dbaas-settings-opensearch` to get a list of available settings.
 	Settings *string `pulumi:"settings"`
-	// ❗ OpenSearch major version.
+	// ❗ OpenSearch major version (`exo dbaas type show opensearch` for reference)
 	Version *string `pulumi:"version"`
 }
 
@@ -785,6 +966,7 @@ type DatabaseOpensearchInput interface {
 }
 
 type DatabaseOpensearchArgs struct {
+	// OpenSearch Dashboards settings
 	Dashboards DatabaseOpensearchDashboardsPtrInput `pulumi:"dashboards"`
 	// ❗ Service name
 	ForkFromService pulumi.StringPtrInput `pulumi:"forkFromService"`
@@ -792,17 +974,17 @@ type DatabaseOpensearchArgs struct {
 	IndexPatterns DatabaseOpensearchIndexPatternArrayInput `pulumi:"indexPatterns"`
 	// Template settings for all new indexes
 	IndexTemplate DatabaseOpensearchIndexTemplatePtrInput `pulumi:"indexTemplate"`
-	// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
+	// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
 	KeepIndexRefreshInterval pulumi.BoolPtrInput `pulumi:"keepIndexRefreshInterval"`
 	// Maximum number of indexes to keep (Minimum value is `0`)
 	MaxIndexCount pulumi.IntPtrInput `pulumi:"maxIndexCount"`
-	// ❗
+	// ❗ Name of a backup to recover from
 	RecoveryBackupName pulumi.StringPtrInput `pulumi:"recoveryBackupName"`
 	// OpenSearch-specific settings, in json. e.g.`jsonencode({thread_pool_search_size: 64})`. Use `exo x get-dbaas-settings-opensearch` to get a list of available settings.
 	Settings pulumi.StringPtrInput `pulumi:"settings"`
-	// ❗ OpenSearch major version.
+	// ❗ OpenSearch major version (`exo dbaas type show opensearch` for reference)
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -901,6 +1083,7 @@ func (o DatabaseOpensearchOutput) ToOutput(ctx context.Context) pulumix.Output[D
 	}
 }
 
+// OpenSearch Dashboards settings
 func (o DatabaseOpensearchOutput) Dashboards() DatabaseOpensearchDashboardsPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) *DatabaseOpensearchDashboards { return v.Dashboards }).(DatabaseOpensearchDashboardsPtrOutput)
 }
@@ -920,7 +1103,7 @@ func (o DatabaseOpensearchOutput) IndexTemplate() DatabaseOpensearchIndexTemplat
 	return o.ApplyT(func(v DatabaseOpensearch) *DatabaseOpensearchIndexTemplate { return v.IndexTemplate }).(DatabaseOpensearchIndexTemplatePtrOutput)
 }
 
-// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
+// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]
 func (o DatabaseOpensearchOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -935,7 +1118,7 @@ func (o DatabaseOpensearchOutput) MaxIndexCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) *int { return v.MaxIndexCount }).(pulumi.IntPtrOutput)
 }
 
-// ❗
+// ❗ Name of a backup to recover from
 func (o DatabaseOpensearchOutput) RecoveryBackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) *string { return v.RecoveryBackupName }).(pulumi.StringPtrOutput)
 }
@@ -945,7 +1128,7 @@ func (o DatabaseOpensearchOutput) Settings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) *string { return v.Settings }).(pulumi.StringPtrOutput)
 }
 
-// ❗ OpenSearch major version.
+// ❗ OpenSearch major version (`exo dbaas type show opensearch` for reference)
 func (o DatabaseOpensearchOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearch) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -980,6 +1163,7 @@ func (o DatabaseOpensearchPtrOutput) Elem() DatabaseOpensearchOutput {
 	}).(DatabaseOpensearchOutput)
 }
 
+// OpenSearch Dashboards settings
 func (o DatabaseOpensearchPtrOutput) Dashboards() DatabaseOpensearchDashboardsPtrOutput {
 	return o.ApplyT(func(v *DatabaseOpensearch) *DatabaseOpensearchDashboards {
 		if v == nil {
@@ -1019,7 +1203,7 @@ func (o DatabaseOpensearchPtrOutput) IndexTemplate() DatabaseOpensearchIndexTemp
 	}).(DatabaseOpensearchIndexTemplatePtrOutput)
 }
 
-// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
+// Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]
 func (o DatabaseOpensearchPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DatabaseOpensearch) []string {
 		if v == nil {
@@ -1049,7 +1233,7 @@ func (o DatabaseOpensearchPtrOutput) MaxIndexCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// ❗
+// ❗ Name of a backup to recover from
 func (o DatabaseOpensearchPtrOutput) RecoveryBackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseOpensearch) *string {
 		if v == nil {
@@ -1069,7 +1253,7 @@ func (o DatabaseOpensearchPtrOutput) Settings() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// ❗ OpenSearch major version.
+// ❗ OpenSearch major version (`exo dbaas type show opensearch` for reference)
 func (o DatabaseOpensearchPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseOpensearch) *string {
 		if v == nil {
@@ -2054,6 +2238,224 @@ func (o DatabaseRedisPtrOutput) RedisSettings() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.RedisSettings
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatabaseTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// DatabaseTimeoutsInput is an input type that accepts DatabaseTimeoutsArgs and DatabaseTimeoutsOutput values.
+// You can construct a concrete instance of `DatabaseTimeoutsInput` via:
+//
+//	DatabaseTimeoutsArgs{...}
+type DatabaseTimeoutsInput interface {
+	pulumi.Input
+
+	ToDatabaseTimeoutsOutput() DatabaseTimeoutsOutput
+	ToDatabaseTimeoutsOutputWithContext(context.Context) DatabaseTimeoutsOutput
+}
+
+type DatabaseTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (DatabaseTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseTimeouts)(nil)).Elem()
+}
+
+func (i DatabaseTimeoutsArgs) ToDatabaseTimeoutsOutput() DatabaseTimeoutsOutput {
+	return i.ToDatabaseTimeoutsOutputWithContext(context.Background())
+}
+
+func (i DatabaseTimeoutsArgs) ToDatabaseTimeoutsOutputWithContext(ctx context.Context) DatabaseTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseTimeoutsOutput)
+}
+
+func (i DatabaseTimeoutsArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseTimeouts] {
+	return pulumix.Output[DatabaseTimeouts]{
+		OutputState: i.ToDatabaseTimeoutsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i DatabaseTimeoutsArgs) ToDatabaseTimeoutsPtrOutput() DatabaseTimeoutsPtrOutput {
+	return i.ToDatabaseTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseTimeoutsArgs) ToDatabaseTimeoutsPtrOutputWithContext(ctx context.Context) DatabaseTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseTimeoutsOutput).ToDatabaseTimeoutsPtrOutputWithContext(ctx)
+}
+
+// DatabaseTimeoutsPtrInput is an input type that accepts DatabaseTimeoutsArgs, DatabaseTimeoutsPtr and DatabaseTimeoutsPtrOutput values.
+// You can construct a concrete instance of `DatabaseTimeoutsPtrInput` via:
+//
+//	        DatabaseTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabaseTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseTimeoutsPtrOutput() DatabaseTimeoutsPtrOutput
+	ToDatabaseTimeoutsPtrOutputWithContext(context.Context) DatabaseTimeoutsPtrOutput
+}
+
+type databaseTimeoutsPtrType DatabaseTimeoutsArgs
+
+func DatabaseTimeoutsPtr(v *DatabaseTimeoutsArgs) DatabaseTimeoutsPtrInput {
+	return (*databaseTimeoutsPtrType)(v)
+}
+
+func (*databaseTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseTimeouts)(nil)).Elem()
+}
+
+func (i *databaseTimeoutsPtrType) ToDatabaseTimeoutsPtrOutput() DatabaseTimeoutsPtrOutput {
+	return i.ToDatabaseTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseTimeoutsPtrType) ToDatabaseTimeoutsPtrOutputWithContext(ctx context.Context) DatabaseTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseTimeoutsPtrOutput)
+}
+
+func (i *databaseTimeoutsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseTimeouts] {
+	return pulumix.Output[*DatabaseTimeouts]{
+		OutputState: i.ToDatabaseTimeoutsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type DatabaseTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (DatabaseTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseTimeouts)(nil)).Elem()
+}
+
+func (o DatabaseTimeoutsOutput) ToDatabaseTimeoutsOutput() DatabaseTimeoutsOutput {
+	return o
+}
+
+func (o DatabaseTimeoutsOutput) ToDatabaseTimeoutsOutputWithContext(ctx context.Context) DatabaseTimeoutsOutput {
+	return o
+}
+
+func (o DatabaseTimeoutsOutput) ToDatabaseTimeoutsPtrOutput() DatabaseTimeoutsPtrOutput {
+	return o.ToDatabaseTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseTimeoutsOutput) ToDatabaseTimeoutsPtrOutputWithContext(ctx context.Context) DatabaseTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseTimeouts) *DatabaseTimeouts {
+		return &v
+	}).(DatabaseTimeoutsPtrOutput)
+}
+
+func (o DatabaseTimeoutsOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseTimeouts] {
+	return pulumix.Output[DatabaseTimeouts]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DatabaseTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o DatabaseTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o DatabaseTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DatabaseTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type DatabaseTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseTimeouts)(nil)).Elem()
+}
+
+func (o DatabaseTimeoutsPtrOutput) ToDatabaseTimeoutsPtrOutput() DatabaseTimeoutsPtrOutput {
+	return o
+}
+
+func (o DatabaseTimeoutsPtrOutput) ToDatabaseTimeoutsPtrOutputWithContext(ctx context.Context) DatabaseTimeoutsPtrOutput {
+	return o
+}
+
+func (o DatabaseTimeoutsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseTimeouts] {
+	return pulumix.Output[*DatabaseTimeouts]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DatabaseTimeoutsPtrOutput) Elem() DatabaseTimeoutsOutput {
+	return o.ApplyT(func(v *DatabaseTimeouts) DatabaseTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseTimeouts
+		return ret
+	}).(DatabaseTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DatabaseTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o DatabaseTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o DatabaseTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DatabaseTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3369,7 +3771,7 @@ type GetComputeInstanceListInstance struct {
 	Type string `pulumi:"type"`
 	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 	UserData string `pulumi:"userData"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone string `pulumi:"zone"`
 }
 
@@ -3423,7 +3825,7 @@ type GetComputeInstanceListInstanceArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 	UserData pulumi.StringInput `pulumi:"userData"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
@@ -3597,7 +3999,7 @@ func (o GetComputeInstanceListInstanceOutput) UserData() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.UserData }).(pulumi.StringOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o GetComputeInstanceListInstanceOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.Zone }).(pulumi.StringOutput)
 }
@@ -3626,6 +4028,167 @@ func (o GetComputeInstanceListInstanceArrayOutput) Index(i pulumi.IntInput) GetC
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetComputeInstanceListInstance {
 		return vs[0].([]GetComputeInstanceListInstance)[vs[1].(int)]
 	}).(GetComputeInstanceListInstanceOutput)
+}
+
+type GetDatabaseURITimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+}
+
+// GetDatabaseURITimeoutsInput is an input type that accepts GetDatabaseURITimeoutsArgs and GetDatabaseURITimeoutsOutput values.
+// You can construct a concrete instance of `GetDatabaseURITimeoutsInput` via:
+//
+//	GetDatabaseURITimeoutsArgs{...}
+type GetDatabaseURITimeoutsInput interface {
+	pulumi.Input
+
+	ToGetDatabaseURITimeoutsOutput() GetDatabaseURITimeoutsOutput
+	ToGetDatabaseURITimeoutsOutputWithContext(context.Context) GetDatabaseURITimeoutsOutput
+}
+
+type GetDatabaseURITimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetDatabaseURITimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseURITimeouts)(nil)).Elem()
+}
+
+func (i GetDatabaseURITimeoutsArgs) ToGetDatabaseURITimeoutsOutput() GetDatabaseURITimeoutsOutput {
+	return i.ToGetDatabaseURITimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseURITimeoutsArgs) ToGetDatabaseURITimeoutsOutputWithContext(ctx context.Context) GetDatabaseURITimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseURITimeoutsOutput)
+}
+
+func (i GetDatabaseURITimeoutsArgs) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseURITimeouts] {
+	return pulumix.Output[GetDatabaseURITimeouts]{
+		OutputState: i.ToGetDatabaseURITimeoutsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GetDatabaseURITimeoutsArgs) ToGetDatabaseURITimeoutsPtrOutput() GetDatabaseURITimeoutsPtrOutput {
+	return i.ToGetDatabaseURITimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseURITimeoutsArgs) ToGetDatabaseURITimeoutsPtrOutputWithContext(ctx context.Context) GetDatabaseURITimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseURITimeoutsOutput).ToGetDatabaseURITimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetDatabaseURITimeoutsPtrInput is an input type that accepts GetDatabaseURITimeoutsArgs, GetDatabaseURITimeoutsPtr and GetDatabaseURITimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetDatabaseURITimeoutsPtrInput` via:
+//
+//	        GetDatabaseURITimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetDatabaseURITimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetDatabaseURITimeoutsPtrOutput() GetDatabaseURITimeoutsPtrOutput
+	ToGetDatabaseURITimeoutsPtrOutputWithContext(context.Context) GetDatabaseURITimeoutsPtrOutput
+}
+
+type getDatabaseURITimeoutsPtrType GetDatabaseURITimeoutsArgs
+
+func GetDatabaseURITimeoutsPtr(v *GetDatabaseURITimeoutsArgs) GetDatabaseURITimeoutsPtrInput {
+	return (*getDatabaseURITimeoutsPtrType)(v)
+}
+
+func (*getDatabaseURITimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetDatabaseURITimeouts)(nil)).Elem()
+}
+
+func (i *getDatabaseURITimeoutsPtrType) ToGetDatabaseURITimeoutsPtrOutput() GetDatabaseURITimeoutsPtrOutput {
+	return i.ToGetDatabaseURITimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getDatabaseURITimeoutsPtrType) ToGetDatabaseURITimeoutsPtrOutputWithContext(ctx context.Context) GetDatabaseURITimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseURITimeoutsPtrOutput)
+}
+
+func (i *getDatabaseURITimeoutsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetDatabaseURITimeouts] {
+	return pulumix.Output[*GetDatabaseURITimeouts]{
+		OutputState: i.ToGetDatabaseURITimeoutsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetDatabaseURITimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseURITimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseURITimeouts)(nil)).Elem()
+}
+
+func (o GetDatabaseURITimeoutsOutput) ToGetDatabaseURITimeoutsOutput() GetDatabaseURITimeoutsOutput {
+	return o
+}
+
+func (o GetDatabaseURITimeoutsOutput) ToGetDatabaseURITimeoutsOutputWithContext(ctx context.Context) GetDatabaseURITimeoutsOutput {
+	return o
+}
+
+func (o GetDatabaseURITimeoutsOutput) ToGetDatabaseURITimeoutsPtrOutput() GetDatabaseURITimeoutsPtrOutput {
+	return o.ToGetDatabaseURITimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetDatabaseURITimeoutsOutput) ToGetDatabaseURITimeoutsPtrOutputWithContext(ctx context.Context) GetDatabaseURITimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetDatabaseURITimeouts) *GetDatabaseURITimeouts {
+		return &v
+	}).(GetDatabaseURITimeoutsPtrOutput)
+}
+
+func (o GetDatabaseURITimeoutsOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseURITimeouts] {
+	return pulumix.Output[GetDatabaseURITimeouts]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o GetDatabaseURITimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDatabaseURITimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetDatabaseURITimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseURITimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetDatabaseURITimeouts)(nil)).Elem()
+}
+
+func (o GetDatabaseURITimeoutsPtrOutput) ToGetDatabaseURITimeoutsPtrOutput() GetDatabaseURITimeoutsPtrOutput {
+	return o
+}
+
+func (o GetDatabaseURITimeoutsPtrOutput) ToGetDatabaseURITimeoutsPtrOutputWithContext(ctx context.Context) GetDatabaseURITimeoutsPtrOutput {
+	return o
+}
+
+func (o GetDatabaseURITimeoutsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetDatabaseURITimeouts] {
+	return pulumix.Output[*GetDatabaseURITimeouts]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetDatabaseURITimeoutsPtrOutput) Elem() GetDatabaseURITimeoutsOutput {
+	return o.ApplyT(func(v *GetDatabaseURITimeouts) GetDatabaseURITimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetDatabaseURITimeouts
+		return ret
+	}).(GetDatabaseURITimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o GetDatabaseURITimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDatabaseURITimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetDomainRecordFilter struct {
@@ -4564,6 +5127,463 @@ func (o GetInstancePoolListPoolInstanceArrayOutput) Index(i pulumi.IntInput) Get
 	}).(GetInstancePoolListPoolInstanceOutput)
 }
 
+type GetNLBServiceListService struct {
+	// NLB service description.
+	Description string                              `pulumi:"description"`
+	Healthcheck GetNLBServiceListServiceHealthcheck `pulumi:"healthcheck"`
+	// NLB service ID.
+	Id string `pulumi:"id"`
+	// The exoscale*instance*pool (ID) to forward traffic to.
+	InstancePoolId string `pulumi:"instancePoolId"`
+	// NLB Service name.
+	Name string `pulumi:"name"`
+	// Port exposed on the NLB's public IP.
+	Port int `pulumi:"port"`
+	// Network traffic protocol.
+	Protocol string `pulumi:"protocol"`
+	// NLB Service State.
+	State string `pulumi:"state"`
+	// The strategy (`round-robin`|`source-hash`).
+	Strategy string `pulumi:"strategy"`
+	// Port on which the network traffic will be forwarded to on the receiving instance.
+	TargetPort int `pulumi:"targetPort"`
+}
+
+// GetNLBServiceListServiceInput is an input type that accepts GetNLBServiceListServiceArgs and GetNLBServiceListServiceOutput values.
+// You can construct a concrete instance of `GetNLBServiceListServiceInput` via:
+//
+//	GetNLBServiceListServiceArgs{...}
+type GetNLBServiceListServiceInput interface {
+	pulumi.Input
+
+	ToGetNLBServiceListServiceOutput() GetNLBServiceListServiceOutput
+	ToGetNLBServiceListServiceOutputWithContext(context.Context) GetNLBServiceListServiceOutput
+}
+
+type GetNLBServiceListServiceArgs struct {
+	// NLB service description.
+	Description pulumi.StringInput                       `pulumi:"description"`
+	Healthcheck GetNLBServiceListServiceHealthcheckInput `pulumi:"healthcheck"`
+	// NLB service ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The exoscale*instance*pool (ID) to forward traffic to.
+	InstancePoolId pulumi.StringInput `pulumi:"instancePoolId"`
+	// NLB Service name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Port exposed on the NLB's public IP.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Network traffic protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// NLB Service State.
+	State pulumi.StringInput `pulumi:"state"`
+	// The strategy (`round-robin`|`source-hash`).
+	Strategy pulumi.StringInput `pulumi:"strategy"`
+	// Port on which the network traffic will be forwarded to on the receiving instance.
+	TargetPort pulumi.IntInput `pulumi:"targetPort"`
+}
+
+func (GetNLBServiceListServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNLBServiceListService)(nil)).Elem()
+}
+
+func (i GetNLBServiceListServiceArgs) ToGetNLBServiceListServiceOutput() GetNLBServiceListServiceOutput {
+	return i.ToGetNLBServiceListServiceOutputWithContext(context.Background())
+}
+
+func (i GetNLBServiceListServiceArgs) ToGetNLBServiceListServiceOutputWithContext(ctx context.Context) GetNLBServiceListServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNLBServiceListServiceOutput)
+}
+
+func (i GetNLBServiceListServiceArgs) ToOutput(ctx context.Context) pulumix.Output[GetNLBServiceListService] {
+	return pulumix.Output[GetNLBServiceListService]{
+		OutputState: i.ToGetNLBServiceListServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetNLBServiceListServiceArrayInput is an input type that accepts GetNLBServiceListServiceArray and GetNLBServiceListServiceArrayOutput values.
+// You can construct a concrete instance of `GetNLBServiceListServiceArrayInput` via:
+//
+//	GetNLBServiceListServiceArray{ GetNLBServiceListServiceArgs{...} }
+type GetNLBServiceListServiceArrayInput interface {
+	pulumi.Input
+
+	ToGetNLBServiceListServiceArrayOutput() GetNLBServiceListServiceArrayOutput
+	ToGetNLBServiceListServiceArrayOutputWithContext(context.Context) GetNLBServiceListServiceArrayOutput
+}
+
+type GetNLBServiceListServiceArray []GetNLBServiceListServiceInput
+
+func (GetNLBServiceListServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNLBServiceListService)(nil)).Elem()
+}
+
+func (i GetNLBServiceListServiceArray) ToGetNLBServiceListServiceArrayOutput() GetNLBServiceListServiceArrayOutput {
+	return i.ToGetNLBServiceListServiceArrayOutputWithContext(context.Background())
+}
+
+func (i GetNLBServiceListServiceArray) ToGetNLBServiceListServiceArrayOutputWithContext(ctx context.Context) GetNLBServiceListServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNLBServiceListServiceArrayOutput)
+}
+
+func (i GetNLBServiceListServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetNLBServiceListService] {
+	return pulumix.Output[[]GetNLBServiceListService]{
+		OutputState: i.ToGetNLBServiceListServiceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetNLBServiceListServiceOutput struct{ *pulumi.OutputState }
+
+func (GetNLBServiceListServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNLBServiceListService)(nil)).Elem()
+}
+
+func (o GetNLBServiceListServiceOutput) ToGetNLBServiceListServiceOutput() GetNLBServiceListServiceOutput {
+	return o
+}
+
+func (o GetNLBServiceListServiceOutput) ToGetNLBServiceListServiceOutputWithContext(ctx context.Context) GetNLBServiceListServiceOutput {
+	return o
+}
+
+func (o GetNLBServiceListServiceOutput) ToOutput(ctx context.Context) pulumix.Output[GetNLBServiceListService] {
+	return pulumix.Output[GetNLBServiceListService]{
+		OutputState: o.OutputState,
+	}
+}
+
+// NLB service description.
+func (o GetNLBServiceListServiceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNLBServiceListService) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetNLBServiceListServiceOutput) Healthcheck() GetNLBServiceListServiceHealthcheckOutput {
+	return o.ApplyT(func(v GetNLBServiceListService) GetNLBServiceListServiceHealthcheck { return v.Healthcheck }).(GetNLBServiceListServiceHealthcheckOutput)
+}
+
+// NLB service ID.
+func (o GetNLBServiceListServiceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNLBServiceListService) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The exoscale*instance*pool (ID) to forward traffic to.
+func (o GetNLBServiceListServiceOutput) InstancePoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNLBServiceListService) string { return v.InstancePoolId }).(pulumi.StringOutput)
+}
+
+// NLB Service name.
+func (o GetNLBServiceListServiceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNLBServiceListService) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Port exposed on the NLB's public IP.
+func (o GetNLBServiceListServiceOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNLBServiceListService) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Network traffic protocol.
+func (o GetNLBServiceListServiceOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNLBServiceListService) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// NLB Service State.
+func (o GetNLBServiceListServiceOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNLBServiceListService) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The strategy (`round-robin`|`source-hash`).
+func (o GetNLBServiceListServiceOutput) Strategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNLBServiceListService) string { return v.Strategy }).(pulumi.StringOutput)
+}
+
+// Port on which the network traffic will be forwarded to on the receiving instance.
+func (o GetNLBServiceListServiceOutput) TargetPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNLBServiceListService) int { return v.TargetPort }).(pulumi.IntOutput)
+}
+
+type GetNLBServiceListServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNLBServiceListServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNLBServiceListService)(nil)).Elem()
+}
+
+func (o GetNLBServiceListServiceArrayOutput) ToGetNLBServiceListServiceArrayOutput() GetNLBServiceListServiceArrayOutput {
+	return o
+}
+
+func (o GetNLBServiceListServiceArrayOutput) ToGetNLBServiceListServiceArrayOutputWithContext(ctx context.Context) GetNLBServiceListServiceArrayOutput {
+	return o
+}
+
+func (o GetNLBServiceListServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetNLBServiceListService] {
+	return pulumix.Output[[]GetNLBServiceListService]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetNLBServiceListServiceArrayOutput) Index(i pulumi.IntInput) GetNLBServiceListServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNLBServiceListService {
+		return vs[0].([]GetNLBServiceListService)[vs[1].(int)]
+	}).(GetNLBServiceListServiceOutput)
+}
+
+type GetNLBServiceListServiceHealthcheck struct {
+	Interval int    `pulumi:"interval"`
+	Mode     string `pulumi:"mode"`
+	Port     int    `pulumi:"port"`
+	Retries  int    `pulumi:"retries"`
+	Timeout  int    `pulumi:"timeout"`
+	TlsSni   string `pulumi:"tlsSni"`
+	Uri      string `pulumi:"uri"`
+}
+
+// GetNLBServiceListServiceHealthcheckInput is an input type that accepts GetNLBServiceListServiceHealthcheckArgs and GetNLBServiceListServiceHealthcheckOutput values.
+// You can construct a concrete instance of `GetNLBServiceListServiceHealthcheckInput` via:
+//
+//	GetNLBServiceListServiceHealthcheckArgs{...}
+type GetNLBServiceListServiceHealthcheckInput interface {
+	pulumi.Input
+
+	ToGetNLBServiceListServiceHealthcheckOutput() GetNLBServiceListServiceHealthcheckOutput
+	ToGetNLBServiceListServiceHealthcheckOutputWithContext(context.Context) GetNLBServiceListServiceHealthcheckOutput
+}
+
+type GetNLBServiceListServiceHealthcheckArgs struct {
+	Interval pulumi.IntInput    `pulumi:"interval"`
+	Mode     pulumi.StringInput `pulumi:"mode"`
+	Port     pulumi.IntInput    `pulumi:"port"`
+	Retries  pulumi.IntInput    `pulumi:"retries"`
+	Timeout  pulumi.IntInput    `pulumi:"timeout"`
+	TlsSni   pulumi.StringInput `pulumi:"tlsSni"`
+	Uri      pulumi.StringInput `pulumi:"uri"`
+}
+
+func (GetNLBServiceListServiceHealthcheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNLBServiceListServiceHealthcheck)(nil)).Elem()
+}
+
+func (i GetNLBServiceListServiceHealthcheckArgs) ToGetNLBServiceListServiceHealthcheckOutput() GetNLBServiceListServiceHealthcheckOutput {
+	return i.ToGetNLBServiceListServiceHealthcheckOutputWithContext(context.Background())
+}
+
+func (i GetNLBServiceListServiceHealthcheckArgs) ToGetNLBServiceListServiceHealthcheckOutputWithContext(ctx context.Context) GetNLBServiceListServiceHealthcheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNLBServiceListServiceHealthcheckOutput)
+}
+
+func (i GetNLBServiceListServiceHealthcheckArgs) ToOutput(ctx context.Context) pulumix.Output[GetNLBServiceListServiceHealthcheck] {
+	return pulumix.Output[GetNLBServiceListServiceHealthcheck]{
+		OutputState: i.ToGetNLBServiceListServiceHealthcheckOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetNLBServiceListServiceHealthcheckOutput struct{ *pulumi.OutputState }
+
+func (GetNLBServiceListServiceHealthcheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNLBServiceListServiceHealthcheck)(nil)).Elem()
+}
+
+func (o GetNLBServiceListServiceHealthcheckOutput) ToGetNLBServiceListServiceHealthcheckOutput() GetNLBServiceListServiceHealthcheckOutput {
+	return o
+}
+
+func (o GetNLBServiceListServiceHealthcheckOutput) ToGetNLBServiceListServiceHealthcheckOutputWithContext(ctx context.Context) GetNLBServiceListServiceHealthcheckOutput {
+	return o
+}
+
+func (o GetNLBServiceListServiceHealthcheckOutput) ToOutput(ctx context.Context) pulumix.Output[GetNLBServiceListServiceHealthcheck] {
+	return pulumix.Output[GetNLBServiceListServiceHealthcheck]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetNLBServiceListServiceHealthcheckOutput) Interval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNLBServiceListServiceHealthcheck) int { return v.Interval }).(pulumi.IntOutput)
+}
+
+func (o GetNLBServiceListServiceHealthcheckOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNLBServiceListServiceHealthcheck) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+func (o GetNLBServiceListServiceHealthcheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNLBServiceListServiceHealthcheck) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o GetNLBServiceListServiceHealthcheckOutput) Retries() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNLBServiceListServiceHealthcheck) int { return v.Retries }).(pulumi.IntOutput)
+}
+
+func (o GetNLBServiceListServiceHealthcheckOutput) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNLBServiceListServiceHealthcheck) int { return v.Timeout }).(pulumi.IntOutput)
+}
+
+func (o GetNLBServiceListServiceHealthcheckOutput) TlsSni() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNLBServiceListServiceHealthcheck) string { return v.TlsSni }).(pulumi.StringOutput)
+}
+
+func (o GetNLBServiceListServiceHealthcheckOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNLBServiceListServiceHealthcheck) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type GetNLBServiceListTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+}
+
+// GetNLBServiceListTimeoutsInput is an input type that accepts GetNLBServiceListTimeoutsArgs and GetNLBServiceListTimeoutsOutput values.
+// You can construct a concrete instance of `GetNLBServiceListTimeoutsInput` via:
+//
+//	GetNLBServiceListTimeoutsArgs{...}
+type GetNLBServiceListTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetNLBServiceListTimeoutsOutput() GetNLBServiceListTimeoutsOutput
+	ToGetNLBServiceListTimeoutsOutputWithContext(context.Context) GetNLBServiceListTimeoutsOutput
+}
+
+type GetNLBServiceListTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetNLBServiceListTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNLBServiceListTimeouts)(nil)).Elem()
+}
+
+func (i GetNLBServiceListTimeoutsArgs) ToGetNLBServiceListTimeoutsOutput() GetNLBServiceListTimeoutsOutput {
+	return i.ToGetNLBServiceListTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetNLBServiceListTimeoutsArgs) ToGetNLBServiceListTimeoutsOutputWithContext(ctx context.Context) GetNLBServiceListTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNLBServiceListTimeoutsOutput)
+}
+
+func (i GetNLBServiceListTimeoutsArgs) ToOutput(ctx context.Context) pulumix.Output[GetNLBServiceListTimeouts] {
+	return pulumix.Output[GetNLBServiceListTimeouts]{
+		OutputState: i.ToGetNLBServiceListTimeoutsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GetNLBServiceListTimeoutsArgs) ToGetNLBServiceListTimeoutsPtrOutput() GetNLBServiceListTimeoutsPtrOutput {
+	return i.ToGetNLBServiceListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetNLBServiceListTimeoutsArgs) ToGetNLBServiceListTimeoutsPtrOutputWithContext(ctx context.Context) GetNLBServiceListTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNLBServiceListTimeoutsOutput).ToGetNLBServiceListTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetNLBServiceListTimeoutsPtrInput is an input type that accepts GetNLBServiceListTimeoutsArgs, GetNLBServiceListTimeoutsPtr and GetNLBServiceListTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetNLBServiceListTimeoutsPtrInput` via:
+//
+//	        GetNLBServiceListTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetNLBServiceListTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetNLBServiceListTimeoutsPtrOutput() GetNLBServiceListTimeoutsPtrOutput
+	ToGetNLBServiceListTimeoutsPtrOutputWithContext(context.Context) GetNLBServiceListTimeoutsPtrOutput
+}
+
+type getNLBServiceListTimeoutsPtrType GetNLBServiceListTimeoutsArgs
+
+func GetNLBServiceListTimeoutsPtr(v *GetNLBServiceListTimeoutsArgs) GetNLBServiceListTimeoutsPtrInput {
+	return (*getNLBServiceListTimeoutsPtrType)(v)
+}
+
+func (*getNLBServiceListTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetNLBServiceListTimeouts)(nil)).Elem()
+}
+
+func (i *getNLBServiceListTimeoutsPtrType) ToGetNLBServiceListTimeoutsPtrOutput() GetNLBServiceListTimeoutsPtrOutput {
+	return i.ToGetNLBServiceListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getNLBServiceListTimeoutsPtrType) ToGetNLBServiceListTimeoutsPtrOutputWithContext(ctx context.Context) GetNLBServiceListTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNLBServiceListTimeoutsPtrOutput)
+}
+
+func (i *getNLBServiceListTimeoutsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetNLBServiceListTimeouts] {
+	return pulumix.Output[*GetNLBServiceListTimeouts]{
+		OutputState: i.ToGetNLBServiceListTimeoutsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetNLBServiceListTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetNLBServiceListTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNLBServiceListTimeouts)(nil)).Elem()
+}
+
+func (o GetNLBServiceListTimeoutsOutput) ToGetNLBServiceListTimeoutsOutput() GetNLBServiceListTimeoutsOutput {
+	return o
+}
+
+func (o GetNLBServiceListTimeoutsOutput) ToGetNLBServiceListTimeoutsOutputWithContext(ctx context.Context) GetNLBServiceListTimeoutsOutput {
+	return o
+}
+
+func (o GetNLBServiceListTimeoutsOutput) ToGetNLBServiceListTimeoutsPtrOutput() GetNLBServiceListTimeoutsPtrOutput {
+	return o.ToGetNLBServiceListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetNLBServiceListTimeoutsOutput) ToGetNLBServiceListTimeoutsPtrOutputWithContext(ctx context.Context) GetNLBServiceListTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetNLBServiceListTimeouts) *GetNLBServiceListTimeouts {
+		return &v
+	}).(GetNLBServiceListTimeoutsPtrOutput)
+}
+
+func (o GetNLBServiceListTimeoutsOutput) ToOutput(ctx context.Context) pulumix.Output[GetNLBServiceListTimeouts] {
+	return pulumix.Output[GetNLBServiceListTimeouts]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o GetNLBServiceListTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNLBServiceListTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetNLBServiceListTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetNLBServiceListTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetNLBServiceListTimeouts)(nil)).Elem()
+}
+
+func (o GetNLBServiceListTimeoutsPtrOutput) ToGetNLBServiceListTimeoutsPtrOutput() GetNLBServiceListTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetNLBServiceListTimeoutsPtrOutput) ToGetNLBServiceListTimeoutsPtrOutputWithContext(ctx context.Context) GetNLBServiceListTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetNLBServiceListTimeoutsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetNLBServiceListTimeouts] {
+	return pulumix.Output[*GetNLBServiceListTimeouts]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetNLBServiceListTimeoutsPtrOutput) Elem() GetNLBServiceListTimeoutsOutput {
+	return o.ApplyT(func(v *GetNLBServiceListTimeouts) GetNLBServiceListTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetNLBServiceListTimeouts
+		return ret
+	}).(GetNLBServiceListTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o GetNLBServiceListTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetNLBServiceListTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetSKSClusterListCluster struct {
 	// Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
 	Addons []string `pulumi:"addons"`
@@ -4601,7 +5621,7 @@ type GetSKSClusterListCluster struct {
 	State string `pulumi:"state"`
 	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 	Version string `pulumi:"version"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone string `pulumi:"zone"`
 }
 
@@ -4653,7 +5673,7 @@ type GetSKSClusterListClusterArgs struct {
 	State pulumi.StringInput `pulumi:"state"`
 	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 	Version pulumi.StringInput `pulumi:"version"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
@@ -4819,7 +5839,7 @@ func (o GetSKSClusterListClusterOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.Version }).(pulumi.StringOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o GetSKSClusterListClusterOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.Zone }).(pulumi.StringOutput)
 }
@@ -5260,7 +6280,7 @@ type GetSKSNodepoolListNodepool struct {
 	TemplateId string `pulumi:"templateId"`
 	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 	Version string `pulumi:"version"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone string `pulumi:"zone"`
 }
 
@@ -5313,7 +6333,7 @@ type GetSKSNodepoolListNodepoolArgs struct {
 	TemplateId pulumi.StringInput `pulumi:"templateId"`
 	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 	Version pulumi.StringInput `pulumi:"version"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
@@ -5483,7 +6503,7 @@ func (o GetSKSNodepoolListNodepoolOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSKSNodepoolListNodepool) string { return v.Version }).(pulumi.StringOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o GetSKSNodepoolListNodepoolOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSKSNodepoolListNodepool) string { return v.Zone }).(pulumi.StringOutput)
 }
@@ -5517,6 +6537,8 @@ func (o GetSKSNodepoolListNodepoolArrayOutput) Index(i pulumi.IntInput) GetSKSNo
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceNetworkInterfaceInput)(nil)).Elem(), ComputeInstanceNetworkInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceNetworkInterfaceArrayInput)(nil)).Elem(), ComputeInstanceNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseGrafanaInput)(nil)).Elem(), DatabaseGrafanaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseGrafanaPtrInput)(nil)).Elem(), DatabaseGrafanaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseKafkaInput)(nil)).Elem(), DatabaseKafkaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseKafkaPtrInput)(nil)).Elem(), DatabaseKafkaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlInput)(nil)).Elem(), DatabaseMysqlArgs{})
@@ -5533,6 +6555,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePgPtrInput)(nil)).Elem(), DatabasePgArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseRedisInput)(nil)).Elem(), DatabaseRedisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseRedisPtrInput)(nil)).Elem(), DatabaseRedisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTimeoutsInput)(nil)).Elem(), DatabaseTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTimeoutsPtrInput)(nil)).Elem(), DatabaseTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElasticIPHealthcheckInput)(nil)).Elem(), ElasticIPHealthcheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElasticIPHealthcheckPtrInput)(nil)).Elem(), ElasticIPHealthcheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePoolInstanceInput)(nil)).Elem(), InstancePoolInstanceArgs{})
@@ -5547,6 +6571,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupRulesIngressArrayInput)(nil)).Elem(), SecurityGroupRulesIngressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceListInstanceInput)(nil)).Elem(), GetComputeInstanceListInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceListInstanceArrayInput)(nil)).Elem(), GetComputeInstanceListInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseURITimeoutsInput)(nil)).Elem(), GetDatabaseURITimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseURITimeoutsPtrInput)(nil)).Elem(), GetDatabaseURITimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainRecordFilterInput)(nil)).Elem(), GetDomainRecordFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainRecordRecordInput)(nil)).Elem(), GetDomainRecordRecordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainRecordRecordArrayInput)(nil)).Elem(), GetDomainRecordRecordArray{})
@@ -5558,6 +6584,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolListPoolArrayInput)(nil)).Elem(), GetInstancePoolListPoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolListPoolInstanceInput)(nil)).Elem(), GetInstancePoolListPoolInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolListPoolInstanceArrayInput)(nil)).Elem(), GetInstancePoolListPoolInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNLBServiceListServiceInput)(nil)).Elem(), GetNLBServiceListServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNLBServiceListServiceArrayInput)(nil)).Elem(), GetNLBServiceListServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNLBServiceListServiceHealthcheckInput)(nil)).Elem(), GetNLBServiceListServiceHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNLBServiceListTimeoutsInput)(nil)).Elem(), GetNLBServiceListTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNLBServiceListTimeoutsPtrInput)(nil)).Elem(), GetNLBServiceListTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSKSClusterListClusterInput)(nil)).Elem(), GetSKSClusterListClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSKSClusterListClusterArrayInput)(nil)).Elem(), GetSKSClusterListClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSKSClusterListClusterOidcInput)(nil)).Elem(), GetSKSClusterListClusterOidcArgs{})
@@ -5567,6 +6598,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSKSNodepoolListNodepoolArrayInput)(nil)).Elem(), GetSKSNodepoolListNodepoolArray{})
 	pulumi.RegisterOutputType(ComputeInstanceNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseGrafanaOutput{})
+	pulumi.RegisterOutputType(DatabaseGrafanaPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseKafkaOutput{})
 	pulumi.RegisterOutputType(DatabaseKafkaPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseMysqlOutput{})
@@ -5583,6 +6616,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabasePgPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseRedisOutput{})
 	pulumi.RegisterOutputType(DatabaseRedisPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseTimeoutsOutput{})
+	pulumi.RegisterOutputType(DatabaseTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(ElasticIPHealthcheckOutput{})
 	pulumi.RegisterOutputType(ElasticIPHealthcheckPtrOutput{})
 	pulumi.RegisterOutputType(InstancePoolInstanceOutput{})
@@ -5597,6 +6632,8 @@ func init() {
 	pulumi.RegisterOutputType(SecurityGroupRulesIngressArrayOutput{})
 	pulumi.RegisterOutputType(GetComputeInstanceListInstanceOutput{})
 	pulumi.RegisterOutputType(GetComputeInstanceListInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseURITimeoutsOutput{})
+	pulumi.RegisterOutputType(GetDatabaseURITimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetDomainRecordFilterOutput{})
 	pulumi.RegisterOutputType(GetDomainRecordRecordOutput{})
 	pulumi.RegisterOutputType(GetDomainRecordRecordArrayOutput{})
@@ -5608,6 +6645,11 @@ func init() {
 	pulumi.RegisterOutputType(GetInstancePoolListPoolArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancePoolListPoolInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancePoolListPoolInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetNLBServiceListServiceOutput{})
+	pulumi.RegisterOutputType(GetNLBServiceListServiceArrayOutput{})
+	pulumi.RegisterOutputType(GetNLBServiceListServiceHealthcheckOutput{})
+	pulumi.RegisterOutputType(GetNLBServiceListTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetNLBServiceListTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetSKSClusterListClusterOutput{})
 	pulumi.RegisterOutputType(GetSKSClusterListClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetSKSClusterListClusterOidcOutput{})

@@ -6,8 +6,7 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getSKSClusterList(args?: GetSKSClusterListArgs, opts?: pulumi.InvokeOptions): Promise<GetSKSClusterListResult> {
-    args = args || {};
+export function getSKSClusterList(args: GetSKSClusterListArgs, opts?: pulumi.InvokeOptions): Promise<GetSKSClusterListResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getSKSClusterList:getSKSClusterList", {
@@ -100,9 +99,9 @@ export interface GetSKSClusterListArgs {
      */
     version?: string;
     /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
-    zone?: string;
+    zone: string;
 }
 
 /**
@@ -175,11 +174,11 @@ export interface GetSKSClusterListResult {
      */
     readonly version?: string;
     /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
-    readonly zone?: string;
+    readonly zone: string;
 }
-export function getSKSClusterListOutput(args?: GetSKSClusterListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSKSClusterListResult> {
+export function getSKSClusterListOutput(args: GetSKSClusterListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSKSClusterListResult> {
     return pulumi.output(args).apply((a: any) => getSKSClusterList(a, opts))
 }
 
@@ -252,7 +251,7 @@ export interface GetSKSClusterListOutputArgs {
      */
     version?: pulumi.Input<string>;
     /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
-    zone?: pulumi.Input<string>;
+    zone: pulumi.Input<string>;
 }

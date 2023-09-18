@@ -87,7 +87,13 @@
             },
             "key": {
                 "type": "string",
-                "description": "Exoscale API key\n"
+                "description": "Exoscale API key\n",
+                "defaultInfo": {
+                    "environment": [
+                        "EXOSCALE_API_KEY"
+                    ]
+                },
+                "secret": true
             },
             "profile": {
                 "type": "string",
@@ -100,6 +106,11 @@
             "secret": {
                 "type": "string",
                 "description": "Exoscale API secret\n",
+                "defaultInfo": {
+                    "environment": [
+                        "EXOSCALE_API_SECRET"
+                    ]
+                },
                 "secret": true
             },
             "timeout": {
@@ -133,6 +144,30 @@
                     "requiredOutputs": [
                         "ipAddress",
                         "networkId"
+                    ]
+                }
+            }
+        },
+        "exoscale:index/DatabaseGrafana:DatabaseGrafana": {
+            "properties": {
+                "grafanaSettings": {
+                    "type": "string",
+                    "description": "Grafana configuration settings in JSON format (`exo dbaas type show grafana --settings=grafana` for reference).\n"
+                },
+                "ipFilters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of CIDR blocks to allow incoming connections from.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "grafanaSettings",
+                        "ipFilters"
                     ]
                 }
             }
@@ -192,7 +227,10 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "enableCertAuth",
+                        "enableKafkaConnect",
+                        "enableKafkaRest",
                         "enableSaslAuth",
+                        "enableSchemaRegistry",
                         "ipFilters",
                         "kafkaConnectSettings",
                         "kafkaRestSettings",
@@ -238,8 +276,6 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "adminPassword",
-                        "adminUsername",
                         "backupSchedule",
                         "ipFilters",
                         "mysqlSettings",
@@ -251,12 +287,12 @@
         "exoscale:index/DatabaseOpensearch:DatabaseOpensearch": {
             "properties": {
                 "dashboards": {
-                    "$ref": "#/types/exoscale:index/DatabaseOpensearchDashboards:DatabaseOpensearchDashboards"
+                    "$ref": "#/types/exoscale:index/DatabaseOpensearchDashboards:DatabaseOpensearchDashboards",
+                    "description": "OpenSearch Dashboards settings\n"
                 },
                 "forkFromService": {
                     "type": "string",
-                    "description": "❗ Service name\n",
-                    "willReplaceOnChanges": true
+                    "description": "❗ Service name\n"
                 },
                 "indexPatterns": {
                     "type": "array",
@@ -274,7 +310,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Allow incoming connections from this list of CIDR address block, e.g. `[\"10.20.0.0/16\"]`\n"
+                    "description": "Allow incoming connections from this list of CIDR address block, e.g. `[\"10.20.0.0/16\"]\n"
                 },
                 "keepIndexRefreshInterval": {
                     "type": "boolean",
@@ -286,8 +322,7 @@
                 },
                 "recoveryBackupName": {
                     "type": "string",
-                    "description": "❗\n",
-                    "willReplaceOnChanges": true
+                    "description": "❗ Name of a backup to recover from\n"
                 },
                 "settings": {
                     "type": "string",
@@ -295,8 +330,7 @@
                 },
                 "version": {
                     "type": "string",
-                    "description": "❗ OpenSearch major version.\n",
-                    "willReplaceOnChanges": true
+                    "description": "❗ OpenSearch major version (`exo dbaas type show opensearch` for reference)\n"
                 }
             },
             "type": "object",
@@ -304,6 +338,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "ipFilters",
+                        "settings",
                         "version"
                     ]
                 }
@@ -394,8 +429,6 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "adminPassword",
-                        "adminUsername",
                         "backupSchedule",
                         "ipFilters",
                         "pgSettings",
@@ -429,6 +462,27 @@
                     ]
                 }
             }
+        },
+        "exoscale:index/DatabaseTimeouts:DatabaseTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
         },
         "exoscale:index/ElasticIPHealthcheck:ElasticIPHealthcheck": {
             "properties": {
@@ -789,17 +843,19 @@
                 },
                 "zone": {
                     "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                 }
             },
             "type": "object",
             "required": [
+                "antiAffinityGroupIds",
                 "createdAt",
                 "deployTargetId",
                 "diskSize",
                 "elasticIpIds",
                 "ipv6",
                 "ipv6Address",
+                "labels",
                 "managerId",
                 "managerType",
                 "privateNetworkIds",
@@ -818,6 +874,15 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "exoscale:index/getDatabaseURITimeouts:getDatabaseURITimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                }
+            },
+            "type": "object"
         },
         "exoscale:index/getDomainRecordFilter:getDomainRecordFilter": {
             "properties": {
@@ -1080,6 +1145,116 @@
                 }
             }
         },
+        "exoscale:index/getNLBServiceListService:getNLBServiceListService": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "NLB service description.\n"
+                },
+                "healthcheck": {
+                    "$ref": "#/types/exoscale:index/getNLBServiceListServiceHealthcheck:getNLBServiceListServiceHealthcheck"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "NLB service ID.\n"
+                },
+                "instancePoolId": {
+                    "type": "string",
+                    "description": "The exoscale*instance*pool (ID) to forward traffic to.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "NLB Service name.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Port exposed on the NLB's public IP.\n"
+                },
+                "protocol": {
+                    "type": "string",
+                    "description": "Network traffic protocol.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "NLB Service State.\n"
+                },
+                "strategy": {
+                    "type": "string",
+                    "description": "The strategy (`round-robin`|`source-hash`).\n"
+                },
+                "targetPort": {
+                    "type": "integer",
+                    "description": "Port on which the network traffic will be forwarded to on the receiving instance.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "healthcheck",
+                "id",
+                "instancePoolId",
+                "name",
+                "port",
+                "protocol",
+                "state",
+                "strategy",
+                "targetPort"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "exoscale:index/getNLBServiceListServiceHealthcheck:getNLBServiceListServiceHealthcheck": {
+            "properties": {
+                "interval": {
+                    "type": "integer"
+                },
+                "mode": {
+                    "type": "string"
+                },
+                "port": {
+                    "type": "integer"
+                },
+                "retries": {
+                    "type": "integer"
+                },
+                "timeout": {
+                    "type": "integer"
+                },
+                "tlsSni": {
+                    "type": "string"
+                },
+                "uri": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "interval",
+                "mode",
+                "port",
+                "retries",
+                "timeout",
+                "tlsSni",
+                "uri"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "exoscale:index/getNLBServiceListTimeouts:getNLBServiceListTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                }
+            },
+            "type": "object"
+        },
         "exoscale:index/getSKSClusterListCluster:getSKSClusterListCluster": {
             "properties": {
                 "addons": {
@@ -1167,7 +1342,7 @@
                 },
                 "zone": {
                     "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                 }
             },
             "type": "object",
@@ -1364,7 +1539,7 @@
                 },
                 "zone": {
                     "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                 }
             },
             "type": "object",
@@ -1413,7 +1588,8 @@
             },
             "key": {
                 "type": "string",
-                "description": "Exoscale API key\n"
+                "description": "Exoscale API key\n",
+                "secret": true
             },
             "profile": {
                 "type": "string",
@@ -1464,7 +1640,13 @@
             },
             "key": {
                 "type": "string",
-                "description": "Exoscale API key\n"
+                "description": "Exoscale API key\n",
+                "defaultInfo": {
+                    "environment": [
+                        "EXOSCALE_API_KEY"
+                    ]
+                },
+                "secret": true
             },
             "profile": {
                 "type": "string",
@@ -1477,6 +1659,11 @@
             "secret": {
                 "type": "string",
                 "description": "Exoscale API secret\n",
+                "defaultInfo": {
+                    "environment": [
+                        "EXOSCALE_API_SECRET"
+                    ]
+                },
                 "secret": true
             },
             "timeout": {
@@ -1608,7 +1795,7 @@
             }
         },
         "exoscale:index/compute:Compute": {
-            "description": "!\u003e **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use exoscale.ComputeInstance instead.\n\nManage Exoscale Compute Instances.\n",
+            "description": "!\u003e **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use exoscale.ComputeInstance instead (or refer to the ad-hoc migration guide).\n\nManage Exoscale Compute Instances.\n",
             "properties": {
                 "affinityGroupIds": {
                     "type": "array",
@@ -2339,9 +2526,13 @@
                     "type": "integer",
                     "description": "The disk size of the database service.\n"
                 },
+                "grafana": {
+                    "$ref": "#/types/exoscale:index/DatabaseGrafana:DatabaseGrafana",
+                    "description": "*grafana* database service type specific arguments. Structure is documented below.\n"
+                },
                 "kafka": {
                     "$ref": "#/types/exoscale:index/DatabaseKafka:DatabaseKafka",
-                    "description": "*kafka* database service type specific arguments.\n"
+                    "description": "*kafka* database service type specific arguments. Structure is documented below.\n"
                 },
                 "maintenanceDow": {
                     "type": "string",
@@ -2353,7 +2544,7 @@
                 },
                 "mysql": {
                     "$ref": "#/types/exoscale:index/DatabaseMysql:DatabaseMysql",
-                    "description": "*mysql* database service type specific arguments.\n"
+                    "description": "*mysql* database service type specific arguments. Structure is documented below.\n"
                 },
                 "name": {
                     "type": "string",
@@ -2373,7 +2564,7 @@
                 },
                 "opensearch": {
                     "$ref": "#/types/exoscale:index/DatabaseOpensearch:DatabaseOpensearch",
-                    "description": "*opensearch* database service type specific arguments.\n"
+                    "description": "*opensearch* database service type specific arguments. Structure is documented below.\n"
                 },
                 "pg": {
                     "$ref": "#/types/exoscale:index/DatabasePg:DatabasePg",
@@ -2381,7 +2572,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show \u003cTYPE\u003e` - for reference).\n"
+                    "description": "The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show \u003cTYPE\u003e --plans` - for reference).\n"
                 },
                 "redis": {
                     "$ref": "#/types/exoscale:index/DatabaseRedis:DatabaseRedis",
@@ -2395,9 +2586,12 @@
                     "type": "boolean",
                     "description": "The database service protection boolean flag against termination/power-off.\n"
                 },
+                "timeouts": {
+                    "$ref": "#/types/exoscale:index/DatabaseTimeouts:DatabaseTimeouts"
+                },
                 "type": {
                     "type": "string",
-                    "description": "❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).\n"
+                    "description": "❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `grafana`).\n"
                 },
                 "updatedAt": {
                     "type": "string",
@@ -2420,14 +2614,19 @@
                 "nodes",
                 "plan",
                 "state",
+                "terminationProtection",
                 "type",
                 "updatedAt",
                 "zone"
             ],
             "inputProperties": {
+                "grafana": {
+                    "$ref": "#/types/exoscale:index/DatabaseGrafana:DatabaseGrafana",
+                    "description": "*grafana* database service type specific arguments. Structure is documented below.\n"
+                },
                 "kafka": {
                     "$ref": "#/types/exoscale:index/DatabaseKafka:DatabaseKafka",
-                    "description": "*kafka* database service type specific arguments.\n"
+                    "description": "*kafka* database service type specific arguments. Structure is documented below.\n"
                 },
                 "maintenanceDow": {
                     "type": "string",
@@ -2439,16 +2638,15 @@
                 },
                 "mysql": {
                     "$ref": "#/types/exoscale:index/DatabaseMysql:DatabaseMysql",
-                    "description": "*mysql* database service type specific arguments.\n"
+                    "description": "*mysql* database service type specific arguments. Structure is documented below.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "❗ The name of the database service.\n",
-                    "willReplaceOnChanges": true
+                    "description": "❗ The name of the database service.\n"
                 },
                 "opensearch": {
                     "$ref": "#/types/exoscale:index/DatabaseOpensearch:DatabaseOpensearch",
-                    "description": "*opensearch* database service type specific arguments.\n"
+                    "description": "*opensearch* database service type specific arguments. Structure is documented below.\n"
                 },
                 "pg": {
                     "$ref": "#/types/exoscale:index/DatabasePg:DatabasePg",
@@ -2456,7 +2654,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show \u003cTYPE\u003e` - for reference).\n"
+                    "description": "The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show \u003cTYPE\u003e --plans` - for reference).\n"
                 },
                 "redis": {
                     "$ref": "#/types/exoscale:index/DatabaseRedis:DatabaseRedis",
@@ -2466,15 +2664,16 @@
                     "type": "boolean",
                     "description": "The database service protection boolean flag against termination/power-off.\n"
                 },
+                "timeouts": {
+                    "$ref": "#/types/exoscale:index/DatabaseTimeouts:DatabaseTimeouts"
+                },
                 "type": {
                     "type": "string",
-                    "description": "❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).\n",
-                    "willReplaceOnChanges": true
+                    "description": "❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `grafana`).\n"
                 },
                 "zone": {
                     "type": "string",
-                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
-                    "willReplaceOnChanges": true
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                 }
             },
             "requiredInputs": [
@@ -2497,9 +2696,13 @@
                         "type": "integer",
                         "description": "The disk size of the database service.\n"
                     },
+                    "grafana": {
+                        "$ref": "#/types/exoscale:index/DatabaseGrafana:DatabaseGrafana",
+                        "description": "*grafana* database service type specific arguments. Structure is documented below.\n"
+                    },
                     "kafka": {
                         "$ref": "#/types/exoscale:index/DatabaseKafka:DatabaseKafka",
-                        "description": "*kafka* database service type specific arguments.\n"
+                        "description": "*kafka* database service type specific arguments. Structure is documented below.\n"
                     },
                     "maintenanceDow": {
                         "type": "string",
@@ -2511,12 +2714,11 @@
                     },
                     "mysql": {
                         "$ref": "#/types/exoscale:index/DatabaseMysql:DatabaseMysql",
-                        "description": "*mysql* database service type specific arguments.\n"
+                        "description": "*mysql* database service type specific arguments. Structure is documented below.\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "❗ The name of the database service.\n",
-                        "willReplaceOnChanges": true
+                        "description": "❗ The name of the database service.\n"
                     },
                     "nodeCpus": {
                         "type": "integer",
@@ -2532,7 +2734,7 @@
                     },
                     "opensearch": {
                         "$ref": "#/types/exoscale:index/DatabaseOpensearch:DatabaseOpensearch",
-                        "description": "*opensearch* database service type specific arguments.\n"
+                        "description": "*opensearch* database service type specific arguments. Structure is documented below.\n"
                     },
                     "pg": {
                         "$ref": "#/types/exoscale:index/DatabasePg:DatabasePg",
@@ -2540,7 +2742,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show \u003cTYPE\u003e` - for reference).\n"
+                        "description": "The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show \u003cTYPE\u003e --plans` - for reference).\n"
                     },
                     "redis": {
                         "$ref": "#/types/exoscale:index/DatabaseRedis:DatabaseRedis",
@@ -2554,10 +2756,12 @@
                         "type": "boolean",
                         "description": "The database service protection boolean flag against termination/power-off.\n"
                     },
+                    "timeouts": {
+                        "$ref": "#/types/exoscale:index/DatabaseTimeouts:DatabaseTimeouts"
+                    },
                     "type": {
                         "type": "string",
-                        "description": "❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).\n",
-                        "willReplaceOnChanges": true
+                        "description": "❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `grafana`).\n"
                     },
                     "updatedAt": {
                         "type": "string",
@@ -2565,8 +2769,7 @@
                     },
                     "zone": {
                         "type": "string",
-                        "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
-                        "willReplaceOnChanges": true
+                        "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                     }
                 },
                 "type": "object"
@@ -3781,11 +3984,11 @@
                     "items": {
                         "$ref": "#/types/exoscale:index/NLBServiceHealthcheck:NLBServiceHealthcheck"
                     },
-                    "description": "The service health checking configuration (may only bet set at creation time).\n"
+                    "description": "The service health checking configuration.\n"
                 },
                 "instancePoolId": {
                     "type": "string",
-                    "description": "The exoscale*instance*pool (ID) to forward traffic to.\n"
+                    "description": "❗ The exoscale*instance*pool (ID) to forward traffic to.\n"
                 },
                 "name": {
                     "type": "string",
@@ -3839,11 +4042,12 @@
                     "items": {
                         "$ref": "#/types/exoscale:index/NLBServiceHealthcheck:NLBServiceHealthcheck"
                     },
-                    "description": "The service health checking configuration (may only bet set at creation time).\n"
+                    "description": "The service health checking configuration.\n"
                 },
                 "instancePoolId": {
                     "type": "string",
-                    "description": "The exoscale*instance*pool (ID) to forward traffic to.\n"
+                    "description": "❗ The exoscale*instance*pool (ID) to forward traffic to.\n",
+                    "willReplaceOnChanges": true
                 },
                 "name": {
                     "type": "string",
@@ -3896,11 +4100,12 @@
                         "items": {
                             "$ref": "#/types/exoscale:index/NLBServiceHealthcheck:NLBServiceHealthcheck"
                         },
-                        "description": "The service health checking configuration (may only bet set at creation time).\n"
+                        "description": "The service health checking configuration.\n"
                     },
                     "instancePoolId": {
                         "type": "string",
-                        "description": "The exoscale*instance*pool (ID) to forward traffic to.\n"
+                        "description": "❗ The exoscale*instance*pool (ID) to forward traffic to.\n",
+                        "willReplaceOnChanges": true
                     },
                     "name": {
                         "type": "string",
@@ -4079,6 +4284,13 @@
                     "type": "string",
                     "description": "(For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.\n"
                 },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of key/value labels.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The private network name.\n"
@@ -4108,6 +4320,13 @@
                 "endIp": {
                     "type": "string",
                     "description": "(For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of key/value labels.\n"
                 },
                 "name": {
                     "type": "string",
@@ -4140,6 +4359,13 @@
                     "endIp": {
                         "type": "string",
                         "description": "(For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A map of key/value labels.\n"
                     },
                     "name": {
                         "type": "string",
@@ -5644,23 +5870,9 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getComputeInstance.\n",
                 "properties": {
-                    "antiAffinityGroupIds": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "The list of attached exoscale*anti*affinity_group (IDs).\n"
-                    },
                     "id": {
                         "type": "string",
                         "description": "The compute instance ID to match (conflicts with `name`).\n"
-                    },
-                    "labels": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        },
-                        "description": "A map of key/value labels.\n"
                     },
                     "name": {
                         "type": "string",
@@ -5785,12 +5997,14 @@
                 },
                 "type": "object",
                 "required": [
+                    "antiAffinityGroupIds",
                     "createdAt",
                     "deployTargetId",
                     "diskSize",
                     "elasticIpIds",
                     "ipv6",
                     "ipv6Address",
+                    "labels",
                     "managerId",
                     "managerType",
                     "privateNetworkIds",
@@ -5883,10 +6097,13 @@
                     },
                     "zone": {
                         "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "required": [
+                    "zone"
+                ]
             },
             "outputs": {
                 "description": "A collection of values returned by getComputeInstanceList.\n",
@@ -5971,12 +6188,13 @@
                     },
                     "zone": {
                         "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                     }
                 },
                 "type": "object",
                 "required": [
-                    "instances"
+                    "instances",
+                    "zone"
                 ]
             }
         },
@@ -6038,7 +6256,7 @@
             }
         },
         "exoscale:index/getDatabaseURI:getDatabaseURI": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as exoscale from \"@pulumi/exoscale\";\nimport * as exoscale from \"@pulumiverse/exoscale\";\n\nconst myDatabaseDatabase = new exoscale.Database(\"myDatabaseDatabase\", {\n    zone: \"ch-gva-2\",\n    type: \"pg\",\n    plan: \"startup-4\",\n    maintenanceDow: \"sunday\",\n    maintenanceTime: \"23:00:00\",\n    terminationProtection: true,\n    pg: {\n        version: \"13\",\n        backupSchedule: \"04:00\",\n        ipFilters: [\n            \"1.2.3.4/32\",\n            \"5.6.7.8/32\",\n        ],\n        pgSettings: JSON.stringify({\n            timezone: \"Europe/Zurich\",\n        }),\n    },\n});\nconst myDatabaseDatabaseURI = exoscale.getDatabaseURI({\n    name: \"my-database\",\n    type: \"pg\",\n    zone: \"ch-gva-2\",\n});\nexport const myDatabaseUri = myDatabaseDatabaseURI.then(myDatabaseDatabaseURI =\u003e myDatabaseDatabaseURI.uri);\n```\n```python\nimport pulumi\nimport json\nimport pulumi_exoscale as exoscale\nimport pulumiverse_exoscale as exoscale\n\nmy_database_database = exoscale.Database(\"myDatabaseDatabase\",\n    zone=\"ch-gva-2\",\n    type=\"pg\",\n    plan=\"startup-4\",\n    maintenance_dow=\"sunday\",\n    maintenance_time=\"23:00:00\",\n    termination_protection=True,\n    pg=exoscale.DatabasePgArgs(\n        version=\"13\",\n        backup_schedule=\"04:00\",\n        ip_filters=[\n            \"1.2.3.4/32\",\n            \"5.6.7.8/32\",\n        ],\n        pg_settings=json.dumps({\n            \"timezone\": \"Europe/Zurich\",\n        }),\n    ))\nmy_database_database_uri = exoscale.get_database_uri(name=\"my-database\",\n    type=\"pg\",\n    zone=\"ch-gva-2\")\npulumi.export(\"myDatabaseUri\", my_database_database_uri.uri)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Exoscale = Pulumi.Exoscale;\nusing Exoscale = Pulumiverse.Exoscale;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myDatabaseDatabase = new Exoscale.Database(\"myDatabaseDatabase\", new()\n    {\n        Zone = \"ch-gva-2\",\n        Type = \"pg\",\n        Plan = \"startup-4\",\n        MaintenanceDow = \"sunday\",\n        MaintenanceTime = \"23:00:00\",\n        TerminationProtection = true,\n        Pg = new Exoscale.Inputs.DatabasePgArgs\n        {\n            Version = \"13\",\n            BackupSchedule = \"04:00\",\n            IpFilters = new[]\n            {\n                \"1.2.3.4/32\",\n                \"5.6.7.8/32\",\n            },\n            PgSettings = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                [\"timezone\"] = \"Europe/Zurich\",\n            }),\n        },\n    });\n\n    var myDatabaseDatabaseURI = Exoscale.GetDatabaseURI.Invoke(new()\n    {\n        Name = \"my-database\",\n        Type = \"pg\",\n        Zone = \"ch-gva-2\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"myDatabaseUri\"] = myDatabaseDatabaseURI.Apply(getDatabaseURIResult =\u003e getDatabaseURIResult.Uri),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"timezone\": \"Europe/Zurich\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err = exoscale.NewDatabase(ctx, \"myDatabaseDatabase\", \u0026exoscale.DatabaseArgs{\n\t\t\tZone:                  pulumi.String(\"ch-gva-2\"),\n\t\t\tType:                  pulumi.String(\"pg\"),\n\t\t\tPlan:                  pulumi.String(\"startup-4\"),\n\t\t\tMaintenanceDow:        pulumi.String(\"sunday\"),\n\t\t\tMaintenanceTime:       pulumi.String(\"23:00:00\"),\n\t\t\tTerminationProtection: pulumi.Bool(true),\n\t\t\tPg: \u0026exoscale.DatabasePgArgs{\n\t\t\t\tVersion:        pulumi.String(\"13\"),\n\t\t\t\tBackupSchedule: pulumi.String(\"04:00\"),\n\t\t\t\tIpFilters: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"1.2.3.4/32\"),\n\t\t\t\t\tpulumi.String(\"5.6.7.8/32\"),\n\t\t\t\t},\n\t\t\t\tPgSettings: pulumi.String(json0),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyDatabaseDatabaseURI, err := exoscale.GetDatabaseURI(ctx, \u0026exoscale.GetDatabaseURIArgs{\n\t\t\tName: \"my-database\",\n\t\t\tType: \"pg\",\n\t\t\tZone: \"ch-gva-2\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"myDatabaseUri\", myDatabaseDatabaseURI.Uri)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.exoscale.Database;\nimport com.pulumi.exoscale.DatabaseArgs;\nimport com.pulumi.exoscale.inputs.DatabasePgArgs;\nimport com.pulumi.exoscale.ExoscaleFunctions;\nimport com.pulumi.exoscale.inputs.GetDatabaseURIArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myDatabaseDatabase = new Database(\"myDatabaseDatabase\", DatabaseArgs.builder()        \n            .zone(\"ch-gva-2\")\n            .type(\"pg\")\n            .plan(\"startup-4\")\n            .maintenanceDow(\"sunday\")\n            .maintenanceTime(\"23:00:00\")\n            .terminationProtection(true)\n            .pg(DatabasePgArgs.builder()\n                .version(\"13\")\n                .backupSchedule(\"04:00\")\n                .ipFilters(                \n                    \"1.2.3.4/32\",\n                    \"5.6.7.8/32\")\n                .pgSettings(serializeJson(\n                    jsonObject(\n                        jsonProperty(\"timezone\", \"Europe/Zurich\")\n                    )))\n                .build())\n            .build());\n\n        final var myDatabaseDatabaseURI = ExoscaleFunctions.getDatabaseURI(GetDatabaseURIArgs.builder()\n            .name(\"my-database\")\n            .type(\"pg\")\n            .zone(\"ch-gva-2\")\n            .build());\n\n        ctx.export(\"myDatabaseUri\", myDatabaseDatabaseURI.applyValue(getDatabaseURIResult -\u003e getDatabaseURIResult.uri()));\n    }\n}\n```\n```yaml\nresources:\n  myDatabaseDatabase:\n    type: exoscale:Database\n    properties:\n      zone: ch-gva-2\n      type: pg\n      plan: startup-4\n      maintenanceDow: sunday\n      maintenanceTime: 23:00:00\n      terminationProtection: true\n      pg:\n        version: '13'\n        backupSchedule: 04:00\n        ipFilters:\n          - 1.2.3.4/32\n          - 5.6.7.8/32\n        pgSettings:\n          fn::toJSON:\n            timezone: Europe/Zurich\nvariables:\n  myDatabaseDatabaseURI:\n    fn::invoke:\n      Function: exoscale:getDatabaseURI\n      Arguments:\n        name: my-database\n        type: pg\n        zone: ch-gva-2\noutputs:\n  myDatabaseUri: ${myDatabaseDatabaseURI.uri}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.exoscale.Database;\nimport com.pulumi.exoscale.DatabaseArgs;\nimport com.pulumi.exoscale.ExoscaleFunctions;\nimport com.pulumi.exoscale.inputs.GetDatabaseURIArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myDatabaseDatabase = new Database(\"myDatabaseDatabase\", DatabaseArgs.builder()        \n            .zone(\"ch-gva-2\")\n            .type(\"pg\")\n            .plan(\"startup-4\")\n            .maintenanceDow(\"sunday\")\n            .maintenanceTime(\"23:00:00\")\n            .terminationProtection(true)\n            .pg(DatabasePgArgs.builder()\n                .version(\"13\")\n                .backupSchedule(\"04:00\")\n                .ipFilters(                \n                    \"1.2.3.4/32\",\n                    \"5.6.7.8/32\")\n                .pgSettings(serializeJson(\n                    jsonObject(\n                        jsonProperty(\"timezone\", \"Europe/Zurich\")\n                    )))\n                .build())\n            .build());\n\n        final var myDatabaseDatabaseURI = ExoscaleFunctions.getDatabaseURI(GetDatabaseURIArgs.builder()\n            .name(\"my-database\")\n            .type(\"pg\")\n            .zone(\"ch-gva-2\")\n            .build());\n\n        ctx.export(\"myDatabaseUri\", myDatabaseDatabaseURI.applyValue(getDatabaseURIResult -\u003e getDatabaseURIResult.uri()));\n    }\n}\n```\n```yaml\nresources:\n  myDatabaseDatabase:\n    type: exoscale:Database\n    properties:\n      zone: ch-gva-2\n      type: pg\n      plan: startup-4\n      maintenanceDow: sunday\n      maintenanceTime: 23:00:00\n      terminationProtection: true\n      pg:\n        - version: '13'\n          backupSchedule: 04:00\n          ipFilters:\n            - 1.2.3.4/32\n            - 5.6.7.8/32\n          pgSettings:\n            fn::toJSON:\n              timezone: Europe/Zurich\nvariables:\n  myDatabaseDatabaseURI:\n    fn::invoke:\n      Function: exoscale:getDatabaseURI\n      Arguments:\n        name: my-database\n        type: pg\n        zone: ch-gva-2\noutputs:\n  myDatabaseUri: ${myDatabaseDatabaseURI.uri}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getDatabaseURI.\n",
                 "properties": {
@@ -6046,13 +6264,16 @@
                         "type": "string",
                         "description": "The database name to match.\n"
                     },
+                    "timeouts": {
+                        "$ref": "#/types/exoscale:index/getDatabaseURITimeouts:getDatabaseURITimeouts"
+                    },
                     "type": {
                         "type": "string",
                         "description": "The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).\n"
                     },
                     "zone": {
                         "type": "string",
-                        "description": "(Required) The Exoscale Zone name.\n"
+                        "description": "The Exoscale Zone name.\n"
                     }
                 },
                 "type": "object",
@@ -6067,11 +6288,14 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The ID of this resource.\n"
                     },
                     "name": {
                         "type": "string",
                         "description": "The database name to match.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/exoscale:index/getDatabaseURITimeouts:getDatabaseURITimeouts"
                     },
                     "type": {
                         "type": "string",
@@ -6084,16 +6308,16 @@
                     },
                     "zone": {
                         "type": "string",
-                        "description": "(Required) The Exoscale Zone name.\n"
+                        "description": "The Exoscale Zone name.\n"
                     }
                 },
                 "type": "object",
                 "required": [
+                    "id",
                     "name",
                     "type",
                     "uri",
-                    "zone",
-                    "id"
+                    "zone"
                 ]
             }
         },
@@ -6525,6 +6749,69 @@
                 ]
             }
         },
+        "exoscale:index/getNLBServiceList:getNLBServiceList": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getNLBServiceList.\n",
+                "properties": {
+                    "nlbId": {
+                        "type": "string",
+                        "description": "The NLB ID to match (conflicts with `name`).\n"
+                    },
+                    "nlbName": {
+                        "type": "string",
+                        "description": "The NLB name to match (conflicts with `id`).\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/exoscale:index/getNLBServiceListTimeouts:getNLBServiceListTimeouts"
+                    },
+                    "zone": {
+                        "type": "string",
+                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "zone"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getNLBServiceList.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of this resource.\n"
+                    },
+                    "nlbId": {
+                        "type": "string",
+                        "description": "The NLB ID to match (conflicts with `name`).\n"
+                    },
+                    "nlbName": {
+                        "type": "string",
+                        "description": "The NLB name to match (conflicts with `id`).\n"
+                    },
+                    "services": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/exoscale:index/getNLBServiceListService:getNLBServiceListService"
+                        },
+                        "description": "The list of exoscale*nlb*service.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/exoscale:index/getNLBServiceListTimeouts:getNLBServiceListTimeouts"
+                    },
+                    "zone": {
+                        "type": "string",
+                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "services",
+                    "zone"
+                ]
+            }
+        },
         "exoscale:index/getNetwork:getNetwork": {
             "description": "!\u003e **WARNING:** This data source is **DEPRECATED** and will be removed in the next major version. Please use exoscale.PrivateNetwork instead.\n",
             "inputs": {
@@ -6602,6 +6889,13 @@
                         "type": "string",
                         "description": "The private network ID to match (conflicts with `name`).\n"
                     },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A map of key/value labels.\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The network name to match (conflicts with `id`).\n"
@@ -6630,6 +6924,13 @@
                     "id": {
                         "type": "string",
                         "description": "The private network ID to match (conflicts with `name`).\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A map of key/value labels.\n"
                     },
                     "name": {
                         "type": "string",
@@ -6934,10 +7235,13 @@
                     },
                     "zone": {
                         "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "required": [
+                    "zone"
+                ]
             },
             "outputs": {
                 "description": "A collection of values returned by getSKSClusterList.\n",
@@ -7017,12 +7321,13 @@
                     },
                     "zone": {
                         "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                     }
                 },
                 "type": "object",
                 "required": [
-                    "clusters"
+                    "clusters",
+                    "zone"
                 ]
             }
         },
@@ -7323,10 +7628,13 @@
                     },
                     "zone": {
                         "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "required": [
+                    "zone"
+                ]
             },
             "outputs": {
                 "description": "A collection of values returned by getSKSNodepoolList.\n",
@@ -7413,12 +7721,13 @@
                     },
                     "zone": {
                         "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                     }
                 },
                 "type": "object",
                 "required": [
-                    "nodepools"
+                    "nodepools",
+                    "zone"
                 ]
             }
         },
@@ -7516,6 +7825,29 @@
                 "required": [
                     "defaultUser",
                     "zone"
+                ]
+            }
+        },
+        "exoscale:index/getZones:getZones": {
+            "outputs": {
+                "description": "A collection of values returned by getZones.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "zones": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of zones\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "zones",
+                    "id"
                 ]
             }
         }

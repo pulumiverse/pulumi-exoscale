@@ -8,9 +8,7 @@ export function getComputeInstance(args: GetComputeInstanceArgs, opts?: pulumi.I
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getComputeInstance:getComputeInstance", {
-        "antiAffinityGroupIds": args.antiAffinityGroupIds,
         "id": args.id,
-        "labels": args.labels,
         "name": args.name,
         "zone": args.zone,
     }, opts);
@@ -21,17 +19,9 @@ export function getComputeInstance(args: GetComputeInstanceArgs, opts?: pulumi.I
  */
 export interface GetComputeInstanceArgs {
     /**
-     * The list of attached exoscale*anti*affinity_group (IDs).
-     */
-    antiAffinityGroupIds?: string[];
-    /**
      * The compute instance ID to match (conflicts with `name`).
      */
     id?: string;
-    /**
-     * A map of key/value labels.
-     */
-    labels?: {[key: string]: string};
     /**
      * The instance name to match (conflicts with `id`).
      */
@@ -49,7 +39,7 @@ export interface GetComputeInstanceResult {
     /**
      * The list of attached exoscale*anti*affinity_group (IDs).
      */
-    readonly antiAffinityGroupIds?: string[];
+    readonly antiAffinityGroupIds: string[];
     /**
      * The compute instance creation date.
      */
@@ -81,7 +71,7 @@ export interface GetComputeInstanceResult {
     /**
      * A map of key/value labels.
      */
-    readonly labels?: {[key: string]: string};
+    readonly labels: {[key: string]: string};
     /**
      * The instance manager ID, if any.
      */
@@ -144,17 +134,9 @@ export function getComputeInstanceOutput(args: GetComputeInstanceOutputArgs, opt
  */
 export interface GetComputeInstanceOutputArgs {
     /**
-     * The list of attached exoscale*anti*affinity_group (IDs).
-     */
-    antiAffinityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
      * The compute instance ID to match (conflicts with `name`).
      */
     id?: pulumi.Input<string>;
-    /**
-     * A map of key/value labels.
-     */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The instance name to match (conflicts with `id`).
      */

@@ -12,10 +12,10 @@ namespace Pulumiverse.Exoscale
 {
     public static class GetSKSClusterList
     {
-        public static Task<GetSKSClusterListResult> InvokeAsync(GetSKSClusterListArgs? args = null, InvokeOptions? options = null)
+        public static Task<GetSKSClusterListResult> InvokeAsync(GetSKSClusterListArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSKSClusterListResult>("exoscale:index/getSKSClusterList:getSKSClusterList", args ?? new GetSKSClusterListArgs(), options.WithDefaults());
 
-        public static Output<GetSKSClusterListResult> Invoke(GetSKSClusterListInvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetSKSClusterListResult> Invoke(GetSKSClusterListInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSKSClusterListResult>("exoscale:index/getSKSClusterList:getSKSClusterList", args ?? new GetSKSClusterListInvokeArgs(), options.WithDefaults());
     }
 
@@ -125,10 +125,10 @@ namespace Pulumiverse.Exoscale
         public string? Version { get; set; }
 
         /// <summary>
-        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
-        [Input("zone")]
-        public string? Zone { get; set; }
+        [Input("zone", required: true)]
+        public string Zone { get; set; } = null!;
 
         public GetSKSClusterListArgs()
         {
@@ -241,10 +241,10 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Version { get; set; }
 
         /// <summary>
-        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
-        [Input("zone")]
-        public Input<string>? Zone { get; set; }
+        [Input("zone", required: true)]
+        public Input<string> Zone { get; set; } = null!;
 
         public GetSKSClusterListInvokeArgs()
         {
@@ -322,9 +322,9 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly string? Version;
         /// <summary>
-        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         /// </summary>
-        public readonly string? Zone;
+        public readonly string Zone;
 
         [OutputConstructor]
         private GetSKSClusterListResult(
@@ -362,7 +362,7 @@ namespace Pulumiverse.Exoscale
 
             string? version,
 
-            string? zone)
+            string zone)
         {
             AggregationCa = aggregationCa;
             AutoUpgrade = autoUpgrade;

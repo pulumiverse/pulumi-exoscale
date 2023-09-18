@@ -16,6 +16,17 @@ export interface ComputeInstanceNetworkInterface {
     networkId: pulumi.Input<string>;
 }
 
+export interface DatabaseGrafana {
+    /**
+     * Grafana configuration settings in JSON format (`exo dbaas type show grafana --settings=grafana` for reference).
+     */
+    grafanaSettings?: pulumi.Input<string>;
+    /**
+     * A list of CIDR blocks to allow incoming connections from.
+     */
+    ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface DatabaseKafka {
     /**
      * Enable certificate-based authentication method.
@@ -91,6 +102,9 @@ export interface DatabaseMysql {
 }
 
 export interface DatabaseOpensearch {
+    /**
+     * OpenSearch Dashboards settings
+     */
     dashboards?: pulumi.Input<inputs.DatabaseOpensearchDashboards>;
     /**
      * ❗ Service name
@@ -105,7 +119,7 @@ export interface DatabaseOpensearch {
      */
     indexTemplate?: pulumi.Input<inputs.DatabaseOpensearchIndexTemplate>;
     /**
-     * Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]`
+     * Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -117,7 +131,7 @@ export interface DatabaseOpensearch {
      */
     maxIndexCount?: pulumi.Input<number>;
     /**
-     * ❗
+     * ❗ Name of a backup to recover from
      */
     recoveryBackupName?: pulumi.Input<string>;
     /**
@@ -125,7 +139,7 @@ export interface DatabaseOpensearch {
      */
     settings?: pulumi.Input<string>;
     /**
-     * ❗ OpenSearch major version.
+     * ❗ OpenSearch major version (`exo dbaas type show opensearch` for reference)
      */
     version?: pulumi.Input<string>;
 }
@@ -194,6 +208,25 @@ export interface DatabaseRedis {
     redisSettings?: pulumi.Input<string>;
 }
 
+export interface DatabaseTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
 export interface ElasticIPHealthcheck {
     /**
      * The healthcheck interval (seconds; must be between `5` and `300`; default: `10`).
@@ -233,6 +266,20 @@ export interface ElasticIPHealthcheck {
     uri?: pulumi.Input<string>;
 }
 
+export interface GetDatabaseURITimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+}
+
+export interface GetDatabaseURITimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+}
+
 export interface GetDomainRecordFilter {
     /**
      * A regular expression to match the record content.
@@ -269,6 +316,20 @@ export interface GetDomainRecordFilterArgs {
      * The record type to match.
      */
     recordType?: pulumi.Input<string>;
+}
+
+export interface GetNLBServiceListTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+}
+
+export interface GetNLBServiceListTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
 }
 
 export interface GetSKSClusterOidc {

@@ -31,9 +31,9 @@ type NLBService struct {
 
 	// A free-form text describing the NLB service.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The service health checking configuration (may only bet set at creation time).
+	// The service health checking configuration.
 	Healthchecks NLBServiceHealthcheckArrayOutput `pulumi:"healthchecks"`
-	// The exoscale*instance*pool (ID) to forward traffic to.
+	// ❗ The exoscale*instance*pool (ID) to forward traffic to.
 	InstancePoolId pulumi.StringOutput `pulumi:"instancePoolId"`
 	// The NLB service name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -102,9 +102,9 @@ func GetNLBService(ctx *pulumi.Context,
 type nlbserviceState struct {
 	// A free-form text describing the NLB service.
 	Description *string `pulumi:"description"`
-	// The service health checking configuration (may only bet set at creation time).
+	// The service health checking configuration.
 	Healthchecks []NLBServiceHealthcheck `pulumi:"healthchecks"`
-	// The exoscale*instance*pool (ID) to forward traffic to.
+	// ❗ The exoscale*instance*pool (ID) to forward traffic to.
 	InstancePoolId *string `pulumi:"instancePoolId"`
 	// The NLB service name.
 	Name *string `pulumi:"name"`
@@ -126,9 +126,9 @@ type nlbserviceState struct {
 type NLBServiceState struct {
 	// A free-form text describing the NLB service.
 	Description pulumi.StringPtrInput
-	// The service health checking configuration (may only bet set at creation time).
+	// The service health checking configuration.
 	Healthchecks NLBServiceHealthcheckArrayInput
-	// The exoscale*instance*pool (ID) to forward traffic to.
+	// ❗ The exoscale*instance*pool (ID) to forward traffic to.
 	InstancePoolId pulumi.StringPtrInput
 	// The NLB service name.
 	Name pulumi.StringPtrInput
@@ -154,9 +154,9 @@ func (NLBServiceState) ElementType() reflect.Type {
 type nlbserviceArgs struct {
 	// A free-form text describing the NLB service.
 	Description *string `pulumi:"description"`
-	// The service health checking configuration (may only bet set at creation time).
+	// The service health checking configuration.
 	Healthchecks []NLBServiceHealthcheck `pulumi:"healthchecks"`
-	// The exoscale*instance*pool (ID) to forward traffic to.
+	// ❗ The exoscale*instance*pool (ID) to forward traffic to.
 	InstancePoolId string `pulumi:"instancePoolId"`
 	// The NLB service name.
 	Name *string `pulumi:"name"`
@@ -178,9 +178,9 @@ type nlbserviceArgs struct {
 type NLBServiceArgs struct {
 	// A free-form text describing the NLB service.
 	Description pulumi.StringPtrInput
-	// The service health checking configuration (may only bet set at creation time).
+	// The service health checking configuration.
 	Healthchecks NLBServiceHealthcheckArrayInput
-	// The exoscale*instance*pool (ID) to forward traffic to.
+	// ❗ The exoscale*instance*pool (ID) to forward traffic to.
 	InstancePoolId pulumi.StringInput
 	// The NLB service name.
 	Name pulumi.StringPtrInput
@@ -314,12 +314,12 @@ func (o NLBServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NLBService) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The service health checking configuration (may only bet set at creation time).
+// The service health checking configuration.
 func (o NLBServiceOutput) Healthchecks() NLBServiceHealthcheckArrayOutput {
 	return o.ApplyT(func(v *NLBService) NLBServiceHealthcheckArrayOutput { return v.Healthchecks }).(NLBServiceHealthcheckArrayOutput)
 }
 
-// The exoscale*instance*pool (ID) to forward traffic to.
+// ❗ The exoscale*instance*pool (ID) to forward traffic to.
 func (o NLBServiceOutput) InstancePoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NLBService) pulumi.StringOutput { return v.InstancePoolId }).(pulumi.StringOutput)
 }

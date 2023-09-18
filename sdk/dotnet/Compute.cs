@@ -11,7 +11,7 @@ using Pulumi;
 namespace Pulumiverse.Exoscale
 {
     /// <summary>
-    /// !&gt; **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use exoscale.ComputeInstance instead.
+    /// !&gt; **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use exoscale.ComputeInstance instead (or refer to the ad-hoc migration guide).
     /// 
     /// Manage Exoscale Compute Instances.
     /// </summary>

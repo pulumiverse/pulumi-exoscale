@@ -24,12 +24,8 @@ func LookupComputeInstance(ctx *pulumi.Context, args *LookupComputeInstanceArgs,
 
 // A collection of arguments for invoking getComputeInstance.
 type LookupComputeInstanceArgs struct {
-	// The list of attached exoscale*anti*affinity_group (IDs).
-	AntiAffinityGroupIds []string `pulumi:"antiAffinityGroupIds"`
 	// The compute instance ID to match (conflicts with `name`).
 	Id *string `pulumi:"id"`
-	// A map of key/value labels.
-	Labels map[string]string `pulumi:"labels"`
 	// The instance name to match (conflicts with `id`).
 	Name *string `pulumi:"name"`
 	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
@@ -99,12 +95,8 @@ func LookupComputeInstanceOutput(ctx *pulumi.Context, args LookupComputeInstance
 
 // A collection of arguments for invoking getComputeInstance.
 type LookupComputeInstanceOutputArgs struct {
-	// The list of attached exoscale*anti*affinity_group (IDs).
-	AntiAffinityGroupIds pulumi.StringArrayInput `pulumi:"antiAffinityGroupIds"`
 	// The compute instance ID to match (conflicts with `name`).
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// A map of key/value labels.
-	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The instance name to match (conflicts with `id`).
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.

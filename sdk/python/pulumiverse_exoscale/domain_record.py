@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DomainRecordArgs', 'DomainRecord']
@@ -29,15 +29,34 @@ class DomainRecordArgs:
         :param pulumi.Input[int] prio: The record priority (for types that support it; minimum `0`).
         :param pulumi.Input[int] ttl: The record TTL (seconds; minimum `0`; default: `3600`).
         """
-        pulumi.set(__self__, "content", content)
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "record_type", record_type)
+        DomainRecordArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            content=content,
+            domain=domain,
+            record_type=record_type,
+            name=name,
+            prio=prio,
+            ttl=ttl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             content: pulumi.Input[str],
+             domain: pulumi.Input[str],
+             record_type: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             prio: Optional[pulumi.Input[int]] = None,
+             ttl: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("content", content)
+        _setter("domain", domain)
+        _setter("record_type", record_type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if prio is not None:
-            pulumi.set(__self__, "prio", prio)
+            _setter("prio", prio)
         if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
+            _setter("ttl", ttl)
 
     @property
     @pulumi.getter
@@ -132,20 +151,41 @@ class _DomainRecordState:
         :param pulumi.Input[str] record_type: ❗ The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`, `TXT`, `URL`).
         :param pulumi.Input[int] ttl: The record TTL (seconds; minimum `0`; default: `3600`).
         """
+        _DomainRecordState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            content=content,
+            domain=domain,
+            hostname=hostname,
+            name=name,
+            prio=prio,
+            record_type=record_type,
+            ttl=ttl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             content: Optional[pulumi.Input[str]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             hostname: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             prio: Optional[pulumi.Input[int]] = None,
+             record_type: Optional[pulumi.Input[str]] = None,
+             ttl: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if content is not None:
-            pulumi.set(__self__, "content", content)
+            _setter("content", content)
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
         if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
+            _setter("hostname", hostname)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if prio is not None:
-            pulumi.set(__self__, "prio", prio)
+            _setter("prio", prio)
         if record_type is not None:
-            pulumi.set(__self__, "record_type", record_type)
+            _setter("record_type", record_type)
         if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
+            _setter("ttl", ttl)
 
     @property
     @pulumi.getter
@@ -295,6 +335,10 @@ class DomainRecord(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DomainRecordArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -85,6 +85,7 @@ namespace Pulumiverse.Exoscale
                 PluginDownloadURL = "github://api.github.com/pulumiverse/pulumi-exoscale",
                 AdditionalSecretOutputs =
                 {
+                    "key",
                     "secret",
                 },
             };
@@ -121,11 +122,21 @@ namespace Pulumiverse.Exoscale
         [Input("environment")]
         public Input<string>? Environment { get; set; }
 
+        [Input("key")]
+        private Input<string>? _key;
+
         /// <summary>
         /// Exoscale API key
         /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        public Input<string>? Key
+        {
+            get => _key;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _key = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("profile")]
         public Input<string>? Profile { get; set; }
@@ -163,6 +174,8 @@ namespace Pulumiverse.Exoscale
 
         public ProviderArgs()
         {
+            Key = Utilities.GetEnv("EXOSCALE_API_KEY");
+            Secret = Utilities.GetEnv("EXOSCALE_API_SECRET");
         }
         public static new ProviderArgs Empty => new ProviderArgs();
     }

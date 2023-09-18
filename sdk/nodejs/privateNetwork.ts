@@ -54,6 +54,10 @@ export class PrivateNetwork extends pulumi.CustomResource {
      */
     public readonly endIp!: pulumi.Output<string | undefined>;
     /**
+     * A map of key/value labels.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The private network name.
      */
     public readonly name!: pulumi.Output<string>;
@@ -85,6 +89,7 @@ export class PrivateNetwork extends pulumi.CustomResource {
             const state = argsOrState as PrivateNetworkState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["endIp"] = state ? state.endIp : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["netmask"] = state ? state.netmask : undefined;
             resourceInputs["startIp"] = state ? state.startIp : undefined;
@@ -96,6 +101,7 @@ export class PrivateNetwork extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["endIp"] = args ? args.endIp : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["netmask"] = args ? args.netmask : undefined;
             resourceInputs["startIp"] = args ? args.startIp : undefined;
@@ -118,6 +124,10 @@ export interface PrivateNetworkState {
      * (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
      */
     endIp?: pulumi.Input<string>;
+    /**
+     * A map of key/value labels.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The private network name.
      */
@@ -148,6 +158,10 @@ export interface PrivateNetworkArgs {
      * (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
      */
     endIp?: pulumi.Input<string>;
+    /**
+     * A map of key/value labels.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The private network name.
      */

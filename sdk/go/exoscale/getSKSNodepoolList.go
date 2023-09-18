@@ -58,8 +58,8 @@ type GetSKSNodepoolListArgs struct {
 	TemplateId *string `pulumi:"templateId"`
 	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 	Version *string `pulumi:"version"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Zone *string `pulumi:"zone"`
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	Zone string `pulumi:"zone"`
 }
 
 // A collection of values returned by getSKSNodepoolList.
@@ -99,8 +99,8 @@ type GetSKSNodepoolListResult struct {
 	TemplateId *string `pulumi:"templateId"`
 	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 	Version *string `pulumi:"version"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Zone *string `pulumi:"zone"`
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	Zone string `pulumi:"zone"`
 }
 
 func GetSKSNodepoolListOutput(ctx *pulumi.Context, args GetSKSNodepoolListOutputArgs, opts ...pulumi.InvokeOption) GetSKSNodepoolListResultOutput {
@@ -152,8 +152,8 @@ type GetSKSNodepoolListOutputArgs struct {
 	TemplateId pulumi.StringPtrInput `pulumi:"templateId"`
 	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 	Version pulumi.StringPtrInput `pulumi:"version"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Zone pulumi.StringPtrInput `pulumi:"zone"`
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
 func (GetSKSNodepoolListOutputArgs) ElementType() reflect.Type {
@@ -270,9 +270,9 @@ func (o GetSKSNodepoolListResultOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSKSNodepoolListResult) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-func (o GetSKSNodepoolListResultOutput) Zone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListResult) *string { return v.Zone }).(pulumi.StringPtrOutput)
+// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+func (o GetSKSNodepoolListResultOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSKSNodepoolListResult) string { return v.Zone }).(pulumi.StringOutput)
 }
 
 func init() {

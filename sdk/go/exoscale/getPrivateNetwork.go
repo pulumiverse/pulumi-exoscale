@@ -28,6 +28,8 @@ type LookupPrivateNetworkArgs struct {
 	Description *string `pulumi:"description"`
 	// The private network ID to match (conflicts with `name`).
 	Id *string `pulumi:"id"`
+	// A map of key/value labels.
+	Labels map[string]string `pulumi:"labels"`
 	// The network name to match (conflicts with `id`).
 	Name *string `pulumi:"name"`
 	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
@@ -42,6 +44,8 @@ type LookupPrivateNetworkResult struct {
 	EndIp string `pulumi:"endIp"`
 	// The private network ID to match (conflicts with `name`).
 	Id *string `pulumi:"id"`
+	// A map of key/value labels.
+	Labels map[string]string `pulumi:"labels"`
 	// The network name to match (conflicts with `id`).
 	Name *string `pulumi:"name"`
 	// The network mask defining the IPv4 network allowed for static leases.
@@ -71,6 +75,8 @@ type LookupPrivateNetworkOutputArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The private network ID to match (conflicts with `name`).
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// A map of key/value labels.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The network name to match (conflicts with `id`).
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
@@ -115,6 +121,11 @@ func (o LookupPrivateNetworkResultOutput) EndIp() pulumi.StringOutput {
 // The private network ID to match (conflicts with `name`).
 func (o LookupPrivateNetworkResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPrivateNetworkResult) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// A map of key/value labels.
+func (o LookupPrivateNetworkResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupPrivateNetworkResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The network name to match (conflicts with `id`).
