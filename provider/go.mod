@@ -10,7 +10,7 @@ replace (
 require (
 	github.com/exoscale/terraform-provider-exoscale/shim v0.0.0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.16.1
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.60.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.60.1
 	github.com/pulumi/pulumi/sdk/v3 v3.86.0
 )
 
