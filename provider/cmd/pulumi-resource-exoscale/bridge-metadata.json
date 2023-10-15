@@ -9,7 +9,10 @@
             "exoscale:index/domain:Domain": 0,
             "exoscale:index/domainRecord:DomainRecord": 0,
             "exoscale:index/elasticIP:ElasticIP": 0,
+            "exoscale:index/iAMAPIKey:IAMAPIKey": 1,
             "exoscale:index/iAMAccessKey:IAMAccessKey": 0,
+            "exoscale:index/iAMOrgPolicy:IAMOrgPolicy": 1,
+            "exoscale:index/iAMRole:IAMRole": 1,
             "exoscale:index/iPAddress:IPAddress": 0,
             "exoscale:index/instancePool:InstancePool": 0,
             "exoscale:index/nIC:NIC": 0,
@@ -39,6 +42,9 @@
             "exoscale:index/getDomain:getDomain": 0,
             "exoscale:index/getDomainRecord:getDomainRecord": 0,
             "exoscale:index/getElasticIP:getElasticIP": 0,
+            "exoscale:index/getIAMAPIKey:getIAMAPIKey": 1,
+            "exoscale:index/getIAMOrgPolicy:getIAMOrgPolicy": 1,
+            "exoscale:index/getIAMRole:getIAMRole": 1,
             "exoscale:index/getInstancePool:getInstancePool": 0,
             "exoscale:index/getInstancePoolList:getInstancePoolList": 0,
             "exoscale:index/getNLB:getNLB": 0,
@@ -64,7 +70,10 @@
             "exoscale:index/domain:Domain": "exoscale_domain",
             "exoscale:index/domainRecord:DomainRecord": "exoscale_domain_record",
             "exoscale:index/elasticIP:ElasticIP": "exoscale_elastic_ip",
+            "exoscale:index/iAMAPIKey:IAMAPIKey": "exoscale_iam_api_key",
             "exoscale:index/iAMAccessKey:IAMAccessKey": "exoscale_iam_access_key",
+            "exoscale:index/iAMOrgPolicy:IAMOrgPolicy": "exoscale_iam_org_policy",
+            "exoscale:index/iAMRole:IAMRole": "exoscale_iam_role",
             "exoscale:index/iPAddress:IPAddress": "exoscale_ipaddress",
             "exoscale:index/instancePool:InstancePool": "exoscale_instance_pool",
             "exoscale:index/nIC:NIC": "exoscale_nic",
@@ -94,6 +103,9 @@
             "exoscale:index/getDomain:getDomain": "exoscale_domain",
             "exoscale:index/getDomainRecord:getDomainRecord": "exoscale_domain_record",
             "exoscale:index/getElasticIP:getElasticIP": "exoscale_elastic_ip",
+            "exoscale:index/getIAMAPIKey:getIAMAPIKey": "exoscale_iam_api_key",
+            "exoscale:index/getIAMOrgPolicy:getIAMOrgPolicy": "exoscale_iam_org_policy",
+            "exoscale:index/getIAMRole:getIAMRole": "exoscale_iam_role",
             "exoscale:index/getInstancePool:getInstancePool": "exoscale_instance_pool",
             "exoscale:index/getInstancePoolList:getInstancePoolList": "exoscale_instance_pool_list",
             "exoscale:index/getNLB:getNLB": "exoscale_nlb",
@@ -176,6 +188,9 @@
                 "strikesOk": "strikes_ok",
                 "tlsSkipVerify": "tls_skip_verify",
                 "tlsSni": "tls_sni"
+            },
+            "exoscale:index/IAMRolePolicy:IAMRolePolicy": {
+                "defaultServiceStrategy": "default_service_strategy"
             },
             "exoscale:index/InstancePoolInstance:InstancePoolInstance": {
                 "ipv6Address": "ipv6_address",
@@ -338,6 +353,15 @@
                 "tlsSkipVerify": "tls_skip_verify",
                 "tlsSni": "tls_sni"
             },
+            "exoscale:index/getIAMAPIKey:getIAMAPIKey": {
+                "roleId": "role_id"
+            },
+            "exoscale:index/getIAMOrgPolicy:getIAMOrgPolicy": {
+                "defaultServiceStrategy": "default_service_strategy"
+            },
+            "exoscale:index/getIAMRolePolicy:getIAMRolePolicy": {
+                "defaultServiceStrategy": "default_service_strategy"
+            },
             "exoscale:index/getInstancePool:getInstancePool": {
                 "affinityGroupIds": "affinity_group_ids",
                 "deployTargetId": "deploy_target_id",
@@ -488,8 +512,14 @@
             "exoscale:index/getTemplate:getTemplate": {
                 "defaultUser": "default_user"
             },
+            "exoscale:index/iAMAPIKey:IAMAPIKey": {
+                "roleId": "role_id"
+            },
             "exoscale:index/iAMAccessKey:IAMAccessKey": {
                 "tagsOperations": "tags_operations"
+            },
+            "exoscale:index/iAMOrgPolicy:IAMOrgPolicy": {
+                "defaultServiceStrategy": "default_service_strategy"
             },
             "exoscale:index/iPAddress:IPAddress": {
                 "healthcheckInterval": "healthcheck_interval",

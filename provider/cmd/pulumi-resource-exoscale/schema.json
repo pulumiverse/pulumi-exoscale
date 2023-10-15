@@ -347,13 +347,16 @@
         "exoscale:index/DatabaseOpensearchDashboards:DatabaseOpensearchDashboards": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable or disable OpenSearch Dashboards (default: true).\n"
                 },
                 "maxOldSpaceSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. (default: 128).\n"
                 },
                 "requestTimeout": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch (default: 30000)\n"
                 }
             },
             "type": "object"
@@ -361,13 +364,16 @@
         "exoscale:index/DatabaseOpensearchIndexPattern:DatabaseOpensearchIndexPattern": {
             "properties": {
                 "maxIndexCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)\n"
                 },
                 "pattern": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "fnmatch pattern\n"
                 },
                 "sortingAlgorithm": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "`alphabetical` or `creation_date`.\n"
                 }
             },
             "type": "object"
@@ -375,13 +381,16 @@
         "exoscale:index/DatabaseOpensearchIndexTemplate:DatabaseOpensearchIndexTemplate": {
             "properties": {
                 "mappingNestedObjectsLimit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. (Default is 10000. Minimum value is `0`, maximum value is `100000`.)\n"
                 },
                 "numberOfReplicas": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of replicas each primary shard has. (Minimum value is `0`, maximum value is `29`)\n"
                 },
                 "numberOfShards": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of primary shards that an index should have. (Minimum value is `1`, maximum value is `1024`.)\n"
                 }
             },
             "type": "object"
@@ -528,6 +537,163 @@
                 "mode",
                 "port"
             ]
+        },
+        "exoscale:index/IAMAPIKeyTimeouts:IAMAPIKeyTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                }
+            },
+            "type": "object"
+        },
+        "exoscale:index/IAMOrgPolicyServices:IAMOrgPolicyServices": {
+            "properties": {
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/exoscale:index/IAMOrgPolicyServicesRule:IAMOrgPolicyServicesRule"
+                    },
+                    "description": "List of IAM service rules (if type is `rules`).\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Service type (`rules`, `allow`, or `deny`).\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "rules",
+                        "type"
+                    ]
+                }
+            }
+        },
+        "exoscale:index/IAMOrgPolicyServicesRule:IAMOrgPolicyServicesRule": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "IAM policy rule action (`allow` or `deny`).\n"
+                },
+                "expression": {
+                    "type": "string",
+                    "description": "IAM policy rule expression.\n"
+                },
+                "resources": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of resources that IAM policy rule applies to.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "action",
+                        "expression",
+                        "resources"
+                    ]
+                }
+            }
+        },
+        "exoscale:index/IAMOrgPolicyTimeouts:IAMOrgPolicyTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                }
+            },
+            "type": "object"
+        },
+        "exoscale:index/IAMRolePolicy:IAMRolePolicy": {
+            "properties": {
+                "defaultServiceStrategy": {
+                    "type": "string",
+                    "description": "Default service strategy (`allow` or `deny`).\n"
+                },
+                "services": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/exoscale:index/IAMRolePolicyServices:IAMRolePolicyServices"
+                    },
+                    "description": "IAM policy services.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "defaultServiceStrategy",
+                        "services"
+                    ]
+                }
+            }
+        },
+        "exoscale:index/IAMRolePolicyServices:IAMRolePolicyServices": {
+            "properties": {
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/exoscale:index/IAMRolePolicyServicesRule:IAMRolePolicyServicesRule"
+                    },
+                    "description": "List of IAM service rules (if type is `rules`).\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Service type (`rules`, `allow`, or `deny`).\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "rules",
+                        "type"
+                    ]
+                }
+            }
+        },
+        "exoscale:index/IAMRolePolicyServicesRule:IAMRolePolicyServicesRule": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "IAM policy rule action (`allow` or `deny`).\n"
+                },
+                "expression": {
+                    "type": "string",
+                    "description": "IAM policy rule expression.\n"
+                },
+                "resources": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of resources that IAM policy rule applies to.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "action",
+                        "expression",
+                        "resources"
+                    ]
+                }
+            }
+        },
+        "exoscale:index/IAMRoleTimeouts:IAMRoleTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                }
+            },
+            "type": "object"
         },
         "exoscale:index/InstancePoolInstance:InstancePoolInstance": {
             "properties": {
@@ -753,16 +919,13 @@
                     }
                 },
                 "createdAt": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "deployTargetId": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "diskSize": {
-                    "type": "integer",
-                    "description": "Match against this int\n"
+                    "type": "integer"
                 },
                 "elasticIpIds": {
                     "type": "array",
@@ -771,35 +934,28 @@
                     }
                 },
                 "id": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "ipv6": {
-                    "type": "boolean",
-                    "description": "Match against this bool\n"
+                    "type": "boolean"
                 },
                 "ipv6Address": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    },
-                    "description": "Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with \"/\"\n"
+                    }
                 },
                 "managerId": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "managerType": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "name": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "privateNetworkIds": {
                     "type": "array",
@@ -808,12 +964,10 @@
                     }
                 },
                 "publicIpAddress": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "reverseDns": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "securityGroupIds": {
                     "type": "array",
@@ -822,28 +976,22 @@
                     }
                 },
                 "sshKey": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "state": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "templateId": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "type": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "userData": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "zone": {
-                    "type": "string",
-                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -911,12 +1059,10 @@
                     "type": "string"
                 },
                 "domain": {
-                    "type": "string",
-                    "description": "The exoscale.Domain name to match.\n"
+                    "type": "string"
                 },
                 "id": {
-                    "type": "string",
-                    "description": "The ID of this resource.\n"
+                    "type": "string"
                 },
                 "name": {
                     "type": "string"
@@ -981,18 +1127,178 @@
                 }
             }
         },
+        "exoscale:index/getIAMAPIKeyTimeouts:getIAMAPIKeyTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                }
+            },
+            "type": "object"
+        },
+        "exoscale:index/getIAMOrgPolicyServices:getIAMOrgPolicyServices": {
+            "properties": {
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/exoscale:index/getIAMOrgPolicyServicesRule:getIAMOrgPolicyServicesRule"
+                    },
+                    "description": "List of IAM service rules (if type is `rules`).\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Service type (`rules`, `allow`, or `deny`).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "rules",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "exoscale:index/getIAMOrgPolicyServicesRule:getIAMOrgPolicyServicesRule": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "IAM policy rule action (`allow` or `deny`).\n"
+                },
+                "expression": {
+                    "type": "string",
+                    "description": "IAM policy rule expression.\n"
+                },
+                "resources": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of resources that IAM policy rule applies to.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "action",
+                "expression",
+                "resources"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "exoscale:index/getIAMOrgPolicyTimeouts:getIAMOrgPolicyTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                }
+            },
+            "type": "object"
+        },
+        "exoscale:index/getIAMRolePolicy:getIAMRolePolicy": {
+            "properties": {
+                "defaultServiceStrategy": {
+                    "type": "string",
+                    "description": "Default service strategy (`allow` or `deny`).\n"
+                },
+                "services": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/exoscale:index/getIAMRolePolicyServices:getIAMRolePolicyServices"
+                    },
+                    "description": "IAM policy services.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "defaultServiceStrategy",
+                "services"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "exoscale:index/getIAMRolePolicyServices:getIAMRolePolicyServices": {
+            "properties": {
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/exoscale:index/getIAMRolePolicyServicesRule:getIAMRolePolicyServicesRule"
+                    },
+                    "description": "List of IAM service rules (if type is `rules`).\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Service type (`rules`, `allow`, or `deny`).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "rules",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "exoscale:index/getIAMRolePolicyServicesRule:getIAMRolePolicyServicesRule": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "IAM policy rule action (`allow` or `deny`).\n"
+                },
+                "expression": {
+                    "type": "string",
+                    "description": "IAM policy rule expression.\n"
+                },
+                "resources": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of resources that IAM policy rule applies to.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "action",
+                "expression",
+                "resources"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "exoscale:index/getIAMRoleTimeouts:getIAMRoleTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                }
+            },
+            "type": "object"
+        },
         "exoscale:index/getInstancePoolInstance:getInstancePoolInstance": {
             "properties": {
                 "id": {
-                    "type": "string",
-                    "description": "The instance pool ID to match (conflicts with `name`).\n"
+                    "type": "string"
                 },
                 "ipv6Address": {
                     "type": "string"
                 },
                 "name": {
-                    "type": "string",
-                    "description": "The pool name to match (conflicts with `id`).\n"
+                    "type": "string"
                 },
                 "publicIpAddress": {
                     "type": "string"
@@ -1033,8 +1339,7 @@
                     }
                 },
                 "id": {
-                    "type": "string",
-                    "description": "The ID of this resource.\n"
+                    "type": "string"
                 },
                 "instancePrefix": {
                     "type": "string"
@@ -1088,8 +1393,7 @@
                     "type": "string"
                 },
                 "zone": {
-                    "type": "string",
-                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -1121,8 +1425,7 @@
         "exoscale:index/getInstancePoolListPoolInstance:getInstancePoolListPoolInstance": {
             "properties": {
                 "id": {
-                    "type": "string",
-                    "description": "The ID of this resource.\n"
+                    "type": "string"
                 },
                 "ipv6Address": {
                     "type": "string"
@@ -1265,59 +1568,46 @@
                     "deprecationMessage": "This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release."
                 },
                 "aggregationCa": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "autoUpgrade": {
-                    "type": "boolean",
-                    "description": "Match against this bool\n"
+                    "type": "boolean"
                 },
                 "cni": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "controlPlaneCa": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "createdAt": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "description": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "endpoint": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "exoscaleCcm": {
-                    "type": "boolean",
-                    "description": "Match against this bool\n"
+                    "type": "boolean"
                 },
                 "id": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "kubeletCa": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    },
-                    "description": "Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with \"/\"\n"
+                    }
                 },
                 "metricsServer": {
-                    "type": "boolean",
-                    "description": "Match against this bool\n"
+                    "type": "boolean"
                 },
                 "name": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "nodepools": {
                     "type": "array",
@@ -1329,20 +1619,16 @@
                     "$ref": "#/types/exoscale:index/getSKSClusterListClusterOidc:getSKSClusterListClusterOidc"
                 },
                 "serviceLevel": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "state": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "version": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "zone": {
-                    "type": "string",
-                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -1452,51 +1738,40 @@
                     }
                 },
                 "clusterId": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "createdAt": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "deployTargetId": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "description": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "diskSize": {
-                    "type": "integer",
-                    "description": "Match against this int\n"
+                    "type": "integer"
                 },
                 "id": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "instancePoolId": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "instancePrefix": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "instanceType": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    },
-                    "description": "Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with \"/\"\n"
+                    }
                 },
                 "name": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "privateNetworkIds": {
                     "type": "array",
@@ -1511,35 +1786,28 @@
                     }
                 },
                 "size": {
-                    "type": "integer",
-                    "description": "Match against this int\n"
+                    "type": "integer"
                 },
                 "state": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "storageLvm": {
-                    "type": "boolean",
-                    "description": "Match against this bool\n"
+                    "type": "boolean"
                 },
                 "taints": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    },
-                    "description": "Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with \"/\"\n"
+                    }
                 },
                 "templateId": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "version": {
-                    "type": "string",
-                    "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                    "type": "string"
                 },
                 "zone": {
-                    "type": "string",
-                    "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -3085,6 +3353,78 @@
                 "type": "object"
             }
         },
+        "exoscale:index/iAMAPIKey:IAMAPIKey": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "The IAM API Key to match.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "❗ IAM API Key name.\n"
+                },
+                "roleId": {
+                    "type": "string",
+                    "description": "❗ IAM API role ID.\n"
+                },
+                "secret": {
+                    "type": "string",
+                    "description": "Secret for the IAM API Key.\n",
+                    "secret": true
+                },
+                "timeouts": {
+                    "$ref": "#/types/exoscale:index/IAMAPIKeyTimeouts:IAMAPIKeyTimeouts"
+                }
+            },
+            "required": [
+                "key",
+                "name",
+                "roleId",
+                "secret"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "❗ IAM API Key name.\n"
+                },
+                "roleId": {
+                    "type": "string",
+                    "description": "❗ IAM API role ID.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/exoscale:index/IAMAPIKeyTimeouts:IAMAPIKeyTimeouts"
+                }
+            },
+            "requiredInputs": [
+                "roleId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IAMAPIKey resources.\n",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "description": "The IAM API Key to match.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "❗ IAM API Key name.\n"
+                    },
+                    "roleId": {
+                        "type": "string",
+                        "description": "❗ IAM API role ID.\n"
+                    },
+                    "secret": {
+                        "type": "string",
+                        "description": "Secret for the IAM API Key.\n",
+                        "secret": true
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/exoscale:index/IAMAPIKeyTimeouts:IAMAPIKeyTimeouts"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "exoscale:index/iAMAccessKey:IAMAccessKey": {
             "properties": {
                 "key": {
@@ -3213,6 +3553,188 @@
                         "items": {
                             "type": "string"
                         }
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "exoscale:index/iAMOrgPolicy:IAMOrgPolicy": {
+            "properties": {
+                "defaultServiceStrategy": {
+                    "type": "string",
+                    "description": "Default service strategy (`allow` or `deny`).\n"
+                },
+                "services": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/exoscale:index/IAMOrgPolicyServices:IAMOrgPolicyServices"
+                    },
+                    "description": "IAM policy services.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/exoscale:index/IAMOrgPolicyTimeouts:IAMOrgPolicyTimeouts"
+                }
+            },
+            "required": [
+                "defaultServiceStrategy",
+                "services"
+            ],
+            "inputProperties": {
+                "defaultServiceStrategy": {
+                    "type": "string",
+                    "description": "Default service strategy (`allow` or `deny`).\n"
+                },
+                "services": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/exoscale:index/IAMOrgPolicyServices:IAMOrgPolicyServices"
+                    },
+                    "description": "IAM policy services.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/exoscale:index/IAMOrgPolicyTimeouts:IAMOrgPolicyTimeouts"
+                }
+            },
+            "requiredInputs": [
+                "defaultServiceStrategy",
+                "services"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IAMOrgPolicy resources.\n",
+                "properties": {
+                    "defaultServiceStrategy": {
+                        "type": "string",
+                        "description": "Default service strategy (`allow` or `deny`).\n"
+                    },
+                    "services": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/types/exoscale:index/IAMOrgPolicyServices:IAMOrgPolicyServices"
+                        },
+                        "description": "IAM policy services.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/exoscale:index/IAMOrgPolicyTimeouts:IAMOrgPolicyTimeouts"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "exoscale:index/iAMRole:IAMRole": {
+            "description": "Manage Exoscale [IAM](https://community.exoscale.com/documentation/iam/) Role.\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "A free-form text describing the IAM Role\n"
+                },
+                "editable": {
+                    "type": "boolean",
+                    "description": "Defines if IAM Role Policy is editable or not.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "IAM Role labels.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of IAM Role.\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "IAM Role permissions.\n"
+                },
+                "policy": {
+                    "$ref": "#/types/exoscale:index/IAMRolePolicy:IAMRolePolicy",
+                    "description": "IAM Policy.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/exoscale:index/IAMRoleTimeouts:IAMRoleTimeouts"
+                }
+            },
+            "required": [
+                "description",
+                "editable",
+                "labels",
+                "name",
+                "permissions",
+                "policy"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "A free-form text describing the IAM Role\n"
+                },
+                "editable": {
+                    "type": "boolean",
+                    "description": "Defines if IAM Role Policy is editable or not.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "IAM Role labels.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of IAM Role.\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "IAM Role permissions.\n"
+                },
+                "policy": {
+                    "$ref": "#/types/exoscale:index/IAMRolePolicy:IAMRolePolicy",
+                    "description": "IAM Policy.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/exoscale:index/IAMRoleTimeouts:IAMRoleTimeouts"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IAMRole resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "A free-form text describing the IAM Role\n"
+                    },
+                    "editable": {
+                        "type": "boolean",
+                        "description": "Defines if IAM Role Policy is editable or not.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "IAM Role labels.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of IAM Role.\n"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "IAM Role permissions.\n"
+                    },
+                    "policy": {
+                        "$ref": "#/types/exoscale:index/IAMRolePolicy:IAMRolePolicy",
+                        "description": "IAM Policy.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/exoscale:index/IAMRoleTimeouts:IAMRoleTimeouts"
                     }
                 },
                 "type": "object"
@@ -3477,7 +3999,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The instance pool name.\n"
+                    "description": "The instance name.\n"
                 },
                 "networkIds": {
                     "type": "array",
@@ -3597,7 +4119,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The instance pool name.\n"
+                    "description": "The instance name.\n"
                 },
                 "networkIds": {
                     "type": "array",
@@ -3713,7 +4235,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The instance pool name.\n"
+                        "description": "The instance name.\n"
                     },
                     "networkIds": {
                         "type": "array",
@@ -4000,7 +4522,7 @@
                 },
                 "port": {
                     "type": "integer",
-                    "description": "The healthcheck port.\n"
+                    "description": "The NLB service (TCP/UDP) port.\n"
                 },
                 "protocol": {
                     "type": "string",
@@ -4060,7 +4582,7 @@
                 },
                 "port": {
                     "type": "integer",
-                    "description": "The healthcheck port.\n"
+                    "description": "The NLB service (TCP/UDP) port.\n"
                 },
                 "protocol": {
                     "type": "string",
@@ -4118,7 +4640,7 @@
                     },
                     "port": {
                         "type": "integer",
-                        "description": "The healthcheck port.\n"
+                        "description": "The NLB service (TCP/UDP) port.\n"
                     },
                     "protocol": {
                         "type": "string",
@@ -6025,79 +6547,61 @@
                 "description": "A collection of arguments for invoking getComputeInstanceList.\n",
                 "properties": {
                     "createdAt": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "deployTargetId": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "diskSize": {
-                        "type": "integer",
-                        "description": "Match against this int\n"
+                        "type": "integer"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "ipv6": {
-                        "type": "boolean",
-                        "description": "Match against this bool\n"
+                        "type": "boolean"
                     },
                     "ipv6Address": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "labels": {
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
-                        },
-                        "description": "Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with \"/\"\n"
+                        }
                     },
                     "managerId": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "managerType": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "name": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "publicIpAddress": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "reverseDns": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "sshKey": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "state": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "templateId": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "type": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "userData": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "zone": {
-                        "type": "string",
-                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                        "type": "string"
                     }
                 },
                 "type": "object",
@@ -6359,8 +6863,7 @@
                 "description": "A collection of arguments for invoking getDomainRecord.\n",
                 "properties": {
                     "domain": {
-                        "type": "string",
-                        "description": "The exoscale.Domain name to match.\n"
+                        "type": "string"
                     },
                     "filter": {
                         "$ref": "#/types/exoscale:index/getDomainRecordFilter:getDomainRecordFilter",
@@ -6491,13 +6994,175 @@
                 ]
             }
         },
+        "exoscale:index/getIAMAPIKey:getIAMAPIKey": {
+            "description": "Fetch Exoscale [IAM](https://community.exoscale.com/documentation/iam/) API Key.\n\nCorresponding resource: exoscale_iam_role.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getIAMAPIKey.\n",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "description": "The IAM API Key to match.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/exoscale:index/getIAMAPIKeyTimeouts:getIAMAPIKeyTimeouts"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "key"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getIAMAPIKey.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of this resource.\n"
+                    },
+                    "key": {
+                        "type": "string",
+                        "description": "The IAM API Key to match.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "IAM API Key name.\n"
+                    },
+                    "roleId": {
+                        "type": "string",
+                        "description": "IAM API Key role ID.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/exoscale:index/getIAMAPIKeyTimeouts:getIAMAPIKeyTimeouts"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "key",
+                    "name",
+                    "roleId"
+                ]
+            }
+        },
+        "exoscale:index/getIAMOrgPolicy:getIAMOrgPolicy": {
+            "description": "Fetch Exoscale [IAM](https://community.exoscale.com/documentation/iam/) Organization Policy.\n\nCorresponding resource: exoscale_iam_org_policy.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getIAMOrgPolicy.\n",
+                "properties": {
+                    "timeouts": {
+                        "$ref": "#/types/exoscale:index/getIAMOrgPolicyTimeouts:getIAMOrgPolicyTimeouts"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getIAMOrgPolicy.\n",
+                "properties": {
+                    "defaultServiceStrategy": {
+                        "type": "string",
+                        "description": "Default service strategy (`allow` or `deny`).\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of this resource.\n"
+                    },
+                    "services": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/types/exoscale:index/getIAMOrgPolicyServices:getIAMOrgPolicyServices"
+                        },
+                        "description": "IAM policy services.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/exoscale:index/getIAMOrgPolicyTimeouts:getIAMOrgPolicyTimeouts"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "defaultServiceStrategy",
+                    "id",
+                    "services"
+                ]
+            }
+        },
+        "exoscale:index/getIAMRole:getIAMRole": {
+            "description": "Fetch Exoscale [IAM](https://community.exoscale.com/documentation/iam/) Role.\n\nCorresponding resource: exoscale_iam_role.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getIAMRole.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The role ID to match (conflicts with `name`).\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "the role name to match (conflicts with `id`).\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/exoscale:index/getIAMRoleTimeouts:getIAMRoleTimeouts"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getIAMRole.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "A free-form text describing the IAM Role\n"
+                    },
+                    "editable": {
+                        "type": "boolean",
+                        "description": "Defines if IAM Role Policy is editable or not.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The role ID to match (conflicts with `name`).\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "IAM Role labels.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "the role name to match (conflicts with `id`).\n"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "IAM Role permissions.\n"
+                    },
+                    "policy": {
+                        "$ref": "#/types/exoscale:index/getIAMRolePolicy:getIAMRolePolicy",
+                        "description": "IAM Policy.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/exoscale:index/getIAMRoleTimeouts:getIAMRoleTimeouts"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "description",
+                    "editable",
+                    "id",
+                    "labels",
+                    "name",
+                    "permissions",
+                    "policy"
+                ]
+            }
+        },
         "exoscale:index/getInstancePool:getInstancePool": {
             "inputs": {
                 "description": "A collection of arguments for invoking getInstancePool.\n",
                 "properties": {
                     "id": {
-                        "type": "string",
-                        "description": "The instance pool ID to match (conflicts with `name`).\n"
+                        "type": "string"
                     },
                     "labels": {
                         "type": "object",
@@ -6507,8 +7172,7 @@
                         "description": "A map of key/value labels.\n"
                     },
                     "name": {
-                        "type": "string",
-                        "description": "The pool name to match (conflicts with `id`).\n"
+                        "type": "string"
                     },
                     "zone": {
                         "type": "string",
@@ -6649,8 +7313,7 @@
                 "description": "A collection of arguments for invoking getInstancePoolList.\n",
                 "properties": {
                     "zone": {
-                        "type": "string",
-                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                        "type": "string"
                     }
                 },
                 "type": "object",
@@ -7167,75 +7830,58 @@
                 "description": "A collection of arguments for invoking getSKSClusterList.\n",
                 "properties": {
                     "aggregationCa": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "autoUpgrade": {
-                        "type": "boolean",
-                        "description": "Match against this bool\n"
+                        "type": "boolean"
                     },
                     "cni": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "controlPlaneCa": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "createdAt": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "description": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "endpoint": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "exoscaleCcm": {
-                        "type": "boolean",
-                        "description": "Match against this bool\n"
+                        "type": "boolean"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "kubeletCa": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "labels": {
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
-                        },
-                        "description": "Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with \"/\"\n"
+                        }
                     },
                     "metricsServer": {
-                        "type": "boolean",
-                        "description": "Match against this bool\n"
+                        "type": "boolean"
                     },
                     "name": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "serviceLevel": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "state": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "version": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "zone": {
-                        "type": "string",
-                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                        "type": "string"
                     }
                 },
                 "type": "object",
@@ -7553,82 +8199,64 @@
                 "description": "A collection of arguments for invoking getSKSNodepoolList.\n",
                 "properties": {
                     "clusterId": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "createdAt": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "deployTargetId": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "description": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "diskSize": {
-                        "type": "integer",
-                        "description": "Match against this int\n"
+                        "type": "integer"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "instancePoolId": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "instancePrefix": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "instanceType": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "labels": {
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
-                        },
-                        "description": "Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with \"/\"\n"
+                        }
                     },
                     "name": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "size": {
-                        "type": "integer",
-                        "description": "Match against this int\n"
+                        "type": "integer"
                     },
                     "state": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "storageLvm": {
-                        "type": "boolean",
-                        "description": "Match against this bool\n"
+                        "type": "boolean"
                     },
                     "taints": {
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
-                        },
-                        "description": "Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with \"/\"\n"
+                        }
                     },
                     "templateId": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "version": {
-                        "type": "string",
-                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
+                        "type": "string"
                     },
                     "zone": {
-                        "type": "string",
-                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                        "type": "string"
                     }
                 },
                 "type": "object",
