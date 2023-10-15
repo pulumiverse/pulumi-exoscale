@@ -22,6 +22,14 @@ __all__ = [
     'DatabaseRedisArgs',
     'DatabaseTimeoutsArgs',
     'ElasticIPHealthcheckArgs',
+    'IAMAPIKeyTimeoutsArgs',
+    'IAMOrgPolicyServicesArgs',
+    'IAMOrgPolicyServicesRuleArgs',
+    'IAMOrgPolicyTimeoutsArgs',
+    'IAMRolePolicyArgs',
+    'IAMRolePolicyServicesArgs',
+    'IAMRolePolicyServicesRuleArgs',
+    'IAMRoleTimeoutsArgs',
     'InstancePoolInstanceArgs',
     'NLBServiceHealthcheckArgs',
     'SKSClusterOidcArgs',
@@ -29,6 +37,9 @@ __all__ = [
     'SecurityGroupRulesIngressArgs',
     'GetDatabaseURITimeoutsArgs',
     'GetDomainRecordFilterArgs',
+    'GetIAMAPIKeyTimeoutsArgs',
+    'GetIAMOrgPolicyTimeoutsArgs',
+    'GetIAMRoleTimeoutsArgs',
     'GetNLBServiceListTimeoutsArgs',
     'GetSKSClusterOidcArgs',
 ]
@@ -666,6 +677,11 @@ class DatabaseOpensearchDashboardsArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  max_old_space_size: Optional[pulumi.Input[int]] = None,
                  request_timeout: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable or disable OpenSearch Dashboards (default: true).
+        :param pulumi.Input[int] max_old_space_size: Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. (default: 128).
+        :param pulumi.Input[int] request_timeout: Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch (default: 30000)
+        """
         DatabaseOpensearchDashboardsArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             enabled=enabled,
@@ -689,6 +705,9 @@ class DatabaseOpensearchDashboardsArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or disable OpenSearch Dashboards (default: true).
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -698,6 +717,9 @@ class DatabaseOpensearchDashboardsArgs:
     @property
     @pulumi.getter(name="maxOldSpaceSize")
     def max_old_space_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. (default: 128).
+        """
         return pulumi.get(self, "max_old_space_size")
 
     @max_old_space_size.setter
@@ -707,6 +729,9 @@ class DatabaseOpensearchDashboardsArgs:
     @property
     @pulumi.getter(name="requestTimeout")
     def request_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch (default: 30000)
+        """
         return pulumi.get(self, "request_timeout")
 
     @request_timeout.setter
@@ -720,6 +745,11 @@ class DatabaseOpensearchIndexPatternArgs:
                  max_index_count: Optional[pulumi.Input[int]] = None,
                  pattern: Optional[pulumi.Input[str]] = None,
                  sorting_algorithm: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] max_index_count: Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
+        :param pulumi.Input[str] pattern: fnmatch pattern
+        :param pulumi.Input[str] sorting_algorithm: `alphabetical` or `creation_date`.
+        """
         DatabaseOpensearchIndexPatternArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             max_index_count=max_index_count,
@@ -743,6 +773,9 @@ class DatabaseOpensearchIndexPatternArgs:
     @property
     @pulumi.getter(name="maxIndexCount")
     def max_index_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
+        """
         return pulumi.get(self, "max_index_count")
 
     @max_index_count.setter
@@ -752,6 +785,9 @@ class DatabaseOpensearchIndexPatternArgs:
     @property
     @pulumi.getter
     def pattern(self) -> Optional[pulumi.Input[str]]:
+        """
+        fnmatch pattern
+        """
         return pulumi.get(self, "pattern")
 
     @pattern.setter
@@ -761,6 +797,9 @@ class DatabaseOpensearchIndexPatternArgs:
     @property
     @pulumi.getter(name="sortingAlgorithm")
     def sorting_algorithm(self) -> Optional[pulumi.Input[str]]:
+        """
+        `alphabetical` or `creation_date`.
+        """
         return pulumi.get(self, "sorting_algorithm")
 
     @sorting_algorithm.setter
@@ -774,6 +813,11 @@ class DatabaseOpensearchIndexTemplateArgs:
                  mapping_nested_objects_limit: Optional[pulumi.Input[int]] = None,
                  number_of_replicas: Optional[pulumi.Input[int]] = None,
                  number_of_shards: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] mapping_nested_objects_limit: The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. (Default is 10000. Minimum value is `0`, maximum value is `100000`.)
+        :param pulumi.Input[int] number_of_replicas: The number of replicas each primary shard has. (Minimum value is `0`, maximum value is `29`)
+        :param pulumi.Input[int] number_of_shards: The number of primary shards that an index should have. (Minimum value is `1`, maximum value is `1024`.)
+        """
         DatabaseOpensearchIndexTemplateArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             mapping_nested_objects_limit=mapping_nested_objects_limit,
@@ -797,6 +841,9 @@ class DatabaseOpensearchIndexTemplateArgs:
     @property
     @pulumi.getter(name="mappingNestedObjectsLimit")
     def mapping_nested_objects_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. (Default is 10000. Minimum value is `0`, maximum value is `100000`.)
+        """
         return pulumi.get(self, "mapping_nested_objects_limit")
 
     @mapping_nested_objects_limit.setter
@@ -806,6 +853,9 @@ class DatabaseOpensearchIndexTemplateArgs:
     @property
     @pulumi.getter(name="numberOfReplicas")
     def number_of_replicas(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of replicas each primary shard has. (Minimum value is `0`, maximum value is `29`)
+        """
         return pulumi.get(self, "number_of_replicas")
 
     @number_of_replicas.setter
@@ -815,6 +865,9 @@ class DatabaseOpensearchIndexTemplateArgs:
     @property
     @pulumi.getter(name="numberOfShards")
     def number_of_shards(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of primary shards that an index should have. (Minimum value is `1`, maximum value is `1024`.)
+        """
         return pulumi.get(self, "number_of_shards")
 
     @number_of_shards.setter
@@ -1288,6 +1341,388 @@ class ElasticIPHealthcheckArgs:
     @uri.setter
     def uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uri", value)
+
+
+@pulumi.input_type
+class IAMAPIKeyTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        IAMAPIKeyTimeoutsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            read=read,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             read: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if read is not None:
+            _setter("read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read", value)
+
+
+@pulumi.input_type
+class IAMOrgPolicyServicesArgs:
+    def __init__(__self__, *,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['IAMOrgPolicyServicesRuleArgs']]]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['IAMOrgPolicyServicesRuleArgs']]] rules: List of IAM service rules (if type is `rules`).
+        :param pulumi.Input[str] type: Service type (`rules`, `allow`, or `deny`).
+        """
+        IAMOrgPolicyServicesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            rules=rules,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['IAMOrgPolicyServicesRuleArgs']]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if rules is not None:
+            _setter("rules", rules)
+        if type is not None:
+            _setter("type", type)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IAMOrgPolicyServicesRuleArgs']]]]:
+        """
+        List of IAM service rules (if type is `rules`).
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IAMOrgPolicyServicesRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service type (`rules`, `allow`, or `deny`).
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class IAMOrgPolicyServicesRuleArgs:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input[str]] = None,
+                 expression: Optional[pulumi.Input[str]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] action: IAM policy rule action (`allow` or `deny`).
+        :param pulumi.Input[str] expression: IAM policy rule expression.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: List of resources that IAM policy rule applies to.
+        """
+        IAMOrgPolicyServicesRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            expression=expression,
+            resources=resources,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[pulumi.Input[str]] = None,
+             expression: Optional[pulumi.Input[str]] = None,
+             resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if action is not None:
+            _setter("action", action)
+        if expression is not None:
+            _setter("expression", expression)
+        if resources is not None:
+            _setter("resources", resources)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[str]]:
+        """
+        IAM policy rule action (`allow` or `deny`).
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        IAM policy rule expression.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of resources that IAM policy rule applies to.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "resources", value)
+
+
+@pulumi.input_type
+class IAMOrgPolicyTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        IAMOrgPolicyTimeoutsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            read=read,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             read: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if read is not None:
+            _setter("read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read", value)
+
+
+@pulumi.input_type
+class IAMRolePolicyArgs:
+    def __init__(__self__, *,
+                 default_service_strategy: Optional[pulumi.Input[str]] = None,
+                 services: Optional[pulumi.Input[Mapping[str, pulumi.Input['IAMRolePolicyServicesArgs']]]] = None):
+        """
+        :param pulumi.Input[str] default_service_strategy: Default service strategy (`allow` or `deny`).
+        :param pulumi.Input[Mapping[str, pulumi.Input['IAMRolePolicyServicesArgs']]] services: IAM policy services.
+        """
+        IAMRolePolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_service_strategy=default_service_strategy,
+            services=services,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_service_strategy: Optional[pulumi.Input[str]] = None,
+             services: Optional[pulumi.Input[Mapping[str, pulumi.Input['IAMRolePolicyServicesArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if default_service_strategy is not None:
+            _setter("default_service_strategy", default_service_strategy)
+        if services is not None:
+            _setter("services", services)
+
+    @property
+    @pulumi.getter(name="defaultServiceStrategy")
+    def default_service_strategy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default service strategy (`allow` or `deny`).
+        """
+        return pulumi.get(self, "default_service_strategy")
+
+    @default_service_strategy.setter
+    def default_service_strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_service_strategy", value)
+
+    @property
+    @pulumi.getter
+    def services(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['IAMRolePolicyServicesArgs']]]]:
+        """
+        IAM policy services.
+        """
+        return pulumi.get(self, "services")
+
+    @services.setter
+    def services(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['IAMRolePolicyServicesArgs']]]]):
+        pulumi.set(self, "services", value)
+
+
+@pulumi.input_type
+class IAMRolePolicyServicesArgs:
+    def __init__(__self__, *,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['IAMRolePolicyServicesRuleArgs']]]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['IAMRolePolicyServicesRuleArgs']]] rules: List of IAM service rules (if type is `rules`).
+        :param pulumi.Input[str] type: Service type (`rules`, `allow`, or `deny`).
+        """
+        IAMRolePolicyServicesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            rules=rules,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['IAMRolePolicyServicesRuleArgs']]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if rules is not None:
+            _setter("rules", rules)
+        if type is not None:
+            _setter("type", type)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IAMRolePolicyServicesRuleArgs']]]]:
+        """
+        List of IAM service rules (if type is `rules`).
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IAMRolePolicyServicesRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service type (`rules`, `allow`, or `deny`).
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class IAMRolePolicyServicesRuleArgs:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input[str]] = None,
+                 expression: Optional[pulumi.Input[str]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] action: IAM policy rule action (`allow` or `deny`).
+        :param pulumi.Input[str] expression: IAM policy rule expression.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: List of resources that IAM policy rule applies to.
+        """
+        IAMRolePolicyServicesRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            expression=expression,
+            resources=resources,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[pulumi.Input[str]] = None,
+             expression: Optional[pulumi.Input[str]] = None,
+             resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if action is not None:
+            _setter("action", action)
+        if expression is not None:
+            _setter("expression", expression)
+        if resources is not None:
+            _setter("resources", resources)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[str]]:
+        """
+        IAM policy rule action (`allow` or `deny`).
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        IAM policy rule expression.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of resources that IAM policy rule applies to.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "resources", value)
+
+
+@pulumi.input_type
+class IAMRoleTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        IAMRoleTimeoutsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            read=read,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             read: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if read is not None:
+            _setter("read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read", value)
 
 
 @pulumi.input_type
@@ -2077,6 +2512,102 @@ class GetDomainRecordFilterArgs:
     @record_type.setter
     def record_type(self, value: Optional[str]):
         pulumi.set(self, "record_type", value)
+
+
+@pulumi.input_type
+class GetIAMAPIKeyTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[str] = None):
+        """
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        GetIAMAPIKeyTimeoutsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            read=read,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             read: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if read is not None:
+            _setter("read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[str]):
+        pulumi.set(self, "read", value)
+
+
+@pulumi.input_type
+class GetIAMOrgPolicyTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[str] = None):
+        """
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        GetIAMOrgPolicyTimeoutsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            read=read,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             read: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if read is not None:
+            _setter("read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[str]):
+        pulumi.set(self, "read", value)
+
+
+@pulumi.input_type
+class GetIAMRoleTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[str] = None):
+        """
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        GetIAMRoleTimeoutsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            read=read,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             read: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if read is not None:
+            _setter("read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[str]):
+        pulumi.set(self, "read", value)
 
 
 @pulumi.input_type

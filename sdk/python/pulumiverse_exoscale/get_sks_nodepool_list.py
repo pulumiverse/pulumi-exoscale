@@ -279,25 +279,6 @@ def get_sks_nodepool_list(cluster_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSKSNodepoolListResult:
     """
     Use this data source to access information about an existing resource.
-
-    :param str cluster_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str created_at: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str deploy_target_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str description: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param int disk_size: Match against this int
-    :param str id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str instance_pool_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str instance_prefix: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str instance_type: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param Mapping[str, str] labels: Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-    :param str name: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param int size: Match against this int
-    :param str state: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param bool storage_lvm: Match against this bool
-    :param Mapping[str, str] taints: Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-    :param str template_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str version: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -365,24 +346,5 @@ def get_sks_nodepool_list_output(cluster_id: Optional[pulumi.Input[Optional[str]
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSKSNodepoolListResult]:
     """
     Use this data source to access information about an existing resource.
-
-    :param str cluster_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str created_at: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str deploy_target_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str description: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param int disk_size: Match against this int
-    :param str id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str instance_pool_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str instance_prefix: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str instance_type: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param Mapping[str, str] labels: Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-    :param str name: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param int size: Match against this int
-    :param str state: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param bool storage_lvm: Match against this bool
-    :param Mapping[str, str] taints: Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-    :param str template_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str version: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     ...

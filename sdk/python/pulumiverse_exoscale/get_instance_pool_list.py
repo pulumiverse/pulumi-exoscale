@@ -73,8 +73,6 @@ def get_instance_pool_list(zone: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancePoolListResult:
     """
     Use this data source to access information about an existing resource.
-
-    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     __args__ = dict()
     __args__['zone'] = zone
@@ -92,7 +90,5 @@ def get_instance_pool_list_output(zone: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancePoolListResult]:
     """
     Use this data source to access information about an existing resource.
-
-    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     ...

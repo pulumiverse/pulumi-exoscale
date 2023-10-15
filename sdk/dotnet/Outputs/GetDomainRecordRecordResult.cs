@@ -15,13 +15,7 @@ namespace Pulumiverse.Exoscale.Outputs
     public sealed class GetDomainRecordRecordResult
     {
         public readonly string? Content;
-        /// <summary>
-        /// The exoscale.Domain name to match.
-        /// </summary>
         public readonly string? Domain;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly string? Id;
         public readonly string? Name;
         public readonly int? Prio;

@@ -18,9 +18,6 @@ export function getInstancePoolList(args: GetInstancePoolListArgs, opts?: pulumi
  * A collection of arguments for invoking getInstancePoolList.
  */
 export interface GetInstancePoolListArgs {
-    /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-     */
     zone: string;
 }
 
@@ -49,8 +46,5 @@ export function getInstancePoolListOutput(args: GetInstancePoolListOutputArgs, o
  * A collection of arguments for invoking getInstancePoolList.
  */
 export interface GetInstancePoolListOutputArgs {
-    /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-     */
     zone: pulumi.Input<string>;
 }

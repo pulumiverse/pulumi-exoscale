@@ -34,73 +34,22 @@ export function getSKSClusterList(args: GetSKSClusterListArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getSKSClusterList.
  */
 export interface GetSKSClusterListArgs {
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     aggregationCa?: string;
-    /**
-     * Match against this bool
-     */
     autoUpgrade?: boolean;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     cni?: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     controlPlaneCa?: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     createdAt?: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     description?: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     endpoint?: string;
-    /**
-     * Match against this bool
-     */
     exoscaleCcm?: boolean;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     id?: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     kubeletCa?: string;
-    /**
-     * Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-     */
     labels?: {[key: string]: string};
-    /**
-     * Match against this bool
-     */
     metricsServer?: boolean;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     name?: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     serviceLevel?: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     state?: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     version?: string;
-    /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-     */
     zone: string;
 }
 
@@ -186,72 +135,21 @@ export function getSKSClusterListOutput(args: GetSKSClusterListOutputArgs, opts?
  * A collection of arguments for invoking getSKSClusterList.
  */
 export interface GetSKSClusterListOutputArgs {
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     aggregationCa?: pulumi.Input<string>;
-    /**
-     * Match against this bool
-     */
     autoUpgrade?: pulumi.Input<boolean>;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     cni?: pulumi.Input<string>;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     controlPlaneCa?: pulumi.Input<string>;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     createdAt?: pulumi.Input<string>;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     endpoint?: pulumi.Input<string>;
-    /**
-     * Match against this bool
-     */
     exoscaleCcm?: pulumi.Input<boolean>;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     kubeletCa?: pulumi.Input<string>;
-    /**
-     * Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-     */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Match against this bool
-     */
     metricsServer?: pulumi.Input<boolean>;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     serviceLevel?: pulumi.Input<string>;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     state?: pulumi.Input<string>;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     version?: pulumi.Input<string>;
-    /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-     */
     zone: pulumi.Input<string>;
 }

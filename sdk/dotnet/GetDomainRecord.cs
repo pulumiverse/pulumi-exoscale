@@ -22,9 +22,6 @@ namespace Pulumiverse.Exoscale
 
     public sealed class GetDomainRecordArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The exoscale.Domain name to match.
-        /// </summary>
         [Input("domain", required: true)]
         public string Domain { get; set; } = null!;
 
@@ -42,9 +39,6 @@ namespace Pulumiverse.Exoscale
 
     public sealed class GetDomainRecordInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The exoscale.Domain name to match.
-        /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
 

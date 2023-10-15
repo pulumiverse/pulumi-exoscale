@@ -92,7 +92,7 @@ export class InstancePool extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The instance pool name.
+     * The instance name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -254,7 +254,7 @@ export interface InstancePoolState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The instance pool name.
+     * The instance name.
      */
     name?: pulumi.Input<string>;
     /**
@@ -345,7 +345,7 @@ export interface InstancePoolArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The instance pool name.
+     * The instance name.
      */
     name?: pulumi.Input<string>;
     /**

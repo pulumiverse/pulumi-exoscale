@@ -1264,9 +1264,12 @@ func (o DatabaseOpensearchPtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type DatabaseOpensearchDashboards struct {
-	Enabled         *bool `pulumi:"enabled"`
-	MaxOldSpaceSize *int  `pulumi:"maxOldSpaceSize"`
-	RequestTimeout  *int  `pulumi:"requestTimeout"`
+	// Enable or disable OpenSearch Dashboards (default: true).
+	Enabled *bool `pulumi:"enabled"`
+	// Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. (default: 128).
+	MaxOldSpaceSize *int `pulumi:"maxOldSpaceSize"`
+	// Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch (default: 30000)
+	RequestTimeout *int `pulumi:"requestTimeout"`
 }
 
 // DatabaseOpensearchDashboardsInput is an input type that accepts DatabaseOpensearchDashboardsArgs and DatabaseOpensearchDashboardsOutput values.
@@ -1281,9 +1284,12 @@ type DatabaseOpensearchDashboardsInput interface {
 }
 
 type DatabaseOpensearchDashboardsArgs struct {
-	Enabled         pulumi.BoolPtrInput `pulumi:"enabled"`
-	MaxOldSpaceSize pulumi.IntPtrInput  `pulumi:"maxOldSpaceSize"`
-	RequestTimeout  pulumi.IntPtrInput  `pulumi:"requestTimeout"`
+	// Enable or disable OpenSearch Dashboards (default: true).
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. (default: 128).
+	MaxOldSpaceSize pulumi.IntPtrInput `pulumi:"maxOldSpaceSize"`
+	// Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch (default: 30000)
+	RequestTimeout pulumi.IntPtrInput `pulumi:"requestTimeout"`
 }
 
 func (DatabaseOpensearchDashboardsArgs) ElementType() reflect.Type {
@@ -1381,14 +1387,17 @@ func (o DatabaseOpensearchDashboardsOutput) ToOutput(ctx context.Context) pulumi
 	}
 }
 
+// Enable or disable OpenSearch Dashboards (default: true).
 func (o DatabaseOpensearchDashboardsOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearchDashboards) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. (default: 128).
 func (o DatabaseOpensearchDashboardsOutput) MaxOldSpaceSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearchDashboards) *int { return v.MaxOldSpaceSize }).(pulumi.IntPtrOutput)
 }
 
+// Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch (default: 30000)
 func (o DatabaseOpensearchDashboardsOutput) RequestTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearchDashboards) *int { return v.RequestTimeout }).(pulumi.IntPtrOutput)
 }
@@ -1423,6 +1432,7 @@ func (o DatabaseOpensearchDashboardsPtrOutput) Elem() DatabaseOpensearchDashboar
 	}).(DatabaseOpensearchDashboardsOutput)
 }
 
+// Enable or disable OpenSearch Dashboards (default: true).
 func (o DatabaseOpensearchDashboardsPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseOpensearchDashboards) *bool {
 		if v == nil {
@@ -1432,6 +1442,7 @@ func (o DatabaseOpensearchDashboardsPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. (default: 128).
 func (o DatabaseOpensearchDashboardsPtrOutput) MaxOldSpaceSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseOpensearchDashboards) *int {
 		if v == nil {
@@ -1441,6 +1452,7 @@ func (o DatabaseOpensearchDashboardsPtrOutput) MaxOldSpaceSize() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
+// Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch (default: 30000)
 func (o DatabaseOpensearchDashboardsPtrOutput) RequestTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseOpensearchDashboards) *int {
 		if v == nil {
@@ -1451,8 +1463,11 @@ func (o DatabaseOpensearchDashboardsPtrOutput) RequestTimeout() pulumi.IntPtrOut
 }
 
 type DatabaseOpensearchIndexPattern struct {
-	MaxIndexCount    *int    `pulumi:"maxIndexCount"`
-	Pattern          *string `pulumi:"pattern"`
+	// Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
+	MaxIndexCount *int `pulumi:"maxIndexCount"`
+	// fnmatch pattern
+	Pattern *string `pulumi:"pattern"`
+	// `alphabetical` or `creationDate`.
 	SortingAlgorithm *string `pulumi:"sortingAlgorithm"`
 }
 
@@ -1468,8 +1483,11 @@ type DatabaseOpensearchIndexPatternInput interface {
 }
 
 type DatabaseOpensearchIndexPatternArgs struct {
-	MaxIndexCount    pulumi.IntPtrInput    `pulumi:"maxIndexCount"`
-	Pattern          pulumi.StringPtrInput `pulumi:"pattern"`
+	// Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
+	MaxIndexCount pulumi.IntPtrInput `pulumi:"maxIndexCount"`
+	// fnmatch pattern
+	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
+	// `alphabetical` or `creationDate`.
 	SortingAlgorithm pulumi.StringPtrInput `pulumi:"sortingAlgorithm"`
 }
 
@@ -1542,14 +1560,17 @@ func (o DatabaseOpensearchIndexPatternOutput) ToOutput(ctx context.Context) pulu
 	}
 }
 
+// Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
 func (o DatabaseOpensearchIndexPatternOutput) MaxIndexCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearchIndexPattern) *int { return v.MaxIndexCount }).(pulumi.IntPtrOutput)
 }
 
+// fnmatch pattern
 func (o DatabaseOpensearchIndexPatternOutput) Pattern() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearchIndexPattern) *string { return v.Pattern }).(pulumi.StringPtrOutput)
 }
 
+// `alphabetical` or `creationDate`.
 func (o DatabaseOpensearchIndexPatternOutput) SortingAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearchIndexPattern) *string { return v.SortingAlgorithm }).(pulumi.StringPtrOutput)
 }
@@ -1581,9 +1602,12 @@ func (o DatabaseOpensearchIndexPatternArrayOutput) Index(i pulumi.IntInput) Data
 }
 
 type DatabaseOpensearchIndexTemplate struct {
+	// The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. (Default is 10000. Minimum value is `0`, maximum value is `100000`.)
 	MappingNestedObjectsLimit *int `pulumi:"mappingNestedObjectsLimit"`
-	NumberOfReplicas          *int `pulumi:"numberOfReplicas"`
-	NumberOfShards            *int `pulumi:"numberOfShards"`
+	// The number of replicas each primary shard has. (Minimum value is `0`, maximum value is `29`)
+	NumberOfReplicas *int `pulumi:"numberOfReplicas"`
+	// The number of primary shards that an index should have. (Minimum value is `1`, maximum value is `1024`.)
+	NumberOfShards *int `pulumi:"numberOfShards"`
 }
 
 // DatabaseOpensearchIndexTemplateInput is an input type that accepts DatabaseOpensearchIndexTemplateArgs and DatabaseOpensearchIndexTemplateOutput values.
@@ -1598,9 +1622,12 @@ type DatabaseOpensearchIndexTemplateInput interface {
 }
 
 type DatabaseOpensearchIndexTemplateArgs struct {
+	// The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. (Default is 10000. Minimum value is `0`, maximum value is `100000`.)
 	MappingNestedObjectsLimit pulumi.IntPtrInput `pulumi:"mappingNestedObjectsLimit"`
-	NumberOfReplicas          pulumi.IntPtrInput `pulumi:"numberOfReplicas"`
-	NumberOfShards            pulumi.IntPtrInput `pulumi:"numberOfShards"`
+	// The number of replicas each primary shard has. (Minimum value is `0`, maximum value is `29`)
+	NumberOfReplicas pulumi.IntPtrInput `pulumi:"numberOfReplicas"`
+	// The number of primary shards that an index should have. (Minimum value is `1`, maximum value is `1024`.)
+	NumberOfShards pulumi.IntPtrInput `pulumi:"numberOfShards"`
 }
 
 func (DatabaseOpensearchIndexTemplateArgs) ElementType() reflect.Type {
@@ -1698,14 +1725,17 @@ func (o DatabaseOpensearchIndexTemplateOutput) ToOutput(ctx context.Context) pul
 	}
 }
 
+// The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. (Default is 10000. Minimum value is `0`, maximum value is `100000`.)
 func (o DatabaseOpensearchIndexTemplateOutput) MappingNestedObjectsLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearchIndexTemplate) *int { return v.MappingNestedObjectsLimit }).(pulumi.IntPtrOutput)
 }
 
+// The number of replicas each primary shard has. (Minimum value is `0`, maximum value is `29`)
 func (o DatabaseOpensearchIndexTemplateOutput) NumberOfReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearchIndexTemplate) *int { return v.NumberOfReplicas }).(pulumi.IntPtrOutput)
 }
 
+// The number of primary shards that an index should have. (Minimum value is `1`, maximum value is `1024`.)
 func (o DatabaseOpensearchIndexTemplateOutput) NumberOfShards() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseOpensearchIndexTemplate) *int { return v.NumberOfShards }).(pulumi.IntPtrOutput)
 }
@@ -1740,6 +1770,7 @@ func (o DatabaseOpensearchIndexTemplatePtrOutput) Elem() DatabaseOpensearchIndex
 	}).(DatabaseOpensearchIndexTemplateOutput)
 }
 
+// The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. (Default is 10000. Minimum value is `0`, maximum value is `100000`.)
 func (o DatabaseOpensearchIndexTemplatePtrOutput) MappingNestedObjectsLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseOpensearchIndexTemplate) *int {
 		if v == nil {
@@ -1749,6 +1780,7 @@ func (o DatabaseOpensearchIndexTemplatePtrOutput) MappingNestedObjectsLimit() pu
 	}).(pulumi.IntPtrOutput)
 }
 
+// The number of replicas each primary shard has. (Minimum value is `0`, maximum value is `29`)
 func (o DatabaseOpensearchIndexTemplatePtrOutput) NumberOfReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseOpensearchIndexTemplate) *int {
 		if v == nil {
@@ -1758,6 +1790,7 @@ func (o DatabaseOpensearchIndexTemplatePtrOutput) NumberOfReplicas() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
+// The number of primary shards that an index should have. (Minimum value is `1`, maximum value is `1024`.)
 func (o DatabaseOpensearchIndexTemplatePtrOutput) NumberOfShards() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseOpensearchIndexTemplate) *int {
 		if v == nil {
@@ -2772,6 +2805,1207 @@ func (o ElasticIPHealthcheckPtrOutput) Uri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type IAMAPIKeyTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+}
+
+// IAMAPIKeyTimeoutsInput is an input type that accepts IAMAPIKeyTimeoutsArgs and IAMAPIKeyTimeoutsOutput values.
+// You can construct a concrete instance of `IAMAPIKeyTimeoutsInput` via:
+//
+//	IAMAPIKeyTimeoutsArgs{...}
+type IAMAPIKeyTimeoutsInput interface {
+	pulumi.Input
+
+	ToIAMAPIKeyTimeoutsOutput() IAMAPIKeyTimeoutsOutput
+	ToIAMAPIKeyTimeoutsOutputWithContext(context.Context) IAMAPIKeyTimeoutsOutput
+}
+
+type IAMAPIKeyTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (IAMAPIKeyTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMAPIKeyTimeouts)(nil)).Elem()
+}
+
+func (i IAMAPIKeyTimeoutsArgs) ToIAMAPIKeyTimeoutsOutput() IAMAPIKeyTimeoutsOutput {
+	return i.ToIAMAPIKeyTimeoutsOutputWithContext(context.Background())
+}
+
+func (i IAMAPIKeyTimeoutsArgs) ToIAMAPIKeyTimeoutsOutputWithContext(ctx context.Context) IAMAPIKeyTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMAPIKeyTimeoutsOutput)
+}
+
+func (i IAMAPIKeyTimeoutsArgs) ToOutput(ctx context.Context) pulumix.Output[IAMAPIKeyTimeouts] {
+	return pulumix.Output[IAMAPIKeyTimeouts]{
+		OutputState: i.ToIAMAPIKeyTimeoutsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i IAMAPIKeyTimeoutsArgs) ToIAMAPIKeyTimeoutsPtrOutput() IAMAPIKeyTimeoutsPtrOutput {
+	return i.ToIAMAPIKeyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i IAMAPIKeyTimeoutsArgs) ToIAMAPIKeyTimeoutsPtrOutputWithContext(ctx context.Context) IAMAPIKeyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMAPIKeyTimeoutsOutput).ToIAMAPIKeyTimeoutsPtrOutputWithContext(ctx)
+}
+
+// IAMAPIKeyTimeoutsPtrInput is an input type that accepts IAMAPIKeyTimeoutsArgs, IAMAPIKeyTimeoutsPtr and IAMAPIKeyTimeoutsPtrOutput values.
+// You can construct a concrete instance of `IAMAPIKeyTimeoutsPtrInput` via:
+//
+//	        IAMAPIKeyTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type IAMAPIKeyTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToIAMAPIKeyTimeoutsPtrOutput() IAMAPIKeyTimeoutsPtrOutput
+	ToIAMAPIKeyTimeoutsPtrOutputWithContext(context.Context) IAMAPIKeyTimeoutsPtrOutput
+}
+
+type iamapikeyTimeoutsPtrType IAMAPIKeyTimeoutsArgs
+
+func IAMAPIKeyTimeoutsPtr(v *IAMAPIKeyTimeoutsArgs) IAMAPIKeyTimeoutsPtrInput {
+	return (*iamapikeyTimeoutsPtrType)(v)
+}
+
+func (*iamapikeyTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IAMAPIKeyTimeouts)(nil)).Elem()
+}
+
+func (i *iamapikeyTimeoutsPtrType) ToIAMAPIKeyTimeoutsPtrOutput() IAMAPIKeyTimeoutsPtrOutput {
+	return i.ToIAMAPIKeyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *iamapikeyTimeoutsPtrType) ToIAMAPIKeyTimeoutsPtrOutputWithContext(ctx context.Context) IAMAPIKeyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMAPIKeyTimeoutsPtrOutput)
+}
+
+func (i *iamapikeyTimeoutsPtrType) ToOutput(ctx context.Context) pulumix.Output[*IAMAPIKeyTimeouts] {
+	return pulumix.Output[*IAMAPIKeyTimeouts]{
+		OutputState: i.ToIAMAPIKeyTimeoutsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type IAMAPIKeyTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (IAMAPIKeyTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMAPIKeyTimeouts)(nil)).Elem()
+}
+
+func (o IAMAPIKeyTimeoutsOutput) ToIAMAPIKeyTimeoutsOutput() IAMAPIKeyTimeoutsOutput {
+	return o
+}
+
+func (o IAMAPIKeyTimeoutsOutput) ToIAMAPIKeyTimeoutsOutputWithContext(ctx context.Context) IAMAPIKeyTimeoutsOutput {
+	return o
+}
+
+func (o IAMAPIKeyTimeoutsOutput) ToIAMAPIKeyTimeoutsPtrOutput() IAMAPIKeyTimeoutsPtrOutput {
+	return o.ToIAMAPIKeyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o IAMAPIKeyTimeoutsOutput) ToIAMAPIKeyTimeoutsPtrOutputWithContext(ctx context.Context) IAMAPIKeyTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMAPIKeyTimeouts) *IAMAPIKeyTimeouts {
+		return &v
+	}).(IAMAPIKeyTimeoutsPtrOutput)
+}
+
+func (o IAMAPIKeyTimeoutsOutput) ToOutput(ctx context.Context) pulumix.Output[IAMAPIKeyTimeouts] {
+	return pulumix.Output[IAMAPIKeyTimeouts]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o IAMAPIKeyTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IAMAPIKeyTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type IAMAPIKeyTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (IAMAPIKeyTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IAMAPIKeyTimeouts)(nil)).Elem()
+}
+
+func (o IAMAPIKeyTimeoutsPtrOutput) ToIAMAPIKeyTimeoutsPtrOutput() IAMAPIKeyTimeoutsPtrOutput {
+	return o
+}
+
+func (o IAMAPIKeyTimeoutsPtrOutput) ToIAMAPIKeyTimeoutsPtrOutputWithContext(ctx context.Context) IAMAPIKeyTimeoutsPtrOutput {
+	return o
+}
+
+func (o IAMAPIKeyTimeoutsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IAMAPIKeyTimeouts] {
+	return pulumix.Output[*IAMAPIKeyTimeouts]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o IAMAPIKeyTimeoutsPtrOutput) Elem() IAMAPIKeyTimeoutsOutput {
+	return o.ApplyT(func(v *IAMAPIKeyTimeouts) IAMAPIKeyTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret IAMAPIKeyTimeouts
+		return ret
+	}).(IAMAPIKeyTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o IAMAPIKeyTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IAMAPIKeyTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type IAMOrgPolicyServices struct {
+	// List of IAM service rules (if type is `rules`).
+	Rules []IAMOrgPolicyServicesRule `pulumi:"rules"`
+	// Service type (`rules`, `allow`, or `deny`).
+	Type *string `pulumi:"type"`
+}
+
+// IAMOrgPolicyServicesInput is an input type that accepts IAMOrgPolicyServicesArgs and IAMOrgPolicyServicesOutput values.
+// You can construct a concrete instance of `IAMOrgPolicyServicesInput` via:
+//
+//	IAMOrgPolicyServicesArgs{...}
+type IAMOrgPolicyServicesInput interface {
+	pulumi.Input
+
+	ToIAMOrgPolicyServicesOutput() IAMOrgPolicyServicesOutput
+	ToIAMOrgPolicyServicesOutputWithContext(context.Context) IAMOrgPolicyServicesOutput
+}
+
+type IAMOrgPolicyServicesArgs struct {
+	// List of IAM service rules (if type is `rules`).
+	Rules IAMOrgPolicyServicesRuleArrayInput `pulumi:"rules"`
+	// Service type (`rules`, `allow`, or `deny`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (IAMOrgPolicyServicesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMOrgPolicyServices)(nil)).Elem()
+}
+
+func (i IAMOrgPolicyServicesArgs) ToIAMOrgPolicyServicesOutput() IAMOrgPolicyServicesOutput {
+	return i.ToIAMOrgPolicyServicesOutputWithContext(context.Background())
+}
+
+func (i IAMOrgPolicyServicesArgs) ToIAMOrgPolicyServicesOutputWithContext(ctx context.Context) IAMOrgPolicyServicesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMOrgPolicyServicesOutput)
+}
+
+func (i IAMOrgPolicyServicesArgs) ToOutput(ctx context.Context) pulumix.Output[IAMOrgPolicyServices] {
+	return pulumix.Output[IAMOrgPolicyServices]{
+		OutputState: i.ToIAMOrgPolicyServicesOutputWithContext(ctx).OutputState,
+	}
+}
+
+// IAMOrgPolicyServicesMapInput is an input type that accepts IAMOrgPolicyServicesMap and IAMOrgPolicyServicesMapOutput values.
+// You can construct a concrete instance of `IAMOrgPolicyServicesMapInput` via:
+//
+//	IAMOrgPolicyServicesMap{ "key": IAMOrgPolicyServicesArgs{...} }
+type IAMOrgPolicyServicesMapInput interface {
+	pulumi.Input
+
+	ToIAMOrgPolicyServicesMapOutput() IAMOrgPolicyServicesMapOutput
+	ToIAMOrgPolicyServicesMapOutputWithContext(context.Context) IAMOrgPolicyServicesMapOutput
+}
+
+type IAMOrgPolicyServicesMap map[string]IAMOrgPolicyServicesInput
+
+func (IAMOrgPolicyServicesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]IAMOrgPolicyServices)(nil)).Elem()
+}
+
+func (i IAMOrgPolicyServicesMap) ToIAMOrgPolicyServicesMapOutput() IAMOrgPolicyServicesMapOutput {
+	return i.ToIAMOrgPolicyServicesMapOutputWithContext(context.Background())
+}
+
+func (i IAMOrgPolicyServicesMap) ToIAMOrgPolicyServicesMapOutputWithContext(ctx context.Context) IAMOrgPolicyServicesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMOrgPolicyServicesMapOutput)
+}
+
+func (i IAMOrgPolicyServicesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]IAMOrgPolicyServices] {
+	return pulumix.Output[map[string]IAMOrgPolicyServices]{
+		OutputState: i.ToIAMOrgPolicyServicesMapOutputWithContext(ctx).OutputState,
+	}
+}
+
+type IAMOrgPolicyServicesOutput struct{ *pulumi.OutputState }
+
+func (IAMOrgPolicyServicesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMOrgPolicyServices)(nil)).Elem()
+}
+
+func (o IAMOrgPolicyServicesOutput) ToIAMOrgPolicyServicesOutput() IAMOrgPolicyServicesOutput {
+	return o
+}
+
+func (o IAMOrgPolicyServicesOutput) ToIAMOrgPolicyServicesOutputWithContext(ctx context.Context) IAMOrgPolicyServicesOutput {
+	return o
+}
+
+func (o IAMOrgPolicyServicesOutput) ToOutput(ctx context.Context) pulumix.Output[IAMOrgPolicyServices] {
+	return pulumix.Output[IAMOrgPolicyServices]{
+		OutputState: o.OutputState,
+	}
+}
+
+// List of IAM service rules (if type is `rules`).
+func (o IAMOrgPolicyServicesOutput) Rules() IAMOrgPolicyServicesRuleArrayOutput {
+	return o.ApplyT(func(v IAMOrgPolicyServices) []IAMOrgPolicyServicesRule { return v.Rules }).(IAMOrgPolicyServicesRuleArrayOutput)
+}
+
+// Service type (`rules`, `allow`, or `deny`).
+func (o IAMOrgPolicyServicesOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IAMOrgPolicyServices) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type IAMOrgPolicyServicesMapOutput struct{ *pulumi.OutputState }
+
+func (IAMOrgPolicyServicesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]IAMOrgPolicyServices)(nil)).Elem()
+}
+
+func (o IAMOrgPolicyServicesMapOutput) ToIAMOrgPolicyServicesMapOutput() IAMOrgPolicyServicesMapOutput {
+	return o
+}
+
+func (o IAMOrgPolicyServicesMapOutput) ToIAMOrgPolicyServicesMapOutputWithContext(ctx context.Context) IAMOrgPolicyServicesMapOutput {
+	return o
+}
+
+func (o IAMOrgPolicyServicesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]IAMOrgPolicyServices] {
+	return pulumix.Output[map[string]IAMOrgPolicyServices]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o IAMOrgPolicyServicesMapOutput) MapIndex(k pulumi.StringInput) IAMOrgPolicyServicesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IAMOrgPolicyServices {
+		return vs[0].(map[string]IAMOrgPolicyServices)[vs[1].(string)]
+	}).(IAMOrgPolicyServicesOutput)
+}
+
+type IAMOrgPolicyServicesRule struct {
+	// IAM policy rule action (`allow` or `deny`).
+	Action *string `pulumi:"action"`
+	// IAM policy rule expression.
+	Expression *string `pulumi:"expression"`
+	// List of resources that IAM policy rule applies to.
+	Resources []string `pulumi:"resources"`
+}
+
+// IAMOrgPolicyServicesRuleInput is an input type that accepts IAMOrgPolicyServicesRuleArgs and IAMOrgPolicyServicesRuleOutput values.
+// You can construct a concrete instance of `IAMOrgPolicyServicesRuleInput` via:
+//
+//	IAMOrgPolicyServicesRuleArgs{...}
+type IAMOrgPolicyServicesRuleInput interface {
+	pulumi.Input
+
+	ToIAMOrgPolicyServicesRuleOutput() IAMOrgPolicyServicesRuleOutput
+	ToIAMOrgPolicyServicesRuleOutputWithContext(context.Context) IAMOrgPolicyServicesRuleOutput
+}
+
+type IAMOrgPolicyServicesRuleArgs struct {
+	// IAM policy rule action (`allow` or `deny`).
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// IAM policy rule expression.
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	// List of resources that IAM policy rule applies to.
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+}
+
+func (IAMOrgPolicyServicesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMOrgPolicyServicesRule)(nil)).Elem()
+}
+
+func (i IAMOrgPolicyServicesRuleArgs) ToIAMOrgPolicyServicesRuleOutput() IAMOrgPolicyServicesRuleOutput {
+	return i.ToIAMOrgPolicyServicesRuleOutputWithContext(context.Background())
+}
+
+func (i IAMOrgPolicyServicesRuleArgs) ToIAMOrgPolicyServicesRuleOutputWithContext(ctx context.Context) IAMOrgPolicyServicesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMOrgPolicyServicesRuleOutput)
+}
+
+func (i IAMOrgPolicyServicesRuleArgs) ToOutput(ctx context.Context) pulumix.Output[IAMOrgPolicyServicesRule] {
+	return pulumix.Output[IAMOrgPolicyServicesRule]{
+		OutputState: i.ToIAMOrgPolicyServicesRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
+// IAMOrgPolicyServicesRuleArrayInput is an input type that accepts IAMOrgPolicyServicesRuleArray and IAMOrgPolicyServicesRuleArrayOutput values.
+// You can construct a concrete instance of `IAMOrgPolicyServicesRuleArrayInput` via:
+//
+//	IAMOrgPolicyServicesRuleArray{ IAMOrgPolicyServicesRuleArgs{...} }
+type IAMOrgPolicyServicesRuleArrayInput interface {
+	pulumi.Input
+
+	ToIAMOrgPolicyServicesRuleArrayOutput() IAMOrgPolicyServicesRuleArrayOutput
+	ToIAMOrgPolicyServicesRuleArrayOutputWithContext(context.Context) IAMOrgPolicyServicesRuleArrayOutput
+}
+
+type IAMOrgPolicyServicesRuleArray []IAMOrgPolicyServicesRuleInput
+
+func (IAMOrgPolicyServicesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IAMOrgPolicyServicesRule)(nil)).Elem()
+}
+
+func (i IAMOrgPolicyServicesRuleArray) ToIAMOrgPolicyServicesRuleArrayOutput() IAMOrgPolicyServicesRuleArrayOutput {
+	return i.ToIAMOrgPolicyServicesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i IAMOrgPolicyServicesRuleArray) ToIAMOrgPolicyServicesRuleArrayOutputWithContext(ctx context.Context) IAMOrgPolicyServicesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMOrgPolicyServicesRuleArrayOutput)
+}
+
+func (i IAMOrgPolicyServicesRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]IAMOrgPolicyServicesRule] {
+	return pulumix.Output[[]IAMOrgPolicyServicesRule]{
+		OutputState: i.ToIAMOrgPolicyServicesRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type IAMOrgPolicyServicesRuleOutput struct{ *pulumi.OutputState }
+
+func (IAMOrgPolicyServicesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMOrgPolicyServicesRule)(nil)).Elem()
+}
+
+func (o IAMOrgPolicyServicesRuleOutput) ToIAMOrgPolicyServicesRuleOutput() IAMOrgPolicyServicesRuleOutput {
+	return o
+}
+
+func (o IAMOrgPolicyServicesRuleOutput) ToIAMOrgPolicyServicesRuleOutputWithContext(ctx context.Context) IAMOrgPolicyServicesRuleOutput {
+	return o
+}
+
+func (o IAMOrgPolicyServicesRuleOutput) ToOutput(ctx context.Context) pulumix.Output[IAMOrgPolicyServicesRule] {
+	return pulumix.Output[IAMOrgPolicyServicesRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+// IAM policy rule action (`allow` or `deny`).
+func (o IAMOrgPolicyServicesRuleOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IAMOrgPolicyServicesRule) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// IAM policy rule expression.
+func (o IAMOrgPolicyServicesRuleOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IAMOrgPolicyServicesRule) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+// List of resources that IAM policy rule applies to.
+func (o IAMOrgPolicyServicesRuleOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IAMOrgPolicyServicesRule) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+type IAMOrgPolicyServicesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (IAMOrgPolicyServicesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IAMOrgPolicyServicesRule)(nil)).Elem()
+}
+
+func (o IAMOrgPolicyServicesRuleArrayOutput) ToIAMOrgPolicyServicesRuleArrayOutput() IAMOrgPolicyServicesRuleArrayOutput {
+	return o
+}
+
+func (o IAMOrgPolicyServicesRuleArrayOutput) ToIAMOrgPolicyServicesRuleArrayOutputWithContext(ctx context.Context) IAMOrgPolicyServicesRuleArrayOutput {
+	return o
+}
+
+func (o IAMOrgPolicyServicesRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IAMOrgPolicyServicesRule] {
+	return pulumix.Output[[]IAMOrgPolicyServicesRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o IAMOrgPolicyServicesRuleArrayOutput) Index(i pulumi.IntInput) IAMOrgPolicyServicesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IAMOrgPolicyServicesRule {
+		return vs[0].([]IAMOrgPolicyServicesRule)[vs[1].(int)]
+	}).(IAMOrgPolicyServicesRuleOutput)
+}
+
+type IAMOrgPolicyTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+}
+
+// IAMOrgPolicyTimeoutsInput is an input type that accepts IAMOrgPolicyTimeoutsArgs and IAMOrgPolicyTimeoutsOutput values.
+// You can construct a concrete instance of `IAMOrgPolicyTimeoutsInput` via:
+//
+//	IAMOrgPolicyTimeoutsArgs{...}
+type IAMOrgPolicyTimeoutsInput interface {
+	pulumi.Input
+
+	ToIAMOrgPolicyTimeoutsOutput() IAMOrgPolicyTimeoutsOutput
+	ToIAMOrgPolicyTimeoutsOutputWithContext(context.Context) IAMOrgPolicyTimeoutsOutput
+}
+
+type IAMOrgPolicyTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (IAMOrgPolicyTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMOrgPolicyTimeouts)(nil)).Elem()
+}
+
+func (i IAMOrgPolicyTimeoutsArgs) ToIAMOrgPolicyTimeoutsOutput() IAMOrgPolicyTimeoutsOutput {
+	return i.ToIAMOrgPolicyTimeoutsOutputWithContext(context.Background())
+}
+
+func (i IAMOrgPolicyTimeoutsArgs) ToIAMOrgPolicyTimeoutsOutputWithContext(ctx context.Context) IAMOrgPolicyTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMOrgPolicyTimeoutsOutput)
+}
+
+func (i IAMOrgPolicyTimeoutsArgs) ToOutput(ctx context.Context) pulumix.Output[IAMOrgPolicyTimeouts] {
+	return pulumix.Output[IAMOrgPolicyTimeouts]{
+		OutputState: i.ToIAMOrgPolicyTimeoutsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i IAMOrgPolicyTimeoutsArgs) ToIAMOrgPolicyTimeoutsPtrOutput() IAMOrgPolicyTimeoutsPtrOutput {
+	return i.ToIAMOrgPolicyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i IAMOrgPolicyTimeoutsArgs) ToIAMOrgPolicyTimeoutsPtrOutputWithContext(ctx context.Context) IAMOrgPolicyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMOrgPolicyTimeoutsOutput).ToIAMOrgPolicyTimeoutsPtrOutputWithContext(ctx)
+}
+
+// IAMOrgPolicyTimeoutsPtrInput is an input type that accepts IAMOrgPolicyTimeoutsArgs, IAMOrgPolicyTimeoutsPtr and IAMOrgPolicyTimeoutsPtrOutput values.
+// You can construct a concrete instance of `IAMOrgPolicyTimeoutsPtrInput` via:
+//
+//	        IAMOrgPolicyTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type IAMOrgPolicyTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToIAMOrgPolicyTimeoutsPtrOutput() IAMOrgPolicyTimeoutsPtrOutput
+	ToIAMOrgPolicyTimeoutsPtrOutputWithContext(context.Context) IAMOrgPolicyTimeoutsPtrOutput
+}
+
+type iamorgPolicyTimeoutsPtrType IAMOrgPolicyTimeoutsArgs
+
+func IAMOrgPolicyTimeoutsPtr(v *IAMOrgPolicyTimeoutsArgs) IAMOrgPolicyTimeoutsPtrInput {
+	return (*iamorgPolicyTimeoutsPtrType)(v)
+}
+
+func (*iamorgPolicyTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IAMOrgPolicyTimeouts)(nil)).Elem()
+}
+
+func (i *iamorgPolicyTimeoutsPtrType) ToIAMOrgPolicyTimeoutsPtrOutput() IAMOrgPolicyTimeoutsPtrOutput {
+	return i.ToIAMOrgPolicyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *iamorgPolicyTimeoutsPtrType) ToIAMOrgPolicyTimeoutsPtrOutputWithContext(ctx context.Context) IAMOrgPolicyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMOrgPolicyTimeoutsPtrOutput)
+}
+
+func (i *iamorgPolicyTimeoutsPtrType) ToOutput(ctx context.Context) pulumix.Output[*IAMOrgPolicyTimeouts] {
+	return pulumix.Output[*IAMOrgPolicyTimeouts]{
+		OutputState: i.ToIAMOrgPolicyTimeoutsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type IAMOrgPolicyTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (IAMOrgPolicyTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMOrgPolicyTimeouts)(nil)).Elem()
+}
+
+func (o IAMOrgPolicyTimeoutsOutput) ToIAMOrgPolicyTimeoutsOutput() IAMOrgPolicyTimeoutsOutput {
+	return o
+}
+
+func (o IAMOrgPolicyTimeoutsOutput) ToIAMOrgPolicyTimeoutsOutputWithContext(ctx context.Context) IAMOrgPolicyTimeoutsOutput {
+	return o
+}
+
+func (o IAMOrgPolicyTimeoutsOutput) ToIAMOrgPolicyTimeoutsPtrOutput() IAMOrgPolicyTimeoutsPtrOutput {
+	return o.ToIAMOrgPolicyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o IAMOrgPolicyTimeoutsOutput) ToIAMOrgPolicyTimeoutsPtrOutputWithContext(ctx context.Context) IAMOrgPolicyTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMOrgPolicyTimeouts) *IAMOrgPolicyTimeouts {
+		return &v
+	}).(IAMOrgPolicyTimeoutsPtrOutput)
+}
+
+func (o IAMOrgPolicyTimeoutsOutput) ToOutput(ctx context.Context) pulumix.Output[IAMOrgPolicyTimeouts] {
+	return pulumix.Output[IAMOrgPolicyTimeouts]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o IAMOrgPolicyTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IAMOrgPolicyTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type IAMOrgPolicyTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (IAMOrgPolicyTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IAMOrgPolicyTimeouts)(nil)).Elem()
+}
+
+func (o IAMOrgPolicyTimeoutsPtrOutput) ToIAMOrgPolicyTimeoutsPtrOutput() IAMOrgPolicyTimeoutsPtrOutput {
+	return o
+}
+
+func (o IAMOrgPolicyTimeoutsPtrOutput) ToIAMOrgPolicyTimeoutsPtrOutputWithContext(ctx context.Context) IAMOrgPolicyTimeoutsPtrOutput {
+	return o
+}
+
+func (o IAMOrgPolicyTimeoutsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IAMOrgPolicyTimeouts] {
+	return pulumix.Output[*IAMOrgPolicyTimeouts]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o IAMOrgPolicyTimeoutsPtrOutput) Elem() IAMOrgPolicyTimeoutsOutput {
+	return o.ApplyT(func(v *IAMOrgPolicyTimeouts) IAMOrgPolicyTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret IAMOrgPolicyTimeouts
+		return ret
+	}).(IAMOrgPolicyTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o IAMOrgPolicyTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IAMOrgPolicyTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type IAMRolePolicy struct {
+	// Default service strategy (`allow` or `deny`).
+	DefaultServiceStrategy *string `pulumi:"defaultServiceStrategy"`
+	// IAM policy services.
+	Services map[string]IAMRolePolicyServices `pulumi:"services"`
+}
+
+// IAMRolePolicyInput is an input type that accepts IAMRolePolicyArgs and IAMRolePolicyOutput values.
+// You can construct a concrete instance of `IAMRolePolicyInput` via:
+//
+//	IAMRolePolicyArgs{...}
+type IAMRolePolicyInput interface {
+	pulumi.Input
+
+	ToIAMRolePolicyOutput() IAMRolePolicyOutput
+	ToIAMRolePolicyOutputWithContext(context.Context) IAMRolePolicyOutput
+}
+
+type IAMRolePolicyArgs struct {
+	// Default service strategy (`allow` or `deny`).
+	DefaultServiceStrategy pulumi.StringPtrInput `pulumi:"defaultServiceStrategy"`
+	// IAM policy services.
+	Services IAMRolePolicyServicesMapInput `pulumi:"services"`
+}
+
+func (IAMRolePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMRolePolicy)(nil)).Elem()
+}
+
+func (i IAMRolePolicyArgs) ToIAMRolePolicyOutput() IAMRolePolicyOutput {
+	return i.ToIAMRolePolicyOutputWithContext(context.Background())
+}
+
+func (i IAMRolePolicyArgs) ToIAMRolePolicyOutputWithContext(ctx context.Context) IAMRolePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMRolePolicyOutput)
+}
+
+func (i IAMRolePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[IAMRolePolicy] {
+	return pulumix.Output[IAMRolePolicy]{
+		OutputState: i.ToIAMRolePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i IAMRolePolicyArgs) ToIAMRolePolicyPtrOutput() IAMRolePolicyPtrOutput {
+	return i.ToIAMRolePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i IAMRolePolicyArgs) ToIAMRolePolicyPtrOutputWithContext(ctx context.Context) IAMRolePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMRolePolicyOutput).ToIAMRolePolicyPtrOutputWithContext(ctx)
+}
+
+// IAMRolePolicyPtrInput is an input type that accepts IAMRolePolicyArgs, IAMRolePolicyPtr and IAMRolePolicyPtrOutput values.
+// You can construct a concrete instance of `IAMRolePolicyPtrInput` via:
+//
+//	        IAMRolePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type IAMRolePolicyPtrInput interface {
+	pulumi.Input
+
+	ToIAMRolePolicyPtrOutput() IAMRolePolicyPtrOutput
+	ToIAMRolePolicyPtrOutputWithContext(context.Context) IAMRolePolicyPtrOutput
+}
+
+type iamrolePolicyPtrType IAMRolePolicyArgs
+
+func IAMRolePolicyPtr(v *IAMRolePolicyArgs) IAMRolePolicyPtrInput {
+	return (*iamrolePolicyPtrType)(v)
+}
+
+func (*iamrolePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IAMRolePolicy)(nil)).Elem()
+}
+
+func (i *iamrolePolicyPtrType) ToIAMRolePolicyPtrOutput() IAMRolePolicyPtrOutput {
+	return i.ToIAMRolePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *iamrolePolicyPtrType) ToIAMRolePolicyPtrOutputWithContext(ctx context.Context) IAMRolePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMRolePolicyPtrOutput)
+}
+
+func (i *iamrolePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*IAMRolePolicy] {
+	return pulumix.Output[*IAMRolePolicy]{
+		OutputState: i.ToIAMRolePolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type IAMRolePolicyOutput struct{ *pulumi.OutputState }
+
+func (IAMRolePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMRolePolicy)(nil)).Elem()
+}
+
+func (o IAMRolePolicyOutput) ToIAMRolePolicyOutput() IAMRolePolicyOutput {
+	return o
+}
+
+func (o IAMRolePolicyOutput) ToIAMRolePolicyOutputWithContext(ctx context.Context) IAMRolePolicyOutput {
+	return o
+}
+
+func (o IAMRolePolicyOutput) ToIAMRolePolicyPtrOutput() IAMRolePolicyPtrOutput {
+	return o.ToIAMRolePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o IAMRolePolicyOutput) ToIAMRolePolicyPtrOutputWithContext(ctx context.Context) IAMRolePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMRolePolicy) *IAMRolePolicy {
+		return &v
+	}).(IAMRolePolicyPtrOutput)
+}
+
+func (o IAMRolePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[IAMRolePolicy] {
+	return pulumix.Output[IAMRolePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Default service strategy (`allow` or `deny`).
+func (o IAMRolePolicyOutput) DefaultServiceStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IAMRolePolicy) *string { return v.DefaultServiceStrategy }).(pulumi.StringPtrOutput)
+}
+
+// IAM policy services.
+func (o IAMRolePolicyOutput) Services() IAMRolePolicyServicesMapOutput {
+	return o.ApplyT(func(v IAMRolePolicy) map[string]IAMRolePolicyServices { return v.Services }).(IAMRolePolicyServicesMapOutput)
+}
+
+type IAMRolePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (IAMRolePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IAMRolePolicy)(nil)).Elem()
+}
+
+func (o IAMRolePolicyPtrOutput) ToIAMRolePolicyPtrOutput() IAMRolePolicyPtrOutput {
+	return o
+}
+
+func (o IAMRolePolicyPtrOutput) ToIAMRolePolicyPtrOutputWithContext(ctx context.Context) IAMRolePolicyPtrOutput {
+	return o
+}
+
+func (o IAMRolePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IAMRolePolicy] {
+	return pulumix.Output[*IAMRolePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o IAMRolePolicyPtrOutput) Elem() IAMRolePolicyOutput {
+	return o.ApplyT(func(v *IAMRolePolicy) IAMRolePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret IAMRolePolicy
+		return ret
+	}).(IAMRolePolicyOutput)
+}
+
+// Default service strategy (`allow` or `deny`).
+func (o IAMRolePolicyPtrOutput) DefaultServiceStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IAMRolePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultServiceStrategy
+	}).(pulumi.StringPtrOutput)
+}
+
+// IAM policy services.
+func (o IAMRolePolicyPtrOutput) Services() IAMRolePolicyServicesMapOutput {
+	return o.ApplyT(func(v *IAMRolePolicy) map[string]IAMRolePolicyServices {
+		if v == nil {
+			return nil
+		}
+		return v.Services
+	}).(IAMRolePolicyServicesMapOutput)
+}
+
+type IAMRolePolicyServices struct {
+	// List of IAM service rules (if type is `rules`).
+	Rules []IAMRolePolicyServicesRule `pulumi:"rules"`
+	// Service type (`rules`, `allow`, or `deny`).
+	Type *string `pulumi:"type"`
+}
+
+// IAMRolePolicyServicesInput is an input type that accepts IAMRolePolicyServicesArgs and IAMRolePolicyServicesOutput values.
+// You can construct a concrete instance of `IAMRolePolicyServicesInput` via:
+//
+//	IAMRolePolicyServicesArgs{...}
+type IAMRolePolicyServicesInput interface {
+	pulumi.Input
+
+	ToIAMRolePolicyServicesOutput() IAMRolePolicyServicesOutput
+	ToIAMRolePolicyServicesOutputWithContext(context.Context) IAMRolePolicyServicesOutput
+}
+
+type IAMRolePolicyServicesArgs struct {
+	// List of IAM service rules (if type is `rules`).
+	Rules IAMRolePolicyServicesRuleArrayInput `pulumi:"rules"`
+	// Service type (`rules`, `allow`, or `deny`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (IAMRolePolicyServicesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMRolePolicyServices)(nil)).Elem()
+}
+
+func (i IAMRolePolicyServicesArgs) ToIAMRolePolicyServicesOutput() IAMRolePolicyServicesOutput {
+	return i.ToIAMRolePolicyServicesOutputWithContext(context.Background())
+}
+
+func (i IAMRolePolicyServicesArgs) ToIAMRolePolicyServicesOutputWithContext(ctx context.Context) IAMRolePolicyServicesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMRolePolicyServicesOutput)
+}
+
+func (i IAMRolePolicyServicesArgs) ToOutput(ctx context.Context) pulumix.Output[IAMRolePolicyServices] {
+	return pulumix.Output[IAMRolePolicyServices]{
+		OutputState: i.ToIAMRolePolicyServicesOutputWithContext(ctx).OutputState,
+	}
+}
+
+// IAMRolePolicyServicesMapInput is an input type that accepts IAMRolePolicyServicesMap and IAMRolePolicyServicesMapOutput values.
+// You can construct a concrete instance of `IAMRolePolicyServicesMapInput` via:
+//
+//	IAMRolePolicyServicesMap{ "key": IAMRolePolicyServicesArgs{...} }
+type IAMRolePolicyServicesMapInput interface {
+	pulumi.Input
+
+	ToIAMRolePolicyServicesMapOutput() IAMRolePolicyServicesMapOutput
+	ToIAMRolePolicyServicesMapOutputWithContext(context.Context) IAMRolePolicyServicesMapOutput
+}
+
+type IAMRolePolicyServicesMap map[string]IAMRolePolicyServicesInput
+
+func (IAMRolePolicyServicesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]IAMRolePolicyServices)(nil)).Elem()
+}
+
+func (i IAMRolePolicyServicesMap) ToIAMRolePolicyServicesMapOutput() IAMRolePolicyServicesMapOutput {
+	return i.ToIAMRolePolicyServicesMapOutputWithContext(context.Background())
+}
+
+func (i IAMRolePolicyServicesMap) ToIAMRolePolicyServicesMapOutputWithContext(ctx context.Context) IAMRolePolicyServicesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMRolePolicyServicesMapOutput)
+}
+
+func (i IAMRolePolicyServicesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]IAMRolePolicyServices] {
+	return pulumix.Output[map[string]IAMRolePolicyServices]{
+		OutputState: i.ToIAMRolePolicyServicesMapOutputWithContext(ctx).OutputState,
+	}
+}
+
+type IAMRolePolicyServicesOutput struct{ *pulumi.OutputState }
+
+func (IAMRolePolicyServicesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMRolePolicyServices)(nil)).Elem()
+}
+
+func (o IAMRolePolicyServicesOutput) ToIAMRolePolicyServicesOutput() IAMRolePolicyServicesOutput {
+	return o
+}
+
+func (o IAMRolePolicyServicesOutput) ToIAMRolePolicyServicesOutputWithContext(ctx context.Context) IAMRolePolicyServicesOutput {
+	return o
+}
+
+func (o IAMRolePolicyServicesOutput) ToOutput(ctx context.Context) pulumix.Output[IAMRolePolicyServices] {
+	return pulumix.Output[IAMRolePolicyServices]{
+		OutputState: o.OutputState,
+	}
+}
+
+// List of IAM service rules (if type is `rules`).
+func (o IAMRolePolicyServicesOutput) Rules() IAMRolePolicyServicesRuleArrayOutput {
+	return o.ApplyT(func(v IAMRolePolicyServices) []IAMRolePolicyServicesRule { return v.Rules }).(IAMRolePolicyServicesRuleArrayOutput)
+}
+
+// Service type (`rules`, `allow`, or `deny`).
+func (o IAMRolePolicyServicesOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IAMRolePolicyServices) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type IAMRolePolicyServicesMapOutput struct{ *pulumi.OutputState }
+
+func (IAMRolePolicyServicesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]IAMRolePolicyServices)(nil)).Elem()
+}
+
+func (o IAMRolePolicyServicesMapOutput) ToIAMRolePolicyServicesMapOutput() IAMRolePolicyServicesMapOutput {
+	return o
+}
+
+func (o IAMRolePolicyServicesMapOutput) ToIAMRolePolicyServicesMapOutputWithContext(ctx context.Context) IAMRolePolicyServicesMapOutput {
+	return o
+}
+
+func (o IAMRolePolicyServicesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]IAMRolePolicyServices] {
+	return pulumix.Output[map[string]IAMRolePolicyServices]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o IAMRolePolicyServicesMapOutput) MapIndex(k pulumi.StringInput) IAMRolePolicyServicesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IAMRolePolicyServices {
+		return vs[0].(map[string]IAMRolePolicyServices)[vs[1].(string)]
+	}).(IAMRolePolicyServicesOutput)
+}
+
+type IAMRolePolicyServicesRule struct {
+	// IAM policy rule action (`allow` or `deny`).
+	Action *string `pulumi:"action"`
+	// IAM policy rule expression.
+	Expression *string `pulumi:"expression"`
+	// List of resources that IAM policy rule applies to.
+	Resources []string `pulumi:"resources"`
+}
+
+// IAMRolePolicyServicesRuleInput is an input type that accepts IAMRolePolicyServicesRuleArgs and IAMRolePolicyServicesRuleOutput values.
+// You can construct a concrete instance of `IAMRolePolicyServicesRuleInput` via:
+//
+//	IAMRolePolicyServicesRuleArgs{...}
+type IAMRolePolicyServicesRuleInput interface {
+	pulumi.Input
+
+	ToIAMRolePolicyServicesRuleOutput() IAMRolePolicyServicesRuleOutput
+	ToIAMRolePolicyServicesRuleOutputWithContext(context.Context) IAMRolePolicyServicesRuleOutput
+}
+
+type IAMRolePolicyServicesRuleArgs struct {
+	// IAM policy rule action (`allow` or `deny`).
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// IAM policy rule expression.
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	// List of resources that IAM policy rule applies to.
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+}
+
+func (IAMRolePolicyServicesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMRolePolicyServicesRule)(nil)).Elem()
+}
+
+func (i IAMRolePolicyServicesRuleArgs) ToIAMRolePolicyServicesRuleOutput() IAMRolePolicyServicesRuleOutput {
+	return i.ToIAMRolePolicyServicesRuleOutputWithContext(context.Background())
+}
+
+func (i IAMRolePolicyServicesRuleArgs) ToIAMRolePolicyServicesRuleOutputWithContext(ctx context.Context) IAMRolePolicyServicesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMRolePolicyServicesRuleOutput)
+}
+
+func (i IAMRolePolicyServicesRuleArgs) ToOutput(ctx context.Context) pulumix.Output[IAMRolePolicyServicesRule] {
+	return pulumix.Output[IAMRolePolicyServicesRule]{
+		OutputState: i.ToIAMRolePolicyServicesRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
+// IAMRolePolicyServicesRuleArrayInput is an input type that accepts IAMRolePolicyServicesRuleArray and IAMRolePolicyServicesRuleArrayOutput values.
+// You can construct a concrete instance of `IAMRolePolicyServicesRuleArrayInput` via:
+//
+//	IAMRolePolicyServicesRuleArray{ IAMRolePolicyServicesRuleArgs{...} }
+type IAMRolePolicyServicesRuleArrayInput interface {
+	pulumi.Input
+
+	ToIAMRolePolicyServicesRuleArrayOutput() IAMRolePolicyServicesRuleArrayOutput
+	ToIAMRolePolicyServicesRuleArrayOutputWithContext(context.Context) IAMRolePolicyServicesRuleArrayOutput
+}
+
+type IAMRolePolicyServicesRuleArray []IAMRolePolicyServicesRuleInput
+
+func (IAMRolePolicyServicesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IAMRolePolicyServicesRule)(nil)).Elem()
+}
+
+func (i IAMRolePolicyServicesRuleArray) ToIAMRolePolicyServicesRuleArrayOutput() IAMRolePolicyServicesRuleArrayOutput {
+	return i.ToIAMRolePolicyServicesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i IAMRolePolicyServicesRuleArray) ToIAMRolePolicyServicesRuleArrayOutputWithContext(ctx context.Context) IAMRolePolicyServicesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMRolePolicyServicesRuleArrayOutput)
+}
+
+func (i IAMRolePolicyServicesRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]IAMRolePolicyServicesRule] {
+	return pulumix.Output[[]IAMRolePolicyServicesRule]{
+		OutputState: i.ToIAMRolePolicyServicesRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type IAMRolePolicyServicesRuleOutput struct{ *pulumi.OutputState }
+
+func (IAMRolePolicyServicesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMRolePolicyServicesRule)(nil)).Elem()
+}
+
+func (o IAMRolePolicyServicesRuleOutput) ToIAMRolePolicyServicesRuleOutput() IAMRolePolicyServicesRuleOutput {
+	return o
+}
+
+func (o IAMRolePolicyServicesRuleOutput) ToIAMRolePolicyServicesRuleOutputWithContext(ctx context.Context) IAMRolePolicyServicesRuleOutput {
+	return o
+}
+
+func (o IAMRolePolicyServicesRuleOutput) ToOutput(ctx context.Context) pulumix.Output[IAMRolePolicyServicesRule] {
+	return pulumix.Output[IAMRolePolicyServicesRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+// IAM policy rule action (`allow` or `deny`).
+func (o IAMRolePolicyServicesRuleOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IAMRolePolicyServicesRule) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// IAM policy rule expression.
+func (o IAMRolePolicyServicesRuleOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IAMRolePolicyServicesRule) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+// List of resources that IAM policy rule applies to.
+func (o IAMRolePolicyServicesRuleOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IAMRolePolicyServicesRule) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+type IAMRolePolicyServicesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (IAMRolePolicyServicesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IAMRolePolicyServicesRule)(nil)).Elem()
+}
+
+func (o IAMRolePolicyServicesRuleArrayOutput) ToIAMRolePolicyServicesRuleArrayOutput() IAMRolePolicyServicesRuleArrayOutput {
+	return o
+}
+
+func (o IAMRolePolicyServicesRuleArrayOutput) ToIAMRolePolicyServicesRuleArrayOutputWithContext(ctx context.Context) IAMRolePolicyServicesRuleArrayOutput {
+	return o
+}
+
+func (o IAMRolePolicyServicesRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IAMRolePolicyServicesRule] {
+	return pulumix.Output[[]IAMRolePolicyServicesRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o IAMRolePolicyServicesRuleArrayOutput) Index(i pulumi.IntInput) IAMRolePolicyServicesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IAMRolePolicyServicesRule {
+		return vs[0].([]IAMRolePolicyServicesRule)[vs[1].(int)]
+	}).(IAMRolePolicyServicesRuleOutput)
+}
+
+type IAMRoleTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+}
+
+// IAMRoleTimeoutsInput is an input type that accepts IAMRoleTimeoutsArgs and IAMRoleTimeoutsOutput values.
+// You can construct a concrete instance of `IAMRoleTimeoutsInput` via:
+//
+//	IAMRoleTimeoutsArgs{...}
+type IAMRoleTimeoutsInput interface {
+	pulumi.Input
+
+	ToIAMRoleTimeoutsOutput() IAMRoleTimeoutsOutput
+	ToIAMRoleTimeoutsOutputWithContext(context.Context) IAMRoleTimeoutsOutput
+}
+
+type IAMRoleTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (IAMRoleTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMRoleTimeouts)(nil)).Elem()
+}
+
+func (i IAMRoleTimeoutsArgs) ToIAMRoleTimeoutsOutput() IAMRoleTimeoutsOutput {
+	return i.ToIAMRoleTimeoutsOutputWithContext(context.Background())
+}
+
+func (i IAMRoleTimeoutsArgs) ToIAMRoleTimeoutsOutputWithContext(ctx context.Context) IAMRoleTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMRoleTimeoutsOutput)
+}
+
+func (i IAMRoleTimeoutsArgs) ToOutput(ctx context.Context) pulumix.Output[IAMRoleTimeouts] {
+	return pulumix.Output[IAMRoleTimeouts]{
+		OutputState: i.ToIAMRoleTimeoutsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i IAMRoleTimeoutsArgs) ToIAMRoleTimeoutsPtrOutput() IAMRoleTimeoutsPtrOutput {
+	return i.ToIAMRoleTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i IAMRoleTimeoutsArgs) ToIAMRoleTimeoutsPtrOutputWithContext(ctx context.Context) IAMRoleTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMRoleTimeoutsOutput).ToIAMRoleTimeoutsPtrOutputWithContext(ctx)
+}
+
+// IAMRoleTimeoutsPtrInput is an input type that accepts IAMRoleTimeoutsArgs, IAMRoleTimeoutsPtr and IAMRoleTimeoutsPtrOutput values.
+// You can construct a concrete instance of `IAMRoleTimeoutsPtrInput` via:
+//
+//	        IAMRoleTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type IAMRoleTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToIAMRoleTimeoutsPtrOutput() IAMRoleTimeoutsPtrOutput
+	ToIAMRoleTimeoutsPtrOutputWithContext(context.Context) IAMRoleTimeoutsPtrOutput
+}
+
+type iamroleTimeoutsPtrType IAMRoleTimeoutsArgs
+
+func IAMRoleTimeoutsPtr(v *IAMRoleTimeoutsArgs) IAMRoleTimeoutsPtrInput {
+	return (*iamroleTimeoutsPtrType)(v)
+}
+
+func (*iamroleTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IAMRoleTimeouts)(nil)).Elem()
+}
+
+func (i *iamroleTimeoutsPtrType) ToIAMRoleTimeoutsPtrOutput() IAMRoleTimeoutsPtrOutput {
+	return i.ToIAMRoleTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *iamroleTimeoutsPtrType) ToIAMRoleTimeoutsPtrOutputWithContext(ctx context.Context) IAMRoleTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMRoleTimeoutsPtrOutput)
+}
+
+func (i *iamroleTimeoutsPtrType) ToOutput(ctx context.Context) pulumix.Output[*IAMRoleTimeouts] {
+	return pulumix.Output[*IAMRoleTimeouts]{
+		OutputState: i.ToIAMRoleTimeoutsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type IAMRoleTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (IAMRoleTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMRoleTimeouts)(nil)).Elem()
+}
+
+func (o IAMRoleTimeoutsOutput) ToIAMRoleTimeoutsOutput() IAMRoleTimeoutsOutput {
+	return o
+}
+
+func (o IAMRoleTimeoutsOutput) ToIAMRoleTimeoutsOutputWithContext(ctx context.Context) IAMRoleTimeoutsOutput {
+	return o
+}
+
+func (o IAMRoleTimeoutsOutput) ToIAMRoleTimeoutsPtrOutput() IAMRoleTimeoutsPtrOutput {
+	return o.ToIAMRoleTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o IAMRoleTimeoutsOutput) ToIAMRoleTimeoutsPtrOutputWithContext(ctx context.Context) IAMRoleTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMRoleTimeouts) *IAMRoleTimeouts {
+		return &v
+	}).(IAMRoleTimeoutsPtrOutput)
+}
+
+func (o IAMRoleTimeoutsOutput) ToOutput(ctx context.Context) pulumix.Output[IAMRoleTimeouts] {
+	return pulumix.Output[IAMRoleTimeouts]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o IAMRoleTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IAMRoleTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type IAMRoleTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (IAMRoleTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IAMRoleTimeouts)(nil)).Elem()
+}
+
+func (o IAMRoleTimeoutsPtrOutput) ToIAMRoleTimeoutsPtrOutput() IAMRoleTimeoutsPtrOutput {
+	return o
+}
+
+func (o IAMRoleTimeoutsPtrOutput) ToIAMRoleTimeoutsPtrOutputWithContext(ctx context.Context) IAMRoleTimeoutsPtrOutput {
+	return o
+}
+
+func (o IAMRoleTimeoutsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IAMRoleTimeouts] {
+	return pulumix.Output[*IAMRoleTimeouts]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o IAMRoleTimeoutsPtrOutput) Elem() IAMRoleTimeoutsOutput {
+	return o.ApplyT(func(v *IAMRoleTimeouts) IAMRoleTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret IAMRoleTimeouts
+		return ret
+	}).(IAMRoleTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o IAMRoleTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IAMRoleTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
 type InstancePoolInstance struct {
 	// The ID of this resource.
 	Id *string `pulumi:"id"`
@@ -3733,46 +4967,28 @@ func (o SecurityGroupRulesIngressArrayOutput) Index(i pulumi.IntInput) SecurityG
 }
 
 type GetComputeInstanceListInstance struct {
-	AntiAffinityGroupIds []string `pulumi:"antiAffinityGroupIds"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	CreatedAt string `pulumi:"createdAt"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	DeployTargetId string `pulumi:"deployTargetId"`
-	// Match against this int
-	DiskSize     int      `pulumi:"diskSize"`
-	ElasticIpIds []string `pulumi:"elasticIpIds"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Id *string `pulumi:"id"`
-	// Match against this bool
-	Ipv6 bool `pulumi:"ipv6"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Ipv6Address string `pulumi:"ipv6Address"`
-	// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-	Labels map[string]string `pulumi:"labels"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ManagerId string `pulumi:"managerId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ManagerType string `pulumi:"managerType"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Name              *string  `pulumi:"name"`
-	PrivateNetworkIds []string `pulumi:"privateNetworkIds"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	PublicIpAddress string `pulumi:"publicIpAddress"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ReverseDns       string   `pulumi:"reverseDns"`
-	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	SshKey string `pulumi:"sshKey"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	State string `pulumi:"state"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	TemplateId string `pulumi:"templateId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Type string `pulumi:"type"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	UserData string `pulumi:"userData"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-	Zone string `pulumi:"zone"`
+	AntiAffinityGroupIds []string          `pulumi:"antiAffinityGroupIds"`
+	CreatedAt            string            `pulumi:"createdAt"`
+	DeployTargetId       string            `pulumi:"deployTargetId"`
+	DiskSize             int               `pulumi:"diskSize"`
+	ElasticIpIds         []string          `pulumi:"elasticIpIds"`
+	Id                   *string           `pulumi:"id"`
+	Ipv6                 bool              `pulumi:"ipv6"`
+	Ipv6Address          string            `pulumi:"ipv6Address"`
+	Labels               map[string]string `pulumi:"labels"`
+	ManagerId            string            `pulumi:"managerId"`
+	ManagerType          string            `pulumi:"managerType"`
+	Name                 *string           `pulumi:"name"`
+	PrivateNetworkIds    []string          `pulumi:"privateNetworkIds"`
+	PublicIpAddress      string            `pulumi:"publicIpAddress"`
+	ReverseDns           string            `pulumi:"reverseDns"`
+	SecurityGroupIds     []string          `pulumi:"securityGroupIds"`
+	SshKey               string            `pulumi:"sshKey"`
+	State                string            `pulumi:"state"`
+	TemplateId           string            `pulumi:"templateId"`
+	Type                 string            `pulumi:"type"`
+	UserData             string            `pulumi:"userData"`
+	Zone                 string            `pulumi:"zone"`
 }
 
 // GetComputeInstanceListInstanceInput is an input type that accepts GetComputeInstanceListInstanceArgs and GetComputeInstanceListInstanceOutput values.
@@ -3788,45 +5004,27 @@ type GetComputeInstanceListInstanceInput interface {
 
 type GetComputeInstanceListInstanceArgs struct {
 	AntiAffinityGroupIds pulumi.StringArrayInput `pulumi:"antiAffinityGroupIds"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	DeployTargetId pulumi.StringInput `pulumi:"deployTargetId"`
-	// Match against this int
-	DiskSize     pulumi.IntInput         `pulumi:"diskSize"`
-	ElasticIpIds pulumi.StringArrayInput `pulumi:"elasticIpIds"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Match against this bool
-	Ipv6 pulumi.BoolInput `pulumi:"ipv6"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Ipv6Address pulumi.StringInput `pulumi:"ipv6Address"`
-	// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ManagerId pulumi.StringInput `pulumi:"managerId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ManagerType pulumi.StringInput `pulumi:"managerType"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Name              pulumi.StringPtrInput   `pulumi:"name"`
-	PrivateNetworkIds pulumi.StringArrayInput `pulumi:"privateNetworkIds"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	PublicIpAddress pulumi.StringInput `pulumi:"publicIpAddress"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ReverseDns       pulumi.StringInput      `pulumi:"reverseDns"`
-	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	SshKey pulumi.StringInput `pulumi:"sshKey"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	State pulumi.StringInput `pulumi:"state"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	TemplateId pulumi.StringInput `pulumi:"templateId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	UserData pulumi.StringInput `pulumi:"userData"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-	Zone pulumi.StringInput `pulumi:"zone"`
+	CreatedAt            pulumi.StringInput      `pulumi:"createdAt"`
+	DeployTargetId       pulumi.StringInput      `pulumi:"deployTargetId"`
+	DiskSize             pulumi.IntInput         `pulumi:"diskSize"`
+	ElasticIpIds         pulumi.StringArrayInput `pulumi:"elasticIpIds"`
+	Id                   pulumi.StringPtrInput   `pulumi:"id"`
+	Ipv6                 pulumi.BoolInput        `pulumi:"ipv6"`
+	Ipv6Address          pulumi.StringInput      `pulumi:"ipv6Address"`
+	Labels               pulumi.StringMapInput   `pulumi:"labels"`
+	ManagerId            pulumi.StringInput      `pulumi:"managerId"`
+	ManagerType          pulumi.StringInput      `pulumi:"managerType"`
+	Name                 pulumi.StringPtrInput   `pulumi:"name"`
+	PrivateNetworkIds    pulumi.StringArrayInput `pulumi:"privateNetworkIds"`
+	PublicIpAddress      pulumi.StringInput      `pulumi:"publicIpAddress"`
+	ReverseDns           pulumi.StringInput      `pulumi:"reverseDns"`
+	SecurityGroupIds     pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	SshKey               pulumi.StringInput      `pulumi:"sshKey"`
+	State                pulumi.StringInput      `pulumi:"state"`
+	TemplateId           pulumi.StringInput      `pulumi:"templateId"`
+	Type                 pulumi.StringInput      `pulumi:"type"`
+	UserData             pulumi.StringInput      `pulumi:"userData"`
+	Zone                 pulumi.StringInput      `pulumi:"zone"`
 }
 
 func (GetComputeInstanceListInstanceArgs) ElementType() reflect.Type {
@@ -3902,17 +5100,14 @@ func (o GetComputeInstanceListInstanceOutput) AntiAffinityGroupIds() pulumi.Stri
 	return o.ApplyT(func(v GetComputeInstanceListInstance) []string { return v.AntiAffinityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetComputeInstanceListInstanceOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetComputeInstanceListInstanceOutput) DeployTargetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.DeployTargetId }).(pulumi.StringOutput)
 }
 
-// Match against this int
 func (o GetComputeInstanceListInstanceOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) int { return v.DiskSize }).(pulumi.IntOutput)
 }
@@ -3921,37 +5116,30 @@ func (o GetComputeInstanceListInstanceOutput) ElasticIpIds() pulumi.StringArrayO
 	return o.ApplyT(func(v GetComputeInstanceListInstance) []string { return v.ElasticIpIds }).(pulumi.StringArrayOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetComputeInstanceListInstanceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Match against this bool
 func (o GetComputeInstanceListInstanceOutput) Ipv6() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) bool { return v.Ipv6 }).(pulumi.BoolOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetComputeInstanceListInstanceOutput) Ipv6Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
 
-// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
 func (o GetComputeInstanceListInstanceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetComputeInstanceListInstanceOutput) ManagerId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.ManagerId }).(pulumi.StringOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetComputeInstanceListInstanceOutput) ManagerType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.ManagerType }).(pulumi.StringOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetComputeInstanceListInstanceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -3960,12 +5148,10 @@ func (o GetComputeInstanceListInstanceOutput) PrivateNetworkIds() pulumi.StringA
 	return o.ApplyT(func(v GetComputeInstanceListInstance) []string { return v.PrivateNetworkIds }).(pulumi.StringArrayOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetComputeInstanceListInstanceOutput) PublicIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.PublicIpAddress }).(pulumi.StringOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetComputeInstanceListInstanceOutput) ReverseDns() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.ReverseDns }).(pulumi.StringOutput)
 }
@@ -3974,32 +5160,26 @@ func (o GetComputeInstanceListInstanceOutput) SecurityGroupIds() pulumi.StringAr
 	return o.ApplyT(func(v GetComputeInstanceListInstance) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetComputeInstanceListInstanceOutput) SshKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.SshKey }).(pulumi.StringOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetComputeInstanceListInstanceOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetComputeInstanceListInstanceOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.TemplateId }).(pulumi.StringOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetComputeInstanceListInstanceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetComputeInstanceListInstanceOutput) UserData() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.UserData }).(pulumi.StringOutput)
 }
 
-// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o GetComputeInstanceListInstanceOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.Zone }).(pulumi.StringOutput)
 }
@@ -4283,10 +5463,8 @@ func (o GetDomainRecordFilterOutput) RecordType() pulumi.StringPtrOutput {
 }
 
 type GetDomainRecordRecord struct {
-	Content *string `pulumi:"content"`
-	// The Domain name to match.
-	Domain *string `pulumi:"domain"`
-	// The ID of this resource.
+	Content    *string `pulumi:"content"`
+	Domain     *string `pulumi:"domain"`
 	Id         *string `pulumi:"id"`
 	Name       *string `pulumi:"name"`
 	Prio       *int    `pulumi:"prio"`
@@ -4306,10 +5484,8 @@ type GetDomainRecordRecordInput interface {
 }
 
 type GetDomainRecordRecordArgs struct {
-	Content pulumi.StringPtrInput `pulumi:"content"`
-	// The Domain name to match.
-	Domain pulumi.StringPtrInput `pulumi:"domain"`
-	// The ID of this resource.
+	Content    pulumi.StringPtrInput `pulumi:"content"`
+	Domain     pulumi.StringPtrInput `pulumi:"domain"`
 	Id         pulumi.StringPtrInput `pulumi:"id"`
 	Name       pulumi.StringPtrInput `pulumi:"name"`
 	Prio       pulumi.IntPtrInput    `pulumi:"prio"`
@@ -4390,12 +5566,10 @@ func (o GetDomainRecordRecordOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDomainRecordRecord) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
-// The Domain name to match.
 func (o GetDomainRecordRecordOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDomainRecordRecord) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
-// The ID of this resource.
 func (o GetDomainRecordRecordOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDomainRecordRecord) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -4608,11 +5782,1103 @@ func (o GetElasticIPHealthcheckArrayOutput) Index(i pulumi.IntInput) GetElasticI
 	}).(GetElasticIPHealthcheckOutput)
 }
 
+type GetIAMAPIKeyTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+}
+
+// GetIAMAPIKeyTimeoutsInput is an input type that accepts GetIAMAPIKeyTimeoutsArgs and GetIAMAPIKeyTimeoutsOutput values.
+// You can construct a concrete instance of `GetIAMAPIKeyTimeoutsInput` via:
+//
+//	GetIAMAPIKeyTimeoutsArgs{...}
+type GetIAMAPIKeyTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetIAMAPIKeyTimeoutsOutput() GetIAMAPIKeyTimeoutsOutput
+	ToGetIAMAPIKeyTimeoutsOutputWithContext(context.Context) GetIAMAPIKeyTimeoutsOutput
+}
+
+type GetIAMAPIKeyTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetIAMAPIKeyTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIAMAPIKeyTimeouts)(nil)).Elem()
+}
+
+func (i GetIAMAPIKeyTimeoutsArgs) ToGetIAMAPIKeyTimeoutsOutput() GetIAMAPIKeyTimeoutsOutput {
+	return i.ToGetIAMAPIKeyTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetIAMAPIKeyTimeoutsArgs) ToGetIAMAPIKeyTimeoutsOutputWithContext(ctx context.Context) GetIAMAPIKeyTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIAMAPIKeyTimeoutsOutput)
+}
+
+func (i GetIAMAPIKeyTimeoutsArgs) ToOutput(ctx context.Context) pulumix.Output[GetIAMAPIKeyTimeouts] {
+	return pulumix.Output[GetIAMAPIKeyTimeouts]{
+		OutputState: i.ToGetIAMAPIKeyTimeoutsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GetIAMAPIKeyTimeoutsArgs) ToGetIAMAPIKeyTimeoutsPtrOutput() GetIAMAPIKeyTimeoutsPtrOutput {
+	return i.ToGetIAMAPIKeyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetIAMAPIKeyTimeoutsArgs) ToGetIAMAPIKeyTimeoutsPtrOutputWithContext(ctx context.Context) GetIAMAPIKeyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIAMAPIKeyTimeoutsOutput).ToGetIAMAPIKeyTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetIAMAPIKeyTimeoutsPtrInput is an input type that accepts GetIAMAPIKeyTimeoutsArgs, GetIAMAPIKeyTimeoutsPtr and GetIAMAPIKeyTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetIAMAPIKeyTimeoutsPtrInput` via:
+//
+//	        GetIAMAPIKeyTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetIAMAPIKeyTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetIAMAPIKeyTimeoutsPtrOutput() GetIAMAPIKeyTimeoutsPtrOutput
+	ToGetIAMAPIKeyTimeoutsPtrOutputWithContext(context.Context) GetIAMAPIKeyTimeoutsPtrOutput
+}
+
+type getIAMAPIKeyTimeoutsPtrType GetIAMAPIKeyTimeoutsArgs
+
+func GetIAMAPIKeyTimeoutsPtr(v *GetIAMAPIKeyTimeoutsArgs) GetIAMAPIKeyTimeoutsPtrInput {
+	return (*getIAMAPIKeyTimeoutsPtrType)(v)
+}
+
+func (*getIAMAPIKeyTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetIAMAPIKeyTimeouts)(nil)).Elem()
+}
+
+func (i *getIAMAPIKeyTimeoutsPtrType) ToGetIAMAPIKeyTimeoutsPtrOutput() GetIAMAPIKeyTimeoutsPtrOutput {
+	return i.ToGetIAMAPIKeyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getIAMAPIKeyTimeoutsPtrType) ToGetIAMAPIKeyTimeoutsPtrOutputWithContext(ctx context.Context) GetIAMAPIKeyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIAMAPIKeyTimeoutsPtrOutput)
+}
+
+func (i *getIAMAPIKeyTimeoutsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetIAMAPIKeyTimeouts] {
+	return pulumix.Output[*GetIAMAPIKeyTimeouts]{
+		OutputState: i.ToGetIAMAPIKeyTimeoutsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetIAMAPIKeyTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetIAMAPIKeyTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIAMAPIKeyTimeouts)(nil)).Elem()
+}
+
+func (o GetIAMAPIKeyTimeoutsOutput) ToGetIAMAPIKeyTimeoutsOutput() GetIAMAPIKeyTimeoutsOutput {
+	return o
+}
+
+func (o GetIAMAPIKeyTimeoutsOutput) ToGetIAMAPIKeyTimeoutsOutputWithContext(ctx context.Context) GetIAMAPIKeyTimeoutsOutput {
+	return o
+}
+
+func (o GetIAMAPIKeyTimeoutsOutput) ToGetIAMAPIKeyTimeoutsPtrOutput() GetIAMAPIKeyTimeoutsPtrOutput {
+	return o.ToGetIAMAPIKeyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetIAMAPIKeyTimeoutsOutput) ToGetIAMAPIKeyTimeoutsPtrOutputWithContext(ctx context.Context) GetIAMAPIKeyTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetIAMAPIKeyTimeouts) *GetIAMAPIKeyTimeouts {
+		return &v
+	}).(GetIAMAPIKeyTimeoutsPtrOutput)
+}
+
+func (o GetIAMAPIKeyTimeoutsOutput) ToOutput(ctx context.Context) pulumix.Output[GetIAMAPIKeyTimeouts] {
+	return pulumix.Output[GetIAMAPIKeyTimeouts]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o GetIAMAPIKeyTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIAMAPIKeyTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetIAMAPIKeyTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetIAMAPIKeyTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetIAMAPIKeyTimeouts)(nil)).Elem()
+}
+
+func (o GetIAMAPIKeyTimeoutsPtrOutput) ToGetIAMAPIKeyTimeoutsPtrOutput() GetIAMAPIKeyTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetIAMAPIKeyTimeoutsPtrOutput) ToGetIAMAPIKeyTimeoutsPtrOutputWithContext(ctx context.Context) GetIAMAPIKeyTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetIAMAPIKeyTimeoutsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetIAMAPIKeyTimeouts] {
+	return pulumix.Output[*GetIAMAPIKeyTimeouts]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetIAMAPIKeyTimeoutsPtrOutput) Elem() GetIAMAPIKeyTimeoutsOutput {
+	return o.ApplyT(func(v *GetIAMAPIKeyTimeouts) GetIAMAPIKeyTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetIAMAPIKeyTimeouts
+		return ret
+	}).(GetIAMAPIKeyTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o GetIAMAPIKeyTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetIAMAPIKeyTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetIAMOrgPolicyServices struct {
+	// List of IAM service rules (if type is `rules`).
+	Rules []GetIAMOrgPolicyServicesRule `pulumi:"rules"`
+	// Service type (`rules`, `allow`, or `deny`).
+	Type string `pulumi:"type"`
+}
+
+// GetIAMOrgPolicyServicesInput is an input type that accepts GetIAMOrgPolicyServicesArgs and GetIAMOrgPolicyServicesOutput values.
+// You can construct a concrete instance of `GetIAMOrgPolicyServicesInput` via:
+//
+//	GetIAMOrgPolicyServicesArgs{...}
+type GetIAMOrgPolicyServicesInput interface {
+	pulumi.Input
+
+	ToGetIAMOrgPolicyServicesOutput() GetIAMOrgPolicyServicesOutput
+	ToGetIAMOrgPolicyServicesOutputWithContext(context.Context) GetIAMOrgPolicyServicesOutput
+}
+
+type GetIAMOrgPolicyServicesArgs struct {
+	// List of IAM service rules (if type is `rules`).
+	Rules GetIAMOrgPolicyServicesRuleArrayInput `pulumi:"rules"`
+	// Service type (`rules`, `allow`, or `deny`).
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetIAMOrgPolicyServicesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIAMOrgPolicyServices)(nil)).Elem()
+}
+
+func (i GetIAMOrgPolicyServicesArgs) ToGetIAMOrgPolicyServicesOutput() GetIAMOrgPolicyServicesOutput {
+	return i.ToGetIAMOrgPolicyServicesOutputWithContext(context.Background())
+}
+
+func (i GetIAMOrgPolicyServicesArgs) ToGetIAMOrgPolicyServicesOutputWithContext(ctx context.Context) GetIAMOrgPolicyServicesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIAMOrgPolicyServicesOutput)
+}
+
+func (i GetIAMOrgPolicyServicesArgs) ToOutput(ctx context.Context) pulumix.Output[GetIAMOrgPolicyServices] {
+	return pulumix.Output[GetIAMOrgPolicyServices]{
+		OutputState: i.ToGetIAMOrgPolicyServicesOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetIAMOrgPolicyServicesMapInput is an input type that accepts GetIAMOrgPolicyServicesMap and GetIAMOrgPolicyServicesMapOutput values.
+// You can construct a concrete instance of `GetIAMOrgPolicyServicesMapInput` via:
+//
+//	GetIAMOrgPolicyServicesMap{ "key": GetIAMOrgPolicyServicesArgs{...} }
+type GetIAMOrgPolicyServicesMapInput interface {
+	pulumi.Input
+
+	ToGetIAMOrgPolicyServicesMapOutput() GetIAMOrgPolicyServicesMapOutput
+	ToGetIAMOrgPolicyServicesMapOutputWithContext(context.Context) GetIAMOrgPolicyServicesMapOutput
+}
+
+type GetIAMOrgPolicyServicesMap map[string]GetIAMOrgPolicyServicesInput
+
+func (GetIAMOrgPolicyServicesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetIAMOrgPolicyServices)(nil)).Elem()
+}
+
+func (i GetIAMOrgPolicyServicesMap) ToGetIAMOrgPolicyServicesMapOutput() GetIAMOrgPolicyServicesMapOutput {
+	return i.ToGetIAMOrgPolicyServicesMapOutputWithContext(context.Background())
+}
+
+func (i GetIAMOrgPolicyServicesMap) ToGetIAMOrgPolicyServicesMapOutputWithContext(ctx context.Context) GetIAMOrgPolicyServicesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIAMOrgPolicyServicesMapOutput)
+}
+
+func (i GetIAMOrgPolicyServicesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]GetIAMOrgPolicyServices] {
+	return pulumix.Output[map[string]GetIAMOrgPolicyServices]{
+		OutputState: i.ToGetIAMOrgPolicyServicesMapOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetIAMOrgPolicyServicesOutput struct{ *pulumi.OutputState }
+
+func (GetIAMOrgPolicyServicesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIAMOrgPolicyServices)(nil)).Elem()
+}
+
+func (o GetIAMOrgPolicyServicesOutput) ToGetIAMOrgPolicyServicesOutput() GetIAMOrgPolicyServicesOutput {
+	return o
+}
+
+func (o GetIAMOrgPolicyServicesOutput) ToGetIAMOrgPolicyServicesOutputWithContext(ctx context.Context) GetIAMOrgPolicyServicesOutput {
+	return o
+}
+
+func (o GetIAMOrgPolicyServicesOutput) ToOutput(ctx context.Context) pulumix.Output[GetIAMOrgPolicyServices] {
+	return pulumix.Output[GetIAMOrgPolicyServices]{
+		OutputState: o.OutputState,
+	}
+}
+
+// List of IAM service rules (if type is `rules`).
+func (o GetIAMOrgPolicyServicesOutput) Rules() GetIAMOrgPolicyServicesRuleArrayOutput {
+	return o.ApplyT(func(v GetIAMOrgPolicyServices) []GetIAMOrgPolicyServicesRule { return v.Rules }).(GetIAMOrgPolicyServicesRuleArrayOutput)
+}
+
+// Service type (`rules`, `allow`, or `deny`).
+func (o GetIAMOrgPolicyServicesOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIAMOrgPolicyServices) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetIAMOrgPolicyServicesMapOutput struct{ *pulumi.OutputState }
+
+func (GetIAMOrgPolicyServicesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetIAMOrgPolicyServices)(nil)).Elem()
+}
+
+func (o GetIAMOrgPolicyServicesMapOutput) ToGetIAMOrgPolicyServicesMapOutput() GetIAMOrgPolicyServicesMapOutput {
+	return o
+}
+
+func (o GetIAMOrgPolicyServicesMapOutput) ToGetIAMOrgPolicyServicesMapOutputWithContext(ctx context.Context) GetIAMOrgPolicyServicesMapOutput {
+	return o
+}
+
+func (o GetIAMOrgPolicyServicesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]GetIAMOrgPolicyServices] {
+	return pulumix.Output[map[string]GetIAMOrgPolicyServices]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetIAMOrgPolicyServicesMapOutput) MapIndex(k pulumi.StringInput) GetIAMOrgPolicyServicesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetIAMOrgPolicyServices {
+		return vs[0].(map[string]GetIAMOrgPolicyServices)[vs[1].(string)]
+	}).(GetIAMOrgPolicyServicesOutput)
+}
+
+type GetIAMOrgPolicyServicesRule struct {
+	// IAM policy rule action (`allow` or `deny`).
+	Action string `pulumi:"action"`
+	// IAM policy rule expression.
+	Expression string `pulumi:"expression"`
+	// List of resources that IAM policy rule applies to.
+	Resources []string `pulumi:"resources"`
+}
+
+// GetIAMOrgPolicyServicesRuleInput is an input type that accepts GetIAMOrgPolicyServicesRuleArgs and GetIAMOrgPolicyServicesRuleOutput values.
+// You can construct a concrete instance of `GetIAMOrgPolicyServicesRuleInput` via:
+//
+//	GetIAMOrgPolicyServicesRuleArgs{...}
+type GetIAMOrgPolicyServicesRuleInput interface {
+	pulumi.Input
+
+	ToGetIAMOrgPolicyServicesRuleOutput() GetIAMOrgPolicyServicesRuleOutput
+	ToGetIAMOrgPolicyServicesRuleOutputWithContext(context.Context) GetIAMOrgPolicyServicesRuleOutput
+}
+
+type GetIAMOrgPolicyServicesRuleArgs struct {
+	// IAM policy rule action (`allow` or `deny`).
+	Action pulumi.StringInput `pulumi:"action"`
+	// IAM policy rule expression.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// List of resources that IAM policy rule applies to.
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+}
+
+func (GetIAMOrgPolicyServicesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIAMOrgPolicyServicesRule)(nil)).Elem()
+}
+
+func (i GetIAMOrgPolicyServicesRuleArgs) ToGetIAMOrgPolicyServicesRuleOutput() GetIAMOrgPolicyServicesRuleOutput {
+	return i.ToGetIAMOrgPolicyServicesRuleOutputWithContext(context.Background())
+}
+
+func (i GetIAMOrgPolicyServicesRuleArgs) ToGetIAMOrgPolicyServicesRuleOutputWithContext(ctx context.Context) GetIAMOrgPolicyServicesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIAMOrgPolicyServicesRuleOutput)
+}
+
+func (i GetIAMOrgPolicyServicesRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetIAMOrgPolicyServicesRule] {
+	return pulumix.Output[GetIAMOrgPolicyServicesRule]{
+		OutputState: i.ToGetIAMOrgPolicyServicesRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetIAMOrgPolicyServicesRuleArrayInput is an input type that accepts GetIAMOrgPolicyServicesRuleArray and GetIAMOrgPolicyServicesRuleArrayOutput values.
+// You can construct a concrete instance of `GetIAMOrgPolicyServicesRuleArrayInput` via:
+//
+//	GetIAMOrgPolicyServicesRuleArray{ GetIAMOrgPolicyServicesRuleArgs{...} }
+type GetIAMOrgPolicyServicesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetIAMOrgPolicyServicesRuleArrayOutput() GetIAMOrgPolicyServicesRuleArrayOutput
+	ToGetIAMOrgPolicyServicesRuleArrayOutputWithContext(context.Context) GetIAMOrgPolicyServicesRuleArrayOutput
+}
+
+type GetIAMOrgPolicyServicesRuleArray []GetIAMOrgPolicyServicesRuleInput
+
+func (GetIAMOrgPolicyServicesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIAMOrgPolicyServicesRule)(nil)).Elem()
+}
+
+func (i GetIAMOrgPolicyServicesRuleArray) ToGetIAMOrgPolicyServicesRuleArrayOutput() GetIAMOrgPolicyServicesRuleArrayOutput {
+	return i.ToGetIAMOrgPolicyServicesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetIAMOrgPolicyServicesRuleArray) ToGetIAMOrgPolicyServicesRuleArrayOutputWithContext(ctx context.Context) GetIAMOrgPolicyServicesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIAMOrgPolicyServicesRuleArrayOutput)
+}
+
+func (i GetIAMOrgPolicyServicesRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetIAMOrgPolicyServicesRule] {
+	return pulumix.Output[[]GetIAMOrgPolicyServicesRule]{
+		OutputState: i.ToGetIAMOrgPolicyServicesRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetIAMOrgPolicyServicesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetIAMOrgPolicyServicesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIAMOrgPolicyServicesRule)(nil)).Elem()
+}
+
+func (o GetIAMOrgPolicyServicesRuleOutput) ToGetIAMOrgPolicyServicesRuleOutput() GetIAMOrgPolicyServicesRuleOutput {
+	return o
+}
+
+func (o GetIAMOrgPolicyServicesRuleOutput) ToGetIAMOrgPolicyServicesRuleOutputWithContext(ctx context.Context) GetIAMOrgPolicyServicesRuleOutput {
+	return o
+}
+
+func (o GetIAMOrgPolicyServicesRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetIAMOrgPolicyServicesRule] {
+	return pulumix.Output[GetIAMOrgPolicyServicesRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+// IAM policy rule action (`allow` or `deny`).
+func (o GetIAMOrgPolicyServicesRuleOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIAMOrgPolicyServicesRule) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// IAM policy rule expression.
+func (o GetIAMOrgPolicyServicesRuleOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIAMOrgPolicyServicesRule) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// List of resources that IAM policy rule applies to.
+func (o GetIAMOrgPolicyServicesRuleOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIAMOrgPolicyServicesRule) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+type GetIAMOrgPolicyServicesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIAMOrgPolicyServicesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIAMOrgPolicyServicesRule)(nil)).Elem()
+}
+
+func (o GetIAMOrgPolicyServicesRuleArrayOutput) ToGetIAMOrgPolicyServicesRuleArrayOutput() GetIAMOrgPolicyServicesRuleArrayOutput {
+	return o
+}
+
+func (o GetIAMOrgPolicyServicesRuleArrayOutput) ToGetIAMOrgPolicyServicesRuleArrayOutputWithContext(ctx context.Context) GetIAMOrgPolicyServicesRuleArrayOutput {
+	return o
+}
+
+func (o GetIAMOrgPolicyServicesRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetIAMOrgPolicyServicesRule] {
+	return pulumix.Output[[]GetIAMOrgPolicyServicesRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetIAMOrgPolicyServicesRuleArrayOutput) Index(i pulumi.IntInput) GetIAMOrgPolicyServicesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIAMOrgPolicyServicesRule {
+		return vs[0].([]GetIAMOrgPolicyServicesRule)[vs[1].(int)]
+	}).(GetIAMOrgPolicyServicesRuleOutput)
+}
+
+type GetIAMOrgPolicyTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+}
+
+// GetIAMOrgPolicyTimeoutsInput is an input type that accepts GetIAMOrgPolicyTimeoutsArgs and GetIAMOrgPolicyTimeoutsOutput values.
+// You can construct a concrete instance of `GetIAMOrgPolicyTimeoutsInput` via:
+//
+//	GetIAMOrgPolicyTimeoutsArgs{...}
+type GetIAMOrgPolicyTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetIAMOrgPolicyTimeoutsOutput() GetIAMOrgPolicyTimeoutsOutput
+	ToGetIAMOrgPolicyTimeoutsOutputWithContext(context.Context) GetIAMOrgPolicyTimeoutsOutput
+}
+
+type GetIAMOrgPolicyTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetIAMOrgPolicyTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIAMOrgPolicyTimeouts)(nil)).Elem()
+}
+
+func (i GetIAMOrgPolicyTimeoutsArgs) ToGetIAMOrgPolicyTimeoutsOutput() GetIAMOrgPolicyTimeoutsOutput {
+	return i.ToGetIAMOrgPolicyTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetIAMOrgPolicyTimeoutsArgs) ToGetIAMOrgPolicyTimeoutsOutputWithContext(ctx context.Context) GetIAMOrgPolicyTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIAMOrgPolicyTimeoutsOutput)
+}
+
+func (i GetIAMOrgPolicyTimeoutsArgs) ToOutput(ctx context.Context) pulumix.Output[GetIAMOrgPolicyTimeouts] {
+	return pulumix.Output[GetIAMOrgPolicyTimeouts]{
+		OutputState: i.ToGetIAMOrgPolicyTimeoutsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GetIAMOrgPolicyTimeoutsArgs) ToGetIAMOrgPolicyTimeoutsPtrOutput() GetIAMOrgPolicyTimeoutsPtrOutput {
+	return i.ToGetIAMOrgPolicyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetIAMOrgPolicyTimeoutsArgs) ToGetIAMOrgPolicyTimeoutsPtrOutputWithContext(ctx context.Context) GetIAMOrgPolicyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIAMOrgPolicyTimeoutsOutput).ToGetIAMOrgPolicyTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetIAMOrgPolicyTimeoutsPtrInput is an input type that accepts GetIAMOrgPolicyTimeoutsArgs, GetIAMOrgPolicyTimeoutsPtr and GetIAMOrgPolicyTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetIAMOrgPolicyTimeoutsPtrInput` via:
+//
+//	        GetIAMOrgPolicyTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetIAMOrgPolicyTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetIAMOrgPolicyTimeoutsPtrOutput() GetIAMOrgPolicyTimeoutsPtrOutput
+	ToGetIAMOrgPolicyTimeoutsPtrOutputWithContext(context.Context) GetIAMOrgPolicyTimeoutsPtrOutput
+}
+
+type getIAMOrgPolicyTimeoutsPtrType GetIAMOrgPolicyTimeoutsArgs
+
+func GetIAMOrgPolicyTimeoutsPtr(v *GetIAMOrgPolicyTimeoutsArgs) GetIAMOrgPolicyTimeoutsPtrInput {
+	return (*getIAMOrgPolicyTimeoutsPtrType)(v)
+}
+
+func (*getIAMOrgPolicyTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetIAMOrgPolicyTimeouts)(nil)).Elem()
+}
+
+func (i *getIAMOrgPolicyTimeoutsPtrType) ToGetIAMOrgPolicyTimeoutsPtrOutput() GetIAMOrgPolicyTimeoutsPtrOutput {
+	return i.ToGetIAMOrgPolicyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getIAMOrgPolicyTimeoutsPtrType) ToGetIAMOrgPolicyTimeoutsPtrOutputWithContext(ctx context.Context) GetIAMOrgPolicyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIAMOrgPolicyTimeoutsPtrOutput)
+}
+
+func (i *getIAMOrgPolicyTimeoutsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetIAMOrgPolicyTimeouts] {
+	return pulumix.Output[*GetIAMOrgPolicyTimeouts]{
+		OutputState: i.ToGetIAMOrgPolicyTimeoutsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetIAMOrgPolicyTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetIAMOrgPolicyTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIAMOrgPolicyTimeouts)(nil)).Elem()
+}
+
+func (o GetIAMOrgPolicyTimeoutsOutput) ToGetIAMOrgPolicyTimeoutsOutput() GetIAMOrgPolicyTimeoutsOutput {
+	return o
+}
+
+func (o GetIAMOrgPolicyTimeoutsOutput) ToGetIAMOrgPolicyTimeoutsOutputWithContext(ctx context.Context) GetIAMOrgPolicyTimeoutsOutput {
+	return o
+}
+
+func (o GetIAMOrgPolicyTimeoutsOutput) ToGetIAMOrgPolicyTimeoutsPtrOutput() GetIAMOrgPolicyTimeoutsPtrOutput {
+	return o.ToGetIAMOrgPolicyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetIAMOrgPolicyTimeoutsOutput) ToGetIAMOrgPolicyTimeoutsPtrOutputWithContext(ctx context.Context) GetIAMOrgPolicyTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetIAMOrgPolicyTimeouts) *GetIAMOrgPolicyTimeouts {
+		return &v
+	}).(GetIAMOrgPolicyTimeoutsPtrOutput)
+}
+
+func (o GetIAMOrgPolicyTimeoutsOutput) ToOutput(ctx context.Context) pulumix.Output[GetIAMOrgPolicyTimeouts] {
+	return pulumix.Output[GetIAMOrgPolicyTimeouts]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o GetIAMOrgPolicyTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIAMOrgPolicyTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetIAMOrgPolicyTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetIAMOrgPolicyTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetIAMOrgPolicyTimeouts)(nil)).Elem()
+}
+
+func (o GetIAMOrgPolicyTimeoutsPtrOutput) ToGetIAMOrgPolicyTimeoutsPtrOutput() GetIAMOrgPolicyTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetIAMOrgPolicyTimeoutsPtrOutput) ToGetIAMOrgPolicyTimeoutsPtrOutputWithContext(ctx context.Context) GetIAMOrgPolicyTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetIAMOrgPolicyTimeoutsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetIAMOrgPolicyTimeouts] {
+	return pulumix.Output[*GetIAMOrgPolicyTimeouts]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetIAMOrgPolicyTimeoutsPtrOutput) Elem() GetIAMOrgPolicyTimeoutsOutput {
+	return o.ApplyT(func(v *GetIAMOrgPolicyTimeouts) GetIAMOrgPolicyTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetIAMOrgPolicyTimeouts
+		return ret
+	}).(GetIAMOrgPolicyTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o GetIAMOrgPolicyTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetIAMOrgPolicyTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetIAMRolePolicy struct {
+	// Default service strategy (`allow` or `deny`).
+	DefaultServiceStrategy string `pulumi:"defaultServiceStrategy"`
+	// IAM policy services.
+	Services map[string]GetIAMRolePolicyServices `pulumi:"services"`
+}
+
+// GetIAMRolePolicyInput is an input type that accepts GetIAMRolePolicyArgs and GetIAMRolePolicyOutput values.
+// You can construct a concrete instance of `GetIAMRolePolicyInput` via:
+//
+//	GetIAMRolePolicyArgs{...}
+type GetIAMRolePolicyInput interface {
+	pulumi.Input
+
+	ToGetIAMRolePolicyOutput() GetIAMRolePolicyOutput
+	ToGetIAMRolePolicyOutputWithContext(context.Context) GetIAMRolePolicyOutput
+}
+
+type GetIAMRolePolicyArgs struct {
+	// Default service strategy (`allow` or `deny`).
+	DefaultServiceStrategy pulumi.StringInput `pulumi:"defaultServiceStrategy"`
+	// IAM policy services.
+	Services GetIAMRolePolicyServicesMapInput `pulumi:"services"`
+}
+
+func (GetIAMRolePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIAMRolePolicy)(nil)).Elem()
+}
+
+func (i GetIAMRolePolicyArgs) ToGetIAMRolePolicyOutput() GetIAMRolePolicyOutput {
+	return i.ToGetIAMRolePolicyOutputWithContext(context.Background())
+}
+
+func (i GetIAMRolePolicyArgs) ToGetIAMRolePolicyOutputWithContext(ctx context.Context) GetIAMRolePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIAMRolePolicyOutput)
+}
+
+func (i GetIAMRolePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GetIAMRolePolicy] {
+	return pulumix.Output[GetIAMRolePolicy]{
+		OutputState: i.ToGetIAMRolePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetIAMRolePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetIAMRolePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIAMRolePolicy)(nil)).Elem()
+}
+
+func (o GetIAMRolePolicyOutput) ToGetIAMRolePolicyOutput() GetIAMRolePolicyOutput {
+	return o
+}
+
+func (o GetIAMRolePolicyOutput) ToGetIAMRolePolicyOutputWithContext(ctx context.Context) GetIAMRolePolicyOutput {
+	return o
+}
+
+func (o GetIAMRolePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GetIAMRolePolicy] {
+	return pulumix.Output[GetIAMRolePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Default service strategy (`allow` or `deny`).
+func (o GetIAMRolePolicyOutput) DefaultServiceStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIAMRolePolicy) string { return v.DefaultServiceStrategy }).(pulumi.StringOutput)
+}
+
+// IAM policy services.
+func (o GetIAMRolePolicyOutput) Services() GetIAMRolePolicyServicesMapOutput {
+	return o.ApplyT(func(v GetIAMRolePolicy) map[string]GetIAMRolePolicyServices { return v.Services }).(GetIAMRolePolicyServicesMapOutput)
+}
+
+type GetIAMRolePolicyServices struct {
+	// List of IAM service rules (if type is `rules`).
+	Rules []GetIAMRolePolicyServicesRule `pulumi:"rules"`
+	// Service type (`rules`, `allow`, or `deny`).
+	Type string `pulumi:"type"`
+}
+
+// GetIAMRolePolicyServicesInput is an input type that accepts GetIAMRolePolicyServicesArgs and GetIAMRolePolicyServicesOutput values.
+// You can construct a concrete instance of `GetIAMRolePolicyServicesInput` via:
+//
+//	GetIAMRolePolicyServicesArgs{...}
+type GetIAMRolePolicyServicesInput interface {
+	pulumi.Input
+
+	ToGetIAMRolePolicyServicesOutput() GetIAMRolePolicyServicesOutput
+	ToGetIAMRolePolicyServicesOutputWithContext(context.Context) GetIAMRolePolicyServicesOutput
+}
+
+type GetIAMRolePolicyServicesArgs struct {
+	// List of IAM service rules (if type is `rules`).
+	Rules GetIAMRolePolicyServicesRuleArrayInput `pulumi:"rules"`
+	// Service type (`rules`, `allow`, or `deny`).
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetIAMRolePolicyServicesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIAMRolePolicyServices)(nil)).Elem()
+}
+
+func (i GetIAMRolePolicyServicesArgs) ToGetIAMRolePolicyServicesOutput() GetIAMRolePolicyServicesOutput {
+	return i.ToGetIAMRolePolicyServicesOutputWithContext(context.Background())
+}
+
+func (i GetIAMRolePolicyServicesArgs) ToGetIAMRolePolicyServicesOutputWithContext(ctx context.Context) GetIAMRolePolicyServicesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIAMRolePolicyServicesOutput)
+}
+
+func (i GetIAMRolePolicyServicesArgs) ToOutput(ctx context.Context) pulumix.Output[GetIAMRolePolicyServices] {
+	return pulumix.Output[GetIAMRolePolicyServices]{
+		OutputState: i.ToGetIAMRolePolicyServicesOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetIAMRolePolicyServicesMapInput is an input type that accepts GetIAMRolePolicyServicesMap and GetIAMRolePolicyServicesMapOutput values.
+// You can construct a concrete instance of `GetIAMRolePolicyServicesMapInput` via:
+//
+//	GetIAMRolePolicyServicesMap{ "key": GetIAMRolePolicyServicesArgs{...} }
+type GetIAMRolePolicyServicesMapInput interface {
+	pulumi.Input
+
+	ToGetIAMRolePolicyServicesMapOutput() GetIAMRolePolicyServicesMapOutput
+	ToGetIAMRolePolicyServicesMapOutputWithContext(context.Context) GetIAMRolePolicyServicesMapOutput
+}
+
+type GetIAMRolePolicyServicesMap map[string]GetIAMRolePolicyServicesInput
+
+func (GetIAMRolePolicyServicesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetIAMRolePolicyServices)(nil)).Elem()
+}
+
+func (i GetIAMRolePolicyServicesMap) ToGetIAMRolePolicyServicesMapOutput() GetIAMRolePolicyServicesMapOutput {
+	return i.ToGetIAMRolePolicyServicesMapOutputWithContext(context.Background())
+}
+
+func (i GetIAMRolePolicyServicesMap) ToGetIAMRolePolicyServicesMapOutputWithContext(ctx context.Context) GetIAMRolePolicyServicesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIAMRolePolicyServicesMapOutput)
+}
+
+func (i GetIAMRolePolicyServicesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]GetIAMRolePolicyServices] {
+	return pulumix.Output[map[string]GetIAMRolePolicyServices]{
+		OutputState: i.ToGetIAMRolePolicyServicesMapOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetIAMRolePolicyServicesOutput struct{ *pulumi.OutputState }
+
+func (GetIAMRolePolicyServicesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIAMRolePolicyServices)(nil)).Elem()
+}
+
+func (o GetIAMRolePolicyServicesOutput) ToGetIAMRolePolicyServicesOutput() GetIAMRolePolicyServicesOutput {
+	return o
+}
+
+func (o GetIAMRolePolicyServicesOutput) ToGetIAMRolePolicyServicesOutputWithContext(ctx context.Context) GetIAMRolePolicyServicesOutput {
+	return o
+}
+
+func (o GetIAMRolePolicyServicesOutput) ToOutput(ctx context.Context) pulumix.Output[GetIAMRolePolicyServices] {
+	return pulumix.Output[GetIAMRolePolicyServices]{
+		OutputState: o.OutputState,
+	}
+}
+
+// List of IAM service rules (if type is `rules`).
+func (o GetIAMRolePolicyServicesOutput) Rules() GetIAMRolePolicyServicesRuleArrayOutput {
+	return o.ApplyT(func(v GetIAMRolePolicyServices) []GetIAMRolePolicyServicesRule { return v.Rules }).(GetIAMRolePolicyServicesRuleArrayOutput)
+}
+
+// Service type (`rules`, `allow`, or `deny`).
+func (o GetIAMRolePolicyServicesOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIAMRolePolicyServices) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetIAMRolePolicyServicesMapOutput struct{ *pulumi.OutputState }
+
+func (GetIAMRolePolicyServicesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetIAMRolePolicyServices)(nil)).Elem()
+}
+
+func (o GetIAMRolePolicyServicesMapOutput) ToGetIAMRolePolicyServicesMapOutput() GetIAMRolePolicyServicesMapOutput {
+	return o
+}
+
+func (o GetIAMRolePolicyServicesMapOutput) ToGetIAMRolePolicyServicesMapOutputWithContext(ctx context.Context) GetIAMRolePolicyServicesMapOutput {
+	return o
+}
+
+func (o GetIAMRolePolicyServicesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]GetIAMRolePolicyServices] {
+	return pulumix.Output[map[string]GetIAMRolePolicyServices]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetIAMRolePolicyServicesMapOutput) MapIndex(k pulumi.StringInput) GetIAMRolePolicyServicesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetIAMRolePolicyServices {
+		return vs[0].(map[string]GetIAMRolePolicyServices)[vs[1].(string)]
+	}).(GetIAMRolePolicyServicesOutput)
+}
+
+type GetIAMRolePolicyServicesRule struct {
+	// IAM policy rule action (`allow` or `deny`).
+	Action string `pulumi:"action"`
+	// IAM policy rule expression.
+	Expression string `pulumi:"expression"`
+	// List of resources that IAM policy rule applies to.
+	Resources []string `pulumi:"resources"`
+}
+
+// GetIAMRolePolicyServicesRuleInput is an input type that accepts GetIAMRolePolicyServicesRuleArgs and GetIAMRolePolicyServicesRuleOutput values.
+// You can construct a concrete instance of `GetIAMRolePolicyServicesRuleInput` via:
+//
+//	GetIAMRolePolicyServicesRuleArgs{...}
+type GetIAMRolePolicyServicesRuleInput interface {
+	pulumi.Input
+
+	ToGetIAMRolePolicyServicesRuleOutput() GetIAMRolePolicyServicesRuleOutput
+	ToGetIAMRolePolicyServicesRuleOutputWithContext(context.Context) GetIAMRolePolicyServicesRuleOutput
+}
+
+type GetIAMRolePolicyServicesRuleArgs struct {
+	// IAM policy rule action (`allow` or `deny`).
+	Action pulumi.StringInput `pulumi:"action"`
+	// IAM policy rule expression.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// List of resources that IAM policy rule applies to.
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+}
+
+func (GetIAMRolePolicyServicesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIAMRolePolicyServicesRule)(nil)).Elem()
+}
+
+func (i GetIAMRolePolicyServicesRuleArgs) ToGetIAMRolePolicyServicesRuleOutput() GetIAMRolePolicyServicesRuleOutput {
+	return i.ToGetIAMRolePolicyServicesRuleOutputWithContext(context.Background())
+}
+
+func (i GetIAMRolePolicyServicesRuleArgs) ToGetIAMRolePolicyServicesRuleOutputWithContext(ctx context.Context) GetIAMRolePolicyServicesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIAMRolePolicyServicesRuleOutput)
+}
+
+func (i GetIAMRolePolicyServicesRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetIAMRolePolicyServicesRule] {
+	return pulumix.Output[GetIAMRolePolicyServicesRule]{
+		OutputState: i.ToGetIAMRolePolicyServicesRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetIAMRolePolicyServicesRuleArrayInput is an input type that accepts GetIAMRolePolicyServicesRuleArray and GetIAMRolePolicyServicesRuleArrayOutput values.
+// You can construct a concrete instance of `GetIAMRolePolicyServicesRuleArrayInput` via:
+//
+//	GetIAMRolePolicyServicesRuleArray{ GetIAMRolePolicyServicesRuleArgs{...} }
+type GetIAMRolePolicyServicesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetIAMRolePolicyServicesRuleArrayOutput() GetIAMRolePolicyServicesRuleArrayOutput
+	ToGetIAMRolePolicyServicesRuleArrayOutputWithContext(context.Context) GetIAMRolePolicyServicesRuleArrayOutput
+}
+
+type GetIAMRolePolicyServicesRuleArray []GetIAMRolePolicyServicesRuleInput
+
+func (GetIAMRolePolicyServicesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIAMRolePolicyServicesRule)(nil)).Elem()
+}
+
+func (i GetIAMRolePolicyServicesRuleArray) ToGetIAMRolePolicyServicesRuleArrayOutput() GetIAMRolePolicyServicesRuleArrayOutput {
+	return i.ToGetIAMRolePolicyServicesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetIAMRolePolicyServicesRuleArray) ToGetIAMRolePolicyServicesRuleArrayOutputWithContext(ctx context.Context) GetIAMRolePolicyServicesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIAMRolePolicyServicesRuleArrayOutput)
+}
+
+func (i GetIAMRolePolicyServicesRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetIAMRolePolicyServicesRule] {
+	return pulumix.Output[[]GetIAMRolePolicyServicesRule]{
+		OutputState: i.ToGetIAMRolePolicyServicesRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetIAMRolePolicyServicesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetIAMRolePolicyServicesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIAMRolePolicyServicesRule)(nil)).Elem()
+}
+
+func (o GetIAMRolePolicyServicesRuleOutput) ToGetIAMRolePolicyServicesRuleOutput() GetIAMRolePolicyServicesRuleOutput {
+	return o
+}
+
+func (o GetIAMRolePolicyServicesRuleOutput) ToGetIAMRolePolicyServicesRuleOutputWithContext(ctx context.Context) GetIAMRolePolicyServicesRuleOutput {
+	return o
+}
+
+func (o GetIAMRolePolicyServicesRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetIAMRolePolicyServicesRule] {
+	return pulumix.Output[GetIAMRolePolicyServicesRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+// IAM policy rule action (`allow` or `deny`).
+func (o GetIAMRolePolicyServicesRuleOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIAMRolePolicyServicesRule) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// IAM policy rule expression.
+func (o GetIAMRolePolicyServicesRuleOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIAMRolePolicyServicesRule) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// List of resources that IAM policy rule applies to.
+func (o GetIAMRolePolicyServicesRuleOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIAMRolePolicyServicesRule) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+type GetIAMRolePolicyServicesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIAMRolePolicyServicesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIAMRolePolicyServicesRule)(nil)).Elem()
+}
+
+func (o GetIAMRolePolicyServicesRuleArrayOutput) ToGetIAMRolePolicyServicesRuleArrayOutput() GetIAMRolePolicyServicesRuleArrayOutput {
+	return o
+}
+
+func (o GetIAMRolePolicyServicesRuleArrayOutput) ToGetIAMRolePolicyServicesRuleArrayOutputWithContext(ctx context.Context) GetIAMRolePolicyServicesRuleArrayOutput {
+	return o
+}
+
+func (o GetIAMRolePolicyServicesRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetIAMRolePolicyServicesRule] {
+	return pulumix.Output[[]GetIAMRolePolicyServicesRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetIAMRolePolicyServicesRuleArrayOutput) Index(i pulumi.IntInput) GetIAMRolePolicyServicesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIAMRolePolicyServicesRule {
+		return vs[0].([]GetIAMRolePolicyServicesRule)[vs[1].(int)]
+	}).(GetIAMRolePolicyServicesRuleOutput)
+}
+
+type GetIAMRoleTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+}
+
+// GetIAMRoleTimeoutsInput is an input type that accepts GetIAMRoleTimeoutsArgs and GetIAMRoleTimeoutsOutput values.
+// You can construct a concrete instance of `GetIAMRoleTimeoutsInput` via:
+//
+//	GetIAMRoleTimeoutsArgs{...}
+type GetIAMRoleTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetIAMRoleTimeoutsOutput() GetIAMRoleTimeoutsOutput
+	ToGetIAMRoleTimeoutsOutputWithContext(context.Context) GetIAMRoleTimeoutsOutput
+}
+
+type GetIAMRoleTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetIAMRoleTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIAMRoleTimeouts)(nil)).Elem()
+}
+
+func (i GetIAMRoleTimeoutsArgs) ToGetIAMRoleTimeoutsOutput() GetIAMRoleTimeoutsOutput {
+	return i.ToGetIAMRoleTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetIAMRoleTimeoutsArgs) ToGetIAMRoleTimeoutsOutputWithContext(ctx context.Context) GetIAMRoleTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIAMRoleTimeoutsOutput)
+}
+
+func (i GetIAMRoleTimeoutsArgs) ToOutput(ctx context.Context) pulumix.Output[GetIAMRoleTimeouts] {
+	return pulumix.Output[GetIAMRoleTimeouts]{
+		OutputState: i.ToGetIAMRoleTimeoutsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GetIAMRoleTimeoutsArgs) ToGetIAMRoleTimeoutsPtrOutput() GetIAMRoleTimeoutsPtrOutput {
+	return i.ToGetIAMRoleTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetIAMRoleTimeoutsArgs) ToGetIAMRoleTimeoutsPtrOutputWithContext(ctx context.Context) GetIAMRoleTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIAMRoleTimeoutsOutput).ToGetIAMRoleTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetIAMRoleTimeoutsPtrInput is an input type that accepts GetIAMRoleTimeoutsArgs, GetIAMRoleTimeoutsPtr and GetIAMRoleTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetIAMRoleTimeoutsPtrInput` via:
+//
+//	        GetIAMRoleTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetIAMRoleTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetIAMRoleTimeoutsPtrOutput() GetIAMRoleTimeoutsPtrOutput
+	ToGetIAMRoleTimeoutsPtrOutputWithContext(context.Context) GetIAMRoleTimeoutsPtrOutput
+}
+
+type getIAMRoleTimeoutsPtrType GetIAMRoleTimeoutsArgs
+
+func GetIAMRoleTimeoutsPtr(v *GetIAMRoleTimeoutsArgs) GetIAMRoleTimeoutsPtrInput {
+	return (*getIAMRoleTimeoutsPtrType)(v)
+}
+
+func (*getIAMRoleTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetIAMRoleTimeouts)(nil)).Elem()
+}
+
+func (i *getIAMRoleTimeoutsPtrType) ToGetIAMRoleTimeoutsPtrOutput() GetIAMRoleTimeoutsPtrOutput {
+	return i.ToGetIAMRoleTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getIAMRoleTimeoutsPtrType) ToGetIAMRoleTimeoutsPtrOutputWithContext(ctx context.Context) GetIAMRoleTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIAMRoleTimeoutsPtrOutput)
+}
+
+func (i *getIAMRoleTimeoutsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetIAMRoleTimeouts] {
+	return pulumix.Output[*GetIAMRoleTimeouts]{
+		OutputState: i.ToGetIAMRoleTimeoutsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetIAMRoleTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetIAMRoleTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIAMRoleTimeouts)(nil)).Elem()
+}
+
+func (o GetIAMRoleTimeoutsOutput) ToGetIAMRoleTimeoutsOutput() GetIAMRoleTimeoutsOutput {
+	return o
+}
+
+func (o GetIAMRoleTimeoutsOutput) ToGetIAMRoleTimeoutsOutputWithContext(ctx context.Context) GetIAMRoleTimeoutsOutput {
+	return o
+}
+
+func (o GetIAMRoleTimeoutsOutput) ToGetIAMRoleTimeoutsPtrOutput() GetIAMRoleTimeoutsPtrOutput {
+	return o.ToGetIAMRoleTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetIAMRoleTimeoutsOutput) ToGetIAMRoleTimeoutsPtrOutputWithContext(ctx context.Context) GetIAMRoleTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetIAMRoleTimeouts) *GetIAMRoleTimeouts {
+		return &v
+	}).(GetIAMRoleTimeoutsPtrOutput)
+}
+
+func (o GetIAMRoleTimeoutsOutput) ToOutput(ctx context.Context) pulumix.Output[GetIAMRoleTimeouts] {
+	return pulumix.Output[GetIAMRoleTimeouts]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o GetIAMRoleTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIAMRoleTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetIAMRoleTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetIAMRoleTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetIAMRoleTimeouts)(nil)).Elem()
+}
+
+func (o GetIAMRoleTimeoutsPtrOutput) ToGetIAMRoleTimeoutsPtrOutput() GetIAMRoleTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetIAMRoleTimeoutsPtrOutput) ToGetIAMRoleTimeoutsPtrOutputWithContext(ctx context.Context) GetIAMRoleTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetIAMRoleTimeoutsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetIAMRoleTimeouts] {
+	return pulumix.Output[*GetIAMRoleTimeouts]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetIAMRoleTimeoutsPtrOutput) Elem() GetIAMRoleTimeoutsOutput {
+	return o.ApplyT(func(v *GetIAMRoleTimeouts) GetIAMRoleTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetIAMRoleTimeouts
+		return ret
+	}).(GetIAMRoleTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o GetIAMRoleTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetIAMRoleTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetInstancePoolInstance struct {
-	// The instance pool ID to match (conflicts with `name`).
-	Id          *string `pulumi:"id"`
-	Ipv6Address string  `pulumi:"ipv6Address"`
-	// The pool name to match (conflicts with `id`).
+	Id              *string `pulumi:"id"`
+	Ipv6Address     string  `pulumi:"ipv6Address"`
 	Name            *string `pulumi:"name"`
 	PublicIpAddress string  `pulumi:"publicIpAddress"`
 }
@@ -4629,10 +6895,8 @@ type GetInstancePoolInstanceInput interface {
 }
 
 type GetInstancePoolInstanceArgs struct {
-	// The instance pool ID to match (conflicts with `name`).
-	Id          pulumi.StringPtrInput `pulumi:"id"`
-	Ipv6Address pulumi.StringInput    `pulumi:"ipv6Address"`
-	// The pool name to match (conflicts with `id`).
+	Id              pulumi.StringPtrInput `pulumi:"id"`
+	Ipv6Address     pulumi.StringInput    `pulumi:"ipv6Address"`
 	Name            pulumi.StringPtrInput `pulumi:"name"`
 	PublicIpAddress pulumi.StringInput    `pulumi:"publicIpAddress"`
 }
@@ -4706,7 +6970,6 @@ func (o GetInstancePoolInstanceOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
-// The instance pool ID to match (conflicts with `name`).
 func (o GetInstancePoolInstanceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancePoolInstance) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -4715,7 +6978,6 @@ func (o GetInstancePoolInstanceOutput) Ipv6Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancePoolInstance) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
 
-// The pool name to match (conflicts with `id`).
 func (o GetInstancePoolInstanceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancePoolInstance) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -4751,12 +7013,11 @@ func (o GetInstancePoolInstanceArrayOutput) Index(i pulumi.IntInput) GetInstance
 }
 
 type GetInstancePoolListPool struct {
-	AffinityGroupIds []string `pulumi:"affinityGroupIds"`
-	DeployTargetId   string   `pulumi:"deployTargetId"`
-	Description      string   `pulumi:"description"`
-	DiskSize         int      `pulumi:"diskSize"`
-	ElasticIpIds     []string `pulumi:"elasticIpIds"`
-	// The ID of this resource.
+	AffinityGroupIds []string                          `pulumi:"affinityGroupIds"`
+	DeployTargetId   string                            `pulumi:"deployTargetId"`
+	Description      string                            `pulumi:"description"`
+	DiskSize         int                               `pulumi:"diskSize"`
+	ElasticIpIds     []string                          `pulumi:"elasticIpIds"`
 	Id               *string                           `pulumi:"id"`
 	InstancePrefix   string                            `pulumi:"instancePrefix"`
 	InstanceType     string                            `pulumi:"instanceType"`
@@ -4771,8 +7032,7 @@ type GetInstancePoolListPool struct {
 	State            string                            `pulumi:"state"`
 	TemplateId       string                            `pulumi:"templateId"`
 	UserData         string                            `pulumi:"userData"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-	Zone string `pulumi:"zone"`
+	Zone             string                            `pulumi:"zone"`
 }
 
 // GetInstancePoolListPoolInput is an input type that accepts GetInstancePoolListPoolArgs and GetInstancePoolListPoolOutput values.
@@ -4787,12 +7047,11 @@ type GetInstancePoolListPoolInput interface {
 }
 
 type GetInstancePoolListPoolArgs struct {
-	AffinityGroupIds pulumi.StringArrayInput `pulumi:"affinityGroupIds"`
-	DeployTargetId   pulumi.StringInput      `pulumi:"deployTargetId"`
-	Description      pulumi.StringInput      `pulumi:"description"`
-	DiskSize         pulumi.IntInput         `pulumi:"diskSize"`
-	ElasticIpIds     pulumi.StringArrayInput `pulumi:"elasticIpIds"`
-	// The ID of this resource.
+	AffinityGroupIds pulumi.StringArrayInput                   `pulumi:"affinityGroupIds"`
+	DeployTargetId   pulumi.StringInput                        `pulumi:"deployTargetId"`
+	Description      pulumi.StringInput                        `pulumi:"description"`
+	DiskSize         pulumi.IntInput                           `pulumi:"diskSize"`
+	ElasticIpIds     pulumi.StringArrayInput                   `pulumi:"elasticIpIds"`
 	Id               pulumi.StringPtrInput                     `pulumi:"id"`
 	InstancePrefix   pulumi.StringInput                        `pulumi:"instancePrefix"`
 	InstanceType     pulumi.StringInput                        `pulumi:"instanceType"`
@@ -4807,8 +7066,7 @@ type GetInstancePoolListPoolArgs struct {
 	State            pulumi.StringInput                        `pulumi:"state"`
 	TemplateId       pulumi.StringInput                        `pulumi:"templateId"`
 	UserData         pulumi.StringInput                        `pulumi:"userData"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-	Zone pulumi.StringInput `pulumi:"zone"`
+	Zone             pulumi.StringInput                        `pulumi:"zone"`
 }
 
 func (GetInstancePoolListPoolArgs) ElementType() reflect.Type {
@@ -4900,7 +7158,6 @@ func (o GetInstancePoolListPoolOutput) ElasticIpIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) []string { return v.ElasticIpIds }).(pulumi.StringArrayOutput)
 }
 
-// The ID of this resource.
 func (o GetInstancePoolListPoolOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -4957,7 +7214,6 @@ func (o GetInstancePoolListPoolOutput) UserData() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) string { return v.UserData }).(pulumi.StringOutput)
 }
 
-// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o GetInstancePoolListPoolOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) string { return v.Zone }).(pulumi.StringOutput)
 }
@@ -4989,7 +7245,6 @@ func (o GetInstancePoolListPoolArrayOutput) Index(i pulumi.IntInput) GetInstance
 }
 
 type GetInstancePoolListPoolInstance struct {
-	// The ID of this resource.
 	Id              *string `pulumi:"id"`
 	Ipv6Address     string  `pulumi:"ipv6Address"`
 	Name            *string `pulumi:"name"`
@@ -5008,7 +7263,6 @@ type GetInstancePoolListPoolInstanceInput interface {
 }
 
 type GetInstancePoolListPoolInstanceArgs struct {
-	// The ID of this resource.
 	Id              pulumi.StringPtrInput `pulumi:"id"`
 	Ipv6Address     pulumi.StringInput    `pulumi:"ipv6Address"`
 	Name            pulumi.StringPtrInput `pulumi:"name"`
@@ -5084,7 +7338,6 @@ func (o GetInstancePoolListPoolInstanceOutput) ToOutput(ctx context.Context) pul
 	}
 }
 
-// The ID of this resource.
 func (o GetInstancePoolListPoolInstanceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancePoolListPoolInstance) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -5586,43 +7839,26 @@ func (o GetNLBServiceListTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
 
 type GetSKSClusterListCluster struct {
 	// Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
-	Addons []string `pulumi:"addons"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	AggregationCa string `pulumi:"aggregationCa"`
-	// Match against this bool
-	AutoUpgrade *bool `pulumi:"autoUpgrade"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Cni *string `pulumi:"cni"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ControlPlaneCa string `pulumi:"controlPlaneCa"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	CreatedAt string `pulumi:"createdAt"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Description *string `pulumi:"description"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Endpoint string `pulumi:"endpoint"`
-	// Match against this bool
-	ExoscaleCcm *bool `pulumi:"exoscaleCcm"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Id *string `pulumi:"id"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	KubeletCa string `pulumi:"kubeletCa"`
-	// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-	Labels map[string]string `pulumi:"labels"`
-	// Match against this bool
-	MetricsServer *bool `pulumi:"metricsServer"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Name      *string                      `pulumi:"name"`
-	Nodepools []string                     `pulumi:"nodepools"`
-	Oidc      GetSKSClusterListClusterOidc `pulumi:"oidc"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ServiceLevel *string `pulumi:"serviceLevel"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	State string `pulumi:"state"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Version string `pulumi:"version"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-	Zone string `pulumi:"zone"`
+	Addons         []string                     `pulumi:"addons"`
+	AggregationCa  string                       `pulumi:"aggregationCa"`
+	AutoUpgrade    *bool                        `pulumi:"autoUpgrade"`
+	Cni            *string                      `pulumi:"cni"`
+	ControlPlaneCa string                       `pulumi:"controlPlaneCa"`
+	CreatedAt      string                       `pulumi:"createdAt"`
+	Description    *string                      `pulumi:"description"`
+	Endpoint       string                       `pulumi:"endpoint"`
+	ExoscaleCcm    *bool                        `pulumi:"exoscaleCcm"`
+	Id             *string                      `pulumi:"id"`
+	KubeletCa      string                       `pulumi:"kubeletCa"`
+	Labels         map[string]string            `pulumi:"labels"`
+	MetricsServer  *bool                        `pulumi:"metricsServer"`
+	Name           *string                      `pulumi:"name"`
+	Nodepools      []string                     `pulumi:"nodepools"`
+	Oidc           GetSKSClusterListClusterOidc `pulumi:"oidc"`
+	ServiceLevel   *string                      `pulumi:"serviceLevel"`
+	State          string                       `pulumi:"state"`
+	Version        string                       `pulumi:"version"`
+	Zone           string                       `pulumi:"zone"`
 }
 
 // GetSKSClusterListClusterInput is an input type that accepts GetSKSClusterListClusterArgs and GetSKSClusterListClusterOutput values.
@@ -5638,43 +7874,26 @@ type GetSKSClusterListClusterInput interface {
 
 type GetSKSClusterListClusterArgs struct {
 	// Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
-	Addons pulumi.StringArrayInput `pulumi:"addons"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	AggregationCa pulumi.StringInput `pulumi:"aggregationCa"`
-	// Match against this bool
-	AutoUpgrade pulumi.BoolPtrInput `pulumi:"autoUpgrade"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Cni pulumi.StringPtrInput `pulumi:"cni"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ControlPlaneCa pulumi.StringInput `pulumi:"controlPlaneCa"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Endpoint pulumi.StringInput `pulumi:"endpoint"`
-	// Match against this bool
-	ExoscaleCcm pulumi.BoolPtrInput `pulumi:"exoscaleCcm"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	KubeletCa pulumi.StringInput `pulumi:"kubeletCa"`
-	// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Match against this bool
-	MetricsServer pulumi.BoolPtrInput `pulumi:"metricsServer"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Name      pulumi.StringPtrInput             `pulumi:"name"`
-	Nodepools pulumi.StringArrayInput           `pulumi:"nodepools"`
-	Oidc      GetSKSClusterListClusterOidcInput `pulumi:"oidc"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ServiceLevel pulumi.StringPtrInput `pulumi:"serviceLevel"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	State pulumi.StringInput `pulumi:"state"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Version pulumi.StringInput `pulumi:"version"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-	Zone pulumi.StringInput `pulumi:"zone"`
+	Addons         pulumi.StringArrayInput           `pulumi:"addons"`
+	AggregationCa  pulumi.StringInput                `pulumi:"aggregationCa"`
+	AutoUpgrade    pulumi.BoolPtrInput               `pulumi:"autoUpgrade"`
+	Cni            pulumi.StringPtrInput             `pulumi:"cni"`
+	ControlPlaneCa pulumi.StringInput                `pulumi:"controlPlaneCa"`
+	CreatedAt      pulumi.StringInput                `pulumi:"createdAt"`
+	Description    pulumi.StringPtrInput             `pulumi:"description"`
+	Endpoint       pulumi.StringInput                `pulumi:"endpoint"`
+	ExoscaleCcm    pulumi.BoolPtrInput               `pulumi:"exoscaleCcm"`
+	Id             pulumi.StringPtrInput             `pulumi:"id"`
+	KubeletCa      pulumi.StringInput                `pulumi:"kubeletCa"`
+	Labels         pulumi.StringMapInput             `pulumi:"labels"`
+	MetricsServer  pulumi.BoolPtrInput               `pulumi:"metricsServer"`
+	Name           pulumi.StringPtrInput             `pulumi:"name"`
+	Nodepools      pulumi.StringArrayInput           `pulumi:"nodepools"`
+	Oidc           GetSKSClusterListClusterOidcInput `pulumi:"oidc"`
+	ServiceLevel   pulumi.StringPtrInput             `pulumi:"serviceLevel"`
+	State          pulumi.StringInput                `pulumi:"state"`
+	Version        pulumi.StringInput                `pulumi:"version"`
+	Zone           pulumi.StringInput                `pulumi:"zone"`
 }
 
 func (GetSKSClusterListClusterArgs) ElementType() reflect.Type {
@@ -5751,67 +7970,54 @@ func (o GetSKSClusterListClusterOutput) Addons() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSKSClusterListCluster) []string { return v.Addons }).(pulumi.StringArrayOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSClusterListClusterOutput) AggregationCa() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.AggregationCa }).(pulumi.StringOutput)
 }
 
-// Match against this bool
 func (o GetSKSClusterListClusterOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetSKSClusterListCluster) *bool { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSClusterListClusterOutput) Cni() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSKSClusterListCluster) *string { return v.Cni }).(pulumi.StringPtrOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSClusterListClusterOutput) ControlPlaneCa() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.ControlPlaneCa }).(pulumi.StringOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSClusterListClusterOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSClusterListClusterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSKSClusterListCluster) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSClusterListClusterOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
-// Match against this bool
 func (o GetSKSClusterListClusterOutput) ExoscaleCcm() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetSKSClusterListCluster) *bool { return v.ExoscaleCcm }).(pulumi.BoolPtrOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSClusterListClusterOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSKSClusterListCluster) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSClusterListClusterOutput) KubeletCa() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.KubeletCa }).(pulumi.StringOutput)
 }
 
-// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
 func (o GetSKSClusterListClusterOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSKSClusterListCluster) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Match against this bool
 func (o GetSKSClusterListClusterOutput) MetricsServer() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetSKSClusterListCluster) *bool { return v.MetricsServer }).(pulumi.BoolPtrOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSClusterListClusterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSKSClusterListCluster) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -5824,22 +8030,18 @@ func (o GetSKSClusterListClusterOutput) Oidc() GetSKSClusterListClusterOidcOutpu
 	return o.ApplyT(func(v GetSKSClusterListCluster) GetSKSClusterListClusterOidc { return v.Oidc }).(GetSKSClusterListClusterOidcOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSClusterListClusterOutput) ServiceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSKSClusterListCluster) *string { return v.ServiceLevel }).(pulumi.StringPtrOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSClusterListClusterOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSClusterListClusterOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.Version }).(pulumi.StringOutput)
 }
 
-// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o GetSKSClusterListClusterOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.Zone }).(pulumi.StringOutput)
 }
@@ -6243,45 +8445,27 @@ func (o GetSKSClusterOidcPtrOutput) UsernamePrefix() pulumi.StringPtrOutput {
 }
 
 type GetSKSNodepoolListNodepool struct {
-	AntiAffinityGroupIds []string `pulumi:"antiAffinityGroupIds"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ClusterId string `pulumi:"clusterId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	CreatedAt string `pulumi:"createdAt"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	DeployTargetId *string `pulumi:"deployTargetId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Description *string `pulumi:"description"`
-	// Match against this int
-	DiskSize *int `pulumi:"diskSize"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Id *string `pulumi:"id"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	InstancePoolId string `pulumi:"instancePoolId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	InstancePrefix *string `pulumi:"instancePrefix"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	InstanceType *string `pulumi:"instanceType"`
-	// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-	Labels map[string]string `pulumi:"labels"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Name              *string  `pulumi:"name"`
-	PrivateNetworkIds []string `pulumi:"privateNetworkIds"`
-	SecurityGroupIds  []string `pulumi:"securityGroupIds"`
-	// Match against this int
-	Size *int `pulumi:"size"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	State string `pulumi:"state"`
-	// Match against this bool
-	StorageLvm *bool `pulumi:"storageLvm"`
-	// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-	Taints map[string]string `pulumi:"taints"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	TemplateId string `pulumi:"templateId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Version string `pulumi:"version"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-	Zone string `pulumi:"zone"`
+	AntiAffinityGroupIds []string          `pulumi:"antiAffinityGroupIds"`
+	ClusterId            string            `pulumi:"clusterId"`
+	CreatedAt            string            `pulumi:"createdAt"`
+	DeployTargetId       *string           `pulumi:"deployTargetId"`
+	Description          *string           `pulumi:"description"`
+	DiskSize             *int              `pulumi:"diskSize"`
+	Id                   *string           `pulumi:"id"`
+	InstancePoolId       string            `pulumi:"instancePoolId"`
+	InstancePrefix       *string           `pulumi:"instancePrefix"`
+	InstanceType         *string           `pulumi:"instanceType"`
+	Labels               map[string]string `pulumi:"labels"`
+	Name                 *string           `pulumi:"name"`
+	PrivateNetworkIds    []string          `pulumi:"privateNetworkIds"`
+	SecurityGroupIds     []string          `pulumi:"securityGroupIds"`
+	Size                 *int              `pulumi:"size"`
+	State                string            `pulumi:"state"`
+	StorageLvm           *bool             `pulumi:"storageLvm"`
+	Taints               map[string]string `pulumi:"taints"`
+	TemplateId           string            `pulumi:"templateId"`
+	Version              string            `pulumi:"version"`
+	Zone                 string            `pulumi:"zone"`
 }
 
 // GetSKSNodepoolListNodepoolInput is an input type that accepts GetSKSNodepoolListNodepoolArgs and GetSKSNodepoolListNodepoolOutput values.
@@ -6297,44 +8481,26 @@ type GetSKSNodepoolListNodepoolInput interface {
 
 type GetSKSNodepoolListNodepoolArgs struct {
 	AntiAffinityGroupIds pulumi.StringArrayInput `pulumi:"antiAffinityGroupIds"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	DeployTargetId pulumi.StringPtrInput `pulumi:"deployTargetId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Match against this int
-	DiskSize pulumi.IntPtrInput `pulumi:"diskSize"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	InstancePoolId pulumi.StringInput `pulumi:"instancePoolId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	InstancePrefix pulumi.StringPtrInput `pulumi:"instancePrefix"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
-	// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Name              pulumi.StringPtrInput   `pulumi:"name"`
-	PrivateNetworkIds pulumi.StringArrayInput `pulumi:"privateNetworkIds"`
-	SecurityGroupIds  pulumi.StringArrayInput `pulumi:"securityGroupIds"`
-	// Match against this int
-	Size pulumi.IntPtrInput `pulumi:"size"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	State pulumi.StringInput `pulumi:"state"`
-	// Match against this bool
-	StorageLvm pulumi.BoolPtrInput `pulumi:"storageLvm"`
-	// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-	Taints pulumi.StringMapInput `pulumi:"taints"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	TemplateId pulumi.StringInput `pulumi:"templateId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Version pulumi.StringInput `pulumi:"version"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-	Zone pulumi.StringInput `pulumi:"zone"`
+	ClusterId            pulumi.StringInput      `pulumi:"clusterId"`
+	CreatedAt            pulumi.StringInput      `pulumi:"createdAt"`
+	DeployTargetId       pulumi.StringPtrInput   `pulumi:"deployTargetId"`
+	Description          pulumi.StringPtrInput   `pulumi:"description"`
+	DiskSize             pulumi.IntPtrInput      `pulumi:"diskSize"`
+	Id                   pulumi.StringPtrInput   `pulumi:"id"`
+	InstancePoolId       pulumi.StringInput      `pulumi:"instancePoolId"`
+	InstancePrefix       pulumi.StringPtrInput   `pulumi:"instancePrefix"`
+	InstanceType         pulumi.StringPtrInput   `pulumi:"instanceType"`
+	Labels               pulumi.StringMapInput   `pulumi:"labels"`
+	Name                 pulumi.StringPtrInput   `pulumi:"name"`
+	PrivateNetworkIds    pulumi.StringArrayInput `pulumi:"privateNetworkIds"`
+	SecurityGroupIds     pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	Size                 pulumi.IntPtrInput      `pulumi:"size"`
+	State                pulumi.StringInput      `pulumi:"state"`
+	StorageLvm           pulumi.BoolPtrInput     `pulumi:"storageLvm"`
+	Taints               pulumi.StringMapInput   `pulumi:"taints"`
+	TemplateId           pulumi.StringInput      `pulumi:"templateId"`
+	Version              pulumi.StringInput      `pulumi:"version"`
+	Zone                 pulumi.StringInput      `pulumi:"zone"`
 }
 
 func (GetSKSNodepoolListNodepoolArgs) ElementType() reflect.Type {
@@ -6410,57 +8576,46 @@ func (o GetSKSNodepoolListNodepoolOutput) AntiAffinityGroupIds() pulumi.StringAr
 	return o.ApplyT(func(v GetSKSNodepoolListNodepool) []string { return v.AntiAffinityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSNodepoolListNodepoolOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSKSNodepoolListNodepool) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSNodepoolListNodepoolOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSKSNodepoolListNodepool) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSNodepoolListNodepoolOutput) DeployTargetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *string { return v.DeployTargetId }).(pulumi.StringPtrOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSNodepoolListNodepoolOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Match against this int
 func (o GetSKSNodepoolListNodepoolOutput) DiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSNodepoolListNodepoolOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSNodepoolListNodepoolOutput) InstancePoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSKSNodepoolListNodepool) string { return v.InstancePoolId }).(pulumi.StringOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSNodepoolListNodepoolOutput) InstancePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *string { return v.InstancePrefix }).(pulumi.StringPtrOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSNodepoolListNodepoolOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
 
-// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
 func (o GetSKSNodepoolListNodepoolOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSKSNodepoolListNodepool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSNodepoolListNodepoolOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -6473,37 +8628,30 @@ func (o GetSKSNodepoolListNodepoolOutput) SecurityGroupIds() pulumi.StringArrayO
 	return o.ApplyT(func(v GetSKSNodepoolListNodepool) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// Match against this int
 func (o GetSKSNodepoolListNodepoolOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSNodepoolListNodepoolOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSKSNodepoolListNodepool) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Match against this bool
 func (o GetSKSNodepoolListNodepoolOutput) StorageLvm() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *bool { return v.StorageLvm }).(pulumi.BoolPtrOutput)
 }
 
-// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
 func (o GetSKSNodepoolListNodepoolOutput) Taints() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSKSNodepoolListNodepool) map[string]string { return v.Taints }).(pulumi.StringMapOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSNodepoolListNodepoolOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSKSNodepoolListNodepool) string { return v.TemplateId }).(pulumi.StringOutput)
 }
 
-// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 func (o GetSKSNodepoolListNodepoolOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSKSNodepoolListNodepool) string { return v.Version }).(pulumi.StringOutput)
 }
 
-// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o GetSKSNodepoolListNodepoolOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSKSNodepoolListNodepool) string { return v.Zone }).(pulumi.StringOutput)
 }
@@ -6559,6 +8707,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTimeoutsPtrInput)(nil)).Elem(), DatabaseTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElasticIPHealthcheckInput)(nil)).Elem(), ElasticIPHealthcheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElasticIPHealthcheckPtrInput)(nil)).Elem(), ElasticIPHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IAMAPIKeyTimeoutsInput)(nil)).Elem(), IAMAPIKeyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IAMAPIKeyTimeoutsPtrInput)(nil)).Elem(), IAMAPIKeyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IAMOrgPolicyServicesInput)(nil)).Elem(), IAMOrgPolicyServicesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IAMOrgPolicyServicesMapInput)(nil)).Elem(), IAMOrgPolicyServicesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IAMOrgPolicyServicesRuleInput)(nil)).Elem(), IAMOrgPolicyServicesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IAMOrgPolicyServicesRuleArrayInput)(nil)).Elem(), IAMOrgPolicyServicesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IAMOrgPolicyTimeoutsInput)(nil)).Elem(), IAMOrgPolicyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IAMOrgPolicyTimeoutsPtrInput)(nil)).Elem(), IAMOrgPolicyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IAMRolePolicyInput)(nil)).Elem(), IAMRolePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IAMRolePolicyPtrInput)(nil)).Elem(), IAMRolePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IAMRolePolicyServicesInput)(nil)).Elem(), IAMRolePolicyServicesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IAMRolePolicyServicesMapInput)(nil)).Elem(), IAMRolePolicyServicesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IAMRolePolicyServicesRuleInput)(nil)).Elem(), IAMRolePolicyServicesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IAMRolePolicyServicesRuleArrayInput)(nil)).Elem(), IAMRolePolicyServicesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IAMRoleTimeoutsInput)(nil)).Elem(), IAMRoleTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IAMRoleTimeoutsPtrInput)(nil)).Elem(), IAMRoleTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePoolInstanceInput)(nil)).Elem(), InstancePoolInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePoolInstanceArrayInput)(nil)).Elem(), InstancePoolInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NLBServiceHealthcheckInput)(nil)).Elem(), NLBServiceHealthcheckArgs{})
@@ -6578,6 +8742,21 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainRecordRecordArrayInput)(nil)).Elem(), GetDomainRecordRecordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetElasticIPHealthcheckInput)(nil)).Elem(), GetElasticIPHealthcheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetElasticIPHealthcheckArrayInput)(nil)).Elem(), GetElasticIPHealthcheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMAPIKeyTimeoutsInput)(nil)).Elem(), GetIAMAPIKeyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMAPIKeyTimeoutsPtrInput)(nil)).Elem(), GetIAMAPIKeyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMOrgPolicyServicesInput)(nil)).Elem(), GetIAMOrgPolicyServicesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMOrgPolicyServicesMapInput)(nil)).Elem(), GetIAMOrgPolicyServicesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMOrgPolicyServicesRuleInput)(nil)).Elem(), GetIAMOrgPolicyServicesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMOrgPolicyServicesRuleArrayInput)(nil)).Elem(), GetIAMOrgPolicyServicesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMOrgPolicyTimeoutsInput)(nil)).Elem(), GetIAMOrgPolicyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMOrgPolicyTimeoutsPtrInput)(nil)).Elem(), GetIAMOrgPolicyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMRolePolicyInput)(nil)).Elem(), GetIAMRolePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMRolePolicyServicesInput)(nil)).Elem(), GetIAMRolePolicyServicesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMRolePolicyServicesMapInput)(nil)).Elem(), GetIAMRolePolicyServicesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMRolePolicyServicesRuleInput)(nil)).Elem(), GetIAMRolePolicyServicesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMRolePolicyServicesRuleArrayInput)(nil)).Elem(), GetIAMRolePolicyServicesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMRoleTimeoutsInput)(nil)).Elem(), GetIAMRoleTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMRoleTimeoutsPtrInput)(nil)).Elem(), GetIAMRoleTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolInstanceInput)(nil)).Elem(), GetInstancePoolInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolInstanceArrayInput)(nil)).Elem(), GetInstancePoolInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolListPoolInput)(nil)).Elem(), GetInstancePoolListPoolArgs{})
@@ -6620,6 +8799,22 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(ElasticIPHealthcheckOutput{})
 	pulumi.RegisterOutputType(ElasticIPHealthcheckPtrOutput{})
+	pulumi.RegisterOutputType(IAMAPIKeyTimeoutsOutput{})
+	pulumi.RegisterOutputType(IAMAPIKeyTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(IAMOrgPolicyServicesOutput{})
+	pulumi.RegisterOutputType(IAMOrgPolicyServicesMapOutput{})
+	pulumi.RegisterOutputType(IAMOrgPolicyServicesRuleOutput{})
+	pulumi.RegisterOutputType(IAMOrgPolicyServicesRuleArrayOutput{})
+	pulumi.RegisterOutputType(IAMOrgPolicyTimeoutsOutput{})
+	pulumi.RegisterOutputType(IAMOrgPolicyTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(IAMRolePolicyOutput{})
+	pulumi.RegisterOutputType(IAMRolePolicyPtrOutput{})
+	pulumi.RegisterOutputType(IAMRolePolicyServicesOutput{})
+	pulumi.RegisterOutputType(IAMRolePolicyServicesMapOutput{})
+	pulumi.RegisterOutputType(IAMRolePolicyServicesRuleOutput{})
+	pulumi.RegisterOutputType(IAMRolePolicyServicesRuleArrayOutput{})
+	pulumi.RegisterOutputType(IAMRoleTimeoutsOutput{})
+	pulumi.RegisterOutputType(IAMRoleTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(InstancePoolInstanceOutput{})
 	pulumi.RegisterOutputType(InstancePoolInstanceArrayOutput{})
 	pulumi.RegisterOutputType(NLBServiceHealthcheckOutput{})
@@ -6639,6 +8834,21 @@ func init() {
 	pulumi.RegisterOutputType(GetDomainRecordRecordArrayOutput{})
 	pulumi.RegisterOutputType(GetElasticIPHealthcheckOutput{})
 	pulumi.RegisterOutputType(GetElasticIPHealthcheckArrayOutput{})
+	pulumi.RegisterOutputType(GetIAMAPIKeyTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetIAMAPIKeyTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetIAMOrgPolicyServicesOutput{})
+	pulumi.RegisterOutputType(GetIAMOrgPolicyServicesMapOutput{})
+	pulumi.RegisterOutputType(GetIAMOrgPolicyServicesRuleOutput{})
+	pulumi.RegisterOutputType(GetIAMOrgPolicyServicesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetIAMOrgPolicyTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetIAMOrgPolicyTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetIAMRolePolicyOutput{})
+	pulumi.RegisterOutputType(GetIAMRolePolicyServicesOutput{})
+	pulumi.RegisterOutputType(GetIAMRolePolicyServicesMapOutput{})
+	pulumi.RegisterOutputType(GetIAMRolePolicyServicesRuleOutput{})
+	pulumi.RegisterOutputType(GetIAMRolePolicyServicesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetIAMRoleTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetIAMRoleTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetInstancePoolInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancePoolInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancePoolListPoolOutput{})

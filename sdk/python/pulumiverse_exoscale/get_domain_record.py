@@ -88,7 +88,6 @@ def get_domain_record(domain: Optional[str] = None,
     """
     Use this data source to access information about an existing resource.
 
-    :param str domain: The Domain name to match.
     :param pulumi.InputType['GetDomainRecordFilterArgs'] filter: Filter to apply when looking up domain records.
     """
     __args__ = dict()
@@ -111,7 +110,6 @@ def get_domain_record_output(domain: Optional[pulumi.Input[str]] = None,
     """
     Use this data source to access information about an existing resource.
 
-    :param str domain: The Domain name to match.
     :param pulumi.InputType['GetDomainRecordFilterArgs'] filter: Filter to apply when looking up domain records.
     """
     ...

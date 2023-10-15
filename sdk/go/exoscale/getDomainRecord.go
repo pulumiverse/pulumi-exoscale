@@ -24,7 +24,6 @@ func LookupDomainRecord(ctx *pulumi.Context, args *LookupDomainRecordArgs, opts 
 
 // A collection of arguments for invoking getDomainRecord.
 type LookupDomainRecordArgs struct {
-	// The Domain name to match.
 	Domain string `pulumi:"domain"`
 	// Filter to apply when looking up domain records.
 	Filter GetDomainRecordFilter `pulumi:"filter"`
@@ -57,7 +56,6 @@ func LookupDomainRecordOutput(ctx *pulumi.Context, args LookupDomainRecordOutput
 
 // A collection of arguments for invoking getDomainRecord.
 type LookupDomainRecordOutputArgs struct {
-	// The Domain name to match.
 	Domain pulumi.StringInput `pulumi:"domain"`
 	// Filter to apply when looking up domain records.
 	Filter GetDomainRecordFilterInput `pulumi:"filter"`

@@ -145,20 +145,47 @@ export interface DatabaseOpensearch {
 }
 
 export interface DatabaseOpensearchDashboards {
+    /**
+     * Enable or disable OpenSearch Dashboards (default: true).
+     */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. (default: 128).
+     */
     maxOldSpaceSize?: pulumi.Input<number>;
+    /**
+     * Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch (default: 30000)
+     */
     requestTimeout?: pulumi.Input<number>;
 }
 
 export interface DatabaseOpensearchIndexPattern {
+    /**
+     * Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
+     */
     maxIndexCount?: pulumi.Input<number>;
+    /**
+     * fnmatch pattern
+     */
     pattern?: pulumi.Input<string>;
+    /**
+     * `alphabetical` or `creationDate`.
+     */
     sortingAlgorithm?: pulumi.Input<string>;
 }
 
 export interface DatabaseOpensearchIndexTemplate {
+    /**
+     * The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. (Default is 10000. Minimum value is `0`, maximum value is `100000`.)
+     */
     mappingNestedObjectsLimit?: pulumi.Input<number>;
+    /**
+     * The number of replicas each primary shard has. (Minimum value is `0`, maximum value is `29`)
+     */
     numberOfReplicas?: pulumi.Input<number>;
+    /**
+     * The number of primary shards that an index should have. (Minimum value is `1`, maximum value is `1024`.)
+     */
     numberOfShards?: pulumi.Input<number>;
 }
 
@@ -318,6 +345,48 @@ export interface GetDomainRecordFilterArgs {
     recordType?: pulumi.Input<string>;
 }
 
+export interface GetIAMAPIKeyTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+}
+
+export interface GetIAMAPIKeyTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+}
+
+export interface GetIAMOrgPolicyTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+}
+
+export interface GetIAMOrgPolicyTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+}
+
+export interface GetIAMRoleTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+}
+
+export interface GetIAMRoleTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+}
+
 export interface GetNLBServiceListTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
@@ -392,6 +461,90 @@ export interface GetSKSClusterOidcArgs {
      * An OpenID prefix prepended to username claims.
      */
     usernamePrefix?: pulumi.Input<string>;
+}
+
+export interface IAMAPIKeyTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+}
+
+export interface IAMOrgPolicyServices {
+    /**
+     * List of IAM service rules (if type is `rules`).
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.IAMOrgPolicyServicesRule>[]>;
+    /**
+     * Service type (`rules`, `allow`, or `deny`).
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface IAMOrgPolicyServicesRule {
+    /**
+     * IAM policy rule action (`allow` or `deny`).
+     */
+    action?: pulumi.Input<string>;
+    /**
+     * IAM policy rule expression.
+     */
+    expression?: pulumi.Input<string>;
+    /**
+     * List of resources that IAM policy rule applies to.
+     */
+    resources?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface IAMOrgPolicyTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+}
+
+export interface IAMRolePolicy {
+    /**
+     * Default service strategy (`allow` or `deny`).
+     */
+    defaultServiceStrategy?: pulumi.Input<string>;
+    /**
+     * IAM policy services.
+     */
+    services?: pulumi.Input<{[key: string]: pulumi.Input<inputs.IAMRolePolicyServices>}>;
+}
+
+export interface IAMRolePolicyServices {
+    /**
+     * List of IAM service rules (if type is `rules`).
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.IAMRolePolicyServicesRule>[]>;
+    /**
+     * Service type (`rules`, `allow`, or `deny`).
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface IAMRolePolicyServicesRule {
+    /**
+     * IAM policy rule action (`allow` or `deny`).
+     */
+    action?: pulumi.Input<string>;
+    /**
+     * IAM policy rule expression.
+     */
+    expression?: pulumi.Input<string>;
+    /**
+     * List of resources that IAM policy rule applies to.
+     */
+    resources?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface IAMRoleTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
 }
 
 export interface InstancePoolInstance {

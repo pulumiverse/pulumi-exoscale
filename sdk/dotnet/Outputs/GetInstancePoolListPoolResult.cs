@@ -19,9 +19,6 @@ namespace Pulumiverse.Exoscale.Outputs
         public readonly string Description;
         public readonly int DiskSize;
         public readonly ImmutableArray<string> ElasticIpIds;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly string? Id;
         public readonly string InstancePrefix;
         public readonly string InstanceType;
@@ -36,9 +33,6 @@ namespace Pulumiverse.Exoscale.Outputs
         public readonly string State;
         public readonly string TemplateId;
         public readonly string UserData;
-        /// <summary>
-        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-        /// </summary>
         public readonly string Zone;
 
         [OutputConstructor]

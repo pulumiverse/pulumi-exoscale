@@ -51,7 +51,7 @@ type InstancePool struct {
 	KeyPair pulumi.StringPtrOutput `pulumi:"keyPair"`
 	// A map of key/value labels.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The instance pool name.
+	// The instance name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A list of exoscale*private*network (IDs).
 	NetworkIds pulumi.StringArrayOutput `pulumi:"networkIds"`
@@ -137,7 +137,7 @@ type instancePoolState struct {
 	KeyPair *string `pulumi:"keyPair"`
 	// A map of key/value labels.
 	Labels map[string]string `pulumi:"labels"`
-	// The instance pool name.
+	// The instance name.
 	Name *string `pulumi:"name"`
 	// A list of exoscale*private*network (IDs).
 	NetworkIds []string `pulumi:"networkIds"`
@@ -185,7 +185,7 @@ type InstancePoolState struct {
 	KeyPair pulumi.StringPtrInput
 	// A map of key/value labels.
 	Labels pulumi.StringMapInput
-	// The instance pool name.
+	// The instance name.
 	Name pulumi.StringPtrInput
 	// A list of exoscale*private*network (IDs).
 	NetworkIds pulumi.StringArrayInput
@@ -237,7 +237,7 @@ type instancePoolArgs struct {
 	KeyPair *string `pulumi:"keyPair"`
 	// A map of key/value labels.
 	Labels map[string]string `pulumi:"labels"`
-	// The instance pool name.
+	// The instance name.
 	Name *string `pulumi:"name"`
 	// A list of exoscale*private*network (IDs).
 	NetworkIds []string `pulumi:"networkIds"`
@@ -286,7 +286,7 @@ type InstancePoolArgs struct {
 	KeyPair pulumi.StringPtrInput
 	// A map of key/value labels.
 	Labels pulumi.StringMapInput
-	// The instance pool name.
+	// The instance name.
 	Name pulumi.StringPtrInput
 	// A list of exoscale*private*network (IDs).
 	NetworkIds pulumi.StringArrayInput
@@ -477,7 +477,7 @@ func (o InstancePoolOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InstancePool) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The instance pool name.
+// The instance name.
 func (o InstancePoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstancePool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

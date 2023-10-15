@@ -266,24 +266,6 @@ def get_sks_cluster_list(aggregation_ca: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSKSClusterListResult:
     """
     Use this data source to access information about an existing resource.
-
-    :param str aggregation_ca: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param bool auto_upgrade: Match against this bool
-    :param str cni: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str control_plane_ca: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str created_at: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str description: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str endpoint: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param bool exoscale_ccm: Match against this bool
-    :param str id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str kubelet_ca: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param Mapping[str, str] labels: Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-    :param bool metrics_server: Match against this bool
-    :param str name: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str service_level: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str state: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str version: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     __args__ = dict()
     __args__['aggregationCa'] = aggregation_ca
@@ -348,23 +330,5 @@ def get_sks_cluster_list_output(aggregation_ca: Optional[pulumi.Input[Optional[s
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSKSClusterListResult]:
     """
     Use this data source to access information about an existing resource.
-
-    :param str aggregation_ca: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param bool auto_upgrade: Match against this bool
-    :param str cni: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str control_plane_ca: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str created_at: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str description: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str endpoint: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param bool exoscale_ccm: Match against this bool
-    :param str id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str kubelet_ca: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param Mapping[str, str] labels: Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-    :param bool metrics_server: Match against this bool
-    :param str name: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str service_level: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str state: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str version: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     ...

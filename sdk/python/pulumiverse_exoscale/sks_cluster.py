@@ -716,7 +716,7 @@ class SKSCluster(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["metrics_server"] = metrics_server
             __props__.__dict__["name"] = name
-            if not isinstance(oidc, SKSClusterOidcArgs):
+            if oidc is not None and not isinstance(oidc, SKSClusterOidcArgs):
                 oidc = oidc or {}
                 def _setter(key, value):
                     oidc[key] = value

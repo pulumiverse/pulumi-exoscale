@@ -282,25 +282,6 @@ def get_compute_instance_list(created_at: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetComputeInstanceListResult:
     """
     Use this data source to access information about an existing resource.
-
-    :param str created_at: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str deploy_target_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param int disk_size: Match against this int
-    :param str id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param bool ipv6: Match against this bool
-    :param str ipv6_address: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param Mapping[str, str] labels: Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-    :param str manager_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str manager_type: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str name: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str public_ip_address: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str reverse_dns: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str ssh_key: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str state: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str template_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str type: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str user_data: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     __args__ = dict()
     __args__['createdAt'] = created_at
@@ -368,24 +349,5 @@ def get_compute_instance_list_output(created_at: Optional[pulumi.Input[Optional[
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetComputeInstanceListResult]:
     """
     Use this data source to access information about an existing resource.
-
-    :param str created_at: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str deploy_target_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param int disk_size: Match against this int
-    :param str id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param bool ipv6: Match against this bool
-    :param str ipv6_address: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param Mapping[str, str] labels: Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-    :param str manager_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str manager_type: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str name: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str public_ip_address: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str reverse_dns: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str ssh_key: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str state: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str template_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str type: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str user_data: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     ...

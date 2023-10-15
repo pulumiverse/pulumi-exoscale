@@ -790,13 +790,13 @@ class Database(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatabaseArgs.__new__(DatabaseArgs)
 
-            if not isinstance(grafana, DatabaseGrafanaArgs):
+            if grafana is not None and not isinstance(grafana, DatabaseGrafanaArgs):
                 grafana = grafana or {}
                 def _setter(key, value):
                     grafana[key] = value
                 DatabaseGrafanaArgs._configure(_setter, **grafana)
             __props__.__dict__["grafana"] = grafana
-            if not isinstance(kafka, DatabaseKafkaArgs):
+            if kafka is not None and not isinstance(kafka, DatabaseKafkaArgs):
                 kafka = kafka or {}
                 def _setter(key, value):
                     kafka[key] = value
@@ -804,20 +804,20 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["kafka"] = kafka
             __props__.__dict__["maintenance_dow"] = maintenance_dow
             __props__.__dict__["maintenance_time"] = maintenance_time
-            if not isinstance(mysql, DatabaseMysqlArgs):
+            if mysql is not None and not isinstance(mysql, DatabaseMysqlArgs):
                 mysql = mysql or {}
                 def _setter(key, value):
                     mysql[key] = value
                 DatabaseMysqlArgs._configure(_setter, **mysql)
             __props__.__dict__["mysql"] = mysql
             __props__.__dict__["name"] = name
-            if not isinstance(opensearch, DatabaseOpensearchArgs):
+            if opensearch is not None and not isinstance(opensearch, DatabaseOpensearchArgs):
                 opensearch = opensearch or {}
                 def _setter(key, value):
                     opensearch[key] = value
                 DatabaseOpensearchArgs._configure(_setter, **opensearch)
             __props__.__dict__["opensearch"] = opensearch
-            if not isinstance(pg, DatabasePgArgs):
+            if pg is not None and not isinstance(pg, DatabasePgArgs):
                 pg = pg or {}
                 def _setter(key, value):
                     pg[key] = value
@@ -826,14 +826,14 @@ class Database(pulumi.CustomResource):
             if plan is None and not opts.urn:
                 raise TypeError("Missing required property 'plan'")
             __props__.__dict__["plan"] = plan
-            if not isinstance(redis, DatabaseRedisArgs):
+            if redis is not None and not isinstance(redis, DatabaseRedisArgs):
                 redis = redis or {}
                 def _setter(key, value):
                     redis[key] = value
                 DatabaseRedisArgs._configure(_setter, **redis)
             __props__.__dict__["redis"] = redis
             __props__.__dict__["termination_protection"] = termination_protection
-            if not isinstance(timeouts, DatabaseTimeoutsArgs):
+            if timeouts is not None and not isinstance(timeouts, DatabaseTimeoutsArgs):
                 timeouts = timeouts or {}
                 def _setter(key, value):
                     timeouts[key] = value

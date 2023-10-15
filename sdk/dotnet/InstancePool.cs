@@ -93,7 +93,7 @@ namespace Pulumiverse.Exoscale
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The instance pool name.
+        /// The instance name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -287,7 +287,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The instance pool name.
+        /// The instance name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -461,7 +461,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The instance pool name.
+        /// The instance name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
