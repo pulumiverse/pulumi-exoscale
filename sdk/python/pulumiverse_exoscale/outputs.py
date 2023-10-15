@@ -23,6 +23,14 @@ __all__ = [
     'DatabaseRedis',
     'DatabaseTimeouts',
     'ElasticIPHealthcheck',
+    'IAMAPIKeyTimeouts',
+    'IAMOrgPolicyServices',
+    'IAMOrgPolicyServicesRule',
+    'IAMOrgPolicyTimeouts',
+    'IAMRolePolicy',
+    'IAMRolePolicyServices',
+    'IAMRolePolicyServicesRule',
+    'IAMRoleTimeouts',
     'InstancePoolInstance',
     'NLBServiceHealthcheck',
     'SKSClusterOidc',
@@ -33,6 +41,14 @@ __all__ = [
     'GetDomainRecordFilterResult',
     'GetDomainRecordRecordResult',
     'GetElasticIPHealthcheckResult',
+    'GetIAMAPIKeyTimeoutsResult',
+    'GetIAMOrgPolicyServicesResult',
+    'GetIAMOrgPolicyServicesRuleResult',
+    'GetIAMOrgPolicyTimeoutsResult',
+    'GetIAMRolePolicyResult',
+    'GetIAMRolePolicyServicesResult',
+    'GetIAMRolePolicyServicesRuleResult',
+    'GetIAMRoleTimeoutsResult',
     'GetInstancePoolInstanceResult',
     'GetInstancePoolListPoolResult',
     'GetInstancePoolListPoolInstanceResult',
@@ -700,6 +716,11 @@ class DatabaseOpensearchDashboards(dict):
                  enabled: Optional[bool] = None,
                  max_old_space_size: Optional[int] = None,
                  request_timeout: Optional[int] = None):
+        """
+        :param bool enabled: Enable or disable OpenSearch Dashboards (default: true).
+        :param int max_old_space_size: Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. (default: 128).
+        :param int request_timeout: Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch (default: 30000)
+        """
         DatabaseOpensearchDashboards._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             enabled=enabled,
@@ -723,16 +744,25 @@ class DatabaseOpensearchDashboards(dict):
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        Enable or disable OpenSearch Dashboards (default: true).
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="maxOldSpaceSize")
     def max_old_space_size(self) -> Optional[int]:
+        """
+        Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. (default: 128).
+        """
         return pulumi.get(self, "max_old_space_size")
 
     @property
     @pulumi.getter(name="requestTimeout")
     def request_timeout(self) -> Optional[int]:
+        """
+        Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch (default: 30000)
+        """
         return pulumi.get(self, "request_timeout")
 
 
@@ -761,6 +791,11 @@ class DatabaseOpensearchIndexPattern(dict):
                  max_index_count: Optional[int] = None,
                  pattern: Optional[str] = None,
                  sorting_algorithm: Optional[str] = None):
+        """
+        :param int max_index_count: Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
+        :param str pattern: fnmatch pattern
+        :param str sorting_algorithm: `alphabetical` or `creation_date`.
+        """
         DatabaseOpensearchIndexPattern._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             max_index_count=max_index_count,
@@ -784,16 +819,25 @@ class DatabaseOpensearchIndexPattern(dict):
     @property
     @pulumi.getter(name="maxIndexCount")
     def max_index_count(self) -> Optional[int]:
+        """
+        Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
+        """
         return pulumi.get(self, "max_index_count")
 
     @property
     @pulumi.getter
     def pattern(self) -> Optional[str]:
+        """
+        fnmatch pattern
+        """
         return pulumi.get(self, "pattern")
 
     @property
     @pulumi.getter(name="sortingAlgorithm")
     def sorting_algorithm(self) -> Optional[str]:
+        """
+        `alphabetical` or `creation_date`.
+        """
         return pulumi.get(self, "sorting_algorithm")
 
 
@@ -824,6 +868,11 @@ class DatabaseOpensearchIndexTemplate(dict):
                  mapping_nested_objects_limit: Optional[int] = None,
                  number_of_replicas: Optional[int] = None,
                  number_of_shards: Optional[int] = None):
+        """
+        :param int mapping_nested_objects_limit: The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. (Default is 10000. Minimum value is `0`, maximum value is `100000`.)
+        :param int number_of_replicas: The number of replicas each primary shard has. (Minimum value is `0`, maximum value is `29`)
+        :param int number_of_shards: The number of primary shards that an index should have. (Minimum value is `1`, maximum value is `1024`.)
+        """
         DatabaseOpensearchIndexTemplate._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             mapping_nested_objects_limit=mapping_nested_objects_limit,
@@ -847,16 +896,25 @@ class DatabaseOpensearchIndexTemplate(dict):
     @property
     @pulumi.getter(name="mappingNestedObjectsLimit")
     def mapping_nested_objects_limit(self) -> Optional[int]:
+        """
+        The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. (Default is 10000. Minimum value is `0`, maximum value is `100000`.)
+        """
         return pulumi.get(self, "mapping_nested_objects_limit")
 
     @property
     @pulumi.getter(name="numberOfReplicas")
     def number_of_replicas(self) -> Optional[int]:
+        """
+        The number of replicas each primary shard has. (Minimum value is `0`, maximum value is `29`)
+        """
         return pulumi.get(self, "number_of_replicas")
 
     @property
     @pulumi.getter(name="numberOfShards")
     def number_of_shards(self) -> Optional[int]:
+        """
+        The number of primary shards that an index should have. (Minimum value is `1`, maximum value is `1024`.)
+        """
         return pulumi.get(self, "number_of_shards")
 
 
@@ -1305,6 +1363,345 @@ class ElasticIPHealthcheck(dict):
         The healthcheck target URI (required in `http(s)` modes).
         """
         return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class IAMAPIKeyTimeouts(dict):
+    def __init__(__self__, *,
+                 read: Optional[str] = None):
+        """
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        IAMAPIKeyTimeouts._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            read=read,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             read: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if read is not None:
+            _setter("read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
+class IAMOrgPolicyServices(dict):
+    def __init__(__self__, *,
+                 rules: Optional[Sequence['outputs.IAMOrgPolicyServicesRule']] = None,
+                 type: Optional[str] = None):
+        """
+        :param Sequence['IAMOrgPolicyServicesRuleArgs'] rules: List of IAM service rules (if type is `rules`).
+        :param str type: Service type (`rules`, `allow`, or `deny`).
+        """
+        IAMOrgPolicyServices._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            rules=rules,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             rules: Optional[Sequence['outputs.IAMOrgPolicyServicesRule']] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if rules is not None:
+            _setter("rules", rules)
+        if type is not None:
+            _setter("type", type)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[Sequence['outputs.IAMOrgPolicyServicesRule']]:
+        """
+        List of IAM service rules (if type is `rules`).
+        """
+        return pulumi.get(self, "rules")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Service type (`rules`, `allow`, or `deny`).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class IAMOrgPolicyServicesRule(dict):
+    def __init__(__self__, *,
+                 action: Optional[str] = None,
+                 expression: Optional[str] = None,
+                 resources: Optional[Sequence[str]] = None):
+        """
+        :param str action: IAM policy rule action (`allow` or `deny`).
+        :param str expression: IAM policy rule expression.
+        :param Sequence[str] resources: List of resources that IAM policy rule applies to.
+        """
+        IAMOrgPolicyServicesRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            expression=expression,
+            resources=resources,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[str] = None,
+             expression: Optional[str] = None,
+             resources: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if action is not None:
+            _setter("action", action)
+        if expression is not None:
+            _setter("expression", expression)
+        if resources is not None:
+            _setter("resources", resources)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[str]:
+        """
+        IAM policy rule action (`allow` or `deny`).
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[str]:
+        """
+        IAM policy rule expression.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[Sequence[str]]:
+        """
+        List of resources that IAM policy rule applies to.
+        """
+        return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
+class IAMOrgPolicyTimeouts(dict):
+    def __init__(__self__, *,
+                 read: Optional[str] = None):
+        """
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        IAMOrgPolicyTimeouts._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            read=read,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             read: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if read is not None:
+            _setter("read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
+class IAMRolePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultServiceStrategy":
+            suggest = "default_service_strategy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IAMRolePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IAMRolePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IAMRolePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_service_strategy: Optional[str] = None,
+                 services: Optional[Mapping[str, 'outputs.IAMRolePolicyServices']] = None):
+        """
+        :param str default_service_strategy: Default service strategy (`allow` or `deny`).
+        :param Mapping[str, 'IAMRolePolicyServicesArgs'] services: IAM policy services.
+        """
+        IAMRolePolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_service_strategy=default_service_strategy,
+            services=services,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_service_strategy: Optional[str] = None,
+             services: Optional[Mapping[str, 'outputs.IAMRolePolicyServices']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if default_service_strategy is not None:
+            _setter("default_service_strategy", default_service_strategy)
+        if services is not None:
+            _setter("services", services)
+
+    @property
+    @pulumi.getter(name="defaultServiceStrategy")
+    def default_service_strategy(self) -> Optional[str]:
+        """
+        Default service strategy (`allow` or `deny`).
+        """
+        return pulumi.get(self, "default_service_strategy")
+
+    @property
+    @pulumi.getter
+    def services(self) -> Optional[Mapping[str, 'outputs.IAMRolePolicyServices']]:
+        """
+        IAM policy services.
+        """
+        return pulumi.get(self, "services")
+
+
+@pulumi.output_type
+class IAMRolePolicyServices(dict):
+    def __init__(__self__, *,
+                 rules: Optional[Sequence['outputs.IAMRolePolicyServicesRule']] = None,
+                 type: Optional[str] = None):
+        """
+        :param Sequence['IAMRolePolicyServicesRuleArgs'] rules: List of IAM service rules (if type is `rules`).
+        :param str type: Service type (`rules`, `allow`, or `deny`).
+        """
+        IAMRolePolicyServices._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            rules=rules,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             rules: Optional[Sequence['outputs.IAMRolePolicyServicesRule']] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if rules is not None:
+            _setter("rules", rules)
+        if type is not None:
+            _setter("type", type)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[Sequence['outputs.IAMRolePolicyServicesRule']]:
+        """
+        List of IAM service rules (if type is `rules`).
+        """
+        return pulumi.get(self, "rules")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Service type (`rules`, `allow`, or `deny`).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class IAMRolePolicyServicesRule(dict):
+    def __init__(__self__, *,
+                 action: Optional[str] = None,
+                 expression: Optional[str] = None,
+                 resources: Optional[Sequence[str]] = None):
+        """
+        :param str action: IAM policy rule action (`allow` or `deny`).
+        :param str expression: IAM policy rule expression.
+        :param Sequence[str] resources: List of resources that IAM policy rule applies to.
+        """
+        IAMRolePolicyServicesRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            expression=expression,
+            resources=resources,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[str] = None,
+             expression: Optional[str] = None,
+             resources: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if action is not None:
+            _setter("action", action)
+        if expression is not None:
+            _setter("expression", expression)
+        if resources is not None:
+            _setter("resources", resources)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[str]:
+        """
+        IAM policy rule action (`allow` or `deny`).
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[str]:
+        """
+        IAM policy rule expression.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[Sequence[str]]:
+        """
+        List of resources that IAM policy rule applies to.
+        """
+        return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
+class IAMRoleTimeouts(dict):
+    def __init__(__self__, *,
+                 read: Optional[str] = None):
+        """
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        IAMRoleTimeouts._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            read=read,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             read: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if read is not None:
+            _setter("read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
 
 
 @pulumi.output_type
@@ -1978,26 +2375,6 @@ class GetComputeInstanceListInstanceResult(dict):
                  zone: str,
                  id: Optional[str] = None,
                  name: Optional[str] = None):
-        """
-        :param str created_at: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str deploy_target_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param int disk_size: Match against this int
-        :param bool ipv6: Match against this bool
-        :param str ipv6_address: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param Mapping[str, str] labels: Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-        :param str manager_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str manager_type: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str public_ip_address: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str reverse_dns: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str ssh_key: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str state: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str template_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str type: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str user_data: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-        :param str id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str name: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         GetComputeInstanceListInstanceResult._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             anti_affinity_group_ids=anti_affinity_group_ids,
@@ -2082,25 +2459,16 @@ class GetComputeInstanceListInstanceResult(dict):
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="deployTargetId")
     def deploy_target_id(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "deploy_target_id")
 
     @property
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> int:
-        """
-        Match against this int
-        """
         return pulumi.get(self, "disk_size")
 
     @property
@@ -2111,41 +2479,26 @@ class GetComputeInstanceListInstanceResult(dict):
     @property
     @pulumi.getter
     def ipv6(self) -> bool:
-        """
-        Match against this bool
-        """
         return pulumi.get(self, "ipv6")
 
     @property
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "ipv6_address")
 
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
-        """
-        Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="managerId")
     def manager_id(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "manager_id")
 
     @property
     @pulumi.getter(name="managerType")
     def manager_type(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "manager_type")
 
     @property
@@ -2156,17 +2509,11 @@ class GetComputeInstanceListInstanceResult(dict):
     @property
     @pulumi.getter(name="publicIpAddress")
     def public_ip_address(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "public_ip_address")
 
     @property
     @pulumi.getter(name="reverseDns")
     def reverse_dns(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "reverse_dns")
 
     @property
@@ -2177,65 +2524,41 @@ class GetComputeInstanceListInstanceResult(dict):
     @property
     @pulumi.getter(name="sshKey")
     def ssh_key(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "ssh_key")
 
     @property
     @pulumi.getter
     def state(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="templateId")
     def template_id(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "template_id")
 
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="userData")
     def user_data(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "user_data")
 
     @property
     @pulumi.getter
     def zone(self) -> str:
-        """
-        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-        """
         return pulumi.get(self, "zone")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "name")
 
 
@@ -2347,10 +2670,6 @@ class GetDomainRecordRecordResult(dict):
                  prio: Optional[int] = None,
                  record_type: Optional[str] = None,
                  ttl: Optional[int] = None):
-        """
-        :param str domain: The Domain name to match.
-        :param str id: The ID of this resource.
-        """
         GetDomainRecordRecordResult._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             content=content,
@@ -2395,17 +2714,11 @@ class GetDomainRecordRecordResult(dict):
     @property
     @pulumi.getter
     def domain(self) -> Optional[str]:
-        """
-        The Domain name to match.
-        """
         return pulumi.get(self, "domain")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -2523,16 +2836,322 @@ class GetElasticIPHealthcheckResult(dict):
 
 
 @pulumi.output_type
+class GetIAMAPIKeyTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[str] = None):
+        """
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        GetIAMAPIKeyTimeoutsResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            read=read,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             read: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if read is not None:
+            _setter("read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
+class GetIAMOrgPolicyServicesResult(dict):
+    def __init__(__self__, *,
+                 rules: Sequence['outputs.GetIAMOrgPolicyServicesRuleResult'],
+                 type: str):
+        """
+        :param Sequence['GetIAMOrgPolicyServicesRuleArgs'] rules: List of IAM service rules (if type is `rules`).
+        :param str type: Service type (`rules`, `allow`, or `deny`).
+        """
+        GetIAMOrgPolicyServicesResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            rules=rules,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             rules: Sequence['outputs.GetIAMOrgPolicyServicesRuleResult'],
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("rules", rules)
+        _setter("type", type)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.GetIAMOrgPolicyServicesRuleResult']:
+        """
+        List of IAM service rules (if type is `rules`).
+        """
+        return pulumi.get(self, "rules")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Service type (`rules`, `allow`, or `deny`).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetIAMOrgPolicyServicesRuleResult(dict):
+    def __init__(__self__, *,
+                 action: str,
+                 expression: str,
+                 resources: Sequence[str]):
+        """
+        :param str action: IAM policy rule action (`allow` or `deny`).
+        :param str expression: IAM policy rule expression.
+        :param Sequence[str] resources: List of resources that IAM policy rule applies to.
+        """
+        GetIAMOrgPolicyServicesRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            expression=expression,
+            resources=resources,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: str,
+             expression: str,
+             resources: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("action", action)
+        _setter("expression", expression)
+        _setter("resources", resources)
+
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        """
+        IAM policy rule action (`allow` or `deny`).
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        IAM policy rule expression.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Sequence[str]:
+        """
+        List of resources that IAM policy rule applies to.
+        """
+        return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
+class GetIAMOrgPolicyTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[str] = None):
+        """
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        GetIAMOrgPolicyTimeoutsResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            read=read,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             read: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if read is not None:
+            _setter("read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
+class GetIAMRolePolicyResult(dict):
+    def __init__(__self__, *,
+                 default_service_strategy: str,
+                 services: Mapping[str, 'outputs.GetIAMRolePolicyServicesResult']):
+        """
+        :param str default_service_strategy: Default service strategy (`allow` or `deny`).
+        :param Mapping[str, 'GetIAMRolePolicyServicesArgs'] services: IAM policy services.
+        """
+        GetIAMRolePolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_service_strategy=default_service_strategy,
+            services=services,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_service_strategy: str,
+             services: Mapping[str, 'outputs.GetIAMRolePolicyServicesResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("default_service_strategy", default_service_strategy)
+        _setter("services", services)
+
+    @property
+    @pulumi.getter(name="defaultServiceStrategy")
+    def default_service_strategy(self) -> str:
+        """
+        Default service strategy (`allow` or `deny`).
+        """
+        return pulumi.get(self, "default_service_strategy")
+
+    @property
+    @pulumi.getter
+    def services(self) -> Mapping[str, 'outputs.GetIAMRolePolicyServicesResult']:
+        """
+        IAM policy services.
+        """
+        return pulumi.get(self, "services")
+
+
+@pulumi.output_type
+class GetIAMRolePolicyServicesResult(dict):
+    def __init__(__self__, *,
+                 rules: Sequence['outputs.GetIAMRolePolicyServicesRuleResult'],
+                 type: str):
+        """
+        :param Sequence['GetIAMRolePolicyServicesRuleArgs'] rules: List of IAM service rules (if type is `rules`).
+        :param str type: Service type (`rules`, `allow`, or `deny`).
+        """
+        GetIAMRolePolicyServicesResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            rules=rules,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             rules: Sequence['outputs.GetIAMRolePolicyServicesRuleResult'],
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("rules", rules)
+        _setter("type", type)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.GetIAMRolePolicyServicesRuleResult']:
+        """
+        List of IAM service rules (if type is `rules`).
+        """
+        return pulumi.get(self, "rules")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Service type (`rules`, `allow`, or `deny`).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetIAMRolePolicyServicesRuleResult(dict):
+    def __init__(__self__, *,
+                 action: str,
+                 expression: str,
+                 resources: Sequence[str]):
+        """
+        :param str action: IAM policy rule action (`allow` or `deny`).
+        :param str expression: IAM policy rule expression.
+        :param Sequence[str] resources: List of resources that IAM policy rule applies to.
+        """
+        GetIAMRolePolicyServicesRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            expression=expression,
+            resources=resources,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: str,
+             expression: str,
+             resources: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("action", action)
+        _setter("expression", expression)
+        _setter("resources", resources)
+
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        """
+        IAM policy rule action (`allow` or `deny`).
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        IAM policy rule expression.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Sequence[str]:
+        """
+        List of resources that IAM policy rule applies to.
+        """
+        return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
+class GetIAMRoleTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[str] = None):
+        """
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        GetIAMRoleTimeoutsResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            read=read,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             read: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if read is not None:
+            _setter("read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
 class GetInstancePoolInstanceResult(dict):
     def __init__(__self__, *,
                  ipv6_address: str,
                  public_ip_address: str,
                  id: Optional[str] = None,
                  name: Optional[str] = None):
-        """
-        :param str id: The instance pool ID to match (conflicts with `name`).
-        :param str name: The pool name to match (conflicts with `id`).
-        """
         GetInstancePoolInstanceResult._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             ipv6_address=ipv6_address,
@@ -2568,17 +3187,11 @@ class GetInstancePoolInstanceResult(dict):
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        The instance pool ID to match (conflicts with `name`).
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        The pool name to match (conflicts with `id`).
-        """
         return pulumi.get(self, "name")
 
 
@@ -2605,10 +3218,6 @@ class GetInstancePoolListPoolResult(dict):
                  id: Optional[str] = None,
                  labels: Optional[Mapping[str, str]] = None,
                  name: Optional[str] = None):
-        """
-        :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-        :param str id: The ID of this resource.
-        """
         GetInstancePoolListPoolResult._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             affinity_group_ids=affinity_group_ids,
@@ -2763,17 +3372,11 @@ class GetInstancePoolListPoolResult(dict):
     @property
     @pulumi.getter
     def zone(self) -> str:
-        """
-        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-        """
         return pulumi.get(self, "zone")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -2794,9 +3397,6 @@ class GetInstancePoolListPoolInstanceResult(dict):
                  public_ip_address: str,
                  id: Optional[str] = None,
                  name: Optional[str] = None):
-        """
-        :param str id: The ID of this resource.
-        """
         GetInstancePoolListPoolInstanceResult._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             ipv6_address=ipv6_address,
@@ -2832,9 +3432,6 @@ class GetInstancePoolListPoolInstanceResult(dict):
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -3109,25 +3706,6 @@ class GetSKSClusterListClusterResult(dict):
                  metrics_server: Optional[bool] = None,
                  name: Optional[str] = None,
                  service_level: Optional[str] = None):
-        """
-        :param str aggregation_ca: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str control_plane_ca: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str created_at: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str endpoint: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str kubelet_ca: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str state: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str version: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-        :param bool auto_upgrade: Match against this bool
-        :param str cni: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str description: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param bool exoscale_ccm: Match against this bool
-        :param str id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param Mapping[str, str] labels: Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-        :param bool metrics_server: Match against this bool
-        :param str name: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str service_level: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         GetSKSClusterListClusterResult._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             addons=addons,
@@ -3216,41 +3794,26 @@ class GetSKSClusterListClusterResult(dict):
     @property
     @pulumi.getter(name="aggregationCa")
     def aggregation_ca(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "aggregation_ca")
 
     @property
     @pulumi.getter(name="controlPlaneCa")
     def control_plane_ca(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "control_plane_ca")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def endpoint(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter(name="kubeletCa")
     def kubelet_ca(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "kubelet_ca")
 
     @property
@@ -3266,97 +3829,61 @@ class GetSKSClusterListClusterResult(dict):
     @property
     @pulumi.getter
     def state(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def version(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "version")
 
     @property
     @pulumi.getter
     def zone(self) -> str:
-        """
-        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-        """
         return pulumi.get(self, "zone")
 
     @property
     @pulumi.getter(name="autoUpgrade")
     def auto_upgrade(self) -> Optional[bool]:
-        """
-        Match against this bool
-        """
         return pulumi.get(self, "auto_upgrade")
 
     @property
     @pulumi.getter
     def cni(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "cni")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="exoscaleCcm")
     def exoscale_ccm(self) -> Optional[bool]:
-        """
-        Match against this bool
-        """
         return pulumi.get(self, "exoscale_ccm")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
-        """
-        Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="metricsServer")
     def metrics_server(self) -> Optional[bool]:
-        """
-        Match against this bool
-        """
         return pulumi.get(self, "metrics_server")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="serviceLevel")
     def service_level(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "service_level")
 
 
@@ -3574,26 +4101,6 @@ class GetSKSNodepoolListNodepoolResult(dict):
                  size: Optional[int] = None,
                  storage_lvm: Optional[bool] = None,
                  taints: Optional[Mapping[str, str]] = None):
-        """
-        :param str cluster_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str created_at: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str instance_pool_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str state: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str template_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str version: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-        :param str deploy_target_id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str description: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param int disk_size: Match against this int
-        :param str id: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str instance_prefix: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param str instance_type: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param Mapping[str, str] labels: Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-        :param str name: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        :param int size: Match against this int
-        :param bool storage_lvm: Match against this bool
-        :param Mapping[str, str] taints: Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-        """
         GetSKSNodepoolListNodepoolResult._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             cluster_id=cluster_id,
@@ -3682,57 +4189,36 @@ class GetSKSNodepoolListNodepoolResult(dict):
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="instancePoolId")
     def instance_pool_id(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "instance_pool_id")
 
     @property
     @pulumi.getter
     def state(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="templateId")
     def template_id(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "template_id")
 
     @property
     @pulumi.getter
     def version(self) -> str:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "version")
 
     @property
     @pulumi.getter
     def zone(self) -> str:
-        """
-        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-        """
         return pulumi.get(self, "zone")
 
     @property
@@ -3743,65 +4229,41 @@ class GetSKSNodepoolListNodepoolResult(dict):
     @property
     @pulumi.getter(name="deployTargetId")
     def deploy_target_id(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "deploy_target_id")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[int]:
-        """
-        Match against this int
-        """
         return pulumi.get(self, "disk_size")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="instancePrefix")
     def instance_prefix(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "instance_prefix")
 
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "instance_type")
 
     @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
-        """
-        Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -3817,25 +4279,16 @@ class GetSKSNodepoolListNodepoolResult(dict):
     @property
     @pulumi.getter
     def size(self) -> Optional[int]:
-        """
-        Match against this int
-        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter(name="storageLvm")
     def storage_lvm(self) -> Optional[bool]:
-        """
-        Match against this bool
-        """
         return pulumi.get(self, "storage_lvm")
 
     @property
     @pulumi.getter
     def taints(self) -> Optional[Mapping[str, str]]:
-        """
-        Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-        """
         return pulumi.get(self, "taints")
 
 

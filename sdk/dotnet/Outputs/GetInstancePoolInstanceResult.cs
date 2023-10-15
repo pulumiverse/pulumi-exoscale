@@ -14,14 +14,8 @@ namespace Pulumiverse.Exoscale.Outputs
     [OutputType]
     public sealed class GetInstancePoolInstanceResult
     {
-        /// <summary>
-        /// The instance pool ID to match (conflicts with `name`).
-        /// </summary>
         public readonly string? Id;
         public readonly string Ipv6Address;
-        /// <summary>
-        /// The pool name to match (conflicts with `id`).
-        /// </summary>
         public readonly string? Name;
         public readonly string PublicIpAddress;
 

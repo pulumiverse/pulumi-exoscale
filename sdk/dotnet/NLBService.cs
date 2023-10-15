@@ -57,7 +57,7 @@ namespace Pulumiverse.Exoscale
         public Output<string> NlbId { get; private set; } = null!;
 
         /// <summary>
-        /// The healthcheck port.
+        /// The NLB service (TCP/UDP) port.
         /// </summary>
         [Output("port")]
         public Output<int> Port { get; private set; } = null!;
@@ -173,7 +173,7 @@ namespace Pulumiverse.Exoscale
         public Input<string> NlbId { get; set; } = null!;
 
         /// <summary>
-        /// The healthcheck port.
+        /// The NLB service (TCP/UDP) port.
         /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
@@ -247,7 +247,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? NlbId { get; set; }
 
         /// <summary>
-        /// The healthcheck port.
+        /// The NLB service (TCP/UDP) port.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }

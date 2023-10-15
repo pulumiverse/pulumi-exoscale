@@ -37,8 +37,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DomainRecord{}
 	case "exoscale:index/elasticIP:ElasticIP":
 		r = &ElasticIP{}
+	case "exoscale:index/iAMAPIKey:IAMAPIKey":
+		r = &IAMAPIKey{}
 	case "exoscale:index/iAMAccessKey:IAMAccessKey":
 		r = &IAMAccessKey{}
+	case "exoscale:index/iAMOrgPolicy:IAMOrgPolicy":
+		r = &IAMOrgPolicy{}
+	case "exoscale:index/iAMRole:IAMRole":
+		r = &IAMRole{}
 	case "exoscale:index/iPAddress:IPAddress":
 		r = &IPAddress{}
 	case "exoscale:index/instancePool:InstancePool":
@@ -144,7 +150,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"exoscale",
+		"index/iAMAPIKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"exoscale",
 		"index/iAMAccessKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"exoscale",
+		"index/iAMOrgPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"exoscale",
+		"index/iAMRole",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

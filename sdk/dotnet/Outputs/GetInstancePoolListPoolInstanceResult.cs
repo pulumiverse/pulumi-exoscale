@@ -14,9 +14,6 @@ namespace Pulumiverse.Exoscale.Outputs
     [OutputType]
     public sealed class GetInstancePoolListPoolInstanceResult
     {
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly string? Id;
         public readonly string Ipv6Address;
         public readonly string? Name;

@@ -24,6 +24,9 @@ from .get_database_uri import *
 from .get_domain import *
 from .get_domain_record import *
 from .get_elastic_ip import *
+from .get_iam_org_policy import *
+from .get_iam_role import *
+from .get_iamapi_key import *
 from .get_instance_pool import *
 from .get_instance_pool_list import *
 from .get_network import *
@@ -38,6 +41,9 @@ from .get_sks_nodepool_list import *
 from .get_template import *
 from .get_zones import *
 from .iam_access_key import *
+from .iam_org_policy import *
+from .iam_role import *
+from .iamapi_key import *
 from .instance_pool import *
 from .ip_address import *
 from .network import *
@@ -134,10 +140,34 @@ _utilities.register(
  },
  {
   "pkg": "exoscale",
+  "mod": "index/iAMAPIKey",
+  "fqn": "pulumiverse_exoscale",
+  "classes": {
+   "exoscale:index/iAMAPIKey:IAMAPIKey": "IAMAPIKey"
+  }
+ },
+ {
+  "pkg": "exoscale",
   "mod": "index/iAMAccessKey",
   "fqn": "pulumiverse_exoscale",
   "classes": {
    "exoscale:index/iAMAccessKey:IAMAccessKey": "IAMAccessKey"
+  }
+ },
+ {
+  "pkg": "exoscale",
+  "mod": "index/iAMOrgPolicy",
+  "fqn": "pulumiverse_exoscale",
+  "classes": {
+   "exoscale:index/iAMOrgPolicy:IAMOrgPolicy": "IAMOrgPolicy"
+  }
+ },
+ {
+  "pkg": "exoscale",
+  "mod": "index/iAMRole",
+  "fqn": "pulumiverse_exoscale",
+  "classes": {
+   "exoscale:index/iAMRole:IAMRole": "IAMRole"
   }
  },
  {

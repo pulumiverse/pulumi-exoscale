@@ -24,40 +24,23 @@ func GetSKSClusterList(ctx *pulumi.Context, args *GetSKSClusterListArgs, opts ..
 
 // A collection of arguments for invoking getSKSClusterList.
 type GetSKSClusterListArgs struct {
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	AggregationCa *string `pulumi:"aggregationCa"`
-	// Match against this bool
-	AutoUpgrade *bool `pulumi:"autoUpgrade"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Cni *string `pulumi:"cni"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ControlPlaneCa *string `pulumi:"controlPlaneCa"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	CreatedAt *string `pulumi:"createdAt"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Description *string `pulumi:"description"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Endpoint *string `pulumi:"endpoint"`
-	// Match against this bool
-	ExoscaleCcm *bool `pulumi:"exoscaleCcm"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Id *string `pulumi:"id"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	KubeletCa *string `pulumi:"kubeletCa"`
-	// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-	Labels map[string]string `pulumi:"labels"`
-	// Match against this bool
-	MetricsServer *bool `pulumi:"metricsServer"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Name *string `pulumi:"name"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ServiceLevel *string `pulumi:"serviceLevel"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	State *string `pulumi:"state"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Version *string `pulumi:"version"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-	Zone string `pulumi:"zone"`
+	AggregationCa  *string           `pulumi:"aggregationCa"`
+	AutoUpgrade    *bool             `pulumi:"autoUpgrade"`
+	Cni            *string           `pulumi:"cni"`
+	ControlPlaneCa *string           `pulumi:"controlPlaneCa"`
+	CreatedAt      *string           `pulumi:"createdAt"`
+	Description    *string           `pulumi:"description"`
+	Endpoint       *string           `pulumi:"endpoint"`
+	ExoscaleCcm    *bool             `pulumi:"exoscaleCcm"`
+	Id             *string           `pulumi:"id"`
+	KubeletCa      *string           `pulumi:"kubeletCa"`
+	Labels         map[string]string `pulumi:"labels"`
+	MetricsServer  *bool             `pulumi:"metricsServer"`
+	Name           *string           `pulumi:"name"`
+	ServiceLevel   *string           `pulumi:"serviceLevel"`
+	State          *string           `pulumi:"state"`
+	Version        *string           `pulumi:"version"`
+	Zone           string            `pulumi:"zone"`
 }
 
 // A collection of values returned by getSKSClusterList.
@@ -114,40 +97,23 @@ func GetSKSClusterListOutput(ctx *pulumi.Context, args GetSKSClusterListOutputAr
 
 // A collection of arguments for invoking getSKSClusterList.
 type GetSKSClusterListOutputArgs struct {
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	AggregationCa pulumi.StringPtrInput `pulumi:"aggregationCa"`
-	// Match against this bool
-	AutoUpgrade pulumi.BoolPtrInput `pulumi:"autoUpgrade"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Cni pulumi.StringPtrInput `pulumi:"cni"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+	AggregationCa  pulumi.StringPtrInput `pulumi:"aggregationCa"`
+	AutoUpgrade    pulumi.BoolPtrInput   `pulumi:"autoUpgrade"`
+	Cni            pulumi.StringPtrInput `pulumi:"cni"`
 	ControlPlaneCa pulumi.StringPtrInput `pulumi:"controlPlaneCa"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
-	// Match against this bool
-	ExoscaleCcm pulumi.BoolPtrInput `pulumi:"exoscaleCcm"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	KubeletCa pulumi.StringPtrInput `pulumi:"kubeletCa"`
-	// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Match against this bool
-	MetricsServer pulumi.BoolPtrInput `pulumi:"metricsServer"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ServiceLevel pulumi.StringPtrInput `pulumi:"serviceLevel"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	State pulumi.StringPtrInput `pulumi:"state"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Version pulumi.StringPtrInput `pulumi:"version"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-	Zone pulumi.StringInput `pulumi:"zone"`
+	CreatedAt      pulumi.StringPtrInput `pulumi:"createdAt"`
+	Description    pulumi.StringPtrInput `pulumi:"description"`
+	Endpoint       pulumi.StringPtrInput `pulumi:"endpoint"`
+	ExoscaleCcm    pulumi.BoolPtrInput   `pulumi:"exoscaleCcm"`
+	Id             pulumi.StringPtrInput `pulumi:"id"`
+	KubeletCa      pulumi.StringPtrInput `pulumi:"kubeletCa"`
+	Labels         pulumi.StringMapInput `pulumi:"labels"`
+	MetricsServer  pulumi.BoolPtrInput   `pulumi:"metricsServer"`
+	Name           pulumi.StringPtrInput `pulumi:"name"`
+	ServiceLevel   pulumi.StringPtrInput `pulumi:"serviceLevel"`
+	State          pulumi.StringPtrInput `pulumi:"state"`
+	Version        pulumi.StringPtrInput `pulumi:"version"`
+	Zone           pulumi.StringInput    `pulumi:"zone"`
 }
 
 func (GetSKSClusterListOutputArgs) ElementType() reflect.Type {

@@ -383,7 +383,7 @@ class ElasticIP(pulumi.CustomResource):
 
             __props__.__dict__["address_family"] = address_family
             __props__.__dict__["description"] = description
-            if not isinstance(healthcheck, ElasticIPHealthcheckArgs):
+            if healthcheck is not None and not isinstance(healthcheck, ElasticIPHealthcheckArgs):
                 healthcheck = healthcheck or {}
                 def _setter(key, value):
                     healthcheck[key] = value

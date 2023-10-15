@@ -14,8 +14,17 @@ namespace Pulumiverse.Exoscale.Outputs
     [OutputType]
     public sealed class DatabaseOpensearchDashboards
     {
+        /// <summary>
+        /// Enable or disable OpenSearch Dashboards (default: true).
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. (default: 128).
+        /// </summary>
         public readonly int? MaxOldSpaceSize;
+        /// <summary>
+        /// Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch (default: 30000)
+        /// </summary>
         public readonly int? RequestTimeout;
 
         [OutputConstructor]

@@ -21,17 +21,11 @@ export function getInstancePool(args: GetInstancePoolArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getInstancePool.
  */
 export interface GetInstancePoolArgs {
-    /**
-     * The instance pool ID to match (conflicts with `name`).
-     */
     id?: string;
     /**
      * A map of key/value labels.
      */
     labels?: {[key: string]: string};
-    /**
-     * The pool name to match (conflicts with `id`).
-     */
     name?: string;
     /**
      * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
@@ -132,17 +126,11 @@ export function getInstancePoolOutput(args: GetInstancePoolOutputArgs, opts?: pu
  * A collection of arguments for invoking getInstancePool.
  */
 export interface GetInstancePoolOutputArgs {
-    /**
-     * The instance pool ID to match (conflicts with `name`).
-     */
     id?: pulumi.Input<string>;
     /**
      * A map of key/value labels.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The pool name to match (conflicts with `id`).
-     */
     name?: pulumi.Input<string>;
     /**
      * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.

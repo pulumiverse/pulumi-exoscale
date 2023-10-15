@@ -13,12 +13,21 @@ namespace Pulumiverse.Exoscale.Inputs
 
     public sealed class DatabaseOpensearchDashboardsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enable or disable OpenSearch Dashboards (default: true).
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. (default: 128).
+        /// </summary>
         [Input("maxOldSpaceSize")]
         public Input<int>? MaxOldSpaceSize { get; set; }
 
+        /// <summary>
+        /// Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch (default: 30000)
+        /// </summary>
         [Input("requestTimeout")]
         public Input<int>? RequestTimeout { get; set; }
 

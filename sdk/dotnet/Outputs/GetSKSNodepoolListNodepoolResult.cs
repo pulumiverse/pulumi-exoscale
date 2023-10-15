@@ -15,79 +15,25 @@ namespace Pulumiverse.Exoscale.Outputs
     public sealed class GetSKSNodepoolListNodepoolResult
     {
         public readonly ImmutableArray<string> AntiAffinityGroupIds;
-        /// <summary>
-        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        /// </summary>
         public readonly string ClusterId;
-        /// <summary>
-        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        /// </summary>
         public readonly string CreatedAt;
-        /// <summary>
-        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        /// </summary>
         public readonly string? DeployTargetId;
-        /// <summary>
-        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        /// </summary>
         public readonly string? Description;
-        /// <summary>
-        /// Match against this int
-        /// </summary>
         public readonly int? DiskSize;
-        /// <summary>
-        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        /// </summary>
         public readonly string? Id;
-        /// <summary>
-        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        /// </summary>
         public readonly string InstancePoolId;
-        /// <summary>
-        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        /// </summary>
         public readonly string? InstancePrefix;
-        /// <summary>
-        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        /// </summary>
         public readonly string? InstanceType;
-        /// <summary>
-        /// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-        /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
-        /// <summary>
-        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        /// </summary>
         public readonly string? Name;
         public readonly ImmutableArray<string> PrivateNetworkIds;
         public readonly ImmutableArray<string> SecurityGroupIds;
-        /// <summary>
-        /// Match against this int
-        /// </summary>
         public readonly int? Size;
-        /// <summary>
-        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        /// </summary>
         public readonly string State;
-        /// <summary>
-        /// Match against this bool
-        /// </summary>
         public readonly bool? StorageLvm;
-        /// <summary>
-        /// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-        /// </summary>
         public readonly ImmutableDictionary<string, string>? Taints;
-        /// <summary>
-        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        /// </summary>
         public readonly string TemplateId;
-        /// <summary>
-        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-        /// </summary>
         public readonly string Version;
-        /// <summary>
-        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-        /// </summary>
         public readonly string Zone;
 
         [OutputConstructor]

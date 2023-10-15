@@ -13,6 +13,7 @@ __all__ = [
     'GetZonesResult',
     'AwaitableGetZonesResult',
     'get_zones',
+    'get_zones_output',
 ]
 
 @pulumi.output_type
@@ -66,3 +67,11 @@ def get_zones(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesR
     return AwaitableGetZonesResult(
         id=pulumi.get(__ret__, 'id'),
         zones=pulumi.get(__ret__, 'zones'))
+
+
+@_utilities.lift_output_func(get_zones)
+def get_zones_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

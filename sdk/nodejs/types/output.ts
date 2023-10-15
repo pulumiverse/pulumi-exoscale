@@ -145,20 +145,47 @@ export interface DatabaseOpensearch {
 }
 
 export interface DatabaseOpensearchDashboards {
+    /**
+     * Enable or disable OpenSearch Dashboards (default: true).
+     */
     enabled?: boolean;
+    /**
+     * Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. (default: 128).
+     */
     maxOldSpaceSize?: number;
+    /**
+     * Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch (default: 30000)
+     */
     requestTimeout?: number;
 }
 
 export interface DatabaseOpensearchIndexPattern {
+    /**
+     * Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
+     */
     maxIndexCount?: number;
+    /**
+     * fnmatch pattern
+     */
     pattern?: string;
+    /**
+     * `alphabetical` or `creationDate`.
+     */
     sortingAlgorithm?: string;
 }
 
 export interface DatabaseOpensearchIndexTemplate {
+    /**
+     * The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. (Default is 10000. Minimum value is `0`, maximum value is `100000`.)
+     */
     mappingNestedObjectsLimit?: number;
+    /**
+     * The number of replicas each primary shard has. (Minimum value is `0`, maximum value is `29`)
+     */
     numberOfReplicas?: number;
+    /**
+     * The number of primary shards that an index should have. (Minimum value is `1`, maximum value is `1024`.)
+     */
     numberOfShards?: number;
 }
 
@@ -268,80 +295,26 @@ export interface ElasticIPHealthcheck {
 
 export interface GetComputeInstanceListInstance {
     antiAffinityGroupIds: string[];
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     createdAt: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     deployTargetId: string;
-    /**
-     * Match against this int
-     */
     diskSize: number;
     elasticIpIds: string[];
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     id?: string;
-    /**
-     * Match against this bool
-     */
     ipv6: boolean;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     ipv6Address: string;
-    /**
-     * Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-     */
     labels: {[key: string]: string};
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     managerId: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     managerType: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     name?: string;
     privateNetworkIds: string[];
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     publicIpAddress: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     reverseDns: string;
     securityGroupIds: string[];
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     sshKey: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     state: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     templateId: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     type: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     userData: string;
-    /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-     */
     zone: string;
 }
 
@@ -373,13 +346,7 @@ export interface GetDomainRecordFilter {
 
 export interface GetDomainRecordRecord {
     content?: string;
-    /**
-     * The exoscale.Domain name to match.
-     */
     domain?: string;
-    /**
-     * The ID of this resource.
-     */
     id?: string;
     name?: string;
     prio?: number;
@@ -399,15 +366,93 @@ export interface GetElasticIPHealthcheck {
     uri: string;
 }
 
-export interface GetInstancePoolInstance {
+export interface GetIAMAPIKeyTimeouts {
     /**
-     * The instance pool ID to match (conflicts with `name`).
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
+    read?: string;
+}
+
+export interface GetIAMOrgPolicyServices {
+    /**
+     * List of IAM service rules (if type is `rules`).
+     */
+    rules: outputs.GetIAMOrgPolicyServicesRule[];
+    /**
+     * Service type (`rules`, `allow`, or `deny`).
+     */
+    type: string;
+}
+
+export interface GetIAMOrgPolicyServicesRule {
+    /**
+     * IAM policy rule action (`allow` or `deny`).
+     */
+    action: string;
+    /**
+     * IAM policy rule expression.
+     */
+    expression: string;
+    /**
+     * List of resources that IAM policy rule applies to.
+     */
+    resources: string[];
+}
+
+export interface GetIAMOrgPolicyTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+}
+
+export interface GetIAMRolePolicy {
+    /**
+     * Default service strategy (`allow` or `deny`).
+     */
+    defaultServiceStrategy: string;
+    /**
+     * IAM policy services.
+     */
+    services: {[key: string]: outputs.GetIAMRolePolicyServices};
+}
+
+export interface GetIAMRolePolicyServices {
+    /**
+     * List of IAM service rules (if type is `rules`).
+     */
+    rules: outputs.GetIAMRolePolicyServicesRule[];
+    /**
+     * Service type (`rules`, `allow`, or `deny`).
+     */
+    type: string;
+}
+
+export interface GetIAMRolePolicyServicesRule {
+    /**
+     * IAM policy rule action (`allow` or `deny`).
+     */
+    action: string;
+    /**
+     * IAM policy rule expression.
+     */
+    expression: string;
+    /**
+     * List of resources that IAM policy rule applies to.
+     */
+    resources: string[];
+}
+
+export interface GetIAMRoleTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+}
+
+export interface GetInstancePoolInstance {
     id?: string;
     ipv6Address: string;
-    /**
-     * The pool name to match (conflicts with `id`).
-     */
     name?: string;
     publicIpAddress: string;
 }
@@ -418,9 +463,6 @@ export interface GetInstancePoolListPool {
     description: string;
     diskSize: number;
     elasticIpIds: string[];
-    /**
-     * The ID of this resource.
-     */
     id?: string;
     instancePrefix: string;
     instanceType: string;
@@ -435,16 +477,10 @@ export interface GetInstancePoolListPool {
     state: string;
     templateId: string;
     userData: string;
-    /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-     */
     zone: string;
 }
 
 export interface GetInstancePoolListPoolInstance {
-    /**
-     * The ID of this resource.
-     */
     id?: string;
     ipv6Address: string;
     name?: string;
@@ -513,75 +549,24 @@ export interface GetSKSClusterListCluster {
      * @deprecated This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
      */
     addons: string[];
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     aggregationCa: string;
-    /**
-     * Match against this bool
-     */
     autoUpgrade?: boolean;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     cni?: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     controlPlaneCa: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     createdAt: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     description?: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     endpoint: string;
-    /**
-     * Match against this bool
-     */
     exoscaleCcm?: boolean;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     id?: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     kubeletCa: string;
-    /**
-     * Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-     */
     labels?: {[key: string]: string};
-    /**
-     * Match against this bool
-     */
     metricsServer?: boolean;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     name?: string;
     nodepools: string[];
     oidc: outputs.GetSKSClusterListClusterOidc;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     serviceLevel?: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     state: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     version: string;
-    /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-     */
     zone: string;
 }
 
@@ -628,80 +613,110 @@ export interface GetSKSClusterOidc {
 
 export interface GetSKSNodepoolListNodepool {
     antiAffinityGroupIds?: string[];
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     clusterId: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     createdAt: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     deployTargetId?: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     description?: string;
-    /**
-     * Match against this int
-     */
     diskSize?: number;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     id?: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     instancePoolId: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     instancePrefix?: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     instanceType?: string;
-    /**
-     * Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-     */
     labels?: {[key: string]: string};
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     name?: string;
     privateNetworkIds?: string[];
     securityGroupIds?: string[];
-    /**
-     * Match against this int
-     */
     size?: number;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     state: string;
-    /**
-     * Match against this bool
-     */
     storageLvm?: boolean;
-    /**
-     * Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-     */
     taints?: {[key: string]: string};
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     templateId: string;
-    /**
-     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-     */
     version: string;
-    /**
-     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-     */
     zone: string;
+}
+
+export interface IAMAPIKeyTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+}
+
+export interface IAMOrgPolicyServices {
+    /**
+     * List of IAM service rules (if type is `rules`).
+     */
+    rules: outputs.IAMOrgPolicyServicesRule[];
+    /**
+     * Service type (`rules`, `allow`, or `deny`).
+     */
+    type: string;
+}
+
+export interface IAMOrgPolicyServicesRule {
+    /**
+     * IAM policy rule action (`allow` or `deny`).
+     */
+    action: string;
+    /**
+     * IAM policy rule expression.
+     */
+    expression: string;
+    /**
+     * List of resources that IAM policy rule applies to.
+     */
+    resources: string[];
+}
+
+export interface IAMOrgPolicyTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+}
+
+export interface IAMRolePolicy {
+    /**
+     * Default service strategy (`allow` or `deny`).
+     */
+    defaultServiceStrategy: string;
+    /**
+     * IAM policy services.
+     */
+    services: {[key: string]: outputs.IAMRolePolicyServices};
+}
+
+export interface IAMRolePolicyServices {
+    /**
+     * List of IAM service rules (if type is `rules`).
+     */
+    rules: outputs.IAMRolePolicyServicesRule[];
+    /**
+     * Service type (`rules`, `allow`, or `deny`).
+     */
+    type: string;
+}
+
+export interface IAMRolePolicyServicesRule {
+    /**
+     * IAM policy rule action (`allow` or `deny`).
+     */
+    action: string;
+    /**
+     * IAM policy rule expression.
+     */
+    expression: string;
+    /**
+     * List of resources that IAM policy rule applies to.
+     */
+    resources: string[];
+}
+
+export interface IAMRoleTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
 }
 
 export interface InstancePoolInstance {

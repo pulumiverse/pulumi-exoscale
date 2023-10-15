@@ -24,42 +24,24 @@ func GetComputeInstanceList(ctx *pulumi.Context, args *GetComputeInstanceListArg
 
 // A collection of arguments for invoking getComputeInstanceList.
 type GetComputeInstanceListArgs struct {
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	CreatedAt *string `pulumi:"createdAt"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	DeployTargetId *string `pulumi:"deployTargetId"`
-	// Match against this int
-	DiskSize *int `pulumi:"diskSize"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Id *string `pulumi:"id"`
-	// Match against this bool
-	Ipv6 *bool `pulumi:"ipv6"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Ipv6Address *string `pulumi:"ipv6Address"`
-	// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-	Labels map[string]string `pulumi:"labels"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ManagerId *string `pulumi:"managerId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ManagerType *string `pulumi:"managerType"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Name *string `pulumi:"name"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	PublicIpAddress *string `pulumi:"publicIpAddress"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ReverseDns *string `pulumi:"reverseDns"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	SshKey *string `pulumi:"sshKey"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	State *string `pulumi:"state"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	TemplateId *string `pulumi:"templateId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Type *string `pulumi:"type"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	UserData *string `pulumi:"userData"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-	Zone string `pulumi:"zone"`
+	CreatedAt       *string           `pulumi:"createdAt"`
+	DeployTargetId  *string           `pulumi:"deployTargetId"`
+	DiskSize        *int              `pulumi:"diskSize"`
+	Id              *string           `pulumi:"id"`
+	Ipv6            *bool             `pulumi:"ipv6"`
+	Ipv6Address     *string           `pulumi:"ipv6Address"`
+	Labels          map[string]string `pulumi:"labels"`
+	ManagerId       *string           `pulumi:"managerId"`
+	ManagerType     *string           `pulumi:"managerType"`
+	Name            *string           `pulumi:"name"`
+	PublicIpAddress *string           `pulumi:"publicIpAddress"`
+	ReverseDns      *string           `pulumi:"reverseDns"`
+	SshKey          *string           `pulumi:"sshKey"`
+	State           *string           `pulumi:"state"`
+	TemplateId      *string           `pulumi:"templateId"`
+	Type            *string           `pulumi:"type"`
+	UserData        *string           `pulumi:"userData"`
+	Zone            string            `pulumi:"zone"`
 }
 
 // A collection of values returned by getComputeInstanceList.
@@ -119,42 +101,24 @@ func GetComputeInstanceListOutput(ctx *pulumi.Context, args GetComputeInstanceLi
 
 // A collection of arguments for invoking getComputeInstanceList.
 type GetComputeInstanceListOutputArgs struct {
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	DeployTargetId pulumi.StringPtrInput `pulumi:"deployTargetId"`
-	// Match against this int
-	DiskSize pulumi.IntPtrInput `pulumi:"diskSize"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Match against this bool
-	Ipv6 pulumi.BoolPtrInput `pulumi:"ipv6"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
-	// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ManagerId pulumi.StringPtrInput `pulumi:"managerId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ManagerType pulumi.StringPtrInput `pulumi:"managerType"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+	CreatedAt       pulumi.StringPtrInput `pulumi:"createdAt"`
+	DeployTargetId  pulumi.StringPtrInput `pulumi:"deployTargetId"`
+	DiskSize        pulumi.IntPtrInput    `pulumi:"diskSize"`
+	Id              pulumi.StringPtrInput `pulumi:"id"`
+	Ipv6            pulumi.BoolPtrInput   `pulumi:"ipv6"`
+	Ipv6Address     pulumi.StringPtrInput `pulumi:"ipv6Address"`
+	Labels          pulumi.StringMapInput `pulumi:"labels"`
+	ManagerId       pulumi.StringPtrInput `pulumi:"managerId"`
+	ManagerType     pulumi.StringPtrInput `pulumi:"managerType"`
+	Name            pulumi.StringPtrInput `pulumi:"name"`
 	PublicIpAddress pulumi.StringPtrInput `pulumi:"publicIpAddress"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	ReverseDns pulumi.StringPtrInput `pulumi:"reverseDns"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	SshKey pulumi.StringPtrInput `pulumi:"sshKey"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	State pulumi.StringPtrInput `pulumi:"state"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	TemplateId pulumi.StringPtrInput `pulumi:"templateId"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
-	UserData pulumi.StringPtrInput `pulumi:"userData"`
-	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-	Zone pulumi.StringInput `pulumi:"zone"`
+	ReverseDns      pulumi.StringPtrInput `pulumi:"reverseDns"`
+	SshKey          pulumi.StringPtrInput `pulumi:"sshKey"`
+	State           pulumi.StringPtrInput `pulumi:"state"`
+	TemplateId      pulumi.StringPtrInput `pulumi:"templateId"`
+	Type            pulumi.StringPtrInput `pulumi:"type"`
+	UserData        pulumi.StringPtrInput `pulumi:"userData"`
+	Zone            pulumi.StringInput    `pulumi:"zone"`
 }
 
 func (GetComputeInstanceListOutputArgs) ElementType() reflect.Type {

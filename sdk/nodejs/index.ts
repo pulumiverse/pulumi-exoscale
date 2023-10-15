@@ -100,6 +100,21 @@ export const getElasticIP: typeof import("./getElasticIP").getElasticIP = null a
 export const getElasticIPOutput: typeof import("./getElasticIP").getElasticIPOutput = null as any;
 utilities.lazyLoad(exports, ["getElasticIP","getElasticIPOutput"], () => require("./getElasticIP"));
 
+export { GetIAMAPIKeyArgs, GetIAMAPIKeyResult, GetIAMAPIKeyOutputArgs } from "./getIAMAPIKey";
+export const getIAMAPIKey: typeof import("./getIAMAPIKey").getIAMAPIKey = null as any;
+export const getIAMAPIKeyOutput: typeof import("./getIAMAPIKey").getIAMAPIKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getIAMAPIKey","getIAMAPIKeyOutput"], () => require("./getIAMAPIKey"));
+
+export { GetIAMOrgPolicyArgs, GetIAMOrgPolicyResult, GetIAMOrgPolicyOutputArgs } from "./getIAMOrgPolicy";
+export const getIAMOrgPolicy: typeof import("./getIAMOrgPolicy").getIAMOrgPolicy = null as any;
+export const getIAMOrgPolicyOutput: typeof import("./getIAMOrgPolicy").getIAMOrgPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getIAMOrgPolicy","getIAMOrgPolicyOutput"], () => require("./getIAMOrgPolicy"));
+
+export { GetIAMRoleArgs, GetIAMRoleResult, GetIAMRoleOutputArgs } from "./getIAMRole";
+export const getIAMRole: typeof import("./getIAMRole").getIAMRole = null as any;
+export const getIAMRoleOutput: typeof import("./getIAMRole").getIAMRoleOutput = null as any;
+utilities.lazyLoad(exports, ["getIAMRole","getIAMRoleOutput"], () => require("./getIAMRole"));
+
 export { GetInstancePoolArgs, GetInstancePoolResult, GetInstancePoolOutputArgs } from "./getInstancePool";
 export const getInstancePool: typeof import("./getInstancePool").getInstancePool = null as any;
 export const getInstancePoolOutput: typeof import("./getInstancePool").getInstancePoolOutput = null as any;
@@ -169,6 +184,21 @@ export { IAMAccessKeyArgs, IAMAccessKeyState } from "./iamaccessKey";
 export type IAMAccessKey = import("./iamaccessKey").IAMAccessKey;
 export const IAMAccessKey: typeof import("./iamaccessKey").IAMAccessKey = null as any;
 utilities.lazyLoad(exports, ["IAMAccessKey"], () => require("./iamaccessKey"));
+
+export { IAMAPIKeyArgs, IAMAPIKeyState } from "./iamapikey";
+export type IAMAPIKey = import("./iamapikey").IAMAPIKey;
+export const IAMAPIKey: typeof import("./iamapikey").IAMAPIKey = null as any;
+utilities.lazyLoad(exports, ["IAMAPIKey"], () => require("./iamapikey"));
+
+export { IAMOrgPolicyArgs, IAMOrgPolicyState } from "./iamorgPolicy";
+export type IAMOrgPolicy = import("./iamorgPolicy").IAMOrgPolicy;
+export const IAMOrgPolicy: typeof import("./iamorgPolicy").IAMOrgPolicy = null as any;
+utilities.lazyLoad(exports, ["IAMOrgPolicy"], () => require("./iamorgPolicy"));
+
+export { IAMRoleArgs, IAMRoleState } from "./iamrole";
+export type IAMRole = import("./iamrole").IAMRole;
+export const IAMRole: typeof import("./iamrole").IAMRole = null as any;
+utilities.lazyLoad(exports, ["IAMRole"], () => require("./iamrole"));
 
 export { InstancePoolArgs, InstancePoolState } from "./instancePool";
 export type InstancePool = import("./instancePool").InstancePool;
@@ -285,8 +315,14 @@ const _module = {
                 return new DomainRecord(name, <any>undefined, { urn })
             case "exoscale:index/elasticIP:ElasticIP":
                 return new ElasticIP(name, <any>undefined, { urn })
+            case "exoscale:index/iAMAPIKey:IAMAPIKey":
+                return new IAMAPIKey(name, <any>undefined, { urn })
             case "exoscale:index/iAMAccessKey:IAMAccessKey":
                 return new IAMAccessKey(name, <any>undefined, { urn })
+            case "exoscale:index/iAMOrgPolicy:IAMOrgPolicy":
+                return new IAMOrgPolicy(name, <any>undefined, { urn })
+            case "exoscale:index/iAMRole:IAMRole":
+                return new IAMRole(name, <any>undefined, { urn })
             case "exoscale:index/iPAddress:IPAddress":
                 return new IPAddress(name, <any>undefined, { urn })
             case "exoscale:index/instancePool:InstancePool":
@@ -332,7 +368,10 @@ pulumi.runtime.registerResourceModule("exoscale", "index/database", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/domain", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/domainRecord", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/elasticIP", _module)
+pulumi.runtime.registerResourceModule("exoscale", "index/iAMAPIKey", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/iAMAccessKey", _module)
+pulumi.runtime.registerResourceModule("exoscale", "index/iAMOrgPolicy", _module)
+pulumi.runtime.registerResourceModule("exoscale", "index/iAMRole", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/iPAddress", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/instancePool", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/nIC", _module)
