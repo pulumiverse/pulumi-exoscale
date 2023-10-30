@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['IPAddressArgs', 'IPAddress']
@@ -43,64 +43,31 @@ class IPAddressArgs:
         :param pulumi.Input[str] reverse_dns: The EIP reverse DNS record (must end with a `.`; e.g: `my-eip.example.net.`).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags (key/value). To remove all tags, set `tags = {}`.
         """
-        IPAddressArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            zone=zone,
-            description=description,
-            healthcheck_interval=healthcheck_interval,
-            healthcheck_mode=healthcheck_mode,
-            healthcheck_path=healthcheck_path,
-            healthcheck_port=healthcheck_port,
-            healthcheck_strikes_fail=healthcheck_strikes_fail,
-            healthcheck_strikes_ok=healthcheck_strikes_ok,
-            healthcheck_timeout=healthcheck_timeout,
-            healthcheck_tls_skip_verify=healthcheck_tls_skip_verify,
-            healthcheck_tls_sni=healthcheck_tls_sni,
-            reverse_dns=reverse_dns,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             zone: pulumi.Input[str],
-             description: Optional[pulumi.Input[str]] = None,
-             healthcheck_interval: Optional[pulumi.Input[int]] = None,
-             healthcheck_mode: Optional[pulumi.Input[str]] = None,
-             healthcheck_path: Optional[pulumi.Input[str]] = None,
-             healthcheck_port: Optional[pulumi.Input[int]] = None,
-             healthcheck_strikes_fail: Optional[pulumi.Input[int]] = None,
-             healthcheck_strikes_ok: Optional[pulumi.Input[int]] = None,
-             healthcheck_timeout: Optional[pulumi.Input[int]] = None,
-             healthcheck_tls_skip_verify: Optional[pulumi.Input[bool]] = None,
-             healthcheck_tls_sni: Optional[pulumi.Input[str]] = None,
-             reverse_dns: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        _setter("zone", zone)
+        pulumi.set(__self__, "zone", zone)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if healthcheck_interval is not None:
-            _setter("healthcheck_interval", healthcheck_interval)
+            pulumi.set(__self__, "healthcheck_interval", healthcheck_interval)
         if healthcheck_mode is not None:
-            _setter("healthcheck_mode", healthcheck_mode)
+            pulumi.set(__self__, "healthcheck_mode", healthcheck_mode)
         if healthcheck_path is not None:
-            _setter("healthcheck_path", healthcheck_path)
+            pulumi.set(__self__, "healthcheck_path", healthcheck_path)
         if healthcheck_port is not None:
-            _setter("healthcheck_port", healthcheck_port)
+            pulumi.set(__self__, "healthcheck_port", healthcheck_port)
         if healthcheck_strikes_fail is not None:
-            _setter("healthcheck_strikes_fail", healthcheck_strikes_fail)
+            pulumi.set(__self__, "healthcheck_strikes_fail", healthcheck_strikes_fail)
         if healthcheck_strikes_ok is not None:
-            _setter("healthcheck_strikes_ok", healthcheck_strikes_ok)
+            pulumi.set(__self__, "healthcheck_strikes_ok", healthcheck_strikes_ok)
         if healthcheck_timeout is not None:
-            _setter("healthcheck_timeout", healthcheck_timeout)
+            pulumi.set(__self__, "healthcheck_timeout", healthcheck_timeout)
         if healthcheck_tls_skip_verify is not None:
-            _setter("healthcheck_tls_skip_verify", healthcheck_tls_skip_verify)
+            pulumi.set(__self__, "healthcheck_tls_skip_verify", healthcheck_tls_skip_verify)
         if healthcheck_tls_sni is not None:
-            _setter("healthcheck_tls_sni", healthcheck_tls_sni)
+            pulumi.set(__self__, "healthcheck_tls_sni", healthcheck_tls_sni)
         if reverse_dns is not None:
-            _setter("reverse_dns", reverse_dns)
+            pulumi.set(__self__, "reverse_dns", reverse_dns)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -293,69 +260,34 @@ class _IPAddressState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags (key/value). To remove all tags, set `tags = {}`.
         :param pulumi.Input[str] zone: ❗ The Exoscale Zone name
         """
-        _IPAddressState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            healthcheck_interval=healthcheck_interval,
-            healthcheck_mode=healthcheck_mode,
-            healthcheck_path=healthcheck_path,
-            healthcheck_port=healthcheck_port,
-            healthcheck_strikes_fail=healthcheck_strikes_fail,
-            healthcheck_strikes_ok=healthcheck_strikes_ok,
-            healthcheck_timeout=healthcheck_timeout,
-            healthcheck_tls_skip_verify=healthcheck_tls_skip_verify,
-            healthcheck_tls_sni=healthcheck_tls_sni,
-            ip_address=ip_address,
-            reverse_dns=reverse_dns,
-            tags=tags,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             healthcheck_interval: Optional[pulumi.Input[int]] = None,
-             healthcheck_mode: Optional[pulumi.Input[str]] = None,
-             healthcheck_path: Optional[pulumi.Input[str]] = None,
-             healthcheck_port: Optional[pulumi.Input[int]] = None,
-             healthcheck_strikes_fail: Optional[pulumi.Input[int]] = None,
-             healthcheck_strikes_ok: Optional[pulumi.Input[int]] = None,
-             healthcheck_timeout: Optional[pulumi.Input[int]] = None,
-             healthcheck_tls_skip_verify: Optional[pulumi.Input[bool]] = None,
-             healthcheck_tls_sni: Optional[pulumi.Input[str]] = None,
-             ip_address: Optional[pulumi.Input[str]] = None,
-             reverse_dns: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if healthcheck_interval is not None:
-            _setter("healthcheck_interval", healthcheck_interval)
+            pulumi.set(__self__, "healthcheck_interval", healthcheck_interval)
         if healthcheck_mode is not None:
-            _setter("healthcheck_mode", healthcheck_mode)
+            pulumi.set(__self__, "healthcheck_mode", healthcheck_mode)
         if healthcheck_path is not None:
-            _setter("healthcheck_path", healthcheck_path)
+            pulumi.set(__self__, "healthcheck_path", healthcheck_path)
         if healthcheck_port is not None:
-            _setter("healthcheck_port", healthcheck_port)
+            pulumi.set(__self__, "healthcheck_port", healthcheck_port)
         if healthcheck_strikes_fail is not None:
-            _setter("healthcheck_strikes_fail", healthcheck_strikes_fail)
+            pulumi.set(__self__, "healthcheck_strikes_fail", healthcheck_strikes_fail)
         if healthcheck_strikes_ok is not None:
-            _setter("healthcheck_strikes_ok", healthcheck_strikes_ok)
+            pulumi.set(__self__, "healthcheck_strikes_ok", healthcheck_strikes_ok)
         if healthcheck_timeout is not None:
-            _setter("healthcheck_timeout", healthcheck_timeout)
+            pulumi.set(__self__, "healthcheck_timeout", healthcheck_timeout)
         if healthcheck_tls_skip_verify is not None:
-            _setter("healthcheck_tls_skip_verify", healthcheck_tls_skip_verify)
+            pulumi.set(__self__, "healthcheck_tls_skip_verify", healthcheck_tls_skip_verify)
         if healthcheck_tls_sni is not None:
-            _setter("healthcheck_tls_sni", healthcheck_tls_sni)
+            pulumi.set(__self__, "healthcheck_tls_sni", healthcheck_tls_sni)
         if ip_address is not None:
-            _setter("ip_address", ip_address)
+            pulumi.set(__self__, "ip_address", ip_address)
         if reverse_dns is not None:
-            _setter("reverse_dns", reverse_dns)
+            pulumi.set(__self__, "reverse_dns", reverse_dns)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter
@@ -583,10 +515,6 @@ class IPAddress(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            IPAddressArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

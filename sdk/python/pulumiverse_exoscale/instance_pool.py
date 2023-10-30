@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -60,100 +60,51 @@ class InstancePoolArgs:
         :param pulumi.Input[str] user_data: [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machines: The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
         """
-        InstancePoolArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            size=size,
-            template_id=template_id,
-            zone=zone,
-            affinity_group_ids=affinity_group_ids,
-            deploy_target_id=deploy_target_id,
-            description=description,
-            disk_size=disk_size,
-            elastic_ip_ids=elastic_ip_ids,
-            instance_prefix=instance_prefix,
-            instance_type=instance_type,
-            instances=instances,
-            ipv6=ipv6,
-            key_pair=key_pair,
-            labels=labels,
-            name=name,
-            network_ids=network_ids,
-            security_group_ids=security_group_ids,
-            service_offering=service_offering,
-            state=state,
-            user_data=user_data,
-            virtual_machines=virtual_machines,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             size: pulumi.Input[int],
-             template_id: pulumi.Input[str],
-             zone: pulumi.Input[str],
-             affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             deploy_target_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disk_size: Optional[pulumi.Input[int]] = None,
-             elastic_ip_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             instance_prefix: Optional[pulumi.Input[str]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             instances: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePoolInstanceArgs']]]] = None,
-             ipv6: Optional[pulumi.Input[bool]] = None,
-             key_pair: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             service_offering: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             user_data: Optional[pulumi.Input[str]] = None,
-             virtual_machines: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        _setter("size", size)
-        _setter("template_id", template_id)
-        _setter("zone", zone)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "template_id", template_id)
+        pulumi.set(__self__, "zone", zone)
         if affinity_group_ids is not None:
-            _setter("affinity_group_ids", affinity_group_ids)
+            pulumi.set(__self__, "affinity_group_ids", affinity_group_ids)
         if deploy_target_id is not None:
-            _setter("deploy_target_id", deploy_target_id)
+            pulumi.set(__self__, "deploy_target_id", deploy_target_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disk_size is not None:
-            _setter("disk_size", disk_size)
+            pulumi.set(__self__, "disk_size", disk_size)
         if elastic_ip_ids is not None:
-            _setter("elastic_ip_ids", elastic_ip_ids)
+            pulumi.set(__self__, "elastic_ip_ids", elastic_ip_ids)
         if instance_prefix is not None:
-            _setter("instance_prefix", instance_prefix)
+            pulumi.set(__self__, "instance_prefix", instance_prefix)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
         if instances is not None:
-            _setter("instances", instances)
+            pulumi.set(__self__, "instances", instances)
         if ipv6 is not None:
-            _setter("ipv6", ipv6)
+            pulumi.set(__self__, "ipv6", ipv6)
         if key_pair is not None:
-            _setter("key_pair", key_pair)
+            pulumi.set(__self__, "key_pair", key_pair)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network_ids is not None:
-            _setter("network_ids", network_ids)
+            pulumi.set(__self__, "network_ids", network_ids)
         if security_group_ids is not None:
-            _setter("security_group_ids", security_group_ids)
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
         if service_offering is not None:
             warnings.warn("""This attribute has been replaced by \"instance_type\".""", DeprecationWarning)
             pulumi.log.warn("""service_offering is deprecated: This attribute has been replaced by \"instance_type\".""")
         if service_offering is not None:
-            _setter("service_offering", service_offering)
+            pulumi.set(__self__, "service_offering", service_offering)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if user_data is not None:
-            _setter("user_data", user_data)
+            pulumi.set(__self__, "user_data", user_data)
         if virtual_machines is not None:
             warnings.warn("""Use the instances exported attribute instead.""", DeprecationWarning)
             pulumi.log.warn("""virtual_machines is deprecated: Use the instances exported attribute instead.""")
         if virtual_machines is not None:
-            _setter("virtual_machines", virtual_machines)
+            pulumi.set(__self__, "virtual_machines", virtual_machines)
 
     @property
     @pulumi.getter
@@ -458,103 +409,54 @@ class _InstancePoolState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machines: The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
-        _InstancePoolState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            affinity_group_ids=affinity_group_ids,
-            deploy_target_id=deploy_target_id,
-            description=description,
-            disk_size=disk_size,
-            elastic_ip_ids=elastic_ip_ids,
-            instance_prefix=instance_prefix,
-            instance_type=instance_type,
-            instances=instances,
-            ipv6=ipv6,
-            key_pair=key_pair,
-            labels=labels,
-            name=name,
-            network_ids=network_ids,
-            security_group_ids=security_group_ids,
-            service_offering=service_offering,
-            size=size,
-            state=state,
-            template_id=template_id,
-            user_data=user_data,
-            virtual_machines=virtual_machines,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             deploy_target_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disk_size: Optional[pulumi.Input[int]] = None,
-             elastic_ip_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             instance_prefix: Optional[pulumi.Input[str]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             instances: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePoolInstanceArgs']]]] = None,
-             ipv6: Optional[pulumi.Input[bool]] = None,
-             key_pair: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             service_offering: Optional[pulumi.Input[str]] = None,
-             size: Optional[pulumi.Input[int]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             template_id: Optional[pulumi.Input[str]] = None,
-             user_data: Optional[pulumi.Input[str]] = None,
-             virtual_machines: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
         if affinity_group_ids is not None:
-            _setter("affinity_group_ids", affinity_group_ids)
+            pulumi.set(__self__, "affinity_group_ids", affinity_group_ids)
         if deploy_target_id is not None:
-            _setter("deploy_target_id", deploy_target_id)
+            pulumi.set(__self__, "deploy_target_id", deploy_target_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disk_size is not None:
-            _setter("disk_size", disk_size)
+            pulumi.set(__self__, "disk_size", disk_size)
         if elastic_ip_ids is not None:
-            _setter("elastic_ip_ids", elastic_ip_ids)
+            pulumi.set(__self__, "elastic_ip_ids", elastic_ip_ids)
         if instance_prefix is not None:
-            _setter("instance_prefix", instance_prefix)
+            pulumi.set(__self__, "instance_prefix", instance_prefix)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
         if instances is not None:
-            _setter("instances", instances)
+            pulumi.set(__self__, "instances", instances)
         if ipv6 is not None:
-            _setter("ipv6", ipv6)
+            pulumi.set(__self__, "ipv6", ipv6)
         if key_pair is not None:
-            _setter("key_pair", key_pair)
+            pulumi.set(__self__, "key_pair", key_pair)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network_ids is not None:
-            _setter("network_ids", network_ids)
+            pulumi.set(__self__, "network_ids", network_ids)
         if security_group_ids is not None:
-            _setter("security_group_ids", security_group_ids)
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
         if service_offering is not None:
             warnings.warn("""This attribute has been replaced by \"instance_type\".""", DeprecationWarning)
             pulumi.log.warn("""service_offering is deprecated: This attribute has been replaced by \"instance_type\".""")
         if service_offering is not None:
-            _setter("service_offering", service_offering)
+            pulumi.set(__self__, "service_offering", service_offering)
         if size is not None:
-            _setter("size", size)
+            pulumi.set(__self__, "size", size)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if template_id is not None:
-            _setter("template_id", template_id)
+            pulumi.set(__self__, "template_id", template_id)
         if user_data is not None:
-            _setter("user_data", user_data)
+            pulumi.set(__self__, "user_data", user_data)
         if virtual_machines is not None:
             warnings.warn("""Use the instances exported attribute instead.""", DeprecationWarning)
             pulumi.log.warn("""virtual_machines is deprecated: Use the instances exported attribute instead.""")
         if virtual_machines is not None:
-            _setter("virtual_machines", virtual_machines)
+            pulumi.set(__self__, "virtual_machines", virtual_machines)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="affinityGroupIds")
@@ -904,10 +806,6 @@ class InstancePool(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstancePoolArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

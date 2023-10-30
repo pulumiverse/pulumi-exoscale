@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['SKSKubeconfigArgs', 'SKSKubeconfig']
@@ -33,33 +33,14 @@ class SKSKubeconfigArgs:
                take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
         :param pulumi.Input[float] ttl_seconds: ❗ The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
         """
-        SKSKubeconfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            groups=groups,
-            user=user,
-            zone=zone,
-            early_renewal_seconds=early_renewal_seconds,
-            ttl_seconds=ttl_seconds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
-             groups: pulumi.Input[Sequence[pulumi.Input[str]]],
-             user: pulumi.Input[str],
-             zone: pulumi.Input[str],
-             early_renewal_seconds: Optional[pulumi.Input[int]] = None,
-             ttl_seconds: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        _setter("cluster_id", cluster_id)
-        _setter("groups", groups)
-        _setter("user", user)
-        _setter("zone", zone)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "groups", groups)
+        pulumi.set(__self__, "user", user)
+        pulumi.set(__self__, "zone", zone)
         if early_renewal_seconds is not None:
-            _setter("early_renewal_seconds", early_renewal_seconds)
+            pulumi.set(__self__, "early_renewal_seconds", early_renewal_seconds)
         if ttl_seconds is not None:
-            _setter("ttl_seconds", ttl_seconds)
+            pulumi.set(__self__, "ttl_seconds", ttl_seconds)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -163,45 +144,22 @@ class _SKSKubeconfigState:
         :param pulumi.Input[str] user: ❗ User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
-        _SKSKubeconfigState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            early_renewal_seconds=early_renewal_seconds,
-            groups=groups,
-            kubeconfig=kubeconfig,
-            ready_for_renewal=ready_for_renewal,
-            ttl_seconds=ttl_seconds,
-            user=user,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             early_renewal_seconds: Optional[pulumi.Input[int]] = None,
-             groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             kubeconfig: Optional[pulumi.Input[str]] = None,
-             ready_for_renewal: Optional[pulumi.Input[bool]] = None,
-             ttl_seconds: Optional[pulumi.Input[float]] = None,
-             user: Optional[pulumi.Input[str]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
         if cluster_id is not None:
-            _setter("cluster_id", cluster_id)
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if early_renewal_seconds is not None:
-            _setter("early_renewal_seconds", early_renewal_seconds)
+            pulumi.set(__self__, "early_renewal_seconds", early_renewal_seconds)
         if groups is not None:
-            _setter("groups", groups)
+            pulumi.set(__self__, "groups", groups)
         if kubeconfig is not None:
-            _setter("kubeconfig", kubeconfig)
+            pulumi.set(__self__, "kubeconfig", kubeconfig)
         if ready_for_renewal is not None:
-            _setter("ready_for_renewal", ready_for_renewal)
+            pulumi.set(__self__, "ready_for_renewal", ready_for_renewal)
         if ttl_seconds is not None:
-            _setter("ttl_seconds", ttl_seconds)
+            pulumi.set(__self__, "ttl_seconds", ttl_seconds)
         if user is not None:
-            _setter("user", user)
+            pulumi.set(__self__, "user", user)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -346,10 +304,6 @@ class SKSKubeconfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SKSKubeconfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

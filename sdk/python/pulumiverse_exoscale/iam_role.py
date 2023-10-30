@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -32,41 +32,20 @@ class IAMRoleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: IAM Role permissions.
         :param pulumi.Input['IAMRolePolicyArgs'] policy: IAM Policy.
         """
-        IAMRoleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            editable=editable,
-            labels=labels,
-            name=name,
-            permissions=permissions,
-            policy=policy,
-            timeouts=timeouts,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             editable: Optional[pulumi.Input[bool]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             policy: Optional[pulumi.Input['IAMRolePolicyArgs']] = None,
-             timeouts: Optional[pulumi.Input['IAMRoleTimeoutsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if editable is not None:
-            _setter("editable", editable)
+            pulumi.set(__self__, "editable", editable)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if permissions is not None:
-            _setter("permissions", permissions)
+            pulumi.set(__self__, "permissions", permissions)
         if policy is not None:
-            _setter("policy", policy)
+            pulumi.set(__self__, "policy", policy)
         if timeouts is not None:
-            _setter("timeouts", timeouts)
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @property
     @pulumi.getter
@@ -169,41 +148,20 @@ class _IAMRoleState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: IAM Role permissions.
         :param pulumi.Input['IAMRolePolicyArgs'] policy: IAM Policy.
         """
-        _IAMRoleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            editable=editable,
-            labels=labels,
-            name=name,
-            permissions=permissions,
-            policy=policy,
-            timeouts=timeouts,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             editable: Optional[pulumi.Input[bool]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             policy: Optional[pulumi.Input['IAMRolePolicyArgs']] = None,
-             timeouts: Optional[pulumi.Input['IAMRoleTimeoutsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if editable is not None:
-            _setter("editable", editable)
+            pulumi.set(__self__, "editable", editable)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if permissions is not None:
-            _setter("permissions", permissions)
+            pulumi.set(__self__, "permissions", permissions)
         if policy is not None:
-            _setter("policy", policy)
+            pulumi.set(__self__, "policy", policy)
         if timeouts is not None:
-            _setter("timeouts", timeouts)
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @property
     @pulumi.getter
@@ -331,10 +289,6 @@ class IAMRole(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            IAMRoleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -361,17 +315,7 @@ class IAMRole(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["permissions"] = permissions
-            if policy is not None and not isinstance(policy, IAMRolePolicyArgs):
-                policy = policy or {}
-                def _setter(key, value):
-                    policy[key] = value
-                IAMRolePolicyArgs._configure(_setter, **policy)
             __props__.__dict__["policy"] = policy
-            if timeouts is not None and not isinstance(timeouts, IAMRoleTimeoutsArgs):
-                timeouts = timeouts or {}
-                def _setter(key, value):
-                    timeouts[key] = value
-                IAMRoleTimeoutsArgs._configure(_setter, **timeouts)
             __props__.__dict__["timeouts"] = timeouts
         super(IAMRole, __self__).__init__(
             'exoscale:index/iAMRole:IAMRole',

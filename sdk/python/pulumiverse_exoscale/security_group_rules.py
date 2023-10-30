@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,29 +27,14 @@ class SecurityGroupRulesArgs:
         :param pulumi.Input[str] security_group: ❗ The security group (name) the rules apply to (conflicts with `security_group_id`).
         :param pulumi.Input[str] security_group_id: ❗ The security group (ID) the rules apply to (conficts with `security_group)`.
         """
-        SecurityGroupRulesArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            egresses=egresses,
-            ingresses=ingresses,
-            security_group=security_group,
-            security_group_id=security_group_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             egresses: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGroupRulesEgressArgs']]]] = None,
-             ingresses: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGroupRulesIngressArgs']]]] = None,
-             security_group: Optional[pulumi.Input[str]] = None,
-             security_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
         if egresses is not None:
-            _setter("egresses", egresses)
+            pulumi.set(__self__, "egresses", egresses)
         if ingresses is not None:
-            _setter("ingresses", ingresses)
+            pulumi.set(__self__, "ingresses", ingresses)
         if security_group is not None:
-            _setter("security_group", security_group)
+            pulumi.set(__self__, "security_group", security_group)
         if security_group_id is not None:
-            _setter("security_group_id", security_group_id)
+            pulumi.set(__self__, "security_group_id", security_group_id)
 
     @property
     @pulumi.getter
@@ -114,29 +99,14 @@ class _SecurityGroupRulesState:
         :param pulumi.Input[str] security_group: ❗ The security group (name) the rules apply to (conflicts with `security_group_id`).
         :param pulumi.Input[str] security_group_id: ❗ The security group (ID) the rules apply to (conficts with `security_group)`.
         """
-        _SecurityGroupRulesState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            egresses=egresses,
-            ingresses=ingresses,
-            security_group=security_group,
-            security_group_id=security_group_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             egresses: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGroupRulesEgressArgs']]]] = None,
-             ingresses: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGroupRulesIngressArgs']]]] = None,
-             security_group: Optional[pulumi.Input[str]] = None,
-             security_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
         if egresses is not None:
-            _setter("egresses", egresses)
+            pulumi.set(__self__, "egresses", egresses)
         if ingresses is not None:
-            _setter("ingresses", ingresses)
+            pulumi.set(__self__, "ingresses", ingresses)
         if security_group is not None:
-            _setter("security_group", security_group)
+            pulumi.set(__self__, "security_group", security_group)
         if security_group_id is not None:
-            _setter("security_group_id", security_group_id)
+            pulumi.set(__self__, "security_group_id", security_group_id)
 
     @property
     @pulumi.getter
@@ -226,10 +196,6 @@ class SecurityGroupRules(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SecurityGroupRulesArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

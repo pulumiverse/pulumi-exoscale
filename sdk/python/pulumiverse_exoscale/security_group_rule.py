@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['SecurityGroupRuleArgs', 'SecurityGroupRule']
@@ -43,70 +43,37 @@ class SecurityGroupRuleArgs:
         :param pulumi.Input[str] user_security_group: ❗ An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`public_security_group`/`user_security_group_id`). Please use the `user_security_group_id` argument along the exoscale*security*group data source instead.
         :param pulumi.Input[str] user_security_group_id: ❗ An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with `cidr`/`public_security_group`/`user_security_group)`).
         """
-        SecurityGroupRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            cidr=cidr,
-            description=description,
-            end_port=end_port,
-            icmp_code=icmp_code,
-            icmp_type=icmp_type,
-            protocol=protocol,
-            public_security_group=public_security_group,
-            security_group=security_group,
-            security_group_id=security_group_id,
-            start_port=start_port,
-            user_security_group=user_security_group,
-            user_security_group_id=user_security_group_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
-             cidr: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             end_port: Optional[pulumi.Input[int]] = None,
-             icmp_code: Optional[pulumi.Input[int]] = None,
-             icmp_type: Optional[pulumi.Input[int]] = None,
-             protocol: Optional[pulumi.Input[str]] = None,
-             public_security_group: Optional[pulumi.Input[str]] = None,
-             security_group: Optional[pulumi.Input[str]] = None,
-             security_group_id: Optional[pulumi.Input[str]] = None,
-             start_port: Optional[pulumi.Input[int]] = None,
-             user_security_group: Optional[pulumi.Input[str]] = None,
-             user_security_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        _setter("type", type)
+        pulumi.set(__self__, "type", type)
         if cidr is not None:
-            _setter("cidr", cidr)
+            pulumi.set(__self__, "cidr", cidr)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if end_port is not None:
-            _setter("end_port", end_port)
+            pulumi.set(__self__, "end_port", end_port)
         if icmp_code is not None:
-            _setter("icmp_code", icmp_code)
+            pulumi.set(__self__, "icmp_code", icmp_code)
         if icmp_type is not None:
-            _setter("icmp_type", icmp_type)
+            pulumi.set(__self__, "icmp_type", icmp_type)
         if protocol is not None:
-            _setter("protocol", protocol)
+            pulumi.set(__self__, "protocol", protocol)
         if public_security_group is not None:
-            _setter("public_security_group", public_security_group)
+            pulumi.set(__self__, "public_security_group", public_security_group)
         if security_group is not None:
             warnings.warn("""Deprecated in favor of `security_group_id`""", DeprecationWarning)
             pulumi.log.warn("""security_group is deprecated: Deprecated in favor of `security_group_id`""")
         if security_group is not None:
-            _setter("security_group", security_group)
+            pulumi.set(__self__, "security_group", security_group)
         if security_group_id is not None:
-            _setter("security_group_id", security_group_id)
+            pulumi.set(__self__, "security_group_id", security_group_id)
         if start_port is not None:
-            _setter("start_port", start_port)
+            pulumi.set(__self__, "start_port", start_port)
         if user_security_group is not None:
             warnings.warn("""Deprecated in favor of `user_security_group_id`""", DeprecationWarning)
             pulumi.log.warn("""user_security_group is deprecated: Deprecated in favor of `user_security_group_id`""")
         if user_security_group is not None:
-            _setter("user_security_group", user_security_group)
+            pulumi.set(__self__, "user_security_group", user_security_group)
         if user_security_group_id is not None:
-            _setter("user_security_group_id", user_security_group_id)
+            pulumi.set(__self__, "user_security_group_id", user_security_group_id)
 
     @property
     @pulumi.getter
@@ -303,71 +270,38 @@ class _SecurityGroupRuleState:
         :param pulumi.Input[str] user_security_group: ❗ An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`public_security_group`/`user_security_group_id`). Please use the `user_security_group_id` argument along the exoscale*security*group data source instead.
         :param pulumi.Input[str] user_security_group_id: ❗ An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with `cidr`/`public_security_group`/`user_security_group)`).
         """
-        _SecurityGroupRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cidr=cidr,
-            description=description,
-            end_port=end_port,
-            icmp_code=icmp_code,
-            icmp_type=icmp_type,
-            protocol=protocol,
-            public_security_group=public_security_group,
-            security_group=security_group,
-            security_group_id=security_group_id,
-            start_port=start_port,
-            type=type,
-            user_security_group=user_security_group,
-            user_security_group_id=user_security_group_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cidr: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             end_port: Optional[pulumi.Input[int]] = None,
-             icmp_code: Optional[pulumi.Input[int]] = None,
-             icmp_type: Optional[pulumi.Input[int]] = None,
-             protocol: Optional[pulumi.Input[str]] = None,
-             public_security_group: Optional[pulumi.Input[str]] = None,
-             security_group: Optional[pulumi.Input[str]] = None,
-             security_group_id: Optional[pulumi.Input[str]] = None,
-             start_port: Optional[pulumi.Input[int]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             user_security_group: Optional[pulumi.Input[str]] = None,
-             user_security_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
         if cidr is not None:
-            _setter("cidr", cidr)
+            pulumi.set(__self__, "cidr", cidr)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if end_port is not None:
-            _setter("end_port", end_port)
+            pulumi.set(__self__, "end_port", end_port)
         if icmp_code is not None:
-            _setter("icmp_code", icmp_code)
+            pulumi.set(__self__, "icmp_code", icmp_code)
         if icmp_type is not None:
-            _setter("icmp_type", icmp_type)
+            pulumi.set(__self__, "icmp_type", icmp_type)
         if protocol is not None:
-            _setter("protocol", protocol)
+            pulumi.set(__self__, "protocol", protocol)
         if public_security_group is not None:
-            _setter("public_security_group", public_security_group)
+            pulumi.set(__self__, "public_security_group", public_security_group)
         if security_group is not None:
             warnings.warn("""Deprecated in favor of `security_group_id`""", DeprecationWarning)
             pulumi.log.warn("""security_group is deprecated: Deprecated in favor of `security_group_id`""")
         if security_group is not None:
-            _setter("security_group", security_group)
+            pulumi.set(__self__, "security_group", security_group)
         if security_group_id is not None:
-            _setter("security_group_id", security_group_id)
+            pulumi.set(__self__, "security_group_id", security_group_id)
         if start_port is not None:
-            _setter("start_port", start_port)
+            pulumi.set(__self__, "start_port", start_port)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if user_security_group is not None:
             warnings.warn("""Deprecated in favor of `user_security_group_id`""", DeprecationWarning)
             pulumi.log.warn("""user_security_group is deprecated: Deprecated in favor of `user_security_group_id`""")
         if user_security_group is not None:
-            _setter("user_security_group", user_security_group)
+            pulumi.set(__self__, "user_security_group", user_security_group)
         if user_security_group_id is not None:
-            _setter("user_security_group_id", user_security_group_id)
+            pulumi.set(__self__, "user_security_group_id", user_security_group_id)
 
     @property
     @pulumi.getter
@@ -609,10 +543,6 @@ class SecurityGroupRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SecurityGroupRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

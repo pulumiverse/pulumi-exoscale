@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -24,24 +24,11 @@ class IAMAPIKeyArgs:
         :param pulumi.Input[str] role_id: ❗ IAM API role ID.
         :param pulumi.Input[str] name: ❗ IAM API Key name.
         """
-        IAMAPIKeyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            role_id=role_id,
-            name=name,
-            timeouts=timeouts,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             role_id: pulumi.Input[str],
-             name: Optional[pulumi.Input[str]] = None,
-             timeouts: Optional[pulumi.Input['IAMAPIKeyTimeoutsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        _setter("role_id", role_id)
+        pulumi.set(__self__, "role_id", role_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if timeouts is not None:
-            _setter("timeouts", timeouts)
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @property
     @pulumi.getter(name="roleId")
@@ -92,33 +79,16 @@ class _IAMAPIKeyState:
         :param pulumi.Input[str] role_id: ❗ IAM API role ID.
         :param pulumi.Input[str] secret: Secret for the IAM API Key.
         """
-        _IAMAPIKeyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            name=name,
-            role_id=role_id,
-            secret=secret,
-            timeouts=timeouts,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             role_id: Optional[pulumi.Input[str]] = None,
-             secret: Optional[pulumi.Input[str]] = None,
-             timeouts: Optional[pulumi.Input['IAMAPIKeyTimeoutsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if role_id is not None:
-            _setter("role_id", role_id)
+            pulumi.set(__self__, "role_id", role_id)
         if secret is not None:
-            _setter("secret", secret)
+            pulumi.set(__self__, "secret", secret)
         if timeouts is not None:
-            _setter("timeouts", timeouts)
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @property
     @pulumi.getter
@@ -212,10 +182,6 @@ class IAMAPIKey(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            IAMAPIKeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -237,11 +203,6 @@ class IAMAPIKey(pulumi.CustomResource):
             if role_id is None and not opts.urn:
                 raise TypeError("Missing required property 'role_id'")
             __props__.__dict__["role_id"] = role_id
-            if timeouts is not None and not isinstance(timeouts, IAMAPIKeyTimeoutsArgs):
-                timeouts = timeouts or {}
-                def _setter(key, value):
-                    timeouts[key] = value
-                IAMAPIKeyTimeoutsArgs._configure(_setter, **timeouts)
             __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["key"] = None
             __props__.__dict__["secret"] = None
