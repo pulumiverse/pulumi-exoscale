@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['SecurityGroupArgs', 'SecurityGroup']
@@ -23,25 +23,12 @@ class SecurityGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_sources: A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio) notation.
         :param pulumi.Input[str] name: ❗ The security group name.
         """
-        SecurityGroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            external_sources=external_sources,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             external_sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if external_sources is not None:
-            _setter("external_sources", external_sources)
+            pulumi.set(__self__, "external_sources", external_sources)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -92,25 +79,12 @@ class _SecurityGroupState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_sources: A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notatio) notation.
         :param pulumi.Input[str] name: ❗ The security group name.
         """
-        _SecurityGroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            external_sources=external_sources,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             external_sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if external_sources is not None:
-            _setter("external_sources", external_sources)
+            pulumi.set(__self__, "external_sources", external_sources)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -206,10 +180,6 @@ class SecurityGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SecurityGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

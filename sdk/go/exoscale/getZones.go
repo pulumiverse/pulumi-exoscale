@@ -4,7 +4,11 @@
 package exoscale
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -24,4 +28,50 @@ type GetZonesResult struct {
 	Id string `pulumi:"id"`
 	// List of zones
 	Zones []string `pulumi:"zones"`
+}
+
+func GetZonesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetZonesResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetZonesResult, error) {
+		r, err := GetZones(ctx, opts...)
+		var s GetZonesResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetZonesResultOutput)
+}
+
+// A collection of values returned by getZones.
+type GetZonesResultOutput struct{ *pulumi.OutputState }
+
+func (GetZonesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesResult)(nil)).Elem()
+}
+
+func (o GetZonesResultOutput) ToGetZonesResultOutput() GetZonesResultOutput {
+	return o
+}
+
+func (o GetZonesResultOutput) ToGetZonesResultOutputWithContext(ctx context.Context) GetZonesResultOutput {
+	return o
+}
+
+func (o GetZonesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetZonesResult] {
+	return pulumix.Output[GetZonesResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetZonesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// List of zones
+func (o GetZonesResultOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetZonesResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetZonesResultOutput{})
 }

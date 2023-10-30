@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -24,23 +24,10 @@ class IAMOrgPolicyArgs:
         :param pulumi.Input[str] default_service_strategy: Default service strategy (`allow` or `deny`).
         :param pulumi.Input[Mapping[str, pulumi.Input['IAMOrgPolicyServicesArgs']]] services: IAM policy services.
         """
-        IAMOrgPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            default_service_strategy=default_service_strategy,
-            services=services,
-            timeouts=timeouts,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             default_service_strategy: pulumi.Input[str],
-             services: pulumi.Input[Mapping[str, pulumi.Input['IAMOrgPolicyServicesArgs']]],
-             timeouts: Optional[pulumi.Input['IAMOrgPolicyTimeoutsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        _setter("default_service_strategy", default_service_strategy)
-        _setter("services", services)
+        pulumi.set(__self__, "default_service_strategy", default_service_strategy)
+        pulumi.set(__self__, "services", services)
         if timeouts is not None:
-            _setter("timeouts", timeouts)
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @property
     @pulumi.getter(name="defaultServiceStrategy")
@@ -87,25 +74,12 @@ class _IAMOrgPolicyState:
         :param pulumi.Input[str] default_service_strategy: Default service strategy (`allow` or `deny`).
         :param pulumi.Input[Mapping[str, pulumi.Input['IAMOrgPolicyServicesArgs']]] services: IAM policy services.
         """
-        _IAMOrgPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            default_service_strategy=default_service_strategy,
-            services=services,
-            timeouts=timeouts,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             default_service_strategy: Optional[pulumi.Input[str]] = None,
-             services: Optional[pulumi.Input[Mapping[str, pulumi.Input['IAMOrgPolicyServicesArgs']]]] = None,
-             timeouts: Optional[pulumi.Input['IAMOrgPolicyTimeoutsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
         if default_service_strategy is not None:
-            _setter("default_service_strategy", default_service_strategy)
+            pulumi.set(__self__, "default_service_strategy", default_service_strategy)
         if services is not None:
-            _setter("services", services)
+            pulumi.set(__self__, "services", services)
         if timeouts is not None:
-            _setter("timeouts", timeouts)
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @property
     @pulumi.getter(name="defaultServiceStrategy")
@@ -175,10 +149,6 @@ class IAMOrgPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            IAMOrgPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -202,11 +172,6 @@ class IAMOrgPolicy(pulumi.CustomResource):
             if services is None and not opts.urn:
                 raise TypeError("Missing required property 'services'")
             __props__.__dict__["services"] = services
-            if timeouts is not None and not isinstance(timeouts, IAMOrgPolicyTimeoutsArgs):
-                timeouts = timeouts or {}
-                def _setter(key, value):
-                    timeouts[key] = value
-                IAMOrgPolicyTimeoutsArgs._configure(_setter, **timeouts)
             __props__.__dict__["timeouts"] = timeouts
         super(IAMOrgPolicy, __self__).__init__(
             'exoscale:index/iAMOrgPolicy:IAMOrgPolicy',

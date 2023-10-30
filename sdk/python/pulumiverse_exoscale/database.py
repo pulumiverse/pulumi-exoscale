@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -46,66 +46,31 @@ class DatabaseArgs:
         :param pulumi.Input['DatabaseRedisArgs'] redis: *redis* database service type specific arguments. Structure is documented below.
         :param pulumi.Input[bool] termination_protection: The database service protection boolean flag against termination/power-off.
         """
-        DatabaseArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            plan=plan,
-            type=type,
-            zone=zone,
-            grafana=grafana,
-            kafka=kafka,
-            maintenance_dow=maintenance_dow,
-            maintenance_time=maintenance_time,
-            mysql=mysql,
-            name=name,
-            opensearch=opensearch,
-            pg=pg,
-            redis=redis,
-            termination_protection=termination_protection,
-            timeouts=timeouts,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             plan: pulumi.Input[str],
-             type: pulumi.Input[str],
-             zone: pulumi.Input[str],
-             grafana: Optional[pulumi.Input['DatabaseGrafanaArgs']] = None,
-             kafka: Optional[pulumi.Input['DatabaseKafkaArgs']] = None,
-             maintenance_dow: Optional[pulumi.Input[str]] = None,
-             maintenance_time: Optional[pulumi.Input[str]] = None,
-             mysql: Optional[pulumi.Input['DatabaseMysqlArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opensearch: Optional[pulumi.Input['DatabaseOpensearchArgs']] = None,
-             pg: Optional[pulumi.Input['DatabasePgArgs']] = None,
-             redis: Optional[pulumi.Input['DatabaseRedisArgs']] = None,
-             termination_protection: Optional[pulumi.Input[bool]] = None,
-             timeouts: Optional[pulumi.Input['DatabaseTimeoutsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        _setter("plan", plan)
-        _setter("type", type)
-        _setter("zone", zone)
+        pulumi.set(__self__, "plan", plan)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "zone", zone)
         if grafana is not None:
-            _setter("grafana", grafana)
+            pulumi.set(__self__, "grafana", grafana)
         if kafka is not None:
-            _setter("kafka", kafka)
+            pulumi.set(__self__, "kafka", kafka)
         if maintenance_dow is not None:
-            _setter("maintenance_dow", maintenance_dow)
+            pulumi.set(__self__, "maintenance_dow", maintenance_dow)
         if maintenance_time is not None:
-            _setter("maintenance_time", maintenance_time)
+            pulumi.set(__self__, "maintenance_time", maintenance_time)
         if mysql is not None:
-            _setter("mysql", mysql)
+            pulumi.set(__self__, "mysql", mysql)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if opensearch is not None:
-            _setter("opensearch", opensearch)
+            pulumi.set(__self__, "opensearch", opensearch)
         if pg is not None:
-            _setter("pg", pg)
+            pulumi.set(__self__, "pg", pg)
         if redis is not None:
-            _setter("redis", redis)
+            pulumi.set(__self__, "redis", redis)
         if termination_protection is not None:
-            _setter("termination_protection", termination_protection)
+            pulumi.set(__self__, "termination_protection", termination_protection)
         if timeouts is not None:
-            _setter("timeouts", timeouts)
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @property
     @pulumi.getter
@@ -322,101 +287,50 @@ class _DatabaseState:
         :param pulumi.Input[str] updated_at: The date of the latest database service update.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
-        _DatabaseState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ca_certificate=ca_certificate,
-            created_at=created_at,
-            disk_size=disk_size,
-            grafana=grafana,
-            kafka=kafka,
-            maintenance_dow=maintenance_dow,
-            maintenance_time=maintenance_time,
-            mysql=mysql,
-            name=name,
-            node_cpus=node_cpus,
-            node_memory=node_memory,
-            nodes=nodes,
-            opensearch=opensearch,
-            pg=pg,
-            plan=plan,
-            redis=redis,
-            state=state,
-            termination_protection=termination_protection,
-            timeouts=timeouts,
-            type=type,
-            updated_at=updated_at,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ca_certificate: Optional[pulumi.Input[str]] = None,
-             created_at: Optional[pulumi.Input[str]] = None,
-             disk_size: Optional[pulumi.Input[int]] = None,
-             grafana: Optional[pulumi.Input['DatabaseGrafanaArgs']] = None,
-             kafka: Optional[pulumi.Input['DatabaseKafkaArgs']] = None,
-             maintenance_dow: Optional[pulumi.Input[str]] = None,
-             maintenance_time: Optional[pulumi.Input[str]] = None,
-             mysql: Optional[pulumi.Input['DatabaseMysqlArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             node_cpus: Optional[pulumi.Input[int]] = None,
-             node_memory: Optional[pulumi.Input[int]] = None,
-             nodes: Optional[pulumi.Input[int]] = None,
-             opensearch: Optional[pulumi.Input['DatabaseOpensearchArgs']] = None,
-             pg: Optional[pulumi.Input['DatabasePgArgs']] = None,
-             plan: Optional[pulumi.Input[str]] = None,
-             redis: Optional[pulumi.Input['DatabaseRedisArgs']] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             termination_protection: Optional[pulumi.Input[bool]] = None,
-             timeouts: Optional[pulumi.Input['DatabaseTimeoutsArgs']] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             updated_at: Optional[pulumi.Input[str]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
         if ca_certificate is not None:
-            _setter("ca_certificate", ca_certificate)
+            pulumi.set(__self__, "ca_certificate", ca_certificate)
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if disk_size is not None:
-            _setter("disk_size", disk_size)
+            pulumi.set(__self__, "disk_size", disk_size)
         if grafana is not None:
-            _setter("grafana", grafana)
+            pulumi.set(__self__, "grafana", grafana)
         if kafka is not None:
-            _setter("kafka", kafka)
+            pulumi.set(__self__, "kafka", kafka)
         if maintenance_dow is not None:
-            _setter("maintenance_dow", maintenance_dow)
+            pulumi.set(__self__, "maintenance_dow", maintenance_dow)
         if maintenance_time is not None:
-            _setter("maintenance_time", maintenance_time)
+            pulumi.set(__self__, "maintenance_time", maintenance_time)
         if mysql is not None:
-            _setter("mysql", mysql)
+            pulumi.set(__self__, "mysql", mysql)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if node_cpus is not None:
-            _setter("node_cpus", node_cpus)
+            pulumi.set(__self__, "node_cpus", node_cpus)
         if node_memory is not None:
-            _setter("node_memory", node_memory)
+            pulumi.set(__self__, "node_memory", node_memory)
         if nodes is not None:
-            _setter("nodes", nodes)
+            pulumi.set(__self__, "nodes", nodes)
         if opensearch is not None:
-            _setter("opensearch", opensearch)
+            pulumi.set(__self__, "opensearch", opensearch)
         if pg is not None:
-            _setter("pg", pg)
+            pulumi.set(__self__, "pg", pg)
         if plan is not None:
-            _setter("plan", plan)
+            pulumi.set(__self__, "plan", plan)
         if redis is not None:
-            _setter("redis", redis)
+            pulumi.set(__self__, "redis", redis)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if termination_protection is not None:
-            _setter("termination_protection", termination_protection)
+            pulumi.set(__self__, "termination_protection", termination_protection)
         if timeouts is not None:
-            _setter("timeouts", timeouts)
+            pulumi.set(__self__, "timeouts", timeouts)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if updated_at is not None:
-            _setter("updated_at", updated_at)
+            pulumi.set(__self__, "updated_at", updated_at)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="caCertificate")
@@ -758,10 +672,6 @@ class Database(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DatabaseArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -790,54 +700,19 @@ class Database(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatabaseArgs.__new__(DatabaseArgs)
 
-            if grafana is not None and not isinstance(grafana, DatabaseGrafanaArgs):
-                grafana = grafana or {}
-                def _setter(key, value):
-                    grafana[key] = value
-                DatabaseGrafanaArgs._configure(_setter, **grafana)
             __props__.__dict__["grafana"] = grafana
-            if kafka is not None and not isinstance(kafka, DatabaseKafkaArgs):
-                kafka = kafka or {}
-                def _setter(key, value):
-                    kafka[key] = value
-                DatabaseKafkaArgs._configure(_setter, **kafka)
             __props__.__dict__["kafka"] = kafka
             __props__.__dict__["maintenance_dow"] = maintenance_dow
             __props__.__dict__["maintenance_time"] = maintenance_time
-            if mysql is not None and not isinstance(mysql, DatabaseMysqlArgs):
-                mysql = mysql or {}
-                def _setter(key, value):
-                    mysql[key] = value
-                DatabaseMysqlArgs._configure(_setter, **mysql)
             __props__.__dict__["mysql"] = mysql
             __props__.__dict__["name"] = name
-            if opensearch is not None and not isinstance(opensearch, DatabaseOpensearchArgs):
-                opensearch = opensearch or {}
-                def _setter(key, value):
-                    opensearch[key] = value
-                DatabaseOpensearchArgs._configure(_setter, **opensearch)
             __props__.__dict__["opensearch"] = opensearch
-            if pg is not None and not isinstance(pg, DatabasePgArgs):
-                pg = pg or {}
-                def _setter(key, value):
-                    pg[key] = value
-                DatabasePgArgs._configure(_setter, **pg)
             __props__.__dict__["pg"] = pg
             if plan is None and not opts.urn:
                 raise TypeError("Missing required property 'plan'")
             __props__.__dict__["plan"] = plan
-            if redis is not None and not isinstance(redis, DatabaseRedisArgs):
-                redis = redis or {}
-                def _setter(key, value):
-                    redis[key] = value
-                DatabaseRedisArgs._configure(_setter, **redis)
             __props__.__dict__["redis"] = redis
             __props__.__dict__["termination_protection"] = termination_protection
-            if timeouts is not None and not isinstance(timeouts, DatabaseTimeoutsArgs):
-                timeouts = timeouts or {}
-                def _setter(key, value):
-                    timeouts[key] = value
-                DatabaseTimeoutsArgs._configure(_setter, **timeouts)
             __props__.__dict__["timeouts"] = timeouts
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")

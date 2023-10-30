@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -53,78 +53,37 @@ class ComputeInstanceArgs:
         :param pulumi.Input[str] state: The instance state (`running` or `stopped`; default: `running`).
         :param pulumi.Input[str] user_data: [cloud-init](https://cloudinit.readthedocs.io/) configuration.
         """
-        ComputeInstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            template_id=template_id,
-            type=type,
-            zone=zone,
-            anti_affinity_group_ids=anti_affinity_group_ids,
-            deploy_target_id=deploy_target_id,
-            disk_size=disk_size,
-            elastic_ip_ids=elastic_ip_ids,
-            ipv6=ipv6,
-            labels=labels,
-            name=name,
-            network_interfaces=network_interfaces,
-            private=private,
-            reverse_dns=reverse_dns,
-            security_group_ids=security_group_ids,
-            ssh_key=ssh_key,
-            state=state,
-            user_data=user_data,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             template_id: pulumi.Input[str],
-             type: pulumi.Input[str],
-             zone: pulumi.Input[str],
-             anti_affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             deploy_target_id: Optional[pulumi.Input[str]] = None,
-             disk_size: Optional[pulumi.Input[int]] = None,
-             elastic_ip_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             ipv6: Optional[pulumi.Input[bool]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeInstanceNetworkInterfaceArgs']]]] = None,
-             private: Optional[pulumi.Input[bool]] = None,
-             reverse_dns: Optional[pulumi.Input[str]] = None,
-             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             ssh_key: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        _setter("template_id", template_id)
-        _setter("type", type)
-        _setter("zone", zone)
+        pulumi.set(__self__, "template_id", template_id)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "zone", zone)
         if anti_affinity_group_ids is not None:
-            _setter("anti_affinity_group_ids", anti_affinity_group_ids)
+            pulumi.set(__self__, "anti_affinity_group_ids", anti_affinity_group_ids)
         if deploy_target_id is not None:
-            _setter("deploy_target_id", deploy_target_id)
+            pulumi.set(__self__, "deploy_target_id", deploy_target_id)
         if disk_size is not None:
-            _setter("disk_size", disk_size)
+            pulumi.set(__self__, "disk_size", disk_size)
         if elastic_ip_ids is not None:
-            _setter("elastic_ip_ids", elastic_ip_ids)
+            pulumi.set(__self__, "elastic_ip_ids", elastic_ip_ids)
         if ipv6 is not None:
-            _setter("ipv6", ipv6)
+            pulumi.set(__self__, "ipv6", ipv6)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network_interfaces is not None:
-            _setter("network_interfaces", network_interfaces)
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
         if private is not None:
-            _setter("private", private)
+            pulumi.set(__self__, "private", private)
         if reverse_dns is not None:
-            _setter("reverse_dns", reverse_dns)
+            pulumi.set(__self__, "reverse_dns", reverse_dns)
         if security_group_ids is not None:
-            _setter("security_group_ids", security_group_ids)
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
         if ssh_key is not None:
-            _setter("ssh_key", ssh_key)
+            pulumi.set(__self__, "ssh_key", ssh_key)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if user_data is not None:
-            _setter("user_data", user_data)
+            pulumi.set(__self__, "user_data", user_data)
 
     @property
     @pulumi.getter(name="templateId")
@@ -379,100 +338,51 @@ class _ComputeInstanceState:
         :param pulumi.Input[str] user_data: [cloud-init](https://cloudinit.readthedocs.io/) configuration.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
-        _ComputeInstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            anti_affinity_group_ids=anti_affinity_group_ids,
-            created_at=created_at,
-            deploy_target_id=deploy_target_id,
-            disk_size=disk_size,
-            elastic_ip_ids=elastic_ip_ids,
-            ipv6=ipv6,
-            ipv6_address=ipv6_address,
-            labels=labels,
-            name=name,
-            network_interfaces=network_interfaces,
-            private=private,
-            private_network_ids=private_network_ids,
-            public_ip_address=public_ip_address,
-            reverse_dns=reverse_dns,
-            security_group_ids=security_group_ids,
-            ssh_key=ssh_key,
-            state=state,
-            template_id=template_id,
-            type=type,
-            user_data=user_data,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             anti_affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             created_at: Optional[pulumi.Input[str]] = None,
-             deploy_target_id: Optional[pulumi.Input[str]] = None,
-             disk_size: Optional[pulumi.Input[int]] = None,
-             elastic_ip_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             ipv6: Optional[pulumi.Input[bool]] = None,
-             ipv6_address: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeInstanceNetworkInterfaceArgs']]]] = None,
-             private: Optional[pulumi.Input[bool]] = None,
-             private_network_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             public_ip_address: Optional[pulumi.Input[str]] = None,
-             reverse_dns: Optional[pulumi.Input[str]] = None,
-             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             ssh_key: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             template_id: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             user_data: Optional[pulumi.Input[str]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
         if anti_affinity_group_ids is not None:
-            _setter("anti_affinity_group_ids", anti_affinity_group_ids)
+            pulumi.set(__self__, "anti_affinity_group_ids", anti_affinity_group_ids)
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if deploy_target_id is not None:
-            _setter("deploy_target_id", deploy_target_id)
+            pulumi.set(__self__, "deploy_target_id", deploy_target_id)
         if disk_size is not None:
-            _setter("disk_size", disk_size)
+            pulumi.set(__self__, "disk_size", disk_size)
         if elastic_ip_ids is not None:
-            _setter("elastic_ip_ids", elastic_ip_ids)
+            pulumi.set(__self__, "elastic_ip_ids", elastic_ip_ids)
         if ipv6 is not None:
-            _setter("ipv6", ipv6)
+            pulumi.set(__self__, "ipv6", ipv6)
         if ipv6_address is not None:
-            _setter("ipv6_address", ipv6_address)
+            pulumi.set(__self__, "ipv6_address", ipv6_address)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network_interfaces is not None:
-            _setter("network_interfaces", network_interfaces)
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
         if private is not None:
-            _setter("private", private)
+            pulumi.set(__self__, "private", private)
         if private_network_ids is not None:
             warnings.warn("""Use the network_interface block instead.""", DeprecationWarning)
             pulumi.log.warn("""private_network_ids is deprecated: Use the network_interface block instead.""")
         if private_network_ids is not None:
-            _setter("private_network_ids", private_network_ids)
+            pulumi.set(__self__, "private_network_ids", private_network_ids)
         if public_ip_address is not None:
-            _setter("public_ip_address", public_ip_address)
+            pulumi.set(__self__, "public_ip_address", public_ip_address)
         if reverse_dns is not None:
-            _setter("reverse_dns", reverse_dns)
+            pulumi.set(__self__, "reverse_dns", reverse_dns)
         if security_group_ids is not None:
-            _setter("security_group_ids", security_group_ids)
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
         if ssh_key is not None:
-            _setter("ssh_key", ssh_key)
+            pulumi.set(__self__, "ssh_key", ssh_key)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if template_id is not None:
-            _setter("template_id", template_id)
+            pulumi.set(__self__, "template_id", template_id)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if user_data is not None:
-            _setter("user_data", user_data)
+            pulumi.set(__self__, "user_data", user_data)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="antiAffinityGroupIds")
@@ -815,10 +725,6 @@ class ComputeInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ComputeInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

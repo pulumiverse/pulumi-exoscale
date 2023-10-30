@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['NetworkArgs', 'Network']
@@ -32,47 +32,24 @@ class NetworkArgs:
         :param pulumi.Input[str] start_ip: The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags (key/value). To remove all tags, set `tags = {}`.
         """
-        NetworkArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            zone=zone,
-            display_text=display_text,
-            end_ip=end_ip,
-            name=name,
-            netmask=netmask,
-            network_offering=network_offering,
-            start_ip=start_ip,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             zone: pulumi.Input[str],
-             display_text: Optional[pulumi.Input[str]] = None,
-             end_ip: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             netmask: Optional[pulumi.Input[str]] = None,
-             network_offering: Optional[pulumi.Input[str]] = None,
-             start_ip: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        _setter("zone", zone)
+        pulumi.set(__self__, "zone", zone)
         if display_text is not None:
-            _setter("display_text", display_text)
+            pulumi.set(__self__, "display_text", display_text)
         if end_ip is not None:
-            _setter("end_ip", end_ip)
+            pulumi.set(__self__, "end_ip", end_ip)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if netmask is not None:
-            _setter("netmask", netmask)
+            pulumi.set(__self__, "netmask", netmask)
         if network_offering is not None:
             warnings.warn("""This attribute is deprecated, please remove it from your configuration.""", DeprecationWarning)
             pulumi.log.warn("""network_offering is deprecated: This attribute is deprecated, please remove it from your configuration.""")
         if network_offering is not None:
-            _setter("network_offering", network_offering)
+            pulumi.set(__self__, "network_offering", network_offering)
         if start_ip is not None:
-            _setter("start_ip", start_ip)
+            pulumi.set(__self__, "start_ip", start_ip)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -192,48 +169,25 @@ class _NetworkState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags (key/value). To remove all tags, set `tags = {}`.
         :param pulumi.Input[str] zone: ❗ The Exoscale Zone name.
         """
-        _NetworkState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_text=display_text,
-            end_ip=end_ip,
-            name=name,
-            netmask=netmask,
-            network_offering=network_offering,
-            start_ip=start_ip,
-            tags=tags,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_text: Optional[pulumi.Input[str]] = None,
-             end_ip: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             netmask: Optional[pulumi.Input[str]] = None,
-             network_offering: Optional[pulumi.Input[str]] = None,
-             start_ip: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
         if display_text is not None:
-            _setter("display_text", display_text)
+            pulumi.set(__self__, "display_text", display_text)
         if end_ip is not None:
-            _setter("end_ip", end_ip)
+            pulumi.set(__self__, "end_ip", end_ip)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if netmask is not None:
-            _setter("netmask", netmask)
+            pulumi.set(__self__, "netmask", netmask)
         if network_offering is not None:
             warnings.warn("""This attribute is deprecated, please remove it from your configuration.""", DeprecationWarning)
             pulumi.log.warn("""network_offering is deprecated: This attribute is deprecated, please remove it from your configuration.""")
         if network_offering is not None:
-            _setter("network_offering", network_offering)
+            pulumi.set(__self__, "network_offering", network_offering)
         if start_ip is not None:
-            _setter("start_ip", start_ip)
+            pulumi.set(__self__, "start_ip", start_ip)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="displayText")
@@ -378,10 +332,6 @@ class Network(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            NetworkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

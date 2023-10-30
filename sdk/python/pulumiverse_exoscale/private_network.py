@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['PrivateNetworkArgs', 'PrivateNetwork']
@@ -31,40 +31,19 @@ class PrivateNetworkArgs:
         :param pulumi.Input[str] netmask: (For managed Privnets) The network mask defining the IPv4 network allowed for static leases.
         :param pulumi.Input[str] start_ip: (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
         """
-        PrivateNetworkArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            zone=zone,
-            description=description,
-            end_ip=end_ip,
-            labels=labels,
-            name=name,
-            netmask=netmask,
-            start_ip=start_ip,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             zone: pulumi.Input[str],
-             description: Optional[pulumi.Input[str]] = None,
-             end_ip: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             netmask: Optional[pulumi.Input[str]] = None,
-             start_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        _setter("zone", zone)
+        pulumi.set(__self__, "zone", zone)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if end_ip is not None:
-            _setter("end_ip", end_ip)
+            pulumi.set(__self__, "end_ip", end_ip)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if netmask is not None:
-            _setter("netmask", netmask)
+            pulumi.set(__self__, "netmask", netmask)
         if start_ip is not None:
-            _setter("start_ip", start_ip)
+            pulumi.set(__self__, "start_ip", start_ip)
 
     @property
     @pulumi.getter
@@ -171,41 +150,20 @@ class _PrivateNetworkState:
         :param pulumi.Input[str] start_ip: (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
-        _PrivateNetworkState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            end_ip=end_ip,
-            labels=labels,
-            name=name,
-            netmask=netmask,
-            start_ip=start_ip,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             end_ip: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             netmask: Optional[pulumi.Input[str]] = None,
-             start_ip: Optional[pulumi.Input[str]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if end_ip is not None:
-            _setter("end_ip", end_ip)
+            pulumi.set(__self__, "end_ip", end_ip)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if netmask is not None:
-            _setter("netmask", netmask)
+            pulumi.set(__self__, "netmask", netmask)
         if start_ip is not None:
-            _setter("start_ip", start_ip)
+            pulumi.set(__self__, "start_ip", start_ip)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter
@@ -357,10 +315,6 @@ class PrivateNetwork(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PrivateNetworkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

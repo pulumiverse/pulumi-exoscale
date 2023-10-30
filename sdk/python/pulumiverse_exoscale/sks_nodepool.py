@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['SKSNodepoolArgs', 'SKSNodepool']
@@ -46,69 +46,32 @@ class SKSNodepoolArgs:
         :param pulumi.Input[bool] storage_lvm: Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] taints: A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
         """
-        SKSNodepoolArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            instance_type=instance_type,
-            size=size,
-            zone=zone,
-            anti_affinity_group_ids=anti_affinity_group_ids,
-            deploy_target_id=deploy_target_id,
-            description=description,
-            disk_size=disk_size,
-            instance_prefix=instance_prefix,
-            labels=labels,
-            name=name,
-            private_network_ids=private_network_ids,
-            security_group_ids=security_group_ids,
-            storage_lvm=storage_lvm,
-            taints=taints,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
-             instance_type: pulumi.Input[str],
-             size: pulumi.Input[int],
-             zone: pulumi.Input[str],
-             anti_affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             deploy_target_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disk_size: Optional[pulumi.Input[int]] = None,
-             instance_prefix: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             private_network_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             storage_lvm: Optional[pulumi.Input[bool]] = None,
-             taints: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        _setter("cluster_id", cluster_id)
-        _setter("instance_type", instance_type)
-        _setter("size", size)
-        _setter("zone", zone)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "zone", zone)
         if anti_affinity_group_ids is not None:
-            _setter("anti_affinity_group_ids", anti_affinity_group_ids)
+            pulumi.set(__self__, "anti_affinity_group_ids", anti_affinity_group_ids)
         if deploy_target_id is not None:
-            _setter("deploy_target_id", deploy_target_id)
+            pulumi.set(__self__, "deploy_target_id", deploy_target_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disk_size is not None:
-            _setter("disk_size", disk_size)
+            pulumi.set(__self__, "disk_size", disk_size)
         if instance_prefix is not None:
-            _setter("instance_prefix", instance_prefix)
+            pulumi.set(__self__, "instance_prefix", instance_prefix)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if private_network_ids is not None:
-            _setter("private_network_ids", private_network_ids)
+            pulumi.set(__self__, "private_network_ids", private_network_ids)
         if security_group_ids is not None:
-            _setter("security_group_ids", security_group_ids)
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
         if storage_lvm is not None:
-            _setter("storage_lvm", storage_lvm)
+            pulumi.set(__self__, "storage_lvm", storage_lvm)
         if taints is not None:
-            _setter("taints", taints)
+            pulumi.set(__self__, "taints", taints)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -333,93 +296,46 @@ class _SKSNodepoolState:
         :param pulumi.Input[str] version: The managed instances version.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
-        _SKSNodepoolState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            anti_affinity_group_ids=anti_affinity_group_ids,
-            cluster_id=cluster_id,
-            created_at=created_at,
-            deploy_target_id=deploy_target_id,
-            description=description,
-            disk_size=disk_size,
-            instance_pool_id=instance_pool_id,
-            instance_prefix=instance_prefix,
-            instance_type=instance_type,
-            labels=labels,
-            name=name,
-            private_network_ids=private_network_ids,
-            security_group_ids=security_group_ids,
-            size=size,
-            state=state,
-            storage_lvm=storage_lvm,
-            taints=taints,
-            template_id=template_id,
-            version=version,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             anti_affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             created_at: Optional[pulumi.Input[str]] = None,
-             deploy_target_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disk_size: Optional[pulumi.Input[int]] = None,
-             instance_pool_id: Optional[pulumi.Input[str]] = None,
-             instance_prefix: Optional[pulumi.Input[str]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             private_network_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             size: Optional[pulumi.Input[int]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             storage_lvm: Optional[pulumi.Input[bool]] = None,
-             taints: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             template_id: Optional[pulumi.Input[str]] = None,
-             version: Optional[pulumi.Input[str]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
         if anti_affinity_group_ids is not None:
-            _setter("anti_affinity_group_ids", anti_affinity_group_ids)
+            pulumi.set(__self__, "anti_affinity_group_ids", anti_affinity_group_ids)
         if cluster_id is not None:
-            _setter("cluster_id", cluster_id)
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if deploy_target_id is not None:
-            _setter("deploy_target_id", deploy_target_id)
+            pulumi.set(__self__, "deploy_target_id", deploy_target_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disk_size is not None:
-            _setter("disk_size", disk_size)
+            pulumi.set(__self__, "disk_size", disk_size)
         if instance_pool_id is not None:
-            _setter("instance_pool_id", instance_pool_id)
+            pulumi.set(__self__, "instance_pool_id", instance_pool_id)
         if instance_prefix is not None:
-            _setter("instance_prefix", instance_prefix)
+            pulumi.set(__self__, "instance_prefix", instance_prefix)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if private_network_ids is not None:
-            _setter("private_network_ids", private_network_ids)
+            pulumi.set(__self__, "private_network_ids", private_network_ids)
         if security_group_ids is not None:
-            _setter("security_group_ids", security_group_ids)
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
         if size is not None:
-            _setter("size", size)
+            pulumi.set(__self__, "size", size)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if storage_lvm is not None:
-            _setter("storage_lvm", storage_lvm)
+            pulumi.set(__self__, "storage_lvm", storage_lvm)
         if taints is not None:
-            _setter("taints", taints)
+            pulumi.set(__self__, "taints", taints)
         if template_id is not None:
-            _setter("template_id", template_id)
+            pulumi.set(__self__, "template_id", template_id)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="antiAffinityGroupIds")
@@ -739,10 +655,6 @@ class SKSNodepool(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SKSNodepoolArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
