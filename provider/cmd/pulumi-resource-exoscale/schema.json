@@ -61,26 +61,9 @@
     },
     "config": {
         "variables": {
-            "computeEndpoint": {
-                "type": "string",
-                "description": "Exoscale CloudStack API endpoint (by default: https://api.exoscale.com/v1)\n"
-            },
-            "config": {
-                "type": "string",
-                "description": "CloudStack ini configuration filename (by default: cloudstack.ini)\n",
-                "language": {
-                    "csharp": {
-                        "name": "CloudStackIniConfig"
-                    }
-                }
-            },
             "delay": {
                 "type": "integer",
                 "deprecationMessage": "Does nothing"
-            },
-            "dnsEndpoint": {
-                "type": "string",
-                "description": "Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)\n"
             },
             "environment": {
                 "type": "string"
@@ -95,14 +78,6 @@
                 },
                 "secret": true
             },
-            "profile": {
-                "type": "string",
-                "deprecationMessage": "Use region instead"
-            },
-            "region": {
-                "type": "string",
-                "description": "CloudStack ini configuration section name (by default: cloudstack)\n"
-            },
             "secret": {
                 "type": "string",
                 "description": "Exoscale API secret\n",
@@ -116,10 +91,6 @@
             "timeout": {
                 "type": "integer",
                 "description": "Timeout in seconds for waiting on compute resources to become available (by default: 300)\n"
-            },
-            "token": {
-                "type": "string",
-                "deprecationMessage": "Use key instead"
             }
         }
     },
@@ -799,116 +770,6 @@
                 "clientId",
                 "issuerUrl"
             ]
-        },
-        "exoscale:index/SecurityGroupRulesEgress:SecurityGroupRulesEgress": {
-            "properties": {
-                "cidrLists": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.\n"
-                },
-                "description": {
-                    "type": "string",
-                    "description": "A free-form text describing the block.\n"
-                },
-                "icmpCode": {
-                    "type": "integer",
-                    "description": "An ICMP/ICMPv6 type/code to match.\n"
-                },
-                "icmpType": {
-                    "type": "integer",
-                    "description": "An ICMP/ICMPv6 type/code to match.\n"
-                },
-                "ids": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "ports": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "A list of ports or port ranges (`\u003cstart_port\u003e-\u003cend_port\u003e`).\n"
-                },
-                "protocol": {
-                    "type": "string",
-                    "description": "The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).\n"
-                },
-                "userSecurityGroupLists": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "A list of source (for ingress)/destination (for egress) identified by a security group.\n"
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "ids"
-                    ]
-                }
-            }
-        },
-        "exoscale:index/SecurityGroupRulesIngress:SecurityGroupRulesIngress": {
-            "properties": {
-                "cidrLists": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "A list of (`INGRESS`) source / (`EGRESS`) destination IP subnet (in CIDR notation) to match.\n"
-                },
-                "description": {
-                    "type": "string",
-                    "description": "A free-form text describing the block.\n"
-                },
-                "icmpCode": {
-                    "type": "integer",
-                    "description": "An ICMP/ICMPv6 type/code to match.\n"
-                },
-                "icmpType": {
-                    "type": "integer",
-                    "description": "An ICMP/ICMPv6 type/code to match.\n"
-                },
-                "ids": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "ports": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "A list of ports or port ranges (`\u003cstart_port\u003e-\u003cend_port\u003e`).\n"
-                },
-                "protocol": {
-                    "type": "string",
-                    "description": "The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`).\n"
-                },
-                "userSecurityGroupLists": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "A list of source (for ingress)/destination (for egress) identified by a security group.\n"
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "ids"
-                    ]
-                }
-            }
         },
         "exoscale:index/getComputeInstanceListInstance:getComputeInstanceListInstance": {
             "properties": {
@@ -1830,26 +1691,9 @@
     "provider": {
         "description": "The provider type for the exoscale package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
         "properties": {
-            "computeEndpoint": {
-                "type": "string",
-                "description": "Exoscale CloudStack API endpoint (by default: https://api.exoscale.com/v1)\n"
-            },
-            "config": {
-                "type": "string",
-                "description": "CloudStack ini configuration filename (by default: cloudstack.ini)\n",
-                "language": {
-                    "csharp": {
-                        "name": "CloudStackIniConfig"
-                    }
-                }
-            },
             "delay": {
                 "type": "integer",
                 "deprecationMessage": "Does nothing"
-            },
-            "dnsEndpoint": {
-                "type": "string",
-                "description": "Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)\n"
             },
             "environment": {
                 "type": "string"
@@ -1859,14 +1703,6 @@
                 "description": "Exoscale API key\n",
                 "secret": true
             },
-            "profile": {
-                "type": "string",
-                "deprecationMessage": "Use region instead"
-            },
-            "region": {
-                "type": "string",
-                "description": "CloudStack ini configuration section name (by default: cloudstack)\n"
-            },
             "secret": {
                 "type": "string",
                 "description": "Exoscale API secret\n",
@@ -1875,33 +1711,12 @@
             "timeout": {
                 "type": "integer",
                 "description": "Timeout in seconds for waiting on compute resources to become available (by default: 300)\n"
-            },
-            "token": {
-                "type": "string",
-                "deprecationMessage": "Use key instead"
             }
         },
         "inputProperties": {
-            "computeEndpoint": {
-                "type": "string",
-                "description": "Exoscale CloudStack API endpoint (by default: https://api.exoscale.com/v1)\n"
-            },
-            "config": {
-                "type": "string",
-                "description": "CloudStack ini configuration filename (by default: cloudstack.ini)\n",
-                "language": {
-                    "csharp": {
-                        "name": "CloudStackIniConfig"
-                    }
-                }
-            },
             "delay": {
                 "type": "integer",
                 "deprecationMessage": "Does nothing"
-            },
-            "dnsEndpoint": {
-                "type": "string",
-                "description": "Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)\n"
             },
             "environment": {
                 "type": "string"
@@ -1916,14 +1731,6 @@
                 },
                 "secret": true
             },
-            "profile": {
-                "type": "string",
-                "deprecationMessage": "Use region instead"
-            },
-            "region": {
-                "type": "string",
-                "description": "CloudStack ini configuration section name (by default: cloudstack)\n"
-            },
             "secret": {
                 "type": "string",
                 "description": "Exoscale API secret\n",
@@ -1937,87 +1744,10 @@
             "timeout": {
                 "type": "integer",
                 "description": "Timeout in seconds for waiting on compute resources to become available (by default: 300)\n"
-            },
-            "token": {
-                "type": "string",
-                "deprecationMessage": "Use key instead"
             }
         }
     },
     "resources": {
-        "exoscale:index/affinity:Affinity": {
-            "description": "**WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use exoscale.AntiAffinityGroup instead.\n",
-            "properties": {
-                "description": {
-                    "type": "string",
-                    "description": "❗ A free-form text describing the group.\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "❗ The anti-affinity group name.\n"
-                },
-                "type": {
-                    "type": "string",
-                    "description": "❗ The type of the group (`host anti-affinity` is the only supported value).\n"
-                },
-                "virtualMachineIds": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "The compute instances (IDs) members of the group.\n"
-                }
-            },
-            "required": [
-                "name",
-                "virtualMachineIds"
-            ],
-            "inputProperties": {
-                "description": {
-                    "type": "string",
-                    "description": "❗ A free-form text describing the group.\n",
-                    "willReplaceOnChanges": true
-                },
-                "name": {
-                    "type": "string",
-                    "description": "❗ The anti-affinity group name.\n",
-                    "willReplaceOnChanges": true
-                },
-                "type": {
-                    "type": "string",
-                    "description": "❗ The type of the group (`host anti-affinity` is the only supported value).\n",
-                    "willReplaceOnChanges": true
-                }
-            },
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering Affinity resources.\n",
-                "properties": {
-                    "description": {
-                        "type": "string",
-                        "description": "❗ A free-form text describing the group.\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": "❗ The anti-affinity group name.\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "type": {
-                        "type": "string",
-                        "description": "❗ The type of the group (`host anti-affinity` is the only supported value).\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "virtualMachineIds": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "The compute instances (IDs) members of the group.\n"
-                    }
-                },
-                "type": "object"
-            }
-        },
         "exoscale:index/antiAffinityGroup:AntiAffinityGroup": {
             "description": "\n\n\n## Import\n\nAn existing anti-affinity group may be imported by `\u003cID\u003e`\n\n```sh\n $ pulumi import exoscale:index/antiAffinityGroup:AntiAffinityGroup \\\n```\n\n\n\n exoscale_anti_affinity_group.my_anti_affinity_group \\\n\n f81d4fae-7dec-11d0-a765-00a0c91e6bf6 ",
             "properties": {
@@ -2056,396 +1786,6 @@
                     "name": {
                         "type": "string",
                         "description": "❗ The anti-affinity group name.\n",
-                        "willReplaceOnChanges": true
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "exoscale:index/compute:Compute": {
-            "description": "!\u003e **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use exoscale.ComputeInstance instead (or refer to the ad-hoc migration guide).\n\nManage Exoscale Compute Instances.\n",
-            "properties": {
-                "affinityGroupIds": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "❗ A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).\n"
-                },
-                "affinityGroups": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "❗ A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).\n"
-                },
-                "diskSize": {
-                    "type": "integer",
-                    "description": "The instance disk size (GiB; at least `10`).\n"
-                },
-                "displayName": {
-                    "type": "string",
-                    "description": "The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen (\" - \") characters; it can be changed to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically.\n"
-                },
-                "gateway": {
-                    "type": "string"
-                },
-                "hostname": {
-                    "type": "string",
-                    "description": "The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.\n"
-                },
-                "ip4": {
-                    "type": "boolean",
-                    "description": "Request an IPv4 address on the default NIC\n"
-                },
-                "ip6": {
-                    "type": "boolean",
-                    "description": "Request an IPv6 address on the default NIC\n"
-                },
-                "ip6Address": {
-                    "type": "string",
-                    "description": "The instance (main network interface) IPv6 address (if enabled).\n"
-                },
-                "ip6Cidr": {
-                    "type": "string"
-                },
-                "ipAddress": {
-                    "type": "string",
-                    "description": "The instance (main network interface) IPv4 address.\n"
-                },
-                "keyPair": {
-                    "type": "string",
-                    "description": "❗ The SSH keypair (name) to authorize in the instance.\n"
-                },
-                "keyboard": {
-                    "type": "string",
-                    "description": "The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "The instance hostname. Please use the `hostname` argument instead.\n",
-                    "deprecationMessage": "use `hostname` attribute instead"
-                },
-                "password": {
-                    "type": "string",
-                    "description": "The instance initial password and/or encrypted password.\n",
-                    "secret": true
-                },
-                "reverseDns": {
-                    "type": "string",
-                    "description": "The instance reverse DNS record (must end with a `.`; e.g: `my-instance.example.net.`).\n"
-                },
-                "securityGroupIds": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "A list of security groups (IDs; conflicts with `security_groups`).\n"
-                },
-                "securityGroups": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "A list of security groups (names; conflicts with `security_group_ids`).\n"
-                },
-                "size": {
-                    "type": "string",
-                    "description": "The instance size (`Tiny`, `Small`, `Medium`, `Large`, etc.)\n"
-                },
-                "state": {
-                    "type": "string",
-                    "description": "The instance state (`Running` or `Stopped`; default: `Running`)\n"
-                },
-                "tags": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Map of tags (key/value). To remove all tags, set `tags = {}`.\n"
-                },
-                "template": {
-                    "type": "string",
-                    "description": "❗ The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `template_id` attribute instead.\n"
-                },
-                "templateId": {
-                    "type": "string",
-                    "description": "❗ The compute instance template (ID). Usage of the `exoscale.getComputeTemplate` data source is recommended.\n"
-                },
-                "userData": {
-                    "type": "string",
-                    "description": "cloud-init configuration.\n"
-                },
-                "userDataBase64": {
-                    "type": "boolean",
-                    "description": "was the cloud-init configuration base64 encoded\n"
-                },
-                "username": {
-                    "type": "string",
-                    "description": "The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the `exoscale.getComputeTemplate` data source `username` attribute instead.\n",
-                    "deprecationMessage": "broken, use `compute_template` data source `username` attribute"
-                },
-                "zone": {
-                    "type": "string",
-                    "description": "❗ The Exoscale Zone name.\n"
-                }
-            },
-            "required": [
-                "affinityGroupIds",
-                "affinityGroups",
-                "diskSize",
-                "displayName",
-                "gateway",
-                "hostname",
-                "ip6Address",
-                "ip6Cidr",
-                "ipAddress",
-                "name",
-                "password",
-                "securityGroupIds",
-                "securityGroups",
-                "state",
-                "tags",
-                "template",
-                "templateId",
-                "userDataBase64",
-                "username",
-                "zone"
-            ],
-            "inputProperties": {
-                "affinityGroupIds": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "❗ A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).\n",
-                    "willReplaceOnChanges": true
-                },
-                "affinityGroups": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "❗ A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).\n",
-                    "willReplaceOnChanges": true
-                },
-                "diskSize": {
-                    "type": "integer",
-                    "description": "The instance disk size (GiB; at least `10`).\n"
-                },
-                "displayName": {
-                    "type": "string",
-                    "description": "The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen (\" - \") characters; it can be changed to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically.\n"
-                },
-                "hostname": {
-                    "type": "string",
-                    "description": "The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.\n"
-                },
-                "ip4": {
-                    "type": "boolean",
-                    "description": "Request an IPv4 address on the default NIC\n"
-                },
-                "ip6": {
-                    "type": "boolean",
-                    "description": "Request an IPv6 address on the default NIC\n"
-                },
-                "keyPair": {
-                    "type": "string",
-                    "description": "❗ The SSH keypair (name) to authorize in the instance.\n",
-                    "willReplaceOnChanges": true
-                },
-                "keyboard": {
-                    "type": "string",
-                    "description": "The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).\n"
-                },
-                "reverseDns": {
-                    "type": "string",
-                    "description": "The instance reverse DNS record (must end with a `.`; e.g: `my-instance.example.net.`).\n"
-                },
-                "securityGroupIds": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "A list of security groups (IDs; conflicts with `security_groups`).\n"
-                },
-                "securityGroups": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "A list of security groups (names; conflicts with `security_group_ids`).\n"
-                },
-                "size": {
-                    "type": "string",
-                    "description": "The instance size (`Tiny`, `Small`, `Medium`, `Large`, etc.)\n"
-                },
-                "state": {
-                    "type": "string",
-                    "description": "The instance state (`Running` or `Stopped`; default: `Running`)\n"
-                },
-                "tags": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Map of tags (key/value). To remove all tags, set `tags = {}`.\n"
-                },
-                "template": {
-                    "type": "string",
-                    "description": "❗ The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `template_id` attribute instead.\n",
-                    "willReplaceOnChanges": true
-                },
-                "templateId": {
-                    "type": "string",
-                    "description": "❗ The compute instance template (ID). Usage of the `exoscale.getComputeTemplate` data source is recommended.\n",
-                    "willReplaceOnChanges": true
-                },
-                "userData": {
-                    "type": "string",
-                    "description": "cloud-init configuration.\n"
-                },
-                "zone": {
-                    "type": "string",
-                    "description": "❗ The Exoscale Zone name.\n",
-                    "willReplaceOnChanges": true
-                }
-            },
-            "requiredInputs": [
-                "diskSize",
-                "zone"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering Compute resources.\n",
-                "properties": {
-                    "affinityGroupIds": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "❗ A list of anti-affinity groups (IDs; at creation time only; conflicts with `affinity_groups`).\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "affinityGroups": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "❗ A list of anti-affinity groups (names; at creation time only; conflicts with `affinity_group_ids`).\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "diskSize": {
-                        "type": "integer",
-                        "description": "The instance disk size (GiB; at least `10`).\n"
-                    },
-                    "displayName": {
-                        "type": "string",
-                        "description": "The displayed instance name. Note: if the `hostname` attribute is not set, this attribute is also used to set the OS' *hostname* during creation, so the value must contain only alphanumeric and hyphen (\" - \") characters; it can be changed to any character during a later update. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically.\n"
-                    },
-                    "gateway": {
-                        "type": "string"
-                    },
-                    "hostname": {
-                        "type": "string",
-                        "description": "The instance hostname, must contain only alphanumeric and hyphen (`-`) characters. If neither `display_name` or `hostname` attributes are set, a random value will be generated automatically. Note: updating this attribute's value requires to reboot the instance.\n"
-                    },
-                    "ip4": {
-                        "type": "boolean",
-                        "description": "Request an IPv4 address on the default NIC\n"
-                    },
-                    "ip6": {
-                        "type": "boolean",
-                        "description": "Request an IPv6 address on the default NIC\n"
-                    },
-                    "ip6Address": {
-                        "type": "string",
-                        "description": "The instance (main network interface) IPv6 address (if enabled).\n"
-                    },
-                    "ip6Cidr": {
-                        "type": "string"
-                    },
-                    "ipAddress": {
-                        "type": "string",
-                        "description": "The instance (main network interface) IPv4 address.\n"
-                    },
-                    "keyPair": {
-                        "type": "string",
-                        "description": "❗ The SSH keypair (name) to authorize in the instance.\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "keyboard": {
-                        "type": "string",
-                        "description": "The keyboard layout configuration (`de`, `de-ch`, `es`, `fi`, `fr`, `fr-be`, `fr-ch`, `is`, `it`, `jp`, `nl-be`, `no`, `pt`, `uk`, `us`; at creation time only).\n"
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": "The instance hostname. Please use the `hostname` argument instead.\n",
-                        "deprecationMessage": "use `hostname` attribute instead"
-                    },
-                    "password": {
-                        "type": "string",
-                        "description": "The instance initial password and/or encrypted password.\n",
-                        "secret": true
-                    },
-                    "reverseDns": {
-                        "type": "string",
-                        "description": "The instance reverse DNS record (must end with a `.`; e.g: `my-instance.example.net.`).\n"
-                    },
-                    "securityGroupIds": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "A list of security groups (IDs; conflicts with `security_groups`).\n"
-                    },
-                    "securityGroups": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "A list of security groups (names; conflicts with `security_group_ids`).\n"
-                    },
-                    "size": {
-                        "type": "string",
-                        "description": "The instance size (`Tiny`, `Small`, `Medium`, `Large`, etc.)\n"
-                    },
-                    "state": {
-                        "type": "string",
-                        "description": "The instance state (`Running` or `Stopped`; default: `Running`)\n"
-                    },
-                    "tags": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        },
-                        "description": "Map of tags (key/value). To remove all tags, set `tags = {}`.\n"
-                    },
-                    "template": {
-                        "type": "string",
-                        "description": "❗ The compute instance template (name). Only *featured* templates are available, if you want to reference *custom templates* use the `template_id` attribute instead.\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "templateId": {
-                        "type": "string",
-                        "description": "❗ The compute instance template (ID). Usage of the `exoscale.getComputeTemplate` data source is recommended.\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "userData": {
-                        "type": "string",
-                        "description": "cloud-init configuration.\n"
-                    },
-                    "userDataBase64": {
-                        "type": "boolean",
-                        "description": "was the cloud-init configuration base64 encoded\n"
-                    },
-                    "username": {
-                        "type": "string",
-                        "description": "The user to use to connect to the instance. If you've referenced a *custom template* in the resource, use the `exoscale.getComputeTemplate` data source `username` attribute instead.\n",
-                        "deprecationMessage": "broken, use `compute_template` data source `username` attribute"
-                    },
-                    "zone": {
-                        "type": "string",
-                        "description": "❗ The Exoscale Zone name.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -2544,7 +1884,7 @@
                 },
                 "templateId": {
                     "type": "string",
-                    "description": "❗ The exoscale*compute*template (ID) to use when creating the instance.\n"
+                    "description": "❗ The exoscale.getTemplate (ID) to use when creating the instance.\n"
                 },
                 "type": {
                     "type": "string",
@@ -2643,7 +1983,7 @@
                 },
                 "templateId": {
                     "type": "string",
-                    "description": "❗ The exoscale*compute*template (ID) to use when creating the instance.\n",
+                    "description": "❗ The exoscale.getTemplate (ID) to use when creating the instance.\n",
                     "willReplaceOnChanges": true
                 },
                 "type": {
@@ -2759,7 +2099,7 @@
                     },
                     "templateId": {
                         "type": "string",
-                        "description": "❗ The exoscale*compute*template (ID) to use when creating the instance.\n",
+                        "description": "❗ The exoscale.getTemplate (ID) to use when creating the instance.\n",
                         "willReplaceOnChanges": true
                     },
                     "type": {
@@ -3740,204 +3080,6 @@
                 "type": "object"
             }
         },
-        "exoscale:index/iPAddress:IPAddress": {
-            "description": "!\u003e **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use exoscale.ElasticIP instead.\n",
-            "properties": {
-                "description": {
-                    "type": "string",
-                    "description": "A free-form text describing the Elastic IP (EIP).\n"
-                },
-                "healthcheckInterval": {
-                    "type": "integer",
-                    "description": "The healthcheck probing interval (seconds; must be between `5` and `300`).\n"
-                },
-                "healthcheckMode": {
-                    "type": "string",
-                    "description": "❗ The healthcheck probing mode (must be `tcp`, `http` or `https`).\n"
-                },
-                "healthcheckPath": {
-                    "type": "string",
-                    "description": "The healthcheck probe HTTP request path (must be specified in `http`/`https` modes).\n"
-                },
-                "healthcheckPort": {
-                    "type": "integer",
-                    "description": "The healthcheck service port to probe (must be between `1` and `65535`).\n"
-                },
-                "healthcheckStrikesFail": {
-                    "type": "integer",
-                    "description": "The number of unsuccessful healthcheck probes before considering the target unhealthy (must be between `1` and `20`).\n"
-                },
-                "healthcheckStrikesOk": {
-                    "type": "integer",
-                    "description": "The number of successful healthcheck probes before considering the target healthy (must be between `1` and `20`).\n"
-                },
-                "healthcheckTimeout": {
-                    "type": "integer",
-                    "description": "The time in seconds before considering a healthcheck probing failed (must be between `2` and `60`).\n"
-                },
-                "healthcheckTlsSkipVerify": {
-                    "type": "boolean",
-                    "description": "Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).\n"
-                },
-                "healthcheckTlsSni": {
-                    "type": "string",
-                    "description": "The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).\n"
-                },
-                "ipAddress": {
-                    "type": "string",
-                    "description": "The Elastic IP (EIP) IPv4 address.\n"
-                },
-                "reverseDns": {
-                    "type": "string",
-                    "description": "The EIP reverse DNS record (must end with a `.`; e.g: `my-eip.example.net.`).\n"
-                },
-                "tags": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Map of tags (key/value). To remove all tags, set `tags = {}`.\n"
-                },
-                "zone": {
-                    "type": "string",
-                    "description": "❗ The Exoscale Zone name\n"
-                }
-            },
-            "required": [
-                "ipAddress",
-                "tags",
-                "zone"
-            ],
-            "inputProperties": {
-                "description": {
-                    "type": "string",
-                    "description": "A free-form text describing the Elastic IP (EIP).\n"
-                },
-                "healthcheckInterval": {
-                    "type": "integer",
-                    "description": "The healthcheck probing interval (seconds; must be between `5` and `300`).\n"
-                },
-                "healthcheckMode": {
-                    "type": "string",
-                    "description": "❗ The healthcheck probing mode (must be `tcp`, `http` or `https`).\n",
-                    "willReplaceOnChanges": true
-                },
-                "healthcheckPath": {
-                    "type": "string",
-                    "description": "The healthcheck probe HTTP request path (must be specified in `http`/`https` modes).\n"
-                },
-                "healthcheckPort": {
-                    "type": "integer",
-                    "description": "The healthcheck service port to probe (must be between `1` and `65535`).\n"
-                },
-                "healthcheckStrikesFail": {
-                    "type": "integer",
-                    "description": "The number of unsuccessful healthcheck probes before considering the target unhealthy (must be between `1` and `20`).\n"
-                },
-                "healthcheckStrikesOk": {
-                    "type": "integer",
-                    "description": "The number of successful healthcheck probes before considering the target healthy (must be between `1` and `20`).\n"
-                },
-                "healthcheckTimeout": {
-                    "type": "integer",
-                    "description": "The time in seconds before considering a healthcheck probing failed (must be between `2` and `60`).\n"
-                },
-                "healthcheckTlsSkipVerify": {
-                    "type": "boolean",
-                    "description": "Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).\n"
-                },
-                "healthcheckTlsSni": {
-                    "type": "string",
-                    "description": "The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).\n"
-                },
-                "reverseDns": {
-                    "type": "string",
-                    "description": "The EIP reverse DNS record (must end with a `.`; e.g: `my-eip.example.net.`).\n"
-                },
-                "tags": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Map of tags (key/value). To remove all tags, set `tags = {}`.\n"
-                },
-                "zone": {
-                    "type": "string",
-                    "description": "❗ The Exoscale Zone name\n",
-                    "willReplaceOnChanges": true
-                }
-            },
-            "requiredInputs": [
-                "zone"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering IPAddress resources.\n",
-                "properties": {
-                    "description": {
-                        "type": "string",
-                        "description": "A free-form text describing the Elastic IP (EIP).\n"
-                    },
-                    "healthcheckInterval": {
-                        "type": "integer",
-                        "description": "The healthcheck probing interval (seconds; must be between `5` and `300`).\n"
-                    },
-                    "healthcheckMode": {
-                        "type": "string",
-                        "description": "❗ The healthcheck probing mode (must be `tcp`, `http` or `https`).\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "healthcheckPath": {
-                        "type": "string",
-                        "description": "The healthcheck probe HTTP request path (must be specified in `http`/`https` modes).\n"
-                    },
-                    "healthcheckPort": {
-                        "type": "integer",
-                        "description": "The healthcheck service port to probe (must be between `1` and `65535`).\n"
-                    },
-                    "healthcheckStrikesFail": {
-                        "type": "integer",
-                        "description": "The number of unsuccessful healthcheck probes before considering the target unhealthy (must be between `1` and `20`).\n"
-                    },
-                    "healthcheckStrikesOk": {
-                        "type": "integer",
-                        "description": "The number of successful healthcheck probes before considering the target healthy (must be between `1` and `20`).\n"
-                    },
-                    "healthcheckTimeout": {
-                        "type": "integer",
-                        "description": "The time in seconds before considering a healthcheck probing failed (must be between `2` and `60`).\n"
-                    },
-                    "healthcheckTlsSkipVerify": {
-                        "type": "boolean",
-                        "description": "Disable TLS certificate validation in `https` mode (boolean; default: `false`). Note: this parameter can only be changed to `true`, it cannot be reset to `false` later on (requires a resource re-creation).\n"
-                    },
-                    "healthcheckTlsSni": {
-                        "type": "string",
-                        "description": "The healthcheck TLS server name to specify in `https` mode. Note: this parameter can only be changed to a non-empty value, it cannot be reset to its default empty value later on (requires a resource re-creation).\n"
-                    },
-                    "ipAddress": {
-                        "type": "string",
-                        "description": "The Elastic IP (EIP) IPv4 address.\n"
-                    },
-                    "reverseDns": {
-                        "type": "string",
-                        "description": "The EIP reverse DNS record (must end with a `.`; e.g: `my-eip.example.net.`).\n"
-                    },
-                    "tags": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        },
-                        "description": "Map of tags (key/value). To remove all tags, set `tags = {}`.\n"
-                    },
-                    "zone": {
-                        "type": "string",
-                        "description": "❗ The Exoscale Zone name\n",
-                        "willReplaceOnChanges": true
-                    }
-                },
-                "type": "object"
-            }
-        },
         "exoscale:index/instancePool:InstancePool": {
             "description": "\n\n\n## Import\n\nAn existing instance pool may be imported by `\u003cID\u003e@\u003czone\u003e`\n\n```sh\n $ pulumi import exoscale:index/instancePool:InstancePool \\\n```\n\n\n\n exoscale_instance_pool.my_instance_pool \\\n\n f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2 ",
             "properties": {
@@ -4029,7 +3171,7 @@
                 },
                 "templateId": {
                     "type": "string",
-                    "description": "The exoscale*compute*template (ID) to use when creating the managed instances.\n"
+                    "description": "The exoscale.getTemplate (ID) to use when creating the managed instances.\n"
                 },
                 "userData": {
                     "type": "string",
@@ -4149,7 +3291,7 @@
                 },
                 "templateId": {
                     "type": "string",
-                    "description": "The exoscale*compute*template (ID) to use when creating the managed instances.\n"
+                    "description": "The exoscale.getTemplate (ID) to use when creating the managed instances.\n"
                 },
                 "userData": {
                     "type": "string",
@@ -4265,7 +3407,7 @@
                     },
                     "templateId": {
                         "type": "string",
-                        "description": "The exoscale*compute*template (ID) to use when creating the managed instances.\n"
+                        "description": "The exoscale.getTemplate (ID) to use when creating the managed instances.\n"
                     },
                     "userData": {
                         "type": "string",
@@ -4282,91 +3424,6 @@
                     "zone": {
                         "type": "string",
                         "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n",
-                        "willReplaceOnChanges": true
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "exoscale:index/nIC:NIC": {
-            "description": "!\u003e **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use exoscale.ComputeInstance `network_interface` block instead.\n",
-            "properties": {
-                "computeId": {
-                    "type": "string",
-                    "description": "❗ The compute instance ID.\n"
-                },
-                "gateway": {
-                    "type": "string"
-                },
-                "ipAddress": {
-                    "type": "string",
-                    "description": "The IPv4 address to request as static DHCP lease if the NIC is attached to a *managed* private network.\n"
-                },
-                "macAddress": {
-                    "type": "string",
-                    "description": "The NIC MAC address.\n"
-                },
-                "netmask": {
-                    "type": "string"
-                },
-                "networkId": {
-                    "type": "string",
-                    "description": "❗ The private network ID.\n"
-                }
-            },
-            "required": [
-                "computeId",
-                "gateway",
-                "ipAddress",
-                "macAddress",
-                "netmask",
-                "networkId"
-            ],
-            "inputProperties": {
-                "computeId": {
-                    "type": "string",
-                    "description": "❗ The compute instance ID.\n",
-                    "willReplaceOnChanges": true
-                },
-                "ipAddress": {
-                    "type": "string",
-                    "description": "The IPv4 address to request as static DHCP lease if the NIC is attached to a *managed* private network.\n"
-                },
-                "networkId": {
-                    "type": "string",
-                    "description": "❗ The private network ID.\n",
-                    "willReplaceOnChanges": true
-                }
-            },
-            "requiredInputs": [
-                "computeId",
-                "networkId"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering NIC resources.\n",
-                "properties": {
-                    "computeId": {
-                        "type": "string",
-                        "description": "❗ The compute instance ID.\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "gateway": {
-                        "type": "string"
-                    },
-                    "ipAddress": {
-                        "type": "string",
-                        "description": "The IPv4 address to request as static DHCP lease if the NIC is attached to a *managed* private network.\n"
-                    },
-                    "macAddress": {
-                        "type": "string",
-                        "description": "The NIC MAC address.\n"
-                    },
-                    "netmask": {
-                        "type": "string"
-                    },
-                    "networkId": {
-                        "type": "string",
-                        "description": "❗ The private network ID.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -4666,135 +3723,6 @@
                 "type": "object"
             }
         },
-        "exoscale:index/network:Network": {
-            "description": "!\u003e **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use exoscale.PrivateNetwork instead.\n",
-            "properties": {
-                "displayText": {
-                    "type": "string",
-                    "description": "A free-form text describing the network.\n"
-                },
-                "endIp": {
-                    "type": "string",
-                    "description": "The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "The private network name.\n"
-                },
-                "netmask": {
-                    "type": "string",
-                    "description": "The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.\n"
-                },
-                "networkOffering": {
-                    "type": "string",
-                    "deprecationMessage": "This attribute is deprecated, please remove it from your configuration."
-                },
-                "startIp": {
-                    "type": "string",
-                    "description": "The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.\n"
-                },
-                "tags": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Map of tags (key/value). To remove all tags, set `tags = {}`.\n"
-                },
-                "zone": {
-                    "type": "string",
-                    "description": "❗ The Exoscale Zone name.\n"
-                }
-            },
-            "required": [
-                "displayText",
-                "name",
-                "tags",
-                "zone"
-            ],
-            "inputProperties": {
-                "displayText": {
-                    "type": "string",
-                    "description": "A free-form text describing the network.\n"
-                },
-                "endIp": {
-                    "type": "string",
-                    "description": "The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "The private network name.\n"
-                },
-                "netmask": {
-                    "type": "string",
-                    "description": "The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.\n"
-                },
-                "networkOffering": {
-                    "type": "string",
-                    "deprecationMessage": "This attribute is deprecated, please remove it from your configuration."
-                },
-                "startIp": {
-                    "type": "string",
-                    "description": "The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.\n"
-                },
-                "tags": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Map of tags (key/value). To remove all tags, set `tags = {}`.\n"
-                },
-                "zone": {
-                    "type": "string",
-                    "description": "❗ The Exoscale Zone name.\n",
-                    "willReplaceOnChanges": true
-                }
-            },
-            "requiredInputs": [
-                "zone"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering Network resources.\n",
-                "properties": {
-                    "displayText": {
-                        "type": "string",
-                        "description": "A free-form text describing the network.\n"
-                    },
-                    "endIp": {
-                        "type": "string",
-                        "description": "The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.\n"
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": "The private network name.\n"
-                    },
-                    "netmask": {
-                        "type": "string",
-                        "description": "The network mask defining the IP network allowed for static leases (see `exoscale.NIC` resource). Required for *managed* private networks.\n"
-                    },
-                    "networkOffering": {
-                        "type": "string",
-                        "deprecationMessage": "This attribute is deprecated, please remove it from your configuration."
-                    },
-                    "startIp": {
-                        "type": "string",
-                        "description": "The first/last IP addresses used by the DHCP service for dynamic leases. Required for *managed* private networks.\n"
-                    },
-                    "tags": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        },
-                        "description": "Map of tags (key/value). To remove all tags, set `tags = {}`.\n"
-                    },
-                    "zone": {
-                        "type": "string",
-                        "description": "❗ The Exoscale Zone name.\n",
-                        "willReplaceOnChanges": true
-                    }
-                },
-                "type": "object"
-            }
-        },
         "exoscale:index/privateNetwork:PrivateNetwork": {
             "description": "\n\n\n## Import\n\nAn existing private network may be imported by `\u003cID\u003e@\u003czone\u003e`\n\n```sh\n $ pulumi import exoscale:index/privateNetwork:PrivateNetwork \\\n```\n\n\n\n exoscale_private_network.my_private_network \\\n\n f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2 ",
             "properties": {
@@ -4930,7 +3858,7 @@
                 },
                 "cni": {
                     "type": "string",
-                    "description": "The CNI plugin that is to be used. Defaults to \"calico\".\n"
+                    "description": "The CNI plugin that is to be used. Available options are \"calico\" or \"cilium\". Defaults to \"calico\". Setting empty string will result in a cluster with no CNI.\n"
                 },
                 "controlPlaneCa": {
                     "type": "string",
@@ -5027,7 +3955,7 @@
                 },
                 "cni": {
                     "type": "string",
-                    "description": "The CNI plugin that is to be used. Defaults to \"calico\".\n"
+                    "description": "The CNI plugin that is to be used. Available options are \"calico\" or \"cilium\". Defaults to \"calico\". Setting empty string will result in a cluster with no CNI.\n"
                 },
                 "description": {
                     "type": "string",
@@ -5093,7 +4021,7 @@
                     },
                     "cni": {
                         "type": "string",
-                        "description": "The CNI plugin that is to be used. Defaults to \"calico\".\n"
+                        "description": "The CNI plugin that is to be used. Available options are \"calico\" or \"cilium\". Defaults to \"calico\". Setting empty string will result in a cluster with no CNI.\n"
                     },
                     "controlPlaneCa": {
                         "type": "string",
@@ -5629,6 +4557,9 @@
                     "willReplaceOnChanges": true
                 }
             },
+            "requiredInputs": [
+                "publicKey"
+            ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering SSHKey resources.\n",
                 "properties": {
@@ -5645,136 +4576,6 @@
                         "type": "string",
                         "description": "❗ The SSH *public* key that will be authorized in compute instances.\n",
                         "willReplaceOnChanges": true
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "exoscale:index/sSHKeypair:SSHKeypair": {
-            "properties": {
-                "fingerprint": {
-                    "type": "string",
-                    "description": "The SSH keypair unique identifier.\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "❗ The SSH keypair name.\n"
-                },
-                "privateKey": {
-                    "type": "string",
-                    "description": "The SSH *private* key generated if no public key was provided.\n",
-                    "secret": true
-                },
-                "publicKey": {
-                    "type": "string",
-                    "description": "❗ A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `private_key` attribute).\n"
-                }
-            },
-            "required": [
-                "fingerprint",
-                "name",
-                "privateKey"
-            ],
-            "inputProperties": {
-                "name": {
-                    "type": "string",
-                    "description": "❗ The SSH keypair name.\n",
-                    "willReplaceOnChanges": true
-                },
-                "publicKey": {
-                    "type": "string",
-                    "description": "❗ A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `private_key` attribute).\n",
-                    "willReplaceOnChanges": true
-                }
-            },
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering SSHKeypair resources.\n",
-                "properties": {
-                    "fingerprint": {
-                        "type": "string",
-                        "description": "The SSH keypair unique identifier.\n"
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": "❗ The SSH keypair name.\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "privateKey": {
-                        "type": "string",
-                        "description": "The SSH *private* key generated if no public key was provided.\n",
-                        "secret": true
-                    },
-                    "publicKey": {
-                        "type": "string",
-                        "description": "❗ A SSH *public* key that will be authorized in compute instances. If not provided, an SSH keypair (including the *private* key) is generated and saved locally (see the `private_key` attribute).\n",
-                        "willReplaceOnChanges": true
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "exoscale:index/secondaryIPAddress:SecondaryIPAddress": {
-            "description": "!\u003e **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use exoscale.ComputeInstance `elastic_ip_ids` list instead.\n",
-            "properties": {
-                "computeId": {
-                    "type": "string",
-                    "description": "❗ The compute instance ID.\n"
-                },
-                "ipAddress": {
-                    "type": "string",
-                    "description": "❗ The Elastic IP (EIP) address.\n"
-                },
-                "networkId": {
-                    "type": "string",
-                    "description": "The network (ID) the compute instance NIC is attached to.\n"
-                },
-                "nicId": {
-                    "type": "string",
-                    "description": "The network interface (NIC) ID.\n"
-                }
-            },
-            "required": [
-                "computeId",
-                "ipAddress",
-                "networkId",
-                "nicId"
-            ],
-            "inputProperties": {
-                "computeId": {
-                    "type": "string",
-                    "description": "❗ The compute instance ID.\n",
-                    "willReplaceOnChanges": true
-                },
-                "ipAddress": {
-                    "type": "string",
-                    "description": "❗ The Elastic IP (EIP) address.\n",
-                    "willReplaceOnChanges": true
-                }
-            },
-            "requiredInputs": [
-                "computeId",
-                "ipAddress"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering SecondaryIPAddress resources.\n",
-                "properties": {
-                    "computeId": {
-                        "type": "string",
-                        "description": "❗ The compute instance ID.\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "ipAddress": {
-                        "type": "string",
-                        "description": "❗ The Elastic IP (EIP) address.\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "networkId": {
-                        "type": "string",
-                        "description": "The network (ID) the compute instance NIC is attached to.\n"
-                    },
-                    "nicId": {
-                        "type": "string",
-                        "description": "The network interface (NIC) ID.\n"
                     }
                 },
                 "type": "object"
@@ -6055,127 +4856,9 @@
                 },
                 "type": "object"
             }
-        },
-        "exoscale:index/securityGroupRules:SecurityGroupRules": {
-            "description": "!\u003e **WARNING:** This resource is **DEPRECATED** and will be removed in the next major version. Please use the exoscale.SecurityGroupRule instead (or refer to the ad-hoc migration guide).\n",
-            "properties": {
-                "egresses": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/exoscale:index/SecurityGroupRulesEgress:SecurityGroupRulesEgress"
-                    },
-                    "description": "A security group rule definition (can be specified multiple times).\n"
-                },
-                "ingresses": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/exoscale:index/SecurityGroupRulesIngress:SecurityGroupRulesIngress"
-                    },
-                    "description": "A security group rule definition (can be specified multiple times).\n"
-                },
-                "securityGroup": {
-                    "type": "string",
-                    "description": "❗ The security group (name) the rules apply to (conflicts with `security_group_id`).\n"
-                },
-                "securityGroupId": {
-                    "type": "string",
-                    "description": "❗ The security group (ID) the rules apply to (conficts with `security_group)`.\n"
-                }
-            },
-            "required": [
-                "securityGroup",
-                "securityGroupId"
-            ],
-            "inputProperties": {
-                "egresses": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/exoscale:index/SecurityGroupRulesEgress:SecurityGroupRulesEgress"
-                    },
-                    "description": "A security group rule definition (can be specified multiple times).\n"
-                },
-                "ingresses": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/exoscale:index/SecurityGroupRulesIngress:SecurityGroupRulesIngress"
-                    },
-                    "description": "A security group rule definition (can be specified multiple times).\n"
-                },
-                "securityGroup": {
-                    "type": "string",
-                    "description": "❗ The security group (name) the rules apply to (conflicts with `security_group_id`).\n",
-                    "willReplaceOnChanges": true
-                },
-                "securityGroupId": {
-                    "type": "string",
-                    "description": "❗ The security group (ID) the rules apply to (conficts with `security_group)`.\n",
-                    "willReplaceOnChanges": true
-                }
-            },
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering SecurityGroupRules resources.\n",
-                "properties": {
-                    "egresses": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/exoscale:index/SecurityGroupRulesEgress:SecurityGroupRulesEgress"
-                        },
-                        "description": "A security group rule definition (can be specified multiple times).\n"
-                    },
-                    "ingresses": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/exoscale:index/SecurityGroupRulesIngress:SecurityGroupRulesIngress"
-                        },
-                        "description": "A security group rule definition (can be specified multiple times).\n"
-                    },
-                    "securityGroup": {
-                        "type": "string",
-                        "description": "❗ The security group (name) the rules apply to (conflicts with `security_group_id`).\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "securityGroupId": {
-                        "type": "string",
-                        "description": "❗ The security group (ID) the rules apply to (conficts with `security_group)`.\n",
-                        "willReplaceOnChanges": true
-                    }
-                },
-                "type": "object"
-            }
         }
     },
     "functions": {
-        "exoscale:index/getAffinity:getAffinity": {
-            "description": "!\u003e **WARNING:** This data source is DEPRECATED and will be removed in the next major version. Please use exoscale.AntiAffinityGroup instead.\n",
-            "inputs": {
-                "description": "A collection of arguments for invoking getAffinity.\n",
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "description": "The anti-affinity group ID to match (conflicts with `name`)\n"
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": "The group name to match (conflicts with `id`)\n"
-                    }
-                },
-                "type": "object"
-            },
-            "outputs": {
-                "description": "A collection of values returned by getAffinity.\n",
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "description": "The anti-affinity group ID to match (conflicts with `name`)\n"
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": "The group name to match (conflicts with `id`)\n"
-                    }
-                },
-                "type": "object"
-            }
-        },
         "exoscale:index/getAntiAffinityGroup:getAntiAffinityGroup": {
             "inputs": {
                 "description": "A collection of arguments for invoking getAntiAffinityGroup.\n",
@@ -6213,178 +4896,6 @@
                 "type": "object",
                 "required": [
                     "instances"
-                ]
-            }
-        },
-        "exoscale:index/getCompute:getCompute": {
-            "description": "!\u003e **WARNING:** This data source is **DEPRECATED** and will be removed in the next major version. Please use exoscale.ComputeInstance instead.\n",
-            "inputs": {
-                "description": "A collection of arguments for invoking getCompute.\n",
-                "properties": {
-                    "hostname": {
-                        "type": "string",
-                        "description": "The instance hostname to match.\n"
-                    },
-                    "id": {
-                        "type": "string",
-                        "description": "The compute instance ID to match.\n"
-                    },
-                    "tags": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        },
-                        "description": "The instance tags to match (map of key/value).\n"
-                    }
-                },
-                "type": "object"
-            },
-            "outputs": {
-                "description": "A collection of values returned by getCompute.\n",
-                "properties": {
-                    "cpu": {
-                        "type": "integer",
-                        "description": "Number of cpu the Compute instance is running with\n"
-                    },
-                    "created": {
-                        "type": "string",
-                        "description": "Date when the Compute instance was created\n"
-                    },
-                    "diskSize": {
-                        "type": "integer",
-                        "description": "Size of the Compute instance disk\n"
-                    },
-                    "hostname": {
-                        "type": "string",
-                        "description": "The instance hostname to match.\n"
-                    },
-                    "id": {
-                        "type": "string",
-                        "description": "The compute instance ID to match.\n"
-                    },
-                    "ip6Address": {
-                        "type": "string",
-                        "description": "Compute instance public ipv6 address (if ipv6 is enabled)\n"
-                    },
-                    "ipAddress": {
-                        "type": "string",
-                        "description": "Compute instance public ipv4 address\n"
-                    },
-                    "memory": {
-                        "type": "integer",
-                        "description": "Memory allocated for the Compute instance\n"
-                    },
-                    "privateNetworkIpAddresses": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "List of Compute instance private IP addresses (in managed Private Networks only)\n"
-                    },
-                    "size": {
-                        "type": "string",
-                        "description": "Current size of the Compute instance\n"
-                    },
-                    "state": {
-                        "type": "string",
-                        "description": "State of the Compute instance\n"
-                    },
-                    "tags": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        },
-                        "description": "The instance tags to match (map of key/value).\n"
-                    },
-                    "template": {
-                        "type": "string",
-                        "description": "Name of the template for the Compute instance\n"
-                    },
-                    "zone": {
-                        "type": "string",
-                        "description": "Name of the availability zone for the Compute instance\n"
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "cpu",
-                    "created",
-                    "diskSize",
-                    "ip6Address",
-                    "ipAddress",
-                    "memory",
-                    "privateNetworkIpAddresses",
-                    "size",
-                    "state",
-                    "template",
-                    "zone"
-                ]
-            }
-        },
-        "exoscale:index/getComputeIPAddress:getComputeIPAddress": {
-            "description": "!\u003e **WARNING:** This data source is **DEPRECATED** and will be removed in the next major version. Please use exoscale.ElasticIP instead.\n",
-            "inputs": {
-                "description": "A collection of arguments for invoking getComputeIPAddress.\n",
-                "properties": {
-                    "description": {
-                        "type": "string",
-                        "description": "The EIP description to match.\n"
-                    },
-                    "id": {
-                        "type": "string",
-                        "description": "The Elastic IP (EIP) ID to match.\n"
-                    },
-                    "ipAddress": {
-                        "type": "string",
-                        "description": "The EIP IPv4 address to match.\n"
-                    },
-                    "tags": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        },
-                        "description": "The EIP tags to match.\n"
-                    },
-                    "zone": {
-                        "type": "string",
-                        "description": "The Exoscale Zone name.\n"
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "zone"
-                ]
-            },
-            "outputs": {
-                "description": "A collection of values returned by getComputeIPAddress.\n",
-                "properties": {
-                    "description": {
-                        "type": "string",
-                        "description": "The EIP description to match.\n"
-                    },
-                    "id": {
-                        "type": "string",
-                        "description": "The Elastic IP (EIP) ID to match.\n"
-                    },
-                    "ipAddress": {
-                        "type": "string",
-                        "description": "The EIP IPv4 address to match.\n"
-                    },
-                    "tags": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        },
-                        "description": "The EIP tags to match.\n"
-                    },
-                    "zone": {
-                        "type": "string",
-                        "description": "The Exoscale Zone name.\n"
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "zone"
                 ]
             }
         },
@@ -6502,7 +5013,7 @@
                     },
                     "templateId": {
                         "type": "string",
-                        "description": "The instance exoscale*compute*template ID.\n"
+                        "description": "The instance exoscale.getTemplate ID.\n"
                     },
                     "type": {
                         "type": "string",
@@ -6698,63 +5209,6 @@
                 "type": "object",
                 "required": [
                     "instances",
-                    "zone"
-                ]
-            }
-        },
-        "exoscale:index/getComputeTemplate:getComputeTemplate": {
-            "inputs": {
-                "description": "A collection of arguments for invoking getComputeTemplate.\n",
-                "properties": {
-                    "filter": {
-                        "type": "string",
-                        "description": "A template category filter (default: `featured`); among: - `featured` - official Exoscale templates - `community` - community-contributed templates - `mine` - custom templates private to my organization\n"
-                    },
-                    "id": {
-                        "type": "string",
-                        "description": "The compute instance template ID to match (conflicts with `name`).\n"
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": "The template name to match (conflicts with `id`).\n"
-                    },
-                    "zone": {
-                        "type": "string",
-                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "zone"
-                ]
-            },
-            "outputs": {
-                "description": "A collection of values returned by getComputeTemplate.\n",
-                "properties": {
-                    "filter": {
-                        "type": "string",
-                        "description": "A template category filter (default: `featured`); among: - `featured` - official Exoscale templates - `community` - community-contributed templates - `mine` - custom templates private to my organization\n"
-                    },
-                    "id": {
-                        "type": "string",
-                        "description": "The compute instance template ID to match (conflicts with `name`).\n"
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": "The template name to match (conflicts with `id`).\n"
-                    },
-                    "username": {
-                        "type": "string",
-                        "description": "Username for logging into a compute instance based on this template\n"
-                    },
-                    "zone": {
-                        "type": "string",
-                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "username",
                     "zone"
                 ]
             }
@@ -7275,7 +5729,7 @@
                     },
                     "templateId": {
                         "type": "string",
-                        "description": "The managed instances exoscale*compute*template ID.\n"
+                        "description": "The managed instances exoscale.getTemplate ID.\n"
                     },
                     "userData": {
                         "type": "string",
@@ -7475,71 +5929,6 @@
                 ]
             }
         },
-        "exoscale:index/getNetwork:getNetwork": {
-            "description": "!\u003e **WARNING:** This data source is **DEPRECATED** and will be removed in the next major version. Please use exoscale.PrivateNetwork instead.\n",
-            "inputs": {
-                "description": "A collection of arguments for invoking getNetwork.\n",
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "description": "The private network ID to match (conflicts with `name`).\n"
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": "The network name to match (conflicts with `id`).\n"
-                    },
-                    "zone": {
-                        "type": "string",
-                        "description": "(Required) The Exoscale Zone name.\n"
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "zone"
-                ]
-            },
-            "outputs": {
-                "description": "A collection of values returned by getNetwork.\n",
-                "properties": {
-                    "description": {
-                        "type": "string",
-                        "description": "The private network description.\n"
-                    },
-                    "endIp": {
-                        "type": "string",
-                        "description": "The first/last IPv4 addresses used by the DHCP service for dynamic leases.\n"
-                    },
-                    "id": {
-                        "type": "string",
-                        "description": "The private network ID to match (conflicts with `name`).\n"
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": "The network name to match (conflicts with `id`).\n"
-                    },
-                    "netmask": {
-                        "type": "string",
-                        "description": "The network mask defining the IPv4 network allowed for static leases.\n"
-                    },
-                    "startIp": {
-                        "type": "string",
-                        "description": "The first/last IPv4 addresses used by the DHCP service for dynamic leases.\n"
-                    },
-                    "zone": {
-                        "type": "string",
-                        "description": "(Required) The Exoscale Zone name.\n"
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "description",
-                    "endIp",
-                    "netmask",
-                    "startIp",
-                    "zone"
-                ]
-            }
-        },
         "exoscale:index/getPrivateNetwork:getPrivateNetwork": {
             "inputs": {
                 "description": "A collection of arguments for invoking getPrivateNetwork.\n",
@@ -7642,7 +6031,7 @@
                     },
                     "cni": {
                         "type": "string",
-                        "description": "The CNI plugin that is to be used. Defaults to \"calico\".\n"
+                        "description": "The CNI plugin that is to be used. Available options are \"calico\" or \"cilium\". Defaults to \"calico\". Setting empty string will result in a cluster with no CNI.\n"
                     },
                     "controlPlaneCa": {
                         "type": "string",
@@ -7738,7 +6127,7 @@
                     },
                     "cni": {
                         "type": "string",
-                        "description": "The CNI plugin that is to be used. Defaults to \"calico\".\n"
+                        "description": "The CNI plugin that is to be used. Available options are \"calico\" or \"cilium\". Defaults to \"calico\". Setting empty string will result in a cluster with no CNI.\n"
                     },
                     "controlPlaneCa": {
                         "type": "string",

@@ -162,15 +162,6 @@ func Provider() tfbridge.ProviderInfo {
 			"exoscale_iam_api_key":          {Tok:exoscaleResource(mainMod, "IAMAPIKey")},
 			"exoscale_iam_org_policy":       {Tok:exoscaleResource(mainMod, "IAMOrgPolicy")},
 			"exoscale_iam_role":             {Tok:exoscaleResource(mainMod, "IAMRole")},
-			// Deprecated Ressources, will be removed with next major version
-			"exoscale_affinity":             {Tok: exoscaleResource(mainMod, "Affinity")},
-			"exoscale_compute":              {Tok: exoscaleResource(mainMod, "Compute")},
-			"exoscale_ipaddress":            {Tok: exoscaleResource(mainMod, "IPAddress")},
-			"exoscale_network":              {Tok: exoscaleResource(mainMod, "Network")},
-			"exoscale_nic":                  {Tok: exoscaleResource(mainMod, "NIC")},
-			"exoscale_secondary_ipaddress":  {Tok: exoscaleResource(mainMod, "SecondaryIPAddress")},
-			"exoscale_security_group_rules": {Tok: exoscaleResource(mainMod, "SecurityGroupRules")},
-			"exoscale_ssh_keypair":          {Tok: exoscaleResource(mainMod, "SSHKeypair")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example

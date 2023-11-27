@@ -3,7 +3,7 @@ module github.com/pulumiverse/pulumi-exoscale/shim
 go 1.20
 
 require (
-	github.com/exoscale/terraform-provider-exoscale v0.53.1
+	github.com/exoscale/terraform-provider-exoscale v0.54.0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.16.1
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.60.0
 )
@@ -133,7 +133,6 @@ require (
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20230706204954-ccb25ca9f130 // indirect
 	google.golang.org/grpc v1.57.0 // indirect
 	google.golang.org/protobuf v1.31.0 // indirect
-	gopkg.in/ini.v1 v1.66.4 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	lukechampine.com/frand v1.4.2 // indirect
