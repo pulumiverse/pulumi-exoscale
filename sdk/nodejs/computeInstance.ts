@@ -118,7 +118,7 @@ export class ComputeInstance extends pulumi.CustomResource {
      */
     public readonly state!: pulumi.Output<string>;
     /**
-     * ❗ The exoscale*compute*template (ID) to use when creating the instance.
+     * ❗ The exoscale.getTemplate (ID) to use when creating the instance.
      */
     public readonly templateId!: pulumi.Output<string>;
     /**
@@ -281,7 +281,7 @@ export interface ComputeInstanceState {
      */
     state?: pulumi.Input<string>;
     /**
-     * ❗ The exoscale*compute*template (ID) to use when creating the instance.
+     * ❗ The exoscale.getTemplate (ID) to use when creating the instance.
      */
     templateId?: pulumi.Input<string>;
     /**
@@ -355,7 +355,7 @@ export interface ComputeInstanceArgs {
      */
     state?: pulumi.Input<string>;
     /**
-     * ❗ The exoscale*compute*template (ID) to use when creating the instance.
+     * ❗ The exoscale.getTemplate (ID) to use when creating the instance.
      */
     templateId: pulumi.Input<string>;
     /**

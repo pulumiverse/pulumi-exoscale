@@ -7,8 +7,8 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -40,9 +40,12 @@ type SSHKey struct {
 func NewSSHKey(ctx *pulumi.Context,
 	name string, args *SSHKeyArgs, opts ...pulumi.ResourceOption) (*SSHKey, error) {
 	if args == nil {
-		args = &SSHKeyArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.PublicKey == nil {
+		return nil, errors.New("invalid value for required argument 'PublicKey'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SSHKey
 	err := ctx.RegisterResource("exoscale:index/sSHKey:SSHKey", name, args, &resource, opts...)
@@ -91,7 +94,7 @@ type sshkeyArgs struct {
 	// ❗ The SSH key name.
 	Name *string `pulumi:"name"`
 	// ❗ The SSH *public* key that will be authorized in compute instances.
-	PublicKey *string `pulumi:"publicKey"`
+	PublicKey string `pulumi:"publicKey"`
 }
 
 // The set of arguments for constructing a SSHKey resource.
@@ -99,7 +102,7 @@ type SSHKeyArgs struct {
 	// ❗ The SSH key name.
 	Name pulumi.StringPtrInput
 	// ❗ The SSH *public* key that will be authorized in compute instances.
-	PublicKey pulumi.StringPtrInput
+	PublicKey pulumi.StringInput
 }
 
 func (SSHKeyArgs) ElementType() reflect.Type {
@@ -123,12 +126,6 @@ func (i *SSHKey) ToSSHKeyOutput() SSHKeyOutput {
 
 func (i *SSHKey) ToSSHKeyOutputWithContext(ctx context.Context) SSHKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SSHKeyOutput)
-}
-
-func (i *SSHKey) ToOutput(ctx context.Context) pulumix.Output[*SSHKey] {
-	return pulumix.Output[*SSHKey]{
-		OutputState: i.ToSSHKeyOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SSHKeyArrayInput is an input type that accepts SSHKeyArray and SSHKeyArrayOutput values.
@@ -156,12 +153,6 @@ func (i SSHKeyArray) ToSSHKeyArrayOutputWithContext(ctx context.Context) SSHKeyA
 	return pulumi.ToOutputWithContext(ctx, i).(SSHKeyArrayOutput)
 }
 
-func (i SSHKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]*SSHKey] {
-	return pulumix.Output[[]*SSHKey]{
-		OutputState: i.ToSSHKeyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SSHKeyMapInput is an input type that accepts SSHKeyMap and SSHKeyMapOutput values.
 // You can construct a concrete instance of `SSHKeyMapInput` via:
 //
@@ -187,12 +178,6 @@ func (i SSHKeyMap) ToSSHKeyMapOutputWithContext(ctx context.Context) SSHKeyMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(SSHKeyMapOutput)
 }
 
-func (i SSHKeyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SSHKey] {
-	return pulumix.Output[map[string]*SSHKey]{
-		OutputState: i.ToSSHKeyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SSHKeyOutput struct{ *pulumi.OutputState }
 
 func (SSHKeyOutput) ElementType() reflect.Type {
@@ -205,12 +190,6 @@ func (o SSHKeyOutput) ToSSHKeyOutput() SSHKeyOutput {
 
 func (o SSHKeyOutput) ToSSHKeyOutputWithContext(ctx context.Context) SSHKeyOutput {
 	return o
-}
-
-func (o SSHKeyOutput) ToOutput(ctx context.Context) pulumix.Output[*SSHKey] {
-	return pulumix.Output[*SSHKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The SSH key unique identifier.
@@ -242,12 +221,6 @@ func (o SSHKeyArrayOutput) ToSSHKeyArrayOutputWithContext(ctx context.Context) S
 	return o
 }
 
-func (o SSHKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SSHKey] {
-	return pulumix.Output[[]*SSHKey]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SSHKeyArrayOutput) Index(i pulumi.IntInput) SSHKeyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SSHKey {
 		return vs[0].([]*SSHKey)[vs[1].(int)]
@@ -266,12 +239,6 @@ func (o SSHKeyMapOutput) ToSSHKeyMapOutput() SSHKeyMapOutput {
 
 func (o SSHKeyMapOutput) ToSSHKeyMapOutputWithContext(ctx context.Context) SSHKeyMapOutput {
 	return o
-}
-
-func (o SSHKeyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SSHKey] {
-	return pulumix.Output[map[string]*SSHKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SSHKeyMapOutput) MapIndex(k pulumi.StringInput) SSHKeyOutput {

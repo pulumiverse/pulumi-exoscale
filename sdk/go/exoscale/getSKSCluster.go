@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -30,7 +29,7 @@ type LookupSKSClusterArgs struct {
 	AggregationCa *string `pulumi:"aggregationCa"`
 	// Enable automatic upgrading of the control plane version.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
-	// The CNI plugin that is to be used. Defaults to "calico".
+	// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
 	Cni *string `pulumi:"cni"`
 	// The CA certificate (in PEM format) for TLS communications between control plane components.
 	ControlPlaneCa *string `pulumi:"controlPlaneCa"`
@@ -72,7 +71,7 @@ type LookupSKSClusterResult struct {
 	AggregationCa string `pulumi:"aggregationCa"`
 	// Enable automatic upgrading of the control plane version.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
-	// The CNI plugin that is to be used. Defaults to "calico".
+	// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
 	Cni *string `pulumi:"cni"`
 	// The CA certificate (in PEM format) for TLS communications between control plane components.
 	ControlPlaneCa string `pulumi:"controlPlaneCa"`
@@ -127,7 +126,7 @@ type LookupSKSClusterOutputArgs struct {
 	AggregationCa pulumi.StringPtrInput `pulumi:"aggregationCa"`
 	// Enable automatic upgrading of the control plane version.
 	AutoUpgrade pulumi.BoolPtrInput `pulumi:"autoUpgrade"`
-	// The CNI plugin that is to be used. Defaults to "calico".
+	// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
 	Cni pulumi.StringPtrInput `pulumi:"cni"`
 	// The CA certificate (in PEM format) for TLS communications between control plane components.
 	ControlPlaneCa pulumi.StringPtrInput `pulumi:"controlPlaneCa"`
@@ -180,12 +179,6 @@ func (o LookupSKSClusterResultOutput) ToLookupSKSClusterResultOutputWithContext(
 	return o
 }
 
-func (o LookupSKSClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSKSClusterResult] {
-	return pulumix.Output[LookupSKSClusterResult]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
 func (o LookupSKSClusterResultOutput) Addons() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSKSClusterResult) []string { return v.Addons }).(pulumi.StringArrayOutput)
@@ -201,7 +194,7 @@ func (o LookupSKSClusterResultOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupSKSClusterResult) *bool { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
 }
 
-// The CNI plugin that is to be used. Defaults to "calico".
+// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
 func (o LookupSKSClusterResultOutput) Cni() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSKSClusterResult) *string { return v.Cni }).(pulumi.StringPtrOutput)
 }

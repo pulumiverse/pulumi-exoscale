@@ -50,7 +50,7 @@ export interface GetSKSClusterArgs {
      */
     autoUpgrade?: boolean;
     /**
-     * The CNI plugin that is to be used. Defaults to "calico".
+     * The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
      */
     cni?: string;
     /**
@@ -130,7 +130,7 @@ export interface GetSKSClusterResult {
      */
     readonly autoUpgrade?: boolean;
     /**
-     * The CNI plugin that is to be used. Defaults to "calico".
+     * The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
      */
     readonly cni?: string;
     /**
@@ -213,7 +213,7 @@ export interface GetSKSClusterOutputArgs {
      */
     autoUpgrade?: pulumi.Input<boolean>;
     /**
-     * The CNI plugin that is to be used. Defaults to "calico".
+     * The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
      */
     cni?: pulumi.Input<string>;
     /**

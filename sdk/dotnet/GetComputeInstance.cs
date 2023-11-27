@@ -149,7 +149,7 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// The instance exoscale*compute*template ID.
+        /// The instance exoscale.getTemplate ID.
         /// </summary>
         public readonly string TemplateId;
         /// <summary>

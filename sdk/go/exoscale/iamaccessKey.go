@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -146,12 +145,6 @@ func (i *IAMAccessKey) ToIAMAccessKeyOutputWithContext(ctx context.Context) IAMA
 	return pulumi.ToOutputWithContext(ctx, i).(IAMAccessKeyOutput)
 }
 
-func (i *IAMAccessKey) ToOutput(ctx context.Context) pulumix.Output[*IAMAccessKey] {
-	return pulumix.Output[*IAMAccessKey]{
-		OutputState: i.ToIAMAccessKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IAMAccessKeyArrayInput is an input type that accepts IAMAccessKeyArray and IAMAccessKeyArrayOutput values.
 // You can construct a concrete instance of `IAMAccessKeyArrayInput` via:
 //
@@ -175,12 +168,6 @@ func (i IAMAccessKeyArray) ToIAMAccessKeyArrayOutput() IAMAccessKeyArrayOutput {
 
 func (i IAMAccessKeyArray) ToIAMAccessKeyArrayOutputWithContext(ctx context.Context) IAMAccessKeyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IAMAccessKeyArrayOutput)
-}
-
-func (i IAMAccessKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]*IAMAccessKey] {
-	return pulumix.Output[[]*IAMAccessKey]{
-		OutputState: i.ToIAMAccessKeyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IAMAccessKeyMapInput is an input type that accepts IAMAccessKeyMap and IAMAccessKeyMapOutput values.
@@ -208,12 +195,6 @@ func (i IAMAccessKeyMap) ToIAMAccessKeyMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(IAMAccessKeyMapOutput)
 }
 
-func (i IAMAccessKeyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IAMAccessKey] {
-	return pulumix.Output[map[string]*IAMAccessKey]{
-		OutputState: i.ToIAMAccessKeyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IAMAccessKeyOutput struct{ *pulumi.OutputState }
 
 func (IAMAccessKeyOutput) ElementType() reflect.Type {
@@ -226,12 +207,6 @@ func (o IAMAccessKeyOutput) ToIAMAccessKeyOutput() IAMAccessKeyOutput {
 
 func (o IAMAccessKeyOutput) ToIAMAccessKeyOutputWithContext(ctx context.Context) IAMAccessKeyOutput {
 	return o
-}
-
-func (o IAMAccessKeyOutput) ToOutput(ctx context.Context) pulumix.Output[*IAMAccessKey] {
-	return pulumix.Output[*IAMAccessKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IAM access key (identifier).
@@ -282,12 +257,6 @@ func (o IAMAccessKeyArrayOutput) ToIAMAccessKeyArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o IAMAccessKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IAMAccessKey] {
-	return pulumix.Output[[]*IAMAccessKey]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IAMAccessKeyArrayOutput) Index(i pulumi.IntInput) IAMAccessKeyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IAMAccessKey {
 		return vs[0].([]*IAMAccessKey)[vs[1].(int)]
@@ -306,12 +275,6 @@ func (o IAMAccessKeyMapOutput) ToIAMAccessKeyMapOutput() IAMAccessKeyMapOutput {
 
 func (o IAMAccessKeyMapOutput) ToIAMAccessKeyMapOutputWithContext(ctx context.Context) IAMAccessKeyMapOutput {
 	return o
-}
-
-func (o IAMAccessKeyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IAMAccessKey] {
-	return pulumix.Output[map[string]*IAMAccessKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IAMAccessKeyMapOutput) MapIndex(k pulumi.StringInput) IAMAccessKeyOutput {

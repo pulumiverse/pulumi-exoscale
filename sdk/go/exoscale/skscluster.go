@@ -9,7 +9,6 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -35,7 +34,7 @@ type SKSCluster struct {
 	AggregationCa pulumi.StringOutput `pulumi:"aggregationCa"`
 	// Enable automatic upgrading of the control plane version.
 	AutoUpgrade pulumi.BoolPtrOutput `pulumi:"autoUpgrade"`
-	// The CNI plugin that is to be used. Defaults to "calico".
+	// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
 	Cni pulumi.StringPtrOutput `pulumi:"cni"`
 	// The CA certificate (in PEM format) for TLS communications between control plane components.
 	ControlPlaneCa pulumi.StringOutput `pulumi:"controlPlaneCa"`
@@ -108,7 +107,7 @@ type sksclusterState struct {
 	AggregationCa *string `pulumi:"aggregationCa"`
 	// Enable automatic upgrading of the control plane version.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
-	// The CNI plugin that is to be used. Defaults to "calico".
+	// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
 	Cni *string `pulumi:"cni"`
 	// The CA certificate (in PEM format) for TLS communications between control plane components.
 	ControlPlaneCa *string `pulumi:"controlPlaneCa"`
@@ -149,7 +148,7 @@ type SKSClusterState struct {
 	AggregationCa pulumi.StringPtrInput
 	// Enable automatic upgrading of the control plane version.
 	AutoUpgrade pulumi.BoolPtrInput
-	// The CNI plugin that is to be used. Defaults to "calico".
+	// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
 	Cni pulumi.StringPtrInput
 	// The CA certificate (in PEM format) for TLS communications between control plane components.
 	ControlPlaneCa pulumi.StringPtrInput
@@ -192,7 +191,7 @@ type sksclusterArgs struct {
 	Addons []string `pulumi:"addons"`
 	// Enable automatic upgrading of the control plane version.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
-	// The CNI plugin that is to be used. Defaults to "calico".
+	// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
 	Cni *string `pulumi:"cni"`
 	// A free-form text describing the cluster.
 	Description *string `pulumi:"description"`
@@ -220,7 +219,7 @@ type SKSClusterArgs struct {
 	Addons pulumi.StringArrayInput
 	// Enable automatic upgrading of the control plane version.
 	AutoUpgrade pulumi.BoolPtrInput
-	// The CNI plugin that is to be used. Defaults to "calico".
+	// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
 	Cni pulumi.StringPtrInput
 	// A free-form text describing the cluster.
 	Description pulumi.StringPtrInput
@@ -265,12 +264,6 @@ func (i *SKSCluster) ToSKSClusterOutputWithContext(ctx context.Context) SKSClust
 	return pulumi.ToOutputWithContext(ctx, i).(SKSClusterOutput)
 }
 
-func (i *SKSCluster) ToOutput(ctx context.Context) pulumix.Output[*SKSCluster] {
-	return pulumix.Output[*SKSCluster]{
-		OutputState: i.ToSKSClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SKSClusterArrayInput is an input type that accepts SKSClusterArray and SKSClusterArrayOutput values.
 // You can construct a concrete instance of `SKSClusterArrayInput` via:
 //
@@ -294,12 +287,6 @@ func (i SKSClusterArray) ToSKSClusterArrayOutput() SKSClusterArrayOutput {
 
 func (i SKSClusterArray) ToSKSClusterArrayOutputWithContext(ctx context.Context) SKSClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SKSClusterArrayOutput)
-}
-
-func (i SKSClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*SKSCluster] {
-	return pulumix.Output[[]*SKSCluster]{
-		OutputState: i.ToSKSClusterArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SKSClusterMapInput is an input type that accepts SKSClusterMap and SKSClusterMapOutput values.
@@ -327,12 +314,6 @@ func (i SKSClusterMap) ToSKSClusterMapOutputWithContext(ctx context.Context) SKS
 	return pulumi.ToOutputWithContext(ctx, i).(SKSClusterMapOutput)
 }
 
-func (i SKSClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SKSCluster] {
-	return pulumix.Output[map[string]*SKSCluster]{
-		OutputState: i.ToSKSClusterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SKSClusterOutput struct{ *pulumi.OutputState }
 
 func (SKSClusterOutput) ElementType() reflect.Type {
@@ -345,12 +326,6 @@ func (o SKSClusterOutput) ToSKSClusterOutput() SKSClusterOutput {
 
 func (o SKSClusterOutput) ToSKSClusterOutputWithContext(ctx context.Context) SKSClusterOutput {
 	return o
-}
-
-func (o SKSClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*SKSCluster] {
-	return pulumix.Output[*SKSCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
@@ -368,7 +343,7 @@ func (o SKSClusterOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SKSCluster) pulumi.BoolPtrOutput { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
 }
 
-// The CNI plugin that is to be used. Defaults to "calico".
+// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
 func (o SKSClusterOutput) Cni() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SKSCluster) pulumi.StringPtrOutput { return v.Cni }).(pulumi.StringPtrOutput)
 }
@@ -462,12 +437,6 @@ func (o SKSClusterArrayOutput) ToSKSClusterArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o SKSClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SKSCluster] {
-	return pulumix.Output[[]*SKSCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SKSClusterArrayOutput) Index(i pulumi.IntInput) SKSClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SKSCluster {
 		return vs[0].([]*SKSCluster)[vs[1].(int)]
@@ -486,12 +455,6 @@ func (o SKSClusterMapOutput) ToSKSClusterMapOutput() SKSClusterMapOutput {
 
 func (o SKSClusterMapOutput) ToSKSClusterMapOutputWithContext(ctx context.Context) SKSClusterMapOutput {
 	return o
-}
-
-func (o SKSClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SKSCluster] {
-	return pulumix.Output[map[string]*SKSCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SKSClusterMapOutput) MapIndex(k pulumi.StringInput) SKSClusterOutput {

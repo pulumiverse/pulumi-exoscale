@@ -65,7 +65,7 @@ export class SSHKey extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: SSHKeyArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: SSHKeyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SSHKeyArgs | SSHKeyState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -76,6 +76,9 @@ export class SSHKey extends pulumi.CustomResource {
             resourceInputs["publicKey"] = state ? state.publicKey : undefined;
         } else {
             const args = argsOrState as SSHKeyArgs | undefined;
+            if ((!args || args.publicKey === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'publicKey'");
+            }
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["publicKey"] = args ? args.publicKey : undefined;
             resourceInputs["fingerprint"] = undefined /*out*/;
@@ -114,5 +117,5 @@ export interface SSHKeyArgs {
     /**
      * ❗ The SSH *public* key that will be authorized in compute instances.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey: pulumi.Input<string>;
 }

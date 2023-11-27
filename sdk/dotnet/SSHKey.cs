@@ -52,7 +52,7 @@ namespace Pulumiverse.Exoscale
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public SSHKey(string name, SSHKeyArgs? args = null, CustomResourceOptions? options = null)
+        public SSHKey(string name, SSHKeyArgs args, CustomResourceOptions? options = null)
             : base("exoscale:index/sSHKey:SSHKey", name, args ?? new SSHKeyArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -100,8 +100,8 @@ namespace Pulumiverse.Exoscale
         /// <summary>
         /// ❗ The SSH *public* key that will be authorized in compute instances.
         /// </summary>
-        [Input("publicKey")]
-        public Input<string>? PublicKey { get; set; }
+        [Input("publicKey", required: true)]
+        public Input<string> PublicKey { get; set; } = null!;
 
         public SSHKeyArgs()
         {

@@ -32,7 +32,7 @@ class SKSClusterArgs:
         The set of arguments for constructing a SKSCluster resource.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         :param pulumi.Input[bool] auto_upgrade: Enable automatic upgrading of the control plane version.
-        :param pulumi.Input[str] cni: The CNI plugin that is to be used. Defaults to "calico".
+        :param pulumi.Input[str] cni: The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
         :param pulumi.Input[str] description: A free-form text describing the cluster.
         :param pulumi.Input[bool] exoscale_ccm: Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
@@ -109,7 +109,7 @@ class SKSClusterArgs:
     @pulumi.getter
     def cni(self) -> Optional[pulumi.Input[str]]:
         """
-        The CNI plugin that is to be used. Defaults to "calico".
+        The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
         """
         return pulumi.get(self, "cni")
 
@@ -240,7 +240,7 @@ class _SKSClusterState:
         Input properties used for looking up and filtering SKSCluster resources.
         :param pulumi.Input[str] aggregation_ca: The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
         :param pulumi.Input[bool] auto_upgrade: Enable automatic upgrading of the control plane version.
-        :param pulumi.Input[str] cni: The CNI plugin that is to be used. Defaults to "calico".
+        :param pulumi.Input[str] cni: The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
         :param pulumi.Input[str] control_plane_ca: The CA certificate (in PEM format) for TLS communications between control plane components.
         :param pulumi.Input[str] created_at: The cluster creation date.
         :param pulumi.Input[str] description: A free-form text describing the cluster.
@@ -339,7 +339,7 @@ class _SKSClusterState:
     @pulumi.getter
     def cni(self) -> Optional[pulumi.Input[str]]:
         """
-        The CNI plugin that is to be used. Defaults to "calico".
+        The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
         """
         return pulumi.get(self, "cni")
 
@@ -562,7 +562,7 @@ class SKSCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_upgrade: Enable automatic upgrading of the control plane version.
-        :param pulumi.Input[str] cni: The CNI plugin that is to be used. Defaults to "calico".
+        :param pulumi.Input[str] cni: The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
         :param pulumi.Input[str] description: A free-form text describing the cluster.
         :param pulumi.Input[bool] exoscale_ccm: Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
@@ -687,7 +687,7 @@ class SKSCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] aggregation_ca: The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
         :param pulumi.Input[bool] auto_upgrade: Enable automatic upgrading of the control plane version.
-        :param pulumi.Input[str] cni: The CNI plugin that is to be used. Defaults to "calico".
+        :param pulumi.Input[str] cni: The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
         :param pulumi.Input[str] control_plane_ca: The CA certificate (in PEM format) for TLS communications between control plane components.
         :param pulumi.Input[str] created_at: The cluster creation date.
         :param pulumi.Input[str] description: A free-form text describing the cluster.
@@ -757,7 +757,7 @@ class SKSCluster(pulumi.CustomResource):
     @pulumi.getter
     def cni(self) -> pulumi.Output[Optional[str]]:
         """
-        The CNI plugin that is to be used. Defaults to "calico".
+        The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
         """
         return pulumi.get(self, "cni")
 

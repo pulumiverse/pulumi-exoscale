@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -178,12 +177,6 @@ func (o LookupSKSNodepoolResultOutput) ToLookupSKSNodepoolResultOutput() LookupS
 
 func (o LookupSKSNodepoolResultOutput) ToLookupSKSNodepoolResultOutputWithContext(ctx context.Context) LookupSKSNodepoolResultOutput {
 	return o
-}
-
-func (o LookupSKSNodepoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSKSNodepoolResult] {
-	return pulumix.Output[LookupSKSNodepoolResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of exoscale*anti*affinity_group (IDs) to be attached to the managed instances.

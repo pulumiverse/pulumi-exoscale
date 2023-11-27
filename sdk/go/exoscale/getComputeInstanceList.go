@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -138,12 +137,6 @@ func (o GetComputeInstanceListResultOutput) ToGetComputeInstanceListResultOutput
 
 func (o GetComputeInstanceListResultOutput) ToGetComputeInstanceListResultOutputWithContext(ctx context.Context) GetComputeInstanceListResultOutput {
 	return o
-}
-
-func (o GetComputeInstanceListResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetComputeInstanceListResult] {
-	return pulumix.Output[GetComputeInstanceListResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.

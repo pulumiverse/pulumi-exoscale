@@ -60,7 +60,7 @@ export class SKSCluster extends pulumi.CustomResource {
      */
     public readonly autoUpgrade!: pulumi.Output<boolean | undefined>;
     /**
-     * The CNI plugin that is to be used. Defaults to "calico".
+     * The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
      */
     public readonly cni!: pulumi.Output<string | undefined>;
     /**
@@ -203,7 +203,7 @@ export interface SKSClusterState {
      */
     autoUpgrade?: pulumi.Input<boolean>;
     /**
-     * The CNI plugin that is to be used. Defaults to "calico".
+     * The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
      */
     cni?: pulumi.Input<string>;
     /**
@@ -281,7 +281,7 @@ export interface SKSClusterArgs {
      */
     autoUpgrade?: pulumi.Input<boolean>;
     /**
-     * The CNI plugin that is to be used. Defaults to "calico".
+     * The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
      */
     cni?: pulumi.Input<string>;
     /**

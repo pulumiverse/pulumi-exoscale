@@ -9,7 +9,6 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -192,12 +191,6 @@ func (i *SKSKubeconfig) ToSKSKubeconfigOutputWithContext(ctx context.Context) SK
 	return pulumi.ToOutputWithContext(ctx, i).(SKSKubeconfigOutput)
 }
 
-func (i *SKSKubeconfig) ToOutput(ctx context.Context) pulumix.Output[*SKSKubeconfig] {
-	return pulumix.Output[*SKSKubeconfig]{
-		OutputState: i.ToSKSKubeconfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SKSKubeconfigArrayInput is an input type that accepts SKSKubeconfigArray and SKSKubeconfigArrayOutput values.
 // You can construct a concrete instance of `SKSKubeconfigArrayInput` via:
 //
@@ -221,12 +214,6 @@ func (i SKSKubeconfigArray) ToSKSKubeconfigArrayOutput() SKSKubeconfigArrayOutpu
 
 func (i SKSKubeconfigArray) ToSKSKubeconfigArrayOutputWithContext(ctx context.Context) SKSKubeconfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SKSKubeconfigArrayOutput)
-}
-
-func (i SKSKubeconfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*SKSKubeconfig] {
-	return pulumix.Output[[]*SKSKubeconfig]{
-		OutputState: i.ToSKSKubeconfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SKSKubeconfigMapInput is an input type that accepts SKSKubeconfigMap and SKSKubeconfigMapOutput values.
@@ -254,12 +241,6 @@ func (i SKSKubeconfigMap) ToSKSKubeconfigMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SKSKubeconfigMapOutput)
 }
 
-func (i SKSKubeconfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SKSKubeconfig] {
-	return pulumix.Output[map[string]*SKSKubeconfig]{
-		OutputState: i.ToSKSKubeconfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SKSKubeconfigOutput struct{ *pulumi.OutputState }
 
 func (SKSKubeconfigOutput) ElementType() reflect.Type {
@@ -272,12 +253,6 @@ func (o SKSKubeconfigOutput) ToSKSKubeconfigOutput() SKSKubeconfigOutput {
 
 func (o SKSKubeconfigOutput) ToSKSKubeconfigOutputWithContext(ctx context.Context) SKSKubeconfigOutput {
 	return o
-}
-
-func (o SKSKubeconfigOutput) ToOutput(ctx context.Context) pulumix.Output[*SKSKubeconfig] {
-	return pulumix.Output[*SKSKubeconfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ❗ The parent exoscale*sks*cluster ID.
@@ -337,12 +312,6 @@ func (o SKSKubeconfigArrayOutput) ToSKSKubeconfigArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o SKSKubeconfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SKSKubeconfig] {
-	return pulumix.Output[[]*SKSKubeconfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SKSKubeconfigArrayOutput) Index(i pulumi.IntInput) SKSKubeconfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SKSKubeconfig {
 		return vs[0].([]*SKSKubeconfig)[vs[1].(int)]
@@ -361,12 +330,6 @@ func (o SKSKubeconfigMapOutput) ToSKSKubeconfigMapOutput() SKSKubeconfigMapOutpu
 
 func (o SKSKubeconfigMapOutput) ToSKSKubeconfigMapOutputWithContext(ctx context.Context) SKSKubeconfigMapOutput {
 	return o
-}
-
-func (o SKSKubeconfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SKSKubeconfig] {
-	return pulumix.Output[map[string]*SKSKubeconfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SKSKubeconfigMapOutput) MapIndex(k pulumi.StringInput) SKSKubeconfigOutput {

@@ -9,7 +9,6 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -287,12 +286,6 @@ func (i *SKSNodepool) ToSKSNodepoolOutputWithContext(ctx context.Context) SKSNod
 	return pulumi.ToOutputWithContext(ctx, i).(SKSNodepoolOutput)
 }
 
-func (i *SKSNodepool) ToOutput(ctx context.Context) pulumix.Output[*SKSNodepool] {
-	return pulumix.Output[*SKSNodepool]{
-		OutputState: i.ToSKSNodepoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SKSNodepoolArrayInput is an input type that accepts SKSNodepoolArray and SKSNodepoolArrayOutput values.
 // You can construct a concrete instance of `SKSNodepoolArrayInput` via:
 //
@@ -316,12 +309,6 @@ func (i SKSNodepoolArray) ToSKSNodepoolArrayOutput() SKSNodepoolArrayOutput {
 
 func (i SKSNodepoolArray) ToSKSNodepoolArrayOutputWithContext(ctx context.Context) SKSNodepoolArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SKSNodepoolArrayOutput)
-}
-
-func (i SKSNodepoolArray) ToOutput(ctx context.Context) pulumix.Output[[]*SKSNodepool] {
-	return pulumix.Output[[]*SKSNodepool]{
-		OutputState: i.ToSKSNodepoolArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SKSNodepoolMapInput is an input type that accepts SKSNodepoolMap and SKSNodepoolMapOutput values.
@@ -349,12 +336,6 @@ func (i SKSNodepoolMap) ToSKSNodepoolMapOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(SKSNodepoolMapOutput)
 }
 
-func (i SKSNodepoolMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SKSNodepool] {
-	return pulumix.Output[map[string]*SKSNodepool]{
-		OutputState: i.ToSKSNodepoolMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SKSNodepoolOutput struct{ *pulumi.OutputState }
 
 func (SKSNodepoolOutput) ElementType() reflect.Type {
@@ -367,12 +348,6 @@ func (o SKSNodepoolOutput) ToSKSNodepoolOutput() SKSNodepoolOutput {
 
 func (o SKSNodepoolOutput) ToSKSNodepoolOutputWithContext(ctx context.Context) SKSNodepoolOutput {
 	return o
-}
-
-func (o SKSNodepoolOutput) ToOutput(ctx context.Context) pulumix.Output[*SKSNodepool] {
-	return pulumix.Output[*SKSNodepool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of exoscale*anti*affinity_group (IDs) to be attached to the managed instances.
@@ -488,12 +463,6 @@ func (o SKSNodepoolArrayOutput) ToSKSNodepoolArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o SKSNodepoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SKSNodepool] {
-	return pulumix.Output[[]*SKSNodepool]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SKSNodepoolArrayOutput) Index(i pulumi.IntInput) SKSNodepoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SKSNodepool {
 		return vs[0].([]*SKSNodepool)[vs[1].(int)]
@@ -512,12 +481,6 @@ func (o SKSNodepoolMapOutput) ToSKSNodepoolMapOutput() SKSNodepoolMapOutput {
 
 func (o SKSNodepoolMapOutput) ToSKSNodepoolMapOutputWithContext(ctx context.Context) SKSNodepoolMapOutput {
 	return o
-}
-
-func (o SKSNodepoolMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SKSNodepool] {
-	return pulumix.Output[map[string]*SKSNodepool]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SKSNodepoolMapOutput) MapIndex(k pulumi.StringInput) SKSNodepoolOutput {

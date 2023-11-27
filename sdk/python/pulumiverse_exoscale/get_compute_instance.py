@@ -237,7 +237,7 @@ class GetComputeInstanceResult:
     @pulumi.getter(name="templateId")
     def template_id(self) -> str:
         """
-        The instance exoscale*compute*template ID.
+        The instance get_template ID.
         """
         return pulumi.get(self, "template_id")
 

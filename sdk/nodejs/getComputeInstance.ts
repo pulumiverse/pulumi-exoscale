@@ -109,7 +109,7 @@ export interface GetComputeInstanceResult {
      */
     readonly state: string;
     /**
-     * The instance exoscale*compute*template ID.
+     * The instance exoscale.getTemplate ID.
      */
     readonly templateId: string;
     /**

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -78,12 +77,6 @@ func (o LookupDomainRecordResultOutput) ToLookupDomainRecordResultOutput() Looku
 
 func (o LookupDomainRecordResultOutput) ToLookupDomainRecordResultOutputWithContext(ctx context.Context) LookupDomainRecordResultOutput {
 	return o
-}
-
-func (o LookupDomainRecordResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDomainRecordResult] {
-	return pulumix.Output[LookupDomainRecordResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Domain name to match.
