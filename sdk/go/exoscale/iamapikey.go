@@ -9,7 +9,6 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -131,12 +130,6 @@ func (i *IAMAPIKey) ToIAMAPIKeyOutputWithContext(ctx context.Context) IAMAPIKeyO
 	return pulumi.ToOutputWithContext(ctx, i).(IAMAPIKeyOutput)
 }
 
-func (i *IAMAPIKey) ToOutput(ctx context.Context) pulumix.Output[*IAMAPIKey] {
-	return pulumix.Output[*IAMAPIKey]{
-		OutputState: i.ToIAMAPIKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IAMAPIKeyArrayInput is an input type that accepts IAMAPIKeyArray and IAMAPIKeyArrayOutput values.
 // You can construct a concrete instance of `IAMAPIKeyArrayInput` via:
 //
@@ -160,12 +153,6 @@ func (i IAMAPIKeyArray) ToIAMAPIKeyArrayOutput() IAMAPIKeyArrayOutput {
 
 func (i IAMAPIKeyArray) ToIAMAPIKeyArrayOutputWithContext(ctx context.Context) IAMAPIKeyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IAMAPIKeyArrayOutput)
-}
-
-func (i IAMAPIKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]*IAMAPIKey] {
-	return pulumix.Output[[]*IAMAPIKey]{
-		OutputState: i.ToIAMAPIKeyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IAMAPIKeyMapInput is an input type that accepts IAMAPIKeyMap and IAMAPIKeyMapOutput values.
@@ -193,12 +180,6 @@ func (i IAMAPIKeyMap) ToIAMAPIKeyMapOutputWithContext(ctx context.Context) IAMAP
 	return pulumi.ToOutputWithContext(ctx, i).(IAMAPIKeyMapOutput)
 }
 
-func (i IAMAPIKeyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IAMAPIKey] {
-	return pulumix.Output[map[string]*IAMAPIKey]{
-		OutputState: i.ToIAMAPIKeyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IAMAPIKeyOutput struct{ *pulumi.OutputState }
 
 func (IAMAPIKeyOutput) ElementType() reflect.Type {
@@ -211,12 +192,6 @@ func (o IAMAPIKeyOutput) ToIAMAPIKeyOutput() IAMAPIKeyOutput {
 
 func (o IAMAPIKeyOutput) ToIAMAPIKeyOutputWithContext(ctx context.Context) IAMAPIKeyOutput {
 	return o
-}
-
-func (o IAMAPIKeyOutput) ToOutput(ctx context.Context) pulumix.Output[*IAMAPIKey] {
-	return pulumix.Output[*IAMAPIKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IAM API Key to match.
@@ -257,12 +232,6 @@ func (o IAMAPIKeyArrayOutput) ToIAMAPIKeyArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o IAMAPIKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IAMAPIKey] {
-	return pulumix.Output[[]*IAMAPIKey]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IAMAPIKeyArrayOutput) Index(i pulumi.IntInput) IAMAPIKeyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IAMAPIKey {
 		return vs[0].([]*IAMAPIKey)[vs[1].(int)]
@@ -281,12 +250,6 @@ func (o IAMAPIKeyMapOutput) ToIAMAPIKeyMapOutput() IAMAPIKeyMapOutput {
 
 func (o IAMAPIKeyMapOutput) ToIAMAPIKeyMapOutputWithContext(ctx context.Context) IAMAPIKeyMapOutput {
 	return o
-}
-
-func (o IAMAPIKeyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IAMAPIKey] {
-	return pulumix.Output[map[string]*IAMAPIKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IAMAPIKeyMapOutput) MapIndex(k pulumi.StringInput) IAMAPIKeyOutput {

@@ -106,7 +106,7 @@ export interface GetInstancePoolResult {
      */
     readonly state: string;
     /**
-     * The managed instances exoscale*compute*template ID.
+     * The managed instances exoscale.getTemplate ID.
      */
     readonly templateId: string;
     /**

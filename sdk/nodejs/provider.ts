@@ -25,39 +25,15 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === "pulumi:providers:" + Provider.__pulumiType;
     }
 
-    /**
-     * Exoscale CloudStack API endpoint (by default: https://api.exoscale.com/v1)
-     */
-    public readonly computeEndpoint!: pulumi.Output<string | undefined>;
-    /**
-     * CloudStack ini configuration filename (by default: cloudstack.ini)
-     */
-    public readonly config!: pulumi.Output<string | undefined>;
-    /**
-     * Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
-     */
-    public readonly dnsEndpoint!: pulumi.Output<string | undefined>;
     public readonly environment!: pulumi.Output<string | undefined>;
     /**
      * Exoscale API key
      */
     public readonly key!: pulumi.Output<string | undefined>;
     /**
-     * @deprecated Use region instead
-     */
-    public readonly profile!: pulumi.Output<string | undefined>;
-    /**
-     * CloudStack ini configuration section name (by default: cloudstack)
-     */
-    public readonly region!: pulumi.Output<string | undefined>;
-    /**
      * Exoscale API secret
      */
     public readonly secret!: pulumi.Output<string | undefined>;
-    /**
-     * @deprecated Use key instead
-     */
-    public readonly token!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -70,17 +46,11 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["computeEndpoint"] = args ? args.computeEndpoint : undefined;
-            resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["delay"] = pulumi.output(args ? args.delay : undefined).apply(JSON.stringify);
-            resourceInputs["dnsEndpoint"] = args ? args.dnsEndpoint : undefined;
             resourceInputs["environment"] = args ? args.environment : undefined;
             resourceInputs["key"] = (args?.key ? pulumi.secret(args.key) : undefined) ?? utilities.getEnv("EXOSCALE_API_KEY");
-            resourceInputs["profile"] = args ? args.profile : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["secret"] = (args?.secret ? pulumi.secret(args.secret) : undefined) ?? utilities.getEnv("EXOSCALE_API_SECRET");
             resourceInputs["timeout"] = pulumi.output(args ? args.timeout : undefined).apply(JSON.stringify);
-            resourceInputs["token"] = args ? args.token : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["key", "secret"] };
@@ -94,34 +64,14 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     /**
-     * Exoscale CloudStack API endpoint (by default: https://api.exoscale.com/v1)
-     */
-    computeEndpoint?: pulumi.Input<string>;
-    /**
-     * CloudStack ini configuration filename (by default: cloudstack.ini)
-     */
-    config?: pulumi.Input<string>;
-    /**
      * @deprecated Does nothing
      */
     delay?: pulumi.Input<number>;
-    /**
-     * Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
-     */
-    dnsEndpoint?: pulumi.Input<string>;
     environment?: pulumi.Input<string>;
     /**
      * Exoscale API key
      */
     key?: pulumi.Input<string>;
-    /**
-     * @deprecated Use region instead
-     */
-    profile?: pulumi.Input<string>;
-    /**
-     * CloudStack ini configuration section name (by default: cloudstack)
-     */
-    region?: pulumi.Input<string>;
     /**
      * Exoscale API secret
      */
@@ -130,8 +80,4 @@ export interface ProviderArgs {
      * Timeout in seconds for waiting on compute resources to become available (by default: 300)
      */
     timeout?: pulumi.Input<number>;
-    /**
-     * @deprecated Use key instead
-     */
-    token?: pulumi.Input<string>;
 }

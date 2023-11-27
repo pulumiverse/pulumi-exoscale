@@ -21,12 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "exoscale:index/affinity:Affinity":
-		r = &Affinity{}
 	case "exoscale:index/antiAffinityGroup:AntiAffinityGroup":
 		r = &AntiAffinityGroup{}
-	case "exoscale:index/compute:Compute":
-		r = &Compute{}
 	case "exoscale:index/computeInstance:ComputeInstance":
 		r = &ComputeInstance{}
 	case "exoscale:index/database:Database":
@@ -45,18 +41,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IAMOrgPolicy{}
 	case "exoscale:index/iAMRole:IAMRole":
 		r = &IAMRole{}
-	case "exoscale:index/iPAddress:IPAddress":
-		r = &IPAddress{}
 	case "exoscale:index/instancePool:InstancePool":
 		r = &InstancePool{}
-	case "exoscale:index/nIC:NIC":
-		r = &NIC{}
 	case "exoscale:index/nLB:NLB":
 		r = &NLB{}
 	case "exoscale:index/nLBService:NLBService":
 		r = &NLBService{}
-	case "exoscale:index/network:Network":
-		r = &Network{}
 	case "exoscale:index/privateNetwork:PrivateNetwork":
 		r = &PrivateNetwork{}
 	case "exoscale:index/sKSCluster:SKSCluster":
@@ -67,16 +57,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SKSNodepool{}
 	case "exoscale:index/sSHKey:SSHKey":
 		r = &SSHKey{}
-	case "exoscale:index/sSHKeypair:SSHKeypair":
-		r = &SSHKeypair{}
-	case "exoscale:index/secondaryIPAddress:SecondaryIPAddress":
-		r = &SecondaryIPAddress{}
 	case "exoscale:index/securityGroup:SecurityGroup":
 		r = &SecurityGroup{}
 	case "exoscale:index/securityGroupRule:SecurityGroupRule":
 		r = &SecurityGroupRule{}
-	case "exoscale:index/securityGroupRules:SecurityGroupRules":
-		r = &SecurityGroupRules{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -110,17 +94,7 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"exoscale",
-		"index/affinity",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"exoscale",
 		"index/antiAffinityGroup",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"exoscale",
-		"index/compute",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -170,17 +144,7 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"exoscale",
-		"index/iPAddress",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"exoscale",
 		"index/instancePool",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"exoscale",
-		"index/nIC",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -191,11 +155,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"exoscale",
 		"index/nLBService",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"exoscale",
-		"index/network",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -225,27 +184,12 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"exoscale",
-		"index/sSHKeypair",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"exoscale",
-		"index/secondaryIPAddress",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"exoscale",
 		"index/securityGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"exoscale",
 		"index/securityGroupRule",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"exoscale",
-		"index/securityGroupRules",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

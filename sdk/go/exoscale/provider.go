@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -19,23 +18,11 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	// Exoscale CloudStack API endpoint (by default: https://api.exoscale.com/v1)
-	ComputeEndpoint pulumi.StringPtrOutput `pulumi:"computeEndpoint"`
-	// CloudStack ini configuration filename (by default: cloudstack.ini)
-	Config pulumi.StringPtrOutput `pulumi:"config"`
-	// Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
-	DnsEndpoint pulumi.StringPtrOutput `pulumi:"dnsEndpoint"`
 	Environment pulumi.StringPtrOutput `pulumi:"environment"`
 	// Exoscale API key
 	Key pulumi.StringPtrOutput `pulumi:"key"`
-	// Deprecated: Use region instead
-	Profile pulumi.StringPtrOutput `pulumi:"profile"`
-	// CloudStack ini configuration section name (by default: cloudstack)
-	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// Exoscale API secret
 	Secret pulumi.StringPtrOutput `pulumi:"secret"`
-	// Deprecated: Use key instead
-	Token pulumi.StringPtrOutput `pulumi:"token"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -76,52 +63,28 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	// Exoscale CloudStack API endpoint (by default: https://api.exoscale.com/v1)
-	ComputeEndpoint *string `pulumi:"computeEndpoint"`
-	// CloudStack ini configuration filename (by default: cloudstack.ini)
-	Config *string `pulumi:"config"`
 	// Deprecated: Does nothing
-	Delay *int `pulumi:"delay"`
-	// Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
-	DnsEndpoint *string `pulumi:"dnsEndpoint"`
+	Delay       *int    `pulumi:"delay"`
 	Environment *string `pulumi:"environment"`
 	// Exoscale API key
 	Key *string `pulumi:"key"`
-	// Deprecated: Use region instead
-	Profile *string `pulumi:"profile"`
-	// CloudStack ini configuration section name (by default: cloudstack)
-	Region *string `pulumi:"region"`
 	// Exoscale API secret
 	Secret *string `pulumi:"secret"`
 	// Timeout in seconds for waiting on compute resources to become available (by default: 300)
 	Timeout *int `pulumi:"timeout"`
-	// Deprecated: Use key instead
-	Token *string `pulumi:"token"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	// Exoscale CloudStack API endpoint (by default: https://api.exoscale.com/v1)
-	ComputeEndpoint pulumi.StringPtrInput
-	// CloudStack ini configuration filename (by default: cloudstack.ini)
-	Config pulumi.StringPtrInput
 	// Deprecated: Does nothing
-	Delay pulumi.IntPtrInput
-	// Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
-	DnsEndpoint pulumi.StringPtrInput
+	Delay       pulumi.IntPtrInput
 	Environment pulumi.StringPtrInput
 	// Exoscale API key
 	Key pulumi.StringPtrInput
-	// Deprecated: Use region instead
-	Profile pulumi.StringPtrInput
-	// CloudStack ini configuration section name (by default: cloudstack)
-	Region pulumi.StringPtrInput
 	// Exoscale API secret
 	Secret pulumi.StringPtrInput
 	// Timeout in seconds for waiting on compute resources to become available (by default: 300)
 	Timeout pulumi.IntPtrInput
-	// Deprecated: Use key instead
-	Token pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -147,12 +110,6 @@ func (i *Provider) ToProviderOutputWithContext(ctx context.Context) ProviderOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderOutput)
 }
 
-func (i *Provider) ToOutput(ctx context.Context) pulumix.Output[*Provider] {
-	return pulumix.Output[*Provider]{
-		OutputState: i.ToProviderOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProviderOutput struct{ *pulumi.OutputState }
 
 func (ProviderOutput) ElementType() reflect.Type {
@@ -167,27 +124,6 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
-func (o ProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*Provider] {
-	return pulumix.Output[*Provider]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Exoscale CloudStack API endpoint (by default: https://api.exoscale.com/v1)
-func (o ProviderOutput) ComputeEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ComputeEndpoint }).(pulumi.StringPtrOutput)
-}
-
-// CloudStack ini configuration filename (by default: cloudstack.ini)
-func (o ProviderOutput) Config() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Config }).(pulumi.StringPtrOutput)
-}
-
-// Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
-func (o ProviderOutput) DnsEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DnsEndpoint }).(pulumi.StringPtrOutput)
-}
-
 func (o ProviderOutput) Environment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Environment }).(pulumi.StringPtrOutput)
 }
@@ -197,24 +133,9 @@ func (o ProviderOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: Use region instead
-func (o ProviderOutput) Profile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Profile }).(pulumi.StringPtrOutput)
-}
-
-// CloudStack ini configuration section name (by default: cloudstack)
-func (o ProviderOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
-}
-
 // Exoscale API secret
 func (o ProviderOutput) Secret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Secret }).(pulumi.StringPtrOutput)
-}
-
-// Deprecated: Use key instead
-func (o ProviderOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
 }
 
 func init() {

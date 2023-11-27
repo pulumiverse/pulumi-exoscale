@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -90,12 +89,6 @@ func (o GetTemplateResultOutput) ToGetTemplateResultOutput() GetTemplateResultOu
 
 func (o GetTemplateResultOutput) ToGetTemplateResultOutputWithContext(ctx context.Context) GetTemplateResultOutput {
 	return o
-}
-
-func (o GetTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTemplateResult] {
-	return pulumix.Output[GetTemplateResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Username to use to log into a compute instance based on this template

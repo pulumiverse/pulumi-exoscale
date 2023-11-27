@@ -19,24 +19,6 @@ namespace Pulumiverse.Exoscale
     [ExoscaleResourceType("pulumi:providers:exoscale")]
     public partial class Provider : global::Pulumi.ProviderResource
     {
-        /// <summary>
-        /// Exoscale CloudStack API endpoint (by default: https://api.exoscale.com/v1)
-        /// </summary>
-        [Output("computeEndpoint")]
-        public Output<string?> ComputeEndpoint { get; private set; } = null!;
-
-        /// <summary>
-        /// CloudStack ini configuration filename (by default: cloudstack.ini)
-        /// </summary>
-        [Output("config")]
-        public Output<string?> Config { get; private set; } = null!;
-
-        /// <summary>
-        /// Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
-        /// </summary>
-        [Output("dnsEndpoint")]
-        public Output<string?> DnsEndpoint { get; private set; } = null!;
-
         [Output("environment")]
         public Output<string?> Environment { get; private set; } = null!;
 
@@ -46,23 +28,11 @@ namespace Pulumiverse.Exoscale
         [Output("key")]
         public Output<string?> Key { get; private set; } = null!;
 
-        [Output("profile")]
-        public Output<string?> Profile { get; private set; } = null!;
-
-        /// <summary>
-        /// CloudStack ini configuration section name (by default: cloudstack)
-        /// </summary>
-        [Output("region")]
-        public Output<string?> Region { get; private set; } = null!;
-
         /// <summary>
         /// Exoscale API secret
         /// </summary>
         [Output("secret")]
         public Output<string?> Secret { get; private set; } = null!;
-
-        [Output("token")]
-        public Output<string?> Token { get; private set; } = null!;
 
 
         /// <summary>
@@ -98,26 +68,8 @@ namespace Pulumiverse.Exoscale
 
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Exoscale CloudStack API endpoint (by default: https://api.exoscale.com/v1)
-        /// </summary>
-        [Input("computeEndpoint")]
-        public Input<string>? ComputeEndpoint { get; set; }
-
-        /// <summary>
-        /// CloudStack ini configuration filename (by default: cloudstack.ini)
-        /// </summary>
-        [Input("config")]
-        public Input<string>? CloudStackIniConfig { get; set; }
-
         [Input("delay", json: true)]
         public Input<int>? Delay { get; set; }
-
-        /// <summary>
-        /// Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
-        /// </summary>
-        [Input("dnsEndpoint")]
-        public Input<string>? DnsEndpoint { get; set; }
 
         [Input("environment")]
         public Input<string>? Environment { get; set; }
@@ -137,15 +89,6 @@ namespace Pulumiverse.Exoscale
                 _key = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
-
-        [Input("profile")]
-        public Input<string>? Profile { get; set; }
-
-        /// <summary>
-        /// CloudStack ini configuration section name (by default: cloudstack)
-        /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
 
         [Input("secret")]
         private Input<string>? _secret;
@@ -168,9 +111,6 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         [Input("timeout", json: true)]
         public Input<int>? Timeout { get; set; }
-
-        [Input("token")]
-        public Input<string>? Token { get; set; }
 
         public ProviderArgs()
         {

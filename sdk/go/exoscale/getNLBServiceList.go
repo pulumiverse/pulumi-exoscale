@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -89,12 +88,6 @@ func (o GetNLBServiceListResultOutput) ToGetNLBServiceListResultOutput() GetNLBS
 
 func (o GetNLBServiceListResultOutput) ToGetNLBServiceListResultOutputWithContext(ctx context.Context) GetNLBServiceListResultOutput {
 	return o
-}
-
-func (o GetNLBServiceListResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNLBServiceListResult] {
-	return pulumix.Output[GetNLBServiceListResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of this resource.

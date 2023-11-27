@@ -9,7 +9,6 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -65,7 +64,7 @@ type ComputeInstance struct {
 	SshKey pulumi.StringPtrOutput `pulumi:"sshKey"`
 	// The instance state (`running` or `stopped`; default: `running`).
 	State pulumi.StringOutput `pulumi:"state"`
-	// ❗ The exoscale*compute*template (ID) to use when creating the instance.
+	// ❗ The getTemplate (ID) to use when creating the instance.
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
 	// The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -150,7 +149,7 @@ type computeInstanceState struct {
 	SshKey *string `pulumi:"sshKey"`
 	// The instance state (`running` or `stopped`; default: `running`).
 	State *string `pulumi:"state"`
-	// ❗ The exoscale*compute*template (ID) to use when creating the instance.
+	// ❗ The getTemplate (ID) to use when creating the instance.
 	TemplateId *string `pulumi:"templateId"`
 	// The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
 	Type *string `pulumi:"type"`
@@ -197,7 +196,7 @@ type ComputeInstanceState struct {
 	SshKey pulumi.StringPtrInput
 	// The instance state (`running` or `stopped`; default: `running`).
 	State pulumi.StringPtrInput
-	// ❗ The exoscale*compute*template (ID) to use when creating the instance.
+	// ❗ The getTemplate (ID) to use when creating the instance.
 	TemplateId pulumi.StringPtrInput
 	// The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
 	Type pulumi.StringPtrInput
@@ -238,7 +237,7 @@ type computeInstanceArgs struct {
 	SshKey *string `pulumi:"sshKey"`
 	// The instance state (`running` or `stopped`; default: `running`).
 	State *string `pulumi:"state"`
-	// ❗ The exoscale*compute*template (ID) to use when creating the instance.
+	// ❗ The getTemplate (ID) to use when creating the instance.
 	TemplateId string `pulumi:"templateId"`
 	// The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
 	Type string `pulumi:"type"`
@@ -276,7 +275,7 @@ type ComputeInstanceArgs struct {
 	SshKey pulumi.StringPtrInput
 	// The instance state (`running` or `stopped`; default: `running`).
 	State pulumi.StringPtrInput
-	// ❗ The exoscale*compute*template (ID) to use when creating the instance.
+	// ❗ The getTemplate (ID) to use when creating the instance.
 	TemplateId pulumi.StringInput
 	// The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
 	Type pulumi.StringInput
@@ -309,12 +308,6 @@ func (i *ComputeInstance) ToComputeInstanceOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceOutput)
 }
 
-func (i *ComputeInstance) ToOutput(ctx context.Context) pulumix.Output[*ComputeInstance] {
-	return pulumix.Output[*ComputeInstance]{
-		OutputState: i.ToComputeInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ComputeInstanceArrayInput is an input type that accepts ComputeInstanceArray and ComputeInstanceArrayOutput values.
 // You can construct a concrete instance of `ComputeInstanceArrayInput` via:
 //
@@ -338,12 +331,6 @@ func (i ComputeInstanceArray) ToComputeInstanceArrayOutput() ComputeInstanceArra
 
 func (i ComputeInstanceArray) ToComputeInstanceArrayOutputWithContext(ctx context.Context) ComputeInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceArrayOutput)
-}
-
-func (i ComputeInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*ComputeInstance] {
-	return pulumix.Output[[]*ComputeInstance]{
-		OutputState: i.ToComputeInstanceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ComputeInstanceMapInput is an input type that accepts ComputeInstanceMap and ComputeInstanceMapOutput values.
@@ -371,12 +358,6 @@ func (i ComputeInstanceMap) ToComputeInstanceMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceMapOutput)
 }
 
-func (i ComputeInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ComputeInstance] {
-	return pulumix.Output[map[string]*ComputeInstance]{
-		OutputState: i.ToComputeInstanceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ComputeInstanceOutput struct{ *pulumi.OutputState }
 
 func (ComputeInstanceOutput) ElementType() reflect.Type {
@@ -389,12 +370,6 @@ func (o ComputeInstanceOutput) ToComputeInstanceOutput() ComputeInstanceOutput {
 
 func (o ComputeInstanceOutput) ToComputeInstanceOutputWithContext(ctx context.Context) ComputeInstanceOutput {
 	return o
-}
-
-func (o ComputeInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputeInstance] {
-	return pulumix.Output[*ComputeInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
@@ -484,7 +459,7 @@ func (o ComputeInstanceOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *ComputeInstance) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// ❗ The exoscale*compute*template (ID) to use when creating the instance.
+// ❗ The getTemplate (ID) to use when creating the instance.
 func (o ComputeInstanceOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ComputeInstance) pulumi.StringOutput { return v.TemplateId }).(pulumi.StringOutput)
 }
@@ -518,12 +493,6 @@ func (o ComputeInstanceArrayOutput) ToComputeInstanceArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o ComputeInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ComputeInstance] {
-	return pulumix.Output[[]*ComputeInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ComputeInstanceArrayOutput) Index(i pulumi.IntInput) ComputeInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ComputeInstance {
 		return vs[0].([]*ComputeInstance)[vs[1].(int)]
@@ -542,12 +511,6 @@ func (o ComputeInstanceMapOutput) ToComputeInstanceMapOutput() ComputeInstanceMa
 
 func (o ComputeInstanceMapOutput) ToComputeInstanceMapOutputWithContext(ctx context.Context) ComputeInstanceMapOutput {
 	return o
-}
-
-func (o ComputeInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ComputeInstance] {
-	return pulumix.Output[map[string]*ComputeInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ComputeInstanceMapOutput) MapIndex(k pulumi.StringInput) ComputeInstanceOutput {

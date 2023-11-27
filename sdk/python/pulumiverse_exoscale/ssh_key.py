@@ -14,17 +14,28 @@ __all__ = ['SSHKeyArgs', 'SSHKey']
 @pulumi.input_type
 class SSHKeyArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None,
-                 public_key: Optional[pulumi.Input[str]] = None):
+                 public_key: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SSHKey resource.
-        :param pulumi.Input[str] name: ❗ The SSH key name.
         :param pulumi.Input[str] public_key: ❗ The SSH *public* key that will be authorized in compute instances.
+        :param pulumi.Input[str] name: ❗ The SSH key name.
         """
+        pulumi.set(__self__, "public_key", public_key)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if public_key is not None:
-            pulumi.set(__self__, "public_key", public_key)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> pulumi.Input[str]:
+        """
+        ❗ The SSH *public* key that will be authorized in compute instances.
+        """
+        return pulumi.get(self, "public_key")
+
+    @public_key.setter
+    def public_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "public_key", value)
 
     @property
     @pulumi.getter
@@ -37,18 +48,6 @@ class SSHKeyArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="publicKey")
-    def public_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        ❗ The SSH *public* key that will be authorized in compute instances.
-        """
-        return pulumi.get(self, "public_key")
-
-    @public_key.setter
-    def public_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "public_key", value)
 
 
 @pulumi.input_type
@@ -137,7 +136,7 @@ class SSHKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[SSHKeyArgs] = None,
+                 args: SSHKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
@@ -179,6 +178,8 @@ class SSHKey(pulumi.CustomResource):
             __props__ = SSHKeyArgs.__new__(SSHKeyArgs)
 
             __props__.__dict__["name"] = name
+            if public_key is None and not opts.urn:
+                raise TypeError("Missing required property 'public_key'")
             __props__.__dict__["public_key"] = public_key
             __props__.__dict__["fingerprint"] = None
         super(SSHKey, __self__).__init__(

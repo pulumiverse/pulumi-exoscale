@@ -129,7 +129,7 @@ namespace Pulumiverse.Exoscale
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// ❗ The exoscale*compute*template (ID) to use when creating the instance.
+        /// ❗ The exoscale.getTemplate (ID) to use when creating the instance.
         /// </summary>
         [Output("templateId")]
         public Output<string> TemplateId { get; private set; } = null!;
@@ -308,7 +308,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// ❗ The exoscale*compute*template (ID) to use when creating the instance.
+        /// ❗ The exoscale.getTemplate (ID) to use when creating the instance.
         /// </summary>
         [Input("templateId", required: true)]
         public Input<string> TemplateId { get; set; } = null!;
@@ -479,7 +479,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// ❗ The exoscale*compute*template (ID) to use when creating the instance.
+        /// ❗ The exoscale.getTemplate (ID) to use when creating the instance.
         /// </summary>
         [Input("templateId")]
         public Input<string>? TemplateId { get; set; }

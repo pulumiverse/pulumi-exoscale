@@ -35,7 +35,7 @@ class ComputeInstanceArgs:
                  user_data: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ComputeInstance resource.
-        :param pulumi.Input[str] template_id: ❗ The exoscale*compute*template (ID) to use when creating the instance.
+        :param pulumi.Input[str] template_id: ❗ The get_template (ID) to use when creating the instance.
         :param pulumi.Input[str] type: The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
@@ -89,7 +89,7 @@ class ComputeInstanceArgs:
     @pulumi.getter(name="templateId")
     def template_id(self) -> pulumi.Input[str]:
         """
-        ❗ The exoscale*compute*template (ID) to use when creating the instance.
+        ❗ The get_template (ID) to use when creating the instance.
         """
         return pulumi.get(self, "template_id")
 
@@ -333,7 +333,7 @@ class _ComputeInstanceState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of exoscale*security*group (IDs) to attach to the instance.
         :param pulumi.Input[str] ssh_key: The exoscale*ssh*key (name) to authorize in the instance (may only be set at creation time).
         :param pulumi.Input[str] state: The instance state (`running` or `stopped`; default: `running`).
-        :param pulumi.Input[str] template_id: ❗ The exoscale*compute*template (ID) to use when creating the instance.
+        :param pulumi.Input[str] template_id: ❗ The get_template (ID) to use when creating the instance.
         :param pulumi.Input[str] type: The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
         :param pulumi.Input[str] user_data: [cloud-init](https://cloudinit.readthedocs.io/) configuration.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
@@ -595,7 +595,7 @@ class _ComputeInstanceState:
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ❗ The exoscale*compute*template (ID) to use when creating the instance.
+        ❗ The get_template (ID) to use when creating the instance.
         """
         return pulumi.get(self, "template_id")
 
@@ -691,7 +691,7 @@ class ComputeInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of exoscale*security*group (IDs) to attach to the instance.
         :param pulumi.Input[str] ssh_key: The exoscale*ssh*key (name) to authorize in the instance (may only be set at creation time).
         :param pulumi.Input[str] state: The instance state (`running` or `stopped`; default: `running`).
-        :param pulumi.Input[str] template_id: ❗ The exoscale*compute*template (ID) to use when creating the instance.
+        :param pulumi.Input[str] template_id: ❗ The get_template (ID) to use when creating the instance.
         :param pulumi.Input[str] type: The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
         :param pulumi.Input[str] user_data: [cloud-init](https://cloudinit.readthedocs.io/) configuration.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
@@ -838,7 +838,7 @@ class ComputeInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of exoscale*security*group (IDs) to attach to the instance.
         :param pulumi.Input[str] ssh_key: The exoscale*ssh*key (name) to authorize in the instance (may only be set at creation time).
         :param pulumi.Input[str] state: The instance state (`running` or `stopped`; default: `running`).
-        :param pulumi.Input[str] template_id: ❗ The exoscale*compute*template (ID) to use when creating the instance.
+        :param pulumi.Input[str] template_id: ❗ The get_template (ID) to use when creating the instance.
         :param pulumi.Input[str] type: The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
         :param pulumi.Input[str] user_data: [cloud-init](https://cloudinit.readthedocs.io/) configuration.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
@@ -1013,7 +1013,7 @@ class ComputeInstance(pulumi.CustomResource):
     @pulumi.getter(name="templateId")
     def template_id(self) -> pulumi.Output[str]:
         """
-        ❗ The exoscale*compute*template (ID) to use when creating the instance.
+        ❗ The get_template (ID) to use when creating the instance.
         """
         return pulumi.get(self, "template_id")
 

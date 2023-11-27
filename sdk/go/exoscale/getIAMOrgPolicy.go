@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -76,12 +75,6 @@ func (o LookupIAMOrgPolicyResultOutput) ToLookupIAMOrgPolicyResultOutput() Looku
 
 func (o LookupIAMOrgPolicyResultOutput) ToLookupIAMOrgPolicyResultOutputWithContext(ctx context.Context) LookupIAMOrgPolicyResultOutput {
 	return o
-}
-
-func (o LookupIAMOrgPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIAMOrgPolicyResult] {
-	return pulumix.Output[LookupIAMOrgPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Default service strategy (`allow` or `deny`).

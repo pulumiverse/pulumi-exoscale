@@ -14,86 +14,34 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 compute_endpoint: Optional[pulumi.Input[str]] = None,
-                 config: Optional[pulumi.Input[str]] = None,
                  delay: Optional[pulumi.Input[int]] = None,
-                 dns_endpoint: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
-                 profile: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
-                 timeout: Optional[pulumi.Input[int]] = None,
-                 token: Optional[pulumi.Input[str]] = None):
+                 timeout: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[str] compute_endpoint: Exoscale CloudStack API endpoint (by default: https://api.exoscale.com/v1)
-        :param pulumi.Input[str] config: CloudStack ini configuration filename (by default: cloudstack.ini)
-        :param pulumi.Input[str] dns_endpoint: Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
         :param pulumi.Input[str] key: Exoscale API key
-        :param pulumi.Input[str] region: CloudStack ini configuration section name (by default: cloudstack)
         :param pulumi.Input[str] secret: Exoscale API secret
         :param pulumi.Input[int] timeout: Timeout in seconds for waiting on compute resources to become available (by default: 300)
         """
-        if compute_endpoint is not None:
-            pulumi.set(__self__, "compute_endpoint", compute_endpoint)
-        if config is not None:
-            pulumi.set(__self__, "config", config)
         if delay is not None:
             warnings.warn("""Does nothing""", DeprecationWarning)
             pulumi.log.warn("""delay is deprecated: Does nothing""")
         if delay is not None:
             pulumi.set(__self__, "delay", delay)
-        if dns_endpoint is not None:
-            pulumi.set(__self__, "dns_endpoint", dns_endpoint)
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
         if key is None:
             key = _utilities.get_env('EXOSCALE_API_KEY')
         if key is not None:
             pulumi.set(__self__, "key", key)
-        if profile is not None:
-            warnings.warn("""Use region instead""", DeprecationWarning)
-            pulumi.log.warn("""profile is deprecated: Use region instead""")
-        if profile is not None:
-            pulumi.set(__self__, "profile", profile)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
         if secret is None:
             secret = _utilities.get_env('EXOSCALE_API_SECRET')
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
-        if token is not None:
-            warnings.warn("""Use key instead""", DeprecationWarning)
-            pulumi.log.warn("""token is deprecated: Use key instead""")
-        if token is not None:
-            pulumi.set(__self__, "token", token)
-
-    @property
-    @pulumi.getter(name="computeEndpoint")
-    def compute_endpoint(self) -> Optional[pulumi.Input[str]]:
-        """
-        Exoscale CloudStack API endpoint (by default: https://api.exoscale.com/v1)
-        """
-        return pulumi.get(self, "compute_endpoint")
-
-    @compute_endpoint.setter
-    def compute_endpoint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "compute_endpoint", value)
-
-    @property
-    @pulumi.getter
-    def config(self) -> Optional[pulumi.Input[str]]:
-        """
-        CloudStack ini configuration filename (by default: cloudstack.ini)
-        """
-        return pulumi.get(self, "config")
-
-    @config.setter
-    def config(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "config", value)
 
     @property
     @pulumi.getter
@@ -106,18 +54,6 @@ class ProviderArgs:
     @delay.setter
     def delay(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "delay", value)
-
-    @property
-    @pulumi.getter(name="dnsEndpoint")
-    def dns_endpoint(self) -> Optional[pulumi.Input[str]]:
-        """
-        Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
-        """
-        return pulumi.get(self, "dns_endpoint")
-
-    @dns_endpoint.setter
-    def dns_endpoint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "dns_endpoint", value)
 
     @property
     @pulumi.getter
@@ -139,30 +75,6 @@ class ProviderArgs:
     @key.setter
     def key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "key", value)
-
-    @property
-    @pulumi.getter
-    def profile(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Use region instead""", DeprecationWarning)
-        pulumi.log.warn("""profile is deprecated: Use region instead""")
-
-        return pulumi.get(self, "profile")
-
-    @profile.setter
-    def profile(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "profile", value)
-
-    @property
-    @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        CloudStack ini configuration section name (by default: cloudstack)
-        """
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter
@@ -188,35 +100,17 @@ class ProviderArgs:
     def timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout", value)
 
-    @property
-    @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Use key instead""", DeprecationWarning)
-        pulumi.log.warn("""token is deprecated: Use key instead""")
-
-        return pulumi.get(self, "token")
-
-    @token.setter
-    def token(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "token", value)
-
 
 class Provider(pulumi.ProviderResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compute_endpoint: Optional[pulumi.Input[str]] = None,
-                 config: Optional[pulumi.Input[str]] = None,
                  delay: Optional[pulumi.Input[int]] = None,
-                 dns_endpoint: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
-                 profile: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[int]] = None,
-                 token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         The provider type for the exoscale package. By default, resources use package-wide configuration
@@ -226,11 +120,7 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compute_endpoint: Exoscale CloudStack API endpoint (by default: https://api.exoscale.com/v1)
-        :param pulumi.Input[str] config: CloudStack ini configuration filename (by default: cloudstack.ini)
-        :param pulumi.Input[str] dns_endpoint: Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
         :param pulumi.Input[str] key: Exoscale API key
-        :param pulumi.Input[str] region: CloudStack ini configuration section name (by default: cloudstack)
         :param pulumi.Input[str] secret: Exoscale API secret
         :param pulumi.Input[int] timeout: Timeout in seconds for waiting on compute resources to become available (by default: 300)
         """
@@ -261,17 +151,11 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compute_endpoint: Optional[pulumi.Input[str]] = None,
-                 config: Optional[pulumi.Input[str]] = None,
                  delay: Optional[pulumi.Input[int]] = None,
-                 dns_endpoint: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
-                 profile: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[int]] = None,
-                 token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -281,21 +165,15 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
-            __props__.__dict__["compute_endpoint"] = compute_endpoint
-            __props__.__dict__["config"] = config
             __props__.__dict__["delay"] = pulumi.Output.from_input(delay).apply(pulumi.runtime.to_json) if delay is not None else None
-            __props__.__dict__["dns_endpoint"] = dns_endpoint
             __props__.__dict__["environment"] = environment
             if key is None:
                 key = _utilities.get_env('EXOSCALE_API_KEY')
             __props__.__dict__["key"] = None if key is None else pulumi.Output.secret(key)
-            __props__.__dict__["profile"] = profile
-            __props__.__dict__["region"] = region
             if secret is None:
                 secret = _utilities.get_env('EXOSCALE_API_SECRET')
             __props__.__dict__["secret"] = None if secret is None else pulumi.Output.secret(secret)
             __props__.__dict__["timeout"] = pulumi.Output.from_input(timeout).apply(pulumi.runtime.to_json) if timeout is not None else None
-            __props__.__dict__["token"] = token
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["key", "secret"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
@@ -303,30 +181,6 @@ class Provider(pulumi.ProviderResource):
             resource_name,
             __props__,
             opts)
-
-    @property
-    @pulumi.getter(name="computeEndpoint")
-    def compute_endpoint(self) -> pulumi.Output[Optional[str]]:
-        """
-        Exoscale CloudStack API endpoint (by default: https://api.exoscale.com/v1)
-        """
-        return pulumi.get(self, "compute_endpoint")
-
-    @property
-    @pulumi.getter
-    def config(self) -> pulumi.Output[Optional[str]]:
-        """
-        CloudStack ini configuration filename (by default: cloudstack.ini)
-        """
-        return pulumi.get(self, "config")
-
-    @property
-    @pulumi.getter(name="dnsEndpoint")
-    def dns_endpoint(self) -> pulumi.Output[Optional[str]]:
-        """
-        Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
-        """
-        return pulumi.get(self, "dns_endpoint")
 
     @property
     @pulumi.getter
@@ -343,33 +197,9 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter
-    def profile(self) -> pulumi.Output[Optional[str]]:
-        warnings.warn("""Use region instead""", DeprecationWarning)
-        pulumi.log.warn("""profile is deprecated: Use region instead""")
-
-        return pulumi.get(self, "profile")
-
-    @property
-    @pulumi.getter
-    def region(self) -> pulumi.Output[Optional[str]]:
-        """
-        CloudStack ini configuration section name (by default: cloudstack)
-        """
-        return pulumi.get(self, "region")
-
-    @property
-    @pulumi.getter
     def secret(self) -> pulumi.Output[Optional[str]]:
         """
         Exoscale API secret
         """
         return pulumi.get(self, "secret")
-
-    @property
-    @pulumi.getter
-    def token(self) -> pulumi.Output[Optional[str]]:
-        warnings.warn("""Use key instead""", DeprecationWarning)
-        pulumi.log.warn("""token is deprecated: Use key instead""")
-
-        return pulumi.get(self, "token")
 

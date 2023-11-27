@@ -32,41 +32,11 @@ namespace Pulumiverse.Exoscale
 
         private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("exoscale");
 
-        private static readonly __Value<string?> _computeEndpoint = new __Value<string?>(() => __config.Get("computeEndpoint"));
-        /// <summary>
-        /// Exoscale CloudStack API endpoint (by default: https://api.exoscale.com/v1)
-        /// </summary>
-        public static string? ComputeEndpoint
-        {
-            get => _computeEndpoint.Get();
-            set => _computeEndpoint.Set(value);
-        }
-
-        private static readonly __Value<string?> _config = new __Value<string?>(() => __config.Get("config"));
-        /// <summary>
-        /// CloudStack ini configuration filename (by default: cloudstack.ini)
-        /// </summary>
-        public static string? CloudStackIniConfig
-        {
-            get => _config.Get();
-            set => _config.Set(value);
-        }
-
         private static readonly __Value<int?> _delay = new __Value<int?>(() => __config.GetInt32("delay"));
         public static int? Delay
         {
             get => _delay.Get();
             set => _delay.Set(value);
-        }
-
-        private static readonly __Value<string?> _dnsEndpoint = new __Value<string?>(() => __config.Get("dnsEndpoint"));
-        /// <summary>
-        /// Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
-        /// </summary>
-        public static string? DnsEndpoint
-        {
-            get => _dnsEndpoint.Get();
-            set => _dnsEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _environment = new __Value<string?>(() => __config.Get("environment"));
@@ -84,23 +54,6 @@ namespace Pulumiverse.Exoscale
         {
             get => _key.Get();
             set => _key.Set(value);
-        }
-
-        private static readonly __Value<string?> _profile = new __Value<string?>(() => __config.Get("profile"));
-        public static string? Profile
-        {
-            get => _profile.Get();
-            set => _profile.Set(value);
-        }
-
-        private static readonly __Value<string?> _region = new __Value<string?>(() => __config.Get("region"));
-        /// <summary>
-        /// CloudStack ini configuration section name (by default: cloudstack)
-        /// </summary>
-        public static string? Region
-        {
-            get => _region.Get();
-            set => _region.Set(value);
         }
 
         private static readonly __Value<string?> _secret = new __Value<string?>(() => __config.Get("secret") ?? Utilities.GetEnv("EXOSCALE_API_SECRET"));
@@ -121,13 +74,6 @@ namespace Pulumiverse.Exoscale
         {
             get => _timeout.Get();
             set => _timeout.Set(value);
-        }
-
-        private static readonly __Value<string?> _token = new __Value<string?>(() => __config.Get("token"));
-        public static string? Token
-        {
-            get => _token.Get();
-            set => _token.Set(value);
         }
 
     }

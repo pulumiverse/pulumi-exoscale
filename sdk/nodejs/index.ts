@@ -5,20 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export { AffinityArgs, AffinityState } from "./affinity";
-export type Affinity = import("./affinity").Affinity;
-export const Affinity: typeof import("./affinity").Affinity = null as any;
-utilities.lazyLoad(exports, ["Affinity"], () => require("./affinity"));
-
 export { AntiAffinityGroupArgs, AntiAffinityGroupState } from "./antiAffinityGroup";
 export type AntiAffinityGroup = import("./antiAffinityGroup").AntiAffinityGroup;
 export const AntiAffinityGroup: typeof import("./antiAffinityGroup").AntiAffinityGroup = null as any;
 utilities.lazyLoad(exports, ["AntiAffinityGroup"], () => require("./antiAffinityGroup"));
-
-export { ComputeArgs, ComputeState } from "./compute";
-export type Compute = import("./compute").Compute;
-export const Compute: typeof import("./compute").Compute = null as any;
-utilities.lazyLoad(exports, ["Compute"], () => require("./compute"));
 
 export { ComputeInstanceArgs, ComputeInstanceState } from "./computeInstance";
 export type ComputeInstance = import("./computeInstance").ComputeInstance;
@@ -45,25 +35,10 @@ export type ElasticIP = import("./elasticIP").ElasticIP;
 export const ElasticIP: typeof import("./elasticIP").ElasticIP = null as any;
 utilities.lazyLoad(exports, ["ElasticIP"], () => require("./elasticIP"));
 
-export { GetAffinityArgs, GetAffinityResult, GetAffinityOutputArgs } from "./getAffinity";
-export const getAffinity: typeof import("./getAffinity").getAffinity = null as any;
-export const getAffinityOutput: typeof import("./getAffinity").getAffinityOutput = null as any;
-utilities.lazyLoad(exports, ["getAffinity","getAffinityOutput"], () => require("./getAffinity"));
-
 export { GetAntiAffinityGroupArgs, GetAntiAffinityGroupResult, GetAntiAffinityGroupOutputArgs } from "./getAntiAffinityGroup";
 export const getAntiAffinityGroup: typeof import("./getAntiAffinityGroup").getAntiAffinityGroup = null as any;
 export const getAntiAffinityGroupOutput: typeof import("./getAntiAffinityGroup").getAntiAffinityGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getAntiAffinityGroup","getAntiAffinityGroupOutput"], () => require("./getAntiAffinityGroup"));
-
-export { GetComputeArgs, GetComputeResult, GetComputeOutputArgs } from "./getCompute";
-export const getCompute: typeof import("./getCompute").getCompute = null as any;
-export const getComputeOutput: typeof import("./getCompute").getComputeOutput = null as any;
-utilities.lazyLoad(exports, ["getCompute","getComputeOutput"], () => require("./getCompute"));
-
-export { GetComputeIPAddressArgs, GetComputeIPAddressResult, GetComputeIPAddressOutputArgs } from "./getComputeIPAddress";
-export const getComputeIPAddress: typeof import("./getComputeIPAddress").getComputeIPAddress = null as any;
-export const getComputeIPAddressOutput: typeof import("./getComputeIPAddress").getComputeIPAddressOutput = null as any;
-utilities.lazyLoad(exports, ["getComputeIPAddress","getComputeIPAddressOutput"], () => require("./getComputeIPAddress"));
 
 export { GetComputeInstanceArgs, GetComputeInstanceResult, GetComputeInstanceOutputArgs } from "./getComputeInstance";
 export const getComputeInstance: typeof import("./getComputeInstance").getComputeInstance = null as any;
@@ -74,11 +49,6 @@ export { GetComputeInstanceListArgs, GetComputeInstanceListResult, GetComputeIns
 export const getComputeInstanceList: typeof import("./getComputeInstanceList").getComputeInstanceList = null as any;
 export const getComputeInstanceListOutput: typeof import("./getComputeInstanceList").getComputeInstanceListOutput = null as any;
 utilities.lazyLoad(exports, ["getComputeInstanceList","getComputeInstanceListOutput"], () => require("./getComputeInstanceList"));
-
-export { GetComputeTemplateArgs, GetComputeTemplateResult, GetComputeTemplateOutputArgs } from "./getComputeTemplate";
-export const getComputeTemplate: typeof import("./getComputeTemplate").getComputeTemplate = null as any;
-export const getComputeTemplateOutput: typeof import("./getComputeTemplate").getComputeTemplateOutput = null as any;
-utilities.lazyLoad(exports, ["getComputeTemplate","getComputeTemplateOutput"], () => require("./getComputeTemplate"));
 
 export { GetDatabaseURIArgs, GetDatabaseURIResult, GetDatabaseURIOutputArgs } from "./getDatabaseURI";
 export const getDatabaseURI: typeof import("./getDatabaseURI").getDatabaseURI = null as any;
@@ -134,11 +104,6 @@ export { GetNLBServiceListArgs, GetNLBServiceListResult, GetNLBServiceListOutput
 export const getNLBServiceList: typeof import("./getNLBServiceList").getNLBServiceList = null as any;
 export const getNLBServiceListOutput: typeof import("./getNLBServiceList").getNLBServiceListOutput = null as any;
 utilities.lazyLoad(exports, ["getNLBServiceList","getNLBServiceListOutput"], () => require("./getNLBServiceList"));
-
-export { GetNetworkArgs, GetNetworkResult, GetNetworkOutputArgs } from "./getNetwork";
-export const getNetwork: typeof import("./getNetwork").getNetwork = null as any;
-export const getNetworkOutput: typeof import("./getNetwork").getNetworkOutput = null as any;
-utilities.lazyLoad(exports, ["getNetwork","getNetworkOutput"], () => require("./getNetwork"));
 
 export { GetPrivateNetworkArgs, GetPrivateNetworkResult, GetPrivateNetworkOutputArgs } from "./getPrivateNetwork";
 export const getPrivateNetwork: typeof import("./getPrivateNetwork").getPrivateNetwork = null as any;
@@ -205,21 +170,6 @@ export type InstancePool = import("./instancePool").InstancePool;
 export const InstancePool: typeof import("./instancePool").InstancePool = null as any;
 utilities.lazyLoad(exports, ["InstancePool"], () => require("./instancePool"));
 
-export { IPAddressArgs, IPAddressState } from "./ipaddress";
-export type IPAddress = import("./ipaddress").IPAddress;
-export const IPAddress: typeof import("./ipaddress").IPAddress = null as any;
-utilities.lazyLoad(exports, ["IPAddress"], () => require("./ipaddress"));
-
-export { NetworkArgs, NetworkState } from "./network";
-export type Network = import("./network").Network;
-export const Network: typeof import("./network").Network = null as any;
-utilities.lazyLoad(exports, ["Network"], () => require("./network"));
-
-export { NICArgs, NICState } from "./nic";
-export type NIC = import("./nic").NIC;
-export const NIC: typeof import("./nic").NIC = null as any;
-utilities.lazyLoad(exports, ["NIC"], () => require("./nic"));
-
 export { NLBArgs, NLBState } from "./nlb";
 export type NLB = import("./nlb").NLB;
 export const NLB: typeof import("./nlb").NLB = null as any;
@@ -240,11 +190,6 @@ export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
 utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
-export { SecondaryIPAddressArgs, SecondaryIPAddressState } from "./secondaryIPAddress";
-export type SecondaryIPAddress = import("./secondaryIPAddress").SecondaryIPAddress;
-export const SecondaryIPAddress: typeof import("./secondaryIPAddress").SecondaryIPAddress = null as any;
-utilities.lazyLoad(exports, ["SecondaryIPAddress"], () => require("./secondaryIPAddress"));
-
 export { SecurityGroupArgs, SecurityGroupState } from "./securityGroup";
 export type SecurityGroup = import("./securityGroup").SecurityGroup;
 export const SecurityGroup: typeof import("./securityGroup").SecurityGroup = null as any;
@@ -254,11 +199,6 @@ export { SecurityGroupRuleArgs, SecurityGroupRuleState } from "./securityGroupRu
 export type SecurityGroupRule = import("./securityGroupRule").SecurityGroupRule;
 export const SecurityGroupRule: typeof import("./securityGroupRule").SecurityGroupRule = null as any;
 utilities.lazyLoad(exports, ["SecurityGroupRule"], () => require("./securityGroupRule"));
-
-export { SecurityGroupRulesArgs, SecurityGroupRulesState } from "./securityGroupRules";
-export type SecurityGroupRules = import("./securityGroupRules").SecurityGroupRules;
-export const SecurityGroupRules: typeof import("./securityGroupRules").SecurityGroupRules = null as any;
-utilities.lazyLoad(exports, ["SecurityGroupRules"], () => require("./securityGroupRules"));
 
 export { SKSClusterArgs, SKSClusterState } from "./skscluster";
 export type SKSCluster = import("./skscluster").SKSCluster;
@@ -280,11 +220,6 @@ export type SSHKey = import("./sshkey").SSHKey;
 export const SSHKey: typeof import("./sshkey").SSHKey = null as any;
 utilities.lazyLoad(exports, ["SSHKey"], () => require("./sshkey"));
 
-export { SSHKeypairArgs, SSHKeypairState } from "./sshkeypair";
-export type SSHKeypair = import("./sshkeypair").SSHKeypair;
-export const SSHKeypair: typeof import("./sshkeypair").SSHKeypair = null as any;
-utilities.lazyLoad(exports, ["SSHKeypair"], () => require("./sshkeypair"));
-
 
 // Export sub-modules:
 import * as config from "./config";
@@ -299,12 +234,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "exoscale:index/affinity:Affinity":
-                return new Affinity(name, <any>undefined, { urn })
             case "exoscale:index/antiAffinityGroup:AntiAffinityGroup":
                 return new AntiAffinityGroup(name, <any>undefined, { urn })
-            case "exoscale:index/compute:Compute":
-                return new Compute(name, <any>undefined, { urn })
             case "exoscale:index/computeInstance:ComputeInstance":
                 return new ComputeInstance(name, <any>undefined, { urn })
             case "exoscale:index/database:Database":
@@ -323,18 +254,12 @@ const _module = {
                 return new IAMOrgPolicy(name, <any>undefined, { urn })
             case "exoscale:index/iAMRole:IAMRole":
                 return new IAMRole(name, <any>undefined, { urn })
-            case "exoscale:index/iPAddress:IPAddress":
-                return new IPAddress(name, <any>undefined, { urn })
             case "exoscale:index/instancePool:InstancePool":
                 return new InstancePool(name, <any>undefined, { urn })
-            case "exoscale:index/nIC:NIC":
-                return new NIC(name, <any>undefined, { urn })
             case "exoscale:index/nLB:NLB":
                 return new NLB(name, <any>undefined, { urn })
             case "exoscale:index/nLBService:NLBService":
                 return new NLBService(name, <any>undefined, { urn })
-            case "exoscale:index/network:Network":
-                return new Network(name, <any>undefined, { urn })
             case "exoscale:index/privateNetwork:PrivateNetwork":
                 return new PrivateNetwork(name, <any>undefined, { urn })
             case "exoscale:index/sKSCluster:SKSCluster":
@@ -345,24 +270,16 @@ const _module = {
                 return new SKSNodepool(name, <any>undefined, { urn })
             case "exoscale:index/sSHKey:SSHKey":
                 return new SSHKey(name, <any>undefined, { urn })
-            case "exoscale:index/sSHKeypair:SSHKeypair":
-                return new SSHKeypair(name, <any>undefined, { urn })
-            case "exoscale:index/secondaryIPAddress:SecondaryIPAddress":
-                return new SecondaryIPAddress(name, <any>undefined, { urn })
             case "exoscale:index/securityGroup:SecurityGroup":
                 return new SecurityGroup(name, <any>undefined, { urn })
             case "exoscale:index/securityGroupRule:SecurityGroupRule":
                 return new SecurityGroupRule(name, <any>undefined, { urn })
-            case "exoscale:index/securityGroupRules:SecurityGroupRules":
-                return new SecurityGroupRules(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("exoscale", "index/affinity", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/antiAffinityGroup", _module)
-pulumi.runtime.registerResourceModule("exoscale", "index/compute", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/computeInstance", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/database", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/domain", _module)
@@ -372,22 +289,16 @@ pulumi.runtime.registerResourceModule("exoscale", "index/iAMAPIKey", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/iAMAccessKey", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/iAMOrgPolicy", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/iAMRole", _module)
-pulumi.runtime.registerResourceModule("exoscale", "index/iPAddress", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/instancePool", _module)
-pulumi.runtime.registerResourceModule("exoscale", "index/nIC", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/nLB", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/nLBService", _module)
-pulumi.runtime.registerResourceModule("exoscale", "index/network", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/privateNetwork", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/sKSCluster", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/sKSKubeconfig", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/sKSNodepool", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/sSHKey", _module)
-pulumi.runtime.registerResourceModule("exoscale", "index/sSHKeypair", _module)
-pulumi.runtime.registerResourceModule("exoscale", "index/secondaryIPAddress", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/securityGroup", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/securityGroupRule", _module)
-pulumi.runtime.registerResourceModule("exoscale", "index/securityGroupRules", _module)
 pulumi.runtime.registerResourcePackage("exoscale", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

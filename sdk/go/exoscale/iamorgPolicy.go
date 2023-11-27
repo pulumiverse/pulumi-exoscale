@@ -9,7 +9,6 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -118,12 +117,6 @@ func (i *IAMOrgPolicy) ToIAMOrgPolicyOutputWithContext(ctx context.Context) IAMO
 	return pulumi.ToOutputWithContext(ctx, i).(IAMOrgPolicyOutput)
 }
 
-func (i *IAMOrgPolicy) ToOutput(ctx context.Context) pulumix.Output[*IAMOrgPolicy] {
-	return pulumix.Output[*IAMOrgPolicy]{
-		OutputState: i.ToIAMOrgPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IAMOrgPolicyArrayInput is an input type that accepts IAMOrgPolicyArray and IAMOrgPolicyArrayOutput values.
 // You can construct a concrete instance of `IAMOrgPolicyArrayInput` via:
 //
@@ -147,12 +140,6 @@ func (i IAMOrgPolicyArray) ToIAMOrgPolicyArrayOutput() IAMOrgPolicyArrayOutput {
 
 func (i IAMOrgPolicyArray) ToIAMOrgPolicyArrayOutputWithContext(ctx context.Context) IAMOrgPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IAMOrgPolicyArrayOutput)
-}
-
-func (i IAMOrgPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*IAMOrgPolicy] {
-	return pulumix.Output[[]*IAMOrgPolicy]{
-		OutputState: i.ToIAMOrgPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IAMOrgPolicyMapInput is an input type that accepts IAMOrgPolicyMap and IAMOrgPolicyMapOutput values.
@@ -180,12 +167,6 @@ func (i IAMOrgPolicyMap) ToIAMOrgPolicyMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(IAMOrgPolicyMapOutput)
 }
 
-func (i IAMOrgPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IAMOrgPolicy] {
-	return pulumix.Output[map[string]*IAMOrgPolicy]{
-		OutputState: i.ToIAMOrgPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IAMOrgPolicyOutput struct{ *pulumi.OutputState }
 
 func (IAMOrgPolicyOutput) ElementType() reflect.Type {
@@ -198,12 +179,6 @@ func (o IAMOrgPolicyOutput) ToIAMOrgPolicyOutput() IAMOrgPolicyOutput {
 
 func (o IAMOrgPolicyOutput) ToIAMOrgPolicyOutputWithContext(ctx context.Context) IAMOrgPolicyOutput {
 	return o
-}
-
-func (o IAMOrgPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*IAMOrgPolicy] {
-	return pulumix.Output[*IAMOrgPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Default service strategy (`allow` or `deny`).
@@ -234,12 +209,6 @@ func (o IAMOrgPolicyArrayOutput) ToIAMOrgPolicyArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o IAMOrgPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IAMOrgPolicy] {
-	return pulumix.Output[[]*IAMOrgPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IAMOrgPolicyArrayOutput) Index(i pulumi.IntInput) IAMOrgPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IAMOrgPolicy {
 		return vs[0].([]*IAMOrgPolicy)[vs[1].(int)]
@@ -258,12 +227,6 @@ func (o IAMOrgPolicyMapOutput) ToIAMOrgPolicyMapOutput() IAMOrgPolicyMapOutput {
 
 func (o IAMOrgPolicyMapOutput) ToIAMOrgPolicyMapOutputWithContext(ctx context.Context) IAMOrgPolicyMapOutput {
 	return o
-}
-
-func (o IAMOrgPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IAMOrgPolicy] {
-	return pulumix.Output[map[string]*IAMOrgPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IAMOrgPolicyMapOutput) MapIndex(k pulumi.StringInput) IAMOrgPolicyOutput {

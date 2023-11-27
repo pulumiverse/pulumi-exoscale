@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -72,12 +71,6 @@ func (o GetInstancePoolListResultOutput) ToGetInstancePoolListResultOutput() Get
 
 func (o GetInstancePoolListResultOutput) ToGetInstancePoolListResultOutputWithContext(ctx context.Context) GetInstancePoolListResultOutput {
 	return o
-}
-
-func (o GetInstancePoolListResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstancePoolListResult] {
-	return pulumix.Output[GetInstancePoolListResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

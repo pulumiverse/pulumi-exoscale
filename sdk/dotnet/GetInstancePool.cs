@@ -157,7 +157,7 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// The managed instances exoscale*compute*template ID.
+        /// The managed instances exoscale.getTemplate ID.
         /// </summary>
         public readonly string TemplateId;
         /// <summary>

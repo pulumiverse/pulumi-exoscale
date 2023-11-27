@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -133,12 +132,6 @@ func (o GetSKSClusterListResultOutput) ToGetSKSClusterListResultOutput() GetSKSC
 
 func (o GetSKSClusterListResultOutput) ToGetSKSClusterListResultOutputWithContext(ctx context.Context) GetSKSClusterListResultOutput {
 	return o
-}
-
-func (o GetSKSClusterListResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSKSClusterListResult] {
-	return pulumix.Output[GetSKSClusterListResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.

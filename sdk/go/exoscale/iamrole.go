@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -152,12 +151,6 @@ func (i *IAMRole) ToIAMRoleOutputWithContext(ctx context.Context) IAMRoleOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(IAMRoleOutput)
 }
 
-func (i *IAMRole) ToOutput(ctx context.Context) pulumix.Output[*IAMRole] {
-	return pulumix.Output[*IAMRole]{
-		OutputState: i.ToIAMRoleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IAMRoleArrayInput is an input type that accepts IAMRoleArray and IAMRoleArrayOutput values.
 // You can construct a concrete instance of `IAMRoleArrayInput` via:
 //
@@ -181,12 +174,6 @@ func (i IAMRoleArray) ToIAMRoleArrayOutput() IAMRoleArrayOutput {
 
 func (i IAMRoleArray) ToIAMRoleArrayOutputWithContext(ctx context.Context) IAMRoleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IAMRoleArrayOutput)
-}
-
-func (i IAMRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]*IAMRole] {
-	return pulumix.Output[[]*IAMRole]{
-		OutputState: i.ToIAMRoleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IAMRoleMapInput is an input type that accepts IAMRoleMap and IAMRoleMapOutput values.
@@ -214,12 +201,6 @@ func (i IAMRoleMap) ToIAMRoleMapOutputWithContext(ctx context.Context) IAMRoleMa
 	return pulumi.ToOutputWithContext(ctx, i).(IAMRoleMapOutput)
 }
 
-func (i IAMRoleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IAMRole] {
-	return pulumix.Output[map[string]*IAMRole]{
-		OutputState: i.ToIAMRoleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IAMRoleOutput struct{ *pulumi.OutputState }
 
 func (IAMRoleOutput) ElementType() reflect.Type {
@@ -232,12 +213,6 @@ func (o IAMRoleOutput) ToIAMRoleOutput() IAMRoleOutput {
 
 func (o IAMRoleOutput) ToIAMRoleOutputWithContext(ctx context.Context) IAMRoleOutput {
 	return o
-}
-
-func (o IAMRoleOutput) ToOutput(ctx context.Context) pulumix.Output[*IAMRole] {
-	return pulumix.Output[*IAMRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A free-form text describing the IAM Role
@@ -288,12 +263,6 @@ func (o IAMRoleArrayOutput) ToIAMRoleArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o IAMRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IAMRole] {
-	return pulumix.Output[[]*IAMRole]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IAMRoleArrayOutput) Index(i pulumi.IntInput) IAMRoleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IAMRole {
 		return vs[0].([]*IAMRole)[vs[1].(int)]
@@ -312,12 +281,6 @@ func (o IAMRoleMapOutput) ToIAMRoleMapOutput() IAMRoleMapOutput {
 
 func (o IAMRoleMapOutput) ToIAMRoleMapOutputWithContext(ctx context.Context) IAMRoleMapOutput {
 	return o
-}
-
-func (o IAMRoleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IAMRole] {
-	return pulumix.Output[map[string]*IAMRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IAMRoleMapOutput) MapIndex(k pulumi.StringInput) IAMRoleOutput {

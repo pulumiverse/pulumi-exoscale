@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -92,12 +91,6 @@ func (o LookupIAMRoleResultOutput) ToLookupIAMRoleResultOutput() LookupIAMRoleRe
 
 func (o LookupIAMRoleResultOutput) ToLookupIAMRoleResultOutputWithContext(ctx context.Context) LookupIAMRoleResultOutput {
 	return o
-}
-
-func (o LookupIAMRoleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIAMRoleResult] {
-	return pulumix.Output[LookupIAMRoleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A free-form text describing the IAM Role

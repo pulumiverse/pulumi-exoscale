@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -119,12 +118,6 @@ func (i *AntiAffinityGroup) ToAntiAffinityGroupOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AntiAffinityGroupOutput)
 }
 
-func (i *AntiAffinityGroup) ToOutput(ctx context.Context) pulumix.Output[*AntiAffinityGroup] {
-	return pulumix.Output[*AntiAffinityGroup]{
-		OutputState: i.ToAntiAffinityGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AntiAffinityGroupArrayInput is an input type that accepts AntiAffinityGroupArray and AntiAffinityGroupArrayOutput values.
 // You can construct a concrete instance of `AntiAffinityGroupArrayInput` via:
 //
@@ -148,12 +141,6 @@ func (i AntiAffinityGroupArray) ToAntiAffinityGroupArrayOutput() AntiAffinityGro
 
 func (i AntiAffinityGroupArray) ToAntiAffinityGroupArrayOutputWithContext(ctx context.Context) AntiAffinityGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AntiAffinityGroupArrayOutput)
-}
-
-func (i AntiAffinityGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*AntiAffinityGroup] {
-	return pulumix.Output[[]*AntiAffinityGroup]{
-		OutputState: i.ToAntiAffinityGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AntiAffinityGroupMapInput is an input type that accepts AntiAffinityGroupMap and AntiAffinityGroupMapOutput values.
@@ -181,12 +168,6 @@ func (i AntiAffinityGroupMap) ToAntiAffinityGroupMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AntiAffinityGroupMapOutput)
 }
 
-func (i AntiAffinityGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AntiAffinityGroup] {
-	return pulumix.Output[map[string]*AntiAffinityGroup]{
-		OutputState: i.ToAntiAffinityGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AntiAffinityGroupOutput struct{ *pulumi.OutputState }
 
 func (AntiAffinityGroupOutput) ElementType() reflect.Type {
@@ -199,12 +180,6 @@ func (o AntiAffinityGroupOutput) ToAntiAffinityGroupOutput() AntiAffinityGroupOu
 
 func (o AntiAffinityGroupOutput) ToAntiAffinityGroupOutputWithContext(ctx context.Context) AntiAffinityGroupOutput {
 	return o
-}
-
-func (o AntiAffinityGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*AntiAffinityGroup] {
-	return pulumix.Output[*AntiAffinityGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ❗ A free-form text describing the group.
@@ -231,12 +206,6 @@ func (o AntiAffinityGroupArrayOutput) ToAntiAffinityGroupArrayOutputWithContext(
 	return o
 }
 
-func (o AntiAffinityGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AntiAffinityGroup] {
-	return pulumix.Output[[]*AntiAffinityGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AntiAffinityGroupArrayOutput) Index(i pulumi.IntInput) AntiAffinityGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AntiAffinityGroup {
 		return vs[0].([]*AntiAffinityGroup)[vs[1].(int)]
@@ -255,12 +224,6 @@ func (o AntiAffinityGroupMapOutput) ToAntiAffinityGroupMapOutput() AntiAffinityG
 
 func (o AntiAffinityGroupMapOutput) ToAntiAffinityGroupMapOutputWithContext(ctx context.Context) AntiAffinityGroupMapOutput {
 	return o
-}
-
-func (o AntiAffinityGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AntiAffinityGroup] {
-	return pulumix.Output[map[string]*AntiAffinityGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AntiAffinityGroupMapOutput) MapIndex(k pulumi.StringInput) AntiAffinityGroupOutput {

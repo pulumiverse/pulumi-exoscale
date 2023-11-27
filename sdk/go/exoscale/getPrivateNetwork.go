@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -100,12 +99,6 @@ func (o LookupPrivateNetworkResultOutput) ToLookupPrivateNetworkResultOutput() L
 
 func (o LookupPrivateNetworkResultOutput) ToLookupPrivateNetworkResultOutputWithContext(ctx context.Context) LookupPrivateNetworkResultOutput {
 	return o
-}
-
-func (o LookupPrivateNetworkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivateNetworkResult] {
-	return pulumix.Output[LookupPrivateNetworkResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The private network description.

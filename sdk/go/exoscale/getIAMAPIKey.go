@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -82,12 +81,6 @@ func (o LookupIAMAPIKeyResultOutput) ToLookupIAMAPIKeyResultOutput() LookupIAMAP
 
 func (o LookupIAMAPIKeyResultOutput) ToLookupIAMAPIKeyResultOutputWithContext(ctx context.Context) LookupIAMAPIKeyResultOutput {
 	return o
-}
-
-func (o LookupIAMAPIKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIAMAPIKeyResult] {
-	return pulumix.Output[LookupIAMAPIKeyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of this resource.

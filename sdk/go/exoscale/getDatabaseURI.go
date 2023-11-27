@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -89,12 +88,6 @@ func (o GetDatabaseURIResultOutput) ToGetDatabaseURIResultOutput() GetDatabaseUR
 
 func (o GetDatabaseURIResultOutput) ToGetDatabaseURIResultOutputWithContext(ctx context.Context) GetDatabaseURIResultOutput {
 	return o
-}
-
-func (o GetDatabaseURIResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseURIResult] {
-	return pulumix.Output[GetDatabaseURIResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of this resource.

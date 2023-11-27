@@ -9,35 +9,13 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-computeEndpoint: Optional[str]
-"""
-Exoscale CloudStack API endpoint (by default: https://api.exoscale.com/v1)
-"""
-
-config: Optional[str]
-"""
-CloudStack ini configuration filename (by default: cloudstack.ini)
-"""
-
 delay: Optional[int]
-
-dnsEndpoint: Optional[str]
-"""
-Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
-"""
 
 environment: Optional[str]
 
 key: Optional[str]
 """
 Exoscale API key
-"""
-
-profile: Optional[str]
-
-region: Optional[str]
-"""
-CloudStack ini configuration section name (by default: cloudstack)
 """
 
 secret: Optional[str]
@@ -49,6 +27,4 @@ timeout: Optional[int]
 """
 Timeout in seconds for waiting on compute resources to become available (by default: 300)
 """
-
-token: Optional[str]
 

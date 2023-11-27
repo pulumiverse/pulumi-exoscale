@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -70,7 +69,7 @@ type LookupComputeInstanceResult struct {
 	SshKey string `pulumi:"sshKey"`
 	// The instance state.
 	State string `pulumi:"state"`
-	// The instance exoscale*compute*template ID.
+	// The instance getTemplate ID.
 	TemplateId string `pulumi:"templateId"`
 	// The instance type.
 	Type string `pulumi:"type"`
@@ -120,12 +119,6 @@ func (o LookupComputeInstanceResultOutput) ToLookupComputeInstanceResultOutput()
 
 func (o LookupComputeInstanceResultOutput) ToLookupComputeInstanceResultOutputWithContext(ctx context.Context) LookupComputeInstanceResultOutput {
 	return o
-}
-
-func (o LookupComputeInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupComputeInstanceResult] {
-	return pulumix.Output[LookupComputeInstanceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of attached exoscale*anti*affinity_group (IDs).
@@ -218,7 +211,7 @@ func (o LookupComputeInstanceResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// The instance exoscale*compute*template ID.
+// The instance getTemplate ID.
 func (o LookupComputeInstanceResultOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.TemplateId }).(pulumi.StringOutput)
 }

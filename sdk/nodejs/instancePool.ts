@@ -115,7 +115,7 @@ export class InstancePool extends pulumi.CustomResource {
     public readonly size!: pulumi.Output<number>;
     public readonly state!: pulumi.Output<string>;
     /**
-     * The exoscale*compute*template (ID) to use when creating the managed instances.
+     * The exoscale.getTemplate (ID) to use when creating the managed instances.
      */
     public readonly templateId!: pulumi.Output<string>;
     /**
@@ -277,7 +277,7 @@ export interface InstancePoolState {
     size?: pulumi.Input<number>;
     state?: pulumi.Input<string>;
     /**
-     * The exoscale*compute*template (ID) to use when creating the managed instances.
+     * The exoscale.getTemplate (ID) to use when creating the managed instances.
      */
     templateId?: pulumi.Input<string>;
     /**
@@ -368,7 +368,7 @@ export interface InstancePoolArgs {
     size: pulumi.Input<number>;
     state?: pulumi.Input<string>;
     /**
-     * The exoscale*compute*template (ID) to use when creating the managed instances.
+     * The exoscale.getTemplate (ID) to use when creating the managed instances.
      */
     templateId: pulumi.Input<string>;
     /**

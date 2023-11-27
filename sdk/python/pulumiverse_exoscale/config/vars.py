@@ -16,29 +16,8 @@ __config__ = pulumi.Config('exoscale')
 
 class _ExportableConfig(types.ModuleType):
     @property
-    def compute_endpoint(self) -> Optional[str]:
-        """
-        Exoscale CloudStack API endpoint (by default: https://api.exoscale.com/v1)
-        """
-        return __config__.get('computeEndpoint')
-
-    @property
-    def config(self) -> Optional[str]:
-        """
-        CloudStack ini configuration filename (by default: cloudstack.ini)
-        """
-        return __config__.get('config')
-
-    @property
     def delay(self) -> Optional[int]:
         return __config__.get_int('delay')
-
-    @property
-    def dns_endpoint(self) -> Optional[str]:
-        """
-        Exoscale DNS API endpoint (by default: https://api.exoscale.com/dns)
-        """
-        return __config__.get('dnsEndpoint')
 
     @property
     def environment(self) -> Optional[str]:
@@ -50,17 +29,6 @@ class _ExportableConfig(types.ModuleType):
         Exoscale API key
         """
         return __config__.get('key') or _utilities.get_env('EXOSCALE_API_KEY')
-
-    @property
-    def profile(self) -> Optional[str]:
-        return __config__.get('profile')
-
-    @property
-    def region(self) -> Optional[str]:
-        """
-        CloudStack ini configuration section name (by default: cloudstack)
-        """
-        return __config__.get('region')
 
     @property
     def secret(self) -> Optional[str]:
@@ -75,8 +43,4 @@ class _ExportableConfig(types.ModuleType):
         Timeout in seconds for waiting on compute resources to become available (by default: 300)
         """
         return __config__.get_int('timeout')
-
-    @property
-    def token(self) -> Optional[str]:
-        return __config__.get('token')
 

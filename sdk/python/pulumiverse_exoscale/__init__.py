@@ -5,21 +5,15 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
-from .affinity import *
 from .anti_affinity_group import *
-from .compute import *
 from .compute_instance import *
 from .database import *
 from .domain import *
 from .domain_record import *
 from .elastic_ip import *
-from .get_affinity import *
 from .get_anti_affinity_group import *
-from .get_compute import *
 from .get_compute_instance import *
 from .get_compute_instance_list import *
-from .get_compute_ip_address import *
-from .get_compute_template import *
 from .get_database_uri import *
 from .get_domain import *
 from .get_domain_record import *
@@ -29,7 +23,6 @@ from .get_iam_role import *
 from .get_iamapi_key import *
 from .get_instance_pool import *
 from .get_instance_pool_list import *
-from .get_network import *
 from .get_nlb import *
 from .get_nlb_service_list import *
 from .get_private_network import *
@@ -45,22 +38,16 @@ from .iam_org_policy import *
 from .iam_role import *
 from .iamapi_key import *
 from .instance_pool import *
-from .ip_address import *
-from .network import *
-from .nic import *
 from .nlb import *
 from .nlb_service import *
 from .private_network import *
 from .provider import *
-from .secondary_ip_address import *
 from .security_group import *
 from .security_group_rule import *
-from .security_group_rules import *
 from .sks_cluster import *
 from .sks_kubeconfig import *
 from .sks_nodepool import *
 from .ssh_key import *
-from .ssh_keypair import *
 from ._inputs import *
 from . import outputs
 
@@ -76,26 +63,10 @@ _utilities.register(
 [
  {
   "pkg": "exoscale",
-  "mod": "index/affinity",
-  "fqn": "pulumiverse_exoscale",
-  "classes": {
-   "exoscale:index/affinity:Affinity": "Affinity"
-  }
- },
- {
-  "pkg": "exoscale",
   "mod": "index/antiAffinityGroup",
   "fqn": "pulumiverse_exoscale",
   "classes": {
    "exoscale:index/antiAffinityGroup:AntiAffinityGroup": "AntiAffinityGroup"
-  }
- },
- {
-  "pkg": "exoscale",
-  "mod": "index/compute",
-  "fqn": "pulumiverse_exoscale",
-  "classes": {
-   "exoscale:index/compute:Compute": "Compute"
   }
  },
  {
@@ -172,26 +143,10 @@ _utilities.register(
  },
  {
   "pkg": "exoscale",
-  "mod": "index/iPAddress",
-  "fqn": "pulumiverse_exoscale",
-  "classes": {
-   "exoscale:index/iPAddress:IPAddress": "IPAddress"
-  }
- },
- {
-  "pkg": "exoscale",
   "mod": "index/instancePool",
   "fqn": "pulumiverse_exoscale",
   "classes": {
    "exoscale:index/instancePool:InstancePool": "InstancePool"
-  }
- },
- {
-  "pkg": "exoscale",
-  "mod": "index/nIC",
-  "fqn": "pulumiverse_exoscale",
-  "classes": {
-   "exoscale:index/nIC:NIC": "NIC"
   }
  },
  {
@@ -208,14 +163,6 @@ _utilities.register(
   "fqn": "pulumiverse_exoscale",
   "classes": {
    "exoscale:index/nLBService:NLBService": "NLBService"
-  }
- },
- {
-  "pkg": "exoscale",
-  "mod": "index/network",
-  "fqn": "pulumiverse_exoscale",
-  "classes": {
-   "exoscale:index/network:Network": "Network"
   }
  },
  {
@@ -260,22 +207,6 @@ _utilities.register(
  },
  {
   "pkg": "exoscale",
-  "mod": "index/sSHKeypair",
-  "fqn": "pulumiverse_exoscale",
-  "classes": {
-   "exoscale:index/sSHKeypair:SSHKeypair": "SSHKeypair"
-  }
- },
- {
-  "pkg": "exoscale",
-  "mod": "index/secondaryIPAddress",
-  "fqn": "pulumiverse_exoscale",
-  "classes": {
-   "exoscale:index/secondaryIPAddress:SecondaryIPAddress": "SecondaryIPAddress"
-  }
- },
- {
-  "pkg": "exoscale",
   "mod": "index/securityGroup",
   "fqn": "pulumiverse_exoscale",
   "classes": {
@@ -288,14 +219,6 @@ _utilities.register(
   "fqn": "pulumiverse_exoscale",
   "classes": {
    "exoscale:index/securityGroupRule:SecurityGroupRule": "SecurityGroupRule"
-  }
- },
- {
-  "pkg": "exoscale",
-  "mod": "index/securityGroupRules",
-  "fqn": "pulumiverse_exoscale",
-  "classes": {
-   "exoscale:index/securityGroupRules:SecurityGroupRules": "SecurityGroupRules"
   }
  }
 ]

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
@@ -98,12 +97,6 @@ func (o LookupElasticIPResultOutput) ToLookupElasticIPResultOutput() LookupElast
 
 func (o LookupElasticIPResultOutput) ToLookupElasticIPResultOutputWithContext(ctx context.Context) LookupElasticIPResultOutput {
 	return o
-}
-
-func (o LookupElasticIPResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupElasticIPResult] {
-	return pulumix.Output[LookupElasticIPResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Elastic IP (EIP) address family (`inet4` or `inet6`).

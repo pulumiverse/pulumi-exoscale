@@ -42,7 +42,7 @@ namespace Pulumiverse.Exoscale
         public Output<bool?> AutoUpgrade { get; private set; } = null!;
 
         /// <summary>
-        /// The CNI plugin that is to be used. Defaults to "calico".
+        /// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
         /// </summary>
         [Output("cni")]
         public Output<string?> Cni { get; private set; } = null!;
@@ -200,7 +200,7 @@ namespace Pulumiverse.Exoscale
         public Input<bool>? AutoUpgrade { get; set; }
 
         /// <summary>
-        /// The CNI plugin that is to be used. Defaults to "calico".
+        /// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
         /// </summary>
         [Input("cni")]
         public Input<string>? Cni { get; set; }
@@ -295,7 +295,7 @@ namespace Pulumiverse.Exoscale
         public Input<bool>? AutoUpgrade { get; set; }
 
         /// <summary>
-        /// The CNI plugin that is to be used. Defaults to "calico".
+        /// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
         /// </summary>
         [Input("cni")]
         public Input<string>? Cni { get; set; }
