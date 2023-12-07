@@ -3,7 +3,7 @@ module github.com/pulumiverse/pulumi-exoscale/shim
 go 1.20
 
 require (
-	github.com/exoscale/terraform-provider-exoscale v0.54.0
+	github.com/exoscale/terraform-provider-exoscale v0.54.1
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.16.1
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.60.0
 )
@@ -31,7 +31,7 @@ require (
 	github.com/djherbis/times v1.5.0 // indirect
 	github.com/edsrzf/mmap-go v1.1.0 // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
-	github.com/exoscale/egoscale v0.102.0 // indirect
+	github.com/exoscale/egoscale v0.102.1 // indirect
 	github.com/fatih/color v1.14.1 // indirect
 	github.com/gedex/inflector v0.0.0-20170307190818-16278e9db813 // indirect
 	github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376 // indirect
