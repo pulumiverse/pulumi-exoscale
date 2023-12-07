@@ -43,7 +43,7 @@ export class IAMAccessKey extends pulumi.CustomResource {
     /**
      * ❗ A list of API operations to restrict the key to.
      */
-    public readonly operations!: pulumi.Output<string[] | undefined>;
+    public readonly operations!: pulumi.Output<string[]>;
     /**
      * ❗ A list of API [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to restrict the key to (`<domain>/<type>:<name>`).
      */

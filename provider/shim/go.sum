@@ -132,10 +132,10 @@ github.com/envoyproxy/go-control-plane v0.9.0/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymF
 github.com/envoyproxy/go-control-plane v0.9.1-0.20191026205805-5f8ba28d4473/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=
 github.com/envoyproxy/go-control-plane v0.9.4/go.mod h1:6rpuAdCZL397s3pYoYcLgu1mIlRU8Am5FuJP05cCM98=
 github.com/envoyproxy/protoc-gen-validate v0.1.0/go.mod h1:iSmxcyjqTsJpI2R4NaDN7+kN2VEUnK/pcBlmesArF7c=
-github.com/exoscale/egoscale v0.102.0 h1:kIAg2n9Fowk/OCEgDwFNDAMtE+ls2HnGRtqPL22STJI=
-github.com/exoscale/egoscale v0.102.0/go.mod h1:szh4hWSVh+ylgfti4AFR4mkRaCfUyUXSKS3PihlcOco=
-github.com/exoscale/terraform-provider-exoscale v0.54.0 h1:OW40Y783c3JcMZf4kg9Z8WCCtR+jvZuj0IjCFxi4ewM=
-github.com/exoscale/terraform-provider-exoscale v0.54.0/go.mod h1:BLvR/XzKqNI39oXEUsrQfA0i/re0Q0b3jFX2ekw+M5M=
+github.com/exoscale/egoscale v0.102.1 h1:Wc5ogjhl+ws5kElDg9+AKU4QVXPsXBweFCmnhn1FMOc=
+github.com/exoscale/egoscale v0.102.1/go.mod h1:szh4hWSVh+ylgfti4AFR4mkRaCfUyUXSKS3PihlcOco=
+github.com/exoscale/terraform-provider-exoscale v0.54.1 h1:IXuYgcrIgKEOHdaTMxfLkc55Z27tmNAIaI7lRsQ78Ys=
+github.com/exoscale/terraform-provider-exoscale v0.54.1/go.mod h1:Jh/7Vjb5tzaUHpkcDDOz1RGvIc1cmu4XjTp5ZUXZV4s=
 github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
 github.com/fatih/color v1.9.0/go.mod h1:eQcE1qtQxscV5RaZvpXrrb8Drkc3/DdQ+uUYCNjL+zU=
 github.com/fatih/color v1.13.0/go.mod h1:kLAiJbzzSOZDVNGyDpeOxJ47H46qBXwg5ILebYFFOfk=

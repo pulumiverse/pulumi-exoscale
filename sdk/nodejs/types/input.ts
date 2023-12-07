@@ -491,7 +491,7 @@ export interface IAMOrgPolicyServicesRule {
      */
     expression?: pulumi.Input<string>;
     /**
-     * List of resources that IAM policy rule applies to.
+     * @deprecated This field is not suported. Specify resources using CEL expressions.
      */
     resources?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -535,7 +535,7 @@ export interface IAMRolePolicyServicesRule {
      */
     expression?: pulumi.Input<string>;
     /**
-     * List of resources that IAM policy rule applies to.
+     * @deprecated This field is not suported. Specify resources using CEL expressions.
      */
     resources?: pulumi.Input<pulumi.Input<string>[]>;
 }

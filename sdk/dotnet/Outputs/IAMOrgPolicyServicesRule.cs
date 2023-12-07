@@ -22,9 +22,6 @@ namespace Pulumiverse.Exoscale.Outputs
         /// IAM policy rule expression.
         /// </summary>
         public readonly string? Expression;
-        /// <summary>
-        /// List of resources that IAM policy rule applies to.
-        /// </summary>
         public readonly ImmutableArray<string> Resources;
 
         [OutputConstructor]

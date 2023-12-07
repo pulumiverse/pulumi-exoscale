@@ -557,7 +557,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of resources that IAM policy rule applies to.\n"
+                    "deprecationMessage": "This field is not suported. Specify resources using CEL expressions."
                 }
             },
             "type": "object",
@@ -643,7 +643,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of resources that IAM policy rule applies to.\n"
+                    "deprecationMessage": "This field is not suported. Specify resources using CEL expressions."
                 }
             },
             "type": "object",
@@ -1037,7 +1037,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of resources that IAM policy rule applies to.\n"
+                    "deprecationMessage": "This field is no longer suported."
                 }
             },
             "type": "object",
@@ -1126,7 +1126,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of resources that IAM policy rule applies to.\n"
+                    "deprecationMessage": "This field is no longer suported."
                 }
             },
             "type": "object",
@@ -2812,6 +2812,7 @@
             "required": [
                 "key",
                 "name",
+                "operations",
                 "secret",
                 "tagsOperations"
             ],

@@ -1202,12 +1202,14 @@ class IAMOrgPolicyServicesRuleArgs:
         """
         :param pulumi.Input[str] action: IAM policy rule action (`allow` or `deny`).
         :param pulumi.Input[str] expression: IAM policy rule expression.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: List of resources that IAM policy rule applies to.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
         if expression is not None:
             pulumi.set(__self__, "expression", expression)
+        if resources is not None:
+            warnings.warn("""This field is not suported. Specify resources using CEL expressions.""", DeprecationWarning)
+            pulumi.log.warn("""resources is deprecated: This field is not suported. Specify resources using CEL expressions.""")
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
 
@@ -1238,9 +1240,9 @@ class IAMOrgPolicyServicesRuleArgs:
     @property
     @pulumi.getter
     def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of resources that IAM policy rule applies to.
-        """
+        warnings.warn("""This field is not suported. Specify resources using CEL expressions.""", DeprecationWarning)
+        pulumi.log.warn("""resources is deprecated: This field is not suported. Specify resources using CEL expressions.""")
+
         return pulumi.get(self, "resources")
 
     @resources.setter
@@ -1358,12 +1360,14 @@ class IAMRolePolicyServicesRuleArgs:
         """
         :param pulumi.Input[str] action: IAM policy rule action (`allow` or `deny`).
         :param pulumi.Input[str] expression: IAM policy rule expression.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: List of resources that IAM policy rule applies to.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
         if expression is not None:
             pulumi.set(__self__, "expression", expression)
+        if resources is not None:
+            warnings.warn("""This field is not suported. Specify resources using CEL expressions.""", DeprecationWarning)
+            pulumi.log.warn("""resources is deprecated: This field is not suported. Specify resources using CEL expressions.""")
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
 
@@ -1394,9 +1398,9 @@ class IAMRolePolicyServicesRuleArgs:
     @property
     @pulumi.getter
     def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of resources that IAM policy rule applies to.
-        """
+        warnings.warn("""This field is not suported. Specify resources using CEL expressions.""", DeprecationWarning)
+        pulumi.log.warn("""resources is deprecated: This field is not suported. Specify resources using CEL expressions.""")
+
         return pulumi.get(self, "resources")
 
     @resources.setter

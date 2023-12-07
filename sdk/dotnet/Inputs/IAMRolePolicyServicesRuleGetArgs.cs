@@ -27,10 +27,7 @@ namespace Pulumiverse.Exoscale.Inputs
 
         [Input("resources")]
         private InputList<string>? _resources;
-
-        /// <summary>
-        /// List of resources that IAM policy rule applies to.
-        /// </summary>
+        [Obsolete(@"This field is not suported. Specify resources using CEL expressions.")]
         public InputList<string> Resources
         {
             get => _resources ?? (_resources = new InputList<string>());
