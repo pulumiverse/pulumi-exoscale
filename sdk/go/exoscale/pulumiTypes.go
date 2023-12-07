@@ -2764,7 +2764,7 @@ type IAMOrgPolicyServicesRule struct {
 	Action *string `pulumi:"action"`
 	// IAM policy rule expression.
 	Expression *string `pulumi:"expression"`
-	// List of resources that IAM policy rule applies to.
+	// Deprecated: This field is not suported. Specify resources using CEL expressions.
 	Resources []string `pulumi:"resources"`
 }
 
@@ -2784,7 +2784,7 @@ type IAMOrgPolicyServicesRuleArgs struct {
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// IAM policy rule expression.
 	Expression pulumi.StringPtrInput `pulumi:"expression"`
-	// List of resources that IAM policy rule applies to.
+	// Deprecated: This field is not suported. Specify resources using CEL expressions.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
@@ -2849,7 +2849,7 @@ func (o IAMOrgPolicyServicesRuleOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IAMOrgPolicyServicesRule) *string { return v.Expression }).(pulumi.StringPtrOutput)
 }
 
-// List of resources that IAM policy rule applies to.
+// Deprecated: This field is not suported. Specify resources using CEL expressions.
 func (o IAMOrgPolicyServicesRuleOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v IAMOrgPolicyServicesRule) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -3278,7 +3278,7 @@ type IAMRolePolicyServicesRule struct {
 	Action *string `pulumi:"action"`
 	// IAM policy rule expression.
 	Expression *string `pulumi:"expression"`
-	// List of resources that IAM policy rule applies to.
+	// Deprecated: This field is not suported. Specify resources using CEL expressions.
 	Resources []string `pulumi:"resources"`
 }
 
@@ -3298,7 +3298,7 @@ type IAMRolePolicyServicesRuleArgs struct {
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// IAM policy rule expression.
 	Expression pulumi.StringPtrInput `pulumi:"expression"`
-	// List of resources that IAM policy rule applies to.
+	// Deprecated: This field is not suported. Specify resources using CEL expressions.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
@@ -3363,7 +3363,7 @@ func (o IAMRolePolicyServicesRuleOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IAMRolePolicyServicesRule) *string { return v.Expression }).(pulumi.StringPtrOutput)
 }
 
-// List of resources that IAM policy rule applies to.
+// Deprecated: This field is not suported. Specify resources using CEL expressions.
 func (o IAMRolePolicyServicesRuleOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v IAMRolePolicyServicesRule) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -5007,7 +5007,7 @@ type GetIAMOrgPolicyServicesRule struct {
 	Action string `pulumi:"action"`
 	// IAM policy rule expression.
 	Expression string `pulumi:"expression"`
-	// List of resources that IAM policy rule applies to.
+	// Deprecated: This field is no longer suported.
 	Resources []string `pulumi:"resources"`
 }
 
@@ -5027,7 +5027,7 @@ type GetIAMOrgPolicyServicesRuleArgs struct {
 	Action pulumi.StringInput `pulumi:"action"`
 	// IAM policy rule expression.
 	Expression pulumi.StringInput `pulumi:"expression"`
-	// List of resources that IAM policy rule applies to.
+	// Deprecated: This field is no longer suported.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
@@ -5092,7 +5092,7 @@ func (o GetIAMOrgPolicyServicesRuleOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIAMOrgPolicyServicesRule) string { return v.Expression }).(pulumi.StringOutput)
 }
 
-// List of resources that IAM policy rule applies to.
+// Deprecated: This field is no longer suported.
 func (o GetIAMOrgPolicyServicesRuleOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetIAMOrgPolicyServicesRule) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -5426,7 +5426,7 @@ type GetIAMRolePolicyServicesRule struct {
 	Action string `pulumi:"action"`
 	// IAM policy rule expression.
 	Expression string `pulumi:"expression"`
-	// List of resources that IAM policy rule applies to.
+	// Deprecated: This field is no longer suported.
 	Resources []string `pulumi:"resources"`
 }
 
@@ -5446,7 +5446,7 @@ type GetIAMRolePolicyServicesRuleArgs struct {
 	Action pulumi.StringInput `pulumi:"action"`
 	// IAM policy rule expression.
 	Expression pulumi.StringInput `pulumi:"expression"`
-	// List of resources that IAM policy rule applies to.
+	// Deprecated: This field is no longer suported.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
@@ -5511,7 +5511,7 @@ func (o GetIAMRolePolicyServicesRuleOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIAMRolePolicyServicesRule) string { return v.Expression }).(pulumi.StringOutput)
 }
 
-// List of resources that IAM policy rule applies to.
+// Deprecated: This field is no longer suported.
 func (o GetIAMRolePolicyServicesRuleOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetIAMRolePolicyServicesRule) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }

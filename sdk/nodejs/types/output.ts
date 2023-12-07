@@ -394,7 +394,7 @@ export interface GetIAMOrgPolicyServicesRule {
      */
     expression: string;
     /**
-     * List of resources that IAM policy rule applies to.
+     * @deprecated This field is no longer suported.
      */
     resources: string[];
 }
@@ -438,7 +438,7 @@ export interface GetIAMRolePolicyServicesRule {
      */
     expression: string;
     /**
-     * List of resources that IAM policy rule applies to.
+     * @deprecated This field is no longer suported.
      */
     resources: string[];
 }
@@ -663,7 +663,7 @@ export interface IAMOrgPolicyServicesRule {
      */
     expression: string;
     /**
-     * List of resources that IAM policy rule applies to.
+     * @deprecated This field is not suported. Specify resources using CEL expressions.
      */
     resources: string[];
 }
@@ -707,7 +707,7 @@ export interface IAMRolePolicyServicesRule {
      */
     expression: string;
     /**
-     * List of resources that IAM policy rule applies to.
+     * @deprecated This field is not suported. Specify resources using CEL expressions.
      */
     resources: string[];
 }

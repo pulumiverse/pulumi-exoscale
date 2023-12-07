@@ -325,7 +325,7 @@ class IAMAccessKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def operations(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def operations(self) -> pulumi.Output[Sequence[str]]:
         """
         ❗ A list of API operations to restrict the key to.
         """
