@@ -12,9 +12,79 @@ namespace Pulumiverse.Exoscale
 {
     public static class GetComputeInstance
     {
+        /// <summary>
+        /// Fetch Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/) data.
+        /// 
+        /// Corresponding resource: exoscale_compute_instance.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Exoscale = Pulumi.Exoscale;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myInstance = Exoscale.GetComputeInstance.Invoke(new()
+        ///     {
+        ///         Zone = "ch-gva-2",
+        ///         Name = "my-instance",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myInstanceId"] = myInstance.Apply(getComputeInstanceResult =&gt; getComputeInstanceResult.Id),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Please refer to the examples
+        /// directory for complete configuration examples.
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetComputeInstanceResult> InvokeAsync(GetComputeInstanceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetComputeInstanceResult>("exoscale:index/getComputeInstance:getComputeInstance", args ?? new GetComputeInstanceArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Fetch Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/) data.
+        /// 
+        /// Corresponding resource: exoscale_compute_instance.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Exoscale = Pulumi.Exoscale;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myInstance = Exoscale.GetComputeInstance.Invoke(new()
+        ///     {
+        ///         Zone = "ch-gva-2",
+        ///         Name = "my-instance",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myInstanceId"] = myInstance.Apply(getComputeInstanceResult =&gt; getComputeInstanceResult.Id),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Please refer to the examples
+        /// directory for complete configuration examples.
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetComputeInstanceResult> Invoke(GetComputeInstanceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetComputeInstanceResult>("exoscale:index/getComputeInstance:getComputeInstance", args ?? new GetComputeInstanceInvokeArgs(), options.WithDefaults());
     }

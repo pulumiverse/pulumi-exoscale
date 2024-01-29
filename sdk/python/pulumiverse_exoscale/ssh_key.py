@@ -9,15 +9,15 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['SSHKeyArgs', 'SSHKey']
+__all__ = ['SshKeyArgs', 'SshKey']
 
 @pulumi.input_type
-class SSHKeyArgs:
+class SshKeyArgs:
     def __init__(__self__, *,
                  public_key: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a SSHKey resource.
+        The set of arguments for constructing a SshKey resource.
         :param pulumi.Input[str] public_key: ❗ The SSH *public* key that will be authorized in compute instances.
         :param pulumi.Input[str] name: ❗ The SSH key name.
         """
@@ -51,13 +51,13 @@ class SSHKeyArgs:
 
 
 @pulumi.input_type
-class _SSHKeyState:
+class _SshKeyState:
     def __init__(__self__, *,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  public_key: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering SSHKey resources.
+        Input properties used for looking up and filtering SshKey resources.
         :param pulumi.Input[str] fingerprint: The SSH key unique identifier.
         :param pulumi.Input[str] name: ❗ The SSH key name.
         :param pulumi.Input[str] public_key: ❗ The SSH *public* key that will be authorized in compute instances.
@@ -106,7 +106,7 @@ class _SSHKeyState:
         pulumi.set(self, "public_key", value)
 
 
-class SSHKey(pulumi.CustomResource):
+class SshKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -120,7 +120,7 @@ class SSHKey(pulumi.CustomResource):
         An existing SSH key may be imported as a resource by `<name>`
 
         ```sh
-         $ pulumi import exoscale:index/sSHKey:SSHKey \\
+         $ pulumi import exoscale:index/sshKey:SshKey \\
         ```
 
          exoscale_ssh_key.my_ssh_key \\
@@ -136,7 +136,7 @@ class SSHKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SSHKeyArgs,
+                 args: SshKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
@@ -144,7 +144,7 @@ class SSHKey(pulumi.CustomResource):
         An existing SSH key may be imported as a resource by `<name>`
 
         ```sh
-         $ pulumi import exoscale:index/sSHKey:SSHKey \\
+         $ pulumi import exoscale:index/sshKey:SshKey \\
         ```
 
          exoscale_ssh_key.my_ssh_key \\
@@ -152,12 +152,12 @@ class SSHKey(pulumi.CustomResource):
          my-ssh-key
 
         :param str resource_name: The name of the resource.
-        :param SSHKeyArgs args: The arguments to use to populate this resource's properties.
+        :param SshKeyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SSHKeyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SshKeyArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -175,15 +175,15 @@ class SSHKey(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SSHKeyArgs.__new__(SSHKeyArgs)
+            __props__ = SshKeyArgs.__new__(SshKeyArgs)
 
             __props__.__dict__["name"] = name
             if public_key is None and not opts.urn:
                 raise TypeError("Missing required property 'public_key'")
             __props__.__dict__["public_key"] = public_key
             __props__.__dict__["fingerprint"] = None
-        super(SSHKey, __self__).__init__(
-            'exoscale:index/sSHKey:SSHKey',
+        super(SshKey, __self__).__init__(
+            'exoscale:index/sshKey:SshKey',
             resource_name,
             __props__,
             opts)
@@ -194,9 +194,9 @@ class SSHKey(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            public_key: Optional[pulumi.Input[str]] = None) -> 'SSHKey':
+            public_key: Optional[pulumi.Input[str]] = None) -> 'SshKey':
         """
-        Get an existing SSHKey resource's state with the given name, id, and optional extra
+        Get an existing SshKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -208,12 +208,12 @@ class SSHKey(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _SSHKeyState.__new__(_SSHKeyState)
+        __props__ = _SshKeyState.__new__(_SshKeyState)
 
         __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["name"] = name
         __props__.__dict__["public_key"] = public_key
-        return SSHKey(resource_name, opts=opts, __props__=__props__)
+        return SshKey(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

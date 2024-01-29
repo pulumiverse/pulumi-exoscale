@@ -30,10 +30,10 @@ export type DomainRecord = import("./domainRecord").DomainRecord;
 export const DomainRecord: typeof import("./domainRecord").DomainRecord = null as any;
 utilities.lazyLoad(exports, ["DomainRecord"], () => require("./domainRecord"));
 
-export { ElasticIPArgs, ElasticIPState } from "./elasticIP";
-export type ElasticIP = import("./elasticIP").ElasticIP;
-export const ElasticIP: typeof import("./elasticIP").ElasticIP = null as any;
-utilities.lazyLoad(exports, ["ElasticIP"], () => require("./elasticIP"));
+export { ElasticIpArgs, ElasticIpState } from "./elasticIp";
+export type ElasticIp = import("./elasticIp").ElasticIp;
+export const ElasticIp: typeof import("./elasticIp").ElasticIp = null as any;
+utilities.lazyLoad(exports, ["ElasticIp"], () => require("./elasticIp"));
 
 export { GetAntiAffinityGroupArgs, GetAntiAffinityGroupResult, GetAntiAffinityGroupOutputArgs } from "./getAntiAffinityGroup";
 export const getAntiAffinityGroup: typeof import("./getAntiAffinityGroup").getAntiAffinityGroup = null as any;
@@ -50,10 +50,10 @@ export const getComputeInstanceList: typeof import("./getComputeInstanceList").g
 export const getComputeInstanceListOutput: typeof import("./getComputeInstanceList").getComputeInstanceListOutput = null as any;
 utilities.lazyLoad(exports, ["getComputeInstanceList","getComputeInstanceListOutput"], () => require("./getComputeInstanceList"));
 
-export { GetDatabaseURIArgs, GetDatabaseURIResult, GetDatabaseURIOutputArgs } from "./getDatabaseURI";
-export const getDatabaseURI: typeof import("./getDatabaseURI").getDatabaseURI = null as any;
-export const getDatabaseURIOutput: typeof import("./getDatabaseURI").getDatabaseURIOutput = null as any;
-utilities.lazyLoad(exports, ["getDatabaseURI","getDatabaseURIOutput"], () => require("./getDatabaseURI"));
+export { GetDatabaseUriArgs, GetDatabaseUriResult, GetDatabaseUriOutputArgs } from "./getDatabaseUri";
+export const getDatabaseUri: typeof import("./getDatabaseUri").getDatabaseUri = null as any;
+export const getDatabaseUriOutput: typeof import("./getDatabaseUri").getDatabaseUriOutput = null as any;
+utilities.lazyLoad(exports, ["getDatabaseUri","getDatabaseUriOutput"], () => require("./getDatabaseUri"));
 
 export { GetDomainArgs, GetDomainResult, GetDomainOutputArgs } from "./getDomain";
 export const getDomain: typeof import("./getDomain").getDomain = null as any;
@@ -65,25 +65,25 @@ export const getDomainRecord: typeof import("./getDomainRecord").getDomainRecord
 export const getDomainRecordOutput: typeof import("./getDomainRecord").getDomainRecordOutput = null as any;
 utilities.lazyLoad(exports, ["getDomainRecord","getDomainRecordOutput"], () => require("./getDomainRecord"));
 
-export { GetElasticIPArgs, GetElasticIPResult, GetElasticIPOutputArgs } from "./getElasticIP";
-export const getElasticIP: typeof import("./getElasticIP").getElasticIP = null as any;
-export const getElasticIPOutput: typeof import("./getElasticIP").getElasticIPOutput = null as any;
-utilities.lazyLoad(exports, ["getElasticIP","getElasticIPOutput"], () => require("./getElasticIP"));
+export { GetElasticIpArgs, GetElasticIpResult, GetElasticIpOutputArgs } from "./getElasticIp";
+export const getElasticIp: typeof import("./getElasticIp").getElasticIp = null as any;
+export const getElasticIpOutput: typeof import("./getElasticIp").getElasticIpOutput = null as any;
+utilities.lazyLoad(exports, ["getElasticIp","getElasticIpOutput"], () => require("./getElasticIp"));
 
-export { GetIAMAPIKeyArgs, GetIAMAPIKeyResult, GetIAMAPIKeyOutputArgs } from "./getIAMAPIKey";
-export const getIAMAPIKey: typeof import("./getIAMAPIKey").getIAMAPIKey = null as any;
-export const getIAMAPIKeyOutput: typeof import("./getIAMAPIKey").getIAMAPIKeyOutput = null as any;
-utilities.lazyLoad(exports, ["getIAMAPIKey","getIAMAPIKeyOutput"], () => require("./getIAMAPIKey"));
+export { GetIamApiKeyArgs, GetIamApiKeyResult, GetIamApiKeyOutputArgs } from "./getIamApiKey";
+export const getIamApiKey: typeof import("./getIamApiKey").getIamApiKey = null as any;
+export const getIamApiKeyOutput: typeof import("./getIamApiKey").getIamApiKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getIamApiKey","getIamApiKeyOutput"], () => require("./getIamApiKey"));
 
-export { GetIAMOrgPolicyArgs, GetIAMOrgPolicyResult, GetIAMOrgPolicyOutputArgs } from "./getIAMOrgPolicy";
-export const getIAMOrgPolicy: typeof import("./getIAMOrgPolicy").getIAMOrgPolicy = null as any;
-export const getIAMOrgPolicyOutput: typeof import("./getIAMOrgPolicy").getIAMOrgPolicyOutput = null as any;
-utilities.lazyLoad(exports, ["getIAMOrgPolicy","getIAMOrgPolicyOutput"], () => require("./getIAMOrgPolicy"));
+export { GetIamOrgPolicyArgs, GetIamOrgPolicyResult, GetIamOrgPolicyOutputArgs } from "./getIamOrgPolicy";
+export const getIamOrgPolicy: typeof import("./getIamOrgPolicy").getIamOrgPolicy = null as any;
+export const getIamOrgPolicyOutput: typeof import("./getIamOrgPolicy").getIamOrgPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getIamOrgPolicy","getIamOrgPolicyOutput"], () => require("./getIamOrgPolicy"));
 
-export { GetIAMRoleArgs, GetIAMRoleResult, GetIAMRoleOutputArgs } from "./getIAMRole";
-export const getIAMRole: typeof import("./getIAMRole").getIAMRole = null as any;
-export const getIAMRoleOutput: typeof import("./getIAMRole").getIAMRoleOutput = null as any;
-utilities.lazyLoad(exports, ["getIAMRole","getIAMRoleOutput"], () => require("./getIAMRole"));
+export { GetIamRoleArgs, GetIamRoleResult, GetIamRoleOutputArgs } from "./getIamRole";
+export const getIamRole: typeof import("./getIamRole").getIamRole = null as any;
+export const getIamRoleOutput: typeof import("./getIamRole").getIamRoleOutput = null as any;
+utilities.lazyLoad(exports, ["getIamRole","getIamRoleOutput"], () => require("./getIamRole"));
 
 export { GetInstancePoolArgs, GetInstancePoolResult, GetInstancePoolOutputArgs } from "./getInstancePool";
 export const getInstancePool: typeof import("./getInstancePool").getInstancePool = null as any;
@@ -95,45 +95,45 @@ export const getInstancePoolList: typeof import("./getInstancePoolList").getInst
 export const getInstancePoolListOutput: typeof import("./getInstancePoolList").getInstancePoolListOutput = null as any;
 utilities.lazyLoad(exports, ["getInstancePoolList","getInstancePoolListOutput"], () => require("./getInstancePoolList"));
 
-export { GetNLBArgs, GetNLBResult, GetNLBOutputArgs } from "./getNLB";
-export const getNLB: typeof import("./getNLB").getNLB = null as any;
-export const getNLBOutput: typeof import("./getNLB").getNLBOutput = null as any;
-utilities.lazyLoad(exports, ["getNLB","getNLBOutput"], () => require("./getNLB"));
+export { GetNlbArgs, GetNlbResult, GetNlbOutputArgs } from "./getNlb";
+export const getNlb: typeof import("./getNlb").getNlb = null as any;
+export const getNlbOutput: typeof import("./getNlb").getNlbOutput = null as any;
+utilities.lazyLoad(exports, ["getNlb","getNlbOutput"], () => require("./getNlb"));
 
-export { GetNLBServiceListArgs, GetNLBServiceListResult, GetNLBServiceListOutputArgs } from "./getNLBServiceList";
-export const getNLBServiceList: typeof import("./getNLBServiceList").getNLBServiceList = null as any;
-export const getNLBServiceListOutput: typeof import("./getNLBServiceList").getNLBServiceListOutput = null as any;
-utilities.lazyLoad(exports, ["getNLBServiceList","getNLBServiceListOutput"], () => require("./getNLBServiceList"));
+export { GetNlbServiceListArgs, GetNlbServiceListResult, GetNlbServiceListOutputArgs } from "./getNlbServiceList";
+export const getNlbServiceList: typeof import("./getNlbServiceList").getNlbServiceList = null as any;
+export const getNlbServiceListOutput: typeof import("./getNlbServiceList").getNlbServiceListOutput = null as any;
+utilities.lazyLoad(exports, ["getNlbServiceList","getNlbServiceListOutput"], () => require("./getNlbServiceList"));
 
 export { GetPrivateNetworkArgs, GetPrivateNetworkResult, GetPrivateNetworkOutputArgs } from "./getPrivateNetwork";
 export const getPrivateNetwork: typeof import("./getPrivateNetwork").getPrivateNetwork = null as any;
 export const getPrivateNetworkOutput: typeof import("./getPrivateNetwork").getPrivateNetworkOutput = null as any;
 utilities.lazyLoad(exports, ["getPrivateNetwork","getPrivateNetworkOutput"], () => require("./getPrivateNetwork"));
 
-export { GetSKSClusterArgs, GetSKSClusterResult, GetSKSClusterOutputArgs } from "./getSKSCluster";
-export const getSKSCluster: typeof import("./getSKSCluster").getSKSCluster = null as any;
-export const getSKSClusterOutput: typeof import("./getSKSCluster").getSKSClusterOutput = null as any;
-utilities.lazyLoad(exports, ["getSKSCluster","getSKSClusterOutput"], () => require("./getSKSCluster"));
-
-export { GetSKSClusterListArgs, GetSKSClusterListResult, GetSKSClusterListOutputArgs } from "./getSKSClusterList";
-export const getSKSClusterList: typeof import("./getSKSClusterList").getSKSClusterList = null as any;
-export const getSKSClusterListOutput: typeof import("./getSKSClusterList").getSKSClusterListOutput = null as any;
-utilities.lazyLoad(exports, ["getSKSClusterList","getSKSClusterListOutput"], () => require("./getSKSClusterList"));
-
-export { GetSKSNodepoolArgs, GetSKSNodepoolResult, GetSKSNodepoolOutputArgs } from "./getSKSNodepool";
-export const getSKSNodepool: typeof import("./getSKSNodepool").getSKSNodepool = null as any;
-export const getSKSNodepoolOutput: typeof import("./getSKSNodepool").getSKSNodepoolOutput = null as any;
-utilities.lazyLoad(exports, ["getSKSNodepool","getSKSNodepoolOutput"], () => require("./getSKSNodepool"));
-
-export { GetSKSNodepoolListArgs, GetSKSNodepoolListResult, GetSKSNodepoolListOutputArgs } from "./getSKSNodepoolList";
-export const getSKSNodepoolList: typeof import("./getSKSNodepoolList").getSKSNodepoolList = null as any;
-export const getSKSNodepoolListOutput: typeof import("./getSKSNodepoolList").getSKSNodepoolListOutput = null as any;
-utilities.lazyLoad(exports, ["getSKSNodepoolList","getSKSNodepoolListOutput"], () => require("./getSKSNodepoolList"));
-
 export { GetSecurityGroupArgs, GetSecurityGroupResult, GetSecurityGroupOutputArgs } from "./getSecurityGroup";
 export const getSecurityGroup: typeof import("./getSecurityGroup").getSecurityGroup = null as any;
 export const getSecurityGroupOutput: typeof import("./getSecurityGroup").getSecurityGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getSecurityGroup","getSecurityGroupOutput"], () => require("./getSecurityGroup"));
+
+export { GetSksClusterArgs, GetSksClusterResult, GetSksClusterOutputArgs } from "./getSksCluster";
+export const getSksCluster: typeof import("./getSksCluster").getSksCluster = null as any;
+export const getSksClusterOutput: typeof import("./getSksCluster").getSksClusterOutput = null as any;
+utilities.lazyLoad(exports, ["getSksCluster","getSksClusterOutput"], () => require("./getSksCluster"));
+
+export { GetSksClusterListArgs, GetSksClusterListResult, GetSksClusterListOutputArgs } from "./getSksClusterList";
+export const getSksClusterList: typeof import("./getSksClusterList").getSksClusterList = null as any;
+export const getSksClusterListOutput: typeof import("./getSksClusterList").getSksClusterListOutput = null as any;
+utilities.lazyLoad(exports, ["getSksClusterList","getSksClusterListOutput"], () => require("./getSksClusterList"));
+
+export { GetSksNodepoolArgs, GetSksNodepoolResult, GetSksNodepoolOutputArgs } from "./getSksNodepool";
+export const getSksNodepool: typeof import("./getSksNodepool").getSksNodepool = null as any;
+export const getSksNodepoolOutput: typeof import("./getSksNodepool").getSksNodepoolOutput = null as any;
+utilities.lazyLoad(exports, ["getSksNodepool","getSksNodepoolOutput"], () => require("./getSksNodepool"));
+
+export { GetSksNodepoolListArgs, GetSksNodepoolListResult, GetSksNodepoolListOutputArgs } from "./getSksNodepoolList";
+export const getSksNodepoolList: typeof import("./getSksNodepoolList").getSksNodepoolList = null as any;
+export const getSksNodepoolListOutput: typeof import("./getSksNodepoolList").getSksNodepoolListOutput = null as any;
+utilities.lazyLoad(exports, ["getSksNodepoolList","getSksNodepoolListOutput"], () => require("./getSksNodepoolList"));
 
 export { GetTemplateArgs, GetTemplateResult, GetTemplateOutputArgs } from "./getTemplate";
 export const getTemplate: typeof import("./getTemplate").getTemplate = null as any;
@@ -145,40 +145,40 @@ export const getZones: typeof import("./getZones").getZones = null as any;
 export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;
 utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));
 
-export { IAMAccessKeyArgs, IAMAccessKeyState } from "./iamaccessKey";
-export type IAMAccessKey = import("./iamaccessKey").IAMAccessKey;
-export const IAMAccessKey: typeof import("./iamaccessKey").IAMAccessKey = null as any;
-utilities.lazyLoad(exports, ["IAMAccessKey"], () => require("./iamaccessKey"));
+export { IamAccessKeyArgs, IamAccessKeyState } from "./iamAccessKey";
+export type IamAccessKey = import("./iamAccessKey").IamAccessKey;
+export const IamAccessKey: typeof import("./iamAccessKey").IamAccessKey = null as any;
+utilities.lazyLoad(exports, ["IamAccessKey"], () => require("./iamAccessKey"));
 
-export { IAMAPIKeyArgs, IAMAPIKeyState } from "./iamapikey";
-export type IAMAPIKey = import("./iamapikey").IAMAPIKey;
-export const IAMAPIKey: typeof import("./iamapikey").IAMAPIKey = null as any;
-utilities.lazyLoad(exports, ["IAMAPIKey"], () => require("./iamapikey"));
+export { IamApiKeyArgs, IamApiKeyState } from "./iamApiKey";
+export type IamApiKey = import("./iamApiKey").IamApiKey;
+export const IamApiKey: typeof import("./iamApiKey").IamApiKey = null as any;
+utilities.lazyLoad(exports, ["IamApiKey"], () => require("./iamApiKey"));
 
-export { IAMOrgPolicyArgs, IAMOrgPolicyState } from "./iamorgPolicy";
-export type IAMOrgPolicy = import("./iamorgPolicy").IAMOrgPolicy;
-export const IAMOrgPolicy: typeof import("./iamorgPolicy").IAMOrgPolicy = null as any;
-utilities.lazyLoad(exports, ["IAMOrgPolicy"], () => require("./iamorgPolicy"));
+export { IamOrgPolicyArgs, IamOrgPolicyState } from "./iamOrgPolicy";
+export type IamOrgPolicy = import("./iamOrgPolicy").IamOrgPolicy;
+export const IamOrgPolicy: typeof import("./iamOrgPolicy").IamOrgPolicy = null as any;
+utilities.lazyLoad(exports, ["IamOrgPolicy"], () => require("./iamOrgPolicy"));
 
-export { IAMRoleArgs, IAMRoleState } from "./iamrole";
-export type IAMRole = import("./iamrole").IAMRole;
-export const IAMRole: typeof import("./iamrole").IAMRole = null as any;
-utilities.lazyLoad(exports, ["IAMRole"], () => require("./iamrole"));
+export { IamRoleArgs, IamRoleState } from "./iamRole";
+export type IamRole = import("./iamRole").IamRole;
+export const IamRole: typeof import("./iamRole").IamRole = null as any;
+utilities.lazyLoad(exports, ["IamRole"], () => require("./iamRole"));
 
 export { InstancePoolArgs, InstancePoolState } from "./instancePool";
 export type InstancePool = import("./instancePool").InstancePool;
 export const InstancePool: typeof import("./instancePool").InstancePool = null as any;
 utilities.lazyLoad(exports, ["InstancePool"], () => require("./instancePool"));
 
-export { NLBArgs, NLBState } from "./nlb";
-export type NLB = import("./nlb").NLB;
-export const NLB: typeof import("./nlb").NLB = null as any;
-utilities.lazyLoad(exports, ["NLB"], () => require("./nlb"));
+export { NlbArgs, NlbState } from "./nlb";
+export type Nlb = import("./nlb").Nlb;
+export const Nlb: typeof import("./nlb").Nlb = null as any;
+utilities.lazyLoad(exports, ["Nlb"], () => require("./nlb"));
 
-export { NLBServiceArgs, NLBServiceState } from "./nlbservice";
-export type NLBService = import("./nlbservice").NLBService;
-export const NLBService: typeof import("./nlbservice").NLBService = null as any;
-utilities.lazyLoad(exports, ["NLBService"], () => require("./nlbservice"));
+export { NlbServiceArgs, NlbServiceState } from "./nlbService";
+export type NlbService = import("./nlbService").NlbService;
+export const NlbService: typeof import("./nlbService").NlbService = null as any;
+utilities.lazyLoad(exports, ["NlbService"], () => require("./nlbService"));
 
 export { PrivateNetworkArgs, PrivateNetworkState } from "./privateNetwork";
 export type PrivateNetwork = import("./privateNetwork").PrivateNetwork;
@@ -200,25 +200,25 @@ export type SecurityGroupRule = import("./securityGroupRule").SecurityGroupRule;
 export const SecurityGroupRule: typeof import("./securityGroupRule").SecurityGroupRule = null as any;
 utilities.lazyLoad(exports, ["SecurityGroupRule"], () => require("./securityGroupRule"));
 
-export { SKSClusterArgs, SKSClusterState } from "./skscluster";
-export type SKSCluster = import("./skscluster").SKSCluster;
-export const SKSCluster: typeof import("./skscluster").SKSCluster = null as any;
-utilities.lazyLoad(exports, ["SKSCluster"], () => require("./skscluster"));
+export { SksClusterArgs, SksClusterState } from "./sksCluster";
+export type SksCluster = import("./sksCluster").SksCluster;
+export const SksCluster: typeof import("./sksCluster").SksCluster = null as any;
+utilities.lazyLoad(exports, ["SksCluster"], () => require("./sksCluster"));
 
-export { SKSKubeconfigArgs, SKSKubeconfigState } from "./skskubeconfig";
-export type SKSKubeconfig = import("./skskubeconfig").SKSKubeconfig;
-export const SKSKubeconfig: typeof import("./skskubeconfig").SKSKubeconfig = null as any;
-utilities.lazyLoad(exports, ["SKSKubeconfig"], () => require("./skskubeconfig"));
+export { SksKubeconfigArgs, SksKubeconfigState } from "./sksKubeconfig";
+export type SksKubeconfig = import("./sksKubeconfig").SksKubeconfig;
+export const SksKubeconfig: typeof import("./sksKubeconfig").SksKubeconfig = null as any;
+utilities.lazyLoad(exports, ["SksKubeconfig"], () => require("./sksKubeconfig"));
 
-export { SKSNodepoolArgs, SKSNodepoolState } from "./sksnodepool";
-export type SKSNodepool = import("./sksnodepool").SKSNodepool;
-export const SKSNodepool: typeof import("./sksnodepool").SKSNodepool = null as any;
-utilities.lazyLoad(exports, ["SKSNodepool"], () => require("./sksnodepool"));
+export { SksNodepoolArgs, SksNodepoolState } from "./sksNodepool";
+export type SksNodepool = import("./sksNodepool").SksNodepool;
+export const SksNodepool: typeof import("./sksNodepool").SksNodepool = null as any;
+utilities.lazyLoad(exports, ["SksNodepool"], () => require("./sksNodepool"));
 
-export { SSHKeyArgs, SSHKeyState } from "./sshkey";
-export type SSHKey = import("./sshkey").SSHKey;
-export const SSHKey: typeof import("./sshkey").SSHKey = null as any;
-utilities.lazyLoad(exports, ["SSHKey"], () => require("./sshkey"));
+export { SshKeyArgs, SshKeyState } from "./sshKey";
+export type SshKey = import("./sshKey").SshKey;
+export const SshKey: typeof import("./sshKey").SshKey = null as any;
+utilities.lazyLoad(exports, ["SshKey"], () => require("./sshKey"));
 
 
 // Export sub-modules:
@@ -244,36 +244,36 @@ const _module = {
                 return new Domain(name, <any>undefined, { urn })
             case "exoscale:index/domainRecord:DomainRecord":
                 return new DomainRecord(name, <any>undefined, { urn })
-            case "exoscale:index/elasticIP:ElasticIP":
-                return new ElasticIP(name, <any>undefined, { urn })
-            case "exoscale:index/iAMAPIKey:IAMAPIKey":
-                return new IAMAPIKey(name, <any>undefined, { urn })
-            case "exoscale:index/iAMAccessKey:IAMAccessKey":
-                return new IAMAccessKey(name, <any>undefined, { urn })
-            case "exoscale:index/iAMOrgPolicy:IAMOrgPolicy":
-                return new IAMOrgPolicy(name, <any>undefined, { urn })
-            case "exoscale:index/iAMRole:IAMRole":
-                return new IAMRole(name, <any>undefined, { urn })
+            case "exoscale:index/elasticIp:ElasticIp":
+                return new ElasticIp(name, <any>undefined, { urn })
+            case "exoscale:index/iamAccessKey:IamAccessKey":
+                return new IamAccessKey(name, <any>undefined, { urn })
+            case "exoscale:index/iamApiKey:IamApiKey":
+                return new IamApiKey(name, <any>undefined, { urn })
+            case "exoscale:index/iamOrgPolicy:IamOrgPolicy":
+                return new IamOrgPolicy(name, <any>undefined, { urn })
+            case "exoscale:index/iamRole:IamRole":
+                return new IamRole(name, <any>undefined, { urn })
             case "exoscale:index/instancePool:InstancePool":
                 return new InstancePool(name, <any>undefined, { urn })
-            case "exoscale:index/nLB:NLB":
-                return new NLB(name, <any>undefined, { urn })
-            case "exoscale:index/nLBService:NLBService":
-                return new NLBService(name, <any>undefined, { urn })
+            case "exoscale:index/nlb:Nlb":
+                return new Nlb(name, <any>undefined, { urn })
+            case "exoscale:index/nlbService:NlbService":
+                return new NlbService(name, <any>undefined, { urn })
             case "exoscale:index/privateNetwork:PrivateNetwork":
                 return new PrivateNetwork(name, <any>undefined, { urn })
-            case "exoscale:index/sKSCluster:SKSCluster":
-                return new SKSCluster(name, <any>undefined, { urn })
-            case "exoscale:index/sKSKubeconfig:SKSKubeconfig":
-                return new SKSKubeconfig(name, <any>undefined, { urn })
-            case "exoscale:index/sKSNodepool:SKSNodepool":
-                return new SKSNodepool(name, <any>undefined, { urn })
-            case "exoscale:index/sSHKey:SSHKey":
-                return new SSHKey(name, <any>undefined, { urn })
             case "exoscale:index/securityGroup:SecurityGroup":
                 return new SecurityGroup(name, <any>undefined, { urn })
             case "exoscale:index/securityGroupRule:SecurityGroupRule":
                 return new SecurityGroupRule(name, <any>undefined, { urn })
+            case "exoscale:index/sksCluster:SksCluster":
+                return new SksCluster(name, <any>undefined, { urn })
+            case "exoscale:index/sksKubeconfig:SksKubeconfig":
+                return new SksKubeconfig(name, <any>undefined, { urn })
+            case "exoscale:index/sksNodepool:SksNodepool":
+                return new SksNodepool(name, <any>undefined, { urn })
+            case "exoscale:index/sshKey:SshKey":
+                return new SshKey(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -284,21 +284,21 @@ pulumi.runtime.registerResourceModule("exoscale", "index/computeInstance", _modu
 pulumi.runtime.registerResourceModule("exoscale", "index/database", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/domain", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/domainRecord", _module)
-pulumi.runtime.registerResourceModule("exoscale", "index/elasticIP", _module)
-pulumi.runtime.registerResourceModule("exoscale", "index/iAMAPIKey", _module)
-pulumi.runtime.registerResourceModule("exoscale", "index/iAMAccessKey", _module)
-pulumi.runtime.registerResourceModule("exoscale", "index/iAMOrgPolicy", _module)
-pulumi.runtime.registerResourceModule("exoscale", "index/iAMRole", _module)
+pulumi.runtime.registerResourceModule("exoscale", "index/elasticIp", _module)
+pulumi.runtime.registerResourceModule("exoscale", "index/iamAccessKey", _module)
+pulumi.runtime.registerResourceModule("exoscale", "index/iamApiKey", _module)
+pulumi.runtime.registerResourceModule("exoscale", "index/iamOrgPolicy", _module)
+pulumi.runtime.registerResourceModule("exoscale", "index/iamRole", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/instancePool", _module)
-pulumi.runtime.registerResourceModule("exoscale", "index/nLB", _module)
-pulumi.runtime.registerResourceModule("exoscale", "index/nLBService", _module)
+pulumi.runtime.registerResourceModule("exoscale", "index/nlb", _module)
+pulumi.runtime.registerResourceModule("exoscale", "index/nlbService", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/privateNetwork", _module)
-pulumi.runtime.registerResourceModule("exoscale", "index/sKSCluster", _module)
-pulumi.runtime.registerResourceModule("exoscale", "index/sKSKubeconfig", _module)
-pulumi.runtime.registerResourceModule("exoscale", "index/sKSNodepool", _module)
-pulumi.runtime.registerResourceModule("exoscale", "index/sSHKey", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/securityGroup", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/securityGroupRule", _module)
+pulumi.runtime.registerResourceModule("exoscale", "index/sksCluster", _module)
+pulumi.runtime.registerResourceModule("exoscale", "index/sksKubeconfig", _module)
+pulumi.runtime.registerResourceModule("exoscale", "index/sksNodepool", _module)
+pulumi.runtime.registerResourceModule("exoscale", "index/sshKey", _module)
 pulumi.runtime.registerResourcePackage("exoscale", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

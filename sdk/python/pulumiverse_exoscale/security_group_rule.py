@@ -486,6 +486,27 @@ class SecurityGroupRule(pulumi.CustomResource):
                  user_security_group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Manage Exoscale [Security Group](https://community.exoscale.com/documentation/compute/security-groups/) Rules.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumiverse_exoscale as exoscale
+
+        my_security_group = exoscale.SecurityGroup("mySecurityGroup")
+        my_security_group_rule = exoscale.SecurityGroupRule("mySecurityGroupRule",
+            security_group_id=my_security_group.id,
+            type="INGRESS",
+            protocol="TCP",
+            cidr="0.0.0.0/0",
+            start_port=80,
+            end_port=80)
+        ```
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         ## Import
 
         An existing security group rule may be imported by `<security-group-ID>/<security-group-rule-ID>`
@@ -521,6 +542,27 @@ class SecurityGroupRule(pulumi.CustomResource):
                  args: SecurityGroupRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manage Exoscale [Security Group](https://community.exoscale.com/documentation/compute/security-groups/) Rules.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumiverse_exoscale as exoscale
+
+        my_security_group = exoscale.SecurityGroup("mySecurityGroup")
+        my_security_group_rule = exoscale.SecurityGroupRule("mySecurityGroupRule",
+            security_group_id=my_security_group.id,
+            type="INGRESS",
+            protocol="TCP",
+            cidr="0.0.0.0/0",
+            start_port=80,
+            end_port=80)
+        ```
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         ## Import
 
         An existing security group rule may be imported by `<security-group-ID>/<security-group-rule-ID>`

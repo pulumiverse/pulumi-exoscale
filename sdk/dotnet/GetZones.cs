@@ -12,9 +12,67 @@ namespace Pulumiverse.Exoscale
 {
     public static class GetZones
     {
+        /// <summary>
+        /// Lists all zones.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Exoscale = Pulumi.Exoscale;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZones = Exoscale.GetZones.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["zonesOutput"] = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Please refer to the examples
+        /// directory for complete configuration examples.
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetZonesResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("exoscale:index/getZones:getZones", InvokeArgs.Empty, options.WithDefaults());
 
+        /// <summary>
+        /// Lists all zones.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Exoscale = Pulumi.Exoscale;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZones = Exoscale.GetZones.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["zonesOutput"] = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Please refer to the examples
+        /// directory for complete configuration examples.
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetZonesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("exoscale:index/getZones:getZones", InvokeArgs.Empty, options.WithDefaults());
     }

@@ -12,9 +12,79 @@ namespace Pulumiverse.Exoscale
 {
     public static class GetPrivateNetwork
     {
+        /// <summary>
+        /// Fetch Exoscale [Private Networks](https://community.exoscale.com/documentation/compute/private-networks/) data.
+        /// 
+        /// Corresponding resource: exoscale_private_network.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Exoscale = Pulumi.Exoscale;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myPrivateNetwork = Exoscale.GetPrivateNetwork.Invoke(new()
+        ///     {
+        ///         Zone = "ch-gva-2",
+        ///         Name = "my-private-network",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myPrivateNetworkId"] = myPrivateNetwork.Apply(getPrivateNetworkResult =&gt; getPrivateNetworkResult.Id),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Please refer to the examples
+        /// directory for complete configuration examples.
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetPrivateNetworkResult> InvokeAsync(GetPrivateNetworkArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrivateNetworkResult>("exoscale:index/getPrivateNetwork:getPrivateNetwork", args ?? new GetPrivateNetworkArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Fetch Exoscale [Private Networks](https://community.exoscale.com/documentation/compute/private-networks/) data.
+        /// 
+        /// Corresponding resource: exoscale_private_network.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Exoscale = Pulumi.Exoscale;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myPrivateNetwork = Exoscale.GetPrivateNetwork.Invoke(new()
+        ///     {
+        ///         Zone = "ch-gva-2",
+        ///         Name = "my-private-network",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myPrivateNetworkId"] = myPrivateNetwork.Apply(getPrivateNetworkResult =&gt; getPrivateNetworkResult.Id),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Please refer to the examples
+        /// directory for complete configuration examples.
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetPrivateNetworkResult> Invoke(GetPrivateNetworkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrivateNetworkResult>("exoscale:index/getPrivateNetwork:getPrivateNetwork", args ?? new GetPrivateNetworkInvokeArgs(), options.WithDefaults());
     }

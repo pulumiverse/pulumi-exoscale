@@ -11,10 +11,10 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['SKSClusterArgs', 'SKSCluster']
+__all__ = ['SksClusterArgs', 'SksCluster']
 
 @pulumi.input_type
-class SKSClusterArgs:
+class SksClusterArgs:
     def __init__(__self__, *,
                  zone: pulumi.Input[str],
                  addons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -25,11 +25,11 @@ class SKSClusterArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metrics_server: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 oidc: Optional[pulumi.Input['SKSClusterOidcArgs']] = None,
+                 oidc: Optional[pulumi.Input['SksClusterOidcArgs']] = None,
                  service_level: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a SKSCluster resource.
+        The set of arguments for constructing a SksCluster resource.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         :param pulumi.Input[bool] auto_upgrade: Enable automatic upgrading of the control plane version.
         :param pulumi.Input[str] cni: The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
@@ -38,7 +38,7 @@ class SKSClusterArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[bool] metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
         :param pulumi.Input[str] name: The SKS cluster name.
-        :param pulumi.Input['SKSClusterOidcArgs'] oidc: An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
+        :param pulumi.Input['SksClusterOidcArgs'] oidc: An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
         :param pulumi.Input[str] service_level: The service level of the control plane (`pro` or `starter`; default: `pro`; may only be set at creation time).
         :param pulumi.Input[str] version: The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
         """
@@ -179,14 +179,14 @@ class SKSClusterArgs:
 
     @property
     @pulumi.getter
-    def oidc(self) -> Optional[pulumi.Input['SKSClusterOidcArgs']]:
+    def oidc(self) -> Optional[pulumi.Input['SksClusterOidcArgs']]:
         """
         An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
         """
         return pulumi.get(self, "oidc")
 
     @oidc.setter
-    def oidc(self, value: Optional[pulumi.Input['SKSClusterOidcArgs']]):
+    def oidc(self, value: Optional[pulumi.Input['SksClusterOidcArgs']]):
         pulumi.set(self, "oidc", value)
 
     @property
@@ -215,7 +215,7 @@ class SKSClusterArgs:
 
 
 @pulumi.input_type
-class _SKSClusterState:
+class _SksClusterState:
     def __init__(__self__, *,
                  addons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  aggregation_ca: Optional[pulumi.Input[str]] = None,
@@ -231,13 +231,13 @@ class _SKSClusterState:
                  metrics_server: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nodepools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 oidc: Optional[pulumi.Input['SKSClusterOidcArgs']] = None,
+                 oidc: Optional[pulumi.Input['SksClusterOidcArgs']] = None,
                  service_level: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering SKSCluster resources.
+        Input properties used for looking up and filtering SksCluster resources.
         :param pulumi.Input[str] aggregation_ca: The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
         :param pulumi.Input[bool] auto_upgrade: Enable automatic upgrading of the control plane version.
         :param pulumi.Input[str] cni: The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
@@ -251,7 +251,7 @@ class _SKSClusterState:
         :param pulumi.Input[bool] metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
         :param pulumi.Input[str] name: The SKS cluster name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nodepools: The list of exoscale*sks*nodepool (IDs) attached to the cluster.
-        :param pulumi.Input['SKSClusterOidcArgs'] oidc: An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
+        :param pulumi.Input['SksClusterOidcArgs'] oidc: An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
         :param pulumi.Input[str] service_level: The service level of the control plane (`pro` or `starter`; default: `pro`; may only be set at creation time).
         :param pulumi.Input[str] state: The cluster state.
         :param pulumi.Input[str] version: The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
@@ -469,14 +469,14 @@ class _SKSClusterState:
 
     @property
     @pulumi.getter
-    def oidc(self) -> Optional[pulumi.Input['SKSClusterOidcArgs']]:
+    def oidc(self) -> Optional[pulumi.Input['SksClusterOidcArgs']]:
         """
         An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
         """
         return pulumi.get(self, "oidc")
 
     @oidc.setter
-    def oidc(self, value: Optional[pulumi.Input['SKSClusterOidcArgs']]):
+    def oidc(self, value: Optional[pulumi.Input['SksClusterOidcArgs']]):
         pulumi.set(self, "oidc", value)
 
     @property
@@ -528,7 +528,7 @@ class _SKSClusterState:
         pulumi.set(self, "zone", value)
 
 
-class SKSCluster(pulumi.CustomResource):
+class SksCluster(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -541,18 +541,35 @@ class SKSCluster(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metrics_server: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 oidc: Optional[pulumi.Input[pulumi.InputType['SKSClusterOidcArgs']]] = None,
+                 oidc: Optional[pulumi.Input[pulumi.InputType['SksClusterOidcArgs']]] = None,
                  service_level: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Manage Exoscale [Scalable Kubernetes Service (SKS)](https://community.exoscale.com/documentation/sks/) Clusters.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumiverse_exoscale as exoscale
+
+        my_sks_cluster = exoscale.SksCluster("mySksCluster", zone="ch-gva-2")
+        pulumi.export("mySksClusterEndpoint", my_sks_cluster.endpoint)
+        ```
+
+        Next step is to attach exoscale_sks_nodepool(s) to the cluster.
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         ## Import
 
         An existing SKS cluster may be imported by `<ID>@<zone>`
 
         ```sh
-         $ pulumi import exoscale:index/sKSCluster:SKSCluster \\
+         $ pulumi import exoscale:index/sksCluster:SksCluster \\
         ```
 
          exoscale_sks_cluster.my_sks_cluster \\
@@ -568,7 +585,7 @@ class SKSCluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[bool] metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
         :param pulumi.Input[str] name: The SKS cluster name.
-        :param pulumi.Input[pulumi.InputType['SKSClusterOidcArgs']] oidc: An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['SksClusterOidcArgs']] oidc: An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
         :param pulumi.Input[str] service_level: The service level of the control plane (`pro` or `starter`; default: `pro`; may only be set at creation time).
         :param pulumi.Input[str] version: The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
@@ -577,15 +594,32 @@ class SKSCluster(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SKSClusterArgs,
+                 args: SksClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manage Exoscale [Scalable Kubernetes Service (SKS)](https://community.exoscale.com/documentation/sks/) Clusters.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumiverse_exoscale as exoscale
+
+        my_sks_cluster = exoscale.SksCluster("mySksCluster", zone="ch-gva-2")
+        pulumi.export("mySksClusterEndpoint", my_sks_cluster.endpoint)
+        ```
+
+        Next step is to attach exoscale_sks_nodepool(s) to the cluster.
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         ## Import
 
         An existing SKS cluster may be imported by `<ID>@<zone>`
 
         ```sh
-         $ pulumi import exoscale:index/sKSCluster:SKSCluster \\
+         $ pulumi import exoscale:index/sksCluster:SksCluster \\
         ```
 
          exoscale_sks_cluster.my_sks_cluster \\
@@ -593,12 +627,12 @@ class SKSCluster(pulumi.CustomResource):
          f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
 
         :param str resource_name: The name of the resource.
-        :param SKSClusterArgs args: The arguments to use to populate this resource's properties.
+        :param SksClusterArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SKSClusterArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SksClusterArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -615,7 +649,7 @@ class SKSCluster(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metrics_server: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 oidc: Optional[pulumi.Input[pulumi.InputType['SKSClusterOidcArgs']]] = None,
+                 oidc: Optional[pulumi.Input[pulumi.InputType['SksClusterOidcArgs']]] = None,
                  service_level: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -626,7 +660,7 @@ class SKSCluster(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SKSClusterArgs.__new__(SKSClusterArgs)
+            __props__ = SksClusterArgs.__new__(SksClusterArgs)
 
             __props__.__dict__["addons"] = addons
             __props__.__dict__["auto_upgrade"] = auto_upgrade
@@ -649,8 +683,8 @@ class SKSCluster(pulumi.CustomResource):
             __props__.__dict__["kubelet_ca"] = None
             __props__.__dict__["nodepools"] = None
             __props__.__dict__["state"] = None
-        super(SKSCluster, __self__).__init__(
-            'exoscale:index/sKSCluster:SKSCluster',
+        super(SksCluster, __self__).__init__(
+            'exoscale:index/sksCluster:SksCluster',
             resource_name,
             __props__,
             opts)
@@ -673,13 +707,13 @@ class SKSCluster(pulumi.CustomResource):
             metrics_server: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             nodepools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            oidc: Optional[pulumi.Input[pulumi.InputType['SKSClusterOidcArgs']]] = None,
+            oidc: Optional[pulumi.Input[pulumi.InputType['SksClusterOidcArgs']]] = None,
             service_level: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None,
-            zone: Optional[pulumi.Input[str]] = None) -> 'SKSCluster':
+            zone: Optional[pulumi.Input[str]] = None) -> 'SksCluster':
         """
-        Get an existing SKSCluster resource's state with the given name, id, and optional extra
+        Get an existing SksCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -698,7 +732,7 @@ class SKSCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
         :param pulumi.Input[str] name: The SKS cluster name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nodepools: The list of exoscale*sks*nodepool (IDs) attached to the cluster.
-        :param pulumi.Input[pulumi.InputType['SKSClusterOidcArgs']] oidc: An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['SksClusterOidcArgs']] oidc: An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
         :param pulumi.Input[str] service_level: The service level of the control plane (`pro` or `starter`; default: `pro`; may only be set at creation time).
         :param pulumi.Input[str] state: The cluster state.
         :param pulumi.Input[str] version: The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
@@ -706,7 +740,7 @@ class SKSCluster(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _SKSClusterState.__new__(_SKSClusterState)
+        __props__ = _SksClusterState.__new__(_SksClusterState)
 
         __props__.__dict__["addons"] = addons
         __props__.__dict__["aggregation_ca"] = aggregation_ca
@@ -727,7 +761,7 @@ class SKSCluster(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["version"] = version
         __props__.__dict__["zone"] = zone
-        return SKSCluster(resource_name, opts=opts, __props__=__props__)
+        return SksCluster(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
@@ -843,7 +877,7 @@ class SKSCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def oidc(self) -> pulumi.Output['outputs.SKSClusterOidc']:
+    def oidc(self) -> pulumi.Output['outputs.SksClusterOidc']:
         """
         An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
         """

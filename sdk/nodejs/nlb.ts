@@ -5,21 +5,39 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Manage Exoscale [Network Load Balancers (NLB)](https://community.exoscale.com/documentation/compute/network-load-balancer/).
+ *
+ * Corresponding data source: exoscale_nlb.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumiverse/exoscale";
+ *
+ * const myNlb = new exoscale.Nlb("myNlb", {zone: "ch-gva-2"});
+ * ```
+ *
+ * Next step is to attach exoscale_nlb_service(s) to the NLB.
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ *
  * ## Import
  *
  * An existing network load balancer (NLB) may be imported by `<ID>@<zone>`console
  *
  * ```sh
- *  $ pulumi import exoscale:index/nLB:NLB \
+ *  $ pulumi import exoscale:index/nlb:Nlb \
  * ```
  *
  *  exoscale_nlb.my_nlb \
  *
  *  f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
  */
-export class NLB extends pulumi.CustomResource {
+export class Nlb extends pulumi.CustomResource {
     /**
-     * Get an existing NLB resource's state with the given name, ID, and optional extra
+     * Get an existing Nlb resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -27,22 +45,22 @@ export class NLB extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: NLBState, opts?: pulumi.CustomResourceOptions): NLB {
-        return new NLB(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: NlbState, opts?: pulumi.CustomResourceOptions): Nlb {
+        return new Nlb(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'exoscale:index/nLB:NLB';
+    public static readonly __pulumiType = 'exoscale:index/nlb:Nlb';
 
     /**
-     * Returns true if the given object is an instance of NLB.  This is designed to work even
+     * Returns true if the given object is an instance of Nlb.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is NLB {
+    public static isInstance(obj: any): obj is Nlb {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === NLB.__pulumiType;
+        return obj['__pulumiType'] === Nlb.__pulumiType;
     }
 
     /**
@@ -79,18 +97,18 @@ export class NLB extends pulumi.CustomResource {
     public readonly zone!: pulumi.Output<string>;
 
     /**
-     * Create a NLB resource with the given unique name, arguments, and options.
+     * Create a Nlb resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: NLBArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: NLBArgs | NLBState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: NlbArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: NlbArgs | NlbState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as NLBState | undefined;
+            const state = argsOrState as NlbState | undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
@@ -100,7 +118,7 @@ export class NLB extends pulumi.CustomResource {
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
-            const args = argsOrState as NLBArgs | undefined;
+            const args = argsOrState as NlbArgs | undefined;
             if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
@@ -114,14 +132,14 @@ export class NLB extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(NLB.__pulumiType, name, resourceInputs, opts);
+        super(Nlb.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering NLB resources.
+ * Input properties used for looking up and filtering Nlb resources.
  */
-export interface NLBState {
+export interface NlbState {
     /**
      * The NLB creation date.
      */
@@ -157,9 +175,9 @@ export interface NLBState {
 }
 
 /**
- * The set of arguments for constructing a NLB resource.
+ * The set of arguments for constructing a Nlb resource.
  */
-export interface NLBArgs {
+export interface NlbArgs {
     /**
      * A free-form text describing the NLB.
      */

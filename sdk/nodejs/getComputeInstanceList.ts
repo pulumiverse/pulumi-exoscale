@@ -6,6 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * List Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/).
+ *
+ * Corresponding resource: exoscale_compute_instance.
+ */
 export function getComputeInstanceList(args: GetComputeInstanceListArgs, opts?: pulumi.InvokeOptions): Promise<GetComputeInstanceListResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -136,6 +141,11 @@ export interface GetComputeInstanceListResult {
      */
     readonly zone: string;
 }
+/**
+ * List Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/).
+ *
+ * Corresponding resource: exoscale_compute_instance.
+ */
 export function getComputeInstanceListOutput(args: GetComputeInstanceListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeInstanceListResult> {
     return pulumi.output(args).apply((a: any) => getComputeInstanceList(a, opts))
 }

@@ -12,9 +12,77 @@ namespace Pulumiverse.Exoscale
 {
     public static class GetSecurityGroup
     {
+        /// <summary>
+        /// Fetch Exoscale [Security Groups](https://community.exoscale.com/documentation/compute/security-groups/) data.
+        /// 
+        /// Corresponding resource: exoscale_security_group.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Exoscale = Pulumi.Exoscale;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mySecurityGroup = Exoscale.GetSecurityGroup.Invoke(new()
+        ///     {
+        ///         Name = "my-security-group",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mySecurityGroupId"] = mySecurityGroup.Apply(getSecurityGroupResult =&gt; getSecurityGroupResult.Id),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Please refer to the examples
+        /// directory for complete configuration examples.
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetSecurityGroupResult> InvokeAsync(GetSecurityGroupArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecurityGroupResult>("exoscale:index/getSecurityGroup:getSecurityGroup", args ?? new GetSecurityGroupArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Fetch Exoscale [Security Groups](https://community.exoscale.com/documentation/compute/security-groups/) data.
+        /// 
+        /// Corresponding resource: exoscale_security_group.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Exoscale = Pulumi.Exoscale;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mySecurityGroup = Exoscale.GetSecurityGroup.Invoke(new()
+        ///     {
+        ///         Name = "my-security-group",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mySecurityGroupId"] = mySecurityGroup.Apply(getSecurityGroupResult =&gt; getSecurityGroupResult.Id),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Please refer to the examples
+        /// directory for complete configuration examples.
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetSecurityGroupResult> Invoke(GetSecurityGroupInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecurityGroupResult>("exoscale:index/getSecurityGroup:getSecurityGroup", args ?? new GetSecurityGroupInvokeArgs(), options.WithDefaults());
     }

@@ -12,9 +12,77 @@ namespace Pulumiverse.Exoscale
 {
     public static class GetAntiAffinityGroup
     {
+        /// <summary>
+        /// Fetch Exoscale [Anti-Affinity Groups](https://community.exoscale.com/documentation/compute/anti-affinity-groups/) data.
+        /// 
+        /// Corresponding resource: exoscale_anti_affinity_group.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Exoscale = Pulumi.Exoscale;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myAntiAffinityGroup = Exoscale.GetAntiAffinityGroup.Invoke(new()
+        ///     {
+        ///         Name = "my-anti-affinity-group",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myAntiAffinityGroupId"] = myAntiAffinityGroup.Apply(getAntiAffinityGroupResult =&gt; getAntiAffinityGroupResult.Id),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Please refer to the examples
+        /// directory for complete configuration examples.
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetAntiAffinityGroupResult> InvokeAsync(GetAntiAffinityGroupArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAntiAffinityGroupResult>("exoscale:index/getAntiAffinityGroup:getAntiAffinityGroup", args ?? new GetAntiAffinityGroupArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Fetch Exoscale [Anti-Affinity Groups](https://community.exoscale.com/documentation/compute/anti-affinity-groups/) data.
+        /// 
+        /// Corresponding resource: exoscale_anti_affinity_group.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Exoscale = Pulumi.Exoscale;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myAntiAffinityGroup = Exoscale.GetAntiAffinityGroup.Invoke(new()
+        ///     {
+        ///         Name = "my-anti-affinity-group",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myAntiAffinityGroupId"] = myAntiAffinityGroup.Apply(getAntiAffinityGroupResult =&gt; getAntiAffinityGroupResult.Id),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Please refer to the examples
+        /// directory for complete configuration examples.
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetAntiAffinityGroupResult> Invoke(GetAntiAffinityGroupInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAntiAffinityGroupResult>("exoscale:index/getAntiAffinityGroup:getAntiAffinityGroup", args ?? new GetAntiAffinityGroupInvokeArgs(), options.WithDefaults());
     }

@@ -12,20 +12,55 @@ import (
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
+// Manage Exoscale [Network Load Balancers (NLB)](https://community.exoscale.com/documentation/compute/network-load-balancer/).
+//
+// Corresponding data source: exoscale_nlb.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := exoscale.NewNlb(ctx, "myNlb", &exoscale.NlbArgs{
+//				Zone: pulumi.String("ch-gva-2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Next step is to attach exoscale_nlb_service(s) to the NLB.
+//
+// Please refer to the examples
+// directory for complete configuration examples.
+//
 // ## Import
 //
 // An existing network load balancer (NLB) may be imported by `<ID>@<zone>`console
 //
 // ```sh
 //
-//	$ pulumi import exoscale:index/nLB:NLB \
+//	$ pulumi import exoscale:index/nlb:Nlb \
 //
 // ```
 //
 //	exoscale_nlb.my_nlb \
 //
 //	f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
-type NLB struct {
+type Nlb struct {
 	pulumi.CustomResourceState
 
 	// The NLB creation date.
@@ -46,9 +81,9 @@ type NLB struct {
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
-// NewNLB registers a new resource with the given unique name, arguments, and options.
-func NewNLB(ctx *pulumi.Context,
-	name string, args *NLBArgs, opts ...pulumi.ResourceOption) (*NLB, error) {
+// NewNlb registers a new resource with the given unique name, arguments, and options.
+func NewNlb(ctx *pulumi.Context,
+	name string, args *NlbArgs, opts ...pulumi.ResourceOption) (*Nlb, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -57,27 +92,27 @@ func NewNLB(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource NLB
-	err := ctx.RegisterResource("exoscale:index/nLB:NLB", name, args, &resource, opts...)
+	var resource Nlb
+	err := ctx.RegisterResource("exoscale:index/nlb:Nlb", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetNLB gets an existing NLB resource's state with the given name, ID, and optional
+// GetNlb gets an existing Nlb resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetNLB(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *NLBState, opts ...pulumi.ResourceOption) (*NLB, error) {
-	var resource NLB
-	err := ctx.ReadResource("exoscale:index/nLB:NLB", name, id, state, &resource, opts...)
+func GetNlb(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *NlbState, opts ...pulumi.ResourceOption) (*Nlb, error) {
+	var resource Nlb
+	err := ctx.ReadResource("exoscale:index/nlb:Nlb", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering NLB resources.
+// Input properties used for looking up and filtering Nlb resources.
 type nlbState struct {
 	// The NLB creation date.
 	CreatedAt *string `pulumi:"createdAt"`
@@ -97,7 +132,7 @@ type nlbState struct {
 	Zone *string `pulumi:"zone"`
 }
 
-type NLBState struct {
+type NlbState struct {
 	// The NLB creation date.
 	CreatedAt pulumi.StringPtrInput
 	// A free-form text describing the NLB.
@@ -116,7 +151,7 @@ type NLBState struct {
 	Zone pulumi.StringPtrInput
 }
 
-func (NLBState) ElementType() reflect.Type {
+func (NlbState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nlbState)(nil)).Elem()
 }
 
@@ -131,8 +166,8 @@ type nlbArgs struct {
 	Zone string `pulumi:"zone"`
 }
 
-// The set of arguments for constructing a NLB resource.
-type NLBArgs struct {
+// The set of arguments for constructing a Nlb resource.
+type NlbArgs struct {
 	// A free-form text describing the NLB.
 	Description pulumi.StringPtrInput
 	// A map of key/value labels.
@@ -143,178 +178,178 @@ type NLBArgs struct {
 	Zone pulumi.StringInput
 }
 
-func (NLBArgs) ElementType() reflect.Type {
+func (NlbArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*nlbArgs)(nil)).Elem()
 }
 
-type NLBInput interface {
+type NlbInput interface {
 	pulumi.Input
 
-	ToNLBOutput() NLBOutput
-	ToNLBOutputWithContext(ctx context.Context) NLBOutput
+	ToNlbOutput() NlbOutput
+	ToNlbOutputWithContext(ctx context.Context) NlbOutput
 }
 
-func (*NLB) ElementType() reflect.Type {
-	return reflect.TypeOf((**NLB)(nil)).Elem()
+func (*Nlb) ElementType() reflect.Type {
+	return reflect.TypeOf((**Nlb)(nil)).Elem()
 }
 
-func (i *NLB) ToNLBOutput() NLBOutput {
-	return i.ToNLBOutputWithContext(context.Background())
+func (i *Nlb) ToNlbOutput() NlbOutput {
+	return i.ToNlbOutputWithContext(context.Background())
 }
 
-func (i *NLB) ToNLBOutputWithContext(ctx context.Context) NLBOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NLBOutput)
+func (i *Nlb) ToNlbOutputWithContext(ctx context.Context) NlbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NlbOutput)
 }
 
-// NLBArrayInput is an input type that accepts NLBArray and NLBArrayOutput values.
-// You can construct a concrete instance of `NLBArrayInput` via:
+// NlbArrayInput is an input type that accepts NlbArray and NlbArrayOutput values.
+// You can construct a concrete instance of `NlbArrayInput` via:
 //
-//	NLBArray{ NLBArgs{...} }
-type NLBArrayInput interface {
+//	NlbArray{ NlbArgs{...} }
+type NlbArrayInput interface {
 	pulumi.Input
 
-	ToNLBArrayOutput() NLBArrayOutput
-	ToNLBArrayOutputWithContext(context.Context) NLBArrayOutput
+	ToNlbArrayOutput() NlbArrayOutput
+	ToNlbArrayOutputWithContext(context.Context) NlbArrayOutput
 }
 
-type NLBArray []NLBInput
+type NlbArray []NlbInput
 
-func (NLBArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*NLB)(nil)).Elem()
+func (NlbArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*Nlb)(nil)).Elem()
 }
 
-func (i NLBArray) ToNLBArrayOutput() NLBArrayOutput {
-	return i.ToNLBArrayOutputWithContext(context.Background())
+func (i NlbArray) ToNlbArrayOutput() NlbArrayOutput {
+	return i.ToNlbArrayOutputWithContext(context.Background())
 }
 
-func (i NLBArray) ToNLBArrayOutputWithContext(ctx context.Context) NLBArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NLBArrayOutput)
+func (i NlbArray) ToNlbArrayOutputWithContext(ctx context.Context) NlbArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NlbArrayOutput)
 }
 
-// NLBMapInput is an input type that accepts NLBMap and NLBMapOutput values.
-// You can construct a concrete instance of `NLBMapInput` via:
+// NlbMapInput is an input type that accepts NlbMap and NlbMapOutput values.
+// You can construct a concrete instance of `NlbMapInput` via:
 //
-//	NLBMap{ "key": NLBArgs{...} }
-type NLBMapInput interface {
+//	NlbMap{ "key": NlbArgs{...} }
+type NlbMapInput interface {
 	pulumi.Input
 
-	ToNLBMapOutput() NLBMapOutput
-	ToNLBMapOutputWithContext(context.Context) NLBMapOutput
+	ToNlbMapOutput() NlbMapOutput
+	ToNlbMapOutputWithContext(context.Context) NlbMapOutput
 }
 
-type NLBMap map[string]NLBInput
+type NlbMap map[string]NlbInput
 
-func (NLBMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*NLB)(nil)).Elem()
+func (NlbMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*Nlb)(nil)).Elem()
 }
 
-func (i NLBMap) ToNLBMapOutput() NLBMapOutput {
-	return i.ToNLBMapOutputWithContext(context.Background())
+func (i NlbMap) ToNlbMapOutput() NlbMapOutput {
+	return i.ToNlbMapOutputWithContext(context.Background())
 }
 
-func (i NLBMap) ToNLBMapOutputWithContext(ctx context.Context) NLBMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NLBMapOutput)
+func (i NlbMap) ToNlbMapOutputWithContext(ctx context.Context) NlbMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NlbMapOutput)
 }
 
-type NLBOutput struct{ *pulumi.OutputState }
+type NlbOutput struct{ *pulumi.OutputState }
 
-func (NLBOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NLB)(nil)).Elem()
+func (NlbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Nlb)(nil)).Elem()
 }
 
-func (o NLBOutput) ToNLBOutput() NLBOutput {
+func (o NlbOutput) ToNlbOutput() NlbOutput {
 	return o
 }
 
-func (o NLBOutput) ToNLBOutputWithContext(ctx context.Context) NLBOutput {
+func (o NlbOutput) ToNlbOutputWithContext(ctx context.Context) NlbOutput {
 	return o
 }
 
 // The NLB creation date.
-func (o NLBOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v *NLB) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+func (o NlbOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Nlb) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 // A free-form text describing the NLB.
-func (o NLBOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NLB) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o NlbOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Nlb) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The NLB IPv4 address.
-func (o NLBOutput) IpAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v *NLB) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
+func (o NlbOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *Nlb) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
 }
 
 // A map of key/value labels.
-func (o NLBOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *NLB) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+func (o NlbOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Nlb) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The network load balancer (NLB) name.
-func (o NLBOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v *NLB) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+func (o NlbOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Nlb) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // The list of the exoscale*nlb*service (names).
-func (o NLBOutput) Services() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *NLB) pulumi.StringArrayOutput { return v.Services }).(pulumi.StringArrayOutput)
+func (o NlbOutput) Services() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Nlb) pulumi.StringArrayOutput { return v.Services }).(pulumi.StringArrayOutput)
 }
 
 // The current NLB state.
-func (o NLBOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v *NLB) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+func (o NlbOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Nlb) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 // ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-func (o NLBOutput) Zone() pulumi.StringOutput {
-	return o.ApplyT(func(v *NLB) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
+func (o NlbOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Nlb) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }
 
-type NLBArrayOutput struct{ *pulumi.OutputState }
+type NlbArrayOutput struct{ *pulumi.OutputState }
 
-func (NLBArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*NLB)(nil)).Elem()
+func (NlbArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*Nlb)(nil)).Elem()
 }
 
-func (o NLBArrayOutput) ToNLBArrayOutput() NLBArrayOutput {
+func (o NlbArrayOutput) ToNlbArrayOutput() NlbArrayOutput {
 	return o
 }
 
-func (o NLBArrayOutput) ToNLBArrayOutputWithContext(ctx context.Context) NLBArrayOutput {
+func (o NlbArrayOutput) ToNlbArrayOutputWithContext(ctx context.Context) NlbArrayOutput {
 	return o
 }
 
-func (o NLBArrayOutput) Index(i pulumi.IntInput) NLBOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NLB {
-		return vs[0].([]*NLB)[vs[1].(int)]
-	}).(NLBOutput)
+func (o NlbArrayOutput) Index(i pulumi.IntInput) NlbOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Nlb {
+		return vs[0].([]*Nlb)[vs[1].(int)]
+	}).(NlbOutput)
 }
 
-type NLBMapOutput struct{ *pulumi.OutputState }
+type NlbMapOutput struct{ *pulumi.OutputState }
 
-func (NLBMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*NLB)(nil)).Elem()
+func (NlbMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*Nlb)(nil)).Elem()
 }
 
-func (o NLBMapOutput) ToNLBMapOutput() NLBMapOutput {
+func (o NlbMapOutput) ToNlbMapOutput() NlbMapOutput {
 	return o
 }
 
-func (o NLBMapOutput) ToNLBMapOutputWithContext(ctx context.Context) NLBMapOutput {
+func (o NlbMapOutput) ToNlbMapOutputWithContext(ctx context.Context) NlbMapOutput {
 	return o
 }
 
-func (o NLBMapOutput) MapIndex(k pulumi.StringInput) NLBOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *NLB {
-		return vs[0].(map[string]*NLB)[vs[1].(string)]
-	}).(NLBOutput)
+func (o NlbMapOutput) MapIndex(k pulumi.StringInput) NlbOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Nlb {
+		return vs[0].(map[string]*Nlb)[vs[1].(string)]
+	}).(NlbOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*NLBInput)(nil)).Elem(), &NLB{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NLBArrayInput)(nil)).Elem(), NLBArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NLBMapInput)(nil)).Elem(), NLBMap{})
-	pulumi.RegisterOutputType(NLBOutput{})
-	pulumi.RegisterOutputType(NLBArrayOutput{})
-	pulumi.RegisterOutputType(NLBMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NlbInput)(nil)).Elem(), &Nlb{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NlbArrayInput)(nil)).Elem(), NlbArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NlbMapInput)(nil)).Elem(), NlbMap{})
+	pulumi.RegisterOutputType(NlbOutput{})
+	pulumi.RegisterOutputType(NlbArrayOutput{})
+	pulumi.RegisterOutputType(NlbMapOutput{})
 }

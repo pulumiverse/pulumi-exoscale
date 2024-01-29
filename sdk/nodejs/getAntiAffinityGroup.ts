@@ -4,6 +4,26 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Fetch Exoscale [Anti-Affinity Groups](https://community.exoscale.com/documentation/compute/anti-affinity-groups/) data.
+ *
+ * Corresponding resource: exoscale_anti_affinity_group.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumi/exoscale";
+ *
+ * const myAntiAffinityGroup = exoscale.getAntiAffinityGroup({
+ *     name: "my-anti-affinity-group",
+ * });
+ * export const myAntiAffinityGroupId = myAntiAffinityGroup.then(myAntiAffinityGroup => myAntiAffinityGroup.id);
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ */
 export function getAntiAffinityGroup(args?: GetAntiAffinityGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetAntiAffinityGroupResult> {
     args = args || {};
 
@@ -45,6 +65,26 @@ export interface GetAntiAffinityGroupResult {
      */
     readonly name?: string;
 }
+/**
+ * Fetch Exoscale [Anti-Affinity Groups](https://community.exoscale.com/documentation/compute/anti-affinity-groups/) data.
+ *
+ * Corresponding resource: exoscale_anti_affinity_group.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumi/exoscale";
+ *
+ * const myAntiAffinityGroup = exoscale.getAntiAffinityGroup({
+ *     name: "my-anti-affinity-group",
+ * });
+ * export const myAntiAffinityGroupId = myAntiAffinityGroup.then(myAntiAffinityGroup => myAntiAffinityGroup.id);
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ */
 export function getAntiAffinityGroupOutput(args?: GetAntiAffinityGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAntiAffinityGroupResult> {
     return pulumi.output(args).apply((a: any) => getAntiAffinityGroup(a, opts))
 }

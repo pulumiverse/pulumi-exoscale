@@ -11,6 +11,9 @@ import (
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
+// List Exoscale [Instance Pools](https://community.exoscale.com/documentation/compute/instance-pools/).
+//
+// Corresponding resource: exoscale_instance_pool.
 func GetInstancePoolList(ctx *pulumi.Context, args *GetInstancePoolListArgs, opts ...pulumi.InvokeOption) (*GetInstancePoolListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstancePoolListResult

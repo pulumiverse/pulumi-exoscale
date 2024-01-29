@@ -11,6 +11,39 @@ import (
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
+// Fetch Exoscale [Anti-Affinity Groups](https://community.exoscale.com/documentation/compute/anti-affinity-groups/) data.
+//
+// Corresponding resource: exoscale_anti_affinity_group.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myAntiAffinityGroup, err := exoscale.LookupAntiAffinityGroup(ctx, &exoscale.LookupAntiAffinityGroupArgs{
+//				Name: pulumi.StringRef("my-anti-affinity-group"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("myAntiAffinityGroupId", myAntiAffinityGroup.Id)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Please refer to the examples
+// directory for complete configuration examples.
 func LookupAntiAffinityGroup(ctx *pulumi.Context, args *LookupAntiAffinityGroupArgs, opts ...pulumi.InvokeOption) (*LookupAntiAffinityGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAntiAffinityGroupResult

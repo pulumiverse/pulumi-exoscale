@@ -11,6 +11,36 @@ using Pulumi;
 namespace Pulumiverse.Exoscale
 {
     /// <summary>
+    /// Manage Exoscale [Security Group](https://community.exoscale.com/documentation/compute/security-groups/) Rules.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Exoscale = Pulumiverse.Exoscale;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mySecurityGroup = new Exoscale.SecurityGroup("mySecurityGroup");
+    /// 
+    ///     var mySecurityGroupRule = new Exoscale.SecurityGroupRule("mySecurityGroupRule", new()
+    ///     {
+    ///         SecurityGroupId = mySecurityGroup.Id,
+    ///         Type = "INGRESS",
+    ///         Protocol = "TCP",
+    ///         Cidr = "0.0.0.0/0",
+    ///         StartPort = 80,
+    ///         EndPort = 80,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Please refer to the examples
+    /// directory for complete configuration examples.
+    /// 
     /// ## Import
     /// 
     /// An existing security group rule may be imported by `&lt;security-group-ID&gt;/&lt;security-group-rule-ID&gt;`

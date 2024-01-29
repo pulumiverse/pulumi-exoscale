@@ -11,12 +11,12 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['NLBServiceArgs', 'NLBService']
+__all__ = ['NlbServiceArgs', 'NlbService']
 
 @pulumi.input_type
-class NLBServiceArgs:
+class NlbServiceArgs:
     def __init__(__self__, *,
-                 healthchecks: pulumi.Input[Sequence[pulumi.Input['NLBServiceHealthcheckArgs']]],
+                 healthchecks: pulumi.Input[Sequence[pulumi.Input['NlbServiceHealthcheckArgs']]],
                  instance_pool_id: pulumi.Input[str],
                  nlb_id: pulumi.Input[str],
                  port: pulumi.Input[int],
@@ -27,10 +27,10 @@ class NLBServiceArgs:
                  protocol: Optional[pulumi.Input[str]] = None,
                  strategy: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a NLBService resource.
-        :param pulumi.Input[Sequence[pulumi.Input['NLBServiceHealthcheckArgs']]] healthchecks: The service health checking configuration.
+        The set of arguments for constructing a NlbService resource.
+        :param pulumi.Input[Sequence[pulumi.Input['NlbServiceHealthcheckArgs']]] healthchecks: The service health checking configuration.
         :param pulumi.Input[str] instance_pool_id: ❗ The exoscale*instance*pool (ID) to forward traffic to.
-        :param pulumi.Input[str] nlb_id: ❗ The parent NLB ID.
+        :param pulumi.Input[str] nlb_id: ❗ The parent Nlb ID.
         :param pulumi.Input[int] port: The NLB service (TCP/UDP) port.
         :param pulumi.Input[int] target_port: The (TCP/UDP) port to forward traffic to (on target instance pool members).
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
@@ -56,14 +56,14 @@ class NLBServiceArgs:
 
     @property
     @pulumi.getter
-    def healthchecks(self) -> pulumi.Input[Sequence[pulumi.Input['NLBServiceHealthcheckArgs']]]:
+    def healthchecks(self) -> pulumi.Input[Sequence[pulumi.Input['NlbServiceHealthcheckArgs']]]:
         """
         The service health checking configuration.
         """
         return pulumi.get(self, "healthchecks")
 
     @healthchecks.setter
-    def healthchecks(self, value: pulumi.Input[Sequence[pulumi.Input['NLBServiceHealthcheckArgs']]]):
+    def healthchecks(self, value: pulumi.Input[Sequence[pulumi.Input['NlbServiceHealthcheckArgs']]]):
         pulumi.set(self, "healthchecks", value)
 
     @property
@@ -82,7 +82,7 @@ class NLBServiceArgs:
     @pulumi.getter(name="nlbId")
     def nlb_id(self) -> pulumi.Input[str]:
         """
-        ❗ The parent NLB ID.
+        ❗ The parent Nlb ID.
         """
         return pulumi.get(self, "nlb_id")
 
@@ -176,10 +176,10 @@ class NLBServiceArgs:
 
 
 @pulumi.input_type
-class _NLBServiceState:
+class _NlbServiceState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
-                 healthchecks: Optional[pulumi.Input[Sequence[pulumi.Input['NLBServiceHealthcheckArgs']]]] = None,
+                 healthchecks: Optional[pulumi.Input[Sequence[pulumi.Input['NlbServiceHealthcheckArgs']]]] = None,
                  instance_pool_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nlb_id: Optional[pulumi.Input[str]] = None,
@@ -190,12 +190,12 @@ class _NLBServiceState:
                  target_port: Optional[pulumi.Input[int]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering NLBService resources.
+        Input properties used for looking up and filtering NlbService resources.
         :param pulumi.Input[str] description: A free-form text describing the NLB service.
-        :param pulumi.Input[Sequence[pulumi.Input['NLBServiceHealthcheckArgs']]] healthchecks: The service health checking configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['NlbServiceHealthcheckArgs']]] healthchecks: The service health checking configuration.
         :param pulumi.Input[str] instance_pool_id: ❗ The exoscale*instance*pool (ID) to forward traffic to.
         :param pulumi.Input[str] name: The NLB service name.
-        :param pulumi.Input[str] nlb_id: ❗ The parent NLB ID.
+        :param pulumi.Input[str] nlb_id: ❗ The parent Nlb ID.
         :param pulumi.Input[int] port: The NLB service (TCP/UDP) port.
         :param pulumi.Input[str] protocol: The protocol (`tcp`|`udp`; default: `tcp`).
         :param pulumi.Input[str] strategy: The strategy (`round-robin`|`source-hash`; default: `round-robin`).
@@ -239,14 +239,14 @@ class _NLBServiceState:
 
     @property
     @pulumi.getter
-    def healthchecks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NLBServiceHealthcheckArgs']]]]:
+    def healthchecks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NlbServiceHealthcheckArgs']]]]:
         """
         The service health checking configuration.
         """
         return pulumi.get(self, "healthchecks")
 
     @healthchecks.setter
-    def healthchecks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NLBServiceHealthcheckArgs']]]]):
+    def healthchecks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NlbServiceHealthcheckArgs']]]]):
         pulumi.set(self, "healthchecks", value)
 
     @property
@@ -277,7 +277,7 @@ class _NLBServiceState:
     @pulumi.getter(name="nlbId")
     def nlb_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ❗ The parent NLB ID.
+        ❗ The parent Nlb ID.
         """
         return pulumi.get(self, "nlb_id")
 
@@ -355,13 +355,13 @@ class _NLBServiceState:
         pulumi.set(self, "zone", value)
 
 
-class NLBService(pulumi.CustomResource):
+class NlbService(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 healthchecks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NLBServiceHealthcheckArgs']]]]] = None,
+                 healthchecks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NlbServiceHealthcheckArgs']]]]] = None,
                  instance_pool_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nlb_id: Optional[pulumi.Input[str]] = None,
@@ -372,12 +372,43 @@ class NLBService(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Manage Exoscale [Network Load Balancer (NLB)](https://community.exoscale.com/documentation/compute/network-load-balancer/) Services.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumiverse_exoscale as exoscale
+
+        my_nlb = exoscale.Nlb("myNlb", zone="ch-gva-2")
+        my_nlb_service = exoscale.NlbService("myNlbService",
+            nlb_id=my_nlb.id,
+            zone=my_nlb.zone,
+            instance_pool_id=exoscale_instance_pool["my_instance_pool"]["id"],
+            protocol="tcp",
+            port=443,
+            target_port=8443,
+            strategy="round-robin",
+            healthchecks=[exoscale.NlbServiceHealthcheckArgs(
+                mode="https",
+                port=8443,
+                uri="/healthz",
+                tls_sni="example.net",
+                interval=5,
+                timeout=3,
+                retries=1,
+            )])
+        ```
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         ## Import
 
         An existing NLB service may be imported by `<nlb-ID>/<service-ID>@<zone>`
 
         ```sh
-         $ pulumi import exoscale:index/nLBService:NLBService \\
+         $ pulumi import exoscale:index/nlbService:NlbService \\
         ```
 
          exoscale_nlb_service.my_nlb_service \\
@@ -387,10 +418,10 @@ class NLBService(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free-form text describing the NLB service.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NLBServiceHealthcheckArgs']]]] healthchecks: The service health checking configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NlbServiceHealthcheckArgs']]]] healthchecks: The service health checking configuration.
         :param pulumi.Input[str] instance_pool_id: ❗ The exoscale*instance*pool (ID) to forward traffic to.
         :param pulumi.Input[str] name: The NLB service name.
-        :param pulumi.Input[str] nlb_id: ❗ The parent NLB ID.
+        :param pulumi.Input[str] nlb_id: ❗ The parent Nlb ID.
         :param pulumi.Input[int] port: The NLB service (TCP/UDP) port.
         :param pulumi.Input[str] protocol: The protocol (`tcp`|`udp`; default: `tcp`).
         :param pulumi.Input[str] strategy: The strategy (`round-robin`|`source-hash`; default: `round-robin`).
@@ -401,15 +432,46 @@ class NLBService(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: NLBServiceArgs,
+                 args: NlbServiceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manage Exoscale [Network Load Balancer (NLB)](https://community.exoscale.com/documentation/compute/network-load-balancer/) Services.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumiverse_exoscale as exoscale
+
+        my_nlb = exoscale.Nlb("myNlb", zone="ch-gva-2")
+        my_nlb_service = exoscale.NlbService("myNlbService",
+            nlb_id=my_nlb.id,
+            zone=my_nlb.zone,
+            instance_pool_id=exoscale_instance_pool["my_instance_pool"]["id"],
+            protocol="tcp",
+            port=443,
+            target_port=8443,
+            strategy="round-robin",
+            healthchecks=[exoscale.NlbServiceHealthcheckArgs(
+                mode="https",
+                port=8443,
+                uri="/healthz",
+                tls_sni="example.net",
+                interval=5,
+                timeout=3,
+                retries=1,
+            )])
+        ```
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         ## Import
 
         An existing NLB service may be imported by `<nlb-ID>/<service-ID>@<zone>`
 
         ```sh
-         $ pulumi import exoscale:index/nLBService:NLBService \\
+         $ pulumi import exoscale:index/nlbService:NlbService \\
         ```
 
          exoscale_nlb_service.my_nlb_service \\
@@ -417,12 +479,12 @@ class NLBService(pulumi.CustomResource):
          f81d4fae-7dec-11d0-a765-00a0c91e6bf6/9ecc6b8b-73d4-4211-8ced-f7f29bb79524@ch-gva-2
 
         :param str resource_name: The name of the resource.
-        :param NLBServiceArgs args: The arguments to use to populate this resource's properties.
+        :param NlbServiceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(NLBServiceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(NlbServiceArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -432,7 +494,7 @@ class NLBService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 healthchecks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NLBServiceHealthcheckArgs']]]]] = None,
+                 healthchecks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NlbServiceHealthcheckArgs']]]]] = None,
                  instance_pool_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nlb_id: Optional[pulumi.Input[str]] = None,
@@ -448,7 +510,7 @@ class NLBService(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = NLBServiceArgs.__new__(NLBServiceArgs)
+            __props__ = NlbServiceArgs.__new__(NlbServiceArgs)
 
             __props__.__dict__["description"] = description
             if healthchecks is None and not opts.urn:
@@ -473,8 +535,8 @@ class NLBService(pulumi.CustomResource):
                 raise TypeError("Missing required property 'zone'")
             __props__.__dict__["zone"] = zone
             __props__.__dict__["state"] = None
-        super(NLBService, __self__).__init__(
-            'exoscale:index/nLBService:NLBService',
+        super(NlbService, __self__).__init__(
+            'exoscale:index/nlbService:NlbService',
             resource_name,
             __props__,
             opts)
@@ -484,7 +546,7 @@ class NLBService(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
-            healthchecks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NLBServiceHealthcheckArgs']]]]] = None,
+            healthchecks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NlbServiceHealthcheckArgs']]]]] = None,
             instance_pool_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             nlb_id: Optional[pulumi.Input[str]] = None,
@@ -493,19 +555,19 @@ class NLBService(pulumi.CustomResource):
             state: Optional[pulumi.Input[str]] = None,
             strategy: Optional[pulumi.Input[str]] = None,
             target_port: Optional[pulumi.Input[int]] = None,
-            zone: Optional[pulumi.Input[str]] = None) -> 'NLBService':
+            zone: Optional[pulumi.Input[str]] = None) -> 'NlbService':
         """
-        Get an existing NLBService resource's state with the given name, id, and optional extra
+        Get an existing NlbService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free-form text describing the NLB service.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NLBServiceHealthcheckArgs']]]] healthchecks: The service health checking configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NlbServiceHealthcheckArgs']]]] healthchecks: The service health checking configuration.
         :param pulumi.Input[str] instance_pool_id: ❗ The exoscale*instance*pool (ID) to forward traffic to.
         :param pulumi.Input[str] name: The NLB service name.
-        :param pulumi.Input[str] nlb_id: ❗ The parent NLB ID.
+        :param pulumi.Input[str] nlb_id: ❗ The parent Nlb ID.
         :param pulumi.Input[int] port: The NLB service (TCP/UDP) port.
         :param pulumi.Input[str] protocol: The protocol (`tcp`|`udp`; default: `tcp`).
         :param pulumi.Input[str] strategy: The strategy (`round-robin`|`source-hash`; default: `round-robin`).
@@ -514,7 +576,7 @@ class NLBService(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _NLBServiceState.__new__(_NLBServiceState)
+        __props__ = _NlbServiceState.__new__(_NlbServiceState)
 
         __props__.__dict__["description"] = description
         __props__.__dict__["healthchecks"] = healthchecks
@@ -527,7 +589,7 @@ class NLBService(pulumi.CustomResource):
         __props__.__dict__["strategy"] = strategy
         __props__.__dict__["target_port"] = target_port
         __props__.__dict__["zone"] = zone
-        return NLBService(resource_name, opts=opts, __props__=__props__)
+        return NlbService(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
@@ -539,7 +601,7 @@ class NLBService(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def healthchecks(self) -> pulumi.Output[Sequence['outputs.NLBServiceHealthcheck']]:
+    def healthchecks(self) -> pulumi.Output[Sequence['outputs.NlbServiceHealthcheck']]:
         """
         The service health checking configuration.
         """
@@ -565,7 +627,7 @@ class NLBService(pulumi.CustomResource):
     @pulumi.getter(name="nlbId")
     def nlb_id(self) -> pulumi.Output[str]:
         """
-        ❗ The parent NLB ID.
+        ❗ The parent Nlb ID.
         """
         return pulumi.get(self, "nlb_id")
 

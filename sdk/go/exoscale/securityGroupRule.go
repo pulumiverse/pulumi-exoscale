@@ -12,6 +12,46 @@ import (
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
+// Manage Exoscale [Security Group](https://community.exoscale.com/documentation/compute/security-groups/) Rules.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			mySecurityGroup, err := exoscale.NewSecurityGroup(ctx, "mySecurityGroup", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = exoscale.NewSecurityGroupRule(ctx, "mySecurityGroupRule", &exoscale.SecurityGroupRuleArgs{
+//				SecurityGroupId: mySecurityGroup.ID(),
+//				Type:            pulumi.String("INGRESS"),
+//				Protocol:        pulumi.String("TCP"),
+//				Cidr:            pulumi.String("0.0.0.0/0"),
+//				StartPort:       pulumi.Int(80),
+//				EndPort:         pulumi.Int(80),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Please refer to the examples
+// directory for complete configuration examples.
+//
 // ## Import
 //
 // An existing security group rule may be imported by `<security-group-ID>/<security-group-rule-ID>`

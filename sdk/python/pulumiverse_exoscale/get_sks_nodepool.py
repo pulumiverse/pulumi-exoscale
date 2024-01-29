@@ -10,16 +10,16 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
-    'GetSKSNodepoolResult',
-    'AwaitableGetSKSNodepoolResult',
+    'GetSksNodepoolResult',
+    'AwaitableGetSksNodepoolResult',
     'get_sks_nodepool',
     'get_sks_nodepool_output',
 ]
 
 @pulumi.output_type
-class GetSKSNodepoolResult:
+class GetSksNodepoolResult:
     """
-    A collection of values returned by getSKSNodepool.
+    A collection of values returned by getSksNodepool.
     """
     def __init__(__self__, anti_affinity_group_ids=None, cluster_id=None, created_at=None, deploy_target_id=None, description=None, disk_size=None, id=None, instance_pool_id=None, instance_prefix=None, instance_type=None, labels=None, name=None, private_network_ids=None, security_group_ids=None, size=None, state=None, storage_lvm=None, taints=None, template_id=None, version=None, zone=None):
         if anti_affinity_group_ids and not isinstance(anti_affinity_group_ids, list):
@@ -217,7 +217,7 @@ class GetSKSNodepoolResult:
     @pulumi.getter
     def taints(self) -> Optional[Mapping[str, str]]:
         """
-        A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
+        A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) ('taints = { \\n\\n = "\\n\\n:\\n\\n" }').
         """
         return pulumi.get(self, "taints")
 
@@ -243,12 +243,12 @@ class GetSKSNodepoolResult:
         return pulumi.get(self, "zone")
 
 
-class AwaitableGetSKSNodepoolResult(GetSKSNodepoolResult):
+class AwaitableGetSksNodepoolResult(GetSksNodepoolResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetSKSNodepoolResult(
+        return GetSksNodepoolResult(
             anti_affinity_group_ids=self.anti_affinity_group_ids,
             cluster_id=self.cluster_id,
             created_at=self.created_at,
@@ -293,7 +293,7 @@ def get_sks_nodepool(anti_affinity_group_ids: Optional[Sequence[str]] = None,
                      template_id: Optional[str] = None,
                      version: Optional[str] = None,
                      zone: Optional[str] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSKSNodepoolResult:
+                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSksNodepoolResult:
     """
     Use this data source to access information about an existing resource.
 
@@ -311,7 +311,7 @@ def get_sks_nodepool(anti_affinity_group_ids: Optional[Sequence[str]] = None,
     :param Sequence[str] security_group_ids: A list of exoscale*security*group (IDs) to be attached to the managed instances.
     :param str state: The current pool state.
     :param bool storage_lvm: Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
-    :param Mapping[str, str] taints: A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
+    :param Mapping[str, str] taints: A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) ('taints = { \\n\\n = "\\n\\n:\\n\\n" }').
     :param str template_id: The managed instances template ID.
     :param str version: The managed instances version.
     """
@@ -338,9 +338,9 @@ def get_sks_nodepool(anti_affinity_group_ids: Optional[Sequence[str]] = None,
     __args__['version'] = version
     __args__['zone'] = zone
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('exoscale:index/getSKSNodepool:getSKSNodepool', __args__, opts=opts, typ=GetSKSNodepoolResult).value
+    __ret__ = pulumi.runtime.invoke('exoscale:index/getSksNodepool:getSksNodepool', __args__, opts=opts, typ=GetSksNodepoolResult).value
 
-    return AwaitableGetSKSNodepoolResult(
+    return AwaitableGetSksNodepoolResult(
         anti_affinity_group_ids=pulumi.get(__ret__, 'anti_affinity_group_ids'),
         cluster_id=pulumi.get(__ret__, 'cluster_id'),
         created_at=pulumi.get(__ret__, 'created_at'),
@@ -386,7 +386,7 @@ def get_sks_nodepool_output(anti_affinity_group_ids: Optional[pulumi.Input[Optio
                             template_id: Optional[pulumi.Input[Optional[str]]] = None,
                             version: Optional[pulumi.Input[Optional[str]]] = None,
                             zone: Optional[pulumi.Input[str]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSKSNodepoolResult]:
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSksNodepoolResult]:
     """
     Use this data source to access information about an existing resource.
 
@@ -404,7 +404,7 @@ def get_sks_nodepool_output(anti_affinity_group_ids: Optional[pulumi.Input[Optio
     :param Sequence[str] security_group_ids: A list of exoscale*security*group (IDs) to be attached to the managed instances.
     :param str state: The current pool state.
     :param bool storage_lvm: Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
-    :param Mapping[str, str] taints: A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
+    :param Mapping[str, str] taints: A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) ('taints = { \\n\\n = "\\n\\n:\\n\\n" }').
     :param str template_id: The managed instances template ID.
     :param str version: The managed instances version.
     """

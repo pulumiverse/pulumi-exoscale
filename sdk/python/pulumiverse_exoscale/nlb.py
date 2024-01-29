@@ -9,17 +9,17 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['NLBArgs', 'NLB']
+__all__ = ['NlbArgs', 'Nlb']
 
 @pulumi.input_type
-class NLBArgs:
+class NlbArgs:
     def __init__(__self__, *,
                  zone: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a NLB resource.
+        The set of arguments for constructing a Nlb resource.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         :param pulumi.Input[str] description: A free-form text describing the NLB.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
@@ -83,7 +83,7 @@ class NLBArgs:
 
 
 @pulumi.input_type
-class _NLBState:
+class _NlbState:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -94,7 +94,7 @@ class _NLBState:
                  state: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering NLB resources.
+        Input properties used for looking up and filtering Nlb resources.
         :param pulumi.Input[str] created_at: The NLB creation date.
         :param pulumi.Input[str] description: A free-form text describing the NLB.
         :param pulumi.Input[str] ip_address: The NLB IPv4 address.
@@ -218,7 +218,7 @@ class _NLBState:
         pulumi.set(self, "zone", value)
 
 
-class NLB(pulumi.CustomResource):
+class Nlb(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -229,12 +229,30 @@ class NLB(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Manage Exoscale [Network Load Balancers (NLB)](https://community.exoscale.com/documentation/compute/network-load-balancer/).
+
+        Corresponding data source: exoscale_nlb.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumiverse_exoscale as exoscale
+
+        my_nlb = exoscale.Nlb("myNlb", zone="ch-gva-2")
+        ```
+
+        Next step is to attach exoscale_nlb_service(s) to the NLB.
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         ## Import
 
         An existing network load balancer (NLB) may be imported by `<ID>@<zone>`console
 
         ```sh
-         $ pulumi import exoscale:index/nLB:NLB \\
+         $ pulumi import exoscale:index/nlb:Nlb \\
         ```
 
          exoscale_nlb.my_nlb \\
@@ -252,15 +270,33 @@ class NLB(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: NLBArgs,
+                 args: NlbArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manage Exoscale [Network Load Balancers (NLB)](https://community.exoscale.com/documentation/compute/network-load-balancer/).
+
+        Corresponding data source: exoscale_nlb.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumiverse_exoscale as exoscale
+
+        my_nlb = exoscale.Nlb("myNlb", zone="ch-gva-2")
+        ```
+
+        Next step is to attach exoscale_nlb_service(s) to the NLB.
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         ## Import
 
         An existing network load balancer (NLB) may be imported by `<ID>@<zone>`console
 
         ```sh
-         $ pulumi import exoscale:index/nLB:NLB \\
+         $ pulumi import exoscale:index/nlb:Nlb \\
         ```
 
          exoscale_nlb.my_nlb \\
@@ -268,12 +304,12 @@ class NLB(pulumi.CustomResource):
          f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
 
         :param str resource_name: The name of the resource.
-        :param NLBArgs args: The arguments to use to populate this resource's properties.
+        :param NlbArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(NLBArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(NlbArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -293,7 +329,7 @@ class NLB(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = NLBArgs.__new__(NLBArgs)
+            __props__ = NlbArgs.__new__(NlbArgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
@@ -305,8 +341,8 @@ class NLB(pulumi.CustomResource):
             __props__.__dict__["ip_address"] = None
             __props__.__dict__["services"] = None
             __props__.__dict__["state"] = None
-        super(NLB, __self__).__init__(
-            'exoscale:index/nLB:NLB',
+        super(Nlb, __self__).__init__(
+            'exoscale:index/nlb:Nlb',
             resource_name,
             __props__,
             opts)
@@ -322,9 +358,9 @@ class NLB(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            zone: Optional[pulumi.Input[str]] = None) -> 'NLB':
+            zone: Optional[pulumi.Input[str]] = None) -> 'Nlb':
         """
-        Get an existing NLB resource's state with the given name, id, and optional extra
+        Get an existing Nlb resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -341,7 +377,7 @@ class NLB(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _NLBState.__new__(_NLBState)
+        __props__ = _NlbState.__new__(_NlbState)
 
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["description"] = description
@@ -351,7 +387,7 @@ class NLB(pulumi.CustomResource):
         __props__.__dict__["services"] = services
         __props__.__dict__["state"] = state
         __props__.__dict__["zone"] = zone
-        return NLB(resource_name, opts=opts, __props__=__props__)
+        return Nlb(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="createdAt")

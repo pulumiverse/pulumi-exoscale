@@ -40,7 +40,7 @@ class ComputeInstanceArgs:
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
         :param pulumi.Input[str] deploy_target_id: ❗ A deploy target ID.
-        :param pulumi.Input[int] disk_size: The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
+        :param pulumi.Input[int] disk_size: The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of exoscale*elastic*ip (IDs) to attach to the instance.
         :param pulumi.Input[bool] ipv6: Enable IPv6 on the instance (boolean; default: `false`).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
@@ -149,7 +149,7 @@ class ComputeInstanceArgs:
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
+        The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
         """
         return pulumi.get(self, "disk_size")
 
@@ -319,7 +319,7 @@ class _ComputeInstanceState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
         :param pulumi.Input[str] created_at: The instance creation date.
         :param pulumi.Input[str] deploy_target_id: ❗ A deploy target ID.
-        :param pulumi.Input[int] disk_size: The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
+        :param pulumi.Input[int] disk_size: The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of exoscale*elastic*ip (IDs) to attach to the instance.
         :param pulumi.Input[bool] ipv6: Enable IPv6 on the instance (boolean; default: `false`).
         :param pulumi.Input[str] ipv6_address: The instance (main network interface) IPv6 address (if enabled).
@@ -424,7 +424,7 @@ class _ComputeInstanceState:
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
+        The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
         """
         return pulumi.get(self, "disk_size")
 
@@ -664,6 +664,31 @@ class ComputeInstance(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Manage Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/).
+
+        Corresponding data sources: exoscale_compute_instance, exoscale_compute_instance_list.
+
+        After the creation, you can retrieve the password of an instance with [Exoscale CLI](https://github.com/exoscale/cli): `exo compute instance reveal-password NAME`.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_exoscale as exoscale
+        import pulumiverse_exoscale as exoscale
+
+        my_template = exoscale.get_template(zone="ch-gva-2",
+            name="Linux Ubuntu 22.04 LTS 64-bit")
+        my_instance = exoscale.ComputeInstance("myInstance",
+            zone="ch-gva-2",
+            template_id=my_template.id,
+            type="standard.medium",
+            disk_size=10)
+        ```
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         ## Import
 
         An existing compute instance may be imported by `<ID>@<zone>`
@@ -680,7 +705,7 @@ class ComputeInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
         :param pulumi.Input[str] deploy_target_id: ❗ A deploy target ID.
-        :param pulumi.Input[int] disk_size: The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
+        :param pulumi.Input[int] disk_size: The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of exoscale*elastic*ip (IDs) to attach to the instance.
         :param pulumi.Input[bool] ipv6: Enable IPv6 on the instance (boolean; default: `false`).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
@@ -703,6 +728,31 @@ class ComputeInstance(pulumi.CustomResource):
                  args: ComputeInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manage Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/).
+
+        Corresponding data sources: exoscale_compute_instance, exoscale_compute_instance_list.
+
+        After the creation, you can retrieve the password of an instance with [Exoscale CLI](https://github.com/exoscale/cli): `exo compute instance reveal-password NAME`.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_exoscale as exoscale
+        import pulumiverse_exoscale as exoscale
+
+        my_template = exoscale.get_template(zone="ch-gva-2",
+            name="Linux Ubuntu 22.04 LTS 64-bit")
+        my_instance = exoscale.ComputeInstance("myInstance",
+            zone="ch-gva-2",
+            template_id=my_template.id,
+            type="standard.medium",
+            disk_size=10)
+        ```
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         ## Import
 
         An existing compute instance may be imported by `<ID>@<zone>`
@@ -824,7 +874,7 @@ class ComputeInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
         :param pulumi.Input[str] created_at: The instance creation date.
         :param pulumi.Input[str] deploy_target_id: ❗ A deploy target ID.
-        :param pulumi.Input[int] disk_size: The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
+        :param pulumi.Input[int] disk_size: The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of exoscale*elastic*ip (IDs) to attach to the instance.
         :param pulumi.Input[bool] ipv6: Enable IPv6 on the instance (boolean; default: `false`).
         :param pulumi.Input[str] ipv6_address: The instance (main network interface) IPv6 address (if enabled).
@@ -898,7 +948,7 @@ class ComputeInstance(pulumi.CustomResource):
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> pulumi.Output[int]:
         """
-        The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
+        The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
         """
         return pulumi.get(self, "disk_size")
 

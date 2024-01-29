@@ -11,16 +11,16 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
-    'GetElasticIPResult',
-    'AwaitableGetElasticIPResult',
+    'GetElasticIpResult',
+    'AwaitableGetElasticIpResult',
     'get_elastic_ip',
     'get_elastic_ip_output',
 ]
 
 @pulumi.output_type
-class GetElasticIPResult:
+class GetElasticIpResult:
     """
-    A collection of values returned by getElasticIP.
+    A collection of values returned by getElasticIp.
     """
     def __init__(__self__, address_family=None, cidr=None, description=None, healthchecks=None, id=None, ip_address=None, labels=None, reverse_dns=None, zone=None):
         if address_family and not isinstance(address_family, str):
@@ -77,7 +77,7 @@ class GetElasticIPResult:
 
     @property
     @pulumi.getter
-    def healthchecks(self) -> Sequence['outputs.GetElasticIPHealthcheckResult']:
+    def healthchecks(self) -> Sequence['outputs.GetElasticIpHealthcheckResult']:
         """
         The *managed* EIP healthcheck configuration.
         """
@@ -124,12 +124,12 @@ class GetElasticIPResult:
         return pulumi.get(self, "zone")
 
 
-class AwaitableGetElasticIPResult(GetElasticIPResult):
+class AwaitableGetElasticIpResult(GetElasticIpResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetElasticIPResult(
+        return GetElasticIpResult(
             address_family=self.address_family,
             cidr=self.cidr,
             description=self.description,
@@ -145,9 +145,26 @@ def get_elastic_ip(id: Optional[str] = None,
                    ip_address: Optional[str] = None,
                    labels: Optional[Mapping[str, str]] = None,
                    zone: Optional[str] = None,
-                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetElasticIPResult:
+                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetElasticIpResult:
     """
-    Use this data source to access information about an existing resource.
+    Fetch Exoscale [Elastic IPs (EIP)](https://community.exoscale.com/documentation/compute/eip/) data.
+
+    Corresponding resource: exoscale_elastic_ip.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_exoscale as exoscale
+
+    my_elastic_ip = exoscale.get_elastic_ip(zone="ch-gva-2",
+        ip_address="1.2.3.4")
+    pulumi.export("myElasticIpId", my_elastic_ip.id)
+    ```
+
+    Please refer to the examples
+    directory for complete configuration examples.
+
 
     :param str id: The Elastic IP (EIP) ID to match (conflicts with `ip_address` and `labels`).
     :param str ip_address: The EIP IPv4 or IPv6 address to match (conflicts with `id` and `labels`).
@@ -160,9 +177,9 @@ def get_elastic_ip(id: Optional[str] = None,
     __args__['labels'] = labels
     __args__['zone'] = zone
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('exoscale:index/getElasticIP:getElasticIP', __args__, opts=opts, typ=GetElasticIPResult).value
+    __ret__ = pulumi.runtime.invoke('exoscale:index/getElasticIp:getElasticIp', __args__, opts=opts, typ=GetElasticIpResult).value
 
-    return AwaitableGetElasticIPResult(
+    return AwaitableGetElasticIpResult(
         address_family=pulumi.get(__ret__, 'address_family'),
         cidr=pulumi.get(__ret__, 'cidr'),
         description=pulumi.get(__ret__, 'description'),
@@ -179,9 +196,26 @@ def get_elastic_ip_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                           ip_address: Optional[pulumi.Input[Optional[str]]] = None,
                           labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                           zone: Optional[pulumi.Input[str]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetElasticIPResult]:
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetElasticIpResult]:
     """
-    Use this data source to access information about an existing resource.
+    Fetch Exoscale [Elastic IPs (EIP)](https://community.exoscale.com/documentation/compute/eip/) data.
+
+    Corresponding resource: exoscale_elastic_ip.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_exoscale as exoscale
+
+    my_elastic_ip = exoscale.get_elastic_ip(zone="ch-gva-2",
+        ip_address="1.2.3.4")
+    pulumi.export("myElasticIpId", my_elastic_ip.id)
+    ```
+
+    Please refer to the examples
+    directory for complete configuration examples.
+
 
     :param str id: The Elastic IP (EIP) ID to match (conflicts with `ip_address` and `labels`).
     :param str ip_address: The EIP IPv4 or IPv6 address to match (conflicts with `id` and `labels`).

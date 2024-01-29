@@ -4,6 +4,25 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Fetch Exoscale [Compute Instance Templates](https://community.exoscale.com/documentation/compute/custom-templates/) data.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumi/exoscale";
+ *
+ * const myTemplate = exoscale.getTemplate({
+ *     zone: "ch-gva-2",
+ *     name: "Linux Ubuntu 22.04 LTS 64-bit",
+ * });
+ * export const myTemplateId = myTemplate.then(myTemplate => myTemplate.id);
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ */
 export function getTemplate(args: GetTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplateResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -62,6 +81,25 @@ export interface GetTemplateResult {
      */
     readonly zone: string;
 }
+/**
+ * Fetch Exoscale [Compute Instance Templates](https://community.exoscale.com/documentation/compute/custom-templates/) data.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumi/exoscale";
+ *
+ * const myTemplate = exoscale.getTemplate({
+ *     zone: "ch-gva-2",
+ *     name: "Linux Ubuntu 22.04 LTS 64-bit",
+ * });
+ * export const myTemplateId = myTemplate.then(myTemplate => myTemplate.id);
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ */
 export function getTemplateOutput(args: GetTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplateResult> {
     return pulumi.output(args).apply((a: any) => getTemplate(a, opts))
 }

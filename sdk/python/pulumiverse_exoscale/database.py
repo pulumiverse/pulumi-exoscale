@@ -615,6 +615,8 @@ class Database(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Manage Exoscale [Database Services (DBaaS)](https://community.exoscale.com/documentation/dbaas/).
+
         ## Import
 
         An existing database service may be imported by `<name>@<zone>`
@@ -650,6 +652,8 @@ class Database(pulumi.CustomResource):
                  args: DatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manage Exoscale [Database Services (DBaaS)](https://community.exoscale.com/documentation/dbaas/).
+
         ## Import
 
         An existing database service may be imported by `<name>@<zone>`

@@ -12,16 +12,16 @@ from . import outputs
 from ._inputs import *
 
 __all__ = [
-    'GetIAMRoleResult',
-    'AwaitableGetIAMRoleResult',
+    'GetIamRoleResult',
+    'AwaitableGetIamRoleResult',
     'get_iam_role',
     'get_iam_role_output',
 ]
 
 @pulumi.output_type
-class GetIAMRoleResult:
+class GetIamRoleResult:
     """
-    A collection of values returned by getIAMRole.
+    A collection of values returned by getIamRole.
     """
     def __init__(__self__, description=None, editable=None, id=None, labels=None, name=None, permissions=None, policy=None, timeouts=None):
         if description and not isinstance(description, str):
@@ -99,7 +99,7 @@ class GetIAMRoleResult:
 
     @property
     @pulumi.getter
-    def policy(self) -> 'outputs.GetIAMRolePolicyResult':
+    def policy(self) -> 'outputs.GetIamRolePolicyResult':
         """
         IAM Policy.
         """
@@ -107,16 +107,16 @@ class GetIAMRoleResult:
 
     @property
     @pulumi.getter
-    def timeouts(self) -> Optional['outputs.GetIAMRoleTimeoutsResult']:
+    def timeouts(self) -> Optional['outputs.GetIamRoleTimeoutsResult']:
         return pulumi.get(self, "timeouts")
 
 
-class AwaitableGetIAMRoleResult(GetIAMRoleResult):
+class AwaitableGetIamRoleResult(GetIamRoleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetIAMRoleResult(
+        return GetIamRoleResult(
             description=self.description,
             editable=self.editable,
             id=self.id,
@@ -129,8 +129,8 @@ class AwaitableGetIAMRoleResult(GetIAMRoleResult):
 
 def get_iam_role(id: Optional[str] = None,
                  name: Optional[str] = None,
-                 timeouts: Optional[pulumi.InputType['GetIAMRoleTimeoutsArgs']] = None,
-                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIAMRoleResult:
+                 timeouts: Optional[pulumi.InputType['GetIamRoleTimeoutsArgs']] = None,
+                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIamRoleResult:
     """
     Fetch Exoscale [IAM](https://community.exoscale.com/documentation/iam/) Role.
 
@@ -145,9 +145,9 @@ def get_iam_role(id: Optional[str] = None,
     __args__['name'] = name
     __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('exoscale:index/getIAMRole:getIAMRole', __args__, opts=opts, typ=GetIAMRoleResult).value
+    __ret__ = pulumi.runtime.invoke('exoscale:index/getIamRole:getIamRole', __args__, opts=opts, typ=GetIamRoleResult).value
 
-    return AwaitableGetIAMRoleResult(
+    return AwaitableGetIamRoleResult(
         description=pulumi.get(__ret__, 'description'),
         editable=pulumi.get(__ret__, 'editable'),
         id=pulumi.get(__ret__, 'id'),
@@ -161,8 +161,8 @@ def get_iam_role(id: Optional[str] = None,
 @_utilities.lift_output_func(get_iam_role)
 def get_iam_role_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                         name: Optional[pulumi.Input[Optional[str]]] = None,
-                        timeouts: Optional[pulumi.Input[Optional[pulumi.InputType['GetIAMRoleTimeoutsArgs']]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIAMRoleResult]:
+                        timeouts: Optional[pulumi.Input[Optional[pulumi.InputType['GetIamRoleTimeoutsArgs']]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIamRoleResult]:
     """
     Fetch Exoscale [IAM](https://community.exoscale.com/documentation/iam/) Role.
 

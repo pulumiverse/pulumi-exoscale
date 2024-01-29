@@ -12,9 +12,19 @@ namespace Pulumiverse.Exoscale
 {
     public static class GetComputeInstanceList
     {
+        /// <summary>
+        /// List Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/).
+        /// 
+        /// Corresponding resource: exoscale_compute_instance.
+        /// </summary>
         public static Task<GetComputeInstanceListResult> InvokeAsync(GetComputeInstanceListArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetComputeInstanceListResult>("exoscale:index/getComputeInstanceList:getComputeInstanceList", args ?? new GetComputeInstanceListArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// List Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/).
+        /// 
+        /// Corresponding resource: exoscale_compute_instance.
+        /// </summary>
         public static Output<GetComputeInstanceListResult> Invoke(GetComputeInstanceListInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetComputeInstanceListResult>("exoscale:index/getComputeInstanceList:getComputeInstanceList", args ?? new GetComputeInstanceListInvokeArgs(), options.WithDefaults());
     }

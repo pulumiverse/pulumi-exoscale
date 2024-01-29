@@ -6,6 +6,27 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Fetch Exoscale [Instance Pools](https://community.exoscale.com/documentation/compute/instance-pools/) data.
+ *
+ * Corresponding resource: exoscale_instance_pool.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumi/exoscale";
+ *
+ * const myInstancePool = exoscale.getInstancePool({
+ *     zone: "ch-gva-2",
+ *     name: "my-instance-pool",
+ * });
+ * export const myInstancePoolId = myInstancePool.then(myInstancePool => myInstancePool.id);
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ */
 export function getInstancePool(args: GetInstancePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancePoolResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -118,6 +139,27 @@ export interface GetInstancePoolResult {
      */
     readonly zone: string;
 }
+/**
+ * Fetch Exoscale [Instance Pools](https://community.exoscale.com/documentation/compute/instance-pools/) data.
+ *
+ * Corresponding resource: exoscale_instance_pool.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumi/exoscale";
+ *
+ * const myInstancePool = exoscale.getInstancePool({
+ *     zone: "ch-gva-2",
+ *     name: "my-instance-pool",
+ * });
+ * export const myInstancePoolId = myInstancePool.then(myInstancePool => myInstancePool.id);
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ */
 export function getInstancePoolOutput(args: GetInstancePoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancePoolResult> {
     return pulumi.output(args).apply((a: any) => getInstancePool(a, opts))
 }

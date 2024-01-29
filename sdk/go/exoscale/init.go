@@ -31,36 +31,36 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Domain{}
 	case "exoscale:index/domainRecord:DomainRecord":
 		r = &DomainRecord{}
-	case "exoscale:index/elasticIP:ElasticIP":
-		r = &ElasticIP{}
-	case "exoscale:index/iAMAPIKey:IAMAPIKey":
-		r = &IAMAPIKey{}
-	case "exoscale:index/iAMAccessKey:IAMAccessKey":
-		r = &IAMAccessKey{}
-	case "exoscale:index/iAMOrgPolicy:IAMOrgPolicy":
-		r = &IAMOrgPolicy{}
-	case "exoscale:index/iAMRole:IAMRole":
-		r = &IAMRole{}
+	case "exoscale:index/elasticIp:ElasticIp":
+		r = &ElasticIp{}
+	case "exoscale:index/iamAccessKey:IamAccessKey":
+		r = &IamAccessKey{}
+	case "exoscale:index/iamApiKey:IamApiKey":
+		r = &IamApiKey{}
+	case "exoscale:index/iamOrgPolicy:IamOrgPolicy":
+		r = &IamOrgPolicy{}
+	case "exoscale:index/iamRole:IamRole":
+		r = &IamRole{}
 	case "exoscale:index/instancePool:InstancePool":
 		r = &InstancePool{}
-	case "exoscale:index/nLB:NLB":
-		r = &NLB{}
-	case "exoscale:index/nLBService:NLBService":
-		r = &NLBService{}
+	case "exoscale:index/nlb:Nlb":
+		r = &Nlb{}
+	case "exoscale:index/nlbService:NlbService":
+		r = &NlbService{}
 	case "exoscale:index/privateNetwork:PrivateNetwork":
 		r = &PrivateNetwork{}
-	case "exoscale:index/sKSCluster:SKSCluster":
-		r = &SKSCluster{}
-	case "exoscale:index/sKSKubeconfig:SKSKubeconfig":
-		r = &SKSKubeconfig{}
-	case "exoscale:index/sKSNodepool:SKSNodepool":
-		r = &SKSNodepool{}
-	case "exoscale:index/sSHKey:SSHKey":
-		r = &SSHKey{}
 	case "exoscale:index/securityGroup:SecurityGroup":
 		r = &SecurityGroup{}
 	case "exoscale:index/securityGroupRule:SecurityGroupRule":
 		r = &SecurityGroupRule{}
+	case "exoscale:index/sksCluster:SksCluster":
+		r = &SksCluster{}
+	case "exoscale:index/sksKubeconfig:SksKubeconfig":
+		r = &SksKubeconfig{}
+	case "exoscale:index/sksNodepool:SksNodepool":
+		r = &SksNodepool{}
+	case "exoscale:index/sshKey:SshKey":
+		r = &SshKey{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -119,27 +119,27 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"exoscale",
-		"index/elasticIP",
+		"index/elasticIp",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"exoscale",
-		"index/iAMAPIKey",
+		"index/iamAccessKey",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"exoscale",
-		"index/iAMAccessKey",
+		"index/iamApiKey",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"exoscale",
-		"index/iAMOrgPolicy",
+		"index/iamOrgPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"exoscale",
-		"index/iAMRole",
+		"index/iamRole",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -149,37 +149,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"exoscale",
-		"index/nLB",
+		"index/nlb",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"exoscale",
-		"index/nLBService",
+		"index/nlbService",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"exoscale",
 		"index/privateNetwork",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"exoscale",
-		"index/sKSCluster",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"exoscale",
-		"index/sKSKubeconfig",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"exoscale",
-		"index/sKSNodepool",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"exoscale",
-		"index/sSHKey",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -190,6 +170,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"exoscale",
 		"index/securityGroupRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"exoscale",
+		"index/sksCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"exoscale",
+		"index/sksKubeconfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"exoscale",
+		"index/sksNodepool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"exoscale",
+		"index/sshKey",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

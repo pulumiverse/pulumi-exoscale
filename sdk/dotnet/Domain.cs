@@ -11,6 +11,30 @@ using Pulumi;
 namespace Pulumiverse.Exoscale
 {
     /// <summary>
+    /// Manage Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domains.
+    /// 
+    /// Corresponding data source: exoscale_domain.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Exoscale = Pulumiverse.Exoscale;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myDomain = new Exoscale.Domain("myDomain");
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Next step is to attach exoscale_domain_record(s) to the domain.
+    /// 
+    /// Please refer to the examples
+    /// directory for complete configuration examples.
+    /// 
     /// ## Import
     /// 
     /// An existing DNS domain may be imported by `ID`

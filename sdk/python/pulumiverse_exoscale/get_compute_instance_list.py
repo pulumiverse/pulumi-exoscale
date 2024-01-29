@@ -281,7 +281,9 @@ def get_compute_instance_list(created_at: Optional[str] = None,
                               zone: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetComputeInstanceListResult:
     """
-    Use this data source to access information about an existing resource.
+    List Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/).
+
+    Corresponding resource: exoscale_compute_instance.
     """
     __args__ = dict()
     __args__['createdAt'] = created_at
@@ -348,6 +350,8 @@ def get_compute_instance_list_output(created_at: Optional[pulumi.Input[Optional[
                                      zone: Optional[pulumi.Input[str]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetComputeInstanceListResult]:
     """
-    Use this data source to access information about an existing resource.
+    List Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/).
+
+    Corresponding resource: exoscale_compute_instance.
     """
     ...
