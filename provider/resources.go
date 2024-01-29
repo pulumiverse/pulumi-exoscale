@@ -17,12 +17,13 @@ package exoscale
 import (
 	_ "embed"
 	"fmt"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"path/filepath"
 	"unicode"
 
 	"github.com/exoscale/terraform-provider-exoscale/shim"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/pulumiverse/pulumi-exoscale/provider/pkg/version"
 )
 
@@ -141,60 +142,11 @@ func Provider() tfbridge.ProviderInfo {
 			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
 			// 	},
 			// },
-
-			"exoscale_anti_affinity_group": {Tok: exoscaleResource(mainMod, "AntiAffinityGroup")},
-			"exoscale_compute_instance":    {Tok: exoscaleResource(mainMod, "ComputeInstance")},
-			"exoscale_database":            {Tok: exoscaleResource(mainMod, "Database")},
-			"exoscale_domain":              {Tok: exoscaleResource(mainMod, "Domain")},
-			"exoscale_domain_record":       {Tok: exoscaleResource(mainMod, "DomainRecord")},
-			"exoscale_elastic_ip":          {Tok: exoscaleResource(mainMod, "ElasticIP")},
-			"exoscale_iam_access_key":      {Tok: exoscaleResource(mainMod, "IAMAccessKey")},
-			"exoscale_instance_pool":       {Tok: exoscaleResource(mainMod, "InstancePool")},
-			"exoscale_nlb":                 {Tok: exoscaleResource(mainMod, "NLB")},
-			"exoscale_nlb_service":         {Tok: exoscaleResource(mainMod, "NLBService")},
-			"exoscale_private_network":     {Tok: exoscaleResource(mainMod, "PrivateNetwork")},
-			"exoscale_security_group":      {Tok: exoscaleResource(mainMod, "SecurityGroup")},
-			"exoscale_security_group_rule": {Tok: exoscaleResource(mainMod, "SecurityGroupRule")},
-			"exoscale_sks_cluster":         {Tok: exoscaleResource(mainMod, "SKSCluster")},
-			"exoscale_sks_kubeconfig":      {Tok: exoscaleResource(mainMod, "SKSKubeconfig")},
-			"exoscale_sks_nodepool":        {Tok: exoscaleResource(mainMod, "SKSNodepool")},
-			"exoscale_ssh_key":             {Tok: exoscaleResource(mainMod, "SSHKey")},
-			"exoscale_iam_api_key":          {Tok:exoscaleResource(mainMod, "IAMAPIKey")},
-			"exoscale_iam_org_policy":       {Tok:exoscaleResource(mainMod, "IAMOrgPolicy")},
-			"exoscale_iam_role":             {Tok:exoscaleResource(mainMod, "IAMRole")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example
 			// is below.
 			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAmi")},
-			"exoscale_anti_affinity_group":   {Tok: exoscaleDataSource(mainMod, "getAntiAffinityGroup")},
-			"exoscale_compute_instance":      {Tok: exoscaleDataSource(mainMod, "getComputeInstance")},
-			"exoscale_compute_instance_list": {Tok: exoscaleDataSource(mainMod, "getComputeInstanceList")},
-			"exoscale_compute_template":      {Tok: exoscaleDataSource(mainMod, "getComputeTemplate")},
-			"exoscale_domain":                {Tok: exoscaleDataSource(mainMod, "getDomain")},
-			"exoscale_domain_record":         {Tok: exoscaleDataSource(mainMod, "getDomainRecord")},
-			"exoscale_elastic_ip":            {Tok: exoscaleDataSource(mainMod, "getElasticIP")},
-			"exoscale_instance_pool":         {Tok: exoscaleDataSource(mainMod, "getInstancePool")},
-			"exoscale_instance_pool_list":    {Tok: exoscaleDataSource(mainMod, "getInstancePoolList")},
-			"exoscale_nlb":                   {Tok: exoscaleDataSource(mainMod, "getNLB")},
-			"exoscale_private_network":       {Tok: exoscaleDataSource(mainMod, "getPrivateNetwork")},
-			"exoscale_security_group":        {Tok: exoscaleDataSource(mainMod, "getSecurityGroup")},
-			"exoscale_template":              {Tok: exoscaleDataSource(mainMod, "getTemplate")},
-			"exoscale_sks_cluster":           {Tok: exoscaleDataSource(mainMod, "getSKSCluster")},
-			"exoscale_sks_cluster_list":      {Tok: exoscaleDataSource(mainMod, "getSKSClusterList")},
-			"exoscale_sks_nodepool":          {Tok: exoscaleDataSource(mainMod, "getSKSNodepool")},
-			"exoscale_sks_nodepool_list":     {Tok: exoscaleDataSource(mainMod, "getSKSNodepoolList")},
-			"exoscale_database_uri":          {Tok: exoscaleDataSource(mainMod, "getDatabaseURI")},
-			"exoscale_iam_api_key":           {Tok: exoscaleDataSource(mainMod, "getIAMAPIKey")},
-			"exoscale_iam_org_policy":        {Tok: exoscaleDataSource(mainMod, "getIAMOrgPolicy")},
-			"exoscale_iam_role":              {Tok: exoscaleDataSource(mainMod, "getIAMRole")},
-			// Deprecated DataSources, will be removed with next major version
-			"exoscale_affinity":          {Tok: exoscaleDataSource(mainMod, "getAffinity")},
-			"exoscale_compute":           {Tok: exoscaleDataSource(mainMod, "getCompute")},
-			"exoscale_compute_ipaddress": {Tok: exoscaleDataSource(mainMod, "getComputeIPAddress")},
-			"exoscale_network":           {Tok: exoscaleDataSource(mainMod, "getNetwork")},
-			"exoscale_nlb_service_list":  {Tok: exoscaleDataSource(mainMod, "getNLBServiceList")},
-			"exoscale_zones":             {Tok: exoscaleDataSource(mainMod, "getZones")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			PackageName: "@pulumiverse/exoscale",
@@ -237,6 +189,11 @@ func Provider() tfbridge.ProviderInfo {
 			BasePackage: "com.pulumiverse",
 		},
 	}
+
+	prov.MustComputeTokens(tfbridgetokens.SingleModule("exoscale_", mainMod,
+		tfbridgetokens.MakeStandard(mainPkg)))
+
+	prov.SetAutonaming(255, "-")
 
 	prov.SetAutonaming(255, "-")
 
