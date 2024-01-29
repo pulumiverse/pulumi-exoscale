@@ -122,9 +122,6 @@ func Provider() tfbridge.ProviderInfo {
 				},
 				Secret: tfbridge.BoolRef(true),
 			},
-			"config": {
-				CSharpName: "CloudStackIniConfig",
-			},
 			"timeout": {
 				Type: "integer",
 			},
