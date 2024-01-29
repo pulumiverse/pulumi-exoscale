@@ -116,6 +116,7 @@ class DomainRecordArgs:
 class _DomainRecordState:
     def __init__(__self__, *,
                  content: Optional[pulumi.Input[str]] = None,
+                 content_normalized: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -125,6 +126,7 @@ class _DomainRecordState:
         """
         Input properties used for looking up and filtering DomainRecord resources.
         :param pulumi.Input[str] content: The record value.
+        :param pulumi.Input[str] content_normalized: The normalized value of the record
         :param pulumi.Input[str] domain: ❗ The parent Domain to attach the record to.
         :param pulumi.Input[str] hostname: The record *Fully Qualified Domain Name* (FQDN). Useful for aliasing `A`/`AAAA` records with `CNAME`.
         :param pulumi.Input[str] name: The record name, Leave blank (`""`) to create a root record (similar to using `@` in a DNS zone file).
@@ -134,6 +136,8 @@ class _DomainRecordState:
         """
         if content is not None:
             pulumi.set(__self__, "content", content)
+        if content_normalized is not None:
+            pulumi.set(__self__, "content_normalized", content_normalized)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if hostname is not None:
@@ -158,6 +162,18 @@ class _DomainRecordState:
     @content.setter
     def content(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "content", value)
+
+    @property
+    @pulumi.getter(name="contentNormalized")
+    def content_normalized(self) -> Optional[pulumi.Input[str]]:
+        """
+        The normalized value of the record
+        """
+        return pulumi.get(self, "content_normalized")
+
+    @content_normalized.setter
+    def content_normalized(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_normalized", value)
 
     @property
     @pulumi.getter
@@ -245,6 +261,30 @@ class DomainRecord(pulumi.CustomResource):
                  ttl: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
+        Manage Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domain Records.
+
+        Corresponding data source: exoscale_domain_record.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumiverse_exoscale as exoscale
+
+        my_domain = exoscale.Domain("myDomain")
+        my_host = exoscale.DomainRecord("myHost",
+            domain=my_domain.id,
+            record_type="A",
+            content="1.2.3.4")
+        my_host_alias = exoscale.DomainRecord("myHostAlias",
+            domain=my_domain.id,
+            record_type="CNAME",
+            content=my_host.hostname)
+        ```
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         ## Import
 
         An existing DNS domain record may be imported by `<ID>`
@@ -273,6 +313,30 @@ class DomainRecord(pulumi.CustomResource):
                  args: DomainRecordArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manage Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domain Records.
+
+        Corresponding data source: exoscale_domain_record.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumiverse_exoscale as exoscale
+
+        my_domain = exoscale.Domain("myDomain")
+        my_host = exoscale.DomainRecord("myHost",
+            domain=my_domain.id,
+            record_type="A",
+            content="1.2.3.4")
+        my_host_alias = exoscale.DomainRecord("myHostAlias",
+            domain=my_domain.id,
+            record_type="CNAME",
+            content=my_host.hostname)
+        ```
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         ## Import
 
         An existing DNS domain record may be imported by `<ID>`
@@ -327,6 +391,7 @@ class DomainRecord(pulumi.CustomResource):
                 raise TypeError("Missing required property 'record_type'")
             __props__.__dict__["record_type"] = record_type
             __props__.__dict__["ttl"] = ttl
+            __props__.__dict__["content_normalized"] = None
             __props__.__dict__["hostname"] = None
         super(DomainRecord, __self__).__init__(
             'exoscale:index/domainRecord:DomainRecord',
@@ -339,6 +404,7 @@ class DomainRecord(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             content: Optional[pulumi.Input[str]] = None,
+            content_normalized: Optional[pulumi.Input[str]] = None,
             domain: Optional[pulumi.Input[str]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -353,6 +419,7 @@ class DomainRecord(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content: The record value.
+        :param pulumi.Input[str] content_normalized: The normalized value of the record
         :param pulumi.Input[str] domain: ❗ The parent Domain to attach the record to.
         :param pulumi.Input[str] hostname: The record *Fully Qualified Domain Name* (FQDN). Useful for aliasing `A`/`AAAA` records with `CNAME`.
         :param pulumi.Input[str] name: The record name, Leave blank (`""`) to create a root record (similar to using `@` in a DNS zone file).
@@ -365,6 +432,7 @@ class DomainRecord(pulumi.CustomResource):
         __props__ = _DomainRecordState.__new__(_DomainRecordState)
 
         __props__.__dict__["content"] = content
+        __props__.__dict__["content_normalized"] = content_normalized
         __props__.__dict__["domain"] = domain
         __props__.__dict__["hostname"] = hostname
         __props__.__dict__["name"] = name
@@ -380,6 +448,14 @@ class DomainRecord(pulumi.CustomResource):
         The record value.
         """
         return pulumi.get(self, "content")
+
+    @property
+    @pulumi.getter(name="contentNormalized")
+    def content_normalized(self) -> pulumi.Output[str]:
+        """
+        The normalized value of the record
+        """
+        return pulumi.get(self, "content_normalized")
 
     @property
     @pulumi.getter

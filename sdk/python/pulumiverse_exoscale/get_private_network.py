@@ -135,7 +135,24 @@ def get_private_network(description: Optional[str] = None,
                         zone: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPrivateNetworkResult:
     """
-    Use this data source to access information about an existing resource.
+    Fetch Exoscale [Private Networks](https://community.exoscale.com/documentation/compute/private-networks/) data.
+
+    Corresponding resource: exoscale_private_network.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_exoscale as exoscale
+
+    my_private_network = exoscale.get_private_network(zone="ch-gva-2",
+        name="my-private-network")
+    pulumi.export("myPrivateNetworkId", my_private_network.id)
+    ```
+
+    Please refer to the examples
+    directory for complete configuration examples.
+
 
     :param str description: The private network description.
     :param str id: The private network ID to match (conflicts with `name`).
@@ -171,7 +188,24 @@ def get_private_network_output(description: Optional[pulumi.Input[Optional[str]]
                                zone: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrivateNetworkResult]:
     """
-    Use this data source to access information about an existing resource.
+    Fetch Exoscale [Private Networks](https://community.exoscale.com/documentation/compute/private-networks/) data.
+
+    Corresponding resource: exoscale_private_network.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_exoscale as exoscale
+
+    my_private_network = exoscale.get_private_network(zone="ch-gva-2",
+        name="my-private-network")
+    pulumi.export("myPrivateNetworkId", my_private_network.id)
+    ```
+
+    Please refer to the examples
+    directory for complete configuration examples.
+
 
     :param str description: The private network description.
     :param str id: The private network ID to match (conflicts with `name`).

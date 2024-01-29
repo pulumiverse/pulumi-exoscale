@@ -11,6 +11,39 @@ import (
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
+// Manage Exoscale [Anti-Affinity Groups](https://community.exoscale.com/documentation/compute/anti-affinity-groups/).
+//
+// Corresponding data source: exoscale_anti_affinity_group.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := exoscale.NewAntiAffinityGroup(ctx, "myAntiAffinityGroup", &exoscale.AntiAffinityGroupArgs{
+//				Description: pulumi.String("Prevent compute instances to run on the same host"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Please refer to the examples
+// directory for complete configuration examples.
+//
 // ## Import
 //
 // An existing anti-affinity group may be imported by `<ID>`

@@ -5,6 +5,38 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Manage Exoscale [Private Networks](https://community.exoscale.com/documentation/compute/private-networks/).
+ *
+ * Corresponding data source: exoscale_private_network.
+ *
+ * ## Example Usage
+ *
+ * *Unmanaged* private network:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumiverse/exoscale";
+ *
+ * const myPrivateNetwork = new exoscale.PrivateNetwork("myPrivateNetwork", {zone: "ch-gva-2"});
+ * ```
+ *
+ * *Managed* private network:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumiverse/exoscale";
+ *
+ * const myManagedPrivateNetwork = new exoscale.PrivateNetwork("myManagedPrivateNetwork", {
+ *     endIp: "10.0.0.253",
+ *     netmask: "255.255.255.0",
+ *     startIp: "10.0.0.20",
+ *     zone: "ch-gva-2",
+ * });
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ *
  * ## Import
  *
  * An existing private network may be imported by `<ID>@<zone>`

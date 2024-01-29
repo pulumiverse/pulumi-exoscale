@@ -11,6 +11,40 @@ import (
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
+// Fetch Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/) data.
+//
+// Corresponding resource: exoscale_compute_instance.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myInstance, err := exoscale.LookupComputeInstance(ctx, &exoscale.LookupComputeInstanceArgs{
+//				Zone: "ch-gva-2",
+//				Name: pulumi.StringRef("my-instance"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("myInstanceId", myInstance.Id)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Please refer to the examples
+// directory for complete configuration examples.
 func LookupComputeInstance(ctx *pulumi.Context, args *LookupComputeInstanceArgs, opts ...pulumi.InvokeOption) (*LookupComputeInstanceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupComputeInstanceResult

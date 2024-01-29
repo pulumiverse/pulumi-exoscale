@@ -254,7 +254,7 @@ export interface DatabaseTimeouts {
     update?: string;
 }
 
-export interface ElasticIPHealthcheck {
+export interface ElasticIpHealthcheck {
     /**
      * The healthcheck interval (seconds; must be between `5` and `300`; default: `10`).
      */
@@ -318,7 +318,7 @@ export interface GetComputeInstanceListInstance {
     zone: string;
 }
 
-export interface GetDatabaseURITimeouts {
+export interface GetDatabaseUriTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
@@ -354,7 +354,7 @@ export interface GetDomainRecordRecord {
     ttl?: number;
 }
 
-export interface GetElasticIPHealthcheck {
+export interface GetElasticIpHealthcheck {
     interval: number;
     mode: string;
     port: number;
@@ -366,25 +366,25 @@ export interface GetElasticIPHealthcheck {
     uri: string;
 }
 
-export interface GetIAMAPIKeyTimeouts {
+export interface GetIamApiKeyTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
     read?: string;
 }
 
-export interface GetIAMOrgPolicyServices {
+export interface GetIamOrgPolicyServices {
     /**
      * List of IAM service rules (if type is `rules`).
      */
-    rules: outputs.GetIAMOrgPolicyServicesRule[];
+    rules: outputs.GetIamOrgPolicyServicesRule[];
     /**
      * Service type (`rules`, `allow`, or `deny`).
      */
     type: string;
 }
 
-export interface GetIAMOrgPolicyServicesRule {
+export interface GetIamOrgPolicyServicesRule {
     /**
      * IAM policy rule action (`allow` or `deny`).
      */
@@ -399,14 +399,14 @@ export interface GetIAMOrgPolicyServicesRule {
     resources: string[];
 }
 
-export interface GetIAMOrgPolicyTimeouts {
+export interface GetIamOrgPolicyTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
     read?: string;
 }
 
-export interface GetIAMRolePolicy {
+export interface GetIamRolePolicy {
     /**
      * Default service strategy (`allow` or `deny`).
      */
@@ -414,21 +414,21 @@ export interface GetIAMRolePolicy {
     /**
      * IAM policy services.
      */
-    services: {[key: string]: outputs.GetIAMRolePolicyServices};
+    services: {[key: string]: outputs.GetIamRolePolicyServices};
 }
 
-export interface GetIAMRolePolicyServices {
+export interface GetIamRolePolicyServices {
     /**
      * List of IAM service rules (if type is `rules`).
      */
-    rules: outputs.GetIAMRolePolicyServicesRule[];
+    rules: outputs.GetIamRolePolicyServicesRule[];
     /**
      * Service type (`rules`, `allow`, or `deny`).
      */
     type: string;
 }
 
-export interface GetIAMRolePolicyServicesRule {
+export interface GetIamRolePolicyServicesRule {
     /**
      * IAM policy rule action (`allow` or `deny`).
      */
@@ -443,7 +443,7 @@ export interface GetIAMRolePolicyServicesRule {
     resources: string[];
 }
 
-export interface GetIAMRoleTimeouts {
+export interface GetIamRoleTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
@@ -487,12 +487,12 @@ export interface GetInstancePoolListPoolInstance {
     publicIpAddress: string;
 }
 
-export interface GetNLBServiceListService {
+export interface GetNlbServiceListService {
     /**
      * NLB service description.
      */
     description: string;
-    healthcheck: outputs.GetNLBServiceListServiceHealthcheck;
+    healthcheck: outputs.GetNlbServiceListServiceHealthcheck;
     /**
      * NLB service ID.
      */
@@ -527,7 +527,7 @@ export interface GetNLBServiceListService {
     targetPort: number;
 }
 
-export interface GetNLBServiceListServiceHealthcheck {
+export interface GetNlbServiceListServiceHealthcheck {
     interval: number;
     mode: string;
     port: number;
@@ -537,14 +537,14 @@ export interface GetNLBServiceListServiceHealthcheck {
     uri: string;
 }
 
-export interface GetNLBServiceListTimeouts {
+export interface GetNlbServiceListTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
     read?: string;
 }
 
-export interface GetSKSClusterListCluster {
+export interface GetSksClusterListCluster {
     /**
      * @deprecated This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
      */
@@ -563,14 +563,14 @@ export interface GetSKSClusterListCluster {
     metricsServer?: boolean;
     name?: string;
     nodepools: string[];
-    oidc: outputs.GetSKSClusterListClusterOidc;
+    oidc: outputs.GetSksClusterListClusterOidc;
     serviceLevel?: string;
     state: string;
     version: string;
     zone: string;
 }
 
-export interface GetSKSClusterListClusterOidc {
+export interface GetSksClusterListClusterOidc {
     clientId: string;
     groupsClaim?: string;
     groupsPrefix?: string;
@@ -580,7 +580,7 @@ export interface GetSKSClusterListClusterOidc {
     usernamePrefix?: string;
 }
 
-export interface GetSKSClusterOidc {
+export interface GetSksClusterOidc {
     /**
      * The OpenID client ID.
      */
@@ -611,7 +611,7 @@ export interface GetSKSClusterOidc {
     usernamePrefix?: string;
 }
 
-export interface GetSKSNodepoolListNodepool {
+export interface GetSksNodepoolListNodepool {
     antiAffinityGroupIds?: string[];
     clusterId: string;
     createdAt: string;
@@ -635,25 +635,25 @@ export interface GetSKSNodepoolListNodepool {
     zone: string;
 }
 
-export interface IAMAPIKeyTimeouts {
+export interface IamApiKeyTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
     read?: string;
 }
 
-export interface IAMOrgPolicyServices {
+export interface IamOrgPolicyServices {
     /**
      * List of IAM service rules (if type is `rules`).
      */
-    rules: outputs.IAMOrgPolicyServicesRule[];
+    rules: outputs.IamOrgPolicyServicesRule[];
     /**
      * Service type (`rules`, `allow`, or `deny`).
      */
     type: string;
 }
 
-export interface IAMOrgPolicyServicesRule {
+export interface IamOrgPolicyServicesRule {
     /**
      * IAM policy rule action (`allow` or `deny`).
      */
@@ -668,14 +668,14 @@ export interface IAMOrgPolicyServicesRule {
     resources: string[];
 }
 
-export interface IAMOrgPolicyTimeouts {
+export interface IamOrgPolicyTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
     read?: string;
 }
 
-export interface IAMRolePolicy {
+export interface IamRolePolicy {
     /**
      * Default service strategy (`allow` or `deny`).
      */
@@ -683,21 +683,21 @@ export interface IAMRolePolicy {
     /**
      * IAM policy services.
      */
-    services: {[key: string]: outputs.IAMRolePolicyServices};
+    services: {[key: string]: outputs.IamRolePolicyServices};
 }
 
-export interface IAMRolePolicyServices {
+export interface IamRolePolicyServices {
     /**
      * List of IAM service rules (if type is `rules`).
      */
-    rules: outputs.IAMRolePolicyServicesRule[];
+    rules: outputs.IamRolePolicyServicesRule[];
     /**
      * Service type (`rules`, `allow`, or `deny`).
      */
     type: string;
 }
 
-export interface IAMRolePolicyServicesRule {
+export interface IamRolePolicyServicesRule {
     /**
      * IAM policy rule action (`allow` or `deny`).
      */
@@ -712,7 +712,7 @@ export interface IAMRolePolicyServicesRule {
     resources: string[];
 }
 
-export interface IAMRoleTimeouts {
+export interface IamRoleTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
@@ -738,7 +738,7 @@ export interface InstancePoolInstance {
     publicIpAddress: string;
 }
 
-export interface NLBServiceHealthcheck {
+export interface NlbServiceHealthcheck {
     /**
      * The healthcheck interval in seconds (default: `10`).
      */
@@ -769,7 +769,7 @@ export interface NLBServiceHealthcheck {
     uri?: string;
 }
 
-export interface SKSClusterOidc {
+export interface SksClusterOidc {
     /**
      * The OpenID client ID.
      */

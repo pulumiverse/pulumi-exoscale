@@ -12,6 +12,50 @@ import (
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
+// Manage Exoscale [Instance Pools](https://community.exoscale.com/documentation/compute/instance-pools/).
+//
+// Corresponding data sources: exoscale_instance_pool, exoscale_instance_pool_list.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myTemplate, err := exoscale.GetTemplate(ctx, &exoscale.GetTemplateArgs{
+//				Zone: "ch-gva-2",
+//				Name: pulumi.StringRef("Linux Ubuntu 22.04 LTS 64-bit"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = exoscale.NewInstancePool(ctx, "myInstancePool", &exoscale.InstancePoolArgs{
+//				Zone:         pulumi.String("ch-gva-2"),
+//				TemplateId:   *pulumi.String(myTemplate.Id),
+//				InstanceType: pulumi.String("standard.medium"),
+//				DiskSize:     pulumi.Int(10),
+//				Size:         pulumi.Int(3),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Please refer to the examples
+// directory for complete configuration examples.
+//
 // ## Import
 //
 // An existing instance pool may be imported by `<ID>@<zone>`

@@ -11,6 +11,38 @@ import (
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
+// Fetch Exoscale [Compute Instance Templates](https://community.exoscale.com/documentation/compute/custom-templates/) data.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myTemplate, err := exoscale.GetTemplate(ctx, &exoscale.GetTemplateArgs{
+//				Zone: "ch-gva-2",
+//				Name: pulumi.StringRef("Linux Ubuntu 22.04 LTS 64-bit"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("myTemplateId", myTemplate.Id)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Please refer to the examples
+// directory for complete configuration examples.
 func GetTemplate(ctx *pulumi.Context, args *GetTemplateArgs, opts ...pulumi.InvokeOption) (*GetTemplateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTemplateResult

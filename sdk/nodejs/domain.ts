@@ -5,6 +5,24 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Manage Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domains.
+ *
+ * Corresponding data source: exoscale_domain.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumiverse/exoscale";
+ *
+ * const myDomain = new exoscale.Domain("myDomain", {});
+ * ```
+ *
+ * Next step is to attach exoscale_domain_record(s) to the domain.
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ *
  * ## Import
  *
  * An existing DNS domain may be imported by `ID`

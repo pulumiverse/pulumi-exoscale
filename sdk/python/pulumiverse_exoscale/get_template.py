@@ -98,7 +98,22 @@ def get_template(id: Optional[str] = None,
                  zone: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTemplateResult:
     """
-    Use this data source to access information about an existing resource.
+    Fetch Exoscale [Compute Instance Templates](https://community.exoscale.com/documentation/compute/custom-templates/) data.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_exoscale as exoscale
+
+    my_template = exoscale.get_template(zone="ch-gva-2",
+        name="Linux Ubuntu 22.04 LTS 64-bit")
+    pulumi.export("myTemplateId", my_template.id)
+    ```
+
+    Please refer to the examples
+    directory for complete configuration examples.
+
 
     :param str id: The compute instance template ID to match (conflicts with `name`).
     :param str name: The template name to match (conflicts with `id`) (when multiple templates have the same name, the newest one will be returned).
@@ -128,7 +143,22 @@ def get_template_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                         zone: Optional[pulumi.Input[str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTemplateResult]:
     """
-    Use this data source to access information about an existing resource.
+    Fetch Exoscale [Compute Instance Templates](https://community.exoscale.com/documentation/compute/custom-templates/) data.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_exoscale as exoscale
+
+    my_template = exoscale.get_template(zone="ch-gva-2",
+        name="Linux Ubuntu 22.04 LTS 64-bit")
+    pulumi.export("myTemplateId", my_template.id)
+    ```
+
+    Please refer to the examples
+    directory for complete configuration examples.
+
 
     :param str id: The compute instance template ID to match (conflicts with `name`).
     :param str name: The template name to match (conflicts with `id`) (when multiple templates have the same name, the newest one will be returned).

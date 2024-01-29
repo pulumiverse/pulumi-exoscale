@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['SKSNodepoolArgs', 'SKSNodepool']
+__all__ = ['SksNodepoolArgs', 'SksNodepool']
 
 @pulumi.input_type
-class SKSNodepoolArgs:
+class SksNodepoolArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
                  instance_type: pulumi.Input[str],
@@ -30,7 +30,7 @@ class SKSNodepoolArgs:
                  storage_lvm: Optional[pulumi.Input[bool]] = None,
                  taints: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        The set of arguments for constructing a SKSNodepool resource.
+        The set of arguments for constructing a SksNodepool resource.
         :param pulumi.Input[str] cluster_id: ❗ The parent exoscale*sks*cluster ID.
         :param pulumi.Input[str] instance_type: The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
@@ -44,7 +44,7 @@ class SKSNodepoolArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_network_ids: A list of exoscale*private*network (IDs) to be attached to the managed instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of exoscale*security*group (IDs) to be attached to the managed instances.
         :param pulumi.Input[bool] storage_lvm: Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] taints: A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] taints: A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) ('taints = { \\n\\n = "\\n\\n:\\n\\n" }').
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "instance_type", instance_type)
@@ -242,7 +242,7 @@ class SKSNodepoolArgs:
     @pulumi.getter
     def taints(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
+        A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) ('taints = { \\n\\n = "\\n\\n:\\n\\n" }').
         """
         return pulumi.get(self, "taints")
 
@@ -252,7 +252,7 @@ class SKSNodepoolArgs:
 
 
 @pulumi.input_type
-class _SKSNodepoolState:
+class _SksNodepoolState:
     def __init__(__self__, *,
                  anti_affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
@@ -275,7 +275,7 @@ class _SKSNodepoolState:
                  version: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering SKSNodepool resources.
+        Input properties used for looking up and filtering SksNodepool resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: A list of exoscale*anti*affinity_group (IDs) to be attached to the managed instances.
         :param pulumi.Input[str] cluster_id: ❗ The parent exoscale*sks*cluster ID.
         :param pulumi.Input[str] created_at: The pool creation date.
@@ -291,7 +291,7 @@ class _SKSNodepoolState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of exoscale*security*group (IDs) to be attached to the managed instances.
         :param pulumi.Input[str] state: The current pool state.
         :param pulumi.Input[bool] storage_lvm: Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] taints: A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] taints: A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) ('taints = { \\n\\n = "\\n\\n:\\n\\n" }').
         :param pulumi.Input[str] template_id: The managed instances template ID.
         :param pulumi.Input[str] version: The managed instances version.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
@@ -530,7 +530,7 @@ class _SKSNodepoolState:
     @pulumi.getter
     def taints(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
+        A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) ('taints = { \\n\\n = "\\n\\n:\\n\\n" }').
         """
         return pulumi.get(self, "taints")
 
@@ -575,7 +575,7 @@ class _SKSNodepoolState:
         pulumi.set(self, "zone", value)
 
 
-class SKSNodepool(pulumi.CustomResource):
+class SksNodepool(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -597,12 +597,31 @@ class SKSNodepool(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Manage Exoscale [Scalable Kubernetes Service (SKS)](https://community.exoscale.com/documentation/sks/) Node Pools.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumiverse_exoscale as exoscale
+
+        my_sks_cluster = exoscale.SksCluster("mySksCluster", zone="ch-gva-2")
+        my_sks_nodepool = exoscale.SksNodepool("mySksNodepool",
+            cluster_id=my_sks_cluster.id,
+            zone=my_sks_cluster.zone,
+            instance_type="standard.medium",
+            size=3)
+        ```
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         ## Import
 
         An existing SKS node pool may be imported by `<cluster-ID>/<nodepool-ID>@<zone>`
 
         ```sh
-         $ pulumi import exoscale:index/sKSNodepool:SKSNodepool \\
+         $ pulumi import exoscale:index/sksNodepool:SksNodepool \\
         ```
 
          exoscale_sks_nodepool.my_sks_nodepool \\
@@ -623,22 +642,41 @@ class SKSNodepool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_network_ids: A list of exoscale*private*network (IDs) to be attached to the managed instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of exoscale*security*group (IDs) to be attached to the managed instances.
         :param pulumi.Input[bool] storage_lvm: Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] taints: A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] taints: A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) ('taints = { \\n\\n = "\\n\\n:\\n\\n" }').
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SKSNodepoolArgs,
+                 args: SksNodepoolArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manage Exoscale [Scalable Kubernetes Service (SKS)](https://community.exoscale.com/documentation/sks/) Node Pools.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumiverse_exoscale as exoscale
+
+        my_sks_cluster = exoscale.SksCluster("mySksCluster", zone="ch-gva-2")
+        my_sks_nodepool = exoscale.SksNodepool("mySksNodepool",
+            cluster_id=my_sks_cluster.id,
+            zone=my_sks_cluster.zone,
+            instance_type="standard.medium",
+            size=3)
+        ```
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         ## Import
 
         An existing SKS node pool may be imported by `<cluster-ID>/<nodepool-ID>@<zone>`
 
         ```sh
-         $ pulumi import exoscale:index/sKSNodepool:SKSNodepool \\
+         $ pulumi import exoscale:index/sksNodepool:SksNodepool \\
         ```
 
          exoscale_sks_nodepool.my_sks_nodepool \\
@@ -646,12 +684,12 @@ class SKSNodepool(pulumi.CustomResource):
          f81d4fae-7dec-11d0-a765-00a0c91e6bf6/9ecc6b8b-73d4-4211-8ced-f7f29bb79524@ch-gva-2
 
         :param str resource_name: The name of the resource.
-        :param SKSNodepoolArgs args: The arguments to use to populate this resource's properties.
+        :param SksNodepoolArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SKSNodepoolArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SksNodepoolArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -682,7 +720,7 @@ class SKSNodepool(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SKSNodepoolArgs.__new__(SKSNodepoolArgs)
+            __props__ = SksNodepoolArgs.__new__(SksNodepoolArgs)
 
             __props__.__dict__["anti_affinity_group_ids"] = anti_affinity_group_ids
             if cluster_id is None and not opts.urn:
@@ -712,8 +750,8 @@ class SKSNodepool(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["template_id"] = None
             __props__.__dict__["version"] = None
-        super(SKSNodepool, __self__).__init__(
-            'exoscale:index/sKSNodepool:SKSNodepool',
+        super(SksNodepool, __self__).__init__(
+            'exoscale:index/sksNodepool:SksNodepool',
             resource_name,
             __props__,
             opts)
@@ -741,9 +779,9 @@ class SKSNodepool(pulumi.CustomResource):
             taints: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             template_id: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None,
-            zone: Optional[pulumi.Input[str]] = None) -> 'SKSNodepool':
+            zone: Optional[pulumi.Input[str]] = None) -> 'SksNodepool':
         """
-        Get an existing SKSNodepool resource's state with the given name, id, and optional extra
+        Get an existing SksNodepool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -764,14 +802,14 @@ class SKSNodepool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of exoscale*security*group (IDs) to be attached to the managed instances.
         :param pulumi.Input[str] state: The current pool state.
         :param pulumi.Input[bool] storage_lvm: Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] taints: A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] taints: A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) ('taints = { \\n\\n = "\\n\\n:\\n\\n" }').
         :param pulumi.Input[str] template_id: The managed instances template ID.
         :param pulumi.Input[str] version: The managed instances version.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _SKSNodepoolState.__new__(_SKSNodepoolState)
+        __props__ = _SksNodepoolState.__new__(_SksNodepoolState)
 
         __props__.__dict__["anti_affinity_group_ids"] = anti_affinity_group_ids
         __props__.__dict__["cluster_id"] = cluster_id
@@ -793,7 +831,7 @@ class SKSNodepool(pulumi.CustomResource):
         __props__.__dict__["template_id"] = template_id
         __props__.__dict__["version"] = version
         __props__.__dict__["zone"] = zone
-        return SKSNodepool(resource_name, opts=opts, __props__=__props__)
+        return SksNodepool(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="antiAffinityGroupIds")
@@ -924,7 +962,7 @@ class SKSNodepool(pulumi.CustomResource):
     @pulumi.getter
     def taints(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) (`<value>:<effect>`).
+        A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) ('taints = { \\n\\n = "\\n\\n:\\n\\n" }').
         """
         return pulumi.get(self, "taints")
 

@@ -11,16 +11,16 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
-    'GetSKSNodepoolListResult',
-    'AwaitableGetSKSNodepoolListResult',
+    'GetSksNodepoolListResult',
+    'AwaitableGetSksNodepoolListResult',
     'get_sks_nodepool_list',
     'get_sks_nodepool_list_output',
 ]
 
 @pulumi.output_type
-class GetSKSNodepoolListResult:
+class GetSksNodepoolListResult:
     """
-    A collection of values returned by getSKSNodepoolList.
+    A collection of values returned by getSksNodepoolList.
     """
     def __init__(__self__, cluster_id=None, created_at=None, deploy_target_id=None, description=None, disk_size=None, id=None, instance_pool_id=None, instance_prefix=None, instance_type=None, labels=None, name=None, nodepools=None, size=None, state=None, storage_lvm=None, taints=None, template_id=None, version=None, zone=None):
         if cluster_id and not isinstance(cluster_id, str):
@@ -171,7 +171,7 @@ class GetSKSNodepoolListResult:
 
     @property
     @pulumi.getter
-    def nodepools(self) -> Sequence['outputs.GetSKSNodepoolListNodepoolResult']:
+    def nodepools(self) -> Sequence['outputs.GetSksNodepoolListNodepoolResult']:
         return pulumi.get(self, "nodepools")
 
     @property
@@ -231,12 +231,12 @@ class GetSKSNodepoolListResult:
         return pulumi.get(self, "zone")
 
 
-class AwaitableGetSKSNodepoolListResult(GetSKSNodepoolListResult):
+class AwaitableGetSksNodepoolListResult(GetSksNodepoolListResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetSKSNodepoolListResult(
+        return GetSksNodepoolListResult(
             cluster_id=self.cluster_id,
             created_at=self.created_at,
             deploy_target_id=self.deploy_target_id,
@@ -276,7 +276,7 @@ def get_sks_nodepool_list(cluster_id: Optional[str] = None,
                           template_id: Optional[str] = None,
                           version: Optional[str] = None,
                           zone: Optional[str] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSKSNodepoolListResult:
+                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSksNodepoolListResult:
     """
     Use this data source to access information about an existing resource.
     """
@@ -300,9 +300,9 @@ def get_sks_nodepool_list(cluster_id: Optional[str] = None,
     __args__['version'] = version
     __args__['zone'] = zone
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('exoscale:index/getSKSNodepoolList:getSKSNodepoolList', __args__, opts=opts, typ=GetSKSNodepoolListResult).value
+    __ret__ = pulumi.runtime.invoke('exoscale:index/getSksNodepoolList:getSksNodepoolList', __args__, opts=opts, typ=GetSksNodepoolListResult).value
 
-    return AwaitableGetSKSNodepoolListResult(
+    return AwaitableGetSksNodepoolListResult(
         cluster_id=pulumi.get(__ret__, 'cluster_id'),
         created_at=pulumi.get(__ret__, 'created_at'),
         deploy_target_id=pulumi.get(__ret__, 'deploy_target_id'),
@@ -343,7 +343,7 @@ def get_sks_nodepool_list_output(cluster_id: Optional[pulumi.Input[Optional[str]
                                  template_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  version: Optional[pulumi.Input[Optional[str]]] = None,
                                  zone: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSKSNodepoolListResult]:
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSksNodepoolListResult]:
     """
     Use this data source to access information about an existing resource.
     """

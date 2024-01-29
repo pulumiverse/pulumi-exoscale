@@ -5,6 +5,32 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Manage Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domain Records.
+ *
+ * Corresponding data source: exoscale_domain_record.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumiverse/exoscale";
+ *
+ * const myDomain = new exoscale.Domain("myDomain", {});
+ * const myHost = new exoscale.DomainRecord("myHost", {
+ *     domain: myDomain.id,
+ *     recordType: "A",
+ *     content: "1.2.3.4",
+ * });
+ * const myHostAlias = new exoscale.DomainRecord("myHostAlias", {
+ *     domain: myDomain.id,
+ *     recordType: "CNAME",
+ *     content: myHost.hostname,
+ * });
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ *
  * ## Import
  *
  * An existing DNS domain record may be imported by `<ID>`
@@ -50,6 +76,10 @@ export class DomainRecord extends pulumi.CustomResource {
      */
     public readonly content!: pulumi.Output<string>;
     /**
+     * The normalized value of the record
+     */
+    public /*out*/ readonly contentNormalized!: pulumi.Output<string>;
+    /**
      * ❗ The parent exoscale.Domain to attach the record to.
      */
     public readonly domain!: pulumi.Output<string>;
@@ -88,6 +118,7 @@ export class DomainRecord extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DomainRecordState | undefined;
             resourceInputs["content"] = state ? state.content : undefined;
+            resourceInputs["contentNormalized"] = state ? state.contentNormalized : undefined;
             resourceInputs["domain"] = state ? state.domain : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -111,6 +142,7 @@ export class DomainRecord extends pulumi.CustomResource {
             resourceInputs["prio"] = args ? args.prio : undefined;
             resourceInputs["recordType"] = args ? args.recordType : undefined;
             resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["contentNormalized"] = undefined /*out*/;
             resourceInputs["hostname"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -126,6 +158,10 @@ export interface DomainRecordState {
      * The record value.
      */
     content?: pulumi.Input<string>;
+    /**
+     * The normalized value of the record
+     */
+    contentNormalized?: pulumi.Input<string>;
     /**
      * ❗ The parent exoscale.Domain to attach the record to.
      */

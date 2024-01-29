@@ -11,16 +11,16 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
-    'GetSKSClusterListResult',
-    'AwaitableGetSKSClusterListResult',
+    'GetSksClusterListResult',
+    'AwaitableGetSksClusterListResult',
     'get_sks_cluster_list',
     'get_sks_cluster_list_output',
 ]
 
 @pulumi.output_type
-class GetSKSClusterListResult:
+class GetSksClusterListResult:
     """
-    A collection of values returned by getSKSClusterList.
+    A collection of values returned by getSksClusterList.
     """
     def __init__(__self__, aggregation_ca=None, auto_upgrade=None, clusters=None, cni=None, control_plane_ca=None, created_at=None, description=None, endpoint=None, exoscale_ccm=None, id=None, kubelet_ca=None, labels=None, metrics_server=None, name=None, service_level=None, state=None, version=None, zone=None):
         if aggregation_ca and not isinstance(aggregation_ca, str):
@@ -96,7 +96,7 @@ class GetSKSClusterListResult:
 
     @property
     @pulumi.getter
-    def clusters(self) -> Sequence['outputs.GetSKSClusterListClusterResult']:
+    def clusters(self) -> Sequence['outputs.GetSksClusterListClusterResult']:
         return pulumi.get(self, "clusters")
 
     @property
@@ -220,12 +220,12 @@ class GetSKSClusterListResult:
         return pulumi.get(self, "zone")
 
 
-class AwaitableGetSKSClusterListResult(GetSKSClusterListResult):
+class AwaitableGetSksClusterListResult(GetSksClusterListResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetSKSClusterListResult(
+        return GetSksClusterListResult(
             aggregation_ca=self.aggregation_ca,
             auto_upgrade=self.auto_upgrade,
             clusters=self.clusters,
@@ -263,7 +263,7 @@ def get_sks_cluster_list(aggregation_ca: Optional[str] = None,
                          state: Optional[str] = None,
                          version: Optional[str] = None,
                          zone: Optional[str] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSKSClusterListResult:
+                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSksClusterListResult:
     """
     Use this data source to access information about an existing resource.
     """
@@ -286,9 +286,9 @@ def get_sks_cluster_list(aggregation_ca: Optional[str] = None,
     __args__['version'] = version
     __args__['zone'] = zone
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('exoscale:index/getSKSClusterList:getSKSClusterList', __args__, opts=opts, typ=GetSKSClusterListResult).value
+    __ret__ = pulumi.runtime.invoke('exoscale:index/getSksClusterList:getSksClusterList', __args__, opts=opts, typ=GetSksClusterListResult).value
 
-    return AwaitableGetSKSClusterListResult(
+    return AwaitableGetSksClusterListResult(
         aggregation_ca=pulumi.get(__ret__, 'aggregation_ca'),
         auto_upgrade=pulumi.get(__ret__, 'auto_upgrade'),
         clusters=pulumi.get(__ret__, 'clusters'),
@@ -327,7 +327,7 @@ def get_sks_cluster_list_output(aggregation_ca: Optional[pulumi.Input[Optional[s
                                 state: Optional[pulumi.Input[Optional[str]]] = None,
                                 version: Optional[pulumi.Input[Optional[str]]] = None,
                                 zone: Optional[pulumi.Input[str]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSKSClusterListResult]:
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSksClusterListResult]:
     """
     Use this data source to access information about an existing resource.
     """

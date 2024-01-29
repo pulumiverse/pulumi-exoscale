@@ -11,26 +11,26 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['IAMRoleArgs', 'IAMRole']
+__all__ = ['IamRoleArgs', 'IamRole']
 
 @pulumi.input_type
-class IAMRoleArgs:
+class IamRoleArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  editable: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 policy: Optional[pulumi.Input['IAMRolePolicyArgs']] = None,
-                 timeouts: Optional[pulumi.Input['IAMRoleTimeoutsArgs']] = None):
+                 policy: Optional[pulumi.Input['IamRolePolicyArgs']] = None,
+                 timeouts: Optional[pulumi.Input['IamRoleTimeoutsArgs']] = None):
         """
-        The set of arguments for constructing a IAMRole resource.
+        The set of arguments for constructing a IamRole resource.
         :param pulumi.Input[str] description: A free-form text describing the IAM Role
         :param pulumi.Input[bool] editable: Defines if IAM Role Policy is editable or not.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: IAM Role labels.
-        :param pulumi.Input[str] name: Name of IAM Role.
+        :param pulumi.Input[str] name: ❗Name of IAM Role.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: IAM Role permissions.
-        :param pulumi.Input['IAMRolePolicyArgs'] policy: IAM Policy.
+        :param pulumi.Input['IamRolePolicyArgs'] policy: IAM Policy.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -87,7 +87,7 @@ class IAMRoleArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of IAM Role.
+        ❗Name of IAM Role.
         """
         return pulumi.get(self, "name")
 
@@ -109,44 +109,44 @@ class IAMRoleArgs:
 
     @property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input['IAMRolePolicyArgs']]:
+    def policy(self) -> Optional[pulumi.Input['IamRolePolicyArgs']]:
         """
         IAM Policy.
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input['IAMRolePolicyArgs']]):
+    def policy(self, value: Optional[pulumi.Input['IamRolePolicyArgs']]):
         pulumi.set(self, "policy", value)
 
     @property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['IAMRoleTimeoutsArgs']]:
+    def timeouts(self) -> Optional[pulumi.Input['IamRoleTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['IAMRoleTimeoutsArgs']]):
+    def timeouts(self, value: Optional[pulumi.Input['IamRoleTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
-class _IAMRoleState:
+class _IamRoleState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  editable: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 policy: Optional[pulumi.Input['IAMRolePolicyArgs']] = None,
-                 timeouts: Optional[pulumi.Input['IAMRoleTimeoutsArgs']] = None):
+                 policy: Optional[pulumi.Input['IamRolePolicyArgs']] = None,
+                 timeouts: Optional[pulumi.Input['IamRoleTimeoutsArgs']] = None):
         """
-        Input properties used for looking up and filtering IAMRole resources.
+        Input properties used for looking up and filtering IamRole resources.
         :param pulumi.Input[str] description: A free-form text describing the IAM Role
         :param pulumi.Input[bool] editable: Defines if IAM Role Policy is editable or not.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: IAM Role labels.
-        :param pulumi.Input[str] name: Name of IAM Role.
+        :param pulumi.Input[str] name: ❗Name of IAM Role.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: IAM Role permissions.
-        :param pulumi.Input['IAMRolePolicyArgs'] policy: IAM Policy.
+        :param pulumi.Input['IamRolePolicyArgs'] policy: IAM Policy.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -203,7 +203,7 @@ class _IAMRoleState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of IAM Role.
+        ❗Name of IAM Role.
         """
         return pulumi.get(self, "name")
 
@@ -225,27 +225,27 @@ class _IAMRoleState:
 
     @property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input['IAMRolePolicyArgs']]:
+    def policy(self) -> Optional[pulumi.Input['IamRolePolicyArgs']]:
         """
         IAM Policy.
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input['IAMRolePolicyArgs']]):
+    def policy(self, value: Optional[pulumi.Input['IamRolePolicyArgs']]):
         pulumi.set(self, "policy", value)
 
     @property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['IAMRoleTimeoutsArgs']]:
+    def timeouts(self) -> Optional[pulumi.Input['IamRoleTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['IAMRoleTimeoutsArgs']]):
+    def timeouts(self, value: Optional[pulumi.Input['IamRoleTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
-class IAMRole(pulumi.CustomResource):
+class IamRole(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -255,8 +255,8 @@ class IAMRole(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 policy: Optional[pulumi.Input[pulumi.InputType['IAMRolePolicyArgs']]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['IAMRoleTimeoutsArgs']]] = None,
+                 policy: Optional[pulumi.Input[pulumi.InputType['IamRolePolicyArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['IamRoleTimeoutsArgs']]] = None,
                  __props__=None):
         """
         Manage Exoscale [IAM](https://community.exoscale.com/documentation/iam/) Role.
@@ -266,26 +266,26 @@ class IAMRole(pulumi.CustomResource):
         :param pulumi.Input[str] description: A free-form text describing the IAM Role
         :param pulumi.Input[bool] editable: Defines if IAM Role Policy is editable or not.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: IAM Role labels.
-        :param pulumi.Input[str] name: Name of IAM Role.
+        :param pulumi.Input[str] name: ❗Name of IAM Role.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: IAM Role permissions.
-        :param pulumi.Input[pulumi.InputType['IAMRolePolicyArgs']] policy: IAM Policy.
+        :param pulumi.Input[pulumi.InputType['IamRolePolicyArgs']] policy: IAM Policy.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[IAMRoleArgs] = None,
+                 args: Optional[IamRoleArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manage Exoscale [IAM](https://community.exoscale.com/documentation/iam/) Role.
 
         :param str resource_name: The name of the resource.
-        :param IAMRoleArgs args: The arguments to use to populate this resource's properties.
+        :param IamRoleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(IAMRoleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(IamRoleArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -299,8 +299,8 @@ class IAMRole(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 policy: Optional[pulumi.Input[pulumi.InputType['IAMRolePolicyArgs']]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['IAMRoleTimeoutsArgs']]] = None,
+                 policy: Optional[pulumi.Input[pulumi.InputType['IamRolePolicyArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['IamRoleTimeoutsArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -308,7 +308,7 @@ class IAMRole(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = IAMRoleArgs.__new__(IAMRoleArgs)
+            __props__ = IamRoleArgs.__new__(IamRoleArgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["editable"] = editable
@@ -317,8 +317,8 @@ class IAMRole(pulumi.CustomResource):
             __props__.__dict__["permissions"] = permissions
             __props__.__dict__["policy"] = policy
             __props__.__dict__["timeouts"] = timeouts
-        super(IAMRole, __self__).__init__(
-            'exoscale:index/iAMRole:IAMRole',
+        super(IamRole, __self__).__init__(
+            'exoscale:index/iamRole:IamRole',
             resource_name,
             __props__,
             opts)
@@ -332,10 +332,10 @@ class IAMRole(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            policy: Optional[pulumi.Input[pulumi.InputType['IAMRolePolicyArgs']]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['IAMRoleTimeoutsArgs']]] = None) -> 'IAMRole':
+            policy: Optional[pulumi.Input[pulumi.InputType['IamRolePolicyArgs']]] = None,
+            timeouts: Optional[pulumi.Input[pulumi.InputType['IamRoleTimeoutsArgs']]] = None) -> 'IamRole':
         """
-        Get an existing IAMRole resource's state with the given name, id, and optional extra
+        Get an existing IamRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -344,13 +344,13 @@ class IAMRole(pulumi.CustomResource):
         :param pulumi.Input[str] description: A free-form text describing the IAM Role
         :param pulumi.Input[bool] editable: Defines if IAM Role Policy is editable or not.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: IAM Role labels.
-        :param pulumi.Input[str] name: Name of IAM Role.
+        :param pulumi.Input[str] name: ❗Name of IAM Role.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: IAM Role permissions.
-        :param pulumi.Input[pulumi.InputType['IAMRolePolicyArgs']] policy: IAM Policy.
+        :param pulumi.Input[pulumi.InputType['IamRolePolicyArgs']] policy: IAM Policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _IAMRoleState.__new__(_IAMRoleState)
+        __props__ = _IamRoleState.__new__(_IamRoleState)
 
         __props__.__dict__["description"] = description
         __props__.__dict__["editable"] = editable
@@ -359,7 +359,7 @@ class IAMRole(pulumi.CustomResource):
         __props__.__dict__["permissions"] = permissions
         __props__.__dict__["policy"] = policy
         __props__.__dict__["timeouts"] = timeouts
-        return IAMRole(resource_name, opts=opts, __props__=__props__)
+        return IamRole(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
@@ -389,7 +389,7 @@ class IAMRole(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of IAM Role.
+        ❗Name of IAM Role.
         """
         return pulumi.get(self, "name")
 
@@ -403,7 +403,7 @@ class IAMRole(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def policy(self) -> pulumi.Output['outputs.IAMRolePolicy']:
+    def policy(self) -> pulumi.Output['outputs.IamRolePolicy']:
         """
         IAM Policy.
         """
@@ -411,6 +411,6 @@ class IAMRole(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timeouts(self) -> pulumi.Output[Optional['outputs.IAMRoleTimeouts']]:
+    def timeouts(self) -> pulumi.Output[Optional['outputs.IamRoleTimeouts']]:
         return pulumi.get(self, "timeouts")
 

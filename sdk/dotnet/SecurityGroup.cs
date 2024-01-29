@@ -11,6 +11,30 @@ using Pulumi;
 namespace Pulumiverse.Exoscale
 {
     /// <summary>
+    /// Manage Exoscale [Security Groups](https://community.exoscale.com/documentation/compute/security-groups/).
+    /// 
+    /// Corresponding data source: exoscale_security_group.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Exoscale = Pulumiverse.Exoscale;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mySecurityGroup = new Exoscale.SecurityGroup("mySecurityGroup");
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Next step is to attach exoscale_security_group_rule(s) to the group.
+    /// 
+    /// Please refer to the examples
+    /// directory for complete configuration examples.
+    /// 
     /// ## Import
     /// 
     /// An existing security group may be imported by `&lt;ID&gt;`

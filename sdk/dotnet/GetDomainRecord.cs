@@ -12,9 +12,19 @@ namespace Pulumiverse.Exoscale
 {
     public static class GetDomainRecord
     {
+        /// <summary>
+        /// Fetch Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domain Records data.
+        /// 
+        /// Corresponding resource: exoscale_domain_record.
+        /// </summary>
         public static Task<GetDomainRecordResult> InvokeAsync(GetDomainRecordArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainRecordResult>("exoscale:index/getDomainRecord:getDomainRecord", args ?? new GetDomainRecordArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Fetch Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domain Records data.
+        /// 
+        /// Corresponding resource: exoscale_domain_record.
+        /// </summary>
         public static Output<GetDomainRecordResult> Invoke(GetDomainRecordInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainRecordResult>("exoscale:index/getDomainRecord:getDomainRecord", args ?? new GetDomainRecordInvokeArgs(), options.WithDefaults());
     }

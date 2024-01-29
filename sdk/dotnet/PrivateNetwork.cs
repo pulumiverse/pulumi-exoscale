@@ -11,6 +11,54 @@ using Pulumi;
 namespace Pulumiverse.Exoscale
 {
     /// <summary>
+    /// Manage Exoscale [Private Networks](https://community.exoscale.com/documentation/compute/private-networks/).
+    /// 
+    /// Corresponding data source: exoscale_private_network.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// *Unmanaged* private network:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Exoscale = Pulumiverse.Exoscale;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myPrivateNetwork = new Exoscale.PrivateNetwork("myPrivateNetwork", new()
+    ///     {
+    ///         Zone = "ch-gva-2",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// *Managed* private network:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Exoscale = Pulumiverse.Exoscale;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myManagedPrivateNetwork = new Exoscale.PrivateNetwork("myManagedPrivateNetwork", new()
+    ///     {
+    ///         EndIp = "10.0.0.253",
+    ///         Netmask = "255.255.255.0",
+    ///         StartIp = "10.0.0.20",
+    ///         Zone = "ch-gva-2",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Please refer to the examples
+    /// directory for complete configuration examples.
+    /// 
     /// ## Import
     /// 
     /// An existing private network may be imported by `&lt;ID&gt;@&lt;zone&gt;`

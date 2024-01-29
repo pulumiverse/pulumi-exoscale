@@ -2227,7 +2227,7 @@ func (o DatabaseTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type ElasticIPHealthcheck struct {
+type ElasticIpHealthcheck struct {
 	// The healthcheck interval (seconds; must be between `5` and `300`; default: `10`).
 	Interval *int `pulumi:"interval"`
 	// The healthcheck mode (`tcp`, `http` or `https`; may only be set at creation time).
@@ -2248,18 +2248,18 @@ type ElasticIPHealthcheck struct {
 	Uri *string `pulumi:"uri"`
 }
 
-// ElasticIPHealthcheckInput is an input type that accepts ElasticIPHealthcheckArgs and ElasticIPHealthcheckOutput values.
-// You can construct a concrete instance of `ElasticIPHealthcheckInput` via:
+// ElasticIpHealthcheckInput is an input type that accepts ElasticIpHealthcheckArgs and ElasticIpHealthcheckOutput values.
+// You can construct a concrete instance of `ElasticIpHealthcheckInput` via:
 //
-//	ElasticIPHealthcheckArgs{...}
-type ElasticIPHealthcheckInput interface {
+//	ElasticIpHealthcheckArgs{...}
+type ElasticIpHealthcheckInput interface {
 	pulumi.Input
 
-	ToElasticIPHealthcheckOutput() ElasticIPHealthcheckOutput
-	ToElasticIPHealthcheckOutputWithContext(context.Context) ElasticIPHealthcheckOutput
+	ToElasticIpHealthcheckOutput() ElasticIpHealthcheckOutput
+	ToElasticIpHealthcheckOutputWithContext(context.Context) ElasticIpHealthcheckOutput
 }
 
-type ElasticIPHealthcheckArgs struct {
+type ElasticIpHealthcheckArgs struct {
 	// The healthcheck interval (seconds; must be between `5` and `300`; default: `10`).
 	Interval pulumi.IntPtrInput `pulumi:"interval"`
 	// The healthcheck mode (`tcp`, `http` or `https`; may only be set at creation time).
@@ -2280,155 +2280,155 @@ type ElasticIPHealthcheckArgs struct {
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
 
-func (ElasticIPHealthcheckArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElasticIPHealthcheck)(nil)).Elem()
+func (ElasticIpHealthcheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticIpHealthcheck)(nil)).Elem()
 }
 
-func (i ElasticIPHealthcheckArgs) ToElasticIPHealthcheckOutput() ElasticIPHealthcheckOutput {
-	return i.ToElasticIPHealthcheckOutputWithContext(context.Background())
+func (i ElasticIpHealthcheckArgs) ToElasticIpHealthcheckOutput() ElasticIpHealthcheckOutput {
+	return i.ToElasticIpHealthcheckOutputWithContext(context.Background())
 }
 
-func (i ElasticIPHealthcheckArgs) ToElasticIPHealthcheckOutputWithContext(ctx context.Context) ElasticIPHealthcheckOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElasticIPHealthcheckOutput)
+func (i ElasticIpHealthcheckArgs) ToElasticIpHealthcheckOutputWithContext(ctx context.Context) ElasticIpHealthcheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticIpHealthcheckOutput)
 }
 
-func (i ElasticIPHealthcheckArgs) ToElasticIPHealthcheckPtrOutput() ElasticIPHealthcheckPtrOutput {
-	return i.ToElasticIPHealthcheckPtrOutputWithContext(context.Background())
+func (i ElasticIpHealthcheckArgs) ToElasticIpHealthcheckPtrOutput() ElasticIpHealthcheckPtrOutput {
+	return i.ToElasticIpHealthcheckPtrOutputWithContext(context.Background())
 }
 
-func (i ElasticIPHealthcheckArgs) ToElasticIPHealthcheckPtrOutputWithContext(ctx context.Context) ElasticIPHealthcheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElasticIPHealthcheckOutput).ToElasticIPHealthcheckPtrOutputWithContext(ctx)
+func (i ElasticIpHealthcheckArgs) ToElasticIpHealthcheckPtrOutputWithContext(ctx context.Context) ElasticIpHealthcheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticIpHealthcheckOutput).ToElasticIpHealthcheckPtrOutputWithContext(ctx)
 }
 
-// ElasticIPHealthcheckPtrInput is an input type that accepts ElasticIPHealthcheckArgs, ElasticIPHealthcheckPtr and ElasticIPHealthcheckPtrOutput values.
-// You can construct a concrete instance of `ElasticIPHealthcheckPtrInput` via:
+// ElasticIpHealthcheckPtrInput is an input type that accepts ElasticIpHealthcheckArgs, ElasticIpHealthcheckPtr and ElasticIpHealthcheckPtrOutput values.
+// You can construct a concrete instance of `ElasticIpHealthcheckPtrInput` via:
 //
-//	        ElasticIPHealthcheckArgs{...}
+//	        ElasticIpHealthcheckArgs{...}
 //
 //	or:
 //
 //	        nil
-type ElasticIPHealthcheckPtrInput interface {
+type ElasticIpHealthcheckPtrInput interface {
 	pulumi.Input
 
-	ToElasticIPHealthcheckPtrOutput() ElasticIPHealthcheckPtrOutput
-	ToElasticIPHealthcheckPtrOutputWithContext(context.Context) ElasticIPHealthcheckPtrOutput
+	ToElasticIpHealthcheckPtrOutput() ElasticIpHealthcheckPtrOutput
+	ToElasticIpHealthcheckPtrOutputWithContext(context.Context) ElasticIpHealthcheckPtrOutput
 }
 
-type elasticIPHealthcheckPtrType ElasticIPHealthcheckArgs
+type elasticIpHealthcheckPtrType ElasticIpHealthcheckArgs
 
-func ElasticIPHealthcheckPtr(v *ElasticIPHealthcheckArgs) ElasticIPHealthcheckPtrInput {
-	return (*elasticIPHealthcheckPtrType)(v)
+func ElasticIpHealthcheckPtr(v *ElasticIpHealthcheckArgs) ElasticIpHealthcheckPtrInput {
+	return (*elasticIpHealthcheckPtrType)(v)
 }
 
-func (*elasticIPHealthcheckPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElasticIPHealthcheck)(nil)).Elem()
+func (*elasticIpHealthcheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticIpHealthcheck)(nil)).Elem()
 }
 
-func (i *elasticIPHealthcheckPtrType) ToElasticIPHealthcheckPtrOutput() ElasticIPHealthcheckPtrOutput {
-	return i.ToElasticIPHealthcheckPtrOutputWithContext(context.Background())
+func (i *elasticIpHealthcheckPtrType) ToElasticIpHealthcheckPtrOutput() ElasticIpHealthcheckPtrOutput {
+	return i.ToElasticIpHealthcheckPtrOutputWithContext(context.Background())
 }
 
-func (i *elasticIPHealthcheckPtrType) ToElasticIPHealthcheckPtrOutputWithContext(ctx context.Context) ElasticIPHealthcheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElasticIPHealthcheckPtrOutput)
+func (i *elasticIpHealthcheckPtrType) ToElasticIpHealthcheckPtrOutputWithContext(ctx context.Context) ElasticIpHealthcheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticIpHealthcheckPtrOutput)
 }
 
-type ElasticIPHealthcheckOutput struct{ *pulumi.OutputState }
+type ElasticIpHealthcheckOutput struct{ *pulumi.OutputState }
 
-func (ElasticIPHealthcheckOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElasticIPHealthcheck)(nil)).Elem()
+func (ElasticIpHealthcheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticIpHealthcheck)(nil)).Elem()
 }
 
-func (o ElasticIPHealthcheckOutput) ToElasticIPHealthcheckOutput() ElasticIPHealthcheckOutput {
+func (o ElasticIpHealthcheckOutput) ToElasticIpHealthcheckOutput() ElasticIpHealthcheckOutput {
 	return o
 }
 
-func (o ElasticIPHealthcheckOutput) ToElasticIPHealthcheckOutputWithContext(ctx context.Context) ElasticIPHealthcheckOutput {
+func (o ElasticIpHealthcheckOutput) ToElasticIpHealthcheckOutputWithContext(ctx context.Context) ElasticIpHealthcheckOutput {
 	return o
 }
 
-func (o ElasticIPHealthcheckOutput) ToElasticIPHealthcheckPtrOutput() ElasticIPHealthcheckPtrOutput {
-	return o.ToElasticIPHealthcheckPtrOutputWithContext(context.Background())
+func (o ElasticIpHealthcheckOutput) ToElasticIpHealthcheckPtrOutput() ElasticIpHealthcheckPtrOutput {
+	return o.ToElasticIpHealthcheckPtrOutputWithContext(context.Background())
 }
 
-func (o ElasticIPHealthcheckOutput) ToElasticIPHealthcheckPtrOutputWithContext(ctx context.Context) ElasticIPHealthcheckPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticIPHealthcheck) *ElasticIPHealthcheck {
+func (o ElasticIpHealthcheckOutput) ToElasticIpHealthcheckPtrOutputWithContext(ctx context.Context) ElasticIpHealthcheckPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticIpHealthcheck) *ElasticIpHealthcheck {
 		return &v
-	}).(ElasticIPHealthcheckPtrOutput)
+	}).(ElasticIpHealthcheckPtrOutput)
 }
 
 // The healthcheck interval (seconds; must be between `5` and `300`; default: `10`).
-func (o ElasticIPHealthcheckOutput) Interval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElasticIPHealthcheck) *int { return v.Interval }).(pulumi.IntPtrOutput)
+func (o ElasticIpHealthcheckOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticIpHealthcheck) *int { return v.Interval }).(pulumi.IntPtrOutput)
 }
 
 // The healthcheck mode (`tcp`, `http` or `https`; may only be set at creation time).
-func (o ElasticIPHealthcheckOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func(v ElasticIPHealthcheck) string { return v.Mode }).(pulumi.StringOutput)
+func (o ElasticIpHealthcheckOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticIpHealthcheck) string { return v.Mode }).(pulumi.StringOutput)
 }
 
 // The healthcheck target port (must be between `1` and `65535`).
-func (o ElasticIPHealthcheckOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v ElasticIPHealthcheck) int { return v.Port }).(pulumi.IntOutput)
+func (o ElasticIpHealthcheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v ElasticIpHealthcheck) int { return v.Port }).(pulumi.IntOutput)
 }
 
 // The number of failed healthcheck attempts before considering the target unhealthy (must be between `1` and `20`; default: `2`).
-func (o ElasticIPHealthcheckOutput) StrikesFail() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElasticIPHealthcheck) *int { return v.StrikesFail }).(pulumi.IntPtrOutput)
+func (o ElasticIpHealthcheckOutput) StrikesFail() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticIpHealthcheck) *int { return v.StrikesFail }).(pulumi.IntPtrOutput)
 }
 
 // The number of successful healthcheck attempts before considering the target healthy (must be between `1` and `20`; default: `3`).
-func (o ElasticIPHealthcheckOutput) StrikesOk() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElasticIPHealthcheck) *int { return v.StrikesOk }).(pulumi.IntPtrOutput)
+func (o ElasticIpHealthcheckOutput) StrikesOk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticIpHealthcheck) *int { return v.StrikesOk }).(pulumi.IntPtrOutput)
 }
 
 // The time before considering a healthcheck probing failed (seconds; must be between `2` and `60`; default: `3`).
-func (o ElasticIPHealthcheckOutput) Timeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElasticIPHealthcheck) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+func (o ElasticIpHealthcheckOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticIpHealthcheck) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
 
 // Disable TLS certificate verification for healthcheck in `https` mode (boolean; default: `false`).
-func (o ElasticIPHealthcheckOutput) TlsSkipVerify() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElasticIPHealthcheck) *bool { return v.TlsSkipVerify }).(pulumi.BoolPtrOutput)
+func (o ElasticIpHealthcheckOutput) TlsSkipVerify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElasticIpHealthcheck) *bool { return v.TlsSkipVerify }).(pulumi.BoolPtrOutput)
 }
 
 // The healthcheck server name to present with SNI in `https` mode.
-func (o ElasticIPHealthcheckOutput) TlsSni() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElasticIPHealthcheck) *string { return v.TlsSni }).(pulumi.StringPtrOutput)
+func (o ElasticIpHealthcheckOutput) TlsSni() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticIpHealthcheck) *string { return v.TlsSni }).(pulumi.StringPtrOutput)
 }
 
 // The healthcheck target URI (required in `http(s)` modes).
-func (o ElasticIPHealthcheckOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElasticIPHealthcheck) *string { return v.Uri }).(pulumi.StringPtrOutput)
+func (o ElasticIpHealthcheckOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticIpHealthcheck) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
 
-type ElasticIPHealthcheckPtrOutput struct{ *pulumi.OutputState }
+type ElasticIpHealthcheckPtrOutput struct{ *pulumi.OutputState }
 
-func (ElasticIPHealthcheckPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElasticIPHealthcheck)(nil)).Elem()
+func (ElasticIpHealthcheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticIpHealthcheck)(nil)).Elem()
 }
 
-func (o ElasticIPHealthcheckPtrOutput) ToElasticIPHealthcheckPtrOutput() ElasticIPHealthcheckPtrOutput {
+func (o ElasticIpHealthcheckPtrOutput) ToElasticIpHealthcheckPtrOutput() ElasticIpHealthcheckPtrOutput {
 	return o
 }
 
-func (o ElasticIPHealthcheckPtrOutput) ToElasticIPHealthcheckPtrOutputWithContext(ctx context.Context) ElasticIPHealthcheckPtrOutput {
+func (o ElasticIpHealthcheckPtrOutput) ToElasticIpHealthcheckPtrOutputWithContext(ctx context.Context) ElasticIpHealthcheckPtrOutput {
 	return o
 }
 
-func (o ElasticIPHealthcheckPtrOutput) Elem() ElasticIPHealthcheckOutput {
-	return o.ApplyT(func(v *ElasticIPHealthcheck) ElasticIPHealthcheck {
+func (o ElasticIpHealthcheckPtrOutput) Elem() ElasticIpHealthcheckOutput {
+	return o.ApplyT(func(v *ElasticIpHealthcheck) ElasticIpHealthcheck {
 		if v != nil {
 			return *v
 		}
-		var ret ElasticIPHealthcheck
+		var ret ElasticIpHealthcheck
 		return ret
-	}).(ElasticIPHealthcheckOutput)
+	}).(ElasticIpHealthcheckOutput)
 }
 
 // The healthcheck interval (seconds; must be between `5` and `300`; default: `10`).
-func (o ElasticIPHealthcheckPtrOutput) Interval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ElasticIPHealthcheck) *int {
+func (o ElasticIpHealthcheckPtrOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticIpHealthcheck) *int {
 		if v == nil {
 			return nil
 		}
@@ -2437,8 +2437,8 @@ func (o ElasticIPHealthcheckPtrOutput) Interval() pulumi.IntPtrOutput {
 }
 
 // The healthcheck mode (`tcp`, `http` or `https`; may only be set at creation time).
-func (o ElasticIPHealthcheckPtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ElasticIPHealthcheck) *string {
+func (o ElasticIpHealthcheckPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticIpHealthcheck) *string {
 		if v == nil {
 			return nil
 		}
@@ -2447,8 +2447,8 @@ func (o ElasticIPHealthcheckPtrOutput) Mode() pulumi.StringPtrOutput {
 }
 
 // The healthcheck target port (must be between `1` and `65535`).
-func (o ElasticIPHealthcheckPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ElasticIPHealthcheck) *int {
+func (o ElasticIpHealthcheckPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticIpHealthcheck) *int {
 		if v == nil {
 			return nil
 		}
@@ -2457,8 +2457,8 @@ func (o ElasticIPHealthcheckPtrOutput) Port() pulumi.IntPtrOutput {
 }
 
 // The number of failed healthcheck attempts before considering the target unhealthy (must be between `1` and `20`; default: `2`).
-func (o ElasticIPHealthcheckPtrOutput) StrikesFail() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ElasticIPHealthcheck) *int {
+func (o ElasticIpHealthcheckPtrOutput) StrikesFail() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticIpHealthcheck) *int {
 		if v == nil {
 			return nil
 		}
@@ -2467,8 +2467,8 @@ func (o ElasticIPHealthcheckPtrOutput) StrikesFail() pulumi.IntPtrOutput {
 }
 
 // The number of successful healthcheck attempts before considering the target healthy (must be between `1` and `20`; default: `3`).
-func (o ElasticIPHealthcheckPtrOutput) StrikesOk() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ElasticIPHealthcheck) *int {
+func (o ElasticIpHealthcheckPtrOutput) StrikesOk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticIpHealthcheck) *int {
 		if v == nil {
 			return nil
 		}
@@ -2477,8 +2477,8 @@ func (o ElasticIPHealthcheckPtrOutput) StrikesOk() pulumi.IntPtrOutput {
 }
 
 // The time before considering a healthcheck probing failed (seconds; must be between `2` and `60`; default: `3`).
-func (o ElasticIPHealthcheckPtrOutput) Timeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ElasticIPHealthcheck) *int {
+func (o ElasticIpHealthcheckPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticIpHealthcheck) *int {
 		if v == nil {
 			return nil
 		}
@@ -2487,8 +2487,8 @@ func (o ElasticIPHealthcheckPtrOutput) Timeout() pulumi.IntPtrOutput {
 }
 
 // Disable TLS certificate verification for healthcheck in `https` mode (boolean; default: `false`).
-func (o ElasticIPHealthcheckPtrOutput) TlsSkipVerify() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ElasticIPHealthcheck) *bool {
+func (o ElasticIpHealthcheckPtrOutput) TlsSkipVerify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ElasticIpHealthcheck) *bool {
 		if v == nil {
 			return nil
 		}
@@ -2497,8 +2497,8 @@ func (o ElasticIPHealthcheckPtrOutput) TlsSkipVerify() pulumi.BoolPtrOutput {
 }
 
 // The healthcheck server name to present with SNI in `https` mode.
-func (o ElasticIPHealthcheckPtrOutput) TlsSni() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ElasticIPHealthcheck) *string {
+func (o ElasticIpHealthcheckPtrOutput) TlsSni() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticIpHealthcheck) *string {
 		if v == nil {
 			return nil
 		}
@@ -2507,8 +2507,8 @@ func (o ElasticIPHealthcheckPtrOutput) TlsSni() pulumi.StringPtrOutput {
 }
 
 // The healthcheck target URI (required in `http(s)` modes).
-func (o ElasticIPHealthcheckPtrOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ElasticIPHealthcheck) *string {
+func (o ElasticIpHealthcheckPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticIpHealthcheck) *string {
 		if v == nil {
 			return nil
 		}
@@ -2516,136 +2516,136 @@ func (o ElasticIPHealthcheckPtrOutput) Uri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type IAMAPIKeyTimeouts struct {
+type IamApiKeyTimeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 	Read *string `pulumi:"read"`
 }
 
-// IAMAPIKeyTimeoutsInput is an input type that accepts IAMAPIKeyTimeoutsArgs and IAMAPIKeyTimeoutsOutput values.
-// You can construct a concrete instance of `IAMAPIKeyTimeoutsInput` via:
+// IamApiKeyTimeoutsInput is an input type that accepts IamApiKeyTimeoutsArgs and IamApiKeyTimeoutsOutput values.
+// You can construct a concrete instance of `IamApiKeyTimeoutsInput` via:
 //
-//	IAMAPIKeyTimeoutsArgs{...}
-type IAMAPIKeyTimeoutsInput interface {
+//	IamApiKeyTimeoutsArgs{...}
+type IamApiKeyTimeoutsInput interface {
 	pulumi.Input
 
-	ToIAMAPIKeyTimeoutsOutput() IAMAPIKeyTimeoutsOutput
-	ToIAMAPIKeyTimeoutsOutputWithContext(context.Context) IAMAPIKeyTimeoutsOutput
+	ToIamApiKeyTimeoutsOutput() IamApiKeyTimeoutsOutput
+	ToIamApiKeyTimeoutsOutputWithContext(context.Context) IamApiKeyTimeoutsOutput
 }
 
-type IAMAPIKeyTimeoutsArgs struct {
+type IamApiKeyTimeoutsArgs struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 	Read pulumi.StringPtrInput `pulumi:"read"`
 }
 
-func (IAMAPIKeyTimeoutsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMAPIKeyTimeouts)(nil)).Elem()
+func (IamApiKeyTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamApiKeyTimeouts)(nil)).Elem()
 }
 
-func (i IAMAPIKeyTimeoutsArgs) ToIAMAPIKeyTimeoutsOutput() IAMAPIKeyTimeoutsOutput {
-	return i.ToIAMAPIKeyTimeoutsOutputWithContext(context.Background())
+func (i IamApiKeyTimeoutsArgs) ToIamApiKeyTimeoutsOutput() IamApiKeyTimeoutsOutput {
+	return i.ToIamApiKeyTimeoutsOutputWithContext(context.Background())
 }
 
-func (i IAMAPIKeyTimeoutsArgs) ToIAMAPIKeyTimeoutsOutputWithContext(ctx context.Context) IAMAPIKeyTimeoutsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMAPIKeyTimeoutsOutput)
+func (i IamApiKeyTimeoutsArgs) ToIamApiKeyTimeoutsOutputWithContext(ctx context.Context) IamApiKeyTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamApiKeyTimeoutsOutput)
 }
 
-func (i IAMAPIKeyTimeoutsArgs) ToIAMAPIKeyTimeoutsPtrOutput() IAMAPIKeyTimeoutsPtrOutput {
-	return i.ToIAMAPIKeyTimeoutsPtrOutputWithContext(context.Background())
+func (i IamApiKeyTimeoutsArgs) ToIamApiKeyTimeoutsPtrOutput() IamApiKeyTimeoutsPtrOutput {
+	return i.ToIamApiKeyTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (i IAMAPIKeyTimeoutsArgs) ToIAMAPIKeyTimeoutsPtrOutputWithContext(ctx context.Context) IAMAPIKeyTimeoutsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMAPIKeyTimeoutsOutput).ToIAMAPIKeyTimeoutsPtrOutputWithContext(ctx)
+func (i IamApiKeyTimeoutsArgs) ToIamApiKeyTimeoutsPtrOutputWithContext(ctx context.Context) IamApiKeyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamApiKeyTimeoutsOutput).ToIamApiKeyTimeoutsPtrOutputWithContext(ctx)
 }
 
-// IAMAPIKeyTimeoutsPtrInput is an input type that accepts IAMAPIKeyTimeoutsArgs, IAMAPIKeyTimeoutsPtr and IAMAPIKeyTimeoutsPtrOutput values.
-// You can construct a concrete instance of `IAMAPIKeyTimeoutsPtrInput` via:
+// IamApiKeyTimeoutsPtrInput is an input type that accepts IamApiKeyTimeoutsArgs, IamApiKeyTimeoutsPtr and IamApiKeyTimeoutsPtrOutput values.
+// You can construct a concrete instance of `IamApiKeyTimeoutsPtrInput` via:
 //
-//	        IAMAPIKeyTimeoutsArgs{...}
+//	        IamApiKeyTimeoutsArgs{...}
 //
 //	or:
 //
 //	        nil
-type IAMAPIKeyTimeoutsPtrInput interface {
+type IamApiKeyTimeoutsPtrInput interface {
 	pulumi.Input
 
-	ToIAMAPIKeyTimeoutsPtrOutput() IAMAPIKeyTimeoutsPtrOutput
-	ToIAMAPIKeyTimeoutsPtrOutputWithContext(context.Context) IAMAPIKeyTimeoutsPtrOutput
+	ToIamApiKeyTimeoutsPtrOutput() IamApiKeyTimeoutsPtrOutput
+	ToIamApiKeyTimeoutsPtrOutputWithContext(context.Context) IamApiKeyTimeoutsPtrOutput
 }
 
-type iamapikeyTimeoutsPtrType IAMAPIKeyTimeoutsArgs
+type iamApiKeyTimeoutsPtrType IamApiKeyTimeoutsArgs
 
-func IAMAPIKeyTimeoutsPtr(v *IAMAPIKeyTimeoutsArgs) IAMAPIKeyTimeoutsPtrInput {
-	return (*iamapikeyTimeoutsPtrType)(v)
+func IamApiKeyTimeoutsPtr(v *IamApiKeyTimeoutsArgs) IamApiKeyTimeoutsPtrInput {
+	return (*iamApiKeyTimeoutsPtrType)(v)
 }
 
-func (*iamapikeyTimeoutsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMAPIKeyTimeouts)(nil)).Elem()
+func (*iamApiKeyTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamApiKeyTimeouts)(nil)).Elem()
 }
 
-func (i *iamapikeyTimeoutsPtrType) ToIAMAPIKeyTimeoutsPtrOutput() IAMAPIKeyTimeoutsPtrOutput {
-	return i.ToIAMAPIKeyTimeoutsPtrOutputWithContext(context.Background())
+func (i *iamApiKeyTimeoutsPtrType) ToIamApiKeyTimeoutsPtrOutput() IamApiKeyTimeoutsPtrOutput {
+	return i.ToIamApiKeyTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (i *iamapikeyTimeoutsPtrType) ToIAMAPIKeyTimeoutsPtrOutputWithContext(ctx context.Context) IAMAPIKeyTimeoutsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMAPIKeyTimeoutsPtrOutput)
+func (i *iamApiKeyTimeoutsPtrType) ToIamApiKeyTimeoutsPtrOutputWithContext(ctx context.Context) IamApiKeyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamApiKeyTimeoutsPtrOutput)
 }
 
-type IAMAPIKeyTimeoutsOutput struct{ *pulumi.OutputState }
+type IamApiKeyTimeoutsOutput struct{ *pulumi.OutputState }
 
-func (IAMAPIKeyTimeoutsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMAPIKeyTimeouts)(nil)).Elem()
+func (IamApiKeyTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamApiKeyTimeouts)(nil)).Elem()
 }
 
-func (o IAMAPIKeyTimeoutsOutput) ToIAMAPIKeyTimeoutsOutput() IAMAPIKeyTimeoutsOutput {
+func (o IamApiKeyTimeoutsOutput) ToIamApiKeyTimeoutsOutput() IamApiKeyTimeoutsOutput {
 	return o
 }
 
-func (o IAMAPIKeyTimeoutsOutput) ToIAMAPIKeyTimeoutsOutputWithContext(ctx context.Context) IAMAPIKeyTimeoutsOutput {
+func (o IamApiKeyTimeoutsOutput) ToIamApiKeyTimeoutsOutputWithContext(ctx context.Context) IamApiKeyTimeoutsOutput {
 	return o
 }
 
-func (o IAMAPIKeyTimeoutsOutput) ToIAMAPIKeyTimeoutsPtrOutput() IAMAPIKeyTimeoutsPtrOutput {
-	return o.ToIAMAPIKeyTimeoutsPtrOutputWithContext(context.Background())
+func (o IamApiKeyTimeoutsOutput) ToIamApiKeyTimeoutsPtrOutput() IamApiKeyTimeoutsPtrOutput {
+	return o.ToIamApiKeyTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (o IAMAPIKeyTimeoutsOutput) ToIAMAPIKeyTimeoutsPtrOutputWithContext(ctx context.Context) IAMAPIKeyTimeoutsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMAPIKeyTimeouts) *IAMAPIKeyTimeouts {
+func (o IamApiKeyTimeoutsOutput) ToIamApiKeyTimeoutsPtrOutputWithContext(ctx context.Context) IamApiKeyTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamApiKeyTimeouts) *IamApiKeyTimeouts {
 		return &v
-	}).(IAMAPIKeyTimeoutsPtrOutput)
+	}).(IamApiKeyTimeoutsPtrOutput)
 }
 
 // A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-func (o IAMAPIKeyTimeoutsOutput) Read() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IAMAPIKeyTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+func (o IamApiKeyTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IamApiKeyTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
 }
 
-type IAMAPIKeyTimeoutsPtrOutput struct{ *pulumi.OutputState }
+type IamApiKeyTimeoutsPtrOutput struct{ *pulumi.OutputState }
 
-func (IAMAPIKeyTimeoutsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMAPIKeyTimeouts)(nil)).Elem()
+func (IamApiKeyTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamApiKeyTimeouts)(nil)).Elem()
 }
 
-func (o IAMAPIKeyTimeoutsPtrOutput) ToIAMAPIKeyTimeoutsPtrOutput() IAMAPIKeyTimeoutsPtrOutput {
+func (o IamApiKeyTimeoutsPtrOutput) ToIamApiKeyTimeoutsPtrOutput() IamApiKeyTimeoutsPtrOutput {
 	return o
 }
 
-func (o IAMAPIKeyTimeoutsPtrOutput) ToIAMAPIKeyTimeoutsPtrOutputWithContext(ctx context.Context) IAMAPIKeyTimeoutsPtrOutput {
+func (o IamApiKeyTimeoutsPtrOutput) ToIamApiKeyTimeoutsPtrOutputWithContext(ctx context.Context) IamApiKeyTimeoutsPtrOutput {
 	return o
 }
 
-func (o IAMAPIKeyTimeoutsPtrOutput) Elem() IAMAPIKeyTimeoutsOutput {
-	return o.ApplyT(func(v *IAMAPIKeyTimeouts) IAMAPIKeyTimeouts {
+func (o IamApiKeyTimeoutsPtrOutput) Elem() IamApiKeyTimeoutsOutput {
+	return o.ApplyT(func(v *IamApiKeyTimeouts) IamApiKeyTimeouts {
 		if v != nil {
 			return *v
 		}
-		var ret IAMAPIKeyTimeouts
+		var ret IamApiKeyTimeouts
 		return ret
-	}).(IAMAPIKeyTimeoutsOutput)
+	}).(IamApiKeyTimeoutsOutput)
 }
 
 // A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-func (o IAMAPIKeyTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IAMAPIKeyTimeouts) *string {
+func (o IamApiKeyTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IamApiKeyTimeouts) *string {
 		if v == nil {
 			return nil
 		}
@@ -2653,113 +2653,113 @@ func (o IAMAPIKeyTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type IAMOrgPolicyServices struct {
+type IamOrgPolicyServices struct {
 	// List of IAM service rules (if type is `rules`).
-	Rules []IAMOrgPolicyServicesRule `pulumi:"rules"`
+	Rules []IamOrgPolicyServicesRule `pulumi:"rules"`
 	// Service type (`rules`, `allow`, or `deny`).
 	Type *string `pulumi:"type"`
 }
 
-// IAMOrgPolicyServicesInput is an input type that accepts IAMOrgPolicyServicesArgs and IAMOrgPolicyServicesOutput values.
-// You can construct a concrete instance of `IAMOrgPolicyServicesInput` via:
+// IamOrgPolicyServicesInput is an input type that accepts IamOrgPolicyServicesArgs and IamOrgPolicyServicesOutput values.
+// You can construct a concrete instance of `IamOrgPolicyServicesInput` via:
 //
-//	IAMOrgPolicyServicesArgs{...}
-type IAMOrgPolicyServicesInput interface {
+//	IamOrgPolicyServicesArgs{...}
+type IamOrgPolicyServicesInput interface {
 	pulumi.Input
 
-	ToIAMOrgPolicyServicesOutput() IAMOrgPolicyServicesOutput
-	ToIAMOrgPolicyServicesOutputWithContext(context.Context) IAMOrgPolicyServicesOutput
+	ToIamOrgPolicyServicesOutput() IamOrgPolicyServicesOutput
+	ToIamOrgPolicyServicesOutputWithContext(context.Context) IamOrgPolicyServicesOutput
 }
 
-type IAMOrgPolicyServicesArgs struct {
+type IamOrgPolicyServicesArgs struct {
 	// List of IAM service rules (if type is `rules`).
-	Rules IAMOrgPolicyServicesRuleArrayInput `pulumi:"rules"`
+	Rules IamOrgPolicyServicesRuleArrayInput `pulumi:"rules"`
 	// Service type (`rules`, `allow`, or `deny`).
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
-func (IAMOrgPolicyServicesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMOrgPolicyServices)(nil)).Elem()
+func (IamOrgPolicyServicesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamOrgPolicyServices)(nil)).Elem()
 }
 
-func (i IAMOrgPolicyServicesArgs) ToIAMOrgPolicyServicesOutput() IAMOrgPolicyServicesOutput {
-	return i.ToIAMOrgPolicyServicesOutputWithContext(context.Background())
+func (i IamOrgPolicyServicesArgs) ToIamOrgPolicyServicesOutput() IamOrgPolicyServicesOutput {
+	return i.ToIamOrgPolicyServicesOutputWithContext(context.Background())
 }
 
-func (i IAMOrgPolicyServicesArgs) ToIAMOrgPolicyServicesOutputWithContext(ctx context.Context) IAMOrgPolicyServicesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMOrgPolicyServicesOutput)
+func (i IamOrgPolicyServicesArgs) ToIamOrgPolicyServicesOutputWithContext(ctx context.Context) IamOrgPolicyServicesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamOrgPolicyServicesOutput)
 }
 
-// IAMOrgPolicyServicesMapInput is an input type that accepts IAMOrgPolicyServicesMap and IAMOrgPolicyServicesMapOutput values.
-// You can construct a concrete instance of `IAMOrgPolicyServicesMapInput` via:
+// IamOrgPolicyServicesMapInput is an input type that accepts IamOrgPolicyServicesMap and IamOrgPolicyServicesMapOutput values.
+// You can construct a concrete instance of `IamOrgPolicyServicesMapInput` via:
 //
-//	IAMOrgPolicyServicesMap{ "key": IAMOrgPolicyServicesArgs{...} }
-type IAMOrgPolicyServicesMapInput interface {
+//	IamOrgPolicyServicesMap{ "key": IamOrgPolicyServicesArgs{...} }
+type IamOrgPolicyServicesMapInput interface {
 	pulumi.Input
 
-	ToIAMOrgPolicyServicesMapOutput() IAMOrgPolicyServicesMapOutput
-	ToIAMOrgPolicyServicesMapOutputWithContext(context.Context) IAMOrgPolicyServicesMapOutput
+	ToIamOrgPolicyServicesMapOutput() IamOrgPolicyServicesMapOutput
+	ToIamOrgPolicyServicesMapOutputWithContext(context.Context) IamOrgPolicyServicesMapOutput
 }
 
-type IAMOrgPolicyServicesMap map[string]IAMOrgPolicyServicesInput
+type IamOrgPolicyServicesMap map[string]IamOrgPolicyServicesInput
 
-func (IAMOrgPolicyServicesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]IAMOrgPolicyServices)(nil)).Elem()
+func (IamOrgPolicyServicesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]IamOrgPolicyServices)(nil)).Elem()
 }
 
-func (i IAMOrgPolicyServicesMap) ToIAMOrgPolicyServicesMapOutput() IAMOrgPolicyServicesMapOutput {
-	return i.ToIAMOrgPolicyServicesMapOutputWithContext(context.Background())
+func (i IamOrgPolicyServicesMap) ToIamOrgPolicyServicesMapOutput() IamOrgPolicyServicesMapOutput {
+	return i.ToIamOrgPolicyServicesMapOutputWithContext(context.Background())
 }
 
-func (i IAMOrgPolicyServicesMap) ToIAMOrgPolicyServicesMapOutputWithContext(ctx context.Context) IAMOrgPolicyServicesMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMOrgPolicyServicesMapOutput)
+func (i IamOrgPolicyServicesMap) ToIamOrgPolicyServicesMapOutputWithContext(ctx context.Context) IamOrgPolicyServicesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamOrgPolicyServicesMapOutput)
 }
 
-type IAMOrgPolicyServicesOutput struct{ *pulumi.OutputState }
+type IamOrgPolicyServicesOutput struct{ *pulumi.OutputState }
 
-func (IAMOrgPolicyServicesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMOrgPolicyServices)(nil)).Elem()
+func (IamOrgPolicyServicesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamOrgPolicyServices)(nil)).Elem()
 }
 
-func (o IAMOrgPolicyServicesOutput) ToIAMOrgPolicyServicesOutput() IAMOrgPolicyServicesOutput {
+func (o IamOrgPolicyServicesOutput) ToIamOrgPolicyServicesOutput() IamOrgPolicyServicesOutput {
 	return o
 }
 
-func (o IAMOrgPolicyServicesOutput) ToIAMOrgPolicyServicesOutputWithContext(ctx context.Context) IAMOrgPolicyServicesOutput {
+func (o IamOrgPolicyServicesOutput) ToIamOrgPolicyServicesOutputWithContext(ctx context.Context) IamOrgPolicyServicesOutput {
 	return o
 }
 
 // List of IAM service rules (if type is `rules`).
-func (o IAMOrgPolicyServicesOutput) Rules() IAMOrgPolicyServicesRuleArrayOutput {
-	return o.ApplyT(func(v IAMOrgPolicyServices) []IAMOrgPolicyServicesRule { return v.Rules }).(IAMOrgPolicyServicesRuleArrayOutput)
+func (o IamOrgPolicyServicesOutput) Rules() IamOrgPolicyServicesRuleArrayOutput {
+	return o.ApplyT(func(v IamOrgPolicyServices) []IamOrgPolicyServicesRule { return v.Rules }).(IamOrgPolicyServicesRuleArrayOutput)
 }
 
 // Service type (`rules`, `allow`, or `deny`).
-func (o IAMOrgPolicyServicesOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IAMOrgPolicyServices) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o IamOrgPolicyServicesOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IamOrgPolicyServices) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-type IAMOrgPolicyServicesMapOutput struct{ *pulumi.OutputState }
+type IamOrgPolicyServicesMapOutput struct{ *pulumi.OutputState }
 
-func (IAMOrgPolicyServicesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]IAMOrgPolicyServices)(nil)).Elem()
+func (IamOrgPolicyServicesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]IamOrgPolicyServices)(nil)).Elem()
 }
 
-func (o IAMOrgPolicyServicesMapOutput) ToIAMOrgPolicyServicesMapOutput() IAMOrgPolicyServicesMapOutput {
+func (o IamOrgPolicyServicesMapOutput) ToIamOrgPolicyServicesMapOutput() IamOrgPolicyServicesMapOutput {
 	return o
 }
 
-func (o IAMOrgPolicyServicesMapOutput) ToIAMOrgPolicyServicesMapOutputWithContext(ctx context.Context) IAMOrgPolicyServicesMapOutput {
+func (o IamOrgPolicyServicesMapOutput) ToIamOrgPolicyServicesMapOutputWithContext(ctx context.Context) IamOrgPolicyServicesMapOutput {
 	return o
 }
 
-func (o IAMOrgPolicyServicesMapOutput) MapIndex(k pulumi.StringInput) IAMOrgPolicyServicesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IAMOrgPolicyServices {
-		return vs[0].(map[string]IAMOrgPolicyServices)[vs[1].(string)]
-	}).(IAMOrgPolicyServicesOutput)
+func (o IamOrgPolicyServicesMapOutput) MapIndex(k pulumi.StringInput) IamOrgPolicyServicesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IamOrgPolicyServices {
+		return vs[0].(map[string]IamOrgPolicyServices)[vs[1].(string)]
+	}).(IamOrgPolicyServicesOutput)
 }
 
-type IAMOrgPolicyServicesRule struct {
+type IamOrgPolicyServicesRule struct {
 	// IAM policy rule action (`allow` or `deny`).
 	Action *string `pulumi:"action"`
 	// IAM policy rule expression.
@@ -2768,18 +2768,18 @@ type IAMOrgPolicyServicesRule struct {
 	Resources []string `pulumi:"resources"`
 }
 
-// IAMOrgPolicyServicesRuleInput is an input type that accepts IAMOrgPolicyServicesRuleArgs and IAMOrgPolicyServicesRuleOutput values.
-// You can construct a concrete instance of `IAMOrgPolicyServicesRuleInput` via:
+// IamOrgPolicyServicesRuleInput is an input type that accepts IamOrgPolicyServicesRuleArgs and IamOrgPolicyServicesRuleOutput values.
+// You can construct a concrete instance of `IamOrgPolicyServicesRuleInput` via:
 //
-//	IAMOrgPolicyServicesRuleArgs{...}
-type IAMOrgPolicyServicesRuleInput interface {
+//	IamOrgPolicyServicesRuleArgs{...}
+type IamOrgPolicyServicesRuleInput interface {
 	pulumi.Input
 
-	ToIAMOrgPolicyServicesRuleOutput() IAMOrgPolicyServicesRuleOutput
-	ToIAMOrgPolicyServicesRuleOutputWithContext(context.Context) IAMOrgPolicyServicesRuleOutput
+	ToIamOrgPolicyServicesRuleOutput() IamOrgPolicyServicesRuleOutput
+	ToIamOrgPolicyServicesRuleOutputWithContext(context.Context) IamOrgPolicyServicesRuleOutput
 }
 
-type IAMOrgPolicyServicesRuleArgs struct {
+type IamOrgPolicyServicesRuleArgs struct {
 	// IAM policy rule action (`allow` or `deny`).
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// IAM policy rule expression.
@@ -2788,222 +2788,222 @@ type IAMOrgPolicyServicesRuleArgs struct {
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
-func (IAMOrgPolicyServicesRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMOrgPolicyServicesRule)(nil)).Elem()
+func (IamOrgPolicyServicesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamOrgPolicyServicesRule)(nil)).Elem()
 }
 
-func (i IAMOrgPolicyServicesRuleArgs) ToIAMOrgPolicyServicesRuleOutput() IAMOrgPolicyServicesRuleOutput {
-	return i.ToIAMOrgPolicyServicesRuleOutputWithContext(context.Background())
+func (i IamOrgPolicyServicesRuleArgs) ToIamOrgPolicyServicesRuleOutput() IamOrgPolicyServicesRuleOutput {
+	return i.ToIamOrgPolicyServicesRuleOutputWithContext(context.Background())
 }
 
-func (i IAMOrgPolicyServicesRuleArgs) ToIAMOrgPolicyServicesRuleOutputWithContext(ctx context.Context) IAMOrgPolicyServicesRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMOrgPolicyServicesRuleOutput)
+func (i IamOrgPolicyServicesRuleArgs) ToIamOrgPolicyServicesRuleOutputWithContext(ctx context.Context) IamOrgPolicyServicesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamOrgPolicyServicesRuleOutput)
 }
 
-// IAMOrgPolicyServicesRuleArrayInput is an input type that accepts IAMOrgPolicyServicesRuleArray and IAMOrgPolicyServicesRuleArrayOutput values.
-// You can construct a concrete instance of `IAMOrgPolicyServicesRuleArrayInput` via:
+// IamOrgPolicyServicesRuleArrayInput is an input type that accepts IamOrgPolicyServicesRuleArray and IamOrgPolicyServicesRuleArrayOutput values.
+// You can construct a concrete instance of `IamOrgPolicyServicesRuleArrayInput` via:
 //
-//	IAMOrgPolicyServicesRuleArray{ IAMOrgPolicyServicesRuleArgs{...} }
-type IAMOrgPolicyServicesRuleArrayInput interface {
+//	IamOrgPolicyServicesRuleArray{ IamOrgPolicyServicesRuleArgs{...} }
+type IamOrgPolicyServicesRuleArrayInput interface {
 	pulumi.Input
 
-	ToIAMOrgPolicyServicesRuleArrayOutput() IAMOrgPolicyServicesRuleArrayOutput
-	ToIAMOrgPolicyServicesRuleArrayOutputWithContext(context.Context) IAMOrgPolicyServicesRuleArrayOutput
+	ToIamOrgPolicyServicesRuleArrayOutput() IamOrgPolicyServicesRuleArrayOutput
+	ToIamOrgPolicyServicesRuleArrayOutputWithContext(context.Context) IamOrgPolicyServicesRuleArrayOutput
 }
 
-type IAMOrgPolicyServicesRuleArray []IAMOrgPolicyServicesRuleInput
+type IamOrgPolicyServicesRuleArray []IamOrgPolicyServicesRuleInput
 
-func (IAMOrgPolicyServicesRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IAMOrgPolicyServicesRule)(nil)).Elem()
+func (IamOrgPolicyServicesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IamOrgPolicyServicesRule)(nil)).Elem()
 }
 
-func (i IAMOrgPolicyServicesRuleArray) ToIAMOrgPolicyServicesRuleArrayOutput() IAMOrgPolicyServicesRuleArrayOutput {
-	return i.ToIAMOrgPolicyServicesRuleArrayOutputWithContext(context.Background())
+func (i IamOrgPolicyServicesRuleArray) ToIamOrgPolicyServicesRuleArrayOutput() IamOrgPolicyServicesRuleArrayOutput {
+	return i.ToIamOrgPolicyServicesRuleArrayOutputWithContext(context.Background())
 }
 
-func (i IAMOrgPolicyServicesRuleArray) ToIAMOrgPolicyServicesRuleArrayOutputWithContext(ctx context.Context) IAMOrgPolicyServicesRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMOrgPolicyServicesRuleArrayOutput)
+func (i IamOrgPolicyServicesRuleArray) ToIamOrgPolicyServicesRuleArrayOutputWithContext(ctx context.Context) IamOrgPolicyServicesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamOrgPolicyServicesRuleArrayOutput)
 }
 
-type IAMOrgPolicyServicesRuleOutput struct{ *pulumi.OutputState }
+type IamOrgPolicyServicesRuleOutput struct{ *pulumi.OutputState }
 
-func (IAMOrgPolicyServicesRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMOrgPolicyServicesRule)(nil)).Elem()
+func (IamOrgPolicyServicesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamOrgPolicyServicesRule)(nil)).Elem()
 }
 
-func (o IAMOrgPolicyServicesRuleOutput) ToIAMOrgPolicyServicesRuleOutput() IAMOrgPolicyServicesRuleOutput {
+func (o IamOrgPolicyServicesRuleOutput) ToIamOrgPolicyServicesRuleOutput() IamOrgPolicyServicesRuleOutput {
 	return o
 }
 
-func (o IAMOrgPolicyServicesRuleOutput) ToIAMOrgPolicyServicesRuleOutputWithContext(ctx context.Context) IAMOrgPolicyServicesRuleOutput {
+func (o IamOrgPolicyServicesRuleOutput) ToIamOrgPolicyServicesRuleOutputWithContext(ctx context.Context) IamOrgPolicyServicesRuleOutput {
 	return o
 }
 
 // IAM policy rule action (`allow` or `deny`).
-func (o IAMOrgPolicyServicesRuleOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IAMOrgPolicyServicesRule) *string { return v.Action }).(pulumi.StringPtrOutput)
+func (o IamOrgPolicyServicesRuleOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IamOrgPolicyServicesRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
 // IAM policy rule expression.
-func (o IAMOrgPolicyServicesRuleOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IAMOrgPolicyServicesRule) *string { return v.Expression }).(pulumi.StringPtrOutput)
+func (o IamOrgPolicyServicesRuleOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IamOrgPolicyServicesRule) *string { return v.Expression }).(pulumi.StringPtrOutput)
 }
 
 // Deprecated: This field is not suported. Specify resources using CEL expressions.
-func (o IAMOrgPolicyServicesRuleOutput) Resources() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v IAMOrgPolicyServicesRule) []string { return v.Resources }).(pulumi.StringArrayOutput)
+func (o IamOrgPolicyServicesRuleOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IamOrgPolicyServicesRule) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
-type IAMOrgPolicyServicesRuleArrayOutput struct{ *pulumi.OutputState }
+type IamOrgPolicyServicesRuleArrayOutput struct{ *pulumi.OutputState }
 
-func (IAMOrgPolicyServicesRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IAMOrgPolicyServicesRule)(nil)).Elem()
+func (IamOrgPolicyServicesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IamOrgPolicyServicesRule)(nil)).Elem()
 }
 
-func (o IAMOrgPolicyServicesRuleArrayOutput) ToIAMOrgPolicyServicesRuleArrayOutput() IAMOrgPolicyServicesRuleArrayOutput {
+func (o IamOrgPolicyServicesRuleArrayOutput) ToIamOrgPolicyServicesRuleArrayOutput() IamOrgPolicyServicesRuleArrayOutput {
 	return o
 }
 
-func (o IAMOrgPolicyServicesRuleArrayOutput) ToIAMOrgPolicyServicesRuleArrayOutputWithContext(ctx context.Context) IAMOrgPolicyServicesRuleArrayOutput {
+func (o IamOrgPolicyServicesRuleArrayOutput) ToIamOrgPolicyServicesRuleArrayOutputWithContext(ctx context.Context) IamOrgPolicyServicesRuleArrayOutput {
 	return o
 }
 
-func (o IAMOrgPolicyServicesRuleArrayOutput) Index(i pulumi.IntInput) IAMOrgPolicyServicesRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IAMOrgPolicyServicesRule {
-		return vs[0].([]IAMOrgPolicyServicesRule)[vs[1].(int)]
-	}).(IAMOrgPolicyServicesRuleOutput)
+func (o IamOrgPolicyServicesRuleArrayOutput) Index(i pulumi.IntInput) IamOrgPolicyServicesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IamOrgPolicyServicesRule {
+		return vs[0].([]IamOrgPolicyServicesRule)[vs[1].(int)]
+	}).(IamOrgPolicyServicesRuleOutput)
 }
 
-type IAMOrgPolicyTimeouts struct {
+type IamOrgPolicyTimeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 	Read *string `pulumi:"read"`
 }
 
-// IAMOrgPolicyTimeoutsInput is an input type that accepts IAMOrgPolicyTimeoutsArgs and IAMOrgPolicyTimeoutsOutput values.
-// You can construct a concrete instance of `IAMOrgPolicyTimeoutsInput` via:
+// IamOrgPolicyTimeoutsInput is an input type that accepts IamOrgPolicyTimeoutsArgs and IamOrgPolicyTimeoutsOutput values.
+// You can construct a concrete instance of `IamOrgPolicyTimeoutsInput` via:
 //
-//	IAMOrgPolicyTimeoutsArgs{...}
-type IAMOrgPolicyTimeoutsInput interface {
+//	IamOrgPolicyTimeoutsArgs{...}
+type IamOrgPolicyTimeoutsInput interface {
 	pulumi.Input
 
-	ToIAMOrgPolicyTimeoutsOutput() IAMOrgPolicyTimeoutsOutput
-	ToIAMOrgPolicyTimeoutsOutputWithContext(context.Context) IAMOrgPolicyTimeoutsOutput
+	ToIamOrgPolicyTimeoutsOutput() IamOrgPolicyTimeoutsOutput
+	ToIamOrgPolicyTimeoutsOutputWithContext(context.Context) IamOrgPolicyTimeoutsOutput
 }
 
-type IAMOrgPolicyTimeoutsArgs struct {
+type IamOrgPolicyTimeoutsArgs struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 	Read pulumi.StringPtrInput `pulumi:"read"`
 }
 
-func (IAMOrgPolicyTimeoutsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMOrgPolicyTimeouts)(nil)).Elem()
+func (IamOrgPolicyTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamOrgPolicyTimeouts)(nil)).Elem()
 }
 
-func (i IAMOrgPolicyTimeoutsArgs) ToIAMOrgPolicyTimeoutsOutput() IAMOrgPolicyTimeoutsOutput {
-	return i.ToIAMOrgPolicyTimeoutsOutputWithContext(context.Background())
+func (i IamOrgPolicyTimeoutsArgs) ToIamOrgPolicyTimeoutsOutput() IamOrgPolicyTimeoutsOutput {
+	return i.ToIamOrgPolicyTimeoutsOutputWithContext(context.Background())
 }
 
-func (i IAMOrgPolicyTimeoutsArgs) ToIAMOrgPolicyTimeoutsOutputWithContext(ctx context.Context) IAMOrgPolicyTimeoutsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMOrgPolicyTimeoutsOutput)
+func (i IamOrgPolicyTimeoutsArgs) ToIamOrgPolicyTimeoutsOutputWithContext(ctx context.Context) IamOrgPolicyTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamOrgPolicyTimeoutsOutput)
 }
 
-func (i IAMOrgPolicyTimeoutsArgs) ToIAMOrgPolicyTimeoutsPtrOutput() IAMOrgPolicyTimeoutsPtrOutput {
-	return i.ToIAMOrgPolicyTimeoutsPtrOutputWithContext(context.Background())
+func (i IamOrgPolicyTimeoutsArgs) ToIamOrgPolicyTimeoutsPtrOutput() IamOrgPolicyTimeoutsPtrOutput {
+	return i.ToIamOrgPolicyTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (i IAMOrgPolicyTimeoutsArgs) ToIAMOrgPolicyTimeoutsPtrOutputWithContext(ctx context.Context) IAMOrgPolicyTimeoutsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMOrgPolicyTimeoutsOutput).ToIAMOrgPolicyTimeoutsPtrOutputWithContext(ctx)
+func (i IamOrgPolicyTimeoutsArgs) ToIamOrgPolicyTimeoutsPtrOutputWithContext(ctx context.Context) IamOrgPolicyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamOrgPolicyTimeoutsOutput).ToIamOrgPolicyTimeoutsPtrOutputWithContext(ctx)
 }
 
-// IAMOrgPolicyTimeoutsPtrInput is an input type that accepts IAMOrgPolicyTimeoutsArgs, IAMOrgPolicyTimeoutsPtr and IAMOrgPolicyTimeoutsPtrOutput values.
-// You can construct a concrete instance of `IAMOrgPolicyTimeoutsPtrInput` via:
+// IamOrgPolicyTimeoutsPtrInput is an input type that accepts IamOrgPolicyTimeoutsArgs, IamOrgPolicyTimeoutsPtr and IamOrgPolicyTimeoutsPtrOutput values.
+// You can construct a concrete instance of `IamOrgPolicyTimeoutsPtrInput` via:
 //
-//	        IAMOrgPolicyTimeoutsArgs{...}
+//	        IamOrgPolicyTimeoutsArgs{...}
 //
 //	or:
 //
 //	        nil
-type IAMOrgPolicyTimeoutsPtrInput interface {
+type IamOrgPolicyTimeoutsPtrInput interface {
 	pulumi.Input
 
-	ToIAMOrgPolicyTimeoutsPtrOutput() IAMOrgPolicyTimeoutsPtrOutput
-	ToIAMOrgPolicyTimeoutsPtrOutputWithContext(context.Context) IAMOrgPolicyTimeoutsPtrOutput
+	ToIamOrgPolicyTimeoutsPtrOutput() IamOrgPolicyTimeoutsPtrOutput
+	ToIamOrgPolicyTimeoutsPtrOutputWithContext(context.Context) IamOrgPolicyTimeoutsPtrOutput
 }
 
-type iamorgPolicyTimeoutsPtrType IAMOrgPolicyTimeoutsArgs
+type iamOrgPolicyTimeoutsPtrType IamOrgPolicyTimeoutsArgs
 
-func IAMOrgPolicyTimeoutsPtr(v *IAMOrgPolicyTimeoutsArgs) IAMOrgPolicyTimeoutsPtrInput {
-	return (*iamorgPolicyTimeoutsPtrType)(v)
+func IamOrgPolicyTimeoutsPtr(v *IamOrgPolicyTimeoutsArgs) IamOrgPolicyTimeoutsPtrInput {
+	return (*iamOrgPolicyTimeoutsPtrType)(v)
 }
 
-func (*iamorgPolicyTimeoutsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMOrgPolicyTimeouts)(nil)).Elem()
+func (*iamOrgPolicyTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamOrgPolicyTimeouts)(nil)).Elem()
 }
 
-func (i *iamorgPolicyTimeoutsPtrType) ToIAMOrgPolicyTimeoutsPtrOutput() IAMOrgPolicyTimeoutsPtrOutput {
-	return i.ToIAMOrgPolicyTimeoutsPtrOutputWithContext(context.Background())
+func (i *iamOrgPolicyTimeoutsPtrType) ToIamOrgPolicyTimeoutsPtrOutput() IamOrgPolicyTimeoutsPtrOutput {
+	return i.ToIamOrgPolicyTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (i *iamorgPolicyTimeoutsPtrType) ToIAMOrgPolicyTimeoutsPtrOutputWithContext(ctx context.Context) IAMOrgPolicyTimeoutsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMOrgPolicyTimeoutsPtrOutput)
+func (i *iamOrgPolicyTimeoutsPtrType) ToIamOrgPolicyTimeoutsPtrOutputWithContext(ctx context.Context) IamOrgPolicyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamOrgPolicyTimeoutsPtrOutput)
 }
 
-type IAMOrgPolicyTimeoutsOutput struct{ *pulumi.OutputState }
+type IamOrgPolicyTimeoutsOutput struct{ *pulumi.OutputState }
 
-func (IAMOrgPolicyTimeoutsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMOrgPolicyTimeouts)(nil)).Elem()
+func (IamOrgPolicyTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamOrgPolicyTimeouts)(nil)).Elem()
 }
 
-func (o IAMOrgPolicyTimeoutsOutput) ToIAMOrgPolicyTimeoutsOutput() IAMOrgPolicyTimeoutsOutput {
+func (o IamOrgPolicyTimeoutsOutput) ToIamOrgPolicyTimeoutsOutput() IamOrgPolicyTimeoutsOutput {
 	return o
 }
 
-func (o IAMOrgPolicyTimeoutsOutput) ToIAMOrgPolicyTimeoutsOutputWithContext(ctx context.Context) IAMOrgPolicyTimeoutsOutput {
+func (o IamOrgPolicyTimeoutsOutput) ToIamOrgPolicyTimeoutsOutputWithContext(ctx context.Context) IamOrgPolicyTimeoutsOutput {
 	return o
 }
 
-func (o IAMOrgPolicyTimeoutsOutput) ToIAMOrgPolicyTimeoutsPtrOutput() IAMOrgPolicyTimeoutsPtrOutput {
-	return o.ToIAMOrgPolicyTimeoutsPtrOutputWithContext(context.Background())
+func (o IamOrgPolicyTimeoutsOutput) ToIamOrgPolicyTimeoutsPtrOutput() IamOrgPolicyTimeoutsPtrOutput {
+	return o.ToIamOrgPolicyTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (o IAMOrgPolicyTimeoutsOutput) ToIAMOrgPolicyTimeoutsPtrOutputWithContext(ctx context.Context) IAMOrgPolicyTimeoutsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMOrgPolicyTimeouts) *IAMOrgPolicyTimeouts {
+func (o IamOrgPolicyTimeoutsOutput) ToIamOrgPolicyTimeoutsPtrOutputWithContext(ctx context.Context) IamOrgPolicyTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamOrgPolicyTimeouts) *IamOrgPolicyTimeouts {
 		return &v
-	}).(IAMOrgPolicyTimeoutsPtrOutput)
+	}).(IamOrgPolicyTimeoutsPtrOutput)
 }
 
 // A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-func (o IAMOrgPolicyTimeoutsOutput) Read() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IAMOrgPolicyTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+func (o IamOrgPolicyTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IamOrgPolicyTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
 }
 
-type IAMOrgPolicyTimeoutsPtrOutput struct{ *pulumi.OutputState }
+type IamOrgPolicyTimeoutsPtrOutput struct{ *pulumi.OutputState }
 
-func (IAMOrgPolicyTimeoutsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMOrgPolicyTimeouts)(nil)).Elem()
+func (IamOrgPolicyTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamOrgPolicyTimeouts)(nil)).Elem()
 }
 
-func (o IAMOrgPolicyTimeoutsPtrOutput) ToIAMOrgPolicyTimeoutsPtrOutput() IAMOrgPolicyTimeoutsPtrOutput {
+func (o IamOrgPolicyTimeoutsPtrOutput) ToIamOrgPolicyTimeoutsPtrOutput() IamOrgPolicyTimeoutsPtrOutput {
 	return o
 }
 
-func (o IAMOrgPolicyTimeoutsPtrOutput) ToIAMOrgPolicyTimeoutsPtrOutputWithContext(ctx context.Context) IAMOrgPolicyTimeoutsPtrOutput {
+func (o IamOrgPolicyTimeoutsPtrOutput) ToIamOrgPolicyTimeoutsPtrOutputWithContext(ctx context.Context) IamOrgPolicyTimeoutsPtrOutput {
 	return o
 }
 
-func (o IAMOrgPolicyTimeoutsPtrOutput) Elem() IAMOrgPolicyTimeoutsOutput {
-	return o.ApplyT(func(v *IAMOrgPolicyTimeouts) IAMOrgPolicyTimeouts {
+func (o IamOrgPolicyTimeoutsPtrOutput) Elem() IamOrgPolicyTimeoutsOutput {
+	return o.ApplyT(func(v *IamOrgPolicyTimeouts) IamOrgPolicyTimeouts {
 		if v != nil {
 			return *v
 		}
-		var ret IAMOrgPolicyTimeouts
+		var ret IamOrgPolicyTimeouts
 		return ret
-	}).(IAMOrgPolicyTimeoutsOutput)
+	}).(IamOrgPolicyTimeoutsOutput)
 }
 
 // A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-func (o IAMOrgPolicyTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IAMOrgPolicyTimeouts) *string {
+func (o IamOrgPolicyTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IamOrgPolicyTimeouts) *string {
 		if v == nil {
 			return nil
 		}
@@ -3011,145 +3011,145 @@ func (o IAMOrgPolicyTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type IAMRolePolicy struct {
+type IamRolePolicy struct {
 	// Default service strategy (`allow` or `deny`).
 	DefaultServiceStrategy *string `pulumi:"defaultServiceStrategy"`
 	// IAM policy services.
-	Services map[string]IAMRolePolicyServices `pulumi:"services"`
+	Services map[string]IamRolePolicyServices `pulumi:"services"`
 }
 
-// IAMRolePolicyInput is an input type that accepts IAMRolePolicyArgs and IAMRolePolicyOutput values.
-// You can construct a concrete instance of `IAMRolePolicyInput` via:
+// IamRolePolicyInput is an input type that accepts IamRolePolicyArgs and IamRolePolicyOutput values.
+// You can construct a concrete instance of `IamRolePolicyInput` via:
 //
-//	IAMRolePolicyArgs{...}
-type IAMRolePolicyInput interface {
+//	IamRolePolicyArgs{...}
+type IamRolePolicyInput interface {
 	pulumi.Input
 
-	ToIAMRolePolicyOutput() IAMRolePolicyOutput
-	ToIAMRolePolicyOutputWithContext(context.Context) IAMRolePolicyOutput
+	ToIamRolePolicyOutput() IamRolePolicyOutput
+	ToIamRolePolicyOutputWithContext(context.Context) IamRolePolicyOutput
 }
 
-type IAMRolePolicyArgs struct {
+type IamRolePolicyArgs struct {
 	// Default service strategy (`allow` or `deny`).
 	DefaultServiceStrategy pulumi.StringPtrInput `pulumi:"defaultServiceStrategy"`
 	// IAM policy services.
-	Services IAMRolePolicyServicesMapInput `pulumi:"services"`
+	Services IamRolePolicyServicesMapInput `pulumi:"services"`
 }
 
-func (IAMRolePolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMRolePolicy)(nil)).Elem()
+func (IamRolePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamRolePolicy)(nil)).Elem()
 }
 
-func (i IAMRolePolicyArgs) ToIAMRolePolicyOutput() IAMRolePolicyOutput {
-	return i.ToIAMRolePolicyOutputWithContext(context.Background())
+func (i IamRolePolicyArgs) ToIamRolePolicyOutput() IamRolePolicyOutput {
+	return i.ToIamRolePolicyOutputWithContext(context.Background())
 }
 
-func (i IAMRolePolicyArgs) ToIAMRolePolicyOutputWithContext(ctx context.Context) IAMRolePolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMRolePolicyOutput)
+func (i IamRolePolicyArgs) ToIamRolePolicyOutputWithContext(ctx context.Context) IamRolePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamRolePolicyOutput)
 }
 
-func (i IAMRolePolicyArgs) ToIAMRolePolicyPtrOutput() IAMRolePolicyPtrOutput {
-	return i.ToIAMRolePolicyPtrOutputWithContext(context.Background())
+func (i IamRolePolicyArgs) ToIamRolePolicyPtrOutput() IamRolePolicyPtrOutput {
+	return i.ToIamRolePolicyPtrOutputWithContext(context.Background())
 }
 
-func (i IAMRolePolicyArgs) ToIAMRolePolicyPtrOutputWithContext(ctx context.Context) IAMRolePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMRolePolicyOutput).ToIAMRolePolicyPtrOutputWithContext(ctx)
+func (i IamRolePolicyArgs) ToIamRolePolicyPtrOutputWithContext(ctx context.Context) IamRolePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamRolePolicyOutput).ToIamRolePolicyPtrOutputWithContext(ctx)
 }
 
-// IAMRolePolicyPtrInput is an input type that accepts IAMRolePolicyArgs, IAMRolePolicyPtr and IAMRolePolicyPtrOutput values.
-// You can construct a concrete instance of `IAMRolePolicyPtrInput` via:
+// IamRolePolicyPtrInput is an input type that accepts IamRolePolicyArgs, IamRolePolicyPtr and IamRolePolicyPtrOutput values.
+// You can construct a concrete instance of `IamRolePolicyPtrInput` via:
 //
-//	        IAMRolePolicyArgs{...}
+//	        IamRolePolicyArgs{...}
 //
 //	or:
 //
 //	        nil
-type IAMRolePolicyPtrInput interface {
+type IamRolePolicyPtrInput interface {
 	pulumi.Input
 
-	ToIAMRolePolicyPtrOutput() IAMRolePolicyPtrOutput
-	ToIAMRolePolicyPtrOutputWithContext(context.Context) IAMRolePolicyPtrOutput
+	ToIamRolePolicyPtrOutput() IamRolePolicyPtrOutput
+	ToIamRolePolicyPtrOutputWithContext(context.Context) IamRolePolicyPtrOutput
 }
 
-type iamrolePolicyPtrType IAMRolePolicyArgs
+type iamRolePolicyPtrType IamRolePolicyArgs
 
-func IAMRolePolicyPtr(v *IAMRolePolicyArgs) IAMRolePolicyPtrInput {
-	return (*iamrolePolicyPtrType)(v)
+func IamRolePolicyPtr(v *IamRolePolicyArgs) IamRolePolicyPtrInput {
+	return (*iamRolePolicyPtrType)(v)
 }
 
-func (*iamrolePolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMRolePolicy)(nil)).Elem()
+func (*iamRolePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamRolePolicy)(nil)).Elem()
 }
 
-func (i *iamrolePolicyPtrType) ToIAMRolePolicyPtrOutput() IAMRolePolicyPtrOutput {
-	return i.ToIAMRolePolicyPtrOutputWithContext(context.Background())
+func (i *iamRolePolicyPtrType) ToIamRolePolicyPtrOutput() IamRolePolicyPtrOutput {
+	return i.ToIamRolePolicyPtrOutputWithContext(context.Background())
 }
 
-func (i *iamrolePolicyPtrType) ToIAMRolePolicyPtrOutputWithContext(ctx context.Context) IAMRolePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMRolePolicyPtrOutput)
+func (i *iamRolePolicyPtrType) ToIamRolePolicyPtrOutputWithContext(ctx context.Context) IamRolePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamRolePolicyPtrOutput)
 }
 
-type IAMRolePolicyOutput struct{ *pulumi.OutputState }
+type IamRolePolicyOutput struct{ *pulumi.OutputState }
 
-func (IAMRolePolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMRolePolicy)(nil)).Elem()
+func (IamRolePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamRolePolicy)(nil)).Elem()
 }
 
-func (o IAMRolePolicyOutput) ToIAMRolePolicyOutput() IAMRolePolicyOutput {
+func (o IamRolePolicyOutput) ToIamRolePolicyOutput() IamRolePolicyOutput {
 	return o
 }
 
-func (o IAMRolePolicyOutput) ToIAMRolePolicyOutputWithContext(ctx context.Context) IAMRolePolicyOutput {
+func (o IamRolePolicyOutput) ToIamRolePolicyOutputWithContext(ctx context.Context) IamRolePolicyOutput {
 	return o
 }
 
-func (o IAMRolePolicyOutput) ToIAMRolePolicyPtrOutput() IAMRolePolicyPtrOutput {
-	return o.ToIAMRolePolicyPtrOutputWithContext(context.Background())
+func (o IamRolePolicyOutput) ToIamRolePolicyPtrOutput() IamRolePolicyPtrOutput {
+	return o.ToIamRolePolicyPtrOutputWithContext(context.Background())
 }
 
-func (o IAMRolePolicyOutput) ToIAMRolePolicyPtrOutputWithContext(ctx context.Context) IAMRolePolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMRolePolicy) *IAMRolePolicy {
+func (o IamRolePolicyOutput) ToIamRolePolicyPtrOutputWithContext(ctx context.Context) IamRolePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamRolePolicy) *IamRolePolicy {
 		return &v
-	}).(IAMRolePolicyPtrOutput)
+	}).(IamRolePolicyPtrOutput)
 }
 
 // Default service strategy (`allow` or `deny`).
-func (o IAMRolePolicyOutput) DefaultServiceStrategy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IAMRolePolicy) *string { return v.DefaultServiceStrategy }).(pulumi.StringPtrOutput)
+func (o IamRolePolicyOutput) DefaultServiceStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IamRolePolicy) *string { return v.DefaultServiceStrategy }).(pulumi.StringPtrOutput)
 }
 
 // IAM policy services.
-func (o IAMRolePolicyOutput) Services() IAMRolePolicyServicesMapOutput {
-	return o.ApplyT(func(v IAMRolePolicy) map[string]IAMRolePolicyServices { return v.Services }).(IAMRolePolicyServicesMapOutput)
+func (o IamRolePolicyOutput) Services() IamRolePolicyServicesMapOutput {
+	return o.ApplyT(func(v IamRolePolicy) map[string]IamRolePolicyServices { return v.Services }).(IamRolePolicyServicesMapOutput)
 }
 
-type IAMRolePolicyPtrOutput struct{ *pulumi.OutputState }
+type IamRolePolicyPtrOutput struct{ *pulumi.OutputState }
 
-func (IAMRolePolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMRolePolicy)(nil)).Elem()
+func (IamRolePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamRolePolicy)(nil)).Elem()
 }
 
-func (o IAMRolePolicyPtrOutput) ToIAMRolePolicyPtrOutput() IAMRolePolicyPtrOutput {
+func (o IamRolePolicyPtrOutput) ToIamRolePolicyPtrOutput() IamRolePolicyPtrOutput {
 	return o
 }
 
-func (o IAMRolePolicyPtrOutput) ToIAMRolePolicyPtrOutputWithContext(ctx context.Context) IAMRolePolicyPtrOutput {
+func (o IamRolePolicyPtrOutput) ToIamRolePolicyPtrOutputWithContext(ctx context.Context) IamRolePolicyPtrOutput {
 	return o
 }
 
-func (o IAMRolePolicyPtrOutput) Elem() IAMRolePolicyOutput {
-	return o.ApplyT(func(v *IAMRolePolicy) IAMRolePolicy {
+func (o IamRolePolicyPtrOutput) Elem() IamRolePolicyOutput {
+	return o.ApplyT(func(v *IamRolePolicy) IamRolePolicy {
 		if v != nil {
 			return *v
 		}
-		var ret IAMRolePolicy
+		var ret IamRolePolicy
 		return ret
-	}).(IAMRolePolicyOutput)
+	}).(IamRolePolicyOutput)
 }
 
 // Default service strategy (`allow` or `deny`).
-func (o IAMRolePolicyPtrOutput) DefaultServiceStrategy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IAMRolePolicy) *string {
+func (o IamRolePolicyPtrOutput) DefaultServiceStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IamRolePolicy) *string {
 		if v == nil {
 			return nil
 		}
@@ -3158,122 +3158,122 @@ func (o IAMRolePolicyPtrOutput) DefaultServiceStrategy() pulumi.StringPtrOutput 
 }
 
 // IAM policy services.
-func (o IAMRolePolicyPtrOutput) Services() IAMRolePolicyServicesMapOutput {
-	return o.ApplyT(func(v *IAMRolePolicy) map[string]IAMRolePolicyServices {
+func (o IamRolePolicyPtrOutput) Services() IamRolePolicyServicesMapOutput {
+	return o.ApplyT(func(v *IamRolePolicy) map[string]IamRolePolicyServices {
 		if v == nil {
 			return nil
 		}
 		return v.Services
-	}).(IAMRolePolicyServicesMapOutput)
+	}).(IamRolePolicyServicesMapOutput)
 }
 
-type IAMRolePolicyServices struct {
+type IamRolePolicyServices struct {
 	// List of IAM service rules (if type is `rules`).
-	Rules []IAMRolePolicyServicesRule `pulumi:"rules"`
+	Rules []IamRolePolicyServicesRule `pulumi:"rules"`
 	// Service type (`rules`, `allow`, or `deny`).
 	Type *string `pulumi:"type"`
 }
 
-// IAMRolePolicyServicesInput is an input type that accepts IAMRolePolicyServicesArgs and IAMRolePolicyServicesOutput values.
-// You can construct a concrete instance of `IAMRolePolicyServicesInput` via:
+// IamRolePolicyServicesInput is an input type that accepts IamRolePolicyServicesArgs and IamRolePolicyServicesOutput values.
+// You can construct a concrete instance of `IamRolePolicyServicesInput` via:
 //
-//	IAMRolePolicyServicesArgs{...}
-type IAMRolePolicyServicesInput interface {
+//	IamRolePolicyServicesArgs{...}
+type IamRolePolicyServicesInput interface {
 	pulumi.Input
 
-	ToIAMRolePolicyServicesOutput() IAMRolePolicyServicesOutput
-	ToIAMRolePolicyServicesOutputWithContext(context.Context) IAMRolePolicyServicesOutput
+	ToIamRolePolicyServicesOutput() IamRolePolicyServicesOutput
+	ToIamRolePolicyServicesOutputWithContext(context.Context) IamRolePolicyServicesOutput
 }
 
-type IAMRolePolicyServicesArgs struct {
+type IamRolePolicyServicesArgs struct {
 	// List of IAM service rules (if type is `rules`).
-	Rules IAMRolePolicyServicesRuleArrayInput `pulumi:"rules"`
+	Rules IamRolePolicyServicesRuleArrayInput `pulumi:"rules"`
 	// Service type (`rules`, `allow`, or `deny`).
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
-func (IAMRolePolicyServicesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMRolePolicyServices)(nil)).Elem()
+func (IamRolePolicyServicesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamRolePolicyServices)(nil)).Elem()
 }
 
-func (i IAMRolePolicyServicesArgs) ToIAMRolePolicyServicesOutput() IAMRolePolicyServicesOutput {
-	return i.ToIAMRolePolicyServicesOutputWithContext(context.Background())
+func (i IamRolePolicyServicesArgs) ToIamRolePolicyServicesOutput() IamRolePolicyServicesOutput {
+	return i.ToIamRolePolicyServicesOutputWithContext(context.Background())
 }
 
-func (i IAMRolePolicyServicesArgs) ToIAMRolePolicyServicesOutputWithContext(ctx context.Context) IAMRolePolicyServicesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMRolePolicyServicesOutput)
+func (i IamRolePolicyServicesArgs) ToIamRolePolicyServicesOutputWithContext(ctx context.Context) IamRolePolicyServicesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamRolePolicyServicesOutput)
 }
 
-// IAMRolePolicyServicesMapInput is an input type that accepts IAMRolePolicyServicesMap and IAMRolePolicyServicesMapOutput values.
-// You can construct a concrete instance of `IAMRolePolicyServicesMapInput` via:
+// IamRolePolicyServicesMapInput is an input type that accepts IamRolePolicyServicesMap and IamRolePolicyServicesMapOutput values.
+// You can construct a concrete instance of `IamRolePolicyServicesMapInput` via:
 //
-//	IAMRolePolicyServicesMap{ "key": IAMRolePolicyServicesArgs{...} }
-type IAMRolePolicyServicesMapInput interface {
+//	IamRolePolicyServicesMap{ "key": IamRolePolicyServicesArgs{...} }
+type IamRolePolicyServicesMapInput interface {
 	pulumi.Input
 
-	ToIAMRolePolicyServicesMapOutput() IAMRolePolicyServicesMapOutput
-	ToIAMRolePolicyServicesMapOutputWithContext(context.Context) IAMRolePolicyServicesMapOutput
+	ToIamRolePolicyServicesMapOutput() IamRolePolicyServicesMapOutput
+	ToIamRolePolicyServicesMapOutputWithContext(context.Context) IamRolePolicyServicesMapOutput
 }
 
-type IAMRolePolicyServicesMap map[string]IAMRolePolicyServicesInput
+type IamRolePolicyServicesMap map[string]IamRolePolicyServicesInput
 
-func (IAMRolePolicyServicesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]IAMRolePolicyServices)(nil)).Elem()
+func (IamRolePolicyServicesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]IamRolePolicyServices)(nil)).Elem()
 }
 
-func (i IAMRolePolicyServicesMap) ToIAMRolePolicyServicesMapOutput() IAMRolePolicyServicesMapOutput {
-	return i.ToIAMRolePolicyServicesMapOutputWithContext(context.Background())
+func (i IamRolePolicyServicesMap) ToIamRolePolicyServicesMapOutput() IamRolePolicyServicesMapOutput {
+	return i.ToIamRolePolicyServicesMapOutputWithContext(context.Background())
 }
 
-func (i IAMRolePolicyServicesMap) ToIAMRolePolicyServicesMapOutputWithContext(ctx context.Context) IAMRolePolicyServicesMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMRolePolicyServicesMapOutput)
+func (i IamRolePolicyServicesMap) ToIamRolePolicyServicesMapOutputWithContext(ctx context.Context) IamRolePolicyServicesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamRolePolicyServicesMapOutput)
 }
 
-type IAMRolePolicyServicesOutput struct{ *pulumi.OutputState }
+type IamRolePolicyServicesOutput struct{ *pulumi.OutputState }
 
-func (IAMRolePolicyServicesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMRolePolicyServices)(nil)).Elem()
+func (IamRolePolicyServicesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamRolePolicyServices)(nil)).Elem()
 }
 
-func (o IAMRolePolicyServicesOutput) ToIAMRolePolicyServicesOutput() IAMRolePolicyServicesOutput {
+func (o IamRolePolicyServicesOutput) ToIamRolePolicyServicesOutput() IamRolePolicyServicesOutput {
 	return o
 }
 
-func (o IAMRolePolicyServicesOutput) ToIAMRolePolicyServicesOutputWithContext(ctx context.Context) IAMRolePolicyServicesOutput {
+func (o IamRolePolicyServicesOutput) ToIamRolePolicyServicesOutputWithContext(ctx context.Context) IamRolePolicyServicesOutput {
 	return o
 }
 
 // List of IAM service rules (if type is `rules`).
-func (o IAMRolePolicyServicesOutput) Rules() IAMRolePolicyServicesRuleArrayOutput {
-	return o.ApplyT(func(v IAMRolePolicyServices) []IAMRolePolicyServicesRule { return v.Rules }).(IAMRolePolicyServicesRuleArrayOutput)
+func (o IamRolePolicyServicesOutput) Rules() IamRolePolicyServicesRuleArrayOutput {
+	return o.ApplyT(func(v IamRolePolicyServices) []IamRolePolicyServicesRule { return v.Rules }).(IamRolePolicyServicesRuleArrayOutput)
 }
 
 // Service type (`rules`, `allow`, or `deny`).
-func (o IAMRolePolicyServicesOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IAMRolePolicyServices) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o IamRolePolicyServicesOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IamRolePolicyServices) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-type IAMRolePolicyServicesMapOutput struct{ *pulumi.OutputState }
+type IamRolePolicyServicesMapOutput struct{ *pulumi.OutputState }
 
-func (IAMRolePolicyServicesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]IAMRolePolicyServices)(nil)).Elem()
+func (IamRolePolicyServicesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]IamRolePolicyServices)(nil)).Elem()
 }
 
-func (o IAMRolePolicyServicesMapOutput) ToIAMRolePolicyServicesMapOutput() IAMRolePolicyServicesMapOutput {
+func (o IamRolePolicyServicesMapOutput) ToIamRolePolicyServicesMapOutput() IamRolePolicyServicesMapOutput {
 	return o
 }
 
-func (o IAMRolePolicyServicesMapOutput) ToIAMRolePolicyServicesMapOutputWithContext(ctx context.Context) IAMRolePolicyServicesMapOutput {
+func (o IamRolePolicyServicesMapOutput) ToIamRolePolicyServicesMapOutputWithContext(ctx context.Context) IamRolePolicyServicesMapOutput {
 	return o
 }
 
-func (o IAMRolePolicyServicesMapOutput) MapIndex(k pulumi.StringInput) IAMRolePolicyServicesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IAMRolePolicyServices {
-		return vs[0].(map[string]IAMRolePolicyServices)[vs[1].(string)]
-	}).(IAMRolePolicyServicesOutput)
+func (o IamRolePolicyServicesMapOutput) MapIndex(k pulumi.StringInput) IamRolePolicyServicesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IamRolePolicyServices {
+		return vs[0].(map[string]IamRolePolicyServices)[vs[1].(string)]
+	}).(IamRolePolicyServicesOutput)
 }
 
-type IAMRolePolicyServicesRule struct {
+type IamRolePolicyServicesRule struct {
 	// IAM policy rule action (`allow` or `deny`).
 	Action *string `pulumi:"action"`
 	// IAM policy rule expression.
@@ -3282,18 +3282,18 @@ type IAMRolePolicyServicesRule struct {
 	Resources []string `pulumi:"resources"`
 }
 
-// IAMRolePolicyServicesRuleInput is an input type that accepts IAMRolePolicyServicesRuleArgs and IAMRolePolicyServicesRuleOutput values.
-// You can construct a concrete instance of `IAMRolePolicyServicesRuleInput` via:
+// IamRolePolicyServicesRuleInput is an input type that accepts IamRolePolicyServicesRuleArgs and IamRolePolicyServicesRuleOutput values.
+// You can construct a concrete instance of `IamRolePolicyServicesRuleInput` via:
 //
-//	IAMRolePolicyServicesRuleArgs{...}
-type IAMRolePolicyServicesRuleInput interface {
+//	IamRolePolicyServicesRuleArgs{...}
+type IamRolePolicyServicesRuleInput interface {
 	pulumi.Input
 
-	ToIAMRolePolicyServicesRuleOutput() IAMRolePolicyServicesRuleOutput
-	ToIAMRolePolicyServicesRuleOutputWithContext(context.Context) IAMRolePolicyServicesRuleOutput
+	ToIamRolePolicyServicesRuleOutput() IamRolePolicyServicesRuleOutput
+	ToIamRolePolicyServicesRuleOutputWithContext(context.Context) IamRolePolicyServicesRuleOutput
 }
 
-type IAMRolePolicyServicesRuleArgs struct {
+type IamRolePolicyServicesRuleArgs struct {
 	// IAM policy rule action (`allow` or `deny`).
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// IAM policy rule expression.
@@ -3302,222 +3302,222 @@ type IAMRolePolicyServicesRuleArgs struct {
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
-func (IAMRolePolicyServicesRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMRolePolicyServicesRule)(nil)).Elem()
+func (IamRolePolicyServicesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamRolePolicyServicesRule)(nil)).Elem()
 }
 
-func (i IAMRolePolicyServicesRuleArgs) ToIAMRolePolicyServicesRuleOutput() IAMRolePolicyServicesRuleOutput {
-	return i.ToIAMRolePolicyServicesRuleOutputWithContext(context.Background())
+func (i IamRolePolicyServicesRuleArgs) ToIamRolePolicyServicesRuleOutput() IamRolePolicyServicesRuleOutput {
+	return i.ToIamRolePolicyServicesRuleOutputWithContext(context.Background())
 }
 
-func (i IAMRolePolicyServicesRuleArgs) ToIAMRolePolicyServicesRuleOutputWithContext(ctx context.Context) IAMRolePolicyServicesRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMRolePolicyServicesRuleOutput)
+func (i IamRolePolicyServicesRuleArgs) ToIamRolePolicyServicesRuleOutputWithContext(ctx context.Context) IamRolePolicyServicesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamRolePolicyServicesRuleOutput)
 }
 
-// IAMRolePolicyServicesRuleArrayInput is an input type that accepts IAMRolePolicyServicesRuleArray and IAMRolePolicyServicesRuleArrayOutput values.
-// You can construct a concrete instance of `IAMRolePolicyServicesRuleArrayInput` via:
+// IamRolePolicyServicesRuleArrayInput is an input type that accepts IamRolePolicyServicesRuleArray and IamRolePolicyServicesRuleArrayOutput values.
+// You can construct a concrete instance of `IamRolePolicyServicesRuleArrayInput` via:
 //
-//	IAMRolePolicyServicesRuleArray{ IAMRolePolicyServicesRuleArgs{...} }
-type IAMRolePolicyServicesRuleArrayInput interface {
+//	IamRolePolicyServicesRuleArray{ IamRolePolicyServicesRuleArgs{...} }
+type IamRolePolicyServicesRuleArrayInput interface {
 	pulumi.Input
 
-	ToIAMRolePolicyServicesRuleArrayOutput() IAMRolePolicyServicesRuleArrayOutput
-	ToIAMRolePolicyServicesRuleArrayOutputWithContext(context.Context) IAMRolePolicyServicesRuleArrayOutput
+	ToIamRolePolicyServicesRuleArrayOutput() IamRolePolicyServicesRuleArrayOutput
+	ToIamRolePolicyServicesRuleArrayOutputWithContext(context.Context) IamRolePolicyServicesRuleArrayOutput
 }
 
-type IAMRolePolicyServicesRuleArray []IAMRolePolicyServicesRuleInput
+type IamRolePolicyServicesRuleArray []IamRolePolicyServicesRuleInput
 
-func (IAMRolePolicyServicesRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IAMRolePolicyServicesRule)(nil)).Elem()
+func (IamRolePolicyServicesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IamRolePolicyServicesRule)(nil)).Elem()
 }
 
-func (i IAMRolePolicyServicesRuleArray) ToIAMRolePolicyServicesRuleArrayOutput() IAMRolePolicyServicesRuleArrayOutput {
-	return i.ToIAMRolePolicyServicesRuleArrayOutputWithContext(context.Background())
+func (i IamRolePolicyServicesRuleArray) ToIamRolePolicyServicesRuleArrayOutput() IamRolePolicyServicesRuleArrayOutput {
+	return i.ToIamRolePolicyServicesRuleArrayOutputWithContext(context.Background())
 }
 
-func (i IAMRolePolicyServicesRuleArray) ToIAMRolePolicyServicesRuleArrayOutputWithContext(ctx context.Context) IAMRolePolicyServicesRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMRolePolicyServicesRuleArrayOutput)
+func (i IamRolePolicyServicesRuleArray) ToIamRolePolicyServicesRuleArrayOutputWithContext(ctx context.Context) IamRolePolicyServicesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamRolePolicyServicesRuleArrayOutput)
 }
 
-type IAMRolePolicyServicesRuleOutput struct{ *pulumi.OutputState }
+type IamRolePolicyServicesRuleOutput struct{ *pulumi.OutputState }
 
-func (IAMRolePolicyServicesRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMRolePolicyServicesRule)(nil)).Elem()
+func (IamRolePolicyServicesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamRolePolicyServicesRule)(nil)).Elem()
 }
 
-func (o IAMRolePolicyServicesRuleOutput) ToIAMRolePolicyServicesRuleOutput() IAMRolePolicyServicesRuleOutput {
+func (o IamRolePolicyServicesRuleOutput) ToIamRolePolicyServicesRuleOutput() IamRolePolicyServicesRuleOutput {
 	return o
 }
 
-func (o IAMRolePolicyServicesRuleOutput) ToIAMRolePolicyServicesRuleOutputWithContext(ctx context.Context) IAMRolePolicyServicesRuleOutput {
+func (o IamRolePolicyServicesRuleOutput) ToIamRolePolicyServicesRuleOutputWithContext(ctx context.Context) IamRolePolicyServicesRuleOutput {
 	return o
 }
 
 // IAM policy rule action (`allow` or `deny`).
-func (o IAMRolePolicyServicesRuleOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IAMRolePolicyServicesRule) *string { return v.Action }).(pulumi.StringPtrOutput)
+func (o IamRolePolicyServicesRuleOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IamRolePolicyServicesRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
 // IAM policy rule expression.
-func (o IAMRolePolicyServicesRuleOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IAMRolePolicyServicesRule) *string { return v.Expression }).(pulumi.StringPtrOutput)
+func (o IamRolePolicyServicesRuleOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IamRolePolicyServicesRule) *string { return v.Expression }).(pulumi.StringPtrOutput)
 }
 
 // Deprecated: This field is not suported. Specify resources using CEL expressions.
-func (o IAMRolePolicyServicesRuleOutput) Resources() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v IAMRolePolicyServicesRule) []string { return v.Resources }).(pulumi.StringArrayOutput)
+func (o IamRolePolicyServicesRuleOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IamRolePolicyServicesRule) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
-type IAMRolePolicyServicesRuleArrayOutput struct{ *pulumi.OutputState }
+type IamRolePolicyServicesRuleArrayOutput struct{ *pulumi.OutputState }
 
-func (IAMRolePolicyServicesRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IAMRolePolicyServicesRule)(nil)).Elem()
+func (IamRolePolicyServicesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IamRolePolicyServicesRule)(nil)).Elem()
 }
 
-func (o IAMRolePolicyServicesRuleArrayOutput) ToIAMRolePolicyServicesRuleArrayOutput() IAMRolePolicyServicesRuleArrayOutput {
+func (o IamRolePolicyServicesRuleArrayOutput) ToIamRolePolicyServicesRuleArrayOutput() IamRolePolicyServicesRuleArrayOutput {
 	return o
 }
 
-func (o IAMRolePolicyServicesRuleArrayOutput) ToIAMRolePolicyServicesRuleArrayOutputWithContext(ctx context.Context) IAMRolePolicyServicesRuleArrayOutput {
+func (o IamRolePolicyServicesRuleArrayOutput) ToIamRolePolicyServicesRuleArrayOutputWithContext(ctx context.Context) IamRolePolicyServicesRuleArrayOutput {
 	return o
 }
 
-func (o IAMRolePolicyServicesRuleArrayOutput) Index(i pulumi.IntInput) IAMRolePolicyServicesRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IAMRolePolicyServicesRule {
-		return vs[0].([]IAMRolePolicyServicesRule)[vs[1].(int)]
-	}).(IAMRolePolicyServicesRuleOutput)
+func (o IamRolePolicyServicesRuleArrayOutput) Index(i pulumi.IntInput) IamRolePolicyServicesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IamRolePolicyServicesRule {
+		return vs[0].([]IamRolePolicyServicesRule)[vs[1].(int)]
+	}).(IamRolePolicyServicesRuleOutput)
 }
 
-type IAMRoleTimeouts struct {
+type IamRoleTimeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 	Read *string `pulumi:"read"`
 }
 
-// IAMRoleTimeoutsInput is an input type that accepts IAMRoleTimeoutsArgs and IAMRoleTimeoutsOutput values.
-// You can construct a concrete instance of `IAMRoleTimeoutsInput` via:
+// IamRoleTimeoutsInput is an input type that accepts IamRoleTimeoutsArgs and IamRoleTimeoutsOutput values.
+// You can construct a concrete instance of `IamRoleTimeoutsInput` via:
 //
-//	IAMRoleTimeoutsArgs{...}
-type IAMRoleTimeoutsInput interface {
+//	IamRoleTimeoutsArgs{...}
+type IamRoleTimeoutsInput interface {
 	pulumi.Input
 
-	ToIAMRoleTimeoutsOutput() IAMRoleTimeoutsOutput
-	ToIAMRoleTimeoutsOutputWithContext(context.Context) IAMRoleTimeoutsOutput
+	ToIamRoleTimeoutsOutput() IamRoleTimeoutsOutput
+	ToIamRoleTimeoutsOutputWithContext(context.Context) IamRoleTimeoutsOutput
 }
 
-type IAMRoleTimeoutsArgs struct {
+type IamRoleTimeoutsArgs struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 	Read pulumi.StringPtrInput `pulumi:"read"`
 }
 
-func (IAMRoleTimeoutsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMRoleTimeouts)(nil)).Elem()
+func (IamRoleTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamRoleTimeouts)(nil)).Elem()
 }
 
-func (i IAMRoleTimeoutsArgs) ToIAMRoleTimeoutsOutput() IAMRoleTimeoutsOutput {
-	return i.ToIAMRoleTimeoutsOutputWithContext(context.Background())
+func (i IamRoleTimeoutsArgs) ToIamRoleTimeoutsOutput() IamRoleTimeoutsOutput {
+	return i.ToIamRoleTimeoutsOutputWithContext(context.Background())
 }
 
-func (i IAMRoleTimeoutsArgs) ToIAMRoleTimeoutsOutputWithContext(ctx context.Context) IAMRoleTimeoutsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMRoleTimeoutsOutput)
+func (i IamRoleTimeoutsArgs) ToIamRoleTimeoutsOutputWithContext(ctx context.Context) IamRoleTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamRoleTimeoutsOutput)
 }
 
-func (i IAMRoleTimeoutsArgs) ToIAMRoleTimeoutsPtrOutput() IAMRoleTimeoutsPtrOutput {
-	return i.ToIAMRoleTimeoutsPtrOutputWithContext(context.Background())
+func (i IamRoleTimeoutsArgs) ToIamRoleTimeoutsPtrOutput() IamRoleTimeoutsPtrOutput {
+	return i.ToIamRoleTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (i IAMRoleTimeoutsArgs) ToIAMRoleTimeoutsPtrOutputWithContext(ctx context.Context) IAMRoleTimeoutsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMRoleTimeoutsOutput).ToIAMRoleTimeoutsPtrOutputWithContext(ctx)
+func (i IamRoleTimeoutsArgs) ToIamRoleTimeoutsPtrOutputWithContext(ctx context.Context) IamRoleTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamRoleTimeoutsOutput).ToIamRoleTimeoutsPtrOutputWithContext(ctx)
 }
 
-// IAMRoleTimeoutsPtrInput is an input type that accepts IAMRoleTimeoutsArgs, IAMRoleTimeoutsPtr and IAMRoleTimeoutsPtrOutput values.
-// You can construct a concrete instance of `IAMRoleTimeoutsPtrInput` via:
+// IamRoleTimeoutsPtrInput is an input type that accepts IamRoleTimeoutsArgs, IamRoleTimeoutsPtr and IamRoleTimeoutsPtrOutput values.
+// You can construct a concrete instance of `IamRoleTimeoutsPtrInput` via:
 //
-//	        IAMRoleTimeoutsArgs{...}
+//	        IamRoleTimeoutsArgs{...}
 //
 //	or:
 //
 //	        nil
-type IAMRoleTimeoutsPtrInput interface {
+type IamRoleTimeoutsPtrInput interface {
 	pulumi.Input
 
-	ToIAMRoleTimeoutsPtrOutput() IAMRoleTimeoutsPtrOutput
-	ToIAMRoleTimeoutsPtrOutputWithContext(context.Context) IAMRoleTimeoutsPtrOutput
+	ToIamRoleTimeoutsPtrOutput() IamRoleTimeoutsPtrOutput
+	ToIamRoleTimeoutsPtrOutputWithContext(context.Context) IamRoleTimeoutsPtrOutput
 }
 
-type iamroleTimeoutsPtrType IAMRoleTimeoutsArgs
+type iamRoleTimeoutsPtrType IamRoleTimeoutsArgs
 
-func IAMRoleTimeoutsPtr(v *IAMRoleTimeoutsArgs) IAMRoleTimeoutsPtrInput {
-	return (*iamroleTimeoutsPtrType)(v)
+func IamRoleTimeoutsPtr(v *IamRoleTimeoutsArgs) IamRoleTimeoutsPtrInput {
+	return (*iamRoleTimeoutsPtrType)(v)
 }
 
-func (*iamroleTimeoutsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMRoleTimeouts)(nil)).Elem()
+func (*iamRoleTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamRoleTimeouts)(nil)).Elem()
 }
 
-func (i *iamroleTimeoutsPtrType) ToIAMRoleTimeoutsPtrOutput() IAMRoleTimeoutsPtrOutput {
-	return i.ToIAMRoleTimeoutsPtrOutputWithContext(context.Background())
+func (i *iamRoleTimeoutsPtrType) ToIamRoleTimeoutsPtrOutput() IamRoleTimeoutsPtrOutput {
+	return i.ToIamRoleTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (i *iamroleTimeoutsPtrType) ToIAMRoleTimeoutsPtrOutputWithContext(ctx context.Context) IAMRoleTimeoutsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMRoleTimeoutsPtrOutput)
+func (i *iamRoleTimeoutsPtrType) ToIamRoleTimeoutsPtrOutputWithContext(ctx context.Context) IamRoleTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamRoleTimeoutsPtrOutput)
 }
 
-type IAMRoleTimeoutsOutput struct{ *pulumi.OutputState }
+type IamRoleTimeoutsOutput struct{ *pulumi.OutputState }
 
-func (IAMRoleTimeoutsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMRoleTimeouts)(nil)).Elem()
+func (IamRoleTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamRoleTimeouts)(nil)).Elem()
 }
 
-func (o IAMRoleTimeoutsOutput) ToIAMRoleTimeoutsOutput() IAMRoleTimeoutsOutput {
+func (o IamRoleTimeoutsOutput) ToIamRoleTimeoutsOutput() IamRoleTimeoutsOutput {
 	return o
 }
 
-func (o IAMRoleTimeoutsOutput) ToIAMRoleTimeoutsOutputWithContext(ctx context.Context) IAMRoleTimeoutsOutput {
+func (o IamRoleTimeoutsOutput) ToIamRoleTimeoutsOutputWithContext(ctx context.Context) IamRoleTimeoutsOutput {
 	return o
 }
 
-func (o IAMRoleTimeoutsOutput) ToIAMRoleTimeoutsPtrOutput() IAMRoleTimeoutsPtrOutput {
-	return o.ToIAMRoleTimeoutsPtrOutputWithContext(context.Background())
+func (o IamRoleTimeoutsOutput) ToIamRoleTimeoutsPtrOutput() IamRoleTimeoutsPtrOutput {
+	return o.ToIamRoleTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (o IAMRoleTimeoutsOutput) ToIAMRoleTimeoutsPtrOutputWithContext(ctx context.Context) IAMRoleTimeoutsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMRoleTimeouts) *IAMRoleTimeouts {
+func (o IamRoleTimeoutsOutput) ToIamRoleTimeoutsPtrOutputWithContext(ctx context.Context) IamRoleTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamRoleTimeouts) *IamRoleTimeouts {
 		return &v
-	}).(IAMRoleTimeoutsPtrOutput)
+	}).(IamRoleTimeoutsPtrOutput)
 }
 
 // A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-func (o IAMRoleTimeoutsOutput) Read() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IAMRoleTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+func (o IamRoleTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IamRoleTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
 }
 
-type IAMRoleTimeoutsPtrOutput struct{ *pulumi.OutputState }
+type IamRoleTimeoutsPtrOutput struct{ *pulumi.OutputState }
 
-func (IAMRoleTimeoutsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMRoleTimeouts)(nil)).Elem()
+func (IamRoleTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamRoleTimeouts)(nil)).Elem()
 }
 
-func (o IAMRoleTimeoutsPtrOutput) ToIAMRoleTimeoutsPtrOutput() IAMRoleTimeoutsPtrOutput {
+func (o IamRoleTimeoutsPtrOutput) ToIamRoleTimeoutsPtrOutput() IamRoleTimeoutsPtrOutput {
 	return o
 }
 
-func (o IAMRoleTimeoutsPtrOutput) ToIAMRoleTimeoutsPtrOutputWithContext(ctx context.Context) IAMRoleTimeoutsPtrOutput {
+func (o IamRoleTimeoutsPtrOutput) ToIamRoleTimeoutsPtrOutputWithContext(ctx context.Context) IamRoleTimeoutsPtrOutput {
 	return o
 }
 
-func (o IAMRoleTimeoutsPtrOutput) Elem() IAMRoleTimeoutsOutput {
-	return o.ApplyT(func(v *IAMRoleTimeouts) IAMRoleTimeouts {
+func (o IamRoleTimeoutsPtrOutput) Elem() IamRoleTimeoutsOutput {
+	return o.ApplyT(func(v *IamRoleTimeouts) IamRoleTimeouts {
 		if v != nil {
 			return *v
 		}
-		var ret IAMRoleTimeouts
+		var ret IamRoleTimeouts
 		return ret
-	}).(IAMRoleTimeoutsOutput)
+	}).(IamRoleTimeoutsOutput)
 }
 
 // A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-func (o IAMRoleTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IAMRoleTimeouts) *string {
+func (o IamRoleTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IamRoleTimeouts) *string {
 		if v == nil {
 			return nil
 		}
@@ -3649,7 +3649,7 @@ func (o InstancePoolInstanceArrayOutput) Index(i pulumi.IntInput) InstancePoolIn
 	}).(InstancePoolInstanceOutput)
 }
 
-type NLBServiceHealthcheck struct {
+type NlbServiceHealthcheck struct {
 	// The healthcheck interval in seconds (default: `10`).
 	Interval *int `pulumi:"interval"`
 	// The healthcheck mode (`tcp`|`http`|`https`; default: `tcp`).
@@ -3666,18 +3666,18 @@ type NLBServiceHealthcheck struct {
 	Uri *string `pulumi:"uri"`
 }
 
-// NLBServiceHealthcheckInput is an input type that accepts NLBServiceHealthcheckArgs and NLBServiceHealthcheckOutput values.
-// You can construct a concrete instance of `NLBServiceHealthcheckInput` via:
+// NlbServiceHealthcheckInput is an input type that accepts NlbServiceHealthcheckArgs and NlbServiceHealthcheckOutput values.
+// You can construct a concrete instance of `NlbServiceHealthcheckInput` via:
 //
-//	NLBServiceHealthcheckArgs{...}
-type NLBServiceHealthcheckInput interface {
+//	NlbServiceHealthcheckArgs{...}
+type NlbServiceHealthcheckInput interface {
 	pulumi.Input
 
-	ToNLBServiceHealthcheckOutput() NLBServiceHealthcheckOutput
-	ToNLBServiceHealthcheckOutputWithContext(context.Context) NLBServiceHealthcheckOutput
+	ToNlbServiceHealthcheckOutput() NlbServiceHealthcheckOutput
+	ToNlbServiceHealthcheckOutputWithContext(context.Context) NlbServiceHealthcheckOutput
 }
 
-type NLBServiceHealthcheckArgs struct {
+type NlbServiceHealthcheckArgs struct {
 	// The healthcheck interval in seconds (default: `10`).
 	Interval pulumi.IntPtrInput `pulumi:"interval"`
 	// The healthcheck mode (`tcp`|`http`|`https`; default: `tcp`).
@@ -3694,113 +3694,113 @@ type NLBServiceHealthcheckArgs struct {
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
 
-func (NLBServiceHealthcheckArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NLBServiceHealthcheck)(nil)).Elem()
+func (NlbServiceHealthcheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NlbServiceHealthcheck)(nil)).Elem()
 }
 
-func (i NLBServiceHealthcheckArgs) ToNLBServiceHealthcheckOutput() NLBServiceHealthcheckOutput {
-	return i.ToNLBServiceHealthcheckOutputWithContext(context.Background())
+func (i NlbServiceHealthcheckArgs) ToNlbServiceHealthcheckOutput() NlbServiceHealthcheckOutput {
+	return i.ToNlbServiceHealthcheckOutputWithContext(context.Background())
 }
 
-func (i NLBServiceHealthcheckArgs) ToNLBServiceHealthcheckOutputWithContext(ctx context.Context) NLBServiceHealthcheckOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NLBServiceHealthcheckOutput)
+func (i NlbServiceHealthcheckArgs) ToNlbServiceHealthcheckOutputWithContext(ctx context.Context) NlbServiceHealthcheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NlbServiceHealthcheckOutput)
 }
 
-// NLBServiceHealthcheckArrayInput is an input type that accepts NLBServiceHealthcheckArray and NLBServiceHealthcheckArrayOutput values.
-// You can construct a concrete instance of `NLBServiceHealthcheckArrayInput` via:
+// NlbServiceHealthcheckArrayInput is an input type that accepts NlbServiceHealthcheckArray and NlbServiceHealthcheckArrayOutput values.
+// You can construct a concrete instance of `NlbServiceHealthcheckArrayInput` via:
 //
-//	NLBServiceHealthcheckArray{ NLBServiceHealthcheckArgs{...} }
-type NLBServiceHealthcheckArrayInput interface {
+//	NlbServiceHealthcheckArray{ NlbServiceHealthcheckArgs{...} }
+type NlbServiceHealthcheckArrayInput interface {
 	pulumi.Input
 
-	ToNLBServiceHealthcheckArrayOutput() NLBServiceHealthcheckArrayOutput
-	ToNLBServiceHealthcheckArrayOutputWithContext(context.Context) NLBServiceHealthcheckArrayOutput
+	ToNlbServiceHealthcheckArrayOutput() NlbServiceHealthcheckArrayOutput
+	ToNlbServiceHealthcheckArrayOutputWithContext(context.Context) NlbServiceHealthcheckArrayOutput
 }
 
-type NLBServiceHealthcheckArray []NLBServiceHealthcheckInput
+type NlbServiceHealthcheckArray []NlbServiceHealthcheckInput
 
-func (NLBServiceHealthcheckArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NLBServiceHealthcheck)(nil)).Elem()
+func (NlbServiceHealthcheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NlbServiceHealthcheck)(nil)).Elem()
 }
 
-func (i NLBServiceHealthcheckArray) ToNLBServiceHealthcheckArrayOutput() NLBServiceHealthcheckArrayOutput {
-	return i.ToNLBServiceHealthcheckArrayOutputWithContext(context.Background())
+func (i NlbServiceHealthcheckArray) ToNlbServiceHealthcheckArrayOutput() NlbServiceHealthcheckArrayOutput {
+	return i.ToNlbServiceHealthcheckArrayOutputWithContext(context.Background())
 }
 
-func (i NLBServiceHealthcheckArray) ToNLBServiceHealthcheckArrayOutputWithContext(ctx context.Context) NLBServiceHealthcheckArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NLBServiceHealthcheckArrayOutput)
+func (i NlbServiceHealthcheckArray) ToNlbServiceHealthcheckArrayOutputWithContext(ctx context.Context) NlbServiceHealthcheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NlbServiceHealthcheckArrayOutput)
 }
 
-type NLBServiceHealthcheckOutput struct{ *pulumi.OutputState }
+type NlbServiceHealthcheckOutput struct{ *pulumi.OutputState }
 
-func (NLBServiceHealthcheckOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NLBServiceHealthcheck)(nil)).Elem()
+func (NlbServiceHealthcheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NlbServiceHealthcheck)(nil)).Elem()
 }
 
-func (o NLBServiceHealthcheckOutput) ToNLBServiceHealthcheckOutput() NLBServiceHealthcheckOutput {
+func (o NlbServiceHealthcheckOutput) ToNlbServiceHealthcheckOutput() NlbServiceHealthcheckOutput {
 	return o
 }
 
-func (o NLBServiceHealthcheckOutput) ToNLBServiceHealthcheckOutputWithContext(ctx context.Context) NLBServiceHealthcheckOutput {
+func (o NlbServiceHealthcheckOutput) ToNlbServiceHealthcheckOutputWithContext(ctx context.Context) NlbServiceHealthcheckOutput {
 	return o
 }
 
 // The healthcheck interval in seconds (default: `10`).
-func (o NLBServiceHealthcheckOutput) Interval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NLBServiceHealthcheck) *int { return v.Interval }).(pulumi.IntPtrOutput)
+func (o NlbServiceHealthcheckOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NlbServiceHealthcheck) *int { return v.Interval }).(pulumi.IntPtrOutput)
 }
 
 // The healthcheck mode (`tcp`|`http`|`https`; default: `tcp`).
-func (o NLBServiceHealthcheckOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NLBServiceHealthcheck) *string { return v.Mode }).(pulumi.StringPtrOutput)
+func (o NlbServiceHealthcheckOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NlbServiceHealthcheck) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
 // The NLB service (TCP/UDP) port.
-func (o NLBServiceHealthcheckOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v NLBServiceHealthcheck) int { return v.Port }).(pulumi.IntOutput)
+func (o NlbServiceHealthcheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v NlbServiceHealthcheck) int { return v.Port }).(pulumi.IntOutput)
 }
 
 // The healthcheck retries (default: `1`).
-func (o NLBServiceHealthcheckOutput) Retries() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NLBServiceHealthcheck) *int { return v.Retries }).(pulumi.IntPtrOutput)
+func (o NlbServiceHealthcheckOutput) Retries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NlbServiceHealthcheck) *int { return v.Retries }).(pulumi.IntPtrOutput)
 }
 
 // The healthcheck timeout (seconds; default: `5`).
-func (o NLBServiceHealthcheckOutput) Timeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NLBServiceHealthcheck) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+func (o NlbServiceHealthcheckOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NlbServiceHealthcheck) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
 
 // The healthcheck TLS SNI server name (only if `mode` is `https`).
-func (o NLBServiceHealthcheckOutput) TlsSni() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NLBServiceHealthcheck) *string { return v.TlsSni }).(pulumi.StringPtrOutput)
+func (o NlbServiceHealthcheckOutput) TlsSni() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NlbServiceHealthcheck) *string { return v.TlsSni }).(pulumi.StringPtrOutput)
 }
 
 // The healthcheck URI (must be set only if `mode` is `http(s)`).
-func (o NLBServiceHealthcheckOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NLBServiceHealthcheck) *string { return v.Uri }).(pulumi.StringPtrOutput)
+func (o NlbServiceHealthcheckOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NlbServiceHealthcheck) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
 
-type NLBServiceHealthcheckArrayOutput struct{ *pulumi.OutputState }
+type NlbServiceHealthcheckArrayOutput struct{ *pulumi.OutputState }
 
-func (NLBServiceHealthcheckArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NLBServiceHealthcheck)(nil)).Elem()
+func (NlbServiceHealthcheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NlbServiceHealthcheck)(nil)).Elem()
 }
 
-func (o NLBServiceHealthcheckArrayOutput) ToNLBServiceHealthcheckArrayOutput() NLBServiceHealthcheckArrayOutput {
+func (o NlbServiceHealthcheckArrayOutput) ToNlbServiceHealthcheckArrayOutput() NlbServiceHealthcheckArrayOutput {
 	return o
 }
 
-func (o NLBServiceHealthcheckArrayOutput) ToNLBServiceHealthcheckArrayOutputWithContext(ctx context.Context) NLBServiceHealthcheckArrayOutput {
+func (o NlbServiceHealthcheckArrayOutput) ToNlbServiceHealthcheckArrayOutputWithContext(ctx context.Context) NlbServiceHealthcheckArrayOutput {
 	return o
 }
 
-func (o NLBServiceHealthcheckArrayOutput) Index(i pulumi.IntInput) NLBServiceHealthcheckOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NLBServiceHealthcheck {
-		return vs[0].([]NLBServiceHealthcheck)[vs[1].(int)]
-	}).(NLBServiceHealthcheckOutput)
+func (o NlbServiceHealthcheckArrayOutput) Index(i pulumi.IntInput) NlbServiceHealthcheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NlbServiceHealthcheck {
+		return vs[0].([]NlbServiceHealthcheck)[vs[1].(int)]
+	}).(NlbServiceHealthcheckOutput)
 }
 
-type SKSClusterOidc struct {
+type SksClusterOidc struct {
 	// The OpenID client ID.
 	ClientId string `pulumi:"clientId"`
 	// An OpenID JWT claim to use as the user's group.
@@ -3817,18 +3817,18 @@ type SKSClusterOidc struct {
 	UsernamePrefix *string `pulumi:"usernamePrefix"`
 }
 
-// SKSClusterOidcInput is an input type that accepts SKSClusterOidcArgs and SKSClusterOidcOutput values.
-// You can construct a concrete instance of `SKSClusterOidcInput` via:
+// SksClusterOidcInput is an input type that accepts SksClusterOidcArgs and SksClusterOidcOutput values.
+// You can construct a concrete instance of `SksClusterOidcInput` via:
 //
-//	SKSClusterOidcArgs{...}
-type SKSClusterOidcInput interface {
+//	SksClusterOidcArgs{...}
+type SksClusterOidcInput interface {
 	pulumi.Input
 
-	ToSKSClusterOidcOutput() SKSClusterOidcOutput
-	ToSKSClusterOidcOutputWithContext(context.Context) SKSClusterOidcOutput
+	ToSksClusterOidcOutput() SksClusterOidcOutput
+	ToSksClusterOidcOutputWithContext(context.Context) SksClusterOidcOutput
 }
 
-type SKSClusterOidcArgs struct {
+type SksClusterOidcArgs struct {
 	// The OpenID client ID.
 	ClientId pulumi.StringInput `pulumi:"clientId"`
 	// An OpenID JWT claim to use as the user's group.
@@ -3845,145 +3845,145 @@ type SKSClusterOidcArgs struct {
 	UsernamePrefix pulumi.StringPtrInput `pulumi:"usernamePrefix"`
 }
 
-func (SKSClusterOidcArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SKSClusterOidc)(nil)).Elem()
+func (SksClusterOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SksClusterOidc)(nil)).Elem()
 }
 
-func (i SKSClusterOidcArgs) ToSKSClusterOidcOutput() SKSClusterOidcOutput {
-	return i.ToSKSClusterOidcOutputWithContext(context.Background())
+func (i SksClusterOidcArgs) ToSksClusterOidcOutput() SksClusterOidcOutput {
+	return i.ToSksClusterOidcOutputWithContext(context.Background())
 }
 
-func (i SKSClusterOidcArgs) ToSKSClusterOidcOutputWithContext(ctx context.Context) SKSClusterOidcOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SKSClusterOidcOutput)
+func (i SksClusterOidcArgs) ToSksClusterOidcOutputWithContext(ctx context.Context) SksClusterOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SksClusterOidcOutput)
 }
 
-func (i SKSClusterOidcArgs) ToSKSClusterOidcPtrOutput() SKSClusterOidcPtrOutput {
-	return i.ToSKSClusterOidcPtrOutputWithContext(context.Background())
+func (i SksClusterOidcArgs) ToSksClusterOidcPtrOutput() SksClusterOidcPtrOutput {
+	return i.ToSksClusterOidcPtrOutputWithContext(context.Background())
 }
 
-func (i SKSClusterOidcArgs) ToSKSClusterOidcPtrOutputWithContext(ctx context.Context) SKSClusterOidcPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SKSClusterOidcOutput).ToSKSClusterOidcPtrOutputWithContext(ctx)
+func (i SksClusterOidcArgs) ToSksClusterOidcPtrOutputWithContext(ctx context.Context) SksClusterOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SksClusterOidcOutput).ToSksClusterOidcPtrOutputWithContext(ctx)
 }
 
-// SKSClusterOidcPtrInput is an input type that accepts SKSClusterOidcArgs, SKSClusterOidcPtr and SKSClusterOidcPtrOutput values.
-// You can construct a concrete instance of `SKSClusterOidcPtrInput` via:
+// SksClusterOidcPtrInput is an input type that accepts SksClusterOidcArgs, SksClusterOidcPtr and SksClusterOidcPtrOutput values.
+// You can construct a concrete instance of `SksClusterOidcPtrInput` via:
 //
-//	        SKSClusterOidcArgs{...}
+//	        SksClusterOidcArgs{...}
 //
 //	or:
 //
 //	        nil
-type SKSClusterOidcPtrInput interface {
+type SksClusterOidcPtrInput interface {
 	pulumi.Input
 
-	ToSKSClusterOidcPtrOutput() SKSClusterOidcPtrOutput
-	ToSKSClusterOidcPtrOutputWithContext(context.Context) SKSClusterOidcPtrOutput
+	ToSksClusterOidcPtrOutput() SksClusterOidcPtrOutput
+	ToSksClusterOidcPtrOutputWithContext(context.Context) SksClusterOidcPtrOutput
 }
 
-type sksclusterOidcPtrType SKSClusterOidcArgs
+type sksClusterOidcPtrType SksClusterOidcArgs
 
-func SKSClusterOidcPtr(v *SKSClusterOidcArgs) SKSClusterOidcPtrInput {
-	return (*sksclusterOidcPtrType)(v)
+func SksClusterOidcPtr(v *SksClusterOidcArgs) SksClusterOidcPtrInput {
+	return (*sksClusterOidcPtrType)(v)
 }
 
-func (*sksclusterOidcPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SKSClusterOidc)(nil)).Elem()
+func (*sksClusterOidcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SksClusterOidc)(nil)).Elem()
 }
 
-func (i *sksclusterOidcPtrType) ToSKSClusterOidcPtrOutput() SKSClusterOidcPtrOutput {
-	return i.ToSKSClusterOidcPtrOutputWithContext(context.Background())
+func (i *sksClusterOidcPtrType) ToSksClusterOidcPtrOutput() SksClusterOidcPtrOutput {
+	return i.ToSksClusterOidcPtrOutputWithContext(context.Background())
 }
 
-func (i *sksclusterOidcPtrType) ToSKSClusterOidcPtrOutputWithContext(ctx context.Context) SKSClusterOidcPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SKSClusterOidcPtrOutput)
+func (i *sksClusterOidcPtrType) ToSksClusterOidcPtrOutputWithContext(ctx context.Context) SksClusterOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SksClusterOidcPtrOutput)
 }
 
-type SKSClusterOidcOutput struct{ *pulumi.OutputState }
+type SksClusterOidcOutput struct{ *pulumi.OutputState }
 
-func (SKSClusterOidcOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SKSClusterOidc)(nil)).Elem()
+func (SksClusterOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SksClusterOidc)(nil)).Elem()
 }
 
-func (o SKSClusterOidcOutput) ToSKSClusterOidcOutput() SKSClusterOidcOutput {
+func (o SksClusterOidcOutput) ToSksClusterOidcOutput() SksClusterOidcOutput {
 	return o
 }
 
-func (o SKSClusterOidcOutput) ToSKSClusterOidcOutputWithContext(ctx context.Context) SKSClusterOidcOutput {
+func (o SksClusterOidcOutput) ToSksClusterOidcOutputWithContext(ctx context.Context) SksClusterOidcOutput {
 	return o
 }
 
-func (o SKSClusterOidcOutput) ToSKSClusterOidcPtrOutput() SKSClusterOidcPtrOutput {
-	return o.ToSKSClusterOidcPtrOutputWithContext(context.Background())
+func (o SksClusterOidcOutput) ToSksClusterOidcPtrOutput() SksClusterOidcPtrOutput {
+	return o.ToSksClusterOidcPtrOutputWithContext(context.Background())
 }
 
-func (o SKSClusterOidcOutput) ToSKSClusterOidcPtrOutputWithContext(ctx context.Context) SKSClusterOidcPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SKSClusterOidc) *SKSClusterOidc {
+func (o SksClusterOidcOutput) ToSksClusterOidcPtrOutputWithContext(ctx context.Context) SksClusterOidcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SksClusterOidc) *SksClusterOidc {
 		return &v
-	}).(SKSClusterOidcPtrOutput)
+	}).(SksClusterOidcPtrOutput)
 }
 
 // The OpenID client ID.
-func (o SKSClusterOidcOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v SKSClusterOidc) string { return v.ClientId }).(pulumi.StringOutput)
+func (o SksClusterOidcOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v SksClusterOidc) string { return v.ClientId }).(pulumi.StringOutput)
 }
 
 // An OpenID JWT claim to use as the user's group.
-func (o SKSClusterOidcOutput) GroupsClaim() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SKSClusterOidc) *string { return v.GroupsClaim }).(pulumi.StringPtrOutput)
+func (o SksClusterOidcOutput) GroupsClaim() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SksClusterOidc) *string { return v.GroupsClaim }).(pulumi.StringPtrOutput)
 }
 
 // An OpenID prefix prepended to group claims.
-func (o SKSClusterOidcOutput) GroupsPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SKSClusterOidc) *string { return v.GroupsPrefix }).(pulumi.StringPtrOutput)
+func (o SksClusterOidcOutput) GroupsPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SksClusterOidc) *string { return v.GroupsPrefix }).(pulumi.StringPtrOutput)
 }
 
 // The OpenID provider URL.
-func (o SKSClusterOidcOutput) IssuerUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v SKSClusterOidc) string { return v.IssuerUrl }).(pulumi.StringOutput)
+func (o SksClusterOidcOutput) IssuerUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v SksClusterOidc) string { return v.IssuerUrl }).(pulumi.StringOutput)
 }
 
 // A map of key/value pairs that describes a required claim in the OpenID Token.
-func (o SKSClusterOidcOutput) RequiredClaim() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SKSClusterOidc) map[string]string { return v.RequiredClaim }).(pulumi.StringMapOutput)
+func (o SksClusterOidcOutput) RequiredClaim() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SksClusterOidc) map[string]string { return v.RequiredClaim }).(pulumi.StringMapOutput)
 }
 
 // An OpenID JWT claim to use as the user name.
-func (o SKSClusterOidcOutput) UsernameClaim() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SKSClusterOidc) *string { return v.UsernameClaim }).(pulumi.StringPtrOutput)
+func (o SksClusterOidcOutput) UsernameClaim() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SksClusterOidc) *string { return v.UsernameClaim }).(pulumi.StringPtrOutput)
 }
 
 // An OpenID prefix prepended to username claims.
-func (o SKSClusterOidcOutput) UsernamePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SKSClusterOidc) *string { return v.UsernamePrefix }).(pulumi.StringPtrOutput)
+func (o SksClusterOidcOutput) UsernamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SksClusterOidc) *string { return v.UsernamePrefix }).(pulumi.StringPtrOutput)
 }
 
-type SKSClusterOidcPtrOutput struct{ *pulumi.OutputState }
+type SksClusterOidcPtrOutput struct{ *pulumi.OutputState }
 
-func (SKSClusterOidcPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SKSClusterOidc)(nil)).Elem()
+func (SksClusterOidcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SksClusterOidc)(nil)).Elem()
 }
 
-func (o SKSClusterOidcPtrOutput) ToSKSClusterOidcPtrOutput() SKSClusterOidcPtrOutput {
+func (o SksClusterOidcPtrOutput) ToSksClusterOidcPtrOutput() SksClusterOidcPtrOutput {
 	return o
 }
 
-func (o SKSClusterOidcPtrOutput) ToSKSClusterOidcPtrOutputWithContext(ctx context.Context) SKSClusterOidcPtrOutput {
+func (o SksClusterOidcPtrOutput) ToSksClusterOidcPtrOutputWithContext(ctx context.Context) SksClusterOidcPtrOutput {
 	return o
 }
 
-func (o SKSClusterOidcPtrOutput) Elem() SKSClusterOidcOutput {
-	return o.ApplyT(func(v *SKSClusterOidc) SKSClusterOidc {
+func (o SksClusterOidcPtrOutput) Elem() SksClusterOidcOutput {
+	return o.ApplyT(func(v *SksClusterOidc) SksClusterOidc {
 		if v != nil {
 			return *v
 		}
-		var ret SKSClusterOidc
+		var ret SksClusterOidc
 		return ret
-	}).(SKSClusterOidcOutput)
+	}).(SksClusterOidcOutput)
 }
 
 // The OpenID client ID.
-func (o SKSClusterOidcPtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SKSClusterOidc) *string {
+func (o SksClusterOidcPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SksClusterOidc) *string {
 		if v == nil {
 			return nil
 		}
@@ -3992,8 +3992,8 @@ func (o SKSClusterOidcPtrOutput) ClientId() pulumi.StringPtrOutput {
 }
 
 // An OpenID JWT claim to use as the user's group.
-func (o SKSClusterOidcPtrOutput) GroupsClaim() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SKSClusterOidc) *string {
+func (o SksClusterOidcPtrOutput) GroupsClaim() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SksClusterOidc) *string {
 		if v == nil {
 			return nil
 		}
@@ -4002,8 +4002,8 @@ func (o SKSClusterOidcPtrOutput) GroupsClaim() pulumi.StringPtrOutput {
 }
 
 // An OpenID prefix prepended to group claims.
-func (o SKSClusterOidcPtrOutput) GroupsPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SKSClusterOidc) *string {
+func (o SksClusterOidcPtrOutput) GroupsPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SksClusterOidc) *string {
 		if v == nil {
 			return nil
 		}
@@ -4012,8 +4012,8 @@ func (o SKSClusterOidcPtrOutput) GroupsPrefix() pulumi.StringPtrOutput {
 }
 
 // The OpenID provider URL.
-func (o SKSClusterOidcPtrOutput) IssuerUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SKSClusterOidc) *string {
+func (o SksClusterOidcPtrOutput) IssuerUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SksClusterOidc) *string {
 		if v == nil {
 			return nil
 		}
@@ -4022,8 +4022,8 @@ func (o SKSClusterOidcPtrOutput) IssuerUrl() pulumi.StringPtrOutput {
 }
 
 // A map of key/value pairs that describes a required claim in the OpenID Token.
-func (o SKSClusterOidcPtrOutput) RequiredClaim() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *SKSClusterOidc) map[string]string {
+func (o SksClusterOidcPtrOutput) RequiredClaim() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SksClusterOidc) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -4032,8 +4032,8 @@ func (o SKSClusterOidcPtrOutput) RequiredClaim() pulumi.StringMapOutput {
 }
 
 // An OpenID JWT claim to use as the user name.
-func (o SKSClusterOidcPtrOutput) UsernameClaim() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SKSClusterOidc) *string {
+func (o SksClusterOidcPtrOutput) UsernameClaim() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SksClusterOidc) *string {
 		if v == nil {
 			return nil
 		}
@@ -4042,8 +4042,8 @@ func (o SKSClusterOidcPtrOutput) UsernameClaim() pulumi.StringPtrOutput {
 }
 
 // An OpenID prefix prepended to username claims.
-func (o SKSClusterOidcPtrOutput) UsernamePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SKSClusterOidc) *string {
+func (o SksClusterOidcPtrOutput) UsernamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SksClusterOidc) *string {
 		if v == nil {
 			return nil
 		}
@@ -4271,136 +4271,136 @@ func (o GetComputeInstanceListInstanceArrayOutput) Index(i pulumi.IntInput) GetC
 	}).(GetComputeInstanceListInstanceOutput)
 }
 
-type GetDatabaseURITimeouts struct {
+type GetDatabaseUriTimeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 	Read *string `pulumi:"read"`
 }
 
-// GetDatabaseURITimeoutsInput is an input type that accepts GetDatabaseURITimeoutsArgs and GetDatabaseURITimeoutsOutput values.
-// You can construct a concrete instance of `GetDatabaseURITimeoutsInput` via:
+// GetDatabaseUriTimeoutsInput is an input type that accepts GetDatabaseUriTimeoutsArgs and GetDatabaseUriTimeoutsOutput values.
+// You can construct a concrete instance of `GetDatabaseUriTimeoutsInput` via:
 //
-//	GetDatabaseURITimeoutsArgs{...}
-type GetDatabaseURITimeoutsInput interface {
+//	GetDatabaseUriTimeoutsArgs{...}
+type GetDatabaseUriTimeoutsInput interface {
 	pulumi.Input
 
-	ToGetDatabaseURITimeoutsOutput() GetDatabaseURITimeoutsOutput
-	ToGetDatabaseURITimeoutsOutputWithContext(context.Context) GetDatabaseURITimeoutsOutput
+	ToGetDatabaseUriTimeoutsOutput() GetDatabaseUriTimeoutsOutput
+	ToGetDatabaseUriTimeoutsOutputWithContext(context.Context) GetDatabaseUriTimeoutsOutput
 }
 
-type GetDatabaseURITimeoutsArgs struct {
+type GetDatabaseUriTimeoutsArgs struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 	Read pulumi.StringPtrInput `pulumi:"read"`
 }
 
-func (GetDatabaseURITimeoutsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDatabaseURITimeouts)(nil)).Elem()
+func (GetDatabaseUriTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseUriTimeouts)(nil)).Elem()
 }
 
-func (i GetDatabaseURITimeoutsArgs) ToGetDatabaseURITimeoutsOutput() GetDatabaseURITimeoutsOutput {
-	return i.ToGetDatabaseURITimeoutsOutputWithContext(context.Background())
+func (i GetDatabaseUriTimeoutsArgs) ToGetDatabaseUriTimeoutsOutput() GetDatabaseUriTimeoutsOutput {
+	return i.ToGetDatabaseUriTimeoutsOutputWithContext(context.Background())
 }
 
-func (i GetDatabaseURITimeoutsArgs) ToGetDatabaseURITimeoutsOutputWithContext(ctx context.Context) GetDatabaseURITimeoutsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseURITimeoutsOutput)
+func (i GetDatabaseUriTimeoutsArgs) ToGetDatabaseUriTimeoutsOutputWithContext(ctx context.Context) GetDatabaseUriTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseUriTimeoutsOutput)
 }
 
-func (i GetDatabaseURITimeoutsArgs) ToGetDatabaseURITimeoutsPtrOutput() GetDatabaseURITimeoutsPtrOutput {
-	return i.ToGetDatabaseURITimeoutsPtrOutputWithContext(context.Background())
+func (i GetDatabaseUriTimeoutsArgs) ToGetDatabaseUriTimeoutsPtrOutput() GetDatabaseUriTimeoutsPtrOutput {
+	return i.ToGetDatabaseUriTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (i GetDatabaseURITimeoutsArgs) ToGetDatabaseURITimeoutsPtrOutputWithContext(ctx context.Context) GetDatabaseURITimeoutsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseURITimeoutsOutput).ToGetDatabaseURITimeoutsPtrOutputWithContext(ctx)
+func (i GetDatabaseUriTimeoutsArgs) ToGetDatabaseUriTimeoutsPtrOutputWithContext(ctx context.Context) GetDatabaseUriTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseUriTimeoutsOutput).ToGetDatabaseUriTimeoutsPtrOutputWithContext(ctx)
 }
 
-// GetDatabaseURITimeoutsPtrInput is an input type that accepts GetDatabaseURITimeoutsArgs, GetDatabaseURITimeoutsPtr and GetDatabaseURITimeoutsPtrOutput values.
-// You can construct a concrete instance of `GetDatabaseURITimeoutsPtrInput` via:
+// GetDatabaseUriTimeoutsPtrInput is an input type that accepts GetDatabaseUriTimeoutsArgs, GetDatabaseUriTimeoutsPtr and GetDatabaseUriTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetDatabaseUriTimeoutsPtrInput` via:
 //
-//	        GetDatabaseURITimeoutsArgs{...}
+//	        GetDatabaseUriTimeoutsArgs{...}
 //
 //	or:
 //
 //	        nil
-type GetDatabaseURITimeoutsPtrInput interface {
+type GetDatabaseUriTimeoutsPtrInput interface {
 	pulumi.Input
 
-	ToGetDatabaseURITimeoutsPtrOutput() GetDatabaseURITimeoutsPtrOutput
-	ToGetDatabaseURITimeoutsPtrOutputWithContext(context.Context) GetDatabaseURITimeoutsPtrOutput
+	ToGetDatabaseUriTimeoutsPtrOutput() GetDatabaseUriTimeoutsPtrOutput
+	ToGetDatabaseUriTimeoutsPtrOutputWithContext(context.Context) GetDatabaseUriTimeoutsPtrOutput
 }
 
-type getDatabaseURITimeoutsPtrType GetDatabaseURITimeoutsArgs
+type getDatabaseUriTimeoutsPtrType GetDatabaseUriTimeoutsArgs
 
-func GetDatabaseURITimeoutsPtr(v *GetDatabaseURITimeoutsArgs) GetDatabaseURITimeoutsPtrInput {
-	return (*getDatabaseURITimeoutsPtrType)(v)
+func GetDatabaseUriTimeoutsPtr(v *GetDatabaseUriTimeoutsArgs) GetDatabaseUriTimeoutsPtrInput {
+	return (*getDatabaseUriTimeoutsPtrType)(v)
 }
 
-func (*getDatabaseURITimeoutsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetDatabaseURITimeouts)(nil)).Elem()
+func (*getDatabaseUriTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetDatabaseUriTimeouts)(nil)).Elem()
 }
 
-func (i *getDatabaseURITimeoutsPtrType) ToGetDatabaseURITimeoutsPtrOutput() GetDatabaseURITimeoutsPtrOutput {
-	return i.ToGetDatabaseURITimeoutsPtrOutputWithContext(context.Background())
+func (i *getDatabaseUriTimeoutsPtrType) ToGetDatabaseUriTimeoutsPtrOutput() GetDatabaseUriTimeoutsPtrOutput {
+	return i.ToGetDatabaseUriTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (i *getDatabaseURITimeoutsPtrType) ToGetDatabaseURITimeoutsPtrOutputWithContext(ctx context.Context) GetDatabaseURITimeoutsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseURITimeoutsPtrOutput)
+func (i *getDatabaseUriTimeoutsPtrType) ToGetDatabaseUriTimeoutsPtrOutputWithContext(ctx context.Context) GetDatabaseUriTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseUriTimeoutsPtrOutput)
 }
 
-type GetDatabaseURITimeoutsOutput struct{ *pulumi.OutputState }
+type GetDatabaseUriTimeoutsOutput struct{ *pulumi.OutputState }
 
-func (GetDatabaseURITimeoutsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDatabaseURITimeouts)(nil)).Elem()
+func (GetDatabaseUriTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseUriTimeouts)(nil)).Elem()
 }
 
-func (o GetDatabaseURITimeoutsOutput) ToGetDatabaseURITimeoutsOutput() GetDatabaseURITimeoutsOutput {
+func (o GetDatabaseUriTimeoutsOutput) ToGetDatabaseUriTimeoutsOutput() GetDatabaseUriTimeoutsOutput {
 	return o
 }
 
-func (o GetDatabaseURITimeoutsOutput) ToGetDatabaseURITimeoutsOutputWithContext(ctx context.Context) GetDatabaseURITimeoutsOutput {
+func (o GetDatabaseUriTimeoutsOutput) ToGetDatabaseUriTimeoutsOutputWithContext(ctx context.Context) GetDatabaseUriTimeoutsOutput {
 	return o
 }
 
-func (o GetDatabaseURITimeoutsOutput) ToGetDatabaseURITimeoutsPtrOutput() GetDatabaseURITimeoutsPtrOutput {
-	return o.ToGetDatabaseURITimeoutsPtrOutputWithContext(context.Background())
+func (o GetDatabaseUriTimeoutsOutput) ToGetDatabaseUriTimeoutsPtrOutput() GetDatabaseUriTimeoutsPtrOutput {
+	return o.ToGetDatabaseUriTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (o GetDatabaseURITimeoutsOutput) ToGetDatabaseURITimeoutsPtrOutputWithContext(ctx context.Context) GetDatabaseURITimeoutsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetDatabaseURITimeouts) *GetDatabaseURITimeouts {
+func (o GetDatabaseUriTimeoutsOutput) ToGetDatabaseUriTimeoutsPtrOutputWithContext(ctx context.Context) GetDatabaseUriTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetDatabaseUriTimeouts) *GetDatabaseUriTimeouts {
 		return &v
-	}).(GetDatabaseURITimeoutsPtrOutput)
+	}).(GetDatabaseUriTimeoutsPtrOutput)
 }
 
 // A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-func (o GetDatabaseURITimeoutsOutput) Read() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetDatabaseURITimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+func (o GetDatabaseUriTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDatabaseUriTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
 }
 
-type GetDatabaseURITimeoutsPtrOutput struct{ *pulumi.OutputState }
+type GetDatabaseUriTimeoutsPtrOutput struct{ *pulumi.OutputState }
 
-func (GetDatabaseURITimeoutsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetDatabaseURITimeouts)(nil)).Elem()
+func (GetDatabaseUriTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetDatabaseUriTimeouts)(nil)).Elem()
 }
 
-func (o GetDatabaseURITimeoutsPtrOutput) ToGetDatabaseURITimeoutsPtrOutput() GetDatabaseURITimeoutsPtrOutput {
+func (o GetDatabaseUriTimeoutsPtrOutput) ToGetDatabaseUriTimeoutsPtrOutput() GetDatabaseUriTimeoutsPtrOutput {
 	return o
 }
 
-func (o GetDatabaseURITimeoutsPtrOutput) ToGetDatabaseURITimeoutsPtrOutputWithContext(ctx context.Context) GetDatabaseURITimeoutsPtrOutput {
+func (o GetDatabaseUriTimeoutsPtrOutput) ToGetDatabaseUriTimeoutsPtrOutputWithContext(ctx context.Context) GetDatabaseUriTimeoutsPtrOutput {
 	return o
 }
 
-func (o GetDatabaseURITimeoutsPtrOutput) Elem() GetDatabaseURITimeoutsOutput {
-	return o.ApplyT(func(v *GetDatabaseURITimeouts) GetDatabaseURITimeouts {
+func (o GetDatabaseUriTimeoutsPtrOutput) Elem() GetDatabaseUriTimeoutsOutput {
+	return o.ApplyT(func(v *GetDatabaseUriTimeouts) GetDatabaseUriTimeouts {
 		if v != nil {
 			return *v
 		}
-		var ret GetDatabaseURITimeouts
+		var ret GetDatabaseUriTimeouts
 		return ret
-	}).(GetDatabaseURITimeoutsOutput)
+	}).(GetDatabaseUriTimeoutsOutput)
 }
 
 // A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-func (o GetDatabaseURITimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetDatabaseURITimeouts) *string {
+func (o GetDatabaseUriTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDatabaseUriTimeouts) *string {
 		if v == nil {
 			return nil
 		}
@@ -4617,7 +4617,7 @@ func (o GetDomainRecordRecordArrayOutput) Index(i pulumi.IntInput) GetDomainReco
 	}).(GetDomainRecordRecordOutput)
 }
 
-type GetElasticIPHealthcheck struct {
+type GetElasticIpHealthcheck struct {
 	Interval      int    `pulumi:"interval"`
 	Mode          string `pulumi:"mode"`
 	Port          int    `pulumi:"port"`
@@ -4629,18 +4629,18 @@ type GetElasticIPHealthcheck struct {
 	Uri           string `pulumi:"uri"`
 }
 
-// GetElasticIPHealthcheckInput is an input type that accepts GetElasticIPHealthcheckArgs and GetElasticIPHealthcheckOutput values.
-// You can construct a concrete instance of `GetElasticIPHealthcheckInput` via:
+// GetElasticIpHealthcheckInput is an input type that accepts GetElasticIpHealthcheckArgs and GetElasticIpHealthcheckOutput values.
+// You can construct a concrete instance of `GetElasticIpHealthcheckInput` via:
 //
-//	GetElasticIPHealthcheckArgs{...}
-type GetElasticIPHealthcheckInput interface {
+//	GetElasticIpHealthcheckArgs{...}
+type GetElasticIpHealthcheckInput interface {
 	pulumi.Input
 
-	ToGetElasticIPHealthcheckOutput() GetElasticIPHealthcheckOutput
-	ToGetElasticIPHealthcheckOutputWithContext(context.Context) GetElasticIPHealthcheckOutput
+	ToGetElasticIpHealthcheckOutput() GetElasticIpHealthcheckOutput
+	ToGetElasticIpHealthcheckOutputWithContext(context.Context) GetElasticIpHealthcheckOutput
 }
 
-type GetElasticIPHealthcheckArgs struct {
+type GetElasticIpHealthcheckArgs struct {
 	Interval      pulumi.IntInput    `pulumi:"interval"`
 	Mode          pulumi.StringInput `pulumi:"mode"`
 	Port          pulumi.IntInput    `pulumi:"port"`
@@ -4652,243 +4652,243 @@ type GetElasticIPHealthcheckArgs struct {
 	Uri           pulumi.StringInput `pulumi:"uri"`
 }
 
-func (GetElasticIPHealthcheckArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetElasticIPHealthcheck)(nil)).Elem()
+func (GetElasticIpHealthcheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetElasticIpHealthcheck)(nil)).Elem()
 }
 
-func (i GetElasticIPHealthcheckArgs) ToGetElasticIPHealthcheckOutput() GetElasticIPHealthcheckOutput {
-	return i.ToGetElasticIPHealthcheckOutputWithContext(context.Background())
+func (i GetElasticIpHealthcheckArgs) ToGetElasticIpHealthcheckOutput() GetElasticIpHealthcheckOutput {
+	return i.ToGetElasticIpHealthcheckOutputWithContext(context.Background())
 }
 
-func (i GetElasticIPHealthcheckArgs) ToGetElasticIPHealthcheckOutputWithContext(ctx context.Context) GetElasticIPHealthcheckOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetElasticIPHealthcheckOutput)
+func (i GetElasticIpHealthcheckArgs) ToGetElasticIpHealthcheckOutputWithContext(ctx context.Context) GetElasticIpHealthcheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetElasticIpHealthcheckOutput)
 }
 
-// GetElasticIPHealthcheckArrayInput is an input type that accepts GetElasticIPHealthcheckArray and GetElasticIPHealthcheckArrayOutput values.
-// You can construct a concrete instance of `GetElasticIPHealthcheckArrayInput` via:
+// GetElasticIpHealthcheckArrayInput is an input type that accepts GetElasticIpHealthcheckArray and GetElasticIpHealthcheckArrayOutput values.
+// You can construct a concrete instance of `GetElasticIpHealthcheckArrayInput` via:
 //
-//	GetElasticIPHealthcheckArray{ GetElasticIPHealthcheckArgs{...} }
-type GetElasticIPHealthcheckArrayInput interface {
+//	GetElasticIpHealthcheckArray{ GetElasticIpHealthcheckArgs{...} }
+type GetElasticIpHealthcheckArrayInput interface {
 	pulumi.Input
 
-	ToGetElasticIPHealthcheckArrayOutput() GetElasticIPHealthcheckArrayOutput
-	ToGetElasticIPHealthcheckArrayOutputWithContext(context.Context) GetElasticIPHealthcheckArrayOutput
+	ToGetElasticIpHealthcheckArrayOutput() GetElasticIpHealthcheckArrayOutput
+	ToGetElasticIpHealthcheckArrayOutputWithContext(context.Context) GetElasticIpHealthcheckArrayOutput
 }
 
-type GetElasticIPHealthcheckArray []GetElasticIPHealthcheckInput
+type GetElasticIpHealthcheckArray []GetElasticIpHealthcheckInput
 
-func (GetElasticIPHealthcheckArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetElasticIPHealthcheck)(nil)).Elem()
+func (GetElasticIpHealthcheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetElasticIpHealthcheck)(nil)).Elem()
 }
 
-func (i GetElasticIPHealthcheckArray) ToGetElasticIPHealthcheckArrayOutput() GetElasticIPHealthcheckArrayOutput {
-	return i.ToGetElasticIPHealthcheckArrayOutputWithContext(context.Background())
+func (i GetElasticIpHealthcheckArray) ToGetElasticIpHealthcheckArrayOutput() GetElasticIpHealthcheckArrayOutput {
+	return i.ToGetElasticIpHealthcheckArrayOutputWithContext(context.Background())
 }
 
-func (i GetElasticIPHealthcheckArray) ToGetElasticIPHealthcheckArrayOutputWithContext(ctx context.Context) GetElasticIPHealthcheckArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetElasticIPHealthcheckArrayOutput)
+func (i GetElasticIpHealthcheckArray) ToGetElasticIpHealthcheckArrayOutputWithContext(ctx context.Context) GetElasticIpHealthcheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetElasticIpHealthcheckArrayOutput)
 }
 
-type GetElasticIPHealthcheckOutput struct{ *pulumi.OutputState }
+type GetElasticIpHealthcheckOutput struct{ *pulumi.OutputState }
 
-func (GetElasticIPHealthcheckOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetElasticIPHealthcheck)(nil)).Elem()
+func (GetElasticIpHealthcheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetElasticIpHealthcheck)(nil)).Elem()
 }
 
-func (o GetElasticIPHealthcheckOutput) ToGetElasticIPHealthcheckOutput() GetElasticIPHealthcheckOutput {
+func (o GetElasticIpHealthcheckOutput) ToGetElasticIpHealthcheckOutput() GetElasticIpHealthcheckOutput {
 	return o
 }
 
-func (o GetElasticIPHealthcheckOutput) ToGetElasticIPHealthcheckOutputWithContext(ctx context.Context) GetElasticIPHealthcheckOutput {
+func (o GetElasticIpHealthcheckOutput) ToGetElasticIpHealthcheckOutputWithContext(ctx context.Context) GetElasticIpHealthcheckOutput {
 	return o
 }
 
-func (o GetElasticIPHealthcheckOutput) Interval() pulumi.IntOutput {
-	return o.ApplyT(func(v GetElasticIPHealthcheck) int { return v.Interval }).(pulumi.IntOutput)
+func (o GetElasticIpHealthcheckOutput) Interval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetElasticIpHealthcheck) int { return v.Interval }).(pulumi.IntOutput)
 }
 
-func (o GetElasticIPHealthcheckOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetElasticIPHealthcheck) string { return v.Mode }).(pulumi.StringOutput)
+func (o GetElasticIpHealthcheckOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetElasticIpHealthcheck) string { return v.Mode }).(pulumi.StringOutput)
 }
 
-func (o GetElasticIPHealthcheckOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v GetElasticIPHealthcheck) int { return v.Port }).(pulumi.IntOutput)
+func (o GetElasticIpHealthcheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetElasticIpHealthcheck) int { return v.Port }).(pulumi.IntOutput)
 }
 
-func (o GetElasticIPHealthcheckOutput) StrikesFail() pulumi.IntOutput {
-	return o.ApplyT(func(v GetElasticIPHealthcheck) int { return v.StrikesFail }).(pulumi.IntOutput)
+func (o GetElasticIpHealthcheckOutput) StrikesFail() pulumi.IntOutput {
+	return o.ApplyT(func(v GetElasticIpHealthcheck) int { return v.StrikesFail }).(pulumi.IntOutput)
 }
 
-func (o GetElasticIPHealthcheckOutput) StrikesOk() pulumi.IntOutput {
-	return o.ApplyT(func(v GetElasticIPHealthcheck) int { return v.StrikesOk }).(pulumi.IntOutput)
+func (o GetElasticIpHealthcheckOutput) StrikesOk() pulumi.IntOutput {
+	return o.ApplyT(func(v GetElasticIpHealthcheck) int { return v.StrikesOk }).(pulumi.IntOutput)
 }
 
-func (o GetElasticIPHealthcheckOutput) Timeout() pulumi.IntOutput {
-	return o.ApplyT(func(v GetElasticIPHealthcheck) int { return v.Timeout }).(pulumi.IntOutput)
+func (o GetElasticIpHealthcheckOutput) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetElasticIpHealthcheck) int { return v.Timeout }).(pulumi.IntOutput)
 }
 
-func (o GetElasticIPHealthcheckOutput) TlsSkipVerify() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetElasticIPHealthcheck) bool { return v.TlsSkipVerify }).(pulumi.BoolOutput)
+func (o GetElasticIpHealthcheckOutput) TlsSkipVerify() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetElasticIpHealthcheck) bool { return v.TlsSkipVerify }).(pulumi.BoolOutput)
 }
 
-func (o GetElasticIPHealthcheckOutput) TlsSni() pulumi.StringOutput {
-	return o.ApplyT(func(v GetElasticIPHealthcheck) string { return v.TlsSni }).(pulumi.StringOutput)
+func (o GetElasticIpHealthcheckOutput) TlsSni() pulumi.StringOutput {
+	return o.ApplyT(func(v GetElasticIpHealthcheck) string { return v.TlsSni }).(pulumi.StringOutput)
 }
 
-func (o GetElasticIPHealthcheckOutput) Uri() pulumi.StringOutput {
-	return o.ApplyT(func(v GetElasticIPHealthcheck) string { return v.Uri }).(pulumi.StringOutput)
+func (o GetElasticIpHealthcheckOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetElasticIpHealthcheck) string { return v.Uri }).(pulumi.StringOutput)
 }
 
-type GetElasticIPHealthcheckArrayOutput struct{ *pulumi.OutputState }
+type GetElasticIpHealthcheckArrayOutput struct{ *pulumi.OutputState }
 
-func (GetElasticIPHealthcheckArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetElasticIPHealthcheck)(nil)).Elem()
+func (GetElasticIpHealthcheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetElasticIpHealthcheck)(nil)).Elem()
 }
 
-func (o GetElasticIPHealthcheckArrayOutput) ToGetElasticIPHealthcheckArrayOutput() GetElasticIPHealthcheckArrayOutput {
+func (o GetElasticIpHealthcheckArrayOutput) ToGetElasticIpHealthcheckArrayOutput() GetElasticIpHealthcheckArrayOutput {
 	return o
 }
 
-func (o GetElasticIPHealthcheckArrayOutput) ToGetElasticIPHealthcheckArrayOutputWithContext(ctx context.Context) GetElasticIPHealthcheckArrayOutput {
+func (o GetElasticIpHealthcheckArrayOutput) ToGetElasticIpHealthcheckArrayOutputWithContext(ctx context.Context) GetElasticIpHealthcheckArrayOutput {
 	return o
 }
 
-func (o GetElasticIPHealthcheckArrayOutput) Index(i pulumi.IntInput) GetElasticIPHealthcheckOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetElasticIPHealthcheck {
-		return vs[0].([]GetElasticIPHealthcheck)[vs[1].(int)]
-	}).(GetElasticIPHealthcheckOutput)
+func (o GetElasticIpHealthcheckArrayOutput) Index(i pulumi.IntInput) GetElasticIpHealthcheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetElasticIpHealthcheck {
+		return vs[0].([]GetElasticIpHealthcheck)[vs[1].(int)]
+	}).(GetElasticIpHealthcheckOutput)
 }
 
-type GetIAMAPIKeyTimeouts struct {
+type GetIamApiKeyTimeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 	Read *string `pulumi:"read"`
 }
 
-// GetIAMAPIKeyTimeoutsInput is an input type that accepts GetIAMAPIKeyTimeoutsArgs and GetIAMAPIKeyTimeoutsOutput values.
-// You can construct a concrete instance of `GetIAMAPIKeyTimeoutsInput` via:
+// GetIamApiKeyTimeoutsInput is an input type that accepts GetIamApiKeyTimeoutsArgs and GetIamApiKeyTimeoutsOutput values.
+// You can construct a concrete instance of `GetIamApiKeyTimeoutsInput` via:
 //
-//	GetIAMAPIKeyTimeoutsArgs{...}
-type GetIAMAPIKeyTimeoutsInput interface {
+//	GetIamApiKeyTimeoutsArgs{...}
+type GetIamApiKeyTimeoutsInput interface {
 	pulumi.Input
 
-	ToGetIAMAPIKeyTimeoutsOutput() GetIAMAPIKeyTimeoutsOutput
-	ToGetIAMAPIKeyTimeoutsOutputWithContext(context.Context) GetIAMAPIKeyTimeoutsOutput
+	ToGetIamApiKeyTimeoutsOutput() GetIamApiKeyTimeoutsOutput
+	ToGetIamApiKeyTimeoutsOutputWithContext(context.Context) GetIamApiKeyTimeoutsOutput
 }
 
-type GetIAMAPIKeyTimeoutsArgs struct {
+type GetIamApiKeyTimeoutsArgs struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 	Read pulumi.StringPtrInput `pulumi:"read"`
 }
 
-func (GetIAMAPIKeyTimeoutsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIAMAPIKeyTimeouts)(nil)).Elem()
+func (GetIamApiKeyTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamApiKeyTimeouts)(nil)).Elem()
 }
 
-func (i GetIAMAPIKeyTimeoutsArgs) ToGetIAMAPIKeyTimeoutsOutput() GetIAMAPIKeyTimeoutsOutput {
-	return i.ToGetIAMAPIKeyTimeoutsOutputWithContext(context.Background())
+func (i GetIamApiKeyTimeoutsArgs) ToGetIamApiKeyTimeoutsOutput() GetIamApiKeyTimeoutsOutput {
+	return i.ToGetIamApiKeyTimeoutsOutputWithContext(context.Background())
 }
 
-func (i GetIAMAPIKeyTimeoutsArgs) ToGetIAMAPIKeyTimeoutsOutputWithContext(ctx context.Context) GetIAMAPIKeyTimeoutsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMAPIKeyTimeoutsOutput)
+func (i GetIamApiKeyTimeoutsArgs) ToGetIamApiKeyTimeoutsOutputWithContext(ctx context.Context) GetIamApiKeyTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamApiKeyTimeoutsOutput)
 }
 
-func (i GetIAMAPIKeyTimeoutsArgs) ToGetIAMAPIKeyTimeoutsPtrOutput() GetIAMAPIKeyTimeoutsPtrOutput {
-	return i.ToGetIAMAPIKeyTimeoutsPtrOutputWithContext(context.Background())
+func (i GetIamApiKeyTimeoutsArgs) ToGetIamApiKeyTimeoutsPtrOutput() GetIamApiKeyTimeoutsPtrOutput {
+	return i.ToGetIamApiKeyTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (i GetIAMAPIKeyTimeoutsArgs) ToGetIAMAPIKeyTimeoutsPtrOutputWithContext(ctx context.Context) GetIAMAPIKeyTimeoutsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMAPIKeyTimeoutsOutput).ToGetIAMAPIKeyTimeoutsPtrOutputWithContext(ctx)
+func (i GetIamApiKeyTimeoutsArgs) ToGetIamApiKeyTimeoutsPtrOutputWithContext(ctx context.Context) GetIamApiKeyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamApiKeyTimeoutsOutput).ToGetIamApiKeyTimeoutsPtrOutputWithContext(ctx)
 }
 
-// GetIAMAPIKeyTimeoutsPtrInput is an input type that accepts GetIAMAPIKeyTimeoutsArgs, GetIAMAPIKeyTimeoutsPtr and GetIAMAPIKeyTimeoutsPtrOutput values.
-// You can construct a concrete instance of `GetIAMAPIKeyTimeoutsPtrInput` via:
+// GetIamApiKeyTimeoutsPtrInput is an input type that accepts GetIamApiKeyTimeoutsArgs, GetIamApiKeyTimeoutsPtr and GetIamApiKeyTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetIamApiKeyTimeoutsPtrInput` via:
 //
-//	        GetIAMAPIKeyTimeoutsArgs{...}
+//	        GetIamApiKeyTimeoutsArgs{...}
 //
 //	or:
 //
 //	        nil
-type GetIAMAPIKeyTimeoutsPtrInput interface {
+type GetIamApiKeyTimeoutsPtrInput interface {
 	pulumi.Input
 
-	ToGetIAMAPIKeyTimeoutsPtrOutput() GetIAMAPIKeyTimeoutsPtrOutput
-	ToGetIAMAPIKeyTimeoutsPtrOutputWithContext(context.Context) GetIAMAPIKeyTimeoutsPtrOutput
+	ToGetIamApiKeyTimeoutsPtrOutput() GetIamApiKeyTimeoutsPtrOutput
+	ToGetIamApiKeyTimeoutsPtrOutputWithContext(context.Context) GetIamApiKeyTimeoutsPtrOutput
 }
 
-type getIAMAPIKeyTimeoutsPtrType GetIAMAPIKeyTimeoutsArgs
+type getIamApiKeyTimeoutsPtrType GetIamApiKeyTimeoutsArgs
 
-func GetIAMAPIKeyTimeoutsPtr(v *GetIAMAPIKeyTimeoutsArgs) GetIAMAPIKeyTimeoutsPtrInput {
-	return (*getIAMAPIKeyTimeoutsPtrType)(v)
+func GetIamApiKeyTimeoutsPtr(v *GetIamApiKeyTimeoutsArgs) GetIamApiKeyTimeoutsPtrInput {
+	return (*getIamApiKeyTimeoutsPtrType)(v)
 }
 
-func (*getIAMAPIKeyTimeoutsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetIAMAPIKeyTimeouts)(nil)).Elem()
+func (*getIamApiKeyTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetIamApiKeyTimeouts)(nil)).Elem()
 }
 
-func (i *getIAMAPIKeyTimeoutsPtrType) ToGetIAMAPIKeyTimeoutsPtrOutput() GetIAMAPIKeyTimeoutsPtrOutput {
-	return i.ToGetIAMAPIKeyTimeoutsPtrOutputWithContext(context.Background())
+func (i *getIamApiKeyTimeoutsPtrType) ToGetIamApiKeyTimeoutsPtrOutput() GetIamApiKeyTimeoutsPtrOutput {
+	return i.ToGetIamApiKeyTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (i *getIAMAPIKeyTimeoutsPtrType) ToGetIAMAPIKeyTimeoutsPtrOutputWithContext(ctx context.Context) GetIAMAPIKeyTimeoutsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMAPIKeyTimeoutsPtrOutput)
+func (i *getIamApiKeyTimeoutsPtrType) ToGetIamApiKeyTimeoutsPtrOutputWithContext(ctx context.Context) GetIamApiKeyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamApiKeyTimeoutsPtrOutput)
 }
 
-type GetIAMAPIKeyTimeoutsOutput struct{ *pulumi.OutputState }
+type GetIamApiKeyTimeoutsOutput struct{ *pulumi.OutputState }
 
-func (GetIAMAPIKeyTimeoutsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIAMAPIKeyTimeouts)(nil)).Elem()
+func (GetIamApiKeyTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamApiKeyTimeouts)(nil)).Elem()
 }
 
-func (o GetIAMAPIKeyTimeoutsOutput) ToGetIAMAPIKeyTimeoutsOutput() GetIAMAPIKeyTimeoutsOutput {
+func (o GetIamApiKeyTimeoutsOutput) ToGetIamApiKeyTimeoutsOutput() GetIamApiKeyTimeoutsOutput {
 	return o
 }
 
-func (o GetIAMAPIKeyTimeoutsOutput) ToGetIAMAPIKeyTimeoutsOutputWithContext(ctx context.Context) GetIAMAPIKeyTimeoutsOutput {
+func (o GetIamApiKeyTimeoutsOutput) ToGetIamApiKeyTimeoutsOutputWithContext(ctx context.Context) GetIamApiKeyTimeoutsOutput {
 	return o
 }
 
-func (o GetIAMAPIKeyTimeoutsOutput) ToGetIAMAPIKeyTimeoutsPtrOutput() GetIAMAPIKeyTimeoutsPtrOutput {
-	return o.ToGetIAMAPIKeyTimeoutsPtrOutputWithContext(context.Background())
+func (o GetIamApiKeyTimeoutsOutput) ToGetIamApiKeyTimeoutsPtrOutput() GetIamApiKeyTimeoutsPtrOutput {
+	return o.ToGetIamApiKeyTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (o GetIAMAPIKeyTimeoutsOutput) ToGetIAMAPIKeyTimeoutsPtrOutputWithContext(ctx context.Context) GetIAMAPIKeyTimeoutsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetIAMAPIKeyTimeouts) *GetIAMAPIKeyTimeouts {
+func (o GetIamApiKeyTimeoutsOutput) ToGetIamApiKeyTimeoutsPtrOutputWithContext(ctx context.Context) GetIamApiKeyTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetIamApiKeyTimeouts) *GetIamApiKeyTimeouts {
 		return &v
-	}).(GetIAMAPIKeyTimeoutsPtrOutput)
+	}).(GetIamApiKeyTimeoutsPtrOutput)
 }
 
 // A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-func (o GetIAMAPIKeyTimeoutsOutput) Read() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetIAMAPIKeyTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+func (o GetIamApiKeyTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIamApiKeyTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
 }
 
-type GetIAMAPIKeyTimeoutsPtrOutput struct{ *pulumi.OutputState }
+type GetIamApiKeyTimeoutsPtrOutput struct{ *pulumi.OutputState }
 
-func (GetIAMAPIKeyTimeoutsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetIAMAPIKeyTimeouts)(nil)).Elem()
+func (GetIamApiKeyTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetIamApiKeyTimeouts)(nil)).Elem()
 }
 
-func (o GetIAMAPIKeyTimeoutsPtrOutput) ToGetIAMAPIKeyTimeoutsPtrOutput() GetIAMAPIKeyTimeoutsPtrOutput {
+func (o GetIamApiKeyTimeoutsPtrOutput) ToGetIamApiKeyTimeoutsPtrOutput() GetIamApiKeyTimeoutsPtrOutput {
 	return o
 }
 
-func (o GetIAMAPIKeyTimeoutsPtrOutput) ToGetIAMAPIKeyTimeoutsPtrOutputWithContext(ctx context.Context) GetIAMAPIKeyTimeoutsPtrOutput {
+func (o GetIamApiKeyTimeoutsPtrOutput) ToGetIamApiKeyTimeoutsPtrOutputWithContext(ctx context.Context) GetIamApiKeyTimeoutsPtrOutput {
 	return o
 }
 
-func (o GetIAMAPIKeyTimeoutsPtrOutput) Elem() GetIAMAPIKeyTimeoutsOutput {
-	return o.ApplyT(func(v *GetIAMAPIKeyTimeouts) GetIAMAPIKeyTimeouts {
+func (o GetIamApiKeyTimeoutsPtrOutput) Elem() GetIamApiKeyTimeoutsOutput {
+	return o.ApplyT(func(v *GetIamApiKeyTimeouts) GetIamApiKeyTimeouts {
 		if v != nil {
 			return *v
 		}
-		var ret GetIAMAPIKeyTimeouts
+		var ret GetIamApiKeyTimeouts
 		return ret
-	}).(GetIAMAPIKeyTimeoutsOutput)
+	}).(GetIamApiKeyTimeoutsOutput)
 }
 
 // A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-func (o GetIAMAPIKeyTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetIAMAPIKeyTimeouts) *string {
+func (o GetIamApiKeyTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetIamApiKeyTimeouts) *string {
 		if v == nil {
 			return nil
 		}
@@ -4896,113 +4896,113 @@ func (o GetIAMAPIKeyTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type GetIAMOrgPolicyServices struct {
+type GetIamOrgPolicyServices struct {
 	// List of IAM service rules (if type is `rules`).
-	Rules []GetIAMOrgPolicyServicesRule `pulumi:"rules"`
+	Rules []GetIamOrgPolicyServicesRule `pulumi:"rules"`
 	// Service type (`rules`, `allow`, or `deny`).
 	Type string `pulumi:"type"`
 }
 
-// GetIAMOrgPolicyServicesInput is an input type that accepts GetIAMOrgPolicyServicesArgs and GetIAMOrgPolicyServicesOutput values.
-// You can construct a concrete instance of `GetIAMOrgPolicyServicesInput` via:
+// GetIamOrgPolicyServicesInput is an input type that accepts GetIamOrgPolicyServicesArgs and GetIamOrgPolicyServicesOutput values.
+// You can construct a concrete instance of `GetIamOrgPolicyServicesInput` via:
 //
-//	GetIAMOrgPolicyServicesArgs{...}
-type GetIAMOrgPolicyServicesInput interface {
+//	GetIamOrgPolicyServicesArgs{...}
+type GetIamOrgPolicyServicesInput interface {
 	pulumi.Input
 
-	ToGetIAMOrgPolicyServicesOutput() GetIAMOrgPolicyServicesOutput
-	ToGetIAMOrgPolicyServicesOutputWithContext(context.Context) GetIAMOrgPolicyServicesOutput
+	ToGetIamOrgPolicyServicesOutput() GetIamOrgPolicyServicesOutput
+	ToGetIamOrgPolicyServicesOutputWithContext(context.Context) GetIamOrgPolicyServicesOutput
 }
 
-type GetIAMOrgPolicyServicesArgs struct {
+type GetIamOrgPolicyServicesArgs struct {
 	// List of IAM service rules (if type is `rules`).
-	Rules GetIAMOrgPolicyServicesRuleArrayInput `pulumi:"rules"`
+	Rules GetIamOrgPolicyServicesRuleArrayInput `pulumi:"rules"`
 	// Service type (`rules`, `allow`, or `deny`).
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
-func (GetIAMOrgPolicyServicesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIAMOrgPolicyServices)(nil)).Elem()
+func (GetIamOrgPolicyServicesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamOrgPolicyServices)(nil)).Elem()
 }
 
-func (i GetIAMOrgPolicyServicesArgs) ToGetIAMOrgPolicyServicesOutput() GetIAMOrgPolicyServicesOutput {
-	return i.ToGetIAMOrgPolicyServicesOutputWithContext(context.Background())
+func (i GetIamOrgPolicyServicesArgs) ToGetIamOrgPolicyServicesOutput() GetIamOrgPolicyServicesOutput {
+	return i.ToGetIamOrgPolicyServicesOutputWithContext(context.Background())
 }
 
-func (i GetIAMOrgPolicyServicesArgs) ToGetIAMOrgPolicyServicesOutputWithContext(ctx context.Context) GetIAMOrgPolicyServicesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMOrgPolicyServicesOutput)
+func (i GetIamOrgPolicyServicesArgs) ToGetIamOrgPolicyServicesOutputWithContext(ctx context.Context) GetIamOrgPolicyServicesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamOrgPolicyServicesOutput)
 }
 
-// GetIAMOrgPolicyServicesMapInput is an input type that accepts GetIAMOrgPolicyServicesMap and GetIAMOrgPolicyServicesMapOutput values.
-// You can construct a concrete instance of `GetIAMOrgPolicyServicesMapInput` via:
+// GetIamOrgPolicyServicesMapInput is an input type that accepts GetIamOrgPolicyServicesMap and GetIamOrgPolicyServicesMapOutput values.
+// You can construct a concrete instance of `GetIamOrgPolicyServicesMapInput` via:
 //
-//	GetIAMOrgPolicyServicesMap{ "key": GetIAMOrgPolicyServicesArgs{...} }
-type GetIAMOrgPolicyServicesMapInput interface {
+//	GetIamOrgPolicyServicesMap{ "key": GetIamOrgPolicyServicesArgs{...} }
+type GetIamOrgPolicyServicesMapInput interface {
 	pulumi.Input
 
-	ToGetIAMOrgPolicyServicesMapOutput() GetIAMOrgPolicyServicesMapOutput
-	ToGetIAMOrgPolicyServicesMapOutputWithContext(context.Context) GetIAMOrgPolicyServicesMapOutput
+	ToGetIamOrgPolicyServicesMapOutput() GetIamOrgPolicyServicesMapOutput
+	ToGetIamOrgPolicyServicesMapOutputWithContext(context.Context) GetIamOrgPolicyServicesMapOutput
 }
 
-type GetIAMOrgPolicyServicesMap map[string]GetIAMOrgPolicyServicesInput
+type GetIamOrgPolicyServicesMap map[string]GetIamOrgPolicyServicesInput
 
-func (GetIAMOrgPolicyServicesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetIAMOrgPolicyServices)(nil)).Elem()
+func (GetIamOrgPolicyServicesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetIamOrgPolicyServices)(nil)).Elem()
 }
 
-func (i GetIAMOrgPolicyServicesMap) ToGetIAMOrgPolicyServicesMapOutput() GetIAMOrgPolicyServicesMapOutput {
-	return i.ToGetIAMOrgPolicyServicesMapOutputWithContext(context.Background())
+func (i GetIamOrgPolicyServicesMap) ToGetIamOrgPolicyServicesMapOutput() GetIamOrgPolicyServicesMapOutput {
+	return i.ToGetIamOrgPolicyServicesMapOutputWithContext(context.Background())
 }
 
-func (i GetIAMOrgPolicyServicesMap) ToGetIAMOrgPolicyServicesMapOutputWithContext(ctx context.Context) GetIAMOrgPolicyServicesMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMOrgPolicyServicesMapOutput)
+func (i GetIamOrgPolicyServicesMap) ToGetIamOrgPolicyServicesMapOutputWithContext(ctx context.Context) GetIamOrgPolicyServicesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamOrgPolicyServicesMapOutput)
 }
 
-type GetIAMOrgPolicyServicesOutput struct{ *pulumi.OutputState }
+type GetIamOrgPolicyServicesOutput struct{ *pulumi.OutputState }
 
-func (GetIAMOrgPolicyServicesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIAMOrgPolicyServices)(nil)).Elem()
+func (GetIamOrgPolicyServicesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamOrgPolicyServices)(nil)).Elem()
 }
 
-func (o GetIAMOrgPolicyServicesOutput) ToGetIAMOrgPolicyServicesOutput() GetIAMOrgPolicyServicesOutput {
+func (o GetIamOrgPolicyServicesOutput) ToGetIamOrgPolicyServicesOutput() GetIamOrgPolicyServicesOutput {
 	return o
 }
 
-func (o GetIAMOrgPolicyServicesOutput) ToGetIAMOrgPolicyServicesOutputWithContext(ctx context.Context) GetIAMOrgPolicyServicesOutput {
+func (o GetIamOrgPolicyServicesOutput) ToGetIamOrgPolicyServicesOutputWithContext(ctx context.Context) GetIamOrgPolicyServicesOutput {
 	return o
 }
 
 // List of IAM service rules (if type is `rules`).
-func (o GetIAMOrgPolicyServicesOutput) Rules() GetIAMOrgPolicyServicesRuleArrayOutput {
-	return o.ApplyT(func(v GetIAMOrgPolicyServices) []GetIAMOrgPolicyServicesRule { return v.Rules }).(GetIAMOrgPolicyServicesRuleArrayOutput)
+func (o GetIamOrgPolicyServicesOutput) Rules() GetIamOrgPolicyServicesRuleArrayOutput {
+	return o.ApplyT(func(v GetIamOrgPolicyServices) []GetIamOrgPolicyServicesRule { return v.Rules }).(GetIamOrgPolicyServicesRuleArrayOutput)
 }
 
 // Service type (`rules`, `allow`, or `deny`).
-func (o GetIAMOrgPolicyServicesOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIAMOrgPolicyServices) string { return v.Type }).(pulumi.StringOutput)
+func (o GetIamOrgPolicyServicesOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIamOrgPolicyServices) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GetIAMOrgPolicyServicesMapOutput struct{ *pulumi.OutputState }
+type GetIamOrgPolicyServicesMapOutput struct{ *pulumi.OutputState }
 
-func (GetIAMOrgPolicyServicesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetIAMOrgPolicyServices)(nil)).Elem()
+func (GetIamOrgPolicyServicesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetIamOrgPolicyServices)(nil)).Elem()
 }
 
-func (o GetIAMOrgPolicyServicesMapOutput) ToGetIAMOrgPolicyServicesMapOutput() GetIAMOrgPolicyServicesMapOutput {
+func (o GetIamOrgPolicyServicesMapOutput) ToGetIamOrgPolicyServicesMapOutput() GetIamOrgPolicyServicesMapOutput {
 	return o
 }
 
-func (o GetIAMOrgPolicyServicesMapOutput) ToGetIAMOrgPolicyServicesMapOutputWithContext(ctx context.Context) GetIAMOrgPolicyServicesMapOutput {
+func (o GetIamOrgPolicyServicesMapOutput) ToGetIamOrgPolicyServicesMapOutputWithContext(ctx context.Context) GetIamOrgPolicyServicesMapOutput {
 	return o
 }
 
-func (o GetIAMOrgPolicyServicesMapOutput) MapIndex(k pulumi.StringInput) GetIAMOrgPolicyServicesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetIAMOrgPolicyServices {
-		return vs[0].(map[string]GetIAMOrgPolicyServices)[vs[1].(string)]
-	}).(GetIAMOrgPolicyServicesOutput)
+func (o GetIamOrgPolicyServicesMapOutput) MapIndex(k pulumi.StringInput) GetIamOrgPolicyServicesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetIamOrgPolicyServices {
+		return vs[0].(map[string]GetIamOrgPolicyServices)[vs[1].(string)]
+	}).(GetIamOrgPolicyServicesOutput)
 }
 
-type GetIAMOrgPolicyServicesRule struct {
+type GetIamOrgPolicyServicesRule struct {
 	// IAM policy rule action (`allow` or `deny`).
 	Action string `pulumi:"action"`
 	// IAM policy rule expression.
@@ -5011,18 +5011,18 @@ type GetIAMOrgPolicyServicesRule struct {
 	Resources []string `pulumi:"resources"`
 }
 
-// GetIAMOrgPolicyServicesRuleInput is an input type that accepts GetIAMOrgPolicyServicesRuleArgs and GetIAMOrgPolicyServicesRuleOutput values.
-// You can construct a concrete instance of `GetIAMOrgPolicyServicesRuleInput` via:
+// GetIamOrgPolicyServicesRuleInput is an input type that accepts GetIamOrgPolicyServicesRuleArgs and GetIamOrgPolicyServicesRuleOutput values.
+// You can construct a concrete instance of `GetIamOrgPolicyServicesRuleInput` via:
 //
-//	GetIAMOrgPolicyServicesRuleArgs{...}
-type GetIAMOrgPolicyServicesRuleInput interface {
+//	GetIamOrgPolicyServicesRuleArgs{...}
+type GetIamOrgPolicyServicesRuleInput interface {
 	pulumi.Input
 
-	ToGetIAMOrgPolicyServicesRuleOutput() GetIAMOrgPolicyServicesRuleOutput
-	ToGetIAMOrgPolicyServicesRuleOutputWithContext(context.Context) GetIAMOrgPolicyServicesRuleOutput
+	ToGetIamOrgPolicyServicesRuleOutput() GetIamOrgPolicyServicesRuleOutput
+	ToGetIamOrgPolicyServicesRuleOutputWithContext(context.Context) GetIamOrgPolicyServicesRuleOutput
 }
 
-type GetIAMOrgPolicyServicesRuleArgs struct {
+type GetIamOrgPolicyServicesRuleArgs struct {
 	// IAM policy rule action (`allow` or `deny`).
 	Action pulumi.StringInput `pulumi:"action"`
 	// IAM policy rule expression.
@@ -5031,222 +5031,222 @@ type GetIAMOrgPolicyServicesRuleArgs struct {
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
-func (GetIAMOrgPolicyServicesRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIAMOrgPolicyServicesRule)(nil)).Elem()
+func (GetIamOrgPolicyServicesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamOrgPolicyServicesRule)(nil)).Elem()
 }
 
-func (i GetIAMOrgPolicyServicesRuleArgs) ToGetIAMOrgPolicyServicesRuleOutput() GetIAMOrgPolicyServicesRuleOutput {
-	return i.ToGetIAMOrgPolicyServicesRuleOutputWithContext(context.Background())
+func (i GetIamOrgPolicyServicesRuleArgs) ToGetIamOrgPolicyServicesRuleOutput() GetIamOrgPolicyServicesRuleOutput {
+	return i.ToGetIamOrgPolicyServicesRuleOutputWithContext(context.Background())
 }
 
-func (i GetIAMOrgPolicyServicesRuleArgs) ToGetIAMOrgPolicyServicesRuleOutputWithContext(ctx context.Context) GetIAMOrgPolicyServicesRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMOrgPolicyServicesRuleOutput)
+func (i GetIamOrgPolicyServicesRuleArgs) ToGetIamOrgPolicyServicesRuleOutputWithContext(ctx context.Context) GetIamOrgPolicyServicesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamOrgPolicyServicesRuleOutput)
 }
 
-// GetIAMOrgPolicyServicesRuleArrayInput is an input type that accepts GetIAMOrgPolicyServicesRuleArray and GetIAMOrgPolicyServicesRuleArrayOutput values.
-// You can construct a concrete instance of `GetIAMOrgPolicyServicesRuleArrayInput` via:
+// GetIamOrgPolicyServicesRuleArrayInput is an input type that accepts GetIamOrgPolicyServicesRuleArray and GetIamOrgPolicyServicesRuleArrayOutput values.
+// You can construct a concrete instance of `GetIamOrgPolicyServicesRuleArrayInput` via:
 //
-//	GetIAMOrgPolicyServicesRuleArray{ GetIAMOrgPolicyServicesRuleArgs{...} }
-type GetIAMOrgPolicyServicesRuleArrayInput interface {
+//	GetIamOrgPolicyServicesRuleArray{ GetIamOrgPolicyServicesRuleArgs{...} }
+type GetIamOrgPolicyServicesRuleArrayInput interface {
 	pulumi.Input
 
-	ToGetIAMOrgPolicyServicesRuleArrayOutput() GetIAMOrgPolicyServicesRuleArrayOutput
-	ToGetIAMOrgPolicyServicesRuleArrayOutputWithContext(context.Context) GetIAMOrgPolicyServicesRuleArrayOutput
+	ToGetIamOrgPolicyServicesRuleArrayOutput() GetIamOrgPolicyServicesRuleArrayOutput
+	ToGetIamOrgPolicyServicesRuleArrayOutputWithContext(context.Context) GetIamOrgPolicyServicesRuleArrayOutput
 }
 
-type GetIAMOrgPolicyServicesRuleArray []GetIAMOrgPolicyServicesRuleInput
+type GetIamOrgPolicyServicesRuleArray []GetIamOrgPolicyServicesRuleInput
 
-func (GetIAMOrgPolicyServicesRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetIAMOrgPolicyServicesRule)(nil)).Elem()
+func (GetIamOrgPolicyServicesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIamOrgPolicyServicesRule)(nil)).Elem()
 }
 
-func (i GetIAMOrgPolicyServicesRuleArray) ToGetIAMOrgPolicyServicesRuleArrayOutput() GetIAMOrgPolicyServicesRuleArrayOutput {
-	return i.ToGetIAMOrgPolicyServicesRuleArrayOutputWithContext(context.Background())
+func (i GetIamOrgPolicyServicesRuleArray) ToGetIamOrgPolicyServicesRuleArrayOutput() GetIamOrgPolicyServicesRuleArrayOutput {
+	return i.ToGetIamOrgPolicyServicesRuleArrayOutputWithContext(context.Background())
 }
 
-func (i GetIAMOrgPolicyServicesRuleArray) ToGetIAMOrgPolicyServicesRuleArrayOutputWithContext(ctx context.Context) GetIAMOrgPolicyServicesRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMOrgPolicyServicesRuleArrayOutput)
+func (i GetIamOrgPolicyServicesRuleArray) ToGetIamOrgPolicyServicesRuleArrayOutputWithContext(ctx context.Context) GetIamOrgPolicyServicesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamOrgPolicyServicesRuleArrayOutput)
 }
 
-type GetIAMOrgPolicyServicesRuleOutput struct{ *pulumi.OutputState }
+type GetIamOrgPolicyServicesRuleOutput struct{ *pulumi.OutputState }
 
-func (GetIAMOrgPolicyServicesRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIAMOrgPolicyServicesRule)(nil)).Elem()
+func (GetIamOrgPolicyServicesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamOrgPolicyServicesRule)(nil)).Elem()
 }
 
-func (o GetIAMOrgPolicyServicesRuleOutput) ToGetIAMOrgPolicyServicesRuleOutput() GetIAMOrgPolicyServicesRuleOutput {
+func (o GetIamOrgPolicyServicesRuleOutput) ToGetIamOrgPolicyServicesRuleOutput() GetIamOrgPolicyServicesRuleOutput {
 	return o
 }
 
-func (o GetIAMOrgPolicyServicesRuleOutput) ToGetIAMOrgPolicyServicesRuleOutputWithContext(ctx context.Context) GetIAMOrgPolicyServicesRuleOutput {
+func (o GetIamOrgPolicyServicesRuleOutput) ToGetIamOrgPolicyServicesRuleOutputWithContext(ctx context.Context) GetIamOrgPolicyServicesRuleOutput {
 	return o
 }
 
 // IAM policy rule action (`allow` or `deny`).
-func (o GetIAMOrgPolicyServicesRuleOutput) Action() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIAMOrgPolicyServicesRule) string { return v.Action }).(pulumi.StringOutput)
+func (o GetIamOrgPolicyServicesRuleOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIamOrgPolicyServicesRule) string { return v.Action }).(pulumi.StringOutput)
 }
 
 // IAM policy rule expression.
-func (o GetIAMOrgPolicyServicesRuleOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIAMOrgPolicyServicesRule) string { return v.Expression }).(pulumi.StringOutput)
+func (o GetIamOrgPolicyServicesRuleOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIamOrgPolicyServicesRule) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 // Deprecated: This field is no longer suported.
-func (o GetIAMOrgPolicyServicesRuleOutput) Resources() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetIAMOrgPolicyServicesRule) []string { return v.Resources }).(pulumi.StringArrayOutput)
+func (o GetIamOrgPolicyServicesRuleOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIamOrgPolicyServicesRule) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
-type GetIAMOrgPolicyServicesRuleArrayOutput struct{ *pulumi.OutputState }
+type GetIamOrgPolicyServicesRuleArrayOutput struct{ *pulumi.OutputState }
 
-func (GetIAMOrgPolicyServicesRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetIAMOrgPolicyServicesRule)(nil)).Elem()
+func (GetIamOrgPolicyServicesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIamOrgPolicyServicesRule)(nil)).Elem()
 }
 
-func (o GetIAMOrgPolicyServicesRuleArrayOutput) ToGetIAMOrgPolicyServicesRuleArrayOutput() GetIAMOrgPolicyServicesRuleArrayOutput {
+func (o GetIamOrgPolicyServicesRuleArrayOutput) ToGetIamOrgPolicyServicesRuleArrayOutput() GetIamOrgPolicyServicesRuleArrayOutput {
 	return o
 }
 
-func (o GetIAMOrgPolicyServicesRuleArrayOutput) ToGetIAMOrgPolicyServicesRuleArrayOutputWithContext(ctx context.Context) GetIAMOrgPolicyServicesRuleArrayOutput {
+func (o GetIamOrgPolicyServicesRuleArrayOutput) ToGetIamOrgPolicyServicesRuleArrayOutputWithContext(ctx context.Context) GetIamOrgPolicyServicesRuleArrayOutput {
 	return o
 }
 
-func (o GetIAMOrgPolicyServicesRuleArrayOutput) Index(i pulumi.IntInput) GetIAMOrgPolicyServicesRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIAMOrgPolicyServicesRule {
-		return vs[0].([]GetIAMOrgPolicyServicesRule)[vs[1].(int)]
-	}).(GetIAMOrgPolicyServicesRuleOutput)
+func (o GetIamOrgPolicyServicesRuleArrayOutput) Index(i pulumi.IntInput) GetIamOrgPolicyServicesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIamOrgPolicyServicesRule {
+		return vs[0].([]GetIamOrgPolicyServicesRule)[vs[1].(int)]
+	}).(GetIamOrgPolicyServicesRuleOutput)
 }
 
-type GetIAMOrgPolicyTimeouts struct {
+type GetIamOrgPolicyTimeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 	Read *string `pulumi:"read"`
 }
 
-// GetIAMOrgPolicyTimeoutsInput is an input type that accepts GetIAMOrgPolicyTimeoutsArgs and GetIAMOrgPolicyTimeoutsOutput values.
-// You can construct a concrete instance of `GetIAMOrgPolicyTimeoutsInput` via:
+// GetIamOrgPolicyTimeoutsInput is an input type that accepts GetIamOrgPolicyTimeoutsArgs and GetIamOrgPolicyTimeoutsOutput values.
+// You can construct a concrete instance of `GetIamOrgPolicyTimeoutsInput` via:
 //
-//	GetIAMOrgPolicyTimeoutsArgs{...}
-type GetIAMOrgPolicyTimeoutsInput interface {
+//	GetIamOrgPolicyTimeoutsArgs{...}
+type GetIamOrgPolicyTimeoutsInput interface {
 	pulumi.Input
 
-	ToGetIAMOrgPolicyTimeoutsOutput() GetIAMOrgPolicyTimeoutsOutput
-	ToGetIAMOrgPolicyTimeoutsOutputWithContext(context.Context) GetIAMOrgPolicyTimeoutsOutput
+	ToGetIamOrgPolicyTimeoutsOutput() GetIamOrgPolicyTimeoutsOutput
+	ToGetIamOrgPolicyTimeoutsOutputWithContext(context.Context) GetIamOrgPolicyTimeoutsOutput
 }
 
-type GetIAMOrgPolicyTimeoutsArgs struct {
+type GetIamOrgPolicyTimeoutsArgs struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 	Read pulumi.StringPtrInput `pulumi:"read"`
 }
 
-func (GetIAMOrgPolicyTimeoutsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIAMOrgPolicyTimeouts)(nil)).Elem()
+func (GetIamOrgPolicyTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamOrgPolicyTimeouts)(nil)).Elem()
 }
 
-func (i GetIAMOrgPolicyTimeoutsArgs) ToGetIAMOrgPolicyTimeoutsOutput() GetIAMOrgPolicyTimeoutsOutput {
-	return i.ToGetIAMOrgPolicyTimeoutsOutputWithContext(context.Background())
+func (i GetIamOrgPolicyTimeoutsArgs) ToGetIamOrgPolicyTimeoutsOutput() GetIamOrgPolicyTimeoutsOutput {
+	return i.ToGetIamOrgPolicyTimeoutsOutputWithContext(context.Background())
 }
 
-func (i GetIAMOrgPolicyTimeoutsArgs) ToGetIAMOrgPolicyTimeoutsOutputWithContext(ctx context.Context) GetIAMOrgPolicyTimeoutsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMOrgPolicyTimeoutsOutput)
+func (i GetIamOrgPolicyTimeoutsArgs) ToGetIamOrgPolicyTimeoutsOutputWithContext(ctx context.Context) GetIamOrgPolicyTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamOrgPolicyTimeoutsOutput)
 }
 
-func (i GetIAMOrgPolicyTimeoutsArgs) ToGetIAMOrgPolicyTimeoutsPtrOutput() GetIAMOrgPolicyTimeoutsPtrOutput {
-	return i.ToGetIAMOrgPolicyTimeoutsPtrOutputWithContext(context.Background())
+func (i GetIamOrgPolicyTimeoutsArgs) ToGetIamOrgPolicyTimeoutsPtrOutput() GetIamOrgPolicyTimeoutsPtrOutput {
+	return i.ToGetIamOrgPolicyTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (i GetIAMOrgPolicyTimeoutsArgs) ToGetIAMOrgPolicyTimeoutsPtrOutputWithContext(ctx context.Context) GetIAMOrgPolicyTimeoutsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMOrgPolicyTimeoutsOutput).ToGetIAMOrgPolicyTimeoutsPtrOutputWithContext(ctx)
+func (i GetIamOrgPolicyTimeoutsArgs) ToGetIamOrgPolicyTimeoutsPtrOutputWithContext(ctx context.Context) GetIamOrgPolicyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamOrgPolicyTimeoutsOutput).ToGetIamOrgPolicyTimeoutsPtrOutputWithContext(ctx)
 }
 
-// GetIAMOrgPolicyTimeoutsPtrInput is an input type that accepts GetIAMOrgPolicyTimeoutsArgs, GetIAMOrgPolicyTimeoutsPtr and GetIAMOrgPolicyTimeoutsPtrOutput values.
-// You can construct a concrete instance of `GetIAMOrgPolicyTimeoutsPtrInput` via:
+// GetIamOrgPolicyTimeoutsPtrInput is an input type that accepts GetIamOrgPolicyTimeoutsArgs, GetIamOrgPolicyTimeoutsPtr and GetIamOrgPolicyTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetIamOrgPolicyTimeoutsPtrInput` via:
 //
-//	        GetIAMOrgPolicyTimeoutsArgs{...}
+//	        GetIamOrgPolicyTimeoutsArgs{...}
 //
 //	or:
 //
 //	        nil
-type GetIAMOrgPolicyTimeoutsPtrInput interface {
+type GetIamOrgPolicyTimeoutsPtrInput interface {
 	pulumi.Input
 
-	ToGetIAMOrgPolicyTimeoutsPtrOutput() GetIAMOrgPolicyTimeoutsPtrOutput
-	ToGetIAMOrgPolicyTimeoutsPtrOutputWithContext(context.Context) GetIAMOrgPolicyTimeoutsPtrOutput
+	ToGetIamOrgPolicyTimeoutsPtrOutput() GetIamOrgPolicyTimeoutsPtrOutput
+	ToGetIamOrgPolicyTimeoutsPtrOutputWithContext(context.Context) GetIamOrgPolicyTimeoutsPtrOutput
 }
 
-type getIAMOrgPolicyTimeoutsPtrType GetIAMOrgPolicyTimeoutsArgs
+type getIamOrgPolicyTimeoutsPtrType GetIamOrgPolicyTimeoutsArgs
 
-func GetIAMOrgPolicyTimeoutsPtr(v *GetIAMOrgPolicyTimeoutsArgs) GetIAMOrgPolicyTimeoutsPtrInput {
-	return (*getIAMOrgPolicyTimeoutsPtrType)(v)
+func GetIamOrgPolicyTimeoutsPtr(v *GetIamOrgPolicyTimeoutsArgs) GetIamOrgPolicyTimeoutsPtrInput {
+	return (*getIamOrgPolicyTimeoutsPtrType)(v)
 }
 
-func (*getIAMOrgPolicyTimeoutsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetIAMOrgPolicyTimeouts)(nil)).Elem()
+func (*getIamOrgPolicyTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetIamOrgPolicyTimeouts)(nil)).Elem()
 }
 
-func (i *getIAMOrgPolicyTimeoutsPtrType) ToGetIAMOrgPolicyTimeoutsPtrOutput() GetIAMOrgPolicyTimeoutsPtrOutput {
-	return i.ToGetIAMOrgPolicyTimeoutsPtrOutputWithContext(context.Background())
+func (i *getIamOrgPolicyTimeoutsPtrType) ToGetIamOrgPolicyTimeoutsPtrOutput() GetIamOrgPolicyTimeoutsPtrOutput {
+	return i.ToGetIamOrgPolicyTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (i *getIAMOrgPolicyTimeoutsPtrType) ToGetIAMOrgPolicyTimeoutsPtrOutputWithContext(ctx context.Context) GetIAMOrgPolicyTimeoutsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMOrgPolicyTimeoutsPtrOutput)
+func (i *getIamOrgPolicyTimeoutsPtrType) ToGetIamOrgPolicyTimeoutsPtrOutputWithContext(ctx context.Context) GetIamOrgPolicyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamOrgPolicyTimeoutsPtrOutput)
 }
 
-type GetIAMOrgPolicyTimeoutsOutput struct{ *pulumi.OutputState }
+type GetIamOrgPolicyTimeoutsOutput struct{ *pulumi.OutputState }
 
-func (GetIAMOrgPolicyTimeoutsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIAMOrgPolicyTimeouts)(nil)).Elem()
+func (GetIamOrgPolicyTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamOrgPolicyTimeouts)(nil)).Elem()
 }
 
-func (o GetIAMOrgPolicyTimeoutsOutput) ToGetIAMOrgPolicyTimeoutsOutput() GetIAMOrgPolicyTimeoutsOutput {
+func (o GetIamOrgPolicyTimeoutsOutput) ToGetIamOrgPolicyTimeoutsOutput() GetIamOrgPolicyTimeoutsOutput {
 	return o
 }
 
-func (o GetIAMOrgPolicyTimeoutsOutput) ToGetIAMOrgPolicyTimeoutsOutputWithContext(ctx context.Context) GetIAMOrgPolicyTimeoutsOutput {
+func (o GetIamOrgPolicyTimeoutsOutput) ToGetIamOrgPolicyTimeoutsOutputWithContext(ctx context.Context) GetIamOrgPolicyTimeoutsOutput {
 	return o
 }
 
-func (o GetIAMOrgPolicyTimeoutsOutput) ToGetIAMOrgPolicyTimeoutsPtrOutput() GetIAMOrgPolicyTimeoutsPtrOutput {
-	return o.ToGetIAMOrgPolicyTimeoutsPtrOutputWithContext(context.Background())
+func (o GetIamOrgPolicyTimeoutsOutput) ToGetIamOrgPolicyTimeoutsPtrOutput() GetIamOrgPolicyTimeoutsPtrOutput {
+	return o.ToGetIamOrgPolicyTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (o GetIAMOrgPolicyTimeoutsOutput) ToGetIAMOrgPolicyTimeoutsPtrOutputWithContext(ctx context.Context) GetIAMOrgPolicyTimeoutsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetIAMOrgPolicyTimeouts) *GetIAMOrgPolicyTimeouts {
+func (o GetIamOrgPolicyTimeoutsOutput) ToGetIamOrgPolicyTimeoutsPtrOutputWithContext(ctx context.Context) GetIamOrgPolicyTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetIamOrgPolicyTimeouts) *GetIamOrgPolicyTimeouts {
 		return &v
-	}).(GetIAMOrgPolicyTimeoutsPtrOutput)
+	}).(GetIamOrgPolicyTimeoutsPtrOutput)
 }
 
 // A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-func (o GetIAMOrgPolicyTimeoutsOutput) Read() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetIAMOrgPolicyTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+func (o GetIamOrgPolicyTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIamOrgPolicyTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
 }
 
-type GetIAMOrgPolicyTimeoutsPtrOutput struct{ *pulumi.OutputState }
+type GetIamOrgPolicyTimeoutsPtrOutput struct{ *pulumi.OutputState }
 
-func (GetIAMOrgPolicyTimeoutsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetIAMOrgPolicyTimeouts)(nil)).Elem()
+func (GetIamOrgPolicyTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetIamOrgPolicyTimeouts)(nil)).Elem()
 }
 
-func (o GetIAMOrgPolicyTimeoutsPtrOutput) ToGetIAMOrgPolicyTimeoutsPtrOutput() GetIAMOrgPolicyTimeoutsPtrOutput {
+func (o GetIamOrgPolicyTimeoutsPtrOutput) ToGetIamOrgPolicyTimeoutsPtrOutput() GetIamOrgPolicyTimeoutsPtrOutput {
 	return o
 }
 
-func (o GetIAMOrgPolicyTimeoutsPtrOutput) ToGetIAMOrgPolicyTimeoutsPtrOutputWithContext(ctx context.Context) GetIAMOrgPolicyTimeoutsPtrOutput {
+func (o GetIamOrgPolicyTimeoutsPtrOutput) ToGetIamOrgPolicyTimeoutsPtrOutputWithContext(ctx context.Context) GetIamOrgPolicyTimeoutsPtrOutput {
 	return o
 }
 
-func (o GetIAMOrgPolicyTimeoutsPtrOutput) Elem() GetIAMOrgPolicyTimeoutsOutput {
-	return o.ApplyT(func(v *GetIAMOrgPolicyTimeouts) GetIAMOrgPolicyTimeouts {
+func (o GetIamOrgPolicyTimeoutsPtrOutput) Elem() GetIamOrgPolicyTimeoutsOutput {
+	return o.ApplyT(func(v *GetIamOrgPolicyTimeouts) GetIamOrgPolicyTimeouts {
 		if v != nil {
 			return *v
 		}
-		var ret GetIAMOrgPolicyTimeouts
+		var ret GetIamOrgPolicyTimeouts
 		return ret
-	}).(GetIAMOrgPolicyTimeoutsOutput)
+	}).(GetIamOrgPolicyTimeoutsOutput)
 }
 
 // A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-func (o GetIAMOrgPolicyTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetIAMOrgPolicyTimeouts) *string {
+func (o GetIamOrgPolicyTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetIamOrgPolicyTimeouts) *string {
 		if v == nil {
 			return nil
 		}
@@ -5254,174 +5254,174 @@ func (o GetIAMOrgPolicyTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type GetIAMRolePolicy struct {
+type GetIamRolePolicy struct {
 	// Default service strategy (`allow` or `deny`).
 	DefaultServiceStrategy string `pulumi:"defaultServiceStrategy"`
 	// IAM policy services.
-	Services map[string]GetIAMRolePolicyServices `pulumi:"services"`
+	Services map[string]GetIamRolePolicyServices `pulumi:"services"`
 }
 
-// GetIAMRolePolicyInput is an input type that accepts GetIAMRolePolicyArgs and GetIAMRolePolicyOutput values.
-// You can construct a concrete instance of `GetIAMRolePolicyInput` via:
+// GetIamRolePolicyInput is an input type that accepts GetIamRolePolicyArgs and GetIamRolePolicyOutput values.
+// You can construct a concrete instance of `GetIamRolePolicyInput` via:
 //
-//	GetIAMRolePolicyArgs{...}
-type GetIAMRolePolicyInput interface {
+//	GetIamRolePolicyArgs{...}
+type GetIamRolePolicyInput interface {
 	pulumi.Input
 
-	ToGetIAMRolePolicyOutput() GetIAMRolePolicyOutput
-	ToGetIAMRolePolicyOutputWithContext(context.Context) GetIAMRolePolicyOutput
+	ToGetIamRolePolicyOutput() GetIamRolePolicyOutput
+	ToGetIamRolePolicyOutputWithContext(context.Context) GetIamRolePolicyOutput
 }
 
-type GetIAMRolePolicyArgs struct {
+type GetIamRolePolicyArgs struct {
 	// Default service strategy (`allow` or `deny`).
 	DefaultServiceStrategy pulumi.StringInput `pulumi:"defaultServiceStrategy"`
 	// IAM policy services.
-	Services GetIAMRolePolicyServicesMapInput `pulumi:"services"`
+	Services GetIamRolePolicyServicesMapInput `pulumi:"services"`
 }
 
-func (GetIAMRolePolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIAMRolePolicy)(nil)).Elem()
+func (GetIamRolePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamRolePolicy)(nil)).Elem()
 }
 
-func (i GetIAMRolePolicyArgs) ToGetIAMRolePolicyOutput() GetIAMRolePolicyOutput {
-	return i.ToGetIAMRolePolicyOutputWithContext(context.Background())
+func (i GetIamRolePolicyArgs) ToGetIamRolePolicyOutput() GetIamRolePolicyOutput {
+	return i.ToGetIamRolePolicyOutputWithContext(context.Background())
 }
 
-func (i GetIAMRolePolicyArgs) ToGetIAMRolePolicyOutputWithContext(ctx context.Context) GetIAMRolePolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMRolePolicyOutput)
+func (i GetIamRolePolicyArgs) ToGetIamRolePolicyOutputWithContext(ctx context.Context) GetIamRolePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamRolePolicyOutput)
 }
 
-type GetIAMRolePolicyOutput struct{ *pulumi.OutputState }
+type GetIamRolePolicyOutput struct{ *pulumi.OutputState }
 
-func (GetIAMRolePolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIAMRolePolicy)(nil)).Elem()
+func (GetIamRolePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamRolePolicy)(nil)).Elem()
 }
 
-func (o GetIAMRolePolicyOutput) ToGetIAMRolePolicyOutput() GetIAMRolePolicyOutput {
+func (o GetIamRolePolicyOutput) ToGetIamRolePolicyOutput() GetIamRolePolicyOutput {
 	return o
 }
 
-func (o GetIAMRolePolicyOutput) ToGetIAMRolePolicyOutputWithContext(ctx context.Context) GetIAMRolePolicyOutput {
+func (o GetIamRolePolicyOutput) ToGetIamRolePolicyOutputWithContext(ctx context.Context) GetIamRolePolicyOutput {
 	return o
 }
 
 // Default service strategy (`allow` or `deny`).
-func (o GetIAMRolePolicyOutput) DefaultServiceStrategy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIAMRolePolicy) string { return v.DefaultServiceStrategy }).(pulumi.StringOutput)
+func (o GetIamRolePolicyOutput) DefaultServiceStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIamRolePolicy) string { return v.DefaultServiceStrategy }).(pulumi.StringOutput)
 }
 
 // IAM policy services.
-func (o GetIAMRolePolicyOutput) Services() GetIAMRolePolicyServicesMapOutput {
-	return o.ApplyT(func(v GetIAMRolePolicy) map[string]GetIAMRolePolicyServices { return v.Services }).(GetIAMRolePolicyServicesMapOutput)
+func (o GetIamRolePolicyOutput) Services() GetIamRolePolicyServicesMapOutput {
+	return o.ApplyT(func(v GetIamRolePolicy) map[string]GetIamRolePolicyServices { return v.Services }).(GetIamRolePolicyServicesMapOutput)
 }
 
-type GetIAMRolePolicyServices struct {
+type GetIamRolePolicyServices struct {
 	// List of IAM service rules (if type is `rules`).
-	Rules []GetIAMRolePolicyServicesRule `pulumi:"rules"`
+	Rules []GetIamRolePolicyServicesRule `pulumi:"rules"`
 	// Service type (`rules`, `allow`, or `deny`).
 	Type string `pulumi:"type"`
 }
 
-// GetIAMRolePolicyServicesInput is an input type that accepts GetIAMRolePolicyServicesArgs and GetIAMRolePolicyServicesOutput values.
-// You can construct a concrete instance of `GetIAMRolePolicyServicesInput` via:
+// GetIamRolePolicyServicesInput is an input type that accepts GetIamRolePolicyServicesArgs and GetIamRolePolicyServicesOutput values.
+// You can construct a concrete instance of `GetIamRolePolicyServicesInput` via:
 //
-//	GetIAMRolePolicyServicesArgs{...}
-type GetIAMRolePolicyServicesInput interface {
+//	GetIamRolePolicyServicesArgs{...}
+type GetIamRolePolicyServicesInput interface {
 	pulumi.Input
 
-	ToGetIAMRolePolicyServicesOutput() GetIAMRolePolicyServicesOutput
-	ToGetIAMRolePolicyServicesOutputWithContext(context.Context) GetIAMRolePolicyServicesOutput
+	ToGetIamRolePolicyServicesOutput() GetIamRolePolicyServicesOutput
+	ToGetIamRolePolicyServicesOutputWithContext(context.Context) GetIamRolePolicyServicesOutput
 }
 
-type GetIAMRolePolicyServicesArgs struct {
+type GetIamRolePolicyServicesArgs struct {
 	// List of IAM service rules (if type is `rules`).
-	Rules GetIAMRolePolicyServicesRuleArrayInput `pulumi:"rules"`
+	Rules GetIamRolePolicyServicesRuleArrayInput `pulumi:"rules"`
 	// Service type (`rules`, `allow`, or `deny`).
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
-func (GetIAMRolePolicyServicesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIAMRolePolicyServices)(nil)).Elem()
+func (GetIamRolePolicyServicesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamRolePolicyServices)(nil)).Elem()
 }
 
-func (i GetIAMRolePolicyServicesArgs) ToGetIAMRolePolicyServicesOutput() GetIAMRolePolicyServicesOutput {
-	return i.ToGetIAMRolePolicyServicesOutputWithContext(context.Background())
+func (i GetIamRolePolicyServicesArgs) ToGetIamRolePolicyServicesOutput() GetIamRolePolicyServicesOutput {
+	return i.ToGetIamRolePolicyServicesOutputWithContext(context.Background())
 }
 
-func (i GetIAMRolePolicyServicesArgs) ToGetIAMRolePolicyServicesOutputWithContext(ctx context.Context) GetIAMRolePolicyServicesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMRolePolicyServicesOutput)
+func (i GetIamRolePolicyServicesArgs) ToGetIamRolePolicyServicesOutputWithContext(ctx context.Context) GetIamRolePolicyServicesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamRolePolicyServicesOutput)
 }
 
-// GetIAMRolePolicyServicesMapInput is an input type that accepts GetIAMRolePolicyServicesMap and GetIAMRolePolicyServicesMapOutput values.
-// You can construct a concrete instance of `GetIAMRolePolicyServicesMapInput` via:
+// GetIamRolePolicyServicesMapInput is an input type that accepts GetIamRolePolicyServicesMap and GetIamRolePolicyServicesMapOutput values.
+// You can construct a concrete instance of `GetIamRolePolicyServicesMapInput` via:
 //
-//	GetIAMRolePolicyServicesMap{ "key": GetIAMRolePolicyServicesArgs{...} }
-type GetIAMRolePolicyServicesMapInput interface {
+//	GetIamRolePolicyServicesMap{ "key": GetIamRolePolicyServicesArgs{...} }
+type GetIamRolePolicyServicesMapInput interface {
 	pulumi.Input
 
-	ToGetIAMRolePolicyServicesMapOutput() GetIAMRolePolicyServicesMapOutput
-	ToGetIAMRolePolicyServicesMapOutputWithContext(context.Context) GetIAMRolePolicyServicesMapOutput
+	ToGetIamRolePolicyServicesMapOutput() GetIamRolePolicyServicesMapOutput
+	ToGetIamRolePolicyServicesMapOutputWithContext(context.Context) GetIamRolePolicyServicesMapOutput
 }
 
-type GetIAMRolePolicyServicesMap map[string]GetIAMRolePolicyServicesInput
+type GetIamRolePolicyServicesMap map[string]GetIamRolePolicyServicesInput
 
-func (GetIAMRolePolicyServicesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetIAMRolePolicyServices)(nil)).Elem()
+func (GetIamRolePolicyServicesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetIamRolePolicyServices)(nil)).Elem()
 }
 
-func (i GetIAMRolePolicyServicesMap) ToGetIAMRolePolicyServicesMapOutput() GetIAMRolePolicyServicesMapOutput {
-	return i.ToGetIAMRolePolicyServicesMapOutputWithContext(context.Background())
+func (i GetIamRolePolicyServicesMap) ToGetIamRolePolicyServicesMapOutput() GetIamRolePolicyServicesMapOutput {
+	return i.ToGetIamRolePolicyServicesMapOutputWithContext(context.Background())
 }
 
-func (i GetIAMRolePolicyServicesMap) ToGetIAMRolePolicyServicesMapOutputWithContext(ctx context.Context) GetIAMRolePolicyServicesMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMRolePolicyServicesMapOutput)
+func (i GetIamRolePolicyServicesMap) ToGetIamRolePolicyServicesMapOutputWithContext(ctx context.Context) GetIamRolePolicyServicesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamRolePolicyServicesMapOutput)
 }
 
-type GetIAMRolePolicyServicesOutput struct{ *pulumi.OutputState }
+type GetIamRolePolicyServicesOutput struct{ *pulumi.OutputState }
 
-func (GetIAMRolePolicyServicesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIAMRolePolicyServices)(nil)).Elem()
+func (GetIamRolePolicyServicesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamRolePolicyServices)(nil)).Elem()
 }
 
-func (o GetIAMRolePolicyServicesOutput) ToGetIAMRolePolicyServicesOutput() GetIAMRolePolicyServicesOutput {
+func (o GetIamRolePolicyServicesOutput) ToGetIamRolePolicyServicesOutput() GetIamRolePolicyServicesOutput {
 	return o
 }
 
-func (o GetIAMRolePolicyServicesOutput) ToGetIAMRolePolicyServicesOutputWithContext(ctx context.Context) GetIAMRolePolicyServicesOutput {
+func (o GetIamRolePolicyServicesOutput) ToGetIamRolePolicyServicesOutputWithContext(ctx context.Context) GetIamRolePolicyServicesOutput {
 	return o
 }
 
 // List of IAM service rules (if type is `rules`).
-func (o GetIAMRolePolicyServicesOutput) Rules() GetIAMRolePolicyServicesRuleArrayOutput {
-	return o.ApplyT(func(v GetIAMRolePolicyServices) []GetIAMRolePolicyServicesRule { return v.Rules }).(GetIAMRolePolicyServicesRuleArrayOutput)
+func (o GetIamRolePolicyServicesOutput) Rules() GetIamRolePolicyServicesRuleArrayOutput {
+	return o.ApplyT(func(v GetIamRolePolicyServices) []GetIamRolePolicyServicesRule { return v.Rules }).(GetIamRolePolicyServicesRuleArrayOutput)
 }
 
 // Service type (`rules`, `allow`, or `deny`).
-func (o GetIAMRolePolicyServicesOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIAMRolePolicyServices) string { return v.Type }).(pulumi.StringOutput)
+func (o GetIamRolePolicyServicesOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIamRolePolicyServices) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GetIAMRolePolicyServicesMapOutput struct{ *pulumi.OutputState }
+type GetIamRolePolicyServicesMapOutput struct{ *pulumi.OutputState }
 
-func (GetIAMRolePolicyServicesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetIAMRolePolicyServices)(nil)).Elem()
+func (GetIamRolePolicyServicesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetIamRolePolicyServices)(nil)).Elem()
 }
 
-func (o GetIAMRolePolicyServicesMapOutput) ToGetIAMRolePolicyServicesMapOutput() GetIAMRolePolicyServicesMapOutput {
+func (o GetIamRolePolicyServicesMapOutput) ToGetIamRolePolicyServicesMapOutput() GetIamRolePolicyServicesMapOutput {
 	return o
 }
 
-func (o GetIAMRolePolicyServicesMapOutput) ToGetIAMRolePolicyServicesMapOutputWithContext(ctx context.Context) GetIAMRolePolicyServicesMapOutput {
+func (o GetIamRolePolicyServicesMapOutput) ToGetIamRolePolicyServicesMapOutputWithContext(ctx context.Context) GetIamRolePolicyServicesMapOutput {
 	return o
 }
 
-func (o GetIAMRolePolicyServicesMapOutput) MapIndex(k pulumi.StringInput) GetIAMRolePolicyServicesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetIAMRolePolicyServices {
-		return vs[0].(map[string]GetIAMRolePolicyServices)[vs[1].(string)]
-	}).(GetIAMRolePolicyServicesOutput)
+func (o GetIamRolePolicyServicesMapOutput) MapIndex(k pulumi.StringInput) GetIamRolePolicyServicesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetIamRolePolicyServices {
+		return vs[0].(map[string]GetIamRolePolicyServices)[vs[1].(string)]
+	}).(GetIamRolePolicyServicesOutput)
 }
 
-type GetIAMRolePolicyServicesRule struct {
+type GetIamRolePolicyServicesRule struct {
 	// IAM policy rule action (`allow` or `deny`).
 	Action string `pulumi:"action"`
 	// IAM policy rule expression.
@@ -5430,18 +5430,18 @@ type GetIAMRolePolicyServicesRule struct {
 	Resources []string `pulumi:"resources"`
 }
 
-// GetIAMRolePolicyServicesRuleInput is an input type that accepts GetIAMRolePolicyServicesRuleArgs and GetIAMRolePolicyServicesRuleOutput values.
-// You can construct a concrete instance of `GetIAMRolePolicyServicesRuleInput` via:
+// GetIamRolePolicyServicesRuleInput is an input type that accepts GetIamRolePolicyServicesRuleArgs and GetIamRolePolicyServicesRuleOutput values.
+// You can construct a concrete instance of `GetIamRolePolicyServicesRuleInput` via:
 //
-//	GetIAMRolePolicyServicesRuleArgs{...}
-type GetIAMRolePolicyServicesRuleInput interface {
+//	GetIamRolePolicyServicesRuleArgs{...}
+type GetIamRolePolicyServicesRuleInput interface {
 	pulumi.Input
 
-	ToGetIAMRolePolicyServicesRuleOutput() GetIAMRolePolicyServicesRuleOutput
-	ToGetIAMRolePolicyServicesRuleOutputWithContext(context.Context) GetIAMRolePolicyServicesRuleOutput
+	ToGetIamRolePolicyServicesRuleOutput() GetIamRolePolicyServicesRuleOutput
+	ToGetIamRolePolicyServicesRuleOutputWithContext(context.Context) GetIamRolePolicyServicesRuleOutput
 }
 
-type GetIAMRolePolicyServicesRuleArgs struct {
+type GetIamRolePolicyServicesRuleArgs struct {
 	// IAM policy rule action (`allow` or `deny`).
 	Action pulumi.StringInput `pulumi:"action"`
 	// IAM policy rule expression.
@@ -5450,222 +5450,222 @@ type GetIAMRolePolicyServicesRuleArgs struct {
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
-func (GetIAMRolePolicyServicesRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIAMRolePolicyServicesRule)(nil)).Elem()
+func (GetIamRolePolicyServicesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamRolePolicyServicesRule)(nil)).Elem()
 }
 
-func (i GetIAMRolePolicyServicesRuleArgs) ToGetIAMRolePolicyServicesRuleOutput() GetIAMRolePolicyServicesRuleOutput {
-	return i.ToGetIAMRolePolicyServicesRuleOutputWithContext(context.Background())
+func (i GetIamRolePolicyServicesRuleArgs) ToGetIamRolePolicyServicesRuleOutput() GetIamRolePolicyServicesRuleOutput {
+	return i.ToGetIamRolePolicyServicesRuleOutputWithContext(context.Background())
 }
 
-func (i GetIAMRolePolicyServicesRuleArgs) ToGetIAMRolePolicyServicesRuleOutputWithContext(ctx context.Context) GetIAMRolePolicyServicesRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMRolePolicyServicesRuleOutput)
+func (i GetIamRolePolicyServicesRuleArgs) ToGetIamRolePolicyServicesRuleOutputWithContext(ctx context.Context) GetIamRolePolicyServicesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamRolePolicyServicesRuleOutput)
 }
 
-// GetIAMRolePolicyServicesRuleArrayInput is an input type that accepts GetIAMRolePolicyServicesRuleArray and GetIAMRolePolicyServicesRuleArrayOutput values.
-// You can construct a concrete instance of `GetIAMRolePolicyServicesRuleArrayInput` via:
+// GetIamRolePolicyServicesRuleArrayInput is an input type that accepts GetIamRolePolicyServicesRuleArray and GetIamRolePolicyServicesRuleArrayOutput values.
+// You can construct a concrete instance of `GetIamRolePolicyServicesRuleArrayInput` via:
 //
-//	GetIAMRolePolicyServicesRuleArray{ GetIAMRolePolicyServicesRuleArgs{...} }
-type GetIAMRolePolicyServicesRuleArrayInput interface {
+//	GetIamRolePolicyServicesRuleArray{ GetIamRolePolicyServicesRuleArgs{...} }
+type GetIamRolePolicyServicesRuleArrayInput interface {
 	pulumi.Input
 
-	ToGetIAMRolePolicyServicesRuleArrayOutput() GetIAMRolePolicyServicesRuleArrayOutput
-	ToGetIAMRolePolicyServicesRuleArrayOutputWithContext(context.Context) GetIAMRolePolicyServicesRuleArrayOutput
+	ToGetIamRolePolicyServicesRuleArrayOutput() GetIamRolePolicyServicesRuleArrayOutput
+	ToGetIamRolePolicyServicesRuleArrayOutputWithContext(context.Context) GetIamRolePolicyServicesRuleArrayOutput
 }
 
-type GetIAMRolePolicyServicesRuleArray []GetIAMRolePolicyServicesRuleInput
+type GetIamRolePolicyServicesRuleArray []GetIamRolePolicyServicesRuleInput
 
-func (GetIAMRolePolicyServicesRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetIAMRolePolicyServicesRule)(nil)).Elem()
+func (GetIamRolePolicyServicesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIamRolePolicyServicesRule)(nil)).Elem()
 }
 
-func (i GetIAMRolePolicyServicesRuleArray) ToGetIAMRolePolicyServicesRuleArrayOutput() GetIAMRolePolicyServicesRuleArrayOutput {
-	return i.ToGetIAMRolePolicyServicesRuleArrayOutputWithContext(context.Background())
+func (i GetIamRolePolicyServicesRuleArray) ToGetIamRolePolicyServicesRuleArrayOutput() GetIamRolePolicyServicesRuleArrayOutput {
+	return i.ToGetIamRolePolicyServicesRuleArrayOutputWithContext(context.Background())
 }
 
-func (i GetIAMRolePolicyServicesRuleArray) ToGetIAMRolePolicyServicesRuleArrayOutputWithContext(ctx context.Context) GetIAMRolePolicyServicesRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMRolePolicyServicesRuleArrayOutput)
+func (i GetIamRolePolicyServicesRuleArray) ToGetIamRolePolicyServicesRuleArrayOutputWithContext(ctx context.Context) GetIamRolePolicyServicesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamRolePolicyServicesRuleArrayOutput)
 }
 
-type GetIAMRolePolicyServicesRuleOutput struct{ *pulumi.OutputState }
+type GetIamRolePolicyServicesRuleOutput struct{ *pulumi.OutputState }
 
-func (GetIAMRolePolicyServicesRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIAMRolePolicyServicesRule)(nil)).Elem()
+func (GetIamRolePolicyServicesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamRolePolicyServicesRule)(nil)).Elem()
 }
 
-func (o GetIAMRolePolicyServicesRuleOutput) ToGetIAMRolePolicyServicesRuleOutput() GetIAMRolePolicyServicesRuleOutput {
+func (o GetIamRolePolicyServicesRuleOutput) ToGetIamRolePolicyServicesRuleOutput() GetIamRolePolicyServicesRuleOutput {
 	return o
 }
 
-func (o GetIAMRolePolicyServicesRuleOutput) ToGetIAMRolePolicyServicesRuleOutputWithContext(ctx context.Context) GetIAMRolePolicyServicesRuleOutput {
+func (o GetIamRolePolicyServicesRuleOutput) ToGetIamRolePolicyServicesRuleOutputWithContext(ctx context.Context) GetIamRolePolicyServicesRuleOutput {
 	return o
 }
 
 // IAM policy rule action (`allow` or `deny`).
-func (o GetIAMRolePolicyServicesRuleOutput) Action() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIAMRolePolicyServicesRule) string { return v.Action }).(pulumi.StringOutput)
+func (o GetIamRolePolicyServicesRuleOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIamRolePolicyServicesRule) string { return v.Action }).(pulumi.StringOutput)
 }
 
 // IAM policy rule expression.
-func (o GetIAMRolePolicyServicesRuleOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIAMRolePolicyServicesRule) string { return v.Expression }).(pulumi.StringOutput)
+func (o GetIamRolePolicyServicesRuleOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIamRolePolicyServicesRule) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 // Deprecated: This field is no longer suported.
-func (o GetIAMRolePolicyServicesRuleOutput) Resources() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetIAMRolePolicyServicesRule) []string { return v.Resources }).(pulumi.StringArrayOutput)
+func (o GetIamRolePolicyServicesRuleOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIamRolePolicyServicesRule) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
-type GetIAMRolePolicyServicesRuleArrayOutput struct{ *pulumi.OutputState }
+type GetIamRolePolicyServicesRuleArrayOutput struct{ *pulumi.OutputState }
 
-func (GetIAMRolePolicyServicesRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetIAMRolePolicyServicesRule)(nil)).Elem()
+func (GetIamRolePolicyServicesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIamRolePolicyServicesRule)(nil)).Elem()
 }
 
-func (o GetIAMRolePolicyServicesRuleArrayOutput) ToGetIAMRolePolicyServicesRuleArrayOutput() GetIAMRolePolicyServicesRuleArrayOutput {
+func (o GetIamRolePolicyServicesRuleArrayOutput) ToGetIamRolePolicyServicesRuleArrayOutput() GetIamRolePolicyServicesRuleArrayOutput {
 	return o
 }
 
-func (o GetIAMRolePolicyServicesRuleArrayOutput) ToGetIAMRolePolicyServicesRuleArrayOutputWithContext(ctx context.Context) GetIAMRolePolicyServicesRuleArrayOutput {
+func (o GetIamRolePolicyServicesRuleArrayOutput) ToGetIamRolePolicyServicesRuleArrayOutputWithContext(ctx context.Context) GetIamRolePolicyServicesRuleArrayOutput {
 	return o
 }
 
-func (o GetIAMRolePolicyServicesRuleArrayOutput) Index(i pulumi.IntInput) GetIAMRolePolicyServicesRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIAMRolePolicyServicesRule {
-		return vs[0].([]GetIAMRolePolicyServicesRule)[vs[1].(int)]
-	}).(GetIAMRolePolicyServicesRuleOutput)
+func (o GetIamRolePolicyServicesRuleArrayOutput) Index(i pulumi.IntInput) GetIamRolePolicyServicesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIamRolePolicyServicesRule {
+		return vs[0].([]GetIamRolePolicyServicesRule)[vs[1].(int)]
+	}).(GetIamRolePolicyServicesRuleOutput)
 }
 
-type GetIAMRoleTimeouts struct {
+type GetIamRoleTimeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 	Read *string `pulumi:"read"`
 }
 
-// GetIAMRoleTimeoutsInput is an input type that accepts GetIAMRoleTimeoutsArgs and GetIAMRoleTimeoutsOutput values.
-// You can construct a concrete instance of `GetIAMRoleTimeoutsInput` via:
+// GetIamRoleTimeoutsInput is an input type that accepts GetIamRoleTimeoutsArgs and GetIamRoleTimeoutsOutput values.
+// You can construct a concrete instance of `GetIamRoleTimeoutsInput` via:
 //
-//	GetIAMRoleTimeoutsArgs{...}
-type GetIAMRoleTimeoutsInput interface {
+//	GetIamRoleTimeoutsArgs{...}
+type GetIamRoleTimeoutsInput interface {
 	pulumi.Input
 
-	ToGetIAMRoleTimeoutsOutput() GetIAMRoleTimeoutsOutput
-	ToGetIAMRoleTimeoutsOutputWithContext(context.Context) GetIAMRoleTimeoutsOutput
+	ToGetIamRoleTimeoutsOutput() GetIamRoleTimeoutsOutput
+	ToGetIamRoleTimeoutsOutputWithContext(context.Context) GetIamRoleTimeoutsOutput
 }
 
-type GetIAMRoleTimeoutsArgs struct {
+type GetIamRoleTimeoutsArgs struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 	Read pulumi.StringPtrInput `pulumi:"read"`
 }
 
-func (GetIAMRoleTimeoutsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIAMRoleTimeouts)(nil)).Elem()
+func (GetIamRoleTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamRoleTimeouts)(nil)).Elem()
 }
 
-func (i GetIAMRoleTimeoutsArgs) ToGetIAMRoleTimeoutsOutput() GetIAMRoleTimeoutsOutput {
-	return i.ToGetIAMRoleTimeoutsOutputWithContext(context.Background())
+func (i GetIamRoleTimeoutsArgs) ToGetIamRoleTimeoutsOutput() GetIamRoleTimeoutsOutput {
+	return i.ToGetIamRoleTimeoutsOutputWithContext(context.Background())
 }
 
-func (i GetIAMRoleTimeoutsArgs) ToGetIAMRoleTimeoutsOutputWithContext(ctx context.Context) GetIAMRoleTimeoutsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMRoleTimeoutsOutput)
+func (i GetIamRoleTimeoutsArgs) ToGetIamRoleTimeoutsOutputWithContext(ctx context.Context) GetIamRoleTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamRoleTimeoutsOutput)
 }
 
-func (i GetIAMRoleTimeoutsArgs) ToGetIAMRoleTimeoutsPtrOutput() GetIAMRoleTimeoutsPtrOutput {
-	return i.ToGetIAMRoleTimeoutsPtrOutputWithContext(context.Background())
+func (i GetIamRoleTimeoutsArgs) ToGetIamRoleTimeoutsPtrOutput() GetIamRoleTimeoutsPtrOutput {
+	return i.ToGetIamRoleTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (i GetIAMRoleTimeoutsArgs) ToGetIAMRoleTimeoutsPtrOutputWithContext(ctx context.Context) GetIAMRoleTimeoutsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMRoleTimeoutsOutput).ToGetIAMRoleTimeoutsPtrOutputWithContext(ctx)
+func (i GetIamRoleTimeoutsArgs) ToGetIamRoleTimeoutsPtrOutputWithContext(ctx context.Context) GetIamRoleTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamRoleTimeoutsOutput).ToGetIamRoleTimeoutsPtrOutputWithContext(ctx)
 }
 
-// GetIAMRoleTimeoutsPtrInput is an input type that accepts GetIAMRoleTimeoutsArgs, GetIAMRoleTimeoutsPtr and GetIAMRoleTimeoutsPtrOutput values.
-// You can construct a concrete instance of `GetIAMRoleTimeoutsPtrInput` via:
+// GetIamRoleTimeoutsPtrInput is an input type that accepts GetIamRoleTimeoutsArgs, GetIamRoleTimeoutsPtr and GetIamRoleTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetIamRoleTimeoutsPtrInput` via:
 //
-//	        GetIAMRoleTimeoutsArgs{...}
+//	        GetIamRoleTimeoutsArgs{...}
 //
 //	or:
 //
 //	        nil
-type GetIAMRoleTimeoutsPtrInput interface {
+type GetIamRoleTimeoutsPtrInput interface {
 	pulumi.Input
 
-	ToGetIAMRoleTimeoutsPtrOutput() GetIAMRoleTimeoutsPtrOutput
-	ToGetIAMRoleTimeoutsPtrOutputWithContext(context.Context) GetIAMRoleTimeoutsPtrOutput
+	ToGetIamRoleTimeoutsPtrOutput() GetIamRoleTimeoutsPtrOutput
+	ToGetIamRoleTimeoutsPtrOutputWithContext(context.Context) GetIamRoleTimeoutsPtrOutput
 }
 
-type getIAMRoleTimeoutsPtrType GetIAMRoleTimeoutsArgs
+type getIamRoleTimeoutsPtrType GetIamRoleTimeoutsArgs
 
-func GetIAMRoleTimeoutsPtr(v *GetIAMRoleTimeoutsArgs) GetIAMRoleTimeoutsPtrInput {
-	return (*getIAMRoleTimeoutsPtrType)(v)
+func GetIamRoleTimeoutsPtr(v *GetIamRoleTimeoutsArgs) GetIamRoleTimeoutsPtrInput {
+	return (*getIamRoleTimeoutsPtrType)(v)
 }
 
-func (*getIAMRoleTimeoutsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetIAMRoleTimeouts)(nil)).Elem()
+func (*getIamRoleTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetIamRoleTimeouts)(nil)).Elem()
 }
 
-func (i *getIAMRoleTimeoutsPtrType) ToGetIAMRoleTimeoutsPtrOutput() GetIAMRoleTimeoutsPtrOutput {
-	return i.ToGetIAMRoleTimeoutsPtrOutputWithContext(context.Background())
+func (i *getIamRoleTimeoutsPtrType) ToGetIamRoleTimeoutsPtrOutput() GetIamRoleTimeoutsPtrOutput {
+	return i.ToGetIamRoleTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (i *getIAMRoleTimeoutsPtrType) ToGetIAMRoleTimeoutsPtrOutputWithContext(ctx context.Context) GetIAMRoleTimeoutsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMRoleTimeoutsPtrOutput)
+func (i *getIamRoleTimeoutsPtrType) ToGetIamRoleTimeoutsPtrOutputWithContext(ctx context.Context) GetIamRoleTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamRoleTimeoutsPtrOutput)
 }
 
-type GetIAMRoleTimeoutsOutput struct{ *pulumi.OutputState }
+type GetIamRoleTimeoutsOutput struct{ *pulumi.OutputState }
 
-func (GetIAMRoleTimeoutsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIAMRoleTimeouts)(nil)).Elem()
+func (GetIamRoleTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamRoleTimeouts)(nil)).Elem()
 }
 
-func (o GetIAMRoleTimeoutsOutput) ToGetIAMRoleTimeoutsOutput() GetIAMRoleTimeoutsOutput {
+func (o GetIamRoleTimeoutsOutput) ToGetIamRoleTimeoutsOutput() GetIamRoleTimeoutsOutput {
 	return o
 }
 
-func (o GetIAMRoleTimeoutsOutput) ToGetIAMRoleTimeoutsOutputWithContext(ctx context.Context) GetIAMRoleTimeoutsOutput {
+func (o GetIamRoleTimeoutsOutput) ToGetIamRoleTimeoutsOutputWithContext(ctx context.Context) GetIamRoleTimeoutsOutput {
 	return o
 }
 
-func (o GetIAMRoleTimeoutsOutput) ToGetIAMRoleTimeoutsPtrOutput() GetIAMRoleTimeoutsPtrOutput {
-	return o.ToGetIAMRoleTimeoutsPtrOutputWithContext(context.Background())
+func (o GetIamRoleTimeoutsOutput) ToGetIamRoleTimeoutsPtrOutput() GetIamRoleTimeoutsPtrOutput {
+	return o.ToGetIamRoleTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (o GetIAMRoleTimeoutsOutput) ToGetIAMRoleTimeoutsPtrOutputWithContext(ctx context.Context) GetIAMRoleTimeoutsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetIAMRoleTimeouts) *GetIAMRoleTimeouts {
+func (o GetIamRoleTimeoutsOutput) ToGetIamRoleTimeoutsPtrOutputWithContext(ctx context.Context) GetIamRoleTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetIamRoleTimeouts) *GetIamRoleTimeouts {
 		return &v
-	}).(GetIAMRoleTimeoutsPtrOutput)
+	}).(GetIamRoleTimeoutsPtrOutput)
 }
 
 // A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-func (o GetIAMRoleTimeoutsOutput) Read() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetIAMRoleTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+func (o GetIamRoleTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIamRoleTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
 }
 
-type GetIAMRoleTimeoutsPtrOutput struct{ *pulumi.OutputState }
+type GetIamRoleTimeoutsPtrOutput struct{ *pulumi.OutputState }
 
-func (GetIAMRoleTimeoutsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetIAMRoleTimeouts)(nil)).Elem()
+func (GetIamRoleTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetIamRoleTimeouts)(nil)).Elem()
 }
 
-func (o GetIAMRoleTimeoutsPtrOutput) ToGetIAMRoleTimeoutsPtrOutput() GetIAMRoleTimeoutsPtrOutput {
+func (o GetIamRoleTimeoutsPtrOutput) ToGetIamRoleTimeoutsPtrOutput() GetIamRoleTimeoutsPtrOutput {
 	return o
 }
 
-func (o GetIAMRoleTimeoutsPtrOutput) ToGetIAMRoleTimeoutsPtrOutputWithContext(ctx context.Context) GetIAMRoleTimeoutsPtrOutput {
+func (o GetIamRoleTimeoutsPtrOutput) ToGetIamRoleTimeoutsPtrOutputWithContext(ctx context.Context) GetIamRoleTimeoutsPtrOutput {
 	return o
 }
 
-func (o GetIAMRoleTimeoutsPtrOutput) Elem() GetIAMRoleTimeoutsOutput {
-	return o.ApplyT(func(v *GetIAMRoleTimeouts) GetIAMRoleTimeouts {
+func (o GetIamRoleTimeoutsPtrOutput) Elem() GetIamRoleTimeoutsOutput {
+	return o.ApplyT(func(v *GetIamRoleTimeouts) GetIamRoleTimeouts {
 		if v != nil {
 			return *v
 		}
-		var ret GetIAMRoleTimeouts
+		var ret GetIamRoleTimeouts
 		return ret
-	}).(GetIAMRoleTimeoutsOutput)
+	}).(GetIamRoleTimeoutsOutput)
 }
 
 // A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-func (o GetIAMRoleTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetIAMRoleTimeouts) *string {
+func (o GetIamRoleTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetIamRoleTimeouts) *string {
 		if v == nil {
 			return nil
 		}
@@ -6105,10 +6105,10 @@ func (o GetInstancePoolListPoolInstanceArrayOutput) Index(i pulumi.IntInput) Get
 	}).(GetInstancePoolListPoolInstanceOutput)
 }
 
-type GetNLBServiceListService struct {
+type GetNlbServiceListService struct {
 	// NLB service description.
 	Description string                              `pulumi:"description"`
-	Healthcheck GetNLBServiceListServiceHealthcheck `pulumi:"healthcheck"`
+	Healthcheck GetNlbServiceListServiceHealthcheck `pulumi:"healthcheck"`
 	// NLB service ID.
 	Id string `pulumi:"id"`
 	// The exoscale*instance*pool (ID) to forward traffic to.
@@ -6127,21 +6127,21 @@ type GetNLBServiceListService struct {
 	TargetPort int `pulumi:"targetPort"`
 }
 
-// GetNLBServiceListServiceInput is an input type that accepts GetNLBServiceListServiceArgs and GetNLBServiceListServiceOutput values.
-// You can construct a concrete instance of `GetNLBServiceListServiceInput` via:
+// GetNlbServiceListServiceInput is an input type that accepts GetNlbServiceListServiceArgs and GetNlbServiceListServiceOutput values.
+// You can construct a concrete instance of `GetNlbServiceListServiceInput` via:
 //
-//	GetNLBServiceListServiceArgs{...}
-type GetNLBServiceListServiceInput interface {
+//	GetNlbServiceListServiceArgs{...}
+type GetNlbServiceListServiceInput interface {
 	pulumi.Input
 
-	ToGetNLBServiceListServiceOutput() GetNLBServiceListServiceOutput
-	ToGetNLBServiceListServiceOutputWithContext(context.Context) GetNLBServiceListServiceOutput
+	ToGetNlbServiceListServiceOutput() GetNlbServiceListServiceOutput
+	ToGetNlbServiceListServiceOutputWithContext(context.Context) GetNlbServiceListServiceOutput
 }
 
-type GetNLBServiceListServiceArgs struct {
+type GetNlbServiceListServiceArgs struct {
 	// NLB service description.
 	Description pulumi.StringInput                       `pulumi:"description"`
-	Healthcheck GetNLBServiceListServiceHealthcheckInput `pulumi:"healthcheck"`
+	Healthcheck GetNlbServiceListServiceHealthcheckInput `pulumi:"healthcheck"`
 	// NLB service ID.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The exoscale*instance*pool (ID) to forward traffic to.
@@ -6160,127 +6160,127 @@ type GetNLBServiceListServiceArgs struct {
 	TargetPort pulumi.IntInput `pulumi:"targetPort"`
 }
 
-func (GetNLBServiceListServiceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNLBServiceListService)(nil)).Elem()
+func (GetNlbServiceListServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNlbServiceListService)(nil)).Elem()
 }
 
-func (i GetNLBServiceListServiceArgs) ToGetNLBServiceListServiceOutput() GetNLBServiceListServiceOutput {
-	return i.ToGetNLBServiceListServiceOutputWithContext(context.Background())
+func (i GetNlbServiceListServiceArgs) ToGetNlbServiceListServiceOutput() GetNlbServiceListServiceOutput {
+	return i.ToGetNlbServiceListServiceOutputWithContext(context.Background())
 }
 
-func (i GetNLBServiceListServiceArgs) ToGetNLBServiceListServiceOutputWithContext(ctx context.Context) GetNLBServiceListServiceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNLBServiceListServiceOutput)
+func (i GetNlbServiceListServiceArgs) ToGetNlbServiceListServiceOutputWithContext(ctx context.Context) GetNlbServiceListServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNlbServiceListServiceOutput)
 }
 
-// GetNLBServiceListServiceArrayInput is an input type that accepts GetNLBServiceListServiceArray and GetNLBServiceListServiceArrayOutput values.
-// You can construct a concrete instance of `GetNLBServiceListServiceArrayInput` via:
+// GetNlbServiceListServiceArrayInput is an input type that accepts GetNlbServiceListServiceArray and GetNlbServiceListServiceArrayOutput values.
+// You can construct a concrete instance of `GetNlbServiceListServiceArrayInput` via:
 //
-//	GetNLBServiceListServiceArray{ GetNLBServiceListServiceArgs{...} }
-type GetNLBServiceListServiceArrayInput interface {
+//	GetNlbServiceListServiceArray{ GetNlbServiceListServiceArgs{...} }
+type GetNlbServiceListServiceArrayInput interface {
 	pulumi.Input
 
-	ToGetNLBServiceListServiceArrayOutput() GetNLBServiceListServiceArrayOutput
-	ToGetNLBServiceListServiceArrayOutputWithContext(context.Context) GetNLBServiceListServiceArrayOutput
+	ToGetNlbServiceListServiceArrayOutput() GetNlbServiceListServiceArrayOutput
+	ToGetNlbServiceListServiceArrayOutputWithContext(context.Context) GetNlbServiceListServiceArrayOutput
 }
 
-type GetNLBServiceListServiceArray []GetNLBServiceListServiceInput
+type GetNlbServiceListServiceArray []GetNlbServiceListServiceInput
 
-func (GetNLBServiceListServiceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNLBServiceListService)(nil)).Elem()
+func (GetNlbServiceListServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNlbServiceListService)(nil)).Elem()
 }
 
-func (i GetNLBServiceListServiceArray) ToGetNLBServiceListServiceArrayOutput() GetNLBServiceListServiceArrayOutput {
-	return i.ToGetNLBServiceListServiceArrayOutputWithContext(context.Background())
+func (i GetNlbServiceListServiceArray) ToGetNlbServiceListServiceArrayOutput() GetNlbServiceListServiceArrayOutput {
+	return i.ToGetNlbServiceListServiceArrayOutputWithContext(context.Background())
 }
 
-func (i GetNLBServiceListServiceArray) ToGetNLBServiceListServiceArrayOutputWithContext(ctx context.Context) GetNLBServiceListServiceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNLBServiceListServiceArrayOutput)
+func (i GetNlbServiceListServiceArray) ToGetNlbServiceListServiceArrayOutputWithContext(ctx context.Context) GetNlbServiceListServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNlbServiceListServiceArrayOutput)
 }
 
-type GetNLBServiceListServiceOutput struct{ *pulumi.OutputState }
+type GetNlbServiceListServiceOutput struct{ *pulumi.OutputState }
 
-func (GetNLBServiceListServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNLBServiceListService)(nil)).Elem()
+func (GetNlbServiceListServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNlbServiceListService)(nil)).Elem()
 }
 
-func (o GetNLBServiceListServiceOutput) ToGetNLBServiceListServiceOutput() GetNLBServiceListServiceOutput {
+func (o GetNlbServiceListServiceOutput) ToGetNlbServiceListServiceOutput() GetNlbServiceListServiceOutput {
 	return o
 }
 
-func (o GetNLBServiceListServiceOutput) ToGetNLBServiceListServiceOutputWithContext(ctx context.Context) GetNLBServiceListServiceOutput {
+func (o GetNlbServiceListServiceOutput) ToGetNlbServiceListServiceOutputWithContext(ctx context.Context) GetNlbServiceListServiceOutput {
 	return o
 }
 
 // NLB service description.
-func (o GetNLBServiceListServiceOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNLBServiceListService) string { return v.Description }).(pulumi.StringOutput)
+func (o GetNlbServiceListServiceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNlbServiceListService) string { return v.Description }).(pulumi.StringOutput)
 }
 
-func (o GetNLBServiceListServiceOutput) Healthcheck() GetNLBServiceListServiceHealthcheckOutput {
-	return o.ApplyT(func(v GetNLBServiceListService) GetNLBServiceListServiceHealthcheck { return v.Healthcheck }).(GetNLBServiceListServiceHealthcheckOutput)
+func (o GetNlbServiceListServiceOutput) Healthcheck() GetNlbServiceListServiceHealthcheckOutput {
+	return o.ApplyT(func(v GetNlbServiceListService) GetNlbServiceListServiceHealthcheck { return v.Healthcheck }).(GetNlbServiceListServiceHealthcheckOutput)
 }
 
 // NLB service ID.
-func (o GetNLBServiceListServiceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNLBServiceListService) string { return v.Id }).(pulumi.StringOutput)
+func (o GetNlbServiceListServiceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNlbServiceListService) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The exoscale*instance*pool (ID) to forward traffic to.
-func (o GetNLBServiceListServiceOutput) InstancePoolId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNLBServiceListService) string { return v.InstancePoolId }).(pulumi.StringOutput)
+func (o GetNlbServiceListServiceOutput) InstancePoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNlbServiceListService) string { return v.InstancePoolId }).(pulumi.StringOutput)
 }
 
 // NLB Service name.
-func (o GetNLBServiceListServiceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNLBServiceListService) string { return v.Name }).(pulumi.StringOutput)
+func (o GetNlbServiceListServiceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNlbServiceListService) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Port exposed on the NLB's public IP.
-func (o GetNLBServiceListServiceOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v GetNLBServiceListService) int { return v.Port }).(pulumi.IntOutput)
+func (o GetNlbServiceListServiceOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNlbServiceListService) int { return v.Port }).(pulumi.IntOutput)
 }
 
 // Network traffic protocol.
-func (o GetNLBServiceListServiceOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNLBServiceListService) string { return v.Protocol }).(pulumi.StringOutput)
+func (o GetNlbServiceListServiceOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNlbServiceListService) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
 // NLB Service State.
-func (o GetNLBServiceListServiceOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNLBServiceListService) string { return v.State }).(pulumi.StringOutput)
+func (o GetNlbServiceListServiceOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNlbServiceListService) string { return v.State }).(pulumi.StringOutput)
 }
 
 // The strategy (`round-robin`|`source-hash`).
-func (o GetNLBServiceListServiceOutput) Strategy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNLBServiceListService) string { return v.Strategy }).(pulumi.StringOutput)
+func (o GetNlbServiceListServiceOutput) Strategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNlbServiceListService) string { return v.Strategy }).(pulumi.StringOutput)
 }
 
 // Port on which the network traffic will be forwarded to on the receiving instance.
-func (o GetNLBServiceListServiceOutput) TargetPort() pulumi.IntOutput {
-	return o.ApplyT(func(v GetNLBServiceListService) int { return v.TargetPort }).(pulumi.IntOutput)
+func (o GetNlbServiceListServiceOutput) TargetPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNlbServiceListService) int { return v.TargetPort }).(pulumi.IntOutput)
 }
 
-type GetNLBServiceListServiceArrayOutput struct{ *pulumi.OutputState }
+type GetNlbServiceListServiceArrayOutput struct{ *pulumi.OutputState }
 
-func (GetNLBServiceListServiceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNLBServiceListService)(nil)).Elem()
+func (GetNlbServiceListServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNlbServiceListService)(nil)).Elem()
 }
 
-func (o GetNLBServiceListServiceArrayOutput) ToGetNLBServiceListServiceArrayOutput() GetNLBServiceListServiceArrayOutput {
+func (o GetNlbServiceListServiceArrayOutput) ToGetNlbServiceListServiceArrayOutput() GetNlbServiceListServiceArrayOutput {
 	return o
 }
 
-func (o GetNLBServiceListServiceArrayOutput) ToGetNLBServiceListServiceArrayOutputWithContext(ctx context.Context) GetNLBServiceListServiceArrayOutput {
+func (o GetNlbServiceListServiceArrayOutput) ToGetNlbServiceListServiceArrayOutputWithContext(ctx context.Context) GetNlbServiceListServiceArrayOutput {
 	return o
 }
 
-func (o GetNLBServiceListServiceArrayOutput) Index(i pulumi.IntInput) GetNLBServiceListServiceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNLBServiceListService {
-		return vs[0].([]GetNLBServiceListService)[vs[1].(int)]
-	}).(GetNLBServiceListServiceOutput)
+func (o GetNlbServiceListServiceArrayOutput) Index(i pulumi.IntInput) GetNlbServiceListServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNlbServiceListService {
+		return vs[0].([]GetNlbServiceListService)[vs[1].(int)]
+	}).(GetNlbServiceListServiceOutput)
 }
 
-type GetNLBServiceListServiceHealthcheck struct {
+type GetNlbServiceListServiceHealthcheck struct {
 	Interval int    `pulumi:"interval"`
 	Mode     string `pulumi:"mode"`
 	Port     int    `pulumi:"port"`
@@ -6290,18 +6290,18 @@ type GetNLBServiceListServiceHealthcheck struct {
 	Uri      string `pulumi:"uri"`
 }
 
-// GetNLBServiceListServiceHealthcheckInput is an input type that accepts GetNLBServiceListServiceHealthcheckArgs and GetNLBServiceListServiceHealthcheckOutput values.
-// You can construct a concrete instance of `GetNLBServiceListServiceHealthcheckInput` via:
+// GetNlbServiceListServiceHealthcheckInput is an input type that accepts GetNlbServiceListServiceHealthcheckArgs and GetNlbServiceListServiceHealthcheckOutput values.
+// You can construct a concrete instance of `GetNlbServiceListServiceHealthcheckInput` via:
 //
-//	GetNLBServiceListServiceHealthcheckArgs{...}
-type GetNLBServiceListServiceHealthcheckInput interface {
+//	GetNlbServiceListServiceHealthcheckArgs{...}
+type GetNlbServiceListServiceHealthcheckInput interface {
 	pulumi.Input
 
-	ToGetNLBServiceListServiceHealthcheckOutput() GetNLBServiceListServiceHealthcheckOutput
-	ToGetNLBServiceListServiceHealthcheckOutputWithContext(context.Context) GetNLBServiceListServiceHealthcheckOutput
+	ToGetNlbServiceListServiceHealthcheckOutput() GetNlbServiceListServiceHealthcheckOutput
+	ToGetNlbServiceListServiceHealthcheckOutputWithContext(context.Context) GetNlbServiceListServiceHealthcheckOutput
 }
 
-type GetNLBServiceListServiceHealthcheckArgs struct {
+type GetNlbServiceListServiceHealthcheckArgs struct {
 	Interval pulumi.IntInput    `pulumi:"interval"`
 	Mode     pulumi.StringInput `pulumi:"mode"`
 	Port     pulumi.IntInput    `pulumi:"port"`
@@ -6311,190 +6311,190 @@ type GetNLBServiceListServiceHealthcheckArgs struct {
 	Uri      pulumi.StringInput `pulumi:"uri"`
 }
 
-func (GetNLBServiceListServiceHealthcheckArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNLBServiceListServiceHealthcheck)(nil)).Elem()
+func (GetNlbServiceListServiceHealthcheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNlbServiceListServiceHealthcheck)(nil)).Elem()
 }
 
-func (i GetNLBServiceListServiceHealthcheckArgs) ToGetNLBServiceListServiceHealthcheckOutput() GetNLBServiceListServiceHealthcheckOutput {
-	return i.ToGetNLBServiceListServiceHealthcheckOutputWithContext(context.Background())
+func (i GetNlbServiceListServiceHealthcheckArgs) ToGetNlbServiceListServiceHealthcheckOutput() GetNlbServiceListServiceHealthcheckOutput {
+	return i.ToGetNlbServiceListServiceHealthcheckOutputWithContext(context.Background())
 }
 
-func (i GetNLBServiceListServiceHealthcheckArgs) ToGetNLBServiceListServiceHealthcheckOutputWithContext(ctx context.Context) GetNLBServiceListServiceHealthcheckOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNLBServiceListServiceHealthcheckOutput)
+func (i GetNlbServiceListServiceHealthcheckArgs) ToGetNlbServiceListServiceHealthcheckOutputWithContext(ctx context.Context) GetNlbServiceListServiceHealthcheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNlbServiceListServiceHealthcheckOutput)
 }
 
-type GetNLBServiceListServiceHealthcheckOutput struct{ *pulumi.OutputState }
+type GetNlbServiceListServiceHealthcheckOutput struct{ *pulumi.OutputState }
 
-func (GetNLBServiceListServiceHealthcheckOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNLBServiceListServiceHealthcheck)(nil)).Elem()
+func (GetNlbServiceListServiceHealthcheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNlbServiceListServiceHealthcheck)(nil)).Elem()
 }
 
-func (o GetNLBServiceListServiceHealthcheckOutput) ToGetNLBServiceListServiceHealthcheckOutput() GetNLBServiceListServiceHealthcheckOutput {
+func (o GetNlbServiceListServiceHealthcheckOutput) ToGetNlbServiceListServiceHealthcheckOutput() GetNlbServiceListServiceHealthcheckOutput {
 	return o
 }
 
-func (o GetNLBServiceListServiceHealthcheckOutput) ToGetNLBServiceListServiceHealthcheckOutputWithContext(ctx context.Context) GetNLBServiceListServiceHealthcheckOutput {
+func (o GetNlbServiceListServiceHealthcheckOutput) ToGetNlbServiceListServiceHealthcheckOutputWithContext(ctx context.Context) GetNlbServiceListServiceHealthcheckOutput {
 	return o
 }
 
-func (o GetNLBServiceListServiceHealthcheckOutput) Interval() pulumi.IntOutput {
-	return o.ApplyT(func(v GetNLBServiceListServiceHealthcheck) int { return v.Interval }).(pulumi.IntOutput)
+func (o GetNlbServiceListServiceHealthcheckOutput) Interval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNlbServiceListServiceHealthcheck) int { return v.Interval }).(pulumi.IntOutput)
 }
 
-func (o GetNLBServiceListServiceHealthcheckOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNLBServiceListServiceHealthcheck) string { return v.Mode }).(pulumi.StringOutput)
+func (o GetNlbServiceListServiceHealthcheckOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNlbServiceListServiceHealthcheck) string { return v.Mode }).(pulumi.StringOutput)
 }
 
-func (o GetNLBServiceListServiceHealthcheckOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v GetNLBServiceListServiceHealthcheck) int { return v.Port }).(pulumi.IntOutput)
+func (o GetNlbServiceListServiceHealthcheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNlbServiceListServiceHealthcheck) int { return v.Port }).(pulumi.IntOutput)
 }
 
-func (o GetNLBServiceListServiceHealthcheckOutput) Retries() pulumi.IntOutput {
-	return o.ApplyT(func(v GetNLBServiceListServiceHealthcheck) int { return v.Retries }).(pulumi.IntOutput)
+func (o GetNlbServiceListServiceHealthcheckOutput) Retries() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNlbServiceListServiceHealthcheck) int { return v.Retries }).(pulumi.IntOutput)
 }
 
-func (o GetNLBServiceListServiceHealthcheckOutput) Timeout() pulumi.IntOutput {
-	return o.ApplyT(func(v GetNLBServiceListServiceHealthcheck) int { return v.Timeout }).(pulumi.IntOutput)
+func (o GetNlbServiceListServiceHealthcheckOutput) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNlbServiceListServiceHealthcheck) int { return v.Timeout }).(pulumi.IntOutput)
 }
 
-func (o GetNLBServiceListServiceHealthcheckOutput) TlsSni() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNLBServiceListServiceHealthcheck) string { return v.TlsSni }).(pulumi.StringOutput)
+func (o GetNlbServiceListServiceHealthcheckOutput) TlsSni() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNlbServiceListServiceHealthcheck) string { return v.TlsSni }).(pulumi.StringOutput)
 }
 
-func (o GetNLBServiceListServiceHealthcheckOutput) Uri() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNLBServiceListServiceHealthcheck) string { return v.Uri }).(pulumi.StringOutput)
+func (o GetNlbServiceListServiceHealthcheckOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNlbServiceListServiceHealthcheck) string { return v.Uri }).(pulumi.StringOutput)
 }
 
-type GetNLBServiceListTimeouts struct {
+type GetNlbServiceListTimeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 	Read *string `pulumi:"read"`
 }
 
-// GetNLBServiceListTimeoutsInput is an input type that accepts GetNLBServiceListTimeoutsArgs and GetNLBServiceListTimeoutsOutput values.
-// You can construct a concrete instance of `GetNLBServiceListTimeoutsInput` via:
+// GetNlbServiceListTimeoutsInput is an input type that accepts GetNlbServiceListTimeoutsArgs and GetNlbServiceListTimeoutsOutput values.
+// You can construct a concrete instance of `GetNlbServiceListTimeoutsInput` via:
 //
-//	GetNLBServiceListTimeoutsArgs{...}
-type GetNLBServiceListTimeoutsInput interface {
+//	GetNlbServiceListTimeoutsArgs{...}
+type GetNlbServiceListTimeoutsInput interface {
 	pulumi.Input
 
-	ToGetNLBServiceListTimeoutsOutput() GetNLBServiceListTimeoutsOutput
-	ToGetNLBServiceListTimeoutsOutputWithContext(context.Context) GetNLBServiceListTimeoutsOutput
+	ToGetNlbServiceListTimeoutsOutput() GetNlbServiceListTimeoutsOutput
+	ToGetNlbServiceListTimeoutsOutputWithContext(context.Context) GetNlbServiceListTimeoutsOutput
 }
 
-type GetNLBServiceListTimeoutsArgs struct {
+type GetNlbServiceListTimeoutsArgs struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 	Read pulumi.StringPtrInput `pulumi:"read"`
 }
 
-func (GetNLBServiceListTimeoutsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNLBServiceListTimeouts)(nil)).Elem()
+func (GetNlbServiceListTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNlbServiceListTimeouts)(nil)).Elem()
 }
 
-func (i GetNLBServiceListTimeoutsArgs) ToGetNLBServiceListTimeoutsOutput() GetNLBServiceListTimeoutsOutput {
-	return i.ToGetNLBServiceListTimeoutsOutputWithContext(context.Background())
+func (i GetNlbServiceListTimeoutsArgs) ToGetNlbServiceListTimeoutsOutput() GetNlbServiceListTimeoutsOutput {
+	return i.ToGetNlbServiceListTimeoutsOutputWithContext(context.Background())
 }
 
-func (i GetNLBServiceListTimeoutsArgs) ToGetNLBServiceListTimeoutsOutputWithContext(ctx context.Context) GetNLBServiceListTimeoutsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNLBServiceListTimeoutsOutput)
+func (i GetNlbServiceListTimeoutsArgs) ToGetNlbServiceListTimeoutsOutputWithContext(ctx context.Context) GetNlbServiceListTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNlbServiceListTimeoutsOutput)
 }
 
-func (i GetNLBServiceListTimeoutsArgs) ToGetNLBServiceListTimeoutsPtrOutput() GetNLBServiceListTimeoutsPtrOutput {
-	return i.ToGetNLBServiceListTimeoutsPtrOutputWithContext(context.Background())
+func (i GetNlbServiceListTimeoutsArgs) ToGetNlbServiceListTimeoutsPtrOutput() GetNlbServiceListTimeoutsPtrOutput {
+	return i.ToGetNlbServiceListTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (i GetNLBServiceListTimeoutsArgs) ToGetNLBServiceListTimeoutsPtrOutputWithContext(ctx context.Context) GetNLBServiceListTimeoutsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNLBServiceListTimeoutsOutput).ToGetNLBServiceListTimeoutsPtrOutputWithContext(ctx)
+func (i GetNlbServiceListTimeoutsArgs) ToGetNlbServiceListTimeoutsPtrOutputWithContext(ctx context.Context) GetNlbServiceListTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNlbServiceListTimeoutsOutput).ToGetNlbServiceListTimeoutsPtrOutputWithContext(ctx)
 }
 
-// GetNLBServiceListTimeoutsPtrInput is an input type that accepts GetNLBServiceListTimeoutsArgs, GetNLBServiceListTimeoutsPtr and GetNLBServiceListTimeoutsPtrOutput values.
-// You can construct a concrete instance of `GetNLBServiceListTimeoutsPtrInput` via:
+// GetNlbServiceListTimeoutsPtrInput is an input type that accepts GetNlbServiceListTimeoutsArgs, GetNlbServiceListTimeoutsPtr and GetNlbServiceListTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetNlbServiceListTimeoutsPtrInput` via:
 //
-//	        GetNLBServiceListTimeoutsArgs{...}
+//	        GetNlbServiceListTimeoutsArgs{...}
 //
 //	or:
 //
 //	        nil
-type GetNLBServiceListTimeoutsPtrInput interface {
+type GetNlbServiceListTimeoutsPtrInput interface {
 	pulumi.Input
 
-	ToGetNLBServiceListTimeoutsPtrOutput() GetNLBServiceListTimeoutsPtrOutput
-	ToGetNLBServiceListTimeoutsPtrOutputWithContext(context.Context) GetNLBServiceListTimeoutsPtrOutput
+	ToGetNlbServiceListTimeoutsPtrOutput() GetNlbServiceListTimeoutsPtrOutput
+	ToGetNlbServiceListTimeoutsPtrOutputWithContext(context.Context) GetNlbServiceListTimeoutsPtrOutput
 }
 
-type getNLBServiceListTimeoutsPtrType GetNLBServiceListTimeoutsArgs
+type getNlbServiceListTimeoutsPtrType GetNlbServiceListTimeoutsArgs
 
-func GetNLBServiceListTimeoutsPtr(v *GetNLBServiceListTimeoutsArgs) GetNLBServiceListTimeoutsPtrInput {
-	return (*getNLBServiceListTimeoutsPtrType)(v)
+func GetNlbServiceListTimeoutsPtr(v *GetNlbServiceListTimeoutsArgs) GetNlbServiceListTimeoutsPtrInput {
+	return (*getNlbServiceListTimeoutsPtrType)(v)
 }
 
-func (*getNLBServiceListTimeoutsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetNLBServiceListTimeouts)(nil)).Elem()
+func (*getNlbServiceListTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetNlbServiceListTimeouts)(nil)).Elem()
 }
 
-func (i *getNLBServiceListTimeoutsPtrType) ToGetNLBServiceListTimeoutsPtrOutput() GetNLBServiceListTimeoutsPtrOutput {
-	return i.ToGetNLBServiceListTimeoutsPtrOutputWithContext(context.Background())
+func (i *getNlbServiceListTimeoutsPtrType) ToGetNlbServiceListTimeoutsPtrOutput() GetNlbServiceListTimeoutsPtrOutput {
+	return i.ToGetNlbServiceListTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (i *getNLBServiceListTimeoutsPtrType) ToGetNLBServiceListTimeoutsPtrOutputWithContext(ctx context.Context) GetNLBServiceListTimeoutsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNLBServiceListTimeoutsPtrOutput)
+func (i *getNlbServiceListTimeoutsPtrType) ToGetNlbServiceListTimeoutsPtrOutputWithContext(ctx context.Context) GetNlbServiceListTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNlbServiceListTimeoutsPtrOutput)
 }
 
-type GetNLBServiceListTimeoutsOutput struct{ *pulumi.OutputState }
+type GetNlbServiceListTimeoutsOutput struct{ *pulumi.OutputState }
 
-func (GetNLBServiceListTimeoutsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNLBServiceListTimeouts)(nil)).Elem()
+func (GetNlbServiceListTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNlbServiceListTimeouts)(nil)).Elem()
 }
 
-func (o GetNLBServiceListTimeoutsOutput) ToGetNLBServiceListTimeoutsOutput() GetNLBServiceListTimeoutsOutput {
+func (o GetNlbServiceListTimeoutsOutput) ToGetNlbServiceListTimeoutsOutput() GetNlbServiceListTimeoutsOutput {
 	return o
 }
 
-func (o GetNLBServiceListTimeoutsOutput) ToGetNLBServiceListTimeoutsOutputWithContext(ctx context.Context) GetNLBServiceListTimeoutsOutput {
+func (o GetNlbServiceListTimeoutsOutput) ToGetNlbServiceListTimeoutsOutputWithContext(ctx context.Context) GetNlbServiceListTimeoutsOutput {
 	return o
 }
 
-func (o GetNLBServiceListTimeoutsOutput) ToGetNLBServiceListTimeoutsPtrOutput() GetNLBServiceListTimeoutsPtrOutput {
-	return o.ToGetNLBServiceListTimeoutsPtrOutputWithContext(context.Background())
+func (o GetNlbServiceListTimeoutsOutput) ToGetNlbServiceListTimeoutsPtrOutput() GetNlbServiceListTimeoutsPtrOutput {
+	return o.ToGetNlbServiceListTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (o GetNLBServiceListTimeoutsOutput) ToGetNLBServiceListTimeoutsPtrOutputWithContext(ctx context.Context) GetNLBServiceListTimeoutsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetNLBServiceListTimeouts) *GetNLBServiceListTimeouts {
+func (o GetNlbServiceListTimeoutsOutput) ToGetNlbServiceListTimeoutsPtrOutputWithContext(ctx context.Context) GetNlbServiceListTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetNlbServiceListTimeouts) *GetNlbServiceListTimeouts {
 		return &v
-	}).(GetNLBServiceListTimeoutsPtrOutput)
+	}).(GetNlbServiceListTimeoutsPtrOutput)
 }
 
 // A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-func (o GetNLBServiceListTimeoutsOutput) Read() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetNLBServiceListTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+func (o GetNlbServiceListTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNlbServiceListTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
 }
 
-type GetNLBServiceListTimeoutsPtrOutput struct{ *pulumi.OutputState }
+type GetNlbServiceListTimeoutsPtrOutput struct{ *pulumi.OutputState }
 
-func (GetNLBServiceListTimeoutsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetNLBServiceListTimeouts)(nil)).Elem()
+func (GetNlbServiceListTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetNlbServiceListTimeouts)(nil)).Elem()
 }
 
-func (o GetNLBServiceListTimeoutsPtrOutput) ToGetNLBServiceListTimeoutsPtrOutput() GetNLBServiceListTimeoutsPtrOutput {
+func (o GetNlbServiceListTimeoutsPtrOutput) ToGetNlbServiceListTimeoutsPtrOutput() GetNlbServiceListTimeoutsPtrOutput {
 	return o
 }
 
-func (o GetNLBServiceListTimeoutsPtrOutput) ToGetNLBServiceListTimeoutsPtrOutputWithContext(ctx context.Context) GetNLBServiceListTimeoutsPtrOutput {
+func (o GetNlbServiceListTimeoutsPtrOutput) ToGetNlbServiceListTimeoutsPtrOutputWithContext(ctx context.Context) GetNlbServiceListTimeoutsPtrOutput {
 	return o
 }
 
-func (o GetNLBServiceListTimeoutsPtrOutput) Elem() GetNLBServiceListTimeoutsOutput {
-	return o.ApplyT(func(v *GetNLBServiceListTimeouts) GetNLBServiceListTimeouts {
+func (o GetNlbServiceListTimeoutsPtrOutput) Elem() GetNlbServiceListTimeoutsOutput {
+	return o.ApplyT(func(v *GetNlbServiceListTimeouts) GetNlbServiceListTimeouts {
 		if v != nil {
 			return *v
 		}
-		var ret GetNLBServiceListTimeouts
+		var ret GetNlbServiceListTimeouts
 		return ret
-	}).(GetNLBServiceListTimeoutsOutput)
+	}).(GetNlbServiceListTimeoutsOutput)
 }
 
 // A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-func (o GetNLBServiceListTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetNLBServiceListTimeouts) *string {
+func (o GetNlbServiceListTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetNlbServiceListTimeouts) *string {
 		if v == nil {
 			return nil
 		}
@@ -6502,7 +6502,7 @@ func (o GetNLBServiceListTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type GetSKSClusterListCluster struct {
+type GetSksClusterListCluster struct {
 	// Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
 	Addons         []string                     `pulumi:"addons"`
 	AggregationCa  string                       `pulumi:"aggregationCa"`
@@ -6519,25 +6519,25 @@ type GetSKSClusterListCluster struct {
 	MetricsServer  *bool                        `pulumi:"metricsServer"`
 	Name           *string                      `pulumi:"name"`
 	Nodepools      []string                     `pulumi:"nodepools"`
-	Oidc           GetSKSClusterListClusterOidc `pulumi:"oidc"`
+	Oidc           GetSksClusterListClusterOidc `pulumi:"oidc"`
 	ServiceLevel   *string                      `pulumi:"serviceLevel"`
 	State          string                       `pulumi:"state"`
 	Version        string                       `pulumi:"version"`
 	Zone           string                       `pulumi:"zone"`
 }
 
-// GetSKSClusterListClusterInput is an input type that accepts GetSKSClusterListClusterArgs and GetSKSClusterListClusterOutput values.
-// You can construct a concrete instance of `GetSKSClusterListClusterInput` via:
+// GetSksClusterListClusterInput is an input type that accepts GetSksClusterListClusterArgs and GetSksClusterListClusterOutput values.
+// You can construct a concrete instance of `GetSksClusterListClusterInput` via:
 //
-//	GetSKSClusterListClusterArgs{...}
-type GetSKSClusterListClusterInput interface {
+//	GetSksClusterListClusterArgs{...}
+type GetSksClusterListClusterInput interface {
 	pulumi.Input
 
-	ToGetSKSClusterListClusterOutput() GetSKSClusterListClusterOutput
-	ToGetSKSClusterListClusterOutputWithContext(context.Context) GetSKSClusterListClusterOutput
+	ToGetSksClusterListClusterOutput() GetSksClusterListClusterOutput
+	ToGetSksClusterListClusterOutputWithContext(context.Context) GetSksClusterListClusterOutput
 }
 
-type GetSKSClusterListClusterArgs struct {
+type GetSksClusterListClusterArgs struct {
 	// Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
 	Addons         pulumi.StringArrayInput           `pulumi:"addons"`
 	AggregationCa  pulumi.StringInput                `pulumi:"aggregationCa"`
@@ -6554,166 +6554,166 @@ type GetSKSClusterListClusterArgs struct {
 	MetricsServer  pulumi.BoolPtrInput               `pulumi:"metricsServer"`
 	Name           pulumi.StringPtrInput             `pulumi:"name"`
 	Nodepools      pulumi.StringArrayInput           `pulumi:"nodepools"`
-	Oidc           GetSKSClusterListClusterOidcInput `pulumi:"oidc"`
+	Oidc           GetSksClusterListClusterOidcInput `pulumi:"oidc"`
 	ServiceLevel   pulumi.StringPtrInput             `pulumi:"serviceLevel"`
 	State          pulumi.StringInput                `pulumi:"state"`
 	Version        pulumi.StringInput                `pulumi:"version"`
 	Zone           pulumi.StringInput                `pulumi:"zone"`
 }
 
-func (GetSKSClusterListClusterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSKSClusterListCluster)(nil)).Elem()
+func (GetSksClusterListClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSksClusterListCluster)(nil)).Elem()
 }
 
-func (i GetSKSClusterListClusterArgs) ToGetSKSClusterListClusterOutput() GetSKSClusterListClusterOutput {
-	return i.ToGetSKSClusterListClusterOutputWithContext(context.Background())
+func (i GetSksClusterListClusterArgs) ToGetSksClusterListClusterOutput() GetSksClusterListClusterOutput {
+	return i.ToGetSksClusterListClusterOutputWithContext(context.Background())
 }
 
-func (i GetSKSClusterListClusterArgs) ToGetSKSClusterListClusterOutputWithContext(ctx context.Context) GetSKSClusterListClusterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSKSClusterListClusterOutput)
+func (i GetSksClusterListClusterArgs) ToGetSksClusterListClusterOutputWithContext(ctx context.Context) GetSksClusterListClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSksClusterListClusterOutput)
 }
 
-// GetSKSClusterListClusterArrayInput is an input type that accepts GetSKSClusterListClusterArray and GetSKSClusterListClusterArrayOutput values.
-// You can construct a concrete instance of `GetSKSClusterListClusterArrayInput` via:
+// GetSksClusterListClusterArrayInput is an input type that accepts GetSksClusterListClusterArray and GetSksClusterListClusterArrayOutput values.
+// You can construct a concrete instance of `GetSksClusterListClusterArrayInput` via:
 //
-//	GetSKSClusterListClusterArray{ GetSKSClusterListClusterArgs{...} }
-type GetSKSClusterListClusterArrayInput interface {
+//	GetSksClusterListClusterArray{ GetSksClusterListClusterArgs{...} }
+type GetSksClusterListClusterArrayInput interface {
 	pulumi.Input
 
-	ToGetSKSClusterListClusterArrayOutput() GetSKSClusterListClusterArrayOutput
-	ToGetSKSClusterListClusterArrayOutputWithContext(context.Context) GetSKSClusterListClusterArrayOutput
+	ToGetSksClusterListClusterArrayOutput() GetSksClusterListClusterArrayOutput
+	ToGetSksClusterListClusterArrayOutputWithContext(context.Context) GetSksClusterListClusterArrayOutput
 }
 
-type GetSKSClusterListClusterArray []GetSKSClusterListClusterInput
+type GetSksClusterListClusterArray []GetSksClusterListClusterInput
 
-func (GetSKSClusterListClusterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSKSClusterListCluster)(nil)).Elem()
+func (GetSksClusterListClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSksClusterListCluster)(nil)).Elem()
 }
 
-func (i GetSKSClusterListClusterArray) ToGetSKSClusterListClusterArrayOutput() GetSKSClusterListClusterArrayOutput {
-	return i.ToGetSKSClusterListClusterArrayOutputWithContext(context.Background())
+func (i GetSksClusterListClusterArray) ToGetSksClusterListClusterArrayOutput() GetSksClusterListClusterArrayOutput {
+	return i.ToGetSksClusterListClusterArrayOutputWithContext(context.Background())
 }
 
-func (i GetSKSClusterListClusterArray) ToGetSKSClusterListClusterArrayOutputWithContext(ctx context.Context) GetSKSClusterListClusterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSKSClusterListClusterArrayOutput)
+func (i GetSksClusterListClusterArray) ToGetSksClusterListClusterArrayOutputWithContext(ctx context.Context) GetSksClusterListClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSksClusterListClusterArrayOutput)
 }
 
-type GetSKSClusterListClusterOutput struct{ *pulumi.OutputState }
+type GetSksClusterListClusterOutput struct{ *pulumi.OutputState }
 
-func (GetSKSClusterListClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSKSClusterListCluster)(nil)).Elem()
+func (GetSksClusterListClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSksClusterListCluster)(nil)).Elem()
 }
 
-func (o GetSKSClusterListClusterOutput) ToGetSKSClusterListClusterOutput() GetSKSClusterListClusterOutput {
+func (o GetSksClusterListClusterOutput) ToGetSksClusterListClusterOutput() GetSksClusterListClusterOutput {
 	return o
 }
 
-func (o GetSKSClusterListClusterOutput) ToGetSKSClusterListClusterOutputWithContext(ctx context.Context) GetSKSClusterListClusterOutput {
+func (o GetSksClusterListClusterOutput) ToGetSksClusterListClusterOutputWithContext(ctx context.Context) GetSksClusterListClusterOutput {
 	return o
 }
 
 // Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
-func (o GetSKSClusterListClusterOutput) Addons() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) []string { return v.Addons }).(pulumi.StringArrayOutput)
+func (o GetSksClusterListClusterOutput) Addons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSksClusterListCluster) []string { return v.Addons }).(pulumi.StringArrayOutput)
 }
 
-func (o GetSKSClusterListClusterOutput) AggregationCa() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.AggregationCa }).(pulumi.StringOutput)
+func (o GetSksClusterListClusterOutput) AggregationCa() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSksClusterListCluster) string { return v.AggregationCa }).(pulumi.StringOutput)
 }
 
-func (o GetSKSClusterListClusterOutput) AutoUpgrade() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) *bool { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
+func (o GetSksClusterListClusterOutput) AutoUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSksClusterListCluster) *bool { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
 }
 
-func (o GetSKSClusterListClusterOutput) Cni() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) *string { return v.Cni }).(pulumi.StringPtrOutput)
+func (o GetSksClusterListClusterOutput) Cni() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksClusterListCluster) *string { return v.Cni }).(pulumi.StringPtrOutput)
 }
 
-func (o GetSKSClusterListClusterOutput) ControlPlaneCa() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.ControlPlaneCa }).(pulumi.StringOutput)
+func (o GetSksClusterListClusterOutput) ControlPlaneCa() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSksClusterListCluster) string { return v.ControlPlaneCa }).(pulumi.StringOutput)
 }
 
-func (o GetSKSClusterListClusterOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.CreatedAt }).(pulumi.StringOutput)
+func (o GetSksClusterListClusterOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSksClusterListCluster) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-func (o GetSKSClusterListClusterOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o GetSksClusterListClusterOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksClusterListCluster) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o GetSKSClusterListClusterOutput) Endpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.Endpoint }).(pulumi.StringOutput)
+func (o GetSksClusterListClusterOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSksClusterListCluster) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
-func (o GetSKSClusterListClusterOutput) ExoscaleCcm() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) *bool { return v.ExoscaleCcm }).(pulumi.BoolPtrOutput)
+func (o GetSksClusterListClusterOutput) ExoscaleCcm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSksClusterListCluster) *bool { return v.ExoscaleCcm }).(pulumi.BoolPtrOutput)
 }
 
-func (o GetSKSClusterListClusterOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o GetSksClusterListClusterOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksClusterListCluster) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-func (o GetSKSClusterListClusterOutput) KubeletCa() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.KubeletCa }).(pulumi.StringOutput)
+func (o GetSksClusterListClusterOutput) KubeletCa() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSksClusterListCluster) string { return v.KubeletCa }).(pulumi.StringOutput)
 }
 
-func (o GetSKSClusterListClusterOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+func (o GetSksClusterListClusterOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSksClusterListCluster) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-func (o GetSKSClusterListClusterOutput) MetricsServer() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) *bool { return v.MetricsServer }).(pulumi.BoolPtrOutput)
+func (o GetSksClusterListClusterOutput) MetricsServer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSksClusterListCluster) *bool { return v.MetricsServer }).(pulumi.BoolPtrOutput)
 }
 
-func (o GetSKSClusterListClusterOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o GetSksClusterListClusterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksClusterListCluster) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-func (o GetSKSClusterListClusterOutput) Nodepools() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) []string { return v.Nodepools }).(pulumi.StringArrayOutput)
+func (o GetSksClusterListClusterOutput) Nodepools() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSksClusterListCluster) []string { return v.Nodepools }).(pulumi.StringArrayOutput)
 }
 
-func (o GetSKSClusterListClusterOutput) Oidc() GetSKSClusterListClusterOidcOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) GetSKSClusterListClusterOidc { return v.Oidc }).(GetSKSClusterListClusterOidcOutput)
+func (o GetSksClusterListClusterOutput) Oidc() GetSksClusterListClusterOidcOutput {
+	return o.ApplyT(func(v GetSksClusterListCluster) GetSksClusterListClusterOidc { return v.Oidc }).(GetSksClusterListClusterOidcOutput)
 }
 
-func (o GetSKSClusterListClusterOutput) ServiceLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) *string { return v.ServiceLevel }).(pulumi.StringPtrOutput)
+func (o GetSksClusterListClusterOutput) ServiceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksClusterListCluster) *string { return v.ServiceLevel }).(pulumi.StringPtrOutput)
 }
 
-func (o GetSKSClusterListClusterOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.State }).(pulumi.StringOutput)
+func (o GetSksClusterListClusterOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSksClusterListCluster) string { return v.State }).(pulumi.StringOutput)
 }
 
-func (o GetSKSClusterListClusterOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.Version }).(pulumi.StringOutput)
+func (o GetSksClusterListClusterOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSksClusterListCluster) string { return v.Version }).(pulumi.StringOutput)
 }
 
-func (o GetSKSClusterListClusterOutput) Zone() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSClusterListCluster) string { return v.Zone }).(pulumi.StringOutput)
+func (o GetSksClusterListClusterOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSksClusterListCluster) string { return v.Zone }).(pulumi.StringOutput)
 }
 
-type GetSKSClusterListClusterArrayOutput struct{ *pulumi.OutputState }
+type GetSksClusterListClusterArrayOutput struct{ *pulumi.OutputState }
 
-func (GetSKSClusterListClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSKSClusterListCluster)(nil)).Elem()
+func (GetSksClusterListClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSksClusterListCluster)(nil)).Elem()
 }
 
-func (o GetSKSClusterListClusterArrayOutput) ToGetSKSClusterListClusterArrayOutput() GetSKSClusterListClusterArrayOutput {
+func (o GetSksClusterListClusterArrayOutput) ToGetSksClusterListClusterArrayOutput() GetSksClusterListClusterArrayOutput {
 	return o
 }
 
-func (o GetSKSClusterListClusterArrayOutput) ToGetSKSClusterListClusterArrayOutputWithContext(ctx context.Context) GetSKSClusterListClusterArrayOutput {
+func (o GetSksClusterListClusterArrayOutput) ToGetSksClusterListClusterArrayOutputWithContext(ctx context.Context) GetSksClusterListClusterArrayOutput {
 	return o
 }
 
-func (o GetSKSClusterListClusterArrayOutput) Index(i pulumi.IntInput) GetSKSClusterListClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSKSClusterListCluster {
-		return vs[0].([]GetSKSClusterListCluster)[vs[1].(int)]
-	}).(GetSKSClusterListClusterOutput)
+func (o GetSksClusterListClusterArrayOutput) Index(i pulumi.IntInput) GetSksClusterListClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSksClusterListCluster {
+		return vs[0].([]GetSksClusterListCluster)[vs[1].(int)]
+	}).(GetSksClusterListClusterOutput)
 }
 
-type GetSKSClusterListClusterOidc struct {
+type GetSksClusterListClusterOidc struct {
 	ClientId       string            `pulumi:"clientId"`
 	GroupsClaim    *string           `pulumi:"groupsClaim"`
 	GroupsPrefix   *string           `pulumi:"groupsPrefix"`
@@ -6723,18 +6723,18 @@ type GetSKSClusterListClusterOidc struct {
 	UsernamePrefix *string           `pulumi:"usernamePrefix"`
 }
 
-// GetSKSClusterListClusterOidcInput is an input type that accepts GetSKSClusterListClusterOidcArgs and GetSKSClusterListClusterOidcOutput values.
-// You can construct a concrete instance of `GetSKSClusterListClusterOidcInput` via:
+// GetSksClusterListClusterOidcInput is an input type that accepts GetSksClusterListClusterOidcArgs and GetSksClusterListClusterOidcOutput values.
+// You can construct a concrete instance of `GetSksClusterListClusterOidcInput` via:
 //
-//	GetSKSClusterListClusterOidcArgs{...}
-type GetSKSClusterListClusterOidcInput interface {
+//	GetSksClusterListClusterOidcArgs{...}
+type GetSksClusterListClusterOidcInput interface {
 	pulumi.Input
 
-	ToGetSKSClusterListClusterOidcOutput() GetSKSClusterListClusterOidcOutput
-	ToGetSKSClusterListClusterOidcOutputWithContext(context.Context) GetSKSClusterListClusterOidcOutput
+	ToGetSksClusterListClusterOidcOutput() GetSksClusterListClusterOidcOutput
+	ToGetSksClusterListClusterOidcOutputWithContext(context.Context) GetSksClusterListClusterOidcOutput
 }
 
-type GetSKSClusterListClusterOidcArgs struct {
+type GetSksClusterListClusterOidcArgs struct {
 	ClientId       pulumi.StringInput    `pulumi:"clientId"`
 	GroupsClaim    pulumi.StringPtrInput `pulumi:"groupsClaim"`
 	GroupsPrefix   pulumi.StringPtrInput `pulumi:"groupsPrefix"`
@@ -6744,61 +6744,61 @@ type GetSKSClusterListClusterOidcArgs struct {
 	UsernamePrefix pulumi.StringPtrInput `pulumi:"usernamePrefix"`
 }
 
-func (GetSKSClusterListClusterOidcArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSKSClusterListClusterOidc)(nil)).Elem()
+func (GetSksClusterListClusterOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSksClusterListClusterOidc)(nil)).Elem()
 }
 
-func (i GetSKSClusterListClusterOidcArgs) ToGetSKSClusterListClusterOidcOutput() GetSKSClusterListClusterOidcOutput {
-	return i.ToGetSKSClusterListClusterOidcOutputWithContext(context.Background())
+func (i GetSksClusterListClusterOidcArgs) ToGetSksClusterListClusterOidcOutput() GetSksClusterListClusterOidcOutput {
+	return i.ToGetSksClusterListClusterOidcOutputWithContext(context.Background())
 }
 
-func (i GetSKSClusterListClusterOidcArgs) ToGetSKSClusterListClusterOidcOutputWithContext(ctx context.Context) GetSKSClusterListClusterOidcOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSKSClusterListClusterOidcOutput)
+func (i GetSksClusterListClusterOidcArgs) ToGetSksClusterListClusterOidcOutputWithContext(ctx context.Context) GetSksClusterListClusterOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSksClusterListClusterOidcOutput)
 }
 
-type GetSKSClusterListClusterOidcOutput struct{ *pulumi.OutputState }
+type GetSksClusterListClusterOidcOutput struct{ *pulumi.OutputState }
 
-func (GetSKSClusterListClusterOidcOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSKSClusterListClusterOidc)(nil)).Elem()
+func (GetSksClusterListClusterOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSksClusterListClusterOidc)(nil)).Elem()
 }
 
-func (o GetSKSClusterListClusterOidcOutput) ToGetSKSClusterListClusterOidcOutput() GetSKSClusterListClusterOidcOutput {
+func (o GetSksClusterListClusterOidcOutput) ToGetSksClusterListClusterOidcOutput() GetSksClusterListClusterOidcOutput {
 	return o
 }
 
-func (o GetSKSClusterListClusterOidcOutput) ToGetSKSClusterListClusterOidcOutputWithContext(ctx context.Context) GetSKSClusterListClusterOidcOutput {
+func (o GetSksClusterListClusterOidcOutput) ToGetSksClusterListClusterOidcOutputWithContext(ctx context.Context) GetSksClusterListClusterOidcOutput {
 	return o
 }
 
-func (o GetSKSClusterListClusterOidcOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSClusterListClusterOidc) string { return v.ClientId }).(pulumi.StringOutput)
+func (o GetSksClusterListClusterOidcOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSksClusterListClusterOidc) string { return v.ClientId }).(pulumi.StringOutput)
 }
 
-func (o GetSKSClusterListClusterOidcOutput) GroupsClaim() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterListClusterOidc) *string { return v.GroupsClaim }).(pulumi.StringPtrOutput)
+func (o GetSksClusterListClusterOidcOutput) GroupsClaim() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksClusterListClusterOidc) *string { return v.GroupsClaim }).(pulumi.StringPtrOutput)
 }
 
-func (o GetSKSClusterListClusterOidcOutput) GroupsPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterListClusterOidc) *string { return v.GroupsPrefix }).(pulumi.StringPtrOutput)
+func (o GetSksClusterListClusterOidcOutput) GroupsPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksClusterListClusterOidc) *string { return v.GroupsPrefix }).(pulumi.StringPtrOutput)
 }
 
-func (o GetSKSClusterListClusterOidcOutput) IssuerUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSClusterListClusterOidc) string { return v.IssuerUrl }).(pulumi.StringOutput)
+func (o GetSksClusterListClusterOidcOutput) IssuerUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSksClusterListClusterOidc) string { return v.IssuerUrl }).(pulumi.StringOutput)
 }
 
-func (o GetSKSClusterListClusterOidcOutput) RequiredClaim() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetSKSClusterListClusterOidc) map[string]string { return v.RequiredClaim }).(pulumi.StringMapOutput)
+func (o GetSksClusterListClusterOidcOutput) RequiredClaim() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSksClusterListClusterOidc) map[string]string { return v.RequiredClaim }).(pulumi.StringMapOutput)
 }
 
-func (o GetSKSClusterListClusterOidcOutput) UsernameClaim() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterListClusterOidc) *string { return v.UsernameClaim }).(pulumi.StringPtrOutput)
+func (o GetSksClusterListClusterOidcOutput) UsernameClaim() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksClusterListClusterOidc) *string { return v.UsernameClaim }).(pulumi.StringPtrOutput)
 }
 
-func (o GetSKSClusterListClusterOidcOutput) UsernamePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterListClusterOidc) *string { return v.UsernamePrefix }).(pulumi.StringPtrOutput)
+func (o GetSksClusterListClusterOidcOutput) UsernamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksClusterListClusterOidc) *string { return v.UsernamePrefix }).(pulumi.StringPtrOutput)
 }
 
-type GetSKSClusterOidc struct {
+type GetSksClusterOidc struct {
 	// The OpenID client ID.
 	ClientId string `pulumi:"clientId"`
 	// An OpenID JWT claim to use as the user's group.
@@ -6815,18 +6815,18 @@ type GetSKSClusterOidc struct {
 	UsernamePrefix *string `pulumi:"usernamePrefix"`
 }
 
-// GetSKSClusterOidcInput is an input type that accepts GetSKSClusterOidcArgs and GetSKSClusterOidcOutput values.
-// You can construct a concrete instance of `GetSKSClusterOidcInput` via:
+// GetSksClusterOidcInput is an input type that accepts GetSksClusterOidcArgs and GetSksClusterOidcOutput values.
+// You can construct a concrete instance of `GetSksClusterOidcInput` via:
 //
-//	GetSKSClusterOidcArgs{...}
-type GetSKSClusterOidcInput interface {
+//	GetSksClusterOidcArgs{...}
+type GetSksClusterOidcInput interface {
 	pulumi.Input
 
-	ToGetSKSClusterOidcOutput() GetSKSClusterOidcOutput
-	ToGetSKSClusterOidcOutputWithContext(context.Context) GetSKSClusterOidcOutput
+	ToGetSksClusterOidcOutput() GetSksClusterOidcOutput
+	ToGetSksClusterOidcOutputWithContext(context.Context) GetSksClusterOidcOutput
 }
 
-type GetSKSClusterOidcArgs struct {
+type GetSksClusterOidcArgs struct {
 	// The OpenID client ID.
 	ClientId pulumi.StringInput `pulumi:"clientId"`
 	// An OpenID JWT claim to use as the user's group.
@@ -6843,145 +6843,145 @@ type GetSKSClusterOidcArgs struct {
 	UsernamePrefix pulumi.StringPtrInput `pulumi:"usernamePrefix"`
 }
 
-func (GetSKSClusterOidcArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSKSClusterOidc)(nil)).Elem()
+func (GetSksClusterOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSksClusterOidc)(nil)).Elem()
 }
 
-func (i GetSKSClusterOidcArgs) ToGetSKSClusterOidcOutput() GetSKSClusterOidcOutput {
-	return i.ToGetSKSClusterOidcOutputWithContext(context.Background())
+func (i GetSksClusterOidcArgs) ToGetSksClusterOidcOutput() GetSksClusterOidcOutput {
+	return i.ToGetSksClusterOidcOutputWithContext(context.Background())
 }
 
-func (i GetSKSClusterOidcArgs) ToGetSKSClusterOidcOutputWithContext(ctx context.Context) GetSKSClusterOidcOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSKSClusterOidcOutput)
+func (i GetSksClusterOidcArgs) ToGetSksClusterOidcOutputWithContext(ctx context.Context) GetSksClusterOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSksClusterOidcOutput)
 }
 
-func (i GetSKSClusterOidcArgs) ToGetSKSClusterOidcPtrOutput() GetSKSClusterOidcPtrOutput {
-	return i.ToGetSKSClusterOidcPtrOutputWithContext(context.Background())
+func (i GetSksClusterOidcArgs) ToGetSksClusterOidcPtrOutput() GetSksClusterOidcPtrOutput {
+	return i.ToGetSksClusterOidcPtrOutputWithContext(context.Background())
 }
 
-func (i GetSKSClusterOidcArgs) ToGetSKSClusterOidcPtrOutputWithContext(ctx context.Context) GetSKSClusterOidcPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSKSClusterOidcOutput).ToGetSKSClusterOidcPtrOutputWithContext(ctx)
+func (i GetSksClusterOidcArgs) ToGetSksClusterOidcPtrOutputWithContext(ctx context.Context) GetSksClusterOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSksClusterOidcOutput).ToGetSksClusterOidcPtrOutputWithContext(ctx)
 }
 
-// GetSKSClusterOidcPtrInput is an input type that accepts GetSKSClusterOidcArgs, GetSKSClusterOidcPtr and GetSKSClusterOidcPtrOutput values.
-// You can construct a concrete instance of `GetSKSClusterOidcPtrInput` via:
+// GetSksClusterOidcPtrInput is an input type that accepts GetSksClusterOidcArgs, GetSksClusterOidcPtr and GetSksClusterOidcPtrOutput values.
+// You can construct a concrete instance of `GetSksClusterOidcPtrInput` via:
 //
-//	        GetSKSClusterOidcArgs{...}
+//	        GetSksClusterOidcArgs{...}
 //
 //	or:
 //
 //	        nil
-type GetSKSClusterOidcPtrInput interface {
+type GetSksClusterOidcPtrInput interface {
 	pulumi.Input
 
-	ToGetSKSClusterOidcPtrOutput() GetSKSClusterOidcPtrOutput
-	ToGetSKSClusterOidcPtrOutputWithContext(context.Context) GetSKSClusterOidcPtrOutput
+	ToGetSksClusterOidcPtrOutput() GetSksClusterOidcPtrOutput
+	ToGetSksClusterOidcPtrOutputWithContext(context.Context) GetSksClusterOidcPtrOutput
 }
 
-type getSKSClusterOidcPtrType GetSKSClusterOidcArgs
+type getSksClusterOidcPtrType GetSksClusterOidcArgs
 
-func GetSKSClusterOidcPtr(v *GetSKSClusterOidcArgs) GetSKSClusterOidcPtrInput {
-	return (*getSKSClusterOidcPtrType)(v)
+func GetSksClusterOidcPtr(v *GetSksClusterOidcArgs) GetSksClusterOidcPtrInput {
+	return (*getSksClusterOidcPtrType)(v)
 }
 
-func (*getSKSClusterOidcPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetSKSClusterOidc)(nil)).Elem()
+func (*getSksClusterOidcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSksClusterOidc)(nil)).Elem()
 }
 
-func (i *getSKSClusterOidcPtrType) ToGetSKSClusterOidcPtrOutput() GetSKSClusterOidcPtrOutput {
-	return i.ToGetSKSClusterOidcPtrOutputWithContext(context.Background())
+func (i *getSksClusterOidcPtrType) ToGetSksClusterOidcPtrOutput() GetSksClusterOidcPtrOutput {
+	return i.ToGetSksClusterOidcPtrOutputWithContext(context.Background())
 }
 
-func (i *getSKSClusterOidcPtrType) ToGetSKSClusterOidcPtrOutputWithContext(ctx context.Context) GetSKSClusterOidcPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSKSClusterOidcPtrOutput)
+func (i *getSksClusterOidcPtrType) ToGetSksClusterOidcPtrOutputWithContext(ctx context.Context) GetSksClusterOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSksClusterOidcPtrOutput)
 }
 
-type GetSKSClusterOidcOutput struct{ *pulumi.OutputState }
+type GetSksClusterOidcOutput struct{ *pulumi.OutputState }
 
-func (GetSKSClusterOidcOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSKSClusterOidc)(nil)).Elem()
+func (GetSksClusterOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSksClusterOidc)(nil)).Elem()
 }
 
-func (o GetSKSClusterOidcOutput) ToGetSKSClusterOidcOutput() GetSKSClusterOidcOutput {
+func (o GetSksClusterOidcOutput) ToGetSksClusterOidcOutput() GetSksClusterOidcOutput {
 	return o
 }
 
-func (o GetSKSClusterOidcOutput) ToGetSKSClusterOidcOutputWithContext(ctx context.Context) GetSKSClusterOidcOutput {
+func (o GetSksClusterOidcOutput) ToGetSksClusterOidcOutputWithContext(ctx context.Context) GetSksClusterOidcOutput {
 	return o
 }
 
-func (o GetSKSClusterOidcOutput) ToGetSKSClusterOidcPtrOutput() GetSKSClusterOidcPtrOutput {
-	return o.ToGetSKSClusterOidcPtrOutputWithContext(context.Background())
+func (o GetSksClusterOidcOutput) ToGetSksClusterOidcPtrOutput() GetSksClusterOidcPtrOutput {
+	return o.ToGetSksClusterOidcPtrOutputWithContext(context.Background())
 }
 
-func (o GetSKSClusterOidcOutput) ToGetSKSClusterOidcPtrOutputWithContext(ctx context.Context) GetSKSClusterOidcPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSKSClusterOidc) *GetSKSClusterOidc {
+func (o GetSksClusterOidcOutput) ToGetSksClusterOidcPtrOutputWithContext(ctx context.Context) GetSksClusterOidcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSksClusterOidc) *GetSksClusterOidc {
 		return &v
-	}).(GetSKSClusterOidcPtrOutput)
+	}).(GetSksClusterOidcPtrOutput)
 }
 
 // The OpenID client ID.
-func (o GetSKSClusterOidcOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSClusterOidc) string { return v.ClientId }).(pulumi.StringOutput)
+func (o GetSksClusterOidcOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSksClusterOidc) string { return v.ClientId }).(pulumi.StringOutput)
 }
 
 // An OpenID JWT claim to use as the user's group.
-func (o GetSKSClusterOidcOutput) GroupsClaim() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterOidc) *string { return v.GroupsClaim }).(pulumi.StringPtrOutput)
+func (o GetSksClusterOidcOutput) GroupsClaim() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksClusterOidc) *string { return v.GroupsClaim }).(pulumi.StringPtrOutput)
 }
 
 // An OpenID prefix prepended to group claims.
-func (o GetSKSClusterOidcOutput) GroupsPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterOidc) *string { return v.GroupsPrefix }).(pulumi.StringPtrOutput)
+func (o GetSksClusterOidcOutput) GroupsPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksClusterOidc) *string { return v.GroupsPrefix }).(pulumi.StringPtrOutput)
 }
 
 // The OpenID provider URL.
-func (o GetSKSClusterOidcOutput) IssuerUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSClusterOidc) string { return v.IssuerUrl }).(pulumi.StringOutput)
+func (o GetSksClusterOidcOutput) IssuerUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSksClusterOidc) string { return v.IssuerUrl }).(pulumi.StringOutput)
 }
 
 // A map of key/value pairs that describes a required claim in the OpenID Token.
-func (o GetSKSClusterOidcOutput) RequiredClaim() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetSKSClusterOidc) map[string]string { return v.RequiredClaim }).(pulumi.StringMapOutput)
+func (o GetSksClusterOidcOutput) RequiredClaim() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSksClusterOidc) map[string]string { return v.RequiredClaim }).(pulumi.StringMapOutput)
 }
 
 // An OpenID JWT claim to use as the user name.
-func (o GetSKSClusterOidcOutput) UsernameClaim() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterOidc) *string { return v.UsernameClaim }).(pulumi.StringPtrOutput)
+func (o GetSksClusterOidcOutput) UsernameClaim() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksClusterOidc) *string { return v.UsernameClaim }).(pulumi.StringPtrOutput)
 }
 
 // An OpenID prefix prepended to username claims.
-func (o GetSKSClusterOidcOutput) UsernamePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSClusterOidc) *string { return v.UsernamePrefix }).(pulumi.StringPtrOutput)
+func (o GetSksClusterOidcOutput) UsernamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksClusterOidc) *string { return v.UsernamePrefix }).(pulumi.StringPtrOutput)
 }
 
-type GetSKSClusterOidcPtrOutput struct{ *pulumi.OutputState }
+type GetSksClusterOidcPtrOutput struct{ *pulumi.OutputState }
 
-func (GetSKSClusterOidcPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetSKSClusterOidc)(nil)).Elem()
+func (GetSksClusterOidcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSksClusterOidc)(nil)).Elem()
 }
 
-func (o GetSKSClusterOidcPtrOutput) ToGetSKSClusterOidcPtrOutput() GetSKSClusterOidcPtrOutput {
+func (o GetSksClusterOidcPtrOutput) ToGetSksClusterOidcPtrOutput() GetSksClusterOidcPtrOutput {
 	return o
 }
 
-func (o GetSKSClusterOidcPtrOutput) ToGetSKSClusterOidcPtrOutputWithContext(ctx context.Context) GetSKSClusterOidcPtrOutput {
+func (o GetSksClusterOidcPtrOutput) ToGetSksClusterOidcPtrOutputWithContext(ctx context.Context) GetSksClusterOidcPtrOutput {
 	return o
 }
 
-func (o GetSKSClusterOidcPtrOutput) Elem() GetSKSClusterOidcOutput {
-	return o.ApplyT(func(v *GetSKSClusterOidc) GetSKSClusterOidc {
+func (o GetSksClusterOidcPtrOutput) Elem() GetSksClusterOidcOutput {
+	return o.ApplyT(func(v *GetSksClusterOidc) GetSksClusterOidc {
 		if v != nil {
 			return *v
 		}
-		var ret GetSKSClusterOidc
+		var ret GetSksClusterOidc
 		return ret
-	}).(GetSKSClusterOidcOutput)
+	}).(GetSksClusterOidcOutput)
 }
 
 // The OpenID client ID.
-func (o GetSKSClusterOidcPtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetSKSClusterOidc) *string {
+func (o GetSksClusterOidcPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSksClusterOidc) *string {
 		if v == nil {
 			return nil
 		}
@@ -6990,8 +6990,8 @@ func (o GetSKSClusterOidcPtrOutput) ClientId() pulumi.StringPtrOutput {
 }
 
 // An OpenID JWT claim to use as the user's group.
-func (o GetSKSClusterOidcPtrOutput) GroupsClaim() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetSKSClusterOidc) *string {
+func (o GetSksClusterOidcPtrOutput) GroupsClaim() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSksClusterOidc) *string {
 		if v == nil {
 			return nil
 		}
@@ -7000,8 +7000,8 @@ func (o GetSKSClusterOidcPtrOutput) GroupsClaim() pulumi.StringPtrOutput {
 }
 
 // An OpenID prefix prepended to group claims.
-func (o GetSKSClusterOidcPtrOutput) GroupsPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetSKSClusterOidc) *string {
+func (o GetSksClusterOidcPtrOutput) GroupsPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSksClusterOidc) *string {
 		if v == nil {
 			return nil
 		}
@@ -7010,8 +7010,8 @@ func (o GetSKSClusterOidcPtrOutput) GroupsPrefix() pulumi.StringPtrOutput {
 }
 
 // The OpenID provider URL.
-func (o GetSKSClusterOidcPtrOutput) IssuerUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetSKSClusterOidc) *string {
+func (o GetSksClusterOidcPtrOutput) IssuerUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSksClusterOidc) *string {
 		if v == nil {
 			return nil
 		}
@@ -7020,8 +7020,8 @@ func (o GetSKSClusterOidcPtrOutput) IssuerUrl() pulumi.StringPtrOutput {
 }
 
 // A map of key/value pairs that describes a required claim in the OpenID Token.
-func (o GetSKSClusterOidcPtrOutput) RequiredClaim() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GetSKSClusterOidc) map[string]string {
+func (o GetSksClusterOidcPtrOutput) RequiredClaim() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetSksClusterOidc) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -7030,8 +7030,8 @@ func (o GetSKSClusterOidcPtrOutput) RequiredClaim() pulumi.StringMapOutput {
 }
 
 // An OpenID JWT claim to use as the user name.
-func (o GetSKSClusterOidcPtrOutput) UsernameClaim() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetSKSClusterOidc) *string {
+func (o GetSksClusterOidcPtrOutput) UsernameClaim() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSksClusterOidc) *string {
 		if v == nil {
 			return nil
 		}
@@ -7040,8 +7040,8 @@ func (o GetSKSClusterOidcPtrOutput) UsernameClaim() pulumi.StringPtrOutput {
 }
 
 // An OpenID prefix prepended to username claims.
-func (o GetSKSClusterOidcPtrOutput) UsernamePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetSKSClusterOidc) *string {
+func (o GetSksClusterOidcPtrOutput) UsernamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSksClusterOidc) *string {
 		if v == nil {
 			return nil
 		}
@@ -7049,7 +7049,7 @@ func (o GetSKSClusterOidcPtrOutput) UsernamePrefix() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type GetSKSNodepoolListNodepool struct {
+type GetSksNodepoolListNodepool struct {
 	AntiAffinityGroupIds []string          `pulumi:"antiAffinityGroupIds"`
 	ClusterId            string            `pulumi:"clusterId"`
 	CreatedAt            string            `pulumi:"createdAt"`
@@ -7073,18 +7073,18 @@ type GetSKSNodepoolListNodepool struct {
 	Zone                 string            `pulumi:"zone"`
 }
 
-// GetSKSNodepoolListNodepoolInput is an input type that accepts GetSKSNodepoolListNodepoolArgs and GetSKSNodepoolListNodepoolOutput values.
-// You can construct a concrete instance of `GetSKSNodepoolListNodepoolInput` via:
+// GetSksNodepoolListNodepoolInput is an input type that accepts GetSksNodepoolListNodepoolArgs and GetSksNodepoolListNodepoolOutput values.
+// You can construct a concrete instance of `GetSksNodepoolListNodepoolInput` via:
 //
-//	GetSKSNodepoolListNodepoolArgs{...}
-type GetSKSNodepoolListNodepoolInput interface {
+//	GetSksNodepoolListNodepoolArgs{...}
+type GetSksNodepoolListNodepoolInput interface {
 	pulumi.Input
 
-	ToGetSKSNodepoolListNodepoolOutput() GetSKSNodepoolListNodepoolOutput
-	ToGetSKSNodepoolListNodepoolOutputWithContext(context.Context) GetSKSNodepoolListNodepoolOutput
+	ToGetSksNodepoolListNodepoolOutput() GetSksNodepoolListNodepoolOutput
+	ToGetSksNodepoolListNodepoolOutputWithContext(context.Context) GetSksNodepoolListNodepoolOutput
 }
 
-type GetSKSNodepoolListNodepoolArgs struct {
+type GetSksNodepoolListNodepoolArgs struct {
 	AntiAffinityGroupIds pulumi.StringArrayInput `pulumi:"antiAffinityGroupIds"`
 	ClusterId            pulumi.StringInput      `pulumi:"clusterId"`
 	CreatedAt            pulumi.StringInput      `pulumi:"createdAt"`
@@ -7108,159 +7108,159 @@ type GetSKSNodepoolListNodepoolArgs struct {
 	Zone                 pulumi.StringInput      `pulumi:"zone"`
 }
 
-func (GetSKSNodepoolListNodepoolArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSKSNodepoolListNodepool)(nil)).Elem()
+func (GetSksNodepoolListNodepoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSksNodepoolListNodepool)(nil)).Elem()
 }
 
-func (i GetSKSNodepoolListNodepoolArgs) ToGetSKSNodepoolListNodepoolOutput() GetSKSNodepoolListNodepoolOutput {
-	return i.ToGetSKSNodepoolListNodepoolOutputWithContext(context.Background())
+func (i GetSksNodepoolListNodepoolArgs) ToGetSksNodepoolListNodepoolOutput() GetSksNodepoolListNodepoolOutput {
+	return i.ToGetSksNodepoolListNodepoolOutputWithContext(context.Background())
 }
 
-func (i GetSKSNodepoolListNodepoolArgs) ToGetSKSNodepoolListNodepoolOutputWithContext(ctx context.Context) GetSKSNodepoolListNodepoolOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSKSNodepoolListNodepoolOutput)
+func (i GetSksNodepoolListNodepoolArgs) ToGetSksNodepoolListNodepoolOutputWithContext(ctx context.Context) GetSksNodepoolListNodepoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSksNodepoolListNodepoolOutput)
 }
 
-// GetSKSNodepoolListNodepoolArrayInput is an input type that accepts GetSKSNodepoolListNodepoolArray and GetSKSNodepoolListNodepoolArrayOutput values.
-// You can construct a concrete instance of `GetSKSNodepoolListNodepoolArrayInput` via:
+// GetSksNodepoolListNodepoolArrayInput is an input type that accepts GetSksNodepoolListNodepoolArray and GetSksNodepoolListNodepoolArrayOutput values.
+// You can construct a concrete instance of `GetSksNodepoolListNodepoolArrayInput` via:
 //
-//	GetSKSNodepoolListNodepoolArray{ GetSKSNodepoolListNodepoolArgs{...} }
-type GetSKSNodepoolListNodepoolArrayInput interface {
+//	GetSksNodepoolListNodepoolArray{ GetSksNodepoolListNodepoolArgs{...} }
+type GetSksNodepoolListNodepoolArrayInput interface {
 	pulumi.Input
 
-	ToGetSKSNodepoolListNodepoolArrayOutput() GetSKSNodepoolListNodepoolArrayOutput
-	ToGetSKSNodepoolListNodepoolArrayOutputWithContext(context.Context) GetSKSNodepoolListNodepoolArrayOutput
+	ToGetSksNodepoolListNodepoolArrayOutput() GetSksNodepoolListNodepoolArrayOutput
+	ToGetSksNodepoolListNodepoolArrayOutputWithContext(context.Context) GetSksNodepoolListNodepoolArrayOutput
 }
 
-type GetSKSNodepoolListNodepoolArray []GetSKSNodepoolListNodepoolInput
+type GetSksNodepoolListNodepoolArray []GetSksNodepoolListNodepoolInput
 
-func (GetSKSNodepoolListNodepoolArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSKSNodepoolListNodepool)(nil)).Elem()
+func (GetSksNodepoolListNodepoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSksNodepoolListNodepool)(nil)).Elem()
 }
 
-func (i GetSKSNodepoolListNodepoolArray) ToGetSKSNodepoolListNodepoolArrayOutput() GetSKSNodepoolListNodepoolArrayOutput {
-	return i.ToGetSKSNodepoolListNodepoolArrayOutputWithContext(context.Background())
+func (i GetSksNodepoolListNodepoolArray) ToGetSksNodepoolListNodepoolArrayOutput() GetSksNodepoolListNodepoolArrayOutput {
+	return i.ToGetSksNodepoolListNodepoolArrayOutputWithContext(context.Background())
 }
 
-func (i GetSKSNodepoolListNodepoolArray) ToGetSKSNodepoolListNodepoolArrayOutputWithContext(ctx context.Context) GetSKSNodepoolListNodepoolArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSKSNodepoolListNodepoolArrayOutput)
+func (i GetSksNodepoolListNodepoolArray) ToGetSksNodepoolListNodepoolArrayOutputWithContext(ctx context.Context) GetSksNodepoolListNodepoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSksNodepoolListNodepoolArrayOutput)
 }
 
-type GetSKSNodepoolListNodepoolOutput struct{ *pulumi.OutputState }
+type GetSksNodepoolListNodepoolOutput struct{ *pulumi.OutputState }
 
-func (GetSKSNodepoolListNodepoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSKSNodepoolListNodepool)(nil)).Elem()
+func (GetSksNodepoolListNodepoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSksNodepoolListNodepool)(nil)).Elem()
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) ToGetSKSNodepoolListNodepoolOutput() GetSKSNodepoolListNodepoolOutput {
+func (o GetSksNodepoolListNodepoolOutput) ToGetSksNodepoolListNodepoolOutput() GetSksNodepoolListNodepoolOutput {
 	return o
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) ToGetSKSNodepoolListNodepoolOutputWithContext(ctx context.Context) GetSKSNodepoolListNodepoolOutput {
+func (o GetSksNodepoolListNodepoolOutput) ToGetSksNodepoolListNodepoolOutputWithContext(ctx context.Context) GetSksNodepoolListNodepoolOutput {
 	return o
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) AntiAffinityGroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) []string { return v.AntiAffinityGroupIds }).(pulumi.StringArrayOutput)
+func (o GetSksNodepoolListNodepoolOutput) AntiAffinityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepool) []string { return v.AntiAffinityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) ClusterId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) string { return v.ClusterId }).(pulumi.StringOutput)
+func (o GetSksNodepoolListNodepoolOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepool) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) string { return v.CreatedAt }).(pulumi.StringOutput)
+func (o GetSksNodepoolListNodepoolOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepool) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) DeployTargetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *string { return v.DeployTargetId }).(pulumi.StringPtrOutput)
+func (o GetSksNodepoolListNodepoolOutput) DeployTargetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepool) *string { return v.DeployTargetId }).(pulumi.StringPtrOutput)
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o GetSksNodepoolListNodepoolOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepool) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) DiskSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
+func (o GetSksNodepoolListNodepoolOutput) DiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepool) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o GetSksNodepoolListNodepoolOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepool) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) InstancePoolId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) string { return v.InstancePoolId }).(pulumi.StringOutput)
+func (o GetSksNodepoolListNodepoolOutput) InstancePoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepool) string { return v.InstancePoolId }).(pulumi.StringOutput)
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) InstancePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *string { return v.InstancePrefix }).(pulumi.StringPtrOutput)
+func (o GetSksNodepoolListNodepoolOutput) InstancePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepool) *string { return v.InstancePrefix }).(pulumi.StringPtrOutput)
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) InstanceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+func (o GetSksNodepoolListNodepoolOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepool) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+func (o GetSksNodepoolListNodepoolOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o GetSksNodepoolListNodepoolOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepool) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) PrivateNetworkIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) []string { return v.PrivateNetworkIds }).(pulumi.StringArrayOutput)
+func (o GetSksNodepoolListNodepoolOutput) PrivateNetworkIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepool) []string { return v.PrivateNetworkIds }).(pulumi.StringArrayOutput)
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) SecurityGroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+func (o GetSksNodepoolListNodepoolOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepool) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) Size() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *int { return v.Size }).(pulumi.IntPtrOutput)
+func (o GetSksNodepoolListNodepoolOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepool) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) string { return v.State }).(pulumi.StringOutput)
+func (o GetSksNodepoolListNodepoolOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepool) string { return v.State }).(pulumi.StringOutput)
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) StorageLvm() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) *bool { return v.StorageLvm }).(pulumi.BoolPtrOutput)
+func (o GetSksNodepoolListNodepoolOutput) StorageLvm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepool) *bool { return v.StorageLvm }).(pulumi.BoolPtrOutput)
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) Taints() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) map[string]string { return v.Taints }).(pulumi.StringMapOutput)
+func (o GetSksNodepoolListNodepoolOutput) Taints() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepool) map[string]string { return v.Taints }).(pulumi.StringMapOutput)
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) TemplateId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) string { return v.TemplateId }).(pulumi.StringOutput)
+func (o GetSksNodepoolListNodepoolOutput) TemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepool) string { return v.TemplateId }).(pulumi.StringOutput)
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) string { return v.Version }).(pulumi.StringOutput)
+func (o GetSksNodepoolListNodepoolOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepool) string { return v.Version }).(pulumi.StringOutput)
 }
 
-func (o GetSKSNodepoolListNodepoolOutput) Zone() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSKSNodepoolListNodepool) string { return v.Zone }).(pulumi.StringOutput)
+func (o GetSksNodepoolListNodepoolOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepool) string { return v.Zone }).(pulumi.StringOutput)
 }
 
-type GetSKSNodepoolListNodepoolArrayOutput struct{ *pulumi.OutputState }
+type GetSksNodepoolListNodepoolArrayOutput struct{ *pulumi.OutputState }
 
-func (GetSKSNodepoolListNodepoolArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSKSNodepoolListNodepool)(nil)).Elem()
+func (GetSksNodepoolListNodepoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSksNodepoolListNodepool)(nil)).Elem()
 }
 
-func (o GetSKSNodepoolListNodepoolArrayOutput) ToGetSKSNodepoolListNodepoolArrayOutput() GetSKSNodepoolListNodepoolArrayOutput {
+func (o GetSksNodepoolListNodepoolArrayOutput) ToGetSksNodepoolListNodepoolArrayOutput() GetSksNodepoolListNodepoolArrayOutput {
 	return o
 }
 
-func (o GetSKSNodepoolListNodepoolArrayOutput) ToGetSKSNodepoolListNodepoolArrayOutputWithContext(ctx context.Context) GetSKSNodepoolListNodepoolArrayOutput {
+func (o GetSksNodepoolListNodepoolArrayOutput) ToGetSksNodepoolListNodepoolArrayOutputWithContext(ctx context.Context) GetSksNodepoolListNodepoolArrayOutput {
 	return o
 }
 
-func (o GetSKSNodepoolListNodepoolArrayOutput) Index(i pulumi.IntInput) GetSKSNodepoolListNodepoolOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSKSNodepoolListNodepool {
-		return vs[0].([]GetSKSNodepoolListNodepool)[vs[1].(int)]
-	}).(GetSKSNodepoolListNodepoolOutput)
+func (o GetSksNodepoolListNodepoolArrayOutput) Index(i pulumi.IntInput) GetSksNodepoolListNodepoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSksNodepoolListNodepool {
+		return vs[0].([]GetSksNodepoolListNodepool)[vs[1].(int)]
+	}).(GetSksNodepoolListNodepoolOutput)
 }
 
 func init() {
@@ -7286,72 +7286,72 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseRedisPtrInput)(nil)).Elem(), DatabaseRedisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTimeoutsInput)(nil)).Elem(), DatabaseTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTimeoutsPtrInput)(nil)).Elem(), DatabaseTimeoutsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElasticIPHealthcheckInput)(nil)).Elem(), ElasticIPHealthcheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElasticIPHealthcheckPtrInput)(nil)).Elem(), ElasticIPHealthcheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMAPIKeyTimeoutsInput)(nil)).Elem(), IAMAPIKeyTimeoutsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMAPIKeyTimeoutsPtrInput)(nil)).Elem(), IAMAPIKeyTimeoutsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMOrgPolicyServicesInput)(nil)).Elem(), IAMOrgPolicyServicesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMOrgPolicyServicesMapInput)(nil)).Elem(), IAMOrgPolicyServicesMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMOrgPolicyServicesRuleInput)(nil)).Elem(), IAMOrgPolicyServicesRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMOrgPolicyServicesRuleArrayInput)(nil)).Elem(), IAMOrgPolicyServicesRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMOrgPolicyTimeoutsInput)(nil)).Elem(), IAMOrgPolicyTimeoutsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMOrgPolicyTimeoutsPtrInput)(nil)).Elem(), IAMOrgPolicyTimeoutsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMRolePolicyInput)(nil)).Elem(), IAMRolePolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMRolePolicyPtrInput)(nil)).Elem(), IAMRolePolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMRolePolicyServicesInput)(nil)).Elem(), IAMRolePolicyServicesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMRolePolicyServicesMapInput)(nil)).Elem(), IAMRolePolicyServicesMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMRolePolicyServicesRuleInput)(nil)).Elem(), IAMRolePolicyServicesRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMRolePolicyServicesRuleArrayInput)(nil)).Elem(), IAMRolePolicyServicesRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMRoleTimeoutsInput)(nil)).Elem(), IAMRoleTimeoutsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMRoleTimeoutsPtrInput)(nil)).Elem(), IAMRoleTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElasticIpHealthcheckInput)(nil)).Elem(), ElasticIpHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElasticIpHealthcheckPtrInput)(nil)).Elem(), ElasticIpHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamApiKeyTimeoutsInput)(nil)).Elem(), IamApiKeyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamApiKeyTimeoutsPtrInput)(nil)).Elem(), IamApiKeyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamOrgPolicyServicesInput)(nil)).Elem(), IamOrgPolicyServicesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamOrgPolicyServicesMapInput)(nil)).Elem(), IamOrgPolicyServicesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamOrgPolicyServicesRuleInput)(nil)).Elem(), IamOrgPolicyServicesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamOrgPolicyServicesRuleArrayInput)(nil)).Elem(), IamOrgPolicyServicesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamOrgPolicyTimeoutsInput)(nil)).Elem(), IamOrgPolicyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamOrgPolicyTimeoutsPtrInput)(nil)).Elem(), IamOrgPolicyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamRolePolicyInput)(nil)).Elem(), IamRolePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamRolePolicyPtrInput)(nil)).Elem(), IamRolePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamRolePolicyServicesInput)(nil)).Elem(), IamRolePolicyServicesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamRolePolicyServicesMapInput)(nil)).Elem(), IamRolePolicyServicesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamRolePolicyServicesRuleInput)(nil)).Elem(), IamRolePolicyServicesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamRolePolicyServicesRuleArrayInput)(nil)).Elem(), IamRolePolicyServicesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamRoleTimeoutsInput)(nil)).Elem(), IamRoleTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamRoleTimeoutsPtrInput)(nil)).Elem(), IamRoleTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePoolInstanceInput)(nil)).Elem(), InstancePoolInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePoolInstanceArrayInput)(nil)).Elem(), InstancePoolInstanceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NLBServiceHealthcheckInput)(nil)).Elem(), NLBServiceHealthcheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NLBServiceHealthcheckArrayInput)(nil)).Elem(), NLBServiceHealthcheckArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SKSClusterOidcInput)(nil)).Elem(), SKSClusterOidcArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SKSClusterOidcPtrInput)(nil)).Elem(), SKSClusterOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NlbServiceHealthcheckInput)(nil)).Elem(), NlbServiceHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NlbServiceHealthcheckArrayInput)(nil)).Elem(), NlbServiceHealthcheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SksClusterOidcInput)(nil)).Elem(), SksClusterOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SksClusterOidcPtrInput)(nil)).Elem(), SksClusterOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceListInstanceInput)(nil)).Elem(), GetComputeInstanceListInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceListInstanceArrayInput)(nil)).Elem(), GetComputeInstanceListInstanceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseURITimeoutsInput)(nil)).Elem(), GetDatabaseURITimeoutsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseURITimeoutsPtrInput)(nil)).Elem(), GetDatabaseURITimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseUriTimeoutsInput)(nil)).Elem(), GetDatabaseUriTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseUriTimeoutsPtrInput)(nil)).Elem(), GetDatabaseUriTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainRecordFilterInput)(nil)).Elem(), GetDomainRecordFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainRecordRecordInput)(nil)).Elem(), GetDomainRecordRecordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainRecordRecordArrayInput)(nil)).Elem(), GetDomainRecordRecordArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetElasticIPHealthcheckInput)(nil)).Elem(), GetElasticIPHealthcheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetElasticIPHealthcheckArrayInput)(nil)).Elem(), GetElasticIPHealthcheckArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMAPIKeyTimeoutsInput)(nil)).Elem(), GetIAMAPIKeyTimeoutsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMAPIKeyTimeoutsPtrInput)(nil)).Elem(), GetIAMAPIKeyTimeoutsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMOrgPolicyServicesInput)(nil)).Elem(), GetIAMOrgPolicyServicesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMOrgPolicyServicesMapInput)(nil)).Elem(), GetIAMOrgPolicyServicesMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMOrgPolicyServicesRuleInput)(nil)).Elem(), GetIAMOrgPolicyServicesRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMOrgPolicyServicesRuleArrayInput)(nil)).Elem(), GetIAMOrgPolicyServicesRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMOrgPolicyTimeoutsInput)(nil)).Elem(), GetIAMOrgPolicyTimeoutsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMOrgPolicyTimeoutsPtrInput)(nil)).Elem(), GetIAMOrgPolicyTimeoutsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMRolePolicyInput)(nil)).Elem(), GetIAMRolePolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMRolePolicyServicesInput)(nil)).Elem(), GetIAMRolePolicyServicesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMRolePolicyServicesMapInput)(nil)).Elem(), GetIAMRolePolicyServicesMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMRolePolicyServicesRuleInput)(nil)).Elem(), GetIAMRolePolicyServicesRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMRolePolicyServicesRuleArrayInput)(nil)).Elem(), GetIAMRolePolicyServicesRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMRoleTimeoutsInput)(nil)).Elem(), GetIAMRoleTimeoutsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMRoleTimeoutsPtrInput)(nil)).Elem(), GetIAMRoleTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetElasticIpHealthcheckInput)(nil)).Elem(), GetElasticIpHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetElasticIpHealthcheckArrayInput)(nil)).Elem(), GetElasticIpHealthcheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamApiKeyTimeoutsInput)(nil)).Elem(), GetIamApiKeyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamApiKeyTimeoutsPtrInput)(nil)).Elem(), GetIamApiKeyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamOrgPolicyServicesInput)(nil)).Elem(), GetIamOrgPolicyServicesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamOrgPolicyServicesMapInput)(nil)).Elem(), GetIamOrgPolicyServicesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamOrgPolicyServicesRuleInput)(nil)).Elem(), GetIamOrgPolicyServicesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamOrgPolicyServicesRuleArrayInput)(nil)).Elem(), GetIamOrgPolicyServicesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamOrgPolicyTimeoutsInput)(nil)).Elem(), GetIamOrgPolicyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamOrgPolicyTimeoutsPtrInput)(nil)).Elem(), GetIamOrgPolicyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamRolePolicyInput)(nil)).Elem(), GetIamRolePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamRolePolicyServicesInput)(nil)).Elem(), GetIamRolePolicyServicesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamRolePolicyServicesMapInput)(nil)).Elem(), GetIamRolePolicyServicesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamRolePolicyServicesRuleInput)(nil)).Elem(), GetIamRolePolicyServicesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamRolePolicyServicesRuleArrayInput)(nil)).Elem(), GetIamRolePolicyServicesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamRoleTimeoutsInput)(nil)).Elem(), GetIamRoleTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamRoleTimeoutsPtrInput)(nil)).Elem(), GetIamRoleTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolInstanceInput)(nil)).Elem(), GetInstancePoolInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolInstanceArrayInput)(nil)).Elem(), GetInstancePoolInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolListPoolInput)(nil)).Elem(), GetInstancePoolListPoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolListPoolArrayInput)(nil)).Elem(), GetInstancePoolListPoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolListPoolInstanceInput)(nil)).Elem(), GetInstancePoolListPoolInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolListPoolInstanceArrayInput)(nil)).Elem(), GetInstancePoolListPoolInstanceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNLBServiceListServiceInput)(nil)).Elem(), GetNLBServiceListServiceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNLBServiceListServiceArrayInput)(nil)).Elem(), GetNLBServiceListServiceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNLBServiceListServiceHealthcheckInput)(nil)).Elem(), GetNLBServiceListServiceHealthcheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNLBServiceListTimeoutsInput)(nil)).Elem(), GetNLBServiceListTimeoutsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNLBServiceListTimeoutsPtrInput)(nil)).Elem(), GetNLBServiceListTimeoutsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSKSClusterListClusterInput)(nil)).Elem(), GetSKSClusterListClusterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSKSClusterListClusterArrayInput)(nil)).Elem(), GetSKSClusterListClusterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSKSClusterListClusterOidcInput)(nil)).Elem(), GetSKSClusterListClusterOidcArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSKSClusterOidcInput)(nil)).Elem(), GetSKSClusterOidcArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSKSClusterOidcPtrInput)(nil)).Elem(), GetSKSClusterOidcArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSKSNodepoolListNodepoolInput)(nil)).Elem(), GetSKSNodepoolListNodepoolArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSKSNodepoolListNodepoolArrayInput)(nil)).Elem(), GetSKSNodepoolListNodepoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNlbServiceListServiceInput)(nil)).Elem(), GetNlbServiceListServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNlbServiceListServiceArrayInput)(nil)).Elem(), GetNlbServiceListServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNlbServiceListServiceHealthcheckInput)(nil)).Elem(), GetNlbServiceListServiceHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNlbServiceListTimeoutsInput)(nil)).Elem(), GetNlbServiceListTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNlbServiceListTimeoutsPtrInput)(nil)).Elem(), GetNlbServiceListTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSksClusterListClusterInput)(nil)).Elem(), GetSksClusterListClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSksClusterListClusterArrayInput)(nil)).Elem(), GetSksClusterListClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSksClusterListClusterOidcInput)(nil)).Elem(), GetSksClusterListClusterOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSksClusterOidcInput)(nil)).Elem(), GetSksClusterOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSksClusterOidcPtrInput)(nil)).Elem(), GetSksClusterOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSksNodepoolListNodepoolInput)(nil)).Elem(), GetSksNodepoolListNodepoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSksNodepoolListNodepoolArrayInput)(nil)).Elem(), GetSksNodepoolListNodepoolArray{})
 	pulumi.RegisterOutputType(ComputeInstanceNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseGrafanaOutput{})
@@ -7374,70 +7374,70 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseRedisPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseTimeoutsOutput{})
 	pulumi.RegisterOutputType(DatabaseTimeoutsPtrOutput{})
-	pulumi.RegisterOutputType(ElasticIPHealthcheckOutput{})
-	pulumi.RegisterOutputType(ElasticIPHealthcheckPtrOutput{})
-	pulumi.RegisterOutputType(IAMAPIKeyTimeoutsOutput{})
-	pulumi.RegisterOutputType(IAMAPIKeyTimeoutsPtrOutput{})
-	pulumi.RegisterOutputType(IAMOrgPolicyServicesOutput{})
-	pulumi.RegisterOutputType(IAMOrgPolicyServicesMapOutput{})
-	pulumi.RegisterOutputType(IAMOrgPolicyServicesRuleOutput{})
-	pulumi.RegisterOutputType(IAMOrgPolicyServicesRuleArrayOutput{})
-	pulumi.RegisterOutputType(IAMOrgPolicyTimeoutsOutput{})
-	pulumi.RegisterOutputType(IAMOrgPolicyTimeoutsPtrOutput{})
-	pulumi.RegisterOutputType(IAMRolePolicyOutput{})
-	pulumi.RegisterOutputType(IAMRolePolicyPtrOutput{})
-	pulumi.RegisterOutputType(IAMRolePolicyServicesOutput{})
-	pulumi.RegisterOutputType(IAMRolePolicyServicesMapOutput{})
-	pulumi.RegisterOutputType(IAMRolePolicyServicesRuleOutput{})
-	pulumi.RegisterOutputType(IAMRolePolicyServicesRuleArrayOutput{})
-	pulumi.RegisterOutputType(IAMRoleTimeoutsOutput{})
-	pulumi.RegisterOutputType(IAMRoleTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(ElasticIpHealthcheckOutput{})
+	pulumi.RegisterOutputType(ElasticIpHealthcheckPtrOutput{})
+	pulumi.RegisterOutputType(IamApiKeyTimeoutsOutput{})
+	pulumi.RegisterOutputType(IamApiKeyTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(IamOrgPolicyServicesOutput{})
+	pulumi.RegisterOutputType(IamOrgPolicyServicesMapOutput{})
+	pulumi.RegisterOutputType(IamOrgPolicyServicesRuleOutput{})
+	pulumi.RegisterOutputType(IamOrgPolicyServicesRuleArrayOutput{})
+	pulumi.RegisterOutputType(IamOrgPolicyTimeoutsOutput{})
+	pulumi.RegisterOutputType(IamOrgPolicyTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(IamRolePolicyOutput{})
+	pulumi.RegisterOutputType(IamRolePolicyPtrOutput{})
+	pulumi.RegisterOutputType(IamRolePolicyServicesOutput{})
+	pulumi.RegisterOutputType(IamRolePolicyServicesMapOutput{})
+	pulumi.RegisterOutputType(IamRolePolicyServicesRuleOutput{})
+	pulumi.RegisterOutputType(IamRolePolicyServicesRuleArrayOutput{})
+	pulumi.RegisterOutputType(IamRoleTimeoutsOutput{})
+	pulumi.RegisterOutputType(IamRoleTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(InstancePoolInstanceOutput{})
 	pulumi.RegisterOutputType(InstancePoolInstanceArrayOutput{})
-	pulumi.RegisterOutputType(NLBServiceHealthcheckOutput{})
-	pulumi.RegisterOutputType(NLBServiceHealthcheckArrayOutput{})
-	pulumi.RegisterOutputType(SKSClusterOidcOutput{})
-	pulumi.RegisterOutputType(SKSClusterOidcPtrOutput{})
+	pulumi.RegisterOutputType(NlbServiceHealthcheckOutput{})
+	pulumi.RegisterOutputType(NlbServiceHealthcheckArrayOutput{})
+	pulumi.RegisterOutputType(SksClusterOidcOutput{})
+	pulumi.RegisterOutputType(SksClusterOidcPtrOutput{})
 	pulumi.RegisterOutputType(GetComputeInstanceListInstanceOutput{})
 	pulumi.RegisterOutputType(GetComputeInstanceListInstanceArrayOutput{})
-	pulumi.RegisterOutputType(GetDatabaseURITimeoutsOutput{})
-	pulumi.RegisterOutputType(GetDatabaseURITimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetDatabaseUriTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetDatabaseUriTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetDomainRecordFilterOutput{})
 	pulumi.RegisterOutputType(GetDomainRecordRecordOutput{})
 	pulumi.RegisterOutputType(GetDomainRecordRecordArrayOutput{})
-	pulumi.RegisterOutputType(GetElasticIPHealthcheckOutput{})
-	pulumi.RegisterOutputType(GetElasticIPHealthcheckArrayOutput{})
-	pulumi.RegisterOutputType(GetIAMAPIKeyTimeoutsOutput{})
-	pulumi.RegisterOutputType(GetIAMAPIKeyTimeoutsPtrOutput{})
-	pulumi.RegisterOutputType(GetIAMOrgPolicyServicesOutput{})
-	pulumi.RegisterOutputType(GetIAMOrgPolicyServicesMapOutput{})
-	pulumi.RegisterOutputType(GetIAMOrgPolicyServicesRuleOutput{})
-	pulumi.RegisterOutputType(GetIAMOrgPolicyServicesRuleArrayOutput{})
-	pulumi.RegisterOutputType(GetIAMOrgPolicyTimeoutsOutput{})
-	pulumi.RegisterOutputType(GetIAMOrgPolicyTimeoutsPtrOutput{})
-	pulumi.RegisterOutputType(GetIAMRolePolicyOutput{})
-	pulumi.RegisterOutputType(GetIAMRolePolicyServicesOutput{})
-	pulumi.RegisterOutputType(GetIAMRolePolicyServicesMapOutput{})
-	pulumi.RegisterOutputType(GetIAMRolePolicyServicesRuleOutput{})
-	pulumi.RegisterOutputType(GetIAMRolePolicyServicesRuleArrayOutput{})
-	pulumi.RegisterOutputType(GetIAMRoleTimeoutsOutput{})
-	pulumi.RegisterOutputType(GetIAMRoleTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetElasticIpHealthcheckOutput{})
+	pulumi.RegisterOutputType(GetElasticIpHealthcheckArrayOutput{})
+	pulumi.RegisterOutputType(GetIamApiKeyTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetIamApiKeyTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetIamOrgPolicyServicesOutput{})
+	pulumi.RegisterOutputType(GetIamOrgPolicyServicesMapOutput{})
+	pulumi.RegisterOutputType(GetIamOrgPolicyServicesRuleOutput{})
+	pulumi.RegisterOutputType(GetIamOrgPolicyServicesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetIamOrgPolicyTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetIamOrgPolicyTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetIamRolePolicyOutput{})
+	pulumi.RegisterOutputType(GetIamRolePolicyServicesOutput{})
+	pulumi.RegisterOutputType(GetIamRolePolicyServicesMapOutput{})
+	pulumi.RegisterOutputType(GetIamRolePolicyServicesRuleOutput{})
+	pulumi.RegisterOutputType(GetIamRolePolicyServicesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetIamRoleTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetIamRoleTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetInstancePoolInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancePoolInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancePoolListPoolOutput{})
 	pulumi.RegisterOutputType(GetInstancePoolListPoolArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancePoolListPoolInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancePoolListPoolInstanceArrayOutput{})
-	pulumi.RegisterOutputType(GetNLBServiceListServiceOutput{})
-	pulumi.RegisterOutputType(GetNLBServiceListServiceArrayOutput{})
-	pulumi.RegisterOutputType(GetNLBServiceListServiceHealthcheckOutput{})
-	pulumi.RegisterOutputType(GetNLBServiceListTimeoutsOutput{})
-	pulumi.RegisterOutputType(GetNLBServiceListTimeoutsPtrOutput{})
-	pulumi.RegisterOutputType(GetSKSClusterListClusterOutput{})
-	pulumi.RegisterOutputType(GetSKSClusterListClusterArrayOutput{})
-	pulumi.RegisterOutputType(GetSKSClusterListClusterOidcOutput{})
-	pulumi.RegisterOutputType(GetSKSClusterOidcOutput{})
-	pulumi.RegisterOutputType(GetSKSClusterOidcPtrOutput{})
-	pulumi.RegisterOutputType(GetSKSNodepoolListNodepoolOutput{})
-	pulumi.RegisterOutputType(GetSKSNodepoolListNodepoolArrayOutput{})
+	pulumi.RegisterOutputType(GetNlbServiceListServiceOutput{})
+	pulumi.RegisterOutputType(GetNlbServiceListServiceArrayOutput{})
+	pulumi.RegisterOutputType(GetNlbServiceListServiceHealthcheckOutput{})
+	pulumi.RegisterOutputType(GetNlbServiceListTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetNlbServiceListTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetSksClusterListClusterOutput{})
+	pulumi.RegisterOutputType(GetSksClusterListClusterArrayOutput{})
+	pulumi.RegisterOutputType(GetSksClusterListClusterOidcOutput{})
+	pulumi.RegisterOutputType(GetSksClusterOidcOutput{})
+	pulumi.RegisterOutputType(GetSksClusterOidcPtrOutput{})
+	pulumi.RegisterOutputType(GetSksNodepoolListNodepoolOutput{})
+	pulumi.RegisterOutputType(GetSksNodepoolListNodepoolArrayOutput{})
 }

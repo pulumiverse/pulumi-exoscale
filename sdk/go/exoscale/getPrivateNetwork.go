@@ -11,6 +11,40 @@ import (
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
+// Fetch Exoscale [Private Networks](https://community.exoscale.com/documentation/compute/private-networks/) data.
+//
+// Corresponding resource: exoscale_private_network.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myPrivateNetwork, err := exoscale.LookupPrivateNetwork(ctx, &exoscale.LookupPrivateNetworkArgs{
+//				Zone: "ch-gva-2",
+//				Name: pulumi.StringRef("my-private-network"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("myPrivateNetworkId", myPrivateNetwork.Id)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Please refer to the examples
+// directory for complete configuration examples.
 func LookupPrivateNetwork(ctx *pulumi.Context, args *LookupPrivateNetworkArgs, opts ...pulumi.InvokeOption) (*LookupPrivateNetworkResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateNetworkResult

@@ -11,6 +11,9 @@ import (
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
+// Fetch Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domain Records data.
+//
+// Corresponding resource: exoscale_domain_record.
 func LookupDomainRecord(ctx *pulumi.Context, args *LookupDomainRecordArgs, opts ...pulumi.InvokeOption) (*LookupDomainRecordResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDomainRecordResult

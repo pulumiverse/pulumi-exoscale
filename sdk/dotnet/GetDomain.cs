@@ -12,9 +12,77 @@ namespace Pulumiverse.Exoscale
 {
     public static class GetDomain
     {
+        /// <summary>
+        /// Fetch Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domains data.
+        /// 
+        /// Corresponding resource: exoscale_domain.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Exoscale = Pulumi.Exoscale;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myDomain = Exoscale.GetDomain.Invoke(new()
+        ///     {
+        ///         Name = "my.domain",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myDomainId"] = myDomain.Apply(getDomainResult =&gt; getDomainResult.Id),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Please refer to the examples
+        /// directory for complete configuration examples.
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetDomainResult> InvokeAsync(GetDomainArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("exoscale:index/getDomain:getDomain", args ?? new GetDomainArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Fetch Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domains data.
+        /// 
+        /// Corresponding resource: exoscale_domain.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Exoscale = Pulumi.Exoscale;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myDomain = Exoscale.GetDomain.Invoke(new()
+        ///     {
+        ///         Name = "my.domain",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myDomainId"] = myDomain.Apply(getDomainResult =&gt; getDomainResult.Id),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Please refer to the examples
+        /// directory for complete configuration examples.
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetDomainResult> Invoke(GetDomainInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainResult>("exoscale:index/getDomain:getDomain", args ?? new GetDomainInvokeArgs(), options.WithDefaults());
     }

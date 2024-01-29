@@ -4,6 +4,22 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Lists all zones.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumi/exoscale";
+ *
+ * const exampleZones = exoscale.getZones({});
+ * export const zonesOutput = exampleZones.then(exampleZones => exampleZones.zones);
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ */
 export function getZones(opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -24,6 +40,22 @@ export interface GetZonesResult {
      */
     readonly zones: string[];
 }
+/**
+ * Lists all zones.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumi/exoscale";
+ *
+ * const exampleZones = exoscale.getZones({});
+ * export const zonesOutput = exampleZones.then(exampleZones => exampleZones.zones);
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ */
 export function getZonesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
     return pulumi.output(getZones(opts))
 }

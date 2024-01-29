@@ -264,6 +264,37 @@ class PrivateNetwork(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Manage Exoscale [Private Networks](https://community.exoscale.com/documentation/compute/private-networks/).
+
+        Corresponding data source: exoscale_private_network.
+
+        ## Example Usage
+
+        *Unmanaged* private network:
+
+        ```python
+        import pulumi
+        import pulumiverse_exoscale as exoscale
+
+        my_private_network = exoscale.PrivateNetwork("myPrivateNetwork", zone="ch-gva-2")
+        ```
+
+        *Managed* private network:
+
+        ```python
+        import pulumi
+        import pulumiverse_exoscale as exoscale
+
+        my_managed_private_network = exoscale.PrivateNetwork("myManagedPrivateNetwork",
+            end_ip="10.0.0.253",
+            netmask="255.255.255.0",
+            start_ip="10.0.0.20",
+            zone="ch-gva-2")
+        ```
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         ## Import
 
         An existing private network may be imported by `<ID>@<zone>`
@@ -293,6 +324,37 @@ class PrivateNetwork(pulumi.CustomResource):
                  args: PrivateNetworkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manage Exoscale [Private Networks](https://community.exoscale.com/documentation/compute/private-networks/).
+
+        Corresponding data source: exoscale_private_network.
+
+        ## Example Usage
+
+        *Unmanaged* private network:
+
+        ```python
+        import pulumi
+        import pulumiverse_exoscale as exoscale
+
+        my_private_network = exoscale.PrivateNetwork("myPrivateNetwork", zone="ch-gva-2")
+        ```
+
+        *Managed* private network:
+
+        ```python
+        import pulumi
+        import pulumiverse_exoscale as exoscale
+
+        my_managed_private_network = exoscale.PrivateNetwork("myManagedPrivateNetwork",
+            end_ip="10.0.0.253",
+            netmask="255.255.255.0",
+            start_ip="10.0.0.20",
+            zone="ch-gva-2")
+        ```
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         ## Import
 
         An existing private network may be imported by `<ID>@<zone>`

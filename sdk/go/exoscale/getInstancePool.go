@@ -11,6 +11,40 @@ import (
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
+// Fetch Exoscale [Instance Pools](https://community.exoscale.com/documentation/compute/instance-pools/) data.
+//
+// Corresponding resource: exoscale_instance_pool.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myInstancePool, err := exoscale.LookupInstancePool(ctx, &exoscale.LookupInstancePoolArgs{
+//				Zone: "ch-gva-2",
+//				Name: pulumi.StringRef("my-instance-pool"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("myInstancePoolId", myInstancePool.Id)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Please refer to the examples
+// directory for complete configuration examples.
 func LookupInstancePool(ctx *pulumi.Context, args *LookupInstancePoolArgs, opts ...pulumi.InvokeOption) (*LookupInstancePoolResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstancePoolResult

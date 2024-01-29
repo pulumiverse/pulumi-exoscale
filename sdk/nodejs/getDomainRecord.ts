@@ -6,6 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Fetch Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domain Records data.
+ *
+ * Corresponding resource: exoscale_domain_record.
+ */
 export function getDomainRecord(args: GetDomainRecordArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainRecordResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -47,6 +52,11 @@ export interface GetDomainRecordResult {
      */
     readonly records: outputs.GetDomainRecordRecord[];
 }
+/**
+ * Fetch Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domain Records data.
+ *
+ * Corresponding resource: exoscale_domain_record.
+ */
 export function getDomainRecordOutput(args: GetDomainRecordOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainRecordResult> {
     return pulumi.output(args).apply((a: any) => getDomainRecord(a, opts))
 }

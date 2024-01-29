@@ -11,6 +11,39 @@ import (
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
+// Manage Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domains.
+//
+// Corresponding data source: exoscale_domain.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := exoscale.NewDomain(ctx, "myDomain", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Next step is to attach exoscale_domain_record(s) to the domain.
+//
+// Please refer to the examples
+// directory for complete configuration examples.
+//
 // ## Import
 //
 // An existing DNS domain may be imported by `ID`

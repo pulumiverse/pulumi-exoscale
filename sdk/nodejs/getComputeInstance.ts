@@ -4,6 +4,27 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Fetch Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/) data.
+ *
+ * Corresponding resource: exoscale_compute_instance.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumi/exoscale";
+ *
+ * const myInstance = exoscale.getComputeInstance({
+ *     zone: "ch-gva-2",
+ *     name: "my-instance",
+ * });
+ * export const myInstanceId = myInstance.then(myInstance => myInstance.id);
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ */
 export function getComputeInstance(args: GetComputeInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetComputeInstanceResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -125,6 +146,27 @@ export interface GetComputeInstanceResult {
      */
     readonly zone: string;
 }
+/**
+ * Fetch Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/) data.
+ *
+ * Corresponding resource: exoscale_compute_instance.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumi/exoscale";
+ *
+ * const myInstance = exoscale.getComputeInstance({
+ *     zone: "ch-gva-2",
+ *     name: "my-instance",
+ * });
+ * export const myInstanceId = myInstance.then(myInstance => myInstance.id);
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ */
 export function getComputeInstanceOutput(args: GetComputeInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeInstanceResult> {
     return pulumi.output(args).apply((a: any) => getComputeInstance(a, opts))
 }

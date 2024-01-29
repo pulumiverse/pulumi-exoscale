@@ -21,25 +21,25 @@ __all__ = [
     'DatabasePgArgs',
     'DatabaseRedisArgs',
     'DatabaseTimeoutsArgs',
-    'ElasticIPHealthcheckArgs',
-    'IAMAPIKeyTimeoutsArgs',
-    'IAMOrgPolicyServicesArgs',
-    'IAMOrgPolicyServicesRuleArgs',
-    'IAMOrgPolicyTimeoutsArgs',
-    'IAMRolePolicyArgs',
-    'IAMRolePolicyServicesArgs',
-    'IAMRolePolicyServicesRuleArgs',
-    'IAMRoleTimeoutsArgs',
+    'ElasticIpHealthcheckArgs',
+    'IamApiKeyTimeoutsArgs',
+    'IamOrgPolicyServicesArgs',
+    'IamOrgPolicyServicesRuleArgs',
+    'IamOrgPolicyTimeoutsArgs',
+    'IamRolePolicyArgs',
+    'IamRolePolicyServicesArgs',
+    'IamRolePolicyServicesRuleArgs',
+    'IamRoleTimeoutsArgs',
     'InstancePoolInstanceArgs',
-    'NLBServiceHealthcheckArgs',
-    'SKSClusterOidcArgs',
-    'GetDatabaseURITimeoutsArgs',
+    'NlbServiceHealthcheckArgs',
+    'SksClusterOidcArgs',
+    'GetDatabaseUriTimeoutsArgs',
     'GetDomainRecordFilterArgs',
-    'GetIAMAPIKeyTimeoutsArgs',
-    'GetIAMOrgPolicyTimeoutsArgs',
-    'GetIAMRoleTimeoutsArgs',
-    'GetNLBServiceListTimeoutsArgs',
-    'GetSKSClusterOidcArgs',
+    'GetIamApiKeyTimeoutsArgs',
+    'GetIamOrgPolicyTimeoutsArgs',
+    'GetIamRoleTimeoutsArgs',
+    'GetNlbServiceListTimeoutsArgs',
+    'GetSksClusterOidcArgs',
 ]
 
 @pulumi.input_type
@@ -983,7 +983,7 @@ class DatabaseTimeoutsArgs:
 
 
 @pulumi.input_type
-class ElasticIPHealthcheckArgs:
+class ElasticIpHealthcheckArgs:
     def __init__(__self__, *,
                  mode: pulumi.Input[str],
                  port: pulumi.Input[int],
@@ -1132,7 +1132,7 @@ class ElasticIPHealthcheckArgs:
 
 
 @pulumi.input_type
-class IAMAPIKeyTimeoutsArgs:
+class IamApiKeyTimeoutsArgs:
     def __init__(__self__, *,
                  read: Optional[pulumi.Input[str]] = None):
         """
@@ -1155,12 +1155,12 @@ class IAMAPIKeyTimeoutsArgs:
 
 
 @pulumi.input_type
-class IAMOrgPolicyServicesArgs:
+class IamOrgPolicyServicesArgs:
     def __init__(__self__, *,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['IAMOrgPolicyServicesRuleArgs']]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['IamOrgPolicyServicesRuleArgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['IAMOrgPolicyServicesRuleArgs']]] rules: List of IAM service rules (if type is `rules`).
+        :param pulumi.Input[Sequence[pulumi.Input['IamOrgPolicyServicesRuleArgs']]] rules: List of IAM service rules (if type is `rules`).
         :param pulumi.Input[str] type: Service type (`rules`, `allow`, or `deny`).
         """
         if rules is not None:
@@ -1170,14 +1170,14 @@ class IAMOrgPolicyServicesArgs:
 
     @property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IAMOrgPolicyServicesRuleArgs']]]]:
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IamOrgPolicyServicesRuleArgs']]]]:
         """
         List of IAM service rules (if type is `rules`).
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IAMOrgPolicyServicesRuleArgs']]]]):
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IamOrgPolicyServicesRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @property
@@ -1194,7 +1194,7 @@ class IAMOrgPolicyServicesArgs:
 
 
 @pulumi.input_type
-class IAMOrgPolicyServicesRuleArgs:
+class IamOrgPolicyServicesRuleArgs:
     def __init__(__self__, *,
                  action: Optional[pulumi.Input[str]] = None,
                  expression: Optional[pulumi.Input[str]] = None,
@@ -1251,7 +1251,7 @@ class IAMOrgPolicyServicesRuleArgs:
 
 
 @pulumi.input_type
-class IAMOrgPolicyTimeoutsArgs:
+class IamOrgPolicyTimeoutsArgs:
     def __init__(__self__, *,
                  read: Optional[pulumi.Input[str]] = None):
         """
@@ -1274,13 +1274,13 @@ class IAMOrgPolicyTimeoutsArgs:
 
 
 @pulumi.input_type
-class IAMRolePolicyArgs:
+class IamRolePolicyArgs:
     def __init__(__self__, *,
                  default_service_strategy: Optional[pulumi.Input[str]] = None,
-                 services: Optional[pulumi.Input[Mapping[str, pulumi.Input['IAMRolePolicyServicesArgs']]]] = None):
+                 services: Optional[pulumi.Input[Mapping[str, pulumi.Input['IamRolePolicyServicesArgs']]]] = None):
         """
         :param pulumi.Input[str] default_service_strategy: Default service strategy (`allow` or `deny`).
-        :param pulumi.Input[Mapping[str, pulumi.Input['IAMRolePolicyServicesArgs']]] services: IAM policy services.
+        :param pulumi.Input[Mapping[str, pulumi.Input['IamRolePolicyServicesArgs']]] services: IAM policy services.
         """
         if default_service_strategy is not None:
             pulumi.set(__self__, "default_service_strategy", default_service_strategy)
@@ -1301,24 +1301,24 @@ class IAMRolePolicyArgs:
 
     @property
     @pulumi.getter
-    def services(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['IAMRolePolicyServicesArgs']]]]:
+    def services(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['IamRolePolicyServicesArgs']]]]:
         """
         IAM policy services.
         """
         return pulumi.get(self, "services")
 
     @services.setter
-    def services(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['IAMRolePolicyServicesArgs']]]]):
+    def services(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['IamRolePolicyServicesArgs']]]]):
         pulumi.set(self, "services", value)
 
 
 @pulumi.input_type
-class IAMRolePolicyServicesArgs:
+class IamRolePolicyServicesArgs:
     def __init__(__self__, *,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['IAMRolePolicyServicesRuleArgs']]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['IamRolePolicyServicesRuleArgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['IAMRolePolicyServicesRuleArgs']]] rules: List of IAM service rules (if type is `rules`).
+        :param pulumi.Input[Sequence[pulumi.Input['IamRolePolicyServicesRuleArgs']]] rules: List of IAM service rules (if type is `rules`).
         :param pulumi.Input[str] type: Service type (`rules`, `allow`, or `deny`).
         """
         if rules is not None:
@@ -1328,14 +1328,14 @@ class IAMRolePolicyServicesArgs:
 
     @property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IAMRolePolicyServicesRuleArgs']]]]:
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IamRolePolicyServicesRuleArgs']]]]:
         """
         List of IAM service rules (if type is `rules`).
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IAMRolePolicyServicesRuleArgs']]]]):
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IamRolePolicyServicesRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @property
@@ -1352,7 +1352,7 @@ class IAMRolePolicyServicesArgs:
 
 
 @pulumi.input_type
-class IAMRolePolicyServicesRuleArgs:
+class IamRolePolicyServicesRuleArgs:
     def __init__(__self__, *,
                  action: Optional[pulumi.Input[str]] = None,
                  expression: Optional[pulumi.Input[str]] = None,
@@ -1409,7 +1409,7 @@ class IAMRolePolicyServicesRuleArgs:
 
 
 @pulumi.input_type
-class IAMRoleTimeoutsArgs:
+class IamRoleTimeoutsArgs:
     def __init__(__self__, *,
                  read: Optional[pulumi.Input[str]] = None):
         """
@@ -1503,7 +1503,7 @@ class InstancePoolInstanceArgs:
 
 
 @pulumi.input_type
-class NLBServiceHealthcheckArgs:
+class NlbServiceHealthcheckArgs:
     def __init__(__self__, *,
                  port: pulumi.Input[int],
                  interval: Optional[pulumi.Input[int]] = None,
@@ -1621,7 +1621,7 @@ class NLBServiceHealthcheckArgs:
 
 
 @pulumi.input_type
-class SKSClusterOidcArgs:
+class SksClusterOidcArgs:
     def __init__(__self__, *,
                  client_id: pulumi.Input[str],
                  issuer_url: pulumi.Input[str],
@@ -1738,7 +1738,7 @@ class SKSClusterOidcArgs:
 
 
 @pulumi.input_type
-class GetDatabaseURITimeoutsArgs:
+class GetDatabaseUriTimeoutsArgs:
     def __init__(__self__, *,
                  read: Optional[str] = None):
         """
@@ -1832,7 +1832,7 @@ class GetDomainRecordFilterArgs:
 
 
 @pulumi.input_type
-class GetIAMAPIKeyTimeoutsArgs:
+class GetIamApiKeyTimeoutsArgs:
     def __init__(__self__, *,
                  read: Optional[str] = None):
         """
@@ -1855,7 +1855,7 @@ class GetIAMAPIKeyTimeoutsArgs:
 
 
 @pulumi.input_type
-class GetIAMOrgPolicyTimeoutsArgs:
+class GetIamOrgPolicyTimeoutsArgs:
     def __init__(__self__, *,
                  read: Optional[str] = None):
         """
@@ -1878,7 +1878,7 @@ class GetIAMOrgPolicyTimeoutsArgs:
 
 
 @pulumi.input_type
-class GetIAMRoleTimeoutsArgs:
+class GetIamRoleTimeoutsArgs:
     def __init__(__self__, *,
                  read: Optional[str] = None):
         """
@@ -1901,7 +1901,7 @@ class GetIAMRoleTimeoutsArgs:
 
 
 @pulumi.input_type
-class GetNLBServiceListTimeoutsArgs:
+class GetNlbServiceListTimeoutsArgs:
     def __init__(__self__, *,
                  read: Optional[str] = None):
         """
@@ -1924,7 +1924,7 @@ class GetNLBServiceListTimeoutsArgs:
 
 
 @pulumi.input_type
-class GetSKSClusterOidcArgs:
+class GetSksClusterOidcArgs:
     def __init__(__self__, *,
                  client_id: str,
                  issuer_url: str,

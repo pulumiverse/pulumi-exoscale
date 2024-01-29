@@ -72,7 +72,23 @@ def get_anti_affinity_group(id: Optional[str] = None,
                             name: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAntiAffinityGroupResult:
     """
-    Use this data source to access information about an existing resource.
+    Fetch Exoscale [Anti-Affinity Groups](https://community.exoscale.com/documentation/compute/anti-affinity-groups/) data.
+
+    Corresponding resource: exoscale_anti_affinity_group.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_exoscale as exoscale
+
+    my_anti_affinity_group = exoscale.get_anti_affinity_group(name="my-anti-affinity-group")
+    pulumi.export("myAntiAffinityGroupId", my_anti_affinity_group.id)
+    ```
+
+    Please refer to the examples
+    directory for complete configuration examples.
+
 
     :param str id: The anti-affinity group ID to match (conflicts with `name`).
     :param str name: The group name to match (conflicts with `id`).
@@ -94,7 +110,23 @@ def get_anti_affinity_group_output(id: Optional[pulumi.Input[Optional[str]]] = N
                                    name: Optional[pulumi.Input[Optional[str]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAntiAffinityGroupResult]:
     """
-    Use this data source to access information about an existing resource.
+    Fetch Exoscale [Anti-Affinity Groups](https://community.exoscale.com/documentation/compute/anti-affinity-groups/) data.
+
+    Corresponding resource: exoscale_anti_affinity_group.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_exoscale as exoscale
+
+    my_anti_affinity_group = exoscale.get_anti_affinity_group(name="my-anti-affinity-group")
+    pulumi.export("myAntiAffinityGroupId", my_anti_affinity_group.id)
+    ```
+
+    Please refer to the examples
+    directory for complete configuration examples.
+
 
     :param str id: The anti-affinity group ID to match (conflicts with `name`).
     :param str name: The group name to match (conflicts with `id`).

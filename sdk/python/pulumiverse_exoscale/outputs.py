@@ -22,41 +22,41 @@ __all__ = [
     'DatabasePg',
     'DatabaseRedis',
     'DatabaseTimeouts',
-    'ElasticIPHealthcheck',
-    'IAMAPIKeyTimeouts',
-    'IAMOrgPolicyServices',
-    'IAMOrgPolicyServicesRule',
-    'IAMOrgPolicyTimeouts',
-    'IAMRolePolicy',
-    'IAMRolePolicyServices',
-    'IAMRolePolicyServicesRule',
-    'IAMRoleTimeouts',
+    'ElasticIpHealthcheck',
+    'IamApiKeyTimeouts',
+    'IamOrgPolicyServices',
+    'IamOrgPolicyServicesRule',
+    'IamOrgPolicyTimeouts',
+    'IamRolePolicy',
+    'IamRolePolicyServices',
+    'IamRolePolicyServicesRule',
+    'IamRoleTimeouts',
     'InstancePoolInstance',
-    'NLBServiceHealthcheck',
-    'SKSClusterOidc',
+    'NlbServiceHealthcheck',
+    'SksClusterOidc',
     'GetComputeInstanceListInstanceResult',
-    'GetDatabaseURITimeoutsResult',
+    'GetDatabaseUriTimeoutsResult',
     'GetDomainRecordFilterResult',
     'GetDomainRecordRecordResult',
-    'GetElasticIPHealthcheckResult',
-    'GetIAMAPIKeyTimeoutsResult',
-    'GetIAMOrgPolicyServicesResult',
-    'GetIAMOrgPolicyServicesRuleResult',
-    'GetIAMOrgPolicyTimeoutsResult',
-    'GetIAMRolePolicyResult',
-    'GetIAMRolePolicyServicesResult',
-    'GetIAMRolePolicyServicesRuleResult',
-    'GetIAMRoleTimeoutsResult',
+    'GetElasticIpHealthcheckResult',
+    'GetIamApiKeyTimeoutsResult',
+    'GetIamOrgPolicyServicesResult',
+    'GetIamOrgPolicyServicesRuleResult',
+    'GetIamOrgPolicyTimeoutsResult',
+    'GetIamRolePolicyResult',
+    'GetIamRolePolicyServicesResult',
+    'GetIamRolePolicyServicesRuleResult',
+    'GetIamRoleTimeoutsResult',
     'GetInstancePoolInstanceResult',
     'GetInstancePoolListPoolResult',
     'GetInstancePoolListPoolInstanceResult',
-    'GetNLBServiceListServiceResult',
-    'GetNLBServiceListServiceHealthcheckResult',
-    'GetNLBServiceListTimeoutsResult',
-    'GetSKSClusterListClusterResult',
-    'GetSKSClusterListClusterOidcResult',
-    'GetSKSClusterOidcResult',
-    'GetSKSNodepoolListNodepoolResult',
+    'GetNlbServiceListServiceResult',
+    'GetNlbServiceListServiceHealthcheckResult',
+    'GetNlbServiceListTimeoutsResult',
+    'GetSksClusterListClusterResult',
+    'GetSksClusterListClusterOidcResult',
+    'GetSksClusterOidcResult',
+    'GetSksNodepoolListNodepoolResult',
 ]
 
 @pulumi.output_type
@@ -1018,7 +1018,7 @@ class DatabaseTimeouts(dict):
 
 
 @pulumi.output_type
-class ElasticIPHealthcheck(dict):
+class ElasticIpHealthcheck(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1032,14 +1032,14 @@ class ElasticIPHealthcheck(dict):
             suggest = "tls_sni"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ElasticIPHealthcheck. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ElasticIpHealthcheck. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        ElasticIPHealthcheck.__key_warning(key)
+        ElasticIpHealthcheck.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        ElasticIPHealthcheck.__key_warning(key)
+        ElasticIpHealthcheck.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -1154,7 +1154,7 @@ class ElasticIPHealthcheck(dict):
 
 
 @pulumi.output_type
-class IAMAPIKeyTimeouts(dict):
+class IamApiKeyTimeouts(dict):
     def __init__(__self__, *,
                  read: Optional[str] = None):
         """
@@ -1173,12 +1173,12 @@ class IAMAPIKeyTimeouts(dict):
 
 
 @pulumi.output_type
-class IAMOrgPolicyServices(dict):
+class IamOrgPolicyServices(dict):
     def __init__(__self__, *,
-                 rules: Optional[Sequence['outputs.IAMOrgPolicyServicesRule']] = None,
+                 rules: Optional[Sequence['outputs.IamOrgPolicyServicesRule']] = None,
                  type: Optional[str] = None):
         """
-        :param Sequence['IAMOrgPolicyServicesRuleArgs'] rules: List of IAM service rules (if type is `rules`).
+        :param Sequence['IamOrgPolicyServicesRuleArgs'] rules: List of IAM service rules (if type is `rules`).
         :param str type: Service type (`rules`, `allow`, or `deny`).
         """
         if rules is not None:
@@ -1188,7 +1188,7 @@ class IAMOrgPolicyServices(dict):
 
     @property
     @pulumi.getter
-    def rules(self) -> Optional[Sequence['outputs.IAMOrgPolicyServicesRule']]:
+    def rules(self) -> Optional[Sequence['outputs.IamOrgPolicyServicesRule']]:
         """
         List of IAM service rules (if type is `rules`).
         """
@@ -1204,7 +1204,7 @@ class IAMOrgPolicyServices(dict):
 
 
 @pulumi.output_type
-class IAMOrgPolicyServicesRule(dict):
+class IamOrgPolicyServicesRule(dict):
     def __init__(__self__, *,
                  action: Optional[str] = None,
                  expression: Optional[str] = None,
@@ -1246,7 +1246,7 @@ class IAMOrgPolicyServicesRule(dict):
 
 
 @pulumi.output_type
-class IAMOrgPolicyTimeouts(dict):
+class IamOrgPolicyTimeouts(dict):
     def __init__(__self__, *,
                  read: Optional[str] = None):
         """
@@ -1265,7 +1265,7 @@ class IAMOrgPolicyTimeouts(dict):
 
 
 @pulumi.output_type
-class IAMRolePolicy(dict):
+class IamRolePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1273,22 +1273,22 @@ class IAMRolePolicy(dict):
             suggest = "default_service_strategy"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IAMRolePolicy. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in IamRolePolicy. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        IAMRolePolicy.__key_warning(key)
+        IamRolePolicy.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        IAMRolePolicy.__key_warning(key)
+        IamRolePolicy.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
                  default_service_strategy: Optional[str] = None,
-                 services: Optional[Mapping[str, 'outputs.IAMRolePolicyServices']] = None):
+                 services: Optional[Mapping[str, 'outputs.IamRolePolicyServices']] = None):
         """
         :param str default_service_strategy: Default service strategy (`allow` or `deny`).
-        :param Mapping[str, 'IAMRolePolicyServicesArgs'] services: IAM policy services.
+        :param Mapping[str, 'IamRolePolicyServicesArgs'] services: IAM policy services.
         """
         if default_service_strategy is not None:
             pulumi.set(__self__, "default_service_strategy", default_service_strategy)
@@ -1305,7 +1305,7 @@ class IAMRolePolicy(dict):
 
     @property
     @pulumi.getter
-    def services(self) -> Optional[Mapping[str, 'outputs.IAMRolePolicyServices']]:
+    def services(self) -> Optional[Mapping[str, 'outputs.IamRolePolicyServices']]:
         """
         IAM policy services.
         """
@@ -1313,12 +1313,12 @@ class IAMRolePolicy(dict):
 
 
 @pulumi.output_type
-class IAMRolePolicyServices(dict):
+class IamRolePolicyServices(dict):
     def __init__(__self__, *,
-                 rules: Optional[Sequence['outputs.IAMRolePolicyServicesRule']] = None,
+                 rules: Optional[Sequence['outputs.IamRolePolicyServicesRule']] = None,
                  type: Optional[str] = None):
         """
-        :param Sequence['IAMRolePolicyServicesRuleArgs'] rules: List of IAM service rules (if type is `rules`).
+        :param Sequence['IamRolePolicyServicesRuleArgs'] rules: List of IAM service rules (if type is `rules`).
         :param str type: Service type (`rules`, `allow`, or `deny`).
         """
         if rules is not None:
@@ -1328,7 +1328,7 @@ class IAMRolePolicyServices(dict):
 
     @property
     @pulumi.getter
-    def rules(self) -> Optional[Sequence['outputs.IAMRolePolicyServicesRule']]:
+    def rules(self) -> Optional[Sequence['outputs.IamRolePolicyServicesRule']]:
         """
         List of IAM service rules (if type is `rules`).
         """
@@ -1344,7 +1344,7 @@ class IAMRolePolicyServices(dict):
 
 
 @pulumi.output_type
-class IAMRolePolicyServicesRule(dict):
+class IamRolePolicyServicesRule(dict):
     def __init__(__self__, *,
                  action: Optional[str] = None,
                  expression: Optional[str] = None,
@@ -1386,7 +1386,7 @@ class IAMRolePolicyServicesRule(dict):
 
 
 @pulumi.output_type
-class IAMRoleTimeouts(dict):
+class IamRoleTimeouts(dict):
     def __init__(__self__, *,
                  read: Optional[str] = None):
         """
@@ -1479,7 +1479,7 @@ class InstancePoolInstance(dict):
 
 
 @pulumi.output_type
-class NLBServiceHealthcheck(dict):
+class NlbServiceHealthcheck(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1487,14 +1487,14 @@ class NLBServiceHealthcheck(dict):
             suggest = "tls_sni"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NLBServiceHealthcheck. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in NlbServiceHealthcheck. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        NLBServiceHealthcheck.__key_warning(key)
+        NlbServiceHealthcheck.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        NLBServiceHealthcheck.__key_warning(key)
+        NlbServiceHealthcheck.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -1586,7 +1586,7 @@ class NLBServiceHealthcheck(dict):
 
 
 @pulumi.output_type
-class SKSClusterOidc(dict):
+class SksClusterOidc(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1606,14 +1606,14 @@ class SKSClusterOidc(dict):
             suggest = "username_prefix"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SKSClusterOidc. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in SksClusterOidc. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        SKSClusterOidc.__key_warning(key)
+        SksClusterOidc.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        SKSClusterOidc.__key_warning(key)
+        SksClusterOidc.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -1865,7 +1865,7 @@ class GetComputeInstanceListInstanceResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseURITimeoutsResult(dict):
+class GetDatabaseUriTimeoutsResult(dict):
     def __init__(__self__, *,
                  read: Optional[str] = None):
         """
@@ -2000,7 +2000,7 @@ class GetDomainRecordRecordResult(dict):
 
 
 @pulumi.output_type
-class GetElasticIPHealthcheckResult(dict):
+class GetElasticIpHealthcheckResult(dict):
     def __init__(__self__, *,
                  interval: int,
                  mode: str,
@@ -2068,7 +2068,7 @@ class GetElasticIPHealthcheckResult(dict):
 
 
 @pulumi.output_type
-class GetIAMAPIKeyTimeoutsResult(dict):
+class GetIamApiKeyTimeoutsResult(dict):
     def __init__(__self__, *,
                  read: Optional[str] = None):
         """
@@ -2087,12 +2087,12 @@ class GetIAMAPIKeyTimeoutsResult(dict):
 
 
 @pulumi.output_type
-class GetIAMOrgPolicyServicesResult(dict):
+class GetIamOrgPolicyServicesResult(dict):
     def __init__(__self__, *,
-                 rules: Sequence['outputs.GetIAMOrgPolicyServicesRuleResult'],
+                 rules: Sequence['outputs.GetIamOrgPolicyServicesRuleResult'],
                  type: str):
         """
-        :param Sequence['GetIAMOrgPolicyServicesRuleArgs'] rules: List of IAM service rules (if type is `rules`).
+        :param Sequence['GetIamOrgPolicyServicesRuleArgs'] rules: List of IAM service rules (if type is `rules`).
         :param str type: Service type (`rules`, `allow`, or `deny`).
         """
         pulumi.set(__self__, "rules", rules)
@@ -2100,7 +2100,7 @@ class GetIAMOrgPolicyServicesResult(dict):
 
     @property
     @pulumi.getter
-    def rules(self) -> Sequence['outputs.GetIAMOrgPolicyServicesRuleResult']:
+    def rules(self) -> Sequence['outputs.GetIamOrgPolicyServicesRuleResult']:
         """
         List of IAM service rules (if type is `rules`).
         """
@@ -2116,7 +2116,7 @@ class GetIAMOrgPolicyServicesResult(dict):
 
 
 @pulumi.output_type
-class GetIAMOrgPolicyServicesRuleResult(dict):
+class GetIamOrgPolicyServicesRuleResult(dict):
     def __init__(__self__, *,
                  action: str,
                  expression: str,
@@ -2155,7 +2155,7 @@ class GetIAMOrgPolicyServicesRuleResult(dict):
 
 
 @pulumi.output_type
-class GetIAMOrgPolicyTimeoutsResult(dict):
+class GetIamOrgPolicyTimeoutsResult(dict):
     def __init__(__self__, *,
                  read: Optional[str] = None):
         """
@@ -2174,13 +2174,13 @@ class GetIAMOrgPolicyTimeoutsResult(dict):
 
 
 @pulumi.output_type
-class GetIAMRolePolicyResult(dict):
+class GetIamRolePolicyResult(dict):
     def __init__(__self__, *,
                  default_service_strategy: str,
-                 services: Mapping[str, 'outputs.GetIAMRolePolicyServicesResult']):
+                 services: Mapping[str, 'outputs.GetIamRolePolicyServicesResult']):
         """
         :param str default_service_strategy: Default service strategy (`allow` or `deny`).
-        :param Mapping[str, 'GetIAMRolePolicyServicesArgs'] services: IAM policy services.
+        :param Mapping[str, 'GetIamRolePolicyServicesArgs'] services: IAM policy services.
         """
         pulumi.set(__self__, "default_service_strategy", default_service_strategy)
         pulumi.set(__self__, "services", services)
@@ -2195,7 +2195,7 @@ class GetIAMRolePolicyResult(dict):
 
     @property
     @pulumi.getter
-    def services(self) -> Mapping[str, 'outputs.GetIAMRolePolicyServicesResult']:
+    def services(self) -> Mapping[str, 'outputs.GetIamRolePolicyServicesResult']:
         """
         IAM policy services.
         """
@@ -2203,12 +2203,12 @@ class GetIAMRolePolicyResult(dict):
 
 
 @pulumi.output_type
-class GetIAMRolePolicyServicesResult(dict):
+class GetIamRolePolicyServicesResult(dict):
     def __init__(__self__, *,
-                 rules: Sequence['outputs.GetIAMRolePolicyServicesRuleResult'],
+                 rules: Sequence['outputs.GetIamRolePolicyServicesRuleResult'],
                  type: str):
         """
-        :param Sequence['GetIAMRolePolicyServicesRuleArgs'] rules: List of IAM service rules (if type is `rules`).
+        :param Sequence['GetIamRolePolicyServicesRuleArgs'] rules: List of IAM service rules (if type is `rules`).
         :param str type: Service type (`rules`, `allow`, or `deny`).
         """
         pulumi.set(__self__, "rules", rules)
@@ -2216,7 +2216,7 @@ class GetIAMRolePolicyServicesResult(dict):
 
     @property
     @pulumi.getter
-    def rules(self) -> Sequence['outputs.GetIAMRolePolicyServicesRuleResult']:
+    def rules(self) -> Sequence['outputs.GetIamRolePolicyServicesRuleResult']:
         """
         List of IAM service rules (if type is `rules`).
         """
@@ -2232,7 +2232,7 @@ class GetIAMRolePolicyServicesResult(dict):
 
 
 @pulumi.output_type
-class GetIAMRolePolicyServicesRuleResult(dict):
+class GetIamRolePolicyServicesRuleResult(dict):
     def __init__(__self__, *,
                  action: str,
                  expression: str,
@@ -2271,7 +2271,7 @@ class GetIAMRolePolicyServicesRuleResult(dict):
 
 
 @pulumi.output_type
-class GetIAMRoleTimeoutsResult(dict):
+class GetIamRoleTimeoutsResult(dict):
     def __init__(__self__, *,
                  read: Optional[str] = None):
         """
@@ -2508,10 +2508,10 @@ class GetInstancePoolListPoolInstanceResult(dict):
 
 
 @pulumi.output_type
-class GetNLBServiceListServiceResult(dict):
+class GetNlbServiceListServiceResult(dict):
     def __init__(__self__, *,
                  description: str,
-                 healthcheck: 'outputs.GetNLBServiceListServiceHealthcheckResult',
+                 healthcheck: 'outputs.GetNlbServiceListServiceHealthcheckResult',
                  id: str,
                  instance_pool_id: str,
                  name: str,
@@ -2552,7 +2552,7 @@ class GetNLBServiceListServiceResult(dict):
 
     @property
     @pulumi.getter
-    def healthcheck(self) -> 'outputs.GetNLBServiceListServiceHealthcheckResult':
+    def healthcheck(self) -> 'outputs.GetNlbServiceListServiceHealthcheckResult':
         return pulumi.get(self, "healthcheck")
 
     @property
@@ -2621,7 +2621,7 @@ class GetNLBServiceListServiceResult(dict):
 
 
 @pulumi.output_type
-class GetNLBServiceListServiceHealthcheckResult(dict):
+class GetNlbServiceListServiceHealthcheckResult(dict):
     def __init__(__self__, *,
                  interval: int,
                  mode: str,
@@ -2675,7 +2675,7 @@ class GetNLBServiceListServiceHealthcheckResult(dict):
 
 
 @pulumi.output_type
-class GetNLBServiceListTimeoutsResult(dict):
+class GetNlbServiceListTimeoutsResult(dict):
     def __init__(__self__, *,
                  read: Optional[str] = None):
         """
@@ -2694,7 +2694,7 @@ class GetNLBServiceListTimeoutsResult(dict):
 
 
 @pulumi.output_type
-class GetSKSClusterListClusterResult(dict):
+class GetSksClusterListClusterResult(dict):
     def __init__(__self__, *,
                  addons: Sequence[str],
                  aggregation_ca: str,
@@ -2703,7 +2703,7 @@ class GetSKSClusterListClusterResult(dict):
                  endpoint: str,
                  kubelet_ca: str,
                  nodepools: Sequence[str],
-                 oidc: 'outputs.GetSKSClusterListClusterOidcResult',
+                 oidc: 'outputs.GetSksClusterListClusterOidcResult',
                  state: str,
                  version: str,
                  zone: str,
@@ -2786,7 +2786,7 @@ class GetSKSClusterListClusterResult(dict):
 
     @property
     @pulumi.getter
-    def oidc(self) -> 'outputs.GetSKSClusterListClusterOidcResult':
+    def oidc(self) -> 'outputs.GetSksClusterListClusterOidcResult':
         return pulumi.get(self, "oidc")
 
     @property
@@ -2851,7 +2851,7 @@ class GetSKSClusterListClusterResult(dict):
 
 
 @pulumi.output_type
-class GetSKSClusterListClusterOidcResult(dict):
+class GetSksClusterListClusterOidcResult(dict):
     def __init__(__self__, *,
                  client_id: str,
                  issuer_url: str,
@@ -2910,7 +2910,7 @@ class GetSKSClusterListClusterOidcResult(dict):
 
 
 @pulumi.output_type
-class GetSKSClusterOidcResult(dict):
+class GetSksClusterOidcResult(dict):
     def __init__(__self__, *,
                  client_id: str,
                  issuer_url: str,
@@ -2999,7 +2999,7 @@ class GetSKSClusterOidcResult(dict):
 
 
 @pulumi.output_type
-class GetSKSNodepoolListNodepoolResult(dict):
+class GetSksNodepoolListNodepoolResult(dict):
     def __init__(__self__, *,
                  cluster_id: str,
                  created_at: str,

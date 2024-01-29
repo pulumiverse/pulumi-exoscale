@@ -18,9 +18,9 @@ from .get_database_uri import *
 from .get_domain import *
 from .get_domain_record import *
 from .get_elastic_ip import *
+from .get_iam_api_key import *
 from .get_iam_org_policy import *
 from .get_iam_role import *
-from .get_iamapi_key import *
 from .get_instance_pool import *
 from .get_instance_pool_list import *
 from .get_nlb import *
@@ -34,9 +34,9 @@ from .get_sks_nodepool_list import *
 from .get_template import *
 from .get_zones import *
 from .iam_access_key import *
+from .iam_api_key import *
 from .iam_org_policy import *
 from .iam_role import *
-from .iamapi_key import *
 from .instance_pool import *
 from .nlb import *
 from .nlb_service import *
@@ -103,42 +103,42 @@ _utilities.register(
  },
  {
   "pkg": "exoscale",
-  "mod": "index/elasticIP",
+  "mod": "index/elasticIp",
   "fqn": "pulumiverse_exoscale",
   "classes": {
-   "exoscale:index/elasticIP:ElasticIP": "ElasticIP"
+   "exoscale:index/elasticIp:ElasticIp": "ElasticIp"
   }
  },
  {
   "pkg": "exoscale",
-  "mod": "index/iAMAPIKey",
+  "mod": "index/iamAccessKey",
   "fqn": "pulumiverse_exoscale",
   "classes": {
-   "exoscale:index/iAMAPIKey:IAMAPIKey": "IAMAPIKey"
+   "exoscale:index/iamAccessKey:IamAccessKey": "IamAccessKey"
   }
  },
  {
   "pkg": "exoscale",
-  "mod": "index/iAMAccessKey",
+  "mod": "index/iamApiKey",
   "fqn": "pulumiverse_exoscale",
   "classes": {
-   "exoscale:index/iAMAccessKey:IAMAccessKey": "IAMAccessKey"
+   "exoscale:index/iamApiKey:IamApiKey": "IamApiKey"
   }
  },
  {
   "pkg": "exoscale",
-  "mod": "index/iAMOrgPolicy",
+  "mod": "index/iamOrgPolicy",
   "fqn": "pulumiverse_exoscale",
   "classes": {
-   "exoscale:index/iAMOrgPolicy:IAMOrgPolicy": "IAMOrgPolicy"
+   "exoscale:index/iamOrgPolicy:IamOrgPolicy": "IamOrgPolicy"
   }
  },
  {
   "pkg": "exoscale",
-  "mod": "index/iAMRole",
+  "mod": "index/iamRole",
   "fqn": "pulumiverse_exoscale",
   "classes": {
-   "exoscale:index/iAMRole:IAMRole": "IAMRole"
+   "exoscale:index/iamRole:IamRole": "IamRole"
   }
  },
  {
@@ -151,18 +151,18 @@ _utilities.register(
  },
  {
   "pkg": "exoscale",
-  "mod": "index/nLB",
+  "mod": "index/nlb",
   "fqn": "pulumiverse_exoscale",
   "classes": {
-   "exoscale:index/nLB:NLB": "NLB"
+   "exoscale:index/nlb:Nlb": "Nlb"
   }
  },
  {
   "pkg": "exoscale",
-  "mod": "index/nLBService",
+  "mod": "index/nlbService",
   "fqn": "pulumiverse_exoscale",
   "classes": {
-   "exoscale:index/nLBService:NLBService": "NLBService"
+   "exoscale:index/nlbService:NlbService": "NlbService"
   }
  },
  {
@@ -171,38 +171,6 @@ _utilities.register(
   "fqn": "pulumiverse_exoscale",
   "classes": {
    "exoscale:index/privateNetwork:PrivateNetwork": "PrivateNetwork"
-  }
- },
- {
-  "pkg": "exoscale",
-  "mod": "index/sKSCluster",
-  "fqn": "pulumiverse_exoscale",
-  "classes": {
-   "exoscale:index/sKSCluster:SKSCluster": "SKSCluster"
-  }
- },
- {
-  "pkg": "exoscale",
-  "mod": "index/sKSKubeconfig",
-  "fqn": "pulumiverse_exoscale",
-  "classes": {
-   "exoscale:index/sKSKubeconfig:SKSKubeconfig": "SKSKubeconfig"
-  }
- },
- {
-  "pkg": "exoscale",
-  "mod": "index/sKSNodepool",
-  "fqn": "pulumiverse_exoscale",
-  "classes": {
-   "exoscale:index/sKSNodepool:SKSNodepool": "SKSNodepool"
-  }
- },
- {
-  "pkg": "exoscale",
-  "mod": "index/sSHKey",
-  "fqn": "pulumiverse_exoscale",
-  "classes": {
-   "exoscale:index/sSHKey:SSHKey": "SSHKey"
   }
  },
  {
@@ -219,6 +187,38 @@ _utilities.register(
   "fqn": "pulumiverse_exoscale",
   "classes": {
    "exoscale:index/securityGroupRule:SecurityGroupRule": "SecurityGroupRule"
+  }
+ },
+ {
+  "pkg": "exoscale",
+  "mod": "index/sksCluster",
+  "fqn": "pulumiverse_exoscale",
+  "classes": {
+   "exoscale:index/sksCluster:SksCluster": "SksCluster"
+  }
+ },
+ {
+  "pkg": "exoscale",
+  "mod": "index/sksKubeconfig",
+  "fqn": "pulumiverse_exoscale",
+  "classes": {
+   "exoscale:index/sksKubeconfig:SksKubeconfig": "SksKubeconfig"
+  }
+ },
+ {
+  "pkg": "exoscale",
+  "mod": "index/sksNodepool",
+  "fqn": "pulumiverse_exoscale",
+  "classes": {
+   "exoscale:index/sksNodepool:SksNodepool": "SksNodepool"
+  }
+ },
+ {
+  "pkg": "exoscale",
+  "mod": "index/sshKey",
+  "fqn": "pulumiverse_exoscale",
+  "classes": {
+   "exoscale:index/sshKey:SshKey": "SshKey"
   }
  }
 ]

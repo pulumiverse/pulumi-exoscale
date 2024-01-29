@@ -4,6 +4,27 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Fetch Exoscale [Private Networks](https://community.exoscale.com/documentation/compute/private-networks/) data.
+ *
+ * Corresponding resource: exoscale_private_network.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumi/exoscale";
+ *
+ * const myPrivateNetwork = exoscale.getPrivateNetwork({
+ *     zone: "ch-gva-2",
+ *     name: "my-private-network",
+ * });
+ * export const myPrivateNetworkId = myPrivateNetwork.then(myPrivateNetwork => myPrivateNetwork.id);
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ */
 export function getPrivateNetwork(args: GetPrivateNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateNetworkResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -79,6 +100,27 @@ export interface GetPrivateNetworkResult {
      */
     readonly zone: string;
 }
+/**
+ * Fetch Exoscale [Private Networks](https://community.exoscale.com/documentation/compute/private-networks/) data.
+ *
+ * Corresponding resource: exoscale_private_network.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumi/exoscale";
+ *
+ * const myPrivateNetwork = exoscale.getPrivateNetwork({
+ *     zone: "ch-gva-2",
+ *     name: "my-private-network",
+ * });
+ * export const myPrivateNetworkId = myPrivateNetwork.then(myPrivateNetwork => myPrivateNetwork.id);
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ */
 export function getPrivateNetworkOutput(args: GetPrivateNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateNetworkResult> {
     return pulumi.output(args).apply((a: any) => getPrivateNetwork(a, opts))
 }

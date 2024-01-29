@@ -72,7 +72,23 @@ def get_security_group(id: Optional[str] = None,
                        name: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecurityGroupResult:
     """
-    Use this data source to access information about an existing resource.
+    Fetch Exoscale [Security Groups](https://community.exoscale.com/documentation/compute/security-groups/) data.
+
+    Corresponding resource: exoscale_security_group.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_exoscale as exoscale
+
+    my_security_group = exoscale.get_security_group(name="my-security-group")
+    pulumi.export("mySecurityGroupId", my_security_group.id)
+    ```
+
+    Please refer to the examples
+    directory for complete configuration examples.
+
 
     :param str id: The security group ID to match (conflicts with `name`)
     :param str name: The name to match (conflicts with `id`)
@@ -94,7 +110,23 @@ def get_security_group_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                               name: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecurityGroupResult]:
     """
-    Use this data source to access information about an existing resource.
+    Fetch Exoscale [Security Groups](https://community.exoscale.com/documentation/compute/security-groups/) data.
+
+    Corresponding resource: exoscale_security_group.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_exoscale as exoscale
+
+    my_security_group = exoscale.get_security_group(name="my-security-group")
+    pulumi.export("mySecurityGroupId", my_security_group.id)
+    ```
+
+    Please refer to the examples
+    directory for complete configuration examples.
+
 
     :param str id: The security group ID to match (conflicts with `name`)
     :param str name: The name to match (conflicts with `id`)

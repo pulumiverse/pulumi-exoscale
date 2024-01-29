@@ -133,6 +133,24 @@ class SecurityGroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Manage Exoscale [Security Groups](https://community.exoscale.com/documentation/compute/security-groups/).
+
+        Corresponding data source: exoscale_security_group.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumiverse_exoscale as exoscale
+
+        my_security_group = exoscale.SecurityGroup("mySecurityGroup")
+        ```
+
+        Next step is to attach exoscale_security_group_rule(s) to the group.
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         ## Import
 
         An existing security group may be imported by `<ID>`
@@ -158,6 +176,24 @@ class SecurityGroup(pulumi.CustomResource):
                  args: Optional[SecurityGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manage Exoscale [Security Groups](https://community.exoscale.com/documentation/compute/security-groups/).
+
+        Corresponding data source: exoscale_security_group.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumiverse_exoscale as exoscale
+
+        my_security_group = exoscale.SecurityGroup("mySecurityGroup")
+        ```
+
+        Next step is to attach exoscale_security_group_rule(s) to the group.
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         ## Import
 
         An existing security group may be imported by `<ID>`

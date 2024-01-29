@@ -11,6 +11,39 @@ import (
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
+// Manage Exoscale [Security Groups](https://community.exoscale.com/documentation/compute/security-groups/).
+//
+// Corresponding data source: exoscale_security_group.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := exoscale.NewSecurityGroup(ctx, "mySecurityGroup", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Next step is to attach exoscale_security_group_rule(s) to the group.
+//
+// Please refer to the examples
+// directory for complete configuration examples.
+//
 // ## Import
 //
 // An existing security group may be imported by `<ID>`

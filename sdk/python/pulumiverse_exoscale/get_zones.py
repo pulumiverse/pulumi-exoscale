@@ -58,7 +58,20 @@ class AwaitableGetZonesResult(GetZonesResult):
 
 def get_zones(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
     """
-    Use this data source to access information about an existing resource.
+    Lists all zones.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_exoscale as exoscale
+
+    example_zones = exoscale.get_zones()
+    pulumi.export("zonesOutput", example_zones.zones)
+    ```
+
+    Please refer to the examples
+    directory for complete configuration examples.
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -72,6 +85,19 @@ def get_zones(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesR
 @_utilities.lift_output_func(get_zones)
 def get_zones_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
     """
-    Use this data source to access information about an existing resource.
+    Lists all zones.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_exoscale as exoscale
+
+    example_zones = exoscale.get_zones()
+    pulumi.export("zonesOutput", example_zones.zones)
+    ```
+
+    Please refer to the examples
+    directory for complete configuration examples.
     """
     ...

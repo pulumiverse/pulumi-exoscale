@@ -12,6 +12,53 @@ import (
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
+// Manage Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domain Records.
+//
+// Corresponding data source: exoscale_domain_record.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myDomain, err := exoscale.NewDomain(ctx, "myDomain", nil)
+//			if err != nil {
+//				return err
+//			}
+//			myHost, err := exoscale.NewDomainRecord(ctx, "myHost", &exoscale.DomainRecordArgs{
+//				Domain:     myDomain.ID(),
+//				RecordType: pulumi.String("A"),
+//				Content:    pulumi.String("1.2.3.4"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = exoscale.NewDomainRecord(ctx, "myHostAlias", &exoscale.DomainRecordArgs{
+//				Domain:     myDomain.ID(),
+//				RecordType: pulumi.String("CNAME"),
+//				Content:    myHost.Hostname,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Please refer to the examples
+// directory for complete configuration examples.
+//
 // ## Import
 //
 // An existing DNS domain record may be imported by `<ID>`
@@ -30,6 +77,8 @@ type DomainRecord struct {
 
 	// The record value.
 	Content pulumi.StringOutput `pulumi:"content"`
+	// The normalized value of the record
+	ContentNormalized pulumi.StringOutput `pulumi:"contentNormalized"`
 	// ❗ The parent Domain to attach the record to.
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// The record *Fully Qualified Domain Name* (FQDN). Useful for aliasing `A`/`AAAA` records with `CNAME`.
@@ -85,6 +134,8 @@ func GetDomainRecord(ctx *pulumi.Context,
 type domainRecordState struct {
 	// The record value.
 	Content *string `pulumi:"content"`
+	// The normalized value of the record
+	ContentNormalized *string `pulumi:"contentNormalized"`
 	// ❗ The parent Domain to attach the record to.
 	Domain *string `pulumi:"domain"`
 	// The record *Fully Qualified Domain Name* (FQDN). Useful for aliasing `A`/`AAAA` records with `CNAME`.
@@ -102,6 +153,8 @@ type domainRecordState struct {
 type DomainRecordState struct {
 	// The record value.
 	Content pulumi.StringPtrInput
+	// The normalized value of the record
+	ContentNormalized pulumi.StringPtrInput
 	// ❗ The parent Domain to attach the record to.
 	Domain pulumi.StringPtrInput
 	// The record *Fully Qualified Domain Name* (FQDN). Useful for aliasing `A`/`AAAA` records with `CNAME`.
@@ -241,6 +294,11 @@ func (o DomainRecordOutput) ToDomainRecordOutputWithContext(ctx context.Context)
 // The record value.
 func (o DomainRecordOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainRecord) pulumi.StringOutput { return v.Content }).(pulumi.StringOutput)
+}
+
+// The normalized value of the record
+func (o DomainRecordOutput) ContentNormalized() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainRecord) pulumi.StringOutput { return v.ContentNormalized }).(pulumi.StringOutput)
 }
 
 // ❗ The parent Domain to attach the record to.

@@ -11,6 +11,43 @@ using Pulumi;
 namespace Pulumiverse.Exoscale
 {
     /// <summary>
+    /// Manage Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/).
+    /// 
+    /// Corresponding data sources: exoscale_compute_instance, exoscale_compute_instance_list.
+    /// 
+    /// After the creation, you can retrieve the password of an instance with [Exoscale CLI](https://github.com/exoscale/cli): `exo compute instance reveal-password NAME`.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Exoscale = Pulumi.Exoscale;
+    /// using Exoscale = Pulumiverse.Exoscale;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myTemplate = Exoscale.GetTemplate.Invoke(new()
+    ///     {
+    ///         Zone = "ch-gva-2",
+    ///         Name = "Linux Ubuntu 22.04 LTS 64-bit",
+    ///     });
+    /// 
+    ///     var myInstance = new Exoscale.ComputeInstance("myInstance", new()
+    ///     {
+    ///         Zone = "ch-gva-2",
+    ///         TemplateId = myTemplate.Apply(getTemplateResult =&gt; getTemplateResult.Id),
+    ///         Type = "standard.medium",
+    ///         DiskSize = 10,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Please refer to the examples
+    /// directory for complete configuration examples.
+    /// 
     /// ## Import
     /// 
     /// An existing compute instance may be imported by `&lt;ID&gt;@&lt;zone&gt;`
@@ -45,7 +82,7 @@ namespace Pulumiverse.Exoscale
         public Output<string?> DeployTargetId { get; private set; } = null!;
 
         /// <summary>
-        /// The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
+        /// The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
         /// </summary>
         [Output("diskSize")]
         public Output<int> DiskSize { get; private set; } = null!;
@@ -218,7 +255,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? DeployTargetId { get; set; }
 
         /// <summary>
-        /// The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
+        /// The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
         /// </summary>
         [Input("diskSize")]
         public Input<int>? DiskSize { get; set; }
@@ -364,7 +401,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? DeployTargetId { get; set; }
 
         /// <summary>
-        /// The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
+        /// The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
         /// </summary>
         [Input("diskSize")]
         public Input<int>? DiskSize { get; set; }

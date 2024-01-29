@@ -301,7 +301,24 @@ def get_compute_instance(id: Optional[str] = None,
                          zone: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetComputeInstanceResult:
     """
-    Use this data source to access information about an existing resource.
+    Fetch Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/) data.
+
+    Corresponding resource: exoscale_compute_instance.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_exoscale as exoscale
+
+    my_instance = exoscale.get_compute_instance(zone="ch-gva-2",
+        name="my-instance")
+    pulumi.export("myInstanceId", my_instance.id)
+    ```
+
+    Please refer to the examples
+    directory for complete configuration examples.
+
 
     :param str id: The compute instance ID to match (conflicts with `name`).
     :param str name: The instance name to match (conflicts with `id`).
@@ -345,7 +362,24 @@ def get_compute_instance_output(id: Optional[pulumi.Input[Optional[str]]] = None
                                 zone: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetComputeInstanceResult]:
     """
-    Use this data source to access information about an existing resource.
+    Fetch Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/) data.
+
+    Corresponding resource: exoscale_compute_instance.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_exoscale as exoscale
+
+    my_instance = exoscale.get_compute_instance(zone="ch-gva-2",
+        name="my-instance")
+    pulumi.export("myInstanceId", my_instance.id)
+    ```
+
+    Please refer to the examples
+    directory for complete configuration examples.
+
 
     :param str id: The compute instance ID to match (conflicts with `name`).
     :param str name: The instance name to match (conflicts with `id`).

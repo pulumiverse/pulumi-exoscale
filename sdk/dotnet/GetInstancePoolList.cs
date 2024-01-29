@@ -12,9 +12,19 @@ namespace Pulumiverse.Exoscale
 {
     public static class GetInstancePoolList
     {
+        /// <summary>
+        /// List Exoscale [Instance Pools](https://community.exoscale.com/documentation/compute/instance-pools/).
+        /// 
+        /// Corresponding resource: exoscale_instance_pool.
+        /// </summary>
         public static Task<GetInstancePoolListResult> InvokeAsync(GetInstancePoolListArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancePoolListResult>("exoscale:index/getInstancePoolList:getInstancePoolList", args ?? new GetInstancePoolListArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// List Exoscale [Instance Pools](https://community.exoscale.com/documentation/compute/instance-pools/).
+        /// 
+        /// Corresponding resource: exoscale_instance_pool.
+        /// </summary>
         public static Output<GetInstancePoolListResult> Invoke(GetInstancePoolListInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancePoolListResult>("exoscale:index/getInstancePoolList:getInstancePoolList", args ?? new GetInstancePoolListInvokeArgs(), options.WithDefaults());
     }
