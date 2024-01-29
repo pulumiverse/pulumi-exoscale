@@ -10,16 +10,16 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
-    'GetNLBResult',
-    'AwaitableGetNLBResult',
+    'GetNlbResult',
+    'AwaitableGetNlbResult',
     'get_nlb',
     'get_nlb_output',
 ]
 
 @pulumi.output_type
-class GetNLBResult:
+class GetNlbResult:
     """
-    A collection of values returned by getNLB.
+    A collection of values returned by getNlb.
     """
     def __init__(__self__, created_at=None, description=None, id=None, ip_address=None, name=None, state=None, zone=None):
         if created_at and not isinstance(created_at, str):
@@ -101,12 +101,12 @@ class GetNLBResult:
         return pulumi.get(self, "zone")
 
 
-class AwaitableGetNLBResult(GetNLBResult):
+class AwaitableGetNlbResult(GetNlbResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetNLBResult(
+        return GetNlbResult(
             created_at=self.created_at,
             description=self.description,
             id=self.id,
@@ -119,9 +119,26 @@ class AwaitableGetNLBResult(GetNLBResult):
 def get_nlb(id: Optional[str] = None,
             name: Optional[str] = None,
             zone: Optional[str] = None,
-            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNLBResult:
+            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNlbResult:
     """
-    Use this data source to access information about an existing resource.
+    Fetch Exoscale [Network Load Balancers (NLB)](https://community.exoscale.com/documentation/compute/network-load-balancer/) data.
+
+    Corresponding resource: exoscale_nlb.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_exoscale as exoscale
+
+    my_nlb = exoscale.get_nlb(zone="ch-gva-2",
+        name="my-nlb")
+    pulumi.export("myNlbId", my_nlb.id)
+    ```
+
+    Please refer to the examples
+    directory for complete configuration examples.
+
 
     :param str id: The Network Load Balancers (NLB) ID to match (conflicts with `name`).
     :param str name: The NLB name to match (conflicts with `id`).
@@ -132,9 +149,9 @@ def get_nlb(id: Optional[str] = None,
     __args__['name'] = name
     __args__['zone'] = zone
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('exoscale:index/getNLB:getNLB', __args__, opts=opts, typ=GetNLBResult).value
+    __ret__ = pulumi.runtime.invoke('exoscale:index/getNlb:getNlb', __args__, opts=opts, typ=GetNlbResult).value
 
-    return AwaitableGetNLBResult(
+    return AwaitableGetNlbResult(
         created_at=pulumi.get(__ret__, 'created_at'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
@@ -148,9 +165,26 @@ def get_nlb(id: Optional[str] = None,
 def get_nlb_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                    name: Optional[pulumi.Input[Optional[str]]] = None,
                    zone: Optional[pulumi.Input[str]] = None,
-                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNLBResult]:
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNlbResult]:
     """
-    Use this data source to access information about an existing resource.
+    Fetch Exoscale [Network Load Balancers (NLB)](https://community.exoscale.com/documentation/compute/network-load-balancer/) data.
+
+    Corresponding resource: exoscale_nlb.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_exoscale as exoscale
+
+    my_nlb = exoscale.get_nlb(zone="ch-gva-2",
+        name="my-nlb")
+    pulumi.export("myNlbId", my_nlb.id)
+    ```
+
+    Please refer to the examples
+    directory for complete configuration examples.
+
 
     :param str id: The Network Load Balancers (NLB) ID to match (conflicts with `name`).
     :param str name: The NLB name to match (conflicts with `id`).

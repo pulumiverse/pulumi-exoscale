@@ -11,18 +11,18 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['IAMOrgPolicyArgs', 'IAMOrgPolicy']
+__all__ = ['IamOrgPolicyArgs', 'IamOrgPolicy']
 
 @pulumi.input_type
-class IAMOrgPolicyArgs:
+class IamOrgPolicyArgs:
     def __init__(__self__, *,
                  default_service_strategy: pulumi.Input[str],
-                 services: pulumi.Input[Mapping[str, pulumi.Input['IAMOrgPolicyServicesArgs']]],
-                 timeouts: Optional[pulumi.Input['IAMOrgPolicyTimeoutsArgs']] = None):
+                 services: pulumi.Input[Mapping[str, pulumi.Input['IamOrgPolicyServicesArgs']]],
+                 timeouts: Optional[pulumi.Input['IamOrgPolicyTimeoutsArgs']] = None):
         """
-        The set of arguments for constructing a IAMOrgPolicy resource.
+        The set of arguments for constructing a IamOrgPolicy resource.
         :param pulumi.Input[str] default_service_strategy: Default service strategy (`allow` or `deny`).
-        :param pulumi.Input[Mapping[str, pulumi.Input['IAMOrgPolicyServicesArgs']]] services: IAM policy services.
+        :param pulumi.Input[Mapping[str, pulumi.Input['IamOrgPolicyServicesArgs']]] services: IAM policy services.
         """
         pulumi.set(__self__, "default_service_strategy", default_service_strategy)
         pulumi.set(__self__, "services", services)
@@ -43,36 +43,36 @@ class IAMOrgPolicyArgs:
 
     @property
     @pulumi.getter
-    def services(self) -> pulumi.Input[Mapping[str, pulumi.Input['IAMOrgPolicyServicesArgs']]]:
+    def services(self) -> pulumi.Input[Mapping[str, pulumi.Input['IamOrgPolicyServicesArgs']]]:
         """
         IAM policy services.
         """
         return pulumi.get(self, "services")
 
     @services.setter
-    def services(self, value: pulumi.Input[Mapping[str, pulumi.Input['IAMOrgPolicyServicesArgs']]]):
+    def services(self, value: pulumi.Input[Mapping[str, pulumi.Input['IamOrgPolicyServicesArgs']]]):
         pulumi.set(self, "services", value)
 
     @property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['IAMOrgPolicyTimeoutsArgs']]:
+    def timeouts(self) -> Optional[pulumi.Input['IamOrgPolicyTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['IAMOrgPolicyTimeoutsArgs']]):
+    def timeouts(self, value: Optional[pulumi.Input['IamOrgPolicyTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
-class _IAMOrgPolicyState:
+class _IamOrgPolicyState:
     def __init__(__self__, *,
                  default_service_strategy: Optional[pulumi.Input[str]] = None,
-                 services: Optional[pulumi.Input[Mapping[str, pulumi.Input['IAMOrgPolicyServicesArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['IAMOrgPolicyTimeoutsArgs']] = None):
+                 services: Optional[pulumi.Input[Mapping[str, pulumi.Input['IamOrgPolicyServicesArgs']]]] = None,
+                 timeouts: Optional[pulumi.Input['IamOrgPolicyTimeoutsArgs']] = None):
         """
-        Input properties used for looking up and filtering IAMOrgPolicy resources.
+        Input properties used for looking up and filtering IamOrgPolicy resources.
         :param pulumi.Input[str] default_service_strategy: Default service strategy (`allow` or `deny`).
-        :param pulumi.Input[Mapping[str, pulumi.Input['IAMOrgPolicyServicesArgs']]] services: IAM policy services.
+        :param pulumi.Input[Mapping[str, pulumi.Input['IamOrgPolicyServicesArgs']]] services: IAM policy services.
         """
         if default_service_strategy is not None:
             pulumi.set(__self__, "default_service_strategy", default_service_strategy)
@@ -95,57 +95,57 @@ class _IAMOrgPolicyState:
 
     @property
     @pulumi.getter
-    def services(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['IAMOrgPolicyServicesArgs']]]]:
+    def services(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['IamOrgPolicyServicesArgs']]]]:
         """
         IAM policy services.
         """
         return pulumi.get(self, "services")
 
     @services.setter
-    def services(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['IAMOrgPolicyServicesArgs']]]]):
+    def services(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['IamOrgPolicyServicesArgs']]]]):
         pulumi.set(self, "services", value)
 
     @property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['IAMOrgPolicyTimeoutsArgs']]:
+    def timeouts(self) -> Optional[pulumi.Input['IamOrgPolicyTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['IAMOrgPolicyTimeoutsArgs']]):
+    def timeouts(self, value: Optional[pulumi.Input['IamOrgPolicyTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
-class IAMOrgPolicy(pulumi.CustomResource):
+class IamOrgPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_service_strategy: Optional[pulumi.Input[str]] = None,
-                 services: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['IAMOrgPolicyServicesArgs']]]]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['IAMOrgPolicyTimeoutsArgs']]] = None,
+                 services: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['IamOrgPolicyServicesArgs']]]]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['IamOrgPolicyTimeoutsArgs']]] = None,
                  __props__=None):
         """
-        Create a IAMOrgPolicy resource with the given unique name, props, and options.
+        Create a IamOrgPolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_service_strategy: Default service strategy (`allow` or `deny`).
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['IAMOrgPolicyServicesArgs']]]] services: IAM policy services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['IamOrgPolicyServicesArgs']]]] services: IAM policy services.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: IAMOrgPolicyArgs,
+                 args: IamOrgPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a IAMOrgPolicy resource with the given unique name, props, and options.
+        Create a IamOrgPolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
-        :param IAMOrgPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param IamOrgPolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(IAMOrgPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(IamOrgPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -155,8 +155,8 @@ class IAMOrgPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_service_strategy: Optional[pulumi.Input[str]] = None,
-                 services: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['IAMOrgPolicyServicesArgs']]]]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['IAMOrgPolicyTimeoutsArgs']]] = None,
+                 services: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['IamOrgPolicyServicesArgs']]]]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['IamOrgPolicyTimeoutsArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -164,7 +164,7 @@ class IAMOrgPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = IAMOrgPolicyArgs.__new__(IAMOrgPolicyArgs)
+            __props__ = IamOrgPolicyArgs.__new__(IamOrgPolicyArgs)
 
             if default_service_strategy is None and not opts.urn:
                 raise TypeError("Missing required property 'default_service_strategy'")
@@ -173,8 +173,8 @@ class IAMOrgPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'services'")
             __props__.__dict__["services"] = services
             __props__.__dict__["timeouts"] = timeouts
-        super(IAMOrgPolicy, __self__).__init__(
-            'exoscale:index/iAMOrgPolicy:IAMOrgPolicy',
+        super(IamOrgPolicy, __self__).__init__(
+            'exoscale:index/iamOrgPolicy:IamOrgPolicy',
             resource_name,
             __props__,
             opts)
@@ -184,26 +184,26 @@ class IAMOrgPolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             default_service_strategy: Optional[pulumi.Input[str]] = None,
-            services: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['IAMOrgPolicyServicesArgs']]]]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['IAMOrgPolicyTimeoutsArgs']]] = None) -> 'IAMOrgPolicy':
+            services: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['IamOrgPolicyServicesArgs']]]]] = None,
+            timeouts: Optional[pulumi.Input[pulumi.InputType['IamOrgPolicyTimeoutsArgs']]] = None) -> 'IamOrgPolicy':
         """
-        Get an existing IAMOrgPolicy resource's state with the given name, id, and optional extra
+        Get an existing IamOrgPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_service_strategy: Default service strategy (`allow` or `deny`).
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['IAMOrgPolicyServicesArgs']]]] services: IAM policy services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['IamOrgPolicyServicesArgs']]]] services: IAM policy services.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _IAMOrgPolicyState.__new__(_IAMOrgPolicyState)
+        __props__ = _IamOrgPolicyState.__new__(_IamOrgPolicyState)
 
         __props__.__dict__["default_service_strategy"] = default_service_strategy
         __props__.__dict__["services"] = services
         __props__.__dict__["timeouts"] = timeouts
-        return IAMOrgPolicy(resource_name, opts=opts, __props__=__props__)
+        return IamOrgPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="defaultServiceStrategy")
@@ -215,7 +215,7 @@ class IAMOrgPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def services(self) -> pulumi.Output[Mapping[str, 'outputs.IAMOrgPolicyServices']]:
+    def services(self) -> pulumi.Output[Mapping[str, 'outputs.IamOrgPolicyServices']]:
         """
         IAM policy services.
         """
@@ -223,6 +223,6 @@ class IAMOrgPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timeouts(self) -> pulumi.Output[Optional['outputs.IAMOrgPolicyTimeouts']]:
+    def timeouts(self) -> pulumi.Output[Optional['outputs.IamOrgPolicyTimeouts']]:
         return pulumi.get(self, "timeouts")
 

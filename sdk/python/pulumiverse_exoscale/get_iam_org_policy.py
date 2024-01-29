@@ -12,16 +12,16 @@ from . import outputs
 from ._inputs import *
 
 __all__ = [
-    'GetIAMOrgPolicyResult',
-    'AwaitableGetIAMOrgPolicyResult',
+    'GetIamOrgPolicyResult',
+    'AwaitableGetIamOrgPolicyResult',
     'get_iam_org_policy',
     'get_iam_org_policy_output',
 ]
 
 @pulumi.output_type
-class GetIAMOrgPolicyResult:
+class GetIamOrgPolicyResult:
     """
-    A collection of values returned by getIAMOrgPolicy.
+    A collection of values returned by getIamOrgPolicy.
     """
     def __init__(__self__, default_service_strategy=None, id=None, services=None, timeouts=None):
         if default_service_strategy and not isinstance(default_service_strategy, str):
@@ -55,7 +55,7 @@ class GetIAMOrgPolicyResult:
 
     @property
     @pulumi.getter
-    def services(self) -> Mapping[str, 'outputs.GetIAMOrgPolicyServicesResult']:
+    def services(self) -> Mapping[str, 'outputs.GetIamOrgPolicyServicesResult']:
         """
         IAM policy services.
         """
@@ -63,24 +63,24 @@ class GetIAMOrgPolicyResult:
 
     @property
     @pulumi.getter
-    def timeouts(self) -> Optional['outputs.GetIAMOrgPolicyTimeoutsResult']:
+    def timeouts(self) -> Optional['outputs.GetIamOrgPolicyTimeoutsResult']:
         return pulumi.get(self, "timeouts")
 
 
-class AwaitableGetIAMOrgPolicyResult(GetIAMOrgPolicyResult):
+class AwaitableGetIamOrgPolicyResult(GetIamOrgPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetIAMOrgPolicyResult(
+        return GetIamOrgPolicyResult(
             default_service_strategy=self.default_service_strategy,
             id=self.id,
             services=self.services,
             timeouts=self.timeouts)
 
 
-def get_iam_org_policy(timeouts: Optional[pulumi.InputType['GetIAMOrgPolicyTimeoutsArgs']] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIAMOrgPolicyResult:
+def get_iam_org_policy(timeouts: Optional[pulumi.InputType['GetIamOrgPolicyTimeoutsArgs']] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIamOrgPolicyResult:
     """
     Fetch Exoscale [IAM](https://community.exoscale.com/documentation/iam/) Organization Policy.
 
@@ -89,9 +89,9 @@ def get_iam_org_policy(timeouts: Optional[pulumi.InputType['GetIAMOrgPolicyTimeo
     __args__ = dict()
     __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('exoscale:index/getIAMOrgPolicy:getIAMOrgPolicy', __args__, opts=opts, typ=GetIAMOrgPolicyResult).value
+    __ret__ = pulumi.runtime.invoke('exoscale:index/getIamOrgPolicy:getIamOrgPolicy', __args__, opts=opts, typ=GetIamOrgPolicyResult).value
 
-    return AwaitableGetIAMOrgPolicyResult(
+    return AwaitableGetIamOrgPolicyResult(
         default_service_strategy=pulumi.get(__ret__, 'default_service_strategy'),
         id=pulumi.get(__ret__, 'id'),
         services=pulumi.get(__ret__, 'services'),
@@ -99,8 +99,8 @@ def get_iam_org_policy(timeouts: Optional[pulumi.InputType['GetIAMOrgPolicyTimeo
 
 
 @_utilities.lift_output_func(get_iam_org_policy)
-def get_iam_org_policy_output(timeouts: Optional[pulumi.Input[Optional[pulumi.InputType['GetIAMOrgPolicyTimeoutsArgs']]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIAMOrgPolicyResult]:
+def get_iam_org_policy_output(timeouts: Optional[pulumi.Input[Optional[pulumi.InputType['GetIamOrgPolicyTimeoutsArgs']]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIamOrgPolicyResult]:
     """
     Fetch Exoscale [IAM](https://community.exoscale.com/documentation/iam/) Organization Policy.
 

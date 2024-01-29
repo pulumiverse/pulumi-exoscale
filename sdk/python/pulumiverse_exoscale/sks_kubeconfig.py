@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['SKSKubeconfigArgs', 'SKSKubeconfig']
+__all__ = ['SksKubeconfigArgs', 'SksKubeconfig']
 
 @pulumi.input_type
-class SKSKubeconfigArgs:
+class SksKubeconfigArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
                  groups: pulumi.Input[Sequence[pulumi.Input[str]]],
@@ -21,7 +21,7 @@ class SKSKubeconfigArgs:
                  early_renewal_seconds: Optional[pulumi.Input[int]] = None,
                  ttl_seconds: Optional[pulumi.Input[float]] = None):
         """
-        The set of arguments for constructing a SKSKubeconfig resource.
+        The set of arguments for constructing a SksKubeconfig resource.
         :param pulumi.Input[str] cluster_id: ❗ The parent exoscale*sks*cluster ID.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: ❗ Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
         :param pulumi.Input[str] user: ❗ User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.
@@ -120,7 +120,7 @@ class SKSKubeconfigArgs:
 
 
 @pulumi.input_type
-class _SKSKubeconfigState:
+class _SksKubeconfigState:
     def __init__(__self__, *,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  early_renewal_seconds: Optional[pulumi.Input[int]] = None,
@@ -131,7 +131,7 @@ class _SKSKubeconfigState:
                  user: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering SKSKubeconfig resources.
+        Input properties used for looking up and filtering SksKubeconfig resources.
         :param pulumi.Input[str] cluster_id: ❗ The parent exoscale*sks*cluster ID.
         :param pulumi.Input[int] early_renewal_seconds: If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
                certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
@@ -259,7 +259,7 @@ class _SKSKubeconfigState:
         pulumi.set(self, "zone", value)
 
 
-class SKSKubeconfig(pulumi.CustomResource):
+class SksKubeconfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -272,7 +272,7 @@ class SKSKubeconfig(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a SKSKubeconfig resource with the given unique name, props, and options.
+        Create a SksKubeconfig resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: ❗ The parent exoscale*sks*cluster ID.
@@ -290,17 +290,17 @@ class SKSKubeconfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SKSKubeconfigArgs,
+                 args: SksKubeconfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a SKSKubeconfig resource with the given unique name, props, and options.
+        Create a SksKubeconfig resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
-        :param SKSKubeconfigArgs args: The arguments to use to populate this resource's properties.
+        :param SksKubeconfigArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SKSKubeconfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SksKubeconfigArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -322,7 +322,7 @@ class SKSKubeconfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SKSKubeconfigArgs.__new__(SKSKubeconfigArgs)
+            __props__ = SksKubeconfigArgs.__new__(SksKubeconfigArgs)
 
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
@@ -342,8 +342,8 @@ class SKSKubeconfig(pulumi.CustomResource):
             __props__.__dict__["ready_for_renewal"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["kubeconfig"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
-        super(SKSKubeconfig, __self__).__init__(
-            'exoscale:index/sKSKubeconfig:SKSKubeconfig',
+        super(SksKubeconfig, __self__).__init__(
+            'exoscale:index/sksKubeconfig:SksKubeconfig',
             resource_name,
             __props__,
             opts)
@@ -359,9 +359,9 @@ class SKSKubeconfig(pulumi.CustomResource):
             ready_for_renewal: Optional[pulumi.Input[bool]] = None,
             ttl_seconds: Optional[pulumi.Input[float]] = None,
             user: Optional[pulumi.Input[str]] = None,
-            zone: Optional[pulumi.Input[str]] = None) -> 'SKSKubeconfig':
+            zone: Optional[pulumi.Input[str]] = None) -> 'SksKubeconfig':
         """
-        Get an existing SKSKubeconfig resource's state with the given name, id, and optional extra
+        Get an existing SksKubeconfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -381,7 +381,7 @@ class SKSKubeconfig(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _SKSKubeconfigState.__new__(_SKSKubeconfigState)
+        __props__ = _SksKubeconfigState.__new__(_SksKubeconfigState)
 
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["early_renewal_seconds"] = early_renewal_seconds
@@ -391,7 +391,7 @@ class SKSKubeconfig(pulumi.CustomResource):
         __props__.__dict__["ttl_seconds"] = ttl_seconds
         __props__.__dict__["user"] = user
         __props__.__dict__["zone"] = zone
-        return SKSKubeconfig(resource_name, opts=opts, __props__=__props__)
+        return SksKubeconfig(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="clusterId")

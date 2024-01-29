@@ -6,6 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * List Exoscale [Instance Pools](https://community.exoscale.com/documentation/compute/instance-pools/).
+ *
+ * Corresponding resource: exoscale_instance_pool.
+ */
 export function getInstancePoolList(args: GetInstancePoolListArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancePoolListResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -38,6 +43,11 @@ export interface GetInstancePoolListResult {
      */
     readonly zone: string;
 }
+/**
+ * List Exoscale [Instance Pools](https://community.exoscale.com/documentation/compute/instance-pools/).
+ *
+ * Corresponding resource: exoscale_instance_pool.
+ */
 export function getInstancePoolListOutput(args: GetInstancePoolListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancePoolListResult> {
     return pulumi.output(args).apply((a: any) => getInstancePoolList(a, opts))
 }

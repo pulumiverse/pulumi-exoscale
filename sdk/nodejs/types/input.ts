@@ -254,7 +254,7 @@ export interface DatabaseTimeouts {
     update?: pulumi.Input<string>;
 }
 
-export interface ElasticIPHealthcheck {
+export interface ElasticIpHealthcheck {
     /**
      * The healthcheck interval (seconds; must be between `5` and `300`; default: `10`).
      */
@@ -293,14 +293,14 @@ export interface ElasticIPHealthcheck {
     uri?: pulumi.Input<string>;
 }
 
-export interface GetDatabaseURITimeouts {
+export interface GetDatabaseUriTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
     read?: string;
 }
 
-export interface GetDatabaseURITimeoutsArgs {
+export interface GetDatabaseUriTimeoutsArgs {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
@@ -345,63 +345,63 @@ export interface GetDomainRecordFilterArgs {
     recordType?: pulumi.Input<string>;
 }
 
-export interface GetIAMAPIKeyTimeouts {
+export interface GetIamApiKeyTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
     read?: string;
 }
 
-export interface GetIAMAPIKeyTimeoutsArgs {
+export interface GetIamApiKeyTimeoutsArgs {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
     read?: pulumi.Input<string>;
 }
 
-export interface GetIAMOrgPolicyTimeouts {
+export interface GetIamOrgPolicyTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
     read?: string;
 }
 
-export interface GetIAMOrgPolicyTimeoutsArgs {
+export interface GetIamOrgPolicyTimeoutsArgs {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
     read?: pulumi.Input<string>;
 }
 
-export interface GetIAMRoleTimeouts {
+export interface GetIamRoleTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
     read?: string;
 }
 
-export interface GetIAMRoleTimeoutsArgs {
+export interface GetIamRoleTimeoutsArgs {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
     read?: pulumi.Input<string>;
 }
 
-export interface GetNLBServiceListTimeouts {
+export interface GetNlbServiceListTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
     read?: string;
 }
 
-export interface GetNLBServiceListTimeoutsArgs {
+export interface GetNlbServiceListTimeoutsArgs {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
     read?: pulumi.Input<string>;
 }
 
-export interface GetSKSClusterOidc {
+export interface GetSksClusterOidc {
     /**
      * The OpenID client ID.
      */
@@ -432,7 +432,7 @@ export interface GetSKSClusterOidc {
     usernamePrefix?: string;
 }
 
-export interface GetSKSClusterOidcArgs {
+export interface GetSksClusterOidcArgs {
     /**
      * The OpenID client ID.
      */
@@ -463,25 +463,25 @@ export interface GetSKSClusterOidcArgs {
     usernamePrefix?: pulumi.Input<string>;
 }
 
-export interface IAMAPIKeyTimeouts {
+export interface IamApiKeyTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
     read?: pulumi.Input<string>;
 }
 
-export interface IAMOrgPolicyServices {
+export interface IamOrgPolicyServices {
     /**
      * List of IAM service rules (if type is `rules`).
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.IAMOrgPolicyServicesRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.IamOrgPolicyServicesRule>[]>;
     /**
      * Service type (`rules`, `allow`, or `deny`).
      */
     type?: pulumi.Input<string>;
 }
 
-export interface IAMOrgPolicyServicesRule {
+export interface IamOrgPolicyServicesRule {
     /**
      * IAM policy rule action (`allow` or `deny`).
      */
@@ -496,14 +496,14 @@ export interface IAMOrgPolicyServicesRule {
     resources?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface IAMOrgPolicyTimeouts {
+export interface IamOrgPolicyTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
     read?: pulumi.Input<string>;
 }
 
-export interface IAMRolePolicy {
+export interface IamRolePolicy {
     /**
      * Default service strategy (`allow` or `deny`).
      */
@@ -511,21 +511,21 @@ export interface IAMRolePolicy {
     /**
      * IAM policy services.
      */
-    services?: pulumi.Input<{[key: string]: pulumi.Input<inputs.IAMRolePolicyServices>}>;
+    services?: pulumi.Input<{[key: string]: pulumi.Input<inputs.IamRolePolicyServices>}>;
 }
 
-export interface IAMRolePolicyServices {
+export interface IamRolePolicyServices {
     /**
      * List of IAM service rules (if type is `rules`).
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.IAMRolePolicyServicesRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.IamRolePolicyServicesRule>[]>;
     /**
      * Service type (`rules`, `allow`, or `deny`).
      */
     type?: pulumi.Input<string>;
 }
 
-export interface IAMRolePolicyServicesRule {
+export interface IamRolePolicyServicesRule {
     /**
      * IAM policy rule action (`allow` or `deny`).
      */
@@ -540,7 +540,7 @@ export interface IAMRolePolicyServicesRule {
     resources?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface IAMRoleTimeouts {
+export interface IamRoleTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
@@ -566,7 +566,7 @@ export interface InstancePoolInstance {
     publicIpAddress?: pulumi.Input<string>;
 }
 
-export interface NLBServiceHealthcheck {
+export interface NlbServiceHealthcheck {
     /**
      * The healthcheck interval in seconds (default: `10`).
      */
@@ -597,7 +597,7 @@ export interface NLBServiceHealthcheck {
     uri?: pulumi.Input<string>;
 }
 
-export interface SKSClusterOidc {
+export interface SksClusterOidc {
     /**
      * The OpenID client ID.
      */

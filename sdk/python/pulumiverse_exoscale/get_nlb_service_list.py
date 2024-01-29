@@ -12,16 +12,16 @@ from . import outputs
 from ._inputs import *
 
 __all__ = [
-    'GetNLBServiceListResult',
-    'AwaitableGetNLBServiceListResult',
+    'GetNlbServiceListResult',
+    'AwaitableGetNlbServiceListResult',
     'get_nlb_service_list',
     'get_nlb_service_list_output',
 ]
 
 @pulumi.output_type
-class GetNLBServiceListResult:
+class GetNlbServiceListResult:
     """
-    A collection of values returned by getNLBServiceList.
+    A collection of values returned by getNlbServiceList.
     """
     def __init__(__self__, id=None, nlb_id=None, nlb_name=None, services=None, timeouts=None, zone=None):
         if id and not isinstance(id, str):
@@ -69,7 +69,7 @@ class GetNLBServiceListResult:
 
     @property
     @pulumi.getter
-    def services(self) -> Sequence['outputs.GetNLBServiceListServiceResult']:
+    def services(self) -> Sequence['outputs.GetNlbServiceListServiceResult']:
         """
         The list of exoscale*nlb*service.
         """
@@ -77,7 +77,7 @@ class GetNLBServiceListResult:
 
     @property
     @pulumi.getter
-    def timeouts(self) -> Optional['outputs.GetNLBServiceListTimeoutsResult']:
+    def timeouts(self) -> Optional['outputs.GetNlbServiceListTimeoutsResult']:
         return pulumi.get(self, "timeouts")
 
     @property
@@ -89,12 +89,12 @@ class GetNLBServiceListResult:
         return pulumi.get(self, "zone")
 
 
-class AwaitableGetNLBServiceListResult(GetNLBServiceListResult):
+class AwaitableGetNlbServiceListResult(GetNlbServiceListResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetNLBServiceListResult(
+        return GetNlbServiceListResult(
             id=self.id,
             nlb_id=self.nlb_id,
             nlb_name=self.nlb_name,
@@ -105,11 +105,14 @@ class AwaitableGetNLBServiceListResult(GetNLBServiceListResult):
 
 def get_nlb_service_list(nlb_id: Optional[str] = None,
                          nlb_name: Optional[str] = None,
-                         timeouts: Optional[pulumi.InputType['GetNLBServiceListTimeoutsArgs']] = None,
+                         timeouts: Optional[pulumi.InputType['GetNlbServiceListTimeoutsArgs']] = None,
                          zone: Optional[str] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNLBServiceListResult:
+                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNlbServiceListResult:
     """
-    Use this data source to access information about an existing resource.
+    Fetch Exoscale [Network Load Balancers (NLB)](https://community.exoscale.com/documentation/compute/network-load-balancer/) Services.
+
+    Corresponding resource: exoscale_nlb.
+
 
     :param str nlb_id: The NLB ID to match (conflicts with `name`).
     :param str nlb_name: The NLB name to match (conflicts with `id`).
@@ -121,9 +124,9 @@ def get_nlb_service_list(nlb_id: Optional[str] = None,
     __args__['timeouts'] = timeouts
     __args__['zone'] = zone
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('exoscale:index/getNLBServiceList:getNLBServiceList', __args__, opts=opts, typ=GetNLBServiceListResult).value
+    __ret__ = pulumi.runtime.invoke('exoscale:index/getNlbServiceList:getNlbServiceList', __args__, opts=opts, typ=GetNlbServiceListResult).value
 
-    return AwaitableGetNLBServiceListResult(
+    return AwaitableGetNlbServiceListResult(
         id=pulumi.get(__ret__, 'id'),
         nlb_id=pulumi.get(__ret__, 'nlb_id'),
         nlb_name=pulumi.get(__ret__, 'nlb_name'),
@@ -135,11 +138,14 @@ def get_nlb_service_list(nlb_id: Optional[str] = None,
 @_utilities.lift_output_func(get_nlb_service_list)
 def get_nlb_service_list_output(nlb_id: Optional[pulumi.Input[Optional[str]]] = None,
                                 nlb_name: Optional[pulumi.Input[Optional[str]]] = None,
-                                timeouts: Optional[pulumi.Input[Optional[pulumi.InputType['GetNLBServiceListTimeoutsArgs']]]] = None,
+                                timeouts: Optional[pulumi.Input[Optional[pulumi.InputType['GetNlbServiceListTimeoutsArgs']]]] = None,
                                 zone: Optional[pulumi.Input[str]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNLBServiceListResult]:
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNlbServiceListResult]:
     """
-    Use this data source to access information about an existing resource.
+    Fetch Exoscale [Network Load Balancers (NLB)](https://community.exoscale.com/documentation/compute/network-load-balancer/) Services.
+
+    Corresponding resource: exoscale_nlb.
+
 
     :param str nlb_id: The NLB ID to match (conflicts with `name`).
     :param str nlb_name: The NLB name to match (conflicts with `id`).

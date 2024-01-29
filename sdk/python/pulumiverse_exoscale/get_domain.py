@@ -59,7 +59,23 @@ class AwaitableGetDomainResult(GetDomainResult):
 def get_domain(name: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainResult:
     """
-    Use this data source to access information about an existing resource.
+    Fetch Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domains data.
+
+    Corresponding resource: exoscale_domain.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_exoscale as exoscale
+
+    my_domain = exoscale.get_domain(name="my.domain")
+    pulumi.export("myDomainId", my_domain.id)
+    ```
+
+    Please refer to the examples
+    directory for complete configuration examples.
+
 
     :param str name: The DNS domain name to match.
     """
@@ -77,7 +93,23 @@ def get_domain(name: Optional[str] = None,
 def get_domain_output(name: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainResult]:
     """
-    Use this data source to access information about an existing resource.
+    Fetch Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domains data.
+
+    Corresponding resource: exoscale_domain.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_exoscale as exoscale
+
+    my_domain = exoscale.get_domain(name="my.domain")
+    pulumi.export("myDomainId", my_domain.id)
+    ```
+
+    Please refer to the examples
+    directory for complete configuration examples.
+
 
     :param str name: The DNS domain name to match.
     """

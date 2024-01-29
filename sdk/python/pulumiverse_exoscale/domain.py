@@ -155,6 +155,24 @@ class Domain(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Manage Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domains.
+
+        Corresponding data source: exoscale_domain.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumiverse_exoscale as exoscale
+
+        my_domain = exoscale.Domain("myDomain")
+        ```
+
+        Next step is to attach exoscale_domain_record(s) to the domain.
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         ## Import
 
         An existing DNS domain may be imported by `ID`
@@ -178,6 +196,24 @@ class Domain(pulumi.CustomResource):
                  args: Optional[DomainArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manage Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domains.
+
+        Corresponding data source: exoscale_domain.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumiverse_exoscale as exoscale
+
+        my_domain = exoscale.Domain("myDomain")
+        ```
+
+        Next step is to attach exoscale_domain_record(s) to the domain.
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         ## Import
 
         An existing DNS domain may be imported by `ID`

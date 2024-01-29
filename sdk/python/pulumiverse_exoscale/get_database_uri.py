@@ -12,16 +12,16 @@ from . import outputs
 from ._inputs import *
 
 __all__ = [
-    'GetDatabaseURIResult',
-    'AwaitableGetDatabaseURIResult',
+    'GetDatabaseUriResult',
+    'AwaitableGetDatabaseUriResult',
     'get_database_uri',
     'get_database_uri_output',
 ]
 
 @pulumi.output_type
-class GetDatabaseURIResult:
+class GetDatabaseUriResult:
     """
-    A collection of values returned by getDatabaseURI.
+    A collection of values returned by getDatabaseUri.
     """
     def __init__(__self__, id=None, name=None, timeouts=None, type=None, uri=None, zone=None):
         if id and not isinstance(id, str):
@@ -61,7 +61,7 @@ class GetDatabaseURIResult:
 
     @property
     @pulumi.getter
-    def timeouts(self) -> Optional['outputs.GetDatabaseURITimeoutsResult']:
+    def timeouts(self) -> Optional['outputs.GetDatabaseUriTimeoutsResult']:
         return pulumi.get(self, "timeouts")
 
     @property
@@ -89,12 +89,12 @@ class GetDatabaseURIResult:
         return pulumi.get(self, "zone")
 
 
-class AwaitableGetDatabaseURIResult(GetDatabaseURIResult):
+class AwaitableGetDatabaseUriResult(GetDatabaseUriResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetDatabaseURIResult(
+        return GetDatabaseUriResult(
             id=self.id,
             name=self.name,
             timeouts=self.timeouts,
@@ -104,10 +104,10 @@ class AwaitableGetDatabaseURIResult(GetDatabaseURIResult):
 
 
 def get_database_uri(name: Optional[str] = None,
-                     timeouts: Optional[pulumi.InputType['GetDatabaseURITimeoutsArgs']] = None,
+                     timeouts: Optional[pulumi.InputType['GetDatabaseUriTimeoutsArgs']] = None,
                      type: Optional[str] = None,
                      zone: Optional[str] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseURIResult:
+                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseUriResult:
     """
     Use this data source to access information about an existing resource.
 
@@ -121,9 +121,9 @@ def get_database_uri(name: Optional[str] = None,
     __args__['type'] = type
     __args__['zone'] = zone
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('exoscale:index/getDatabaseURI:getDatabaseURI', __args__, opts=opts, typ=GetDatabaseURIResult).value
+    __ret__ = pulumi.runtime.invoke('exoscale:index/getDatabaseUri:getDatabaseUri', __args__, opts=opts, typ=GetDatabaseUriResult).value
 
-    return AwaitableGetDatabaseURIResult(
+    return AwaitableGetDatabaseUriResult(
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         timeouts=pulumi.get(__ret__, 'timeouts'),
@@ -134,10 +134,10 @@ def get_database_uri(name: Optional[str] = None,
 
 @_utilities.lift_output_func(get_database_uri)
 def get_database_uri_output(name: Optional[pulumi.Input[str]] = None,
-                            timeouts: Optional[pulumi.Input[Optional[pulumi.InputType['GetDatabaseURITimeoutsArgs']]]] = None,
+                            timeouts: Optional[pulumi.Input[Optional[pulumi.InputType['GetDatabaseUriTimeoutsArgs']]]] = None,
                             type: Optional[pulumi.Input[str]] = None,
                             zone: Optional[pulumi.Input[str]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseURIResult]:
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseUriResult]:
     """
     Use this data source to access information about an existing resource.
 

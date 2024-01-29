@@ -279,7 +279,24 @@ def get_instance_pool(id: Optional[str] = None,
                       zone: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancePoolResult:
     """
-    Use this data source to access information about an existing resource.
+    Fetch Exoscale [Instance Pools](https://community.exoscale.com/documentation/compute/instance-pools/) data.
+
+    Corresponding resource: exoscale_instance_pool.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_exoscale as exoscale
+
+    my_instance_pool = exoscale.get_instance_pool(zone="ch-gva-2",
+        name="my-instance-pool")
+    pulumi.export("myInstancePoolId", my_instance_pool.id)
+    ```
+
+    Please refer to the examples
+    directory for complete configuration examples.
+
 
     :param Mapping[str, str] labels: A map of key/value labels.
     :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
@@ -322,7 +339,24 @@ def get_instance_pool_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                              zone: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancePoolResult]:
     """
-    Use this data source to access information about an existing resource.
+    Fetch Exoscale [Instance Pools](https://community.exoscale.com/documentation/compute/instance-pools/) data.
+
+    Corresponding resource: exoscale_instance_pool.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_exoscale as exoscale
+
+    my_instance_pool = exoscale.get_instance_pool(zone="ch-gva-2",
+        name="my-instance-pool")
+    pulumi.export("myInstancePoolId", my_instance_pool.id)
+    ```
+
+    Please refer to the examples
+    directory for complete configuration examples.
+
 
     :param Mapping[str, str] labels: A map of key/value labels.
     :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.

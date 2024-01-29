@@ -5,6 +5,22 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Manage Exoscale [Anti-Affinity Groups](https://community.exoscale.com/documentation/compute/anti-affinity-groups/).
+ *
+ * Corresponding data source: exoscale_anti_affinity_group.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumiverse/exoscale";
+ *
+ * const myAntiAffinityGroup = new exoscale.AntiAffinityGroup("myAntiAffinityGroup", {description: "Prevent compute instances to run on the same host"});
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ *
  * ## Import
  *
  * An existing anti-affinity group may be imported by `<ID>`

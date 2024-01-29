@@ -5,6 +5,28 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Manage Exoscale [Security Group](https://community.exoscale.com/documentation/compute/security-groups/) Rules.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumiverse/exoscale";
+ *
+ * const mySecurityGroup = new exoscale.SecurityGroup("mySecurityGroup", {});
+ * const mySecurityGroupRule = new exoscale.SecurityGroupRule("mySecurityGroupRule", {
+ *     securityGroupId: mySecurityGroup.id,
+ *     type: "INGRESS",
+ *     protocol: "TCP",
+ *     cidr: "0.0.0.0/0",
+ *     startPort: 80,
+ *     endPort: 80,
+ * });
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ *
  * ## Import
  *
  * An existing security group rule may be imported by `<security-group-ID>/<security-group-rule-ID>`

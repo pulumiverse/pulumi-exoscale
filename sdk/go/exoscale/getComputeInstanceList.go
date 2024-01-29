@@ -11,6 +11,9 @@ import (
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
+// List Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/).
+//
+// Corresponding resource: exoscale_compute_instance.
 func GetComputeInstanceList(ctx *pulumi.Context, args *GetComputeInstanceListArgs, opts ...pulumi.InvokeOption) (*GetComputeInstanceListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetComputeInstanceListResult

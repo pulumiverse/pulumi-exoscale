@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Manage Exoscale [Database Services (DBaaS)](https://community.exoscale.com/documentation/dbaas/).
+ *
  * ## Import
  *
  * An existing database service may be imported by `<name>@<zone>`

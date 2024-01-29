@@ -12,6 +12,8 @@ import (
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
+// Manage Exoscale [Database Services (DBaaS)](https://community.exoscale.com/documentation/dbaas/).
+//
 // ## Import
 //
 // An existing database service may be imported by `<name>@<zone>`

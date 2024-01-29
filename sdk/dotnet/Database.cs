@@ -11,6 +11,8 @@ using Pulumi;
 namespace Pulumiverse.Exoscale
 {
     /// <summary>
+    /// Manage Exoscale [Database Services (DBaaS)](https://community.exoscale.com/documentation/dbaas/).
+    /// 
     /// ## Import
     /// 
     /// An existing database service may be imported by `&lt;name&gt;@&lt;zone&gt;`

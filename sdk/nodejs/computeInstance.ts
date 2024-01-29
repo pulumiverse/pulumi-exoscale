@@ -7,6 +7,34 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Manage Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/).
+ *
+ * Corresponding data sources: exoscale_compute_instance, exoscale_compute_instance_list.
+ *
+ * After the creation, you can retrieve the password of an instance with [Exoscale CLI](https://github.com/exoscale/cli): `exo compute instance reveal-password NAME`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumi/exoscale";
+ * import * as exoscale from "@pulumiverse/exoscale";
+ *
+ * const myTemplate = exoscale.getTemplate({
+ *     zone: "ch-gva-2",
+ *     name: "Linux Ubuntu 22.04 LTS 64-bit",
+ * });
+ * const myInstance = new exoscale.ComputeInstance("myInstance", {
+ *     zone: "ch-gva-2",
+ *     templateId: myTemplate.then(myTemplate => myTemplate.id),
+ *     type: "standard.medium",
+ *     diskSize: 10,
+ * });
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ *
  * ## Import
  *
  * An existing compute instance may be imported by `<ID>@<zone>`
@@ -60,7 +88,7 @@ export class ComputeInstance extends pulumi.CustomResource {
      */
     public readonly deployTargetId!: pulumi.Output<string | undefined>;
     /**
-     * The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
+     * The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
      */
     public readonly diskSize!: pulumi.Output<number>;
     /**
@@ -223,7 +251,7 @@ export interface ComputeInstanceState {
      */
     deployTargetId?: pulumi.Input<string>;
     /**
-     * The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
+     * The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
      */
     diskSize?: pulumi.Input<number>;
     /**
@@ -311,7 +339,7 @@ export interface ComputeInstanceArgs {
      */
     deployTargetId?: pulumi.Input<string>;
     /**
-     * The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
+     * The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
      */
     diskSize?: pulumi.Input<number>;
     /**

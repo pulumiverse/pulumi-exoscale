@@ -11,6 +11,42 @@ using Pulumi;
 namespace Pulumiverse.Exoscale
 {
     /// <summary>
+    /// Manage Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domain Records.
+    /// 
+    /// Corresponding data source: exoscale_domain_record.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Exoscale = Pulumiverse.Exoscale;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myDomain = new Exoscale.Domain("myDomain");
+    /// 
+    ///     var myHost = new Exoscale.DomainRecord("myHost", new()
+    ///     {
+    ///         Domain = myDomain.Id,
+    ///         RecordType = "A",
+    ///         Content = "1.2.3.4",
+    ///     });
+    /// 
+    ///     var myHostAlias = new Exoscale.DomainRecord("myHostAlias", new()
+    ///     {
+    ///         Domain = myDomain.Id,
+    ///         RecordType = "CNAME",
+    ///         Content = myHost.Hostname,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Please refer to the examples
+    /// directory for complete configuration examples.
+    /// 
     /// ## Import
     /// 
     /// An existing DNS domain record may be imported by `&lt;ID&gt;`
@@ -31,6 +67,12 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         [Output("content")]
         public Output<string> Content { get; private set; } = null!;
+
+        /// <summary>
+        /// The normalized value of the record
+        /// </summary>
+        [Output("contentNormalized")]
+        public Output<string> ContentNormalized { get; private set; } = null!;
 
         /// <summary>
         /// ❗ The parent exoscale.Domain to attach the record to.
@@ -164,6 +206,12 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
+
+        /// <summary>
+        /// The normalized value of the record
+        /// </summary>
+        [Input("contentNormalized")]
+        public Input<string>? ContentNormalized { get; set; }
 
         /// <summary>
         /// ❗ The parent exoscale.Domain to attach the record to.

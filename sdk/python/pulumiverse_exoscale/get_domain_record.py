@@ -86,7 +86,10 @@ def get_domain_record(domain: Optional[str] = None,
                       filter: Optional[pulumi.InputType['GetDomainRecordFilterArgs']] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainRecordResult:
     """
-    Use this data source to access information about an existing resource.
+    Fetch Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domain Records data.
+
+    Corresponding resource: exoscale_domain_record.
+
 
     :param pulumi.InputType['GetDomainRecordFilterArgs'] filter: Filter to apply when looking up domain records.
     """
@@ -108,7 +111,10 @@ def get_domain_record_output(domain: Optional[pulumi.Input[str]] = None,
                              filter: Optional[pulumi.Input[pulumi.InputType['GetDomainRecordFilterArgs']]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainRecordResult]:
     """
-    Use this data source to access information about an existing resource.
+    Fetch Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domain Records data.
+
+    Corresponding resource: exoscale_domain_record.
+
 
     :param pulumi.InputType['GetDomainRecordFilterArgs'] filter: Filter to apply when looking up domain records.
     """

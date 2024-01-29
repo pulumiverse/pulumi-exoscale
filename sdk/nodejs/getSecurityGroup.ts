@@ -4,6 +4,26 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Fetch Exoscale [Security Groups](https://community.exoscale.com/documentation/compute/security-groups/) data.
+ *
+ * Corresponding resource: exoscale_security_group.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumi/exoscale";
+ *
+ * const mySecurityGroup = exoscale.getSecurityGroup({
+ *     name: "my-security-group",
+ * });
+ * export const mySecurityGroupId = mySecurityGroup.then(mySecurityGroup => mySecurityGroup.id);
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ */
 export function getSecurityGroup(args?: GetSecurityGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityGroupResult> {
     args = args || {};
 
@@ -45,6 +65,26 @@ export interface GetSecurityGroupResult {
      */
     readonly name?: string;
 }
+/**
+ * Fetch Exoscale [Security Groups](https://community.exoscale.com/documentation/compute/security-groups/) data.
+ *
+ * Corresponding resource: exoscale_security_group.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumi/exoscale";
+ *
+ * const mySecurityGroup = exoscale.getSecurityGroup({
+ *     name: "my-security-group",
+ * });
+ * export const mySecurityGroupId = mySecurityGroup.then(mySecurityGroup => mySecurityGroup.id);
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ */
 export function getSecurityGroupOutput(args?: GetSecurityGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityGroupResult> {
     return pulumi.output(args).apply((a: any) => getSecurityGroup(a, opts))
 }

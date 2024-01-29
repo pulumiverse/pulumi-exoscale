@@ -11,6 +11,42 @@ using Pulumi;
 namespace Pulumiverse.Exoscale
 {
     /// <summary>
+    /// Manage Exoscale [Instance Pools](https://community.exoscale.com/documentation/compute/instance-pools/).
+    /// 
+    /// Corresponding data sources: exoscale_instance_pool, exoscale_instance_pool_list.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Exoscale = Pulumi.Exoscale;
+    /// using Exoscale = Pulumiverse.Exoscale;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myTemplate = Exoscale.GetTemplate.Invoke(new()
+    ///     {
+    ///         Zone = "ch-gva-2",
+    ///         Name = "Linux Ubuntu 22.04 LTS 64-bit",
+    ///     });
+    /// 
+    ///     var myInstancePool = new Exoscale.InstancePool("myInstancePool", new()
+    ///     {
+    ///         Zone = "ch-gva-2",
+    ///         TemplateId = myTemplate.Apply(getTemplateResult =&gt; getTemplateResult.Id),
+    ///         InstanceType = "standard.medium",
+    ///         DiskSize = 10,
+    ///         Size = 3,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Please refer to the examples
+    /// directory for complete configuration examples.
+    /// 
     /// ## Import
     /// 
     /// An existing instance pool may be imported by `&lt;ID&gt;@&lt;zone&gt;`

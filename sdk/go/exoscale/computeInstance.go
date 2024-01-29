@@ -12,6 +12,51 @@ import (
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
+// Manage Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/).
+//
+// Corresponding data sources: exoscale_compute_instance, exoscale_compute_instance_list.
+//
+// After the creation, you can retrieve the password of an instance with [Exoscale CLI](https://github.com/exoscale/cli): `exo compute instance reveal-password NAME`.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myTemplate, err := exoscale.GetTemplate(ctx, &exoscale.GetTemplateArgs{
+//				Zone: "ch-gva-2",
+//				Name: pulumi.StringRef("Linux Ubuntu 22.04 LTS 64-bit"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = exoscale.NewComputeInstance(ctx, "myInstance", &exoscale.ComputeInstanceArgs{
+//				Zone:       pulumi.String("ch-gva-2"),
+//				TemplateId: *pulumi.String(myTemplate.Id),
+//				Type:       pulumi.String("standard.medium"),
+//				DiskSize:   pulumi.Int(10),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Please refer to the examples
+// directory for complete configuration examples.
+//
 // ## Import
 //
 // An existing compute instance may be imported by `<ID>@<zone>`
@@ -34,7 +79,7 @@ type ComputeInstance struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// ❗ A deploy target ID.
 	DeployTargetId pulumi.StringPtrOutput `pulumi:"deployTargetId"`
-	// The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
+	// The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
 	DiskSize pulumi.IntOutput `pulumi:"diskSize"`
 	// A list of exoscale*elastic*ip (IDs) to attach to the instance.
 	ElasticIpIds pulumi.StringArrayOutput `pulumi:"elasticIpIds"`
@@ -119,7 +164,7 @@ type computeInstanceState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// ❗ A deploy target ID.
 	DeployTargetId *string `pulumi:"deployTargetId"`
-	// The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
+	// The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
 	DiskSize *int `pulumi:"diskSize"`
 	// A list of exoscale*elastic*ip (IDs) to attach to the instance.
 	ElasticIpIds []string `pulumi:"elasticIpIds"`
@@ -166,7 +211,7 @@ type ComputeInstanceState struct {
 	CreatedAt pulumi.StringPtrInput
 	// ❗ A deploy target ID.
 	DeployTargetId pulumi.StringPtrInput
-	// The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
+	// The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
 	DiskSize pulumi.IntPtrInput
 	// A list of exoscale*elastic*ip (IDs) to attach to the instance.
 	ElasticIpIds pulumi.StringArrayInput
@@ -215,7 +260,7 @@ type computeInstanceArgs struct {
 	AntiAffinityGroupIds []string `pulumi:"antiAffinityGroupIds"`
 	// ❗ A deploy target ID.
 	DeployTargetId *string `pulumi:"deployTargetId"`
-	// The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
+	// The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
 	DiskSize *int `pulumi:"diskSize"`
 	// A list of exoscale*elastic*ip (IDs) to attach to the instance.
 	ElasticIpIds []string `pulumi:"elasticIpIds"`
@@ -253,7 +298,7 @@ type ComputeInstanceArgs struct {
 	AntiAffinityGroupIds pulumi.StringArrayInput
 	// ❗ A deploy target ID.
 	DeployTargetId pulumi.StringPtrInput
-	// The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
+	// The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
 	DiskSize pulumi.IntPtrInput
 	// A list of exoscale*elastic*ip (IDs) to attach to the instance.
 	ElasticIpIds pulumi.StringArrayInput
@@ -387,7 +432,7 @@ func (o ComputeInstanceOutput) DeployTargetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeInstance) pulumi.StringPtrOutput { return v.DeployTargetId }).(pulumi.StringPtrOutput)
 }
 
-// The instance disk size (GiB; at least `10`). **WARNING**: updating this attribute stops/restarts the instance.
+// The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
 func (o ComputeInstanceOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *ComputeInstance) pulumi.IntOutput { return v.DiskSize }).(pulumi.IntOutput)
 }

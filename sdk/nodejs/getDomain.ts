@@ -4,6 +4,26 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Fetch Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domains data.
+ *
+ * Corresponding resource: exoscale_domain.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumi/exoscale";
+ *
+ * const myDomain = exoscale.getDomain({
+ *     name: "my.domain",
+ * });
+ * export const myDomainId = myDomain.then(myDomain => myDomain.id);
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ */
 export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,6 +55,26 @@ export interface GetDomainResult {
      */
     readonly name: string;
 }
+/**
+ * Fetch Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domains data.
+ *
+ * Corresponding resource: exoscale_domain.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumi/exoscale";
+ *
+ * const myDomain = exoscale.getDomain({
+ *     name: "my.domain",
+ * });
+ * export const myDomainId = myDomain.then(myDomain => myDomain.id);
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ */
 export function getDomainOutput(args: GetDomainOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainResult> {
     return pulumi.output(args).apply((a: any) => getDomain(a, opts))
 }

@@ -7,6 +7,33 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Manage Exoscale [Instance Pools](https://community.exoscale.com/documentation/compute/instance-pools/).
+ *
+ * Corresponding data sources: exoscale_instance_pool, exoscale_instance_pool_list.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumi/exoscale";
+ * import * as exoscale from "@pulumiverse/exoscale";
+ *
+ * const myTemplate = exoscale.getTemplate({
+ *     zone: "ch-gva-2",
+ *     name: "Linux Ubuntu 22.04 LTS 64-bit",
+ * });
+ * const myInstancePool = new exoscale.InstancePool("myInstancePool", {
+ *     zone: "ch-gva-2",
+ *     templateId: myTemplate.then(myTemplate => myTemplate.id),
+ *     instanceType: "standard.medium",
+ *     diskSize: 10,
+ *     size: 3,
+ * });
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ *
  * ## Import
  *
  * An existing instance pool may be imported by `<ID>@<zone>`

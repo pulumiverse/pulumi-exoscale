@@ -5,6 +5,24 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Manage Exoscale [Security Groups](https://community.exoscale.com/documentation/compute/security-groups/).
+ *
+ * Corresponding data source: exoscale_security_group.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumiverse/exoscale";
+ *
+ * const mySecurityGroup = new exoscale.SecurityGroup("mySecurityGroup", {});
+ * ```
+ *
+ * Next step is to attach exoscale_security_group_rule(s) to the group.
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ *
  * ## Import
  *
  * An existing security group may be imported by `<ID>`

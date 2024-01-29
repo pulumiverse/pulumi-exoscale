@@ -100,6 +100,22 @@ class AntiAffinityGroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Manage Exoscale [Anti-Affinity Groups](https://community.exoscale.com/documentation/compute/anti-affinity-groups/).
+
+        Corresponding data source: exoscale_anti_affinity_group.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumiverse_exoscale as exoscale
+
+        my_anti_affinity_group = exoscale.AntiAffinityGroup("myAntiAffinityGroup", description="Prevent compute instances to run on the same host")
+        ```
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         ## Import
 
         An existing anti-affinity group may be imported by `<ID>`
@@ -124,6 +140,22 @@ class AntiAffinityGroup(pulumi.CustomResource):
                  args: Optional[AntiAffinityGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manage Exoscale [Anti-Affinity Groups](https://community.exoscale.com/documentation/compute/anti-affinity-groups/).
+
+        Corresponding data source: exoscale_anti_affinity_group.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumiverse_exoscale as exoscale
+
+        my_anti_affinity_group = exoscale.AntiAffinityGroup("myAntiAffinityGroup", description="Prevent compute instances to run on the same host")
+        ```
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         ## Import
 
         An existing anti-affinity group may be imported by `<ID>`

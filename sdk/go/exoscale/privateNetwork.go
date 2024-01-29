@@ -12,6 +12,70 @@ import (
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
+// Manage Exoscale [Private Networks](https://community.exoscale.com/documentation/compute/private-networks/).
+//
+// Corresponding data source: exoscale_private_network.
+//
+// ## Example Usage
+//
+// *Unmanaged* private network:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := exoscale.NewPrivateNetwork(ctx, "myPrivateNetwork", &exoscale.PrivateNetworkArgs{
+//				Zone: pulumi.String("ch-gva-2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// *Managed* private network:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := exoscale.NewPrivateNetwork(ctx, "myManagedPrivateNetwork", &exoscale.PrivateNetworkArgs{
+//				EndIp:   pulumi.String("10.0.0.253"),
+//				Netmask: pulumi.String("255.255.255.0"),
+//				StartIp: pulumi.String("10.0.0.20"),
+//				Zone:    pulumi.String("ch-gva-2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Please refer to the examples
+// directory for complete configuration examples.
+//
 // ## Import
 //
 // An existing private network may be imported by `<ID>@<zone>`

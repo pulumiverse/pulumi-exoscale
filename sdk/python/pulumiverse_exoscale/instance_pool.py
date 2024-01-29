@@ -742,6 +742,30 @@ class InstancePool(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Manage Exoscale [Instance Pools](https://community.exoscale.com/documentation/compute/instance-pools/).
+
+        Corresponding data sources: exoscale_instance_pool, exoscale_instance_pool_list.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_exoscale as exoscale
+        import pulumiverse_exoscale as exoscale
+
+        my_template = exoscale.get_template(zone="ch-gva-2",
+            name="Linux Ubuntu 22.04 LTS 64-bit")
+        my_instance_pool = exoscale.InstancePool("myInstancePool",
+            zone="ch-gva-2",
+            template_id=my_template.id,
+            instance_type="standard.medium",
+            disk_size=10,
+            size=3)
+        ```
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         ## Import
 
         An existing instance pool may be imported by `<ID>@<zone>`
@@ -784,6 +808,30 @@ class InstancePool(pulumi.CustomResource):
                  args: InstancePoolArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manage Exoscale [Instance Pools](https://community.exoscale.com/documentation/compute/instance-pools/).
+
+        Corresponding data sources: exoscale_instance_pool, exoscale_instance_pool_list.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_exoscale as exoscale
+        import pulumiverse_exoscale as exoscale
+
+        my_template = exoscale.get_template(zone="ch-gva-2",
+            name="Linux Ubuntu 22.04 LTS 64-bit")
+        my_instance_pool = exoscale.InstancePool("myInstancePool",
+            zone="ch-gva-2",
+            template_id=my_template.id,
+            instance_type="standard.medium",
+            disk_size=10,
+            size=3)
+        ```
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         ## Import
 
         An existing instance pool may be imported by `<ID>@<zone>`

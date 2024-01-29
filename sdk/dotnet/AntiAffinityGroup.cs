@@ -11,6 +11,31 @@ using Pulumi;
 namespace Pulumiverse.Exoscale
 {
     /// <summary>
+    /// Manage Exoscale [Anti-Affinity Groups](https://community.exoscale.com/documentation/compute/anti-affinity-groups/).
+    /// 
+    /// Corresponding data source: exoscale_anti_affinity_group.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Exoscale = Pulumiverse.Exoscale;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myAntiAffinityGroup = new Exoscale.AntiAffinityGroup("myAntiAffinityGroup", new()
+    ///     {
+    ///         Description = "Prevent compute instances to run on the same host",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Please refer to the examples
+    /// directory for complete configuration examples.
+    /// 
     /// ## Import
     /// 
     /// An existing anti-affinity group may be imported by `&lt;ID&gt;`

@@ -11,6 +11,39 @@ import (
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
+// Fetch Exoscale [Security Groups](https://community.exoscale.com/documentation/compute/security-groups/) data.
+//
+// Corresponding resource: exoscale_security_group.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			mySecurityGroup, err := exoscale.LookupSecurityGroup(ctx, &exoscale.LookupSecurityGroupArgs{
+//				Name: pulumi.StringRef("my-security-group"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("mySecurityGroupId", mySecurityGroup.Id)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Please refer to the examples
+// directory for complete configuration examples.
 func LookupSecurityGroup(ctx *pulumi.Context, args *LookupSecurityGroupArgs, opts ...pulumi.InvokeOption) (*LookupSecurityGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecurityGroupResult

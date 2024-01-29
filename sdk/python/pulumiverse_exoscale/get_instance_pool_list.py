@@ -72,7 +72,9 @@ class AwaitableGetInstancePoolListResult(GetInstancePoolListResult):
 def get_instance_pool_list(zone: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancePoolListResult:
     """
-    Use this data source to access information about an existing resource.
+    List Exoscale [Instance Pools](https://community.exoscale.com/documentation/compute/instance-pools/).
+
+    Corresponding resource: exoscale_instance_pool.
     """
     __args__ = dict()
     __args__['zone'] = zone
@@ -89,6 +91,8 @@ def get_instance_pool_list(zone: Optional[str] = None,
 def get_instance_pool_list_output(zone: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancePoolListResult]:
     """
-    Use this data source to access information about an existing resource.
+    List Exoscale [Instance Pools](https://community.exoscale.com/documentation/compute/instance-pools/).
+
+    Corresponding resource: exoscale_instance_pool.
     """
     ...
