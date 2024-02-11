@@ -13,7 +13,7 @@ require (
 	github.com/exoscale/terraform-provider-exoscale/shim v0.0.0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.25.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.72.0
-	github.com/pulumi/pulumi/sdk/v3 v3.103.1
+	github.com/pulumi/pulumi/sdk/v3 v3.105.0
 )
 
 require (
