@@ -49,10 +49,10 @@ namespace Pulumiverse.Exoscale
     /// 
     /// ## Import
     /// 
-    /// An existing instance pool may be imported by `&lt;ID&gt;@&lt;zone&gt;`
+    /// An existing instance pool may be imported by `&lt;ID&gt;@&lt;zone&gt;`:
     /// 
     /// ```sh
-    ///  $ pulumi import exoscale:index/instancePool:InstancePool \
+    /// $ pulumi import exoscale:index/instancePool:InstancePool \
     /// ```
     /// 
     ///  exoscale_instance_pool.my_instance_pool \

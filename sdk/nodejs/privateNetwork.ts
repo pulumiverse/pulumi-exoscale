@@ -39,10 +39,10 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * An existing private network may be imported by `<ID>@<zone>`
+ * An existing private network may be imported by `<ID>@<zone>`:
  *
  * ```sh
- *  $ pulumi import exoscale:index/privateNetwork:PrivateNetwork \
+ * $ pulumi import exoscale:index/privateNetwork:PrivateNetwork \
  * ```
  *
  *  exoscale_private_network.my_private_network \

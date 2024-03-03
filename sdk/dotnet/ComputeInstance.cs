@@ -50,10 +50,10 @@ namespace Pulumiverse.Exoscale
     /// 
     /// ## Import
     /// 
-    /// An existing compute instance may be imported by `&lt;ID&gt;@&lt;zone&gt;`
+    /// An existing compute instance may be imported by `&lt;ID&gt;@&lt;zone&gt;`:
     /// 
     /// ```sh
-    ///  $ pulumi import exoscale:index/computeInstance:ComputeInstance \
+    /// $ pulumi import exoscale:index/computeInstance:ComputeInstance \
     /// ```
     /// 
     ///  exoscale_compute_instance.my_instance \
@@ -80,6 +80,12 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         [Output("deployTargetId")]
         public Output<string?> DeployTargetId { get; private set; } = null!;
+
+        /// <summary>
+        /// Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
+        /// </summary>
+        [Output("destroyProtected")]
+        public Output<bool?> DestroyProtected { get; private set; } = null!;
 
         /// <summary>
         /// The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
@@ -255,6 +261,12 @@ namespace Pulumiverse.Exoscale
         public Input<string>? DeployTargetId { get; set; }
 
         /// <summary>
+        /// Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
+        /// </summary>
+        [Input("destroyProtected")]
+        public Input<bool>? DestroyProtected { get; set; }
+
+        /// <summary>
         /// The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
         /// </summary>
         [Input("diskSize")]
@@ -399,6 +411,12 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         [Input("deployTargetId")]
         public Input<string>? DeployTargetId { get; set; }
+
+        /// <summary>
+        /// Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
+        /// </summary>
+        [Input("destroyProtected")]
+        public Input<bool>? DestroyProtected { get; set; }
 
         /// <summary>
         /// The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.

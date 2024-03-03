@@ -4052,28 +4052,50 @@ func (o SksClusterOidcPtrOutput) UsernamePrefix() pulumi.StringPtrOutput {
 }
 
 type GetComputeInstanceListInstance struct {
-	AntiAffinityGroupIds []string          `pulumi:"antiAffinityGroupIds"`
-	CreatedAt            string            `pulumi:"createdAt"`
-	DeployTargetId       string            `pulumi:"deployTargetId"`
-	DiskSize             int               `pulumi:"diskSize"`
-	ElasticIpIds         []string          `pulumi:"elasticIpIds"`
-	Id                   *string           `pulumi:"id"`
-	Ipv6                 bool              `pulumi:"ipv6"`
-	Ipv6Address          string            `pulumi:"ipv6Address"`
-	Labels               map[string]string `pulumi:"labels"`
-	ManagerId            string            `pulumi:"managerId"`
-	ManagerType          string            `pulumi:"managerType"`
-	Name                 *string           `pulumi:"name"`
-	PrivateNetworkIds    []string          `pulumi:"privateNetworkIds"`
-	PublicIpAddress      string            `pulumi:"publicIpAddress"`
-	ReverseDns           string            `pulumi:"reverseDns"`
-	SecurityGroupIds     []string          `pulumi:"securityGroupIds"`
-	SshKey               string            `pulumi:"sshKey"`
-	State                string            `pulumi:"state"`
-	TemplateId           string            `pulumi:"templateId"`
-	Type                 string            `pulumi:"type"`
-	UserData             string            `pulumi:"userData"`
-	Zone                 string            `pulumi:"zone"`
+	// The list of attached AntiAffinityGroup (IDs).
+	AntiAffinityGroupIds []string `pulumi:"antiAffinityGroupIds"`
+	// The compute instance creation date.
+	CreatedAt string `pulumi:"createdAt"`
+	// A deploy target ID.
+	DeployTargetId string `pulumi:"deployTargetId"`
+	// The instance disk size (GiB).
+	DiskSize int `pulumi:"diskSize"`
+	// The list of attached ElasticIp (IDs).
+	ElasticIpIds []string `pulumi:"elasticIpIds"`
+	// The compute instance ID to match (conflicts with `name`).
+	Id *string `pulumi:"id"`
+	// Whether IPv6 is enabled on the instance.
+	Ipv6 bool `pulumi:"ipv6"`
+	// The instance (main network interface) IPv6 address (if enabled).
+	Ipv6Address string `pulumi:"ipv6Address"`
+	// A map of key/value labels.
+	Labels map[string]string `pulumi:"labels"`
+	// The instance manager ID, if any.
+	ManagerId string `pulumi:"managerId"`
+	// The instance manager type (instance pool, SKS node pool, etc.), if any.
+	ManagerType string `pulumi:"managerType"`
+	// The instance name to match (conflicts with `id`).
+	Name *string `pulumi:"name"`
+	// The list of attached PrivateNetwork (IDs).
+	PrivateNetworkIds []string `pulumi:"privateNetworkIds"`
+	// The instance (main network interface) IPv4 address.
+	PublicIpAddress string `pulumi:"publicIpAddress"`
+	// Domain name for reverse DNS record.
+	ReverseDns string `pulumi:"reverseDns"`
+	// The list of attached SecurityGroup (IDs).
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// The SshKey (name) authorized on the instance.
+	SshKey string `pulumi:"sshKey"`
+	// The instance state.
+	State string `pulumi:"state"`
+	// The instance getTemplate ID.
+	TemplateId string `pulumi:"templateId"`
+	// The instance type.
+	Type string `pulumi:"type"`
+	// The instance [cloud-init](http://cloudinit.readthedocs.io/en/latest/) configuration.
+	UserData string `pulumi:"userData"`
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	Zone string `pulumi:"zone"`
 }
 
 // GetComputeInstanceListInstanceInput is an input type that accepts GetComputeInstanceListInstanceArgs and GetComputeInstanceListInstanceOutput values.
@@ -4088,28 +4110,50 @@ type GetComputeInstanceListInstanceInput interface {
 }
 
 type GetComputeInstanceListInstanceArgs struct {
+	// The list of attached AntiAffinityGroup (IDs).
 	AntiAffinityGroupIds pulumi.StringArrayInput `pulumi:"antiAffinityGroupIds"`
-	CreatedAt            pulumi.StringInput      `pulumi:"createdAt"`
-	DeployTargetId       pulumi.StringInput      `pulumi:"deployTargetId"`
-	DiskSize             pulumi.IntInput         `pulumi:"diskSize"`
-	ElasticIpIds         pulumi.StringArrayInput `pulumi:"elasticIpIds"`
-	Id                   pulumi.StringPtrInput   `pulumi:"id"`
-	Ipv6                 pulumi.BoolInput        `pulumi:"ipv6"`
-	Ipv6Address          pulumi.StringInput      `pulumi:"ipv6Address"`
-	Labels               pulumi.StringMapInput   `pulumi:"labels"`
-	ManagerId            pulumi.StringInput      `pulumi:"managerId"`
-	ManagerType          pulumi.StringInput      `pulumi:"managerType"`
-	Name                 pulumi.StringPtrInput   `pulumi:"name"`
-	PrivateNetworkIds    pulumi.StringArrayInput `pulumi:"privateNetworkIds"`
-	PublicIpAddress      pulumi.StringInput      `pulumi:"publicIpAddress"`
-	ReverseDns           pulumi.StringInput      `pulumi:"reverseDns"`
-	SecurityGroupIds     pulumi.StringArrayInput `pulumi:"securityGroupIds"`
-	SshKey               pulumi.StringInput      `pulumi:"sshKey"`
-	State                pulumi.StringInput      `pulumi:"state"`
-	TemplateId           pulumi.StringInput      `pulumi:"templateId"`
-	Type                 pulumi.StringInput      `pulumi:"type"`
-	UserData             pulumi.StringInput      `pulumi:"userData"`
-	Zone                 pulumi.StringInput      `pulumi:"zone"`
+	// The compute instance creation date.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// A deploy target ID.
+	DeployTargetId pulumi.StringInput `pulumi:"deployTargetId"`
+	// The instance disk size (GiB).
+	DiskSize pulumi.IntInput `pulumi:"diskSize"`
+	// The list of attached ElasticIp (IDs).
+	ElasticIpIds pulumi.StringArrayInput `pulumi:"elasticIpIds"`
+	// The compute instance ID to match (conflicts with `name`).
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Whether IPv6 is enabled on the instance.
+	Ipv6 pulumi.BoolInput `pulumi:"ipv6"`
+	// The instance (main network interface) IPv6 address (if enabled).
+	Ipv6Address pulumi.StringInput `pulumi:"ipv6Address"`
+	// A map of key/value labels.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The instance manager ID, if any.
+	ManagerId pulumi.StringInput `pulumi:"managerId"`
+	// The instance manager type (instance pool, SKS node pool, etc.), if any.
+	ManagerType pulumi.StringInput `pulumi:"managerType"`
+	// The instance name to match (conflicts with `id`).
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The list of attached PrivateNetwork (IDs).
+	PrivateNetworkIds pulumi.StringArrayInput `pulumi:"privateNetworkIds"`
+	// The instance (main network interface) IPv4 address.
+	PublicIpAddress pulumi.StringInput `pulumi:"publicIpAddress"`
+	// Domain name for reverse DNS record.
+	ReverseDns pulumi.StringInput `pulumi:"reverseDns"`
+	// The list of attached SecurityGroup (IDs).
+	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	// The SshKey (name) authorized on the instance.
+	SshKey pulumi.StringInput `pulumi:"sshKey"`
+	// The instance state.
+	State pulumi.StringInput `pulumi:"state"`
+	// The instance getTemplate ID.
+	TemplateId pulumi.StringInput `pulumi:"templateId"`
+	// The instance type.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The instance [cloud-init](http://cloudinit.readthedocs.io/en/latest/) configuration.
+	UserData pulumi.StringInput `pulumi:"userData"`
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
 func (GetComputeInstanceListInstanceArgs) ElementType() reflect.Type {
@@ -4163,90 +4207,112 @@ func (o GetComputeInstanceListInstanceOutput) ToGetComputeInstanceListInstanceOu
 	return o
 }
 
+// The list of attached AntiAffinityGroup (IDs).
 func (o GetComputeInstanceListInstanceOutput) AntiAffinityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) []string { return v.AntiAffinityGroupIds }).(pulumi.StringArrayOutput)
 }
 
+// The compute instance creation date.
 func (o GetComputeInstanceListInstanceOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// A deploy target ID.
 func (o GetComputeInstanceListInstanceOutput) DeployTargetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.DeployTargetId }).(pulumi.StringOutput)
 }
 
+// The instance disk size (GiB).
 func (o GetComputeInstanceListInstanceOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) int { return v.DiskSize }).(pulumi.IntOutput)
 }
 
+// The list of attached ElasticIp (IDs).
 func (o GetComputeInstanceListInstanceOutput) ElasticIpIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) []string { return v.ElasticIpIds }).(pulumi.StringArrayOutput)
 }
 
+// The compute instance ID to match (conflicts with `name`).
 func (o GetComputeInstanceListInstanceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Whether IPv6 is enabled on the instance.
 func (o GetComputeInstanceListInstanceOutput) Ipv6() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) bool { return v.Ipv6 }).(pulumi.BoolOutput)
 }
 
+// The instance (main network interface) IPv6 address (if enabled).
 func (o GetComputeInstanceListInstanceOutput) Ipv6Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
 
+// A map of key/value labels.
 func (o GetComputeInstanceListInstanceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// The instance manager ID, if any.
 func (o GetComputeInstanceListInstanceOutput) ManagerId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.ManagerId }).(pulumi.StringOutput)
 }
 
+// The instance manager type (instance pool, SKS node pool, etc.), if any.
 func (o GetComputeInstanceListInstanceOutput) ManagerType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.ManagerType }).(pulumi.StringOutput)
 }
 
+// The instance name to match (conflicts with `id`).
 func (o GetComputeInstanceListInstanceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The list of attached PrivateNetwork (IDs).
 func (o GetComputeInstanceListInstanceOutput) PrivateNetworkIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) []string { return v.PrivateNetworkIds }).(pulumi.StringArrayOutput)
 }
 
+// The instance (main network interface) IPv4 address.
 func (o GetComputeInstanceListInstanceOutput) PublicIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.PublicIpAddress }).(pulumi.StringOutput)
 }
 
+// Domain name for reverse DNS record.
 func (o GetComputeInstanceListInstanceOutput) ReverseDns() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.ReverseDns }).(pulumi.StringOutput)
 }
 
+// The list of attached SecurityGroup (IDs).
 func (o GetComputeInstanceListInstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
+// The SshKey (name) authorized on the instance.
 func (o GetComputeInstanceListInstanceOutput) SshKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.SshKey }).(pulumi.StringOutput)
 }
 
+// The instance state.
 func (o GetComputeInstanceListInstanceOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.State }).(pulumi.StringOutput)
 }
 
+// The instance getTemplate ID.
 func (o GetComputeInstanceListInstanceOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.TemplateId }).(pulumi.StringOutput)
 }
 
+// The instance type.
 func (o GetComputeInstanceListInstanceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The instance [cloud-init](http://cloudinit.readthedocs.io/en/latest/) configuration.
 func (o GetComputeInstanceListInstanceOutput) UserData() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.UserData }).(pulumi.StringOutput)
 }
 
+// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o GetComputeInstanceListInstanceOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) string { return v.Zone }).(pulumi.StringOutput)
 }
@@ -4488,13 +4554,20 @@ func (o GetDomainRecordFilterOutput) RecordType() pulumi.StringPtrOutput {
 }
 
 type GetDomainRecordRecord struct {
-	Content    *string `pulumi:"content"`
-	Domain     *string `pulumi:"domain"`
-	Id         *string `pulumi:"id"`
-	Name       *string `pulumi:"name"`
-	Prio       *int    `pulumi:"prio"`
+	// Content of the Record
+	Content *string `pulumi:"content"`
+	// Domain of the Record
+	Domain *string `pulumi:"domain"`
+	// ID of the Record
+	Id *string `pulumi:"id"`
+	// Name of the Record
+	Name *string `pulumi:"name"`
+	// Priority of the Record
+	Prio *int `pulumi:"prio"`
+	// Type of the Record
 	RecordType *string `pulumi:"recordType"`
-	Ttl        *int    `pulumi:"ttl"`
+	// TTL of the Record
+	Ttl *int `pulumi:"ttl"`
 }
 
 // GetDomainRecordRecordInput is an input type that accepts GetDomainRecordRecordArgs and GetDomainRecordRecordOutput values.
@@ -4509,13 +4582,20 @@ type GetDomainRecordRecordInput interface {
 }
 
 type GetDomainRecordRecordArgs struct {
-	Content    pulumi.StringPtrInput `pulumi:"content"`
-	Domain     pulumi.StringPtrInput `pulumi:"domain"`
-	Id         pulumi.StringPtrInput `pulumi:"id"`
-	Name       pulumi.StringPtrInput `pulumi:"name"`
-	Prio       pulumi.IntPtrInput    `pulumi:"prio"`
+	// Content of the Record
+	Content pulumi.StringPtrInput `pulumi:"content"`
+	// Domain of the Record
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// ID of the Record
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Name of the Record
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Priority of the Record
+	Prio pulumi.IntPtrInput `pulumi:"prio"`
+	// Type of the Record
 	RecordType pulumi.StringPtrInput `pulumi:"recordType"`
-	Ttl        pulumi.IntPtrInput    `pulumi:"ttl"`
+	// TTL of the Record
+	Ttl pulumi.IntPtrInput `pulumi:"ttl"`
 }
 
 func (GetDomainRecordRecordArgs) ElementType() reflect.Type {
@@ -4569,30 +4649,37 @@ func (o GetDomainRecordRecordOutput) ToGetDomainRecordRecordOutputWithContext(ct
 	return o
 }
 
+// Content of the Record
 func (o GetDomainRecordRecordOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDomainRecordRecord) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
+// Domain of the Record
 func (o GetDomainRecordRecordOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDomainRecordRecord) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
+// ID of the Record
 func (o GetDomainRecordRecordOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDomainRecordRecord) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Name of the Record
 func (o GetDomainRecordRecordOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDomainRecordRecord) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Priority of the Record
 func (o GetDomainRecordRecordOutput) Prio() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetDomainRecordRecord) *int { return v.Prio }).(pulumi.IntPtrOutput)
 }
 
+// Type of the Record
 func (o GetDomainRecordRecordOutput) RecordType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDomainRecordRecord) *string { return v.RecordType }).(pulumi.StringPtrOutput)
 }
 
+// TTL of the Record
 func (o GetDomainRecordRecordOutput) Ttl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetDomainRecordRecord) *int { return v.Ttl }).(pulumi.IntPtrOutput)
 }
@@ -4618,15 +4705,24 @@ func (o GetDomainRecordRecordArrayOutput) Index(i pulumi.IntInput) GetDomainReco
 }
 
 type GetElasticIpHealthcheck struct {
-	Interval      int    `pulumi:"interval"`
-	Mode          string `pulumi:"mode"`
-	Port          int    `pulumi:"port"`
-	StrikesFail   int    `pulumi:"strikesFail"`
-	StrikesOk     int    `pulumi:"strikesOk"`
-	Timeout       int    `pulumi:"timeout"`
-	TlsSkipVerify bool   `pulumi:"tlsSkipVerify"`
-	TlsSni        string `pulumi:"tlsSni"`
-	Uri           string `pulumi:"uri"`
+	// The healthcheck interval in seconds.
+	Interval int `pulumi:"interval"`
+	// The healthcheck mode.
+	Mode string `pulumi:"mode"`
+	// The healthcheck target port.
+	Port int `pulumi:"port"`
+	// The number of failed healthcheck attempts before considering the target unhealthy.
+	StrikesFail int `pulumi:"strikesFail"`
+	// The number of successful healthcheck attempts before considering the target healthy.
+	StrikesOk int `pulumi:"strikesOk"`
+	// The time in seconds before considering a healthcheck probing failed.
+	Timeout int `pulumi:"timeout"`
+	// Disable TLS certificate verification for healthcheck in `https` mode.
+	TlsSkipVerify bool `pulumi:"tlsSkipVerify"`
+	// The healthcheck server name to present with SNI in `https` mode.
+	TlsSni string `pulumi:"tlsSni"`
+	// The healthcheck URI.
+	Uri string `pulumi:"uri"`
 }
 
 // GetElasticIpHealthcheckInput is an input type that accepts GetElasticIpHealthcheckArgs and GetElasticIpHealthcheckOutput values.
@@ -4641,15 +4737,24 @@ type GetElasticIpHealthcheckInput interface {
 }
 
 type GetElasticIpHealthcheckArgs struct {
-	Interval      pulumi.IntInput    `pulumi:"interval"`
-	Mode          pulumi.StringInput `pulumi:"mode"`
-	Port          pulumi.IntInput    `pulumi:"port"`
-	StrikesFail   pulumi.IntInput    `pulumi:"strikesFail"`
-	StrikesOk     pulumi.IntInput    `pulumi:"strikesOk"`
-	Timeout       pulumi.IntInput    `pulumi:"timeout"`
-	TlsSkipVerify pulumi.BoolInput   `pulumi:"tlsSkipVerify"`
-	TlsSni        pulumi.StringInput `pulumi:"tlsSni"`
-	Uri           pulumi.StringInput `pulumi:"uri"`
+	// The healthcheck interval in seconds.
+	Interval pulumi.IntInput `pulumi:"interval"`
+	// The healthcheck mode.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// The healthcheck target port.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The number of failed healthcheck attempts before considering the target unhealthy.
+	StrikesFail pulumi.IntInput `pulumi:"strikesFail"`
+	// The number of successful healthcheck attempts before considering the target healthy.
+	StrikesOk pulumi.IntInput `pulumi:"strikesOk"`
+	// The time in seconds before considering a healthcheck probing failed.
+	Timeout pulumi.IntInput `pulumi:"timeout"`
+	// Disable TLS certificate verification for healthcheck in `https` mode.
+	TlsSkipVerify pulumi.BoolInput `pulumi:"tlsSkipVerify"`
+	// The healthcheck server name to present with SNI in `https` mode.
+	TlsSni pulumi.StringInput `pulumi:"tlsSni"`
+	// The healthcheck URI.
+	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
 func (GetElasticIpHealthcheckArgs) ElementType() reflect.Type {
@@ -4703,38 +4808,47 @@ func (o GetElasticIpHealthcheckOutput) ToGetElasticIpHealthcheckOutputWithContex
 	return o
 }
 
+// The healthcheck interval in seconds.
 func (o GetElasticIpHealthcheckOutput) Interval() pulumi.IntOutput {
 	return o.ApplyT(func(v GetElasticIpHealthcheck) int { return v.Interval }).(pulumi.IntOutput)
 }
 
+// The healthcheck mode.
 func (o GetElasticIpHealthcheckOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElasticIpHealthcheck) string { return v.Mode }).(pulumi.StringOutput)
 }
 
+// The healthcheck target port.
 func (o GetElasticIpHealthcheckOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetElasticIpHealthcheck) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// The number of failed healthcheck attempts before considering the target unhealthy.
 func (o GetElasticIpHealthcheckOutput) StrikesFail() pulumi.IntOutput {
 	return o.ApplyT(func(v GetElasticIpHealthcheck) int { return v.StrikesFail }).(pulumi.IntOutput)
 }
 
+// The number of successful healthcheck attempts before considering the target healthy.
 func (o GetElasticIpHealthcheckOutput) StrikesOk() pulumi.IntOutput {
 	return o.ApplyT(func(v GetElasticIpHealthcheck) int { return v.StrikesOk }).(pulumi.IntOutput)
 }
 
+// The time in seconds before considering a healthcheck probing failed.
 func (o GetElasticIpHealthcheckOutput) Timeout() pulumi.IntOutput {
 	return o.ApplyT(func(v GetElasticIpHealthcheck) int { return v.Timeout }).(pulumi.IntOutput)
 }
 
+// Disable TLS certificate verification for healthcheck in `https` mode.
 func (o GetElasticIpHealthcheckOutput) TlsSkipVerify() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetElasticIpHealthcheck) bool { return v.TlsSkipVerify }).(pulumi.BoolOutput)
 }
 
+// The healthcheck server name to present with SNI in `https` mode.
 func (o GetElasticIpHealthcheckOutput) TlsSni() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElasticIpHealthcheck) string { return v.TlsSni }).(pulumi.StringOutput)
 }
 
+// The healthcheck URI.
 func (o GetElasticIpHealthcheckOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElasticIpHealthcheck) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -5674,10 +5788,14 @@ func (o GetIamRoleTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
 }
 
 type GetInstancePoolInstance struct {
-	Id              *string `pulumi:"id"`
-	Ipv6Address     string  `pulumi:"ipv6Address"`
-	Name            *string `pulumi:"name"`
-	PublicIpAddress string  `pulumi:"publicIpAddress"`
+	// The compute instance ID.
+	Id *string `pulumi:"id"`
+	// The instance (main network interface) IPv6 address.
+	Ipv6Address string `pulumi:"ipv6Address"`
+	// The instance name.
+	Name *string `pulumi:"name"`
+	// The instance (main network interface) IPv4 address.
+	PublicIpAddress string `pulumi:"publicIpAddress"`
 }
 
 // GetInstancePoolInstanceInput is an input type that accepts GetInstancePoolInstanceArgs and GetInstancePoolInstanceOutput values.
@@ -5692,10 +5810,14 @@ type GetInstancePoolInstanceInput interface {
 }
 
 type GetInstancePoolInstanceArgs struct {
-	Id              pulumi.StringPtrInput `pulumi:"id"`
-	Ipv6Address     pulumi.StringInput    `pulumi:"ipv6Address"`
-	Name            pulumi.StringPtrInput `pulumi:"name"`
-	PublicIpAddress pulumi.StringInput    `pulumi:"publicIpAddress"`
+	// The compute instance ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The instance (main network interface) IPv6 address.
+	Ipv6Address pulumi.StringInput `pulumi:"ipv6Address"`
+	// The instance name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The instance (main network interface) IPv4 address.
+	PublicIpAddress pulumi.StringInput `pulumi:"publicIpAddress"`
 }
 
 func (GetInstancePoolInstanceArgs) ElementType() reflect.Type {
@@ -5749,18 +5871,22 @@ func (o GetInstancePoolInstanceOutput) ToGetInstancePoolInstanceOutputWithContex
 	return o
 }
 
+// The compute instance ID.
 func (o GetInstancePoolInstanceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancePoolInstance) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The instance (main network interface) IPv6 address.
 func (o GetInstancePoolInstanceOutput) Ipv6Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancePoolInstance) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
 
+// The instance name.
 func (o GetInstancePoolInstanceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancePoolInstance) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The instance (main network interface) IPv4 address.
 func (o GetInstancePoolInstanceOutput) PublicIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancePoolInstance) string { return v.PublicIpAddress }).(pulumi.StringOutput)
 }
@@ -5786,26 +5912,46 @@ func (o GetInstancePoolInstanceArrayOutput) Index(i pulumi.IntInput) GetInstance
 }
 
 type GetInstancePoolListPool struct {
-	AffinityGroupIds []string                          `pulumi:"affinityGroupIds"`
-	DeployTargetId   string                            `pulumi:"deployTargetId"`
-	Description      string                            `pulumi:"description"`
-	DiskSize         int                               `pulumi:"diskSize"`
-	ElasticIpIds     []string                          `pulumi:"elasticIpIds"`
-	Id               *string                           `pulumi:"id"`
-	InstancePrefix   string                            `pulumi:"instancePrefix"`
-	InstanceType     string                            `pulumi:"instanceType"`
-	Instances        []GetInstancePoolListPoolInstance `pulumi:"instances"`
-	Ipv6             bool                              `pulumi:"ipv6"`
-	KeyPair          string                            `pulumi:"keyPair"`
-	Labels           map[string]string                 `pulumi:"labels"`
-	Name             *string                           `pulumi:"name"`
-	NetworkIds       []string                          `pulumi:"networkIds"`
-	SecurityGroupIds []string                          `pulumi:"securityGroupIds"`
-	Size             int                               `pulumi:"size"`
-	State            string                            `pulumi:"state"`
-	TemplateId       string                            `pulumi:"templateId"`
-	UserData         string                            `pulumi:"userData"`
-	Zone             string                            `pulumi:"zone"`
+	// The list of attached AntiAffinityGroup (IDs).
+	AffinityGroupIds []string `pulumi:"affinityGroupIds"`
+	// The deploy target ID.
+	DeployTargetId string `pulumi:"deployTargetId"`
+	// The instance pool description.
+	Description string `pulumi:"description"`
+	// The managed instances disk size.
+	DiskSize int `pulumi:"diskSize"`
+	// The list of attached ElasticIp (IDs).
+	ElasticIpIds []string `pulumi:"elasticIpIds"`
+	// The instance pool ID to match (conflicts with `name`).
+	Id *string `pulumi:"id"`
+	// The string used to prefix the managed instances name.
+	InstancePrefix string `pulumi:"instancePrefix"`
+	// The managed instances type.
+	InstanceType string `pulumi:"instanceType"`
+	// The list of managed instances. Structure is documented below.
+	Instances []GetInstancePoolListPoolInstance `pulumi:"instances"`
+	// Whether IPv6 is enabled on managed instances.
+	Ipv6 bool `pulumi:"ipv6"`
+	// The SshKey (name) authorized on the managed instances.
+	KeyPair string `pulumi:"keyPair"`
+	// A map of key/value labels.
+	Labels map[string]string `pulumi:"labels"`
+	// The pool name to match (conflicts with `id`).
+	Name *string `pulumi:"name"`
+	// The list of attached PrivateNetwork (IDs).
+	NetworkIds []string `pulumi:"networkIds"`
+	// The list of attached SecurityGroup (IDs).
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// The number managed instances.
+	Size int `pulumi:"size"`
+	// The pool state.
+	State string `pulumi:"state"`
+	// The managed instances getTemplate ID.
+	TemplateId string `pulumi:"templateId"`
+	// [cloud-init](http://cloudinit.readthedocs.io/en/latest/) configuration.
+	UserData string `pulumi:"userData"`
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	Zone string `pulumi:"zone"`
 }
 
 // GetInstancePoolListPoolInput is an input type that accepts GetInstancePoolListPoolArgs and GetInstancePoolListPoolOutput values.
@@ -5820,26 +5966,46 @@ type GetInstancePoolListPoolInput interface {
 }
 
 type GetInstancePoolListPoolArgs struct {
-	AffinityGroupIds pulumi.StringArrayInput                   `pulumi:"affinityGroupIds"`
-	DeployTargetId   pulumi.StringInput                        `pulumi:"deployTargetId"`
-	Description      pulumi.StringInput                        `pulumi:"description"`
-	DiskSize         pulumi.IntInput                           `pulumi:"diskSize"`
-	ElasticIpIds     pulumi.StringArrayInput                   `pulumi:"elasticIpIds"`
-	Id               pulumi.StringPtrInput                     `pulumi:"id"`
-	InstancePrefix   pulumi.StringInput                        `pulumi:"instancePrefix"`
-	InstanceType     pulumi.StringInput                        `pulumi:"instanceType"`
-	Instances        GetInstancePoolListPoolInstanceArrayInput `pulumi:"instances"`
-	Ipv6             pulumi.BoolInput                          `pulumi:"ipv6"`
-	KeyPair          pulumi.StringInput                        `pulumi:"keyPair"`
-	Labels           pulumi.StringMapInput                     `pulumi:"labels"`
-	Name             pulumi.StringPtrInput                     `pulumi:"name"`
-	NetworkIds       pulumi.StringArrayInput                   `pulumi:"networkIds"`
-	SecurityGroupIds pulumi.StringArrayInput                   `pulumi:"securityGroupIds"`
-	Size             pulumi.IntInput                           `pulumi:"size"`
-	State            pulumi.StringInput                        `pulumi:"state"`
-	TemplateId       pulumi.StringInput                        `pulumi:"templateId"`
-	UserData         pulumi.StringInput                        `pulumi:"userData"`
-	Zone             pulumi.StringInput                        `pulumi:"zone"`
+	// The list of attached AntiAffinityGroup (IDs).
+	AffinityGroupIds pulumi.StringArrayInput `pulumi:"affinityGroupIds"`
+	// The deploy target ID.
+	DeployTargetId pulumi.StringInput `pulumi:"deployTargetId"`
+	// The instance pool description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The managed instances disk size.
+	DiskSize pulumi.IntInput `pulumi:"diskSize"`
+	// The list of attached ElasticIp (IDs).
+	ElasticIpIds pulumi.StringArrayInput `pulumi:"elasticIpIds"`
+	// The instance pool ID to match (conflicts with `name`).
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The string used to prefix the managed instances name.
+	InstancePrefix pulumi.StringInput `pulumi:"instancePrefix"`
+	// The managed instances type.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The list of managed instances. Structure is documented below.
+	Instances GetInstancePoolListPoolInstanceArrayInput `pulumi:"instances"`
+	// Whether IPv6 is enabled on managed instances.
+	Ipv6 pulumi.BoolInput `pulumi:"ipv6"`
+	// The SshKey (name) authorized on the managed instances.
+	KeyPair pulumi.StringInput `pulumi:"keyPair"`
+	// A map of key/value labels.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The pool name to match (conflicts with `id`).
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The list of attached PrivateNetwork (IDs).
+	NetworkIds pulumi.StringArrayInput `pulumi:"networkIds"`
+	// The list of attached SecurityGroup (IDs).
+	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	// The number managed instances.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The pool state.
+	State pulumi.StringInput `pulumi:"state"`
+	// The managed instances getTemplate ID.
+	TemplateId pulumi.StringInput `pulumi:"templateId"`
+	// [cloud-init](http://cloudinit.readthedocs.io/en/latest/) configuration.
+	UserData pulumi.StringInput `pulumi:"userData"`
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
 func (GetInstancePoolListPoolArgs) ElementType() reflect.Type {
@@ -5893,82 +6059,102 @@ func (o GetInstancePoolListPoolOutput) ToGetInstancePoolListPoolOutputWithContex
 	return o
 }
 
+// The list of attached AntiAffinityGroup (IDs).
 func (o GetInstancePoolListPoolOutput) AffinityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) []string { return v.AffinityGroupIds }).(pulumi.StringArrayOutput)
 }
 
+// The deploy target ID.
 func (o GetInstancePoolListPoolOutput) DeployTargetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) string { return v.DeployTargetId }).(pulumi.StringOutput)
 }
 
+// The instance pool description.
 func (o GetInstancePoolListPoolOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The managed instances disk size.
 func (o GetInstancePoolListPoolOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) int { return v.DiskSize }).(pulumi.IntOutput)
 }
 
+// The list of attached ElasticIp (IDs).
 func (o GetInstancePoolListPoolOutput) ElasticIpIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) []string { return v.ElasticIpIds }).(pulumi.StringArrayOutput)
 }
 
+// The instance pool ID to match (conflicts with `name`).
 func (o GetInstancePoolListPoolOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The string used to prefix the managed instances name.
 func (o GetInstancePoolListPoolOutput) InstancePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) string { return v.InstancePrefix }).(pulumi.StringOutput)
 }
 
+// The managed instances type.
 func (o GetInstancePoolListPoolOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
+// The list of managed instances. Structure is documented below.
 func (o GetInstancePoolListPoolOutput) Instances() GetInstancePoolListPoolInstanceArrayOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) []GetInstancePoolListPoolInstance { return v.Instances }).(GetInstancePoolListPoolInstanceArrayOutput)
 }
 
+// Whether IPv6 is enabled on managed instances.
 func (o GetInstancePoolListPoolOutput) Ipv6() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) bool { return v.Ipv6 }).(pulumi.BoolOutput)
 }
 
+// The SshKey (name) authorized on the managed instances.
 func (o GetInstancePoolListPoolOutput) KeyPair() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) string { return v.KeyPair }).(pulumi.StringOutput)
 }
 
+// A map of key/value labels.
 func (o GetInstancePoolListPoolOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// The pool name to match (conflicts with `id`).
 func (o GetInstancePoolListPoolOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The list of attached PrivateNetwork (IDs).
 func (o GetInstancePoolListPoolOutput) NetworkIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) []string { return v.NetworkIds }).(pulumi.StringArrayOutput)
 }
 
+// The list of attached SecurityGroup (IDs).
 func (o GetInstancePoolListPoolOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
+// The number managed instances.
 func (o GetInstancePoolListPoolOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) int { return v.Size }).(pulumi.IntOutput)
 }
 
+// The pool state.
 func (o GetInstancePoolListPoolOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) string { return v.State }).(pulumi.StringOutput)
 }
 
+// The managed instances getTemplate ID.
 func (o GetInstancePoolListPoolOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) string { return v.TemplateId }).(pulumi.StringOutput)
 }
 
+// [cloud-init](http://cloudinit.readthedocs.io/en/latest/) configuration.
 func (o GetInstancePoolListPoolOutput) UserData() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) string { return v.UserData }).(pulumi.StringOutput)
 }
 
+// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 func (o GetInstancePoolListPoolOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) string { return v.Zone }).(pulumi.StringOutput)
 }
@@ -5994,10 +6180,14 @@ func (o GetInstancePoolListPoolArrayOutput) Index(i pulumi.IntInput) GetInstance
 }
 
 type GetInstancePoolListPoolInstance struct {
-	Id              *string `pulumi:"id"`
-	Ipv6Address     string  `pulumi:"ipv6Address"`
-	Name            *string `pulumi:"name"`
-	PublicIpAddress string  `pulumi:"publicIpAddress"`
+	// The compute instance ID.
+	Id *string `pulumi:"id"`
+	// The instance (main network interface) IPv6 address.
+	Ipv6Address string `pulumi:"ipv6Address"`
+	// The instance name.
+	Name *string `pulumi:"name"`
+	// The instance (main network interface) IPv4 address.
+	PublicIpAddress string `pulumi:"publicIpAddress"`
 }
 
 // GetInstancePoolListPoolInstanceInput is an input type that accepts GetInstancePoolListPoolInstanceArgs and GetInstancePoolListPoolInstanceOutput values.
@@ -6012,10 +6202,14 @@ type GetInstancePoolListPoolInstanceInput interface {
 }
 
 type GetInstancePoolListPoolInstanceArgs struct {
-	Id              pulumi.StringPtrInput `pulumi:"id"`
-	Ipv6Address     pulumi.StringInput    `pulumi:"ipv6Address"`
-	Name            pulumi.StringPtrInput `pulumi:"name"`
-	PublicIpAddress pulumi.StringInput    `pulumi:"publicIpAddress"`
+	// The compute instance ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The instance (main network interface) IPv6 address.
+	Ipv6Address pulumi.StringInput `pulumi:"ipv6Address"`
+	// The instance name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The instance (main network interface) IPv4 address.
+	PublicIpAddress pulumi.StringInput `pulumi:"publicIpAddress"`
 }
 
 func (GetInstancePoolListPoolInstanceArgs) ElementType() reflect.Type {
@@ -6069,18 +6263,22 @@ func (o GetInstancePoolListPoolInstanceOutput) ToGetInstancePoolListPoolInstance
 	return o
 }
 
+// The compute instance ID.
 func (o GetInstancePoolListPoolInstanceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancePoolListPoolInstance) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The instance (main network interface) IPv6 address.
 func (o GetInstancePoolListPoolInstanceOutput) Ipv6Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancePoolListPoolInstance) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
 
+// The instance name.
 func (o GetInstancePoolListPoolInstanceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancePoolListPoolInstance) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The instance (main network interface) IPv4 address.
 func (o GetInstancePoolListPoolInstanceOutput) PublicIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancePoolListPoolInstance) string { return v.PublicIpAddress }).(pulumi.StringOutput)
 }
@@ -6504,26 +6702,42 @@ func (o GetNlbServiceListTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
 
 type GetSksClusterListCluster struct {
 	// Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
-	Addons         []string                     `pulumi:"addons"`
-	AggregationCa  string                       `pulumi:"aggregationCa"`
-	AutoUpgrade    *bool                        `pulumi:"autoUpgrade"`
-	Cni            *string                      `pulumi:"cni"`
-	ControlPlaneCa string                       `pulumi:"controlPlaneCa"`
-	CreatedAt      string                       `pulumi:"createdAt"`
-	Description    *string                      `pulumi:"description"`
-	Endpoint       string                       `pulumi:"endpoint"`
-	ExoscaleCcm    *bool                        `pulumi:"exoscaleCcm"`
-	Id             *string                      `pulumi:"id"`
-	KubeletCa      string                       `pulumi:"kubeletCa"`
-	Labels         map[string]string            `pulumi:"labels"`
-	MetricsServer  *bool                        `pulumi:"metricsServer"`
-	Name           *string                      `pulumi:"name"`
-	Nodepools      []string                     `pulumi:"nodepools"`
-	Oidc           GetSksClusterListClusterOidc `pulumi:"oidc"`
-	ServiceLevel   *string                      `pulumi:"serviceLevel"`
-	State          string                       `pulumi:"state"`
-	Version        string                       `pulumi:"version"`
-	Zone           string                       `pulumi:"zone"`
+	Addons []string `pulumi:"addons"`
+	// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
+	AggregationCa string `pulumi:"aggregationCa"`
+	// Enable automatic upgrading of the control plane version.
+	AutoUpgrade *bool `pulumi:"autoUpgrade"`
+	// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
+	Cni *string `pulumi:"cni"`
+	// The CA certificate (in PEM format) for TLS communications between control plane components.
+	ControlPlaneCa string `pulumi:"controlPlaneCa"`
+	// The cluster creation date.
+	CreatedAt string `pulumi:"createdAt"`
+	// A free-form text describing the cluster.
+	Description *string `pulumi:"description"`
+	// The cluster API endpoint.
+	Endpoint string `pulumi:"endpoint"`
+	// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
+	ExoscaleCcm *bool   `pulumi:"exoscaleCcm"`
+	Id          *string `pulumi:"id"`
+	// The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
+	KubeletCa string `pulumi:"kubeletCa"`
+	// A map of key/value labels.
+	Labels map[string]string `pulumi:"labels"`
+	// Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
+	MetricsServer *bool   `pulumi:"metricsServer"`
+	Name          *string `pulumi:"name"`
+	// The list of SksNodepool (IDs) attached to the cluster.
+	Nodepools []string `pulumi:"nodepools"`
+	// An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
+	Oidc GetSksClusterListClusterOidc `pulumi:"oidc"`
+	// The service level of the control plane (`pro` or `starter`; default: `pro`; may only be set at creation time).
+	ServiceLevel *string `pulumi:"serviceLevel"`
+	// The cluster state.
+	State string `pulumi:"state"`
+	// The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
+	Version string `pulumi:"version"`
+	Zone    string `pulumi:"zone"`
 }
 
 // GetSksClusterListClusterInput is an input type that accepts GetSksClusterListClusterArgs and GetSksClusterListClusterOutput values.
@@ -6539,26 +6753,42 @@ type GetSksClusterListClusterInput interface {
 
 type GetSksClusterListClusterArgs struct {
 	// Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
-	Addons         pulumi.StringArrayInput           `pulumi:"addons"`
-	AggregationCa  pulumi.StringInput                `pulumi:"aggregationCa"`
-	AutoUpgrade    pulumi.BoolPtrInput               `pulumi:"autoUpgrade"`
-	Cni            pulumi.StringPtrInput             `pulumi:"cni"`
-	ControlPlaneCa pulumi.StringInput                `pulumi:"controlPlaneCa"`
-	CreatedAt      pulumi.StringInput                `pulumi:"createdAt"`
-	Description    pulumi.StringPtrInput             `pulumi:"description"`
-	Endpoint       pulumi.StringInput                `pulumi:"endpoint"`
-	ExoscaleCcm    pulumi.BoolPtrInput               `pulumi:"exoscaleCcm"`
-	Id             pulumi.StringPtrInput             `pulumi:"id"`
-	KubeletCa      pulumi.StringInput                `pulumi:"kubeletCa"`
-	Labels         pulumi.StringMapInput             `pulumi:"labels"`
-	MetricsServer  pulumi.BoolPtrInput               `pulumi:"metricsServer"`
-	Name           pulumi.StringPtrInput             `pulumi:"name"`
-	Nodepools      pulumi.StringArrayInput           `pulumi:"nodepools"`
-	Oidc           GetSksClusterListClusterOidcInput `pulumi:"oidc"`
-	ServiceLevel   pulumi.StringPtrInput             `pulumi:"serviceLevel"`
-	State          pulumi.StringInput                `pulumi:"state"`
-	Version        pulumi.StringInput                `pulumi:"version"`
-	Zone           pulumi.StringInput                `pulumi:"zone"`
+	Addons pulumi.StringArrayInput `pulumi:"addons"`
+	// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
+	AggregationCa pulumi.StringInput `pulumi:"aggregationCa"`
+	// Enable automatic upgrading of the control plane version.
+	AutoUpgrade pulumi.BoolPtrInput `pulumi:"autoUpgrade"`
+	// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
+	Cni pulumi.StringPtrInput `pulumi:"cni"`
+	// The CA certificate (in PEM format) for TLS communications between control plane components.
+	ControlPlaneCa pulumi.StringInput `pulumi:"controlPlaneCa"`
+	// The cluster creation date.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// A free-form text describing the cluster.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The cluster API endpoint.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
+	ExoscaleCcm pulumi.BoolPtrInput   `pulumi:"exoscaleCcm"`
+	Id          pulumi.StringPtrInput `pulumi:"id"`
+	// The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
+	KubeletCa pulumi.StringInput `pulumi:"kubeletCa"`
+	// A map of key/value labels.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
+	MetricsServer pulumi.BoolPtrInput   `pulumi:"metricsServer"`
+	Name          pulumi.StringPtrInput `pulumi:"name"`
+	// The list of SksNodepool (IDs) attached to the cluster.
+	Nodepools pulumi.StringArrayInput `pulumi:"nodepools"`
+	// An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
+	Oidc GetSksClusterListClusterOidcInput `pulumi:"oidc"`
+	// The service level of the control plane (`pro` or `starter`; default: `pro`; may only be set at creation time).
+	ServiceLevel pulumi.StringPtrInput `pulumi:"serviceLevel"`
+	// The cluster state.
+	State pulumi.StringInput `pulumi:"state"`
+	// The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
+	Version pulumi.StringInput `pulumi:"version"`
+	Zone    pulumi.StringInput `pulumi:"zone"`
 }
 
 func (GetSksClusterListClusterArgs) ElementType() reflect.Type {
@@ -6617,34 +6847,42 @@ func (o GetSksClusterListClusterOutput) Addons() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSksClusterListCluster) []string { return v.Addons }).(pulumi.StringArrayOutput)
 }
 
+// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
 func (o GetSksClusterListClusterOutput) AggregationCa() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSksClusterListCluster) string { return v.AggregationCa }).(pulumi.StringOutput)
 }
 
+// Enable automatic upgrading of the control plane version.
 func (o GetSksClusterListClusterOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetSksClusterListCluster) *bool { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
 }
 
+// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
 func (o GetSksClusterListClusterOutput) Cni() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSksClusterListCluster) *string { return v.Cni }).(pulumi.StringPtrOutput)
 }
 
+// The CA certificate (in PEM format) for TLS communications between control plane components.
 func (o GetSksClusterListClusterOutput) ControlPlaneCa() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSksClusterListCluster) string { return v.ControlPlaneCa }).(pulumi.StringOutput)
 }
 
+// The cluster creation date.
 func (o GetSksClusterListClusterOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSksClusterListCluster) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// A free-form text describing the cluster.
 func (o GetSksClusterListClusterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSksClusterListCluster) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The cluster API endpoint.
 func (o GetSksClusterListClusterOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSksClusterListCluster) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
+// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
 func (o GetSksClusterListClusterOutput) ExoscaleCcm() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetSksClusterListCluster) *bool { return v.ExoscaleCcm }).(pulumi.BoolPtrOutput)
 }
@@ -6653,14 +6891,17 @@ func (o GetSksClusterListClusterOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSksClusterListCluster) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
 func (o GetSksClusterListClusterOutput) KubeletCa() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSksClusterListCluster) string { return v.KubeletCa }).(pulumi.StringOutput)
 }
 
+// A map of key/value labels.
 func (o GetSksClusterListClusterOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSksClusterListCluster) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
 func (o GetSksClusterListClusterOutput) MetricsServer() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetSksClusterListCluster) *bool { return v.MetricsServer }).(pulumi.BoolPtrOutput)
 }
@@ -6669,22 +6910,27 @@ func (o GetSksClusterListClusterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSksClusterListCluster) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The list of SksNodepool (IDs) attached to the cluster.
 func (o GetSksClusterListClusterOutput) Nodepools() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSksClusterListCluster) []string { return v.Nodepools }).(pulumi.StringArrayOutput)
 }
 
+// An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
 func (o GetSksClusterListClusterOutput) Oidc() GetSksClusterListClusterOidcOutput {
 	return o.ApplyT(func(v GetSksClusterListCluster) GetSksClusterListClusterOidc { return v.Oidc }).(GetSksClusterListClusterOidcOutput)
 }
 
+// The service level of the control plane (`pro` or `starter`; default: `pro`; may only be set at creation time).
 func (o GetSksClusterListClusterOutput) ServiceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSksClusterListCluster) *string { return v.ServiceLevel }).(pulumi.StringPtrOutput)
 }
 
+// The cluster state.
 func (o GetSksClusterListClusterOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSksClusterListCluster) string { return v.State }).(pulumi.StringOutput)
 }
 
+// The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
 func (o GetSksClusterListClusterOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSksClusterListCluster) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -6714,13 +6960,20 @@ func (o GetSksClusterListClusterArrayOutput) Index(i pulumi.IntInput) GetSksClus
 }
 
 type GetSksClusterListClusterOidc struct {
-	ClientId       string            `pulumi:"clientId"`
-	GroupsClaim    *string           `pulumi:"groupsClaim"`
-	GroupsPrefix   *string           `pulumi:"groupsPrefix"`
-	IssuerUrl      string            `pulumi:"issuerUrl"`
-	RequiredClaim  map[string]string `pulumi:"requiredClaim"`
-	UsernameClaim  *string           `pulumi:"usernameClaim"`
-	UsernamePrefix *string           `pulumi:"usernamePrefix"`
+	// The OpenID client ID.
+	ClientId string `pulumi:"clientId"`
+	// An OpenID JWT claim to use as the user's group.
+	GroupsClaim *string `pulumi:"groupsClaim"`
+	// An OpenID prefix prepended to group claims.
+	GroupsPrefix *string `pulumi:"groupsPrefix"`
+	// The OpenID provider URL.
+	IssuerUrl string `pulumi:"issuerUrl"`
+	// A map of key/value pairs that describes a required claim in the OpenID Token.
+	RequiredClaim map[string]string `pulumi:"requiredClaim"`
+	// An OpenID JWT claim to use as the user name.
+	UsernameClaim *string `pulumi:"usernameClaim"`
+	// An OpenID prefix prepended to username claims.
+	UsernamePrefix *string `pulumi:"usernamePrefix"`
 }
 
 // GetSksClusterListClusterOidcInput is an input type that accepts GetSksClusterListClusterOidcArgs and GetSksClusterListClusterOidcOutput values.
@@ -6735,12 +6988,19 @@ type GetSksClusterListClusterOidcInput interface {
 }
 
 type GetSksClusterListClusterOidcArgs struct {
-	ClientId       pulumi.StringInput    `pulumi:"clientId"`
-	GroupsClaim    pulumi.StringPtrInput `pulumi:"groupsClaim"`
-	GroupsPrefix   pulumi.StringPtrInput `pulumi:"groupsPrefix"`
-	IssuerUrl      pulumi.StringInput    `pulumi:"issuerUrl"`
-	RequiredClaim  pulumi.StringMapInput `pulumi:"requiredClaim"`
-	UsernameClaim  pulumi.StringPtrInput `pulumi:"usernameClaim"`
+	// The OpenID client ID.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// An OpenID JWT claim to use as the user's group.
+	GroupsClaim pulumi.StringPtrInput `pulumi:"groupsClaim"`
+	// An OpenID prefix prepended to group claims.
+	GroupsPrefix pulumi.StringPtrInput `pulumi:"groupsPrefix"`
+	// The OpenID provider URL.
+	IssuerUrl pulumi.StringInput `pulumi:"issuerUrl"`
+	// A map of key/value pairs that describes a required claim in the OpenID Token.
+	RequiredClaim pulumi.StringMapInput `pulumi:"requiredClaim"`
+	// An OpenID JWT claim to use as the user name.
+	UsernameClaim pulumi.StringPtrInput `pulumi:"usernameClaim"`
+	// An OpenID prefix prepended to username claims.
 	UsernamePrefix pulumi.StringPtrInput `pulumi:"usernamePrefix"`
 }
 
@@ -6770,30 +7030,37 @@ func (o GetSksClusterListClusterOidcOutput) ToGetSksClusterListClusterOidcOutput
 	return o
 }
 
+// The OpenID client ID.
 func (o GetSksClusterListClusterOidcOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSksClusterListClusterOidc) string { return v.ClientId }).(pulumi.StringOutput)
 }
 
+// An OpenID JWT claim to use as the user's group.
 func (o GetSksClusterListClusterOidcOutput) GroupsClaim() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSksClusterListClusterOidc) *string { return v.GroupsClaim }).(pulumi.StringPtrOutput)
 }
 
+// An OpenID prefix prepended to group claims.
 func (o GetSksClusterListClusterOidcOutput) GroupsPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSksClusterListClusterOidc) *string { return v.GroupsPrefix }).(pulumi.StringPtrOutput)
 }
 
+// The OpenID provider URL.
 func (o GetSksClusterListClusterOidcOutput) IssuerUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSksClusterListClusterOidc) string { return v.IssuerUrl }).(pulumi.StringOutput)
 }
 
+// A map of key/value pairs that describes a required claim in the OpenID Token.
 func (o GetSksClusterListClusterOidcOutput) RequiredClaim() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSksClusterListClusterOidc) map[string]string { return v.RequiredClaim }).(pulumi.StringMapOutput)
 }
 
+// An OpenID JWT claim to use as the user name.
 func (o GetSksClusterListClusterOidcOutput) UsernameClaim() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSksClusterListClusterOidc) *string { return v.UsernameClaim }).(pulumi.StringPtrOutput)
 }
 
+// An OpenID prefix prepended to username claims.
 func (o GetSksClusterListClusterOidcOutput) UsernamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSksClusterListClusterOidc) *string { return v.UsernamePrefix }).(pulumi.StringPtrOutput)
 }
@@ -7050,27 +7317,43 @@ func (o GetSksClusterOidcPtrOutput) UsernamePrefix() pulumi.StringPtrOutput {
 }
 
 type GetSksNodepoolListNodepool struct {
-	AntiAffinityGroupIds []string          `pulumi:"antiAffinityGroupIds"`
-	ClusterId            string            `pulumi:"clusterId"`
-	CreatedAt            string            `pulumi:"createdAt"`
-	DeployTargetId       *string           `pulumi:"deployTargetId"`
-	Description          *string           `pulumi:"description"`
-	DiskSize             *int              `pulumi:"diskSize"`
-	Id                   *string           `pulumi:"id"`
-	InstancePoolId       string            `pulumi:"instancePoolId"`
-	InstancePrefix       *string           `pulumi:"instancePrefix"`
-	InstanceType         *string           `pulumi:"instanceType"`
-	Labels               map[string]string `pulumi:"labels"`
-	Name                 *string           `pulumi:"name"`
-	PrivateNetworkIds    []string          `pulumi:"privateNetworkIds"`
-	SecurityGroupIds     []string          `pulumi:"securityGroupIds"`
-	Size                 *int              `pulumi:"size"`
-	State                string            `pulumi:"state"`
-	StorageLvm           *bool             `pulumi:"storageLvm"`
-	Taints               map[string]string `pulumi:"taints"`
-	TemplateId           string            `pulumi:"templateId"`
-	Version              string            `pulumi:"version"`
-	Zone                 string            `pulumi:"zone"`
+	// A list of AntiAffinityGroup (IDs) to be attached to the managed instances.
+	AntiAffinityGroupIds []string `pulumi:"antiAffinityGroupIds"`
+	ClusterId            string   `pulumi:"clusterId"`
+	// The pool creation date.
+	CreatedAt string `pulumi:"createdAt"`
+	// A deploy target ID.
+	DeployTargetId *string `pulumi:"deployTargetId"`
+	// A free-form text describing the pool.
+	Description *string `pulumi:"description"`
+	// The managed instances disk size (GiB; default: `50`).
+	DiskSize *int    `pulumi:"diskSize"`
+	Id       *string `pulumi:"id"`
+	// The underlying InstancePool ID.
+	InstancePoolId string `pulumi:"instancePoolId"`
+	// The string used to prefix the managed instances name (default `pool`).
+	InstancePrefix *string `pulumi:"instancePrefix"`
+	// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
+	InstanceType *string `pulumi:"instanceType"`
+	// A map of key/value labels.
+	Labels map[string]string `pulumi:"labels"`
+	Name   *string           `pulumi:"name"`
+	// A list of PrivateNetwork (IDs) to be attached to the managed instances.
+	PrivateNetworkIds []string `pulumi:"privateNetworkIds"`
+	// A list of SecurityGroup (IDs) to be attached to the managed instances.
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	Size             *int     `pulumi:"size"`
+	// The current pool state.
+	State string `pulumi:"state"`
+	// Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+	StorageLvm *bool `pulumi:"storageLvm"`
+	// A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) ('taints = { <key> = "<value>:<effect>" }').
+	Taints map[string]string `pulumi:"taints"`
+	// The managed instances template ID.
+	TemplateId string `pulumi:"templateId"`
+	// The managed instances version.
+	Version string `pulumi:"version"`
+	Zone    string `pulumi:"zone"`
 }
 
 // GetSksNodepoolListNodepoolInput is an input type that accepts GetSksNodepoolListNodepoolArgs and GetSksNodepoolListNodepoolOutput values.
@@ -7085,27 +7368,43 @@ type GetSksNodepoolListNodepoolInput interface {
 }
 
 type GetSksNodepoolListNodepoolArgs struct {
+	// A list of AntiAffinityGroup (IDs) to be attached to the managed instances.
 	AntiAffinityGroupIds pulumi.StringArrayInput `pulumi:"antiAffinityGroupIds"`
 	ClusterId            pulumi.StringInput      `pulumi:"clusterId"`
-	CreatedAt            pulumi.StringInput      `pulumi:"createdAt"`
-	DeployTargetId       pulumi.StringPtrInput   `pulumi:"deployTargetId"`
-	Description          pulumi.StringPtrInput   `pulumi:"description"`
-	DiskSize             pulumi.IntPtrInput      `pulumi:"diskSize"`
-	Id                   pulumi.StringPtrInput   `pulumi:"id"`
-	InstancePoolId       pulumi.StringInput      `pulumi:"instancePoolId"`
-	InstancePrefix       pulumi.StringPtrInput   `pulumi:"instancePrefix"`
-	InstanceType         pulumi.StringPtrInput   `pulumi:"instanceType"`
-	Labels               pulumi.StringMapInput   `pulumi:"labels"`
-	Name                 pulumi.StringPtrInput   `pulumi:"name"`
-	PrivateNetworkIds    pulumi.StringArrayInput `pulumi:"privateNetworkIds"`
-	SecurityGroupIds     pulumi.StringArrayInput `pulumi:"securityGroupIds"`
-	Size                 pulumi.IntPtrInput      `pulumi:"size"`
-	State                pulumi.StringInput      `pulumi:"state"`
-	StorageLvm           pulumi.BoolPtrInput     `pulumi:"storageLvm"`
-	Taints               pulumi.StringMapInput   `pulumi:"taints"`
-	TemplateId           pulumi.StringInput      `pulumi:"templateId"`
-	Version              pulumi.StringInput      `pulumi:"version"`
-	Zone                 pulumi.StringInput      `pulumi:"zone"`
+	// The pool creation date.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// A deploy target ID.
+	DeployTargetId pulumi.StringPtrInput `pulumi:"deployTargetId"`
+	// A free-form text describing the pool.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The managed instances disk size (GiB; default: `50`).
+	DiskSize pulumi.IntPtrInput    `pulumi:"diskSize"`
+	Id       pulumi.StringPtrInput `pulumi:"id"`
+	// The underlying InstancePool ID.
+	InstancePoolId pulumi.StringInput `pulumi:"instancePoolId"`
+	// The string used to prefix the managed instances name (default `pool`).
+	InstancePrefix pulumi.StringPtrInput `pulumi:"instancePrefix"`
+	// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// A map of key/value labels.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	Name   pulumi.StringPtrInput `pulumi:"name"`
+	// A list of PrivateNetwork (IDs) to be attached to the managed instances.
+	PrivateNetworkIds pulumi.StringArrayInput `pulumi:"privateNetworkIds"`
+	// A list of SecurityGroup (IDs) to be attached to the managed instances.
+	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	Size             pulumi.IntPtrInput      `pulumi:"size"`
+	// The current pool state.
+	State pulumi.StringInput `pulumi:"state"`
+	// Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+	StorageLvm pulumi.BoolPtrInput `pulumi:"storageLvm"`
+	// A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) ('taints = { <key> = "<value>:<effect>" }').
+	Taints pulumi.StringMapInput `pulumi:"taints"`
+	// The managed instances template ID.
+	TemplateId pulumi.StringInput `pulumi:"templateId"`
+	// The managed instances version.
+	Version pulumi.StringInput `pulumi:"version"`
+	Zone    pulumi.StringInput `pulumi:"zone"`
 }
 
 func (GetSksNodepoolListNodepoolArgs) ElementType() reflect.Type {
@@ -7159,6 +7458,7 @@ func (o GetSksNodepoolListNodepoolOutput) ToGetSksNodepoolListNodepoolOutputWith
 	return o
 }
 
+// A list of AntiAffinityGroup (IDs) to be attached to the managed instances.
 func (o GetSksNodepoolListNodepoolOutput) AntiAffinityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSksNodepoolListNodepool) []string { return v.AntiAffinityGroupIds }).(pulumi.StringArrayOutput)
 }
@@ -7167,18 +7467,22 @@ func (o GetSksNodepoolListNodepoolOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSksNodepoolListNodepool) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
+// The pool creation date.
 func (o GetSksNodepoolListNodepoolOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSksNodepoolListNodepool) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// A deploy target ID.
 func (o GetSksNodepoolListNodepoolOutput) DeployTargetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSksNodepoolListNodepool) *string { return v.DeployTargetId }).(pulumi.StringPtrOutput)
 }
 
+// A free-form text describing the pool.
 func (o GetSksNodepoolListNodepoolOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSksNodepoolListNodepool) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The managed instances disk size (GiB; default: `50`).
 func (o GetSksNodepoolListNodepoolOutput) DiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetSksNodepoolListNodepool) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
 }
@@ -7187,18 +7491,22 @@ func (o GetSksNodepoolListNodepoolOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSksNodepoolListNodepool) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The underlying InstancePool ID.
 func (o GetSksNodepoolListNodepoolOutput) InstancePoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSksNodepoolListNodepool) string { return v.InstancePoolId }).(pulumi.StringOutput)
 }
 
+// The string used to prefix the managed instances name (default `pool`).
 func (o GetSksNodepoolListNodepoolOutput) InstancePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSksNodepoolListNodepool) *string { return v.InstancePrefix }).(pulumi.StringPtrOutput)
 }
 
+// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
 func (o GetSksNodepoolListNodepoolOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSksNodepoolListNodepool) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
 
+// A map of key/value labels.
 func (o GetSksNodepoolListNodepoolOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSksNodepoolListNodepool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -7207,10 +7515,12 @@ func (o GetSksNodepoolListNodepoolOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSksNodepoolListNodepool) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// A list of PrivateNetwork (IDs) to be attached to the managed instances.
 func (o GetSksNodepoolListNodepoolOutput) PrivateNetworkIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSksNodepoolListNodepool) []string { return v.PrivateNetworkIds }).(pulumi.StringArrayOutput)
 }
 
+// A list of SecurityGroup (IDs) to be attached to the managed instances.
 func (o GetSksNodepoolListNodepoolOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSksNodepoolListNodepool) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
@@ -7219,22 +7529,27 @@ func (o GetSksNodepoolListNodepoolOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetSksNodepoolListNodepool) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
 
+// The current pool state.
 func (o GetSksNodepoolListNodepoolOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSksNodepoolListNodepool) string { return v.State }).(pulumi.StringOutput)
 }
 
+// Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
 func (o GetSksNodepoolListNodepoolOutput) StorageLvm() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetSksNodepoolListNodepool) *bool { return v.StorageLvm }).(pulumi.BoolPtrOutput)
 }
 
+// A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) ('taints = { <key> = "<value>:<effect>" }').
 func (o GetSksNodepoolListNodepoolOutput) Taints() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSksNodepoolListNodepool) map[string]string { return v.Taints }).(pulumi.StringMapOutput)
 }
 
+// The managed instances template ID.
 func (o GetSksNodepoolListNodepoolOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSksNodepoolListNodepool) string { return v.TemplateId }).(pulumi.StringOutput)
 }
 
+// The managed instances version.
 func (o GetSksNodepoolListNodepoolOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSksNodepoolListNodepool) string { return v.Version }).(pulumi.StringOutput)
 }

@@ -768,10 +768,10 @@ class InstancePool(pulumi.CustomResource):
 
         ## Import
 
-        An existing instance pool may be imported by `<ID>@<zone>`
+        An existing instance pool may be imported by `<ID>@<zone>`:
 
         ```sh
-         $ pulumi import exoscale:index/instancePool:InstancePool \\
+        $ pulumi import exoscale:index/instancePool:InstancePool \\
         ```
 
          exoscale_instance_pool.my_instance_pool \\
@@ -834,10 +834,10 @@ class InstancePool(pulumi.CustomResource):
 
         ## Import
 
-        An existing instance pool may be imported by `<ID>@<zone>`
+        An existing instance pool may be imported by `<ID>@<zone>`:
 
         ```sh
-         $ pulumi import exoscale:index/instancePool:InstancePool \\
+        $ pulumi import exoscale:index/instancePool:InstancePool \\
         ```
 
          exoscale_instance_pool.my_instance_pool \\

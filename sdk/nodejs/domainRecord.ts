@@ -33,10 +33,10 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * An existing DNS domain record may be imported by `<ID>`
+ * An existing DNS domain record may be imported by `<ID>`:
  *
  * ```sh
- *  $ pulumi import exoscale:index/domainRecord:DomainRecord \
+ * $ pulumi import exoscale:index/domainRecord:DomainRecord \
  * ```
  *
  *  exoscale_domain_record.my_host \

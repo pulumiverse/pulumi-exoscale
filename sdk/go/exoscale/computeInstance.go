@@ -59,12 +59,10 @@ import (
 //
 // ## Import
 //
-// An existing compute instance may be imported by `<ID>@<zone>`
+// An existing compute instance may be imported by `<ID>@<zone>`:
 //
 // ```sh
-//
-//	$ pulumi import exoscale:index/computeInstance:ComputeInstance \
-//
+// $ pulumi import exoscale:index/computeInstance:ComputeInstance \
 // ```
 //
 //	exoscale_compute_instance.my_instance \
@@ -79,6 +77,8 @@ type ComputeInstance struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// ❗ A deploy target ID.
 	DeployTargetId pulumi.StringPtrOutput `pulumi:"deployTargetId"`
+	// Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
+	DestroyProtected pulumi.BoolPtrOutput `pulumi:"destroyProtected"`
 	// The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
 	DiskSize pulumi.IntOutput `pulumi:"diskSize"`
 	// A list of exoscale*elastic*ip (IDs) to attach to the instance.
@@ -164,6 +164,8 @@ type computeInstanceState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// ❗ A deploy target ID.
 	DeployTargetId *string `pulumi:"deployTargetId"`
+	// Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
+	DestroyProtected *bool `pulumi:"destroyProtected"`
 	// The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
 	DiskSize *int `pulumi:"diskSize"`
 	// A list of exoscale*elastic*ip (IDs) to attach to the instance.
@@ -211,6 +213,8 @@ type ComputeInstanceState struct {
 	CreatedAt pulumi.StringPtrInput
 	// ❗ A deploy target ID.
 	DeployTargetId pulumi.StringPtrInput
+	// Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
+	DestroyProtected pulumi.BoolPtrInput
 	// The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
 	DiskSize pulumi.IntPtrInput
 	// A list of exoscale*elastic*ip (IDs) to attach to the instance.
@@ -260,6 +264,8 @@ type computeInstanceArgs struct {
 	AntiAffinityGroupIds []string `pulumi:"antiAffinityGroupIds"`
 	// ❗ A deploy target ID.
 	DeployTargetId *string `pulumi:"deployTargetId"`
+	// Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
+	DestroyProtected *bool `pulumi:"destroyProtected"`
 	// The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
 	DiskSize *int `pulumi:"diskSize"`
 	// A list of exoscale*elastic*ip (IDs) to attach to the instance.
@@ -298,6 +304,8 @@ type ComputeInstanceArgs struct {
 	AntiAffinityGroupIds pulumi.StringArrayInput
 	// ❗ A deploy target ID.
 	DeployTargetId pulumi.StringPtrInput
+	// Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
+	DestroyProtected pulumi.BoolPtrInput
 	// The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
 	DiskSize pulumi.IntPtrInput
 	// A list of exoscale*elastic*ip (IDs) to attach to the instance.
@@ -430,6 +438,11 @@ func (o ComputeInstanceOutput) CreatedAt() pulumi.StringOutput {
 // ❗ A deploy target ID.
 func (o ComputeInstanceOutput) DeployTargetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeInstance) pulumi.StringPtrOutput { return v.DeployTargetId }).(pulumi.StringPtrOutput)
+}
+
+// Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
+func (o ComputeInstanceOutput) DestroyProtected() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeInstance) pulumi.BoolPtrOutput { return v.DestroyProtected }).(pulumi.BoolPtrOutput)
 }
 
 // The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.

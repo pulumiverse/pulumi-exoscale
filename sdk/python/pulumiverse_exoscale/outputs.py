@@ -1728,6 +1728,30 @@ class GetComputeInstanceListInstanceResult(dict):
                  zone: str,
                  id: Optional[str] = None,
                  name: Optional[str] = None):
+        """
+        :param Sequence[str] anti_affinity_group_ids: The list of attached AntiAffinityGroup (IDs).
+        :param str created_at: The compute instance creation date.
+        :param str deploy_target_id: A deploy target ID.
+        :param int disk_size: The instance disk size (GiB).
+        :param Sequence[str] elastic_ip_ids: The list of attached ElasticIp (IDs).
+        :param bool ipv6: Whether IPv6 is enabled on the instance.
+        :param str ipv6_address: The instance (main network interface) IPv6 address (if enabled).
+        :param Mapping[str, str] labels: A map of key/value labels.
+        :param str manager_id: The instance manager ID, if any.
+        :param str manager_type: The instance manager type (instance pool, SKS node pool, etc.), if any.
+        :param Sequence[str] private_network_ids: The list of attached PrivateNetwork (IDs).
+        :param str public_ip_address: The instance (main network interface) IPv4 address.
+        :param str reverse_dns: Domain name for reverse DNS record.
+        :param Sequence[str] security_group_ids: The list of attached SecurityGroup (IDs).
+        :param str ssh_key: The SshKey (name) authorized on the instance.
+        :param str state: The instance state.
+        :param str template_id: The instance get_template ID.
+        :param str type: The instance type.
+        :param str user_data: The instance [cloud-init](http://cloudinit.readthedocs.io/en/latest/) configuration.
+        :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        :param str id: The compute instance ID to match (conflicts with `name`).
+        :param str name: The instance name to match (conflicts with `id`).
+        """
         pulumi.set(__self__, "anti_affinity_group_ids", anti_affinity_group_ids)
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "deploy_target_id", deploy_target_id)
@@ -1756,111 +1780,177 @@ class GetComputeInstanceListInstanceResult(dict):
     @property
     @pulumi.getter(name="antiAffinityGroupIds")
     def anti_affinity_group_ids(self) -> Sequence[str]:
+        """
+        The list of attached AntiAffinityGroup (IDs).
+        """
         return pulumi.get(self, "anti_affinity_group_ids")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        The compute instance creation date.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="deployTargetId")
     def deploy_target_id(self) -> str:
+        """
+        A deploy target ID.
+        """
         return pulumi.get(self, "deploy_target_id")
 
     @property
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> int:
+        """
+        The instance disk size (GiB).
+        """
         return pulumi.get(self, "disk_size")
 
     @property
     @pulumi.getter(name="elasticIpIds")
     def elastic_ip_ids(self) -> Sequence[str]:
+        """
+        The list of attached ElasticIp (IDs).
+        """
         return pulumi.get(self, "elastic_ip_ids")
 
     @property
     @pulumi.getter
     def ipv6(self) -> bool:
+        """
+        Whether IPv6 is enabled on the instance.
+        """
         return pulumi.get(self, "ipv6")
 
     @property
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> str:
+        """
+        The instance (main network interface) IPv6 address (if enabled).
+        """
         return pulumi.get(self, "ipv6_address")
 
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
+        """
+        A map of key/value labels.
+        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="managerId")
     def manager_id(self) -> str:
+        """
+        The instance manager ID, if any.
+        """
         return pulumi.get(self, "manager_id")
 
     @property
     @pulumi.getter(name="managerType")
     def manager_type(self) -> str:
+        """
+        The instance manager type (instance pool, SKS node pool, etc.), if any.
+        """
         return pulumi.get(self, "manager_type")
 
     @property
     @pulumi.getter(name="privateNetworkIds")
     def private_network_ids(self) -> Sequence[str]:
+        """
+        The list of attached PrivateNetwork (IDs).
+        """
         return pulumi.get(self, "private_network_ids")
 
     @property
     @pulumi.getter(name="publicIpAddress")
     def public_ip_address(self) -> str:
+        """
+        The instance (main network interface) IPv4 address.
+        """
         return pulumi.get(self, "public_ip_address")
 
     @property
     @pulumi.getter(name="reverseDns")
     def reverse_dns(self) -> str:
+        """
+        Domain name for reverse DNS record.
+        """
         return pulumi.get(self, "reverse_dns")
 
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Sequence[str]:
+        """
+        The list of attached SecurityGroup (IDs).
+        """
         return pulumi.get(self, "security_group_ids")
 
     @property
     @pulumi.getter(name="sshKey")
     def ssh_key(self) -> str:
+        """
+        The SshKey (name) authorized on the instance.
+        """
         return pulumi.get(self, "ssh_key")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The instance state.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="templateId")
     def template_id(self) -> str:
+        """
+        The instance get_template ID.
+        """
         return pulumi.get(self, "template_id")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The instance type.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="userData")
     def user_data(self) -> str:
+        """
+        The instance [cloud-init](http://cloudinit.readthedocs.io/en/latest/) configuration.
+        """
         return pulumi.get(self, "user_data")
 
     @property
     @pulumi.getter
     def zone(self) -> str:
+        """
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        """
         return pulumi.get(self, "zone")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        The compute instance ID to match (conflicts with `name`).
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        The instance name to match (conflicts with `id`).
+        """
         return pulumi.get(self, "name")
 
 
@@ -1948,6 +2038,15 @@ class GetDomainRecordRecordResult(dict):
                  prio: Optional[int] = None,
                  record_type: Optional[str] = None,
                  ttl: Optional[int] = None):
+        """
+        :param str content: Content of the Record
+        :param str domain: Domain of the Record
+        :param str id: ID of the Record
+        :param str name: Name of the Record
+        :param int prio: Priority of the Record
+        :param str record_type: Type of the Record
+        :param int ttl: TTL of the Record
+        """
         if content is not None:
             pulumi.set(__self__, "content", content)
         if domain is not None:
@@ -1966,36 +2065,57 @@ class GetDomainRecordRecordResult(dict):
     @property
     @pulumi.getter
     def content(self) -> Optional[str]:
+        """
+        Content of the Record
+        """
         return pulumi.get(self, "content")
 
     @property
     @pulumi.getter
     def domain(self) -> Optional[str]:
+        """
+        Domain of the Record
+        """
         return pulumi.get(self, "domain")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        ID of the Record
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        Name of the Record
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def prio(self) -> Optional[int]:
+        """
+        Priority of the Record
+        """
         return pulumi.get(self, "prio")
 
     @property
     @pulumi.getter(name="recordType")
     def record_type(self) -> Optional[str]:
+        """
+        Type of the Record
+        """
         return pulumi.get(self, "record_type")
 
     @property
     @pulumi.getter
     def ttl(self) -> Optional[int]:
+        """
+        TTL of the Record
+        """
         return pulumi.get(self, "ttl")
 
 
@@ -2011,6 +2131,17 @@ class GetElasticIpHealthcheckResult(dict):
                  tls_skip_verify: bool,
                  tls_sni: str,
                  uri: str):
+        """
+        :param int interval: The healthcheck interval in seconds.
+        :param str mode: The healthcheck mode.
+        :param int port: The healthcheck target port.
+        :param int strikes_fail: The number of failed healthcheck attempts before considering the target unhealthy.
+        :param int strikes_ok: The number of successful healthcheck attempts before considering the target healthy.
+        :param int timeout: The time in seconds before considering a healthcheck probing failed.
+        :param bool tls_skip_verify: Disable TLS certificate verification for healthcheck in `https` mode.
+        :param str tls_sni: The healthcheck server name to present with SNI in `https` mode.
+        :param str uri: The healthcheck URI.
+        """
         pulumi.set(__self__, "interval", interval)
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "port", port)
@@ -2024,46 +2155,73 @@ class GetElasticIpHealthcheckResult(dict):
     @property
     @pulumi.getter
     def interval(self) -> int:
+        """
+        The healthcheck interval in seconds.
+        """
         return pulumi.get(self, "interval")
 
     @property
     @pulumi.getter
     def mode(self) -> str:
+        """
+        The healthcheck mode.
+        """
         return pulumi.get(self, "mode")
 
     @property
     @pulumi.getter
     def port(self) -> int:
+        """
+        The healthcheck target port.
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="strikesFail")
     def strikes_fail(self) -> int:
+        """
+        The number of failed healthcheck attempts before considering the target unhealthy.
+        """
         return pulumi.get(self, "strikes_fail")
 
     @property
     @pulumi.getter(name="strikesOk")
     def strikes_ok(self) -> int:
+        """
+        The number of successful healthcheck attempts before considering the target healthy.
+        """
         return pulumi.get(self, "strikes_ok")
 
     @property
     @pulumi.getter
     def timeout(self) -> int:
+        """
+        The time in seconds before considering a healthcheck probing failed.
+        """
         return pulumi.get(self, "timeout")
 
     @property
     @pulumi.getter(name="tlsSkipVerify")
     def tls_skip_verify(self) -> bool:
+        """
+        Disable TLS certificate verification for healthcheck in `https` mode.
+        """
         return pulumi.get(self, "tls_skip_verify")
 
     @property
     @pulumi.getter(name="tlsSni")
     def tls_sni(self) -> str:
+        """
+        The healthcheck server name to present with SNI in `https` mode.
+        """
         return pulumi.get(self, "tls_sni")
 
     @property
     @pulumi.getter
     def uri(self) -> str:
+        """
+        The healthcheck URI.
+        """
         return pulumi.get(self, "uri")
 
 
@@ -2296,6 +2454,12 @@ class GetInstancePoolInstanceResult(dict):
                  public_ip_address: str,
                  id: Optional[str] = None,
                  name: Optional[str] = None):
+        """
+        :param str ipv6_address: The instance (main network interface) IPv6 address.
+        :param str public_ip_address: The instance (main network interface) IPv4 address.
+        :param str id: The compute instance ID.
+        :param str name: The instance name.
+        """
         pulumi.set(__self__, "ipv6_address", ipv6_address)
         pulumi.set(__self__, "public_ip_address", public_ip_address)
         if id is not None:
@@ -2306,21 +2470,33 @@ class GetInstancePoolInstanceResult(dict):
     @property
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> str:
+        """
+        The instance (main network interface) IPv6 address.
+        """
         return pulumi.get(self, "ipv6_address")
 
     @property
     @pulumi.getter(name="publicIpAddress")
     def public_ip_address(self) -> str:
+        """
+        The instance (main network interface) IPv4 address.
+        """
         return pulumi.get(self, "public_ip_address")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        The compute instance ID.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        The instance name.
+        """
         return pulumi.get(self, "name")
 
 
@@ -2347,6 +2523,28 @@ class GetInstancePoolListPoolResult(dict):
                  id: Optional[str] = None,
                  labels: Optional[Mapping[str, str]] = None,
                  name: Optional[str] = None):
+        """
+        :param Sequence[str] affinity_group_ids: The list of attached AntiAffinityGroup (IDs).
+        :param str deploy_target_id: The deploy target ID.
+        :param str description: The instance pool description.
+        :param int disk_size: The managed instances disk size.
+        :param Sequence[str] elastic_ip_ids: The list of attached ElasticIp (IDs).
+        :param str instance_prefix: The string used to prefix the managed instances name.
+        :param str instance_type: The managed instances type.
+        :param Sequence['GetInstancePoolListPoolInstanceArgs'] instances: The list of managed instances. Structure is documented below.
+        :param bool ipv6: Whether IPv6 is enabled on managed instances.
+        :param str key_pair: The SshKey (name) authorized on the managed instances.
+        :param Sequence[str] network_ids: The list of attached PrivateNetwork (IDs).
+        :param Sequence[str] security_group_ids: The list of attached SecurityGroup (IDs).
+        :param int size: The number managed instances.
+        :param str state: The pool state.
+        :param str template_id: The managed instances get_template ID.
+        :param str user_data: [cloud-init](http://cloudinit.readthedocs.io/en/latest/) configuration.
+        :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        :param str id: The instance pool ID to match (conflicts with `name`).
+        :param Mapping[str, str] labels: A map of key/value labels.
+        :param str name: The pool name to match (conflicts with `id`).
+        """
         pulumi.set(__self__, "affinity_group_ids", affinity_group_ids)
         pulumi.set(__self__, "deploy_target_id", deploy_target_id)
         pulumi.set(__self__, "description", description)
@@ -2374,101 +2572,161 @@ class GetInstancePoolListPoolResult(dict):
     @property
     @pulumi.getter(name="affinityGroupIds")
     def affinity_group_ids(self) -> Sequence[str]:
+        """
+        The list of attached AntiAffinityGroup (IDs).
+        """
         return pulumi.get(self, "affinity_group_ids")
 
     @property
     @pulumi.getter(name="deployTargetId")
     def deploy_target_id(self) -> str:
+        """
+        The deploy target ID.
+        """
         return pulumi.get(self, "deploy_target_id")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The instance pool description.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> int:
+        """
+        The managed instances disk size.
+        """
         return pulumi.get(self, "disk_size")
 
     @property
     @pulumi.getter(name="elasticIpIds")
     def elastic_ip_ids(self) -> Sequence[str]:
+        """
+        The list of attached ElasticIp (IDs).
+        """
         return pulumi.get(self, "elastic_ip_ids")
 
     @property
     @pulumi.getter(name="instancePrefix")
     def instance_prefix(self) -> str:
+        """
+        The string used to prefix the managed instances name.
+        """
         return pulumi.get(self, "instance_prefix")
 
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> str:
+        """
+        The managed instances type.
+        """
         return pulumi.get(self, "instance_type")
 
     @property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetInstancePoolListPoolInstanceResult']:
+        """
+        The list of managed instances. Structure is documented below.
+        """
         return pulumi.get(self, "instances")
 
     @property
     @pulumi.getter
     def ipv6(self) -> bool:
+        """
+        Whether IPv6 is enabled on managed instances.
+        """
         return pulumi.get(self, "ipv6")
 
     @property
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> str:
+        """
+        The SshKey (name) authorized on the managed instances.
+        """
         return pulumi.get(self, "key_pair")
 
     @property
     @pulumi.getter(name="networkIds")
     def network_ids(self) -> Sequence[str]:
+        """
+        The list of attached PrivateNetwork (IDs).
+        """
         return pulumi.get(self, "network_ids")
 
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Sequence[str]:
+        """
+        The list of attached SecurityGroup (IDs).
+        """
         return pulumi.get(self, "security_group_ids")
 
     @property
     @pulumi.getter
     def size(self) -> int:
+        """
+        The number managed instances.
+        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The pool state.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="templateId")
     def template_id(self) -> str:
+        """
+        The managed instances get_template ID.
+        """
         return pulumi.get(self, "template_id")
 
     @property
     @pulumi.getter(name="userData")
     def user_data(self) -> str:
+        """
+        [cloud-init](http://cloudinit.readthedocs.io/en/latest/) configuration.
+        """
         return pulumi.get(self, "user_data")
 
     @property
     @pulumi.getter
     def zone(self) -> str:
+        """
+        The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        """
         return pulumi.get(self, "zone")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        The instance pool ID to match (conflicts with `name`).
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        A map of key/value labels.
+        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        The pool name to match (conflicts with `id`).
+        """
         return pulumi.get(self, "name")
 
 
@@ -2479,6 +2737,12 @@ class GetInstancePoolListPoolInstanceResult(dict):
                  public_ip_address: str,
                  id: Optional[str] = None,
                  name: Optional[str] = None):
+        """
+        :param str ipv6_address: The instance (main network interface) IPv6 address.
+        :param str public_ip_address: The instance (main network interface) IPv4 address.
+        :param str id: The compute instance ID.
+        :param str name: The instance name.
+        """
         pulumi.set(__self__, "ipv6_address", ipv6_address)
         pulumi.set(__self__, "public_ip_address", public_ip_address)
         if id is not None:
@@ -2489,21 +2753,33 @@ class GetInstancePoolListPoolInstanceResult(dict):
     @property
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> str:
+        """
+        The instance (main network interface) IPv6 address.
+        """
         return pulumi.get(self, "ipv6_address")
 
     @property
     @pulumi.getter(name="publicIpAddress")
     def public_ip_address(self) -> str:
+        """
+        The instance (main network interface) IPv4 address.
+        """
         return pulumi.get(self, "public_ip_address")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        The compute instance ID.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        The instance name.
+        """
         return pulumi.get(self, "name")
 
 
@@ -2716,6 +2992,24 @@ class GetSksClusterListClusterResult(dict):
                  metrics_server: Optional[bool] = None,
                  name: Optional[str] = None,
                  service_level: Optional[str] = None):
+        """
+        :param str aggregation_ca: The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
+        :param str control_plane_ca: The CA certificate (in PEM format) for TLS communications between control plane components.
+        :param str created_at: The cluster creation date.
+        :param str endpoint: The cluster API endpoint.
+        :param str kubelet_ca: The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
+        :param Sequence[str] nodepools: The list of SksNodepool (IDs) attached to the cluster.
+        :param 'GetSksClusterListClusterOidcArgs' oidc: An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
+        :param str state: The cluster state.
+        :param str version: The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
+        :param bool auto_upgrade: Enable automatic upgrading of the control plane version.
+        :param str cni: The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
+        :param str description: A free-form text describing the cluster.
+        :param bool exoscale_ccm: Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
+        :param Mapping[str, str] labels: A map of key/value labels.
+        :param bool metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
+        :param str service_level: The service level of the control plane (`pro` or `starter`; default: `pro`; may only be set at creation time).
+        """
         pulumi.set(__self__, "addons", addons)
         pulumi.set(__self__, "aggregation_ca", aggregation_ca)
         pulumi.set(__self__, "control_plane_ca", control_plane_ca)
@@ -2757,46 +3051,73 @@ class GetSksClusterListClusterResult(dict):
     @property
     @pulumi.getter(name="aggregationCa")
     def aggregation_ca(self) -> str:
+        """
+        The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
+        """
         return pulumi.get(self, "aggregation_ca")
 
     @property
     @pulumi.getter(name="controlPlaneCa")
     def control_plane_ca(self) -> str:
+        """
+        The CA certificate (in PEM format) for TLS communications between control plane components.
+        """
         return pulumi.get(self, "control_plane_ca")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        The cluster creation date.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def endpoint(self) -> str:
+        """
+        The cluster API endpoint.
+        """
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter(name="kubeletCa")
     def kubelet_ca(self) -> str:
+        """
+        The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
+        """
         return pulumi.get(self, "kubelet_ca")
 
     @property
     @pulumi.getter
     def nodepools(self) -> Sequence[str]:
+        """
+        The list of SksNodepool (IDs) attached to the cluster.
+        """
         return pulumi.get(self, "nodepools")
 
     @property
     @pulumi.getter
     def oidc(self) -> 'outputs.GetSksClusterListClusterOidcResult':
+        """
+        An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
+        """
         return pulumi.get(self, "oidc")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The cluster state.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def version(self) -> str:
+        """
+        The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
+        """
         return pulumi.get(self, "version")
 
     @property
@@ -2807,21 +3128,33 @@ class GetSksClusterListClusterResult(dict):
     @property
     @pulumi.getter(name="autoUpgrade")
     def auto_upgrade(self) -> Optional[bool]:
+        """
+        Enable automatic upgrading of the control plane version.
+        """
         return pulumi.get(self, "auto_upgrade")
 
     @property
     @pulumi.getter
     def cni(self) -> Optional[str]:
+        """
+        The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
+        """
         return pulumi.get(self, "cni")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        A free-form text describing the cluster.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="exoscaleCcm")
     def exoscale_ccm(self) -> Optional[bool]:
+        """
+        Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
+        """
         return pulumi.get(self, "exoscale_ccm")
 
     @property
@@ -2832,11 +3165,17 @@ class GetSksClusterListClusterResult(dict):
     @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        A map of key/value labels.
+        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="metricsServer")
     def metrics_server(self) -> Optional[bool]:
+        """
+        Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
+        """
         return pulumi.get(self, "metrics_server")
 
     @property
@@ -2847,6 +3186,9 @@ class GetSksClusterListClusterResult(dict):
     @property
     @pulumi.getter(name="serviceLevel")
     def service_level(self) -> Optional[str]:
+        """
+        The service level of the control plane (`pro` or `starter`; default: `pro`; may only be set at creation time).
+        """
         return pulumi.get(self, "service_level")
 
 
@@ -2860,6 +3202,15 @@ class GetSksClusterListClusterOidcResult(dict):
                  required_claim: Optional[Mapping[str, str]] = None,
                  username_claim: Optional[str] = None,
                  username_prefix: Optional[str] = None):
+        """
+        :param str client_id: The OpenID client ID.
+        :param str issuer_url: The OpenID provider URL.
+        :param str groups_claim: An OpenID JWT claim to use as the user's group.
+        :param str groups_prefix: An OpenID prefix prepended to group claims.
+        :param Mapping[str, str] required_claim: A map of key/value pairs that describes a required claim in the OpenID Token.
+        :param str username_claim: An OpenID JWT claim to use as the user name.
+        :param str username_prefix: An OpenID prefix prepended to username claims.
+        """
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "issuer_url", issuer_url)
         if groups_claim is not None:
@@ -2876,36 +3227,57 @@ class GetSksClusterListClusterOidcResult(dict):
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> str:
+        """
+        The OpenID client ID.
+        """
         return pulumi.get(self, "client_id")
 
     @property
     @pulumi.getter(name="issuerUrl")
     def issuer_url(self) -> str:
+        """
+        The OpenID provider URL.
+        """
         return pulumi.get(self, "issuer_url")
 
     @property
     @pulumi.getter(name="groupsClaim")
     def groups_claim(self) -> Optional[str]:
+        """
+        An OpenID JWT claim to use as the user's group.
+        """
         return pulumi.get(self, "groups_claim")
 
     @property
     @pulumi.getter(name="groupsPrefix")
     def groups_prefix(self) -> Optional[str]:
+        """
+        An OpenID prefix prepended to group claims.
+        """
         return pulumi.get(self, "groups_prefix")
 
     @property
     @pulumi.getter(name="requiredClaim")
     def required_claim(self) -> Optional[Mapping[str, str]]:
+        """
+        A map of key/value pairs that describes a required claim in the OpenID Token.
+        """
         return pulumi.get(self, "required_claim")
 
     @property
     @pulumi.getter(name="usernameClaim")
     def username_claim(self) -> Optional[str]:
+        """
+        An OpenID JWT claim to use as the user name.
+        """
         return pulumi.get(self, "username_claim")
 
     @property
     @pulumi.getter(name="usernamePrefix")
     def username_prefix(self) -> Optional[str]:
+        """
+        An OpenID prefix prepended to username claims.
+        """
         return pulumi.get(self, "username_prefix")
 
 
@@ -3022,6 +3394,24 @@ class GetSksNodepoolListNodepoolResult(dict):
                  size: Optional[int] = None,
                  storage_lvm: Optional[bool] = None,
                  taints: Optional[Mapping[str, str]] = None):
+        """
+        :param str created_at: The pool creation date.
+        :param str instance_pool_id: The underlying InstancePool ID.
+        :param str state: The current pool state.
+        :param str template_id: The managed instances template ID.
+        :param str version: The managed instances version.
+        :param Sequence[str] anti_affinity_group_ids: A list of AntiAffinityGroup (IDs) to be attached to the managed instances.
+        :param str deploy_target_id: A deploy target ID.
+        :param str description: A free-form text describing the pool.
+        :param int disk_size: The managed instances disk size (GiB; default: `50`).
+        :param str instance_prefix: The string used to prefix the managed instances name (default `pool`).
+        :param str instance_type: The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
+        :param Mapping[str, str] labels: A map of key/value labels.
+        :param Sequence[str] private_network_ids: A list of PrivateNetwork (IDs) to be attached to the managed instances.
+        :param Sequence[str] security_group_ids: A list of SecurityGroup (IDs) to be attached to the managed instances.
+        :param bool storage_lvm: Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+        :param Mapping[str, str] taints: A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) ('taints = { <key> = "<value>:<effect>" }').
+        """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "instance_pool_id", instance_pool_id)
@@ -3066,26 +3456,41 @@ class GetSksNodepoolListNodepoolResult(dict):
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        The pool creation date.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="instancePoolId")
     def instance_pool_id(self) -> str:
+        """
+        The underlying InstancePool ID.
+        """
         return pulumi.get(self, "instance_pool_id")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The current pool state.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="templateId")
     def template_id(self) -> str:
+        """
+        The managed instances template ID.
+        """
         return pulumi.get(self, "template_id")
 
     @property
     @pulumi.getter
     def version(self) -> str:
+        """
+        The managed instances version.
+        """
         return pulumi.get(self, "version")
 
     @property
@@ -3096,21 +3501,33 @@ class GetSksNodepoolListNodepoolResult(dict):
     @property
     @pulumi.getter(name="antiAffinityGroupIds")
     def anti_affinity_group_ids(self) -> Optional[Sequence[str]]:
+        """
+        A list of AntiAffinityGroup (IDs) to be attached to the managed instances.
+        """
         return pulumi.get(self, "anti_affinity_group_ids")
 
     @property
     @pulumi.getter(name="deployTargetId")
     def deploy_target_id(self) -> Optional[str]:
+        """
+        A deploy target ID.
+        """
         return pulumi.get(self, "deploy_target_id")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        A free-form text describing the pool.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[int]:
+        """
+        The managed instances disk size (GiB; default: `50`).
+        """
         return pulumi.get(self, "disk_size")
 
     @property
@@ -3121,16 +3538,25 @@ class GetSksNodepoolListNodepoolResult(dict):
     @property
     @pulumi.getter(name="instancePrefix")
     def instance_prefix(self) -> Optional[str]:
+        """
+        The string used to prefix the managed instances name (default `pool`).
+        """
         return pulumi.get(self, "instance_prefix")
 
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[str]:
+        """
+        The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
+        """
         return pulumi.get(self, "instance_type")
 
     @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        A map of key/value labels.
+        """
         return pulumi.get(self, "labels")
 
     @property
@@ -3141,11 +3567,17 @@ class GetSksNodepoolListNodepoolResult(dict):
     @property
     @pulumi.getter(name="privateNetworkIds")
     def private_network_ids(self) -> Optional[Sequence[str]]:
+        """
+        A list of PrivateNetwork (IDs) to be attached to the managed instances.
+        """
         return pulumi.get(self, "private_network_ids")
 
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[Sequence[str]]:
+        """
+        A list of SecurityGroup (IDs) to be attached to the managed instances.
+        """
         return pulumi.get(self, "security_group_ids")
 
     @property
@@ -3156,11 +3588,17 @@ class GetSksNodepoolListNodepoolResult(dict):
     @property
     @pulumi.getter(name="storageLvm")
     def storage_lvm(self) -> Optional[bool]:
+        """
+        Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+        """
         return pulumi.get(self, "storage_lvm")
 
     @property
     @pulumi.getter
     def taints(self) -> Optional[Mapping[str, str]]:
+        """
+        A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) ('taints = { <key> = "<value>:<effect>" }').
+        """
         return pulumi.get(self, "taints")
 
 

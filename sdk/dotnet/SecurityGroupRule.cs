@@ -43,10 +43,10 @@ namespace Pulumiverse.Exoscale
     /// 
     /// ## Import
     /// 
-    /// An existing security group rule may be imported by `&lt;security-group-ID&gt;/&lt;security-group-rule-ID&gt;`
+    /// An existing security group rule may be imported by `&lt;security-group-ID&gt;/&lt;security-group-rule-ID&gt;`:
     /// 
     /// ```sh
-    ///  $ pulumi import exoscale:index/securityGroupRule:SecurityGroupRule \
+    /// $ pulumi import exoscale:index/securityGroupRule:SecurityGroupRule \
     /// ```
     /// 
     ///  exoscale_security_group_rule.my_security_group_rule \

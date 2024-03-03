@@ -14,27 +14,93 @@ namespace Pulumiverse.Exoscale.Outputs
     [OutputType]
     public sealed class GetComputeInstanceListInstanceResult
     {
+        /// <summary>
+        /// The list of attached exoscale.AntiAffinityGroup (IDs).
+        /// </summary>
         public readonly ImmutableArray<string> AntiAffinityGroupIds;
+        /// <summary>
+        /// The compute instance creation date.
+        /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// A deploy target ID.
+        /// </summary>
         public readonly string DeployTargetId;
+        /// <summary>
+        /// The instance disk size (GiB).
+        /// </summary>
         public readonly int DiskSize;
+        /// <summary>
+        /// The list of attached exoscale.ElasticIp (IDs).
+        /// </summary>
         public readonly ImmutableArray<string> ElasticIpIds;
+        /// <summary>
+        /// The compute instance ID to match (conflicts with `name`).
+        /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// Whether IPv6 is enabled on the instance.
+        /// </summary>
         public readonly bool Ipv6;
+        /// <summary>
+        /// The instance (main network interface) IPv6 address (if enabled).
+        /// </summary>
         public readonly string Ipv6Address;
+        /// <summary>
+        /// A map of key/value labels.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
+        /// The instance manager ID, if any.
+        /// </summary>
         public readonly string ManagerId;
+        /// <summary>
+        /// The instance manager type (instance pool, SKS node pool, etc.), if any.
+        /// </summary>
         public readonly string ManagerType;
+        /// <summary>
+        /// The instance name to match (conflicts with `id`).
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// The list of attached exoscale.PrivateNetwork (IDs).
+        /// </summary>
         public readonly ImmutableArray<string> PrivateNetworkIds;
+        /// <summary>
+        /// The instance (main network interface) IPv4 address.
+        /// </summary>
         public readonly string PublicIpAddress;
+        /// <summary>
+        /// Domain name for reverse DNS record.
+        /// </summary>
         public readonly string ReverseDns;
+        /// <summary>
+        /// The list of attached exoscale.SecurityGroup (IDs).
+        /// </summary>
         public readonly ImmutableArray<string> SecurityGroupIds;
+        /// <summary>
+        /// The exoscale.SshKey (name) authorized on the instance.
+        /// </summary>
         public readonly string SshKey;
+        /// <summary>
+        /// The instance state.
+        /// </summary>
         public readonly string State;
+        /// <summary>
+        /// The instance exoscale.getTemplate ID.
+        /// </summary>
         public readonly string TemplateId;
+        /// <summary>
+        /// The instance type.
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The instance [cloud-init](http://cloudinit.readthedocs.io/en/latest/) configuration.
+        /// </summary>
         public readonly string UserData;
+        /// <summary>
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// </summary>
         public readonly string Zone;
 
         [OutputConstructor]

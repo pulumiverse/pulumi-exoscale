@@ -11,10 +11,10 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * An existing database service may be imported by `<name>@<zone>`
+ * An existing database service may be imported by `<name>@<zone>`:
  *
  * ```sh
- *  $ pulumi import exoscale:index/database:Database \
+ * $ pulumi import exoscale:index/database:Database \
  * ```
  *
  *  exoscale_database.my_database \

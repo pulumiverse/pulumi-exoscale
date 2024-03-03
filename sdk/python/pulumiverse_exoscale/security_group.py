@@ -153,10 +153,10 @@ class SecurityGroup(pulumi.CustomResource):
 
         ## Import
 
-        An existing security group may be imported by `<ID>`
+        An existing security group may be imported by `<ID>`:
 
         ```sh
-         $ pulumi import exoscale:index/securityGroup:SecurityGroup \\
+        $ pulumi import exoscale:index/securityGroup:SecurityGroup \\
         ```
 
          exoscale_security_group.my_security_group \\
@@ -196,10 +196,10 @@ class SecurityGroup(pulumi.CustomResource):
 
         ## Import
 
-        An existing security group may be imported by `<ID>`
+        An existing security group may be imported by `<ID>`:
 
         ```sh
-         $ pulumi import exoscale:index/securityGroup:SecurityGroup \\
+        $ pulumi import exoscale:index/securityGroup:SecurityGroup \\
         ```
 
          exoscale_security_group.my_security_group \\

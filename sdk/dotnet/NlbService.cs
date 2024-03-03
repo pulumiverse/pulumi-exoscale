@@ -60,10 +60,10 @@ namespace Pulumiverse.Exoscale
     /// 
     /// ## Import
     /// 
-    /// An existing NLB service may be imported by `&lt;nlb-ID&gt;/&lt;service-ID&gt;@&lt;zone&gt;`
+    /// An existing NLB service may be imported by `&lt;nlb-ID&gt;/&lt;service-ID&gt;@&lt;zone&gt;`:
     /// 
     /// ```sh
-    ///  $ pulumi import exoscale:index/nlbService:NlbService \
+    /// $ pulumi import exoscale:index/nlbService:NlbService \
     /// ```
     /// 
     ///  exoscale_nlb_service.my_nlb_service \

@@ -294,27 +294,93 @@ export interface ElasticIpHealthcheck {
 }
 
 export interface GetComputeInstanceListInstance {
+    /**
+     * The list of attached exoscale.AntiAffinityGroup (IDs).
+     */
     antiAffinityGroupIds: string[];
+    /**
+     * The compute instance creation date.
+     */
     createdAt: string;
+    /**
+     * A deploy target ID.
+     */
     deployTargetId: string;
+    /**
+     * The instance disk size (GiB).
+     */
     diskSize: number;
+    /**
+     * The list of attached exoscale.ElasticIp (IDs).
+     */
     elasticIpIds: string[];
+    /**
+     * The compute instance ID to match (conflicts with `name`).
+     */
     id?: string;
+    /**
+     * Whether IPv6 is enabled on the instance.
+     */
     ipv6: boolean;
+    /**
+     * The instance (main network interface) IPv6 address (if enabled).
+     */
     ipv6Address: string;
+    /**
+     * A map of key/value labels.
+     */
     labels: {[key: string]: string};
+    /**
+     * The instance manager ID, if any.
+     */
     managerId: string;
+    /**
+     * The instance manager type (instance pool, SKS node pool, etc.), if any.
+     */
     managerType: string;
+    /**
+     * The instance name to match (conflicts with `id`).
+     */
     name?: string;
+    /**
+     * The list of attached exoscale.PrivateNetwork (IDs).
+     */
     privateNetworkIds: string[];
+    /**
+     * The instance (main network interface) IPv4 address.
+     */
     publicIpAddress: string;
+    /**
+     * Domain name for reverse DNS record.
+     */
     reverseDns: string;
+    /**
+     * The list of attached exoscale.SecurityGroup (IDs).
+     */
     securityGroupIds: string[];
+    /**
+     * The exoscale.SshKey (name) authorized on the instance.
+     */
     sshKey: string;
+    /**
+     * The instance state.
+     */
     state: string;
+    /**
+     * The instance exoscale.getTemplate ID.
+     */
     templateId: string;
+    /**
+     * The instance type.
+     */
     type: string;
+    /**
+     * The instance [cloud-init](http://cloudinit.readthedocs.io/en/latest/) configuration.
+     */
     userData: string;
+    /**
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     */
     zone: string;
 }
 
@@ -345,24 +411,72 @@ export interface GetDomainRecordFilter {
 }
 
 export interface GetDomainRecordRecord {
+    /**
+     * Content of the Record
+     */
     content?: string;
+    /**
+     * Domain of the Record
+     */
     domain?: string;
+    /**
+     * ID of the Record
+     */
     id?: string;
+    /**
+     * Name of the Record
+     */
     name?: string;
+    /**
+     * Priority of the Record
+     */
     prio?: number;
+    /**
+     * Type of the Record
+     */
     recordType?: string;
+    /**
+     * TTL of the Record
+     */
     ttl?: number;
 }
 
 export interface GetElasticIpHealthcheck {
+    /**
+     * The healthcheck interval in seconds.
+     */
     interval: number;
+    /**
+     * The healthcheck mode.
+     */
     mode: string;
+    /**
+     * The healthcheck target port.
+     */
     port: number;
+    /**
+     * The number of failed healthcheck attempts before considering the target unhealthy.
+     */
     strikesFail: number;
+    /**
+     * The number of successful healthcheck attempts before considering the target healthy.
+     */
     strikesOk: number;
+    /**
+     * The time in seconds before considering a healthcheck probing failed.
+     */
     timeout: number;
+    /**
+     * Disable TLS certificate verification for healthcheck in `https` mode.
+     */
     tlsSkipVerify: boolean;
+    /**
+     * The healthcheck server name to present with SNI in `https` mode.
+     */
     tlsSni: string;
+    /**
+     * The healthcheck URI.
+     */
     uri: string;
 }
 
@@ -451,39 +565,123 @@ export interface GetIamRoleTimeouts {
 }
 
 export interface GetInstancePoolInstance {
+    /**
+     * The compute instance ID.
+     */
     id?: string;
+    /**
+     * The instance (main network interface) IPv6 address.
+     */
     ipv6Address: string;
+    /**
+     * The instance name.
+     */
     name?: string;
+    /**
+     * The instance (main network interface) IPv4 address.
+     */
     publicIpAddress: string;
 }
 
 export interface GetInstancePoolListPool {
+    /**
+     * The list of attached exoscale.AntiAffinityGroup (IDs).
+     */
     affinityGroupIds: string[];
+    /**
+     * The deploy target ID.
+     */
     deployTargetId: string;
+    /**
+     * The instance pool description.
+     */
     description: string;
+    /**
+     * The managed instances disk size.
+     */
     diskSize: number;
+    /**
+     * The list of attached exoscale.ElasticIp (IDs).
+     */
     elasticIpIds: string[];
+    /**
+     * The instance pool ID to match (conflicts with `name`).
+     */
     id?: string;
+    /**
+     * The string used to prefix the managed instances name.
+     */
     instancePrefix: string;
+    /**
+     * The managed instances type.
+     */
     instanceType: string;
+    /**
+     * The list of managed instances. Structure is documented below.
+     */
     instances: outputs.GetInstancePoolListPoolInstance[];
+    /**
+     * Whether IPv6 is enabled on managed instances.
+     */
     ipv6: boolean;
+    /**
+     * The exoscale.SshKey (name) authorized on the managed instances.
+     */
     keyPair: string;
+    /**
+     * A map of key/value labels.
+     */
     labels?: {[key: string]: string};
+    /**
+     * The pool name to match (conflicts with `id`).
+     */
     name?: string;
+    /**
+     * The list of attached exoscale.PrivateNetwork (IDs).
+     */
     networkIds: string[];
+    /**
+     * The list of attached exoscale.SecurityGroup (IDs).
+     */
     securityGroupIds: string[];
+    /**
+     * The number managed instances.
+     */
     size: number;
+    /**
+     * The pool state.
+     */
     state: string;
+    /**
+     * The managed instances exoscale.getTemplate ID.
+     */
     templateId: string;
+    /**
+     * [cloud-init](http://cloudinit.readthedocs.io/en/latest/) configuration.
+     */
     userData: string;
+    /**
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     */
     zone: string;
 }
 
 export interface GetInstancePoolListPoolInstance {
+    /**
+     * The compute instance ID.
+     */
     id?: string;
+    /**
+     * The instance (main network interface) IPv6 address.
+     */
     ipv6Address: string;
+    /**
+     * The instance name.
+     */
     name?: string;
+    /**
+     * The instance (main network interface) IPv4 address.
+     */
     publicIpAddress: string;
 }
 
@@ -549,34 +747,103 @@ export interface GetSksClusterListCluster {
      * @deprecated This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
      */
     addons: string[];
+    /**
+     * The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
+     */
     aggregationCa: string;
+    /**
+     * Enable automatic upgrading of the control plane version.
+     */
     autoUpgrade?: boolean;
+    /**
+     * The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
+     */
     cni?: string;
+    /**
+     * The CA certificate (in PEM format) for TLS communications between control plane components.
+     */
     controlPlaneCa: string;
+    /**
+     * The cluster creation date.
+     */
     createdAt: string;
+    /**
+     * A free-form text describing the cluster.
+     */
     description?: string;
+    /**
+     * The cluster API endpoint.
+     */
     endpoint: string;
+    /**
+     * Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
+     */
     exoscaleCcm?: boolean;
     id?: string;
+    /**
+     * The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
+     */
     kubeletCa: string;
+    /**
+     * A map of key/value labels.
+     */
     labels?: {[key: string]: string};
+    /**
+     * Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
+     */
     metricsServer?: boolean;
     name?: string;
+    /**
+     * The list of exoscale.SksNodepool (IDs) attached to the cluster.
+     */
     nodepools: string[];
+    /**
+     * An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
+     */
     oidc: outputs.GetSksClusterListClusterOidc;
+    /**
+     * The service level of the control plane (`pro` or `starter`; default: `pro`; may only be set at creation time).
+     */
     serviceLevel?: string;
+    /**
+     * The cluster state.
+     */
     state: string;
+    /**
+     * The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
+     */
     version: string;
     zone: string;
 }
 
 export interface GetSksClusterListClusterOidc {
+    /**
+     * The OpenID client ID.
+     */
     clientId: string;
+    /**
+     * An OpenID JWT claim to use as the user's group.
+     */
     groupsClaim?: string;
+    /**
+     * An OpenID prefix prepended to group claims.
+     */
     groupsPrefix?: string;
+    /**
+     * The OpenID provider URL.
+     */
     issuerUrl: string;
+    /**
+     * A map of key/value pairs that describes a required claim in the OpenID Token.
+     */
     requiredClaim?: {[key: string]: string};
+    /**
+     * An OpenID JWT claim to use as the user name.
+     */
     usernameClaim?: string;
+    /**
+     * An OpenID prefix prepended to username claims.
+     */
     usernamePrefix?: string;
 }
 
@@ -612,25 +879,73 @@ export interface GetSksClusterOidc {
 }
 
 export interface GetSksNodepoolListNodepool {
+    /**
+     * A list of exoscale.AntiAffinityGroup (IDs) to be attached to the managed instances.
+     */
     antiAffinityGroupIds?: string[];
     clusterId: string;
+    /**
+     * The pool creation date.
+     */
     createdAt: string;
+    /**
+     * A deploy target ID.
+     */
     deployTargetId?: string;
+    /**
+     * A free-form text describing the pool.
+     */
     description?: string;
+    /**
+     * The managed instances disk size (GiB; default: `50`).
+     */
     diskSize?: number;
     id?: string;
+    /**
+     * The underlying exoscale.InstancePool ID.
+     */
     instancePoolId: string;
+    /**
+     * The string used to prefix the managed instances name (default `pool`).
+     */
     instancePrefix?: string;
+    /**
+     * The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
+     */
     instanceType?: string;
+    /**
+     * A map of key/value labels.
+     */
     labels?: {[key: string]: string};
     name?: string;
+    /**
+     * A list of exoscale.PrivateNetwork (IDs) to be attached to the managed instances.
+     */
     privateNetworkIds?: string[];
+    /**
+     * A list of exoscale.SecurityGroup (IDs) to be attached to the managed instances.
+     */
     securityGroupIds?: string[];
     size?: number;
+    /**
+     * The current pool state.
+     */
     state: string;
+    /**
+     * Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+     */
     storageLvm?: boolean;
+    /**
+     * A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) ('taints = { <key> = "<value>:<effect>" }').
+     */
     taints?: {[key: string]: string};
+    /**
+     * The managed instances template ID.
+     */
     templateId: string;
+    /**
+     * The managed instances version.
+     */
     version: string;
     zone: string;
 }

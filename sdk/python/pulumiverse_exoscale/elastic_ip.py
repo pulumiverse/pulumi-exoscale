@@ -307,10 +307,10 @@ class ElasticIp(pulumi.CustomResource):
 
         ## Import
 
-        An existing Elastic IP (EIP) may be imported by `<ID>@<zone>`
+        An existing Elastic IP (EIP) may be imported by `<ID>@<zone>`:
 
         ```sh
-         $ pulumi import exoscale:index/elasticIp:ElasticIp \\
+        $ pulumi import exoscale:index/elasticIp:ElasticIp \\
         ```
 
          exoscale_elastic_ip.my_elastic_ip \\
@@ -375,10 +375,10 @@ class ElasticIp(pulumi.CustomResource):
 
         ## Import
 
-        An existing Elastic IP (EIP) may be imported by `<ID>@<zone>`
+        An existing Elastic IP (EIP) may be imported by `<ID>@<zone>`:
 
         ```sh
-         $ pulumi import exoscale:index/elasticIp:ElasticIp \\
+        $ pulumi import exoscale:index/elasticIp:ElasticIp \\
         ```
 
          exoscale_elastic_ip.my_elastic_ip \\

@@ -13,10 +13,10 @@ namespace Pulumiverse.Exoscale
     /// <summary>
     /// ## Import
     /// 
-    /// An existing SSH key may be imported as a resource by `&lt;name&gt;`
+    /// An existing SSH key may be imported as a resource by `&lt;name&gt;`:
     /// 
     /// ```sh
-    ///  $ pulumi import exoscale:index/sshKey:SshKey \
+    /// $ pulumi import exoscale:index/sshKey:SshKey \
     /// ```
     /// 
     ///  exoscale_ssh_key.my_ssh_key \

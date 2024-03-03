@@ -14,25 +14,73 @@ namespace Pulumiverse.Exoscale.Outputs
     [OutputType]
     public sealed class GetSksNodepoolListNodepoolResult
     {
+        /// <summary>
+        /// A list of exoscale.AntiAffinityGroup (IDs) to be attached to the managed instances.
+        /// </summary>
         public readonly ImmutableArray<string> AntiAffinityGroupIds;
         public readonly string ClusterId;
+        /// <summary>
+        /// The pool creation date.
+        /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// A deploy target ID.
+        /// </summary>
         public readonly string? DeployTargetId;
+        /// <summary>
+        /// A free-form text describing the pool.
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// The managed instances disk size (GiB; default: `50`).
+        /// </summary>
         public readonly int? DiskSize;
         public readonly string? Id;
+        /// <summary>
+        /// The underlying exoscale.InstancePool ID.
+        /// </summary>
         public readonly string InstancePoolId;
+        /// <summary>
+        /// The string used to prefix the managed instances name (default `pool`).
+        /// </summary>
         public readonly string? InstancePrefix;
+        /// <summary>
+        /// The managed compute instances type (`&lt;family&gt;.&lt;size&gt;`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
+        /// </summary>
         public readonly string? InstanceType;
+        /// <summary>
+        /// A map of key/value labels.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
         public readonly string? Name;
+        /// <summary>
+        /// A list of exoscale.PrivateNetwork (IDs) to be attached to the managed instances.
+        /// </summary>
         public readonly ImmutableArray<string> PrivateNetworkIds;
+        /// <summary>
+        /// A list of exoscale.SecurityGroup (IDs) to be attached to the managed instances.
+        /// </summary>
         public readonly ImmutableArray<string> SecurityGroupIds;
         public readonly int? Size;
+        /// <summary>
+        /// The current pool state.
+        /// </summary>
         public readonly string State;
+        /// <summary>
+        /// Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
+        /// </summary>
         public readonly bool? StorageLvm;
+        /// <summary>
+        /// A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) ('taints = { &lt;key&gt; = "&lt;value&gt;:&lt;effect&gt;" }').
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Taints;
+        /// <summary>
+        /// The managed instances template ID.
+        /// </summary>
         public readonly string TemplateId;
+        /// <summary>
+        /// The managed instances version.
+        /// </summary>
         public readonly string Version;
         public readonly string Zone;
 
