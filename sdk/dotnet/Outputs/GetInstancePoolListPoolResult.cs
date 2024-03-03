@@ -14,25 +14,85 @@ namespace Pulumiverse.Exoscale.Outputs
     [OutputType]
     public sealed class GetInstancePoolListPoolResult
     {
+        /// <summary>
+        /// The list of attached exoscale.AntiAffinityGroup (IDs).
+        /// </summary>
         public readonly ImmutableArray<string> AffinityGroupIds;
+        /// <summary>
+        /// The deploy target ID.
+        /// </summary>
         public readonly string DeployTargetId;
+        /// <summary>
+        /// The instance pool description.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The managed instances disk size.
+        /// </summary>
         public readonly int DiskSize;
+        /// <summary>
+        /// The list of attached exoscale.ElasticIp (IDs).
+        /// </summary>
         public readonly ImmutableArray<string> ElasticIpIds;
+        /// <summary>
+        /// The instance pool ID to match (conflicts with `name`).
+        /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// The string used to prefix the managed instances name.
+        /// </summary>
         public readonly string InstancePrefix;
+        /// <summary>
+        /// The managed instances type.
+        /// </summary>
         public readonly string InstanceType;
+        /// <summary>
+        /// The list of managed instances. Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancePoolListPoolInstanceResult> Instances;
+        /// <summary>
+        /// Whether IPv6 is enabled on managed instances.
+        /// </summary>
         public readonly bool Ipv6;
+        /// <summary>
+        /// The exoscale.SshKey (name) authorized on the managed instances.
+        /// </summary>
         public readonly string KeyPair;
+        /// <summary>
+        /// A map of key/value labels.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
+        /// <summary>
+        /// The pool name to match (conflicts with `id`).
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// The list of attached exoscale.PrivateNetwork (IDs).
+        /// </summary>
         public readonly ImmutableArray<string> NetworkIds;
+        /// <summary>
+        /// The list of attached exoscale.SecurityGroup (IDs).
+        /// </summary>
         public readonly ImmutableArray<string> SecurityGroupIds;
+        /// <summary>
+        /// The number managed instances.
+        /// </summary>
         public readonly int Size;
+        /// <summary>
+        /// The pool state.
+        /// </summary>
         public readonly string State;
+        /// <summary>
+        /// The managed instances exoscale.getTemplate ID.
+        /// </summary>
         public readonly string TemplateId;
+        /// <summary>
+        /// [cloud-init](http://cloudinit.readthedocs.io/en/latest/) configuration.
+        /// </summary>
         public readonly string UserData;
+        /// <summary>
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// </summary>
         public readonly string Zone;
 
         [OutputConstructor]

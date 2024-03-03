@@ -49,12 +49,12 @@ import (
 //
 // ## Import
 //
-// An existing network load balancer (NLB) may be imported by `<ID>@<zone>`console
+// An existing network load balancer (NLB) may be imported by `<ID>@<zone>`:
+//
+//	console
 //
 // ```sh
-//
-//	$ pulumi import exoscale:index/nlb:Nlb \
-//
+// $ pulumi import exoscale:index/nlb:Nlb \
 // ```
 //
 //	exoscale_nlb.my_nlb \

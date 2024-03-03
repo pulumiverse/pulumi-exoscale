@@ -566,10 +566,10 @@ class SksCluster(pulumi.CustomResource):
 
         ## Import
 
-        An existing SKS cluster may be imported by `<ID>@<zone>`
+        An existing SKS cluster may be imported by `<ID>@<zone>`:
 
         ```sh
-         $ pulumi import exoscale:index/sksCluster:SksCluster \\
+        $ pulumi import exoscale:index/sksCluster:SksCluster \\
         ```
 
          exoscale_sks_cluster.my_sks_cluster \\
@@ -616,10 +616,10 @@ class SksCluster(pulumi.CustomResource):
 
         ## Import
 
-        An existing SKS cluster may be imported by `<ID>@<zone>`
+        An existing SKS cluster may be imported by `<ID>@<zone>`:
 
         ```sh
-         $ pulumi import exoscale:index/sksCluster:SksCluster \\
+        $ pulumi import exoscale:index/sksCluster:SksCluster \\
         ```
 
          exoscale_sks_cluster.my_sks_cluster \\

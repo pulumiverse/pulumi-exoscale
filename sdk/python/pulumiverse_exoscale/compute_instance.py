@@ -21,6 +21,7 @@ class ComputeInstanceArgs:
                  zone: pulumi.Input[str],
                  anti_affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deploy_target_id: Optional[pulumi.Input[str]] = None,
+                 destroy_protected: Optional[pulumi.Input[bool]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
                  elastic_ip_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6: Optional[pulumi.Input[bool]] = None,
@@ -40,6 +41,7 @@ class ComputeInstanceArgs:
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
         :param pulumi.Input[str] deploy_target_id: ❗ A deploy target ID.
+        :param pulumi.Input[bool] destroy_protected: Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
         :param pulumi.Input[int] disk_size: The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of exoscale*elastic*ip (IDs) to attach to the instance.
         :param pulumi.Input[bool] ipv6: Enable IPv6 on the instance (boolean; default: `false`).
@@ -60,6 +62,8 @@ class ComputeInstanceArgs:
             pulumi.set(__self__, "anti_affinity_group_ids", anti_affinity_group_ids)
         if deploy_target_id is not None:
             pulumi.set(__self__, "deploy_target_id", deploy_target_id)
+        if destroy_protected is not None:
+            pulumi.set(__self__, "destroy_protected", destroy_protected)
         if disk_size is not None:
             pulumi.set(__self__, "disk_size", disk_size)
         if elastic_ip_ids is not None:
@@ -144,6 +148,18 @@ class ComputeInstanceArgs:
     @deploy_target_id.setter
     def deploy_target_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "deploy_target_id", value)
+
+    @property
+    @pulumi.getter(name="destroyProtected")
+    def destroy_protected(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
+        """
+        return pulumi.get(self, "destroy_protected")
+
+    @destroy_protected.setter
+    def destroy_protected(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "destroy_protected", value)
 
     @property
     @pulumi.getter(name="diskSize")
@@ -296,6 +312,7 @@ class _ComputeInstanceState:
                  anti_affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  deploy_target_id: Optional[pulumi.Input[str]] = None,
+                 destroy_protected: Optional[pulumi.Input[bool]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
                  elastic_ip_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6: Optional[pulumi.Input[bool]] = None,
@@ -319,6 +336,7 @@ class _ComputeInstanceState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
         :param pulumi.Input[str] created_at: The instance creation date.
         :param pulumi.Input[str] deploy_target_id: ❗ A deploy target ID.
+        :param pulumi.Input[bool] destroy_protected: Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
         :param pulumi.Input[int] disk_size: The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of exoscale*elastic*ip (IDs) to attach to the instance.
         :param pulumi.Input[bool] ipv6: Enable IPv6 on the instance (boolean; default: `false`).
@@ -344,6 +362,8 @@ class _ComputeInstanceState:
             pulumi.set(__self__, "created_at", created_at)
         if deploy_target_id is not None:
             pulumi.set(__self__, "deploy_target_id", deploy_target_id)
+        if destroy_protected is not None:
+            pulumi.set(__self__, "destroy_protected", destroy_protected)
         if disk_size is not None:
             pulumi.set(__self__, "disk_size", disk_size)
         if elastic_ip_ids is not None:
@@ -419,6 +439,18 @@ class _ComputeInstanceState:
     @deploy_target_id.setter
     def deploy_target_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "deploy_target_id", value)
+
+    @property
+    @pulumi.getter(name="destroyProtected")
+    def destroy_protected(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
+        """
+        return pulumi.get(self, "destroy_protected")
+
+    @destroy_protected.setter
+    def destroy_protected(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "destroy_protected", value)
 
     @property
     @pulumi.getter(name="diskSize")
@@ -647,6 +679,7 @@ class ComputeInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  anti_affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deploy_target_id: Optional[pulumi.Input[str]] = None,
+                 destroy_protected: Optional[pulumi.Input[bool]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
                  elastic_ip_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6: Optional[pulumi.Input[bool]] = None,
@@ -691,10 +724,10 @@ class ComputeInstance(pulumi.CustomResource):
 
         ## Import
 
-        An existing compute instance may be imported by `<ID>@<zone>`
+        An existing compute instance may be imported by `<ID>@<zone>`:
 
         ```sh
-         $ pulumi import exoscale:index/computeInstance:ComputeInstance \\
+        $ pulumi import exoscale:index/computeInstance:ComputeInstance \\
         ```
 
          exoscale_compute_instance.my_instance \\
@@ -705,6 +738,7 @@ class ComputeInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
         :param pulumi.Input[str] deploy_target_id: ❗ A deploy target ID.
+        :param pulumi.Input[bool] destroy_protected: Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
         :param pulumi.Input[int] disk_size: The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of exoscale*elastic*ip (IDs) to attach to the instance.
         :param pulumi.Input[bool] ipv6: Enable IPv6 on the instance (boolean; default: `false`).
@@ -755,10 +789,10 @@ class ComputeInstance(pulumi.CustomResource):
 
         ## Import
 
-        An existing compute instance may be imported by `<ID>@<zone>`
+        An existing compute instance may be imported by `<ID>@<zone>`:
 
         ```sh
-         $ pulumi import exoscale:index/computeInstance:ComputeInstance \\
+        $ pulumi import exoscale:index/computeInstance:ComputeInstance \\
         ```
 
          exoscale_compute_instance.my_instance \\
@@ -782,6 +816,7 @@ class ComputeInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  anti_affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deploy_target_id: Optional[pulumi.Input[str]] = None,
+                 destroy_protected: Optional[pulumi.Input[bool]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
                  elastic_ip_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6: Optional[pulumi.Input[bool]] = None,
@@ -808,6 +843,7 @@ class ComputeInstance(pulumi.CustomResource):
 
             __props__.__dict__["anti_affinity_group_ids"] = anti_affinity_group_ids
             __props__.__dict__["deploy_target_id"] = deploy_target_id
+            __props__.__dict__["destroy_protected"] = destroy_protected
             __props__.__dict__["disk_size"] = disk_size
             __props__.__dict__["elastic_ip_ids"] = elastic_ip_ids
             __props__.__dict__["ipv6"] = ipv6
@@ -846,6 +882,7 @@ class ComputeInstance(pulumi.CustomResource):
             anti_affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             deploy_target_id: Optional[pulumi.Input[str]] = None,
+            destroy_protected: Optional[pulumi.Input[bool]] = None,
             disk_size: Optional[pulumi.Input[int]] = None,
             elastic_ip_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ipv6: Optional[pulumi.Input[bool]] = None,
@@ -874,6 +911,7 @@ class ComputeInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
         :param pulumi.Input[str] created_at: The instance creation date.
         :param pulumi.Input[str] deploy_target_id: ❗ A deploy target ID.
+        :param pulumi.Input[bool] destroy_protected: Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
         :param pulumi.Input[int] disk_size: The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of exoscale*elastic*ip (IDs) to attach to the instance.
         :param pulumi.Input[bool] ipv6: Enable IPv6 on the instance (boolean; default: `false`).
@@ -900,6 +938,7 @@ class ComputeInstance(pulumi.CustomResource):
         __props__.__dict__["anti_affinity_group_ids"] = anti_affinity_group_ids
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["deploy_target_id"] = deploy_target_id
+        __props__.__dict__["destroy_protected"] = destroy_protected
         __props__.__dict__["disk_size"] = disk_size
         __props__.__dict__["elastic_ip_ids"] = elastic_ip_ids
         __props__.__dict__["ipv6"] = ipv6
@@ -943,6 +982,14 @@ class ComputeInstance(pulumi.CustomResource):
         ❗ A deploy target ID.
         """
         return pulumi.get(self, "deploy_target_id")
+
+    @property
+    @pulumi.getter(name="destroyProtected")
+    def destroy_protected(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
+        """
+        return pulumi.get(self, "destroy_protected")
 
     @property
     @pulumi.getter(name="diskSize")

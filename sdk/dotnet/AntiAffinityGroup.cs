@@ -38,10 +38,10 @@ namespace Pulumiverse.Exoscale
     /// 
     /// ## Import
     /// 
-    /// An existing anti-affinity group may be imported by `&lt;ID&gt;`
+    /// An existing anti-affinity group may be imported by `&lt;ID&gt;`:
     /// 
     /// ```sh
-    ///  $ pulumi import exoscale:index/antiAffinityGroup:AntiAffinityGroup \
+    /// $ pulumi import exoscale:index/antiAffinityGroup:AntiAffinityGroup \
     /// ```
     /// 
     ///  exoscale_anti_affinity_group.my_anti_affinity_group \

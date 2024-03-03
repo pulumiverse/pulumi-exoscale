@@ -71,10 +71,10 @@ namespace Pulumiverse.Exoscale
     /// 
     /// ## Import
     /// 
-    /// An existing Elastic IP (EIP) may be imported by `&lt;ID&gt;@&lt;zone&gt;`
+    /// An existing Elastic IP (EIP) may be imported by `&lt;ID&gt;@&lt;zone&gt;`:
     /// 
     /// ```sh
-    ///  $ pulumi import exoscale:index/elasticIp:ElasticIp \
+    /// $ pulumi import exoscale:index/elasticIp:ElasticIp \
     /// ```
     /// 
     ///  exoscale_elastic_ip.my_elastic_ip \

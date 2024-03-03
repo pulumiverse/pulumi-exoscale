@@ -25,10 +25,10 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * An existing security group may be imported by `<ID>`
+ * An existing security group may be imported by `<ID>`:
  *
  * ```sh
- *  $ pulumi import exoscale:index/securityGroup:SecurityGroup \
+ * $ pulumi import exoscale:index/securityGroup:SecurityGroup \
  * ```
  *
  *  exoscale_security_group.my_security_group \

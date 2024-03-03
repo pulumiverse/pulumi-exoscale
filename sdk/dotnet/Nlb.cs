@@ -40,10 +40,12 @@ namespace Pulumiverse.Exoscale
     /// 
     /// ## Import
     /// 
-    /// An existing network load balancer (NLB) may be imported by `&lt;ID&gt;@&lt;zone&gt;`console
+    /// An existing network load balancer (NLB) may be imported by `&lt;ID&gt;@&lt;zone&gt;`:
+    /// 
+    ///  console
     /// 
     /// ```sh
-    ///  $ pulumi import exoscale:index/nlb:Nlb \
+    /// $ pulumi import exoscale:index/nlb:Nlb \
     /// ```
     /// 
     ///  exoscale_nlb.my_nlb \

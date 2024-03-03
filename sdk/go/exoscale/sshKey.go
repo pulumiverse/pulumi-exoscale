@@ -14,12 +14,10 @@ import (
 
 // ## Import
 //
-// An existing SSH key may be imported as a resource by `<name>`
+// An existing SSH key may be imported as a resource by `<name>`:
 //
 // ```sh
-//
-//	$ pulumi import exoscale:index/sshKey:SshKey \
-//
+// $ pulumi import exoscale:index/sshKey:SshKey \
 // ```
 //
 //	exoscale_ssh_key.my_ssh_key \

@@ -37,10 +37,10 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * An existing compute instance may be imported by `<ID>@<zone>`
+ * An existing compute instance may be imported by `<ID>@<zone>`:
  *
  * ```sh
- *  $ pulumi import exoscale:index/computeInstance:ComputeInstance \
+ * $ pulumi import exoscale:index/computeInstance:ComputeInstance \
  * ```
  *
  *  exoscale_compute_instance.my_instance \
@@ -87,6 +87,10 @@ export class ComputeInstance extends pulumi.CustomResource {
      * ❗ A deploy target ID.
      */
     public readonly deployTargetId!: pulumi.Output<string | undefined>;
+    /**
+     * Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
+     */
+    public readonly destroyProtected!: pulumi.Output<boolean | undefined>;
     /**
      * The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
      */
@@ -178,6 +182,7 @@ export class ComputeInstance extends pulumi.CustomResource {
             resourceInputs["antiAffinityGroupIds"] = state ? state.antiAffinityGroupIds : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["deployTargetId"] = state ? state.deployTargetId : undefined;
+            resourceInputs["destroyProtected"] = state ? state.destroyProtected : undefined;
             resourceInputs["diskSize"] = state ? state.diskSize : undefined;
             resourceInputs["elasticIpIds"] = state ? state.elasticIpIds : undefined;
             resourceInputs["ipv6"] = state ? state.ipv6 : undefined;
@@ -209,6 +214,7 @@ export class ComputeInstance extends pulumi.CustomResource {
             }
             resourceInputs["antiAffinityGroupIds"] = args ? args.antiAffinityGroupIds : undefined;
             resourceInputs["deployTargetId"] = args ? args.deployTargetId : undefined;
+            resourceInputs["destroyProtected"] = args ? args.destroyProtected : undefined;
             resourceInputs["diskSize"] = args ? args.diskSize : undefined;
             resourceInputs["elasticIpIds"] = args ? args.elasticIpIds : undefined;
             resourceInputs["ipv6"] = args ? args.ipv6 : undefined;
@@ -250,6 +256,10 @@ export interface ComputeInstanceState {
      * ❗ A deploy target ID.
      */
     deployTargetId?: pulumi.Input<string>;
+    /**
+     * Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
+     */
+    destroyProtected?: pulumi.Input<boolean>;
     /**
      * The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
      */
@@ -338,6 +348,10 @@ export interface ComputeInstanceArgs {
      * ❗ A deploy target ID.
      */
     deployTargetId?: pulumi.Input<string>;
+    /**
+     * Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
+     */
+    destroyProtected?: pulumi.Input<boolean>;
     /**
      * The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
      */

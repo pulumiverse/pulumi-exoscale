@@ -44,10 +44,10 @@ namespace Pulumiverse.Exoscale
     /// 
     /// ## Import
     /// 
-    /// An existing SKS node pool may be imported by `&lt;cluster-ID&gt;/&lt;nodepool-ID&gt;@&lt;zone&gt;`
+    /// An existing SKS node pool may be imported by `&lt;cluster-ID&gt;/&lt;nodepool-ID&gt;@&lt;zone&gt;`:
     /// 
     /// ```sh
-    ///  $ pulumi import exoscale:index/sksNodepool:SksNodepool \
+    /// $ pulumi import exoscale:index/sksNodepool:SksNodepool \
     /// ```
     /// 
     ///  exoscale_sks_nodepool.my_sks_nodepool \

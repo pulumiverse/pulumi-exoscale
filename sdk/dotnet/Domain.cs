@@ -37,10 +37,10 @@ namespace Pulumiverse.Exoscale
     /// 
     /// ## Import
     /// 
-    /// An existing DNS domain may be imported by `ID`
+    /// An existing DNS domain may be imported by `ID`:
     /// 
     /// ```sh
-    ///  $ pulumi import exoscale:index/domain:Domain \
+    /// $ pulumi import exoscale:index/domain:Domain \
     /// ```
     /// 
     ///  exoscale_domain.my_domain \

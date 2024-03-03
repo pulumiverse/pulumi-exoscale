@@ -37,10 +37,10 @@ namespace Pulumiverse.Exoscale
     /// 
     /// ## Import
     /// 
-    /// An existing security group may be imported by `&lt;ID&gt;`
+    /// An existing security group may be imported by `&lt;ID&gt;`:
     /// 
     /// ```sh
-    ///  $ pulumi import exoscale:index/securityGroup:SecurityGroup \
+    /// $ pulumi import exoscale:index/securityGroup:SecurityGroup \
     /// ```
     /// 
     ///  exoscale_security_group.my_security_group \

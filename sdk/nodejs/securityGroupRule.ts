@@ -29,10 +29,10 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * An existing security group rule may be imported by `<security-group-ID>/<security-group-rule-ID>`
+ * An existing security group rule may be imported by `<security-group-ID>/<security-group-rule-ID>`:
  *
  * ```sh
- *  $ pulumi import exoscale:index/securityGroupRule:SecurityGroupRule \
+ * $ pulumi import exoscale:index/securityGroupRule:SecurityGroupRule \
  * ```
  *
  *  exoscale_security_group_rule.my_security_group_rule \

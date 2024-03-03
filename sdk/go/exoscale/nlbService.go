@@ -68,12 +68,10 @@ import (
 //
 // ## Import
 //
-// An existing NLB service may be imported by `<nlb-ID>/<service-ID>@<zone>`
+// An existing NLB service may be imported by `<nlb-ID>/<service-ID>@<zone>`:
 //
 // ```sh
-//
-//	$ pulumi import exoscale:index/nlbService:NlbService \
-//
+// $ pulumi import exoscale:index/nlbService:NlbService \
 // ```
 //
 //	exoscale_nlb_service.my_nlb_service \

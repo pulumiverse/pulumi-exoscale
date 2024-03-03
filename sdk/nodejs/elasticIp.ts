@@ -50,10 +50,10 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * An existing Elastic IP (EIP) may be imported by `<ID>@<zone>`
+ * An existing Elastic IP (EIP) may be imported by `<ID>@<zone>`:
  *
  * ```sh
- *  $ pulumi import exoscale:index/elasticIp:ElasticIp \
+ * $ pulumi import exoscale:index/elasticIp:ElasticIp \
  * ```
  *
  *  exoscale_elastic_ip.my_elastic_ip \

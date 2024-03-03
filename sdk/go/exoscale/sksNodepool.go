@@ -54,12 +54,10 @@ import (
 //
 // ## Import
 //
-// An existing SKS node pool may be imported by `<cluster-ID>/<nodepool-ID>@<zone>`
+// An existing SKS node pool may be imported by `<cluster-ID>/<nodepool-ID>@<zone>`:
 //
 // ```sh
-//
-//	$ pulumi import exoscale:index/sksNodepool:SksNodepool \
-//
+// $ pulumi import exoscale:index/sksNodepool:SksNodepool \
 // ```
 //
 //	exoscale_sks_nodepool.my_sks_nodepool \

@@ -15,23 +15,71 @@ namespace Pulumiverse.Exoscale.Outputs
     public sealed class GetSksClusterListClusterResult
     {
         public readonly ImmutableArray<string> Addons;
+        /// <summary>
+        /// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
+        /// </summary>
         public readonly string AggregationCa;
+        /// <summary>
+        /// Enable automatic upgrading of the control plane version.
+        /// </summary>
         public readonly bool? AutoUpgrade;
+        /// <summary>
+        /// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
+        /// </summary>
         public readonly string? Cni;
+        /// <summary>
+        /// The CA certificate (in PEM format) for TLS communications between control plane components.
+        /// </summary>
         public readonly string ControlPlaneCa;
+        /// <summary>
+        /// The cluster creation date.
+        /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// A free-form text describing the cluster.
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// The cluster API endpoint.
+        /// </summary>
         public readonly string Endpoint;
+        /// <summary>
+        /// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
+        /// </summary>
         public readonly bool? ExoscaleCcm;
         public readonly string? Id;
+        /// <summary>
+        /// The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
+        /// </summary>
         public readonly string KubeletCa;
+        /// <summary>
+        /// A map of key/value labels.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
+        /// <summary>
+        /// Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
+        /// </summary>
         public readonly bool? MetricsServer;
         public readonly string? Name;
+        /// <summary>
+        /// The list of exoscale.SksNodepool (IDs) attached to the cluster.
+        /// </summary>
         public readonly ImmutableArray<string> Nodepools;
+        /// <summary>
+        /// An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
+        /// </summary>
         public readonly Outputs.GetSksClusterListClusterOidcResult Oidc;
+        /// <summary>
+        /// The service level of the control plane (`pro` or `starter`; default: `pro`; may only be set at creation time).
+        /// </summary>
         public readonly string? ServiceLevel;
+        /// <summary>
+        /// The cluster state.
+        /// </summary>
         public readonly string State;
+        /// <summary>
+        /// The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
+        /// </summary>
         public readonly string Version;
         public readonly string Zone;
 

@@ -61,10 +61,10 @@ namespace Pulumiverse.Exoscale
     /// 
     /// ## Import
     /// 
-    /// An existing private network may be imported by `&lt;ID&gt;@&lt;zone&gt;`
+    /// An existing private network may be imported by `&lt;ID&gt;@&lt;zone&gt;`:
     /// 
     /// ```sh
-    ///  $ pulumi import exoscale:index/privateNetwork:PrivateNetwork \
+    /// $ pulumi import exoscale:index/privateNetwork:PrivateNetwork \
     /// ```
     /// 
     ///  exoscale_private_network.my_private_network \
