@@ -17,10 +17,9 @@ namespace Pulumiverse.Exoscale
         /// 
         /// Corresponding resource: exoscale_elastic_ip.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,11 +40,10 @@ namespace Pulumiverse.Exoscale
         ///     };
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Please refer to the examples
         /// directory for complete configuration examples.
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetElasticIpResult> InvokeAsync(GetElasticIpArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetElasticIpResult>("exoscale:index/getElasticIp:getElasticIp", args ?? new GetElasticIpArgs(), options.WithDefaults());
@@ -55,10 +53,9 @@ namespace Pulumiverse.Exoscale
         /// 
         /// Corresponding resource: exoscale_elastic_ip.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -79,11 +76,10 @@ namespace Pulumiverse.Exoscale
         ///     };
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Please refer to the examples
         /// directory for complete configuration examples.
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetElasticIpResult> Invoke(GetElasticIpInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetElasticIpResult>("exoscale:index/getElasticIp:getElasticIp", args ?? new GetElasticIpInvokeArgs(), options.WithDefaults());

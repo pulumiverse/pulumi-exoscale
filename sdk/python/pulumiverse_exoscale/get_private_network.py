@@ -141,6 +141,7 @@ def get_private_network(description: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_exoscale as exoscale
@@ -149,6 +150,7 @@ def get_private_network(description: Optional[str] = None,
         name="my-private-network")
     pulumi.export("myPrivateNetworkId", my_private_network.id)
     ```
+    <!--End PulumiCodeChooser -->
 
     Please refer to the examples
     directory for complete configuration examples.
@@ -194,6 +196,7 @@ def get_private_network_output(description: Optional[pulumi.Input[Optional[str]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_exoscale as exoscale
@@ -202,6 +205,7 @@ def get_private_network_output(description: Optional[pulumi.Input[Optional[str]]
         name="my-private-network")
     pulumi.export("myPrivateNetworkId", my_private_network.id)
     ```
+    <!--End PulumiCodeChooser -->
 
     Please refer to the examples
     directory for complete configuration examples.

@@ -6701,7 +6701,7 @@ func (o GetNlbServiceListTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
 }
 
 type GetSksClusterListCluster struct {
-	// Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
+	// Deprecated: This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
 	Addons []string `pulumi:"addons"`
 	// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
 	AggregationCa string `pulumi:"aggregationCa"`
@@ -6752,7 +6752,7 @@ type GetSksClusterListClusterInput interface {
 }
 
 type GetSksClusterListClusterArgs struct {
-	// Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
+	// Deprecated: This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
 	Addons pulumi.StringArrayInput `pulumi:"addons"`
 	// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
 	AggregationCa pulumi.StringInput `pulumi:"aggregationCa"`
@@ -6842,7 +6842,7 @@ func (o GetSksClusterListClusterOutput) ToGetSksClusterListClusterOutputWithCont
 	return o
 }
 
-// Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
+// Deprecated: This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
 func (o GetSksClusterListClusterOutput) Addons() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSksClusterListCluster) []string { return v.Addons }).(pulumi.StringArrayOutput)
 }

@@ -23,7 +23,7 @@ func LookupSksCluster(ctx *pulumi.Context, args *LookupSksClusterArgs, opts ...p
 
 // A collection of arguments for invoking getSksCluster.
 type LookupSksClusterArgs struct {
-	// Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
+	// Deprecated: This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
 	Addons []string `pulumi:"addons"`
 	// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
 	AggregationCa *string `pulumi:"aggregationCa"`
@@ -65,7 +65,7 @@ type LookupSksClusterArgs struct {
 
 // A collection of values returned by getSksCluster.
 type LookupSksClusterResult struct {
-	// Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
+	// Deprecated: This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
 	Addons []string `pulumi:"addons"`
 	// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
 	AggregationCa string `pulumi:"aggregationCa"`
@@ -120,7 +120,7 @@ func LookupSksClusterOutput(ctx *pulumi.Context, args LookupSksClusterOutputArgs
 
 // A collection of arguments for invoking getSksCluster.
 type LookupSksClusterOutputArgs struct {
-	// Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
+	// Deprecated: This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
 	Addons pulumi.StringArrayInput `pulumi:"addons"`
 	// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
 	AggregationCa pulumi.StringPtrInput `pulumi:"aggregationCa"`
@@ -179,7 +179,7 @@ func (o LookupSksClusterResultOutput) ToLookupSksClusterResultOutputWithContext(
 	return o
 }
 
-// Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
+// Deprecated: This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
 func (o LookupSksClusterResultOutput) Addons() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSksClusterResult) []string { return v.Addons }).(pulumi.StringArrayOutput)
 }

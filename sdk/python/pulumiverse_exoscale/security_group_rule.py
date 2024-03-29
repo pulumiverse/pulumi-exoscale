@@ -490,6 +490,7 @@ class SecurityGroupRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -503,6 +504,7 @@ class SecurityGroupRule(pulumi.CustomResource):
             start_port=80,
             end_port=80)
         ```
+        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -515,9 +517,9 @@ class SecurityGroupRule(pulumi.CustomResource):
         $ pulumi import exoscale:index/securityGroupRule:SecurityGroupRule \\
         ```
 
-         exoscale_security_group_rule.my_security_group_rule \\
+          exoscale_security_group_rule.my_security_group_rule \\
 
-         f81d4fae-7dec-11d0-a765-00a0c91e6bf6/9ecc6b8b-73d4-4211-8ced-f7f29bb79524
+          f81d4fae-7dec-11d0-a765-00a0c91e6bf6/9ecc6b8b-73d4-4211-8ced-f7f29bb79524
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -546,6 +548,7 @@ class SecurityGroupRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -559,6 +562,7 @@ class SecurityGroupRule(pulumi.CustomResource):
             start_port=80,
             end_port=80)
         ```
+        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -571,9 +575,9 @@ class SecurityGroupRule(pulumi.CustomResource):
         $ pulumi import exoscale:index/securityGroupRule:SecurityGroupRule \\
         ```
 
-         exoscale_security_group_rule.my_security_group_rule \\
+          exoscale_security_group_rule.my_security_group_rule \\
 
-         f81d4fae-7dec-11d0-a765-00a0c91e6bf6/9ecc6b8b-73d4-4211-8ced-f7f29bb79524
+          f81d4fae-7dec-11d0-a765-00a0c91e6bf6/9ecc6b8b-73d4-4211-8ced-f7f29bb79524
 
         :param str resource_name: The name of the resource.
         :param SecurityGroupRuleArgs args: The arguments to use to populate this resource's properties.

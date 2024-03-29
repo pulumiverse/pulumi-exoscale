@@ -272,15 +272,18 @@ class PrivateNetwork(pulumi.CustomResource):
 
         *Unmanaged* private network:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
 
         my_private_network = exoscale.PrivateNetwork("myPrivateNetwork", zone="ch-gva-2")
         ```
+        <!--End PulumiCodeChooser -->
 
         *Managed* private network:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -291,6 +294,7 @@ class PrivateNetwork(pulumi.CustomResource):
             start_ip="10.0.0.20",
             zone="ch-gva-2")
         ```
+        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -303,9 +307,9 @@ class PrivateNetwork(pulumi.CustomResource):
         $ pulumi import exoscale:index/privateNetwork:PrivateNetwork \\
         ```
 
-         exoscale_private_network.my_private_network \\
+          exoscale_private_network.my_private_network \\
 
-         f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
+          f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -332,15 +336,18 @@ class PrivateNetwork(pulumi.CustomResource):
 
         *Unmanaged* private network:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
 
         my_private_network = exoscale.PrivateNetwork("myPrivateNetwork", zone="ch-gva-2")
         ```
+        <!--End PulumiCodeChooser -->
 
         *Managed* private network:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -351,6 +358,7 @@ class PrivateNetwork(pulumi.CustomResource):
             start_ip="10.0.0.20",
             zone="ch-gva-2")
         ```
+        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -363,9 +371,9 @@ class PrivateNetwork(pulumi.CustomResource):
         $ pulumi import exoscale:index/privateNetwork:PrivateNetwork \\
         ```
 
-         exoscale_private_network.my_private_network \\
+          exoscale_private_network.my_private_network \\
 
-         f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
+          f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
 
         :param str resource_name: The name of the resource.
         :param PrivateNetworkArgs args: The arguments to use to populate this resource's properties.

@@ -15,6 +15,7 @@ namespace Pulumiverse.Exoscale
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -34,6 +35,7 @@ namespace Pulumiverse.Exoscale
     ///     };
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Next step is to attach exoscale_sks_nodepool(s) to the cluster.
     /// 
@@ -48,9 +50,9 @@ namespace Pulumiverse.Exoscale
     /// $ pulumi import exoscale:index/sksCluster:SksCluster \
     /// ```
     /// 
-    ///  exoscale_sks_cluster.my_sks_cluster \
+    ///   exoscale_sks_cluster.my_sks_cluster \
     /// 
-    ///  f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
+    ///   f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
     /// </summary>
     [ExoscaleResourceType("exoscale:index/sksCluster:SksCluster")]
     public partial class SksCluster : global::Pulumi.CustomResource

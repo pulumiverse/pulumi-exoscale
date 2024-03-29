@@ -11,6 +11,7 @@ import (
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
+// ## Example Usage
 func GetDatabaseUri(ctx *pulumi.Context, args *GetDatabaseUriArgs, opts ...pulumi.InvokeOption) (*GetDatabaseUriResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseUriResult

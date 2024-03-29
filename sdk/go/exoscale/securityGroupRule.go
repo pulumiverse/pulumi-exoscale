@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,6 +49,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Please refer to the examples
 // directory for complete configuration examples.
@@ -82,7 +84,7 @@ type SecurityGroupRule struct {
 	PublicSecurityGroup pulumi.StringOutput `pulumi:"publicSecurityGroup"`
 	// ❗ The parent security group name. Please use the `securityGroupId` argument along the exoscale*security*group data source instead.
 	//
-	// Deprecated: Deprecated in favor of `security_group_id`
+	// Deprecated: Deprecated in favor of `securityGroupId`
 	SecurityGroup pulumi.StringOutput `pulumi:"securityGroup"`
 	// ❗ The parent exoscale*security*group ID.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
@@ -92,7 +94,7 @@ type SecurityGroupRule struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// ❗ An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`publicSecurityGroup`/`userSecurityGroupId`). Please use the `userSecurityGroupId` argument along the exoscale*security*group data source instead.
 	//
-	// Deprecated: Deprecated in favor of `user_security_group_id`
+	// Deprecated: Deprecated in favor of `userSecurityGroupId`
 	UserSecurityGroup pulumi.StringOutput `pulumi:"userSecurityGroup"`
 	// ❗ An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with `cidr`/`publicSecurityGroup`/`user_security_group)`).
 	UserSecurityGroupId pulumi.StringPtrOutput `pulumi:"userSecurityGroupId"`
@@ -147,7 +149,7 @@ type securityGroupRuleState struct {
 	PublicSecurityGroup *string `pulumi:"publicSecurityGroup"`
 	// ❗ The parent security group name. Please use the `securityGroupId` argument along the exoscale*security*group data source instead.
 	//
-	// Deprecated: Deprecated in favor of `security_group_id`
+	// Deprecated: Deprecated in favor of `securityGroupId`
 	SecurityGroup *string `pulumi:"securityGroup"`
 	// ❗ The parent exoscale*security*group ID.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -157,7 +159,7 @@ type securityGroupRuleState struct {
 	Type *string `pulumi:"type"`
 	// ❗ An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`publicSecurityGroup`/`userSecurityGroupId`). Please use the `userSecurityGroupId` argument along the exoscale*security*group data source instead.
 	//
-	// Deprecated: Deprecated in favor of `user_security_group_id`
+	// Deprecated: Deprecated in favor of `userSecurityGroupId`
 	UserSecurityGroup *string `pulumi:"userSecurityGroup"`
 	// ❗ An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with `cidr`/`publicSecurityGroup`/`user_security_group)`).
 	UserSecurityGroupId *string `pulumi:"userSecurityGroupId"`
@@ -180,7 +182,7 @@ type SecurityGroupRuleState struct {
 	PublicSecurityGroup pulumi.StringPtrInput
 	// ❗ The parent security group name. Please use the `securityGroupId` argument along the exoscale*security*group data source instead.
 	//
-	// Deprecated: Deprecated in favor of `security_group_id`
+	// Deprecated: Deprecated in favor of `securityGroupId`
 	SecurityGroup pulumi.StringPtrInput
 	// ❗ The parent exoscale*security*group ID.
 	SecurityGroupId pulumi.StringPtrInput
@@ -190,7 +192,7 @@ type SecurityGroupRuleState struct {
 	Type pulumi.StringPtrInput
 	// ❗ An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`publicSecurityGroup`/`userSecurityGroupId`). Please use the `userSecurityGroupId` argument along the exoscale*security*group data source instead.
 	//
-	// Deprecated: Deprecated in favor of `user_security_group_id`
+	// Deprecated: Deprecated in favor of `userSecurityGroupId`
 	UserSecurityGroup pulumi.StringPtrInput
 	// ❗ An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with `cidr`/`publicSecurityGroup`/`user_security_group)`).
 	UserSecurityGroupId pulumi.StringPtrInput
@@ -217,7 +219,7 @@ type securityGroupRuleArgs struct {
 	PublicSecurityGroup *string `pulumi:"publicSecurityGroup"`
 	// ❗ The parent security group name. Please use the `securityGroupId` argument along the exoscale*security*group data source instead.
 	//
-	// Deprecated: Deprecated in favor of `security_group_id`
+	// Deprecated: Deprecated in favor of `securityGroupId`
 	SecurityGroup *string `pulumi:"securityGroup"`
 	// ❗ The parent exoscale*security*group ID.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -227,7 +229,7 @@ type securityGroupRuleArgs struct {
 	Type string `pulumi:"type"`
 	// ❗ An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`publicSecurityGroup`/`userSecurityGroupId`). Please use the `userSecurityGroupId` argument along the exoscale*security*group data source instead.
 	//
-	// Deprecated: Deprecated in favor of `user_security_group_id`
+	// Deprecated: Deprecated in favor of `userSecurityGroupId`
 	UserSecurityGroup *string `pulumi:"userSecurityGroup"`
 	// ❗ An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with `cidr`/`publicSecurityGroup`/`user_security_group)`).
 	UserSecurityGroupId *string `pulumi:"userSecurityGroupId"`
@@ -251,7 +253,7 @@ type SecurityGroupRuleArgs struct {
 	PublicSecurityGroup pulumi.StringPtrInput
 	// ❗ The parent security group name. Please use the `securityGroupId` argument along the exoscale*security*group data source instead.
 	//
-	// Deprecated: Deprecated in favor of `security_group_id`
+	// Deprecated: Deprecated in favor of `securityGroupId`
 	SecurityGroup pulumi.StringPtrInput
 	// ❗ The parent exoscale*security*group ID.
 	SecurityGroupId pulumi.StringPtrInput
@@ -261,7 +263,7 @@ type SecurityGroupRuleArgs struct {
 	Type pulumi.StringInput
 	// ❗ An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`publicSecurityGroup`/`userSecurityGroupId`). Please use the `userSecurityGroupId` argument along the exoscale*security*group data source instead.
 	//
-	// Deprecated: Deprecated in favor of `user_security_group_id`
+	// Deprecated: Deprecated in favor of `userSecurityGroupId`
 	UserSecurityGroup pulumi.StringPtrInput
 	// ❗ An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with `cidr`/`publicSecurityGroup`/`user_security_group)`).
 	UserSecurityGroupId pulumi.StringPtrInput
@@ -391,7 +393,7 @@ func (o SecurityGroupRuleOutput) PublicSecurityGroup() pulumi.StringOutput {
 
 // ❗ The parent security group name. Please use the `securityGroupId` argument along the exoscale*security*group data source instead.
 //
-// Deprecated: Deprecated in favor of `security_group_id`
+// Deprecated: Deprecated in favor of `securityGroupId`
 func (o SecurityGroupRuleOutput) SecurityGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringOutput { return v.SecurityGroup }).(pulumi.StringOutput)
 }
@@ -413,7 +415,7 @@ func (o SecurityGroupRuleOutput) Type() pulumi.StringOutput {
 
 // ❗ An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`publicSecurityGroup`/`userSecurityGroupId`). Please use the `userSecurityGroupId` argument along the exoscale*security*group data source instead.
 //
-// Deprecated: Deprecated in favor of `user_security_group_id`
+// Deprecated: Deprecated in favor of `userSecurityGroupId`
 func (o SecurityGroupRuleOutput) UserSecurityGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringOutput { return v.UserSecurityGroup }).(pulumi.StringOutput)
 }

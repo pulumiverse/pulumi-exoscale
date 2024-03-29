@@ -267,6 +267,7 @@ class DomainRecord(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -281,6 +282,7 @@ class DomainRecord(pulumi.CustomResource):
             record_type="CNAME",
             content=my_host.hostname)
         ```
+        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -293,9 +295,9 @@ class DomainRecord(pulumi.CustomResource):
         $ pulumi import exoscale:index/domainRecord:DomainRecord \\
         ```
 
-         exoscale_domain_record.my_host \\
+          exoscale_domain_record.my_host \\
 
-         f81d4fae-7dec-11d0-a765-00a0c91e6bf6
+          f81d4fae-7dec-11d0-a765-00a0c91e6bf6
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -319,6 +321,7 @@ class DomainRecord(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -333,6 +336,7 @@ class DomainRecord(pulumi.CustomResource):
             record_type="CNAME",
             content=my_host.hostname)
         ```
+        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -345,9 +349,9 @@ class DomainRecord(pulumi.CustomResource):
         $ pulumi import exoscale:index/domainRecord:DomainRecord \\
         ```
 
-         exoscale_domain_record.my_host \\
+          exoscale_domain_record.my_host \\
 
-         f81d4fae-7dec-11d0-a765-00a0c91e6bf6
+          f81d4fae-7dec-11d0-a765-00a0c91e6bf6
 
         :param str resource_name: The name of the resource.
         :param DomainRecordArgs args: The arguments to use to populate this resource's properties.

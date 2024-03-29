@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +40,7 @@ import (
 //			}
 //			_, err = exoscale.NewInstancePool(ctx, "myInstancePool", &exoscale.InstancePoolArgs{
 //				Zone:         pulumi.String("ch-gva-2"),
-//				TemplateId:   *pulumi.String(myTemplate.Id),
+//				TemplateId:   pulumi.String(myTemplate.Id),
 //				InstanceType: pulumi.String("standard.medium"),
 //				DiskSize:     pulumi.Int(10),
 //				Size:         pulumi.Int(3),
@@ -52,6 +53,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Please refer to the examples
 // directory for complete configuration examples.
@@ -100,7 +102,7 @@ type InstancePool struct {
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// The managed instances type. Please use the `instanceType` argument instead.
 	//
-	// Deprecated: This attribute has been replaced by "instance_type".
+	// Deprecated: This attribute has been replaced by "instanceType".
 	ServiceOffering pulumi.StringOutput `pulumi:"serviceOffering"`
 	// The number of managed instances.
 	Size  pulumi.IntOutput    `pulumi:"size"`
@@ -186,7 +188,7 @@ type instancePoolState struct {
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// The managed instances type. Please use the `instanceType` argument instead.
 	//
-	// Deprecated: This attribute has been replaced by "instance_type".
+	// Deprecated: This attribute has been replaced by "instanceType".
 	ServiceOffering *string `pulumi:"serviceOffering"`
 	// The number of managed instances.
 	Size  *int    `pulumi:"size"`
@@ -234,7 +236,7 @@ type InstancePoolState struct {
 	SecurityGroupIds pulumi.StringArrayInput
 	// The managed instances type. Please use the `instanceType` argument instead.
 	//
-	// Deprecated: This attribute has been replaced by "instance_type".
+	// Deprecated: This attribute has been replaced by "instanceType".
 	ServiceOffering pulumi.StringPtrInput
 	// The number of managed instances.
 	Size  pulumi.IntPtrInput
@@ -286,7 +288,7 @@ type instancePoolArgs struct {
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// The managed instances type. Please use the `instanceType` argument instead.
 	//
-	// Deprecated: This attribute has been replaced by "instance_type".
+	// Deprecated: This attribute has been replaced by "instanceType".
 	ServiceOffering *string `pulumi:"serviceOffering"`
 	// The number of managed instances.
 	Size  int     `pulumi:"size"`
@@ -335,7 +337,7 @@ type InstancePoolArgs struct {
 	SecurityGroupIds pulumi.StringArrayInput
 	// The managed instances type. Please use the `instanceType` argument instead.
 	//
-	// Deprecated: This attribute has been replaced by "instance_type".
+	// Deprecated: This attribute has been replaced by "instanceType".
 	ServiceOffering pulumi.StringPtrInput
 	// The number of managed instances.
 	Size  pulumi.IntInput
@@ -511,7 +513,7 @@ func (o InstancePoolOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 
 // The managed instances type. Please use the `instanceType` argument instead.
 //
-// Deprecated: This attribute has been replaced by "instance_type".
+// Deprecated: This attribute has been replaced by "instanceType".
 func (o InstancePoolOutput) ServiceOffering() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstancePool) pulumi.StringOutput { return v.ServiceOffering }).(pulumi.StringOutput)
 }

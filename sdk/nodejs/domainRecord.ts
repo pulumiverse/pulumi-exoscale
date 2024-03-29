@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
@@ -27,6 +28,7 @@ import * as utilities from "./utilities";
  *     content: myHost.hostname,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Please refer to the examples
  * directory for complete configuration examples.
@@ -39,9 +41,9 @@ import * as utilities from "./utilities";
  * $ pulumi import exoscale:index/domainRecord:DomainRecord \
  * ```
  *
- *  exoscale_domain_record.my_host \
+ *   exoscale_domain_record.my_host \
  *
- *  f81d4fae-7dec-11d0-a765-00a0c91e6bf6
+ *   f81d4fae-7dec-11d0-a765-00a0c91e6bf6
  */
 export class DomainRecord extends pulumi.CustomResource {
     /**

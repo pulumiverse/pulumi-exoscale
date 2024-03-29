@@ -11,12 +11,14 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
  * const myAntiAffinityGroup = new exoscale.AntiAffinityGroup("myAntiAffinityGroup", {description: "Prevent compute instances to run on the same host"});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Please refer to the examples
  * directory for complete configuration examples.
@@ -29,9 +31,9 @@ import * as utilities from "./utilities";
  * $ pulumi import exoscale:index/antiAffinityGroup:AntiAffinityGroup \
  * ```
  *
- *  exoscale_anti_affinity_group.my_anti_affinity_group \
+ *   exoscale_anti_affinity_group.my_anti_affinity_group \
  *
- *  f81d4fae-7dec-11d0-a765-00a0c91e6bf6
+ *   f81d4fae-7dec-11d0-a765-00a0c91e6bf6
  */
 export class AntiAffinityGroup extends pulumi.CustomResource {
     /**

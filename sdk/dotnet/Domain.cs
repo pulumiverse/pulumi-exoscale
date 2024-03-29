@@ -17,6 +17,7 @@ namespace Pulumiverse.Exoscale
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -29,6 +30,7 @@ namespace Pulumiverse.Exoscale
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Next step is to attach exoscale_domain_record(s) to the domain.
     /// 
@@ -43,9 +45,9 @@ namespace Pulumiverse.Exoscale
     /// $ pulumi import exoscale:index/domain:Domain \
     /// ```
     /// 
-    ///  exoscale_domain.my_domain \
+    ///   exoscale_domain.my_domain \
     /// 
-    ///  89083a5c-b648-474a-0000-0000000f67bd
+    ///   89083a5c-b648-474a-0000-0000000f67bd
     /// </summary>
     [ExoscaleResourceType("exoscale:index/domain:Domain")]
     public partial class Domain : global::Pulumi.CustomResource

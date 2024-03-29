@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumi/exoscale";
@@ -30,6 +31,7 @@ import * as utilities from "./utilities";
  *     size: 3,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Please refer to the examples
  * directory for complete configuration examples.
@@ -42,9 +44,9 @@ import * as utilities from "./utilities";
  * $ pulumi import exoscale:index/instancePool:InstancePool \
  * ```
  *
- *  exoscale_instance_pool.my_instance_pool \
+ *   exoscale_instance_pool.my_instance_pool \
  *
- *  f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
+ *   f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
  */
 export class InstancePool extends pulumi.CustomResource {
     /**
@@ -133,7 +135,7 @@ export class InstancePool extends pulumi.CustomResource {
     /**
      * The managed instances type. Please use the `instanceType` argument instead.
      *
-     * @deprecated This attribute has been replaced by "instance_type".
+     * @deprecated This attribute has been replaced by "instanceType".
      */
     public readonly serviceOffering!: pulumi.Output<string>;
     /**
@@ -295,7 +297,7 @@ export interface InstancePoolState {
     /**
      * The managed instances type. Please use the `instanceType` argument instead.
      *
-     * @deprecated This attribute has been replaced by "instance_type".
+     * @deprecated This attribute has been replaced by "instanceType".
      */
     serviceOffering?: pulumi.Input<string>;
     /**
@@ -386,7 +388,7 @@ export interface InstancePoolArgs {
     /**
      * The managed instances type. Please use the `instanceType` argument instead.
      *
-     * @deprecated This attribute has been replaced by "instance_type".
+     * @deprecated This attribute has been replaced by "instanceType".
      */
     serviceOffering?: pulumi.Input<string>;
     /**

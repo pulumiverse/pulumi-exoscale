@@ -625,9 +625,9 @@ class Database(pulumi.CustomResource):
         $ pulumi import exoscale:index/database:Database \\
         ```
 
-         exoscale_database.my_database \\
+          exoscale_database.my_database \\
 
-         my-database@ch-gva-2
+          my-database@ch-gva-2
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -662,9 +662,9 @@ class Database(pulumi.CustomResource):
         $ pulumi import exoscale:index/database:Database \\
         ```
 
-         exoscale_database.my_database \\
+          exoscale_database.my_database \\
 
-         my-database@ch-gva-2
+          my-database@ch-gva-2
 
         :param str resource_name: The name of the resource.
         :param DatabaseArgs args: The arguments to use to populate this resource's properties.

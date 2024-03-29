@@ -21,9 +21,9 @@ namespace Pulumiverse.Exoscale
     /// $ pulumi import exoscale:index/database:Database \
     /// ```
     /// 
-    ///  exoscale_database.my_database \
+    ///   exoscale_database.my_database \
     /// 
-    ///  my-database@ch-gva-2
+    ///   my-database@ch-gva-2
     /// </summary>
     [ExoscaleResourceType("exoscale:index/database:Database")]
     public partial class Database : global::Pulumi.CustomResource

@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumi/exoscale";
@@ -23,6 +24,7 @@ import * as utilities from "./utilities";
  * });
  * export const myElasticIpId = myElasticIp.then(myElasticIp => myElasticIp.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Please refer to the examples
  * directory for complete configuration examples.
@@ -108,6 +110,7 @@ export interface GetElasticIpResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumi/exoscale";
@@ -118,6 +121,7 @@ export interface GetElasticIpResult {
  * });
  * export const myElasticIpId = myElasticIp.then(myElasticIp => myElasticIp.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Please refer to the examples
  * directory for complete configuration examples.

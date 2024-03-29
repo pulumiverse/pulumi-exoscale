@@ -11,12 +11,14 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
  * const myNlb = new exoscale.Nlb("myNlb", {zone: "ch-gva-2"});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Next step is to attach exoscale_nlb_service(s) to the NLB.
  *
@@ -27,15 +29,15 @@ import * as utilities from "./utilities";
  *
  * An existing network load balancer (NLB) may be imported by `<ID>@<zone>`:
  *
- *  console
+ * console
  *
  * ```sh
  * $ pulumi import exoscale:index/nlb:Nlb \
  * ```
  *
- *  exoscale_nlb.my_nlb \
+ *   exoscale_nlb.my_nlb \
  *
- *  f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
+ *   f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
  */
 export class Nlb extends pulumi.CustomResource {
     /**

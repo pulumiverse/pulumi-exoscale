@@ -19,6 +19,7 @@ namespace Pulumiverse.Exoscale
     /// 
     /// *Unmanaged* private network:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -34,9 +35,11 @@ namespace Pulumiverse.Exoscale
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// *Managed* private network:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -55,6 +58,7 @@ namespace Pulumiverse.Exoscale
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Please refer to the examples
     /// directory for complete configuration examples.
@@ -67,9 +71,9 @@ namespace Pulumiverse.Exoscale
     /// $ pulumi import exoscale:index/privateNetwork:PrivateNetwork \
     /// ```
     /// 
-    ///  exoscale_private_network.my_private_network \
+    ///   exoscale_private_network.my_private_network \
     /// 
-    ///  f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
+    ///   f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
     /// </summary>
     [ExoscaleResourceType("exoscale:index/privateNetwork:PrivateNetwork")]
     public partial class PrivateNetwork : global::Pulumi.CustomResource

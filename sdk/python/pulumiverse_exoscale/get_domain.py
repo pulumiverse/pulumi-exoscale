@@ -65,6 +65,7 @@ def get_domain(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_exoscale as exoscale
@@ -72,6 +73,7 @@ def get_domain(name: Optional[str] = None,
     my_domain = exoscale.get_domain(name="my.domain")
     pulumi.export("myDomainId", my_domain.id)
     ```
+    <!--End PulumiCodeChooser -->
 
     Please refer to the examples
     directory for complete configuration examples.
@@ -99,6 +101,7 @@ def get_domain_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_exoscale as exoscale
@@ -106,6 +109,7 @@ def get_domain_output(name: Optional[pulumi.Input[str]] = None,
     my_domain = exoscale.get_domain(name="my.domain")
     pulumi.export("myDomainId", my_domain.id)
     ```
+    <!--End PulumiCodeChooser -->
 
     Please refer to the examples
     directory for complete configuration examples.

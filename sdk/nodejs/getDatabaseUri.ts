@@ -6,6 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ */
 export function getDatabaseUri(args: GetDatabaseUriArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseUriResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -62,6 +65,9 @@ export interface GetDatabaseUriResult {
      */
     readonly zone: string;
 }
+/**
+ * ## Example Usage
+ */
 export function getDatabaseUriOutput(args: GetDatabaseUriOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseUriResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseUri(a, opts))
 }

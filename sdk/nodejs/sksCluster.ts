@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
@@ -18,6 +19,7 @@ import * as utilities from "./utilities";
  * const mySksCluster = new exoscale.SksCluster("mySksCluster", {zone: "ch-gva-2"});
  * export const mySksClusterEndpoint = mySksCluster.endpoint;
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Next step is to attach exoscale_sks_nodepool(s) to the cluster.
  *
@@ -32,9 +34,9 @@ import * as utilities from "./utilities";
  * $ pulumi import exoscale:index/sksCluster:SksCluster \
  * ```
  *
- *  exoscale_sks_cluster.my_sks_cluster \
+ *   exoscale_sks_cluster.my_sks_cluster \
  *
- *  f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
+ *   f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
  */
 export class SksCluster extends pulumi.CustomResource {
     /**
@@ -65,7 +67,7 @@ export class SksCluster extends pulumi.CustomResource {
     }
 
     /**
-     * @deprecated This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
+     * @deprecated This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
      */
     public readonly addons!: pulumi.Output<string[]>;
     /**
@@ -208,7 +210,7 @@ export class SksCluster extends pulumi.CustomResource {
  */
 export interface SksClusterState {
     /**
-     * @deprecated This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
+     * @deprecated This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
      */
     addons?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -290,7 +292,7 @@ export interface SksClusterState {
  */
 export interface SksClusterArgs {
     /**
-     * @deprecated This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
+     * @deprecated This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
      */
     addons?: pulumi.Input<pulumi.Input<string>[]>;
     /**

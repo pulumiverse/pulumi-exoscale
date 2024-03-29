@@ -158,7 +158,8 @@ class IamApiKey(pulumi.CustomResource):
                  timeouts: Optional[pulumi.Input[pulumi.InputType['IamApiKeyTimeoutsArgs']]] = None,
                  __props__=None):
         """
-        Create a IamApiKey resource with the given unique name, props, and options.
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: ❗ IAM API Key name.
@@ -171,7 +172,8 @@ class IamApiKey(pulumi.CustomResource):
                  args: IamApiKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a IamApiKey resource with the given unique name, props, and options.
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param IamApiKeyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

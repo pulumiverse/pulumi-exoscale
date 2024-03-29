@@ -109,7 +109,8 @@ def get_database_uri(name: Optional[str] = None,
                      zone: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseUriResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
 
     :param str name: The database name to match.
     :param str type: The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
@@ -139,7 +140,8 @@ def get_database_uri_output(name: Optional[pulumi.Input[str]] = None,
                             zone: Optional[pulumi.Input[str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseUriResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
 
     :param str name: The database name to match.
     :param str type: The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).

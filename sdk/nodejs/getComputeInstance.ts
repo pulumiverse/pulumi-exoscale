@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumi/exoscale";
@@ -21,6 +22,7 @@ import * as utilities from "./utilities";
  * });
  * export const myInstanceId = myInstance.then(myInstance => myInstance.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Please refer to the examples
  * directory for complete configuration examples.
@@ -153,6 +155,7 @@ export interface GetComputeInstanceResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumi/exoscale";
@@ -163,6 +166,7 @@ export interface GetComputeInstanceResult {
  * });
  * export const myInstanceId = myInstance.then(myInstance => myInstance.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Please refer to the examples
  * directory for complete configuration examples.

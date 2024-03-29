@@ -19,6 +19,7 @@ namespace Pulumiverse.Exoscale
     /// 
     /// *Unmanaged* EIPv4:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -34,9 +35,11 @@ namespace Pulumiverse.Exoscale
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// *Managed* EIPv6:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -65,6 +68,7 @@ namespace Pulumiverse.Exoscale
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Please refer to the examples
     /// directory for complete configuration examples.
@@ -77,9 +81,9 @@ namespace Pulumiverse.Exoscale
     /// $ pulumi import exoscale:index/elasticIp:ElasticIp \
     /// ```
     /// 
-    ///  exoscale_elastic_ip.my_elastic_ip \
+    ///   exoscale_elastic_ip.my_elastic_ip \
     /// 
-    ///  f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
+    ///   f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
     /// </summary>
     [ExoscaleResourceType("exoscale:index/elasticIp:ElasticIp")]
     public partial class ElasticIp : global::Pulumi.CustomResource

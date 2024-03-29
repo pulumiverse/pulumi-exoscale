@@ -235,12 +235,14 @@ class Nlb(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
 
         my_nlb = exoscale.Nlb("myNlb", zone="ch-gva-2")
         ```
+        <!--End PulumiCodeChooser -->
 
         Next step is to attach exoscale_nlb_service(s) to the NLB.
 
@@ -251,15 +253,15 @@ class Nlb(pulumi.CustomResource):
 
         An existing network load balancer (NLB) may be imported by `<ID>@<zone>`:
 
-         console
+        console
 
         ```sh
         $ pulumi import exoscale:index/nlb:Nlb \\
         ```
 
-         exoscale_nlb.my_nlb \\
+          exoscale_nlb.my_nlb \\
 
-         f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
+          f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -281,12 +283,14 @@ class Nlb(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
 
         my_nlb = exoscale.Nlb("myNlb", zone="ch-gva-2")
         ```
+        <!--End PulumiCodeChooser -->
 
         Next step is to attach exoscale_nlb_service(s) to the NLB.
 
@@ -297,15 +301,15 @@ class Nlb(pulumi.CustomResource):
 
         An existing network load balancer (NLB) may be imported by `<ID>@<zone>`:
 
-         console
+        console
 
         ```sh
         $ pulumi import exoscale:index/nlb:Nlb \\
         ```
 
-         exoscale_nlb.my_nlb \\
+          exoscale_nlb.my_nlb \\
 
-         f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
+          f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
 
         :param str resource_name: The name of the resource.
         :param NlbArgs args: The arguments to use to populate this resource's properties.

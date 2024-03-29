@@ -15,6 +15,7 @@ namespace Pulumiverse.Exoscale
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -38,6 +39,7 @@ namespace Pulumiverse.Exoscale
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Please refer to the examples
     /// directory for complete configuration examples.
@@ -50,9 +52,9 @@ namespace Pulumiverse.Exoscale
     /// $ pulumi import exoscale:index/sksNodepool:SksNodepool \
     /// ```
     /// 
-    ///  exoscale_sks_nodepool.my_sks_nodepool \
+    ///   exoscale_sks_nodepool.my_sks_nodepool \
     /// 
-    ///  f81d4fae-7dec-11d0-a765-00a0c91e6bf6/9ecc6b8b-73d4-4211-8ced-f7f29bb79524@ch-gva-2
+    ///   f81d4fae-7dec-11d0-a765-00a0c91e6bf6/9ecc6b8b-73d4-4211-8ced-f7f29bb79524@ch-gva-2
     /// </summary>
     [ExoscaleResourceType("exoscale:index/sksNodepool:SksNodepool")]
     public partial class SksNodepool : global::Pulumi.CustomResource

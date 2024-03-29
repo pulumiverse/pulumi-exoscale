@@ -601,6 +601,7 @@ class SksNodepool(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -612,6 +613,7 @@ class SksNodepool(pulumi.CustomResource):
             instance_type="standard.medium",
             size=3)
         ```
+        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -624,9 +626,9 @@ class SksNodepool(pulumi.CustomResource):
         $ pulumi import exoscale:index/sksNodepool:SksNodepool \\
         ```
 
-         exoscale_sks_nodepool.my_sks_nodepool \\
+          exoscale_sks_nodepool.my_sks_nodepool \\
 
-         f81d4fae-7dec-11d0-a765-00a0c91e6bf6/9ecc6b8b-73d4-4211-8ced-f7f29bb79524@ch-gva-2
+          f81d4fae-7dec-11d0-a765-00a0c91e6bf6/9ecc6b8b-73d4-4211-8ced-f7f29bb79524@ch-gva-2
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -656,6 +658,7 @@ class SksNodepool(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -667,6 +670,7 @@ class SksNodepool(pulumi.CustomResource):
             instance_type="standard.medium",
             size=3)
         ```
+        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -679,9 +683,9 @@ class SksNodepool(pulumi.CustomResource):
         $ pulumi import exoscale:index/sksNodepool:SksNodepool \\
         ```
 
-         exoscale_sks_nodepool.my_sks_nodepool \\
+          exoscale_sks_nodepool.my_sks_nodepool \\
 
-         f81d4fae-7dec-11d0-a765-00a0c91e6bf6/9ecc6b8b-73d4-4211-8ced-f7f29bb79524@ch-gva-2
+          f81d4fae-7dec-11d0-a765-00a0c91e6bf6/9ecc6b8b-73d4-4211-8ced-f7f29bb79524@ch-gva-2
 
         :param str resource_name: The name of the resource.
         :param SksNodepoolArgs args: The arguments to use to populate this resource's properties.

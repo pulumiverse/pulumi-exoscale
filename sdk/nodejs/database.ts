@@ -17,9 +17,9 @@ import * as utilities from "./utilities";
  * $ pulumi import exoscale:index/database:Database \
  * ```
  *
- *  exoscale_database.my_database \
+ *   exoscale_database.my_database \
  *
- *  my-database@ch-gva-2
+ *   my-database@ch-gva-2
  */
 export class Database extends pulumi.CustomResource {
     /**

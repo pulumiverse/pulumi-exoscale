@@ -551,6 +551,7 @@ class SksCluster(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -558,6 +559,7 @@ class SksCluster(pulumi.CustomResource):
         my_sks_cluster = exoscale.SksCluster("mySksCluster", zone="ch-gva-2")
         pulumi.export("mySksClusterEndpoint", my_sks_cluster.endpoint)
         ```
+        <!--End PulumiCodeChooser -->
 
         Next step is to attach exoscale_sks_nodepool(s) to the cluster.
 
@@ -572,9 +574,9 @@ class SksCluster(pulumi.CustomResource):
         $ pulumi import exoscale:index/sksCluster:SksCluster \\
         ```
 
-         exoscale_sks_cluster.my_sks_cluster \\
+          exoscale_sks_cluster.my_sks_cluster \\
 
-         f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
+          f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -601,6 +603,7 @@ class SksCluster(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -608,6 +611,7 @@ class SksCluster(pulumi.CustomResource):
         my_sks_cluster = exoscale.SksCluster("mySksCluster", zone="ch-gva-2")
         pulumi.export("mySksClusterEndpoint", my_sks_cluster.endpoint)
         ```
+        <!--End PulumiCodeChooser -->
 
         Next step is to attach exoscale_sks_nodepool(s) to the cluster.
 
@@ -622,9 +626,9 @@ class SksCluster(pulumi.CustomResource):
         $ pulumi import exoscale:index/sksCluster:SksCluster \\
         ```
 
-         exoscale_sks_cluster.my_sks_cluster \\
+          exoscale_sks_cluster.my_sks_cluster \\
 
-         f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
+          f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
 
         :param str resource_name: The name of the resource.
         :param SksClusterArgs args: The arguments to use to populate this resource's properties.

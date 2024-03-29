@@ -705,6 +705,7 @@ class ComputeInstance(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_exoscale as exoscale
@@ -718,6 +719,7 @@ class ComputeInstance(pulumi.CustomResource):
             type="standard.medium",
             disk_size=10)
         ```
+        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -730,9 +732,9 @@ class ComputeInstance(pulumi.CustomResource):
         $ pulumi import exoscale:index/computeInstance:ComputeInstance \\
         ```
 
-         exoscale_compute_instance.my_instance \\
+          exoscale_compute_instance.my_instance \\
 
-         f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
+          f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -770,6 +772,7 @@ class ComputeInstance(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_exoscale as exoscale
@@ -783,6 +786,7 @@ class ComputeInstance(pulumi.CustomResource):
             type="standard.medium",
             disk_size=10)
         ```
+        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -795,9 +799,9 @@ class ComputeInstance(pulumi.CustomResource):
         $ pulumi import exoscale:index/computeInstance:ComputeInstance \\
         ```
 
-         exoscale_compute_instance.my_instance \\
+          exoscale_compute_instance.my_instance \\
 
-         f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
+          f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
 
         :param str resource_name: The name of the resource.
         :param ComputeInstanceArgs args: The arguments to use to populate this resource's properties.

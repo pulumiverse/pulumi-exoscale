@@ -285,6 +285,7 @@ def get_instance_pool(id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_exoscale as exoscale
@@ -293,6 +294,7 @@ def get_instance_pool(id: Optional[str] = None,
         name="my-instance-pool")
     pulumi.export("myInstancePoolId", my_instance_pool.id)
     ```
+    <!--End PulumiCodeChooser -->
 
     Please refer to the examples
     directory for complete configuration examples.
@@ -345,6 +347,7 @@ def get_instance_pool_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_exoscale as exoscale
@@ -353,6 +356,7 @@ def get_instance_pool_output(id: Optional[pulumi.Input[Optional[str]]] = None,
         name="my-instance-pool")
     pulumi.export("myInstancePoolId", my_instance_pool.id)
     ```
+    <!--End PulumiCodeChooser -->
 
     Please refer to the examples
     directory for complete configuration examples.

@@ -10,6 +10,9 @@ using Pulumi;
 
 namespace Pulumiverse.Exoscale
 {
+    /// <summary>
+    /// ## Example Usage
+    /// </summary>
     [ExoscaleResourceType("exoscale:index/iamApiKey:IamApiKey")]
     public partial class IamApiKey : global::Pulumi.CustomResource
     {
