@@ -12,9 +12,15 @@ namespace Pulumiverse.Exoscale
 {
     public static class GetDatabaseUri
     {
+        /// <summary>
+        /// ## Example Usage
+        /// </summary>
         public static Task<GetDatabaseUriResult> InvokeAsync(GetDatabaseUriArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseUriResult>("exoscale:index/getDatabaseUri:getDatabaseUri", args ?? new GetDatabaseUriArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// </summary>
         public static Output<GetDatabaseUriResult> Invoke(GetDatabaseUriInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseUriResult>("exoscale:index/getDatabaseUri:getDatabaseUri", args ?? new GetDatabaseUriInvokeArgs(), options.WithDefaults());
     }

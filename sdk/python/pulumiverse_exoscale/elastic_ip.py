@@ -273,15 +273,18 @@ class ElasticIp(pulumi.CustomResource):
 
         *Unmanaged* EIPv4:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
 
         my_elastic_ip = exoscale.ElasticIp("myElasticIp", zone="ch-gva-2")
         ```
+        <!--End PulumiCodeChooser -->
 
         *Managed* EIPv6:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -301,6 +304,7 @@ class ElasticIp(pulumi.CustomResource):
             reverse_dns="example.net",
             zone="ch-gva-2")
         ```
+        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -313,9 +317,9 @@ class ElasticIp(pulumi.CustomResource):
         $ pulumi import exoscale:index/elasticIp:ElasticIp \\
         ```
 
-         exoscale_elastic_ip.my_elastic_ip \\
+          exoscale_elastic_ip.my_elastic_ip \\
 
-         f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
+          f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -341,15 +345,18 @@ class ElasticIp(pulumi.CustomResource):
 
         *Unmanaged* EIPv4:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
 
         my_elastic_ip = exoscale.ElasticIp("myElasticIp", zone="ch-gva-2")
         ```
+        <!--End PulumiCodeChooser -->
 
         *Managed* EIPv6:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -369,6 +376,7 @@ class ElasticIp(pulumi.CustomResource):
             reverse_dns="example.net",
             zone="ch-gva-2")
         ```
+        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -381,9 +389,9 @@ class ElasticIp(pulumi.CustomResource):
         $ pulumi import exoscale:index/elasticIp:ElasticIp \\
         ```
 
-         exoscale_elastic_ip.my_elastic_ip \\
+          exoscale_elastic_ip.my_elastic_ip \\
 
-         f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
+          f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
 
         :param str resource_name: The name of the resource.
         :param ElasticIpArgs args: The arguments to use to populate this resource's properties.

@@ -15,10 +15,9 @@ namespace Pulumiverse.Exoscale
         /// <summary>
         /// Fetch Exoscale [Compute Instance Templates](https://community.exoscale.com/documentation/compute/custom-templates/) data.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,11 +38,10 @@ namespace Pulumiverse.Exoscale
         ///     };
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Please refer to the examples
         /// directory for complete configuration examples.
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTemplateResult> InvokeAsync(GetTemplateArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTemplateResult>("exoscale:index/getTemplate:getTemplate", args ?? new GetTemplateArgs(), options.WithDefaults());
@@ -51,10 +49,9 @@ namespace Pulumiverse.Exoscale
         /// <summary>
         /// Fetch Exoscale [Compute Instance Templates](https://community.exoscale.com/documentation/compute/custom-templates/) data.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -75,11 +72,10 @@ namespace Pulumiverse.Exoscale
         ///     };
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Please refer to the examples
         /// directory for complete configuration examples.
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetTemplateResult> Invoke(GetTemplateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTemplateResult>("exoscale:index/getTemplate:getTemplate", args ?? new GetTemplateInvokeArgs(), options.WithDefaults());

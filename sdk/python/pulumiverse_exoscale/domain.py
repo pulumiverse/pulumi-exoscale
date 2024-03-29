@@ -161,12 +161,14 @@ class Domain(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
 
         my_domain = exoscale.Domain("myDomain")
         ```
+        <!--End PulumiCodeChooser -->
 
         Next step is to attach exoscale_domain_record(s) to the domain.
 
@@ -181,9 +183,9 @@ class Domain(pulumi.CustomResource):
         $ pulumi import exoscale:index/domain:Domain \\
         ```
 
-         exoscale_domain.my_domain \\
+          exoscale_domain.my_domain \\
 
-         89083a5c-b648-474a-0000-0000000f67bd
+          89083a5c-b648-474a-0000-0000000f67bd
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -202,12 +204,14 @@ class Domain(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
 
         my_domain = exoscale.Domain("myDomain")
         ```
+        <!--End PulumiCodeChooser -->
 
         Next step is to attach exoscale_domain_record(s) to the domain.
 
@@ -222,9 +226,9 @@ class Domain(pulumi.CustomResource):
         $ pulumi import exoscale:index/domain:Domain \\
         ```
 
-         exoscale_domain.my_domain \\
+          exoscale_domain.my_domain \\
 
-         89083a5c-b648-474a-0000-0000000f67bd
+          89083a5c-b648-474a-0000-0000000f67bd
 
         :param str resource_name: The name of the resource.
         :param DomainArgs args: The arguments to use to populate this resource's properties.

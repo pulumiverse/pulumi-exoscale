@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Next step is to attach exoscale_nlb_service(s) to the NLB.
 //
@@ -51,7 +53,7 @@ import (
 //
 // An existing network load balancer (NLB) may be imported by `<ID>@<zone>`:
 //
-//	console
+// console
 //
 // ```sh
 // $ pulumi import exoscale:index/nlb:Nlb \

@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,6 +41,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Next step is to attach exoscale_sks_nodepool(s) to the cluster.
 //
@@ -60,7 +62,7 @@ import (
 type SksCluster struct {
 	pulumi.CustomResourceState
 
-	// Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
+	// Deprecated: This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
 	Addons pulumi.StringArrayOutput `pulumi:"addons"`
 	// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
 	AggregationCa pulumi.StringOutput `pulumi:"aggregationCa"`
@@ -133,7 +135,7 @@ func GetSksCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SksCluster resources.
 type sksClusterState struct {
-	// Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
+	// Deprecated: This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
 	Addons []string `pulumi:"addons"`
 	// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
 	AggregationCa *string `pulumi:"aggregationCa"`
@@ -174,7 +176,7 @@ type sksClusterState struct {
 }
 
 type SksClusterState struct {
-	// Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
+	// Deprecated: This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
 	Addons pulumi.StringArrayInput
 	// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
 	AggregationCa pulumi.StringPtrInput
@@ -219,7 +221,7 @@ func (SksClusterState) ElementType() reflect.Type {
 }
 
 type sksClusterArgs struct {
-	// Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
+	// Deprecated: This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
 	Addons []string `pulumi:"addons"`
 	// Enable automatic upgrading of the control plane version.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
@@ -247,7 +249,7 @@ type sksClusterArgs struct {
 
 // The set of arguments for constructing a SksCluster resource.
 type SksClusterArgs struct {
-	// Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
+	// Deprecated: This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
 	Addons pulumi.StringArrayInput
 	// Enable automatic upgrading of the control plane version.
 	AutoUpgrade pulumi.BoolPtrInput
@@ -360,7 +362,7 @@ func (o SksClusterOutput) ToSksClusterOutputWithContext(ctx context.Context) Sks
 	return o
 }
 
-// Deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
+// Deprecated: This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
 func (o SksClusterOutput) Addons() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SksCluster) pulumi.StringArrayOutput { return v.Addons }).(pulumi.StringArrayOutput)
 }

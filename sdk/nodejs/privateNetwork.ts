@@ -13,15 +13,18 @@ import * as utilities from "./utilities";
  *
  * *Unmanaged* private network:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
  * const myPrivateNetwork = new exoscale.PrivateNetwork("myPrivateNetwork", {zone: "ch-gva-2"});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * *Managed* private network:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
@@ -33,6 +36,7 @@ import * as utilities from "./utilities";
  *     zone: "ch-gva-2",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Please refer to the examples
  * directory for complete configuration examples.
@@ -45,9 +49,9 @@ import * as utilities from "./utilities";
  * $ pulumi import exoscale:index/privateNetwork:PrivateNetwork \
  * ```
  *
- *  exoscale_private_network.my_private_network \
+ *   exoscale_private_network.my_private_network \
  *
- *  f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
+ *   f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
  */
 export class PrivateNetwork extends pulumi.CustomResource {
     /**

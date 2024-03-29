@@ -744,7 +744,7 @@ export interface GetNlbServiceListTimeouts {
 
 export interface GetSksClusterListCluster {
     /**
-     * @deprecated This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
+     * @deprecated This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
      */
     addons: string[];
     /**

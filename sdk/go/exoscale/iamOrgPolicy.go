@@ -12,6 +12,7 @@ import (
 	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale/internal"
 )
 
+// ## Example Usage
 type IamOrgPolicy struct {
 	pulumi.CustomResourceState
 

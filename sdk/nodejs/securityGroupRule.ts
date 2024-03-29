@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
@@ -23,6 +24,7 @@ import * as utilities from "./utilities";
  *     endPort: 80,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Please refer to the examples
  * directory for complete configuration examples.
@@ -35,9 +37,9 @@ import * as utilities from "./utilities";
  * $ pulumi import exoscale:index/securityGroupRule:SecurityGroupRule \
  * ```
  *
- *  exoscale_security_group_rule.my_security_group_rule \
+ *   exoscale_security_group_rule.my_security_group_rule \
  *
- *  f81d4fae-7dec-11d0-a765-00a0c91e6bf6/9ecc6b8b-73d4-4211-8ced-f7f29bb79524
+ *   f81d4fae-7dec-11d0-a765-00a0c91e6bf6/9ecc6b8b-73d4-4211-8ced-f7f29bb79524
  */
 export class SecurityGroupRule extends pulumi.CustomResource {
     /**
@@ -98,7 +100,7 @@ export class SecurityGroupRule extends pulumi.CustomResource {
     /**
      * ❗ The parent security group name. Please use the `securityGroupId` argument along the exoscale*security*group data source instead.
      *
-     * @deprecated Deprecated in favor of `security_group_id`
+     * @deprecated Deprecated in favor of `securityGroupId`
      */
     public readonly securityGroup!: pulumi.Output<string>;
     /**
@@ -116,7 +118,7 @@ export class SecurityGroupRule extends pulumi.CustomResource {
     /**
      * ❗ An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`publicSecurityGroup`/`userSecurityGroupId`). Please use the `userSecurityGroupId` argument along the exoscale*security*group data source instead.
      *
-     * @deprecated Deprecated in favor of `user_security_group_id`
+     * @deprecated Deprecated in favor of `userSecurityGroupId`
      */
     public readonly userSecurityGroup!: pulumi.Output<string>;
     /**
@@ -209,7 +211,7 @@ export interface SecurityGroupRuleState {
     /**
      * ❗ The parent security group name. Please use the `securityGroupId` argument along the exoscale*security*group data source instead.
      *
-     * @deprecated Deprecated in favor of `security_group_id`
+     * @deprecated Deprecated in favor of `securityGroupId`
      */
     securityGroup?: pulumi.Input<string>;
     /**
@@ -227,7 +229,7 @@ export interface SecurityGroupRuleState {
     /**
      * ❗ An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`publicSecurityGroup`/`userSecurityGroupId`). Please use the `userSecurityGroupId` argument along the exoscale*security*group data source instead.
      *
-     * @deprecated Deprecated in favor of `user_security_group_id`
+     * @deprecated Deprecated in favor of `userSecurityGroupId`
      */
     userSecurityGroup?: pulumi.Input<string>;
     /**
@@ -271,7 +273,7 @@ export interface SecurityGroupRuleArgs {
     /**
      * ❗ The parent security group name. Please use the `securityGroupId` argument along the exoscale*security*group data source instead.
      *
-     * @deprecated Deprecated in favor of `security_group_id`
+     * @deprecated Deprecated in favor of `securityGroupId`
      */
     securityGroup?: pulumi.Input<string>;
     /**
@@ -289,7 +291,7 @@ export interface SecurityGroupRuleArgs {
     /**
      * ❗ An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`publicSecurityGroup`/`userSecurityGroupId`). Please use the `userSecurityGroupId` argument along the exoscale*security*group data source instead.
      *
-     * @deprecated Deprecated in favor of `user_security_group_id`
+     * @deprecated Deprecated in favor of `userSecurityGroupId`
      */
     userSecurityGroup?: pulumi.Input<string>;
     /**

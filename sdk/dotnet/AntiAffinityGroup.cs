@@ -17,6 +17,7 @@ namespace Pulumiverse.Exoscale
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -32,6 +33,7 @@ namespace Pulumiverse.Exoscale
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Please refer to the examples
     /// directory for complete configuration examples.
@@ -44,9 +46,9 @@ namespace Pulumiverse.Exoscale
     /// $ pulumi import exoscale:index/antiAffinityGroup:AntiAffinityGroup \
     /// ```
     /// 
-    ///  exoscale_anti_affinity_group.my_anti_affinity_group \
+    ///   exoscale_anti_affinity_group.my_anti_affinity_group \
     /// 
-    ///  f81d4fae-7dec-11d0-a765-00a0c91e6bf6
+    ///   f81d4fae-7dec-11d0-a765-00a0c91e6bf6
     /// </summary>
     [ExoscaleResourceType("exoscale:index/antiAffinityGroup:AntiAffinityGroup")]
     public partial class AntiAffinityGroup : global::Pulumi.CustomResource

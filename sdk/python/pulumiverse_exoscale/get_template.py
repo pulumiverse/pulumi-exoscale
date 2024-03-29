@@ -102,6 +102,7 @@ def get_template(id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_exoscale as exoscale
@@ -110,6 +111,7 @@ def get_template(id: Optional[str] = None,
         name="Linux Ubuntu 22.04 LTS 64-bit")
     pulumi.export("myTemplateId", my_template.id)
     ```
+    <!--End PulumiCodeChooser -->
 
     Please refer to the examples
     directory for complete configuration examples.
@@ -147,6 +149,7 @@ def get_template_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_exoscale as exoscale
@@ -155,6 +158,7 @@ def get_template_output(id: Optional[pulumi.Input[Optional[str]]] = None,
         name="Linux Ubuntu 22.04 LTS 64-bit")
     pulumi.export("myTemplateId", my_template.id)
     ```
+    <!--End PulumiCodeChooser -->
 
     Please refer to the examples
     directory for complete configuration examples.

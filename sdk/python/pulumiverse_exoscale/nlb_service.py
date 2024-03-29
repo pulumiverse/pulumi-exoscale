@@ -376,6 +376,7 @@ class NlbService(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -399,6 +400,7 @@ class NlbService(pulumi.CustomResource):
                 retries=1,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -411,9 +413,9 @@ class NlbService(pulumi.CustomResource):
         $ pulumi import exoscale:index/nlbService:NlbService \\
         ```
 
-         exoscale_nlb_service.my_nlb_service \\
+          exoscale_nlb_service.my_nlb_service \\
 
-         f81d4fae-7dec-11d0-a765-00a0c91e6bf6/9ecc6b8b-73d4-4211-8ced-f7f29bb79524@ch-gva-2
+          f81d4fae-7dec-11d0-a765-00a0c91e6bf6/9ecc6b8b-73d4-4211-8ced-f7f29bb79524@ch-gva-2
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -439,6 +441,7 @@ class NlbService(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -462,6 +465,7 @@ class NlbService(pulumi.CustomResource):
                 retries=1,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -474,9 +478,9 @@ class NlbService(pulumi.CustomResource):
         $ pulumi import exoscale:index/nlbService:NlbService \\
         ```
 
-         exoscale_nlb_service.my_nlb_service \\
+          exoscale_nlb_service.my_nlb_service \\
 
-         f81d4fae-7dec-11d0-a765-00a0c91e6bf6/9ecc6b8b-73d4-4211-8ced-f7f29bb79524@ch-gva-2
+          f81d4fae-7dec-11d0-a765-00a0c91e6bf6/9ecc6b8b-73d4-4211-8ced-f7f29bb79524@ch-gva-2
 
         :param str resource_name: The name of the resource.
         :param NlbServiceArgs args: The arguments to use to populate this resource's properties.

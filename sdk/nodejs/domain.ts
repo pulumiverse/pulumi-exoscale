@@ -11,12 +11,14 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
  * const myDomain = new exoscale.Domain("myDomain", {});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Next step is to attach exoscale_domain_record(s) to the domain.
  *
@@ -31,9 +33,9 @@ import * as utilities from "./utilities";
  * $ pulumi import exoscale:index/domain:Domain \
  * ```
  *
- *  exoscale_domain.my_domain \
+ *   exoscale_domain.my_domain \
  *
- *  89083a5c-b648-474a-0000-0000000f67bd
+ *   89083a5c-b648-474a-0000-0000000f67bd
  */
 export class Domain extends pulumi.CustomResource {
     /**

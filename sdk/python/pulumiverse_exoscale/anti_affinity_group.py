@@ -106,12 +106,14 @@ class AntiAffinityGroup(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
 
         my_anti_affinity_group = exoscale.AntiAffinityGroup("myAntiAffinityGroup", description="Prevent compute instances to run on the same host")
         ```
+        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -124,9 +126,9 @@ class AntiAffinityGroup(pulumi.CustomResource):
         $ pulumi import exoscale:index/antiAffinityGroup:AntiAffinityGroup \\
         ```
 
-         exoscale_anti_affinity_group.my_anti_affinity_group \\
+          exoscale_anti_affinity_group.my_anti_affinity_group \\
 
-         f81d4fae-7dec-11d0-a765-00a0c91e6bf6
+          f81d4fae-7dec-11d0-a765-00a0c91e6bf6
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -146,12 +148,14 @@ class AntiAffinityGroup(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
 
         my_anti_affinity_group = exoscale.AntiAffinityGroup("myAntiAffinityGroup", description="Prevent compute instances to run on the same host")
         ```
+        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -164,9 +168,9 @@ class AntiAffinityGroup(pulumi.CustomResource):
         $ pulumi import exoscale:index/antiAffinityGroup:AntiAffinityGroup \\
         ```
 
-         exoscale_anti_affinity_group.my_anti_affinity_group \\
+          exoscale_anti_affinity_group.my_anti_affinity_group \\
 
-         f81d4fae-7dec-11d0-a765-00a0c91e6bf6
+          f81d4fae-7dec-11d0-a765-00a0c91e6bf6
 
         :param str resource_name: The name of the resource.
         :param AntiAffinityGroupArgs args: The arguments to use to populate this resource's properties.

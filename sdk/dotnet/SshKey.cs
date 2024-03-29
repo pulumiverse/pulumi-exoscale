@@ -19,9 +19,9 @@ namespace Pulumiverse.Exoscale
     /// $ pulumi import exoscale:index/sshKey:SshKey \
     /// ```
     /// 
-    ///  exoscale_ssh_key.my_ssh_key \
+    ///   exoscale_ssh_key.my_ssh_key \
     /// 
-    ///  my-ssh-key
+    ///   my-ssh-key
     /// </summary>
     [ExoscaleResourceType("exoscale:index/sshKey:SshKey")]
     public partial class SshKey : global::Pulumi.CustomResource

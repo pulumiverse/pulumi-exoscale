@@ -17,10 +17,9 @@ namespace Pulumiverse.Exoscale
         /// 
         /// Corresponding resource: exoscale_instance_pool.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,11 +40,10 @@ namespace Pulumiverse.Exoscale
         ///     };
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Please refer to the examples
         /// directory for complete configuration examples.
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancePoolResult> InvokeAsync(GetInstancePoolArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancePoolResult>("exoscale:index/getInstancePool:getInstancePool", args ?? new GetInstancePoolArgs(), options.WithDefaults());
@@ -55,10 +53,9 @@ namespace Pulumiverse.Exoscale
         /// 
         /// Corresponding resource: exoscale_instance_pool.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -79,11 +76,10 @@ namespace Pulumiverse.Exoscale
         ///     };
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Please refer to the examples
         /// directory for complete configuration examples.
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstancePoolResult> Invoke(GetInstancePoolInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancePoolResult>("exoscale:index/getInstancePool:getInstancePool", args ?? new GetInstancePoolInvokeArgs(), options.WithDefaults());

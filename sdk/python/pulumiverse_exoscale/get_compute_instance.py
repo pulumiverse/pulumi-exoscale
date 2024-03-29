@@ -307,6 +307,7 @@ def get_compute_instance(id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_exoscale as exoscale
@@ -315,6 +316,7 @@ def get_compute_instance(id: Optional[str] = None,
         name="my-instance")
     pulumi.export("myInstanceId", my_instance.id)
     ```
+    <!--End PulumiCodeChooser -->
 
     Please refer to the examples
     directory for complete configuration examples.
@@ -368,6 +370,7 @@ def get_compute_instance_output(id: Optional[pulumi.Input[Optional[str]]] = None
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_exoscale as exoscale
@@ -376,6 +379,7 @@ def get_compute_instance_output(id: Optional[pulumi.Input[Optional[str]]] = None
         name="my-instance")
     pulumi.export("myInstanceId", my_instance.id)
     ```
+    <!--End PulumiCodeChooser -->
 
     Please refer to the examples
     directory for complete configuration examples.

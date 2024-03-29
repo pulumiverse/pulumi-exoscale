@@ -17,6 +17,7 @@ namespace Pulumiverse.Exoscale
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -29,6 +30,7 @@ namespace Pulumiverse.Exoscale
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Next step is to attach exoscale_security_group_rule(s) to the group.
     /// 
@@ -43,9 +45,9 @@ namespace Pulumiverse.Exoscale
     /// $ pulumi import exoscale:index/securityGroup:SecurityGroup \
     /// ```
     /// 
-    ///  exoscale_security_group.my_security_group \
+    ///   exoscale_security_group.my_security_group \
     /// 
-    ///  f81d4fae-7dec-11d0-a765-00a0c91e6bf6
+    ///   f81d4fae-7dec-11d0-a765-00a0c91e6bf6
     /// </summary>
     [ExoscaleResourceType("exoscale:index/securityGroup:SecurityGroup")]
     public partial class SecurityGroup : global::Pulumi.CustomResource

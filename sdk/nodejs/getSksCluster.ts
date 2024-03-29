@@ -38,7 +38,7 @@ export function getSksCluster(args: GetSksClusterArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetSksClusterArgs {
     /**
-     * @deprecated This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
+     * @deprecated This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
      */
     addons?: string[];
     /**
@@ -118,7 +118,7 @@ export interface GetSksClusterArgs {
  */
 export interface GetSksClusterResult {
     /**
-     * @deprecated This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
+     * @deprecated This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
      */
     readonly addons: string[];
     /**
@@ -201,7 +201,7 @@ export function getSksClusterOutput(args: GetSksClusterOutputArgs, opts?: pulumi
  */
 export interface GetSksClusterOutputArgs {
     /**
-     * @deprecated This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.
+     * @deprecated This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
      */
     addons?: pulumi.Input<pulumi.Input<string>[]>;
     /**

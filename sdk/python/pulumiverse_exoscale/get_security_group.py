@@ -78,6 +78,7 @@ def get_security_group(id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_exoscale as exoscale
@@ -85,6 +86,7 @@ def get_security_group(id: Optional[str] = None,
     my_security_group = exoscale.get_security_group(name="my-security-group")
     pulumi.export("mySecurityGroupId", my_security_group.id)
     ```
+    <!--End PulumiCodeChooser -->
 
     Please refer to the examples
     directory for complete configuration examples.
@@ -116,6 +118,7 @@ def get_security_group_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_exoscale as exoscale
@@ -123,6 +126,7 @@ def get_security_group_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     my_security_group = exoscale.get_security_group(name="my-security-group")
     pulumi.export("mySecurityGroupId", my_security_group.id)
     ```
+    <!--End PulumiCodeChooser -->
 
     Please refer to the examples
     directory for complete configuration examples.

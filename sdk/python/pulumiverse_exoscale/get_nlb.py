@@ -127,6 +127,7 @@ def get_nlb(id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_exoscale as exoscale
@@ -135,6 +136,7 @@ def get_nlb(id: Optional[str] = None,
         name="my-nlb")
     pulumi.export("myNlbId", my_nlb.id)
     ```
+    <!--End PulumiCodeChooser -->
 
     Please refer to the examples
     directory for complete configuration examples.
@@ -173,6 +175,7 @@ def get_nlb_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_exoscale as exoscale
@@ -181,6 +184,7 @@ def get_nlb_output(id: Optional[pulumi.Input[Optional[str]]] = None,
         name="my-nlb")
     pulumi.export("myNlbId", my_nlb.id)
     ```
+    <!--End PulumiCodeChooser -->
 
     Please refer to the examples
     directory for complete configuration examples.

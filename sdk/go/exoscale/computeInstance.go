@@ -20,6 +20,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,7 +42,7 @@ import (
 //			}
 //			_, err = exoscale.NewComputeInstance(ctx, "myInstance", &exoscale.ComputeInstanceArgs{
 //				Zone:       pulumi.String("ch-gva-2"),
-//				TemplateId: *pulumi.String(myTemplate.Id),
+//				TemplateId: pulumi.String(myTemplate.Id),
 //				Type:       pulumi.String("standard.medium"),
 //				DiskSize:   pulumi.Int(10),
 //			})
@@ -53,6 +54,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Please refer to the examples
 // directory for complete configuration examples.
@@ -97,7 +99,7 @@ type ComputeInstance struct {
 	Private pulumi.BoolPtrOutput `pulumi:"private"`
 	// A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument instead.
 	//
-	// Deprecated: Use the network_interface block instead.
+	// Deprecated: Use the networkInterface block instead.
 	PrivateNetworkIds pulumi.StringArrayOutput `pulumi:"privateNetworkIds"`
 	// The instance (main network interface) IPv4 address.
 	PublicIpAddress pulumi.StringOutput `pulumi:"publicIpAddress"`
@@ -184,7 +186,7 @@ type computeInstanceState struct {
 	Private *bool `pulumi:"private"`
 	// A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument instead.
 	//
-	// Deprecated: Use the network_interface block instead.
+	// Deprecated: Use the networkInterface block instead.
 	PrivateNetworkIds []string `pulumi:"privateNetworkIds"`
 	// The instance (main network interface) IPv4 address.
 	PublicIpAddress *string `pulumi:"publicIpAddress"`
@@ -233,7 +235,7 @@ type ComputeInstanceState struct {
 	Private pulumi.BoolPtrInput
 	// A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument instead.
 	//
-	// Deprecated: Use the network_interface block instead.
+	// Deprecated: Use the networkInterface block instead.
 	PrivateNetworkIds pulumi.StringArrayInput
 	// The instance (main network interface) IPv4 address.
 	PublicIpAddress pulumi.StringPtrInput
@@ -487,7 +489,7 @@ func (o ComputeInstanceOutput) Private() pulumi.BoolPtrOutput {
 
 // A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument instead.
 //
-// Deprecated: Use the network_interface block instead.
+// Deprecated: Use the networkInterface block instead.
 func (o ComputeInstanceOutput) PrivateNetworkIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ComputeInstance) pulumi.StringArrayOutput { return v.PrivateNetworkIds }).(pulumi.StringArrayOutput)
 }

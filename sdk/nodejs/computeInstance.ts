@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumi/exoscale";
@@ -31,6 +32,7 @@ import * as utilities from "./utilities";
  *     diskSize: 10,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Please refer to the examples
  * directory for complete configuration examples.
@@ -43,9 +45,9 @@ import * as utilities from "./utilities";
  * $ pulumi import exoscale:index/computeInstance:ComputeInstance \
  * ```
  *
- *  exoscale_compute_instance.my_instance \
+ *   exoscale_compute_instance.my_instance \
  *
- *  f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
+ *   f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2
  */
 export class ComputeInstance extends pulumi.CustomResource {
     /**
@@ -126,7 +128,7 @@ export class ComputeInstance extends pulumi.CustomResource {
     /**
      * A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument instead.
      *
-     * @deprecated Use the network_interface block instead.
+     * @deprecated Use the networkInterface block instead.
      */
     public /*out*/ readonly privateNetworkIds!: pulumi.Output<string[]>;
     /**
@@ -295,7 +297,7 @@ export interface ComputeInstanceState {
     /**
      * A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument instead.
      *
-     * @deprecated Use the network_interface block instead.
+     * @deprecated Use the networkInterface block instead.
      */
     privateNetworkIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -10,6 +10,9 @@ using Pulumi;
 
 namespace Pulumiverse.Exoscale
 {
+    /// <summary>
+    /// ## Example Usage
+    /// </summary>
     [ExoscaleResourceType("exoscale:index/iamOrgPolicy:IamOrgPolicy")]
     public partial class IamOrgPolicy : global::Pulumi.CustomResource
     {

@@ -123,9 +123,9 @@ class SshKey(pulumi.CustomResource):
         $ pulumi import exoscale:index/sshKey:SshKey \\
         ```
 
-         exoscale_ssh_key.my_ssh_key \\
+          exoscale_ssh_key.my_ssh_key \\
 
-         my-ssh-key
+          my-ssh-key
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -147,9 +147,9 @@ class SshKey(pulumi.CustomResource):
         $ pulumi import exoscale:index/sshKey:SshKey \\
         ```
 
-         exoscale_ssh_key.my_ssh_key \\
+          exoscale_ssh_key.my_ssh_key \\
 
-         my-ssh-key
+          my-ssh-key
 
         :param str resource_name: The name of the resource.
         :param SshKeyArgs args: The arguments to use to populate this resource's properties.

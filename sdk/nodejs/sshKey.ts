@@ -13,9 +13,9 @@ import * as utilities from "./utilities";
  * $ pulumi import exoscale:index/sshKey:SshKey \
  * ```
  *
- *  exoscale_ssh_key.my_ssh_key \
+ *   exoscale_ssh_key.my_ssh_key \
  *
- *  my-ssh-key
+ *   my-ssh-key
  */
 export class SshKey extends pulumi.CustomResource {
     /**

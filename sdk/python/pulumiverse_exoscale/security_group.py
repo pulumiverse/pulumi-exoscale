@@ -139,12 +139,14 @@ class SecurityGroup(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
 
         my_security_group = exoscale.SecurityGroup("mySecurityGroup")
         ```
+        <!--End PulumiCodeChooser -->
 
         Next step is to attach exoscale_security_group_rule(s) to the group.
 
@@ -159,9 +161,9 @@ class SecurityGroup(pulumi.CustomResource):
         $ pulumi import exoscale:index/securityGroup:SecurityGroup \\
         ```
 
-         exoscale_security_group.my_security_group \\
+          exoscale_security_group.my_security_group \\
 
-         f81d4fae-7dec-11d0-a765-00a0c91e6bf6
+          f81d4fae-7dec-11d0-a765-00a0c91e6bf6
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -182,12 +184,14 @@ class SecurityGroup(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
 
         my_security_group = exoscale.SecurityGroup("mySecurityGroup")
         ```
+        <!--End PulumiCodeChooser -->
 
         Next step is to attach exoscale_security_group_rule(s) to the group.
 
@@ -202,9 +206,9 @@ class SecurityGroup(pulumi.CustomResource):
         $ pulumi import exoscale:index/securityGroup:SecurityGroup \\
         ```
 
-         exoscale_security_group.my_security_group \\
+          exoscale_security_group.my_security_group \\
 
-         f81d4fae-7dec-11d0-a765-00a0c91e6bf6
+          f81d4fae-7dec-11d0-a765-00a0c91e6bf6
 
         :param str resource_name: The name of the resource.
         :param SecurityGroupArgs args: The arguments to use to populate this resource's properties.

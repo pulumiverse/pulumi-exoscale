@@ -17,10 +17,9 @@ namespace Pulumiverse.Exoscale
         /// 
         /// Corresponding resource: exoscale_anti_affinity_group.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,11 +39,10 @@ namespace Pulumiverse.Exoscale
         ///     };
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Please refer to the examples
         /// directory for complete configuration examples.
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAntiAffinityGroupResult> InvokeAsync(GetAntiAffinityGroupArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAntiAffinityGroupResult>("exoscale:index/getAntiAffinityGroup:getAntiAffinityGroup", args ?? new GetAntiAffinityGroupArgs(), options.WithDefaults());
@@ -54,10 +52,9 @@ namespace Pulumiverse.Exoscale
         /// 
         /// Corresponding resource: exoscale_anti_affinity_group.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -77,11 +74,10 @@ namespace Pulumiverse.Exoscale
         ///     };
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Please refer to the examples
         /// directory for complete configuration examples.
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAntiAffinityGroupResult> Invoke(GetAntiAffinityGroupInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAntiAffinityGroupResult>("exoscale:index/getAntiAffinityGroup:getAntiAffinityGroup", args ?? new GetAntiAffinityGroupInvokeArgs(), options.WithDefaults());

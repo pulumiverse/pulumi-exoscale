@@ -125,7 +125,8 @@ class IamOrgPolicy(pulumi.CustomResource):
                  timeouts: Optional[pulumi.Input[pulumi.InputType['IamOrgPolicyTimeoutsArgs']]] = None,
                  __props__=None):
         """
-        Create a IamOrgPolicy resource with the given unique name, props, and options.
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_service_strategy: Default service strategy (`allow` or `deny`).
@@ -138,7 +139,8 @@ class IamOrgPolicy(pulumi.CustomResource):
                  args: IamOrgPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a IamOrgPolicy resource with the given unique name, props, and options.
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param IamOrgPolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

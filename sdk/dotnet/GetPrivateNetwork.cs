@@ -17,10 +17,9 @@ namespace Pulumiverse.Exoscale
         /// 
         /// Corresponding resource: exoscale_private_network.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,11 +40,10 @@ namespace Pulumiverse.Exoscale
         ///     };
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Please refer to the examples
         /// directory for complete configuration examples.
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPrivateNetworkResult> InvokeAsync(GetPrivateNetworkArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrivateNetworkResult>("exoscale:index/getPrivateNetwork:getPrivateNetwork", args ?? new GetPrivateNetworkArgs(), options.WithDefaults());
@@ -55,10 +53,9 @@ namespace Pulumiverse.Exoscale
         /// 
         /// Corresponding resource: exoscale_private_network.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -79,11 +76,10 @@ namespace Pulumiverse.Exoscale
         ///     };
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Please refer to the examples
         /// directory for complete configuration examples.
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPrivateNetworkResult> Invoke(GetPrivateNetworkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrivateNetworkResult>("exoscale:index/getPrivateNetwork:getPrivateNetwork", args ?? new GetPrivateNetworkInvokeArgs(), options.WithDefaults());
