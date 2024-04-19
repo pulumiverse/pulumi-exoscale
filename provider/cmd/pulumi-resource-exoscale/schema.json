@@ -1526,6 +1526,10 @@
                     "type": "boolean",
                     "description": "Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).\n"
                 },
+                "exoscaleCsi": {
+                    "type": "boolean",
+                    "description": "Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).\n"
+                },
                 "id": {
                     "type": "string"
                 },
@@ -4286,6 +4290,10 @@
                     "type": "boolean",
                     "description": "Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).\n"
                 },
+                "exoscaleCsi": {
+                    "type": "boolean",
+                    "description": "Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).\n"
+                },
                 "kubeletCa": {
                     "type": "string",
                     "description": "The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.\n"
@@ -4371,6 +4379,10 @@
                     "type": "boolean",
                     "description": "Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).\n"
                 },
+                "exoscaleCsi": {
+                    "type": "boolean",
+                    "description": "Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).\n"
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -4448,6 +4460,10 @@
                     "exoscaleCcm": {
                         "type": "boolean",
                         "description": "Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).\n"
+                    },
+                    "exoscaleCsi": {
+                        "type": "boolean",
+                        "description": "Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).\n"
                     },
                     "kubeletCa": {
                         "type": "string",
@@ -6235,6 +6251,10 @@
                         "type": "boolean",
                         "description": "Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).\n"
                     },
+                    "exoscaleCsi": {
+                        "type": "boolean",
+                        "description": "Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).\n"
+                    },
                     "id": {
                         "type": "string",
                         "description": "The ID of this resource.\n"
@@ -6331,6 +6351,10 @@
                         "type": "boolean",
                         "description": "Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).\n"
                     },
+                    "exoscaleCsi": {
+                        "type": "boolean",
+                        "description": "Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).\n"
+                    },
                     "id": {
                         "type": "string",
                         "description": "The ID of this resource.\n"
@@ -6424,6 +6448,9 @@
                     "exoscaleCcm": {
                         "type": "boolean"
                     },
+                    "exoscaleCsi": {
+                        "type": "boolean"
+                    },
                     "id": {
                         "type": "string"
                     },
@@ -6498,6 +6525,10 @@
                         "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "exoscaleCcm": {
+                        "type": "boolean",
+                        "description": "Match against this bool\n"
+                    },
+                    "exoscaleCsi": {
                         "type": "boolean",
                         "description": "Match against this bool\n"
                     },
