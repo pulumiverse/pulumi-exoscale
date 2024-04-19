@@ -180,8 +180,8 @@ github.com/envoyproxy/go-control-plane v0.9.4/go.mod h1:6rpuAdCZL397s3pYoYcLgu1m
 github.com/envoyproxy/protoc-gen-validate v0.1.0/go.mod h1:iSmxcyjqTsJpI2R4NaDN7+kN2VEUnK/pcBlmesArF7c=
 github.com/exoscale/egoscale v0.102.3 h1:DYqN2ipoLKpiFoprRGQkp2av/Ze7sUYYlGhi1N62tfY=
 github.com/exoscale/egoscale v0.102.3/go.mod h1:RPf2Gah6up+6kAEayHTQwqapzXlm93f0VQas/UEGU5c=
-github.com/exoscale/terraform-provider-exoscale v0.56.0 h1:jaHKpzcnIoJZx9ZoaWFFxWmie/D3cXxy17Rvn6iVnWk=
-github.com/exoscale/terraform-provider-exoscale v0.56.0/go.mod h1:IEOlQBJh0OiYcvAzfH/FeFwCPjLt4vfzNPMheVMUwGI=
+github.com/exoscale/terraform-provider-exoscale v0.57.0 h1:8aMhjK5IIeFITscbfV2DzTnd9LOylA+XazCNTMEwn40=
+github.com/exoscale/terraform-provider-exoscale v0.57.0/go.mod h1:IEOlQBJh0OiYcvAzfH/FeFwCPjLt4vfzNPMheVMUwGI=
 github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
 github.com/fatih/color v1.9.0/go.mod h1:eQcE1qtQxscV5RaZvpXrrb8Drkc3/DdQ+uUYCNjL+zU=
 github.com/fatih/color v1.13.0/go.mod h1:kLAiJbzzSOZDVNGyDpeOxJ47H46qBXwg5ILebYFFOfk=

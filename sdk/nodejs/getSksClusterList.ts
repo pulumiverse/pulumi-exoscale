@@ -18,6 +18,7 @@ export function getSksClusterList(args: GetSksClusterListArgs, opts?: pulumi.Inv
         "description": args.description,
         "endpoint": args.endpoint,
         "exoscaleCcm": args.exoscaleCcm,
+        "exoscaleCsi": args.exoscaleCsi,
         "id": args.id,
         "kubeletCa": args.kubeletCa,
         "labels": args.labels,
@@ -42,6 +43,7 @@ export interface GetSksClusterListArgs {
     description?: string;
     endpoint?: string;
     exoscaleCcm?: boolean;
+    exoscaleCsi?: boolean;
     id?: string;
     kubeletCa?: string;
     labels?: {[key: string]: string};
@@ -90,6 +92,10 @@ export interface GetSksClusterListResult {
      * Match against this bool
      */
     readonly exoscaleCcm?: boolean;
+    /**
+     * Match against this bool
+     */
+    readonly exoscaleCsi?: boolean;
     /**
      * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
      */
@@ -143,6 +149,7 @@ export interface GetSksClusterListOutputArgs {
     description?: pulumi.Input<string>;
     endpoint?: pulumi.Input<string>;
     exoscaleCcm?: pulumi.Input<boolean>;
+    exoscaleCsi?: pulumi.Input<boolean>;
     id?: pulumi.Input<string>;
     kubeletCa?: pulumi.Input<string>;
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;

@@ -109,6 +109,12 @@ namespace Pulumiverse.Exoscale
         public Output<bool?> ExoscaleCcm { get; private set; } = null!;
 
         /// <summary>
+        /// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        /// </summary>
+        [Output("exoscaleCsi")]
+        public Output<bool?> ExoscaleCsi { get; private set; } = null!;
+
+        /// <summary>
         /// The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
         /// </summary>
         [Output("kubeletCa")]
@@ -248,6 +254,12 @@ namespace Pulumiverse.Exoscale
         [Input("exoscaleCcm")]
         public Input<bool>? ExoscaleCcm { get; set; }
 
+        /// <summary>
+        /// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        /// </summary>
+        [Input("exoscaleCsi")]
+        public Input<bool>? ExoscaleCsi { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -360,6 +372,12 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         [Input("exoscaleCcm")]
         public Input<bool>? ExoscaleCcm { get; set; }
+
+        /// <summary>
+        /// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        /// </summary>
+        [Input("exoscaleCsi")]
+        public Input<bool>? ExoscaleCsi { get; set; }
 
         /// <summary>
         /// The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.

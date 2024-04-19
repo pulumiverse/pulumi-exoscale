@@ -47,6 +47,10 @@ namespace Pulumiverse.Exoscale.Outputs
         /// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
         /// </summary>
         public readonly bool? ExoscaleCcm;
+        /// <summary>
+        /// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        /// </summary>
+        public readonly bool? ExoscaleCsi;
         public readonly string? Id;
         /// <summary>
         /// The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
@@ -103,6 +107,8 @@ namespace Pulumiverse.Exoscale.Outputs
 
             bool? exoscaleCcm,
 
+            bool? exoscaleCsi,
+
             string? id,
 
             string kubeletCa,
@@ -134,6 +140,7 @@ namespace Pulumiverse.Exoscale.Outputs
             Description = description;
             Endpoint = endpoint;
             ExoscaleCcm = exoscaleCcm;
+            ExoscaleCsi = exoscaleCsi;
             Id = id;
             KubeletCa = kubeletCa;
             Labels = labels;

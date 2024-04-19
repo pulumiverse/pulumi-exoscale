@@ -103,6 +103,10 @@ export class SksCluster extends pulumi.CustomResource {
      */
     public readonly exoscaleCcm!: pulumi.Output<boolean | undefined>;
     /**
+     * Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+     */
+    public readonly exoscaleCsi!: pulumi.Output<boolean | undefined>;
+    /**
      * The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
      */
     public /*out*/ readonly kubeletCa!: pulumi.Output<string>;
@@ -165,6 +169,7 @@ export class SksCluster extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["endpoint"] = state ? state.endpoint : undefined;
             resourceInputs["exoscaleCcm"] = state ? state.exoscaleCcm : undefined;
+            resourceInputs["exoscaleCsi"] = state ? state.exoscaleCsi : undefined;
             resourceInputs["kubeletCa"] = state ? state.kubeletCa : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["metricsServer"] = state ? state.metricsServer : undefined;
@@ -185,6 +190,7 @@ export class SksCluster extends pulumi.CustomResource {
             resourceInputs["cni"] = args ? args.cni : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["exoscaleCcm"] = args ? args.exoscaleCcm : undefined;
+            resourceInputs["exoscaleCsi"] = args ? args.exoscaleCsi : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["metricsServer"] = args ? args.metricsServer : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -245,6 +251,10 @@ export interface SksClusterState {
      * Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
      */
     exoscaleCcm?: pulumi.Input<boolean>;
+    /**
+     * Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+     */
+    exoscaleCsi?: pulumi.Input<boolean>;
     /**
      * The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
      */
@@ -311,6 +321,10 @@ export interface SksClusterArgs {
      * Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
      */
     exoscaleCcm?: pulumi.Input<boolean>;
+    /**
+     * Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+     */
+    exoscaleCsi?: pulumi.Input<boolean>;
     /**
      * A map of key/value labels.
      */

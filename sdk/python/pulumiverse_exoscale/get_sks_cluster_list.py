@@ -22,7 +22,7 @@ class GetSksClusterListResult:
     """
     A collection of values returned by getSksClusterList.
     """
-    def __init__(__self__, aggregation_ca=None, auto_upgrade=None, clusters=None, cni=None, control_plane_ca=None, created_at=None, description=None, endpoint=None, exoscale_ccm=None, id=None, kubelet_ca=None, labels=None, metrics_server=None, name=None, service_level=None, state=None, version=None, zone=None):
+    def __init__(__self__, aggregation_ca=None, auto_upgrade=None, clusters=None, cni=None, control_plane_ca=None, created_at=None, description=None, endpoint=None, exoscale_ccm=None, exoscale_csi=None, id=None, kubelet_ca=None, labels=None, metrics_server=None, name=None, service_level=None, state=None, version=None, zone=None):
         if aggregation_ca and not isinstance(aggregation_ca, str):
             raise TypeError("Expected argument 'aggregation_ca' to be a str")
         pulumi.set(__self__, "aggregation_ca", aggregation_ca)
@@ -50,6 +50,9 @@ class GetSksClusterListResult:
         if exoscale_ccm and not isinstance(exoscale_ccm, bool):
             raise TypeError("Expected argument 'exoscale_ccm' to be a bool")
         pulumi.set(__self__, "exoscale_ccm", exoscale_ccm)
+        if exoscale_csi and not isinstance(exoscale_csi, bool):
+            raise TypeError("Expected argument 'exoscale_csi' to be a bool")
+        pulumi.set(__self__, "exoscale_csi", exoscale_csi)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -148,6 +151,14 @@ class GetSksClusterListResult:
         return pulumi.get(self, "exoscale_ccm")
 
     @property
+    @pulumi.getter(name="exoscaleCsi")
+    def exoscale_csi(self) -> Optional[bool]:
+        """
+        Match against this bool
+        """
+        return pulumi.get(self, "exoscale_csi")
+
+    @property
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
@@ -235,6 +246,7 @@ class AwaitableGetSksClusterListResult(GetSksClusterListResult):
             description=self.description,
             endpoint=self.endpoint,
             exoscale_ccm=self.exoscale_ccm,
+            exoscale_csi=self.exoscale_csi,
             id=self.id,
             kubelet_ca=self.kubelet_ca,
             labels=self.labels,
@@ -254,6 +266,7 @@ def get_sks_cluster_list(aggregation_ca: Optional[str] = None,
                          description: Optional[str] = None,
                          endpoint: Optional[str] = None,
                          exoscale_ccm: Optional[bool] = None,
+                         exoscale_csi: Optional[bool] = None,
                          id: Optional[str] = None,
                          kubelet_ca: Optional[str] = None,
                          labels: Optional[Mapping[str, str]] = None,
@@ -276,6 +289,7 @@ def get_sks_cluster_list(aggregation_ca: Optional[str] = None,
     __args__['description'] = description
     __args__['endpoint'] = endpoint
     __args__['exoscaleCcm'] = exoscale_ccm
+    __args__['exoscaleCsi'] = exoscale_csi
     __args__['id'] = id
     __args__['kubeletCa'] = kubelet_ca
     __args__['labels'] = labels
@@ -298,6 +312,7 @@ def get_sks_cluster_list(aggregation_ca: Optional[str] = None,
         description=pulumi.get(__ret__, 'description'),
         endpoint=pulumi.get(__ret__, 'endpoint'),
         exoscale_ccm=pulumi.get(__ret__, 'exoscale_ccm'),
+        exoscale_csi=pulumi.get(__ret__, 'exoscale_csi'),
         id=pulumi.get(__ret__, 'id'),
         kubelet_ca=pulumi.get(__ret__, 'kubelet_ca'),
         labels=pulumi.get(__ret__, 'labels'),
@@ -318,6 +333,7 @@ def get_sks_cluster_list_output(aggregation_ca: Optional[pulumi.Input[Optional[s
                                 description: Optional[pulumi.Input[Optional[str]]] = None,
                                 endpoint: Optional[pulumi.Input[Optional[str]]] = None,
                                 exoscale_ccm: Optional[pulumi.Input[Optional[bool]]] = None,
+                                exoscale_csi: Optional[pulumi.Input[Optional[bool]]] = None,
                                 id: Optional[pulumi.Input[Optional[str]]] = None,
                                 kubelet_ca: Optional[pulumi.Input[Optional[str]]] = None,
                                 labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,

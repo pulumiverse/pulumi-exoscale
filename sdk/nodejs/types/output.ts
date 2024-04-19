@@ -779,6 +779,10 @@ export interface GetSksClusterListCluster {
      * Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
      */
     exoscaleCcm?: boolean;
+    /**
+     * Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+     */
+    exoscaleCsi?: boolean;
     id?: string;
     /**
      * The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.

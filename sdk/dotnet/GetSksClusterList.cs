@@ -46,6 +46,9 @@ namespace Pulumiverse.Exoscale
         [Input("exoscaleCcm")]
         public bool? ExoscaleCcm { get; set; }
 
+        [Input("exoscaleCsi")]
+        public bool? ExoscaleCsi { get; set; }
+
         [Input("id")]
         public string? Id { get; set; }
 
@@ -109,6 +112,9 @@ namespace Pulumiverse.Exoscale
 
         [Input("exoscaleCcm")]
         public Input<bool>? ExoscaleCcm { get; set; }
+
+        [Input("exoscaleCsi")]
+        public Input<bool>? ExoscaleCsi { get; set; }
 
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -186,6 +192,10 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly bool? ExoscaleCcm;
         /// <summary>
+        /// Match against this bool
+        /// </summary>
+        public readonly bool? ExoscaleCsi;
+        /// <summary>
         /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
         /// </summary>
         public readonly string? Id;
@@ -242,6 +252,8 @@ namespace Pulumiverse.Exoscale
 
             bool? exoscaleCcm,
 
+            bool? exoscaleCsi,
+
             string? id,
 
             string? kubeletCa,
@@ -269,6 +281,7 @@ namespace Pulumiverse.Exoscale
             Description = description;
             Endpoint = endpoint;
             ExoscaleCcm = exoscaleCcm;
+            ExoscaleCsi = exoscaleCsi;
             Id = id;
             KubeletCa = kubeletCa;
             Labels = labels;
