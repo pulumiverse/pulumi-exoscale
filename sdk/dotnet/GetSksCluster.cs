@@ -80,6 +80,12 @@ namespace Pulumiverse.Exoscale
         public bool? ExoscaleCcm { get; set; }
 
         /// <summary>
+        /// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        /// </summary>
+        [Input("exoscaleCsi")]
+        public bool? ExoscaleCsi { get; set; }
+
+        /// <summary>
         /// The ID of this resource.
         /// </summary>
         [Input("id")]
@@ -217,6 +223,12 @@ namespace Pulumiverse.Exoscale
         public Input<bool>? ExoscaleCcm { get; set; }
 
         /// <summary>
+        /// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        /// </summary>
+        [Input("exoscaleCsi")]
+        public Input<bool>? ExoscaleCsi { get; set; }
+
+        /// <summary>
         /// The ID of this resource.
         /// </summary>
         [Input("id")]
@@ -332,6 +344,10 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly bool? ExoscaleCcm;
         /// <summary>
+        /// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        /// </summary>
+        public readonly bool? ExoscaleCsi;
+        /// <summary>
         /// The ID of this resource.
         /// </summary>
         public readonly string? Id;
@@ -390,6 +406,8 @@ namespace Pulumiverse.Exoscale
 
             bool? exoscaleCcm,
 
+            bool? exoscaleCsi,
+
             string? id,
 
             string kubeletCa,
@@ -421,6 +439,7 @@ namespace Pulumiverse.Exoscale
             Description = description;
             Endpoint = endpoint;
             ExoscaleCcm = exoscaleCcm;
+            ExoscaleCsi = exoscaleCsi;
             Id = id;
             KubeletCa = kubeletCa;
             Labels = labels;

@@ -80,6 +80,8 @@ type SksCluster struct {
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
 	ExoscaleCcm pulumi.BoolPtrOutput `pulumi:"exoscaleCcm"`
+	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+	ExoscaleCsi pulumi.BoolPtrOutput `pulumi:"exoscaleCsi"`
 	// The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
 	KubeletCa pulumi.StringOutput `pulumi:"kubeletCa"`
 	// A map of key/value labels.
@@ -153,6 +155,8 @@ type sksClusterState struct {
 	Endpoint *string `pulumi:"endpoint"`
 	// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
 	ExoscaleCcm *bool `pulumi:"exoscaleCcm"`
+	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+	ExoscaleCsi *bool `pulumi:"exoscaleCsi"`
 	// The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
 	KubeletCa *string `pulumi:"kubeletCa"`
 	// A map of key/value labels.
@@ -194,6 +198,8 @@ type SksClusterState struct {
 	Endpoint pulumi.StringPtrInput
 	// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
 	ExoscaleCcm pulumi.BoolPtrInput
+	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+	ExoscaleCsi pulumi.BoolPtrInput
 	// The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
 	KubeletCa pulumi.StringPtrInput
 	// A map of key/value labels.
@@ -231,6 +237,8 @@ type sksClusterArgs struct {
 	Description *string `pulumi:"description"`
 	// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
 	ExoscaleCcm *bool `pulumi:"exoscaleCcm"`
+	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+	ExoscaleCsi *bool `pulumi:"exoscaleCsi"`
 	// A map of key/value labels.
 	Labels map[string]string `pulumi:"labels"`
 	// Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
@@ -259,6 +267,8 @@ type SksClusterArgs struct {
 	Description pulumi.StringPtrInput
 	// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
 	ExoscaleCcm pulumi.BoolPtrInput
+	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+	ExoscaleCsi pulumi.BoolPtrInput
 	// A map of key/value labels.
 	Labels pulumi.StringMapInput
 	// Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
@@ -405,6 +415,11 @@ func (o SksClusterOutput) Endpoint() pulumi.StringOutput {
 // Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
 func (o SksClusterOutput) ExoscaleCcm() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SksCluster) pulumi.BoolPtrOutput { return v.ExoscaleCcm }).(pulumi.BoolPtrOutput)
+}
+
+// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+func (o SksClusterOutput) ExoscaleCsi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SksCluster) pulumi.BoolPtrOutput { return v.ExoscaleCsi }).(pulumi.BoolPtrOutput)
 }
 
 // The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.

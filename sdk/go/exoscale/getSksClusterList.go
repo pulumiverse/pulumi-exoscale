@@ -31,6 +31,7 @@ type GetSksClusterListArgs struct {
 	Description    *string           `pulumi:"description"`
 	Endpoint       *string           `pulumi:"endpoint"`
 	ExoscaleCcm    *bool             `pulumi:"exoscaleCcm"`
+	ExoscaleCsi    *bool             `pulumi:"exoscaleCsi"`
 	Id             *string           `pulumi:"id"`
 	KubeletCa      *string           `pulumi:"kubeletCa"`
 	Labels         map[string]string `pulumi:"labels"`
@@ -61,6 +62,8 @@ type GetSksClusterListResult struct {
 	Endpoint *string `pulumi:"endpoint"`
 	// Match against this bool
 	ExoscaleCcm *bool `pulumi:"exoscaleCcm"`
+	// Match against this bool
+	ExoscaleCsi *bool `pulumi:"exoscaleCsi"`
 	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 	Id *string `pulumi:"id"`
 	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
@@ -104,6 +107,7 @@ type GetSksClusterListOutputArgs struct {
 	Description    pulumi.StringPtrInput `pulumi:"description"`
 	Endpoint       pulumi.StringPtrInput `pulumi:"endpoint"`
 	ExoscaleCcm    pulumi.BoolPtrInput   `pulumi:"exoscaleCcm"`
+	ExoscaleCsi    pulumi.BoolPtrInput   `pulumi:"exoscaleCsi"`
 	Id             pulumi.StringPtrInput `pulumi:"id"`
 	KubeletCa      pulumi.StringPtrInput `pulumi:"kubeletCa"`
 	Labels         pulumi.StringMapInput `pulumi:"labels"`
@@ -176,6 +180,11 @@ func (o GetSksClusterListResultOutput) Endpoint() pulumi.StringPtrOutput {
 // Match against this bool
 func (o GetSksClusterListResultOutput) ExoscaleCcm() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetSksClusterListResult) *bool { return v.ExoscaleCcm }).(pulumi.BoolPtrOutput)
+}
+
+// Match against this bool
+func (o GetSksClusterListResultOutput) ExoscaleCsi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSksClusterListResult) *bool { return v.ExoscaleCsi }).(pulumi.BoolPtrOutput)
 }
 
 // Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.

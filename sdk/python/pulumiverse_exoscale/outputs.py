@@ -2987,6 +2987,7 @@ class GetSksClusterListClusterResult(dict):
                  cni: Optional[str] = None,
                  description: Optional[str] = None,
                  exoscale_ccm: Optional[bool] = None,
+                 exoscale_csi: Optional[bool] = None,
                  id: Optional[str] = None,
                  labels: Optional[Mapping[str, str]] = None,
                  metrics_server: Optional[bool] = None,
@@ -3006,6 +3007,7 @@ class GetSksClusterListClusterResult(dict):
         :param str cni: The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
         :param str description: A free-form text describing the cluster.
         :param bool exoscale_ccm: Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
+        :param bool exoscale_csi: Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
         :param Mapping[str, str] labels: A map of key/value labels.
         :param bool metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
         :param str service_level: The service level of the control plane (`pro` or `starter`; default: `pro`; may only be set at creation time).
@@ -3029,6 +3031,8 @@ class GetSksClusterListClusterResult(dict):
             pulumi.set(__self__, "description", description)
         if exoscale_ccm is not None:
             pulumi.set(__self__, "exoscale_ccm", exoscale_ccm)
+        if exoscale_csi is not None:
+            pulumi.set(__self__, "exoscale_csi", exoscale_csi)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if labels is not None:
@@ -3156,6 +3160,14 @@ class GetSksClusterListClusterResult(dict):
         Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
         """
         return pulumi.get(self, "exoscale_ccm")
+
+    @property
+    @pulumi.getter(name="exoscaleCsi")
+    def exoscale_csi(self) -> Optional[bool]:
+        """
+        Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        """
+        return pulumi.get(self, "exoscale_csi")
 
     @property
     @pulumi.getter

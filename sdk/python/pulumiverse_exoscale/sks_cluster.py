@@ -22,6 +22,7 @@ class SksClusterArgs:
                  cni: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  exoscale_ccm: Optional[pulumi.Input[bool]] = None,
+                 exoscale_csi: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metrics_server: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -35,6 +36,7 @@ class SksClusterArgs:
         :param pulumi.Input[str] cni: The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
         :param pulumi.Input[str] description: A free-form text describing the cluster.
         :param pulumi.Input[bool] exoscale_ccm: Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
+        :param pulumi.Input[bool] exoscale_csi: Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[bool] metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
         :param pulumi.Input[str] name: The SKS cluster name.
@@ -56,6 +58,8 @@ class SksClusterArgs:
             pulumi.set(__self__, "description", description)
         if exoscale_ccm is not None:
             pulumi.set(__self__, "exoscale_ccm", exoscale_ccm)
+        if exoscale_csi is not None:
+            pulumi.set(__self__, "exoscale_csi", exoscale_csi)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if metrics_server is not None:
@@ -142,6 +146,18 @@ class SksClusterArgs:
         pulumi.set(self, "exoscale_ccm", value)
 
     @property
+    @pulumi.getter(name="exoscaleCsi")
+    def exoscale_csi(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        """
+        return pulumi.get(self, "exoscale_csi")
+
+    @exoscale_csi.setter
+    def exoscale_csi(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "exoscale_csi", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -226,6 +242,7 @@ class _SksClusterState:
                  description: Optional[pulumi.Input[str]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  exoscale_ccm: Optional[pulumi.Input[bool]] = None,
+                 exoscale_csi: Optional[pulumi.Input[bool]] = None,
                  kubelet_ca: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metrics_server: Optional[pulumi.Input[bool]] = None,
@@ -246,6 +263,7 @@ class _SksClusterState:
         :param pulumi.Input[str] description: A free-form text describing the cluster.
         :param pulumi.Input[str] endpoint: The cluster API endpoint.
         :param pulumi.Input[bool] exoscale_ccm: Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
+        :param pulumi.Input[bool] exoscale_csi: Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
         :param pulumi.Input[str] kubelet_ca: The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[bool] metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
@@ -278,6 +296,8 @@ class _SksClusterState:
             pulumi.set(__self__, "endpoint", endpoint)
         if exoscale_ccm is not None:
             pulumi.set(__self__, "exoscale_ccm", exoscale_ccm)
+        if exoscale_csi is not None:
+            pulumi.set(__self__, "exoscale_csi", exoscale_csi)
         if kubelet_ca is not None:
             pulumi.set(__self__, "kubelet_ca", kubelet_ca)
         if labels is not None:
@@ -406,6 +426,18 @@ class _SksClusterState:
     @exoscale_ccm.setter
     def exoscale_ccm(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "exoscale_ccm", value)
+
+    @property
+    @pulumi.getter(name="exoscaleCsi")
+    def exoscale_csi(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        """
+        return pulumi.get(self, "exoscale_csi")
+
+    @exoscale_csi.setter
+    def exoscale_csi(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "exoscale_csi", value)
 
     @property
     @pulumi.getter(name="kubeletCa")
@@ -538,6 +570,7 @@ class SksCluster(pulumi.CustomResource):
                  cni: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  exoscale_ccm: Optional[pulumi.Input[bool]] = None,
+                 exoscale_csi: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metrics_server: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -584,6 +617,7 @@ class SksCluster(pulumi.CustomResource):
         :param pulumi.Input[str] cni: The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
         :param pulumi.Input[str] description: A free-form text describing the cluster.
         :param pulumi.Input[bool] exoscale_ccm: Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
+        :param pulumi.Input[bool] exoscale_csi: Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[bool] metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
         :param pulumi.Input[str] name: The SKS cluster name.
@@ -650,6 +684,7 @@ class SksCluster(pulumi.CustomResource):
                  cni: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  exoscale_ccm: Optional[pulumi.Input[bool]] = None,
+                 exoscale_csi: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metrics_server: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -671,6 +706,7 @@ class SksCluster(pulumi.CustomResource):
             __props__.__dict__["cni"] = cni
             __props__.__dict__["description"] = description
             __props__.__dict__["exoscale_ccm"] = exoscale_ccm
+            __props__.__dict__["exoscale_csi"] = exoscale_csi
             __props__.__dict__["labels"] = labels
             __props__.__dict__["metrics_server"] = metrics_server
             __props__.__dict__["name"] = name
@@ -706,6 +742,7 @@ class SksCluster(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
             exoscale_ccm: Optional[pulumi.Input[bool]] = None,
+            exoscale_csi: Optional[pulumi.Input[bool]] = None,
             kubelet_ca: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             metrics_server: Optional[pulumi.Input[bool]] = None,
@@ -731,6 +768,7 @@ class SksCluster(pulumi.CustomResource):
         :param pulumi.Input[str] description: A free-form text describing the cluster.
         :param pulumi.Input[str] endpoint: The cluster API endpoint.
         :param pulumi.Input[bool] exoscale_ccm: Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
+        :param pulumi.Input[bool] exoscale_csi: Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
         :param pulumi.Input[str] kubelet_ca: The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[bool] metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
@@ -755,6 +793,7 @@ class SksCluster(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["exoscale_ccm"] = exoscale_ccm
+        __props__.__dict__["exoscale_csi"] = exoscale_csi
         __props__.__dict__["kubelet_ca"] = kubelet_ca
         __props__.__dict__["labels"] = labels
         __props__.__dict__["metrics_server"] = metrics_server
@@ -838,6 +877,14 @@ class SksCluster(pulumi.CustomResource):
         Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
         """
         return pulumi.get(self, "exoscale_ccm")
+
+    @property
+    @pulumi.getter(name="exoscaleCsi")
+    def exoscale_csi(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        """
+        return pulumi.get(self, "exoscale_csi")
 
     @property
     @pulumi.getter(name="kubeletCa")

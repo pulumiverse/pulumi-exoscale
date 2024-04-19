@@ -19,6 +19,7 @@ export function getSksCluster(args: GetSksClusterArgs, opts?: pulumi.InvokeOptio
         "description": args.description,
         "endpoint": args.endpoint,
         "exoscaleCcm": args.exoscaleCcm,
+        "exoscaleCsi": args.exoscaleCsi,
         "id": args.id,
         "kubeletCa": args.kubeletCa,
         "labels": args.labels,
@@ -73,6 +74,10 @@ export interface GetSksClusterArgs {
      * Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
      */
     exoscaleCcm?: boolean;
+    /**
+     * Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+     */
+    exoscaleCsi?: boolean;
     /**
      * The ID of this resource.
      */
@@ -153,6 +158,10 @@ export interface GetSksClusterResult {
      * Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
      */
     readonly exoscaleCcm?: boolean;
+    /**
+     * Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+     */
+    readonly exoscaleCsi?: boolean;
     /**
      * The ID of this resource.
      */
@@ -236,6 +245,10 @@ export interface GetSksClusterOutputArgs {
      * Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
      */
     exoscaleCcm?: pulumi.Input<boolean>;
+    /**
+     * Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+     */
+    exoscaleCsi?: pulumi.Input<boolean>;
     /**
      * The ID of this resource.
      */
