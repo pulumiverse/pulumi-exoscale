@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
@@ -36,7 +35,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Please refer to the examples
  * directory for complete configuration examples.
@@ -102,7 +100,7 @@ export class NlbService extends pulumi.CustomResource {
      */
     public readonly nlbId!: pulumi.Output<string>;
     /**
-     * The NLB service (TCP/UDP) port.
+     * The healthcheck port.
      */
     public readonly port!: pulumi.Output<number>;
     /**
@@ -209,7 +207,7 @@ export interface NlbServiceState {
      */
     nlbId?: pulumi.Input<string>;
     /**
-     * The NLB service (TCP/UDP) port.
+     * The healthcheck port.
      */
     port?: pulumi.Input<number>;
     /**
@@ -256,7 +254,7 @@ export interface NlbServiceArgs {
      */
     nlbId: pulumi.Input<string>;
     /**
-     * The NLB service (TCP/UDP) port.
+     * The healthcheck port.
      */
     port: pulumi.Input<number>;
     /**

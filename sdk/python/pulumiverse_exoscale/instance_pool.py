@@ -53,7 +53,7 @@ class InstancePoolArgs:
         :param pulumi.Input[bool] ipv6: Enable IPv6 on managed instances (boolean; default: `false`).
         :param pulumi.Input[str] key_pair: The exoscale*ssh*key (name) to authorize in the managed instances.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
-        :param pulumi.Input[str] name: The instance name.
+        :param pulumi.Input[str] name: The instance pool name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] network_ids: A list of exoscale*private*network (IDs).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of exoscale*security*group (IDs).
         :param pulumi.Input[str] service_offering: The managed instances type. Please use the `instance_type` argument instead.
@@ -278,7 +278,7 @@ class InstancePoolArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The instance name.
+        The instance pool name.
         """
         return pulumi.get(self, "name")
 
@@ -399,7 +399,7 @@ class _InstancePoolState:
         :param pulumi.Input[bool] ipv6: Enable IPv6 on managed instances (boolean; default: `false`).
         :param pulumi.Input[str] key_pair: The exoscale*ssh*key (name) to authorize in the managed instances.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
-        :param pulumi.Input[str] name: The instance name.
+        :param pulumi.Input[str] name: The instance pool name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] network_ids: A list of exoscale*private*network (IDs).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of exoscale*security*group (IDs).
         :param pulumi.Input[str] service_offering: The managed instances type. Please use the `instance_type` argument instead.
@@ -594,7 +594,7 @@ class _InstancePoolState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The instance name.
+        The instance pool name.
         """
         return pulumi.get(self, "name")
 
@@ -748,7 +748,6 @@ class InstancePool(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_exoscale as exoscale
@@ -763,7 +762,6 @@ class InstancePool(pulumi.CustomResource):
             disk_size=10,
             size=3)
         ```
-        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -793,7 +791,7 @@ class InstancePool(pulumi.CustomResource):
         :param pulumi.Input[bool] ipv6: Enable IPv6 on managed instances (boolean; default: `false`).
         :param pulumi.Input[str] key_pair: The exoscale*ssh*key (name) to authorize in the managed instances.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
-        :param pulumi.Input[str] name: The instance name.
+        :param pulumi.Input[str] name: The instance pool name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] network_ids: A list of exoscale*private*network (IDs).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of exoscale*security*group (IDs).
         :param pulumi.Input[str] service_offering: The managed instances type. Please use the `instance_type` argument instead.
@@ -816,7 +814,6 @@ class InstancePool(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_exoscale as exoscale
@@ -831,7 +828,6 @@ class InstancePool(pulumi.CustomResource):
             disk_size=10,
             size=3)
         ```
-        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -969,7 +965,7 @@ class InstancePool(pulumi.CustomResource):
         :param pulumi.Input[bool] ipv6: Enable IPv6 on managed instances (boolean; default: `false`).
         :param pulumi.Input[str] key_pair: The exoscale*ssh*key (name) to authorize in the managed instances.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
-        :param pulumi.Input[str] name: The instance name.
+        :param pulumi.Input[str] name: The instance pool name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] network_ids: A list of exoscale*private*network (IDs).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of exoscale*security*group (IDs).
         :param pulumi.Input[str] service_offering: The managed instances type. Please use the `instance_type` argument instead.
@@ -1098,7 +1094,7 @@ class InstancePool(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The instance name.
+        The instance pool name.
         """
         return pulumi.get(self, "name")
 

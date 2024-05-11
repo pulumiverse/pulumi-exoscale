@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumi/exoscale";
@@ -31,7 +30,6 @@ import * as utilities from "./utilities";
  *     size: 3,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Please refer to the examples
  * directory for complete configuration examples.
@@ -121,7 +119,7 @@ export class InstancePool extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The instance name.
+     * The instance pool name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -283,7 +281,7 @@ export interface InstancePoolState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The instance name.
+     * The instance pool name.
      */
     name?: pulumi.Input<string>;
     /**
@@ -374,7 +372,7 @@ export interface InstancePoolArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The instance name.
+     * The instance pool name.
      */
     name?: pulumi.Input<string>;
     /**

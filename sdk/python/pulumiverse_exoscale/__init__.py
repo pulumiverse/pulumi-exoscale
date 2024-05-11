@@ -6,12 +6,16 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .anti_affinity_group import *
+from .block_storage_volume import *
+from .block_storage_volume_snapshot import *
 from .compute_instance import *
 from .database import *
 from .domain import *
 from .domain_record import *
 from .elastic_ip import *
 from .get_anti_affinity_group import *
+from .get_block_storage_volume import *
+from .get_block_storage_volume_snapshot import *
 from .get_compute_instance import *
 from .get_compute_instance_list import *
 from .get_database_uri import *
@@ -67,6 +71,22 @@ _utilities.register(
   "fqn": "pulumiverse_exoscale",
   "classes": {
    "exoscale:index/antiAffinityGroup:AntiAffinityGroup": "AntiAffinityGroup"
+  }
+ },
+ {
+  "pkg": "exoscale",
+  "mod": "index/blockStorageVolume",
+  "fqn": "pulumiverse_exoscale",
+  "classes": {
+   "exoscale:index/blockStorageVolume:BlockStorageVolume": "BlockStorageVolume"
+  }
+ },
+ {
+  "pkg": "exoscale",
+  "mod": "index/blockStorageVolumeSnapshot",
+  "fqn": "pulumiverse_exoscale",
+  "classes": {
+   "exoscale:index/blockStorageVolumeSnapshot:BlockStorageVolumeSnapshot": "BlockStorageVolumeSnapshot"
   }
  },
  {

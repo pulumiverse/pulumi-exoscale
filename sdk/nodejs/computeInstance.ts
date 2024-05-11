@@ -15,7 +15,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumi/exoscale";
@@ -32,7 +31,6 @@ import * as utilities from "./utilities";
  *     diskSize: 10,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Please refer to the examples
  * directory for complete configuration examples.
@@ -81,6 +79,10 @@ export class ComputeInstance extends pulumi.CustomResource {
      * ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
      */
     public readonly antiAffinityGroupIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * A list of exoscale*block*storage_volume (ID) to attach to the instance.
+     */
+    public readonly blockStorageVolumeIds!: pulumi.Output<string[] | undefined>;
     /**
      * The instance creation date.
      */
@@ -182,6 +184,7 @@ export class ComputeInstance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ComputeInstanceState | undefined;
             resourceInputs["antiAffinityGroupIds"] = state ? state.antiAffinityGroupIds : undefined;
+            resourceInputs["blockStorageVolumeIds"] = state ? state.blockStorageVolumeIds : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["deployTargetId"] = state ? state.deployTargetId : undefined;
             resourceInputs["destroyProtected"] = state ? state.destroyProtected : undefined;
@@ -215,6 +218,7 @@ export class ComputeInstance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zone'");
             }
             resourceInputs["antiAffinityGroupIds"] = args ? args.antiAffinityGroupIds : undefined;
+            resourceInputs["blockStorageVolumeIds"] = args ? args.blockStorageVolumeIds : undefined;
             resourceInputs["deployTargetId"] = args ? args.deployTargetId : undefined;
             resourceInputs["destroyProtected"] = args ? args.destroyProtected : undefined;
             resourceInputs["diskSize"] = args ? args.diskSize : undefined;
@@ -250,6 +254,10 @@ export interface ComputeInstanceState {
      * ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
      */
     antiAffinityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of exoscale*block*storage_volume (ID) to attach to the instance.
+     */
+    blockStorageVolumeIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The instance creation date.
      */
@@ -346,6 +354,10 @@ export interface ComputeInstanceArgs {
      * ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
      */
     antiAffinityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of exoscale*block*storage_volume (ID) to attach to the instance.
+     */
+    blockStorageVolumeIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * ❗ A deploy target ID.
      */

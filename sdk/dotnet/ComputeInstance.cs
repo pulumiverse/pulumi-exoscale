@@ -19,7 +19,6 @@ namespace Pulumiverse.Exoscale
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -45,7 +44,6 @@ namespace Pulumiverse.Exoscale
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Please refer to the examples
     /// directory for complete configuration examples.
@@ -70,6 +68,12 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         [Output("antiAffinityGroupIds")]
         public Output<ImmutableArray<string>> AntiAffinityGroupIds { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of exoscale*block*storage_volume (ID) to attach to the instance.
+        /// </summary>
+        [Output("blockStorageVolumeIds")]
+        public Output<ImmutableArray<string>> BlockStorageVolumeIds { get; private set; } = null!;
 
         /// <summary>
         /// The instance creation date.
@@ -256,6 +260,18 @@ namespace Pulumiverse.Exoscale
             set => _antiAffinityGroupIds = value;
         }
 
+        [Input("blockStorageVolumeIds")]
+        private InputList<string>? _blockStorageVolumeIds;
+
+        /// <summary>
+        /// A list of exoscale*block*storage_volume (ID) to attach to the instance.
+        /// </summary>
+        public InputList<string> BlockStorageVolumeIds
+        {
+            get => _blockStorageVolumeIds ?? (_blockStorageVolumeIds = new InputList<string>());
+            set => _blockStorageVolumeIds = value;
+        }
+
         /// <summary>
         /// ❗ A deploy target ID.
         /// </summary>
@@ -400,6 +416,18 @@ namespace Pulumiverse.Exoscale
         {
             get => _antiAffinityGroupIds ?? (_antiAffinityGroupIds = new InputList<string>());
             set => _antiAffinityGroupIds = value;
+        }
+
+        [Input("blockStorageVolumeIds")]
+        private InputList<string>? _blockStorageVolumeIds;
+
+        /// <summary>
+        /// A list of exoscale*block*storage_volume (ID) to attach to the instance.
+        /// </summary>
+        public InputList<string> BlockStorageVolumeIds
+        {
+            get => _blockStorageVolumeIds ?? (_blockStorageVolumeIds = new InputList<string>());
+            set => _blockStorageVolumeIds = value;
         }
 
         /// <summary>

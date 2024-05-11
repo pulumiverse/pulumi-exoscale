@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -63,7 +62,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Please refer to the examples
 // directory for complete configuration examples.
@@ -92,7 +90,7 @@ type NlbService struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// ❗ The parent Nlb ID.
 	NlbId pulumi.StringOutput `pulumi:"nlbId"`
-	// The NLB service (TCP/UDP) port.
+	// The healthcheck port.
 	Port pulumi.IntOutput `pulumi:"port"`
 	// The protocol (`tcp`|`udp`; default: `tcp`).
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
@@ -163,7 +161,7 @@ type nlbServiceState struct {
 	Name *string `pulumi:"name"`
 	// ❗ The parent Nlb ID.
 	NlbId *string `pulumi:"nlbId"`
-	// The NLB service (TCP/UDP) port.
+	// The healthcheck port.
 	Port *int `pulumi:"port"`
 	// The protocol (`tcp`|`udp`; default: `tcp`).
 	Protocol *string `pulumi:"protocol"`
@@ -187,7 +185,7 @@ type NlbServiceState struct {
 	Name pulumi.StringPtrInput
 	// ❗ The parent Nlb ID.
 	NlbId pulumi.StringPtrInput
-	// The NLB service (TCP/UDP) port.
+	// The healthcheck port.
 	Port pulumi.IntPtrInput
 	// The protocol (`tcp`|`udp`; default: `tcp`).
 	Protocol pulumi.StringPtrInput
@@ -215,7 +213,7 @@ type nlbServiceArgs struct {
 	Name *string `pulumi:"name"`
 	// ❗ The parent Nlb ID.
 	NlbId string `pulumi:"nlbId"`
-	// The NLB service (TCP/UDP) port.
+	// The healthcheck port.
 	Port int `pulumi:"port"`
 	// The protocol (`tcp`|`udp`; default: `tcp`).
 	Protocol *string `pulumi:"protocol"`
@@ -239,7 +237,7 @@ type NlbServiceArgs struct {
 	Name pulumi.StringPtrInput
 	// ❗ The parent Nlb ID.
 	NlbId pulumi.StringInput
-	// The NLB service (TCP/UDP) port.
+	// The healthcheck port.
 	Port pulumi.IntInput
 	// The protocol (`tcp`|`udp`; default: `tcp`).
 	Protocol pulumi.StringPtrInput
@@ -363,7 +361,7 @@ func (o NlbServiceOutput) NlbId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NlbService) pulumi.StringOutput { return v.NlbId }).(pulumi.StringOutput)
 }
 
-// The NLB service (TCP/UDP) port.
+// The healthcheck port.
 func (o NlbServiceOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v *NlbService) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
 }

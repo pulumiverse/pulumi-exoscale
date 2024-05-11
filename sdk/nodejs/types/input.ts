@@ -5,6 +5,34 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface BlockStorageVolumeSnapshotTarget {
+    /**
+     * Snapshot ID.
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface BlockStorageVolumeSnapshotTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+}
+
+export interface BlockStorageVolumeSnapshotVolume {
+    /**
+     * Snapshot ID.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface BlockStorageVolumeTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+}
+
 export interface ComputeInstanceNetworkInterface {
     /**
      * The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
@@ -293,6 +321,34 @@ export interface ElasticIpHealthcheck {
     uri?: pulumi.Input<string>;
 }
 
+export interface GetBlockStorageVolumeSnapshotTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+}
+
+export interface GetBlockStorageVolumeSnapshotTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+}
+
+export interface GetBlockStorageVolumeTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+}
+
+export interface GetBlockStorageVolumeTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+}
+
 export interface GetDatabaseUriTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
@@ -463,6 +519,36 @@ export interface GetSksClusterOidcArgs {
     usernamePrefix?: pulumi.Input<string>;
 }
 
+export interface GetSksNodepoolKubeletImageGc {
+    /**
+     * The percent of disk usage after which image garbage collection is always run
+     */
+    highThreshold?: number;
+    /**
+     * The percent of disk usage before which image garbage collection is never run
+     */
+    lowThreshold?: number;
+    /**
+     * The minimum age for an unused image before it is garbage collected
+     */
+    minAge?: string;
+}
+
+export interface GetSksNodepoolKubeletImageGcArgs {
+    /**
+     * The percent of disk usage after which image garbage collection is always run
+     */
+    highThreshold?: pulumi.Input<number>;
+    /**
+     * The percent of disk usage before which image garbage collection is never run
+     */
+    lowThreshold?: pulumi.Input<number>;
+    /**
+     * The minimum age for an unused image before it is garbage collected
+     */
+    minAge?: pulumi.Input<string>;
+}
+
 export interface IamApiKeyTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
@@ -626,4 +712,19 @@ export interface SksClusterOidc {
      * An OpenID prefix prepended to username claims.
      */
     usernamePrefix?: pulumi.Input<string>;
+}
+
+export interface SksNodepoolKubeletImageGc {
+    /**
+     * The percent of disk usage after which image garbage collection is always run
+     */
+    highThreshold?: pulumi.Input<number>;
+    /**
+     * The percent of disk usage before which image garbage collection is never run
+     */
+    lowThreshold?: pulumi.Input<number>;
+    /**
+     * The minimum age for an unused image before it is garbage collected
+     */
+    minAge?: pulumi.Input<string>;
 }

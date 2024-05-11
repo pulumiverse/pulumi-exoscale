@@ -273,18 +273,15 @@ class ElasticIp(pulumi.CustomResource):
 
         *Unmanaged* EIPv4:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
 
         my_elastic_ip = exoscale.ElasticIp("myElasticIp", zone="ch-gva-2")
         ```
-        <!--End PulumiCodeChooser -->
 
         *Managed* EIPv6:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -304,7 +301,6 @@ class ElasticIp(pulumi.CustomResource):
             reverse_dns="example.net",
             zone="ch-gva-2")
         ```
-        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -345,18 +341,15 @@ class ElasticIp(pulumi.CustomResource):
 
         *Unmanaged* EIPv4:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
 
         my_elastic_ip = exoscale.ElasticIp("myElasticIp", zone="ch-gva-2")
         ```
-        <!--End PulumiCodeChooser -->
 
         *Managed* EIPv6:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -376,7 +369,6 @@ class ElasticIp(pulumi.CustomResource):
             reverse_dns="example.net",
             zone="ch-gva-2")
         ```
-        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.

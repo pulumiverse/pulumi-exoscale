@@ -212,7 +212,6 @@ class IamAccessKey(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -225,7 +224,6 @@ class IamAccessKey(pulumi.CustomResource):
             resources=["sos/bucket:my-bucket"])
         my_sks_access_key = exoscale.IamAccessKey("mySksAccessKey", tags=["sks"])
         ```
-        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -248,7 +246,6 @@ class IamAccessKey(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -261,7 +258,6 @@ class IamAccessKey(pulumi.CustomResource):
             resources=["sos/bucket:my-bucket"])
         my_sks_access_key = exoscale.IamAccessKey("mySksAccessKey", tags=["sks"])
         ```
-        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.

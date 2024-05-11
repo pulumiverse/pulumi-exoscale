@@ -49,6 +49,10 @@ namespace Pulumiverse.Exoscale.Outputs
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
+        /// Configuration for this nodepool's kubelet image garbage collector
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetSksNodepoolListNodepoolKubeletImageGcResult> KubeletImageGcs;
+        /// <summary>
         /// A map of key/value labels.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
@@ -106,6 +110,8 @@ namespace Pulumiverse.Exoscale.Outputs
 
             string? instanceType,
 
+            ImmutableArray<Outputs.GetSksNodepoolListNodepoolKubeletImageGcResult> kubeletImageGcs,
+
             ImmutableDictionary<string, string>? labels,
 
             string? name,
@@ -138,6 +144,7 @@ namespace Pulumiverse.Exoscale.Outputs
             InstancePoolId = instancePoolId;
             InstancePrefix = instancePrefix;
             InstanceType = instanceType;
+            KubeletImageGcs = kubeletImageGcs;
             Labels = labels;
             Name = name;
             PrivateNetworkIds = privateNetworkIds;

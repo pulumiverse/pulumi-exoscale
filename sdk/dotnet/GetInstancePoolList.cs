@@ -32,6 +32,9 @@ namespace Pulumiverse.Exoscale
 
     public sealed class GetInstancePoolListArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// </summary>
         [Input("zone", required: true)]
         public string Zone { get; set; } = null!;
 
@@ -43,6 +46,9 @@ namespace Pulumiverse.Exoscale
 
     public sealed class GetInstancePoolListInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
 

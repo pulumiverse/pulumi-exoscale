@@ -10,6 +10,16 @@ export type AntiAffinityGroup = import("./antiAffinityGroup").AntiAffinityGroup;
 export const AntiAffinityGroup: typeof import("./antiAffinityGroup").AntiAffinityGroup = null as any;
 utilities.lazyLoad(exports, ["AntiAffinityGroup"], () => require("./antiAffinityGroup"));
 
+export { BlockStorageVolumeArgs, BlockStorageVolumeState } from "./blockStorageVolume";
+export type BlockStorageVolume = import("./blockStorageVolume").BlockStorageVolume;
+export const BlockStorageVolume: typeof import("./blockStorageVolume").BlockStorageVolume = null as any;
+utilities.lazyLoad(exports, ["BlockStorageVolume"], () => require("./blockStorageVolume"));
+
+export { BlockStorageVolumeSnapshotArgs, BlockStorageVolumeSnapshotState } from "./blockStorageVolumeSnapshot";
+export type BlockStorageVolumeSnapshot = import("./blockStorageVolumeSnapshot").BlockStorageVolumeSnapshot;
+export const BlockStorageVolumeSnapshot: typeof import("./blockStorageVolumeSnapshot").BlockStorageVolumeSnapshot = null as any;
+utilities.lazyLoad(exports, ["BlockStorageVolumeSnapshot"], () => require("./blockStorageVolumeSnapshot"));
+
 export { ComputeInstanceArgs, ComputeInstanceState } from "./computeInstance";
 export type ComputeInstance = import("./computeInstance").ComputeInstance;
 export const ComputeInstance: typeof import("./computeInstance").ComputeInstance = null as any;
@@ -39,6 +49,16 @@ export { GetAntiAffinityGroupArgs, GetAntiAffinityGroupResult, GetAntiAffinityGr
 export const getAntiAffinityGroup: typeof import("./getAntiAffinityGroup").getAntiAffinityGroup = null as any;
 export const getAntiAffinityGroupOutput: typeof import("./getAntiAffinityGroup").getAntiAffinityGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getAntiAffinityGroup","getAntiAffinityGroupOutput"], () => require("./getAntiAffinityGroup"));
+
+export { GetBlockStorageVolumeArgs, GetBlockStorageVolumeResult, GetBlockStorageVolumeOutputArgs } from "./getBlockStorageVolume";
+export const getBlockStorageVolume: typeof import("./getBlockStorageVolume").getBlockStorageVolume = null as any;
+export const getBlockStorageVolumeOutput: typeof import("./getBlockStorageVolume").getBlockStorageVolumeOutput = null as any;
+utilities.lazyLoad(exports, ["getBlockStorageVolume","getBlockStorageVolumeOutput"], () => require("./getBlockStorageVolume"));
+
+export { GetBlockStorageVolumeSnapshotArgs, GetBlockStorageVolumeSnapshotResult, GetBlockStorageVolumeSnapshotOutputArgs } from "./getBlockStorageVolumeSnapshot";
+export const getBlockStorageVolumeSnapshot: typeof import("./getBlockStorageVolumeSnapshot").getBlockStorageVolumeSnapshot = null as any;
+export const getBlockStorageVolumeSnapshotOutput: typeof import("./getBlockStorageVolumeSnapshot").getBlockStorageVolumeSnapshotOutput = null as any;
+utilities.lazyLoad(exports, ["getBlockStorageVolumeSnapshot","getBlockStorageVolumeSnapshotOutput"], () => require("./getBlockStorageVolumeSnapshot"));
 
 export { GetComputeInstanceArgs, GetComputeInstanceResult, GetComputeInstanceOutputArgs } from "./getComputeInstance";
 export const getComputeInstance: typeof import("./getComputeInstance").getComputeInstance = null as any;
@@ -236,6 +256,10 @@ const _module = {
         switch (type) {
             case "exoscale:index/antiAffinityGroup:AntiAffinityGroup":
                 return new AntiAffinityGroup(name, <any>undefined, { urn })
+            case "exoscale:index/blockStorageVolume:BlockStorageVolume":
+                return new BlockStorageVolume(name, <any>undefined, { urn })
+            case "exoscale:index/blockStorageVolumeSnapshot:BlockStorageVolumeSnapshot":
+                return new BlockStorageVolumeSnapshot(name, <any>undefined, { urn })
             case "exoscale:index/computeInstance:ComputeInstance":
                 return new ComputeInstance(name, <any>undefined, { urn })
             case "exoscale:index/database:Database":
@@ -280,6 +304,8 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("exoscale", "index/antiAffinityGroup", _module)
+pulumi.runtime.registerResourceModule("exoscale", "index/blockStorageVolume", _module)
+pulumi.runtime.registerResourceModule("exoscale", "index/blockStorageVolumeSnapshot", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/computeInstance", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/database", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/domain", _module)

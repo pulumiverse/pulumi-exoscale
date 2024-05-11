@@ -85,6 +85,18 @@ namespace Pulumiverse.Exoscale
         [Input("instanceType")]
         public string? InstanceType { get; set; }
 
+        [Input("kubeletImageGcs")]
+        private List<Inputs.GetSksNodepoolKubeletImageGcArgs>? _kubeletImageGcs;
+
+        /// <summary>
+        /// Configuration for this nodepool's kubelet image garbage collector
+        /// </summary>
+        public List<Inputs.GetSksNodepoolKubeletImageGcArgs> KubeletImageGcs
+        {
+            get => _kubeletImageGcs ?? (_kubeletImageGcs = new List<Inputs.GetSksNodepoolKubeletImageGcArgs>());
+            set => _kubeletImageGcs = value;
+        }
+
         [Input("labels")]
         private Dictionary<string, string>? _labels;
 
@@ -237,6 +249,18 @@ namespace Pulumiverse.Exoscale
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
+        [Input("kubeletImageGcs")]
+        private InputList<Inputs.GetSksNodepoolKubeletImageGcInputArgs>? _kubeletImageGcs;
+
+        /// <summary>
+        /// Configuration for this nodepool's kubelet image garbage collector
+        /// </summary>
+        public InputList<Inputs.GetSksNodepoolKubeletImageGcInputArgs> KubeletImageGcs
+        {
+            get => _kubeletImageGcs ?? (_kubeletImageGcs = new InputList<Inputs.GetSksNodepoolKubeletImageGcInputArgs>());
+            set => _kubeletImageGcs = value;
+        }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -366,6 +390,10 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
+        /// Configuration for this nodepool's kubelet image garbage collector
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetSksNodepoolKubeletImageGcResult> KubeletImageGcs;
+        /// <summary>
         /// A map of key/value labels.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
@@ -423,6 +451,8 @@ namespace Pulumiverse.Exoscale
 
             string? instanceType,
 
+            ImmutableArray<Outputs.GetSksNodepoolKubeletImageGcResult> kubeletImageGcs,
+
             ImmutableDictionary<string, string>? labels,
 
             string? name,
@@ -455,6 +485,7 @@ namespace Pulumiverse.Exoscale
             InstancePoolId = instancePoolId;
             InstancePrefix = instancePrefix;
             InstanceType = instanceType;
+            KubeletImageGcs = kubeletImageGcs;
             Labels = labels;
             Name = name;
             PrivateNetworkIds = privateNetworkIds;

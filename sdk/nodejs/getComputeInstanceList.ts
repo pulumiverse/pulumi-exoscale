@@ -40,23 +40,77 @@ export function getComputeInstanceList(args: GetComputeInstanceListArgs, opts?: 
  * A collection of arguments for invoking getComputeInstanceList.
  */
 export interface GetComputeInstanceListArgs {
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     createdAt?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     deployTargetId?: string;
+    /**
+     * Match against this int
+     */
     diskSize?: number;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     id?: string;
+    /**
+     * Match against this bool
+     */
     ipv6?: boolean;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     ipv6Address?: string;
+    /**
+     * Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
+     */
     labels?: {[key: string]: string};
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     managerId?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     managerType?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     name?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     publicIpAddress?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     reverseDns?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     sshKey?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     state?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     templateId?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     type?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     userData?: string;
+    /**
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     */
     zone: string;
 }
 
@@ -154,22 +208,76 @@ export function getComputeInstanceListOutput(args: GetComputeInstanceListOutputA
  * A collection of arguments for invoking getComputeInstanceList.
  */
 export interface GetComputeInstanceListOutputArgs {
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     createdAt?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     deployTargetId?: pulumi.Input<string>;
+    /**
+     * Match against this int
+     */
     diskSize?: pulumi.Input<number>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     id?: pulumi.Input<string>;
+    /**
+     * Match against this bool
+     */
     ipv6?: pulumi.Input<boolean>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     ipv6Address?: pulumi.Input<string>;
+    /**
+     * Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
+     */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     managerId?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     managerType?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     publicIpAddress?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     reverseDns?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     sshKey?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     state?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     templateId?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     type?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     userData?: pulumi.Input<string>;
+    /**
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     */
     zone: pulumi.Input<string>;
 }

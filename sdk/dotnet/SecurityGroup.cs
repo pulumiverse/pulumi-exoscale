@@ -17,7 +17,6 @@ namespace Pulumiverse.Exoscale
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -30,7 +29,6 @@ namespace Pulumiverse.Exoscale
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Next step is to attach exoscale_security_group_rule(s) to the group.
     /// 

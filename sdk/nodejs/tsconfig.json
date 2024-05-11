@@ -14,6 +14,8 @@
     },
     "files": [
         "antiAffinityGroup.ts",
+        "blockStorageVolume.ts",
+        "blockStorageVolumeSnapshot.ts",
         "computeInstance.ts",
         "config/index.ts",
         "config/vars.ts",
@@ -22,6 +24,8 @@
         "domainRecord.ts",
         "elasticIp.ts",
         "getAntiAffinityGroup.ts",
+        "getBlockStorageVolume.ts",
+        "getBlockStorageVolumeSnapshot.ts",
         "getComputeInstance.ts",
         "getComputeInstanceList.ts",
         "getDatabaseUri.ts",

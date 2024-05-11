@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
@@ -19,7 +18,6 @@ import * as utilities from "./utilities";
  * const mySksCluster = new exoscale.SksCluster("mySksCluster", {zone: "ch-gva-2"});
  * export const mySksClusterEndpoint = mySksCluster.endpoint;
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Next step is to attach exoscale_sks_nodepool(s) to the cluster.
  *

@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,7 +42,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Please refer to the examples
 // directory for complete configuration examples.
@@ -59,10 +57,12 @@ func LookupInstancePool(ctx *pulumi.Context, args *LookupInstancePoolArgs, opts 
 
 // A collection of arguments for invoking getInstancePool.
 type LookupInstancePoolArgs struct {
+	// The instance pool ID to match (conflicts with `name`).
 	Id *string `pulumi:"id"`
 	// A map of key/value labels.
 	Labels map[string]string `pulumi:"labels"`
-	Name   *string           `pulumi:"name"`
+	// The pool name to match (conflicts with `id`).
+	Name *string `pulumi:"name"`
 	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone string `pulumi:"zone"`
 }
@@ -126,10 +126,12 @@ func LookupInstancePoolOutput(ctx *pulumi.Context, args LookupInstancePoolOutput
 
 // A collection of arguments for invoking getInstancePool.
 type LookupInstancePoolOutputArgs struct {
+	// The instance pool ID to match (conflicts with `name`).
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// A map of key/value labels.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	Name   pulumi.StringPtrInput `pulumi:"name"`
+	// The pool name to match (conflicts with `id`).
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringInput `pulumi:"zone"`
 }

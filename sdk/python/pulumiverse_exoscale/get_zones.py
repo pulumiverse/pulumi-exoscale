@@ -62,7 +62,6 @@ def get_zones(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesR
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_exoscale as exoscale
@@ -70,7 +69,6 @@ def get_zones(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesR
     example_zones = exoscale.get_zones()
     pulumi.export("zonesOutput", example_zones.zones)
     ```
-    <!--End PulumiCodeChooser -->
 
     Please refer to the examples
     directory for complete configuration examples.
@@ -91,7 +89,6 @@ def get_zones_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Outp
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_exoscale as exoscale
@@ -99,7 +96,6 @@ def get_zones_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Outp
     example_zones = exoscale.get_zones()
     pulumi.export("zonesOutput", example_zones.zones)
     ```
-    <!--End PulumiCodeChooser -->
 
     Please refer to the examples
     directory for complete configuration examples.

@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetSksNodepoolResult',
@@ -21,7 +23,7 @@ class GetSksNodepoolResult:
     """
     A collection of values returned by getSksNodepool.
     """
-    def __init__(__self__, anti_affinity_group_ids=None, cluster_id=None, created_at=None, deploy_target_id=None, description=None, disk_size=None, id=None, instance_pool_id=None, instance_prefix=None, instance_type=None, labels=None, name=None, private_network_ids=None, security_group_ids=None, size=None, state=None, storage_lvm=None, taints=None, template_id=None, version=None, zone=None):
+    def __init__(__self__, anti_affinity_group_ids=None, cluster_id=None, created_at=None, deploy_target_id=None, description=None, disk_size=None, id=None, instance_pool_id=None, instance_prefix=None, instance_type=None, kubelet_image_gcs=None, labels=None, name=None, private_network_ids=None, security_group_ids=None, size=None, state=None, storage_lvm=None, taints=None, template_id=None, version=None, zone=None):
         if anti_affinity_group_ids and not isinstance(anti_affinity_group_ids, list):
             raise TypeError("Expected argument 'anti_affinity_group_ids' to be a list")
         pulumi.set(__self__, "anti_affinity_group_ids", anti_affinity_group_ids)
@@ -52,6 +54,9 @@ class GetSksNodepoolResult:
         if instance_type and not isinstance(instance_type, str):
             raise TypeError("Expected argument 'instance_type' to be a str")
         pulumi.set(__self__, "instance_type", instance_type)
+        if kubelet_image_gcs and not isinstance(kubelet_image_gcs, list):
+            raise TypeError("Expected argument 'kubelet_image_gcs' to be a list")
+        pulumi.set(__self__, "kubelet_image_gcs", kubelet_image_gcs)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -164,6 +169,14 @@ class GetSksNodepoolResult:
         return pulumi.get(self, "instance_type")
 
     @property
+    @pulumi.getter(name="kubeletImageGcs")
+    def kubelet_image_gcs(self) -> Optional[Sequence['outputs.GetSksNodepoolKubeletImageGcResult']]:
+        """
+        Configuration for this nodepool's kubelet image garbage collector
+        """
+        return pulumi.get(self, "kubelet_image_gcs")
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
         """
@@ -259,6 +272,7 @@ class AwaitableGetSksNodepoolResult(GetSksNodepoolResult):
             instance_pool_id=self.instance_pool_id,
             instance_prefix=self.instance_prefix,
             instance_type=self.instance_type,
+            kubelet_image_gcs=self.kubelet_image_gcs,
             labels=self.labels,
             name=self.name,
             private_network_ids=self.private_network_ids,
@@ -282,6 +296,7 @@ def get_sks_nodepool(anti_affinity_group_ids: Optional[Sequence[str]] = None,
                      instance_pool_id: Optional[str] = None,
                      instance_prefix: Optional[str] = None,
                      instance_type: Optional[str] = None,
+                     kubelet_image_gcs: Optional[Sequence[pulumi.InputType['GetSksNodepoolKubeletImageGcArgs']]] = None,
                      labels: Optional[Mapping[str, str]] = None,
                      name: Optional[str] = None,
                      private_network_ids: Optional[Sequence[str]] = None,
@@ -306,6 +321,7 @@ def get_sks_nodepool(anti_affinity_group_ids: Optional[Sequence[str]] = None,
     :param str instance_pool_id: The underlying exoscale*instance*pool ID.
     :param str instance_prefix: The string used to prefix the managed instances name (default `pool`).
     :param str instance_type: The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
+    :param Sequence[pulumi.InputType['GetSksNodepoolKubeletImageGcArgs']] kubelet_image_gcs: Configuration for this nodepool's kubelet image garbage collector
     :param Mapping[str, str] labels: A map of key/value labels.
     :param Sequence[str] private_network_ids: A list of exoscale*private*network (IDs) to be attached to the managed instances.
     :param Sequence[str] security_group_ids: A list of exoscale*security*group (IDs) to be attached to the managed instances.
@@ -326,6 +342,7 @@ def get_sks_nodepool(anti_affinity_group_ids: Optional[Sequence[str]] = None,
     __args__['instancePoolId'] = instance_pool_id
     __args__['instancePrefix'] = instance_prefix
     __args__['instanceType'] = instance_type
+    __args__['kubeletImageGcs'] = kubelet_image_gcs
     __args__['labels'] = labels
     __args__['name'] = name
     __args__['privateNetworkIds'] = private_network_ids
@@ -351,6 +368,7 @@ def get_sks_nodepool(anti_affinity_group_ids: Optional[Sequence[str]] = None,
         instance_pool_id=pulumi.get(__ret__, 'instance_pool_id'),
         instance_prefix=pulumi.get(__ret__, 'instance_prefix'),
         instance_type=pulumi.get(__ret__, 'instance_type'),
+        kubelet_image_gcs=pulumi.get(__ret__, 'kubelet_image_gcs'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         private_network_ids=pulumi.get(__ret__, 'private_network_ids'),
@@ -375,6 +393,7 @@ def get_sks_nodepool_output(anti_affinity_group_ids: Optional[pulumi.Input[Optio
                             instance_pool_id: Optional[pulumi.Input[Optional[str]]] = None,
                             instance_prefix: Optional[pulumi.Input[Optional[str]]] = None,
                             instance_type: Optional[pulumi.Input[Optional[str]]] = None,
+                            kubelet_image_gcs: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetSksNodepoolKubeletImageGcArgs']]]]] = None,
                             labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                             name: Optional[pulumi.Input[Optional[str]]] = None,
                             private_network_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -399,6 +418,7 @@ def get_sks_nodepool_output(anti_affinity_group_ids: Optional[pulumi.Input[Optio
     :param str instance_pool_id: The underlying exoscale*instance*pool ID.
     :param str instance_prefix: The string used to prefix the managed instances name (default `pool`).
     :param str instance_type: The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
+    :param Sequence[pulumi.InputType['GetSksNodepoolKubeletImageGcArgs']] kubelet_image_gcs: Configuration for this nodepool's kubelet image garbage collector
     :param Mapping[str, str] labels: A map of key/value labels.
     :param Sequence[str] private_network_ids: A list of exoscale*private*network (IDs) to be attached to the managed instances.
     :param Sequence[str] security_group_ids: A list of exoscale*security*group (IDs) to be attached to the managed instances.

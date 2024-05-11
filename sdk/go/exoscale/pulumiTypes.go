@@ -13,6 +13,554 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type BlockStorageVolumeSnapshotTarget struct {
+	// Snapshot ID.
+	Id *string `pulumi:"id"`
+}
+
+// BlockStorageVolumeSnapshotTargetInput is an input type that accepts BlockStorageVolumeSnapshotTargetArgs and BlockStorageVolumeSnapshotTargetOutput values.
+// You can construct a concrete instance of `BlockStorageVolumeSnapshotTargetInput` via:
+//
+//	BlockStorageVolumeSnapshotTargetArgs{...}
+type BlockStorageVolumeSnapshotTargetInput interface {
+	pulumi.Input
+
+	ToBlockStorageVolumeSnapshotTargetOutput() BlockStorageVolumeSnapshotTargetOutput
+	ToBlockStorageVolumeSnapshotTargetOutputWithContext(context.Context) BlockStorageVolumeSnapshotTargetOutput
+}
+
+type BlockStorageVolumeSnapshotTargetArgs struct {
+	// Snapshot ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (BlockStorageVolumeSnapshotTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlockStorageVolumeSnapshotTarget)(nil)).Elem()
+}
+
+func (i BlockStorageVolumeSnapshotTargetArgs) ToBlockStorageVolumeSnapshotTargetOutput() BlockStorageVolumeSnapshotTargetOutput {
+	return i.ToBlockStorageVolumeSnapshotTargetOutputWithContext(context.Background())
+}
+
+func (i BlockStorageVolumeSnapshotTargetArgs) ToBlockStorageVolumeSnapshotTargetOutputWithContext(ctx context.Context) BlockStorageVolumeSnapshotTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlockStorageVolumeSnapshotTargetOutput)
+}
+
+func (i BlockStorageVolumeSnapshotTargetArgs) ToBlockStorageVolumeSnapshotTargetPtrOutput() BlockStorageVolumeSnapshotTargetPtrOutput {
+	return i.ToBlockStorageVolumeSnapshotTargetPtrOutputWithContext(context.Background())
+}
+
+func (i BlockStorageVolumeSnapshotTargetArgs) ToBlockStorageVolumeSnapshotTargetPtrOutputWithContext(ctx context.Context) BlockStorageVolumeSnapshotTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlockStorageVolumeSnapshotTargetOutput).ToBlockStorageVolumeSnapshotTargetPtrOutputWithContext(ctx)
+}
+
+// BlockStorageVolumeSnapshotTargetPtrInput is an input type that accepts BlockStorageVolumeSnapshotTargetArgs, BlockStorageVolumeSnapshotTargetPtr and BlockStorageVolumeSnapshotTargetPtrOutput values.
+// You can construct a concrete instance of `BlockStorageVolumeSnapshotTargetPtrInput` via:
+//
+//	        BlockStorageVolumeSnapshotTargetArgs{...}
+//
+//	or:
+//
+//	        nil
+type BlockStorageVolumeSnapshotTargetPtrInput interface {
+	pulumi.Input
+
+	ToBlockStorageVolumeSnapshotTargetPtrOutput() BlockStorageVolumeSnapshotTargetPtrOutput
+	ToBlockStorageVolumeSnapshotTargetPtrOutputWithContext(context.Context) BlockStorageVolumeSnapshotTargetPtrOutput
+}
+
+type blockStorageVolumeSnapshotTargetPtrType BlockStorageVolumeSnapshotTargetArgs
+
+func BlockStorageVolumeSnapshotTargetPtr(v *BlockStorageVolumeSnapshotTargetArgs) BlockStorageVolumeSnapshotTargetPtrInput {
+	return (*blockStorageVolumeSnapshotTargetPtrType)(v)
+}
+
+func (*blockStorageVolumeSnapshotTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlockStorageVolumeSnapshotTarget)(nil)).Elem()
+}
+
+func (i *blockStorageVolumeSnapshotTargetPtrType) ToBlockStorageVolumeSnapshotTargetPtrOutput() BlockStorageVolumeSnapshotTargetPtrOutput {
+	return i.ToBlockStorageVolumeSnapshotTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *blockStorageVolumeSnapshotTargetPtrType) ToBlockStorageVolumeSnapshotTargetPtrOutputWithContext(ctx context.Context) BlockStorageVolumeSnapshotTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlockStorageVolumeSnapshotTargetPtrOutput)
+}
+
+type BlockStorageVolumeSnapshotTargetOutput struct{ *pulumi.OutputState }
+
+func (BlockStorageVolumeSnapshotTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlockStorageVolumeSnapshotTarget)(nil)).Elem()
+}
+
+func (o BlockStorageVolumeSnapshotTargetOutput) ToBlockStorageVolumeSnapshotTargetOutput() BlockStorageVolumeSnapshotTargetOutput {
+	return o
+}
+
+func (o BlockStorageVolumeSnapshotTargetOutput) ToBlockStorageVolumeSnapshotTargetOutputWithContext(ctx context.Context) BlockStorageVolumeSnapshotTargetOutput {
+	return o
+}
+
+func (o BlockStorageVolumeSnapshotTargetOutput) ToBlockStorageVolumeSnapshotTargetPtrOutput() BlockStorageVolumeSnapshotTargetPtrOutput {
+	return o.ToBlockStorageVolumeSnapshotTargetPtrOutputWithContext(context.Background())
+}
+
+func (o BlockStorageVolumeSnapshotTargetOutput) ToBlockStorageVolumeSnapshotTargetPtrOutputWithContext(ctx context.Context) BlockStorageVolumeSnapshotTargetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlockStorageVolumeSnapshotTarget) *BlockStorageVolumeSnapshotTarget {
+		return &v
+	}).(BlockStorageVolumeSnapshotTargetPtrOutput)
+}
+
+// Snapshot ID.
+func (o BlockStorageVolumeSnapshotTargetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlockStorageVolumeSnapshotTarget) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type BlockStorageVolumeSnapshotTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (BlockStorageVolumeSnapshotTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlockStorageVolumeSnapshotTarget)(nil)).Elem()
+}
+
+func (o BlockStorageVolumeSnapshotTargetPtrOutput) ToBlockStorageVolumeSnapshotTargetPtrOutput() BlockStorageVolumeSnapshotTargetPtrOutput {
+	return o
+}
+
+func (o BlockStorageVolumeSnapshotTargetPtrOutput) ToBlockStorageVolumeSnapshotTargetPtrOutputWithContext(ctx context.Context) BlockStorageVolumeSnapshotTargetPtrOutput {
+	return o
+}
+
+func (o BlockStorageVolumeSnapshotTargetPtrOutput) Elem() BlockStorageVolumeSnapshotTargetOutput {
+	return o.ApplyT(func(v *BlockStorageVolumeSnapshotTarget) BlockStorageVolumeSnapshotTarget {
+		if v != nil {
+			return *v
+		}
+		var ret BlockStorageVolumeSnapshotTarget
+		return ret
+	}).(BlockStorageVolumeSnapshotTargetOutput)
+}
+
+// Snapshot ID.
+func (o BlockStorageVolumeSnapshotTargetPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlockStorageVolumeSnapshotTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type BlockStorageVolumeSnapshotTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+}
+
+// BlockStorageVolumeSnapshotTimeoutsInput is an input type that accepts BlockStorageVolumeSnapshotTimeoutsArgs and BlockStorageVolumeSnapshotTimeoutsOutput values.
+// You can construct a concrete instance of `BlockStorageVolumeSnapshotTimeoutsInput` via:
+//
+//	BlockStorageVolumeSnapshotTimeoutsArgs{...}
+type BlockStorageVolumeSnapshotTimeoutsInput interface {
+	pulumi.Input
+
+	ToBlockStorageVolumeSnapshotTimeoutsOutput() BlockStorageVolumeSnapshotTimeoutsOutput
+	ToBlockStorageVolumeSnapshotTimeoutsOutputWithContext(context.Context) BlockStorageVolumeSnapshotTimeoutsOutput
+}
+
+type BlockStorageVolumeSnapshotTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (BlockStorageVolumeSnapshotTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlockStorageVolumeSnapshotTimeouts)(nil)).Elem()
+}
+
+func (i BlockStorageVolumeSnapshotTimeoutsArgs) ToBlockStorageVolumeSnapshotTimeoutsOutput() BlockStorageVolumeSnapshotTimeoutsOutput {
+	return i.ToBlockStorageVolumeSnapshotTimeoutsOutputWithContext(context.Background())
+}
+
+func (i BlockStorageVolumeSnapshotTimeoutsArgs) ToBlockStorageVolumeSnapshotTimeoutsOutputWithContext(ctx context.Context) BlockStorageVolumeSnapshotTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlockStorageVolumeSnapshotTimeoutsOutput)
+}
+
+func (i BlockStorageVolumeSnapshotTimeoutsArgs) ToBlockStorageVolumeSnapshotTimeoutsPtrOutput() BlockStorageVolumeSnapshotTimeoutsPtrOutput {
+	return i.ToBlockStorageVolumeSnapshotTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i BlockStorageVolumeSnapshotTimeoutsArgs) ToBlockStorageVolumeSnapshotTimeoutsPtrOutputWithContext(ctx context.Context) BlockStorageVolumeSnapshotTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlockStorageVolumeSnapshotTimeoutsOutput).ToBlockStorageVolumeSnapshotTimeoutsPtrOutputWithContext(ctx)
+}
+
+// BlockStorageVolumeSnapshotTimeoutsPtrInput is an input type that accepts BlockStorageVolumeSnapshotTimeoutsArgs, BlockStorageVolumeSnapshotTimeoutsPtr and BlockStorageVolumeSnapshotTimeoutsPtrOutput values.
+// You can construct a concrete instance of `BlockStorageVolumeSnapshotTimeoutsPtrInput` via:
+//
+//	        BlockStorageVolumeSnapshotTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type BlockStorageVolumeSnapshotTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToBlockStorageVolumeSnapshotTimeoutsPtrOutput() BlockStorageVolumeSnapshotTimeoutsPtrOutput
+	ToBlockStorageVolumeSnapshotTimeoutsPtrOutputWithContext(context.Context) BlockStorageVolumeSnapshotTimeoutsPtrOutput
+}
+
+type blockStorageVolumeSnapshotTimeoutsPtrType BlockStorageVolumeSnapshotTimeoutsArgs
+
+func BlockStorageVolumeSnapshotTimeoutsPtr(v *BlockStorageVolumeSnapshotTimeoutsArgs) BlockStorageVolumeSnapshotTimeoutsPtrInput {
+	return (*blockStorageVolumeSnapshotTimeoutsPtrType)(v)
+}
+
+func (*blockStorageVolumeSnapshotTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlockStorageVolumeSnapshotTimeouts)(nil)).Elem()
+}
+
+func (i *blockStorageVolumeSnapshotTimeoutsPtrType) ToBlockStorageVolumeSnapshotTimeoutsPtrOutput() BlockStorageVolumeSnapshotTimeoutsPtrOutput {
+	return i.ToBlockStorageVolumeSnapshotTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *blockStorageVolumeSnapshotTimeoutsPtrType) ToBlockStorageVolumeSnapshotTimeoutsPtrOutputWithContext(ctx context.Context) BlockStorageVolumeSnapshotTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlockStorageVolumeSnapshotTimeoutsPtrOutput)
+}
+
+type BlockStorageVolumeSnapshotTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (BlockStorageVolumeSnapshotTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlockStorageVolumeSnapshotTimeouts)(nil)).Elem()
+}
+
+func (o BlockStorageVolumeSnapshotTimeoutsOutput) ToBlockStorageVolumeSnapshotTimeoutsOutput() BlockStorageVolumeSnapshotTimeoutsOutput {
+	return o
+}
+
+func (o BlockStorageVolumeSnapshotTimeoutsOutput) ToBlockStorageVolumeSnapshotTimeoutsOutputWithContext(ctx context.Context) BlockStorageVolumeSnapshotTimeoutsOutput {
+	return o
+}
+
+func (o BlockStorageVolumeSnapshotTimeoutsOutput) ToBlockStorageVolumeSnapshotTimeoutsPtrOutput() BlockStorageVolumeSnapshotTimeoutsPtrOutput {
+	return o.ToBlockStorageVolumeSnapshotTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o BlockStorageVolumeSnapshotTimeoutsOutput) ToBlockStorageVolumeSnapshotTimeoutsPtrOutputWithContext(ctx context.Context) BlockStorageVolumeSnapshotTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlockStorageVolumeSnapshotTimeouts) *BlockStorageVolumeSnapshotTimeouts {
+		return &v
+	}).(BlockStorageVolumeSnapshotTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o BlockStorageVolumeSnapshotTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlockStorageVolumeSnapshotTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type BlockStorageVolumeSnapshotTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (BlockStorageVolumeSnapshotTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlockStorageVolumeSnapshotTimeouts)(nil)).Elem()
+}
+
+func (o BlockStorageVolumeSnapshotTimeoutsPtrOutput) ToBlockStorageVolumeSnapshotTimeoutsPtrOutput() BlockStorageVolumeSnapshotTimeoutsPtrOutput {
+	return o
+}
+
+func (o BlockStorageVolumeSnapshotTimeoutsPtrOutput) ToBlockStorageVolumeSnapshotTimeoutsPtrOutputWithContext(ctx context.Context) BlockStorageVolumeSnapshotTimeoutsPtrOutput {
+	return o
+}
+
+func (o BlockStorageVolumeSnapshotTimeoutsPtrOutput) Elem() BlockStorageVolumeSnapshotTimeoutsOutput {
+	return o.ApplyT(func(v *BlockStorageVolumeSnapshotTimeouts) BlockStorageVolumeSnapshotTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret BlockStorageVolumeSnapshotTimeouts
+		return ret
+	}).(BlockStorageVolumeSnapshotTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o BlockStorageVolumeSnapshotTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlockStorageVolumeSnapshotTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type BlockStorageVolumeSnapshotVolume struct {
+	// Snapshot ID.
+	Id string `pulumi:"id"`
+}
+
+// BlockStorageVolumeSnapshotVolumeInput is an input type that accepts BlockStorageVolumeSnapshotVolumeArgs and BlockStorageVolumeSnapshotVolumeOutput values.
+// You can construct a concrete instance of `BlockStorageVolumeSnapshotVolumeInput` via:
+//
+//	BlockStorageVolumeSnapshotVolumeArgs{...}
+type BlockStorageVolumeSnapshotVolumeInput interface {
+	pulumi.Input
+
+	ToBlockStorageVolumeSnapshotVolumeOutput() BlockStorageVolumeSnapshotVolumeOutput
+	ToBlockStorageVolumeSnapshotVolumeOutputWithContext(context.Context) BlockStorageVolumeSnapshotVolumeOutput
+}
+
+type BlockStorageVolumeSnapshotVolumeArgs struct {
+	// Snapshot ID.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (BlockStorageVolumeSnapshotVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlockStorageVolumeSnapshotVolume)(nil)).Elem()
+}
+
+func (i BlockStorageVolumeSnapshotVolumeArgs) ToBlockStorageVolumeSnapshotVolumeOutput() BlockStorageVolumeSnapshotVolumeOutput {
+	return i.ToBlockStorageVolumeSnapshotVolumeOutputWithContext(context.Background())
+}
+
+func (i BlockStorageVolumeSnapshotVolumeArgs) ToBlockStorageVolumeSnapshotVolumeOutputWithContext(ctx context.Context) BlockStorageVolumeSnapshotVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlockStorageVolumeSnapshotVolumeOutput)
+}
+
+func (i BlockStorageVolumeSnapshotVolumeArgs) ToBlockStorageVolumeSnapshotVolumePtrOutput() BlockStorageVolumeSnapshotVolumePtrOutput {
+	return i.ToBlockStorageVolumeSnapshotVolumePtrOutputWithContext(context.Background())
+}
+
+func (i BlockStorageVolumeSnapshotVolumeArgs) ToBlockStorageVolumeSnapshotVolumePtrOutputWithContext(ctx context.Context) BlockStorageVolumeSnapshotVolumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlockStorageVolumeSnapshotVolumeOutput).ToBlockStorageVolumeSnapshotVolumePtrOutputWithContext(ctx)
+}
+
+// BlockStorageVolumeSnapshotVolumePtrInput is an input type that accepts BlockStorageVolumeSnapshotVolumeArgs, BlockStorageVolumeSnapshotVolumePtr and BlockStorageVolumeSnapshotVolumePtrOutput values.
+// You can construct a concrete instance of `BlockStorageVolumeSnapshotVolumePtrInput` via:
+//
+//	        BlockStorageVolumeSnapshotVolumeArgs{...}
+//
+//	or:
+//
+//	        nil
+type BlockStorageVolumeSnapshotVolumePtrInput interface {
+	pulumi.Input
+
+	ToBlockStorageVolumeSnapshotVolumePtrOutput() BlockStorageVolumeSnapshotVolumePtrOutput
+	ToBlockStorageVolumeSnapshotVolumePtrOutputWithContext(context.Context) BlockStorageVolumeSnapshotVolumePtrOutput
+}
+
+type blockStorageVolumeSnapshotVolumePtrType BlockStorageVolumeSnapshotVolumeArgs
+
+func BlockStorageVolumeSnapshotVolumePtr(v *BlockStorageVolumeSnapshotVolumeArgs) BlockStorageVolumeSnapshotVolumePtrInput {
+	return (*blockStorageVolumeSnapshotVolumePtrType)(v)
+}
+
+func (*blockStorageVolumeSnapshotVolumePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlockStorageVolumeSnapshotVolume)(nil)).Elem()
+}
+
+func (i *blockStorageVolumeSnapshotVolumePtrType) ToBlockStorageVolumeSnapshotVolumePtrOutput() BlockStorageVolumeSnapshotVolumePtrOutput {
+	return i.ToBlockStorageVolumeSnapshotVolumePtrOutputWithContext(context.Background())
+}
+
+func (i *blockStorageVolumeSnapshotVolumePtrType) ToBlockStorageVolumeSnapshotVolumePtrOutputWithContext(ctx context.Context) BlockStorageVolumeSnapshotVolumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlockStorageVolumeSnapshotVolumePtrOutput)
+}
+
+type BlockStorageVolumeSnapshotVolumeOutput struct{ *pulumi.OutputState }
+
+func (BlockStorageVolumeSnapshotVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlockStorageVolumeSnapshotVolume)(nil)).Elem()
+}
+
+func (o BlockStorageVolumeSnapshotVolumeOutput) ToBlockStorageVolumeSnapshotVolumeOutput() BlockStorageVolumeSnapshotVolumeOutput {
+	return o
+}
+
+func (o BlockStorageVolumeSnapshotVolumeOutput) ToBlockStorageVolumeSnapshotVolumeOutputWithContext(ctx context.Context) BlockStorageVolumeSnapshotVolumeOutput {
+	return o
+}
+
+func (o BlockStorageVolumeSnapshotVolumeOutput) ToBlockStorageVolumeSnapshotVolumePtrOutput() BlockStorageVolumeSnapshotVolumePtrOutput {
+	return o.ToBlockStorageVolumeSnapshotVolumePtrOutputWithContext(context.Background())
+}
+
+func (o BlockStorageVolumeSnapshotVolumeOutput) ToBlockStorageVolumeSnapshotVolumePtrOutputWithContext(ctx context.Context) BlockStorageVolumeSnapshotVolumePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlockStorageVolumeSnapshotVolume) *BlockStorageVolumeSnapshotVolume {
+		return &v
+	}).(BlockStorageVolumeSnapshotVolumePtrOutput)
+}
+
+// Snapshot ID.
+func (o BlockStorageVolumeSnapshotVolumeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v BlockStorageVolumeSnapshotVolume) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type BlockStorageVolumeSnapshotVolumePtrOutput struct{ *pulumi.OutputState }
+
+func (BlockStorageVolumeSnapshotVolumePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlockStorageVolumeSnapshotVolume)(nil)).Elem()
+}
+
+func (o BlockStorageVolumeSnapshotVolumePtrOutput) ToBlockStorageVolumeSnapshotVolumePtrOutput() BlockStorageVolumeSnapshotVolumePtrOutput {
+	return o
+}
+
+func (o BlockStorageVolumeSnapshotVolumePtrOutput) ToBlockStorageVolumeSnapshotVolumePtrOutputWithContext(ctx context.Context) BlockStorageVolumeSnapshotVolumePtrOutput {
+	return o
+}
+
+func (o BlockStorageVolumeSnapshotVolumePtrOutput) Elem() BlockStorageVolumeSnapshotVolumeOutput {
+	return o.ApplyT(func(v *BlockStorageVolumeSnapshotVolume) BlockStorageVolumeSnapshotVolume {
+		if v != nil {
+			return *v
+		}
+		var ret BlockStorageVolumeSnapshotVolume
+		return ret
+	}).(BlockStorageVolumeSnapshotVolumeOutput)
+}
+
+// Snapshot ID.
+func (o BlockStorageVolumeSnapshotVolumePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlockStorageVolumeSnapshotVolume) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type BlockStorageVolumeTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+}
+
+// BlockStorageVolumeTimeoutsInput is an input type that accepts BlockStorageVolumeTimeoutsArgs and BlockStorageVolumeTimeoutsOutput values.
+// You can construct a concrete instance of `BlockStorageVolumeTimeoutsInput` via:
+//
+//	BlockStorageVolumeTimeoutsArgs{...}
+type BlockStorageVolumeTimeoutsInput interface {
+	pulumi.Input
+
+	ToBlockStorageVolumeTimeoutsOutput() BlockStorageVolumeTimeoutsOutput
+	ToBlockStorageVolumeTimeoutsOutputWithContext(context.Context) BlockStorageVolumeTimeoutsOutput
+}
+
+type BlockStorageVolumeTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (BlockStorageVolumeTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlockStorageVolumeTimeouts)(nil)).Elem()
+}
+
+func (i BlockStorageVolumeTimeoutsArgs) ToBlockStorageVolumeTimeoutsOutput() BlockStorageVolumeTimeoutsOutput {
+	return i.ToBlockStorageVolumeTimeoutsOutputWithContext(context.Background())
+}
+
+func (i BlockStorageVolumeTimeoutsArgs) ToBlockStorageVolumeTimeoutsOutputWithContext(ctx context.Context) BlockStorageVolumeTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlockStorageVolumeTimeoutsOutput)
+}
+
+func (i BlockStorageVolumeTimeoutsArgs) ToBlockStorageVolumeTimeoutsPtrOutput() BlockStorageVolumeTimeoutsPtrOutput {
+	return i.ToBlockStorageVolumeTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i BlockStorageVolumeTimeoutsArgs) ToBlockStorageVolumeTimeoutsPtrOutputWithContext(ctx context.Context) BlockStorageVolumeTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlockStorageVolumeTimeoutsOutput).ToBlockStorageVolumeTimeoutsPtrOutputWithContext(ctx)
+}
+
+// BlockStorageVolumeTimeoutsPtrInput is an input type that accepts BlockStorageVolumeTimeoutsArgs, BlockStorageVolumeTimeoutsPtr and BlockStorageVolumeTimeoutsPtrOutput values.
+// You can construct a concrete instance of `BlockStorageVolumeTimeoutsPtrInput` via:
+//
+//	        BlockStorageVolumeTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type BlockStorageVolumeTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToBlockStorageVolumeTimeoutsPtrOutput() BlockStorageVolumeTimeoutsPtrOutput
+	ToBlockStorageVolumeTimeoutsPtrOutputWithContext(context.Context) BlockStorageVolumeTimeoutsPtrOutput
+}
+
+type blockStorageVolumeTimeoutsPtrType BlockStorageVolumeTimeoutsArgs
+
+func BlockStorageVolumeTimeoutsPtr(v *BlockStorageVolumeTimeoutsArgs) BlockStorageVolumeTimeoutsPtrInput {
+	return (*blockStorageVolumeTimeoutsPtrType)(v)
+}
+
+func (*blockStorageVolumeTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlockStorageVolumeTimeouts)(nil)).Elem()
+}
+
+func (i *blockStorageVolumeTimeoutsPtrType) ToBlockStorageVolumeTimeoutsPtrOutput() BlockStorageVolumeTimeoutsPtrOutput {
+	return i.ToBlockStorageVolumeTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *blockStorageVolumeTimeoutsPtrType) ToBlockStorageVolumeTimeoutsPtrOutputWithContext(ctx context.Context) BlockStorageVolumeTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlockStorageVolumeTimeoutsPtrOutput)
+}
+
+type BlockStorageVolumeTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (BlockStorageVolumeTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlockStorageVolumeTimeouts)(nil)).Elem()
+}
+
+func (o BlockStorageVolumeTimeoutsOutput) ToBlockStorageVolumeTimeoutsOutput() BlockStorageVolumeTimeoutsOutput {
+	return o
+}
+
+func (o BlockStorageVolumeTimeoutsOutput) ToBlockStorageVolumeTimeoutsOutputWithContext(ctx context.Context) BlockStorageVolumeTimeoutsOutput {
+	return o
+}
+
+func (o BlockStorageVolumeTimeoutsOutput) ToBlockStorageVolumeTimeoutsPtrOutput() BlockStorageVolumeTimeoutsPtrOutput {
+	return o.ToBlockStorageVolumeTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o BlockStorageVolumeTimeoutsOutput) ToBlockStorageVolumeTimeoutsPtrOutputWithContext(ctx context.Context) BlockStorageVolumeTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlockStorageVolumeTimeouts) *BlockStorageVolumeTimeouts {
+		return &v
+	}).(BlockStorageVolumeTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o BlockStorageVolumeTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlockStorageVolumeTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type BlockStorageVolumeTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (BlockStorageVolumeTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlockStorageVolumeTimeouts)(nil)).Elem()
+}
+
+func (o BlockStorageVolumeTimeoutsPtrOutput) ToBlockStorageVolumeTimeoutsPtrOutput() BlockStorageVolumeTimeoutsPtrOutput {
+	return o
+}
+
+func (o BlockStorageVolumeTimeoutsPtrOutput) ToBlockStorageVolumeTimeoutsPtrOutputWithContext(ctx context.Context) BlockStorageVolumeTimeoutsPtrOutput {
+	return o
+}
+
+func (o BlockStorageVolumeTimeoutsPtrOutput) Elem() BlockStorageVolumeTimeoutsOutput {
+	return o.ApplyT(func(v *BlockStorageVolumeTimeouts) BlockStorageVolumeTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret BlockStorageVolumeTimeouts
+		return ret
+	}).(BlockStorageVolumeTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o BlockStorageVolumeTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlockStorageVolumeTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
 type ComputeInstanceNetworkInterface struct {
 	// The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
 	IpAddress *string `pulumi:"ipAddress"`
@@ -4051,6 +4599,596 @@ func (o SksClusterOidcPtrOutput) UsernamePrefix() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type SksNodepoolKubeletImageGc struct {
+	// The percent of disk usage after which image garbage collection is always run
+	HighThreshold *int `pulumi:"highThreshold"`
+	// The percent of disk usage before which image garbage collection is never run
+	LowThreshold *int `pulumi:"lowThreshold"`
+	// The minimum age for an unused image before it is garbage collected
+	MinAge *string `pulumi:"minAge"`
+}
+
+// SksNodepoolKubeletImageGcInput is an input type that accepts SksNodepoolKubeletImageGcArgs and SksNodepoolKubeletImageGcOutput values.
+// You can construct a concrete instance of `SksNodepoolKubeletImageGcInput` via:
+//
+//	SksNodepoolKubeletImageGcArgs{...}
+type SksNodepoolKubeletImageGcInput interface {
+	pulumi.Input
+
+	ToSksNodepoolKubeletImageGcOutput() SksNodepoolKubeletImageGcOutput
+	ToSksNodepoolKubeletImageGcOutputWithContext(context.Context) SksNodepoolKubeletImageGcOutput
+}
+
+type SksNodepoolKubeletImageGcArgs struct {
+	// The percent of disk usage after which image garbage collection is always run
+	HighThreshold pulumi.IntPtrInput `pulumi:"highThreshold"`
+	// The percent of disk usage before which image garbage collection is never run
+	LowThreshold pulumi.IntPtrInput `pulumi:"lowThreshold"`
+	// The minimum age for an unused image before it is garbage collected
+	MinAge pulumi.StringPtrInput `pulumi:"minAge"`
+}
+
+func (SksNodepoolKubeletImageGcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SksNodepoolKubeletImageGc)(nil)).Elem()
+}
+
+func (i SksNodepoolKubeletImageGcArgs) ToSksNodepoolKubeletImageGcOutput() SksNodepoolKubeletImageGcOutput {
+	return i.ToSksNodepoolKubeletImageGcOutputWithContext(context.Background())
+}
+
+func (i SksNodepoolKubeletImageGcArgs) ToSksNodepoolKubeletImageGcOutputWithContext(ctx context.Context) SksNodepoolKubeletImageGcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SksNodepoolKubeletImageGcOutput)
+}
+
+// SksNodepoolKubeletImageGcArrayInput is an input type that accepts SksNodepoolKubeletImageGcArray and SksNodepoolKubeletImageGcArrayOutput values.
+// You can construct a concrete instance of `SksNodepoolKubeletImageGcArrayInput` via:
+//
+//	SksNodepoolKubeletImageGcArray{ SksNodepoolKubeletImageGcArgs{...} }
+type SksNodepoolKubeletImageGcArrayInput interface {
+	pulumi.Input
+
+	ToSksNodepoolKubeletImageGcArrayOutput() SksNodepoolKubeletImageGcArrayOutput
+	ToSksNodepoolKubeletImageGcArrayOutputWithContext(context.Context) SksNodepoolKubeletImageGcArrayOutput
+}
+
+type SksNodepoolKubeletImageGcArray []SksNodepoolKubeletImageGcInput
+
+func (SksNodepoolKubeletImageGcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SksNodepoolKubeletImageGc)(nil)).Elem()
+}
+
+func (i SksNodepoolKubeletImageGcArray) ToSksNodepoolKubeletImageGcArrayOutput() SksNodepoolKubeletImageGcArrayOutput {
+	return i.ToSksNodepoolKubeletImageGcArrayOutputWithContext(context.Background())
+}
+
+func (i SksNodepoolKubeletImageGcArray) ToSksNodepoolKubeletImageGcArrayOutputWithContext(ctx context.Context) SksNodepoolKubeletImageGcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SksNodepoolKubeletImageGcArrayOutput)
+}
+
+type SksNodepoolKubeletImageGcOutput struct{ *pulumi.OutputState }
+
+func (SksNodepoolKubeletImageGcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SksNodepoolKubeletImageGc)(nil)).Elem()
+}
+
+func (o SksNodepoolKubeletImageGcOutput) ToSksNodepoolKubeletImageGcOutput() SksNodepoolKubeletImageGcOutput {
+	return o
+}
+
+func (o SksNodepoolKubeletImageGcOutput) ToSksNodepoolKubeletImageGcOutputWithContext(ctx context.Context) SksNodepoolKubeletImageGcOutput {
+	return o
+}
+
+// The percent of disk usage after which image garbage collection is always run
+func (o SksNodepoolKubeletImageGcOutput) HighThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SksNodepoolKubeletImageGc) *int { return v.HighThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The percent of disk usage before which image garbage collection is never run
+func (o SksNodepoolKubeletImageGcOutput) LowThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SksNodepoolKubeletImageGc) *int { return v.LowThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The minimum age for an unused image before it is garbage collected
+func (o SksNodepoolKubeletImageGcOutput) MinAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SksNodepoolKubeletImageGc) *string { return v.MinAge }).(pulumi.StringPtrOutput)
+}
+
+type SksNodepoolKubeletImageGcArrayOutput struct{ *pulumi.OutputState }
+
+func (SksNodepoolKubeletImageGcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SksNodepoolKubeletImageGc)(nil)).Elem()
+}
+
+func (o SksNodepoolKubeletImageGcArrayOutput) ToSksNodepoolKubeletImageGcArrayOutput() SksNodepoolKubeletImageGcArrayOutput {
+	return o
+}
+
+func (o SksNodepoolKubeletImageGcArrayOutput) ToSksNodepoolKubeletImageGcArrayOutputWithContext(ctx context.Context) SksNodepoolKubeletImageGcArrayOutput {
+	return o
+}
+
+func (o SksNodepoolKubeletImageGcArrayOutput) Index(i pulumi.IntInput) SksNodepoolKubeletImageGcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SksNodepoolKubeletImageGc {
+		return vs[0].([]SksNodepoolKubeletImageGc)[vs[1].(int)]
+	}).(SksNodepoolKubeletImageGcOutput)
+}
+
+type GetBlockStorageVolumeInstance struct {
+	// Instance ID.
+	Id string `pulumi:"id"`
+}
+
+// GetBlockStorageVolumeInstanceInput is an input type that accepts GetBlockStorageVolumeInstanceArgs and GetBlockStorageVolumeInstanceOutput values.
+// You can construct a concrete instance of `GetBlockStorageVolumeInstanceInput` via:
+//
+//	GetBlockStorageVolumeInstanceArgs{...}
+type GetBlockStorageVolumeInstanceInput interface {
+	pulumi.Input
+
+	ToGetBlockStorageVolumeInstanceOutput() GetBlockStorageVolumeInstanceOutput
+	ToGetBlockStorageVolumeInstanceOutputWithContext(context.Context) GetBlockStorageVolumeInstanceOutput
+}
+
+type GetBlockStorageVolumeInstanceArgs struct {
+	// Instance ID.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetBlockStorageVolumeInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBlockStorageVolumeInstance)(nil)).Elem()
+}
+
+func (i GetBlockStorageVolumeInstanceArgs) ToGetBlockStorageVolumeInstanceOutput() GetBlockStorageVolumeInstanceOutput {
+	return i.ToGetBlockStorageVolumeInstanceOutputWithContext(context.Background())
+}
+
+func (i GetBlockStorageVolumeInstanceArgs) ToGetBlockStorageVolumeInstanceOutputWithContext(ctx context.Context) GetBlockStorageVolumeInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBlockStorageVolumeInstanceOutput)
+}
+
+type GetBlockStorageVolumeInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetBlockStorageVolumeInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBlockStorageVolumeInstance)(nil)).Elem()
+}
+
+func (o GetBlockStorageVolumeInstanceOutput) ToGetBlockStorageVolumeInstanceOutput() GetBlockStorageVolumeInstanceOutput {
+	return o
+}
+
+func (o GetBlockStorageVolumeInstanceOutput) ToGetBlockStorageVolumeInstanceOutputWithContext(ctx context.Context) GetBlockStorageVolumeInstanceOutput {
+	return o
+}
+
+// Instance ID.
+func (o GetBlockStorageVolumeInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlockStorageVolumeInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetBlockStorageVolumeSnapshotType struct {
+	// Snapshot ID.
+	Id string `pulumi:"id"`
+}
+
+// GetBlockStorageVolumeSnapshotTypeInput is an input type that accepts GetBlockStorageVolumeSnapshotTypeArgs and GetBlockStorageVolumeSnapshotTypeOutput values.
+// You can construct a concrete instance of `GetBlockStorageVolumeSnapshotTypeInput` via:
+//
+//	GetBlockStorageVolumeSnapshotTypeArgs{...}
+type GetBlockStorageVolumeSnapshotTypeInput interface {
+	pulumi.Input
+
+	ToGetBlockStorageVolumeSnapshotTypeOutput() GetBlockStorageVolumeSnapshotTypeOutput
+	ToGetBlockStorageVolumeSnapshotTypeOutputWithContext(context.Context) GetBlockStorageVolumeSnapshotTypeOutput
+}
+
+type GetBlockStorageVolumeSnapshotTypeArgs struct {
+	// Snapshot ID.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetBlockStorageVolumeSnapshotTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBlockStorageVolumeSnapshotType)(nil)).Elem()
+}
+
+func (i GetBlockStorageVolumeSnapshotTypeArgs) ToGetBlockStorageVolumeSnapshotTypeOutput() GetBlockStorageVolumeSnapshotTypeOutput {
+	return i.ToGetBlockStorageVolumeSnapshotTypeOutputWithContext(context.Background())
+}
+
+func (i GetBlockStorageVolumeSnapshotTypeArgs) ToGetBlockStorageVolumeSnapshotTypeOutputWithContext(ctx context.Context) GetBlockStorageVolumeSnapshotTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBlockStorageVolumeSnapshotTypeOutput)
+}
+
+// GetBlockStorageVolumeSnapshotTypeArrayInput is an input type that accepts GetBlockStorageVolumeSnapshotTypeArray and GetBlockStorageVolumeSnapshotTypeArrayOutput values.
+// You can construct a concrete instance of `GetBlockStorageVolumeSnapshotTypeArrayInput` via:
+//
+//	GetBlockStorageVolumeSnapshotTypeArray{ GetBlockStorageVolumeSnapshotTypeArgs{...} }
+type GetBlockStorageVolumeSnapshotTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetBlockStorageVolumeSnapshotTypeArrayOutput() GetBlockStorageVolumeSnapshotTypeArrayOutput
+	ToGetBlockStorageVolumeSnapshotTypeArrayOutputWithContext(context.Context) GetBlockStorageVolumeSnapshotTypeArrayOutput
+}
+
+type GetBlockStorageVolumeSnapshotTypeArray []GetBlockStorageVolumeSnapshotTypeInput
+
+func (GetBlockStorageVolumeSnapshotTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBlockStorageVolumeSnapshotType)(nil)).Elem()
+}
+
+func (i GetBlockStorageVolumeSnapshotTypeArray) ToGetBlockStorageVolumeSnapshotTypeArrayOutput() GetBlockStorageVolumeSnapshotTypeArrayOutput {
+	return i.ToGetBlockStorageVolumeSnapshotTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetBlockStorageVolumeSnapshotTypeArray) ToGetBlockStorageVolumeSnapshotTypeArrayOutputWithContext(ctx context.Context) GetBlockStorageVolumeSnapshotTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBlockStorageVolumeSnapshotTypeArrayOutput)
+}
+
+type GetBlockStorageVolumeSnapshotTypeOutput struct{ *pulumi.OutputState }
+
+func (GetBlockStorageVolumeSnapshotTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBlockStorageVolumeSnapshotType)(nil)).Elem()
+}
+
+func (o GetBlockStorageVolumeSnapshotTypeOutput) ToGetBlockStorageVolumeSnapshotTypeOutput() GetBlockStorageVolumeSnapshotTypeOutput {
+	return o
+}
+
+func (o GetBlockStorageVolumeSnapshotTypeOutput) ToGetBlockStorageVolumeSnapshotTypeOutputWithContext(ctx context.Context) GetBlockStorageVolumeSnapshotTypeOutput {
+	return o
+}
+
+// Snapshot ID.
+func (o GetBlockStorageVolumeSnapshotTypeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlockStorageVolumeSnapshotType) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetBlockStorageVolumeSnapshotTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBlockStorageVolumeSnapshotTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBlockStorageVolumeSnapshotType)(nil)).Elem()
+}
+
+func (o GetBlockStorageVolumeSnapshotTypeArrayOutput) ToGetBlockStorageVolumeSnapshotTypeArrayOutput() GetBlockStorageVolumeSnapshotTypeArrayOutput {
+	return o
+}
+
+func (o GetBlockStorageVolumeSnapshotTypeArrayOutput) ToGetBlockStorageVolumeSnapshotTypeArrayOutputWithContext(ctx context.Context) GetBlockStorageVolumeSnapshotTypeArrayOutput {
+	return o
+}
+
+func (o GetBlockStorageVolumeSnapshotTypeArrayOutput) Index(i pulumi.IntInput) GetBlockStorageVolumeSnapshotTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBlockStorageVolumeSnapshotType {
+		return vs[0].([]GetBlockStorageVolumeSnapshotType)[vs[1].(int)]
+	}).(GetBlockStorageVolumeSnapshotTypeOutput)
+}
+
+type GetBlockStorageVolumeSnapshotTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+}
+
+// GetBlockStorageVolumeSnapshotTimeoutsInput is an input type that accepts GetBlockStorageVolumeSnapshotTimeoutsArgs and GetBlockStorageVolumeSnapshotTimeoutsOutput values.
+// You can construct a concrete instance of `GetBlockStorageVolumeSnapshotTimeoutsInput` via:
+//
+//	GetBlockStorageVolumeSnapshotTimeoutsArgs{...}
+type GetBlockStorageVolumeSnapshotTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetBlockStorageVolumeSnapshotTimeoutsOutput() GetBlockStorageVolumeSnapshotTimeoutsOutput
+	ToGetBlockStorageVolumeSnapshotTimeoutsOutputWithContext(context.Context) GetBlockStorageVolumeSnapshotTimeoutsOutput
+}
+
+type GetBlockStorageVolumeSnapshotTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetBlockStorageVolumeSnapshotTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBlockStorageVolumeSnapshotTimeouts)(nil)).Elem()
+}
+
+func (i GetBlockStorageVolumeSnapshotTimeoutsArgs) ToGetBlockStorageVolumeSnapshotTimeoutsOutput() GetBlockStorageVolumeSnapshotTimeoutsOutput {
+	return i.ToGetBlockStorageVolumeSnapshotTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetBlockStorageVolumeSnapshotTimeoutsArgs) ToGetBlockStorageVolumeSnapshotTimeoutsOutputWithContext(ctx context.Context) GetBlockStorageVolumeSnapshotTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBlockStorageVolumeSnapshotTimeoutsOutput)
+}
+
+func (i GetBlockStorageVolumeSnapshotTimeoutsArgs) ToGetBlockStorageVolumeSnapshotTimeoutsPtrOutput() GetBlockStorageVolumeSnapshotTimeoutsPtrOutput {
+	return i.ToGetBlockStorageVolumeSnapshotTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetBlockStorageVolumeSnapshotTimeoutsArgs) ToGetBlockStorageVolumeSnapshotTimeoutsPtrOutputWithContext(ctx context.Context) GetBlockStorageVolumeSnapshotTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBlockStorageVolumeSnapshotTimeoutsOutput).ToGetBlockStorageVolumeSnapshotTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetBlockStorageVolumeSnapshotTimeoutsPtrInput is an input type that accepts GetBlockStorageVolumeSnapshotTimeoutsArgs, GetBlockStorageVolumeSnapshotTimeoutsPtr and GetBlockStorageVolumeSnapshotTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetBlockStorageVolumeSnapshotTimeoutsPtrInput` via:
+//
+//	        GetBlockStorageVolumeSnapshotTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetBlockStorageVolumeSnapshotTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetBlockStorageVolumeSnapshotTimeoutsPtrOutput() GetBlockStorageVolumeSnapshotTimeoutsPtrOutput
+	ToGetBlockStorageVolumeSnapshotTimeoutsPtrOutputWithContext(context.Context) GetBlockStorageVolumeSnapshotTimeoutsPtrOutput
+}
+
+type getBlockStorageVolumeSnapshotTimeoutsPtrType GetBlockStorageVolumeSnapshotTimeoutsArgs
+
+func GetBlockStorageVolumeSnapshotTimeoutsPtr(v *GetBlockStorageVolumeSnapshotTimeoutsArgs) GetBlockStorageVolumeSnapshotTimeoutsPtrInput {
+	return (*getBlockStorageVolumeSnapshotTimeoutsPtrType)(v)
+}
+
+func (*getBlockStorageVolumeSnapshotTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetBlockStorageVolumeSnapshotTimeouts)(nil)).Elem()
+}
+
+func (i *getBlockStorageVolumeSnapshotTimeoutsPtrType) ToGetBlockStorageVolumeSnapshotTimeoutsPtrOutput() GetBlockStorageVolumeSnapshotTimeoutsPtrOutput {
+	return i.ToGetBlockStorageVolumeSnapshotTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getBlockStorageVolumeSnapshotTimeoutsPtrType) ToGetBlockStorageVolumeSnapshotTimeoutsPtrOutputWithContext(ctx context.Context) GetBlockStorageVolumeSnapshotTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBlockStorageVolumeSnapshotTimeoutsPtrOutput)
+}
+
+type GetBlockStorageVolumeSnapshotTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetBlockStorageVolumeSnapshotTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBlockStorageVolumeSnapshotTimeouts)(nil)).Elem()
+}
+
+func (o GetBlockStorageVolumeSnapshotTimeoutsOutput) ToGetBlockStorageVolumeSnapshotTimeoutsOutput() GetBlockStorageVolumeSnapshotTimeoutsOutput {
+	return o
+}
+
+func (o GetBlockStorageVolumeSnapshotTimeoutsOutput) ToGetBlockStorageVolumeSnapshotTimeoutsOutputWithContext(ctx context.Context) GetBlockStorageVolumeSnapshotTimeoutsOutput {
+	return o
+}
+
+func (o GetBlockStorageVolumeSnapshotTimeoutsOutput) ToGetBlockStorageVolumeSnapshotTimeoutsPtrOutput() GetBlockStorageVolumeSnapshotTimeoutsPtrOutput {
+	return o.ToGetBlockStorageVolumeSnapshotTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetBlockStorageVolumeSnapshotTimeoutsOutput) ToGetBlockStorageVolumeSnapshotTimeoutsPtrOutputWithContext(ctx context.Context) GetBlockStorageVolumeSnapshotTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetBlockStorageVolumeSnapshotTimeouts) *GetBlockStorageVolumeSnapshotTimeouts {
+		return &v
+	}).(GetBlockStorageVolumeSnapshotTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o GetBlockStorageVolumeSnapshotTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBlockStorageVolumeSnapshotTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetBlockStorageVolumeSnapshotTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetBlockStorageVolumeSnapshotTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetBlockStorageVolumeSnapshotTimeouts)(nil)).Elem()
+}
+
+func (o GetBlockStorageVolumeSnapshotTimeoutsPtrOutput) ToGetBlockStorageVolumeSnapshotTimeoutsPtrOutput() GetBlockStorageVolumeSnapshotTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetBlockStorageVolumeSnapshotTimeoutsPtrOutput) ToGetBlockStorageVolumeSnapshotTimeoutsPtrOutputWithContext(ctx context.Context) GetBlockStorageVolumeSnapshotTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetBlockStorageVolumeSnapshotTimeoutsPtrOutput) Elem() GetBlockStorageVolumeSnapshotTimeoutsOutput {
+	return o.ApplyT(func(v *GetBlockStorageVolumeSnapshotTimeouts) GetBlockStorageVolumeSnapshotTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetBlockStorageVolumeSnapshotTimeouts
+		return ret
+	}).(GetBlockStorageVolumeSnapshotTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o GetBlockStorageVolumeSnapshotTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetBlockStorageVolumeSnapshotTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetBlockStorageVolumeSnapshotVolume struct {
+	// Volume ID.
+	Id string `pulumi:"id"`
+}
+
+// GetBlockStorageVolumeSnapshotVolumeInput is an input type that accepts GetBlockStorageVolumeSnapshotVolumeArgs and GetBlockStorageVolumeSnapshotVolumeOutput values.
+// You can construct a concrete instance of `GetBlockStorageVolumeSnapshotVolumeInput` via:
+//
+//	GetBlockStorageVolumeSnapshotVolumeArgs{...}
+type GetBlockStorageVolumeSnapshotVolumeInput interface {
+	pulumi.Input
+
+	ToGetBlockStorageVolumeSnapshotVolumeOutput() GetBlockStorageVolumeSnapshotVolumeOutput
+	ToGetBlockStorageVolumeSnapshotVolumeOutputWithContext(context.Context) GetBlockStorageVolumeSnapshotVolumeOutput
+}
+
+type GetBlockStorageVolumeSnapshotVolumeArgs struct {
+	// Volume ID.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetBlockStorageVolumeSnapshotVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBlockStorageVolumeSnapshotVolume)(nil)).Elem()
+}
+
+func (i GetBlockStorageVolumeSnapshotVolumeArgs) ToGetBlockStorageVolumeSnapshotVolumeOutput() GetBlockStorageVolumeSnapshotVolumeOutput {
+	return i.ToGetBlockStorageVolumeSnapshotVolumeOutputWithContext(context.Background())
+}
+
+func (i GetBlockStorageVolumeSnapshotVolumeArgs) ToGetBlockStorageVolumeSnapshotVolumeOutputWithContext(ctx context.Context) GetBlockStorageVolumeSnapshotVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBlockStorageVolumeSnapshotVolumeOutput)
+}
+
+type GetBlockStorageVolumeSnapshotVolumeOutput struct{ *pulumi.OutputState }
+
+func (GetBlockStorageVolumeSnapshotVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBlockStorageVolumeSnapshotVolume)(nil)).Elem()
+}
+
+func (o GetBlockStorageVolumeSnapshotVolumeOutput) ToGetBlockStorageVolumeSnapshotVolumeOutput() GetBlockStorageVolumeSnapshotVolumeOutput {
+	return o
+}
+
+func (o GetBlockStorageVolumeSnapshotVolumeOutput) ToGetBlockStorageVolumeSnapshotVolumeOutputWithContext(ctx context.Context) GetBlockStorageVolumeSnapshotVolumeOutput {
+	return o
+}
+
+// Volume ID.
+func (o GetBlockStorageVolumeSnapshotVolumeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlockStorageVolumeSnapshotVolume) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetBlockStorageVolumeTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+}
+
+// GetBlockStorageVolumeTimeoutsInput is an input type that accepts GetBlockStorageVolumeTimeoutsArgs and GetBlockStorageVolumeTimeoutsOutput values.
+// You can construct a concrete instance of `GetBlockStorageVolumeTimeoutsInput` via:
+//
+//	GetBlockStorageVolumeTimeoutsArgs{...}
+type GetBlockStorageVolumeTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetBlockStorageVolumeTimeoutsOutput() GetBlockStorageVolumeTimeoutsOutput
+	ToGetBlockStorageVolumeTimeoutsOutputWithContext(context.Context) GetBlockStorageVolumeTimeoutsOutput
+}
+
+type GetBlockStorageVolumeTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetBlockStorageVolumeTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBlockStorageVolumeTimeouts)(nil)).Elem()
+}
+
+func (i GetBlockStorageVolumeTimeoutsArgs) ToGetBlockStorageVolumeTimeoutsOutput() GetBlockStorageVolumeTimeoutsOutput {
+	return i.ToGetBlockStorageVolumeTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetBlockStorageVolumeTimeoutsArgs) ToGetBlockStorageVolumeTimeoutsOutputWithContext(ctx context.Context) GetBlockStorageVolumeTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBlockStorageVolumeTimeoutsOutput)
+}
+
+func (i GetBlockStorageVolumeTimeoutsArgs) ToGetBlockStorageVolumeTimeoutsPtrOutput() GetBlockStorageVolumeTimeoutsPtrOutput {
+	return i.ToGetBlockStorageVolumeTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetBlockStorageVolumeTimeoutsArgs) ToGetBlockStorageVolumeTimeoutsPtrOutputWithContext(ctx context.Context) GetBlockStorageVolumeTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBlockStorageVolumeTimeoutsOutput).ToGetBlockStorageVolumeTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetBlockStorageVolumeTimeoutsPtrInput is an input type that accepts GetBlockStorageVolumeTimeoutsArgs, GetBlockStorageVolumeTimeoutsPtr and GetBlockStorageVolumeTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetBlockStorageVolumeTimeoutsPtrInput` via:
+//
+//	        GetBlockStorageVolumeTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetBlockStorageVolumeTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetBlockStorageVolumeTimeoutsPtrOutput() GetBlockStorageVolumeTimeoutsPtrOutput
+	ToGetBlockStorageVolumeTimeoutsPtrOutputWithContext(context.Context) GetBlockStorageVolumeTimeoutsPtrOutput
+}
+
+type getBlockStorageVolumeTimeoutsPtrType GetBlockStorageVolumeTimeoutsArgs
+
+func GetBlockStorageVolumeTimeoutsPtr(v *GetBlockStorageVolumeTimeoutsArgs) GetBlockStorageVolumeTimeoutsPtrInput {
+	return (*getBlockStorageVolumeTimeoutsPtrType)(v)
+}
+
+func (*getBlockStorageVolumeTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetBlockStorageVolumeTimeouts)(nil)).Elem()
+}
+
+func (i *getBlockStorageVolumeTimeoutsPtrType) ToGetBlockStorageVolumeTimeoutsPtrOutput() GetBlockStorageVolumeTimeoutsPtrOutput {
+	return i.ToGetBlockStorageVolumeTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getBlockStorageVolumeTimeoutsPtrType) ToGetBlockStorageVolumeTimeoutsPtrOutputWithContext(ctx context.Context) GetBlockStorageVolumeTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBlockStorageVolumeTimeoutsPtrOutput)
+}
+
+type GetBlockStorageVolumeTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetBlockStorageVolumeTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBlockStorageVolumeTimeouts)(nil)).Elem()
+}
+
+func (o GetBlockStorageVolumeTimeoutsOutput) ToGetBlockStorageVolumeTimeoutsOutput() GetBlockStorageVolumeTimeoutsOutput {
+	return o
+}
+
+func (o GetBlockStorageVolumeTimeoutsOutput) ToGetBlockStorageVolumeTimeoutsOutputWithContext(ctx context.Context) GetBlockStorageVolumeTimeoutsOutput {
+	return o
+}
+
+func (o GetBlockStorageVolumeTimeoutsOutput) ToGetBlockStorageVolumeTimeoutsPtrOutput() GetBlockStorageVolumeTimeoutsPtrOutput {
+	return o.ToGetBlockStorageVolumeTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetBlockStorageVolumeTimeoutsOutput) ToGetBlockStorageVolumeTimeoutsPtrOutputWithContext(ctx context.Context) GetBlockStorageVolumeTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetBlockStorageVolumeTimeouts) *GetBlockStorageVolumeTimeouts {
+		return &v
+	}).(GetBlockStorageVolumeTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o GetBlockStorageVolumeTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBlockStorageVolumeTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetBlockStorageVolumeTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetBlockStorageVolumeTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetBlockStorageVolumeTimeouts)(nil)).Elem()
+}
+
+func (o GetBlockStorageVolumeTimeoutsPtrOutput) ToGetBlockStorageVolumeTimeoutsPtrOutput() GetBlockStorageVolumeTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetBlockStorageVolumeTimeoutsPtrOutput) ToGetBlockStorageVolumeTimeoutsPtrOutputWithContext(ctx context.Context) GetBlockStorageVolumeTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetBlockStorageVolumeTimeoutsPtrOutput) Elem() GetBlockStorageVolumeTimeoutsOutput {
+	return o.ApplyT(func(v *GetBlockStorageVolumeTimeouts) GetBlockStorageVolumeTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetBlockStorageVolumeTimeouts
+		return ret
+	}).(GetBlockStorageVolumeTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o GetBlockStorageVolumeTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetBlockStorageVolumeTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetComputeInstanceListInstance struct {
 	// The list of attached AntiAffinityGroup (IDs).
 	AntiAffinityGroupIds []string `pulumi:"antiAffinityGroupIds"`
@@ -7325,6 +8463,121 @@ func (o GetSksClusterOidcPtrOutput) UsernamePrefix() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetSksNodepoolKubeletImageGc struct {
+	// The percent of disk usage after which image garbage collection is always run
+	HighThreshold *int `pulumi:"highThreshold"`
+	// The percent of disk usage before which image garbage collection is never run
+	LowThreshold *int `pulumi:"lowThreshold"`
+	// The minimum age for an unused image before it is garbage collected
+	MinAge *string `pulumi:"minAge"`
+}
+
+// GetSksNodepoolKubeletImageGcInput is an input type that accepts GetSksNodepoolKubeletImageGcArgs and GetSksNodepoolKubeletImageGcOutput values.
+// You can construct a concrete instance of `GetSksNodepoolKubeletImageGcInput` via:
+//
+//	GetSksNodepoolKubeletImageGcArgs{...}
+type GetSksNodepoolKubeletImageGcInput interface {
+	pulumi.Input
+
+	ToGetSksNodepoolKubeletImageGcOutput() GetSksNodepoolKubeletImageGcOutput
+	ToGetSksNodepoolKubeletImageGcOutputWithContext(context.Context) GetSksNodepoolKubeletImageGcOutput
+}
+
+type GetSksNodepoolKubeletImageGcArgs struct {
+	// The percent of disk usage after which image garbage collection is always run
+	HighThreshold pulumi.IntPtrInput `pulumi:"highThreshold"`
+	// The percent of disk usage before which image garbage collection is never run
+	LowThreshold pulumi.IntPtrInput `pulumi:"lowThreshold"`
+	// The minimum age for an unused image before it is garbage collected
+	MinAge pulumi.StringPtrInput `pulumi:"minAge"`
+}
+
+func (GetSksNodepoolKubeletImageGcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSksNodepoolKubeletImageGc)(nil)).Elem()
+}
+
+func (i GetSksNodepoolKubeletImageGcArgs) ToGetSksNodepoolKubeletImageGcOutput() GetSksNodepoolKubeletImageGcOutput {
+	return i.ToGetSksNodepoolKubeletImageGcOutputWithContext(context.Background())
+}
+
+func (i GetSksNodepoolKubeletImageGcArgs) ToGetSksNodepoolKubeletImageGcOutputWithContext(ctx context.Context) GetSksNodepoolKubeletImageGcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSksNodepoolKubeletImageGcOutput)
+}
+
+// GetSksNodepoolKubeletImageGcArrayInput is an input type that accepts GetSksNodepoolKubeletImageGcArray and GetSksNodepoolKubeletImageGcArrayOutput values.
+// You can construct a concrete instance of `GetSksNodepoolKubeletImageGcArrayInput` via:
+//
+//	GetSksNodepoolKubeletImageGcArray{ GetSksNodepoolKubeletImageGcArgs{...} }
+type GetSksNodepoolKubeletImageGcArrayInput interface {
+	pulumi.Input
+
+	ToGetSksNodepoolKubeletImageGcArrayOutput() GetSksNodepoolKubeletImageGcArrayOutput
+	ToGetSksNodepoolKubeletImageGcArrayOutputWithContext(context.Context) GetSksNodepoolKubeletImageGcArrayOutput
+}
+
+type GetSksNodepoolKubeletImageGcArray []GetSksNodepoolKubeletImageGcInput
+
+func (GetSksNodepoolKubeletImageGcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSksNodepoolKubeletImageGc)(nil)).Elem()
+}
+
+func (i GetSksNodepoolKubeletImageGcArray) ToGetSksNodepoolKubeletImageGcArrayOutput() GetSksNodepoolKubeletImageGcArrayOutput {
+	return i.ToGetSksNodepoolKubeletImageGcArrayOutputWithContext(context.Background())
+}
+
+func (i GetSksNodepoolKubeletImageGcArray) ToGetSksNodepoolKubeletImageGcArrayOutputWithContext(ctx context.Context) GetSksNodepoolKubeletImageGcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSksNodepoolKubeletImageGcArrayOutput)
+}
+
+type GetSksNodepoolKubeletImageGcOutput struct{ *pulumi.OutputState }
+
+func (GetSksNodepoolKubeletImageGcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSksNodepoolKubeletImageGc)(nil)).Elem()
+}
+
+func (o GetSksNodepoolKubeletImageGcOutput) ToGetSksNodepoolKubeletImageGcOutput() GetSksNodepoolKubeletImageGcOutput {
+	return o
+}
+
+func (o GetSksNodepoolKubeletImageGcOutput) ToGetSksNodepoolKubeletImageGcOutputWithContext(ctx context.Context) GetSksNodepoolKubeletImageGcOutput {
+	return o
+}
+
+// The percent of disk usage after which image garbage collection is always run
+func (o GetSksNodepoolKubeletImageGcOutput) HighThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSksNodepoolKubeletImageGc) *int { return v.HighThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The percent of disk usage before which image garbage collection is never run
+func (o GetSksNodepoolKubeletImageGcOutput) LowThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSksNodepoolKubeletImageGc) *int { return v.LowThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The minimum age for an unused image before it is garbage collected
+func (o GetSksNodepoolKubeletImageGcOutput) MinAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksNodepoolKubeletImageGc) *string { return v.MinAge }).(pulumi.StringPtrOutput)
+}
+
+type GetSksNodepoolKubeletImageGcArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSksNodepoolKubeletImageGcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSksNodepoolKubeletImageGc)(nil)).Elem()
+}
+
+func (o GetSksNodepoolKubeletImageGcArrayOutput) ToGetSksNodepoolKubeletImageGcArrayOutput() GetSksNodepoolKubeletImageGcArrayOutput {
+	return o
+}
+
+func (o GetSksNodepoolKubeletImageGcArrayOutput) ToGetSksNodepoolKubeletImageGcArrayOutputWithContext(ctx context.Context) GetSksNodepoolKubeletImageGcArrayOutput {
+	return o
+}
+
+func (o GetSksNodepoolKubeletImageGcArrayOutput) Index(i pulumi.IntInput) GetSksNodepoolKubeletImageGcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSksNodepoolKubeletImageGc {
+		return vs[0].([]GetSksNodepoolKubeletImageGc)[vs[1].(int)]
+	}).(GetSksNodepoolKubeletImageGcOutput)
+}
+
 type GetSksNodepoolListNodepool struct {
 	// A list of AntiAffinityGroup (IDs) to be attached to the managed instances.
 	AntiAffinityGroupIds []string `pulumi:"antiAffinityGroupIds"`
@@ -7344,6 +8597,8 @@ type GetSksNodepoolListNodepool struct {
 	InstancePrefix *string `pulumi:"instancePrefix"`
 	// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
 	InstanceType *string `pulumi:"instanceType"`
+	// Configuration for this nodepool's kubelet image garbage collector
+	KubeletImageGcs []GetSksNodepoolListNodepoolKubeletImageGc `pulumi:"kubeletImageGcs"`
 	// A map of key/value labels.
 	Labels map[string]string `pulumi:"labels"`
 	Name   *string           `pulumi:"name"`
@@ -7395,6 +8650,8 @@ type GetSksNodepoolListNodepoolArgs struct {
 	InstancePrefix pulumi.StringPtrInput `pulumi:"instancePrefix"`
 	// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// Configuration for this nodepool's kubelet image garbage collector
+	KubeletImageGcs GetSksNodepoolListNodepoolKubeletImageGcArrayInput `pulumi:"kubeletImageGcs"`
 	// A map of key/value labels.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	Name   pulumi.StringPtrInput `pulumi:"name"`
@@ -7515,6 +8772,13 @@ func (o GetSksNodepoolListNodepoolOutput) InstanceType() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetSksNodepoolListNodepool) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
 
+// Configuration for this nodepool's kubelet image garbage collector
+func (o GetSksNodepoolListNodepoolOutput) KubeletImageGcs() GetSksNodepoolListNodepoolKubeletImageGcArrayOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepool) []GetSksNodepoolListNodepoolKubeletImageGc {
+		return v.KubeletImageGcs
+	}).(GetSksNodepoolListNodepoolKubeletImageGcArrayOutput)
+}
+
 // A map of key/value labels.
 func (o GetSksNodepoolListNodepoolOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSksNodepoolListNodepool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
@@ -7587,7 +8851,130 @@ func (o GetSksNodepoolListNodepoolArrayOutput) Index(i pulumi.IntInput) GetSksNo
 	}).(GetSksNodepoolListNodepoolOutput)
 }
 
+type GetSksNodepoolListNodepoolKubeletImageGc struct {
+	// The percent of disk usage after which image garbage collection is always run
+	HighThreshold *int `pulumi:"highThreshold"`
+	// The percent of disk usage before which image garbage collection is never run
+	LowThreshold *int `pulumi:"lowThreshold"`
+	// The minimum age for an unused image before it is garbage collected
+	MinAge *string `pulumi:"minAge"`
+}
+
+// GetSksNodepoolListNodepoolKubeletImageGcInput is an input type that accepts GetSksNodepoolListNodepoolKubeletImageGcArgs and GetSksNodepoolListNodepoolKubeletImageGcOutput values.
+// You can construct a concrete instance of `GetSksNodepoolListNodepoolKubeletImageGcInput` via:
+//
+//	GetSksNodepoolListNodepoolKubeletImageGcArgs{...}
+type GetSksNodepoolListNodepoolKubeletImageGcInput interface {
+	pulumi.Input
+
+	ToGetSksNodepoolListNodepoolKubeletImageGcOutput() GetSksNodepoolListNodepoolKubeletImageGcOutput
+	ToGetSksNodepoolListNodepoolKubeletImageGcOutputWithContext(context.Context) GetSksNodepoolListNodepoolKubeletImageGcOutput
+}
+
+type GetSksNodepoolListNodepoolKubeletImageGcArgs struct {
+	// The percent of disk usage after which image garbage collection is always run
+	HighThreshold pulumi.IntPtrInput `pulumi:"highThreshold"`
+	// The percent of disk usage before which image garbage collection is never run
+	LowThreshold pulumi.IntPtrInput `pulumi:"lowThreshold"`
+	// The minimum age for an unused image before it is garbage collected
+	MinAge pulumi.StringPtrInput `pulumi:"minAge"`
+}
+
+func (GetSksNodepoolListNodepoolKubeletImageGcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSksNodepoolListNodepoolKubeletImageGc)(nil)).Elem()
+}
+
+func (i GetSksNodepoolListNodepoolKubeletImageGcArgs) ToGetSksNodepoolListNodepoolKubeletImageGcOutput() GetSksNodepoolListNodepoolKubeletImageGcOutput {
+	return i.ToGetSksNodepoolListNodepoolKubeletImageGcOutputWithContext(context.Background())
+}
+
+func (i GetSksNodepoolListNodepoolKubeletImageGcArgs) ToGetSksNodepoolListNodepoolKubeletImageGcOutputWithContext(ctx context.Context) GetSksNodepoolListNodepoolKubeletImageGcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSksNodepoolListNodepoolKubeletImageGcOutput)
+}
+
+// GetSksNodepoolListNodepoolKubeletImageGcArrayInput is an input type that accepts GetSksNodepoolListNodepoolKubeletImageGcArray and GetSksNodepoolListNodepoolKubeletImageGcArrayOutput values.
+// You can construct a concrete instance of `GetSksNodepoolListNodepoolKubeletImageGcArrayInput` via:
+//
+//	GetSksNodepoolListNodepoolKubeletImageGcArray{ GetSksNodepoolListNodepoolKubeletImageGcArgs{...} }
+type GetSksNodepoolListNodepoolKubeletImageGcArrayInput interface {
+	pulumi.Input
+
+	ToGetSksNodepoolListNodepoolKubeletImageGcArrayOutput() GetSksNodepoolListNodepoolKubeletImageGcArrayOutput
+	ToGetSksNodepoolListNodepoolKubeletImageGcArrayOutputWithContext(context.Context) GetSksNodepoolListNodepoolKubeletImageGcArrayOutput
+}
+
+type GetSksNodepoolListNodepoolKubeletImageGcArray []GetSksNodepoolListNodepoolKubeletImageGcInput
+
+func (GetSksNodepoolListNodepoolKubeletImageGcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSksNodepoolListNodepoolKubeletImageGc)(nil)).Elem()
+}
+
+func (i GetSksNodepoolListNodepoolKubeletImageGcArray) ToGetSksNodepoolListNodepoolKubeletImageGcArrayOutput() GetSksNodepoolListNodepoolKubeletImageGcArrayOutput {
+	return i.ToGetSksNodepoolListNodepoolKubeletImageGcArrayOutputWithContext(context.Background())
+}
+
+func (i GetSksNodepoolListNodepoolKubeletImageGcArray) ToGetSksNodepoolListNodepoolKubeletImageGcArrayOutputWithContext(ctx context.Context) GetSksNodepoolListNodepoolKubeletImageGcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSksNodepoolListNodepoolKubeletImageGcArrayOutput)
+}
+
+type GetSksNodepoolListNodepoolKubeletImageGcOutput struct{ *pulumi.OutputState }
+
+func (GetSksNodepoolListNodepoolKubeletImageGcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSksNodepoolListNodepoolKubeletImageGc)(nil)).Elem()
+}
+
+func (o GetSksNodepoolListNodepoolKubeletImageGcOutput) ToGetSksNodepoolListNodepoolKubeletImageGcOutput() GetSksNodepoolListNodepoolKubeletImageGcOutput {
+	return o
+}
+
+func (o GetSksNodepoolListNodepoolKubeletImageGcOutput) ToGetSksNodepoolListNodepoolKubeletImageGcOutputWithContext(ctx context.Context) GetSksNodepoolListNodepoolKubeletImageGcOutput {
+	return o
+}
+
+// The percent of disk usage after which image garbage collection is always run
+func (o GetSksNodepoolListNodepoolKubeletImageGcOutput) HighThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepoolKubeletImageGc) *int { return v.HighThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The percent of disk usage before which image garbage collection is never run
+func (o GetSksNodepoolListNodepoolKubeletImageGcOutput) LowThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepoolKubeletImageGc) *int { return v.LowThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The minimum age for an unused image before it is garbage collected
+func (o GetSksNodepoolListNodepoolKubeletImageGcOutput) MinAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksNodepoolListNodepoolKubeletImageGc) *string { return v.MinAge }).(pulumi.StringPtrOutput)
+}
+
+type GetSksNodepoolListNodepoolKubeletImageGcArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSksNodepoolListNodepoolKubeletImageGcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSksNodepoolListNodepoolKubeletImageGc)(nil)).Elem()
+}
+
+func (o GetSksNodepoolListNodepoolKubeletImageGcArrayOutput) ToGetSksNodepoolListNodepoolKubeletImageGcArrayOutput() GetSksNodepoolListNodepoolKubeletImageGcArrayOutput {
+	return o
+}
+
+func (o GetSksNodepoolListNodepoolKubeletImageGcArrayOutput) ToGetSksNodepoolListNodepoolKubeletImageGcArrayOutputWithContext(ctx context.Context) GetSksNodepoolListNodepoolKubeletImageGcArrayOutput {
+	return o
+}
+
+func (o GetSksNodepoolListNodepoolKubeletImageGcArrayOutput) Index(i pulumi.IntInput) GetSksNodepoolListNodepoolKubeletImageGcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSksNodepoolListNodepoolKubeletImageGc {
+		return vs[0].([]GetSksNodepoolListNodepoolKubeletImageGc)[vs[1].(int)]
+	}).(GetSksNodepoolListNodepoolKubeletImageGcOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BlockStorageVolumeSnapshotTargetInput)(nil)).Elem(), BlockStorageVolumeSnapshotTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlockStorageVolumeSnapshotTargetPtrInput)(nil)).Elem(), BlockStorageVolumeSnapshotTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlockStorageVolumeSnapshotTimeoutsInput)(nil)).Elem(), BlockStorageVolumeSnapshotTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlockStorageVolumeSnapshotTimeoutsPtrInput)(nil)).Elem(), BlockStorageVolumeSnapshotTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlockStorageVolumeSnapshotVolumeInput)(nil)).Elem(), BlockStorageVolumeSnapshotVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlockStorageVolumeSnapshotVolumePtrInput)(nil)).Elem(), BlockStorageVolumeSnapshotVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlockStorageVolumeTimeoutsInput)(nil)).Elem(), BlockStorageVolumeTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlockStorageVolumeTimeoutsPtrInput)(nil)).Elem(), BlockStorageVolumeTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceNetworkInterfaceInput)(nil)).Elem(), ComputeInstanceNetworkInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceNetworkInterfaceArrayInput)(nil)).Elem(), ComputeInstanceNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseGrafanaInput)(nil)).Elem(), DatabaseGrafanaArgs{})
@@ -7634,6 +9021,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NlbServiceHealthcheckArrayInput)(nil)).Elem(), NlbServiceHealthcheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SksClusterOidcInput)(nil)).Elem(), SksClusterOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SksClusterOidcPtrInput)(nil)).Elem(), SksClusterOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SksNodepoolKubeletImageGcInput)(nil)).Elem(), SksNodepoolKubeletImageGcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SksNodepoolKubeletImageGcArrayInput)(nil)).Elem(), SksNodepoolKubeletImageGcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBlockStorageVolumeInstanceInput)(nil)).Elem(), GetBlockStorageVolumeInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBlockStorageVolumeSnapshotTypeInput)(nil)).Elem(), GetBlockStorageVolumeSnapshotTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBlockStorageVolumeSnapshotTypeArrayInput)(nil)).Elem(), GetBlockStorageVolumeSnapshotTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBlockStorageVolumeSnapshotTimeoutsInput)(nil)).Elem(), GetBlockStorageVolumeSnapshotTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBlockStorageVolumeSnapshotTimeoutsPtrInput)(nil)).Elem(), GetBlockStorageVolumeSnapshotTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBlockStorageVolumeSnapshotVolumeInput)(nil)).Elem(), GetBlockStorageVolumeSnapshotVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBlockStorageVolumeTimeoutsInput)(nil)).Elem(), GetBlockStorageVolumeTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBlockStorageVolumeTimeoutsPtrInput)(nil)).Elem(), GetBlockStorageVolumeTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceListInstanceInput)(nil)).Elem(), GetComputeInstanceListInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceListInstanceArrayInput)(nil)).Elem(), GetComputeInstanceListInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseUriTimeoutsInput)(nil)).Elem(), GetDatabaseUriTimeoutsArgs{})
@@ -7674,8 +9071,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSksClusterListClusterOidcInput)(nil)).Elem(), GetSksClusterListClusterOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSksClusterOidcInput)(nil)).Elem(), GetSksClusterOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSksClusterOidcPtrInput)(nil)).Elem(), GetSksClusterOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSksNodepoolKubeletImageGcInput)(nil)).Elem(), GetSksNodepoolKubeletImageGcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSksNodepoolKubeletImageGcArrayInput)(nil)).Elem(), GetSksNodepoolKubeletImageGcArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSksNodepoolListNodepoolInput)(nil)).Elem(), GetSksNodepoolListNodepoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSksNodepoolListNodepoolArrayInput)(nil)).Elem(), GetSksNodepoolListNodepoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSksNodepoolListNodepoolKubeletImageGcInput)(nil)).Elem(), GetSksNodepoolListNodepoolKubeletImageGcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSksNodepoolListNodepoolKubeletImageGcArrayInput)(nil)).Elem(), GetSksNodepoolListNodepoolKubeletImageGcArray{})
+	pulumi.RegisterOutputType(BlockStorageVolumeSnapshotTargetOutput{})
+	pulumi.RegisterOutputType(BlockStorageVolumeSnapshotTargetPtrOutput{})
+	pulumi.RegisterOutputType(BlockStorageVolumeSnapshotTimeoutsOutput{})
+	pulumi.RegisterOutputType(BlockStorageVolumeSnapshotTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(BlockStorageVolumeSnapshotVolumeOutput{})
+	pulumi.RegisterOutputType(BlockStorageVolumeSnapshotVolumePtrOutput{})
+	pulumi.RegisterOutputType(BlockStorageVolumeTimeoutsOutput{})
+	pulumi.RegisterOutputType(BlockStorageVolumeTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseGrafanaOutput{})
@@ -7722,6 +9131,16 @@ func init() {
 	pulumi.RegisterOutputType(NlbServiceHealthcheckArrayOutput{})
 	pulumi.RegisterOutputType(SksClusterOidcOutput{})
 	pulumi.RegisterOutputType(SksClusterOidcPtrOutput{})
+	pulumi.RegisterOutputType(SksNodepoolKubeletImageGcOutput{})
+	pulumi.RegisterOutputType(SksNodepoolKubeletImageGcArrayOutput{})
+	pulumi.RegisterOutputType(GetBlockStorageVolumeInstanceOutput{})
+	pulumi.RegisterOutputType(GetBlockStorageVolumeSnapshotTypeOutput{})
+	pulumi.RegisterOutputType(GetBlockStorageVolumeSnapshotTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetBlockStorageVolumeSnapshotTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetBlockStorageVolumeSnapshotTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetBlockStorageVolumeSnapshotVolumeOutput{})
+	pulumi.RegisterOutputType(GetBlockStorageVolumeTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetBlockStorageVolumeTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetComputeInstanceListInstanceOutput{})
 	pulumi.RegisterOutputType(GetComputeInstanceListInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseUriTimeoutsOutput{})
@@ -7762,6 +9181,10 @@ func init() {
 	pulumi.RegisterOutputType(GetSksClusterListClusterOidcOutput{})
 	pulumi.RegisterOutputType(GetSksClusterOidcOutput{})
 	pulumi.RegisterOutputType(GetSksClusterOidcPtrOutput{})
+	pulumi.RegisterOutputType(GetSksNodepoolKubeletImageGcOutput{})
+	pulumi.RegisterOutputType(GetSksNodepoolKubeletImageGcArrayOutput{})
 	pulumi.RegisterOutputType(GetSksNodepoolListNodepoolOutput{})
 	pulumi.RegisterOutputType(GetSksNodepoolListNodepoolArrayOutput{})
+	pulumi.RegisterOutputType(GetSksNodepoolListNodepoolKubeletImageGcOutput{})
+	pulumi.RegisterOutputType(GetSksNodepoolListNodepoolKubeletImageGcArrayOutput{})
 }

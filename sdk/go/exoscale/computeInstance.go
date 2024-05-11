@@ -20,7 +20,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,7 +53,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Please refer to the examples
 // directory for complete configuration examples.
@@ -75,6 +73,8 @@ type ComputeInstance struct {
 
 	// ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
 	AntiAffinityGroupIds pulumi.StringArrayOutput `pulumi:"antiAffinityGroupIds"`
+	// A list of exoscale*block*storage_volume (ID) to attach to the instance.
+	BlockStorageVolumeIds pulumi.StringArrayOutput `pulumi:"blockStorageVolumeIds"`
 	// The instance creation date.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// ❗ A deploy target ID.
@@ -162,6 +162,8 @@ func GetComputeInstance(ctx *pulumi.Context,
 type computeInstanceState struct {
 	// ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
 	AntiAffinityGroupIds []string `pulumi:"antiAffinityGroupIds"`
+	// A list of exoscale*block*storage_volume (ID) to attach to the instance.
+	BlockStorageVolumeIds []string `pulumi:"blockStorageVolumeIds"`
 	// The instance creation date.
 	CreatedAt *string `pulumi:"createdAt"`
 	// ❗ A deploy target ID.
@@ -211,6 +213,8 @@ type computeInstanceState struct {
 type ComputeInstanceState struct {
 	// ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
 	AntiAffinityGroupIds pulumi.StringArrayInput
+	// A list of exoscale*block*storage_volume (ID) to attach to the instance.
+	BlockStorageVolumeIds pulumi.StringArrayInput
 	// The instance creation date.
 	CreatedAt pulumi.StringPtrInput
 	// ❗ A deploy target ID.
@@ -264,6 +268,8 @@ func (ComputeInstanceState) ElementType() reflect.Type {
 type computeInstanceArgs struct {
 	// ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
 	AntiAffinityGroupIds []string `pulumi:"antiAffinityGroupIds"`
+	// A list of exoscale*block*storage_volume (ID) to attach to the instance.
+	BlockStorageVolumeIds []string `pulumi:"blockStorageVolumeIds"`
 	// ❗ A deploy target ID.
 	DeployTargetId *string `pulumi:"deployTargetId"`
 	// Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
@@ -304,6 +310,8 @@ type computeInstanceArgs struct {
 type ComputeInstanceArgs struct {
 	// ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
 	AntiAffinityGroupIds pulumi.StringArrayInput
+	// A list of exoscale*block*storage_volume (ID) to attach to the instance.
+	BlockStorageVolumeIds pulumi.StringArrayInput
 	// ❗ A deploy target ID.
 	DeployTargetId pulumi.StringPtrInput
 	// Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
@@ -430,6 +438,11 @@ func (o ComputeInstanceOutput) ToComputeInstanceOutputWithContext(ctx context.Co
 // ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
 func (o ComputeInstanceOutput) AntiAffinityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ComputeInstance) pulumi.StringArrayOutput { return v.AntiAffinityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// A list of exoscale*block*storage_volume (ID) to attach to the instance.
+func (o ComputeInstanceOutput) BlockStorageVolumeIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ComputeInstance) pulumi.StringArrayOutput { return v.BlockStorageVolumeIds }).(pulumi.StringArrayOutput)
 }
 
 // The instance creation date.

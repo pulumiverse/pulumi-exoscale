@@ -15,7 +15,6 @@ namespace Pulumiverse.Exoscale
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -39,7 +38,6 @@ namespace Pulumiverse.Exoscale
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Please refer to the examples
     /// directory for complete configuration examples.
@@ -112,6 +110,12 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for this nodepool's kubelet image garbage collector
+        /// </summary>
+        [Output("kubeletImageGcs")]
+        public Output<ImmutableArray<Outputs.SksNodepoolKubeletImageGc>> KubeletImageGcs { get; private set; } = null!;
 
         /// <summary>
         /// A map of key/value labels.
@@ -271,6 +275,18 @@ namespace Pulumiverse.Exoscale
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
 
+        [Input("kubeletImageGcs")]
+        private InputList<Inputs.SksNodepoolKubeletImageGcArgs>? _kubeletImageGcs;
+
+        /// <summary>
+        /// Configuration for this nodepool's kubelet image garbage collector
+        /// </summary>
+        public InputList<Inputs.SksNodepoolKubeletImageGcArgs> KubeletImageGcs
+        {
+            get => _kubeletImageGcs ?? (_kubeletImageGcs = new InputList<Inputs.SksNodepoolKubeletImageGcArgs>());
+            set => _kubeletImageGcs = value;
+        }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -407,6 +423,18 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
+
+        [Input("kubeletImageGcs")]
+        private InputList<Inputs.SksNodepoolKubeletImageGcGetArgs>? _kubeletImageGcs;
+
+        /// <summary>
+        /// Configuration for this nodepool's kubelet image garbage collector
+        /// </summary>
+        public InputList<Inputs.SksNodepoolKubeletImageGcGetArgs> KubeletImageGcs
+        {
+            get => _kubeletImageGcs ?? (_kubeletImageGcs = new InputList<Inputs.SksNodepoolKubeletImageGcGetArgs>());
+            set => _kubeletImageGcs = value;
+        }
 
         [Input("labels")]
         private InputMap<string>? _labels;

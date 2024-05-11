@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -9,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
@@ -22,7 +23,6 @@ import * as utilities from "./utilities";
  *     size: 3,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Please refer to the examples
  * directory for complete configuration examples.
@@ -104,6 +104,10 @@ export class SksNodepool extends pulumi.CustomResource {
      */
     public readonly instanceType!: pulumi.Output<string>;
     /**
+     * Configuration for this nodepool's kubelet image garbage collector
+     */
+    public readonly kubeletImageGcs!: pulumi.Output<outputs.SksNodepoolKubeletImageGc[] | undefined>;
+    /**
      * A map of key/value labels.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -167,6 +171,7 @@ export class SksNodepool extends pulumi.CustomResource {
             resourceInputs["instancePoolId"] = state ? state.instancePoolId : undefined;
             resourceInputs["instancePrefix"] = state ? state.instancePrefix : undefined;
             resourceInputs["instanceType"] = state ? state.instanceType : undefined;
+            resourceInputs["kubeletImageGcs"] = state ? state.kubeletImageGcs : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["privateNetworkIds"] = state ? state.privateNetworkIds : undefined;
@@ -199,6 +204,7 @@ export class SksNodepool extends pulumi.CustomResource {
             resourceInputs["diskSize"] = args ? args.diskSize : undefined;
             resourceInputs["instancePrefix"] = args ? args.instancePrefix : undefined;
             resourceInputs["instanceType"] = args ? args.instanceType : undefined;
+            resourceInputs["kubeletImageGcs"] = args ? args.kubeletImageGcs : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["privateNetworkIds"] = args ? args.privateNetworkIds : undefined;
@@ -258,6 +264,10 @@ export interface SksNodepoolState {
      * The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
      */
     instanceType?: pulumi.Input<string>;
+    /**
+     * Configuration for this nodepool's kubelet image garbage collector
+     */
+    kubeletImageGcs?: pulumi.Input<pulumi.Input<inputs.SksNodepoolKubeletImageGc>[]>;
     /**
      * A map of key/value labels.
      */
@@ -333,6 +343,10 @@ export interface SksNodepoolArgs {
      * The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
      */
     instanceType: pulumi.Input<string>;
+    /**
+     * Configuration for this nodepool's kubelet image garbage collector
+     */
+    kubeletImageGcs?: pulumi.Input<pulumi.Input<inputs.SksNodepoolKubeletImageGc>[]>;
     /**
      * A map of key/value labels.
      */

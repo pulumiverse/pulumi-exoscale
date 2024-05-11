@@ -78,7 +78,6 @@ def get_anti_affinity_group(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_exoscale as exoscale
@@ -86,7 +85,6 @@ def get_anti_affinity_group(id: Optional[str] = None,
     my_anti_affinity_group = exoscale.get_anti_affinity_group(name="my-anti-affinity-group")
     pulumi.export("myAntiAffinityGroupId", my_anti_affinity_group.id)
     ```
-    <!--End PulumiCodeChooser -->
 
     Please refer to the examples
     directory for complete configuration examples.
@@ -118,7 +116,6 @@ def get_anti_affinity_group_output(id: Optional[pulumi.Input[Optional[str]]] = N
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_exoscale as exoscale
@@ -126,7 +123,6 @@ def get_anti_affinity_group_output(id: Optional[pulumi.Input[Optional[str]]] = N
     my_anti_affinity_group = exoscale.get_anti_affinity_group(name="my-anti-affinity-group")
     pulumi.export("myAntiAffinityGroupId", my_anti_affinity_group.id)
     ```
-    <!--End PulumiCodeChooser -->
 
     Please refer to the examples
     directory for complete configuration examples.

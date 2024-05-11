@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getSksNodepool(args: GetSksNodepoolArgs, opts?: pulumi.InvokeOptions): Promise<GetSksNodepoolResult> {
@@ -18,6 +20,7 @@ export function getSksNodepool(args: GetSksNodepoolArgs, opts?: pulumi.InvokeOpt
         "instancePoolId": args.instancePoolId,
         "instancePrefix": args.instancePrefix,
         "instanceType": args.instanceType,
+        "kubeletImageGcs": args.kubeletImageGcs,
         "labels": args.labels,
         "name": args.name,
         "privateNetworkIds": args.privateNetworkIds,
@@ -73,6 +76,10 @@ export interface GetSksNodepoolArgs {
      * The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
      */
     instanceType?: string;
+    /**
+     * Configuration for this nodepool's kubelet image garbage collector
+     */
+    kubeletImageGcs?: inputs.GetSksNodepoolKubeletImageGc[];
     /**
      * A map of key/value labels.
      */
@@ -151,6 +158,10 @@ export interface GetSksNodepoolResult {
      * The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
      */
     readonly instanceType?: string;
+    /**
+     * Configuration for this nodepool's kubelet image garbage collector
+     */
+    readonly kubeletImageGcs?: outputs.GetSksNodepoolKubeletImageGc[];
     /**
      * A map of key/value labels.
      */
@@ -232,6 +243,10 @@ export interface GetSksNodepoolOutputArgs {
      * The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
      */
     instanceType?: pulumi.Input<string>;
+    /**
+     * Configuration for this nodepool's kubelet image garbage collector
+     */
+    kubeletImageGcs?: pulumi.Input<pulumi.Input<inputs.GetSksNodepoolKubeletImageGcArgs>[]>;
     /**
      * A map of key/value labels.
      */

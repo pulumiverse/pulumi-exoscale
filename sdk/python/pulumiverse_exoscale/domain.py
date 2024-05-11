@@ -161,14 +161,12 @@ class Domain(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
 
         my_domain = exoscale.Domain("myDomain")
         ```
-        <!--End PulumiCodeChooser -->
 
         Next step is to attach exoscale_domain_record(s) to the domain.
 
@@ -204,14 +202,12 @@ class Domain(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
 
         my_domain = exoscale.Domain("myDomain")
         ```
-        <!--End PulumiCodeChooser -->
 
         Next step is to attach exoscale_domain_record(s) to the domain.
 

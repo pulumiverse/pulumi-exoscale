@@ -267,7 +267,6 @@ class DomainRecord(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -282,7 +281,6 @@ class DomainRecord(pulumi.CustomResource):
             record_type="CNAME",
             content=my_host.hostname)
         ```
-        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -321,7 +319,6 @@ class DomainRecord(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -336,7 +333,6 @@ class DomainRecord(pulumi.CustomResource):
             record_type="CNAME",
             content=my_host.hostname)
         ```
-        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.

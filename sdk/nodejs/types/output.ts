@@ -5,6 +5,34 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface BlockStorageVolumeSnapshotTarget {
+    /**
+     * Snapshot ID.
+     */
+    id?: string;
+}
+
+export interface BlockStorageVolumeSnapshotTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+}
+
+export interface BlockStorageVolumeSnapshotVolume {
+    /**
+     * Snapshot ID.
+     */
+    id: string;
+}
+
+export interface BlockStorageVolumeTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+}
+
 export interface ComputeInstanceNetworkInterface {
     /**
      * The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
@@ -291,6 +319,41 @@ export interface ElasticIpHealthcheck {
      * The healthcheck target URI (required in `http(s)` modes).
      */
     uri?: string;
+}
+
+export interface GetBlockStorageVolumeInstance {
+    /**
+     * Instance ID.
+     */
+    id: string;
+}
+
+export interface GetBlockStorageVolumeSnapshot {
+    /**
+     * Snapshot ID.
+     */
+    id: string;
+}
+
+export interface GetBlockStorageVolumeSnapshotTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+}
+
+export interface GetBlockStorageVolumeSnapshotVolume {
+    /**
+     * Volume ID.
+     */
+    id: string;
+}
+
+export interface GetBlockStorageVolumeTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
 }
 
 export interface GetComputeInstanceListInstance {
@@ -882,6 +945,21 @@ export interface GetSksClusterOidc {
     usernamePrefix?: string;
 }
 
+export interface GetSksNodepoolKubeletImageGc {
+    /**
+     * The percent of disk usage after which image garbage collection is always run
+     */
+    highThreshold?: number;
+    /**
+     * The percent of disk usage before which image garbage collection is never run
+     */
+    lowThreshold?: number;
+    /**
+     * The minimum age for an unused image before it is garbage collected
+     */
+    minAge?: string;
+}
+
 export interface GetSksNodepoolListNodepool {
     /**
      * A list of exoscale.AntiAffinityGroup (IDs) to be attached to the managed instances.
@@ -918,6 +996,10 @@ export interface GetSksNodepoolListNodepool {
      */
     instanceType?: string;
     /**
+     * Configuration for this nodepool's kubelet image garbage collector
+     */
+    kubeletImageGcs?: outputs.GetSksNodepoolListNodepoolKubeletImageGc[];
+    /**
      * A map of key/value labels.
      */
     labels?: {[key: string]: string};
@@ -952,6 +1034,21 @@ export interface GetSksNodepoolListNodepool {
      */
     version: string;
     zone: string;
+}
+
+export interface GetSksNodepoolListNodepoolKubeletImageGc {
+    /**
+     * The percent of disk usage after which image garbage collection is always run
+     */
+    highThreshold?: number;
+    /**
+     * The percent of disk usage before which image garbage collection is never run
+     */
+    lowThreshold?: number;
+    /**
+     * The minimum age for an unused image before it is garbage collected
+     */
+    minAge?: string;
 }
 
 export interface IamApiKeyTimeouts {
@@ -1117,5 +1214,20 @@ export interface SksClusterOidc {
      * An OpenID prefix prepended to username claims.
      */
     usernamePrefix?: string;
+}
+
+export interface SksNodepoolKubeletImageGc {
+    /**
+     * The percent of disk usage after which image garbage collection is always run
+     */
+    highThreshold?: number;
+    /**
+     * The percent of disk usage before which image garbage collection is never run
+     */
+    lowThreshold?: number;
+    /**
+     * The minimum age for an unused image before it is garbage collected
+     */
+    minAge?: string;
 }
 

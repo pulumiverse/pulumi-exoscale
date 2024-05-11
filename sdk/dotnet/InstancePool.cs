@@ -17,7 +17,6 @@ namespace Pulumiverse.Exoscale
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -44,7 +43,6 @@ namespace Pulumiverse.Exoscale
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Please refer to the examples
     /// directory for complete configuration examples.
@@ -131,7 +129,7 @@ namespace Pulumiverse.Exoscale
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The instance name.
+        /// The instance pool name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -325,7 +323,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The instance name.
+        /// The instance pool name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -499,7 +497,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The instance name.
+        /// The instance pool name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

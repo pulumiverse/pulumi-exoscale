@@ -272,18 +272,15 @@ class PrivateNetwork(pulumi.CustomResource):
 
         *Unmanaged* private network:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
 
         my_private_network = exoscale.PrivateNetwork("myPrivateNetwork", zone="ch-gva-2")
         ```
-        <!--End PulumiCodeChooser -->
 
         *Managed* private network:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -294,7 +291,6 @@ class PrivateNetwork(pulumi.CustomResource):
             start_ip="10.0.0.20",
             zone="ch-gva-2")
         ```
-        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -336,18 +332,15 @@ class PrivateNetwork(pulumi.CustomResource):
 
         *Unmanaged* private network:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
 
         my_private_network = exoscale.PrivateNetwork("myPrivateNetwork", zone="ch-gva-2")
         ```
-        <!--End PulumiCodeChooser -->
 
         *Managed* private network:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -358,7 +351,6 @@ class PrivateNetwork(pulumi.CustomResource):
             start_ip="10.0.0.20",
             zone="ch-gva-2")
         ```
-        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.

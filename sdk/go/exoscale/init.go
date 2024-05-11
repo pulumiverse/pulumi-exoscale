@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "exoscale:index/antiAffinityGroup:AntiAffinityGroup":
 		r = &AntiAffinityGroup{}
+	case "exoscale:index/blockStorageVolume:BlockStorageVolume":
+		r = &BlockStorageVolume{}
+	case "exoscale:index/blockStorageVolumeSnapshot:BlockStorageVolumeSnapshot":
+		r = &BlockStorageVolumeSnapshot{}
 	case "exoscale:index/computeInstance:ComputeInstance":
 		r = &ComputeInstance{}
 	case "exoscale:index/database:Database":
@@ -95,6 +99,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"exoscale",
 		"index/antiAffinityGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"exoscale",
+		"index/blockStorageVolume",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"exoscale",
+		"index/blockStorageVolumeSnapshot",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

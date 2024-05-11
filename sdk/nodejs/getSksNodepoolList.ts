@@ -35,23 +35,77 @@ export function getSksNodepoolList(args: GetSksNodepoolListArgs, opts?: pulumi.I
  * A collection of arguments for invoking getSksNodepoolList.
  */
 export interface GetSksNodepoolListArgs {
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     clusterId?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     createdAt?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     deployTargetId?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     description?: string;
+    /**
+     * Match against this int
+     */
     diskSize?: number;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     id?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     instancePoolId?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     instancePrefix?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     instanceType?: string;
+    /**
+     * Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
+     */
     labels?: {[key: string]: string};
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     name?: string;
+    /**
+     * Match against this int
+     */
     size?: number;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     state?: string;
+    /**
+     * Match against this bool
+     */
     storageLvm?: boolean;
+    /**
+     * Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
+     */
     taints?: {[key: string]: string};
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     templateId?: string;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     version?: string;
+    /**
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     */
     zone: string;
 }
 
@@ -141,22 +195,76 @@ export function getSksNodepoolListOutput(args: GetSksNodepoolListOutputArgs, opt
  * A collection of arguments for invoking getSksNodepoolList.
  */
 export interface GetSksNodepoolListOutputArgs {
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     clusterId?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     createdAt?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     deployTargetId?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Match against this int
+     */
     diskSize?: pulumi.Input<number>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     id?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     instancePoolId?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     instancePrefix?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     instanceType?: pulumi.Input<string>;
+    /**
+     * Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
+     */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Match against this int
+     */
     size?: pulumi.Input<number>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     state?: pulumi.Input<string>;
+    /**
+     * Match against this bool
+     */
     storageLvm?: pulumi.Input<boolean>;
+    /**
+     * Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
+     */
     taints?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     templateId?: pulumi.Input<string>;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
     version?: pulumi.Input<string>;
+    /**
+     * The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+     */
     zone: pulumi.Input<string>;
 }

@@ -19,13 +19,6 @@ namespace Pulumiverse.Exoscale
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
-        /// <summary>
-        /// If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
-        /// certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
-        /// expiration of its internal current certificate. Note however that the old certificate remains valid until its true
-        /// expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
-        /// take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
-        /// </summary>
         [Output("earlyRenewalSeconds")]
         public Output<int?> EarlyRenewalSeconds { get; private set; } = null!;
 
@@ -119,13 +112,6 @@ namespace Pulumiverse.Exoscale
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
-        /// <summary>
-        /// If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
-        /// certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
-        /// expiration of its internal current certificate. Note however that the old certificate remains valid until its true
-        /// expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
-        /// take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
-        /// </summary>
         [Input("earlyRenewalSeconds")]
         public Input<int>? EarlyRenewalSeconds { get; set; }
 
@@ -173,13 +159,6 @@ namespace Pulumiverse.Exoscale
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
-        /// <summary>
-        /// If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
-        /// certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
-        /// expiration of its internal current certificate. Note however that the old certificate remains valid until its true
-        /// expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
-        /// take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
-        /// </summary>
         [Input("earlyRenewalSeconds")]
         public Input<int>? EarlyRenewalSeconds { get; set; }
 
