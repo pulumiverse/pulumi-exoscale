@@ -2,6 +2,8 @@
     "mux": {
         "resources": {
             "exoscale:index/antiAffinityGroup:AntiAffinityGroup": 0,
+            "exoscale:index/blockStorageVolume:BlockStorageVolume": 1,
+            "exoscale:index/blockStorageVolumeSnapshot:BlockStorageVolumeSnapshot": 1,
             "exoscale:index/computeInstance:ComputeInstance": 0,
             "exoscale:index/database:Database": 1,
             "exoscale:index/domain:Domain": 0,
@@ -24,6 +26,8 @@
         },
         "functions": {
             "exoscale:index/getAntiAffinityGroup:getAntiAffinityGroup": 0,
+            "exoscale:index/getBlockStorageVolume:getBlockStorageVolume": 1,
+            "exoscale:index/getBlockStorageVolumeSnapshot:getBlockStorageVolumeSnapshot": 1,
             "exoscale:index/getComputeInstance:getComputeInstance": 0,
             "exoscale:index/getComputeInstanceList:getComputeInstanceList": 0,
             "exoscale:index/getDatabaseUri:getDatabaseUri": 1,
