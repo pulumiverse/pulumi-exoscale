@@ -24,6 +24,9 @@ export function getDomainRecord(args: GetDomainRecordArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getDomainRecord.
  */
 export interface GetDomainRecordArgs {
+    /**
+     * The exoscale.Domain name to match.
+     */
     domain: string;
     /**
      * Filter to apply when looking up domain records.
@@ -65,6 +68,9 @@ export function getDomainRecordOutput(args: GetDomainRecordOutputArgs, opts?: pu
  * A collection of arguments for invoking getDomainRecord.
  */
 export interface GetDomainRecordOutputArgs {
+    /**
+     * The exoscale.Domain name to match.
+     */
     domain: pulumi.Input<string>;
     /**
      * Filter to apply when looking up domain records.

@@ -20,6 +20,7 @@ class ComputeInstanceArgs:
                  type: pulumi.Input[str],
                  zone: pulumi.Input[str],
                  anti_affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 block_storage_volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deploy_target_id: Optional[pulumi.Input[str]] = None,
                  destroy_protected: Optional[pulumi.Input[bool]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
@@ -40,6 +41,7 @@ class ComputeInstanceArgs:
         :param pulumi.Input[str] type: The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] block_storage_volume_ids: A list of exoscale*block*storage_volume (ID) to attach to the instance.
         :param pulumi.Input[str] deploy_target_id: ❗ A deploy target ID.
         :param pulumi.Input[bool] destroy_protected: Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
         :param pulumi.Input[int] disk_size: The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
@@ -60,6 +62,8 @@ class ComputeInstanceArgs:
         pulumi.set(__self__, "zone", zone)
         if anti_affinity_group_ids is not None:
             pulumi.set(__self__, "anti_affinity_group_ids", anti_affinity_group_ids)
+        if block_storage_volume_ids is not None:
+            pulumi.set(__self__, "block_storage_volume_ids", block_storage_volume_ids)
         if deploy_target_id is not None:
             pulumi.set(__self__, "deploy_target_id", deploy_target_id)
         if destroy_protected is not None:
@@ -136,6 +140,18 @@ class ComputeInstanceArgs:
     @anti_affinity_group_ids.setter
     def anti_affinity_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "anti_affinity_group_ids", value)
+
+    @property
+    @pulumi.getter(name="blockStorageVolumeIds")
+    def block_storage_volume_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of exoscale*block*storage_volume (ID) to attach to the instance.
+        """
+        return pulumi.get(self, "block_storage_volume_ids")
+
+    @block_storage_volume_ids.setter
+    def block_storage_volume_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "block_storage_volume_ids", value)
 
     @property
     @pulumi.getter(name="deployTargetId")
@@ -310,6 +326,7 @@ class ComputeInstanceArgs:
 class _ComputeInstanceState:
     def __init__(__self__, *,
                  anti_affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 block_storage_volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  deploy_target_id: Optional[pulumi.Input[str]] = None,
                  destroy_protected: Optional[pulumi.Input[bool]] = None,
@@ -334,6 +351,7 @@ class _ComputeInstanceState:
         """
         Input properties used for looking up and filtering ComputeInstance resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] block_storage_volume_ids: A list of exoscale*block*storage_volume (ID) to attach to the instance.
         :param pulumi.Input[str] created_at: The instance creation date.
         :param pulumi.Input[str] deploy_target_id: ❗ A deploy target ID.
         :param pulumi.Input[bool] destroy_protected: Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
@@ -358,6 +376,8 @@ class _ComputeInstanceState:
         """
         if anti_affinity_group_ids is not None:
             pulumi.set(__self__, "anti_affinity_group_ids", anti_affinity_group_ids)
+        if block_storage_volume_ids is not None:
+            pulumi.set(__self__, "block_storage_volume_ids", block_storage_volume_ids)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if deploy_target_id is not None:
@@ -415,6 +435,18 @@ class _ComputeInstanceState:
     @anti_affinity_group_ids.setter
     def anti_affinity_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "anti_affinity_group_ids", value)
+
+    @property
+    @pulumi.getter(name="blockStorageVolumeIds")
+    def block_storage_volume_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of exoscale*block*storage_volume (ID) to attach to the instance.
+        """
+        return pulumi.get(self, "block_storage_volume_ids")
+
+    @block_storage_volume_ids.setter
+    def block_storage_volume_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "block_storage_volume_ids", value)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -678,6 +710,7 @@ class ComputeInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  anti_affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 block_storage_volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deploy_target_id: Optional[pulumi.Input[str]] = None,
                  destroy_protected: Optional[pulumi.Input[bool]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
@@ -705,7 +738,6 @@ class ComputeInstance(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_exoscale as exoscale
@@ -719,7 +751,6 @@ class ComputeInstance(pulumi.CustomResource):
             type="standard.medium",
             disk_size=10)
         ```
-        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -739,6 +770,7 @@ class ComputeInstance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] block_storage_volume_ids: A list of exoscale*block*storage_volume (ID) to attach to the instance.
         :param pulumi.Input[str] deploy_target_id: ❗ A deploy target ID.
         :param pulumi.Input[bool] destroy_protected: Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
         :param pulumi.Input[int] disk_size: The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
@@ -772,7 +804,6 @@ class ComputeInstance(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_exoscale as exoscale
@@ -786,7 +817,6 @@ class ComputeInstance(pulumi.CustomResource):
             type="standard.medium",
             disk_size=10)
         ```
-        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -819,6 +849,7 @@ class ComputeInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  anti_affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 block_storage_volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deploy_target_id: Optional[pulumi.Input[str]] = None,
                  destroy_protected: Optional[pulumi.Input[bool]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
@@ -846,6 +877,7 @@ class ComputeInstance(pulumi.CustomResource):
             __props__ = ComputeInstanceArgs.__new__(ComputeInstanceArgs)
 
             __props__.__dict__["anti_affinity_group_ids"] = anti_affinity_group_ids
+            __props__.__dict__["block_storage_volume_ids"] = block_storage_volume_ids
             __props__.__dict__["deploy_target_id"] = deploy_target_id
             __props__.__dict__["destroy_protected"] = destroy_protected
             __props__.__dict__["disk_size"] = disk_size
@@ -884,6 +916,7 @@ class ComputeInstance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             anti_affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            block_storage_volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             deploy_target_id: Optional[pulumi.Input[str]] = None,
             destroy_protected: Optional[pulumi.Input[bool]] = None,
@@ -913,6 +946,7 @@ class ComputeInstance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] block_storage_volume_ids: A list of exoscale*block*storage_volume (ID) to attach to the instance.
         :param pulumi.Input[str] created_at: The instance creation date.
         :param pulumi.Input[str] deploy_target_id: ❗ A deploy target ID.
         :param pulumi.Input[bool] destroy_protected: Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
@@ -940,6 +974,7 @@ class ComputeInstance(pulumi.CustomResource):
         __props__ = _ComputeInstanceState.__new__(_ComputeInstanceState)
 
         __props__.__dict__["anti_affinity_group_ids"] = anti_affinity_group_ids
+        __props__.__dict__["block_storage_volume_ids"] = block_storage_volume_ids
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["deploy_target_id"] = deploy_target_id
         __props__.__dict__["destroy_protected"] = destroy_protected
@@ -970,6 +1005,14 @@ class ComputeInstance(pulumi.CustomResource):
         ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
         """
         return pulumi.get(self, "anti_affinity_group_ids")
+
+    @property
+    @pulumi.getter(name="blockStorageVolumeIds")
+    def block_storage_volume_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A list of exoscale*block*storage_volume (ID) to attach to the instance.
+        """
+        return pulumi.get(self, "block_storage_volume_ids")
 
     @property
     @pulumi.getter(name="createdAt")

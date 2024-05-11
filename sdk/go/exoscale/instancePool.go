@@ -18,7 +18,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,7 +52,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Please refer to the examples
 // directory for complete configuration examples.
@@ -94,7 +92,7 @@ type InstancePool struct {
 	KeyPair pulumi.StringPtrOutput `pulumi:"keyPair"`
 	// A map of key/value labels.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The instance name.
+	// The instance pool name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A list of exoscale*private*network (IDs).
 	NetworkIds pulumi.StringArrayOutput `pulumi:"networkIds"`
@@ -180,7 +178,7 @@ type instancePoolState struct {
 	KeyPair *string `pulumi:"keyPair"`
 	// A map of key/value labels.
 	Labels map[string]string `pulumi:"labels"`
-	// The instance name.
+	// The instance pool name.
 	Name *string `pulumi:"name"`
 	// A list of exoscale*private*network (IDs).
 	NetworkIds []string `pulumi:"networkIds"`
@@ -228,7 +226,7 @@ type InstancePoolState struct {
 	KeyPair pulumi.StringPtrInput
 	// A map of key/value labels.
 	Labels pulumi.StringMapInput
-	// The instance name.
+	// The instance pool name.
 	Name pulumi.StringPtrInput
 	// A list of exoscale*private*network (IDs).
 	NetworkIds pulumi.StringArrayInput
@@ -280,7 +278,7 @@ type instancePoolArgs struct {
 	KeyPair *string `pulumi:"keyPair"`
 	// A map of key/value labels.
 	Labels map[string]string `pulumi:"labels"`
-	// The instance name.
+	// The instance pool name.
 	Name *string `pulumi:"name"`
 	// A list of exoscale*private*network (IDs).
 	NetworkIds []string `pulumi:"networkIds"`
@@ -329,7 +327,7 @@ type InstancePoolArgs struct {
 	KeyPair pulumi.StringPtrInput
 	// A map of key/value labels.
 	Labels pulumi.StringMapInput
-	// The instance name.
+	// The instance pool name.
 	Name pulumi.StringPtrInput
 	// A list of exoscale*private*network (IDs).
 	NetworkIds pulumi.StringArrayInput
@@ -496,7 +494,7 @@ func (o InstancePoolOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InstancePool) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The instance name.
+// The instance pool name.
 func (o InstancePoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstancePool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

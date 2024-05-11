@@ -26,11 +26,6 @@ class SksKubeconfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: ❗ Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
         :param pulumi.Input[str] user: ❗ User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-        :param pulumi.Input[int] early_renewal_seconds: If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
-               certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
-               expiration of its internal current certificate. Note however that the old certificate remains valid until its true
-               expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
-               take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
         :param pulumi.Input[float] ttl_seconds: ❗ The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -93,13 +88,6 @@ class SksKubeconfigArgs:
     @property
     @pulumi.getter(name="earlyRenewalSeconds")
     def early_renewal_seconds(self) -> Optional[pulumi.Input[int]]:
-        """
-        If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
-        certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
-        expiration of its internal current certificate. Note however that the old certificate remains valid until its true
-        expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
-        take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
-        """
         return pulumi.get(self, "early_renewal_seconds")
 
     @early_renewal_seconds.setter
@@ -133,11 +121,6 @@ class _SksKubeconfigState:
         """
         Input properties used for looking up and filtering SksKubeconfig resources.
         :param pulumi.Input[str] cluster_id: ❗ The parent exoscale*sks*cluster ID.
-        :param pulumi.Input[int] early_renewal_seconds: If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
-               certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
-               expiration of its internal current certificate. Note however that the old certificate remains valid until its true
-               expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
-               take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: ❗ Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
         :param pulumi.Input[str] kubeconfig: The generated Kubeconfig (YAML content).
         :param pulumi.Input[float] ttl_seconds: ❗ The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
@@ -176,13 +159,6 @@ class _SksKubeconfigState:
     @property
     @pulumi.getter(name="earlyRenewalSeconds")
     def early_renewal_seconds(self) -> Optional[pulumi.Input[int]]:
-        """
-        If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
-        certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
-        expiration of its internal current certificate. Note however that the old certificate remains valid until its true
-        expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
-        take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
-        """
         return pulumi.get(self, "early_renewal_seconds")
 
     @early_renewal_seconds.setter
@@ -276,11 +252,6 @@ class SksKubeconfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: ❗ The parent exoscale*sks*cluster ID.
-        :param pulumi.Input[int] early_renewal_seconds: If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
-               certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
-               expiration of its internal current certificate. Note however that the old certificate remains valid until its true
-               expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
-               take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: ❗ Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
         :param pulumi.Input[float] ttl_seconds: ❗ The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
         :param pulumi.Input[str] user: ❗ User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.
@@ -368,11 +339,6 @@ class SksKubeconfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: ❗ The parent exoscale*sks*cluster ID.
-        :param pulumi.Input[int] early_renewal_seconds: If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
-               certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
-               expiration of its internal current certificate. Note however that the old certificate remains valid until its true
-               expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
-               take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: ❗ Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
         :param pulumi.Input[str] kubeconfig: The generated Kubeconfig (YAML content).
         :param pulumi.Input[float] ttl_seconds: ❗ The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
@@ -404,13 +370,6 @@ class SksKubeconfig(pulumi.CustomResource):
     @property
     @pulumi.getter(name="earlyRenewalSeconds")
     def early_renewal_seconds(self) -> pulumi.Output[Optional[int]]:
-        """
-        If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
-        certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
-        expiration of its internal current certificate. Note however that the old certificate remains valid until its true
-        expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
-        take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
-        """
         return pulumi.get(self, "early_renewal_seconds")
 
     @property

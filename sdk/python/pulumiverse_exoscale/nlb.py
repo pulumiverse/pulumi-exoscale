@@ -235,14 +235,12 @@ class Nlb(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
 
         my_nlb = exoscale.Nlb("myNlb", zone="ch-gva-2")
         ```
-        <!--End PulumiCodeChooser -->
 
         Next step is to attach exoscale_nlb_service(s) to the NLB.
 
@@ -283,14 +281,12 @@ class Nlb(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
 
         my_nlb = exoscale.Nlb("myNlb", zone="ch-gva-2")
         ```
-        <!--End PulumiCodeChooser -->
 
         Next step is to attach exoscale_nlb_service(s) to the NLB.
 

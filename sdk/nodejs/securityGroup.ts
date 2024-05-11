@@ -11,14 +11,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
  * const mySecurityGroup = new exoscale.SecurityGroup("mySecurityGroup", {});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Next step is to attach exoscale_security_group_rule(s) to the group.
  *

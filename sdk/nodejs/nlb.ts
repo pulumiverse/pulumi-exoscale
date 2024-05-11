@@ -11,14 +11,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
  * const myNlb = new exoscale.Nlb("myNlb", {zone: "ch-gva-2"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Next step is to attach exoscale_nlb_service(s) to the NLB.
  *

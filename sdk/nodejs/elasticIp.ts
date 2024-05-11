@@ -15,18 +15,15 @@ import * as utilities from "./utilities";
  *
  * *Unmanaged* EIPv4:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
  * const myElasticIp = new exoscale.ElasticIp("myElasticIp", {zone: "ch-gva-2"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * *Managed* EIPv6:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
@@ -47,7 +44,6 @@ import * as utilities from "./utilities";
  *     zone: "ch-gva-2",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Please refer to the examples
  * directory for complete configuration examples.

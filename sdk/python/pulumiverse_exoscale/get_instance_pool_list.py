@@ -75,6 +75,9 @@ def get_instance_pool_list(zone: Optional[str] = None,
     List Exoscale [Instance Pools](https://community.exoscale.com/documentation/compute/instance-pools/).
 
     Corresponding resource: exoscale_instance_pool.
+
+
+    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     __args__ = dict()
     __args__['zone'] = zone
@@ -94,5 +97,8 @@ def get_instance_pool_list_output(zone: Optional[pulumi.Input[str]] = None,
     List Exoscale [Instance Pools](https://community.exoscale.com/documentation/compute/instance-pools/).
 
     Corresponding resource: exoscale_instance_pool.
+
+
+    :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     ...

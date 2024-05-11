@@ -10,6 +10,10 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
+    'BlockStorageVolumeSnapshotTargetArgs',
+    'BlockStorageVolumeSnapshotTimeoutsArgs',
+    'BlockStorageVolumeSnapshotVolumeArgs',
+    'BlockStorageVolumeTimeoutsArgs',
     'ComputeInstanceNetworkInterfaceArgs',
     'DatabaseGrafanaArgs',
     'DatabaseKafkaArgs',
@@ -33,6 +37,9 @@ __all__ = [
     'InstancePoolInstanceArgs',
     'NlbServiceHealthcheckArgs',
     'SksClusterOidcArgs',
+    'SksNodepoolKubeletImageGcArgs',
+    'GetBlockStorageVolumeSnapshotTimeoutsArgs',
+    'GetBlockStorageVolumeTimeoutsArgs',
     'GetDatabaseUriTimeoutsArgs',
     'GetDomainRecordFilterArgs',
     'GetIamApiKeyTimeoutsArgs',
@@ -40,7 +47,99 @@ __all__ = [
     'GetIamRoleTimeoutsArgs',
     'GetNlbServiceListTimeoutsArgs',
     'GetSksClusterOidcArgs',
+    'GetSksNodepoolKubeletImageGcArgs',
 ]
+
+@pulumi.input_type
+class BlockStorageVolumeSnapshotTargetArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] id: Snapshot ID.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Snapshot ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class BlockStorageVolumeSnapshotTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read", value)
+
+
+@pulumi.input_type
+class BlockStorageVolumeSnapshotVolumeArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: Snapshot ID.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        Snapshot ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class BlockStorageVolumeTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read", value)
+
 
 @pulumi.input_type
 class ComputeInstanceNetworkInterfaceArgs:
@@ -1738,6 +1837,107 @@ class SksClusterOidcArgs:
 
 
 @pulumi.input_type
+class SksNodepoolKubeletImageGcArgs:
+    def __init__(__self__, *,
+                 high_threshold: Optional[pulumi.Input[int]] = None,
+                 low_threshold: Optional[pulumi.Input[int]] = None,
+                 min_age: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] high_threshold: The percent of disk usage after which image garbage collection is always run
+        :param pulumi.Input[int] low_threshold: The percent of disk usage before which image garbage collection is never run
+        :param pulumi.Input[str] min_age: The minimum age for an unused image before it is garbage collected
+        """
+        if high_threshold is not None:
+            pulumi.set(__self__, "high_threshold", high_threshold)
+        if low_threshold is not None:
+            pulumi.set(__self__, "low_threshold", low_threshold)
+        if min_age is not None:
+            pulumi.set(__self__, "min_age", min_age)
+
+    @property
+    @pulumi.getter(name="highThreshold")
+    def high_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        The percent of disk usage after which image garbage collection is always run
+        """
+        return pulumi.get(self, "high_threshold")
+
+    @high_threshold.setter
+    def high_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "high_threshold", value)
+
+    @property
+    @pulumi.getter(name="lowThreshold")
+    def low_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        The percent of disk usage before which image garbage collection is never run
+        """
+        return pulumi.get(self, "low_threshold")
+
+    @low_threshold.setter
+    def low_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "low_threshold", value)
+
+    @property
+    @pulumi.getter(name="minAge")
+    def min_age(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum age for an unused image before it is garbage collected
+        """
+        return pulumi.get(self, "min_age")
+
+    @min_age.setter
+    def min_age(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_age", value)
+
+
+@pulumi.input_type
+class GetBlockStorageVolumeSnapshotTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[str] = None):
+        """
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[str]):
+        pulumi.set(self, "read", value)
+
+
+@pulumi.input_type
+class GetBlockStorageVolumeTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[str] = None):
+        """
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[str]):
+        pulumi.set(self, "read", value)
+
+
+@pulumi.input_type
 class GetDatabaseUriTimeoutsArgs:
     def __init__(__self__, *,
                  read: Optional[str] = None):
@@ -2038,5 +2238,60 @@ class GetSksClusterOidcArgs:
     @username_prefix.setter
     def username_prefix(self, value: Optional[str]):
         pulumi.set(self, "username_prefix", value)
+
+
+@pulumi.input_type
+class GetSksNodepoolKubeletImageGcArgs:
+    def __init__(__self__, *,
+                 high_threshold: Optional[int] = None,
+                 low_threshold: Optional[int] = None,
+                 min_age: Optional[str] = None):
+        """
+        :param int high_threshold: The percent of disk usage after which image garbage collection is always run
+        :param int low_threshold: The percent of disk usage before which image garbage collection is never run
+        :param str min_age: The minimum age for an unused image before it is garbage collected
+        """
+        if high_threshold is not None:
+            pulumi.set(__self__, "high_threshold", high_threshold)
+        if low_threshold is not None:
+            pulumi.set(__self__, "low_threshold", low_threshold)
+        if min_age is not None:
+            pulumi.set(__self__, "min_age", min_age)
+
+    @property
+    @pulumi.getter(name="highThreshold")
+    def high_threshold(self) -> Optional[int]:
+        """
+        The percent of disk usage after which image garbage collection is always run
+        """
+        return pulumi.get(self, "high_threshold")
+
+    @high_threshold.setter
+    def high_threshold(self, value: Optional[int]):
+        pulumi.set(self, "high_threshold", value)
+
+    @property
+    @pulumi.getter(name="lowThreshold")
+    def low_threshold(self) -> Optional[int]:
+        """
+        The percent of disk usage before which image garbage collection is never run
+        """
+        return pulumi.get(self, "low_threshold")
+
+    @low_threshold.setter
+    def low_threshold(self, value: Optional[int]):
+        pulumi.set(self, "low_threshold", value)
+
+    @property
+    @pulumi.getter(name="minAge")
+    def min_age(self) -> Optional[str]:
+        """
+        The minimum age for an unused image before it is garbage collected
+        """
+        return pulumi.get(self, "min_age")
+
+    @min_age.setter
+    def min_age(self, value: Optional[str]):
+        pulumi.set(self, "min_age", value)
 
 

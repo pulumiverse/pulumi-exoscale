@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumi/exoscale";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  * });
  * export const myAntiAffinityGroupId = myAntiAffinityGroup.then(myAntiAffinityGroup => myAntiAffinityGroup.id);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Please refer to the examples
  * directory for complete configuration examples.
@@ -74,7 +72,6 @@ export interface GetAntiAffinityGroupResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumi/exoscale";
@@ -84,7 +81,6 @@ export interface GetAntiAffinityGroupResult {
  * });
  * export const myAntiAffinityGroupId = myAntiAffinityGroup.then(myAntiAffinityGroup => myAntiAffinityGroup.id);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Please refer to the examples
  * directory for complete configuration examples.

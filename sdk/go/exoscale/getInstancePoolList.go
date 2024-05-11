@@ -26,6 +26,7 @@ func GetInstancePoolList(ctx *pulumi.Context, args *GetInstancePoolListArgs, opt
 
 // A collection of arguments for invoking getInstancePoolList.
 type GetInstancePoolListArgs struct {
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone string `pulumi:"zone"`
 }
 
@@ -54,6 +55,7 @@ func GetInstancePoolListOutput(ctx *pulumi.Context, args GetInstancePoolListOutp
 
 // A collection of arguments for invoking getInstancePoolList.
 type GetInstancePoolListOutputArgs struct {
+	// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
 	Zone pulumi.StringInput `pulumi:"zone"`
 }
 

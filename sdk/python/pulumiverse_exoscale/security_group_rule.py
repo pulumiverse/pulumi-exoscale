@@ -490,7 +490,6 @@ class SecurityGroupRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -504,7 +503,6 @@ class SecurityGroupRule(pulumi.CustomResource):
             start_port=80,
             end_port=80)
         ```
-        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.
@@ -548,7 +546,6 @@ class SecurityGroupRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -562,7 +559,6 @@ class SecurityGroupRule(pulumi.CustomResource):
             start_port=80,
             end_port=80)
         ```
-        <!--End PulumiCodeChooser -->
 
         Please refer to the examples
         directory for complete configuration examples.

@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,7 +48,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Please refer to the examples
 // directory for complete configuration examples.
@@ -86,6 +84,8 @@ type SksNodepool struct {
 	InstancePrefix pulumi.StringPtrOutput `pulumi:"instancePrefix"`
 	// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
+	// Configuration for this nodepool's kubelet image garbage collector
+	KubeletImageGcs SksNodepoolKubeletImageGcArrayOutput `pulumi:"kubeletImageGcs"`
 	// A map of key/value labels.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The SKS node pool name.
@@ -169,6 +169,8 @@ type sksNodepoolState struct {
 	InstancePrefix *string `pulumi:"instancePrefix"`
 	// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
 	InstanceType *string `pulumi:"instanceType"`
+	// Configuration for this nodepool's kubelet image garbage collector
+	KubeletImageGcs []SksNodepoolKubeletImageGc `pulumi:"kubeletImageGcs"`
 	// A map of key/value labels.
 	Labels map[string]string `pulumi:"labels"`
 	// The SKS node pool name.
@@ -211,6 +213,8 @@ type SksNodepoolState struct {
 	InstancePrefix pulumi.StringPtrInput
 	// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
 	InstanceType pulumi.StringPtrInput
+	// Configuration for this nodepool's kubelet image garbage collector
+	KubeletImageGcs SksNodepoolKubeletImageGcArrayInput
 	// A map of key/value labels.
 	Labels pulumi.StringMapInput
 	// The SKS node pool name.
@@ -253,6 +257,8 @@ type sksNodepoolArgs struct {
 	InstancePrefix *string `pulumi:"instancePrefix"`
 	// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
 	InstanceType string `pulumi:"instanceType"`
+	// Configuration for this nodepool's kubelet image garbage collector
+	KubeletImageGcs []SksNodepoolKubeletImageGc `pulumi:"kubeletImageGcs"`
 	// A map of key/value labels.
 	Labels map[string]string `pulumi:"labels"`
 	// The SKS node pool name.
@@ -286,6 +292,8 @@ type SksNodepoolArgs struct {
 	InstancePrefix pulumi.StringPtrInput
 	// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
 	InstanceType pulumi.StringInput
+	// Configuration for this nodepool's kubelet image garbage collector
+	KubeletImageGcs SksNodepoolKubeletImageGcArrayInput
 	// A map of key/value labels.
 	Labels pulumi.StringMapInput
 	// The SKS node pool name.
@@ -433,6 +441,11 @@ func (o SksNodepoolOutput) InstancePrefix() pulumi.StringPtrOutput {
 // The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
 func (o SksNodepoolOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *SksNodepool) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Configuration for this nodepool's kubelet image garbage collector
+func (o SksNodepoolOutput) KubeletImageGcs() SksNodepoolKubeletImageGcArrayOutput {
+	return o.ApplyT(func(v *SksNodepool) SksNodepoolKubeletImageGcArrayOutput { return v.KubeletImageGcs }).(SksNodepoolKubeletImageGcArrayOutput)
 }
 
 // A map of key/value labels.

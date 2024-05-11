@@ -42,6 +42,8 @@ type LookupSksNodepoolArgs struct {
 	InstancePrefix *string `pulumi:"instancePrefix"`
 	// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
 	InstanceType *string `pulumi:"instanceType"`
+	// Configuration for this nodepool's kubelet image garbage collector
+	KubeletImageGcs []GetSksNodepoolKubeletImageGc `pulumi:"kubeletImageGcs"`
 	// A map of key/value labels.
 	Labels map[string]string `pulumi:"labels"`
 	Name   *string           `pulumi:"name"`
@@ -84,6 +86,8 @@ type LookupSksNodepoolResult struct {
 	InstancePrefix *string `pulumi:"instancePrefix"`
 	// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
 	InstanceType *string `pulumi:"instanceType"`
+	// Configuration for this nodepool's kubelet image garbage collector
+	KubeletImageGcs []GetSksNodepoolKubeletImageGc `pulumi:"kubeletImageGcs"`
 	// A map of key/value labels.
 	Labels map[string]string `pulumi:"labels"`
 	Name   *string           `pulumi:"name"`
@@ -139,6 +143,8 @@ type LookupSksNodepoolOutputArgs struct {
 	InstancePrefix pulumi.StringPtrInput `pulumi:"instancePrefix"`
 	// The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// Configuration for this nodepool's kubelet image garbage collector
+	KubeletImageGcs GetSksNodepoolKubeletImageGcArrayInput `pulumi:"kubeletImageGcs"`
 	// A map of key/value labels.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	Name   pulumi.StringPtrInput `pulumi:"name"`
@@ -226,6 +232,11 @@ func (o LookupSksNodepoolResultOutput) InstancePrefix() pulumi.StringPtrOutput {
 // The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
 func (o LookupSksNodepoolResultOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSksNodepoolResult) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for this nodepool's kubelet image garbage collector
+func (o LookupSksNodepoolResultOutput) KubeletImageGcs() GetSksNodepoolKubeletImageGcArrayOutput {
+	return o.ApplyT(func(v LookupSksNodepoolResult) []GetSksNodepoolKubeletImageGc { return v.KubeletImageGcs }).(GetSksNodepoolKubeletImageGcArrayOutput)
 }
 
 // A map of key/value labels.

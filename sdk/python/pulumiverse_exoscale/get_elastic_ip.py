@@ -153,7 +153,6 @@ def get_elastic_ip(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_exoscale as exoscale
@@ -162,7 +161,6 @@ def get_elastic_ip(id: Optional[str] = None,
         ip_address="1.2.3.4")
     pulumi.export("myElasticIpId", my_elastic_ip.id)
     ```
-    <!--End PulumiCodeChooser -->
 
     Please refer to the examples
     directory for complete configuration examples.
@@ -206,7 +204,6 @@ def get_elastic_ip_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_exoscale as exoscale
@@ -215,7 +212,6 @@ def get_elastic_ip_output(id: Optional[pulumi.Input[Optional[str]]] = None,
         ip_address="1.2.3.4")
     pulumi.export("myElasticIpId", my_elastic_ip.id)
     ```
-    <!--End PulumiCodeChooser -->
 
     Please refer to the examples
     directory for complete configuration examples.

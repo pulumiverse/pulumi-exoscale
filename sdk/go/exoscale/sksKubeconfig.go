@@ -16,12 +16,7 @@ type SksKubeconfig struct {
 	pulumi.CustomResourceState
 
 	// ❗ The parent exoscale*sks*cluster ID.
-	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
-	// certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
-	// expiration of its internal current certificate. Note however that the old certificate remains valid until its true
-	// expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
-	// take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
+	ClusterId           pulumi.StringOutput `pulumi:"clusterId"`
 	EarlyRenewalSeconds pulumi.IntPtrOutput `pulumi:"earlyRenewalSeconds"`
 	// ❗ Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
 	Groups pulumi.StringArrayOutput `pulumi:"groups"`
@@ -83,13 +78,8 @@ func GetSksKubeconfig(ctx *pulumi.Context,
 // Input properties used for looking up and filtering SksKubeconfig resources.
 type sksKubeconfigState struct {
 	// ❗ The parent exoscale*sks*cluster ID.
-	ClusterId *string `pulumi:"clusterId"`
-	// If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
-	// certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
-	// expiration of its internal current certificate. Note however that the old certificate remains valid until its true
-	// expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
-	// take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
-	EarlyRenewalSeconds *int `pulumi:"earlyRenewalSeconds"`
+	ClusterId           *string `pulumi:"clusterId"`
+	EarlyRenewalSeconds *int    `pulumi:"earlyRenewalSeconds"`
 	// ❗ Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
 	Groups []string `pulumi:"groups"`
 	// The generated Kubeconfig (YAML content).
@@ -105,12 +95,7 @@ type sksKubeconfigState struct {
 
 type SksKubeconfigState struct {
 	// ❗ The parent exoscale*sks*cluster ID.
-	ClusterId pulumi.StringPtrInput
-	// If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
-	// certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
-	// expiration of its internal current certificate. Note however that the old certificate remains valid until its true
-	// expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
-	// take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
+	ClusterId           pulumi.StringPtrInput
 	EarlyRenewalSeconds pulumi.IntPtrInput
 	// ❗ Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
 	Groups pulumi.StringArrayInput
@@ -131,13 +116,8 @@ func (SksKubeconfigState) ElementType() reflect.Type {
 
 type sksKubeconfigArgs struct {
 	// ❗ The parent exoscale*sks*cluster ID.
-	ClusterId string `pulumi:"clusterId"`
-	// If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
-	// certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
-	// expiration of its internal current certificate. Note however that the old certificate remains valid until its true
-	// expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
-	// take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
-	EarlyRenewalSeconds *int `pulumi:"earlyRenewalSeconds"`
+	ClusterId           string `pulumi:"clusterId"`
+	EarlyRenewalSeconds *int   `pulumi:"earlyRenewalSeconds"`
 	// ❗ Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
 	Groups []string `pulumi:"groups"`
 	// ❗ The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
@@ -151,12 +131,7 @@ type sksKubeconfigArgs struct {
 // The set of arguments for constructing a SksKubeconfig resource.
 type SksKubeconfigArgs struct {
 	// ❗ The parent exoscale*sks*cluster ID.
-	ClusterId pulumi.StringInput
-	// If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
-	// certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
-	// expiration of its internal current certificate. Note however that the old certificate remains valid until its true
-	// expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
-	// take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
+	ClusterId           pulumi.StringInput
 	EarlyRenewalSeconds pulumi.IntPtrInput
 	// ❗ Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
 	Groups pulumi.StringArrayInput
@@ -260,11 +235,6 @@ func (o SksKubeconfigOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SksKubeconfig) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA
-// certificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the
-// expiration of its internal current certificate. Note however that the old certificate remains valid until its true
-// expiration time since this resource does not (and cannot) support revocation. Also note this advance update can only
-// take place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).
 func (o SksKubeconfigOutput) EarlyRenewalSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SksKubeconfig) pulumi.IntPtrOutput { return v.EarlyRenewalSeconds }).(pulumi.IntPtrOutput)
 }

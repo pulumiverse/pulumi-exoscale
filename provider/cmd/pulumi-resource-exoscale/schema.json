@@ -95,6 +95,45 @@
         }
     },
     "types": {
+        "exoscale:index/BlockStorageVolumeSnapshotTarget:BlockStorageVolumeSnapshotTarget": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Snapshot ID.\n"
+                }
+            },
+            "type": "object"
+        },
+        "exoscale:index/BlockStorageVolumeSnapshotTimeouts:BlockStorageVolumeSnapshotTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                }
+            },
+            "type": "object"
+        },
+        "exoscale:index/BlockStorageVolumeSnapshotVolume:BlockStorageVolumeSnapshotVolume": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Snapshot ID.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id"
+            ]
+        },
+        "exoscale:index/BlockStorageVolumeTimeouts:BlockStorageVolumeTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                }
+            },
+            "type": "object"
+        },
         "exoscale:index/ComputeInstanceNetworkInterface:ComputeInstanceNetworkInterface": {
             "properties": {
                 "ipAddress": {
@@ -770,6 +809,92 @@
                 "clientId",
                 "issuerUrl"
             ]
+        },
+        "exoscale:index/SksNodepoolKubeletImageGc:SksNodepoolKubeletImageGc": {
+            "properties": {
+                "highThreshold": {
+                    "type": "integer",
+                    "description": "The percent of disk usage after which image garbage collection is always run\n"
+                },
+                "lowThreshold": {
+                    "type": "integer",
+                    "description": "The percent of disk usage before which image garbage collection is never run\n"
+                },
+                "minAge": {
+                    "type": "string",
+                    "description": "The minimum age for an unused image before it is garbage collected\n"
+                }
+            },
+            "type": "object"
+        },
+        "exoscale:index/getBlockStorageVolumeInstance:getBlockStorageVolumeInstance": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Instance ID.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "exoscale:index/getBlockStorageVolumeSnapshot:getBlockStorageVolumeSnapshot": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Snapshot ID.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "exoscale:index/getBlockStorageVolumeSnapshotTimeouts:getBlockStorageVolumeSnapshotTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                }
+            },
+            "type": "object"
+        },
+        "exoscale:index/getBlockStorageVolumeSnapshotVolume:getBlockStorageVolumeSnapshotVolume": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Volume ID.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "exoscale:index/getBlockStorageVolumeTimeouts:getBlockStorageVolumeTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                }
+            },
+            "type": "object"
         },
         "exoscale:index/getComputeInstanceListInstance:getComputeInstanceListInstance": {
             "properties": {
@@ -1683,6 +1808,23 @@
                 "issuerUrl"
             ]
         },
+        "exoscale:index/getSksNodepoolKubeletImageGc:getSksNodepoolKubeletImageGc": {
+            "properties": {
+                "highThreshold": {
+                    "type": "integer",
+                    "description": "The percent of disk usage after which image garbage collection is always run\n"
+                },
+                "lowThreshold": {
+                    "type": "integer",
+                    "description": "The percent of disk usage before which image garbage collection is never run\n"
+                },
+                "minAge": {
+                    "type": "string",
+                    "description": "The minimum age for an unused image before it is garbage collected\n"
+                }
+            },
+            "type": "object"
+        },
         "exoscale:index/getSksNodepoolListNodepool:getSksNodepoolListNodepool": {
             "properties": {
                 "antiAffinityGroupIds": {
@@ -1725,6 +1867,13 @@
                 "instanceType": {
                     "type": "string",
                     "description": "The managed compute instances type (`\u003cfamily\u003e.\u003csize\u003e`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).\n"
+                },
+                "kubeletImageGcs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/exoscale:index/getSksNodepoolListNodepoolKubeletImageGc:getSksNodepoolListNodepoolKubeletImageGc"
+                    },
+                    "description": "Configuration for this nodepool's kubelet image garbage collector\n"
                 },
                 "labels": {
                     "type": "object",
@@ -1795,6 +1944,23 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "exoscale:index/getSksNodepoolListNodepoolKubeletImageGc:getSksNodepoolListNodepoolKubeletImageGc": {
+            "properties": {
+                "highThreshold": {
+                    "type": "integer",
+                    "description": "The percent of disk usage after which image garbage collection is always run\n"
+                },
+                "lowThreshold": {
+                    "type": "integer",
+                    "description": "The percent of disk usage before which image garbage collection is never run\n"
+                },
+                "minAge": {
+                    "type": "string",
+                    "description": "The minimum age for an unused image before it is garbage collected\n"
+                }
+            },
+            "type": "object"
         }
     },
     "provider": {
@@ -1901,6 +2067,246 @@
                 "type": "object"
             }
         },
+        "exoscale:index/blockStorageVolume:BlockStorageVolume": {
+            "description": "Manage [Exoscale Block Storage](https://community.exoscale.com/documentation/block-storage/) Volume.\n\nBlock Storage offers persistent externally attached volumes for your workloads.\n",
+            "properties": {
+                "blocksize": {
+                    "type": "integer",
+                    "description": "Volume block size.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Volume creation date.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "❗ Resource labels.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "❗ Volume name.\n"
+                },
+                "size": {
+                    "type": "integer",
+                    "description": "Volume size in GB (default 10). If volume is attached, instance must be stopped to update this value. Volume can only grow, cannot be shrunk.\n"
+                },
+                "snapshotTarget": {
+                    "$ref": "#/types/exoscale:index/BlockStorageVolumeSnapshotTarget:BlockStorageVolumeSnapshotTarget",
+                    "description": "Block storage snapshot to use when creating a volume. Read-only after creation.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Volume state.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/exoscale:index/BlockStorageVolumeTimeouts:BlockStorageVolumeTimeouts"
+                },
+                "zone": {
+                    "type": "string",
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                }
+            },
+            "required": [
+                "blocksize",
+                "createdAt",
+                "name",
+                "state",
+                "zone"
+            ],
+            "inputProperties": {
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "❗ Resource labels.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "❗ Volume name.\n"
+                },
+                "size": {
+                    "type": "integer",
+                    "description": "Volume size in GB (default 10). If volume is attached, instance must be stopped to update this value. Volume can only grow, cannot be shrunk.\n"
+                },
+                "snapshotTarget": {
+                    "$ref": "#/types/exoscale:index/BlockStorageVolumeSnapshotTarget:BlockStorageVolumeSnapshotTarget",
+                    "description": "Block storage snapshot to use when creating a volume. Read-only after creation.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/exoscale:index/BlockStorageVolumeTimeouts:BlockStorageVolumeTimeouts"
+                },
+                "zone": {
+                    "type": "string",
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                }
+            },
+            "requiredInputs": [
+                "zone"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering BlockStorageVolume resources.\n",
+                "properties": {
+                    "blocksize": {
+                        "type": "integer",
+                        "description": "Volume block size.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Volume creation date.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "❗ Resource labels.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "❗ Volume name.\n"
+                    },
+                    "size": {
+                        "type": "integer",
+                        "description": "Volume size in GB (default 10). If volume is attached, instance must be stopped to update this value. Volume can only grow, cannot be shrunk.\n"
+                    },
+                    "snapshotTarget": {
+                        "$ref": "#/types/exoscale:index/BlockStorageVolumeSnapshotTarget:BlockStorageVolumeSnapshotTarget",
+                        "description": "Block storage snapshot to use when creating a volume. Read-only after creation.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Volume state.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/exoscale:index/BlockStorageVolumeTimeouts:BlockStorageVolumeTimeouts"
+                    },
+                    "zone": {
+                        "type": "string",
+                        "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "exoscale:index/blockStorageVolumeSnapshot:BlockStorageVolumeSnapshot": {
+            "description": "Manage [Exoscale Block Storage](https://community.exoscale.com/documentation/block-storage/) Volume Snapshot.\n\nBlock Storage offers persistent externally attached volumes for your workloads.\n",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "Snapshot creation date.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "❗ Resource labels. Not updateble after creation.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "❗ Volume snapshot name.\n"
+                },
+                "size": {
+                    "type": "integer",
+                    "description": "Snapshot size in GB.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Snapshot state.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/exoscale:index/BlockStorageVolumeSnapshotTimeouts:BlockStorageVolumeSnapshotTimeouts"
+                },
+                "volume": {
+                    "$ref": "#/types/exoscale:index/BlockStorageVolumeSnapshotVolume:BlockStorageVolumeSnapshotVolume",
+                    "description": "Volume from which to create a snapshot.\n"
+                },
+                "zone": {
+                    "type": "string",
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                }
+            },
+            "required": [
+                "createdAt",
+                "name",
+                "size",
+                "state",
+                "volume",
+                "zone"
+            ],
+            "inputProperties": {
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "❗ Resource labels. Not updateble after creation.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "❗ Volume snapshot name.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/exoscale:index/BlockStorageVolumeSnapshotTimeouts:BlockStorageVolumeSnapshotTimeouts"
+                },
+                "volume": {
+                    "$ref": "#/types/exoscale:index/BlockStorageVolumeSnapshotVolume:BlockStorageVolumeSnapshotVolume",
+                    "description": "Volume from which to create a snapshot.\n"
+                },
+                "zone": {
+                    "type": "string",
+                    "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                }
+            },
+            "requiredInputs": [
+                "volume",
+                "zone"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering BlockStorageVolumeSnapshot resources.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Snapshot creation date.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "❗ Resource labels. Not updateble after creation.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "❗ Volume snapshot name.\n"
+                    },
+                    "size": {
+                        "type": "integer",
+                        "description": "Snapshot size in GB.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Snapshot state.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/exoscale:index/BlockStorageVolumeSnapshotTimeouts:BlockStorageVolumeSnapshotTimeouts"
+                    },
+                    "volume": {
+                        "$ref": "#/types/exoscale:index/BlockStorageVolumeSnapshotVolume:BlockStorageVolumeSnapshotVolume",
+                        "description": "Volume from which to create a snapshot.\n"
+                    },
+                    "zone": {
+                        "type": "string",
+                        "description": "❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "exoscale:index/computeInstance:ComputeInstance": {
             "description": "Manage Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/).\n\nCorresponding data sources: exoscale_compute_instance, exoscale_compute_instance_list.\n\nAfter the creation, you can retrieve the password of an instance with [Exoscale CLI](https://github.com/exoscale/cli): `exo compute instance reveal-password NAME`.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as exoscale from \"@pulumi/exoscale\";\nimport * as exoscale from \"@pulumiverse/exoscale\";\n\nconst myTemplate = exoscale.getTemplate({\n    zone: \"ch-gva-2\",\n    name: \"Linux Ubuntu 22.04 LTS 64-bit\",\n});\nconst myInstance = new exoscale.ComputeInstance(\"myInstance\", {\n    zone: \"ch-gva-2\",\n    templateId: myTemplate.then(myTemplate =\u003e myTemplate.id),\n    type: \"standard.medium\",\n    diskSize: 10,\n});\n```\n```python\nimport pulumi\nimport pulumi_exoscale as exoscale\nimport pulumiverse_exoscale as exoscale\n\nmy_template = exoscale.get_template(zone=\"ch-gva-2\",\n    name=\"Linux Ubuntu 22.04 LTS 64-bit\")\nmy_instance = exoscale.ComputeInstance(\"myInstance\",\n    zone=\"ch-gva-2\",\n    template_id=my_template.id,\n    type=\"standard.medium\",\n    disk_size=10)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Exoscale = Pulumi.Exoscale;\nusing Exoscale = Pulumiverse.Exoscale;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myTemplate = Exoscale.GetTemplate.Invoke(new()\n    {\n        Zone = \"ch-gva-2\",\n        Name = \"Linux Ubuntu 22.04 LTS 64-bit\",\n    });\n\n    var myInstance = new Exoscale.ComputeInstance(\"myInstance\", new()\n    {\n        Zone = \"ch-gva-2\",\n        TemplateId = myTemplate.Apply(getTemplateResult =\u003e getTemplateResult.Id),\n        Type = \"standard.medium\",\n        DiskSize = 10,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyTemplate, err := exoscale.GetTemplate(ctx, \u0026exoscale.GetTemplateArgs{\n\t\t\tZone: \"ch-gva-2\",\n\t\t\tName: pulumi.StringRef(\"Linux Ubuntu 22.04 LTS 64-bit\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = exoscale.NewComputeInstance(ctx, \"myInstance\", \u0026exoscale.ComputeInstanceArgs{\n\t\t\tZone:       pulumi.String(\"ch-gva-2\"),\n\t\t\tTemplateId: pulumi.String(myTemplate.Id),\n\t\t\tType:       pulumi.String(\"standard.medium\"),\n\t\t\tDiskSize:   pulumi.Int(10),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.exoscale.ExoscaleFunctions;\nimport com.pulumi.exoscale.inputs.GetTemplateArgs;\nimport com.pulumi.exoscale.ComputeInstance;\nimport com.pulumi.exoscale.ComputeInstanceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myTemplate = ExoscaleFunctions.getTemplate(GetTemplateArgs.builder()\n            .zone(\"ch-gva-2\")\n            .name(\"Linux Ubuntu 22.04 LTS 64-bit\")\n            .build());\n\n        var myInstance = new ComputeInstance(\"myInstance\", ComputeInstanceArgs.builder()        \n            .zone(\"ch-gva-2\")\n            .templateId(myTemplate.applyValue(getTemplateResult -\u003e getTemplateResult.id()))\n            .type(\"standard.medium\")\n            .diskSize(10)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myInstance:\n    type: exoscale:ComputeInstance\n    properties:\n      zone: ch-gva-2\n      templateId: ${myTemplate.id}\n      type: standard.medium\n      diskSize: 10\nvariables:\n  myTemplate:\n    fn::invoke:\n      Function: exoscale:getTemplate\n      Arguments:\n        zone: ch-gva-2\n        name: Linux Ubuntu 22.04 LTS 64-bit\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nPlease refer to the examples\ndirectory for complete configuration examples.\n\n## Import\n\nAn existing compute instance may be imported by `\u003cID\u003e@\u003czone\u003e`:\n\n```sh\n$ pulumi import exoscale:index/computeInstance:ComputeInstance \\\n```\n\n  exoscale_compute_instance.my_instance \\\n\n  f81d4fae-7dec-11d0-a765-00a0c91e6bf6@ch-gva-2\n\n",
             "properties": {
@@ -1910,6 +2316,13 @@
                         "type": "string"
                     },
                     "description": "❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).\n"
+                },
+                "blockStorageVolumeIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of exoscale*block*storage_volume (ID) to attach to the instance.\n"
                 },
                 "createdAt": {
                     "type": "string",
@@ -2033,6 +2446,13 @@
                     "description": "❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).\n",
                     "willReplaceOnChanges": true
                 },
+                "blockStorageVolumeIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of exoscale*block*storage_volume (ID) to attach to the instance.\n"
+                },
                 "deployTargetId": {
                     "type": "string",
                     "description": "❗ A deploy target ID.\n",
@@ -2132,6 +2552,13 @@
                         },
                         "description": "❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).\n",
                         "willReplaceOnChanges": true
+                    },
+                    "blockStorageVolumeIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of exoscale*block*storage_volume (ID) to attach to the instance.\n"
                     },
                     "createdAt": {
                         "type": "string",
@@ -3275,7 +3702,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The instance name.\n"
+                    "description": "The instance pool name.\n"
                 },
                 "networkIds": {
                     "type": "array",
@@ -3395,7 +3822,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The instance name.\n"
+                    "description": "The instance pool name.\n"
                 },
                 "networkIds": {
                     "type": "array",
@@ -3511,7 +3938,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The instance name.\n"
+                        "description": "The instance pool name.\n"
                     },
                     "networkIds": {
                         "type": "array",
@@ -3713,7 +4140,7 @@
                 },
                 "port": {
                     "type": "integer",
-                    "description": "The NLB service (TCP/UDP) port.\n"
+                    "description": "The healthcheck port.\n"
                 },
                 "protocol": {
                     "type": "string",
@@ -3773,7 +4200,7 @@
                 },
                 "port": {
                     "type": "integer",
-                    "description": "The NLB service (TCP/UDP) port.\n"
+                    "description": "The healthcheck port.\n"
                 },
                 "protocol": {
                     "type": "string",
@@ -3831,7 +4258,7 @@
                     },
                     "port": {
                         "type": "integer",
-                        "description": "The NLB service (TCP/UDP) port.\n"
+                        "description": "The healthcheck port.\n"
                     },
                     "protocol": {
                         "type": "string",
@@ -4523,8 +4950,7 @@
                     "description": "❗ The parent exoscale*sks*cluster ID.\n"
                 },
                 "earlyRenewalSeconds": {
-                    "type": "integer",
-                    "description": "If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA\ncertificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the\nexpiration of its internal current certificate. Note however that the old certificate remains valid until its true\nexpiration time since this resource does not (and cannot) support revocation. Also note this advance update can only\ntake place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).\n"
+                    "type": "integer"
                 },
                 "groups": {
                     "type": "array",
@@ -4569,8 +4995,7 @@
                     "willReplaceOnChanges": true
                 },
                 "earlyRenewalSeconds": {
-                    "type": "integer",
-                    "description": "If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA\ncertificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the\nexpiration of its internal current certificate. Note however that the old certificate remains valid until its true\nexpiration time since this resource does not (and cannot) support revocation. Also note this advance update can only\ntake place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).\n"
+                    "type": "integer"
                 },
                 "groups": {
                     "type": "array",
@@ -4611,8 +5036,7 @@
                         "willReplaceOnChanges": true
                     },
                     "earlyRenewalSeconds": {
-                        "type": "integer",
-                        "description": "If set, the resource will consider the Kubeconfig to have expired the given number of seconds before its actual CA\ncertificate or client certificate expiry time. This can be useful to deploy an updated Kubeconfig in advance of the\nexpiration of its internal current certificate. Note however that the old certificate remains valid until its true\nexpiration time since this resource does not (and cannot) support revocation. Also note this advance update can only\ntake place if the Terraform configuration is applied during the early renewal period (seconds; default: 0).\n"
+                        "type": "integer"
                     },
                     "groups": {
                         "type": "array",
@@ -4690,6 +5114,13 @@
                 "instanceType": {
                     "type": "string",
                     "description": "The managed compute instances type (`\u003cfamily\u003e.\u003csize\u003e`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).\n"
+                },
+                "kubeletImageGcs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/exoscale:index/SksNodepoolKubeletImageGc:SksNodepoolKubeletImageGc"
+                    },
+                    "description": "Configuration for this nodepool's kubelet image garbage collector\n"
                 },
                 "labels": {
                     "type": "object",
@@ -4792,6 +5223,13 @@
                     "type": "string",
                     "description": "The managed compute instances type (`\u003cfamily\u003e.\u003csize\u003e`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).\n"
                 },
+                "kubeletImageGcs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/exoscale:index/SksNodepoolKubeletImageGc:SksNodepoolKubeletImageGc"
+                    },
+                    "description": "Configuration for this nodepool's kubelet image garbage collector\n"
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -4885,6 +5323,13 @@
                     "instanceType": {
                         "type": "string",
                         "description": "The managed compute instances type (`\u003cfamily\u003e.\u003csize\u003e`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).\n"
+                    },
+                    "kubeletImageGcs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/exoscale:index/SksNodepoolKubeletImageGc:SksNodepoolKubeletImageGc"
+                        },
+                        "description": "Configuration for this nodepool's kubelet image garbage collector\n"
                     },
                     "labels": {
                         "type": "object",
@@ -5043,6 +5488,175 @@
                 "type": "object",
                 "required": [
                     "instances"
+                ]
+            }
+        },
+        "exoscale:index/getBlockStorageVolume:getBlockStorageVolume": {
+            "description": "Fetch [Exoscale Block Storage](https://community.exoscale.com/documentation/block-storage/) Volume.\n\nBlock Storage offers persistent externally attached volumes for your workloads.\n\nCorresponding resource: exoscale_block_storage_volume.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getBlockStorageVolume.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Volume ID to match.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/exoscale:index/getBlockStorageVolumeTimeouts:getBlockStorageVolumeTimeouts"
+                    },
+                    "zone": {
+                        "type": "string",
+                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "zone"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getBlockStorageVolume.\n",
+                "properties": {
+                    "blocksize": {
+                        "type": "integer",
+                        "description": "Volume block size.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Volume creation date.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Volume ID to match.\n"
+                    },
+                    "instance": {
+                        "$ref": "#/types/exoscale:index/getBlockStorageVolumeInstance:getBlockStorageVolumeInstance",
+                        "description": "Volume attached instance.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Resource labels.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Volume name.\n"
+                    },
+                    "size": {
+                        "type": "integer",
+                        "description": "Volume size in GB.\n"
+                    },
+                    "snapshots": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/exoscale:index/getBlockStorageVolumeSnapshot:getBlockStorageVolumeSnapshot"
+                        },
+                        "description": "Volume snapshots.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Volume state.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/exoscale:index/getBlockStorageVolumeTimeouts:getBlockStorageVolumeTimeouts"
+                    },
+                    "zone": {
+                        "type": "string",
+                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "blocksize",
+                    "createdAt",
+                    "id",
+                    "instance",
+                    "labels",
+                    "name",
+                    "size",
+                    "snapshots",
+                    "state",
+                    "zone"
+                ]
+            }
+        },
+        "exoscale:index/getBlockStorageVolumeSnapshot:getBlockStorageVolumeSnapshot": {
+            "description": "Fetch [Exoscale Block Storage](https://community.exoscale.com/documentation/block-storage/) Snapshot.\n\nBlock Storage offers persistent externally attached volumes for your workloads.\n\nCorresponding resource: exoscale_block_storage_snapshot.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getBlockStorageVolumeSnapshot.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Snapshot ID to match.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/exoscale:index/getBlockStorageVolumeSnapshotTimeouts:getBlockStorageVolumeSnapshotTimeouts"
+                    },
+                    "zone": {
+                        "type": "string",
+                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "zone"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getBlockStorageVolumeSnapshot.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Snapshot creation date.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Snapshot ID to match.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Labels.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Snapshot name.\n"
+                    },
+                    "size": {
+                        "type": "integer",
+                        "description": "Snapshot size in GB.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Snapshot state.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/exoscale:index/getBlockStorageVolumeSnapshotTimeouts:getBlockStorageVolumeSnapshotTimeouts"
+                    },
+                    "volume": {
+                        "$ref": "#/types/exoscale:index/getBlockStorageVolumeSnapshotVolume:getBlockStorageVolumeSnapshotVolume",
+                        "description": "Block Storage Volume.\n"
+                    },
+                    "zone": {
+                        "type": "string",
+                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "createdAt",
+                    "id",
+                    "labels",
+                    "name",
+                    "size",
+                    "state",
+                    "volume",
+                    "zone"
                 ]
             }
         },
@@ -5207,61 +5821,79 @@
                 "description": "A collection of arguments for invoking getComputeInstanceList.\n",
                 "properties": {
                     "createdAt": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "deployTargetId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "diskSize": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "Match against this int\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "ipv6": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Match against this bool\n"
                     },
                     "ipv6Address": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "labels": {
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
-                        }
+                        },
+                        "description": "Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with \"/\"\n"
                     },
                     "managerId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "managerType": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "publicIpAddress": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "reverseDns": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "sshKey": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "state": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "templateId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "type": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "userData": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "zone": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                     }
                 },
                 "type": "object",
@@ -5468,7 +6100,8 @@
                 "description": "A collection of arguments for invoking getDomainRecord.\n",
                 "properties": {
                     "domain": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The exoscale.Domain name to match.\n"
                     },
                     "filter": {
                         "$ref": "#/types/exoscale:index/getDomainRecordFilter:getDomainRecordFilter",
@@ -5769,7 +6402,8 @@
                 "description": "A collection of arguments for invoking getInstancePool.\n",
                 "properties": {
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The instance pool ID to match (conflicts with `name`).\n"
                     },
                     "labels": {
                         "type": "object",
@@ -5779,7 +6413,8 @@
                         "description": "A map of key/value labels.\n"
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The pool name to match (conflicts with `id`).\n"
                     },
                     "zone": {
                         "type": "string",
@@ -5921,7 +6556,8 @@
                 "description": "A collection of arguments for invoking getInstancePoolList.\n",
                 "properties": {
                     "zone": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                     }
                 },
                 "type": "object",
@@ -6425,61 +7061,79 @@
                 "description": "A collection of arguments for invoking getSksClusterList.\n",
                 "properties": {
                     "aggregationCa": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "autoUpgrade": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Match against this bool\n"
                     },
                     "cni": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "controlPlaneCa": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "createdAt": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "description": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "endpoint": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "exoscaleCcm": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Match against this bool\n"
                     },
                     "exoscaleCsi": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Match against this bool\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "kubeletCa": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "labels": {
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
-                        }
+                        },
+                        "description": "Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with \"/\"\n"
                     },
                     "metricsServer": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Match against this bool\n"
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "serviceLevel": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "state": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "version": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "zone": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                     }
                 },
                 "type": "object",
@@ -6625,6 +7279,13 @@
                         "type": "string",
                         "description": "The managed compute instances type (`\u003cfamily\u003e.\u003csize\u003e`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).\n"
                     },
+                    "kubeletImageGcs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/exoscale:index/getSksNodepoolKubeletImageGc:getSksNodepoolKubeletImageGc"
+                        },
+                        "description": "Configuration for this nodepool's kubelet image garbage collector\n"
+                    },
                     "labels": {
                         "type": "object",
                         "additionalProperties": {
@@ -6730,6 +7391,13 @@
                         "type": "string",
                         "description": "The managed compute instances type (`\u003cfamily\u003e.\u003csize\u003e`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).\n"
                     },
+                    "kubeletImageGcs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/exoscale:index/getSksNodepoolKubeletImageGc:getSksNodepoolKubeletImageGc"
+                        },
+                        "description": "Configuration for this nodepool's kubelet image garbage collector\n"
+                    },
                     "labels": {
                         "type": "object",
                         "additionalProperties": {
@@ -6801,64 +7469,82 @@
                 "description": "A collection of arguments for invoking getSksNodepoolList.\n",
                 "properties": {
                     "clusterId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "createdAt": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "deployTargetId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "description": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "diskSize": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "Match against this int\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "instancePoolId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "instancePrefix": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "instanceType": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "labels": {
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
-                        }
+                        },
+                        "description": "Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with \"/\"\n"
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "size": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "Match against this int\n"
                     },
                     "state": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "storageLvm": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Match against this bool\n"
                     },
                     "taints": {
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
-                        }
+                        },
+                        "description": "Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with \"/\"\n"
                     },
                     "templateId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "version": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Match against this string. If you supply a string that begins and ends with a \"/\" it will be matched as a regex.\n"
                     },
                     "zone": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.\n"
                     }
                 },
                 "type": "object",

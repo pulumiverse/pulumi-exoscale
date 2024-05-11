@@ -584,7 +584,6 @@ class SksCluster(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -592,7 +591,6 @@ class SksCluster(pulumi.CustomResource):
         my_sks_cluster = exoscale.SksCluster("mySksCluster", zone="ch-gva-2")
         pulumi.export("mySksClusterEndpoint", my_sks_cluster.endpoint)
         ```
-        <!--End PulumiCodeChooser -->
 
         Next step is to attach exoscale_sks_nodepool(s) to the cluster.
 
@@ -637,7 +635,6 @@ class SksCluster(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
@@ -645,7 +642,6 @@ class SksCluster(pulumi.CustomResource):
         my_sks_cluster = exoscale.SksCluster("mySksCluster", zone="ch-gva-2")
         pulumi.export("mySksClusterEndpoint", my_sks_cluster.endpoint)
         ```
-        <!--End PulumiCodeChooser -->
 
         Next step is to attach exoscale_sks_nodepool(s) to the cluster.
 

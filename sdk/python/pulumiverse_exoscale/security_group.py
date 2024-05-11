@@ -139,14 +139,12 @@ class SecurityGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
 
         my_security_group = exoscale.SecurityGroup("mySecurityGroup")
         ```
-        <!--End PulumiCodeChooser -->
 
         Next step is to attach exoscale_security_group_rule(s) to the group.
 
@@ -184,14 +182,12 @@ class SecurityGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumiverse_exoscale as exoscale
 
         my_security_group = exoscale.SecurityGroup("mySecurityGroup")
         ```
-        <!--End PulumiCodeChooser -->
 
         Next step is to attach exoscale_security_group_rule(s) to the group.
 

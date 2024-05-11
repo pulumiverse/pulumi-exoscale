@@ -22,62 +22,117 @@ namespace Pulumiverse.Exoscale
 
     public sealed class GetSksClusterListArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         [Input("aggregationCa")]
         public string? AggregationCa { get; set; }
 
+        /// <summary>
+        /// Match against this bool
+        /// </summary>
         [Input("autoUpgrade")]
         public bool? AutoUpgrade { get; set; }
 
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         [Input("cni")]
         public string? Cni { get; set; }
 
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         [Input("controlPlaneCa")]
         public string? ControlPlaneCa { get; set; }
 
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         [Input("createdAt")]
         public string? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         [Input("description")]
         public string? Description { get; set; }
 
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         [Input("endpoint")]
         public string? Endpoint { get; set; }
 
+        /// <summary>
+        /// Match against this bool
+        /// </summary>
         [Input("exoscaleCcm")]
         public bool? ExoscaleCcm { get; set; }
 
+        /// <summary>
+        /// Match against this bool
+        /// </summary>
         [Input("exoscaleCsi")]
         public bool? ExoscaleCsi { get; set; }
 
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         [Input("kubeletCa")]
         public string? KubeletCa { get; set; }
 
         [Input("labels")]
         private Dictionary<string, string>? _labels;
+
+        /// <summary>
+        /// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
+        /// </summary>
         public Dictionary<string, string> Labels
         {
             get => _labels ?? (_labels = new Dictionary<string, string>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// Match against this bool
+        /// </summary>
         [Input("metricsServer")]
         public bool? MetricsServer { get; set; }
 
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         [Input("serviceLevel")]
         public string? ServiceLevel { get; set; }
 
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         [Input("state")]
         public string? State { get; set; }
 
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         [Input("version")]
         public string? Version { get; set; }
 
+        /// <summary>
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// </summary>
         [Input("zone", required: true)]
         public string Zone { get; set; } = null!;
 
@@ -89,62 +144,117 @@ namespace Pulumiverse.Exoscale
 
     public sealed class GetSksClusterListInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         [Input("aggregationCa")]
         public Input<string>? AggregationCa { get; set; }
 
+        /// <summary>
+        /// Match against this bool
+        /// </summary>
         [Input("autoUpgrade")]
         public Input<bool>? AutoUpgrade { get; set; }
 
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         [Input("cni")]
         public Input<string>? Cni { get; set; }
 
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         [Input("controlPlaneCa")]
         public Input<string>? ControlPlaneCa { get; set; }
 
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
 
+        /// <summary>
+        /// Match against this bool
+        /// </summary>
         [Input("exoscaleCcm")]
         public Input<bool>? ExoscaleCcm { get; set; }
 
+        /// <summary>
+        /// Match against this bool
+        /// </summary>
         [Input("exoscaleCsi")]
         public Input<bool>? ExoscaleCsi { get; set; }
 
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         [Input("kubeletCa")]
         public Input<string>? KubeletCa { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Match against key/values. Keys are matched exactly, while values may be matched as a regex if you supply a string that begins and ends with "/"
+        /// </summary>
         public InputMap<string> Labels
         {
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// Match against this bool
+        /// </summary>
         [Input("metricsServer")]
         public Input<bool>? MetricsServer { get; set; }
 
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         [Input("serviceLevel")]
         public Input<string>? ServiceLevel { get; set; }
 
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        /// <summary>
+        /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 
+        /// <summary>
+        /// The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
+        /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
 

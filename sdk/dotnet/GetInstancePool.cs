@@ -19,7 +19,6 @@ namespace Pulumiverse.Exoscale
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumiverse.Exoscale
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Please refer to the examples
         /// directory for complete configuration examples.
@@ -55,7 +53,6 @@ namespace Pulumiverse.Exoscale
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,7 +73,6 @@ namespace Pulumiverse.Exoscale
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Please refer to the examples
         /// directory for complete configuration examples.
@@ -88,6 +84,9 @@ namespace Pulumiverse.Exoscale
 
     public sealed class GetInstancePoolArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The instance pool ID to match (conflicts with `name`).
+        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
@@ -103,6 +102,9 @@ namespace Pulumiverse.Exoscale
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The pool name to match (conflicts with `id`).
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -120,6 +122,9 @@ namespace Pulumiverse.Exoscale
 
     public sealed class GetInstancePoolInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The instance pool ID to match (conflicts with `name`).
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
@@ -135,6 +140,9 @@ namespace Pulumiverse.Exoscale
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The pool name to match (conflicts with `id`).
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

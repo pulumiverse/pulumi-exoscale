@@ -7,7 +7,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  * });
  * const mySksAccessKey = new exoscale.IamAccessKey("mySksAccessKey", {tags: ["sks"]});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Please refer to the examples
  * directory for complete configuration examples.

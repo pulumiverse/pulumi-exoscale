@@ -285,7 +285,6 @@ def get_instance_pool(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_exoscale as exoscale
@@ -294,13 +293,14 @@ def get_instance_pool(id: Optional[str] = None,
         name="my-instance-pool")
     pulumi.export("myInstancePoolId", my_instance_pool.id)
     ```
-    <!--End PulumiCodeChooser -->
 
     Please refer to the examples
     directory for complete configuration examples.
 
 
+    :param str id: The instance pool ID to match (conflicts with `name`).
     :param Mapping[str, str] labels: A map of key/value labels.
+    :param str name: The pool name to match (conflicts with `id`).
     :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     __args__ = dict()
@@ -347,7 +347,6 @@ def get_instance_pool_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_exoscale as exoscale
@@ -356,13 +355,14 @@ def get_instance_pool_output(id: Optional[pulumi.Input[Optional[str]]] = None,
         name="my-instance-pool")
     pulumi.export("myInstancePoolId", my_instance_pool.id)
     ```
-    <!--End PulumiCodeChooser -->
 
     Please refer to the examples
     directory for complete configuration examples.
 
 
+    :param str id: The instance pool ID to match (conflicts with `name`).
     :param Mapping[str, str] labels: A map of key/value labels.
+    :param str name: The pool name to match (conflicts with `id`).
     :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
     ...
