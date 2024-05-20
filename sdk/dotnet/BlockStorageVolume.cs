@@ -31,13 +31,13 @@ namespace Pulumiverse.Exoscale
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// ❗ Resource labels.
+        /// Resource labels.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// ❗ Volume name.
+        /// Volume name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumiverse.Exoscale
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// ❗ Resource labels.
+        /// Resource labels.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -129,7 +129,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// ❗ Volume name.
+        /// Volume name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -179,7 +179,7 @@ namespace Pulumiverse.Exoscale
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// ❗ Resource labels.
+        /// Resource labels.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -188,7 +188,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// ❗ Volume name.
+        /// Volume name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

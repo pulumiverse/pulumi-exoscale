@@ -25,8 +25,8 @@ class BlockStorageVolumeArgs:
         """
         The set of arguments for constructing a BlockStorageVolume resource.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: ❗ Resource labels.
-        :param pulumi.Input[str] name: ❗ Volume name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels.
+        :param pulumi.Input[str] name: Volume name.
         :param pulumi.Input[int] size: Volume size in GB (default 10). If volume is attached, instance must be stopped to update this value. Volume can only grow, cannot be shrunk.
         :param pulumi.Input['BlockStorageVolumeSnapshotTargetArgs'] snapshot_target: Block storage snapshot to use when creating a volume. Read-only after creation.
         """
@@ -58,7 +58,7 @@ class BlockStorageVolumeArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        ❗ Resource labels.
+        Resource labels.
         """
         return pulumi.get(self, "labels")
 
@@ -70,7 +70,7 @@ class BlockStorageVolumeArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        ❗ Volume name.
+        Volume name.
         """
         return pulumi.get(self, "name")
 
@@ -128,8 +128,8 @@ class _BlockStorageVolumeState:
         Input properties used for looking up and filtering BlockStorageVolume resources.
         :param pulumi.Input[int] blocksize: Volume block size.
         :param pulumi.Input[str] created_at: Volume creation date.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: ❗ Resource labels.
-        :param pulumi.Input[str] name: ❗ Volume name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels.
+        :param pulumi.Input[str] name: Volume name.
         :param pulumi.Input[int] size: Volume size in GB (default 10). If volume is attached, instance must be stopped to update this value. Volume can only grow, cannot be shrunk.
         :param pulumi.Input['BlockStorageVolumeSnapshotTargetArgs'] snapshot_target: Block storage snapshot to use when creating a volume. Read-only after creation.
         :param pulumi.Input[str] state: Volume state.
@@ -182,7 +182,7 @@ class _BlockStorageVolumeState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        ❗ Resource labels.
+        Resource labels.
         """
         return pulumi.get(self, "labels")
 
@@ -194,7 +194,7 @@ class _BlockStorageVolumeState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        ❗ Volume name.
+        Volume name.
         """
         return pulumi.get(self, "name")
 
@@ -279,8 +279,8 @@ class BlockStorageVolume(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: ❗ Resource labels.
-        :param pulumi.Input[str] name: ❗ Volume name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels.
+        :param pulumi.Input[str] name: Volume name.
         :param pulumi.Input[int] size: Volume size in GB (default 10). If volume is attached, instance must be stopped to update this value. Volume can only grow, cannot be shrunk.
         :param pulumi.Input[pulumi.InputType['BlockStorageVolumeSnapshotTargetArgs']] snapshot_target: Block storage snapshot to use when creating a volume. Read-only after creation.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
@@ -365,8 +365,8 @@ class BlockStorageVolume(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] blocksize: Volume block size.
         :param pulumi.Input[str] created_at: Volume creation date.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: ❗ Resource labels.
-        :param pulumi.Input[str] name: ❗ Volume name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels.
+        :param pulumi.Input[str] name: Volume name.
         :param pulumi.Input[int] size: Volume size in GB (default 10). If volume is attached, instance must be stopped to update this value. Volume can only grow, cannot be shrunk.
         :param pulumi.Input[pulumi.InputType['BlockStorageVolumeSnapshotTargetArgs']] snapshot_target: Block storage snapshot to use when creating a volume. Read-only after creation.
         :param pulumi.Input[str] state: Volume state.
@@ -407,7 +407,7 @@ class BlockStorageVolume(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        ❗ Resource labels.
+        Resource labels.
         """
         return pulumi.get(self, "labels")
 
@@ -415,7 +415,7 @@ class BlockStorageVolume(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        ❗ Volume name.
+        Volume name.
         """
         return pulumi.get(self, "name")
 
