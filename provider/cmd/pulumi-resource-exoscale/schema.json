@@ -2083,11 +2083,11 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "❗ Resource labels.\n"
+                    "description": "Resource labels.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "❗ Volume name.\n"
+                    "description": "Volume name.\n"
                 },
                 "size": {
                     "type": "integer",
@@ -2122,11 +2122,11 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "❗ Resource labels.\n"
+                    "description": "Resource labels.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "❗ Volume name.\n"
+                    "description": "Volume name.\n"
                 },
                 "size": {
                     "type": "integer",
@@ -2163,11 +2163,11 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "❗ Resource labels.\n"
+                        "description": "Resource labels.\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "❗ Volume name.\n"
+                        "description": "Volume name.\n"
                     },
                     "size": {
                         "type": "integer",
@@ -2204,11 +2204,11 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "❗ Resource labels. Not updateble after creation.\n"
+                    "description": "Resource labels.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "❗ Volume snapshot name.\n"
+                    "description": "Volume snapshot name.\n"
                 },
                 "size": {
                     "type": "integer",
@@ -2244,11 +2244,11 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "❗ Resource labels. Not updateble after creation.\n"
+                    "description": "Resource labels.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "❗ Volume snapshot name.\n"
+                    "description": "Volume snapshot name.\n"
                 },
                 "timeouts": {
                     "$ref": "#/types/exoscale:index/BlockStorageVolumeSnapshotTimeouts:BlockStorageVolumeSnapshotTimeouts"
@@ -2278,11 +2278,11 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "❗ Resource labels. Not updateble after creation.\n"
+                        "description": "Resource labels.\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "❗ Volume snapshot name.\n"
+                        "description": "Volume snapshot name.\n"
                     },
                     "size": {
                         "type": "integer",
