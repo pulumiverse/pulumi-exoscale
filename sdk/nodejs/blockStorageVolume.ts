@@ -48,11 +48,11 @@ export class BlockStorageVolume extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * ❗ Resource labels.
+     * Resource labels.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * ❗ Volume name.
+     * Volume name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -128,11 +128,11 @@ export interface BlockStorageVolumeState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * ❗ Resource labels.
+     * Resource labels.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * ❗ Volume name.
+     * Volume name.
      */
     name?: pulumi.Input<string>;
     /**
@@ -159,11 +159,11 @@ export interface BlockStorageVolumeState {
  */
 export interface BlockStorageVolumeArgs {
     /**
-     * ❗ Resource labels.
+     * Resource labels.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * ❗ Volume name.
+     * Volume name.
      */
     name?: pulumi.Input<string>;
     /**

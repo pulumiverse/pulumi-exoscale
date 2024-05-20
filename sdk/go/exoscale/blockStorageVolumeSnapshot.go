@@ -20,9 +20,9 @@ type BlockStorageVolumeSnapshot struct {
 
 	// Snapshot creation date.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// ❗ Resource labels. Not updateble after creation.
+	// Resource labels.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// ❗ Volume snapshot name.
+	// Volume snapshot name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Snapshot size in GB.
 	Size pulumi.IntOutput `pulumi:"size"`
@@ -73,9 +73,9 @@ func GetBlockStorageVolumeSnapshot(ctx *pulumi.Context,
 type blockStorageVolumeSnapshotState struct {
 	// Snapshot creation date.
 	CreatedAt *string `pulumi:"createdAt"`
-	// ❗ Resource labels. Not updateble after creation.
+	// Resource labels.
 	Labels map[string]string `pulumi:"labels"`
-	// ❗ Volume snapshot name.
+	// Volume snapshot name.
 	Name *string `pulumi:"name"`
 	// Snapshot size in GB.
 	Size *int `pulumi:"size"`
@@ -91,9 +91,9 @@ type blockStorageVolumeSnapshotState struct {
 type BlockStorageVolumeSnapshotState struct {
 	// Snapshot creation date.
 	CreatedAt pulumi.StringPtrInput
-	// ❗ Resource labels. Not updateble after creation.
+	// Resource labels.
 	Labels pulumi.StringMapInput
-	// ❗ Volume snapshot name.
+	// Volume snapshot name.
 	Name pulumi.StringPtrInput
 	// Snapshot size in GB.
 	Size pulumi.IntPtrInput
@@ -111,9 +111,9 @@ func (BlockStorageVolumeSnapshotState) ElementType() reflect.Type {
 }
 
 type blockStorageVolumeSnapshotArgs struct {
-	// ❗ Resource labels. Not updateble after creation.
+	// Resource labels.
 	Labels map[string]string `pulumi:"labels"`
-	// ❗ Volume snapshot name.
+	// Volume snapshot name.
 	Name     *string                             `pulumi:"name"`
 	Timeouts *BlockStorageVolumeSnapshotTimeouts `pulumi:"timeouts"`
 	// Volume from which to create a snapshot.
@@ -124,9 +124,9 @@ type blockStorageVolumeSnapshotArgs struct {
 
 // The set of arguments for constructing a BlockStorageVolumeSnapshot resource.
 type BlockStorageVolumeSnapshotArgs struct {
-	// ❗ Resource labels. Not updateble after creation.
+	// Resource labels.
 	Labels pulumi.StringMapInput
-	// ❗ Volume snapshot name.
+	// Volume snapshot name.
 	Name     pulumi.StringPtrInput
 	Timeouts BlockStorageVolumeSnapshotTimeoutsPtrInput
 	// Volume from which to create a snapshot.
@@ -227,12 +227,12 @@ func (o BlockStorageVolumeSnapshotOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *BlockStorageVolumeSnapshot) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// ❗ Resource labels. Not updateble after creation.
+// Resource labels.
 func (o BlockStorageVolumeSnapshotOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BlockStorageVolumeSnapshot) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// ❗ Volume snapshot name.
+// Volume snapshot name.
 func (o BlockStorageVolumeSnapshotOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BlockStorageVolumeSnapshot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

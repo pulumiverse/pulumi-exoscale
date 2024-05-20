@@ -44,11 +44,11 @@ export class BlockStorageVolumeSnapshot extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * ❗ Resource labels. Not updateble after creation.
+     * Resource labels.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * ❗ Volume snapshot name.
+     * Volume snapshot name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -121,11 +121,11 @@ export interface BlockStorageVolumeSnapshotState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * ❗ Resource labels. Not updateble after creation.
+     * Resource labels.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * ❗ Volume snapshot name.
+     * Volume snapshot name.
      */
     name?: pulumi.Input<string>;
     /**
@@ -152,11 +152,11 @@ export interface BlockStorageVolumeSnapshotState {
  */
 export interface BlockStorageVolumeSnapshotArgs {
     /**
-     * ❗ Resource labels. Not updateble after creation.
+     * Resource labels.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * ❗ Volume snapshot name.
+     * Volume snapshot name.
      */
     name?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.BlockStorageVolumeSnapshotTimeouts>;

@@ -22,9 +22,9 @@ type BlockStorageVolume struct {
 	Blocksize pulumi.IntOutput `pulumi:"blocksize"`
 	// Volume creation date.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// ❗ Resource labels.
+	// Resource labels.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// ❗ Volume name.
+	// Volume name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Volume size in GB (default 10). If volume is attached, instance must be stopped to update this value. Volume can only grow, cannot be shrunk.
 	Size pulumi.IntPtrOutput `pulumi:"size"`
@@ -74,9 +74,9 @@ type blockStorageVolumeState struct {
 	Blocksize *int `pulumi:"blocksize"`
 	// Volume creation date.
 	CreatedAt *string `pulumi:"createdAt"`
-	// ❗ Resource labels.
+	// Resource labels.
 	Labels map[string]string `pulumi:"labels"`
-	// ❗ Volume name.
+	// Volume name.
 	Name *string `pulumi:"name"`
 	// Volume size in GB (default 10). If volume is attached, instance must be stopped to update this value. Volume can only grow, cannot be shrunk.
 	Size *int `pulumi:"size"`
@@ -94,9 +94,9 @@ type BlockStorageVolumeState struct {
 	Blocksize pulumi.IntPtrInput
 	// Volume creation date.
 	CreatedAt pulumi.StringPtrInput
-	// ❗ Resource labels.
+	// Resource labels.
 	Labels pulumi.StringMapInput
-	// ❗ Volume name.
+	// Volume name.
 	Name pulumi.StringPtrInput
 	// Volume size in GB (default 10). If volume is attached, instance must be stopped to update this value. Volume can only grow, cannot be shrunk.
 	Size pulumi.IntPtrInput
@@ -114,9 +114,9 @@ func (BlockStorageVolumeState) ElementType() reflect.Type {
 }
 
 type blockStorageVolumeArgs struct {
-	// ❗ Resource labels.
+	// Resource labels.
 	Labels map[string]string `pulumi:"labels"`
-	// ❗ Volume name.
+	// Volume name.
 	Name *string `pulumi:"name"`
 	// Volume size in GB (default 10). If volume is attached, instance must be stopped to update this value. Volume can only grow, cannot be shrunk.
 	Size *int `pulumi:"size"`
@@ -129,9 +129,9 @@ type blockStorageVolumeArgs struct {
 
 // The set of arguments for constructing a BlockStorageVolume resource.
 type BlockStorageVolumeArgs struct {
-	// ❗ Resource labels.
+	// Resource labels.
 	Labels pulumi.StringMapInput
-	// ❗ Volume name.
+	// Volume name.
 	Name pulumi.StringPtrInput
 	// Volume size in GB (default 10). If volume is attached, instance must be stopped to update this value. Volume can only grow, cannot be shrunk.
 	Size pulumi.IntPtrInput
@@ -239,12 +239,12 @@ func (o BlockStorageVolumeOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *BlockStorageVolume) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// ❗ Resource labels.
+// Resource labels.
 func (o BlockStorageVolumeOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BlockStorageVolume) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// ❗ Volume name.
+// Volume name.
 func (o BlockStorageVolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BlockStorageVolume) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
