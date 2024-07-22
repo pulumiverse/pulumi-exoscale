@@ -1338,10 +1338,8 @@ class IamOrgPolicyServicesRuleArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field is not suported. Specify resources using CEL expressions.""")
     def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        warnings.warn("""This field is not suported. Specify resources using CEL expressions.""", DeprecationWarning)
-        pulumi.log.warn("""resources is deprecated: This field is not suported. Specify resources using CEL expressions.""")
-
         return pulumi.get(self, "resources")
 
     @resources.setter
@@ -1496,10 +1494,8 @@ class IamRolePolicyServicesRuleArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field is not suported. Specify resources using CEL expressions.""")
     def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        warnings.warn("""This field is not suported. Specify resources using CEL expressions.""", DeprecationWarning)
-        pulumi.log.warn("""resources is deprecated: This field is not suported. Specify resources using CEL expressions.""")
-
         return pulumi.get(self, "resources")
 
     @resources.setter

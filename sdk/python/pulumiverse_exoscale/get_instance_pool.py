@@ -22,10 +22,13 @@ class GetInstancePoolResult:
     """
     A collection of values returned by getInstancePool.
     """
-    def __init__(__self__, affinity_group_ids=None, deploy_target_id=None, description=None, disk_size=None, elastic_ip_ids=None, id=None, instance_prefix=None, instance_type=None, instances=None, ipv6=None, key_pair=None, labels=None, name=None, network_ids=None, security_group_ids=None, size=None, state=None, template_id=None, user_data=None, zone=None):
+    def __init__(__self__, affinity_group_ids=None, anti_affinity_group_ids=None, deploy_target_id=None, description=None, disk_size=None, elastic_ip_ids=None, id=None, instance_prefix=None, instance_type=None, instances=None, ipv6=None, key_pair=None, labels=None, name=None, network_ids=None, security_group_ids=None, size=None, state=None, template_id=None, user_data=None, zone=None):
         if affinity_group_ids and not isinstance(affinity_group_ids, list):
             raise TypeError("Expected argument 'affinity_group_ids' to be a list")
         pulumi.set(__self__, "affinity_group_ids", affinity_group_ids)
+        if anti_affinity_group_ids and not isinstance(anti_affinity_group_ids, list):
+            raise TypeError("Expected argument 'anti_affinity_group_ids' to be a list")
+        pulumi.set(__self__, "anti_affinity_group_ids", anti_affinity_group_ids)
         if deploy_target_id and not isinstance(deploy_target_id, str):
             raise TypeError("Expected argument 'deploy_target_id' to be a str")
         pulumi.set(__self__, "deploy_target_id", deploy_target_id)
@@ -86,11 +89,20 @@ class GetInstancePoolResult:
 
     @property
     @pulumi.getter(name="affinityGroupIds")
+    @_utilities.deprecated("""Use anti_affinity_group_ids instead.""")
     def affinity_group_ids(self) -> Sequence[str]:
+        """
+        The list of attached exoscale*anti*affinity_group (IDs). Use anti*affinity*group_ids instead.
+        """
+        return pulumi.get(self, "affinity_group_ids")
+
+    @property
+    @pulumi.getter(name="antiAffinityGroupIds")
+    def anti_affinity_group_ids(self) -> Sequence[str]:
         """
         The list of attached exoscale*anti*affinity_group (IDs).
         """
-        return pulumi.get(self, "affinity_group_ids")
+        return pulumi.get(self, "anti_affinity_group_ids")
 
     @property
     @pulumi.getter(name="deployTargetId")
@@ -252,6 +264,7 @@ class AwaitableGetInstancePoolResult(GetInstancePoolResult):
             yield self
         return GetInstancePoolResult(
             affinity_group_ids=self.affinity_group_ids,
+            anti_affinity_group_ids=self.anti_affinity_group_ids,
             deploy_target_id=self.deploy_target_id,
             description=self.description,
             disk_size=self.disk_size,
@@ -313,6 +326,7 @@ def get_instance_pool(id: Optional[str] = None,
 
     return AwaitableGetInstancePoolResult(
         affinity_group_ids=pulumi.get(__ret__, 'affinity_group_ids'),
+        anti_affinity_group_ids=pulumi.get(__ret__, 'anti_affinity_group_ids'),
         deploy_target_id=pulumi.get(__ret__, 'deploy_target_id'),
         description=pulumi.get(__ret__, 'description'),
         disk_size=pulumi.get(__ret__, 'disk_size'),

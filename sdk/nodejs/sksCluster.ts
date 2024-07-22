@@ -101,7 +101,7 @@ export class SksCluster extends pulumi.CustomResource {
      */
     public readonly exoscaleCcm!: pulumi.Output<boolean | undefined>;
     /**
-     * Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+     * Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
      */
     public readonly exoscaleCsi!: pulumi.Output<boolean | undefined>;
     /**
@@ -250,7 +250,7 @@ export interface SksClusterState {
      */
     exoscaleCcm?: pulumi.Input<boolean>;
     /**
-     * Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+     * Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
      */
     exoscaleCsi?: pulumi.Input<boolean>;
     /**
@@ -320,7 +320,7 @@ export interface SksClusterArgs {
      */
     exoscaleCcm?: pulumi.Input<boolean>;
     /**
-     * Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+     * Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
      */
     exoscaleCsi?: pulumi.Input<boolean>;
     /**

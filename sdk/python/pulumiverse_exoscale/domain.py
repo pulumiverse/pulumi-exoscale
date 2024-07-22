@@ -76,13 +76,11 @@ class _DomainState:
 
     @property
     @pulumi.getter(name="autoRenew")
+    @_utilities.deprecated("""Not used, will be removed in the future""")
     def auto_renew(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether the DNS domain has automatic renewal enabled (boolean).
         """
-        warnings.warn("""Not used, will be removed in the future""", DeprecationWarning)
-        pulumi.log.warn("""auto_renew is deprecated: Not used, will be removed in the future""")
-
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -91,13 +89,11 @@ class _DomainState:
 
     @property
     @pulumi.getter(name="expiresOn")
+    @_utilities.deprecated("""Not used, will be removed in the future""")
     def expires_on(self) -> Optional[pulumi.Input[str]]:
         """
         The domain expiration date, if known.
         """
-        warnings.warn("""Not used, will be removed in the future""", DeprecationWarning)
-        pulumi.log.warn("""expires_on is deprecated: Not used, will be removed in the future""")
-
         return pulumi.get(self, "expires_on")
 
     @expires_on.setter
@@ -118,13 +114,11 @@ class _DomainState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Not used, will be removed in the future""")
     def state(self) -> Optional[pulumi.Input[str]]:
         """
         The domain state.
         """
-        warnings.warn("""Not used, will be removed in the future""", DeprecationWarning)
-        pulumi.log.warn("""state is deprecated: Not used, will be removed in the future""")
-
         return pulumi.get(self, "state")
 
     @state.setter
@@ -133,13 +127,11 @@ class _DomainState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Not used, will be removed in the future""")
     def token(self) -> Optional[pulumi.Input[str]]:
         """
         A security token that can be used as an alternative way to manage DNS domains via the Exoscale API.
         """
-        warnings.warn("""Not used, will be removed in the future""", DeprecationWarning)
-        pulumi.log.warn("""token is deprecated: Not used, will be removed in the future""")
-
         return pulumi.get(self, "token")
 
     @token.setter
@@ -297,24 +289,20 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoRenew")
+    @_utilities.deprecated("""Not used, will be removed in the future""")
     def auto_renew(self) -> pulumi.Output[bool]:
         """
         Whether the DNS domain has automatic renewal enabled (boolean).
         """
-        warnings.warn("""Not used, will be removed in the future""", DeprecationWarning)
-        pulumi.log.warn("""auto_renew is deprecated: Not used, will be removed in the future""")
-
         return pulumi.get(self, "auto_renew")
 
     @property
     @pulumi.getter(name="expiresOn")
+    @_utilities.deprecated("""Not used, will be removed in the future""")
     def expires_on(self) -> pulumi.Output[str]:
         """
         The domain expiration date, if known.
         """
-        warnings.warn("""Not used, will be removed in the future""", DeprecationWarning)
-        pulumi.log.warn("""expires_on is deprecated: Not used, will be removed in the future""")
-
         return pulumi.get(self, "expires_on")
 
     @property
@@ -327,23 +315,19 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Not used, will be removed in the future""")
     def state(self) -> pulumi.Output[str]:
         """
         The domain state.
         """
-        warnings.warn("""Not used, will be removed in the future""", DeprecationWarning)
-        pulumi.log.warn("""state is deprecated: Not used, will be removed in the future""")
-
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Not used, will be removed in the future""")
     def token(self) -> pulumi.Output[str]:
         """
         A security token that can be used as an alternative way to manage DNS domains via the Exoscale API.
         """
-        warnings.warn("""Not used, will be removed in the future""", DeprecationWarning)
-        pulumi.log.warn("""token is deprecated: Not used, will be removed in the future""")
-
         return pulumi.get(self, "token")
 

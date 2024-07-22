@@ -90,10 +90,8 @@ class GetSksClusterResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""")
     def addons(self) -> Sequence[str]:
-        warnings.warn("""This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""", DeprecationWarning)
-        pulumi.log.warn("""addons is deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""")
-
         return pulumi.get(self, "addons")
 
     @property
@@ -164,7 +162,7 @@ class GetSksClusterResult:
     @pulumi.getter(name="exoscaleCsi")
     def exoscale_csi(self) -> Optional[bool]:
         """
-        Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
         """
         return pulumi.get(self, "exoscale_csi")
 
@@ -313,7 +311,7 @@ def get_sks_cluster(addons: Optional[Sequence[str]] = None,
     :param str description: A free-form text describing the cluster.
     :param str endpoint: The cluster API endpoint.
     :param bool exoscale_ccm: Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
-    :param bool exoscale_csi: Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+    :param bool exoscale_csi: Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
     :param str id: The ID of this resource.
     :param str kubelet_ca: The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
     :param Mapping[str, str] labels: A map of key/value labels.
@@ -407,7 +405,7 @@ def get_sks_cluster_output(addons: Optional[pulumi.Input[Optional[Sequence[str]]
     :param str description: A free-form text describing the cluster.
     :param str endpoint: The cluster API endpoint.
     :param bool exoscale_ccm: Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
-    :param bool exoscale_csi: Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+    :param bool exoscale_csi: Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
     :param str id: The ID of this resource.
     :param str kubelet_ca: The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
     :param Mapping[str, str] labels: A map of key/value labels.

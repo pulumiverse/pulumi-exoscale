@@ -78,7 +78,7 @@ type SksCluster struct {
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
 	ExoscaleCcm pulumi.BoolPtrOutput `pulumi:"exoscaleCcm"`
-	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
 	ExoscaleCsi pulumi.BoolPtrOutput `pulumi:"exoscaleCsi"`
 	// The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
 	KubeletCa pulumi.StringOutput `pulumi:"kubeletCa"`
@@ -153,7 +153,7 @@ type sksClusterState struct {
 	Endpoint *string `pulumi:"endpoint"`
 	// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
 	ExoscaleCcm *bool `pulumi:"exoscaleCcm"`
-	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
 	ExoscaleCsi *bool `pulumi:"exoscaleCsi"`
 	// The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
 	KubeletCa *string `pulumi:"kubeletCa"`
@@ -196,7 +196,7 @@ type SksClusterState struct {
 	Endpoint pulumi.StringPtrInput
 	// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
 	ExoscaleCcm pulumi.BoolPtrInput
-	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
 	ExoscaleCsi pulumi.BoolPtrInput
 	// The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
 	KubeletCa pulumi.StringPtrInput
@@ -235,7 +235,7 @@ type sksClusterArgs struct {
 	Description *string `pulumi:"description"`
 	// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
 	ExoscaleCcm *bool `pulumi:"exoscaleCcm"`
-	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
 	ExoscaleCsi *bool `pulumi:"exoscaleCsi"`
 	// A map of key/value labels.
 	Labels map[string]string `pulumi:"labels"`
@@ -265,7 +265,7 @@ type SksClusterArgs struct {
 	Description pulumi.StringPtrInput
 	// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
 	ExoscaleCcm pulumi.BoolPtrInput
-	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
 	ExoscaleCsi pulumi.BoolPtrInput
 	// A map of key/value labels.
 	Labels pulumi.StringMapInput
@@ -415,7 +415,7 @@ func (o SksClusterOutput) ExoscaleCcm() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SksCluster) pulumi.BoolPtrOutput { return v.ExoscaleCcm }).(pulumi.BoolPtrOutput)
 }
 
-// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
 func (o SksClusterOutput) ExoscaleCsi() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SksCluster) pulumi.BoolPtrOutput { return v.ExoscaleCsi }).(pulumi.BoolPtrOutput)
 }

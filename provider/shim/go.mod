@@ -5,7 +5,7 @@ go 1.21
 toolchain go1.21.6
 
 require (
-	github.com/exoscale/terraform-provider-exoscale v0.59.0
+	github.com/exoscale/terraform-provider-exoscale v0.59.2
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.16.1
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.60.0
 )

@@ -163,9 +163,13 @@ namespace Pulumiverse.Exoscale
     public sealed class GetInstancePoolResult
     {
         /// <summary>
-        /// The list of attached exoscale*anti*affinity_group (IDs).
+        /// The list of attached exoscale*anti*affinity_group (IDs). Use anti*affinity*group_ids instead.
         /// </summary>
         public readonly ImmutableArray<string> AffinityGroupIds;
+        /// <summary>
+        /// The list of attached exoscale*anti*affinity_group (IDs).
+        /// </summary>
+        public readonly ImmutableArray<string> AntiAffinityGroupIds;
         /// <summary>
         /// The deploy target ID.
         /// </summary>
@@ -247,6 +251,8 @@ namespace Pulumiverse.Exoscale
         private GetInstancePoolResult(
             ImmutableArray<string> affinityGroupIds,
 
+            ImmutableArray<string> antiAffinityGroupIds,
+
             string deployTargetId,
 
             string description,
@@ -286,6 +292,7 @@ namespace Pulumiverse.Exoscale
             string zone)
         {
             AffinityGroupIds = affinityGroupIds;
+            AntiAffinityGroupIds = antiAffinityGroupIds;
             DeployTargetId = deployTargetId;
             Description = description;
             DiskSize = diskSize;

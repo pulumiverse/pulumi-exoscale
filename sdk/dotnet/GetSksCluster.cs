@@ -80,7 +80,7 @@ namespace Pulumiverse.Exoscale
         public bool? ExoscaleCcm { get; set; }
 
         /// <summary>
-        /// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        /// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
         /// </summary>
         [Input("exoscaleCsi")]
         public bool? ExoscaleCsi { get; set; }
@@ -223,7 +223,7 @@ namespace Pulumiverse.Exoscale
         public Input<bool>? ExoscaleCcm { get; set; }
 
         /// <summary>
-        /// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        /// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
         /// </summary>
         [Input("exoscaleCsi")]
         public Input<bool>? ExoscaleCsi { get; set; }
@@ -344,7 +344,7 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly bool? ExoscaleCcm;
         /// <summary>
-        /// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        /// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
         /// </summary>
         public readonly bool? ExoscaleCsi;
         /// <summary>

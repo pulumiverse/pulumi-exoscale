@@ -45,10 +45,8 @@ class ProviderArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Does nothing""")
     def delay(self) -> Optional[pulumi.Input[int]]:
-        warnings.warn("""Does nothing""", DeprecationWarning)
-        pulumi.log.warn("""delay is deprecated: Does nothing""")
-
         return pulumi.get(self, "delay")
 
     @delay.setter

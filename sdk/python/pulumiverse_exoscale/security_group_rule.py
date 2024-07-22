@@ -173,13 +173,11 @@ class SecurityGroupRuleArgs:
 
     @property
     @pulumi.getter(name="securityGroup")
+    @_utilities.deprecated("""Deprecated in favor of `security_group_id`""")
     def security_group(self) -> Optional[pulumi.Input[str]]:
         """
         ❗ The parent security group name. Please use the `security_group_id` argument along the exoscale*security*group data source instead.
         """
-        warnings.warn("""Deprecated in favor of `security_group_id`""", DeprecationWarning)
-        pulumi.log.warn("""security_group is deprecated: Deprecated in favor of `security_group_id`""")
-
         return pulumi.get(self, "security_group")
 
     @security_group.setter
@@ -212,13 +210,11 @@ class SecurityGroupRuleArgs:
 
     @property
     @pulumi.getter(name="userSecurityGroup")
+    @_utilities.deprecated("""Deprecated in favor of `user_security_group_id`""")
     def user_security_group(self) -> Optional[pulumi.Input[str]]:
         """
         ❗ An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`public_security_group`/`user_security_group_id`). Please use the `user_security_group_id` argument along the exoscale*security*group data source instead.
         """
-        warnings.warn("""Deprecated in favor of `user_security_group_id`""", DeprecationWarning)
-        pulumi.log.warn("""user_security_group is deprecated: Deprecated in favor of `user_security_group_id`""")
-
         return pulumi.get(self, "user_security_group")
 
     @user_security_group.setter
@@ -389,13 +385,11 @@ class _SecurityGroupRuleState:
 
     @property
     @pulumi.getter(name="securityGroup")
+    @_utilities.deprecated("""Deprecated in favor of `security_group_id`""")
     def security_group(self) -> Optional[pulumi.Input[str]]:
         """
         ❗ The parent security group name. Please use the `security_group_id` argument along the exoscale*security*group data source instead.
         """
-        warnings.warn("""Deprecated in favor of `security_group_id`""", DeprecationWarning)
-        pulumi.log.warn("""security_group is deprecated: Deprecated in favor of `security_group_id`""")
-
         return pulumi.get(self, "security_group")
 
     @security_group.setter
@@ -440,13 +434,11 @@ class _SecurityGroupRuleState:
 
     @property
     @pulumi.getter(name="userSecurityGroup")
+    @_utilities.deprecated("""Deprecated in favor of `user_security_group_id`""")
     def user_security_group(self) -> Optional[pulumi.Input[str]]:
         """
         ❗ An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`public_security_group`/`user_security_group_id`). Please use the `user_security_group_id` argument along the exoscale*security*group data source instead.
         """
-        warnings.warn("""Deprecated in favor of `user_security_group_id`""", DeprecationWarning)
-        pulumi.log.warn("""user_security_group is deprecated: Deprecated in favor of `user_security_group_id`""")
-
         return pulumi.get(self, "user_security_group")
 
     @user_security_group.setter
@@ -748,13 +740,11 @@ class SecurityGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroup")
+    @_utilities.deprecated("""Deprecated in favor of `security_group_id`""")
     def security_group(self) -> pulumi.Output[str]:
         """
         ❗ The parent security group name. Please use the `security_group_id` argument along the exoscale*security*group data source instead.
         """
-        warnings.warn("""Deprecated in favor of `security_group_id`""", DeprecationWarning)
-        pulumi.log.warn("""security_group is deprecated: Deprecated in favor of `security_group_id`""")
-
         return pulumi.get(self, "security_group")
 
     @property
@@ -783,13 +773,11 @@ class SecurityGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userSecurityGroup")
+    @_utilities.deprecated("""Deprecated in favor of `user_security_group_id`""")
     def user_security_group(self) -> pulumi.Output[str]:
         """
         ❗ An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`public_security_group`/`user_security_group_id`). Please use the `user_security_group_id` argument along the exoscale*security*group data source instead.
         """
-        warnings.warn("""Deprecated in favor of `user_security_group_id`""", DeprecationWarning)
-        pulumi.log.warn("""user_security_group is deprecated: Deprecated in favor of `user_security_group_id`""")
-
         return pulumi.get(self, "user_security_group")
 
     @property
