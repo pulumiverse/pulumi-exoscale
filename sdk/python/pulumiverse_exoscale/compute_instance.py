@@ -582,13 +582,11 @@ class _ComputeInstanceState:
 
     @property
     @pulumi.getter(name="privateNetworkIds")
+    @_utilities.deprecated("""Use the network_interface block instead.""")
     def private_network_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument instead.
         """
-        warnings.warn("""Use the network_interface block instead.""", DeprecationWarning)
-        pulumi.log.warn("""private_network_ids is deprecated: Use the network_interface block instead.""")
-
         return pulumi.get(self, "private_network_ids")
 
     @private_network_ids.setter
@@ -1104,13 +1102,11 @@ class ComputeInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateNetworkIds")
+    @_utilities.deprecated("""Use the network_interface block instead.""")
     def private_network_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument instead.
         """
-        warnings.warn("""Use the network_interface block instead.""", DeprecationWarning)
-        pulumi.log.warn("""private_network_ids is deprecated: Use the network_interface block instead.""")
-
         return pulumi.get(self, "private_network_ids")
 
     @property

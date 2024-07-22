@@ -41,7 +41,7 @@ type LookupSksClusterArgs struct {
 	Endpoint *string `pulumi:"endpoint"`
 	// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
 	ExoscaleCcm *bool `pulumi:"exoscaleCcm"`
-	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
 	ExoscaleCsi *bool `pulumi:"exoscaleCsi"`
 	// The ID of this resource.
 	Id *string `pulumi:"id"`
@@ -85,7 +85,7 @@ type LookupSksClusterResult struct {
 	Endpoint string `pulumi:"endpoint"`
 	// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
 	ExoscaleCcm *bool `pulumi:"exoscaleCcm"`
-	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
 	ExoscaleCsi *bool `pulumi:"exoscaleCsi"`
 	// The ID of this resource.
 	Id *string `pulumi:"id"`
@@ -142,7 +142,7 @@ type LookupSksClusterOutputArgs struct {
 	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
 	// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
 	ExoscaleCcm pulumi.BoolPtrInput `pulumi:"exoscaleCcm"`
-	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
 	ExoscaleCsi pulumi.BoolPtrInput `pulumi:"exoscaleCsi"`
 	// The ID of this resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
@@ -230,7 +230,7 @@ func (o LookupSksClusterResultOutput) ExoscaleCcm() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupSksClusterResult) *bool { return v.ExoscaleCcm }).(pulumi.BoolPtrOutput)
 }
 
-// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
 func (o LookupSksClusterResultOutput) ExoscaleCsi() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupSksClusterResult) *bool { return v.ExoscaleCsi }).(pulumi.BoolPtrOutput)
 }

@@ -1325,10 +1325,8 @@ class IamOrgPolicyServicesRule(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field is not suported. Specify resources using CEL expressions.""")
     def resources(self) -> Optional[Sequence[str]]:
-        warnings.warn("""This field is not suported. Specify resources using CEL expressions.""", DeprecationWarning)
-        pulumi.log.warn("""resources is deprecated: This field is not suported. Specify resources using CEL expressions.""")
-
         return pulumi.get(self, "resources")
 
 
@@ -1465,10 +1463,8 @@ class IamRolePolicyServicesRule(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field is not suported. Specify resources using CEL expressions.""")
     def resources(self) -> Optional[Sequence[str]]:
-        warnings.warn("""This field is not suported. Specify resources using CEL expressions.""", DeprecationWarning)
-        pulumi.log.warn("""resources is deprecated: This field is not suported. Specify resources using CEL expressions.""")
-
         return pulumi.get(self, "resources")
 
 
@@ -2548,10 +2544,8 @@ class GetIamOrgPolicyServicesRuleResult(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field is no longer suported.""")
     def resources(self) -> Sequence[str]:
-        warnings.warn("""This field is no longer suported.""", DeprecationWarning)
-        pulumi.log.warn("""resources is deprecated: This field is no longer suported.""")
-
         return pulumi.get(self, "resources")
 
 
@@ -2664,10 +2658,8 @@ class GetIamRolePolicyServicesRuleResult(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field is no longer suported.""")
     def resources(self) -> Sequence[str]:
-        warnings.warn("""This field is no longer suported.""", DeprecationWarning)
-        pulumi.log.warn("""resources is deprecated: This field is no longer suported.""")
-
         return pulumi.get(self, "resources")
 
 
@@ -2747,6 +2739,7 @@ class GetInstancePoolInstanceResult(dict):
 class GetInstancePoolListPoolResult(dict):
     def __init__(__self__, *,
                  affinity_group_ids: Sequence[str],
+                 anti_affinity_group_ids: Sequence[str],
                  deploy_target_id: str,
                  description: str,
                  disk_size: int,
@@ -2767,7 +2760,8 @@ class GetInstancePoolListPoolResult(dict):
                  labels: Optional[Mapping[str, str]] = None,
                  name: Optional[str] = None):
         """
-        :param Sequence[str] affinity_group_ids: The list of attached AntiAffinityGroup (IDs).
+        :param Sequence[str] affinity_group_ids: The list of attached AntiAffinityGroup (IDs). Use anti_affinity_group_ids instead.
+        :param Sequence[str] anti_affinity_group_ids: The list of attached AntiAffinityGroup (IDs).
         :param str deploy_target_id: The deploy target ID.
         :param str description: The instance pool description.
         :param int disk_size: The managed instances disk size.
@@ -2789,6 +2783,7 @@ class GetInstancePoolListPoolResult(dict):
         :param str name: The pool name to match (conflicts with `id`).
         """
         pulumi.set(__self__, "affinity_group_ids", affinity_group_ids)
+        pulumi.set(__self__, "anti_affinity_group_ids", anti_affinity_group_ids)
         pulumi.set(__self__, "deploy_target_id", deploy_target_id)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "disk_size", disk_size)
@@ -2814,11 +2809,20 @@ class GetInstancePoolListPoolResult(dict):
 
     @property
     @pulumi.getter(name="affinityGroupIds")
+    @_utilities.deprecated("""Use anti_affinity_group_ids instead.""")
     def affinity_group_ids(self) -> Sequence[str]:
+        """
+        The list of attached AntiAffinityGroup (IDs). Use anti_affinity_group_ids instead.
+        """
+        return pulumi.get(self, "affinity_group_ids")
+
+    @property
+    @pulumi.getter(name="antiAffinityGroupIds")
+    def anti_affinity_group_ids(self) -> Sequence[str]:
         """
         The list of attached AntiAffinityGroup (IDs).
         """
-        return pulumi.get(self, "affinity_group_ids")
+        return pulumi.get(self, "anti_affinity_group_ids")
 
     @property
     @pulumi.getter(name="deployTargetId")
@@ -3250,7 +3254,7 @@ class GetSksClusterListClusterResult(dict):
         :param str cni: The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
         :param str description: A free-form text describing the cluster.
         :param bool exoscale_ccm: Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
-        :param bool exoscale_csi: Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        :param bool exoscale_csi: Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
         :param Mapping[str, str] labels: A map of key/value labels.
         :param bool metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
         :param str service_level: The service level of the control plane (`pro` or `starter`; default: `pro`; may only be set at creation time).
@@ -3289,10 +3293,8 @@ class GetSksClusterListClusterResult(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""")
     def addons(self) -> Sequence[str]:
-        warnings.warn("""This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""", DeprecationWarning)
-        pulumi.log.warn("""addons is deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""")
-
         return pulumi.get(self, "addons")
 
     @property
@@ -3408,7 +3410,7 @@ class GetSksClusterListClusterResult(dict):
     @pulumi.getter(name="exoscaleCsi")
     def exoscale_csi(self) -> Optional[bool]:
         """
-        Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
         """
         return pulumi.get(self, "exoscale_csi")
 

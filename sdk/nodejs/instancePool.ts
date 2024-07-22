@@ -76,8 +76,14 @@ export class InstancePool extends pulumi.CustomResource {
 
     /**
      * A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+     *
+     * @deprecated Use antiAffinityGroupIds instead.
      */
     public readonly affinityGroupIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+     */
+    public readonly antiAffinityGroupIds!: pulumi.Output<string[] | undefined>;
     /**
      * A deploy target ID.
      */
@@ -174,6 +180,7 @@ export class InstancePool extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InstancePoolState | undefined;
             resourceInputs["affinityGroupIds"] = state ? state.affinityGroupIds : undefined;
+            resourceInputs["antiAffinityGroupIds"] = state ? state.antiAffinityGroupIds : undefined;
             resourceInputs["deployTargetId"] = state ? state.deployTargetId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["diskSize"] = state ? state.diskSize : undefined;
@@ -206,6 +213,7 @@ export class InstancePool extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zone'");
             }
             resourceInputs["affinityGroupIds"] = args ? args.affinityGroupIds : undefined;
+            resourceInputs["antiAffinityGroupIds"] = args ? args.antiAffinityGroupIds : undefined;
             resourceInputs["deployTargetId"] = args ? args.deployTargetId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskSize"] = args ? args.diskSize : undefined;
@@ -238,8 +246,14 @@ export class InstancePool extends pulumi.CustomResource {
 export interface InstancePoolState {
     /**
      * A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+     *
+     * @deprecated Use antiAffinityGroupIds instead.
      */
     affinityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+     */
+    antiAffinityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A deploy target ID.
      */
@@ -329,8 +343,14 @@ export interface InstancePoolState {
 export interface InstancePoolArgs {
     /**
      * A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+     *
+     * @deprecated Use antiAffinityGroupIds instead.
      */
     affinityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+     */
+    antiAffinityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A deploy target ID.
      */

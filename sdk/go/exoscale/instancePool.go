@@ -71,7 +71,11 @@ type InstancePool struct {
 	pulumi.CustomResourceState
 
 	// A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+	//
+	// Deprecated: Use antiAffinityGroupIds instead.
 	AffinityGroupIds pulumi.StringArrayOutput `pulumi:"affinityGroupIds"`
+	// A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+	AntiAffinityGroupIds pulumi.StringArrayOutput `pulumi:"antiAffinityGroupIds"`
 	// A deploy target ID.
 	DeployTargetId pulumi.StringPtrOutput `pulumi:"deployTargetId"`
 	// A free-form text describing the pool.
@@ -157,7 +161,11 @@ func GetInstancePool(ctx *pulumi.Context,
 // Input properties used for looking up and filtering InstancePool resources.
 type instancePoolState struct {
 	// A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+	//
+	// Deprecated: Use antiAffinityGroupIds instead.
 	AffinityGroupIds []string `pulumi:"affinityGroupIds"`
+	// A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+	AntiAffinityGroupIds []string `pulumi:"antiAffinityGroupIds"`
 	// A deploy target ID.
 	DeployTargetId *string `pulumi:"deployTargetId"`
 	// A free-form text describing the pool.
@@ -205,7 +213,11 @@ type instancePoolState struct {
 
 type InstancePoolState struct {
 	// A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+	//
+	// Deprecated: Use antiAffinityGroupIds instead.
 	AffinityGroupIds pulumi.StringArrayInput
+	// A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+	AntiAffinityGroupIds pulumi.StringArrayInput
 	// A deploy target ID.
 	DeployTargetId pulumi.StringPtrInput
 	// A free-form text describing the pool.
@@ -257,7 +269,11 @@ func (InstancePoolState) ElementType() reflect.Type {
 
 type instancePoolArgs struct {
 	// A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+	//
+	// Deprecated: Use antiAffinityGroupIds instead.
 	AffinityGroupIds []string `pulumi:"affinityGroupIds"`
+	// A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+	AntiAffinityGroupIds []string `pulumi:"antiAffinityGroupIds"`
 	// A deploy target ID.
 	DeployTargetId *string `pulumi:"deployTargetId"`
 	// A free-form text describing the pool.
@@ -306,7 +322,11 @@ type instancePoolArgs struct {
 // The set of arguments for constructing a InstancePool resource.
 type InstancePoolArgs struct {
 	// A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+	//
+	// Deprecated: Use antiAffinityGroupIds instead.
 	AffinityGroupIds pulumi.StringArrayInput
+	// A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+	AntiAffinityGroupIds pulumi.StringArrayInput
 	// A deploy target ID.
 	DeployTargetId pulumi.StringPtrInput
 	// A free-form text describing the pool.
@@ -440,8 +460,15 @@ func (o InstancePoolOutput) ToInstancePoolOutputWithContext(ctx context.Context)
 }
 
 // A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+//
+// Deprecated: Use antiAffinityGroupIds instead.
 func (o InstancePoolOutput) AffinityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InstancePool) pulumi.StringArrayOutput { return v.AffinityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+func (o InstancePoolOutput) AntiAffinityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstancePool) pulumi.StringArrayOutput { return v.AntiAffinityGroupIds }).(pulumi.StringArrayOutput)
 }
 
 // A deploy target ID.

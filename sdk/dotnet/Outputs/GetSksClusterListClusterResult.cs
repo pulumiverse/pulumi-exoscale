@@ -48,7 +48,7 @@ namespace Pulumiverse.Exoscale.Outputs
         /// </summary>
         public readonly bool? ExoscaleCcm;
         /// <summary>
-        /// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        /// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
         /// </summary>
         public readonly bool? ExoscaleCsi;
         public readonly string? Id;

@@ -20,6 +20,7 @@ class InstancePoolArgs:
                  template_id: pulumi.Input[str],
                  zone: pulumi.Input[str],
                  affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 anti_affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deploy_target_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
@@ -43,6 +44,7 @@ class InstancePoolArgs:
         :param pulumi.Input[str] template_id: The get_template (ID) to use when creating the managed instances.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_group_ids: A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
         :param pulumi.Input[str] deploy_target_id: A deploy target ID.
         :param pulumi.Input[str] description: A free-form text describing the pool.
         :param pulumi.Input[int] disk_size: The managed instances disk size (GiB).
@@ -64,7 +66,12 @@ class InstancePoolArgs:
         pulumi.set(__self__, "template_id", template_id)
         pulumi.set(__self__, "zone", zone)
         if affinity_group_ids is not None:
+            warnings.warn("""Use anti_affinity_group_ids instead.""", DeprecationWarning)
+            pulumi.log.warn("""affinity_group_ids is deprecated: Use anti_affinity_group_ids instead.""")
+        if affinity_group_ids is not None:
             pulumi.set(__self__, "affinity_group_ids", affinity_group_ids)
+        if anti_affinity_group_ids is not None:
+            pulumi.set(__self__, "anti_affinity_group_ids", anti_affinity_group_ids)
         if deploy_target_id is not None:
             pulumi.set(__self__, "deploy_target_id", deploy_target_id)
         if description is not None:
@@ -144,6 +151,7 @@ class InstancePoolArgs:
 
     @property
     @pulumi.getter(name="affinityGroupIds")
+    @_utilities.deprecated("""Use anti_affinity_group_ids instead.""")
     def affinity_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
@@ -153,6 +161,18 @@ class InstancePoolArgs:
     @affinity_group_ids.setter
     def affinity_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "affinity_group_ids", value)
+
+    @property
+    @pulumi.getter(name="antiAffinityGroupIds")
+    def anti_affinity_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+        """
+        return pulumi.get(self, "anti_affinity_group_ids")
+
+    @anti_affinity_group_ids.setter
+    def anti_affinity_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "anti_affinity_group_ids", value)
 
     @property
     @pulumi.getter(name="deployTargetId")
@@ -312,13 +332,11 @@ class InstancePoolArgs:
 
     @property
     @pulumi.getter(name="serviceOffering")
+    @_utilities.deprecated("""This attribute has been replaced by \"instance_type\".""")
     def service_offering(self) -> Optional[pulumi.Input[str]]:
         """
         The managed instances type. Please use the `instance_type` argument instead.
         """
-        warnings.warn("""This attribute has been replaced by \"instance_type\".""", DeprecationWarning)
-        pulumi.log.warn("""service_offering is deprecated: This attribute has been replaced by \"instance_type\".""")
-
         return pulumi.get(self, "service_offering")
 
     @service_offering.setter
@@ -348,13 +366,11 @@ class InstancePoolArgs:
 
     @property
     @pulumi.getter(name="virtualMachines")
+    @_utilities.deprecated("""Use the instances exported attribute instead.""")
     def virtual_machines(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
         """
-        warnings.warn("""Use the instances exported attribute instead.""", DeprecationWarning)
-        pulumi.log.warn("""virtual_machines is deprecated: Use the instances exported attribute instead.""")
-
         return pulumi.get(self, "virtual_machines")
 
     @virtual_machines.setter
@@ -366,6 +382,7 @@ class InstancePoolArgs:
 class _InstancePoolState:
     def __init__(__self__, *,
                  affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 anti_affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deploy_target_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
@@ -389,6 +406,7 @@ class _InstancePoolState:
         """
         Input properties used for looking up and filtering InstancePool resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_group_ids: A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
         :param pulumi.Input[str] deploy_target_id: A deploy target ID.
         :param pulumi.Input[str] description: A free-form text describing the pool.
         :param pulumi.Input[int] disk_size: The managed instances disk size (GiB).
@@ -410,7 +428,12 @@ class _InstancePoolState:
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         if affinity_group_ids is not None:
+            warnings.warn("""Use anti_affinity_group_ids instead.""", DeprecationWarning)
+            pulumi.log.warn("""affinity_group_ids is deprecated: Use anti_affinity_group_ids instead.""")
+        if affinity_group_ids is not None:
             pulumi.set(__self__, "affinity_group_ids", affinity_group_ids)
+        if anti_affinity_group_ids is not None:
+            pulumi.set(__self__, "anti_affinity_group_ids", anti_affinity_group_ids)
         if deploy_target_id is not None:
             pulumi.set(__self__, "deploy_target_id", deploy_target_id)
         if description is not None:
@@ -460,6 +483,7 @@ class _InstancePoolState:
 
     @property
     @pulumi.getter(name="affinityGroupIds")
+    @_utilities.deprecated("""Use anti_affinity_group_ids instead.""")
     def affinity_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
@@ -469,6 +493,18 @@ class _InstancePoolState:
     @affinity_group_ids.setter
     def affinity_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "affinity_group_ids", value)
+
+    @property
+    @pulumi.getter(name="antiAffinityGroupIds")
+    def anti_affinity_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+        """
+        return pulumi.get(self, "anti_affinity_group_ids")
+
+    @anti_affinity_group_ids.setter
+    def anti_affinity_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "anti_affinity_group_ids", value)
 
     @property
     @pulumi.getter(name="deployTargetId")
@@ -628,13 +664,11 @@ class _InstancePoolState:
 
     @property
     @pulumi.getter(name="serviceOffering")
+    @_utilities.deprecated("""This attribute has been replaced by \"instance_type\".""")
     def service_offering(self) -> Optional[pulumi.Input[str]]:
         """
         The managed instances type. Please use the `instance_type` argument instead.
         """
-        warnings.warn("""This attribute has been replaced by \"instance_type\".""", DeprecationWarning)
-        pulumi.log.warn("""service_offering is deprecated: This attribute has been replaced by \"instance_type\".""")
-
         return pulumi.get(self, "service_offering")
 
     @service_offering.setter
@@ -688,13 +722,11 @@ class _InstancePoolState:
 
     @property
     @pulumi.getter(name="virtualMachines")
+    @_utilities.deprecated("""Use the instances exported attribute instead.""")
     def virtual_machines(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
         """
-        warnings.warn("""Use the instances exported attribute instead.""", DeprecationWarning)
-        pulumi.log.warn("""virtual_machines is deprecated: Use the instances exported attribute instead.""")
-
         return pulumi.get(self, "virtual_machines")
 
     @virtual_machines.setter
@@ -720,6 +752,7 @@ class InstancePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 anti_affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deploy_target_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
@@ -781,6 +814,7 @@ class InstancePool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_group_ids: A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
         :param pulumi.Input[str] deploy_target_id: A deploy target ID.
         :param pulumi.Input[str] description: A free-form text describing the pool.
         :param pulumi.Input[int] disk_size: The managed instances disk size (GiB).
@@ -860,6 +894,7 @@ class InstancePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 anti_affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deploy_target_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
@@ -890,6 +925,7 @@ class InstancePool(pulumi.CustomResource):
             __props__ = InstancePoolArgs.__new__(InstancePoolArgs)
 
             __props__.__dict__["affinity_group_ids"] = affinity_group_ids
+            __props__.__dict__["anti_affinity_group_ids"] = anti_affinity_group_ids
             __props__.__dict__["deploy_target_id"] = deploy_target_id
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_size"] = disk_size
@@ -927,6 +963,7 @@ class InstancePool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            anti_affinity_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             deploy_target_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disk_size: Optional[pulumi.Input[int]] = None,
@@ -955,6 +992,7 @@ class InstancePool(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] affinity_group_ids: A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] anti_affinity_group_ids: A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
         :param pulumi.Input[str] deploy_target_id: A deploy target ID.
         :param pulumi.Input[str] description: A free-form text describing the pool.
         :param pulumi.Input[int] disk_size: The managed instances disk size (GiB).
@@ -980,6 +1018,7 @@ class InstancePool(pulumi.CustomResource):
         __props__ = _InstancePoolState.__new__(_InstancePoolState)
 
         __props__.__dict__["affinity_group_ids"] = affinity_group_ids
+        __props__.__dict__["anti_affinity_group_ids"] = anti_affinity_group_ids
         __props__.__dict__["deploy_target_id"] = deploy_target_id
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_size"] = disk_size
@@ -1004,11 +1043,20 @@ class InstancePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="affinityGroupIds")
+    @_utilities.deprecated("""Use anti_affinity_group_ids instead.""")
     def affinity_group_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
         """
         return pulumi.get(self, "affinity_group_ids")
+
+    @property
+    @pulumi.getter(name="antiAffinityGroupIds")
+    def anti_affinity_group_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+        """
+        return pulumi.get(self, "anti_affinity_group_ids")
 
     @property
     @pulumi.getter(name="deployTargetId")
@@ -1116,13 +1164,11 @@ class InstancePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceOffering")
+    @_utilities.deprecated("""This attribute has been replaced by \"instance_type\".""")
     def service_offering(self) -> pulumi.Output[str]:
         """
         The managed instances type. Please use the `instance_type` argument instead.
         """
-        warnings.warn("""This attribute has been replaced by \"instance_type\".""", DeprecationWarning)
-        pulumi.log.warn("""service_offering is deprecated: This attribute has been replaced by \"instance_type\".""")
-
         return pulumi.get(self, "service_offering")
 
     @property
@@ -1156,13 +1202,11 @@ class InstancePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="virtualMachines")
+    @_utilities.deprecated("""Use the instances exported attribute instead.""")
     def virtual_machines(self) -> pulumi.Output[Sequence[str]]:
         """
         The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
         """
-        warnings.warn("""Use the instances exported attribute instead.""", DeprecationWarning)
-        pulumi.log.warn("""virtual_machines is deprecated: Use the instances exported attribute instead.""")
-
         return pulumi.get(self, "virtual_machines")
 
     @property

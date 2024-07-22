@@ -648,9 +648,15 @@ export interface GetInstancePoolInstance {
 
 export interface GetInstancePoolListPool {
     /**
-     * The list of attached exoscale.AntiAffinityGroup (IDs).
+     * The list of attached exoscale.AntiAffinityGroup (IDs). Use antiAffinityGroupIds instead.
+     *
+     * @deprecated Use antiAffinityGroupIds instead.
      */
     affinityGroupIds: string[];
+    /**
+     * The list of attached exoscale.AntiAffinityGroup (IDs).
+     */
+    antiAffinityGroupIds: string[];
     /**
      * The deploy target ID.
      */
@@ -843,7 +849,7 @@ export interface GetSksClusterListCluster {
      */
     exoscaleCcm?: boolean;
     /**
-     * Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+     * Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
      */
     exoscaleCsi?: boolean;
     id?: string;

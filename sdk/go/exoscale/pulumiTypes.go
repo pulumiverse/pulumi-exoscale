@@ -7050,8 +7050,12 @@ func (o GetInstancePoolInstanceArrayOutput) Index(i pulumi.IntInput) GetInstance
 }
 
 type GetInstancePoolListPool struct {
-	// The list of attached AntiAffinityGroup (IDs).
+	// The list of attached AntiAffinityGroup (IDs). Use antiAffinityGroupIds instead.
+	//
+	// Deprecated: Use antiAffinityGroupIds instead.
 	AffinityGroupIds []string `pulumi:"affinityGroupIds"`
+	// The list of attached AntiAffinityGroup (IDs).
+	AntiAffinityGroupIds []string `pulumi:"antiAffinityGroupIds"`
 	// The deploy target ID.
 	DeployTargetId string `pulumi:"deployTargetId"`
 	// The instance pool description.
@@ -7104,8 +7108,12 @@ type GetInstancePoolListPoolInput interface {
 }
 
 type GetInstancePoolListPoolArgs struct {
-	// The list of attached AntiAffinityGroup (IDs).
+	// The list of attached AntiAffinityGroup (IDs). Use antiAffinityGroupIds instead.
+	//
+	// Deprecated: Use antiAffinityGroupIds instead.
 	AffinityGroupIds pulumi.StringArrayInput `pulumi:"affinityGroupIds"`
+	// The list of attached AntiAffinityGroup (IDs).
+	AntiAffinityGroupIds pulumi.StringArrayInput `pulumi:"antiAffinityGroupIds"`
 	// The deploy target ID.
 	DeployTargetId pulumi.StringInput `pulumi:"deployTargetId"`
 	// The instance pool description.
@@ -7197,9 +7205,16 @@ func (o GetInstancePoolListPoolOutput) ToGetInstancePoolListPoolOutputWithContex
 	return o
 }
 
-// The list of attached AntiAffinityGroup (IDs).
+// The list of attached AntiAffinityGroup (IDs). Use antiAffinityGroupIds instead.
+//
+// Deprecated: Use antiAffinityGroupIds instead.
 func (o GetInstancePoolListPoolOutput) AffinityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancePoolListPool) []string { return v.AffinityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// The list of attached AntiAffinityGroup (IDs).
+func (o GetInstancePoolListPoolOutput) AntiAffinityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancePoolListPool) []string { return v.AntiAffinityGroupIds }).(pulumi.StringArrayOutput)
 }
 
 // The deploy target ID.
@@ -7857,7 +7872,7 @@ type GetSksClusterListCluster struct {
 	Endpoint string `pulumi:"endpoint"`
 	// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
 	ExoscaleCcm *bool `pulumi:"exoscaleCcm"`
-	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
 	ExoscaleCsi *bool   `pulumi:"exoscaleCsi"`
 	Id          *string `pulumi:"id"`
 	// The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
@@ -7910,7 +7925,7 @@ type GetSksClusterListClusterArgs struct {
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 	// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
 	ExoscaleCcm pulumi.BoolPtrInput `pulumi:"exoscaleCcm"`
-	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+	// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
 	ExoscaleCsi pulumi.BoolPtrInput   `pulumi:"exoscaleCsi"`
 	Id          pulumi.StringPtrInput `pulumi:"id"`
 	// The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
@@ -8029,7 +8044,7 @@ func (o GetSksClusterListClusterOutput) ExoscaleCcm() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetSksClusterListCluster) *bool { return v.ExoscaleCcm }).(pulumi.BoolPtrOutput)
 }
 
-// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
 func (o GetSksClusterListClusterOutput) ExoscaleCsi() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetSksClusterListCluster) *bool { return v.ExoscaleCsi }).(pulumi.BoolPtrOutput)
 }

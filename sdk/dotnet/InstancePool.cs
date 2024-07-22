@@ -69,6 +69,12 @@ namespace Pulumiverse.Exoscale
         public Output<ImmutableArray<string>> AffinityGroupIds { get; private set; } = null!;
 
         /// <summary>
+        /// A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+        /// </summary>
+        [Output("antiAffinityGroupIds")]
+        public Output<ImmutableArray<string>> AntiAffinityGroupIds { get; private set; } = null!;
+
+        /// <summary>
         /// A deploy target ID.
         /// </summary>
         [Output("deployTargetId")]
@@ -238,10 +244,23 @@ namespace Pulumiverse.Exoscale
         /// <summary>
         /// A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
         /// </summary>
+        [Obsolete(@"Use anti_affinity_group_ids instead.")]
         public InputList<string> AffinityGroupIds
         {
             get => _affinityGroupIds ?? (_affinityGroupIds = new InputList<string>());
             set => _affinityGroupIds = value;
+        }
+
+        [Input("antiAffinityGroupIds")]
+        private InputList<string>? _antiAffinityGroupIds;
+
+        /// <summary>
+        /// A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+        /// </summary>
+        public InputList<string> AntiAffinityGroupIds
+        {
+            get => _antiAffinityGroupIds ?? (_antiAffinityGroupIds = new InputList<string>());
+            set => _antiAffinityGroupIds = value;
         }
 
         /// <summary>
@@ -412,10 +431,23 @@ namespace Pulumiverse.Exoscale
         /// <summary>
         /// A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
         /// </summary>
+        [Obsolete(@"Use anti_affinity_group_ids instead.")]
         public InputList<string> AffinityGroupIds
         {
             get => _affinityGroupIds ?? (_affinityGroupIds = new InputList<string>());
             set => _affinityGroupIds = value;
+        }
+
+        [Input("antiAffinityGroupIds")]
+        private InputList<string>? _antiAffinityGroupIds;
+
+        /// <summary>
+        /// A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
+        /// </summary>
+        public InputList<string> AntiAffinityGroupIds
+        {
+            get => _antiAffinityGroupIds ?? (_antiAffinityGroupIds = new InputList<string>());
+            set => _antiAffinityGroupIds = value;
         }
 
         /// <summary>

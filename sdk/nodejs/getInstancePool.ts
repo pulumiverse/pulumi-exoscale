@@ -65,9 +65,15 @@ export interface GetInstancePoolArgs {
  */
 export interface GetInstancePoolResult {
     /**
-     * The list of attached exoscale*anti*affinity_group (IDs).
+     * The list of attached exoscale*anti*affinity_group (IDs). Use anti*affinity*group_ids instead.
+     *
+     * @deprecated Use antiAffinityGroupIds instead.
      */
     readonly affinityGroupIds: string[];
+    /**
+     * The list of attached exoscale*anti*affinity_group (IDs).
+     */
+    readonly antiAffinityGroupIds: string[];
     /**
      * The deploy target ID.
      */

@@ -36,7 +36,7 @@ class SksClusterArgs:
         :param pulumi.Input[str] cni: The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
         :param pulumi.Input[str] description: A free-form text describing the cluster.
         :param pulumi.Input[bool] exoscale_ccm: Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
-        :param pulumi.Input[bool] exoscale_csi: Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        :param pulumi.Input[bool] exoscale_csi: Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[bool] metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
         :param pulumi.Input[str] name: The SKS cluster name.
@@ -87,10 +87,8 @@ class SksClusterArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""")
     def addons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        warnings.warn("""This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""", DeprecationWarning)
-        pulumi.log.warn("""addons is deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""")
-
         return pulumi.get(self, "addons")
 
     @addons.setter
@@ -149,7 +147,7 @@ class SksClusterArgs:
     @pulumi.getter(name="exoscaleCsi")
     def exoscale_csi(self) -> Optional[pulumi.Input[bool]]:
         """
-        Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
         """
         return pulumi.get(self, "exoscale_csi")
 
@@ -263,7 +261,7 @@ class _SksClusterState:
         :param pulumi.Input[str] description: A free-form text describing the cluster.
         :param pulumi.Input[str] endpoint: The cluster API endpoint.
         :param pulumi.Input[bool] exoscale_ccm: Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
-        :param pulumi.Input[bool] exoscale_csi: Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        :param pulumi.Input[bool] exoscale_csi: Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
         :param pulumi.Input[str] kubelet_ca: The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[bool] metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
@@ -321,10 +319,8 @@ class _SksClusterState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""")
     def addons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        warnings.warn("""This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""", DeprecationWarning)
-        pulumi.log.warn("""addons is deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""")
-
         return pulumi.get(self, "addons")
 
     @addons.setter
@@ -431,7 +427,7 @@ class _SksClusterState:
     @pulumi.getter(name="exoscaleCsi")
     def exoscale_csi(self) -> Optional[pulumi.Input[bool]]:
         """
-        Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
         """
         return pulumi.get(self, "exoscale_csi")
 
@@ -615,7 +611,7 @@ class SksCluster(pulumi.CustomResource):
         :param pulumi.Input[str] cni: The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
         :param pulumi.Input[str] description: A free-form text describing the cluster.
         :param pulumi.Input[bool] exoscale_ccm: Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
-        :param pulumi.Input[bool] exoscale_csi: Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        :param pulumi.Input[bool] exoscale_csi: Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[bool] metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
         :param pulumi.Input[str] name: The SKS cluster name.
@@ -764,7 +760,7 @@ class SksCluster(pulumi.CustomResource):
         :param pulumi.Input[str] description: A free-form text describing the cluster.
         :param pulumi.Input[str] endpoint: The cluster API endpoint.
         :param pulumi.Input[bool] exoscale_ccm: Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
-        :param pulumi.Input[bool] exoscale_csi: Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        :param pulumi.Input[bool] exoscale_csi: Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
         :param pulumi.Input[str] kubelet_ca: The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[bool] metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
@@ -804,10 +800,8 @@ class SksCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""")
     def addons(self) -> pulumi.Output[Sequence[str]]:
-        warnings.warn("""This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""", DeprecationWarning)
-        pulumi.log.warn("""addons is deprecated: This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.""")
-
         return pulumi.get(self, "addons")
 
     @property
@@ -878,7 +872,7 @@ class SksCluster(pulumi.CustomResource):
     @pulumi.getter(name="exoscaleCsi")
     def exoscale_csi(self) -> pulumi.Output[Optional[bool]]:
         """
-        Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; may only be set at creation time).
+        Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
         """
         return pulumi.get(self, "exoscale_csi")
 

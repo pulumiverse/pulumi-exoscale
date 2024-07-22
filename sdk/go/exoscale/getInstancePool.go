@@ -69,8 +69,12 @@ type LookupInstancePoolArgs struct {
 
 // A collection of values returned by getInstancePool.
 type LookupInstancePoolResult struct {
-	// The list of attached exoscale*anti*affinity_group (IDs).
+	// The list of attached exoscale*anti*affinity_group (IDs). Use anti*affinity*group_ids instead.
+	//
+	// Deprecated: Use antiAffinityGroupIds instead.
 	AffinityGroupIds []string `pulumi:"affinityGroupIds"`
+	// The list of attached exoscale*anti*affinity_group (IDs).
+	AntiAffinityGroupIds []string `pulumi:"antiAffinityGroupIds"`
 	// The deploy target ID.
 	DeployTargetId string `pulumi:"deployTargetId"`
 	// The instance pool description.
@@ -155,9 +159,16 @@ func (o LookupInstancePoolResultOutput) ToLookupInstancePoolResultOutputWithCont
 	return o
 }
 
-// The list of attached exoscale*anti*affinity_group (IDs).
+// The list of attached exoscale*anti*affinity_group (IDs). Use anti*affinity*group_ids instead.
+//
+// Deprecated: Use antiAffinityGroupIds instead.
 func (o LookupInstancePoolResultOutput) AffinityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) []string { return v.AffinityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// The list of attached exoscale*anti*affinity_group (IDs).
+func (o LookupInstancePoolResultOutput) AntiAffinityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInstancePoolResult) []string { return v.AntiAffinityGroupIds }).(pulumi.StringArrayOutput)
 }
 
 // The deploy target ID.
