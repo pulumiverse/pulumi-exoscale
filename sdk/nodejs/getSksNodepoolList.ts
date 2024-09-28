@@ -7,7 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getSksNodepoolList(args: GetSksNodepoolListArgs, opts?: pulumi.InvokeOptions): Promise<GetSksNodepoolListResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getSksNodepoolList:getSksNodepoolList", {
         "clusterId": args.clusterId,
@@ -188,7 +187,27 @@ export interface GetSksNodepoolListResult {
     readonly zone: string;
 }
 export function getSksNodepoolListOutput(args: GetSksNodepoolListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSksNodepoolListResult> {
-    return pulumi.output(args).apply((a: any) => getSksNodepoolList(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("exoscale:index/getSksNodepoolList:getSksNodepoolList", {
+        "clusterId": args.clusterId,
+        "createdAt": args.createdAt,
+        "deployTargetId": args.deployTargetId,
+        "description": args.description,
+        "diskSize": args.diskSize,
+        "id": args.id,
+        "instancePoolId": args.instancePoolId,
+        "instancePrefix": args.instancePrefix,
+        "instanceType": args.instanceType,
+        "labels": args.labels,
+        "name": args.name,
+        "size": args.size,
+        "state": args.state,
+        "storageLvm": args.storageLvm,
+        "taints": args.taints,
+        "templateId": args.templateId,
+        "version": args.version,
+        "zone": args.zone,
+    }, opts);
 }
 
 /**

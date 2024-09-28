@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * directory for complete configuration examples.
  */
 export function getZones(opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getZones:getZones", {
     }, opts);
@@ -57,5 +56,7 @@ export interface GetZonesResult {
  * directory for complete configuration examples.
  */
 export function getZonesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
-    return pulumi.output(getZones(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("exoscale:index/getZones:getZones", {
+    }, opts);
 }

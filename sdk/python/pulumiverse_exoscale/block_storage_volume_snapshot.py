@@ -234,8 +234,8 @@ class BlockStorageVolumeSnapshot(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['BlockStorageVolumeSnapshotTimeoutsArgs']]] = None,
-                 volume: Optional[pulumi.Input[pulumi.InputType['BlockStorageVolumeSnapshotVolumeArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['BlockStorageVolumeSnapshotTimeoutsArgs', 'BlockStorageVolumeSnapshotTimeoutsArgsDict']]] = None,
+                 volume: Optional[pulumi.Input[Union['BlockStorageVolumeSnapshotVolumeArgs', 'BlockStorageVolumeSnapshotVolumeArgsDict']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -247,7 +247,7 @@ class BlockStorageVolumeSnapshot(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels.
         :param pulumi.Input[str] name: Volume snapshot name.
-        :param pulumi.Input[pulumi.InputType['BlockStorageVolumeSnapshotVolumeArgs']] volume: Volume from which to create a snapshot.
+        :param pulumi.Input[Union['BlockStorageVolumeSnapshotVolumeArgs', 'BlockStorageVolumeSnapshotVolumeArgsDict']] volume: Volume from which to create a snapshot.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         ...
@@ -278,8 +278,8 @@ class BlockStorageVolumeSnapshot(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['BlockStorageVolumeSnapshotTimeoutsArgs']]] = None,
-                 volume: Optional[pulumi.Input[pulumi.InputType['BlockStorageVolumeSnapshotVolumeArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['BlockStorageVolumeSnapshotTimeoutsArgs', 'BlockStorageVolumeSnapshotTimeoutsArgsDict']]] = None,
+                 volume: Optional[pulumi.Input[Union['BlockStorageVolumeSnapshotVolumeArgs', 'BlockStorageVolumeSnapshotVolumeArgsDict']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -317,8 +317,8 @@ class BlockStorageVolumeSnapshot(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             size: Optional[pulumi.Input[int]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['BlockStorageVolumeSnapshotTimeoutsArgs']]] = None,
-            volume: Optional[pulumi.Input[pulumi.InputType['BlockStorageVolumeSnapshotVolumeArgs']]] = None,
+            timeouts: Optional[pulumi.Input[Union['BlockStorageVolumeSnapshotTimeoutsArgs', 'BlockStorageVolumeSnapshotTimeoutsArgsDict']]] = None,
+            volume: Optional[pulumi.Input[Union['BlockStorageVolumeSnapshotVolumeArgs', 'BlockStorageVolumeSnapshotVolumeArgsDict']]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'BlockStorageVolumeSnapshot':
         """
         Get an existing BlockStorageVolumeSnapshot resource's state with the given name, id, and optional extra
@@ -332,7 +332,7 @@ class BlockStorageVolumeSnapshot(pulumi.CustomResource):
         :param pulumi.Input[str] name: Volume snapshot name.
         :param pulumi.Input[int] size: Snapshot size in GB.
         :param pulumi.Input[str] state: Snapshot state.
-        :param pulumi.Input[pulumi.InputType['BlockStorageVolumeSnapshotVolumeArgs']] volume: Volume from which to create a snapshot.
+        :param pulumi.Input[Union['BlockStorageVolumeSnapshotVolumeArgs', 'BlockStorageVolumeSnapshotVolumeArgsDict']] volume: Volume from which to create a snapshot.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

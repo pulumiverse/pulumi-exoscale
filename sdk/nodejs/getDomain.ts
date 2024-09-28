@@ -25,7 +25,6 @@ import * as utilities from "./utilities";
  * directory for complete configuration examples.
  */
 export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getDomain:getDomain", {
         "name": args.name,
@@ -76,7 +75,10 @@ export interface GetDomainResult {
  * directory for complete configuration examples.
  */
 export function getDomainOutput(args: GetDomainOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainResult> {
-    return pulumi.output(args).apply((a: any) => getDomain(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("exoscale:index/getDomain:getDomain", {
+        "name": args.name,
+    }, opts);
 }
 
 /**

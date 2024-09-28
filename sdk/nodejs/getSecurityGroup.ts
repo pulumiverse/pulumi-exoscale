@@ -26,7 +26,6 @@ import * as utilities from "./utilities";
  */
 export function getSecurityGroup(args?: GetSecurityGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityGroupResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getSecurityGroup:getSecurityGroup", {
         "id": args.id,
@@ -86,7 +85,12 @@ export interface GetSecurityGroupResult {
  * directory for complete configuration examples.
  */
 export function getSecurityGroupOutput(args?: GetSecurityGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityGroupResult> {
-    return pulumi.output(args).apply((a: any) => getSecurityGroup(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("exoscale:index/getSecurityGroup:getSecurityGroup", {
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

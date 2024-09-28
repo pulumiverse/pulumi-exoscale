@@ -564,6 +564,8 @@ func (o BlockStorageVolumeTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
 type ComputeInstanceNetworkInterface struct {
 	// The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
 	IpAddress *string `pulumi:"ipAddress"`
+	// MAC address
+	MacAddress *string `pulumi:"macAddress"`
 	// The exoscale*private*network (ID) to attach to the instance.
 	NetworkId string `pulumi:"networkId"`
 }
@@ -582,6 +584,8 @@ type ComputeInstanceNetworkInterfaceInput interface {
 type ComputeInstanceNetworkInterfaceArgs struct {
 	// The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// MAC address
+	MacAddress pulumi.StringPtrInput `pulumi:"macAddress"`
 	// The exoscale*private*network (ID) to attach to the instance.
 	NetworkId pulumi.StringInput `pulumi:"networkId"`
 }
@@ -640,6 +644,11 @@ func (o ComputeInstanceNetworkInterfaceOutput) ToComputeInstanceNetworkInterface
 // The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
 func (o ComputeInstanceNetworkInterfaceOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeInstanceNetworkInterface) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// MAC address
+func (o ComputeInstanceNetworkInterfaceOutput) MacAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeInstanceNetworkInterface) *string { return v.MacAddress }).(pulumi.StringPtrOutput)
 }
 
 // The exoscale*private*network (ID) to attach to the instance.
@@ -4604,7 +4613,7 @@ type SksNodepoolKubeletImageGc struct {
 	HighThreshold *int `pulumi:"highThreshold"`
 	// The percent of disk usage before which image garbage collection is never run
 	LowThreshold *int `pulumi:"lowThreshold"`
-	// The minimum age for an unused image before it is garbage collected
+	// The minimum age for an unused image before it is garbage collected (k8s duration format, eg. 1h)
 	MinAge *string `pulumi:"minAge"`
 }
 
@@ -4624,7 +4633,7 @@ type SksNodepoolKubeletImageGcArgs struct {
 	HighThreshold pulumi.IntPtrInput `pulumi:"highThreshold"`
 	// The percent of disk usage before which image garbage collection is never run
 	LowThreshold pulumi.IntPtrInput `pulumi:"lowThreshold"`
-	// The minimum age for an unused image before it is garbage collected
+	// The minimum age for an unused image before it is garbage collected (k8s duration format, eg. 1h)
 	MinAge pulumi.StringPtrInput `pulumi:"minAge"`
 }
 
@@ -4689,7 +4698,7 @@ func (o SksNodepoolKubeletImageGcOutput) LowThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SksNodepoolKubeletImageGc) *int { return v.LowThreshold }).(pulumi.IntPtrOutput)
 }
 
-// The minimum age for an unused image before it is garbage collected
+// The minimum age for an unused image before it is garbage collected (k8s duration format, eg. 1h)
 func (o SksNodepoolKubeletImageGcOutput) MinAge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SksNodepoolKubeletImageGc) *string { return v.MinAge }).(pulumi.StringPtrOutput)
 }
@@ -8483,7 +8492,7 @@ type GetSksNodepoolKubeletImageGc struct {
 	HighThreshold *int `pulumi:"highThreshold"`
 	// The percent of disk usage before which image garbage collection is never run
 	LowThreshold *int `pulumi:"lowThreshold"`
-	// The minimum age for an unused image before it is garbage collected
+	// The minimum age for an unused image before it is garbage collected (k8s duration format, eg. 1h)
 	MinAge *string `pulumi:"minAge"`
 }
 
@@ -8503,7 +8512,7 @@ type GetSksNodepoolKubeletImageGcArgs struct {
 	HighThreshold pulumi.IntPtrInput `pulumi:"highThreshold"`
 	// The percent of disk usage before which image garbage collection is never run
 	LowThreshold pulumi.IntPtrInput `pulumi:"lowThreshold"`
-	// The minimum age for an unused image before it is garbage collected
+	// The minimum age for an unused image before it is garbage collected (k8s duration format, eg. 1h)
 	MinAge pulumi.StringPtrInput `pulumi:"minAge"`
 }
 
@@ -8568,7 +8577,7 @@ func (o GetSksNodepoolKubeletImageGcOutput) LowThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetSksNodepoolKubeletImageGc) *int { return v.LowThreshold }).(pulumi.IntPtrOutput)
 }
 
-// The minimum age for an unused image before it is garbage collected
+// The minimum age for an unused image before it is garbage collected (k8s duration format, eg. 1h)
 func (o GetSksNodepoolKubeletImageGcOutput) MinAge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSksNodepoolKubeletImageGc) *string { return v.MinAge }).(pulumi.StringPtrOutput)
 }
@@ -8871,7 +8880,7 @@ type GetSksNodepoolListNodepoolKubeletImageGc struct {
 	HighThreshold *int `pulumi:"highThreshold"`
 	// The percent of disk usage before which image garbage collection is never run
 	LowThreshold *int `pulumi:"lowThreshold"`
-	// The minimum age for an unused image before it is garbage collected
+	// The minimum age for an unused image before it is garbage collected (k8s duration format, eg. 1h)
 	MinAge *string `pulumi:"minAge"`
 }
 
@@ -8891,7 +8900,7 @@ type GetSksNodepoolListNodepoolKubeletImageGcArgs struct {
 	HighThreshold pulumi.IntPtrInput `pulumi:"highThreshold"`
 	// The percent of disk usage before which image garbage collection is never run
 	LowThreshold pulumi.IntPtrInput `pulumi:"lowThreshold"`
-	// The minimum age for an unused image before it is garbage collected
+	// The minimum age for an unused image before it is garbage collected (k8s duration format, eg. 1h)
 	MinAge pulumi.StringPtrInput `pulumi:"minAge"`
 }
 
@@ -8956,7 +8965,7 @@ func (o GetSksNodepoolListNodepoolKubeletImageGcOutput) LowThreshold() pulumi.In
 	return o.ApplyT(func(v GetSksNodepoolListNodepoolKubeletImageGc) *int { return v.LowThreshold }).(pulumi.IntPtrOutput)
 }
 
-// The minimum age for an unused image before it is garbage collected
+// The minimum age for an unused image before it is garbage collected (k8s duration format, eg. 1h)
 func (o GetSksNodepoolListNodepoolKubeletImageGcOutput) MinAge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSksNodepoolListNodepoolKubeletImageGc) *string { return v.MinAge }).(pulumi.StringPtrOutput)
 }

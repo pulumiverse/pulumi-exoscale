@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  */
 export function getIamRole(args?: GetIamRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetIamRoleResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getIamRole:getIamRole", {
         "id": args.id,
@@ -77,7 +76,13 @@ export interface GetIamRoleResult {
  * Corresponding resource: exoscale_iam_role.
  */
 export function getIamRoleOutput(args?: GetIamRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIamRoleResult> {
-    return pulumi.output(args).apply((a: any) => getIamRole(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("exoscale:index/getIamRole:getIamRole", {
+        "id": args.id,
+        "name": args.name,
+        "timeouts": args.timeouts,
+    }, opts);
 }
 
 /**

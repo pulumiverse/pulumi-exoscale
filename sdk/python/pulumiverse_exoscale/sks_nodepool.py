@@ -621,7 +621,7 @@ class SksNodepool(pulumi.CustomResource):
                  disk_size: Optional[pulumi.Input[int]] = None,
                  instance_prefix: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
-                 kubelet_image_gcs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SksNodepoolKubeletImageGcArgs']]]]] = None,
+                 kubelet_image_gcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SksNodepoolKubeletImageGcArgs', 'SksNodepoolKubeletImageGcArgsDict']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_network_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -672,7 +672,7 @@ class SksNodepool(pulumi.CustomResource):
         :param pulumi.Input[int] disk_size: The managed instances disk size (GiB; default: `50`).
         :param pulumi.Input[str] instance_prefix: The string used to prefix the managed instances name (default `pool`).
         :param pulumi.Input[str] instance_type: The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SksNodepoolKubeletImageGcArgs']]]] kubelet_image_gcs: Configuration for this nodepool's kubelet image garbage collector
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SksNodepoolKubeletImageGcArgs', 'SksNodepoolKubeletImageGcArgsDict']]]] kubelet_image_gcs: Configuration for this nodepool's kubelet image garbage collector
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[str] name: The SKS node pool name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_network_ids: A list of exoscale*private*network (IDs) to be attached to the managed instances.
@@ -741,7 +741,7 @@ class SksNodepool(pulumi.CustomResource):
                  disk_size: Optional[pulumi.Input[int]] = None,
                  instance_prefix: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
-                 kubelet_image_gcs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SksNodepoolKubeletImageGcArgs']]]]] = None,
+                 kubelet_image_gcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SksNodepoolKubeletImageGcArgs', 'SksNodepoolKubeletImageGcArgsDict']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_network_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -807,7 +807,7 @@ class SksNodepool(pulumi.CustomResource):
             instance_pool_id: Optional[pulumi.Input[str]] = None,
             instance_prefix: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
-            kubelet_image_gcs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SksNodepoolKubeletImageGcArgs']]]]] = None,
+            kubelet_image_gcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SksNodepoolKubeletImageGcArgs', 'SksNodepoolKubeletImageGcArgsDict']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             private_network_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -835,7 +835,7 @@ class SksNodepool(pulumi.CustomResource):
         :param pulumi.Input[str] instance_pool_id: The underlying exoscale*instance*pool ID.
         :param pulumi.Input[str] instance_prefix: The string used to prefix the managed instances name (default `pool`).
         :param pulumi.Input[str] instance_type: The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SksNodepoolKubeletImageGcArgs']]]] kubelet_image_gcs: Configuration for this nodepool's kubelet image garbage collector
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SksNodepoolKubeletImageGcArgs', 'SksNodepoolKubeletImageGcArgsDict']]]] kubelet_image_gcs: Configuration for this nodepool's kubelet image garbage collector
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[str] name: The SKS node pool name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_network_ids: A list of exoscale*private*network (IDs) to be attached to the managed instances.

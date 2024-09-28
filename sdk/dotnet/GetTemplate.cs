@@ -13,8 +13,6 @@ namespace Pulumiverse.Exoscale
     public static class GetTemplate
     {
         /// <summary>
-        /// Fetch Exoscale [Compute Instance Templates](https://community.exoscale.com/documentation/compute/custom-templates/) data.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -45,8 +43,6 @@ namespace Pulumiverse.Exoscale
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTemplateResult>("exoscale:index/getTemplate:getTemplate", args ?? new GetTemplateArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Fetch Exoscale [Compute Instance Templates](https://community.exoscale.com/documentation/compute/custom-templates/) data.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

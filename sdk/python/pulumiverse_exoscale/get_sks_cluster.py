@@ -294,7 +294,7 @@ def get_sks_cluster(addons: Optional[Sequence[str]] = None,
                     metrics_server: Optional[bool] = None,
                     name: Optional[str] = None,
                     nodepools: Optional[Sequence[str]] = None,
-                    oidc: Optional[pulumi.InputType['GetSksClusterOidcArgs']] = None,
+                    oidc: Optional[Union['GetSksClusterOidcArgs', 'GetSksClusterOidcArgsDict']] = None,
                     service_level: Optional[str] = None,
                     state: Optional[str] = None,
                     version: Optional[str] = None,
@@ -317,7 +317,7 @@ def get_sks_cluster(addons: Optional[Sequence[str]] = None,
     :param Mapping[str, str] labels: A map of key/value labels.
     :param bool metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
     :param Sequence[str] nodepools: The list of exoscale*sks*nodepool (IDs) attached to the cluster.
-    :param pulumi.InputType['GetSksClusterOidcArgs'] oidc: An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
+    :param Union['GetSksClusterOidcArgs', 'GetSksClusterOidcArgsDict'] oidc: An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
     :param str service_level: The service level of the control plane (`pro` or `starter`; default: `pro`; may only be set at creation time).
     :param str state: The cluster state.
     :param str version: The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
@@ -388,7 +388,7 @@ def get_sks_cluster_output(addons: Optional[pulumi.Input[Optional[Sequence[str]]
                            metrics_server: Optional[pulumi.Input[Optional[bool]]] = None,
                            name: Optional[pulumi.Input[Optional[str]]] = None,
                            nodepools: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                           oidc: Optional[pulumi.Input[Optional[pulumi.InputType['GetSksClusterOidcArgs']]]] = None,
+                           oidc: Optional[pulumi.Input[Optional[Union['GetSksClusterOidcArgs', 'GetSksClusterOidcArgsDict']]]] = None,
                            service_level: Optional[pulumi.Input[Optional[str]]] = None,
                            state: Optional[pulumi.Input[Optional[str]]] = None,
                            version: Optional[pulumi.Input[Optional[str]]] = None,
@@ -411,7 +411,7 @@ def get_sks_cluster_output(addons: Optional[pulumi.Input[Optional[Sequence[str]]
     :param Mapping[str, str] labels: A map of key/value labels.
     :param bool metrics_server: Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
     :param Sequence[str] nodepools: The list of exoscale*sks*nodepool (IDs) attached to the cluster.
-    :param pulumi.InputType['GetSksClusterOidcArgs'] oidc: An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
+    :param Union['GetSksClusterOidcArgs', 'GetSksClusterOidcArgsDict'] oidc: An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
     :param str service_level: The service level of the control plane (`pro` or `starter`; default: `pro`; may only be set at creation time).
     :param str state: The cluster state.
     :param str version: The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).

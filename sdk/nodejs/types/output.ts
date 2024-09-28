@@ -39,6 +39,10 @@ export interface ComputeInstanceNetworkInterface {
      */
     ipAddress: string;
     /**
+     * MAC address
+     */
+    macAddress: string;
+    /**
      * The exoscale*private*network (ID) to attach to the instance.
      */
     networkId: string;
@@ -961,7 +965,7 @@ export interface GetSksNodepoolKubeletImageGc {
      */
     lowThreshold?: number;
     /**
-     * The minimum age for an unused image before it is garbage collected
+     * The minimum age for an unused image before it is garbage collected (k8s duration format, eg. 1h)
      */
     minAge?: string;
 }
@@ -1052,7 +1056,7 @@ export interface GetSksNodepoolListNodepoolKubeletImageGc {
      */
     lowThreshold?: number;
     /**
-     * The minimum age for an unused image before it is garbage collected
+     * The minimum age for an unused image before it is garbage collected (k8s duration format, eg. 1h)
      */
     minAge?: string;
 }
@@ -1232,7 +1236,7 @@ export interface SksNodepoolKubeletImageGc {
      */
     lowThreshold?: number;
     /**
-     * The minimum age for an unused image before it is garbage collected
+     * The minimum age for an unused image before it is garbage collected (k8s duration format, eg. 1h)
      */
     minAge?: string;
 }

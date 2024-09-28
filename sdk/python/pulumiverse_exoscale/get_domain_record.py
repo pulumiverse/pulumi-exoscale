@@ -83,7 +83,7 @@ class AwaitableGetDomainRecordResult(GetDomainRecordResult):
 
 
 def get_domain_record(domain: Optional[str] = None,
-                      filter: Optional[pulumi.InputType['GetDomainRecordFilterArgs']] = None,
+                      filter: Optional[Union['GetDomainRecordFilterArgs', 'GetDomainRecordFilterArgsDict']] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainRecordResult:
     """
     Fetch Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domain Records data.
@@ -92,7 +92,7 @@ def get_domain_record(domain: Optional[str] = None,
 
 
     :param str domain: The Domain name to match.
-    :param pulumi.InputType['GetDomainRecordFilterArgs'] filter: Filter to apply when looking up domain records.
+    :param Union['GetDomainRecordFilterArgs', 'GetDomainRecordFilterArgsDict'] filter: Filter to apply when looking up domain records.
     """
     __args__ = dict()
     __args__['domain'] = domain
@@ -109,7 +109,7 @@ def get_domain_record(domain: Optional[str] = None,
 
 @_utilities.lift_output_func(get_domain_record)
 def get_domain_record_output(domain: Optional[pulumi.Input[str]] = None,
-                             filter: Optional[pulumi.Input[pulumi.InputType['GetDomainRecordFilterArgs']]] = None,
+                             filter: Optional[pulumi.Input[Union['GetDomainRecordFilterArgs', 'GetDomainRecordFilterArgsDict']]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainRecordResult]:
     """
     Fetch Exoscale [DNS](https://community.exoscale.com/documentation/dns/) Domain Records data.
@@ -118,6 +118,6 @@ def get_domain_record_output(domain: Optional[pulumi.Input[str]] = None,
 
 
     :param str domain: The Domain name to match.
-    :param pulumi.InputType['GetDomainRecordFilterArgs'] filter: Filter to apply when looking up domain records.
+    :param Union['GetDomainRecordFilterArgs', 'GetDomainRecordFilterArgsDict'] filter: Filter to apply when looking up domain records.
     """
     ...

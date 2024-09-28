@@ -42,14 +42,20 @@ type LookupIamOrgPolicyResult struct {
 
 func LookupIamOrgPolicyOutput(ctx *pulumi.Context, args LookupIamOrgPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupIamOrgPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupIamOrgPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupIamOrgPolicyResultOutput, error) {
 			args := v.(LookupIamOrgPolicyArgs)
-			r, err := LookupIamOrgPolicy(ctx, &args, opts...)
-			var s LookupIamOrgPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupIamOrgPolicyResult
+			secret, err := ctx.InvokePackageRaw("exoscale:index/getIamOrgPolicy:getIamOrgPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupIamOrgPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupIamOrgPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupIamOrgPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupIamOrgPolicyResultOutput)
 }
 

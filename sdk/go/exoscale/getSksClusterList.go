@@ -104,14 +104,20 @@ type GetSksClusterListResult struct {
 
 func GetSksClusterListOutput(ctx *pulumi.Context, args GetSksClusterListOutputArgs, opts ...pulumi.InvokeOption) GetSksClusterListResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSksClusterListResult, error) {
+		ApplyT(func(v interface{}) (GetSksClusterListResultOutput, error) {
 			args := v.(GetSksClusterListArgs)
-			r, err := GetSksClusterList(ctx, &args, opts...)
-			var s GetSksClusterListResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetSksClusterListResult
+			secret, err := ctx.InvokePackageRaw("exoscale:index/getSksClusterList:getSksClusterList", args, &rv, "", opts...)
+			if err != nil {
+				return GetSksClusterListResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSksClusterListResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSksClusterListResultOutput), nil
+			}
+			return output, nil
 		}).(GetSksClusterListResultOutput)
 }
 

@@ -108,14 +108,20 @@ type GetComputeInstanceListResult struct {
 
 func GetComputeInstanceListOutput(ctx *pulumi.Context, args GetComputeInstanceListOutputArgs, opts ...pulumi.InvokeOption) GetComputeInstanceListResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetComputeInstanceListResult, error) {
+		ApplyT(func(v interface{}) (GetComputeInstanceListResultOutput, error) {
 			args := v.(GetComputeInstanceListArgs)
-			r, err := GetComputeInstanceList(ctx, &args, opts...)
-			var s GetComputeInstanceListResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetComputeInstanceListResult
+			secret, err := ctx.InvokePackageRaw("exoscale:index/getComputeInstanceList:getComputeInstanceList", args, &rv, "", opts...)
+			if err != nil {
+				return GetComputeInstanceListResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetComputeInstanceListResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetComputeInstanceListResultOutput), nil
+			}
+			return output, nil
 		}).(GetComputeInstanceListResultOutput)
 }
 

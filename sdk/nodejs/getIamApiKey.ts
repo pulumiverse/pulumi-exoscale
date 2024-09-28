@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  * Corresponding resource: exoscale_iam_role.
  */
 export function getIamApiKey(args: GetIamApiKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetIamApiKeyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getIamApiKey:getIamApiKey", {
         "key": args.key,
@@ -59,7 +58,11 @@ export interface GetIamApiKeyResult {
  * Corresponding resource: exoscale_iam_role.
  */
 export function getIamApiKeyOutput(args: GetIamApiKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIamApiKeyResult> {
-    return pulumi.output(args).apply((a: any) => getIamApiKey(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("exoscale:index/getIamApiKey:getIamApiKey", {
+        "key": args.key,
+        "timeouts": args.timeouts,
+    }, opts);
 }
 
 /**

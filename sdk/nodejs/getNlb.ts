@@ -26,7 +26,6 @@ import * as utilities from "./utilities";
  * directory for complete configuration examples.
  */
 export function getNlb(args: GetNlbArgs, opts?: pulumi.InvokeOptions): Promise<GetNlbResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getNlb:getNlb", {
         "id": args.id,
@@ -108,7 +107,12 @@ export interface GetNlbResult {
  * directory for complete configuration examples.
  */
 export function getNlbOutput(args: GetNlbOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNlbResult> {
-    return pulumi.output(args).apply((a: any) => getNlb(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("exoscale:index/getNlb:getNlb", {
+        "id": args.id,
+        "name": args.name,
+        "zone": args.zone,
+    }, opts);
 }
 
 /**

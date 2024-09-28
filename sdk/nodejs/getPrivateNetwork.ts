@@ -26,7 +26,6 @@ import * as utilities from "./utilities";
  * directory for complete configuration examples.
  */
 export function getPrivateNetwork(args: GetPrivateNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateNetworkResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getPrivateNetwork:getPrivateNetwork", {
         "description": args.description,
@@ -122,7 +121,14 @@ export interface GetPrivateNetworkResult {
  * directory for complete configuration examples.
  */
 export function getPrivateNetworkOutput(args: GetPrivateNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateNetworkResult> {
-    return pulumi.output(args).apply((a: any) => getPrivateNetwork(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("exoscale:index/getPrivateNetwork:getPrivateNetwork", {
+        "description": args.description,
+        "id": args.id,
+        "labels": args.labels,
+        "name": args.name,
+        "zone": args.zone,
+    }, opts);
 }
 
 /**

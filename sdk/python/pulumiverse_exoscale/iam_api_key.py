@@ -155,7 +155,7 @@ class IamApiKey(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  role_id: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['IamApiKeyTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['IamApiKeyTimeoutsArgs', 'IamApiKeyTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -191,7 +191,7 @@ class IamApiKey(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  role_id: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['IamApiKeyTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['IamApiKeyTimeoutsArgs', 'IamApiKeyTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -224,7 +224,7 @@ class IamApiKey(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             role_id: Optional[pulumi.Input[str]] = None,
             secret: Optional[pulumi.Input[str]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['IamApiKeyTimeoutsArgs']]] = None) -> 'IamApiKey':
+            timeouts: Optional[pulumi.Input[Union['IamApiKeyTimeoutsArgs', 'IamApiKeyTimeoutsArgsDict']]] = None) -> 'IamApiKey':
         """
         Get an existing IamApiKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

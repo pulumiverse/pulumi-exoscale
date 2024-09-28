@@ -29,7 +29,7 @@ namespace Pulumiverse.Exoscale
     public sealed class GetDatabaseUriArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The database name to match.
+        /// Name of database service to match.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -58,7 +58,7 @@ namespace Pulumiverse.Exoscale
     public sealed class GetDatabaseUriInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The database name to match.
+        /// Name of database service to match.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -89,22 +89,46 @@ namespace Pulumiverse.Exoscale
     public sealed class GetDatabaseUriResult
     {
         /// <summary>
+        /// Default database name
+        /// </summary>
+        public readonly string DbName;
+        /// <summary>
+        /// Database service hostname
+        /// </summary>
+        public readonly string Host;
+        /// <summary>
         /// The ID of this resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The database name to match.
+        /// Name of database service to match.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Admin user password
+        /// </summary>
+        public readonly string Password;
+        /// <summary>
+        /// Database service port
+        /// </summary>
+        public readonly int Port;
+        /// <summary>
+        /// Database service connection schema
+        /// </summary>
+        public readonly string Schema;
         public readonly Outputs.GetDatabaseUriTimeoutsResult? Timeouts;
         /// <summary>
         /// The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The database service connection URI.
+        /// Database service connection URI.
         /// </summary>
         public readonly string Uri;
+        /// <summary>
+        /// Admin user username
+        /// </summary>
+        public readonly string Username;
         /// <summary>
         /// The Exoscale Zone name.
         /// </summary>
@@ -112,9 +136,19 @@ namespace Pulumiverse.Exoscale
 
         [OutputConstructor]
         private GetDatabaseUriResult(
+            string dbName,
+
+            string host,
+
             string id,
 
             string name,
+
+            string password,
+
+            int port,
+
+            string schema,
 
             Outputs.GetDatabaseUriTimeoutsResult? timeouts,
 
@@ -122,13 +156,21 @@ namespace Pulumiverse.Exoscale
 
             string uri,
 
+            string username,
+
             string zone)
         {
+            DbName = dbName;
+            Host = host;
             Id = id;
             Name = name;
+            Password = password;
+            Port = port;
+            Schema = schema;
             Timeouts = timeouts;
             Type = type;
             Uri = uri;
+            Username = username;
             Zone = zone;
         }
     }

@@ -361,7 +361,7 @@ class NlbService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 healthchecks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NlbServiceHealthcheckArgs']]]]] = None,
+                 healthchecks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NlbServiceHealthcheckArgs', 'NlbServiceHealthcheckArgsDict']]]]] = None,
                  instance_pool_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nlb_id: Optional[pulumi.Input[str]] = None,
@@ -389,15 +389,15 @@ class NlbService(pulumi.CustomResource):
             port=443,
             target_port=8443,
             strategy="round-robin",
-            healthchecks=[exoscale.NlbServiceHealthcheckArgs(
-                mode="https",
-                port=8443,
-                uri="/healthz",
-                tls_sni="example.net",
-                interval=5,
-                timeout=3,
-                retries=1,
-            )])
+            healthchecks=[{
+                "mode": "https",
+                "port": 8443,
+                "uri": "/healthz",
+                "tls_sni": "example.net",
+                "interval": 5,
+                "timeout": 3,
+                "retries": 1,
+            }])
         ```
 
         Please refer to the examples
@@ -418,7 +418,7 @@ class NlbService(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free-form text describing the NLB service.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NlbServiceHealthcheckArgs']]]] healthchecks: The service health checking configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NlbServiceHealthcheckArgs', 'NlbServiceHealthcheckArgsDict']]]] healthchecks: The service health checking configuration.
         :param pulumi.Input[str] instance_pool_id: ❗ The exoscale*instance*pool (ID) to forward traffic to.
         :param pulumi.Input[str] name: The NLB service name.
         :param pulumi.Input[str] nlb_id: ❗ The parent Nlb ID.
@@ -452,15 +452,15 @@ class NlbService(pulumi.CustomResource):
             port=443,
             target_port=8443,
             strategy="round-robin",
-            healthchecks=[exoscale.NlbServiceHealthcheckArgs(
-                mode="https",
-                port=8443,
-                uri="/healthz",
-                tls_sni="example.net",
-                interval=5,
-                timeout=3,
-                retries=1,
-            )])
+            healthchecks=[{
+                "mode": "https",
+                "port": 8443,
+                "uri": "/healthz",
+                "tls_sni": "example.net",
+                "interval": 5,
+                "timeout": 3,
+                "retries": 1,
+            }])
         ```
 
         Please refer to the examples
@@ -494,7 +494,7 @@ class NlbService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 healthchecks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NlbServiceHealthcheckArgs']]]]] = None,
+                 healthchecks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NlbServiceHealthcheckArgs', 'NlbServiceHealthcheckArgsDict']]]]] = None,
                  instance_pool_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nlb_id: Optional[pulumi.Input[str]] = None,
@@ -546,7 +546,7 @@ class NlbService(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
-            healthchecks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NlbServiceHealthcheckArgs']]]]] = None,
+            healthchecks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NlbServiceHealthcheckArgs', 'NlbServiceHealthcheckArgsDict']]]]] = None,
             instance_pool_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             nlb_id: Optional[pulumi.Input[str]] = None,
@@ -564,7 +564,7 @@ class NlbService(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free-form text describing the NLB service.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NlbServiceHealthcheckArgs']]]] healthchecks: The service health checking configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NlbServiceHealthcheckArgs', 'NlbServiceHealthcheckArgsDict']]]] healthchecks: The service health checking configuration.
         :param pulumi.Input[str] instance_pool_id: ❗ The exoscale*instance*pool (ID) to forward traffic to.
         :param pulumi.Input[str] name: The NLB service name.
         :param pulumi.Input[str] nlb_id: ❗ The parent Nlb ID.

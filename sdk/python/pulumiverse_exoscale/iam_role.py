@@ -255,8 +255,8 @@ class IamRole(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 policy: Optional[pulumi.Input[pulumi.InputType['IamRolePolicyArgs']]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['IamRoleTimeoutsArgs']]] = None,
+                 policy: Optional[pulumi.Input[Union['IamRolePolicyArgs', 'IamRolePolicyArgsDict']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['IamRoleTimeoutsArgs', 'IamRoleTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Manage Exoscale [IAM](https://community.exoscale.com/documentation/iam/) Role.
@@ -268,7 +268,7 @@ class IamRole(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: IAM Role labels.
         :param pulumi.Input[str] name: ❗Name of IAM Role.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: IAM Role permissions.
-        :param pulumi.Input[pulumi.InputType['IamRolePolicyArgs']] policy: IAM Policy.
+        :param pulumi.Input[Union['IamRolePolicyArgs', 'IamRolePolicyArgsDict']] policy: IAM Policy.
         """
         ...
     @overload
@@ -299,8 +299,8 @@ class IamRole(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 policy: Optional[pulumi.Input[pulumi.InputType['IamRolePolicyArgs']]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['IamRoleTimeoutsArgs']]] = None,
+                 policy: Optional[pulumi.Input[Union['IamRolePolicyArgs', 'IamRolePolicyArgsDict']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['IamRoleTimeoutsArgs', 'IamRoleTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -332,8 +332,8 @@ class IamRole(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            policy: Optional[pulumi.Input[pulumi.InputType['IamRolePolicyArgs']]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['IamRoleTimeoutsArgs']]] = None) -> 'IamRole':
+            policy: Optional[pulumi.Input[Union['IamRolePolicyArgs', 'IamRolePolicyArgsDict']]] = None,
+            timeouts: Optional[pulumi.Input[Union['IamRoleTimeoutsArgs', 'IamRoleTimeoutsArgsDict']]] = None) -> 'IamRole':
         """
         Get an existing IamRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -346,7 +346,7 @@ class IamRole(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: IAM Role labels.
         :param pulumi.Input[str] name: ❗Name of IAM Role.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: IAM Role permissions.
-        :param pulumi.Input[pulumi.InputType['IamRolePolicyArgs']] policy: IAM Policy.
+        :param pulumi.Input[Union['IamRolePolicyArgs', 'IamRolePolicyArgsDict']] policy: IAM Policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

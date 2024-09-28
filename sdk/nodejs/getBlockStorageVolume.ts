@@ -14,7 +14,6 @@ import * as utilities from "./utilities";
  * Corresponding resource: exoscale_block_storage_volume.
  */
 export function getBlockStorageVolume(args: GetBlockStorageVolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetBlockStorageVolumeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getBlockStorageVolume:getBlockStorageVolume", {
         "id": args.id,
@@ -92,7 +91,12 @@ export interface GetBlockStorageVolumeResult {
  * Corresponding resource: exoscale_block_storage_volume.
  */
 export function getBlockStorageVolumeOutput(args: GetBlockStorageVolumeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBlockStorageVolumeResult> {
-    return pulumi.output(args).apply((a: any) => getBlockStorageVolume(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("exoscale:index/getBlockStorageVolume:getBlockStorageVolume", {
+        "id": args.id,
+        "timeouts": args.timeouts,
+        "zone": args.zone,
+    }, opts);
 }
 
 /**

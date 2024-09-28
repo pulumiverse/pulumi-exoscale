@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  * Corresponding resource: exoscale_nlb.
  */
 export function getNlbServiceList(args: GetNlbServiceListArgs, opts?: pulumi.InvokeOptions): Promise<GetNlbServiceListResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getNlbServiceList:getNlbServiceList", {
         "nlbId": args.nlbId,
@@ -73,7 +72,13 @@ export interface GetNlbServiceListResult {
  * Corresponding resource: exoscale_nlb.
  */
 export function getNlbServiceListOutput(args: GetNlbServiceListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNlbServiceListResult> {
-    return pulumi.output(args).apply((a: any) => getNlbServiceList(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("exoscale:index/getNlbServiceList:getNlbServiceList", {
+        "nlbId": args.nlbId,
+        "nlbName": args.nlbName,
+        "timeouts": args.timeouts,
+        "zone": args.zone,
+    }, opts);
 }
 
 /**
