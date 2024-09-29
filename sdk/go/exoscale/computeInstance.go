@@ -91,6 +91,8 @@ type ComputeInstance struct {
 	Ipv6Address pulumi.StringOutput `pulumi:"ipv6Address"`
 	// A map of key/value labels.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// MAC address
+	MacAddress pulumi.StringOutput `pulumi:"macAddress"`
 	// The compute instance name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Private network interfaces (may be specified multiple times). Structure is documented below.
@@ -180,6 +182,8 @@ type computeInstanceState struct {
 	Ipv6Address *string `pulumi:"ipv6Address"`
 	// A map of key/value labels.
 	Labels map[string]string `pulumi:"labels"`
+	// MAC address
+	MacAddress *string `pulumi:"macAddress"`
 	// The compute instance name.
 	Name *string `pulumi:"name"`
 	// Private network interfaces (may be specified multiple times). Structure is documented below.
@@ -231,6 +235,8 @@ type ComputeInstanceState struct {
 	Ipv6Address pulumi.StringPtrInput
 	// A map of key/value labels.
 	Labels pulumi.StringMapInput
+	// MAC address
+	MacAddress pulumi.StringPtrInput
 	// The compute instance name.
 	Name pulumi.StringPtrInput
 	// Private network interfaces (may be specified multiple times). Structure is documented below.
@@ -483,6 +489,11 @@ func (o ComputeInstanceOutput) Ipv6Address() pulumi.StringOutput {
 // A map of key/value labels.
 func (o ComputeInstanceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ComputeInstance) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// MAC address
+func (o ComputeInstanceOutput) MacAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *ComputeInstance) pulumi.StringOutput { return v.MacAddress }).(pulumi.StringOutput)
 }
 
 // The compute instance name.

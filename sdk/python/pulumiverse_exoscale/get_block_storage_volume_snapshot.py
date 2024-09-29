@@ -140,7 +140,7 @@ class AwaitableGetBlockStorageVolumeSnapshotResult(GetBlockStorageVolumeSnapshot
 
 
 def get_block_storage_volume_snapshot(id: Optional[str] = None,
-                                      timeouts: Optional[pulumi.InputType['GetBlockStorageVolumeSnapshotTimeoutsArgs']] = None,
+                                      timeouts: Optional[Union['GetBlockStorageVolumeSnapshotTimeoutsArgs', 'GetBlockStorageVolumeSnapshotTimeoutsArgsDict']] = None,
                                       zone: Optional[str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBlockStorageVolumeSnapshotResult:
     """
@@ -175,7 +175,7 @@ def get_block_storage_volume_snapshot(id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_block_storage_volume_snapshot)
 def get_block_storage_volume_snapshot_output(id: Optional[pulumi.Input[str]] = None,
-                                             timeouts: Optional[pulumi.Input[Optional[pulumi.InputType['GetBlockStorageVolumeSnapshotTimeoutsArgs']]]] = None,
+                                             timeouts: Optional[pulumi.Input[Optional[Union['GetBlockStorageVolumeSnapshotTimeoutsArgs', 'GetBlockStorageVolumeSnapshotTimeoutsArgsDict']]]] = None,
                                              zone: Optional[pulumi.Input[str]] = None,
                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBlockStorageVolumeSnapshotResult]:
     """

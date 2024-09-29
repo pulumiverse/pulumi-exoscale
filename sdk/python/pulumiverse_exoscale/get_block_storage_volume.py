@@ -164,7 +164,7 @@ class AwaitableGetBlockStorageVolumeResult(GetBlockStorageVolumeResult):
 
 
 def get_block_storage_volume(id: Optional[str] = None,
-                             timeouts: Optional[pulumi.InputType['GetBlockStorageVolumeTimeoutsArgs']] = None,
+                             timeouts: Optional[Union['GetBlockStorageVolumeTimeoutsArgs', 'GetBlockStorageVolumeTimeoutsArgsDict']] = None,
                              zone: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBlockStorageVolumeResult:
     """
@@ -201,7 +201,7 @@ def get_block_storage_volume(id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_block_storage_volume)
 def get_block_storage_volume_output(id: Optional[pulumi.Input[str]] = None,
-                                    timeouts: Optional[pulumi.Input[Optional[pulumi.InputType['GetBlockStorageVolumeTimeoutsArgs']]]] = None,
+                                    timeouts: Optional[pulumi.Input[Optional[Union['GetBlockStorageVolumeTimeoutsArgs', 'GetBlockStorageVolumeTimeoutsArgsDict']]]] = None,
                                     zone: Optional[pulumi.Input[str]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBlockStorageVolumeResult]:
     """

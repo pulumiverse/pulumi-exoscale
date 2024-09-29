@@ -335,6 +335,7 @@ class _ComputeInstanceState:
                  ipv6: Optional[pulumi.Input[bool]] = None,
                  ipv6_address: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 mac_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeInstanceNetworkInterfaceArgs']]]] = None,
                  private: Optional[pulumi.Input[bool]] = None,
@@ -360,6 +361,7 @@ class _ComputeInstanceState:
         :param pulumi.Input[bool] ipv6: Enable IPv6 on the instance (boolean; default: `false`).
         :param pulumi.Input[str] ipv6_address: The instance (main network interface) IPv6 address (if enabled).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
+        :param pulumi.Input[str] mac_address: MAC address
         :param pulumi.Input[str] name: The compute instance name.
         :param pulumi.Input[Sequence[pulumi.Input['ComputeInstanceNetworkInterfaceArgs']]] network_interfaces: Private network interfaces (may be specified multiple times). Structure is documented below.
         :param pulumi.Input[bool] private: Whether the instance is private (no public IP addresses; default: false)
@@ -394,6 +396,8 @@ class _ComputeInstanceState:
             pulumi.set(__self__, "ipv6_address", ipv6_address)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if mac_address is not None:
+            pulumi.set(__self__, "mac_address", mac_address)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network_interfaces is not None:
@@ -543,6 +547,18 @@ class _ComputeInstanceState:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="macAddress")
+    def mac_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        MAC address
+        """
+        return pulumi.get(self, "mac_address")
+
+    @mac_address.setter
+    def mac_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mac_address", value)
 
     @property
     @pulumi.getter
@@ -716,7 +732,7 @@ class ComputeInstance(pulumi.CustomResource):
                  ipv6: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeInstanceNetworkInterfaceArgs']]]]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComputeInstanceNetworkInterfaceArgs', 'ComputeInstanceNetworkInterfaceArgsDict']]]]] = None,
                  private: Optional[pulumi.Input[bool]] = None,
                  reverse_dns: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -776,7 +792,7 @@ class ComputeInstance(pulumi.CustomResource):
         :param pulumi.Input[bool] ipv6: Enable IPv6 on the instance (boolean; default: `false`).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
         :param pulumi.Input[str] name: The compute instance name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeInstanceNetworkInterfaceArgs']]]] network_interfaces: Private network interfaces (may be specified multiple times). Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ComputeInstanceNetworkInterfaceArgs', 'ComputeInstanceNetworkInterfaceArgsDict']]]] network_interfaces: Private network interfaces (may be specified multiple times). Structure is documented below.
         :param pulumi.Input[bool] private: Whether the instance is private (no public IP addresses; default: false)
         :param pulumi.Input[str] reverse_dns: Domain name for reverse DNS record.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of exoscale*security*group (IDs) to attach to the instance.
@@ -855,7 +871,7 @@ class ComputeInstance(pulumi.CustomResource):
                  ipv6: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeInstanceNetworkInterfaceArgs']]]]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComputeInstanceNetworkInterfaceArgs', 'ComputeInstanceNetworkInterfaceArgsDict']]]]] = None,
                  private: Optional[pulumi.Input[bool]] = None,
                  reverse_dns: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -901,6 +917,7 @@ class ComputeInstance(pulumi.CustomResource):
             __props__.__dict__["zone"] = zone
             __props__.__dict__["created_at"] = None
             __props__.__dict__["ipv6_address"] = None
+            __props__.__dict__["mac_address"] = None
             __props__.__dict__["private_network_ids"] = None
             __props__.__dict__["public_ip_address"] = None
         super(ComputeInstance, __self__).__init__(
@@ -923,8 +940,9 @@ class ComputeInstance(pulumi.CustomResource):
             ipv6: Optional[pulumi.Input[bool]] = None,
             ipv6_address: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            mac_address: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeInstanceNetworkInterfaceArgs']]]]] = None,
+            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComputeInstanceNetworkInterfaceArgs', 'ComputeInstanceNetworkInterfaceArgsDict']]]]] = None,
             private: Optional[pulumi.Input[bool]] = None,
             private_network_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             public_ip_address: Optional[pulumi.Input[str]] = None,
@@ -953,8 +971,9 @@ class ComputeInstance(pulumi.CustomResource):
         :param pulumi.Input[bool] ipv6: Enable IPv6 on the instance (boolean; default: `false`).
         :param pulumi.Input[str] ipv6_address: The instance (main network interface) IPv6 address (if enabled).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
+        :param pulumi.Input[str] mac_address: MAC address
         :param pulumi.Input[str] name: The compute instance name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeInstanceNetworkInterfaceArgs']]]] network_interfaces: Private network interfaces (may be specified multiple times). Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ComputeInstanceNetworkInterfaceArgs', 'ComputeInstanceNetworkInterfaceArgsDict']]]] network_interfaces: Private network interfaces (may be specified multiple times). Structure is documented below.
         :param pulumi.Input[bool] private: Whether the instance is private (no public IP addresses; default: false)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_network_ids: A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument instead.
         :param pulumi.Input[str] public_ip_address: The instance (main network interface) IPv4 address.
@@ -981,6 +1000,7 @@ class ComputeInstance(pulumi.CustomResource):
         __props__.__dict__["ipv6"] = ipv6
         __props__.__dict__["ipv6_address"] = ipv6_address
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["mac_address"] = mac_address
         __props__.__dict__["name"] = name
         __props__.__dict__["network_interfaces"] = network_interfaces
         __props__.__dict__["private"] = private
@@ -1075,6 +1095,14 @@ class ComputeInstance(pulumi.CustomResource):
         A map of key/value labels.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="macAddress")
+    def mac_address(self) -> pulumi.Output[str]:
+        """
+        MAC address
+        """
+        return pulumi.get(self, "mac_address")
 
     @property
     @pulumi.getter

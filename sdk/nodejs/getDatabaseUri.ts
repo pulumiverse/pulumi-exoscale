@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * ## Example Usage
  */
 export function getDatabaseUri(args: GetDatabaseUriArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseUriResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getDatabaseUri:getDatabaseUri", {
         "name": args.name,
@@ -25,7 +24,7 @@ export function getDatabaseUri(args: GetDatabaseUriArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetDatabaseUriArgs {
     /**
-     * The database name to match.
+     * Name of database service to match.
      */
     name: string;
     timeouts?: inputs.GetDatabaseUriTimeouts;
@@ -44,22 +43,46 @@ export interface GetDatabaseUriArgs {
  */
 export interface GetDatabaseUriResult {
     /**
+     * Default database name
+     */
+    readonly dbName: string;
+    /**
+     * Database service hostname
+     */
+    readonly host: string;
+    /**
      * The ID of this resource.
      */
     readonly id: string;
     /**
-     * The database name to match.
+     * Name of database service to match.
      */
     readonly name: string;
+    /**
+     * Admin user password
+     */
+    readonly password: string;
+    /**
+     * Database service port
+     */
+    readonly port: number;
+    /**
+     * Database service connection schema
+     */
+    readonly schema: string;
     readonly timeouts?: outputs.GetDatabaseUriTimeouts;
     /**
      * The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
      */
     readonly type: string;
     /**
-     * The database service connection URI.
+     * Database service connection URI.
      */
     readonly uri: string;
+    /**
+     * Admin user username
+     */
+    readonly username: string;
     /**
      * The Exoscale Zone name.
      */
@@ -69,7 +92,13 @@ export interface GetDatabaseUriResult {
  * ## Example Usage
  */
 export function getDatabaseUriOutput(args: GetDatabaseUriOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseUriResult> {
-    return pulumi.output(args).apply((a: any) => getDatabaseUri(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("exoscale:index/getDatabaseUri:getDatabaseUri", {
+        "name": args.name,
+        "timeouts": args.timeouts,
+        "type": args.type,
+        "zone": args.zone,
+    }, opts);
 }
 
 /**
@@ -77,7 +106,7 @@ export function getDatabaseUriOutput(args: GetDatabaseUriOutputArgs, opts?: pulu
  */
 export interface GetDatabaseUriOutputArgs {
     /**
-     * The database name to match.
+     * Name of database service to match.
      */
     name: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.GetDatabaseUriTimeoutsArgs>;

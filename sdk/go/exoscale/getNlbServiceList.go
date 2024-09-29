@@ -52,14 +52,20 @@ type GetNlbServiceListResult struct {
 
 func GetNlbServiceListOutput(ctx *pulumi.Context, args GetNlbServiceListOutputArgs, opts ...pulumi.InvokeOption) GetNlbServiceListResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetNlbServiceListResult, error) {
+		ApplyT(func(v interface{}) (GetNlbServiceListResultOutput, error) {
 			args := v.(GetNlbServiceListArgs)
-			r, err := GetNlbServiceList(ctx, &args, opts...)
-			var s GetNlbServiceListResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetNlbServiceListResult
+			secret, err := ctx.InvokePackageRaw("exoscale:index/getNlbServiceList:getNlbServiceList", args, &rv, "", opts...)
+			if err != nil {
+				return GetNlbServiceListResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetNlbServiceListResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetNlbServiceListResultOutput), nil
+			}
+			return output, nil
 		}).(GetNlbServiceListResultOutput)
 }
 

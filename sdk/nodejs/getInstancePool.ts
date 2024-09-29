@@ -28,7 +28,6 @@ import * as utilities from "./utilities";
  * directory for complete configuration examples.
  */
 export function getInstancePool(args: GetInstancePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancePoolResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getInstancePool:getInstancePool", {
         "id": args.id,
@@ -173,7 +172,13 @@ export interface GetInstancePoolResult {
  * directory for complete configuration examples.
  */
 export function getInstancePoolOutput(args: GetInstancePoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancePoolResult> {
-    return pulumi.output(args).apply((a: any) => getInstancePool(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("exoscale:index/getInstancePool:getInstancePool", {
+        "id": args.id,
+        "labels": args.labels,
+        "name": args.name,
+        "zone": args.zone,
+    }, opts);
 }
 
 /**

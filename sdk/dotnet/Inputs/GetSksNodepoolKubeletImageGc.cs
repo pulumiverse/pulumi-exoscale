@@ -26,7 +26,7 @@ namespace Pulumiverse.Exoscale.Inputs
         public int? LowThreshold { get; set; }
 
         /// <summary>
-        /// The minimum age for an unused image before it is garbage collected
+        /// The minimum age for an unused image before it is garbage collected (k8s duration format, eg. 1h)
         /// </summary>
         [Input("minAge")]
         public string? MinAge { get; set; }

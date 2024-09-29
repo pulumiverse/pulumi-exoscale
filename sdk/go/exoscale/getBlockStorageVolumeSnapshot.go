@@ -58,14 +58,20 @@ type LookupBlockStorageVolumeSnapshotResult struct {
 
 func LookupBlockStorageVolumeSnapshotOutput(ctx *pulumi.Context, args LookupBlockStorageVolumeSnapshotOutputArgs, opts ...pulumi.InvokeOption) LookupBlockStorageVolumeSnapshotResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupBlockStorageVolumeSnapshotResult, error) {
+		ApplyT(func(v interface{}) (LookupBlockStorageVolumeSnapshotResultOutput, error) {
 			args := v.(LookupBlockStorageVolumeSnapshotArgs)
-			r, err := LookupBlockStorageVolumeSnapshot(ctx, &args, opts...)
-			var s LookupBlockStorageVolumeSnapshotResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupBlockStorageVolumeSnapshotResult
+			secret, err := ctx.InvokePackageRaw("exoscale:index/getBlockStorageVolumeSnapshot:getBlockStorageVolumeSnapshot", args, &rv, "", opts...)
+			if err != nil {
+				return LookupBlockStorageVolumeSnapshotResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupBlockStorageVolumeSnapshotResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupBlockStorageVolumeSnapshotResultOutput), nil
+			}
+			return output, nil
 		}).(LookupBlockStorageVolumeSnapshotResultOutput)
 }
 

@@ -26,7 +26,6 @@ import * as utilities from "./utilities";
  * directory for complete configuration examples.
  */
 export function getComputeInstance(args: GetComputeInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetComputeInstanceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getComputeInstance:getComputeInstance", {
         "id": args.id,
@@ -168,7 +167,12 @@ export interface GetComputeInstanceResult {
  * directory for complete configuration examples.
  */
 export function getComputeInstanceOutput(args: GetComputeInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeInstanceResult> {
-    return pulumi.output(args).apply((a: any) => getComputeInstance(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("exoscale:index/getComputeInstance:getComputeInstance", {
+        "id": args.id,
+        "name": args.name,
+        "zone": args.zone,
+    }, opts);
 }
 
 /**

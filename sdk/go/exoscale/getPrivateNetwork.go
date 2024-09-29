@@ -91,14 +91,20 @@ type LookupPrivateNetworkResult struct {
 
 func LookupPrivateNetworkOutput(ctx *pulumi.Context, args LookupPrivateNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateNetworkResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPrivateNetworkResult, error) {
+		ApplyT(func(v interface{}) (LookupPrivateNetworkResultOutput, error) {
 			args := v.(LookupPrivateNetworkArgs)
-			r, err := LookupPrivateNetwork(ctx, &args, opts...)
-			var s LookupPrivateNetworkResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupPrivateNetworkResult
+			secret, err := ctx.InvokePackageRaw("exoscale:index/getPrivateNetwork:getPrivateNetwork", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPrivateNetworkResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPrivateNetworkResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPrivateNetworkResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPrivateNetworkResultOutput)
 }
 

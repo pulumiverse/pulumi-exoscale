@@ -104,14 +104,20 @@ type GetSksNodepoolListResult struct {
 
 func GetSksNodepoolListOutput(ctx *pulumi.Context, args GetSksNodepoolListOutputArgs, opts ...pulumi.InvokeOption) GetSksNodepoolListResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSksNodepoolListResult, error) {
+		ApplyT(func(v interface{}) (GetSksNodepoolListResultOutput, error) {
 			args := v.(GetSksNodepoolListArgs)
-			r, err := GetSksNodepoolList(ctx, &args, opts...)
-			var s GetSksNodepoolListResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetSksNodepoolListResult
+			secret, err := ctx.InvokePackageRaw("exoscale:index/getSksNodepoolList:getSksNodepoolList", args, &rv, "", opts...)
+			if err != nil {
+				return GetSksNodepoolListResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSksNodepoolListResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSksNodepoolListResultOutput), nil
+			}
+			return output, nil
 		}).(GetSksNodepoolListResultOutput)
 }
 

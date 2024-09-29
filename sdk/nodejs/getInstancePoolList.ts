@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  * Corresponding resource: exoscale_instance_pool.
  */
 export function getInstancePoolList(args: GetInstancePoolListArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancePoolListResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getInstancePoolList:getInstancePoolList", {
         "zone": args.zone,
@@ -52,7 +51,10 @@ export interface GetInstancePoolListResult {
  * Corresponding resource: exoscale_instance_pool.
  */
 export function getInstancePoolListOutput(args: GetInstancePoolListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancePoolListResult> {
-    return pulumi.output(args).apply((a: any) => getInstancePoolList(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("exoscale:index/getInstancePoolList:getInstancePoolList", {
+        "zone": args.zone,
+    }, opts);
 }
 
 /**

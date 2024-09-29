@@ -79,7 +79,7 @@ class AwaitableGetIamOrgPolicyResult(GetIamOrgPolicyResult):
             timeouts=self.timeouts)
 
 
-def get_iam_org_policy(timeouts: Optional[pulumi.InputType['GetIamOrgPolicyTimeoutsArgs']] = None,
+def get_iam_org_policy(timeouts: Optional[Union['GetIamOrgPolicyTimeoutsArgs', 'GetIamOrgPolicyTimeoutsArgsDict']] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIamOrgPolicyResult:
     """
     Fetch Exoscale [IAM](https://community.exoscale.com/documentation/iam/) Organization Policy.
@@ -99,7 +99,7 @@ def get_iam_org_policy(timeouts: Optional[pulumi.InputType['GetIamOrgPolicyTimeo
 
 
 @_utilities.lift_output_func(get_iam_org_policy)
-def get_iam_org_policy_output(timeouts: Optional[pulumi.Input[Optional[pulumi.InputType['GetIamOrgPolicyTimeoutsArgs']]]] = None,
+def get_iam_org_policy_output(timeouts: Optional[pulumi.Input[Optional[Union['GetIamOrgPolicyTimeoutsArgs', 'GetIamOrgPolicyTimeoutsArgsDict']]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIamOrgPolicyResult]:
     """
     Fetch Exoscale [IAM](https://community.exoscale.com/documentation/iam/) Organization Policy.

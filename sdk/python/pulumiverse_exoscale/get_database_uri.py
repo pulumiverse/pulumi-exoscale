@@ -23,13 +23,28 @@ class GetDatabaseUriResult:
     """
     A collection of values returned by getDatabaseUri.
     """
-    def __init__(__self__, id=None, name=None, timeouts=None, type=None, uri=None, zone=None):
+    def __init__(__self__, db_name=None, host=None, id=None, name=None, password=None, port=None, schema=None, timeouts=None, type=None, uri=None, username=None, zone=None):
+        if db_name and not isinstance(db_name, str):
+            raise TypeError("Expected argument 'db_name' to be a str")
+        pulumi.set(__self__, "db_name", db_name)
+        if host and not isinstance(host, str):
+            raise TypeError("Expected argument 'host' to be a str")
+        pulumi.set(__self__, "host", host)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if password and not isinstance(password, str):
+            raise TypeError("Expected argument 'password' to be a str")
+        pulumi.set(__self__, "password", password)
+        if port and not isinstance(port, int):
+            raise TypeError("Expected argument 'port' to be a int")
+        pulumi.set(__self__, "port", port)
+        if schema and not isinstance(schema, str):
+            raise TypeError("Expected argument 'schema' to be a str")
+        pulumi.set(__self__, "schema", schema)
         if timeouts and not isinstance(timeouts, dict):
             raise TypeError("Expected argument 'timeouts' to be a dict")
         pulumi.set(__self__, "timeouts", timeouts)
@@ -39,9 +54,28 @@ class GetDatabaseUriResult:
         if uri and not isinstance(uri, str):
             raise TypeError("Expected argument 'uri' to be a str")
         pulumi.set(__self__, "uri", uri)
+        if username and not isinstance(username, str):
+            raise TypeError("Expected argument 'username' to be a str")
+        pulumi.set(__self__, "username", username)
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="dbName")
+    def db_name(self) -> str:
+        """
+        Default database name
+        """
+        return pulumi.get(self, "db_name")
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        Database service hostname
+        """
+        return pulumi.get(self, "host")
 
     @property
     @pulumi.getter
@@ -55,9 +89,33 @@ class GetDatabaseUriResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The database name to match.
+        Name of database service to match.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Admin user password
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Database service port
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def schema(self) -> str:
+        """
+        Database service connection schema
+        """
+        return pulumi.get(self, "schema")
 
     @property
     @pulumi.getter
@@ -76,9 +134,17 @@ class GetDatabaseUriResult:
     @pulumi.getter
     def uri(self) -> str:
         """
-        The database service connection URI.
+        Database service connection URI.
         """
         return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        Admin user username
+        """
+        return pulumi.get(self, "username")
 
     @property
     @pulumi.getter
@@ -95,16 +161,22 @@ class AwaitableGetDatabaseUriResult(GetDatabaseUriResult):
         if False:
             yield self
         return GetDatabaseUriResult(
+            db_name=self.db_name,
+            host=self.host,
             id=self.id,
             name=self.name,
+            password=self.password,
+            port=self.port,
+            schema=self.schema,
             timeouts=self.timeouts,
             type=self.type,
             uri=self.uri,
+            username=self.username,
             zone=self.zone)
 
 
 def get_database_uri(name: Optional[str] = None,
-                     timeouts: Optional[pulumi.InputType['GetDatabaseUriTimeoutsArgs']] = None,
+                     timeouts: Optional[Union['GetDatabaseUriTimeoutsArgs', 'GetDatabaseUriTimeoutsArgsDict']] = None,
                      type: Optional[str] = None,
                      zone: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseUriResult:
@@ -112,7 +184,7 @@ def get_database_uri(name: Optional[str] = None,
     ## Example Usage
 
 
-    :param str name: The database name to match.
+    :param str name: Name of database service to match.
     :param str type: The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
     :param str zone: The Exoscale Zone name.
     """
@@ -125,17 +197,23 @@ def get_database_uri(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('exoscale:index/getDatabaseUri:getDatabaseUri', __args__, opts=opts, typ=GetDatabaseUriResult).value
 
     return AwaitableGetDatabaseUriResult(
+        db_name=pulumi.get(__ret__, 'db_name'),
+        host=pulumi.get(__ret__, 'host'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
+        password=pulumi.get(__ret__, 'password'),
+        port=pulumi.get(__ret__, 'port'),
+        schema=pulumi.get(__ret__, 'schema'),
         timeouts=pulumi.get(__ret__, 'timeouts'),
         type=pulumi.get(__ret__, 'type'),
         uri=pulumi.get(__ret__, 'uri'),
+        username=pulumi.get(__ret__, 'username'),
         zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_database_uri)
 def get_database_uri_output(name: Optional[pulumi.Input[str]] = None,
-                            timeouts: Optional[pulumi.Input[Optional[pulumi.InputType['GetDatabaseUriTimeoutsArgs']]]] = None,
+                            timeouts: Optional[pulumi.Input[Optional[Union['GetDatabaseUriTimeoutsArgs', 'GetDatabaseUriTimeoutsArgsDict']]]] = None,
                             type: Optional[pulumi.Input[str]] = None,
                             zone: Optional[pulumi.Input[str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseUriResult]:
@@ -143,7 +221,7 @@ def get_database_uri_output(name: Optional[pulumi.Input[str]] = None,
     ## Example Usage
 
 
-    :param str name: The database name to match.
+    :param str name: Name of database service to match.
     :param str type: The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
     :param str zone: The Exoscale Zone name.
     """
