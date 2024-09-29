@@ -759,7 +759,7 @@ class InstancePool(pulumi.CustomResource):
                  elastic_ip_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_prefix: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePoolInstanceArgs']]]]] = None,
+                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePoolInstanceArgs', 'InstancePoolInstanceArgsDict']]]]] = None,
                  ipv6: Optional[pulumi.Input[bool]] = None,
                  key_pair: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -821,7 +821,7 @@ class InstancePool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of exoscale*elastic*ip (IDs).
         :param pulumi.Input[str] instance_prefix: The string used to prefix managed instances name (default: `pool`).
         :param pulumi.Input[str] instance_type: The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePoolInstanceArgs']]]] instances: The list of managed instances. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstancePoolInstanceArgs', 'InstancePoolInstanceArgsDict']]]] instances: The list of managed instances. Structure is documented below.
         :param pulumi.Input[bool] ipv6: Enable IPv6 on managed instances (boolean; default: `false`).
         :param pulumi.Input[str] key_pair: The exoscale*ssh*key (name) to authorize in the managed instances.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.
@@ -901,7 +901,7 @@ class InstancePool(pulumi.CustomResource):
                  elastic_ip_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_prefix: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePoolInstanceArgs']]]]] = None,
+                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePoolInstanceArgs', 'InstancePoolInstanceArgsDict']]]]] = None,
                  ipv6: Optional[pulumi.Input[bool]] = None,
                  key_pair: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -970,7 +970,7 @@ class InstancePool(pulumi.CustomResource):
             elastic_ip_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             instance_prefix: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
-            instances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePoolInstanceArgs']]]]] = None,
+            instances: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePoolInstanceArgs', 'InstancePoolInstanceArgsDict']]]]] = None,
             ipv6: Optional[pulumi.Input[bool]] = None,
             key_pair: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -999,7 +999,7 @@ class InstancePool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ip_ids: A list of exoscale*elastic*ip (IDs).
         :param pulumi.Input[str] instance_prefix: The string used to prefix managed instances name (default: `pool`).
         :param pulumi.Input[str] instance_type: The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePoolInstanceArgs']]]] instances: The list of managed instances. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstancePoolInstanceArgs', 'InstancePoolInstanceArgsDict']]]] instances: The list of managed instances. Structure is documented below.
         :param pulumi.Input[bool] ipv6: Enable IPv6 on managed instances (boolean; default: `false`).
         :param pulumi.Input[str] key_pair: The exoscale*ssh*key (name) to authorize in the managed instances.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value labels.

@@ -26,7 +26,6 @@ import * as utilities from "./utilities";
  */
 export function getAntiAffinityGroup(args?: GetAntiAffinityGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetAntiAffinityGroupResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getAntiAffinityGroup:getAntiAffinityGroup", {
         "id": args.id,
@@ -86,7 +85,12 @@ export interface GetAntiAffinityGroupResult {
  * directory for complete configuration examples.
  */
 export function getAntiAffinityGroupOutput(args?: GetAntiAffinityGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAntiAffinityGroupResult> {
-    return pulumi.output(args).apply((a: any) => getAntiAffinityGroup(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("exoscale:index/getAntiAffinityGroup:getAntiAffinityGroup", {
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

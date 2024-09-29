@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  */
 export function getIamOrgPolicy(args?: GetIamOrgPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetIamOrgPolicyResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getIamOrgPolicy:getIamOrgPolicy", {
         "timeouts": args.timeouts,
@@ -51,7 +50,11 @@ export interface GetIamOrgPolicyResult {
  * Corresponding resource: exoscale_iam_org_policy.
  */
 export function getIamOrgPolicyOutput(args?: GetIamOrgPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIamOrgPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getIamOrgPolicy(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("exoscale:index/getIamOrgPolicy:getIamOrgPolicy", {
+        "timeouts": args.timeouts,
+    }, opts);
 }
 
 /**

@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  * Corresponding resource: exoscale_compute_instance.
  */
 export function getComputeInstanceList(args: GetComputeInstanceListArgs, opts?: pulumi.InvokeOptions): Promise<GetComputeInstanceListResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getComputeInstanceList:getComputeInstanceList", {
         "createdAt": args.createdAt,
@@ -201,7 +200,27 @@ export interface GetComputeInstanceListResult {
  * Corresponding resource: exoscale_compute_instance.
  */
 export function getComputeInstanceListOutput(args: GetComputeInstanceListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeInstanceListResult> {
-    return pulumi.output(args).apply((a: any) => getComputeInstanceList(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("exoscale:index/getComputeInstanceList:getComputeInstanceList", {
+        "createdAt": args.createdAt,
+        "deployTargetId": args.deployTargetId,
+        "diskSize": args.diskSize,
+        "id": args.id,
+        "ipv6": args.ipv6,
+        "ipv6Address": args.ipv6Address,
+        "labels": args.labels,
+        "managerId": args.managerId,
+        "managerType": args.managerType,
+        "name": args.name,
+        "publicIpAddress": args.publicIpAddress,
+        "reverseDns": args.reverseDns,
+        "sshKey": args.sshKey,
+        "state": args.state,
+        "templateId": args.templateId,
+        "type": args.type,
+        "userData": args.userData,
+        "zone": args.zone,
+    }, opts);
 }
 
 /**

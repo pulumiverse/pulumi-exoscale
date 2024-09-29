@@ -28,7 +28,6 @@ import * as utilities from "./utilities";
  * directory for complete configuration examples.
  */
 export function getElasticIp(args: GetElasticIpArgs, opts?: pulumi.InvokeOptions): Promise<GetElasticIpResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getElasticIp:getElasticIp", {
         "id": args.id,
@@ -123,7 +122,13 @@ export interface GetElasticIpResult {
  * directory for complete configuration examples.
  */
 export function getElasticIpOutput(args: GetElasticIpOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetElasticIpResult> {
-    return pulumi.output(args).apply((a: any) => getElasticIp(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("exoscale:index/getElasticIp:getElasticIp", {
+        "id": args.id,
+        "ipAddress": args.ipAddress,
+        "labels": args.labels,
+        "zone": args.zone,
+    }, opts);
 }
 
 /**

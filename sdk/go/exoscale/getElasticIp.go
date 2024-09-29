@@ -91,14 +91,20 @@ type LookupElasticIpResult struct {
 
 func LookupElasticIpOutput(ctx *pulumi.Context, args LookupElasticIpOutputArgs, opts ...pulumi.InvokeOption) LookupElasticIpResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupElasticIpResult, error) {
+		ApplyT(func(v interface{}) (LookupElasticIpResultOutput, error) {
 			args := v.(LookupElasticIpArgs)
-			r, err := LookupElasticIp(ctx, &args, opts...)
-			var s LookupElasticIpResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupElasticIpResult
+			secret, err := ctx.InvokePackageRaw("exoscale:index/getElasticIp:getElasticIp", args, &rv, "", opts...)
+			if err != nil {
+				return LookupElasticIpResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupElasticIpResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupElasticIpResultOutput), nil
+			}
+			return output, nil
 		}).(LookupElasticIpResultOutput)
 }
 

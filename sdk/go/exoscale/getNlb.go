@@ -85,14 +85,20 @@ type LookupNlbResult struct {
 
 func LookupNlbOutput(ctx *pulumi.Context, args LookupNlbOutputArgs, opts ...pulumi.InvokeOption) LookupNlbResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupNlbResult, error) {
+		ApplyT(func(v interface{}) (LookupNlbResultOutput, error) {
 			args := v.(LookupNlbArgs)
-			r, err := LookupNlb(ctx, &args, opts...)
-			var s LookupNlbResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupNlbResult
+			secret, err := ctx.InvokePackageRaw("exoscale:index/getNlb:getNlb", args, &rv, "", opts...)
+			if err != nil {
+				return LookupNlbResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupNlbResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupNlbResultOutput), nil
+			}
+			return output, nil
 		}).(LookupNlbResultOutput)
 }
 

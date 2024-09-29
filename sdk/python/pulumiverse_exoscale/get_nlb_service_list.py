@@ -105,7 +105,7 @@ class AwaitableGetNlbServiceListResult(GetNlbServiceListResult):
 
 def get_nlb_service_list(nlb_id: Optional[str] = None,
                          nlb_name: Optional[str] = None,
-                         timeouts: Optional[pulumi.InputType['GetNlbServiceListTimeoutsArgs']] = None,
+                         timeouts: Optional[Union['GetNlbServiceListTimeoutsArgs', 'GetNlbServiceListTimeoutsArgsDict']] = None,
                          zone: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNlbServiceListResult:
     """
@@ -138,7 +138,7 @@ def get_nlb_service_list(nlb_id: Optional[str] = None,
 @_utilities.lift_output_func(get_nlb_service_list)
 def get_nlb_service_list_output(nlb_id: Optional[pulumi.Input[Optional[str]]] = None,
                                 nlb_name: Optional[pulumi.Input[Optional[str]]] = None,
-                                timeouts: Optional[pulumi.Input[Optional[pulumi.InputType['GetNlbServiceListTimeoutsArgs']]]] = None,
+                                timeouts: Optional[pulumi.Input[Optional[Union['GetNlbServiceListTimeoutsArgs', 'GetNlbServiceListTimeoutsArgsDict']]]] = None,
                                 zone: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNlbServiceListResult]:
     """

@@ -7,7 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getSksCluster(args: GetSksClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetSksClusterResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getSksCluster:getSksCluster", {
         "addons": args.addons,
@@ -202,7 +201,30 @@ export interface GetSksClusterResult {
     readonly zone: string;
 }
 export function getSksClusterOutput(args: GetSksClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSksClusterResult> {
-    return pulumi.output(args).apply((a: any) => getSksCluster(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("exoscale:index/getSksCluster:getSksCluster", {
+        "addons": args.addons,
+        "aggregationCa": args.aggregationCa,
+        "autoUpgrade": args.autoUpgrade,
+        "cni": args.cni,
+        "controlPlaneCa": args.controlPlaneCa,
+        "createdAt": args.createdAt,
+        "description": args.description,
+        "endpoint": args.endpoint,
+        "exoscaleCcm": args.exoscaleCcm,
+        "exoscaleCsi": args.exoscaleCsi,
+        "id": args.id,
+        "kubeletCa": args.kubeletCa,
+        "labels": args.labels,
+        "metricsServer": args.metricsServer,
+        "name": args.name,
+        "nodepools": args.nodepools,
+        "oidc": args.oidc,
+        "serviceLevel": args.serviceLevel,
+        "state": args.state,
+        "version": args.version,
+        "zone": args.zone,
+    }, opts);
 }
 
 /**

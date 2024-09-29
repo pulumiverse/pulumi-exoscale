@@ -20,6 +20,12 @@ namespace Pulumiverse.Exoscale.Inputs
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
+        /// MAC address
+        /// </summary>
+        [Input("macAddress")]
+        public Input<string>? MacAddress { get; set; }
+
+        /// <summary>
         /// The exoscale*private*network (ID) to attach to the instance.
         /// </summary>
         [Input("networkId", required: true)]

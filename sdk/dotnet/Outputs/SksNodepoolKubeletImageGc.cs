@@ -23,7 +23,7 @@ namespace Pulumiverse.Exoscale.Outputs
         /// </summary>
         public readonly int? LowThreshold;
         /// <summary>
-        /// The minimum age for an unused image before it is garbage collected
+        /// The minimum age for an unused image before it is garbage collected (k8s duration format, eg. 1h)
         /// </summary>
         public readonly string? MinAge;
 

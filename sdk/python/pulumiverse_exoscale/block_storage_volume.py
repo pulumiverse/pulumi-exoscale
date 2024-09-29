@@ -268,8 +268,8 @@ class BlockStorageVolume(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
-                 snapshot_target: Optional[pulumi.Input[pulumi.InputType['BlockStorageVolumeSnapshotTargetArgs']]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['BlockStorageVolumeTimeoutsArgs']]] = None,
+                 snapshot_target: Optional[pulumi.Input[Union['BlockStorageVolumeSnapshotTargetArgs', 'BlockStorageVolumeSnapshotTargetArgsDict']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['BlockStorageVolumeTimeoutsArgs', 'BlockStorageVolumeTimeoutsArgsDict']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -282,7 +282,7 @@ class BlockStorageVolume(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels.
         :param pulumi.Input[str] name: Volume name.
         :param pulumi.Input[int] size: Volume size in GB (default 10). If volume is attached, instance must be stopped to update this value. Volume can only grow, cannot be shrunk.
-        :param pulumi.Input[pulumi.InputType['BlockStorageVolumeSnapshotTargetArgs']] snapshot_target: Block storage snapshot to use when creating a volume. Read-only after creation.
+        :param pulumi.Input[Union['BlockStorageVolumeSnapshotTargetArgs', 'BlockStorageVolumeSnapshotTargetArgsDict']] snapshot_target: Block storage snapshot to use when creating a volume. Read-only after creation.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """
         ...
@@ -314,8 +314,8 @@ class BlockStorageVolume(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
-                 snapshot_target: Optional[pulumi.Input[pulumi.InputType['BlockStorageVolumeSnapshotTargetArgs']]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['BlockStorageVolumeTimeoutsArgs']]] = None,
+                 snapshot_target: Optional[pulumi.Input[Union['BlockStorageVolumeSnapshotTargetArgs', 'BlockStorageVolumeSnapshotTargetArgsDict']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['BlockStorageVolumeTimeoutsArgs', 'BlockStorageVolumeTimeoutsArgsDict']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -352,9 +352,9 @@ class BlockStorageVolume(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             size: Optional[pulumi.Input[int]] = None,
-            snapshot_target: Optional[pulumi.Input[pulumi.InputType['BlockStorageVolumeSnapshotTargetArgs']]] = None,
+            snapshot_target: Optional[pulumi.Input[Union['BlockStorageVolumeSnapshotTargetArgs', 'BlockStorageVolumeSnapshotTargetArgsDict']]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['BlockStorageVolumeTimeoutsArgs']]] = None,
+            timeouts: Optional[pulumi.Input[Union['BlockStorageVolumeTimeoutsArgs', 'BlockStorageVolumeTimeoutsArgsDict']]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'BlockStorageVolume':
         """
         Get an existing BlockStorageVolume resource's state with the given name, id, and optional extra
@@ -368,7 +368,7 @@ class BlockStorageVolume(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels.
         :param pulumi.Input[str] name: Volume name.
         :param pulumi.Input[int] size: Volume size in GB (default 10). If volume is attached, instance must be stopped to update this value. Volume can only grow, cannot be shrunk.
-        :param pulumi.Input[pulumi.InputType['BlockStorageVolumeSnapshotTargetArgs']] snapshot_target: Block storage snapshot to use when creating a volume. Read-only after creation.
+        :param pulumi.Input[Union['BlockStorageVolumeSnapshotTargetArgs', 'BlockStorageVolumeSnapshotTargetArgsDict']] snapshot_target: Block storage snapshot to use when creating a volume. Read-only after creation.
         :param pulumi.Input[str] state: Volume state.
         :param pulumi.Input[str] zone: ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
         """

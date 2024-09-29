@@ -92,7 +92,7 @@ class AwaitableGetIamApiKeyResult(GetIamApiKeyResult):
 
 
 def get_iam_api_key(key: Optional[str] = None,
-                    timeouts: Optional[pulumi.InputType['GetIamApiKeyTimeoutsArgs']] = None,
+                    timeouts: Optional[Union['GetIamApiKeyTimeoutsArgs', 'GetIamApiKeyTimeoutsArgsDict']] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIamApiKeyResult:
     """
     Fetch Exoscale [IAM](https://community.exoscale.com/documentation/iam/) API Key.
@@ -118,7 +118,7 @@ def get_iam_api_key(key: Optional[str] = None,
 
 @_utilities.lift_output_func(get_iam_api_key)
 def get_iam_api_key_output(key: Optional[pulumi.Input[str]] = None,
-                           timeouts: Optional[pulumi.Input[Optional[pulumi.InputType['GetIamApiKeyTimeoutsArgs']]]] = None,
+                           timeouts: Optional[pulumi.Input[Optional[Union['GetIamApiKeyTimeoutsArgs', 'GetIamApiKeyTimeoutsArgsDict']]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIamApiKeyResult]:
     """
     Fetch Exoscale [IAM](https://community.exoscale.com/documentation/iam/) API Key.

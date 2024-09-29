@@ -7,7 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getSksNodepool(args: GetSksNodepoolArgs, opts?: pulumi.InvokeOptions): Promise<GetSksNodepoolResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getSksNodepool:getSksNodepool", {
         "antiAffinityGroupIds": args.antiAffinityGroupIds,
@@ -199,7 +198,31 @@ export interface GetSksNodepoolResult {
     readonly zone: string;
 }
 export function getSksNodepoolOutput(args: GetSksNodepoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSksNodepoolResult> {
-    return pulumi.output(args).apply((a: any) => getSksNodepool(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("exoscale:index/getSksNodepool:getSksNodepool", {
+        "antiAffinityGroupIds": args.antiAffinityGroupIds,
+        "clusterId": args.clusterId,
+        "createdAt": args.createdAt,
+        "deployTargetId": args.deployTargetId,
+        "description": args.description,
+        "diskSize": args.diskSize,
+        "id": args.id,
+        "instancePoolId": args.instancePoolId,
+        "instancePrefix": args.instancePrefix,
+        "instanceType": args.instanceType,
+        "kubeletImageGcs": args.kubeletImageGcs,
+        "labels": args.labels,
+        "name": args.name,
+        "privateNetworkIds": args.privateNetworkIds,
+        "securityGroupIds": args.securityGroupIds,
+        "size": args.size,
+        "state": args.state,
+        "storageLvm": args.storageLvm,
+        "taints": args.taints,
+        "templateId": args.templateId,
+        "version": args.version,
+        "zone": args.zone,
+    }, opts);
 }
 
 /**

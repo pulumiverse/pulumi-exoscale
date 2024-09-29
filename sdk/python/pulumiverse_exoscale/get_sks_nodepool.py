@@ -296,7 +296,7 @@ def get_sks_nodepool(anti_affinity_group_ids: Optional[Sequence[str]] = None,
                      instance_pool_id: Optional[str] = None,
                      instance_prefix: Optional[str] = None,
                      instance_type: Optional[str] = None,
-                     kubelet_image_gcs: Optional[Sequence[pulumi.InputType['GetSksNodepoolKubeletImageGcArgs']]] = None,
+                     kubelet_image_gcs: Optional[Sequence[Union['GetSksNodepoolKubeletImageGcArgs', 'GetSksNodepoolKubeletImageGcArgsDict']]] = None,
                      labels: Optional[Mapping[str, str]] = None,
                      name: Optional[str] = None,
                      private_network_ids: Optional[Sequence[str]] = None,
@@ -321,7 +321,7 @@ def get_sks_nodepool(anti_affinity_group_ids: Optional[Sequence[str]] = None,
     :param str instance_pool_id: The underlying exoscale*instance*pool ID.
     :param str instance_prefix: The string used to prefix the managed instances name (default `pool`).
     :param str instance_type: The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
-    :param Sequence[pulumi.InputType['GetSksNodepoolKubeletImageGcArgs']] kubelet_image_gcs: Configuration for this nodepool's kubelet image garbage collector
+    :param Sequence[Union['GetSksNodepoolKubeletImageGcArgs', 'GetSksNodepoolKubeletImageGcArgsDict']] kubelet_image_gcs: Configuration for this nodepool's kubelet image garbage collector
     :param Mapping[str, str] labels: A map of key/value labels.
     :param Sequence[str] private_network_ids: A list of exoscale*private*network (IDs) to be attached to the managed instances.
     :param Sequence[str] security_group_ids: A list of exoscale*security*group (IDs) to be attached to the managed instances.
@@ -393,7 +393,7 @@ def get_sks_nodepool_output(anti_affinity_group_ids: Optional[pulumi.Input[Optio
                             instance_pool_id: Optional[pulumi.Input[Optional[str]]] = None,
                             instance_prefix: Optional[pulumi.Input[Optional[str]]] = None,
                             instance_type: Optional[pulumi.Input[Optional[str]]] = None,
-                            kubelet_image_gcs: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetSksNodepoolKubeletImageGcArgs']]]]] = None,
+                            kubelet_image_gcs: Optional[pulumi.Input[Optional[Sequence[Union['GetSksNodepoolKubeletImageGcArgs', 'GetSksNodepoolKubeletImageGcArgsDict']]]]] = None,
                             labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                             name: Optional[pulumi.Input[Optional[str]]] = None,
                             private_network_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -418,7 +418,7 @@ def get_sks_nodepool_output(anti_affinity_group_ids: Optional[pulumi.Input[Optio
     :param str instance_pool_id: The underlying exoscale*instance*pool ID.
     :param str instance_prefix: The string used to prefix the managed instances name (default `pool`).
     :param str instance_type: The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
-    :param Sequence[pulumi.InputType['GetSksNodepoolKubeletImageGcArgs']] kubelet_image_gcs: Configuration for this nodepool's kubelet image garbage collector
+    :param Sequence[Union['GetSksNodepoolKubeletImageGcArgs', 'GetSksNodepoolKubeletImageGcArgsDict']] kubelet_image_gcs: Configuration for this nodepool's kubelet image garbage collector
     :param Mapping[str, str] labels: A map of key/value labels.
     :param Sequence[str] private_network_ids: A list of exoscale*private*network (IDs) to be attached to the managed instances.
     :param Sequence[str] security_group_ids: A list of exoscale*security*group (IDs) to be attached to the managed instances.

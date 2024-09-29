@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Fetch Exoscale [Compute Instance Templates](https://community.exoscale.com/documentation/compute/custom-templates/) data.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -24,7 +22,6 @@ import * as utilities from "./utilities";
  * directory for complete configuration examples.
  */
 export function getTemplate(args: GetTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplateResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getTemplate:getTemplate", {
         "id": args.id,
@@ -82,8 +79,6 @@ export interface GetTemplateResult {
     readonly zone: string;
 }
 /**
- * Fetch Exoscale [Compute Instance Templates](https://community.exoscale.com/documentation/compute/custom-templates/) data.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -101,7 +96,13 @@ export interface GetTemplateResult {
  * directory for complete configuration examples.
  */
 export function getTemplateOutput(args: GetTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplateResult> {
-    return pulumi.output(args).apply((a: any) => getTemplate(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("exoscale:index/getTemplate:getTemplate", {
+        "id": args.id,
+        "name": args.name,
+        "visibility": args.visibility,
+        "zone": args.zone,
+    }, opts);
 }
 
 /**

@@ -111,14 +111,20 @@ type LookupSksClusterResult struct {
 
 func LookupSksClusterOutput(ctx *pulumi.Context, args LookupSksClusterOutputArgs, opts ...pulumi.InvokeOption) LookupSksClusterResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSksClusterResult, error) {
+		ApplyT(func(v interface{}) (LookupSksClusterResultOutput, error) {
 			args := v.(LookupSksClusterArgs)
-			r, err := LookupSksCluster(ctx, &args, opts...)
-			var s LookupSksClusterResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupSksClusterResult
+			secret, err := ctx.InvokePackageRaw("exoscale:index/getSksCluster:getSksCluster", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSksClusterResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSksClusterResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSksClusterResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSksClusterResultOutput)
 }
 

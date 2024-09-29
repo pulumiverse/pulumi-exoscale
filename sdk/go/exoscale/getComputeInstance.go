@@ -115,14 +115,20 @@ type LookupComputeInstanceResult struct {
 
 func LookupComputeInstanceOutput(ctx *pulumi.Context, args LookupComputeInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupComputeInstanceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupComputeInstanceResult, error) {
+		ApplyT(func(v interface{}) (LookupComputeInstanceResultOutput, error) {
 			args := v.(LookupComputeInstanceArgs)
-			r, err := LookupComputeInstance(ctx, &args, opts...)
-			var s LookupComputeInstanceResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupComputeInstanceResult
+			secret, err := ctx.InvokePackageRaw("exoscale:index/getComputeInstance:getComputeInstance", args, &rv, "", opts...)
+			if err != nil {
+				return LookupComputeInstanceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupComputeInstanceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupComputeInstanceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupComputeInstanceResultOutput)
 }
 

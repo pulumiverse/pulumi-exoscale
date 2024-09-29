@@ -121,8 +121,8 @@ class IamOrgPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_service_strategy: Optional[pulumi.Input[str]] = None,
-                 services: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['IamOrgPolicyServicesArgs']]]]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['IamOrgPolicyTimeoutsArgs']]] = None,
+                 services: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['IamOrgPolicyServicesArgs', 'IamOrgPolicyServicesArgsDict']]]]] = None,
+                 timeouts: Optional[pulumi.Input[Union['IamOrgPolicyTimeoutsArgs', 'IamOrgPolicyTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -130,7 +130,7 @@ class IamOrgPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_service_strategy: Default service strategy (`allow` or `deny`).
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['IamOrgPolicyServicesArgs']]]] services: IAM policy services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['IamOrgPolicyServicesArgs', 'IamOrgPolicyServicesArgsDict']]]] services: IAM policy services.
         """
         ...
     @overload
@@ -157,8 +157,8 @@ class IamOrgPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_service_strategy: Optional[pulumi.Input[str]] = None,
-                 services: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['IamOrgPolicyServicesArgs']]]]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['IamOrgPolicyTimeoutsArgs']]] = None,
+                 services: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['IamOrgPolicyServicesArgs', 'IamOrgPolicyServicesArgsDict']]]]] = None,
+                 timeouts: Optional[pulumi.Input[Union['IamOrgPolicyTimeoutsArgs', 'IamOrgPolicyTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -186,8 +186,8 @@ class IamOrgPolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             default_service_strategy: Optional[pulumi.Input[str]] = None,
-            services: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['IamOrgPolicyServicesArgs']]]]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['IamOrgPolicyTimeoutsArgs']]] = None) -> 'IamOrgPolicy':
+            services: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['IamOrgPolicyServicesArgs', 'IamOrgPolicyServicesArgsDict']]]]] = None,
+            timeouts: Optional[pulumi.Input[Union['IamOrgPolicyTimeoutsArgs', 'IamOrgPolicyTimeoutsArgsDict']]] = None) -> 'IamOrgPolicy':
         """
         Get an existing IamOrgPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -196,7 +196,7 @@ class IamOrgPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_service_strategy: Default service strategy (`allow` or `deny`).
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['IamOrgPolicyServicesArgs']]]] services: IAM policy services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['IamOrgPolicyServicesArgs', 'IamOrgPolicyServicesArgsDict']]]] services: IAM policy services.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

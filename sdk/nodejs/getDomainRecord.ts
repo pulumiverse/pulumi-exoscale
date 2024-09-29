@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  * Corresponding resource: exoscale_domain_record.
  */
 export function getDomainRecord(args: GetDomainRecordArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainRecordResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("exoscale:index/getDomainRecord:getDomainRecord", {
         "domain": args.domain,
@@ -61,7 +60,11 @@ export interface GetDomainRecordResult {
  * Corresponding resource: exoscale_domain_record.
  */
 export function getDomainRecordOutput(args: GetDomainRecordOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainRecordResult> {
-    return pulumi.output(args).apply((a: any) => getDomainRecord(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("exoscale:index/getDomainRecord:getDomainRecord", {
+        "domain": args.domain,
+        "filter": args.filter,
+    }, opts);
 }
 
 /**

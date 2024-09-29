@@ -124,6 +124,12 @@ namespace Pulumiverse.Exoscale
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
+        /// MAC address
+        /// </summary>
+        [Output("macAddress")]
+        public Output<string> MacAddress { get; private set; } = null!;
+
+        /// <summary>
         /// The compute instance name.
         /// </summary>
         [Output("name")]
@@ -489,6 +495,12 @@ namespace Pulumiverse.Exoscale
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// MAC address
+        /// </summary>
+        [Input("macAddress")]
+        public Input<string>? MacAddress { get; set; }
 
         /// <summary>
         /// The compute instance name.

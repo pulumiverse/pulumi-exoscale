@@ -42,14 +42,20 @@ type GetInstancePoolListResult struct {
 
 func GetInstancePoolListOutput(ctx *pulumi.Context, args GetInstancePoolListOutputArgs, opts ...pulumi.InvokeOption) GetInstancePoolListResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetInstancePoolListResult, error) {
+		ApplyT(func(v interface{}) (GetInstancePoolListResultOutput, error) {
 			args := v.(GetInstancePoolListArgs)
-			r, err := GetInstancePoolList(ctx, &args, opts...)
-			var s GetInstancePoolListResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetInstancePoolListResult
+			secret, err := ctx.InvokePackageRaw("exoscale:index/getInstancePoolList:getInstancePoolList", args, &rv, "", opts...)
+			if err != nil {
+				return GetInstancePoolListResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetInstancePoolListResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetInstancePoolListResultOutput), nil
+			}
+			return output, nil
 		}).(GetInstancePoolListResultOutput)
 }
 

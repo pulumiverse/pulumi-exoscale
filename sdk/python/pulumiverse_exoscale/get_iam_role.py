@@ -129,7 +129,7 @@ class AwaitableGetIamRoleResult(GetIamRoleResult):
 
 def get_iam_role(id: Optional[str] = None,
                  name: Optional[str] = None,
-                 timeouts: Optional[pulumi.InputType['GetIamRoleTimeoutsArgs']] = None,
+                 timeouts: Optional[Union['GetIamRoleTimeoutsArgs', 'GetIamRoleTimeoutsArgsDict']] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIamRoleResult:
     """
     Fetch Exoscale [IAM](https://community.exoscale.com/documentation/iam/) Role.
@@ -161,7 +161,7 @@ def get_iam_role(id: Optional[str] = None,
 @_utilities.lift_output_func(get_iam_role)
 def get_iam_role_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                         name: Optional[pulumi.Input[Optional[str]]] = None,
-                        timeouts: Optional[pulumi.Input[Optional[pulumi.InputType['GetIamRoleTimeoutsArgs']]]] = None,
+                        timeouts: Optional[pulumi.Input[Optional[Union['GetIamRoleTimeoutsArgs', 'GetIamRoleTimeoutsArgsDict']]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIamRoleResult]:
     """
     Fetch Exoscale [IAM](https://community.exoscale.com/documentation/iam/) Role.

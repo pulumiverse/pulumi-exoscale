@@ -19,6 +19,10 @@ namespace Pulumiverse.Exoscale.Outputs
         /// </summary>
         public readonly string? IpAddress;
         /// <summary>
+        /// MAC address
+        /// </summary>
+        public readonly string? MacAddress;
+        /// <summary>
         /// The exoscale*private*network (ID) to attach to the instance.
         /// </summary>
         public readonly string NetworkId;
@@ -27,9 +31,12 @@ namespace Pulumiverse.Exoscale.Outputs
         private ComputeInstanceNetworkInterface(
             string? ipAddress,
 
+            string? macAddress,
+
             string networkId)
         {
             IpAddress = ipAddress;
+            MacAddress = macAddress;
             NetworkId = networkId;
         }
     }

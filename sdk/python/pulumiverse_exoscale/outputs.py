@@ -155,6 +155,8 @@ class ComputeInstanceNetworkInterface(dict):
             suggest = "network_id"
         elif key == "ipAddress":
             suggest = "ip_address"
+        elif key == "macAddress":
+            suggest = "mac_address"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ComputeInstanceNetworkInterface. Access the value via the '{suggest}' property getter instead.")
@@ -169,14 +171,18 @@ class ComputeInstanceNetworkInterface(dict):
 
     def __init__(__self__, *,
                  network_id: str,
-                 ip_address: Optional[str] = None):
+                 ip_address: Optional[str] = None,
+                 mac_address: Optional[str] = None):
         """
         :param str network_id: The exoscale*private*network (ID) to attach to the instance.
         :param str ip_address: The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
+        :param str mac_address: MAC address
         """
         pulumi.set(__self__, "network_id", network_id)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
+        if mac_address is not None:
+            pulumi.set(__self__, "mac_address", mac_address)
 
     @property
     @pulumi.getter(name="networkId")
@@ -193,6 +199,14 @@ class ComputeInstanceNetworkInterface(dict):
         The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
         """
         return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="macAddress")
+    def mac_address(self) -> Optional[str]:
+        """
+        MAC address
+        """
+        return pulumi.get(self, "mac_address")
 
 
 @pulumi.output_type
@@ -1816,7 +1830,7 @@ class SksNodepoolKubeletImageGc(dict):
         """
         :param int high_threshold: The percent of disk usage after which image garbage collection is always run
         :param int low_threshold: The percent of disk usage before which image garbage collection is never run
-        :param str min_age: The minimum age for an unused image before it is garbage collected
+        :param str min_age: The minimum age for an unused image before it is garbage collected (k8s duration format, eg. 1h)
         """
         if high_threshold is not None:
             pulumi.set(__self__, "high_threshold", high_threshold)
@@ -1845,7 +1859,7 @@ class SksNodepoolKubeletImageGc(dict):
     @pulumi.getter(name="minAge")
     def min_age(self) -> Optional[str]:
         """
-        The minimum age for an unused image before it is garbage collected
+        The minimum age for an unused image before it is garbage collected (k8s duration format, eg. 1h)
         """
         return pulumi.get(self, "min_age")
 
@@ -3636,7 +3650,7 @@ class GetSksNodepoolKubeletImageGcResult(dict):
         """
         :param int high_threshold: The percent of disk usage after which image garbage collection is always run
         :param int low_threshold: The percent of disk usage before which image garbage collection is never run
-        :param str min_age: The minimum age for an unused image before it is garbage collected
+        :param str min_age: The minimum age for an unused image before it is garbage collected (k8s duration format, eg. 1h)
         """
         if high_threshold is not None:
             pulumi.set(__self__, "high_threshold", high_threshold)
@@ -3665,7 +3679,7 @@ class GetSksNodepoolKubeletImageGcResult(dict):
     @pulumi.getter(name="minAge")
     def min_age(self) -> Optional[str]:
         """
-        The minimum age for an unused image before it is garbage collected
+        The minimum age for an unused image before it is garbage collected (k8s duration format, eg. 1h)
         """
         return pulumi.get(self, "min_age")
 
@@ -3923,7 +3937,7 @@ class GetSksNodepoolListNodepoolKubeletImageGcResult(dict):
         """
         :param int high_threshold: The percent of disk usage after which image garbage collection is always run
         :param int low_threshold: The percent of disk usage before which image garbage collection is never run
-        :param str min_age: The minimum age for an unused image before it is garbage collected
+        :param str min_age: The minimum age for an unused image before it is garbage collected (k8s duration format, eg. 1h)
         """
         if high_threshold is not None:
             pulumi.set(__self__, "high_threshold", high_threshold)
@@ -3952,7 +3966,7 @@ class GetSksNodepoolListNodepoolKubeletImageGcResult(dict):
     @pulumi.getter(name="minAge")
     def min_age(self) -> Optional[str]:
         """
-        The minimum age for an unused image before it is garbage collected
+        The minimum age for an unused image before it is garbage collected (k8s duration format, eg. 1h)
         """
         return pulumi.get(self, "min_age")
 

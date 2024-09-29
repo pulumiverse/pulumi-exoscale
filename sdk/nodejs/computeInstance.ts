@@ -116,6 +116,10 @@ export class ComputeInstance extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * MAC address
+     */
+    public /*out*/ readonly macAddress!: pulumi.Output<string>;
+    /**
      * The compute instance name.
      */
     public readonly name!: pulumi.Output<string>;
@@ -193,6 +197,7 @@ export class ComputeInstance extends pulumi.CustomResource {
             resourceInputs["ipv6"] = state ? state.ipv6 : undefined;
             resourceInputs["ipv6Address"] = state ? state.ipv6Address : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["macAddress"] = state ? state.macAddress : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             resourceInputs["private"] = state ? state.private : undefined;
@@ -238,6 +243,7 @@ export class ComputeInstance extends pulumi.CustomResource {
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["ipv6Address"] = undefined /*out*/;
+            resourceInputs["macAddress"] = undefined /*out*/;
             resourceInputs["privateNetworkIds"] = undefined /*out*/;
             resourceInputs["publicIpAddress"] = undefined /*out*/;
         }
@@ -290,6 +296,10 @@ export interface ComputeInstanceState {
      * A map of key/value labels.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * MAC address
+     */
+    macAddress?: pulumi.Input<string>;
     /**
      * The compute instance name.
      */

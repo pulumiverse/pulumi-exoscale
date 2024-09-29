@@ -74,14 +74,20 @@ type LookupAntiAffinityGroupResult struct {
 
 func LookupAntiAffinityGroupOutput(ctx *pulumi.Context, args LookupAntiAffinityGroupOutputArgs, opts ...pulumi.InvokeOption) LookupAntiAffinityGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAntiAffinityGroupResult, error) {
+		ApplyT(func(v interface{}) (LookupAntiAffinityGroupResultOutput, error) {
 			args := v.(LookupAntiAffinityGroupArgs)
-			r, err := LookupAntiAffinityGroup(ctx, &args, opts...)
-			var s LookupAntiAffinityGroupResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupAntiAffinityGroupResult
+			secret, err := ctx.InvokePackageRaw("exoscale:index/getAntiAffinityGroup:getAntiAffinityGroup", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAntiAffinityGroupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAntiAffinityGroupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAntiAffinityGroupResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAntiAffinityGroupResultOutput)
 }
 
