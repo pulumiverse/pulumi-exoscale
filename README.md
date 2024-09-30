@@ -1,4 +1,4 @@
-# Exoscale Resource Provider
+d# Exoscale Resource Provider
 
 The Exoscale Resource Provider lets you manage [Exoscale](https://www.exoscale.com/) resources.
 
@@ -16,7 +16,7 @@ npm install @pulumiverse/exoscale
 
 or `yarn`:
 
-```bash
+```bashdsds
 yarn add @pulumiverse/exoscale
 ```
 
