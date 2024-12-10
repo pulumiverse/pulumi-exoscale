@@ -17,7 +17,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const myPrivateNetwork = new exoscale.PrivateNetwork("myPrivateNetwork", {zone: "ch-gva-2"});
+ * const myPrivateNetwork = new exoscale.PrivateNetwork("my_private_network", {
+ *     zone: "ch-gva-2",
+ *     name: "my-private-network",
+ * });
  * ```
  *
  * *Managed* private network:
@@ -26,11 +29,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const myManagedPrivateNetwork = new exoscale.PrivateNetwork("myManagedPrivateNetwork", {
- *     endIp: "10.0.0.253",
+ * const myManagedPrivateNetwork = new exoscale.PrivateNetwork("my_managed_private_network", {
+ *     zone: "ch-gva-2",
+ *     name: "my-managed-private-network",
  *     netmask: "255.255.255.0",
  *     startIp: "10.0.0.20",
- *     zone: "ch-gva-2",
+ *     endIp: "10.0.0.253",
  * });
  * ```
  *

@@ -25,8 +25,9 @@ namespace Pulumiverse.Exoscale
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myAntiAffinityGroup = new Exoscale.AntiAffinityGroup("myAntiAffinityGroup", new()
+    ///     var myAntiAffinityGroup = new Exoscale.AntiAffinityGroup("my_anti_affinity_group", new()
     ///     {
+    ///         Name = "my-anti-affinity-group",
     ///         Description = "Prevent compute instances to run on the same host",
     ///     });
     /// 

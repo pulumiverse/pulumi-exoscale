@@ -12,6 +12,32 @@ namespace Pulumiverse.Exoscale
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Exoscale = Pulumiverse.Exoscale;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var orgPolicy = new Exoscale.IamOrgPolicy("org_policy", new()
+    ///     {
+    ///         DefaultServiceStrategy = "allow",
+    ///         Services = 
+    ///         {
+    ///             { "sos", new Exoscale.Inputs.IamOrgPolicyServicesArgs
+    ///             {
+    ///                 Type = "deny",
+    ///             } },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Please refer to the examples
+    /// directory for complete configuration examples.
     /// </summary>
     [ExoscaleResourceType("exoscale:index/iamOrgPolicy:IamOrgPolicy")]
     public partial class IamOrgPolicy : global::Pulumi.CustomResource

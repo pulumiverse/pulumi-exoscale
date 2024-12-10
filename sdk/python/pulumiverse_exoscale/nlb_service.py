@@ -380,11 +380,14 @@ class NlbService(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_nlb = exoscale.Nlb("myNlb", zone="ch-gva-2")
-        my_nlb_service = exoscale.NlbService("myNlbService",
+        my_nlb = exoscale.Nlb("my_nlb",
+            zone="ch-gva-2",
+            name="my-nlb")
+        my_nlb_service = exoscale.NlbService("my_nlb_service",
             nlb_id=my_nlb.id,
             zone=my_nlb.zone,
-            instance_pool_id=exoscale_instance_pool["my_instance_pool"]["id"],
+            name="my-nlb-service",
+            instance_pool_id=my_instance_pool["id"],
             protocol="tcp",
             port=443,
             target_port=8443,
@@ -443,11 +446,14 @@ class NlbService(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_nlb = exoscale.Nlb("myNlb", zone="ch-gva-2")
-        my_nlb_service = exoscale.NlbService("myNlbService",
+        my_nlb = exoscale.Nlb("my_nlb",
+            zone="ch-gva-2",
+            name="my-nlb")
+        my_nlb_service = exoscale.NlbService("my_nlb_service",
             nlb_id=my_nlb.id,
             zone=my_nlb.zone,
-            instance_pool_id=exoscale_instance_pool["my_instance_pool"]["id"],
+            name="my-nlb-service",
+            instance_pool_id=my_instance_pool["id"],
             protocol="tcp",
             port=443,
             target_port=8443,

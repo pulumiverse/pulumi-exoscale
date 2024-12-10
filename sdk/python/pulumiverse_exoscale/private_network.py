@@ -276,7 +276,9 @@ class PrivateNetwork(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_private_network = exoscale.PrivateNetwork("myPrivateNetwork", zone="ch-gva-2")
+        my_private_network = exoscale.PrivateNetwork("my_private_network",
+            zone="ch-gva-2",
+            name="my-private-network")
         ```
 
         *Managed* private network:
@@ -285,11 +287,12 @@ class PrivateNetwork(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_managed_private_network = exoscale.PrivateNetwork("myManagedPrivateNetwork",
-            end_ip="10.0.0.253",
+        my_managed_private_network = exoscale.PrivateNetwork("my_managed_private_network",
+            zone="ch-gva-2",
+            name="my-managed-private-network",
             netmask="255.255.255.0",
             start_ip="10.0.0.20",
-            zone="ch-gva-2")
+            end_ip="10.0.0.253")
         ```
 
         Please refer to the examples
@@ -336,7 +339,9 @@ class PrivateNetwork(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_private_network = exoscale.PrivateNetwork("myPrivateNetwork", zone="ch-gva-2")
+        my_private_network = exoscale.PrivateNetwork("my_private_network",
+            zone="ch-gva-2",
+            name="my-private-network")
         ```
 
         *Managed* private network:
@@ -345,11 +350,12 @@ class PrivateNetwork(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_managed_private_network = exoscale.PrivateNetwork("myManagedPrivateNetwork",
-            end_ip="10.0.0.253",
+        my_managed_private_network = exoscale.PrivateNetwork("my_managed_private_network",
+            zone="ch-gva-2",
+            name="my-managed-private-network",
             netmask="255.255.255.0",
             start_ip="10.0.0.20",
-            zone="ch-gva-2")
+            end_ip="10.0.0.253")
         ```
 
         Please refer to the examples

@@ -157,7 +157,7 @@ class Domain(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_domain = exoscale.Domain("myDomain")
+        my_domain = exoscale.Domain("my_domain", name="my.domain")
         ```
 
         Next step is to attach exoscale_domain_record(s) to the domain.
@@ -198,7 +198,7 @@ class Domain(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_domain = exoscale.Domain("myDomain")
+        my_domain = exoscale.Domain("my_domain", name="my.domain")
         ```
 
         Next step is to attach exoscale_domain_record(s) to the domain.

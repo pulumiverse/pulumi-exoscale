@@ -15,7 +15,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const mySksCluster = new exoscale.SksCluster("mySksCluster", {zone: "ch-gva-2"});
+ * const mySksCluster = new exoscale.SksCluster("my_sks_cluster", {
+ *     zone: "ch-gva-2",
+ *     name: "my-sks-cluster",
+ * });
  * export const mySksClusterEndpoint = mySksCluster.endpoint;
  * ```
  *

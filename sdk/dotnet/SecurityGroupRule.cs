@@ -23,9 +23,12 @@ namespace Pulumiverse.Exoscale
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mySecurityGroup = new Exoscale.SecurityGroup("mySecurityGroup");
+    ///     var mySecurityGroup = new Exoscale.SecurityGroup("my_security_group", new()
+    ///     {
+    ///         Name = "my-security-group",
+    ///     });
     /// 
-    ///     var mySecurityGroupRule = new Exoscale.SecurityGroupRule("mySecurityGroupRule", new()
+    ///     var mySecurityGroupRule = new Exoscale.SecurityGroupRule("my_security_group_rule", new()
     ///     {
     ///         SecurityGroupId = mySecurityGroup.Id,
     ///         Type = "INGRESS",

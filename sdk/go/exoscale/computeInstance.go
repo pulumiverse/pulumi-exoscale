@@ -39,8 +39,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = exoscale.NewComputeInstance(ctx, "myInstance", &exoscale.ComputeInstanceArgs{
+//			_, err = exoscale.NewComputeInstance(ctx, "my_instance", &exoscale.ComputeInstanceArgs{
 //				Zone:       pulumi.String("ch-gva-2"),
+//				Name:       pulumi.String("my-instance"),
 //				TemplateId: pulumi.String(myTemplate.Id),
 //				Type:       pulumi.String("standard.medium"),
 //				DiskSize:   pulumi.Int(10),

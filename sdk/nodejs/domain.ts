@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const myDomain = new exoscale.Domain("myDomain", {});
+ * const myDomain = new exoscale.Domain("my_domain", {name: "my.domain"});
  * ```
  *
  * Next step is to attach exoscale_domain_record(s) to the domain.

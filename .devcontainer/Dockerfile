@@ -19,3 +19,4 @@ RUN sudo apt install gh -y
 RUN sudo apt install vim -y
 
 RUN go install github.com/pulumi/upgrade-provider@main
+RUN pip install setuptools

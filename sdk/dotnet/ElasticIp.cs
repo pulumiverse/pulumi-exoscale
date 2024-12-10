@@ -27,7 +27,7 @@ namespace Pulumiverse.Exoscale
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myElasticIp = new Exoscale.ElasticIp("myElasticIp", new()
+    ///     var myElasticIp = new Exoscale.ElasticIp("my_elastic_ip", new()
     ///     {
     ///         Zone = "ch-gva-2",
     ///     });
@@ -45,22 +45,22 @@ namespace Pulumiverse.Exoscale
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myManagedElasticIp = new Exoscale.ElasticIp("myManagedElasticIp", new()
+    ///     var myManagedElasticIp = new Exoscale.ElasticIp("my_managed_elastic_ip", new()
     ///     {
+    ///         Zone = "ch-gva-2",
     ///         AddressFamily = "inet6",
+    ///         ReverseDns = "example.net",
     ///         Healthcheck = new Exoscale.Inputs.ElasticIpHealthcheckArgs
     ///         {
-    ///             Interval = 5,
     ///             Mode = "https",
     ///             Port = 443,
-    ///             StrikesFail = 3,
-    ///             StrikesOk = 2,
-    ///             Timeout = 3,
-    ///             TlsSni = "example.net",
     ///             Uri = "/health",
+    ///             Interval = 5,
+    ///             Timeout = 3,
+    ///             StrikesOk = 2,
+    ///             StrikesFail = 3,
+    ///             TlsSni = "example.net",
     ///         },
-    ///         ReverseDns = "example.net",
-    ///         Zone = "ch-gva-2",
     ///     });
     /// 
     /// });

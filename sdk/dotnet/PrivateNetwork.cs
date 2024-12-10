@@ -27,9 +27,10 @@ namespace Pulumiverse.Exoscale
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myPrivateNetwork = new Exoscale.PrivateNetwork("myPrivateNetwork", new()
+    ///     var myPrivateNetwork = new Exoscale.PrivateNetwork("my_private_network", new()
     ///     {
     ///         Zone = "ch-gva-2",
+    ///         Name = "my-private-network",
     ///     });
     /// 
     /// });
@@ -45,12 +46,13 @@ namespace Pulumiverse.Exoscale
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myManagedPrivateNetwork = new Exoscale.PrivateNetwork("myManagedPrivateNetwork", new()
+    ///     var myManagedPrivateNetwork = new Exoscale.PrivateNetwork("my_managed_private_network", new()
     ///     {
-    ///         EndIp = "10.0.0.253",
+    ///         Zone = "ch-gva-2",
+    ///         Name = "my-managed-private-network",
     ///         Netmask = "255.255.255.0",
     ///         StartIp = "10.0.0.20",
-    ///         Zone = "ch-gva-2",
+    ///         EndIp = "10.0.0.253",
     ///     });
     /// 
     /// });

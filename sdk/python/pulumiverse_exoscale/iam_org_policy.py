@@ -127,6 +127,22 @@ class IamOrgPolicy(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumiverse_exoscale as exoscale
+
+        org_policy = exoscale.IamOrgPolicy("org_policy",
+            default_service_strategy="allow",
+            services={
+                "sos": {
+                    "type": "deny",
+                },
+            })
+        ```
+
+        Please refer to the examples
+        directory for complete configuration examples.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_service_strategy: Default service strategy (`allow` or `deny`).
@@ -140,6 +156,22 @@ class IamOrgPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumiverse_exoscale as exoscale
+
+        org_policy = exoscale.IamOrgPolicy("org_policy",
+            default_service_strategy="allow",
+            services={
+                "sos": {
+                    "type": "deny",
+                },
+            })
+        ```
+
+        Please refer to the examples
+        directory for complete configuration examples.
 
         :param str resource_name: The name of the resource.
         :param IamOrgPolicyArgs args: The arguments to use to populate this resource's properties.

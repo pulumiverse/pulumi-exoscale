@@ -486,8 +486,8 @@ class SecurityGroupRule(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_security_group = exoscale.SecurityGroup("mySecurityGroup")
-        my_security_group_rule = exoscale.SecurityGroupRule("mySecurityGroupRule",
+        my_security_group = exoscale.SecurityGroup("my_security_group", name="my-security-group")
+        my_security_group_rule = exoscale.SecurityGroupRule("my_security_group_rule",
             security_group_id=my_security_group.id,
             type="INGRESS",
             protocol="TCP",
@@ -542,8 +542,8 @@ class SecurityGroupRule(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_security_group = exoscale.SecurityGroup("mySecurityGroup")
-        my_security_group_rule = exoscale.SecurityGroupRule("mySecurityGroupRule",
+        my_security_group = exoscale.SecurityGroup("my_security_group", name="my-security-group")
+        my_security_group_rule = exoscale.SecurityGroupRule("my_security_group_rule",
             security_group_id=my_security_group.id,
             type="INGRESS",
             protocol="TCP",
