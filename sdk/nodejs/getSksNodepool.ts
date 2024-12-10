@@ -197,7 +197,7 @@ export interface GetSksNodepoolResult {
     readonly version: string;
     readonly zone: string;
 }
-export function getSksNodepoolOutput(args: GetSksNodepoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSksNodepoolResult> {
+export function getSksNodepoolOutput(args: GetSksNodepoolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSksNodepoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("exoscale:index/getSksNodepool:getSksNodepool", {
         "antiAffinityGroupIds": args.antiAffinityGroupIds,

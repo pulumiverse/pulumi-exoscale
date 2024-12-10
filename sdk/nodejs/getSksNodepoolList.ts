@@ -186,7 +186,7 @@ export interface GetSksNodepoolListResult {
      */
     readonly zone: string;
 }
-export function getSksNodepoolListOutput(args: GetSksNodepoolListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSksNodepoolListResult> {
+export function getSksNodepoolListOutput(args: GetSksNodepoolListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSksNodepoolListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("exoscale:index/getSksNodepoolList:getSksNodepoolList", {
         "clusterId": args.clusterId,

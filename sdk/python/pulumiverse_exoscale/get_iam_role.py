@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -156,13 +161,10 @@ def get_iam_role(id: Optional[str] = None,
         permissions=pulumi.get(__ret__, 'permissions'),
         policy=pulumi.get(__ret__, 'policy'),
         timeouts=pulumi.get(__ret__, 'timeouts'))
-
-
-@_utilities.lift_output_func(get_iam_role)
 def get_iam_role_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                         name: Optional[pulumi.Input[Optional[str]]] = None,
                         timeouts: Optional[pulumi.Input[Optional[Union['GetIamRoleTimeoutsArgs', 'GetIamRoleTimeoutsArgsDict']]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIamRoleResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIamRoleResult]:
     """
     Fetch Exoscale [IAM](https://community.exoscale.com/documentation/iam/) Role.
 
@@ -172,4 +174,18 @@ def get_iam_role_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str id: The role ID to match (conflicts with `name`).
     :param str name: the role name to match (conflicts with `id`).
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['name'] = name
+    __args__['timeouts'] = timeouts
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('exoscale:index/getIamRole:getIamRole', __args__, opts=opts, typ=GetIamRoleResult)
+    return __ret__.apply(lambda __response__: GetIamRoleResult(
+        description=pulumi.get(__response__, 'description'),
+        editable=pulumi.get(__response__, 'editable'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        permissions=pulumi.get(__response__, 'permissions'),
+        policy=pulumi.get(__response__, 'policy'),
+        timeouts=pulumi.get(__response__, 'timeouts')))

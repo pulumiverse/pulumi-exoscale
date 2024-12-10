@@ -91,7 +91,7 @@ export interface GetDatabaseUriResult {
 /**
  * ## Example Usage
  */
-export function getDatabaseUriOutput(args: GetDatabaseUriOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseUriResult> {
+export function getDatabaseUriOutput(args: GetDatabaseUriOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseUriResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("exoscale:index/getDatabaseUri:getDatabaseUri", {
         "name": args.name,

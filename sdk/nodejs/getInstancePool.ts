@@ -171,7 +171,7 @@ export interface GetInstancePoolResult {
  * Please refer to the examples
  * directory for complete configuration examples.
  */
-export function getInstancePoolOutput(args: GetInstancePoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancePoolResult> {
+export function getInstancePoolOutput(args: GetInstancePoolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstancePoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("exoscale:index/getInstancePool:getInstancePool", {
         "id": args.id,

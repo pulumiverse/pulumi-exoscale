@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -103,12 +108,9 @@ def get_security_group(id: Optional[str] = None,
         external_sources=pulumi.get(__ret__, 'external_sources'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
-
-
-@_utilities.lift_output_func(get_security_group)
 def get_security_group_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                               name: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecurityGroupResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecurityGroupResult]:
     """
     Fetch Exoscale [Security Groups](https://community.exoscale.com/documentation/compute/security-groups/) data.
 
@@ -131,4 +133,12 @@ def get_security_group_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str id: The security group ID to match (conflicts with `name`)
     :param str name: The name to match (conflicts with `id`)
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['name'] = name
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('exoscale:index/getSecurityGroup:getSecurityGroup', __args__, opts=opts, typ=GetSecurityGroupResult)
+    return __ret__.apply(lambda __response__: GetSecurityGroupResult(
+        external_sources=pulumi.get(__response__, 'external_sources'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name')))

@@ -84,7 +84,7 @@ export interface GetSecurityGroupResult {
  * Please refer to the examples
  * directory for complete configuration examples.
  */
-export function getSecurityGroupOutput(args?: GetSecurityGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityGroupResult> {
+export function getSecurityGroupOutput(args?: GetSecurityGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecurityGroupResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("exoscale:index/getSecurityGroup:getSecurityGroup", {

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -114,12 +119,9 @@ def get_iam_api_key(key: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         role_id=pulumi.get(__ret__, 'role_id'),
         timeouts=pulumi.get(__ret__, 'timeouts'))
-
-
-@_utilities.lift_output_func(get_iam_api_key)
 def get_iam_api_key_output(key: Optional[pulumi.Input[str]] = None,
                            timeouts: Optional[pulumi.Input[Optional[Union['GetIamApiKeyTimeoutsArgs', 'GetIamApiKeyTimeoutsArgsDict']]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIamApiKeyResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIamApiKeyResult]:
     """
     Fetch Exoscale [IAM](https://community.exoscale.com/documentation/iam/) API Key.
 
@@ -128,4 +130,14 @@ def get_iam_api_key_output(key: Optional[pulumi.Input[str]] = None,
 
     :param str key: The IAM API Key to match.
     """
-    ...
+    __args__ = dict()
+    __args__['key'] = key
+    __args__['timeouts'] = timeouts
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('exoscale:index/getIamApiKey:getIamApiKey', __args__, opts=opts, typ=GetIamApiKeyResult)
+    return __ret__.apply(lambda __response__: GetIamApiKeyResult(
+        id=pulumi.get(__response__, 'id'),
+        key=pulumi.get(__response__, 'key'),
+        name=pulumi.get(__response__, 'name'),
+        role_id=pulumi.get(__response__, 'role_id'),
+        timeouts=pulumi.get(__response__, 'timeouts')))

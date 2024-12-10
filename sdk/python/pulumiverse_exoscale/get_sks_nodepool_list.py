@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -341,9 +346,6 @@ def get_sks_nodepool_list(cluster_id: Optional[str] = None,
         template_id=pulumi.get(__ret__, 'template_id'),
         version=pulumi.get(__ret__, 'version'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_sks_nodepool_list)
 def get_sks_nodepool_list_output(cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  created_at: Optional[pulumi.Input[Optional[str]]] = None,
                                  deploy_target_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -362,7 +364,7 @@ def get_sks_nodepool_list_output(cluster_id: Optional[pulumi.Input[Optional[str]
                                  template_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  version: Optional[pulumi.Input[Optional[str]]] = None,
                                  zone: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSksNodepoolListResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSksNodepoolListResult]:
     """
     Use this data source to access information about an existing resource.
 
@@ -385,4 +387,44 @@ def get_sks_nodepool_list_output(cluster_id: Optional[pulumi.Input[Optional[str]
     :param str version: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
     :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    __args__['createdAt'] = created_at
+    __args__['deployTargetId'] = deploy_target_id
+    __args__['description'] = description
+    __args__['diskSize'] = disk_size
+    __args__['id'] = id
+    __args__['instancePoolId'] = instance_pool_id
+    __args__['instancePrefix'] = instance_prefix
+    __args__['instanceType'] = instance_type
+    __args__['labels'] = labels
+    __args__['name'] = name
+    __args__['size'] = size
+    __args__['state'] = state
+    __args__['storageLvm'] = storage_lvm
+    __args__['taints'] = taints
+    __args__['templateId'] = template_id
+    __args__['version'] = version
+    __args__['zone'] = zone
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('exoscale:index/getSksNodepoolList:getSksNodepoolList', __args__, opts=opts, typ=GetSksNodepoolListResult)
+    return __ret__.apply(lambda __response__: GetSksNodepoolListResult(
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        deploy_target_id=pulumi.get(__response__, 'deploy_target_id'),
+        description=pulumi.get(__response__, 'description'),
+        disk_size=pulumi.get(__response__, 'disk_size'),
+        id=pulumi.get(__response__, 'id'),
+        instance_pool_id=pulumi.get(__response__, 'instance_pool_id'),
+        instance_prefix=pulumi.get(__response__, 'instance_prefix'),
+        instance_type=pulumi.get(__response__, 'instance_type'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        nodepools=pulumi.get(__response__, 'nodepools'),
+        size=pulumi.get(__response__, 'size'),
+        state=pulumi.get(__response__, 'state'),
+        storage_lvm=pulumi.get(__response__, 'storage_lvm'),
+        taints=pulumi.get(__response__, 'taints'),
+        template_id=pulumi.get(__response__, 'template_id'),
+        version=pulumi.get(__response__, 'version'),
+        zone=pulumi.get(__response__, 'zone')))

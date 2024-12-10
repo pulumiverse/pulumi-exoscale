@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 import types
@@ -38,9 +43,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('secret') or _utilities.get_env('EXOSCALE_API_SECRET')
 
     @property
+    def sos_endpoint(self) -> Optional[str]:
+        return __config__.get('sosEndpoint')
+
+    @property
     def timeout(self) -> Optional[int]:
         """
-        Timeout in seconds for waiting on compute resources to become available (by default: 300)
+        Timeout in seconds for waiting on compute resources to become available (by default: 3600)
         """
         return __config__.get_int('timeout')
 

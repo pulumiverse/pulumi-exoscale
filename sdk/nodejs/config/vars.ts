@@ -45,8 +45,16 @@ Object.defineProperty(exports, "secret", {
     enumerable: true,
 });
 
+export declare const sosEndpoint: string | undefined;
+Object.defineProperty(exports, "sosEndpoint", {
+    get() {
+        return __config.get("sosEndpoint");
+    },
+    enumerable: true,
+});
+
 /**
- * Timeout in seconds for waiting on compute resources to become available (by default: 300)
+ * Timeout in seconds for waiting on compute resources to become available (by default: 3600)
  */
 export declare const timeout: number | undefined;
 Object.defineProperty(exports, "timeout", {

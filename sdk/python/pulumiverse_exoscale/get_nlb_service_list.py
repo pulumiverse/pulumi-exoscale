@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -133,14 +138,11 @@ def get_nlb_service_list(nlb_id: Optional[str] = None,
         services=pulumi.get(__ret__, 'services'),
         timeouts=pulumi.get(__ret__, 'timeouts'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_nlb_service_list)
 def get_nlb_service_list_output(nlb_id: Optional[pulumi.Input[Optional[str]]] = None,
                                 nlb_name: Optional[pulumi.Input[Optional[str]]] = None,
                                 timeouts: Optional[pulumi.Input[Optional[Union['GetNlbServiceListTimeoutsArgs', 'GetNlbServiceListTimeoutsArgsDict']]]] = None,
                                 zone: Optional[pulumi.Input[str]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNlbServiceListResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNlbServiceListResult]:
     """
     Fetch Exoscale [Network Load Balancers (NLB)](https://community.exoscale.com/documentation/compute/network-load-balancer/) Services.
 
@@ -151,4 +153,17 @@ def get_nlb_service_list_output(nlb_id: Optional[pulumi.Input[Optional[str]]] = 
     :param str nlb_name: The NLB name to match (conflicts with `id`).
     :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
-    ...
+    __args__ = dict()
+    __args__['nlbId'] = nlb_id
+    __args__['nlbName'] = nlb_name
+    __args__['timeouts'] = timeouts
+    __args__['zone'] = zone
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('exoscale:index/getNlbServiceList:getNlbServiceList', __args__, opts=opts, typ=GetNlbServiceListResult)
+    return __ret__.apply(lambda __response__: GetNlbServiceListResult(
+        id=pulumi.get(__response__, 'id'),
+        nlb_id=pulumi.get(__response__, 'nlb_id'),
+        nlb_name=pulumi.get(__response__, 'nlb_name'),
+        services=pulumi.get(__response__, 'services'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
+        zone=pulumi.get(__response__, 'zone')))

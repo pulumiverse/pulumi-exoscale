@@ -82,7 +82,7 @@ export interface GetBlockStorageVolumeSnapshotResult {
  *
  * Corresponding resource: exoscale_block_storage_snapshot.
  */
-export function getBlockStorageVolumeSnapshotOutput(args: GetBlockStorageVolumeSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBlockStorageVolumeSnapshotResult> {
+export function getBlockStorageVolumeSnapshotOutput(args: GetBlockStorageVolumeSnapshotOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBlockStorageVolumeSnapshotResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("exoscale:index/getBlockStorageVolumeSnapshot:getBlockStorageVolumeSnapshot", {
         "id": args.id,

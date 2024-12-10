@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 delay: Optional[int]
@@ -23,8 +28,10 @@ secret: Optional[str]
 Exoscale API secret
 """
 
+sosEndpoint: Optional[str]
+
 timeout: Optional[int]
 """
-Timeout in seconds for waiting on compute resources to become available (by default: 300)
+Timeout in seconds for waiting on compute resources to become available (by default: 3600)
 """
 

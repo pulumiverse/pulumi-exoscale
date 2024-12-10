@@ -66,9 +66,16 @@ namespace Pulumiverse.Exoscale
             set => _secret.Set(value);
         }
 
+        private static readonly __Value<string?> _sosEndpoint = new __Value<string?>(() => __config.Get("sosEndpoint"));
+        public static string? SosEndpoint
+        {
+            get => _sosEndpoint.Get();
+            set => _sosEndpoint.Set(value);
+        }
+
         private static readonly __Value<int?> _timeout = new __Value<int?>(() => __config.GetInt32("timeout"));
         /// <summary>
-        /// Timeout in seconds for waiting on compute resources to become available (by default: 300)
+        /// Timeout in seconds for waiting on compute resources to become available (by default: 3600)
         /// </summary>
         public static int? Timeout
         {

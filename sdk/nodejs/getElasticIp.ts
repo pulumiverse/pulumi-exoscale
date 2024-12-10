@@ -121,7 +121,7 @@ export interface GetElasticIpResult {
  * Please refer to the examples
  * directory for complete configuration examples.
  */
-export function getElasticIpOutput(args: GetElasticIpOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetElasticIpResult> {
+export function getElasticIpOutput(args: GetElasticIpOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetElasticIpResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("exoscale:index/getElasticIp:getElasticIp", {
         "id": args.id,

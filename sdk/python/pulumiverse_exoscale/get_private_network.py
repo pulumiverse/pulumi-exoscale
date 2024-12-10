@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -178,15 +183,12 @@ def get_private_network(description: Optional[str] = None,
         netmask=pulumi.get(__ret__, 'netmask'),
         start_ip=pulumi.get(__ret__, 'start_ip'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_private_network)
 def get_private_network_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                                id: Optional[pulumi.Input[Optional[str]]] = None,
                                labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                name: Optional[pulumi.Input[Optional[str]]] = None,
                                zone: Optional[pulumi.Input[str]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrivateNetworkResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrivateNetworkResult]:
     """
     Fetch Exoscale [Private Networks](https://community.exoscale.com/documentation/compute/private-networks/) data.
 
@@ -213,4 +215,20 @@ def get_private_network_output(description: Optional[pulumi.Input[Optional[str]]
     :param str name: The network name to match (conflicts with `id`).
     :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
-    ...
+    __args__ = dict()
+    __args__['description'] = description
+    __args__['id'] = id
+    __args__['labels'] = labels
+    __args__['name'] = name
+    __args__['zone'] = zone
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('exoscale:index/getPrivateNetwork:getPrivateNetwork', __args__, opts=opts, typ=GetPrivateNetworkResult)
+    return __ret__.apply(lambda __response__: GetPrivateNetworkResult(
+        description=pulumi.get(__response__, 'description'),
+        end_ip=pulumi.get(__response__, 'end_ip'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        netmask=pulumi.get(__response__, 'netmask'),
+        start_ip=pulumi.get(__response__, 'start_ip'),
+        zone=pulumi.get(__response__, 'zone')))

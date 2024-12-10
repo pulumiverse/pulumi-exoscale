@@ -59,7 +59,7 @@ export interface GetDomainRecordResult {
  *
  * Corresponding resource: exoscale_domain_record.
  */
-export function getDomainRecordOutput(args: GetDomainRecordOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainRecordResult> {
+export function getDomainRecordOutput(args: GetDomainRecordOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDomainRecordResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("exoscale:index/getDomainRecord:getDomainRecord", {
         "domain": args.domain,

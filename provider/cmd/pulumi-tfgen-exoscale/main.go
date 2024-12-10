@@ -15,11 +15,12 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/pf/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	exoscale "github.com/pulumiverse/pulumi-exoscale/provider"
+	"github.com/pulumiverse/pulumi-exoscale/provider/pkg/version"
 )
 
 func main() {
 	// Modify the path to point to the new provider
-	tfgen.MainWithMuxer("exoscale", exoscale.Provider())
+	tfgen.Main("exoscale", version.Version, exoscale.Provider())
 }

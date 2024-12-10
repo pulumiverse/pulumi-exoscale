@@ -199,7 +199,7 @@ export interface GetComputeInstanceListResult {
  *
  * Corresponding resource: exoscale_compute_instance.
  */
-export function getComputeInstanceListOutput(args: GetComputeInstanceListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeInstanceListResult> {
+export function getComputeInstanceListOutput(args: GetComputeInstanceListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetComputeInstanceListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("exoscale:index/getComputeInstanceList:getComputeInstanceList", {
         "createdAt": args.createdAt,

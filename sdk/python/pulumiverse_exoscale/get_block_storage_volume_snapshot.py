@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -171,13 +176,10 @@ def get_block_storage_volume_snapshot(id: Optional[str] = None,
         timeouts=pulumi.get(__ret__, 'timeouts'),
         volume=pulumi.get(__ret__, 'volume'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_block_storage_volume_snapshot)
 def get_block_storage_volume_snapshot_output(id: Optional[pulumi.Input[str]] = None,
                                              timeouts: Optional[pulumi.Input[Optional[Union['GetBlockStorageVolumeSnapshotTimeoutsArgs', 'GetBlockStorageVolumeSnapshotTimeoutsArgsDict']]]] = None,
                                              zone: Optional[pulumi.Input[str]] = None,
-                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBlockStorageVolumeSnapshotResult]:
+                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBlockStorageVolumeSnapshotResult]:
     """
     Fetch [Exoscale Block Storage](https://community.exoscale.com/documentation/block-storage/) Snapshot.
 
@@ -189,4 +191,19 @@ def get_block_storage_volume_snapshot_output(id: Optional[pulumi.Input[str]] = N
     :param str id: Snapshot ID to match.
     :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['timeouts'] = timeouts
+    __args__['zone'] = zone
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('exoscale:index/getBlockStorageVolumeSnapshot:getBlockStorageVolumeSnapshot', __args__, opts=opts, typ=GetBlockStorageVolumeSnapshotResult)
+    return __ret__.apply(lambda __response__: GetBlockStorageVolumeSnapshotResult(
+        created_at=pulumi.get(__response__, 'created_at'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        size=pulumi.get(__response__, 'size'),
+        state=pulumi.get(__response__, 'state'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
+        volume=pulumi.get(__response__, 'volume'),
+        zone=pulumi.get(__response__, 'zone')))

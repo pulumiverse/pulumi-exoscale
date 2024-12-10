@@ -35,6 +35,7 @@ from .get_sks_cluster import *
 from .get_sks_cluster_list import *
 from .get_sks_nodepool import *
 from .get_sks_nodepool_list import *
+from .get_sos_bucket_policy import *
 from .get_template import *
 from .get_zones import *
 from .iam_access_key import *
@@ -51,6 +52,7 @@ from .security_group_rule import *
 from .sks_cluster import *
 from .sks_kubeconfig import *
 from .sks_nodepool import *
+from .sos_bucket_policy import *
 from .ssh_key import *
 from ._inputs import *
 from . import outputs
@@ -231,6 +233,14 @@ _utilities.register(
   "fqn": "pulumiverse_exoscale",
   "classes": {
    "exoscale:index/sksNodepool:SksNodepool": "SksNodepool"
+  }
+ },
+ {
+  "pkg": "exoscale",
+  "mod": "index/sosBucketPolicy",
+  "fqn": "pulumiverse_exoscale",
+  "classes": {
+   "exoscale:index/sosBucketPolicy:SosBucketPolicy": "SosBucketPolicy"
   }
  },
  {

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -18,12 +23,13 @@ class ProviderArgs:
                  environment: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
+                 sos_endpoint: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] key: Exoscale API key
         :param pulumi.Input[str] secret: Exoscale API secret
-        :param pulumi.Input[int] timeout: Timeout in seconds for waiting on compute resources to become available (by default: 300)
+        :param pulumi.Input[int] timeout: Timeout in seconds for waiting on compute resources to become available (by default: 3600)
         """
         if delay is not None:
             warnings.warn("""Does nothing""", DeprecationWarning)
@@ -40,6 +46,8 @@ class ProviderArgs:
             secret = _utilities.get_env('EXOSCALE_API_SECRET')
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
+        if sos_endpoint is not None:
+            pulumi.set(__self__, "sos_endpoint", sos_endpoint)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
 
@@ -87,10 +95,19 @@ class ProviderArgs:
         pulumi.set(self, "secret", value)
 
     @property
+    @pulumi.getter(name="sosEndpoint")
+    def sos_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sos_endpoint")
+
+    @sos_endpoint.setter
+    def sos_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sos_endpoint", value)
+
+    @property
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Timeout in seconds for waiting on compute resources to become available (by default: 300)
+        Timeout in seconds for waiting on compute resources to become available (by default: 3600)
         """
         return pulumi.get(self, "timeout")
 
@@ -108,6 +125,7 @@ class Provider(pulumi.ProviderResource):
                  environment: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
+                 sos_endpoint: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -120,7 +138,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key: Exoscale API key
         :param pulumi.Input[str] secret: Exoscale API secret
-        :param pulumi.Input[int] timeout: Timeout in seconds for waiting on compute resources to become available (by default: 300)
+        :param pulumi.Input[int] timeout: Timeout in seconds for waiting on compute resources to become available (by default: 3600)
         """
         ...
     @overload
@@ -153,6 +171,7 @@ class Provider(pulumi.ProviderResource):
                  environment: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
+                 sos_endpoint: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -171,6 +190,7 @@ class Provider(pulumi.ProviderResource):
             if secret is None:
                 secret = _utilities.get_env('EXOSCALE_API_SECRET')
             __props__.__dict__["secret"] = None if secret is None else pulumi.Output.secret(secret)
+            __props__.__dict__["sos_endpoint"] = sos_endpoint
             __props__.__dict__["timeout"] = pulumi.Output.from_input(timeout).apply(pulumi.runtime.to_json) if timeout is not None else None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["key", "secret"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -200,4 +220,9 @@ class Provider(pulumi.ProviderResource):
         Exoscale API secret
         """
         return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter(name="sosEndpoint")
+    def sos_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "sos_endpoint")
 

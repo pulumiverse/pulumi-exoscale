@@ -95,7 +95,7 @@ export interface GetTemplateResult {
  * Please refer to the examples
  * directory for complete configuration examples.
  */
-export function getTemplateOutput(args: GetTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplateResult> {
+export function getTemplateOutput(args: GetTemplateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("exoscale:index/getTemplate:getTemplate", {
         "id": args.id,

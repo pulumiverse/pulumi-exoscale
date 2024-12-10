@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -346,14 +351,11 @@ def get_instance_pool(id: Optional[str] = None,
         template_id=pulumi.get(__ret__, 'template_id'),
         user_data=pulumi.get(__ret__, 'user_data'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_instance_pool)
 def get_instance_pool_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                              labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                              name: Optional[pulumi.Input[Optional[str]]] = None,
                              zone: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancePoolResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancePoolResult]:
     """
     Fetch Exoscale [Instance Pools](https://community.exoscale.com/documentation/compute/instance-pools/) data.
 
@@ -379,4 +381,32 @@ def get_instance_pool_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str name: The pool name to match (conflicts with `id`).
     :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['labels'] = labels
+    __args__['name'] = name
+    __args__['zone'] = zone
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('exoscale:index/getInstancePool:getInstancePool', __args__, opts=opts, typ=GetInstancePoolResult)
+    return __ret__.apply(lambda __response__: GetInstancePoolResult(
+        affinity_group_ids=pulumi.get(__response__, 'affinity_group_ids'),
+        anti_affinity_group_ids=pulumi.get(__response__, 'anti_affinity_group_ids'),
+        deploy_target_id=pulumi.get(__response__, 'deploy_target_id'),
+        description=pulumi.get(__response__, 'description'),
+        disk_size=pulumi.get(__response__, 'disk_size'),
+        elastic_ip_ids=pulumi.get(__response__, 'elastic_ip_ids'),
+        id=pulumi.get(__response__, 'id'),
+        instance_prefix=pulumi.get(__response__, 'instance_prefix'),
+        instance_type=pulumi.get(__response__, 'instance_type'),
+        instances=pulumi.get(__response__, 'instances'),
+        ipv6=pulumi.get(__response__, 'ipv6'),
+        key_pair=pulumi.get(__response__, 'key_pair'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        network_ids=pulumi.get(__response__, 'network_ids'),
+        security_group_ids=pulumi.get(__response__, 'security_group_ids'),
+        size=pulumi.get(__response__, 'size'),
+        state=pulumi.get(__response__, 'state'),
+        template_id=pulumi.get(__response__, 'template_id'),
+        user_data=pulumi.get(__response__, 'user_data'),
+        zone=pulumi.get(__response__, 'zone')))

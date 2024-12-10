@@ -55,7 +55,7 @@ export interface GetZonesResult {
  * Please refer to the examples
  * directory for complete configuration examples.
  */
-export function getZonesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
+export function getZonesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZonesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("exoscale:index/getZones:getZones", {
     }, opts);
