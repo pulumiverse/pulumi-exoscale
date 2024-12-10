@@ -15,10 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const myAntiAffinityGroup = new exoscale.AntiAffinityGroup("my_anti_affinity_group", {
- *     name: "my-anti-affinity-group",
- *     description: "Prevent compute instances to run on the same host",
- * });
+ * const myAntiAffinityGroup = new exoscale.AntiAffinityGroup("myAntiAffinityGroup", {description: "Prevent compute instances to run on the same host"});
  * ```
  *
  * Please refer to the examples

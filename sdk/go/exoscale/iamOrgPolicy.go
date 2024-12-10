@@ -13,38 +13,6 @@ import (
 )
 
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := exoscale.NewIamOrgPolicy(ctx, "org_policy", &exoscale.IamOrgPolicyArgs{
-//				DefaultServiceStrategy: pulumi.String("allow"),
-//				Services: exoscale.IamOrgPolicyServicesMap{
-//					"sos": &exoscale.IamOrgPolicyServicesArgs{
-//						Type: pulumi.String("deny"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Please refer to the examples
-// directory for complete configuration examples.
 type IamOrgPolicy struct {
 	pulumi.CustomResourceState
 

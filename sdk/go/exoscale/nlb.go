@@ -30,9 +30,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := exoscale.NewNlb(ctx, "my_nlb", &exoscale.NlbArgs{
+//			_, err := exoscale.NewNlb(ctx, "myNlb", &exoscale.NlbArgs{
 //				Zone: pulumi.String("ch-gva-2"),
-//				Name: pulumi.String("my-nlb"),
 //			})
 //			if err != nil {
 //				return err

@@ -282,7 +282,7 @@ class ElasticIp(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_elastic_ip = exoscale.ElasticIp("my_elastic_ip", zone="ch-gva-2")
+        my_elastic_ip = exoscale.ElasticIp("myElasticIp", zone="ch-gva-2")
         ```
 
         *Managed* EIPv6:
@@ -291,20 +291,20 @@ class ElasticIp(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_managed_elastic_ip = exoscale.ElasticIp("my_managed_elastic_ip",
-            zone="ch-gva-2",
+        my_managed_elastic_ip = exoscale.ElasticIp("myManagedElasticIp",
             address_family="inet6",
-            reverse_dns="example.net",
             healthcheck={
+                "interval": 5,
                 "mode": "https",
                 "port": 443,
-                "uri": "/health",
-                "interval": 5,
-                "timeout": 3,
-                "strikes_ok": 2,
                 "strikes_fail": 3,
+                "strikes_ok": 2,
+                "timeout": 3,
                 "tls_sni": "example.net",
-            })
+                "uri": "/health",
+            },
+            reverse_dns="example.net",
+            zone="ch-gva-2")
         ```
 
         Please refer to the examples
@@ -350,7 +350,7 @@ class ElasticIp(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_elastic_ip = exoscale.ElasticIp("my_elastic_ip", zone="ch-gva-2")
+        my_elastic_ip = exoscale.ElasticIp("myElasticIp", zone="ch-gva-2")
         ```
 
         *Managed* EIPv6:
@@ -359,20 +359,20 @@ class ElasticIp(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_managed_elastic_ip = exoscale.ElasticIp("my_managed_elastic_ip",
-            zone="ch-gva-2",
+        my_managed_elastic_ip = exoscale.ElasticIp("myManagedElasticIp",
             address_family="inet6",
-            reverse_dns="example.net",
             healthcheck={
+                "interval": 5,
                 "mode": "https",
                 "port": 443,
-                "uri": "/health",
-                "interval": 5,
-                "timeout": 3,
-                "strikes_ok": 2,
                 "strikes_fail": 3,
+                "strikes_ok": 2,
+                "timeout": 3,
                 "tls_sni": "example.net",
-            })
+                "uri": "/health",
+            },
+            reverse_dns="example.net",
+            zone="ch-gva-2")
         ```
 
         Please refer to the examples

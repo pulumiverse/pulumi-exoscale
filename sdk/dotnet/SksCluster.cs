@@ -23,10 +23,9 @@ namespace Pulumiverse.Exoscale
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mySksCluster = new Exoscale.SksCluster("my_sks_cluster", new()
+    ///     var mySksCluster = new Exoscale.SksCluster("mySksCluster", new()
     ///     {
     ///         Zone = "ch-gva-2",
-    ///         Name = "my-sks-cluster",
     ///     });
     /// 
     ///     return new Dictionary&lt;string, object?&gt;

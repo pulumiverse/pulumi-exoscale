@@ -32,10 +32,9 @@ namespace Pulumiverse.Exoscale
     ///         Name = "Linux Ubuntu 22.04 LTS 64-bit",
     ///     });
     /// 
-    ///     var myInstancePool = new Exoscale.InstancePool("my_instance_pool", new()
+    ///     var myInstancePool = new Exoscale.InstancePool("myInstancePool", new()
     ///     {
     ///         Zone = "ch-gva-2",
-    ///         Name = "my-instance-pool",
     ///         TemplateId = myTemplate.Apply(getTemplateResult =&gt; getTemplateResult.Id),
     ///         InstanceType = "standard.medium",
     ///         DiskSize = 10,

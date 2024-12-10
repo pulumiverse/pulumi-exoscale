@@ -15,15 +15,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const myNlb = new exoscale.Nlb("my_nlb", {
- *     zone: "ch-gva-2",
- *     name: "my-nlb",
- * });
- * const myNlbService = new exoscale.NlbService("my_nlb_service", {
+ * const myNlb = new exoscale.Nlb("myNlb", {zone: "ch-gva-2"});
+ * const myNlbService = new exoscale.NlbService("myNlbService", {
  *     nlbId: myNlb.id,
  *     zone: myNlb.zone,
- *     name: "my-nlb-service",
- *     instancePoolId: myInstancePool.id,
+ *     instancePoolId: exoscale_instance_pool.my_instance_pool.id,
  *     protocol: "tcp",
  *     port: 443,
  *     targetPort: 8443,

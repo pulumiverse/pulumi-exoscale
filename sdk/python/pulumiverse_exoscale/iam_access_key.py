@@ -221,16 +221,13 @@ class IamAccessKey(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_sos_access_key = exoscale.IamAccessKey("my_sos_access_key",
-            name="my-sos-access-key",
+        my_sos_access_key = exoscale.IamAccessKey("mySosAccessKey",
             operations=[
                 "get-sos-object",
                 "list-sos-bucket",
             ],
             resources=["sos/bucket:my-bucket"])
-        my_sks_access_key = exoscale.IamAccessKey("my_sks_access_key",
-            name="my-sks-access-key",
-            tags=["sks"])
+        my_sks_access_key = exoscale.IamAccessKey("mySksAccessKey", tags=["sks"])
         ```
 
         Please refer to the examples
@@ -258,16 +255,13 @@ class IamAccessKey(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_sos_access_key = exoscale.IamAccessKey("my_sos_access_key",
-            name="my-sos-access-key",
+        my_sos_access_key = exoscale.IamAccessKey("mySosAccessKey",
             operations=[
                 "get-sos-object",
                 "list-sos-bucket",
             ],
             resources=["sos/bucket:my-bucket"])
-        my_sks_access_key = exoscale.IamAccessKey("my_sks_access_key",
-            name="my-sks-access-key",
-            tags=["sks"])
+        my_sks_access_key = exoscale.IamAccessKey("mySksAccessKey", tags=["sks"])
         ```
 
         Please refer to the examples

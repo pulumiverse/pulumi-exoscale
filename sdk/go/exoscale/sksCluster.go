@@ -28,9 +28,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			mySksCluster, err := exoscale.NewSksCluster(ctx, "my_sks_cluster", &exoscale.SksClusterArgs{
+//			mySksCluster, err := exoscale.NewSksCluster(ctx, "mySksCluster", &exoscale.SksClusterArgs{
 //				Zone: pulumi.String("ch-gva-2"),
-//				Name: pulumi.String("my-sks-cluster"),
 //			})
 //			if err != nil {
 //				return err

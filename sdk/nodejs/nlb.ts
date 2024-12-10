@@ -15,10 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const myNlb = new exoscale.Nlb("my_nlb", {
- *     zone: "ch-gva-2",
- *     name: "my-nlb",
- * });
+ * const myNlb = new exoscale.Nlb("myNlb", {zone: "ch-gva-2"});
  * ```
  *
  * Next step is to attach exoscale_nlb_service(s) to the NLB.

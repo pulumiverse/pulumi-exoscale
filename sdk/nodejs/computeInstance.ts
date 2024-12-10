@@ -24,9 +24,8 @@ import * as utilities from "./utilities";
  *     zone: "ch-gva-2",
  *     name: "Linux Ubuntu 22.04 LTS 64-bit",
  * });
- * const myInstance = new exoscale.ComputeInstance("my_instance", {
+ * const myInstance = new exoscale.ComputeInstance("myInstance", {
  *     zone: "ch-gva-2",
- *     name: "my-instance",
  *     templateId: myTemplate.then(myTemplate => myTemplate.id),
  *     type: "standard.medium",
  *     diskSize: 10,

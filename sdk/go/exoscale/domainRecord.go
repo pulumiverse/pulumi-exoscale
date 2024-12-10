@@ -30,24 +30,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myDomain, err := exoscale.NewDomain(ctx, "my_domain", &exoscale.DomainArgs{
-//				Name: pulumi.String("example.net"),
-//			})
+//			myDomain, err := exoscale.NewDomain(ctx, "myDomain", nil)
 //			if err != nil {
 //				return err
 //			}
-//			myHost, err := exoscale.NewDomainRecord(ctx, "my_host", &exoscale.DomainRecordArgs{
+//			myHost, err := exoscale.NewDomainRecord(ctx, "myHost", &exoscale.DomainRecordArgs{
 //				Domain:     myDomain.ID(),
-//				Name:       pulumi.String("my-host"),
 //				RecordType: pulumi.String("A"),
 //				Content:    pulumi.String("1.2.3.4"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = exoscale.NewDomainRecord(ctx, "my_host_alias", &exoscale.DomainRecordArgs{
+//			_, err = exoscale.NewDomainRecord(ctx, "myHostAlias", &exoscale.DomainRecordArgs{
 //				Domain:     myDomain.ID(),
-//				Name:       pulumi.String("my-host-alias"),
 //				RecordType: pulumi.String("CNAME"),
 //				Content:    myHost.Hostname,
 //			})

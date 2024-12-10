@@ -148,7 +148,7 @@ class SecurityGroup(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_security_group = exoscale.SecurityGroup("my_security_group", name="my-security-group")
+        my_security_group = exoscale.SecurityGroup("mySecurityGroup")
         ```
 
         Next step is to attach exoscale_security_group_rule(s) to the group.
@@ -191,7 +191,7 @@ class SecurityGroup(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_security_group = exoscale.SecurityGroup("my_security_group", name="my-security-group")
+        my_security_group = exoscale.SecurityGroup("mySecurityGroup")
         ```
 
         Next step is to attach exoscale_security_group_rule(s) to the group.

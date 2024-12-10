@@ -21,9 +21,8 @@ namespace Pulumiverse.Exoscale
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mySosAccessKey = new Exoscale.IamAccessKey("my_sos_access_key", new()
+    ///     var mySosAccessKey = new Exoscale.IamAccessKey("mySosAccessKey", new()
     ///     {
-    ///         Name = "my-sos-access-key",
     ///         Operations = new[]
     ///         {
     ///             "get-sos-object",
@@ -35,9 +34,8 @@ namespace Pulumiverse.Exoscale
     ///         },
     ///     });
     /// 
-    ///     var mySksAccessKey = new Exoscale.IamAccessKey("my_sks_access_key", new()
+    ///     var mySksAccessKey = new Exoscale.IamAccessKey("mySksAccessKey", new()
     ///     {
-    ///         Name = "my-sks-access-key",
     ///         Tags = new[]
     ///         {
     ///             "sks",

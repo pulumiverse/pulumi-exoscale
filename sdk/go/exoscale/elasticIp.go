@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := exoscale.NewElasticIp(ctx, "my_elastic_ip", &exoscale.ElasticIpArgs{
+//			_, err := exoscale.NewElasticIp(ctx, "myElasticIp", &exoscale.ElasticIpArgs{
 //				Zone: pulumi.String("ch-gva-2"),
 //			})
 //			if err != nil {
@@ -58,20 +58,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := exoscale.NewElasticIp(ctx, "my_managed_elastic_ip", &exoscale.ElasticIpArgs{
-//				Zone:          pulumi.String("ch-gva-2"),
+//			_, err := exoscale.NewElasticIp(ctx, "myManagedElasticIp", &exoscale.ElasticIpArgs{
 //				AddressFamily: pulumi.String("inet6"),
-//				ReverseDns:    pulumi.String("example.net"),
 //				Healthcheck: &exoscale.ElasticIpHealthcheckArgs{
+//					Interval:    pulumi.Int(5),
 //					Mode:        pulumi.String("https"),
 //					Port:        pulumi.Int(443),
-//					Uri:         pulumi.String("/health"),
-//					Interval:    pulumi.Int(5),
-//					Timeout:     pulumi.Int(3),
-//					StrikesOk:   pulumi.Int(2),
 //					StrikesFail: pulumi.Int(3),
+//					StrikesOk:   pulumi.Int(2),
+//					Timeout:     pulumi.Int(3),
 //					TlsSni:      pulumi.String("example.net"),
+//					Uri:         pulumi.String("/health"),
 //				},
+//				ReverseDns: pulumi.String("example.net"),
+//				Zone:       pulumi.String("ch-gva-2"),
 //			})
 //			if err != nil {
 //				return err
