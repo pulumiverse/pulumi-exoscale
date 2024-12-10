@@ -8,23 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as exoscale from "@pulumiverse/exoscale";
- *
- * const orgPolicy = new exoscale.IamOrgPolicy("org_policy", {
- *     defaultServiceStrategy: "allow",
- *     services: {
- *         sos: {
- *             type: "deny",
- *         },
- *     },
- * });
- * ```
- *
- * Please refer to the examples
- * directory for complete configuration examples.
  */
 export class IamOrgPolicy extends pulumi.CustomResource {
     /**

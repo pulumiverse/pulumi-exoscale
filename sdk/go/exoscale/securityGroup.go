@@ -29,9 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := exoscale.NewSecurityGroup(ctx, "my_security_group", &exoscale.SecurityGroupArgs{
-//				Name: pulumi.String("my-security-group"),
-//			})
+//			_, err := exoscale.NewSecurityGroup(ctx, "mySecurityGroup", nil)
 //			if err != nil {
 //				return err
 //			}

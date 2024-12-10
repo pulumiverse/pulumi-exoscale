@@ -23,18 +23,16 @@ namespace Pulumiverse.Exoscale
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myNlb = new Exoscale.Nlb("my_nlb", new()
+    ///     var myNlb = new Exoscale.Nlb("myNlb", new()
     ///     {
     ///         Zone = "ch-gva-2",
-    ///         Name = "my-nlb",
     ///     });
     /// 
-    ///     var myNlbService = new Exoscale.NlbService("my_nlb_service", new()
+    ///     var myNlbService = new Exoscale.NlbService("myNlbService", new()
     ///     {
     ///         NlbId = myNlb.Id,
     ///         Zone = myNlb.Zone,
-    ///         Name = "my-nlb-service",
-    ///         InstancePoolId = myInstancePool.Id,
+    ///         InstancePoolId = exoscale_instance_pool.My_instance_pool.Id,
     ///         Protocol = "tcp",
     ///         Port = 443,
     ///         TargetPort = 8443,

@@ -764,9 +764,8 @@ class ComputeInstance(pulumi.CustomResource):
 
         my_template = exoscale.get_template(zone="ch-gva-2",
             name="Linux Ubuntu 22.04 LTS 64-bit")
-        my_instance = exoscale.ComputeInstance("my_instance",
+        my_instance = exoscale.ComputeInstance("myInstance",
             zone="ch-gva-2",
-            name="my-instance",
             template_id=my_template.id,
             type="standard.medium",
             disk_size=10)
@@ -831,9 +830,8 @@ class ComputeInstance(pulumi.CustomResource):
 
         my_template = exoscale.get_template(zone="ch-gva-2",
             name="Linux Ubuntu 22.04 LTS 64-bit")
-        my_instance = exoscale.ComputeInstance("my_instance",
+        my_instance = exoscale.ComputeInstance("myInstance",
             zone="ch-gva-2",
-            name="my-instance",
             template_id=my_template.id,
             type="standard.medium",
             disk_size=10)

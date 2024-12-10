@@ -22,9 +22,8 @@ import * as utilities from "./utilities";
  *     zone: "ch-gva-2",
  *     name: "Linux Ubuntu 22.04 LTS 64-bit",
  * });
- * const myInstancePool = new exoscale.InstancePool("my_instance_pool", {
+ * const myInstancePool = new exoscale.InstancePool("myInstancePool", {
  *     zone: "ch-gva-2",
- *     name: "my-instance-pool",
  *     templateId: myTemplate.then(myTemplate => myTemplate.id),
  *     instanceType: "standard.medium",
  *     diskSize: 10,

@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const myElasticIp = new exoscale.ElasticIp("my_elastic_ip", {zone: "ch-gva-2"});
+ * const myElasticIp = new exoscale.ElasticIp("myElasticIp", {zone: "ch-gva-2"});
  * ```
  *
  * *Managed* EIPv6:
@@ -28,20 +28,20 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const myManagedElasticIp = new exoscale.ElasticIp("my_managed_elastic_ip", {
- *     zone: "ch-gva-2",
+ * const myManagedElasticIp = new exoscale.ElasticIp("myManagedElasticIp", {
  *     addressFamily: "inet6",
- *     reverseDns: "example.net",
  *     healthcheck: {
+ *         interval: 5,
  *         mode: "https",
  *         port: 443,
- *         uri: "/health",
- *         interval: 5,
- *         timeout: 3,
- *         strikesOk: 2,
  *         strikesFail: 3,
+ *         strikesOk: 2,
+ *         timeout: 3,
  *         tlsSni: "example.net",
+ *         uri: "/health",
  *     },
+ *     reverseDns: "example.net",
+ *     zone: "ch-gva-2",
  * });
  * ```
  *

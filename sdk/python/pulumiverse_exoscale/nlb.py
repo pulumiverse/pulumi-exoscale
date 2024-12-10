@@ -244,9 +244,7 @@ class Nlb(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_nlb = exoscale.Nlb("my_nlb",
-            zone="ch-gva-2",
-            name="my-nlb")
+        my_nlb = exoscale.Nlb("myNlb", zone="ch-gva-2")
         ```
 
         Next step is to attach exoscale_nlb_service(s) to the NLB.
@@ -292,9 +290,7 @@ class Nlb(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_nlb = exoscale.Nlb("my_nlb",
-            zone="ch-gva-2",
-            name="my-nlb")
+        my_nlb = exoscale.Nlb("myNlb", zone="ch-gva-2")
         ```
 
         Next step is to attach exoscale_nlb_service(s) to the NLB.

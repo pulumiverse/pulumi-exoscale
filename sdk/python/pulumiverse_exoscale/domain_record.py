@@ -276,15 +276,13 @@ class DomainRecord(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_domain = exoscale.Domain("my_domain", name="example.net")
-        my_host = exoscale.DomainRecord("my_host",
+        my_domain = exoscale.Domain("myDomain")
+        my_host = exoscale.DomainRecord("myHost",
             domain=my_domain.id,
-            name="my-host",
             record_type="A",
             content="1.2.3.4")
-        my_host_alias = exoscale.DomainRecord("my_host_alias",
+        my_host_alias = exoscale.DomainRecord("myHostAlias",
             domain=my_domain.id,
-            name="my-host-alias",
             record_type="CNAME",
             content=my_host.hostname)
         ```
@@ -330,15 +328,13 @@ class DomainRecord(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_domain = exoscale.Domain("my_domain", name="example.net")
-        my_host = exoscale.DomainRecord("my_host",
+        my_domain = exoscale.Domain("myDomain")
+        my_host = exoscale.DomainRecord("myHost",
             domain=my_domain.id,
-            name="my-host",
             record_type="A",
             content="1.2.3.4")
-        my_host_alias = exoscale.DomainRecord("my_host_alias",
+        my_host_alias = exoscale.DomainRecord("myHostAlias",
             domain=my_domain.id,
-            name="my-host-alias",
             record_type="CNAME",
             content=my_host.hostname)
         ```
