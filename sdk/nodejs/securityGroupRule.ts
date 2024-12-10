@@ -13,8 +13,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const mySecurityGroup = new exoscale.SecurityGroup("mySecurityGroup", {});
- * const mySecurityGroupRule = new exoscale.SecurityGroupRule("mySecurityGroupRule", {
+ * const mySecurityGroup = new exoscale.SecurityGroup("my_security_group", {name: "my-security-group"});
+ * const mySecurityGroupRule = new exoscale.SecurityGroupRule("my_security_group_rule", {
  *     securityGroupId: mySecurityGroup.id,
  *     type: "INGRESS",
  *     protocol: "TCP",

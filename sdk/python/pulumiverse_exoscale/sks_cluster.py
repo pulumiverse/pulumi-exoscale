@@ -584,7 +584,9 @@ class SksCluster(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_sks_cluster = exoscale.SksCluster("mySksCluster", zone="ch-gva-2")
+        my_sks_cluster = exoscale.SksCluster("my_sks_cluster",
+            zone="ch-gva-2",
+            name="my-sks-cluster")
         pulumi.export("mySksClusterEndpoint", my_sks_cluster.endpoint)
         ```
 
@@ -635,7 +637,9 @@ class SksCluster(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_sks_cluster = exoscale.SksCluster("mySksCluster", zone="ch-gva-2")
+        my_sks_cluster = exoscale.SksCluster("my_sks_cluster",
+            zone="ch-gva-2",
+            name="my-sks-cluster")
         pulumi.export("mySksClusterEndpoint", my_sks_cluster.endpoint)
         ```
 

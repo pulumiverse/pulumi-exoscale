@@ -788,8 +788,9 @@ class InstancePool(pulumi.CustomResource):
 
         my_template = exoscale.get_template(zone="ch-gva-2",
             name="Linux Ubuntu 22.04 LTS 64-bit")
-        my_instance_pool = exoscale.InstancePool("myInstancePool",
+        my_instance_pool = exoscale.InstancePool("my_instance_pool",
             zone="ch-gva-2",
+            name="my-instance-pool",
             template_id=my_template.id,
             instance_type="standard.medium",
             disk_size=10,
@@ -855,8 +856,9 @@ class InstancePool(pulumi.CustomResource):
 
         my_template = exoscale.get_template(zone="ch-gva-2",
             name="Linux Ubuntu 22.04 LTS 64-bit")
-        my_instance_pool = exoscale.InstancePool("myInstancePool",
+        my_instance_pool = exoscale.InstancePool("my_instance_pool",
             zone="ch-gva-2",
+            name="my-instance-pool",
             template_id=my_template.id,
             instance_type="standard.medium",
             disk_size=10,

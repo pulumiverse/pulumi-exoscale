@@ -11,14 +11,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const mySosAccessKey = new exoscale.IamAccessKey("mySosAccessKey", {
+ * const mySosAccessKey = new exoscale.IamAccessKey("my_sos_access_key", {
+ *     name: "my-sos-access-key",
  *     operations: [
  *         "get-sos-object",
  *         "list-sos-bucket",
  *     ],
  *     resources: ["sos/bucket:my-bucket"],
  * });
- * const mySksAccessKey = new exoscale.IamAccessKey("mySksAccessKey", {tags: ["sks"]});
+ * const mySksAccessKey = new exoscale.IamAccessKey("my_sks_access_key", {
+ *     name: "my-sks-access-key",
+ *     tags: ["sks"],
+ * });
  * ```
  *
  * Please refer to the examples

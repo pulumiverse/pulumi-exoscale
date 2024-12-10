@@ -25,7 +25,10 @@ namespace Pulumiverse.Exoscale
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myDomain = new Exoscale.Domain("myDomain");
+    ///     var myDomain = new Exoscale.Domain("my_domain", new()
+    ///     {
+    ///         Name = "my.domain",
+    ///     });
     /// 
     /// });
     /// ```

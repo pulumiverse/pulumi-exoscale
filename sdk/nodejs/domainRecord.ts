@@ -15,14 +15,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const myDomain = new exoscale.Domain("myDomain", {});
- * const myHost = new exoscale.DomainRecord("myHost", {
+ * const myDomain = new exoscale.Domain("my_domain", {name: "example.net"});
+ * const myHost = new exoscale.DomainRecord("my_host", {
  *     domain: myDomain.id,
+ *     name: "my-host",
  *     recordType: "A",
  *     content: "1.2.3.4",
  * });
- * const myHostAlias = new exoscale.DomainRecord("myHostAlias", {
+ * const myHostAlias = new exoscale.DomainRecord("my_host_alias", {
  *     domain: myDomain.id,
+ *     name: "my-host-alias",
  *     recordType: "CNAME",
  *     content: myHost.hostname,
  * });

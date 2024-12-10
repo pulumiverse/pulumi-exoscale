@@ -6,7 +6,9 @@
 **/obj/
 Pulumi.*.yaml
 **/node_modules/
+package-lock.json
 .DS_Store
+go.work*
 
 **/command-output/
 
@@ -21,3 +23,11 @@ provider/**/schema-embed.json
 **/version.txt
 **/nuget
 **/dist
+
+__pycache__
+venv
+sdk/python/build
+sdk/python/*.egg-info
+
+# Ignore local build tracking directory
+**/.make/*

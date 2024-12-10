@@ -640,10 +640,13 @@ class SksNodepool(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_sks_cluster = exoscale.SksCluster("mySksCluster", zone="ch-gva-2")
-        my_sks_nodepool = exoscale.SksNodepool("mySksNodepool",
+        my_sks_cluster = exoscale.SksCluster("my_sks_cluster",
+            zone="ch-gva-2",
+            name="my-sks-cluster")
+        my_sks_nodepool = exoscale.SksNodepool("my_sks_nodepool",
             cluster_id=my_sks_cluster.id,
             zone=my_sks_cluster.zone,
+            name="my-sks-nodepool",
             instance_type="standard.medium",
             size=3)
         ```
@@ -696,10 +699,13 @@ class SksNodepool(pulumi.CustomResource):
         import pulumi
         import pulumiverse_exoscale as exoscale
 
-        my_sks_cluster = exoscale.SksCluster("mySksCluster", zone="ch-gva-2")
-        my_sks_nodepool = exoscale.SksNodepool("mySksNodepool",
+        my_sks_cluster = exoscale.SksCluster("my_sks_cluster",
+            zone="ch-gva-2",
+            name="my-sks-cluster")
+        my_sks_nodepool = exoscale.SksNodepool("my_sks_nodepool",
             cluster_id=my_sks_cluster.id,
             zone=my_sks_cluster.zone,
+            name="my-sks-nodepool",
             instance_type="standard.medium",
             size=3)
         ```

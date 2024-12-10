@@ -37,8 +37,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = exoscale.NewInstancePool(ctx, "myInstancePool", &exoscale.InstancePoolArgs{
+//			_, err = exoscale.NewInstancePool(ctx, "my_instance_pool", &exoscale.InstancePoolArgs{
 //				Zone:         pulumi.String("ch-gva-2"),
+//				Name:         pulumi.String("my-instance-pool"),
 //				TemplateId:   pulumi.String(myTemplate.Id),
 //				InstanceType: pulumi.String("standard.medium"),
 //				DiskSize:     pulumi.Int(10),
