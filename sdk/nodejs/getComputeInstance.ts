@@ -166,7 +166,7 @@ export interface GetComputeInstanceResult {
  * Please refer to the examples
  * directory for complete configuration examples.
  */
-export function getComputeInstanceOutput(args: GetComputeInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeInstanceResult> {
+export function getComputeInstanceOutput(args: GetComputeInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetComputeInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("exoscale:index/getComputeInstance:getComputeInstance", {
         "id": args.id,

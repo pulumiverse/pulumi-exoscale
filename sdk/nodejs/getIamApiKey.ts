@@ -57,7 +57,7 @@ export interface GetIamApiKeyResult {
  *
  * Corresponding resource: exoscale_iam_role.
  */
-export function getIamApiKeyOutput(args: GetIamApiKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIamApiKeyResult> {
+export function getIamApiKeyOutput(args: GetIamApiKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIamApiKeyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("exoscale:index/getIamApiKey:getIamApiKey", {
         "key": args.key,

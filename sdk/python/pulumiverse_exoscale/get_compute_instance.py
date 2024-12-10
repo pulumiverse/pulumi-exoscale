@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -354,13 +359,10 @@ def get_compute_instance(id: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'),
         user_data=pulumi.get(__ret__, 'user_data'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_compute_instance)
 def get_compute_instance_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                                 name: Optional[pulumi.Input[Optional[str]]] = None,
                                 zone: Optional[pulumi.Input[str]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetComputeInstanceResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetComputeInstanceResult]:
     """
     Fetch Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/) data.
 
@@ -385,4 +387,32 @@ def get_compute_instance_output(id: Optional[pulumi.Input[Optional[str]]] = None
     :param str name: The instance name to match (conflicts with `id`).
     :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['name'] = name
+    __args__['zone'] = zone
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('exoscale:index/getComputeInstance:getComputeInstance', __args__, opts=opts, typ=GetComputeInstanceResult)
+    return __ret__.apply(lambda __response__: GetComputeInstanceResult(
+        anti_affinity_group_ids=pulumi.get(__response__, 'anti_affinity_group_ids'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        deploy_target_id=pulumi.get(__response__, 'deploy_target_id'),
+        disk_size=pulumi.get(__response__, 'disk_size'),
+        elastic_ip_ids=pulumi.get(__response__, 'elastic_ip_ids'),
+        id=pulumi.get(__response__, 'id'),
+        ipv6=pulumi.get(__response__, 'ipv6'),
+        ipv6_address=pulumi.get(__response__, 'ipv6_address'),
+        labels=pulumi.get(__response__, 'labels'),
+        manager_id=pulumi.get(__response__, 'manager_id'),
+        manager_type=pulumi.get(__response__, 'manager_type'),
+        name=pulumi.get(__response__, 'name'),
+        private_network_ids=pulumi.get(__response__, 'private_network_ids'),
+        public_ip_address=pulumi.get(__response__, 'public_ip_address'),
+        reverse_dns=pulumi.get(__response__, 'reverse_dns'),
+        security_group_ids=pulumi.get(__response__, 'security_group_ids'),
+        ssh_key=pulumi.get(__response__, 'ssh_key'),
+        state=pulumi.get(__response__, 'state'),
+        template_id=pulumi.get(__response__, 'template_id'),
+        type=pulumi.get(__response__, 'type'),
+        user_data=pulumi.get(__response__, 'user_data'),
+        zone=pulumi.get(__response__, 'zone')))

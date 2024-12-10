@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -132,14 +137,11 @@ def get_template(id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         visibility=pulumi.get(__ret__, 'visibility'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_template)
 def get_template_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                         name: Optional[pulumi.Input[Optional[str]]] = None,
                         visibility: Optional[pulumi.Input[Optional[str]]] = None,
                         zone: Optional[pulumi.Input[str]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTemplateResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTemplateResult]:
     """
     ## Example Usage
 
@@ -161,4 +163,16 @@ def get_template_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str visibility: A template category filter (default: `public`); among: - `public` - official Exoscale templates - `private` - custom templates private to my organization
     :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['name'] = name
+    __args__['visibility'] = visibility
+    __args__['zone'] = zone
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('exoscale:index/getTemplate:getTemplate', __args__, opts=opts, typ=GetTemplateResult)
+    return __ret__.apply(lambda __response__: GetTemplateResult(
+        default_user=pulumi.get(__response__, 'default_user'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        visibility=pulumi.get(__response__, 'visibility'),
+        zone=pulumi.get(__response__, 'zone')))

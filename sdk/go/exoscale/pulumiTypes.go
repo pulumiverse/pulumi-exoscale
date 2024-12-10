@@ -4723,6 +4723,200 @@ func (o SksNodepoolKubeletImageGcArrayOutput) Index(i pulumi.IntInput) SksNodepo
 	}).(SksNodepoolKubeletImageGcOutput)
 }
 
+type SosBucketPolicyTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// SosBucketPolicyTimeoutsInput is an input type that accepts SosBucketPolicyTimeoutsArgs and SosBucketPolicyTimeoutsOutput values.
+// You can construct a concrete instance of `SosBucketPolicyTimeoutsInput` via:
+//
+//	SosBucketPolicyTimeoutsArgs{...}
+type SosBucketPolicyTimeoutsInput interface {
+	pulumi.Input
+
+	ToSosBucketPolicyTimeoutsOutput() SosBucketPolicyTimeoutsOutput
+	ToSosBucketPolicyTimeoutsOutputWithContext(context.Context) SosBucketPolicyTimeoutsOutput
+}
+
+type SosBucketPolicyTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (SosBucketPolicyTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SosBucketPolicyTimeouts)(nil)).Elem()
+}
+
+func (i SosBucketPolicyTimeoutsArgs) ToSosBucketPolicyTimeoutsOutput() SosBucketPolicyTimeoutsOutput {
+	return i.ToSosBucketPolicyTimeoutsOutputWithContext(context.Background())
+}
+
+func (i SosBucketPolicyTimeoutsArgs) ToSosBucketPolicyTimeoutsOutputWithContext(ctx context.Context) SosBucketPolicyTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SosBucketPolicyTimeoutsOutput)
+}
+
+func (i SosBucketPolicyTimeoutsArgs) ToSosBucketPolicyTimeoutsPtrOutput() SosBucketPolicyTimeoutsPtrOutput {
+	return i.ToSosBucketPolicyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i SosBucketPolicyTimeoutsArgs) ToSosBucketPolicyTimeoutsPtrOutputWithContext(ctx context.Context) SosBucketPolicyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SosBucketPolicyTimeoutsOutput).ToSosBucketPolicyTimeoutsPtrOutputWithContext(ctx)
+}
+
+// SosBucketPolicyTimeoutsPtrInput is an input type that accepts SosBucketPolicyTimeoutsArgs, SosBucketPolicyTimeoutsPtr and SosBucketPolicyTimeoutsPtrOutput values.
+// You can construct a concrete instance of `SosBucketPolicyTimeoutsPtrInput` via:
+//
+//	        SosBucketPolicyTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SosBucketPolicyTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToSosBucketPolicyTimeoutsPtrOutput() SosBucketPolicyTimeoutsPtrOutput
+	ToSosBucketPolicyTimeoutsPtrOutputWithContext(context.Context) SosBucketPolicyTimeoutsPtrOutput
+}
+
+type sosBucketPolicyTimeoutsPtrType SosBucketPolicyTimeoutsArgs
+
+func SosBucketPolicyTimeoutsPtr(v *SosBucketPolicyTimeoutsArgs) SosBucketPolicyTimeoutsPtrInput {
+	return (*sosBucketPolicyTimeoutsPtrType)(v)
+}
+
+func (*sosBucketPolicyTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SosBucketPolicyTimeouts)(nil)).Elem()
+}
+
+func (i *sosBucketPolicyTimeoutsPtrType) ToSosBucketPolicyTimeoutsPtrOutput() SosBucketPolicyTimeoutsPtrOutput {
+	return i.ToSosBucketPolicyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *sosBucketPolicyTimeoutsPtrType) ToSosBucketPolicyTimeoutsPtrOutputWithContext(ctx context.Context) SosBucketPolicyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SosBucketPolicyTimeoutsPtrOutput)
+}
+
+type SosBucketPolicyTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (SosBucketPolicyTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SosBucketPolicyTimeouts)(nil)).Elem()
+}
+
+func (o SosBucketPolicyTimeoutsOutput) ToSosBucketPolicyTimeoutsOutput() SosBucketPolicyTimeoutsOutput {
+	return o
+}
+
+func (o SosBucketPolicyTimeoutsOutput) ToSosBucketPolicyTimeoutsOutputWithContext(ctx context.Context) SosBucketPolicyTimeoutsOutput {
+	return o
+}
+
+func (o SosBucketPolicyTimeoutsOutput) ToSosBucketPolicyTimeoutsPtrOutput() SosBucketPolicyTimeoutsPtrOutput {
+	return o.ToSosBucketPolicyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o SosBucketPolicyTimeoutsOutput) ToSosBucketPolicyTimeoutsPtrOutputWithContext(ctx context.Context) SosBucketPolicyTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SosBucketPolicyTimeouts) *SosBucketPolicyTimeouts {
+		return &v
+	}).(SosBucketPolicyTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SosBucketPolicyTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SosBucketPolicyTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o SosBucketPolicyTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SosBucketPolicyTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o SosBucketPolicyTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SosBucketPolicyTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SosBucketPolicyTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SosBucketPolicyTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type SosBucketPolicyTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (SosBucketPolicyTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SosBucketPolicyTimeouts)(nil)).Elem()
+}
+
+func (o SosBucketPolicyTimeoutsPtrOutput) ToSosBucketPolicyTimeoutsPtrOutput() SosBucketPolicyTimeoutsPtrOutput {
+	return o
+}
+
+func (o SosBucketPolicyTimeoutsPtrOutput) ToSosBucketPolicyTimeoutsPtrOutputWithContext(ctx context.Context) SosBucketPolicyTimeoutsPtrOutput {
+	return o
+}
+
+func (o SosBucketPolicyTimeoutsPtrOutput) Elem() SosBucketPolicyTimeoutsOutput {
+	return o.ApplyT(func(v *SosBucketPolicyTimeouts) SosBucketPolicyTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret SosBucketPolicyTimeouts
+		return ret
+	}).(SosBucketPolicyTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SosBucketPolicyTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SosBucketPolicyTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o SosBucketPolicyTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SosBucketPolicyTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o SosBucketPolicyTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SosBucketPolicyTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SosBucketPolicyTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SosBucketPolicyTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetBlockStorageVolumeInstance struct {
 	// Instance ID.
 	Id string `pulumi:"id"`
@@ -8990,6 +9184,143 @@ func (o GetSksNodepoolListNodepoolKubeletImageGcArrayOutput) Index(i pulumi.IntI
 	}).(GetSksNodepoolListNodepoolKubeletImageGcOutput)
 }
 
+type GetSosBucketPolicyTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+}
+
+// GetSosBucketPolicyTimeoutsInput is an input type that accepts GetSosBucketPolicyTimeoutsArgs and GetSosBucketPolicyTimeoutsOutput values.
+// You can construct a concrete instance of `GetSosBucketPolicyTimeoutsInput` via:
+//
+//	GetSosBucketPolicyTimeoutsArgs{...}
+type GetSosBucketPolicyTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetSosBucketPolicyTimeoutsOutput() GetSosBucketPolicyTimeoutsOutput
+	ToGetSosBucketPolicyTimeoutsOutputWithContext(context.Context) GetSosBucketPolicyTimeoutsOutput
+}
+
+type GetSosBucketPolicyTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetSosBucketPolicyTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSosBucketPolicyTimeouts)(nil)).Elem()
+}
+
+func (i GetSosBucketPolicyTimeoutsArgs) ToGetSosBucketPolicyTimeoutsOutput() GetSosBucketPolicyTimeoutsOutput {
+	return i.ToGetSosBucketPolicyTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetSosBucketPolicyTimeoutsArgs) ToGetSosBucketPolicyTimeoutsOutputWithContext(ctx context.Context) GetSosBucketPolicyTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSosBucketPolicyTimeoutsOutput)
+}
+
+func (i GetSosBucketPolicyTimeoutsArgs) ToGetSosBucketPolicyTimeoutsPtrOutput() GetSosBucketPolicyTimeoutsPtrOutput {
+	return i.ToGetSosBucketPolicyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetSosBucketPolicyTimeoutsArgs) ToGetSosBucketPolicyTimeoutsPtrOutputWithContext(ctx context.Context) GetSosBucketPolicyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSosBucketPolicyTimeoutsOutput).ToGetSosBucketPolicyTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetSosBucketPolicyTimeoutsPtrInput is an input type that accepts GetSosBucketPolicyTimeoutsArgs, GetSosBucketPolicyTimeoutsPtr and GetSosBucketPolicyTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetSosBucketPolicyTimeoutsPtrInput` via:
+//
+//	        GetSosBucketPolicyTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSosBucketPolicyTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetSosBucketPolicyTimeoutsPtrOutput() GetSosBucketPolicyTimeoutsPtrOutput
+	ToGetSosBucketPolicyTimeoutsPtrOutputWithContext(context.Context) GetSosBucketPolicyTimeoutsPtrOutput
+}
+
+type getSosBucketPolicyTimeoutsPtrType GetSosBucketPolicyTimeoutsArgs
+
+func GetSosBucketPolicyTimeoutsPtr(v *GetSosBucketPolicyTimeoutsArgs) GetSosBucketPolicyTimeoutsPtrInput {
+	return (*getSosBucketPolicyTimeoutsPtrType)(v)
+}
+
+func (*getSosBucketPolicyTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSosBucketPolicyTimeouts)(nil)).Elem()
+}
+
+func (i *getSosBucketPolicyTimeoutsPtrType) ToGetSosBucketPolicyTimeoutsPtrOutput() GetSosBucketPolicyTimeoutsPtrOutput {
+	return i.ToGetSosBucketPolicyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getSosBucketPolicyTimeoutsPtrType) ToGetSosBucketPolicyTimeoutsPtrOutputWithContext(ctx context.Context) GetSosBucketPolicyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSosBucketPolicyTimeoutsPtrOutput)
+}
+
+type GetSosBucketPolicyTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetSosBucketPolicyTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSosBucketPolicyTimeouts)(nil)).Elem()
+}
+
+func (o GetSosBucketPolicyTimeoutsOutput) ToGetSosBucketPolicyTimeoutsOutput() GetSosBucketPolicyTimeoutsOutput {
+	return o
+}
+
+func (o GetSosBucketPolicyTimeoutsOutput) ToGetSosBucketPolicyTimeoutsOutputWithContext(ctx context.Context) GetSosBucketPolicyTimeoutsOutput {
+	return o
+}
+
+func (o GetSosBucketPolicyTimeoutsOutput) ToGetSosBucketPolicyTimeoutsPtrOutput() GetSosBucketPolicyTimeoutsPtrOutput {
+	return o.ToGetSosBucketPolicyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetSosBucketPolicyTimeoutsOutput) ToGetSosBucketPolicyTimeoutsPtrOutputWithContext(ctx context.Context) GetSosBucketPolicyTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSosBucketPolicyTimeouts) *GetSosBucketPolicyTimeouts {
+		return &v
+	}).(GetSosBucketPolicyTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o GetSosBucketPolicyTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSosBucketPolicyTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetSosBucketPolicyTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetSosBucketPolicyTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSosBucketPolicyTimeouts)(nil)).Elem()
+}
+
+func (o GetSosBucketPolicyTimeoutsPtrOutput) ToGetSosBucketPolicyTimeoutsPtrOutput() GetSosBucketPolicyTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetSosBucketPolicyTimeoutsPtrOutput) ToGetSosBucketPolicyTimeoutsPtrOutputWithContext(ctx context.Context) GetSosBucketPolicyTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetSosBucketPolicyTimeoutsPtrOutput) Elem() GetSosBucketPolicyTimeoutsOutput {
+	return o.ApplyT(func(v *GetSosBucketPolicyTimeouts) GetSosBucketPolicyTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetSosBucketPolicyTimeouts
+		return ret
+	}).(GetSosBucketPolicyTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o GetSosBucketPolicyTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSosBucketPolicyTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BlockStorageVolumeSnapshotTargetInput)(nil)).Elem(), BlockStorageVolumeSnapshotTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlockStorageVolumeSnapshotTargetPtrInput)(nil)).Elem(), BlockStorageVolumeSnapshotTargetArgs{})
@@ -9047,6 +9378,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SksClusterOidcPtrInput)(nil)).Elem(), SksClusterOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SksNodepoolKubeletImageGcInput)(nil)).Elem(), SksNodepoolKubeletImageGcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SksNodepoolKubeletImageGcArrayInput)(nil)).Elem(), SksNodepoolKubeletImageGcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SosBucketPolicyTimeoutsInput)(nil)).Elem(), SosBucketPolicyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SosBucketPolicyTimeoutsPtrInput)(nil)).Elem(), SosBucketPolicyTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBlockStorageVolumeInstanceInput)(nil)).Elem(), GetBlockStorageVolumeInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBlockStorageVolumeSnapshotTypeInput)(nil)).Elem(), GetBlockStorageVolumeSnapshotTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBlockStorageVolumeSnapshotTypeArrayInput)(nil)).Elem(), GetBlockStorageVolumeSnapshotTypeArray{})
@@ -9101,6 +9434,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSksNodepoolListNodepoolArrayInput)(nil)).Elem(), GetSksNodepoolListNodepoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSksNodepoolListNodepoolKubeletImageGcInput)(nil)).Elem(), GetSksNodepoolListNodepoolKubeletImageGcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSksNodepoolListNodepoolKubeletImageGcArrayInput)(nil)).Elem(), GetSksNodepoolListNodepoolKubeletImageGcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSosBucketPolicyTimeoutsInput)(nil)).Elem(), GetSosBucketPolicyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSosBucketPolicyTimeoutsPtrInput)(nil)).Elem(), GetSosBucketPolicyTimeoutsArgs{})
 	pulumi.RegisterOutputType(BlockStorageVolumeSnapshotTargetOutput{})
 	pulumi.RegisterOutputType(BlockStorageVolumeSnapshotTargetPtrOutput{})
 	pulumi.RegisterOutputType(BlockStorageVolumeSnapshotTimeoutsOutput{})
@@ -9157,6 +9492,8 @@ func init() {
 	pulumi.RegisterOutputType(SksClusterOidcPtrOutput{})
 	pulumi.RegisterOutputType(SksNodepoolKubeletImageGcOutput{})
 	pulumi.RegisterOutputType(SksNodepoolKubeletImageGcArrayOutput{})
+	pulumi.RegisterOutputType(SosBucketPolicyTimeoutsOutput{})
+	pulumi.RegisterOutputType(SosBucketPolicyTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetBlockStorageVolumeInstanceOutput{})
 	pulumi.RegisterOutputType(GetBlockStorageVolumeSnapshotTypeOutput{})
 	pulumi.RegisterOutputType(GetBlockStorageVolumeSnapshotTypeArrayOutput{})
@@ -9211,4 +9548,6 @@ func init() {
 	pulumi.RegisterOutputType(GetSksNodepoolListNodepoolArrayOutput{})
 	pulumi.RegisterOutputType(GetSksNodepoolListNodepoolKubeletImageGcOutput{})
 	pulumi.RegisterOutputType(GetSksNodepoolListNodepoolKubeletImageGcArrayOutput{})
+	pulumi.RegisterOutputType(GetSosBucketPolicyTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetSosBucketPolicyTimeoutsPtrOutput{})
 }

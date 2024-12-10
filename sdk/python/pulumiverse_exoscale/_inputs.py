@@ -4,51 +4,109 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
     'BlockStorageVolumeSnapshotTargetArgs',
+    'BlockStorageVolumeSnapshotTargetArgsDict',
     'BlockStorageVolumeSnapshotTimeoutsArgs',
+    'BlockStorageVolumeSnapshotTimeoutsArgsDict',
     'BlockStorageVolumeSnapshotVolumeArgs',
+    'BlockStorageVolumeSnapshotVolumeArgsDict',
     'BlockStorageVolumeTimeoutsArgs',
+    'BlockStorageVolumeTimeoutsArgsDict',
     'ComputeInstanceNetworkInterfaceArgs',
+    'ComputeInstanceNetworkInterfaceArgsDict',
     'DatabaseGrafanaArgs',
+    'DatabaseGrafanaArgsDict',
     'DatabaseKafkaArgs',
+    'DatabaseKafkaArgsDict',
     'DatabaseMysqlArgs',
+    'DatabaseMysqlArgsDict',
     'DatabaseOpensearchArgs',
+    'DatabaseOpensearchArgsDict',
     'DatabaseOpensearchDashboardsArgs',
+    'DatabaseOpensearchDashboardsArgsDict',
     'DatabaseOpensearchIndexPatternArgs',
+    'DatabaseOpensearchIndexPatternArgsDict',
     'DatabaseOpensearchIndexTemplateArgs',
+    'DatabaseOpensearchIndexTemplateArgsDict',
     'DatabasePgArgs',
+    'DatabasePgArgsDict',
     'DatabaseRedisArgs',
+    'DatabaseRedisArgsDict',
     'DatabaseTimeoutsArgs',
+    'DatabaseTimeoutsArgsDict',
     'ElasticIpHealthcheckArgs',
+    'ElasticIpHealthcheckArgsDict',
     'IamApiKeyTimeoutsArgs',
+    'IamApiKeyTimeoutsArgsDict',
     'IamOrgPolicyServicesArgs',
+    'IamOrgPolicyServicesArgsDict',
     'IamOrgPolicyServicesRuleArgs',
+    'IamOrgPolicyServicesRuleArgsDict',
     'IamOrgPolicyTimeoutsArgs',
+    'IamOrgPolicyTimeoutsArgsDict',
     'IamRolePolicyArgs',
+    'IamRolePolicyArgsDict',
     'IamRolePolicyServicesArgs',
+    'IamRolePolicyServicesArgsDict',
     'IamRolePolicyServicesRuleArgs',
+    'IamRolePolicyServicesRuleArgsDict',
     'IamRoleTimeoutsArgs',
+    'IamRoleTimeoutsArgsDict',
     'InstancePoolInstanceArgs',
+    'InstancePoolInstanceArgsDict',
     'NlbServiceHealthcheckArgs',
+    'NlbServiceHealthcheckArgsDict',
     'SksClusterOidcArgs',
+    'SksClusterOidcArgsDict',
     'SksNodepoolKubeletImageGcArgs',
+    'SksNodepoolKubeletImageGcArgsDict',
+    'SosBucketPolicyTimeoutsArgs',
+    'SosBucketPolicyTimeoutsArgsDict',
     'GetBlockStorageVolumeSnapshotTimeoutsArgs',
+    'GetBlockStorageVolumeSnapshotTimeoutsArgsDict',
     'GetBlockStorageVolumeTimeoutsArgs',
+    'GetBlockStorageVolumeTimeoutsArgsDict',
     'GetDatabaseUriTimeoutsArgs',
+    'GetDatabaseUriTimeoutsArgsDict',
     'GetDomainRecordFilterArgs',
+    'GetDomainRecordFilterArgsDict',
     'GetIamApiKeyTimeoutsArgs',
+    'GetIamApiKeyTimeoutsArgsDict',
     'GetIamOrgPolicyTimeoutsArgs',
+    'GetIamOrgPolicyTimeoutsArgsDict',
     'GetIamRoleTimeoutsArgs',
+    'GetIamRoleTimeoutsArgsDict',
     'GetNlbServiceListTimeoutsArgs',
+    'GetNlbServiceListTimeoutsArgsDict',
     'GetSksClusterOidcArgs',
+    'GetSksClusterOidcArgsDict',
     'GetSksNodepoolKubeletImageGcArgs',
+    'GetSksNodepoolKubeletImageGcArgsDict',
+    'GetSosBucketPolicyTimeoutsArgs',
+    'GetSosBucketPolicyTimeoutsArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class BlockStorageVolumeSnapshotTargetArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Snapshot ID.
+        """
+elif False:
+    BlockStorageVolumeSnapshotTargetArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BlockStorageVolumeSnapshotTargetArgs:
@@ -73,6 +131,15 @@ class BlockStorageVolumeSnapshotTargetArgs:
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class BlockStorageVolumeSnapshotTimeoutsArgsDict(TypedDict):
+        read: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+elif False:
+    BlockStorageVolumeSnapshotTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BlockStorageVolumeSnapshotTimeoutsArgs:
     def __init__(__self__, *,
@@ -96,6 +163,15 @@ class BlockStorageVolumeSnapshotTimeoutsArgs:
         pulumi.set(self, "read", value)
 
 
+if not MYPY:
+    class BlockStorageVolumeSnapshotVolumeArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        Snapshot ID.
+        """
+elif False:
+    BlockStorageVolumeSnapshotVolumeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BlockStorageVolumeSnapshotVolumeArgs:
     def __init__(__self__, *,
@@ -117,6 +193,15 @@ class BlockStorageVolumeSnapshotVolumeArgs:
     def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class BlockStorageVolumeTimeoutsArgsDict(TypedDict):
+        read: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+elif False:
+    BlockStorageVolumeTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BlockStorageVolumeTimeoutsArgs:
@@ -140,6 +225,23 @@ class BlockStorageVolumeTimeoutsArgs:
     def read(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "read", value)
 
+
+if not MYPY:
+    class ComputeInstanceNetworkInterfaceArgsDict(TypedDict):
+        network_id: pulumi.Input[str]
+        """
+        The exoscale*private*network (ID) to attach to the instance.
+        """
+        ip_address: NotRequired[pulumi.Input[str]]
+        """
+        The IPv4 address to request as static DHCP lease if the network interface is attached to a *managed* private network.
+        """
+        mac_address: NotRequired[pulumi.Input[str]]
+        """
+        MAC address
+        """
+elif False:
+    ComputeInstanceNetworkInterfaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ComputeInstanceNetworkInterfaceArgs:
@@ -195,6 +297,19 @@ class ComputeInstanceNetworkInterfaceArgs:
         pulumi.set(self, "mac_address", value)
 
 
+if not MYPY:
+    class DatabaseGrafanaArgsDict(TypedDict):
+        grafana_settings: NotRequired[pulumi.Input[str]]
+        """
+        Grafana configuration settings in JSON format (`exo dbaas type show grafana --settings=grafana` for reference).
+        """
+        ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of CIDR blocks to allow incoming connections from.
+        """
+elif False:
+    DatabaseGrafanaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatabaseGrafanaArgs:
     def __init__(__self__, *,
@@ -233,6 +348,55 @@ class DatabaseGrafanaArgs:
     def ip_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ip_filters", value)
 
+
+if not MYPY:
+    class DatabaseKafkaArgsDict(TypedDict):
+        enable_cert_auth: NotRequired[pulumi.Input[bool]]
+        """
+        Enable certificate-based authentication method.
+        """
+        enable_kafka_connect: NotRequired[pulumi.Input[bool]]
+        """
+        Enable Kafka Connect.
+        """
+        enable_kafka_rest: NotRequired[pulumi.Input[bool]]
+        """
+        Enable Kafka REST.
+        """
+        enable_sasl_auth: NotRequired[pulumi.Input[bool]]
+        """
+        Enable SASL-based authentication method.
+        """
+        enable_schema_registry: NotRequired[pulumi.Input[bool]]
+        """
+        Enable Schema Registry.
+        """
+        ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of CIDR blocks to allow incoming connections from.
+        """
+        kafka_connect_settings: NotRequired[pulumi.Input[str]]
+        """
+        Kafka Connect configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka-connect` for reference).
+        """
+        kafka_rest_settings: NotRequired[pulumi.Input[str]]
+        """
+        Kafka REST configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka-rest` for reference).
+        """
+        kafka_settings: NotRequired[pulumi.Input[str]]
+        """
+        Kafka configuration settings in JSON format (`exo dbaas type show kafka --settings=kafka` for reference).
+        """
+        schema_registry_settings: NotRequired[pulumi.Input[str]]
+        """
+        Schema Registry configuration settings in JSON format (`exo dbaas type show kafka --settings=schema-registry` for reference)
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        Kafka major version (`exo dbaas type show kafka` for reference; may only be set at creation time).
+        """
+elif False:
+    DatabaseKafkaArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatabaseKafkaArgs:
@@ -417,6 +581,35 @@ class DatabaseKafkaArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class DatabaseMysqlArgsDict(TypedDict):
+        admin_password: NotRequired[pulumi.Input[str]]
+        """
+        A custom administrator account password (may only be set at creation time).
+        """
+        admin_username: NotRequired[pulumi.Input[str]]
+        """
+        A custom administrator account username (may only be set at creation time).
+        """
+        backup_schedule: NotRequired[pulumi.Input[str]]
+        """
+        The automated backup schedule (`HH:MM`).
+        """
+        ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of CIDR blocks to allow incoming connections from.
+        """
+        mysql_settings: NotRequired[pulumi.Input[str]]
+        """
+        MySQL configuration settings in JSON format (`exo dbaas type show mysql --settings=mysql` for reference).
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        MySQL major version (`exo dbaas type show mysql` for reference; may only be set at creation time).
+        """
+elif False:
+    DatabaseMysqlArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatabaseMysqlArgs:
     def __init__(__self__, *,
@@ -519,6 +712,51 @@ class DatabaseMysqlArgs:
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class DatabaseOpensearchArgsDict(TypedDict):
+        dashboards: NotRequired[pulumi.Input['DatabaseOpensearchDashboardsArgsDict']]
+        """
+        OpenSearch Dashboards settings
+        """
+        fork_from_service: NotRequired[pulumi.Input[str]]
+        """
+        ❗ Service name
+        """
+        index_patterns: NotRequired[pulumi.Input[Sequence[pulumi.Input['DatabaseOpensearchIndexPatternArgsDict']]]]
+        """
+        (can be used multiple times) Allows you to create glob style patterns and set a max number of indexes matching this pattern you want to keep. Creating indexes exceeding this value will cause the oldest one to get deleted. You could for example create a pattern looking like 'logs.?' and then create index logs.1, logs.2 etc, it will delete logs.1 once you create logs.6. Do note 'logs.?' does not apply to logs.10. Note: Setting max*index*count to 0 will do nothing and the pattern gets ignored.
+        """
+        index_template: NotRequired[pulumi.Input['DatabaseOpensearchIndexTemplateArgsDict']]
+        """
+        Template settings for all new indexes
+        """
+        ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allow incoming connections from this list of CIDR address block, e.g. `["10.20.0.0/16"]
+        """
+        keep_index_refresh_interval: NotRequired[pulumi.Input[bool]]
+        """
+        Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
+        """
+        max_index_count: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of indexes to keep (Minimum value is `0`)
+        """
+        recovery_backup_name: NotRequired[pulumi.Input[str]]
+        """
+        ❗ Name of a backup to recover from
+        """
+        settings: NotRequired[pulumi.Input[str]]
+        """
+        OpenSearch-specific settings, in json. e.g.`jsonencode({thread_pool_search_size: 64})`. Use `exo x get-dbaas-settings-opensearch` to get a list of available settings.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        ❗ OpenSearch major version (`exo dbaas type show opensearch` for reference)
+        """
+elif False:
+    DatabaseOpensearchArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatabaseOpensearchArgs:
@@ -687,6 +925,23 @@ class DatabaseOpensearchArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class DatabaseOpensearchDashboardsArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable or disable OpenSearch Dashboards (default: true).
+        """
+        max_old_space_size: NotRequired[pulumi.Input[int]]
+        """
+        Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. (default: 128).
+        """
+        request_timeout: NotRequired[pulumi.Input[int]]
+        """
+        Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch (default: 30000)
+        """
+elif False:
+    DatabaseOpensearchDashboardsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatabaseOpensearchDashboardsArgs:
     def __init__(__self__, *,
@@ -741,6 +996,23 @@ class DatabaseOpensearchDashboardsArgs:
     def request_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "request_timeout", value)
 
+
+if not MYPY:
+    class DatabaseOpensearchIndexPatternArgsDict(TypedDict):
+        max_index_count: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of indexes to keep before deleting the oldest one (Minimum value is `0`)
+        """
+        pattern: NotRequired[pulumi.Input[str]]
+        """
+        fnmatch pattern
+        """
+        sorting_algorithm: NotRequired[pulumi.Input[str]]
+        """
+        `alphabetical` or `creation_date`.
+        """
+elif False:
+    DatabaseOpensearchIndexPatternArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatabaseOpensearchIndexPatternArgs:
@@ -797,6 +1069,23 @@ class DatabaseOpensearchIndexPatternArgs:
         pulumi.set(self, "sorting_algorithm", value)
 
 
+if not MYPY:
+    class DatabaseOpensearchIndexTemplateArgsDict(TypedDict):
+        mapping_nested_objects_limit: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. (Default is 10000. Minimum value is `0`, maximum value is `100000`.)
+        """
+        number_of_replicas: NotRequired[pulumi.Input[int]]
+        """
+        The number of replicas each primary shard has. (Minimum value is `0`, maximum value is `29`)
+        """
+        number_of_shards: NotRequired[pulumi.Input[int]]
+        """
+        The number of primary shards that an index should have. (Minimum value is `1`, maximum value is `1024`.)
+        """
+elif False:
+    DatabaseOpensearchIndexTemplateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatabaseOpensearchIndexTemplateArgs:
     def __init__(__self__, *,
@@ -851,6 +1140,43 @@ class DatabaseOpensearchIndexTemplateArgs:
     def number_of_shards(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "number_of_shards", value)
 
+
+if not MYPY:
+    class DatabasePgArgsDict(TypedDict):
+        admin_password: NotRequired[pulumi.Input[str]]
+        """
+        A custom administrator account password (may only be set at creation time).
+        """
+        admin_username: NotRequired[pulumi.Input[str]]
+        """
+        A custom administrator account username (may only be set at creation time).
+        """
+        backup_schedule: NotRequired[pulumi.Input[str]]
+        """
+        The automated backup schedule (`HH:MM`).
+        """
+        ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of CIDR blocks to allow incoming connections from.
+        """
+        pg_settings: NotRequired[pulumi.Input[str]]
+        """
+        PostgreSQL configuration settings in JSON format (`exo dbaas type show pg --settings=pg` for reference).
+        """
+        pgbouncer_settings: NotRequired[pulumi.Input[str]]
+        """
+        PgBouncer configuration settings in JSON format (`exo dbaas type show pg --settings=pgbouncer` for reference).
+        """
+        pglookout_settings: NotRequired[pulumi.Input[str]]
+        """
+        pglookout configuration settings in JSON format (`exo dbaas type show pg --settings=pglookout` for reference).
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        PostgreSQL major version (`exo dbaas type show pg` for reference; may only be set at creation time).
+        """
+elif False:
+    DatabasePgArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatabasePgArgs:
@@ -987,6 +1313,19 @@ class DatabasePgArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class DatabaseRedisArgsDict(TypedDict):
+        ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of CIDR blocks to allow incoming connections from.
+        """
+        redis_settings: NotRequired[pulumi.Input[str]]
+        """
+        Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
+        """
+elif False:
+    DatabaseRedisArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatabaseRedisArgs:
     def __init__(__self__, *,
@@ -1025,6 +1364,27 @@ class DatabaseRedisArgs:
     def redis_settings(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "redis_settings", value)
 
+
+if not MYPY:
+    class DatabaseTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    DatabaseTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatabaseTimeoutsArgs:
@@ -1096,6 +1456,47 @@ class DatabaseTimeoutsArgs:
     def update(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update", value)
 
+
+if not MYPY:
+    class ElasticIpHealthcheckArgsDict(TypedDict):
+        mode: pulumi.Input[str]
+        """
+        The healthcheck mode (`tcp`, `http` or `https`; may only be set at creation time).
+        """
+        port: pulumi.Input[int]
+        """
+        The healthcheck target port (must be between `1` and `65535`).
+        """
+        interval: NotRequired[pulumi.Input[int]]
+        """
+        The healthcheck interval (seconds; must be between `5` and `300`; default: `10`).
+        """
+        strikes_fail: NotRequired[pulumi.Input[int]]
+        """
+        The number of failed healthcheck attempts before considering the target unhealthy (must be between `1` and `20`; default: `2`).
+        """
+        strikes_ok: NotRequired[pulumi.Input[int]]
+        """
+        The number of successful healthcheck attempts before considering the target healthy (must be between `1` and `20`; default: `3`).
+        """
+        timeout: NotRequired[pulumi.Input[int]]
+        """
+        The time before considering a healthcheck probing failed (seconds; must be between `2` and `60`; default: `3`).
+        """
+        tls_skip_verify: NotRequired[pulumi.Input[bool]]
+        """
+        Disable TLS certificate verification for healthcheck in `https` mode (boolean; default: `false`).
+        """
+        tls_sni: NotRequired[pulumi.Input[str]]
+        """
+        The healthcheck server name to present with SNI in `https` mode.
+        """
+        uri: NotRequired[pulumi.Input[str]]
+        """
+        The healthcheck target URI (required in `http(s)` modes).
+        """
+elif False:
+    ElasticIpHealthcheckArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElasticIpHealthcheckArgs:
@@ -1246,6 +1647,15 @@ class ElasticIpHealthcheckArgs:
         pulumi.set(self, "uri", value)
 
 
+if not MYPY:
+    class IamApiKeyTimeoutsArgsDict(TypedDict):
+        read: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+elif False:
+    IamApiKeyTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class IamApiKeyTimeoutsArgs:
     def __init__(__self__, *,
@@ -1268,6 +1678,19 @@ class IamApiKeyTimeoutsArgs:
     def read(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "read", value)
 
+
+if not MYPY:
+    class IamOrgPolicyServicesArgsDict(TypedDict):
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['IamOrgPolicyServicesRuleArgsDict']]]]
+        """
+        List of IAM service rules (if type is `rules`).
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Service type (`rules`, `allow`, or `deny`).
+        """
+elif False:
+    IamOrgPolicyServicesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class IamOrgPolicyServicesArgs:
@@ -1307,6 +1730,20 @@ class IamOrgPolicyServicesArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class IamOrgPolicyServicesRuleArgsDict(TypedDict):
+        action: NotRequired[pulumi.Input[str]]
+        """
+        IAM policy rule action (`allow` or `deny`).
+        """
+        expression: NotRequired[pulumi.Input[str]]
+        """
+        IAM policy rule expression.
+        """
+        resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    IamOrgPolicyServicesRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class IamOrgPolicyServicesRuleArgs:
@@ -1363,6 +1800,15 @@ class IamOrgPolicyServicesRuleArgs:
         pulumi.set(self, "resources", value)
 
 
+if not MYPY:
+    class IamOrgPolicyTimeoutsArgsDict(TypedDict):
+        read: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+elif False:
+    IamOrgPolicyTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class IamOrgPolicyTimeoutsArgs:
     def __init__(__self__, *,
@@ -1385,6 +1831,19 @@ class IamOrgPolicyTimeoutsArgs:
     def read(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "read", value)
 
+
+if not MYPY:
+    class IamRolePolicyArgsDict(TypedDict):
+        default_service_strategy: NotRequired[pulumi.Input[str]]
+        """
+        Default service strategy (`allow` or `deny`).
+        """
+        services: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['IamRolePolicyServicesArgsDict']]]]
+        """
+        IAM policy services.
+        """
+elif False:
+    IamRolePolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class IamRolePolicyArgs:
@@ -1425,6 +1884,19 @@ class IamRolePolicyArgs:
         pulumi.set(self, "services", value)
 
 
+if not MYPY:
+    class IamRolePolicyServicesArgsDict(TypedDict):
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['IamRolePolicyServicesRuleArgsDict']]]]
+        """
+        List of IAM service rules (if type is `rules`).
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Service type (`rules`, `allow`, or `deny`).
+        """
+elif False:
+    IamRolePolicyServicesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class IamRolePolicyServicesArgs:
     def __init__(__self__, *,
@@ -1463,6 +1935,20 @@ class IamRolePolicyServicesArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class IamRolePolicyServicesRuleArgsDict(TypedDict):
+        action: NotRequired[pulumi.Input[str]]
+        """
+        IAM policy rule action (`allow` or `deny`).
+        """
+        expression: NotRequired[pulumi.Input[str]]
+        """
+        IAM policy rule expression.
+        """
+        resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    IamRolePolicyServicesRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class IamRolePolicyServicesRuleArgs:
@@ -1519,6 +2005,15 @@ class IamRolePolicyServicesRuleArgs:
         pulumi.set(self, "resources", value)
 
 
+if not MYPY:
+    class IamRoleTimeoutsArgsDict(TypedDict):
+        read: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+elif False:
+    IamRoleTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class IamRoleTimeoutsArgs:
     def __init__(__self__, *,
@@ -1541,6 +2036,27 @@ class IamRoleTimeoutsArgs:
     def read(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "read", value)
 
+
+if not MYPY:
+    class InstancePoolInstanceArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of this resource.
+        """
+        ipv6_address: NotRequired[pulumi.Input[str]]
+        """
+        The instance (main network interface) IPv6 address.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The instance name.
+        """
+        public_ip_address: NotRequired[pulumi.Input[str]]
+        """
+        The instance (main network interface) IPv4 address.
+        """
+elif False:
+    InstancePoolInstanceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstancePoolInstanceArgs:
@@ -1612,6 +2128,39 @@ class InstancePoolInstanceArgs:
     def public_ip_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "public_ip_address", value)
 
+
+if not MYPY:
+    class NlbServiceHealthcheckArgsDict(TypedDict):
+        port: pulumi.Input[int]
+        """
+        The NLB service (TCP/UDP) port.
+        """
+        interval: NotRequired[pulumi.Input[int]]
+        """
+        The healthcheck interval in seconds (default: `10`).
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        The healthcheck mode (`tcp`|`http`|`https`; default: `tcp`).
+        """
+        retries: NotRequired[pulumi.Input[int]]
+        """
+        The healthcheck retries (default: `1`).
+        """
+        timeout: NotRequired[pulumi.Input[int]]
+        """
+        The healthcheck timeout (seconds; default: `5`).
+        """
+        tls_sni: NotRequired[pulumi.Input[str]]
+        """
+        The healthcheck TLS SNI server name (only if `mode` is `https`).
+        """
+        uri: NotRequired[pulumi.Input[str]]
+        """
+        The healthcheck URI (must be set only if `mode` is `http(s)`).
+        """
+elif False:
+    NlbServiceHealthcheckArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NlbServiceHealthcheckArgs:
@@ -1731,6 +2280,39 @@ class NlbServiceHealthcheckArgs:
         pulumi.set(self, "uri", value)
 
 
+if not MYPY:
+    class SksClusterOidcArgsDict(TypedDict):
+        client_id: pulumi.Input[str]
+        """
+        The OpenID client ID.
+        """
+        issuer_url: pulumi.Input[str]
+        """
+        The OpenID provider URL.
+        """
+        groups_claim: NotRequired[pulumi.Input[str]]
+        """
+        An OpenID JWT claim to use as the user's group.
+        """
+        groups_prefix: NotRequired[pulumi.Input[str]]
+        """
+        An OpenID prefix prepended to group claims.
+        """
+        required_claim: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A map of key/value pairs that describes a required claim in the OpenID Token.
+        """
+        username_claim: NotRequired[pulumi.Input[str]]
+        """
+        An OpenID JWT claim to use as the user name.
+        """
+        username_prefix: NotRequired[pulumi.Input[str]]
+        """
+        An OpenID prefix prepended to username claims.
+        """
+elif False:
+    SksClusterOidcArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SksClusterOidcArgs:
     def __init__(__self__, *,
@@ -1848,6 +2430,23 @@ class SksClusterOidcArgs:
         pulumi.set(self, "username_prefix", value)
 
 
+if not MYPY:
+    class SksNodepoolKubeletImageGcArgsDict(TypedDict):
+        high_threshold: NotRequired[pulumi.Input[int]]
+        """
+        The percent of disk usage after which image garbage collection is always run
+        """
+        low_threshold: NotRequired[pulumi.Input[int]]
+        """
+        The percent of disk usage before which image garbage collection is never run
+        """
+        min_age: NotRequired[pulumi.Input[str]]
+        """
+        The minimum age for an unused image before it is garbage collected (k8s duration format, eg. 1h)
+        """
+elif False:
+    SksNodepoolKubeletImageGcArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SksNodepoolKubeletImageGcArgs:
     def __init__(__self__, *,
@@ -1903,6 +2502,107 @@ class SksNodepoolKubeletImageGcArgs:
         pulumi.set(self, "min_age", value)
 
 
+if not MYPY:
+    class SosBucketPolicyTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    SosBucketPolicyTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SosBucketPolicyTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[str]] = None,
+                 delete: Optional[pulumi.Input[str]] = None,
+                 read: Optional[pulumi.Input[str]] = None,
+                 update: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create", value)
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete", value)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read", value)
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update", value)
+
+
+if not MYPY:
+    class GetBlockStorageVolumeSnapshotTimeoutsArgsDict(TypedDict):
+        read: NotRequired[str]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+elif False:
+    GetBlockStorageVolumeSnapshotTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetBlockStorageVolumeSnapshotTimeoutsArgs:
     def __init__(__self__, *,
@@ -1925,6 +2625,15 @@ class GetBlockStorageVolumeSnapshotTimeoutsArgs:
     def read(self, value: Optional[str]):
         pulumi.set(self, "read", value)
 
+
+if not MYPY:
+    class GetBlockStorageVolumeTimeoutsArgsDict(TypedDict):
+        read: NotRequired[str]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+elif False:
+    GetBlockStorageVolumeTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetBlockStorageVolumeTimeoutsArgs:
@@ -1949,6 +2658,15 @@ class GetBlockStorageVolumeTimeoutsArgs:
         pulumi.set(self, "read", value)
 
 
+if not MYPY:
+    class GetDatabaseUriTimeoutsArgsDict(TypedDict):
+        read: NotRequired[str]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+elif False:
+    GetDatabaseUriTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetDatabaseUriTimeoutsArgs:
     def __init__(__self__, *,
@@ -1971,6 +2689,27 @@ class GetDatabaseUriTimeoutsArgs:
     def read(self, value: Optional[str]):
         pulumi.set(self, "read", value)
 
+
+if not MYPY:
+    class GetDomainRecordFilterArgsDict(TypedDict):
+        content_regex: NotRequired[str]
+        """
+        A regular expression to match the record content.
+        """
+        id: NotRequired[str]
+        """
+        The record ID to match.
+        """
+        name: NotRequired[str]
+        """
+        The domain record name to match.
+        """
+        record_type: NotRequired[str]
+        """
+        The record type to match.
+        """
+elif False:
+    GetDomainRecordFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetDomainRecordFilterArgs:
@@ -2043,6 +2782,15 @@ class GetDomainRecordFilterArgs:
         pulumi.set(self, "record_type", value)
 
 
+if not MYPY:
+    class GetIamApiKeyTimeoutsArgsDict(TypedDict):
+        read: NotRequired[str]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+elif False:
+    GetIamApiKeyTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetIamApiKeyTimeoutsArgs:
     def __init__(__self__, *,
@@ -2065,6 +2813,15 @@ class GetIamApiKeyTimeoutsArgs:
     def read(self, value: Optional[str]):
         pulumi.set(self, "read", value)
 
+
+if not MYPY:
+    class GetIamOrgPolicyTimeoutsArgsDict(TypedDict):
+        read: NotRequired[str]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+elif False:
+    GetIamOrgPolicyTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetIamOrgPolicyTimeoutsArgs:
@@ -2089,6 +2846,15 @@ class GetIamOrgPolicyTimeoutsArgs:
         pulumi.set(self, "read", value)
 
 
+if not MYPY:
+    class GetIamRoleTimeoutsArgsDict(TypedDict):
+        read: NotRequired[str]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+elif False:
+    GetIamRoleTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetIamRoleTimeoutsArgs:
     def __init__(__self__, *,
@@ -2112,6 +2878,15 @@ class GetIamRoleTimeoutsArgs:
         pulumi.set(self, "read", value)
 
 
+if not MYPY:
+    class GetNlbServiceListTimeoutsArgsDict(TypedDict):
+        read: NotRequired[str]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+elif False:
+    GetNlbServiceListTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetNlbServiceListTimeoutsArgs:
     def __init__(__self__, *,
@@ -2134,6 +2909,39 @@ class GetNlbServiceListTimeoutsArgs:
     def read(self, value: Optional[str]):
         pulumi.set(self, "read", value)
 
+
+if not MYPY:
+    class GetSksClusterOidcArgsDict(TypedDict):
+        client_id: str
+        """
+        The OpenID client ID.
+        """
+        issuer_url: str
+        """
+        The OpenID provider URL.
+        """
+        groups_claim: NotRequired[str]
+        """
+        An OpenID JWT claim to use as the user's group.
+        """
+        groups_prefix: NotRequired[str]
+        """
+        An OpenID prefix prepended to group claims.
+        """
+        required_claim: NotRequired[Mapping[str, str]]
+        """
+        A map of key/value pairs that describes a required claim in the OpenID Token.
+        """
+        username_claim: NotRequired[str]
+        """
+        An OpenID JWT claim to use as the user name.
+        """
+        username_prefix: NotRequired[str]
+        """
+        An OpenID prefix prepended to username claims.
+        """
+elif False:
+    GetSksClusterOidcArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetSksClusterOidcArgs:
@@ -2252,6 +3060,23 @@ class GetSksClusterOidcArgs:
         pulumi.set(self, "username_prefix", value)
 
 
+if not MYPY:
+    class GetSksNodepoolKubeletImageGcArgsDict(TypedDict):
+        high_threshold: NotRequired[int]
+        """
+        The percent of disk usage after which image garbage collection is always run
+        """
+        low_threshold: NotRequired[int]
+        """
+        The percent of disk usage before which image garbage collection is never run
+        """
+        min_age: NotRequired[str]
+        """
+        The minimum age for an unused image before it is garbage collected (k8s duration format, eg. 1h)
+        """
+elif False:
+    GetSksNodepoolKubeletImageGcArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetSksNodepoolKubeletImageGcArgs:
     def __init__(__self__, *,
@@ -2305,5 +3130,37 @@ class GetSksNodepoolKubeletImageGcArgs:
     @min_age.setter
     def min_age(self, value: Optional[str]):
         pulumi.set(self, "min_age", value)
+
+
+if not MYPY:
+    class GetSosBucketPolicyTimeoutsArgsDict(TypedDict):
+        read: NotRequired[str]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+elif False:
+    GetSosBucketPolicyTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetSosBucketPolicyTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[str] = None):
+        """
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[str]):
+        pulumi.set(self, "read", value)
 
 

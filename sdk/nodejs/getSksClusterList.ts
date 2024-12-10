@@ -186,7 +186,7 @@ export interface GetSksClusterListResult {
      */
     readonly zone: string;
 }
-export function getSksClusterListOutput(args: GetSksClusterListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSksClusterListResult> {
+export function getSksClusterListOutput(args: GetSksClusterListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSksClusterListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("exoscale:index/getSksClusterList:getSksClusterList", {
         "aggregationCa": args.aggregationCa,

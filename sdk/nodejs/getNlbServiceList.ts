@@ -71,7 +71,7 @@ export interface GetNlbServiceListResult {
  *
  * Corresponding resource: exoscale_nlb.
  */
-export function getNlbServiceListOutput(args: GetNlbServiceListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNlbServiceListResult> {
+export function getNlbServiceListOutput(args: GetNlbServiceListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNlbServiceListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("exoscale:index/getNlbServiceList:getNlbServiceList", {
         "nlbId": args.nlbId,

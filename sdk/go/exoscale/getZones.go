@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleZones, err := exoscale.GetZones(ctx, nil, nil)
+//			exampleZones, err := exoscale.GetZones(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}

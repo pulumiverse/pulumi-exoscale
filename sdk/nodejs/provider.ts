@@ -34,6 +34,7 @@ export class Provider extends pulumi.ProviderResource {
      * Exoscale API secret
      */
     public readonly secret!: pulumi.Output<string | undefined>;
+    public readonly sosEndpoint!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -50,6 +51,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["environment"] = args ? args.environment : undefined;
             resourceInputs["key"] = (args?.key ? pulumi.secret(args.key) : undefined) ?? utilities.getEnv("EXOSCALE_API_KEY");
             resourceInputs["secret"] = (args?.secret ? pulumi.secret(args.secret) : undefined) ?? utilities.getEnv("EXOSCALE_API_SECRET");
+            resourceInputs["sosEndpoint"] = args ? args.sosEndpoint : undefined;
             resourceInputs["timeout"] = pulumi.output(args ? args.timeout : undefined).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -76,8 +78,9 @@ export interface ProviderArgs {
      * Exoscale API secret
      */
     secret?: pulumi.Input<string>;
+    sosEndpoint?: pulumi.Input<string>;
     /**
-     * Timeout in seconds for waiting on compute resources to become available (by default: 300)
+     * Timeout in seconds for waiting on compute resources to become available (by default: 3600)
      */
     timeout?: pulumi.Input<number>;
 }

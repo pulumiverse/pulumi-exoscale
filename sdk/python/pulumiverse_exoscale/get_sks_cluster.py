@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -369,9 +374,6 @@ def get_sks_cluster(addons: Optional[Sequence[str]] = None,
         state=pulumi.get(__ret__, 'state'),
         version=pulumi.get(__ret__, 'version'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_sks_cluster)
 def get_sks_cluster_output(addons: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                            aggregation_ca: Optional[pulumi.Input[Optional[str]]] = None,
                            auto_upgrade: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -393,7 +395,7 @@ def get_sks_cluster_output(addons: Optional[pulumi.Input[Optional[Sequence[str]]
                            state: Optional[pulumi.Input[Optional[str]]] = None,
                            version: Optional[pulumi.Input[Optional[str]]] = None,
                            zone: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSksClusterResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSksClusterResult]:
     """
     Use this data source to access information about an existing resource.
 
@@ -416,4 +418,49 @@ def get_sks_cluster_output(addons: Optional[pulumi.Input[Optional[Sequence[str]]
     :param str state: The cluster state.
     :param str version: The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
     """
-    ...
+    __args__ = dict()
+    __args__['addons'] = addons
+    __args__['aggregationCa'] = aggregation_ca
+    __args__['autoUpgrade'] = auto_upgrade
+    __args__['cni'] = cni
+    __args__['controlPlaneCa'] = control_plane_ca
+    __args__['createdAt'] = created_at
+    __args__['description'] = description
+    __args__['endpoint'] = endpoint
+    __args__['exoscaleCcm'] = exoscale_ccm
+    __args__['exoscaleCsi'] = exoscale_csi
+    __args__['id'] = id
+    __args__['kubeletCa'] = kubelet_ca
+    __args__['labels'] = labels
+    __args__['metricsServer'] = metrics_server
+    __args__['name'] = name
+    __args__['nodepools'] = nodepools
+    __args__['oidc'] = oidc
+    __args__['serviceLevel'] = service_level
+    __args__['state'] = state
+    __args__['version'] = version
+    __args__['zone'] = zone
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('exoscale:index/getSksCluster:getSksCluster', __args__, opts=opts, typ=GetSksClusterResult)
+    return __ret__.apply(lambda __response__: GetSksClusterResult(
+        addons=pulumi.get(__response__, 'addons'),
+        aggregation_ca=pulumi.get(__response__, 'aggregation_ca'),
+        auto_upgrade=pulumi.get(__response__, 'auto_upgrade'),
+        cni=pulumi.get(__response__, 'cni'),
+        control_plane_ca=pulumi.get(__response__, 'control_plane_ca'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        description=pulumi.get(__response__, 'description'),
+        endpoint=pulumi.get(__response__, 'endpoint'),
+        exoscale_ccm=pulumi.get(__response__, 'exoscale_ccm'),
+        exoscale_csi=pulumi.get(__response__, 'exoscale_csi'),
+        id=pulumi.get(__response__, 'id'),
+        kubelet_ca=pulumi.get(__response__, 'kubelet_ca'),
+        labels=pulumi.get(__response__, 'labels'),
+        metrics_server=pulumi.get(__response__, 'metrics_server'),
+        name=pulumi.get(__response__, 'name'),
+        nodepools=pulumi.get(__response__, 'nodepools'),
+        oidc=pulumi.get(__response__, 'oidc'),
+        service_level=pulumi.get(__response__, 'service_level'),
+        state=pulumi.get(__response__, 'state'),
+        version=pulumi.get(__response__, 'version'),
+        zone=pulumi.get(__response__, 'zone')))

@@ -44,8 +44,11 @@ func GetSecret(ctx *pulumi.Context) string {
 	}
 	return value
 }
+func GetSosEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "exoscale:sosEndpoint")
+}
 
-// Timeout in seconds for waiting on compute resources to become available (by default: 300)
+// Timeout in seconds for waiting on compute resources to become available (by default: 3600)
 func GetTimeout(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "exoscale:timeout")
 }

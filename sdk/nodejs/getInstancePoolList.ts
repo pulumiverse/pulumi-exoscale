@@ -50,7 +50,7 @@ export interface GetInstancePoolListResult {
  *
  * Corresponding resource: exoscale_instance_pool.
  */
-export function getInstancePoolListOutput(args: GetInstancePoolListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancePoolListResult> {
+export function getInstancePoolListOutput(args: GetInstancePoolListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstancePoolListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("exoscale:index/getInstancePoolList:getInstancePoolList", {
         "zone": args.zone,

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -96,14 +101,19 @@ def get_iam_org_policy(timeouts: Optional[Union['GetIamOrgPolicyTimeoutsArgs', '
         id=pulumi.get(__ret__, 'id'),
         services=pulumi.get(__ret__, 'services'),
         timeouts=pulumi.get(__ret__, 'timeouts'))
-
-
-@_utilities.lift_output_func(get_iam_org_policy)
 def get_iam_org_policy_output(timeouts: Optional[pulumi.Input[Optional[Union['GetIamOrgPolicyTimeoutsArgs', 'GetIamOrgPolicyTimeoutsArgsDict']]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIamOrgPolicyResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIamOrgPolicyResult]:
     """
     Fetch Exoscale [IAM](https://community.exoscale.com/documentation/iam/) Organization Policy.
 
     Corresponding resource: exoscale_iam_org_policy.
     """
-    ...
+    __args__ = dict()
+    __args__['timeouts'] = timeouts
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('exoscale:index/getIamOrgPolicy:getIamOrgPolicy', __args__, opts=opts, typ=GetIamOrgPolicyResult)
+    return __ret__.apply(lambda __response__: GetIamOrgPolicyResult(
+        default_service_strategy=pulumi.get(__response__, 'default_service_strategy'),
+        id=pulumi.get(__response__, 'id'),
+        services=pulumi.get(__response__, 'services'),
+        timeouts=pulumi.get(__response__, 'timeouts')))

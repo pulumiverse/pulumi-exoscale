@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -209,14 +214,11 @@ def get_database_uri(name: Optional[str] = None,
         uri=pulumi.get(__ret__, 'uri'),
         username=pulumi.get(__ret__, 'username'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_database_uri)
 def get_database_uri_output(name: Optional[pulumi.Input[str]] = None,
                             timeouts: Optional[pulumi.Input[Optional[Union['GetDatabaseUriTimeoutsArgs', 'GetDatabaseUriTimeoutsArgsDict']]]] = None,
                             type: Optional[pulumi.Input[str]] = None,
                             zone: Optional[pulumi.Input[str]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseUriResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseUriResult]:
     """
     ## Example Usage
 
@@ -225,4 +227,23 @@ def get_database_uri_output(name: Optional[pulumi.Input[str]] = None,
     :param str type: The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`).
     :param str zone: The Exoscale Zone name.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['timeouts'] = timeouts
+    __args__['type'] = type
+    __args__['zone'] = zone
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('exoscale:index/getDatabaseUri:getDatabaseUri', __args__, opts=opts, typ=GetDatabaseUriResult)
+    return __ret__.apply(lambda __response__: GetDatabaseUriResult(
+        db_name=pulumi.get(__response__, 'db_name'),
+        host=pulumi.get(__response__, 'host'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        password=pulumi.get(__response__, 'password'),
+        port=pulumi.get(__response__, 'port'),
+        schema=pulumi.get(__response__, 'schema'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
+        type=pulumi.get(__response__, 'type'),
+        uri=pulumi.get(__response__, 'uri'),
+        username=pulumi.get(__response__, 'username'),
+        zone=pulumi.get(__response__, 'zone')))

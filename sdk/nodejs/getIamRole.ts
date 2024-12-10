@@ -75,7 +75,7 @@ export interface GetIamRoleResult {
  *
  * Corresponding resource: exoscale_iam_role.
  */
-export function getIamRoleOutput(args?: GetIamRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIamRoleResult> {
+export function getIamRoleOutput(args?: GetIamRoleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIamRoleResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("exoscale:index/getIamRole:getIamRole", {

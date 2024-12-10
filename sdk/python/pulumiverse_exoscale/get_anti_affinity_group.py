@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -103,12 +108,9 @@ def get_anti_affinity_group(id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         instances=pulumi.get(__ret__, 'instances'),
         name=pulumi.get(__ret__, 'name'))
-
-
-@_utilities.lift_output_func(get_anti_affinity_group)
 def get_anti_affinity_group_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                                    name: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAntiAffinityGroupResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAntiAffinityGroupResult]:
     """
     Fetch Exoscale [Anti-Affinity Groups](https://community.exoscale.com/documentation/compute/anti-affinity-groups/) data.
 
@@ -131,4 +133,12 @@ def get_anti_affinity_group_output(id: Optional[pulumi.Input[Optional[str]]] = N
     :param str id: The anti-affinity group ID to match (conflicts with `name`).
     :param str name: The group name to match (conflicts with `id`).
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['name'] = name
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('exoscale:index/getAntiAffinityGroup:getAntiAffinityGroup', __args__, opts=opts, typ=GetAntiAffinityGroupResult)
+    return __ret__.apply(lambda __response__: GetAntiAffinityGroupResult(
+        id=pulumi.get(__response__, 'id'),
+        instances=pulumi.get(__response__, 'instances'),
+        name=pulumi.get(__response__, 'name')))

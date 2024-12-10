@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -189,14 +194,11 @@ def get_elastic_ip(id: Optional[str] = None,
         labels=pulumi.get(__ret__, 'labels'),
         reverse_dns=pulumi.get(__ret__, 'reverse_dns'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_elastic_ip)
 def get_elastic_ip_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                           ip_address: Optional[pulumi.Input[Optional[str]]] = None,
                           labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                           zone: Optional[pulumi.Input[str]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetElasticIpResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetElasticIpResult]:
     """
     Fetch Exoscale [Elastic IPs (EIP)](https://community.exoscale.com/documentation/compute/eip/) data.
 
@@ -222,4 +224,20 @@ def get_elastic_ip_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     :param Mapping[str, str] labels: The EIP labels to match (conflicts with `ip_address` and `id`).
     :param str zone: The Exocale [Zone](https://www.exoscale.com/datacenters/) name.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['ipAddress'] = ip_address
+    __args__['labels'] = labels
+    __args__['zone'] = zone
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('exoscale:index/getElasticIp:getElasticIp', __args__, opts=opts, typ=GetElasticIpResult)
+    return __ret__.apply(lambda __response__: GetElasticIpResult(
+        address_family=pulumi.get(__response__, 'address_family'),
+        cidr=pulumi.get(__response__, 'cidr'),
+        description=pulumi.get(__response__, 'description'),
+        healthchecks=pulumi.get(__response__, 'healthchecks'),
+        id=pulumi.get(__response__, 'id'),
+        ip_address=pulumi.get(__response__, 'ip_address'),
+        labels=pulumi.get(__response__, 'labels'),
+        reverse_dns=pulumi.get(__response__, 'reverse_dns'),
+        zone=pulumi.get(__response__, 'zone')))

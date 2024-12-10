@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -347,9 +352,6 @@ def get_compute_instance_list(created_at: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'),
         user_data=pulumi.get(__ret__, 'user_data'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_compute_instance_list)
 def get_compute_instance_list_output(created_at: Optional[pulumi.Input[Optional[str]]] = None,
                                      deploy_target_id: Optional[pulumi.Input[Optional[str]]] = None,
                                      disk_size: Optional[pulumi.Input[Optional[int]]] = None,
@@ -368,7 +370,7 @@ def get_compute_instance_list_output(created_at: Optional[pulumi.Input[Optional[
                                      type: Optional[pulumi.Input[Optional[str]]] = None,
                                      user_data: Optional[pulumi.Input[Optional[str]]] = None,
                                      zone: Optional[pulumi.Input[str]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetComputeInstanceListResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetComputeInstanceListResult]:
     """
     List Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/).
 
@@ -394,4 +396,44 @@ def get_compute_instance_list_output(created_at: Optional[pulumi.Input[Optional[
     :param str user_data: Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
     :param str zone: The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
     """
-    ...
+    __args__ = dict()
+    __args__['createdAt'] = created_at
+    __args__['deployTargetId'] = deploy_target_id
+    __args__['diskSize'] = disk_size
+    __args__['id'] = id
+    __args__['ipv6'] = ipv6
+    __args__['ipv6Address'] = ipv6_address
+    __args__['labels'] = labels
+    __args__['managerId'] = manager_id
+    __args__['managerType'] = manager_type
+    __args__['name'] = name
+    __args__['publicIpAddress'] = public_ip_address
+    __args__['reverseDns'] = reverse_dns
+    __args__['sshKey'] = ssh_key
+    __args__['state'] = state
+    __args__['templateId'] = template_id
+    __args__['type'] = type
+    __args__['userData'] = user_data
+    __args__['zone'] = zone
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('exoscale:index/getComputeInstanceList:getComputeInstanceList', __args__, opts=opts, typ=GetComputeInstanceListResult)
+    return __ret__.apply(lambda __response__: GetComputeInstanceListResult(
+        created_at=pulumi.get(__response__, 'created_at'),
+        deploy_target_id=pulumi.get(__response__, 'deploy_target_id'),
+        disk_size=pulumi.get(__response__, 'disk_size'),
+        id=pulumi.get(__response__, 'id'),
+        instances=pulumi.get(__response__, 'instances'),
+        ipv6=pulumi.get(__response__, 'ipv6'),
+        ipv6_address=pulumi.get(__response__, 'ipv6_address'),
+        labels=pulumi.get(__response__, 'labels'),
+        manager_id=pulumi.get(__response__, 'manager_id'),
+        manager_type=pulumi.get(__response__, 'manager_type'),
+        name=pulumi.get(__response__, 'name'),
+        public_ip_address=pulumi.get(__response__, 'public_ip_address'),
+        reverse_dns=pulumi.get(__response__, 'reverse_dns'),
+        ssh_key=pulumi.get(__response__, 'ssh_key'),
+        state=pulumi.get(__response__, 'state'),
+        template_id=pulumi.get(__response__, 'template_id'),
+        type=pulumi.get(__response__, 'type'),
+        user_data=pulumi.get(__response__, 'user_data'),
+        zone=pulumi.get(__response__, 'zone')))

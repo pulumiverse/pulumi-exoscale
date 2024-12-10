@@ -155,6 +155,11 @@ export const getSksNodepoolList: typeof import("./getSksNodepoolList").getSksNod
 export const getSksNodepoolListOutput: typeof import("./getSksNodepoolList").getSksNodepoolListOutput = null as any;
 utilities.lazyLoad(exports, ["getSksNodepoolList","getSksNodepoolListOutput"], () => require("./getSksNodepoolList"));
 
+export { GetSosBucketPolicyArgs, GetSosBucketPolicyResult, GetSosBucketPolicyOutputArgs } from "./getSosBucketPolicy";
+export const getSosBucketPolicy: typeof import("./getSosBucketPolicy").getSosBucketPolicy = null as any;
+export const getSosBucketPolicyOutput: typeof import("./getSosBucketPolicy").getSosBucketPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getSosBucketPolicy","getSosBucketPolicyOutput"], () => require("./getSosBucketPolicy"));
+
 export { GetTemplateArgs, GetTemplateResult, GetTemplateOutputArgs } from "./getTemplate";
 export const getTemplate: typeof import("./getTemplate").getTemplate = null as any;
 export const getTemplateOutput: typeof import("./getTemplate").getTemplateOutput = null as any;
@@ -235,6 +240,11 @@ export type SksNodepool = import("./sksNodepool").SksNodepool;
 export const SksNodepool: typeof import("./sksNodepool").SksNodepool = null as any;
 utilities.lazyLoad(exports, ["SksNodepool"], () => require("./sksNodepool"));
 
+export { SosBucketPolicyArgs, SosBucketPolicyState } from "./sosBucketPolicy";
+export type SosBucketPolicy = import("./sosBucketPolicy").SosBucketPolicy;
+export const SosBucketPolicy: typeof import("./sosBucketPolicy").SosBucketPolicy = null as any;
+utilities.lazyLoad(exports, ["SosBucketPolicy"], () => require("./sosBucketPolicy"));
+
 export { SshKeyArgs, SshKeyState } from "./sshKey";
 export type SshKey = import("./sshKey").SshKey;
 export const SshKey: typeof import("./sshKey").SshKey = null as any;
@@ -296,6 +306,8 @@ const _module = {
                 return new SksKubeconfig(name, <any>undefined, { urn })
             case "exoscale:index/sksNodepool:SksNodepool":
                 return new SksNodepool(name, <any>undefined, { urn })
+            case "exoscale:index/sosBucketPolicy:SosBucketPolicy":
+                return new SosBucketPolicy(name, <any>undefined, { urn })
             case "exoscale:index/sshKey:SshKey":
                 return new SshKey(name, <any>undefined, { urn })
             default:
@@ -324,6 +336,7 @@ pulumi.runtime.registerResourceModule("exoscale", "index/securityGroupRule", _mo
 pulumi.runtime.registerResourceModule("exoscale", "index/sksCluster", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/sksKubeconfig", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/sksNodepool", _module)
+pulumi.runtime.registerResourceModule("exoscale", "index/sosBucketPolicy", _module)
 pulumi.runtime.registerResourceModule("exoscale", "index/sshKey", _module)
 pulumi.runtime.registerResourcePackage("exoscale", {
     version: utilities.getVersion(),

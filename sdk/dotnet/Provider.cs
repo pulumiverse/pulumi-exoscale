@@ -34,6 +34,9 @@ namespace Pulumiverse.Exoscale
         [Output("secret")]
         public Output<string?> Secret { get; private set; } = null!;
 
+        [Output("sosEndpoint")]
+        public Output<string?> SosEndpoint { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
@@ -106,8 +109,11 @@ namespace Pulumiverse.Exoscale
             }
         }
 
+        [Input("sosEndpoint")]
+        public Input<string>? SosEndpoint { get; set; }
+
         /// <summary>
-        /// Timeout in seconds for waiting on compute resources to become available (by default: 300)
+        /// Timeout in seconds for waiting on compute resources to become available (by default: 3600)
         /// </summary>
         [Input("timeout", json: true)]
         public Input<int>? Timeout { get; set; }

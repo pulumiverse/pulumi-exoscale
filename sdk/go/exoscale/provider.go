@@ -22,7 +22,8 @@ type Provider struct {
 	// Exoscale API key
 	Key pulumi.StringPtrOutput `pulumi:"key"`
 	// Exoscale API secret
-	Secret pulumi.StringPtrOutput `pulumi:"secret"`
+	Secret      pulumi.StringPtrOutput `pulumi:"secret"`
+	SosEndpoint pulumi.StringPtrOutput `pulumi:"sosEndpoint"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -69,8 +70,9 @@ type providerArgs struct {
 	// Exoscale API key
 	Key *string `pulumi:"key"`
 	// Exoscale API secret
-	Secret *string `pulumi:"secret"`
-	// Timeout in seconds for waiting on compute resources to become available (by default: 300)
+	Secret      *string `pulumi:"secret"`
+	SosEndpoint *string `pulumi:"sosEndpoint"`
+	// Timeout in seconds for waiting on compute resources to become available (by default: 3600)
 	Timeout *int `pulumi:"timeout"`
 }
 
@@ -82,8 +84,9 @@ type ProviderArgs struct {
 	// Exoscale API key
 	Key pulumi.StringPtrInput
 	// Exoscale API secret
-	Secret pulumi.StringPtrInput
-	// Timeout in seconds for waiting on compute resources to become available (by default: 300)
+	Secret      pulumi.StringPtrInput
+	SosEndpoint pulumi.StringPtrInput
+	// Timeout in seconds for waiting on compute resources to become available (by default: 3600)
 	Timeout pulumi.IntPtrInput
 }
 
@@ -136,6 +139,10 @@ func (o ProviderOutput) Key() pulumi.StringPtrOutput {
 // Exoscale API secret
 func (o ProviderOutput) Secret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) SosEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SosEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -106,7 +106,7 @@ export interface GetNlbResult {
  * Please refer to the examples
  * directory for complete configuration examples.
  */
-export function getNlbOutput(args: GetNlbOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNlbResult> {
+export function getNlbOutput(args: GetNlbOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNlbResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("exoscale:index/getNlb:getNlb", {
         "id": args.id,

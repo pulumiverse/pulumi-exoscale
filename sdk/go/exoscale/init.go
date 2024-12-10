@@ -63,6 +63,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SksKubeconfig{}
 	case "exoscale:index/sksNodepool:SksNodepool":
 		r = &SksNodepool{}
+	case "exoscale:index/sosBucketPolicy:SosBucketPolicy":
+		r = &SosBucketPolicy{}
 	case "exoscale:index/sshKey:SshKey":
 		r = &SshKey{}
 	default:
@@ -199,6 +201,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"exoscale",
 		"index/sksNodepool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"exoscale",
+		"index/sosBucketPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

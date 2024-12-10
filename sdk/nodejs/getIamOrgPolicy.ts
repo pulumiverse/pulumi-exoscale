@@ -49,7 +49,7 @@ export interface GetIamOrgPolicyResult {
  *
  * Corresponding resource: exoscale_iam_org_policy.
  */
-export function getIamOrgPolicyOutput(args?: GetIamOrgPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIamOrgPolicyResult> {
+export function getIamOrgPolicyOutput(args?: GetIamOrgPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIamOrgPolicyResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("exoscale:index/getIamOrgPolicy:getIamOrgPolicy", {

@@ -84,7 +84,7 @@ export interface GetAntiAffinityGroupResult {
  * Please refer to the examples
  * directory for complete configuration examples.
  */
-export function getAntiAffinityGroupOutput(args?: GetAntiAffinityGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAntiAffinityGroupResult> {
+export function getAntiAffinityGroupOutput(args?: GetAntiAffinityGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAntiAffinityGroupResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("exoscale:index/getAntiAffinityGroup:getAntiAffinityGroup", {
