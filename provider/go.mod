@@ -11,7 +11,7 @@ replace (
 
 require (
 	github.com/exoscale/terraform-provider-exoscale/shim v0.0.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.98.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.99.0
 	github.com/pulumi/pulumi/sdk/v3 v3.144.1
 )
 
@@ -189,6 +189,7 @@ require (
 	github.com/natefinch/atomic v1.0.1 // indirect
 	github.com/oklog/run v1.1.0 // indirect
 	github.com/olekukonko/tablewriter v0.0.5 // indirect
+	github.com/opentofu/registry-address v0.0.0-20230922120653-901b9ae4061a // indirect
 	github.com/opentracing/basictracer-go v1.1.0 // indirect
 	github.com/opentracing/opentracing-go v1.2.0 // indirect
 	github.com/pelletier/go-toml/v2 v2.1.1 // indirect
