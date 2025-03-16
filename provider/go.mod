@@ -2,8 +2,6 @@ module github.com/pulumiverse/pulumi-exoscale/provider
 
 go 1.23
 
-toolchain go1.23.3
-
 replace (
 	github.com/exoscale/terraform-provider-exoscale/shim => ./shim
 	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240520223432-0c0bf0d65f10
@@ -12,7 +10,7 @@ replace (
 require (
 	github.com/exoscale/terraform-provider-exoscale/shim v0.0.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.102.0
-	github.com/pulumi/pulumi/sdk/v3 v3.149.0
+	github.com/pulumi/pulumi/sdk/v3 v3.156.0
 )
 
 require (
