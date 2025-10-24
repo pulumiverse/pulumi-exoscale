@@ -15,14 +15,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const myDomain = new exoscale.Domain("myDomain", {});
- * const myHost = new exoscale.DomainRecord("myHost", {
+ * const myDomain = new exoscale.Domain("my_domain", {name: "example.net"});
+ * const myHost = new exoscale.DomainRecord("my_host", {
  *     domain: myDomain.id,
+ *     name: "my-host",
  *     recordType: "A",
  *     content: "1.2.3.4",
  * });
- * const myHostAlias = new exoscale.DomainRecord("myHostAlias", {
+ * const myHostAlias = new exoscale.DomainRecord("my_host_alias", {
  *     domain: myDomain.id,
+ *     name: "my-host-alias",
  *     recordType: "CNAME",
  *     content: myHost.hostname,
  * });
@@ -74,35 +76,35 @@ export class DomainRecord extends pulumi.CustomResource {
     /**
      * The record value. Format follows specific record type. For example SRV record format would be `<weight> <port> <target>`
      */
-    public readonly content!: pulumi.Output<string>;
+    declare public readonly content: pulumi.Output<string>;
     /**
      * The normalized value of the record
      */
-    public /*out*/ readonly contentNormalized!: pulumi.Output<string>;
+    declare public /*out*/ readonly contentNormalized: pulumi.Output<string>;
     /**
      * ❗ The parent exoscale.Domain to attach the record to.
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * The record *Fully Qualified Domain Name* (FQDN). Useful for aliasing `A`/`AAAA` records with `CNAME`.
      */
-    public /*out*/ readonly hostname!: pulumi.Output<string>;
+    declare public /*out*/ readonly hostname: pulumi.Output<string>;
     /**
      * The record name, Leave blank (`""`) to create a root record (similar to using `@` in a DNS zone file).
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The record priority (for types that support it; minimum `0`).
      */
-    public readonly prio!: pulumi.Output<number>;
+    declare public readonly prio: pulumi.Output<number>;
     /**
      * ❗ The record type (`A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `HINFO`, `MX`, `NAPTR`, `NS`, `POOL`, `SPF`, `SRV`, `SSHFP`, `TXT`, `URL`).
      */
-    public readonly recordType!: pulumi.Output<string>;
+    declare public readonly recordType: pulumi.Output<string>;
     /**
      * The record TTL (seconds; minimum `0`; default: `3600`).
      */
-    public readonly ttl!: pulumi.Output<number>;
+    declare public readonly ttl: pulumi.Output<number>;
 
     /**
      * Create a DomainRecord resource with the given unique name, arguments, and options.
@@ -117,31 +119,31 @@ export class DomainRecord extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainRecordState | undefined;
-            resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["contentNormalized"] = state ? state.contentNormalized : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["hostname"] = state ? state.hostname : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["prio"] = state ? state.prio : undefined;
-            resourceInputs["recordType"] = state ? state.recordType : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["content"] = state?.content;
+            resourceInputs["contentNormalized"] = state?.contentNormalized;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["hostname"] = state?.hostname;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["prio"] = state?.prio;
+            resourceInputs["recordType"] = state?.recordType;
+            resourceInputs["ttl"] = state?.ttl;
         } else {
             const args = argsOrState as DomainRecordArgs | undefined;
-            if ((!args || args.content === undefined) && !opts.urn) {
+            if (args?.content === undefined && !opts.urn) {
                 throw new Error("Missing required property 'content'");
             }
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            if ((!args || args.recordType === undefined) && !opts.urn) {
+            if (args?.recordType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'recordType'");
             }
-            resourceInputs["content"] = args ? args.content : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["prio"] = args ? args.prio : undefined;
-            resourceInputs["recordType"] = args ? args.recordType : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["content"] = args?.content;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["prio"] = args?.prio;
+            resourceInputs["recordType"] = args?.recordType;
+            resourceInputs["ttl"] = args?.ttl;
             resourceInputs["contentNormalized"] = undefined /*out*/;
             resourceInputs["hostname"] = undefined /*out*/;
         }

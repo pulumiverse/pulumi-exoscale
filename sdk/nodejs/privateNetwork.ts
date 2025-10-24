@@ -17,7 +17,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const myPrivateNetwork = new exoscale.PrivateNetwork("myPrivateNetwork", {zone: "ch-gva-2"});
+ * const myPrivateNetwork = new exoscale.PrivateNetwork("my_private_network", {
+ *     zone: "ch-gva-2",
+ *     name: "my-private-network",
+ * });
  * ```
  *
  * *Managed* private network:
@@ -26,11 +29,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const myManagedPrivateNetwork = new exoscale.PrivateNetwork("myManagedPrivateNetwork", {
- *     endIp: "10.0.0.253",
+ * const myManagedPrivateNetwork = new exoscale.PrivateNetwork("my_managed_private_network", {
+ *     zone: "ch-gva-2",
+ *     name: "my-managed-private-network",
  *     netmask: "255.255.255.0",
  *     startIp: "10.0.0.20",
- *     zone: "ch-gva-2",
+ *     endIp: "10.0.0.253",
  * });
  * ```
  *
@@ -80,31 +84,31 @@ export class PrivateNetwork extends pulumi.CustomResource {
     /**
      * A free-form text describing the network.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
      */
-    public readonly endIp!: pulumi.Output<string | undefined>;
+    declare public readonly endIp: pulumi.Output<string | undefined>;
     /**
      * A map of key/value labels.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The private network name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * (For managed Privnets) The network mask defining the IPv4 network allowed for static leases.
      */
-    public readonly netmask!: pulumi.Output<string | undefined>;
+    declare public readonly netmask: pulumi.Output<string | undefined>;
     /**
      * (For managed Privnets) The first/last IPv4 addresses used by the DHCP service for dynamic leases.
      */
-    public readonly startIp!: pulumi.Output<string | undefined>;
+    declare public readonly startIp: pulumi.Output<string | undefined>;
     /**
      * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a PrivateNetwork resource with the given unique name, arguments, and options.
@@ -119,25 +123,25 @@ export class PrivateNetwork extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PrivateNetworkState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["endIp"] = state ? state.endIp : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["netmask"] = state ? state.netmask : undefined;
-            resourceInputs["startIp"] = state ? state.startIp : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["endIp"] = state?.endIp;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["netmask"] = state?.netmask;
+            resourceInputs["startIp"] = state?.startIp;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as PrivateNetworkArgs | undefined;
-            if ((!args || args.zone === undefined) && !opts.urn) {
+            if (args?.zone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["endIp"] = args ? args.endIp : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["netmask"] = args ? args.netmask : undefined;
-            resourceInputs["startIp"] = args ? args.startIp : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["endIp"] = args?.endIp;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["netmask"] = args?.netmask;
+            resourceInputs["startIp"] = args?.startIp;
+            resourceInputs["zone"] = args?.zone;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PrivateNetwork.__pulumiType, name, resourceInputs, opts);

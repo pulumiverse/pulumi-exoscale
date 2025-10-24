@@ -16,6 +16,76 @@ namespace Pulumiverse.Exoscale
         /// Fetch Exoscale [DNS](https://community.exoscale.com/product/networking/dns/) Domain Records data.
         /// 
         /// Corresponding resource: exoscale_domain_record.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Exoscale = Pulumi.Exoscale;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myDomain = Exoscale.GetDomain.Invoke(new()
+        ///     {
+        ///         Name = "my.domain",
+        ///     });
+        /// 
+        ///     var myExoscaleDomainARecords = Exoscale.GetDomainRecord.Invoke(new()
+        ///     {
+        ///         Domain = myDomain.Apply(getDomainResult =&gt; getDomainResult.Name),
+        ///         Filter = new Exoscale.Inputs.GetDomainRecordFilterInputArgs
+        ///         {
+        ///             Name = "my-host",
+        ///             RecordType = "A",
+        ///         },
+        ///     });
+        /// 
+        ///     var myExoscaleDomainNSRecords = Exoscale.GetDomainRecord.Invoke(new()
+        ///     {
+        ///         Domain = myDomain.Apply(getDomainResult =&gt; getDomainResult.Name),
+        ///         Filter = new Exoscale.Inputs.GetDomainRecordFilterInputArgs
+        ///         {
+        ///             ContentRegex = "ns.*",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myExoscaleDomainARecords"] = Std.Formatlist.Invoke(new()
+        ///         {
+        ///             Input = "%s",
+        ///             Args = new[]
+        ///             {
+        ///                 myExoscaleDomainARecords.Apply(getDomainRecordResult =&gt; getDomainRecordResult.Records).Select(__item =&gt; __item.Name).ToList(),
+        ///             },
+        ///         }).Apply(invoke =&gt; Std.Join.Invoke(new()
+        ///         {
+        ///             Separator = @"
+        /// ",
+        ///             Input = invoke.Result,
+        ///         })).Apply(invoke =&gt; invoke.Result),
+        ///         ["myExoscaleDomainNSRecords"] = Std.Formatlist.Invoke(new()
+        ///         {
+        ///             Input = "%s",
+        ///             Args = new[]
+        ///             {
+        ///                 myExoscaleDomainNSRecords.Apply(getDomainRecordResult =&gt; getDomainRecordResult.Records).Select(__item =&gt; __item.Content).ToList(),
+        ///             },
+        ///         }).Apply(invoke =&gt; Std.Join.Invoke(new()
+        ///         {
+        ///             Separator = @"
+        /// ",
+        ///             Input = invoke.Result,
+        ///         })).Apply(invoke =&gt; invoke.Result),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Please refer to the examples
+        /// directory for complete configuration examples.
         /// </summary>
         public static Task<GetDomainRecordResult> InvokeAsync(GetDomainRecordArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainRecordResult>("exoscale:index/getDomainRecord:getDomainRecord", args ?? new GetDomainRecordArgs(), options.WithDefaults());
@@ -24,6 +94,76 @@ namespace Pulumiverse.Exoscale
         /// Fetch Exoscale [DNS](https://community.exoscale.com/product/networking/dns/) Domain Records data.
         /// 
         /// Corresponding resource: exoscale_domain_record.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Exoscale = Pulumi.Exoscale;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myDomain = Exoscale.GetDomain.Invoke(new()
+        ///     {
+        ///         Name = "my.domain",
+        ///     });
+        /// 
+        ///     var myExoscaleDomainARecords = Exoscale.GetDomainRecord.Invoke(new()
+        ///     {
+        ///         Domain = myDomain.Apply(getDomainResult =&gt; getDomainResult.Name),
+        ///         Filter = new Exoscale.Inputs.GetDomainRecordFilterInputArgs
+        ///         {
+        ///             Name = "my-host",
+        ///             RecordType = "A",
+        ///         },
+        ///     });
+        /// 
+        ///     var myExoscaleDomainNSRecords = Exoscale.GetDomainRecord.Invoke(new()
+        ///     {
+        ///         Domain = myDomain.Apply(getDomainResult =&gt; getDomainResult.Name),
+        ///         Filter = new Exoscale.Inputs.GetDomainRecordFilterInputArgs
+        ///         {
+        ///             ContentRegex = "ns.*",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myExoscaleDomainARecords"] = Std.Formatlist.Invoke(new()
+        ///         {
+        ///             Input = "%s",
+        ///             Args = new[]
+        ///             {
+        ///                 myExoscaleDomainARecords.Apply(getDomainRecordResult =&gt; getDomainRecordResult.Records).Select(__item =&gt; __item.Name).ToList(),
+        ///             },
+        ///         }).Apply(invoke =&gt; Std.Join.Invoke(new()
+        ///         {
+        ///             Separator = @"
+        /// ",
+        ///             Input = invoke.Result,
+        ///         })).Apply(invoke =&gt; invoke.Result),
+        ///         ["myExoscaleDomainNSRecords"] = Std.Formatlist.Invoke(new()
+        ///         {
+        ///             Input = "%s",
+        ///             Args = new[]
+        ///             {
+        ///                 myExoscaleDomainNSRecords.Apply(getDomainRecordResult =&gt; getDomainRecordResult.Records).Select(__item =&gt; __item.Content).ToList(),
+        ///             },
+        ///         }).Apply(invoke =&gt; Std.Join.Invoke(new()
+        ///         {
+        ///             Separator = @"
+        /// ",
+        ///             Input = invoke.Result,
+        ///         })).Apply(invoke =&gt; invoke.Result),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Please refer to the examples
+        /// directory for complete configuration examples.
         /// </summary>
         public static Output<GetDomainRecordResult> Invoke(GetDomainRecordInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainRecordResult>("exoscale:index/getDomainRecord:getDomainRecord", args ?? new GetDomainRecordInvokeArgs(), options.WithDefaults());
@@ -32,6 +172,76 @@ namespace Pulumiverse.Exoscale
         /// Fetch Exoscale [DNS](https://community.exoscale.com/product/networking/dns/) Domain Records data.
         /// 
         /// Corresponding resource: exoscale_domain_record.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Exoscale = Pulumi.Exoscale;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myDomain = Exoscale.GetDomain.Invoke(new()
+        ///     {
+        ///         Name = "my.domain",
+        ///     });
+        /// 
+        ///     var myExoscaleDomainARecords = Exoscale.GetDomainRecord.Invoke(new()
+        ///     {
+        ///         Domain = myDomain.Apply(getDomainResult =&gt; getDomainResult.Name),
+        ///         Filter = new Exoscale.Inputs.GetDomainRecordFilterInputArgs
+        ///         {
+        ///             Name = "my-host",
+        ///             RecordType = "A",
+        ///         },
+        ///     });
+        /// 
+        ///     var myExoscaleDomainNSRecords = Exoscale.GetDomainRecord.Invoke(new()
+        ///     {
+        ///         Domain = myDomain.Apply(getDomainResult =&gt; getDomainResult.Name),
+        ///         Filter = new Exoscale.Inputs.GetDomainRecordFilterInputArgs
+        ///         {
+        ///             ContentRegex = "ns.*",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myExoscaleDomainARecords"] = Std.Formatlist.Invoke(new()
+        ///         {
+        ///             Input = "%s",
+        ///             Args = new[]
+        ///             {
+        ///                 myExoscaleDomainARecords.Apply(getDomainRecordResult =&gt; getDomainRecordResult.Records).Select(__item =&gt; __item.Name).ToList(),
+        ///             },
+        ///         }).Apply(invoke =&gt; Std.Join.Invoke(new()
+        ///         {
+        ///             Separator = @"
+        /// ",
+        ///             Input = invoke.Result,
+        ///         })).Apply(invoke =&gt; invoke.Result),
+        ///         ["myExoscaleDomainNSRecords"] = Std.Formatlist.Invoke(new()
+        ///         {
+        ///             Input = "%s",
+        ///             Args = new[]
+        ///             {
+        ///                 myExoscaleDomainNSRecords.Apply(getDomainRecordResult =&gt; getDomainRecordResult.Records).Select(__item =&gt; __item.Content).ToList(),
+        ///             },
+        ///         }).Apply(invoke =&gt; Std.Join.Invoke(new()
+        ///         {
+        ///             Separator = @"
+        /// ",
+        ///             Input = invoke.Result,
+        ///         })).Apply(invoke =&gt; invoke.Result),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Please refer to the examples
+        /// directory for complete configuration examples.
         /// </summary>
         public static Output<GetDomainRecordResult> Invoke(GetDomainRecordInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainRecordResult>("exoscale:index/getDomainRecord:getDomainRecord", args ?? new GetDomainRecordInvokeArgs(), options.WithDefaults());

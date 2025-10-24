@@ -32,9 +32,10 @@ namespace Pulumiverse.Exoscale
     ///         Name = "Linux Ubuntu 22.04 LTS 64-bit",
     ///     });
     /// 
-    ///     var myInstancePool = new Exoscale.InstancePool("myInstancePool", new()
+    ///     var myInstancePool = new Exoscale.InstancePool("my_instance_pool", new()
     ///     {
     ///         Zone = "ch-gva-2",
+    ///         Name = "my-instance-pool",
     ///         TemplateId = myTemplate.Apply(getTemplateResult =&gt; getTemplateResult.Id),
     ///         InstanceType = "standard.medium",
     ///         DiskSize = 10,
@@ -99,7 +100,7 @@ namespace Pulumiverse.Exoscale
         public Output<ImmutableArray<string>> ElasticIpIds { get; private set; } = null!;
 
         /// <summary>
-        /// The string used to prefix managed instances name (default: `pool`).
+        /// The string used to prefix managed instances name (default: `Pool`).
         /// </summary>
         [Output("instancePrefix")]
         public Output<string?> InstancePrefix { get; private set; } = null!;
@@ -117,7 +118,7 @@ namespace Pulumiverse.Exoscale
         public Output<ImmutableArray<Outputs.InstancePoolInstance>> Instances { get; private set; } = null!;
 
         /// <summary>
-        /// Enable IPv6 on managed instances (boolean; default: `false`).
+        /// Enable IPv6 on managed instances (boolean; default: `False`).
         /// </summary>
         [Output("ipv6")]
         public Output<bool?> Ipv6 { get; private set; } = null!;
@@ -159,7 +160,7 @@ namespace Pulumiverse.Exoscale
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// The managed instances type. Please use the `instance_type` argument instead.
+        /// The managed instances type. Please use the `InstanceType` argument instead.
         /// </summary>
         [Output("serviceOffering")]
         public Output<string> ServiceOffering { get; private set; } = null!;
@@ -250,7 +251,7 @@ namespace Pulumiverse.Exoscale
         /// <summary>
         /// A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
         /// </summary>
-        [Obsolete(@"Use anti_affinity_group_ids instead.")]
+        [Obsolete(@"Use AntiAffinityGroupIds instead.")]
         public InputList<string> AffinityGroupIds
         {
             get => _affinityGroupIds ?? (_affinityGroupIds = new InputList<string>());
@@ -300,7 +301,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The string used to prefix managed instances name (default: `pool`).
+        /// The string used to prefix managed instances name (default: `Pool`).
         /// </summary>
         [Input("instancePrefix")]
         public Input<string>? InstancePrefix { get; set; }
@@ -324,7 +325,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// Enable IPv6 on managed instances (boolean; default: `false`).
+        /// Enable IPv6 on managed instances (boolean; default: `False`).
         /// </summary>
         [Input("ipv6")]
         public Input<bool>? Ipv6 { get; set; }
@@ -384,7 +385,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The managed instances type. Please use the `instance_type` argument instead.
+        /// The managed instances type. Please use the `InstanceType` argument instead.
         /// </summary>
         [Input("serviceOffering")]
         public Input<string>? ServiceOffering { get; set; }
@@ -443,7 +444,7 @@ namespace Pulumiverse.Exoscale
         /// <summary>
         /// A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
         /// </summary>
-        [Obsolete(@"Use anti_affinity_group_ids instead.")]
+        [Obsolete(@"Use AntiAffinityGroupIds instead.")]
         public InputList<string> AffinityGroupIds
         {
             get => _affinityGroupIds ?? (_affinityGroupIds = new InputList<string>());
@@ -493,7 +494,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The string used to prefix managed instances name (default: `pool`).
+        /// The string used to prefix managed instances name (default: `Pool`).
         /// </summary>
         [Input("instancePrefix")]
         public Input<string>? InstancePrefix { get; set; }
@@ -517,7 +518,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// Enable IPv6 on managed instances (boolean; default: `false`).
+        /// Enable IPv6 on managed instances (boolean; default: `False`).
         /// </summary>
         [Input("ipv6")]
         public Input<bool>? Ipv6 { get; set; }
@@ -577,7 +578,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The managed instances type. Please use the `instance_type` argument instead.
+        /// The managed instances type. Please use the `InstanceType` argument instead.
         /// </summary>
         [Input("serviceOffering")]
         public Input<string>? ServiceOffering { get; set; }

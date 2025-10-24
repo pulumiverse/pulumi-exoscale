@@ -14,18 +14,165 @@ namespace Pulumiverse.Exoscale
     {
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Text.Json;
+        /// using Pulumi;
+        /// using Exoscale = Pulumi.Exoscale;
+        /// using Exoscale = Pulumiverse.Exoscale;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myDatabaseDatabase = new Exoscale.Database("my_database", new()
+        ///     {
+        ///         Zone = "ch-gva-2",
+        ///         Name = "my-database",
+        ///         Type = "pg",
+        ///         Plan = "startup-4",
+        ///         MaintenanceDow = "sunday",
+        ///         MaintenanceTime = "23:00:00",
+        ///         TerminationProtection = true,
+        ///         Pg = new Exoscale.Inputs.DatabasePgArgs
+        ///         {
+        ///             Version = "13",
+        ///             BackupSchedule = "04:00",
+        ///             IpFilters = new[]
+        ///             {
+        ///                 "1.2.3.4/32",
+        ///                 "5.6.7.8/32",
+        ///             },
+        ///             PgSettings = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+        ///             {
+        ///                 ["timezone"] = "Europe/Zurich",
+        ///             }),
+        ///         },
+        ///     });
+        /// 
+        ///     var myDatabase = Exoscale.GetDatabaseUri.Invoke(new()
+        ///     {
+        ///         Name = "my-database",
+        ///         Type = "pg",
+        ///         Zone = "ch-gva-2",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myDatabaseUri"] = myDatabase.Apply(getDatabaseUriResult =&gt; getDatabaseUriResult.Uri),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetDatabaseUriResult> InvokeAsync(GetDatabaseUriArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseUriResult>("exoscale:index/getDatabaseUri:getDatabaseUri", args ?? new GetDatabaseUriArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Text.Json;
+        /// using Pulumi;
+        /// using Exoscale = Pulumi.Exoscale;
+        /// using Exoscale = Pulumiverse.Exoscale;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myDatabaseDatabase = new Exoscale.Database("my_database", new()
+        ///     {
+        ///         Zone = "ch-gva-2",
+        ///         Name = "my-database",
+        ///         Type = "pg",
+        ///         Plan = "startup-4",
+        ///         MaintenanceDow = "sunday",
+        ///         MaintenanceTime = "23:00:00",
+        ///         TerminationProtection = true,
+        ///         Pg = new Exoscale.Inputs.DatabasePgArgs
+        ///         {
+        ///             Version = "13",
+        ///             BackupSchedule = "04:00",
+        ///             IpFilters = new[]
+        ///             {
+        ///                 "1.2.3.4/32",
+        ///                 "5.6.7.8/32",
+        ///             },
+        ///             PgSettings = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+        ///             {
+        ///                 ["timezone"] = "Europe/Zurich",
+        ///             }),
+        ///         },
+        ///     });
+        /// 
+        ///     var myDatabase = Exoscale.GetDatabaseUri.Invoke(new()
+        ///     {
+        ///         Name = "my-database",
+        ///         Type = "pg",
+        ///         Zone = "ch-gva-2",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myDatabaseUri"] = myDatabase.Apply(getDatabaseUriResult =&gt; getDatabaseUriResult.Uri),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDatabaseUriResult> Invoke(GetDatabaseUriInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseUriResult>("exoscale:index/getDatabaseUri:getDatabaseUri", args ?? new GetDatabaseUriInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Text.Json;
+        /// using Pulumi;
+        /// using Exoscale = Pulumi.Exoscale;
+        /// using Exoscale = Pulumiverse.Exoscale;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myDatabaseDatabase = new Exoscale.Database("my_database", new()
+        ///     {
+        ///         Zone = "ch-gva-2",
+        ///         Name = "my-database",
+        ///         Type = "pg",
+        ///         Plan = "startup-4",
+        ///         MaintenanceDow = "sunday",
+        ///         MaintenanceTime = "23:00:00",
+        ///         TerminationProtection = true,
+        ///         Pg = new Exoscale.Inputs.DatabasePgArgs
+        ///         {
+        ///             Version = "13",
+        ///             BackupSchedule = "04:00",
+        ///             IpFilters = new[]
+        ///             {
+        ///                 "1.2.3.4/32",
+        ///                 "5.6.7.8/32",
+        ///             },
+        ///             PgSettings = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+        ///             {
+        ///                 ["timezone"] = "Europe/Zurich",
+        ///             }),
+        ///         },
+        ///     });
+        /// 
+        ///     var myDatabase = Exoscale.GetDatabaseUri.Invoke(new()
+        ///     {
+        ///         Name = "my-database",
+        ///         Type = "pg",
+        ///         Zone = "ch-gva-2",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myDatabaseUri"] = myDatabase.Apply(getDatabaseUriResult =&gt; getDatabaseUriResult.Uri),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDatabaseUriResult> Invoke(GetDatabaseUriInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseUriResult>("exoscale:index/getDatabaseUri:getDatabaseUri", args ?? new GetDatabaseUriInvokeArgs(), options.WithDefaults());
@@ -44,7 +191,7 @@ namespace Pulumiverse.Exoscale
         public Inputs.GetDatabaseUriTimeoutsArgs? Timeouts { get; set; }
 
         /// <summary>
-        /// The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `valkey`, `grafana`).
+        /// The type of the database service (`Kafka`, `Mysql`, `Opensearch`, `Pg`, `Valkey`, `Grafana`).
         /// </summary>
         [Input("type", required: true)]
         public string Type { get; set; } = null!;
@@ -73,7 +220,7 @@ namespace Pulumiverse.Exoscale
         public Input<Inputs.GetDatabaseUriTimeoutsInputArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `valkey`, `grafana`).
+        /// The type of the database service (`Kafka`, `Mysql`, `Opensearch`, `Pg`, `Valkey`, `Grafana`).
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -124,7 +271,7 @@ namespace Pulumiverse.Exoscale
         public readonly string Schema;
         public readonly Outputs.GetDatabaseUriTimeoutsResult? Timeouts;
         /// <summary>
-        /// The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `valkey`, `grafana`).
+        /// The type of the database service (`Kafka`, `Mysql`, `Opensearch`, `Pg`, `Valkey`, `Grafana`).
         /// </summary>
         public readonly string Type;
         /// <summary>

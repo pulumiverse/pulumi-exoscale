@@ -27,7 +27,7 @@ namespace Pulumiverse.Exoscale
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myElasticIp = new Exoscale.ElasticIp("myElasticIp", new()
+    ///     var myElasticIp = new Exoscale.ElasticIp("my_elastic_ip", new()
     ///     {
     ///         Zone = "ch-gva-2",
     ///     });
@@ -45,22 +45,22 @@ namespace Pulumiverse.Exoscale
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myManagedElasticIp = new Exoscale.ElasticIp("myManagedElasticIp", new()
+    ///     var myManagedElasticIp = new Exoscale.ElasticIp("my_managed_elastic_ip", new()
     ///     {
+    ///         Zone = "ch-gva-2",
     ///         AddressFamily = "inet6",
+    ///         ReverseDns = "example.net",
     ///         Healthcheck = new Exoscale.Inputs.ElasticIpHealthcheckArgs
     ///         {
-    ///             Interval = 5,
     ///             Mode = "https",
     ///             Port = 443,
-    ///             StrikesFail = 3,
-    ///             StrikesOk = 2,
-    ///             Timeout = 3,
-    ///             TlsSni = "example.net",
     ///             Uri = "/health",
+    ///             Interval = 5,
+    ///             Timeout = 3,
+    ///             StrikesOk = 2,
+    ///             StrikesFail = 3,
+    ///             TlsSni = "example.net",
     ///         },
-    ///         ReverseDns = "example.net",
-    ///         Zone = "ch-gva-2",
     ///     });
     /// 
     /// });
@@ -85,7 +85,7 @@ namespace Pulumiverse.Exoscale
     public partial class ElasticIp : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// ❗ The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
+        /// ❗ The Elastic IP (EIP) address family (`Inet4` or `Inet6`; default: `Inet4`).
         /// </summary>
         [Output("addressFamily")]
         public Output<string> AddressFamily { get; private set; } = null!;
@@ -180,7 +180,7 @@ namespace Pulumiverse.Exoscale
     public sealed class ElasticIpArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ❗ The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
+        /// ❗ The Elastic IP (EIP) address family (`Inet4` or `Inet6`; default: `Inet4`).
         /// </summary>
         [Input("addressFamily")]
         public Input<string>? AddressFamily { get; set; }
@@ -230,7 +230,7 @@ namespace Pulumiverse.Exoscale
     public sealed class ElasticIpState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ❗ The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
+        /// ❗ The Elastic IP (EIP) address family (`Inet4` or `Inet6`; default: `Inet4`).
         /// </summary>
         [Input("addressFamily")]
         public Input<string>? AddressFamily { get; set; }

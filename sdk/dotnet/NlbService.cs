@@ -23,16 +23,18 @@ namespace Pulumiverse.Exoscale
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myNlb = new Exoscale.Nlb("myNlb", new()
+    ///     var myNlb = new Exoscale.Nlb("my_nlb", new()
     ///     {
     ///         Zone = "ch-gva-2",
+    ///         Name = "my-nlb",
     ///     });
     /// 
-    ///     var myNlbService = new Exoscale.NlbService("myNlbService", new()
+    ///     var myNlbService = new Exoscale.NlbService("my_nlb_service", new()
     ///     {
     ///         NlbId = myNlb.Id,
     ///         Zone = myNlb.Zone,
-    ///         InstancePoolId = exoscale_instance_pool.My_instance_pool.Id,
+    ///         Name = "my-nlb-service",
+    ///         InstancePoolId = myInstancePool.Id,
     ///         Protocol = "tcp",
     ///         Port = 443,
     ///         TargetPort = 8443,
@@ -110,7 +112,7 @@ namespace Pulumiverse.Exoscale
         public Output<int> Port { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol (`tcp`|`udp`; default: `tcp`).
+        /// The protocol (`Tcp`|`Udp`; default: `Tcp`).
         /// </summary>
         [Output("protocol")]
         public Output<string?> Protocol { get; private set; } = null!;
@@ -226,7 +228,7 @@ namespace Pulumiverse.Exoscale
         public Input<int> Port { get; set; } = null!;
 
         /// <summary>
-        /// The protocol (`tcp`|`udp`; default: `tcp`).
+        /// The protocol (`Tcp`|`Udp`; default: `Tcp`).
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -300,7 +302,7 @@ namespace Pulumiverse.Exoscale
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// The protocol (`tcp`|`udp`; default: `tcp`).
+        /// The protocol (`Tcp`|`Udp`; default: `Tcp`).
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }

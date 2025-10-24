@@ -40,24 +40,24 @@ export class DbaasPgDatabase extends pulumi.CustomResource {
     /**
      * ❗ The name of the database for this service.
      */
-    public readonly databaseName!: pulumi.Output<string>;
+    declare public readonly databaseName: pulumi.Output<string>;
     /**
      * Default string sort order (LC_COLLATE) for PostgreSQL database
      */
-    public readonly lcCollate!: pulumi.Output<string | undefined>;
+    declare public readonly lcCollate: pulumi.Output<string | undefined>;
     /**
      * Default character classification (LC_CTYPE) for PostgreSQL database
      */
-    public readonly lcCtype!: pulumi.Output<string | undefined>;
+    declare public readonly lcCtype: pulumi.Output<string | undefined>;
     /**
      * ❗ The name of the database service.
      */
-    public readonly service!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.DbaasPgDatabaseTimeouts | undefined>;
+    declare public readonly service: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.DbaasPgDatabaseTimeouts | undefined>;
     /**
      * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a DbaasPgDatabase resource with the given unique name, arguments, and options.
@@ -72,29 +72,29 @@ export class DbaasPgDatabase extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DbaasPgDatabaseState | undefined;
-            resourceInputs["databaseName"] = state ? state.databaseName : undefined;
-            resourceInputs["lcCollate"] = state ? state.lcCollate : undefined;
-            resourceInputs["lcCtype"] = state ? state.lcCtype : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["databaseName"] = state?.databaseName;
+            resourceInputs["lcCollate"] = state?.lcCollate;
+            resourceInputs["lcCtype"] = state?.lcCtype;
+            resourceInputs["service"] = state?.service;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as DbaasPgDatabaseArgs | undefined;
-            if ((!args || args.databaseName === undefined) && !opts.urn) {
+            if (args?.databaseName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databaseName'");
             }
-            if ((!args || args.service === undefined) && !opts.urn) {
+            if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            if ((!args || args.zone === undefined) && !opts.urn) {
+            if (args?.zone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            resourceInputs["databaseName"] = args ? args.databaseName : undefined;
-            resourceInputs["lcCollate"] = args ? args.lcCollate : undefined;
-            resourceInputs["lcCtype"] = args ? args.lcCtype : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["databaseName"] = args?.databaseName;
+            resourceInputs["lcCollate"] = args?.lcCollate;
+            resourceInputs["lcCtype"] = args?.lcCtype;
+            resourceInputs["service"] = args?.service;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["zone"] = args?.zone;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DbaasPgDatabase.__pulumiType, name, resourceInputs, opts);

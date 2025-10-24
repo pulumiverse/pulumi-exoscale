@@ -23,8 +23,9 @@ import * as utilities from "./utilities";
  *     zone: "ch-gva-2",
  *     name: "Linux Ubuntu 22.04 LTS 64-bit",
  * });
- * const myInstance = new exoscale.ComputeInstance("myInstance", {
+ * const myInstance = new exoscale.ComputeInstance("my_instance", {
  *     zone: "ch-gva-2",
+ *     name: "my-instance",
  *     templateId: myTemplate.then(myTemplate => myTemplate.id),
  *     type: "standard.medium",
  *     diskSize: 10,
@@ -77,107 +78,115 @@ export class ComputeInstance extends pulumi.CustomResource {
     /**
      * ❗ A list of exoscale*anti*affinity_group (IDs) to attach to the instance (may only be set at creation time).
      */
-    public readonly antiAffinityGroupIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly antiAffinityGroupIds: pulumi.Output<string[] | undefined>;
     /**
      * A list of exoscale*block*storage_volume (ID) to attach to the instance.
      */
-    public readonly blockStorageVolumeIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly blockStorageVolumeIds: pulumi.Output<string[] | undefined>;
     /**
      * The instance creation date.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * ❗ A deploy target ID.
      */
-    public readonly deployTargetId!: pulumi.Output<string | undefined>;
+    declare public readonly deployTargetId: pulumi.Output<string | undefined>;
     /**
      * Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
      */
-    public readonly destroyProtected!: pulumi.Output<boolean | undefined>;
+    declare public readonly destroyProtected: pulumi.Output<boolean | undefined>;
     /**
      * The instance disk size (GiB; at least `10`). Can not be decreased after creation. **WARNING**: updating this attribute stops/restarts the instance.
      */
-    public readonly diskSize!: pulumi.Output<number>;
+    declare public readonly diskSize: pulumi.Output<number>;
     /**
      * A list of exoscale*elastic*ip (IDs) to attach to the instance.
      */
-    public readonly elasticIpIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly elasticIpIds: pulumi.Output<string[] | undefined>;
+    /**
+     * Indicates whether secure boot is enabled on the instance.
+     */
+    declare public readonly enableSecureBoot: pulumi.Output<boolean | undefined>;
+    /**
+     * Indicates whether TPM is enabled on the instance.
+     */
+    declare public readonly enableTpm: pulumi.Output<boolean | undefined>;
     /**
      * Enable IPv6 on the instance (boolean; default: `false`).
      */
-    public readonly ipv6!: pulumi.Output<boolean | undefined>;
+    declare public readonly ipv6: pulumi.Output<boolean | undefined>;
     /**
      * The instance (main network interface) IPv6 address (if enabled).
      */
-    public /*out*/ readonly ipv6Address!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipv6Address: pulumi.Output<string>;
     /**
      * A map of key/value labels.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * MAC address
      */
-    public /*out*/ readonly macAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly macAddress: pulumi.Output<string>;
     /**
      * The compute instance name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Private network interfaces (may be specified multiple times). Structure is documented below.
      */
-    public readonly networkInterfaces!: pulumi.Output<outputs.ComputeInstanceNetworkInterface[] | undefined>;
+    declare public readonly networkInterfaces: pulumi.Output<outputs.ComputeInstanceNetworkInterface[] | undefined>;
     /**
      * Whether the instance is private (no public IP addresses; default: false)
      */
-    public readonly private!: pulumi.Output<boolean | undefined>;
+    declare public readonly private: pulumi.Output<boolean | undefined>;
     /**
      * A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument instead.
      *
      * @deprecated Use the networkInterface block instead.
      */
-    public /*out*/ readonly privateNetworkIds!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly privateNetworkIds: pulumi.Output<string[]>;
     /**
      * The instance (main network interface) IPv4 address.
      */
-    public /*out*/ readonly publicIpAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly publicIpAddress: pulumi.Output<string>;
     /**
      * Domain name for reverse DNS record.
      */
-    public readonly reverseDns!: pulumi.Output<string | undefined>;
+    declare public readonly reverseDns: pulumi.Output<string | undefined>;
     /**
      * A list of exoscale*security*group (IDs) to attach to the instance.
      */
-    public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly securityGroupIds: pulumi.Output<string[] | undefined>;
     /**
      * The exoscale*ssh*key (name) to authorize in the instance (may only be set at creation time).
      *
      * @deprecated Use sshKeys instead
      */
-    public readonly sshKey!: pulumi.Output<string | undefined>;
+    declare public readonly sshKey: pulumi.Output<string | undefined>;
     /**
      * The list of exoscale*ssh*key (name) to authorize in the instance (may only be set at creation time).
      */
-    public readonly sshKeys!: pulumi.Output<string[] | undefined>;
+    declare public readonly sshKeys: pulumi.Output<string[] | undefined>;
     /**
      * The instance state (`running` or `stopped`; default: `running`).
      */
-    public readonly state!: pulumi.Output<string>;
+    declare public readonly state: pulumi.Output<string>;
     /**
      * ❗ The exoscale.getTemplate (ID) to use when creating the instance.
      */
-    public readonly templateId!: pulumi.Output<string>;
+    declare public readonly templateId: pulumi.Output<string>;
     /**
      * The instance type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types). **WARNING**: updating this attribute stops/restarts the instance.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * [cloud-init](https://cloudinit.readthedocs.io/) configuration.
      */
-    public readonly userData!: pulumi.Output<string | undefined>;
+    declare public readonly userData: pulumi.Output<string | undefined>;
     /**
      * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a ComputeInstance resource with the given unique name, arguments, and options.
@@ -192,65 +201,69 @@ export class ComputeInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ComputeInstanceState | undefined;
-            resourceInputs["antiAffinityGroupIds"] = state ? state.antiAffinityGroupIds : undefined;
-            resourceInputs["blockStorageVolumeIds"] = state ? state.blockStorageVolumeIds : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["deployTargetId"] = state ? state.deployTargetId : undefined;
-            resourceInputs["destroyProtected"] = state ? state.destroyProtected : undefined;
-            resourceInputs["diskSize"] = state ? state.diskSize : undefined;
-            resourceInputs["elasticIpIds"] = state ? state.elasticIpIds : undefined;
-            resourceInputs["ipv6"] = state ? state.ipv6 : undefined;
-            resourceInputs["ipv6Address"] = state ? state.ipv6Address : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["macAddress"] = state ? state.macAddress : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
-            resourceInputs["private"] = state ? state.private : undefined;
-            resourceInputs["privateNetworkIds"] = state ? state.privateNetworkIds : undefined;
-            resourceInputs["publicIpAddress"] = state ? state.publicIpAddress : undefined;
-            resourceInputs["reverseDns"] = state ? state.reverseDns : undefined;
-            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            resourceInputs["sshKey"] = state ? state.sshKey : undefined;
-            resourceInputs["sshKeys"] = state ? state.sshKeys : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["templateId"] = state ? state.templateId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["userData"] = state ? state.userData : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["antiAffinityGroupIds"] = state?.antiAffinityGroupIds;
+            resourceInputs["blockStorageVolumeIds"] = state?.blockStorageVolumeIds;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["deployTargetId"] = state?.deployTargetId;
+            resourceInputs["destroyProtected"] = state?.destroyProtected;
+            resourceInputs["diskSize"] = state?.diskSize;
+            resourceInputs["elasticIpIds"] = state?.elasticIpIds;
+            resourceInputs["enableSecureBoot"] = state?.enableSecureBoot;
+            resourceInputs["enableTpm"] = state?.enableTpm;
+            resourceInputs["ipv6"] = state?.ipv6;
+            resourceInputs["ipv6Address"] = state?.ipv6Address;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["macAddress"] = state?.macAddress;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkInterfaces"] = state?.networkInterfaces;
+            resourceInputs["private"] = state?.private;
+            resourceInputs["privateNetworkIds"] = state?.privateNetworkIds;
+            resourceInputs["publicIpAddress"] = state?.publicIpAddress;
+            resourceInputs["reverseDns"] = state?.reverseDns;
+            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
+            resourceInputs["sshKey"] = state?.sshKey;
+            resourceInputs["sshKeys"] = state?.sshKeys;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["templateId"] = state?.templateId;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["userData"] = state?.userData;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as ComputeInstanceArgs | undefined;
-            if ((!args || args.diskSize === undefined) && !opts.urn) {
+            if (args?.diskSize === undefined && !opts.urn) {
                 throw new Error("Missing required property 'diskSize'");
             }
-            if ((!args || args.templateId === undefined) && !opts.urn) {
+            if (args?.templateId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'templateId'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.zone === undefined) && !opts.urn) {
+            if (args?.zone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            resourceInputs["antiAffinityGroupIds"] = args ? args.antiAffinityGroupIds : undefined;
-            resourceInputs["blockStorageVolumeIds"] = args ? args.blockStorageVolumeIds : undefined;
-            resourceInputs["deployTargetId"] = args ? args.deployTargetId : undefined;
-            resourceInputs["destroyProtected"] = args ? args.destroyProtected : undefined;
-            resourceInputs["diskSize"] = args ? args.diskSize : undefined;
-            resourceInputs["elasticIpIds"] = args ? args.elasticIpIds : undefined;
-            resourceInputs["ipv6"] = args ? args.ipv6 : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
-            resourceInputs["private"] = args ? args.private : undefined;
-            resourceInputs["reverseDns"] = args ? args.reverseDns : undefined;
-            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            resourceInputs["sshKey"] = args ? args.sshKey : undefined;
-            resourceInputs["sshKeys"] = args ? args.sshKeys : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
-            resourceInputs["templateId"] = args ? args.templateId : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["userData"] = args ? args.userData : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["antiAffinityGroupIds"] = args?.antiAffinityGroupIds;
+            resourceInputs["blockStorageVolumeIds"] = args?.blockStorageVolumeIds;
+            resourceInputs["deployTargetId"] = args?.deployTargetId;
+            resourceInputs["destroyProtected"] = args?.destroyProtected;
+            resourceInputs["diskSize"] = args?.diskSize;
+            resourceInputs["elasticIpIds"] = args?.elasticIpIds;
+            resourceInputs["enableSecureBoot"] = args?.enableSecureBoot;
+            resourceInputs["enableTpm"] = args?.enableTpm;
+            resourceInputs["ipv6"] = args?.ipv6;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkInterfaces"] = args?.networkInterfaces;
+            resourceInputs["private"] = args?.private;
+            resourceInputs["reverseDns"] = args?.reverseDns;
+            resourceInputs["securityGroupIds"] = args?.securityGroupIds;
+            resourceInputs["sshKey"] = args?.sshKey;
+            resourceInputs["sshKeys"] = args?.sshKeys;
+            resourceInputs["state"] = args?.state;
+            resourceInputs["templateId"] = args?.templateId;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["userData"] = args?.userData;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["ipv6Address"] = undefined /*out*/;
             resourceInputs["macAddress"] = undefined /*out*/;
@@ -294,6 +307,14 @@ export interface ComputeInstanceState {
      * A list of exoscale*elastic*ip (IDs) to attach to the instance.
      */
     elasticIpIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Indicates whether secure boot is enabled on the instance.
+     */
+    enableSecureBoot?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether TPM is enabled on the instance.
+     */
+    enableTpm?: pulumi.Input<boolean>;
     /**
      * Enable IPv6 on the instance (boolean; default: `false`).
      */
@@ -400,6 +421,14 @@ export interface ComputeInstanceArgs {
      * A list of exoscale*elastic*ip (IDs) to attach to the instance.
      */
     elasticIpIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Indicates whether secure boot is enabled on the instance.
+     */
+    enableSecureBoot?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether TPM is enabled on the instance.
+     */
+    enableTpm?: pulumi.Input<boolean>;
     /**
      * Enable IPv6 on the instance (boolean; default: `false`).
      */

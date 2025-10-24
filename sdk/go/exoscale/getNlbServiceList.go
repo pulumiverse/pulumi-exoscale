@@ -14,6 +14,11 @@ import (
 // Fetch Exoscale [Network Load Balancers (NLB)](https://community.exoscale.com/product/networking/nlb/) Services.
 //
 // Corresponding resource: exoscale_nlb.
+//
+// ## Example Usage
+//
+// Please refer to the examples
+// directory for complete configuration examples.
 func GetNlbServiceList(ctx *pulumi.Context, args *GetNlbServiceListArgs, opts ...pulumi.InvokeOption) (*GetNlbServiceListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNlbServiceListResult

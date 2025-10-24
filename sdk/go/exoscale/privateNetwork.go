@@ -32,8 +32,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := exoscale.NewPrivateNetwork(ctx, "myPrivateNetwork", &exoscale.PrivateNetworkArgs{
+//			_, err := exoscale.NewPrivateNetwork(ctx, "my_private_network", &exoscale.PrivateNetworkArgs{
 //				Zone: pulumi.String("ch-gva-2"),
+//				Name: pulumi.String("my-private-network"),
 //			})
 //			if err != nil {
 //				return err
@@ -58,11 +59,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := exoscale.NewPrivateNetwork(ctx, "myManagedPrivateNetwork", &exoscale.PrivateNetworkArgs{
-//				EndIp:   pulumi.String("10.0.0.253"),
+//			_, err := exoscale.NewPrivateNetwork(ctx, "my_managed_private_network", &exoscale.PrivateNetworkArgs{
+//				Zone:    pulumi.String("ch-gva-2"),
+//				Name:    pulumi.String("my-managed-private-network"),
 //				Netmask: pulumi.String("255.255.255.0"),
 //				StartIp: pulumi.String("10.0.0.20"),
-//				Zone:    pulumi.String("ch-gva-2"),
+//				EndIp:   pulumi.String("10.0.0.253"),
 //			})
 //			if err != nil {
 //				return err

@@ -10,6 +10,34 @@ import * as utilities from "./utilities";
  * List Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/).
  *
  * Corresponding resource: exoscale_compute_instance.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumiverse/exoscale";
+ * import * as std from "@pulumi/std";
+ *
+ * const myComputeInstanceList = exoscale.getComputeInstanceList({
+ *     zone: "ch-gva-2",
+ *     type: "standard.micro",
+ *     name: "/.*ubuntu.*&#47;",
+ *     labels: {
+ *         customer: "/.*bank.*&#47;",
+ *         contract: "premium-support",
+ *     },
+ * });
+ * export const myComputeInstanceIds = std.formatlist({
+ *     input: "%s",
+ *     args: [myComputeInstanceList.then(myComputeInstanceList => myComputeInstanceList.instances.map(__item => __item.id))],
+ * }).then(invoke => std.join({
+ *     separator: "\n",
+ *     input: invoke.result,
+ * })).then(invoke => invoke.result);
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
  */
 export function getComputeInstanceList(args: GetComputeInstanceListArgs, opts?: pulumi.InvokeOptions): Promise<GetComputeInstanceListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -17,6 +45,8 @@ export function getComputeInstanceList(args: GetComputeInstanceListArgs, opts?: 
         "createdAt": args.createdAt,
         "deployTargetId": args.deployTargetId,
         "diskSize": args.diskSize,
+        "enableSecureBoot": args.enableSecureBoot,
+        "enableTpm": args.enableTpm,
         "id": args.id,
         "ipv6": args.ipv6,
         "ipv6Address": args.ipv6Address,
@@ -51,6 +81,8 @@ export interface GetComputeInstanceListArgs {
      * Match against this int
      */
     diskSize?: number;
+    enableSecureBoot?: boolean;
+    enableTpm?: boolean;
     /**
      * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
      */
@@ -129,6 +161,8 @@ export interface GetComputeInstanceListResult {
      * Match against this int
      */
     readonly diskSize?: number;
+    readonly enableSecureBoot?: boolean;
+    readonly enableTpm?: boolean;
     /**
      * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
      */
@@ -198,6 +232,34 @@ export interface GetComputeInstanceListResult {
  * List Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/).
  *
  * Corresponding resource: exoscale_compute_instance.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumiverse/exoscale";
+ * import * as std from "@pulumi/std";
+ *
+ * const myComputeInstanceList = exoscale.getComputeInstanceList({
+ *     zone: "ch-gva-2",
+ *     type: "standard.micro",
+ *     name: "/.*ubuntu.*&#47;",
+ *     labels: {
+ *         customer: "/.*bank.*&#47;",
+ *         contract: "premium-support",
+ *     },
+ * });
+ * export const myComputeInstanceIds = std.formatlist({
+ *     input: "%s",
+ *     args: [myComputeInstanceList.then(myComputeInstanceList => myComputeInstanceList.instances.map(__item => __item.id))],
+ * }).then(invoke => std.join({
+ *     separator: "\n",
+ *     input: invoke.result,
+ * })).then(invoke => invoke.result);
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
  */
 export function getComputeInstanceListOutput(args: GetComputeInstanceListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetComputeInstanceListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -205,6 +267,8 @@ export function getComputeInstanceListOutput(args: GetComputeInstanceListOutputA
         "createdAt": args.createdAt,
         "deployTargetId": args.deployTargetId,
         "diskSize": args.diskSize,
+        "enableSecureBoot": args.enableSecureBoot,
+        "enableTpm": args.enableTpm,
         "id": args.id,
         "ipv6": args.ipv6,
         "ipv6Address": args.ipv6Address,
@@ -239,6 +303,8 @@ export interface GetComputeInstanceListOutputArgs {
      * Match against this int
      */
     diskSize?: pulumi.Input<number>;
+    enableSecureBoot?: pulumi.Input<boolean>;
+    enableTpm?: pulumi.Input<boolean>;
     /**
      * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
      */

@@ -8,6 +8,23 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumiverse/exoscale";
+ *
+ * const orgPolicy = new exoscale.IamOrgPolicy("org_policy", {
+ *     defaultServiceStrategy: "allow",
+ *     services: {
+ *         sos: {
+ *             type: "deny",
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
  */
 export class IamOrgPolicy extends pulumi.CustomResource {
     /**
@@ -40,12 +57,12 @@ export class IamOrgPolicy extends pulumi.CustomResource {
     /**
      * Default service strategy (`allow` or `deny`).
      */
-    public readonly defaultServiceStrategy!: pulumi.Output<string>;
+    declare public readonly defaultServiceStrategy: pulumi.Output<string>;
     /**
      * IAM policy services.
      */
-    public readonly services!: pulumi.Output<{[key: string]: outputs.IamOrgPolicyServices}>;
-    public readonly timeouts!: pulumi.Output<outputs.IamOrgPolicyTimeouts | undefined>;
+    declare public readonly services: pulumi.Output<{[key: string]: outputs.IamOrgPolicyServices}>;
+    declare public readonly timeouts: pulumi.Output<outputs.IamOrgPolicyTimeouts | undefined>;
 
     /**
      * Create a IamOrgPolicy resource with the given unique name, arguments, and options.
@@ -60,20 +77,20 @@ export class IamOrgPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IamOrgPolicyState | undefined;
-            resourceInputs["defaultServiceStrategy"] = state ? state.defaultServiceStrategy : undefined;
-            resourceInputs["services"] = state ? state.services : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
+            resourceInputs["defaultServiceStrategy"] = state?.defaultServiceStrategy;
+            resourceInputs["services"] = state?.services;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as IamOrgPolicyArgs | undefined;
-            if ((!args || args.defaultServiceStrategy === undefined) && !opts.urn) {
+            if (args?.defaultServiceStrategy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'defaultServiceStrategy'");
             }
-            if ((!args || args.services === undefined) && !opts.urn) {
+            if (args?.services === undefined && !opts.urn) {
                 throw new Error("Missing required property 'services'");
             }
-            resourceInputs["defaultServiceStrategy"] = args ? args.defaultServiceStrategy : undefined;
-            resourceInputs["services"] = args ? args.services : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
+            resourceInputs["defaultServiceStrategy"] = args?.defaultServiceStrategy;
+            resourceInputs["services"] = args?.services;
+            resourceInputs["timeouts"] = args?.timeouts;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IamOrgPolicy.__pulumiType, name, resourceInputs, opts);

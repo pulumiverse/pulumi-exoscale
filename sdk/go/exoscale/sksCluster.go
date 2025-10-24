@@ -28,8 +28,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			mySksCluster, err := exoscale.NewSksCluster(ctx, "mySksCluster", &exoscale.SksClusterArgs{
+//			mySksCluster, err := exoscale.NewSksCluster(ctx, "my_sks_cluster", &exoscale.SksClusterArgs{
 //				Zone: pulumi.String("ch-gva-2"),
+//				Name: pulumi.String("my-sks-cluster"),
 //			})
 //			if err != nil {
 //				return err
@@ -64,6 +65,8 @@ type SksCluster struct {
 	Addons pulumi.StringArrayOutput `pulumi:"addons"`
 	// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
 	AggregationCa pulumi.StringOutput `pulumi:"aggregationCa"`
+	// Parameters for Kubernetes Audit configuration (may only be enabled at creation time)
+	Audit SksClusterAuditPtrOutput `pulumi:"audit"`
 	// Enable automatic upgrading of the control plane version.
 	AutoUpgrade pulumi.BoolPtrOutput `pulumi:"autoUpgrade"`
 	// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
@@ -143,6 +146,8 @@ type sksClusterState struct {
 	Addons []string `pulumi:"addons"`
 	// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
 	AggregationCa *string `pulumi:"aggregationCa"`
+	// Parameters for Kubernetes Audit configuration (may only be enabled at creation time)
+	Audit *SksClusterAudit `pulumi:"audit"`
 	// Enable automatic upgrading of the control plane version.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
 	// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
@@ -190,6 +195,8 @@ type SksClusterState struct {
 	Addons pulumi.StringArrayInput
 	// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
 	AggregationCa pulumi.StringPtrInput
+	// Parameters for Kubernetes Audit configuration (may only be enabled at creation time)
+	Audit SksClusterAuditPtrInput
 	// Enable automatic upgrading of the control plane version.
 	AutoUpgrade pulumi.BoolPtrInput
 	// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
@@ -239,6 +246,8 @@ func (SksClusterState) ElementType() reflect.Type {
 type sksClusterArgs struct {
 	// Deprecated: This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
 	Addons []string `pulumi:"addons"`
+	// Parameters for Kubernetes Audit configuration (may only be enabled at creation time)
+	Audit *SksClusterAudit `pulumi:"audit"`
 	// Enable automatic upgrading of the control plane version.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
 	// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
@@ -273,6 +282,8 @@ type sksClusterArgs struct {
 type SksClusterArgs struct {
 	// Deprecated: This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
 	Addons pulumi.StringArrayInput
+	// Parameters for Kubernetes Audit configuration (may only be enabled at creation time)
+	Audit SksClusterAuditPtrInput
 	// Enable automatic upgrading of the control plane version.
 	AutoUpgrade pulumi.BoolPtrInput
 	// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
@@ -398,6 +409,11 @@ func (o SksClusterOutput) Addons() pulumi.StringArrayOutput {
 // The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
 func (o SksClusterOutput) AggregationCa() pulumi.StringOutput {
 	return o.ApplyT(func(v *SksCluster) pulumi.StringOutput { return v.AggregationCa }).(pulumi.StringOutput)
+}
+
+// Parameters for Kubernetes Audit configuration (may only be enabled at creation time)
+func (o SksClusterOutput) Audit() SksClusterAuditPtrOutput {
+	return o.ApplyT(func(v *SksCluster) SksClusterAuditPtrOutput { return v.Audit }).(SksClusterAuditPtrOutput)
 }
 
 // Enable automatic upgrading of the control plane version.

@@ -35,29 +35,29 @@ export class SksKubeconfig extends pulumi.CustomResource {
     /**
      * ❗ The parent exoscale*sks*cluster ID.
      */
-    public readonly clusterId!: pulumi.Output<string>;
-    public readonly earlyRenewalSeconds!: pulumi.Output<number | undefined>;
+    declare public readonly clusterId: pulumi.Output<string>;
+    declare public readonly earlyRenewalSeconds: pulumi.Output<number | undefined>;
     /**
      * ❗ Group names in the generated Kubeconfig. The certificate present in the Kubeconfig will have these roles set in the Organization field.
      */
-    public readonly groups!: pulumi.Output<string[]>;
+    declare public readonly groups: pulumi.Output<string[]>;
     /**
      * The generated Kubeconfig (YAML content).
      */
-    public /*out*/ readonly kubeconfig!: pulumi.Output<string>;
-    public /*out*/ readonly readyForRenewal!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly kubeconfig: pulumi.Output<string>;
+    declare public /*out*/ readonly readyForRenewal: pulumi.Output<boolean>;
     /**
      * ❗ The Time-to-Live of the Kubeconfig, after which it will expire / become invalid (seconds; default: 2592000 = 30 days).
      */
-    public readonly ttlSeconds!: pulumi.Output<number | undefined>;
+    declare public readonly ttlSeconds: pulumi.Output<number | undefined>;
     /**
      * ❗ User name in the generated Kubeconfig. The certificate present in the Kubeconfig will also have this name set for the CN field.
      */
-    public readonly user!: pulumi.Output<string>;
+    declare public readonly user: pulumi.Output<string>;
     /**
      * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a SksKubeconfig resource with the given unique name, arguments, and options.
@@ -72,34 +72,34 @@ export class SksKubeconfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SksKubeconfigState | undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["earlyRenewalSeconds"] = state ? state.earlyRenewalSeconds : undefined;
-            resourceInputs["groups"] = state ? state.groups : undefined;
-            resourceInputs["kubeconfig"] = state ? state.kubeconfig : undefined;
-            resourceInputs["readyForRenewal"] = state ? state.readyForRenewal : undefined;
-            resourceInputs["ttlSeconds"] = state ? state.ttlSeconds : undefined;
-            resourceInputs["user"] = state ? state.user : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["earlyRenewalSeconds"] = state?.earlyRenewalSeconds;
+            resourceInputs["groups"] = state?.groups;
+            resourceInputs["kubeconfig"] = state?.kubeconfig;
+            resourceInputs["readyForRenewal"] = state?.readyForRenewal;
+            resourceInputs["ttlSeconds"] = state?.ttlSeconds;
+            resourceInputs["user"] = state?.user;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as SksKubeconfigArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.groups === undefined) && !opts.urn) {
+            if (args?.groups === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groups'");
             }
-            if ((!args || args.user === undefined) && !opts.urn) {
+            if (args?.user === undefined && !opts.urn) {
                 throw new Error("Missing required property 'user'");
             }
-            if ((!args || args.zone === undefined) && !opts.urn) {
+            if (args?.zone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["earlyRenewalSeconds"] = args ? args.earlyRenewalSeconds : undefined;
-            resourceInputs["groups"] = args ? args.groups : undefined;
-            resourceInputs["ttlSeconds"] = args ? args.ttlSeconds : undefined;
-            resourceInputs["user"] = args ? args.user : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["earlyRenewalSeconds"] = args?.earlyRenewalSeconds;
+            resourceInputs["groups"] = args?.groups;
+            resourceInputs["ttlSeconds"] = args?.ttlSeconds;
+            resourceInputs["user"] = args?.user;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["kubeconfig"] = undefined /*out*/;
             resourceInputs["readyForRenewal"] = undefined /*out*/;
         }

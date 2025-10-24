@@ -25,16 +25,16 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === "pulumi:providers:" + Provider.__pulumiType;
     }
 
-    public readonly environment!: pulumi.Output<string | undefined>;
+    declare public readonly environment: pulumi.Output<string | undefined>;
     /**
      * Exoscale API key
      */
-    public readonly key!: pulumi.Output<string | undefined>;
+    declare public readonly key: pulumi.Output<string | undefined>;
     /**
      * Exoscale API secret
      */
-    public readonly secret!: pulumi.Output<string | undefined>;
-    public readonly sosEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly secret: pulumi.Output<string | undefined>;
+    declare public readonly sosEndpoint: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -47,12 +47,12 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["delay"] = pulumi.output(args ? args.delay : undefined).apply(JSON.stringify);
-            resourceInputs["environment"] = args ? args.environment : undefined;
+            resourceInputs["delay"] = pulumi.output(args?.delay).apply(JSON.stringify);
+            resourceInputs["environment"] = args?.environment;
             resourceInputs["key"] = (args?.key ? pulumi.secret(args.key) : undefined) ?? utilities.getEnv("EXOSCALE_API_KEY");
             resourceInputs["secret"] = (args?.secret ? pulumi.secret(args.secret) : undefined) ?? utilities.getEnv("EXOSCALE_API_SECRET");
-            resourceInputs["sosEndpoint"] = args ? args.sosEndpoint : undefined;
-            resourceInputs["timeout"] = pulumi.output(args ? args.timeout : undefined).apply(JSON.stringify);
+            resourceInputs["sosEndpoint"] = args?.sosEndpoint;
+            resourceInputs["timeout"] = pulumi.output(args?.timeout).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["key", "secret"] };

@@ -34,9 +34,10 @@ namespace Pulumiverse.Exoscale
     ///         Name = "Linux Ubuntu 22.04 LTS 64-bit",
     ///     });
     /// 
-    ///     var myInstance = new Exoscale.ComputeInstance("myInstance", new()
+    ///     var myInstance = new Exoscale.ComputeInstance("my_instance", new()
     ///     {
     ///         Zone = "ch-gva-2",
+    ///         Name = "my-instance",
     ///         TemplateId = myTemplate.Apply(getTemplateResult =&gt; getTemplateResult.Id),
     ///         Type = "standard.medium",
     ///         DiskSize = 10,
@@ -88,7 +89,7 @@ namespace Pulumiverse.Exoscale
         public Output<string?> DeployTargetId { get; private set; } = null!;
 
         /// <summary>
-        /// Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
+        /// Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `False`).
         /// </summary>
         [Output("destroyProtected")]
         public Output<bool?> DestroyProtected { get; private set; } = null!;
@@ -106,7 +107,19 @@ namespace Pulumiverse.Exoscale
         public Output<ImmutableArray<string>> ElasticIpIds { get; private set; } = null!;
 
         /// <summary>
-        /// Enable IPv6 on the instance (boolean; default: `false`).
+        /// Indicates whether secure boot is enabled on the instance.
+        /// </summary>
+        [Output("enableSecureBoot")]
+        public Output<bool?> EnableSecureBoot { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether TPM is enabled on the instance.
+        /// </summary>
+        [Output("enableTpm")]
+        public Output<bool?> EnableTpm { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable IPv6 on the instance (boolean; default: `False`).
         /// </summary>
         [Output("ipv6")]
         public Output<bool?> Ipv6 { get; private set; } = null!;
@@ -184,7 +197,7 @@ namespace Pulumiverse.Exoscale
         public Output<ImmutableArray<string>> SshKeys { get; private set; } = null!;
 
         /// <summary>
-        /// The instance state (`running` or `stopped`; default: `running`).
+        /// The instance state (`Running` or `Stopped`; default: `Running`).
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -291,7 +304,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? DeployTargetId { get; set; }
 
         /// <summary>
-        /// Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
+        /// Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `False`).
         /// </summary>
         [Input("destroyProtected")]
         public Input<bool>? DestroyProtected { get; set; }
@@ -315,7 +328,19 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// Enable IPv6 on the instance (boolean; default: `false`).
+        /// Indicates whether secure boot is enabled on the instance.
+        /// </summary>
+        [Input("enableSecureBoot")]
+        public Input<bool>? EnableSecureBoot { get; set; }
+
+        /// <summary>
+        /// Indicates whether TPM is enabled on the instance.
+        /// </summary>
+        [Input("enableTpm")]
+        public Input<bool>? EnableTpm { get; set; }
+
+        /// <summary>
+        /// Enable IPv6 on the instance (boolean; default: `False`).
         /// </summary>
         [Input("ipv6")]
         public Input<bool>? Ipv6 { get; set; }
@@ -393,7 +418,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The instance state (`running` or `stopped`; default: `running`).
+        /// The instance state (`Running` or `Stopped`; default: `Running`).
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -467,7 +492,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? DeployTargetId { get; set; }
 
         /// <summary>
-        /// Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `false`).
+        /// Mark the instance as protected, the Exoscale API will refuse to delete the instance until the protection is removed (boolean; default: `False`).
         /// </summary>
         [Input("destroyProtected")]
         public Input<bool>? DestroyProtected { get; set; }
@@ -491,7 +516,19 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// Enable IPv6 on the instance (boolean; default: `false`).
+        /// Indicates whether secure boot is enabled on the instance.
+        /// </summary>
+        [Input("enableSecureBoot")]
+        public Input<bool>? EnableSecureBoot { get; set; }
+
+        /// <summary>
+        /// Indicates whether TPM is enabled on the instance.
+        /// </summary>
+        [Input("enableTpm")]
+        public Input<bool>? EnableTpm { get; set; }
+
+        /// <summary>
+        /// Enable IPv6 on the instance (boolean; default: `False`).
         /// </summary>
         [Input("ipv6")]
         public Input<bool>? Ipv6 { get; set; }
@@ -550,7 +587,7 @@ namespace Pulumiverse.Exoscale
         /// <summary>
         /// A list of private networks (IDs) attached to the instance. Please use the `network_interface.*.network_id` argument instead.
         /// </summary>
-        [Obsolete(@"Use the network_interface block instead.")]
+        [Obsolete(@"Use the NetworkInterface block instead.")]
         public InputList<string> PrivateNetworkIds
         {
             get => _privateNetworkIds ?? (_privateNetworkIds = new InputList<string>());
@@ -600,7 +637,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The instance state (`running` or `stopped`; default: `running`).
+        /// The instance state (`Running` or `Stopped`; default: `Running`).
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

@@ -28,15 +28,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			mySksCluster, err := exoscale.NewSksCluster(ctx, "mySksCluster", &exoscale.SksClusterArgs{
+//			mySksCluster, err := exoscale.NewSksCluster(ctx, "my_sks_cluster", &exoscale.SksClusterArgs{
 //				Zone: pulumi.String("ch-gva-2"),
+//				Name: pulumi.String("my-sks-cluster"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = exoscale.NewSksNodepool(ctx, "mySksNodepool", &exoscale.SksNodepoolArgs{
+//			_, err = exoscale.NewSksNodepool(ctx, "my_sks_nodepool", &exoscale.SksNodepoolArgs{
 //				ClusterId:    mySksCluster.ID(),
 //				Zone:         mySksCluster.Zone,
+//				Name:         pulumi.String("my-sks-nodepool"),
 //				InstanceType: pulumi.String("standard.medium"),
 //				Size:         pulumi.Int(3),
 //			})

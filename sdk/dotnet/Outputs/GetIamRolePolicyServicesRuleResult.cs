@@ -15,7 +15,7 @@ namespace Pulumiverse.Exoscale.Outputs
     public sealed class GetIamRolePolicyServicesRuleResult
     {
         /// <summary>
-        /// IAM policy rule action (`allow` or `deny`).
+        /// IAM policy rule action (`Allow` or `Deny`).
         /// </summary>
         public readonly string Action;
         /// <summary>
