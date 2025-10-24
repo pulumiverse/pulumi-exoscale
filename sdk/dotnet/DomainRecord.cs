@@ -25,18 +25,23 @@ namespace Pulumiverse.Exoscale
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myDomain = new Exoscale.Domain("myDomain");
+    ///     var myDomain = new Exoscale.Domain("my_domain", new()
+    ///     {
+    ///         Name = "example.net",
+    ///     });
     /// 
-    ///     var myHost = new Exoscale.DomainRecord("myHost", new()
+    ///     var myHost = new Exoscale.DomainRecord("my_host", new()
     ///     {
     ///         Domain = myDomain.Id,
+    ///         Name = "my-host",
     ///         RecordType = "A",
     ///         Content = "1.2.3.4",
     ///     });
     /// 
-    ///     var myHostAlias = new Exoscale.DomainRecord("myHostAlias", new()
+    ///     var myHostAlias = new Exoscale.DomainRecord("my_host_alias", new()
     ///     {
     ///         Domain = myDomain.Id,
+    ///         Name = "my-host-alias",
     ///         RecordType = "CNAME",
     ///         Content = myHost.Hostname,
     ///     });

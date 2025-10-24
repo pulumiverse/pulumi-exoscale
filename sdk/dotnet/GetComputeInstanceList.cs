@@ -16,6 +16,51 @@ namespace Pulumiverse.Exoscale
         /// List Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/).
         /// 
         /// Corresponding resource: exoscale_compute_instance.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Exoscale = Pulumi.Exoscale;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myComputeInstanceList = Exoscale.GetComputeInstanceList.Invoke(new()
+        ///     {
+        ///         Zone = "ch-gva-2",
+        ///         Type = "standard.micro",
+        ///         Name = "/.*ubuntu.*/",
+        ///         Labels = 
+        ///         {
+        ///             { "customer", "/.*bank.*/" },
+        ///             { "contract", "premium-support" },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myComputeInstanceIds"] = Std.Formatlist.Invoke(new()
+        ///         {
+        ///             Input = "%s",
+        ///             Args = new[]
+        ///             {
+        ///                 myComputeInstanceList.Apply(getComputeInstanceListResult =&gt; getComputeInstanceListResult.Instances).Select(__item =&gt; __item.Id).ToList(),
+        ///             },
+        ///         }).Apply(invoke =&gt; Std.Join.Invoke(new()
+        ///         {
+        ///             Separator = @"
+        /// ",
+        ///             Input = invoke.Result,
+        ///         })).Apply(invoke =&gt; invoke.Result),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Please refer to the examples
+        /// directory for complete configuration examples.
         /// </summary>
         public static Task<GetComputeInstanceListResult> InvokeAsync(GetComputeInstanceListArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetComputeInstanceListResult>("exoscale:index/getComputeInstanceList:getComputeInstanceList", args ?? new GetComputeInstanceListArgs(), options.WithDefaults());
@@ -24,6 +69,51 @@ namespace Pulumiverse.Exoscale
         /// List Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/).
         /// 
         /// Corresponding resource: exoscale_compute_instance.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Exoscale = Pulumi.Exoscale;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myComputeInstanceList = Exoscale.GetComputeInstanceList.Invoke(new()
+        ///     {
+        ///         Zone = "ch-gva-2",
+        ///         Type = "standard.micro",
+        ///         Name = "/.*ubuntu.*/",
+        ///         Labels = 
+        ///         {
+        ///             { "customer", "/.*bank.*/" },
+        ///             { "contract", "premium-support" },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myComputeInstanceIds"] = Std.Formatlist.Invoke(new()
+        ///         {
+        ///             Input = "%s",
+        ///             Args = new[]
+        ///             {
+        ///                 myComputeInstanceList.Apply(getComputeInstanceListResult =&gt; getComputeInstanceListResult.Instances).Select(__item =&gt; __item.Id).ToList(),
+        ///             },
+        ///         }).Apply(invoke =&gt; Std.Join.Invoke(new()
+        ///         {
+        ///             Separator = @"
+        /// ",
+        ///             Input = invoke.Result,
+        ///         })).Apply(invoke =&gt; invoke.Result),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Please refer to the examples
+        /// directory for complete configuration examples.
         /// </summary>
         public static Output<GetComputeInstanceListResult> Invoke(GetComputeInstanceListInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetComputeInstanceListResult>("exoscale:index/getComputeInstanceList:getComputeInstanceList", args ?? new GetComputeInstanceListInvokeArgs(), options.WithDefaults());
@@ -32,6 +122,51 @@ namespace Pulumiverse.Exoscale
         /// List Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/).
         /// 
         /// Corresponding resource: exoscale_compute_instance.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Exoscale = Pulumi.Exoscale;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myComputeInstanceList = Exoscale.GetComputeInstanceList.Invoke(new()
+        ///     {
+        ///         Zone = "ch-gva-2",
+        ///         Type = "standard.micro",
+        ///         Name = "/.*ubuntu.*/",
+        ///         Labels = 
+        ///         {
+        ///             { "customer", "/.*bank.*/" },
+        ///             { "contract", "premium-support" },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myComputeInstanceIds"] = Std.Formatlist.Invoke(new()
+        ///         {
+        ///             Input = "%s",
+        ///             Args = new[]
+        ///             {
+        ///                 myComputeInstanceList.Apply(getComputeInstanceListResult =&gt; getComputeInstanceListResult.Instances).Select(__item =&gt; __item.Id).ToList(),
+        ///             },
+        ///         }).Apply(invoke =&gt; Std.Join.Invoke(new()
+        ///         {
+        ///             Separator = @"
+        /// ",
+        ///             Input = invoke.Result,
+        ///         })).Apply(invoke =&gt; invoke.Result),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Please refer to the examples
+        /// directory for complete configuration examples.
         /// </summary>
         public static Output<GetComputeInstanceListResult> Invoke(GetComputeInstanceListInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetComputeInstanceListResult>("exoscale:index/getComputeInstanceList:getComputeInstanceList", args ?? new GetComputeInstanceListInvokeArgs(), options.WithDefaults());
@@ -57,6 +192,12 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         [Input("diskSize")]
         public int? DiskSize { get; set; }
+
+        [Input("enableSecureBoot")]
+        public bool? EnableSecureBoot { get; set; }
+
+        [Input("enableTpm")]
+        public bool? EnableTpm { get; set; }
 
         /// <summary>
         /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
@@ -180,6 +321,12 @@ namespace Pulumiverse.Exoscale
         [Input("diskSize")]
         public Input<int>? DiskSize { get; set; }
 
+        [Input("enableSecureBoot")]
+        public Input<bool>? EnableSecureBoot { get; set; }
+
+        [Input("enableTpm")]
+        public Input<bool>? EnableTpm { get; set; }
+
         /// <summary>
         /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
         /// </summary>
@@ -298,6 +445,8 @@ namespace Pulumiverse.Exoscale
         /// Match against this int
         /// </summary>
         public readonly int? DiskSize;
+        public readonly bool? EnableSecureBoot;
+        public readonly bool? EnableTpm;
         /// <summary>
         /// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
         /// </summary>
@@ -371,6 +520,10 @@ namespace Pulumiverse.Exoscale
 
             int? diskSize,
 
+            bool? enableSecureBoot,
+
+            bool? enableTpm,
+
             string? id,
 
             ImmutableArray<Outputs.GetComputeInstanceListInstanceResult> instances,
@@ -406,6 +559,8 @@ namespace Pulumiverse.Exoscale
             CreatedAt = createdAt;
             DeployTargetId = deployTargetId;
             DiskSize = diskSize;
+            EnableSecureBoot = enableSecureBoot;
+            EnableTpm = enableTpm;
             Id = id;
             Instances = instances;
             Ipv6 = ipv6;

@@ -10,6 +10,52 @@ import * as utilities from "./utilities";
  * Fetch Exoscale [DNS](https://community.exoscale.com/product/networking/dns/) Domain Records data.
  *
  * Corresponding resource: exoscale_domain_record.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumiverse/exoscale";
+ * import * as std from "@pulumi/std";
+ *
+ * export = async () => {
+ *     const myDomain = await exoscale.getDomain({
+ *         name: "my.domain",
+ *     });
+ *     const myExoscaleDomainARecords = await exoscale.getDomainRecord({
+ *         domain: myDomain.name,
+ *         filter: {
+ *             name: "my-host",
+ *             recordType: "A",
+ *         },
+ *     });
+ *     const myExoscaleDomainNSRecords = await exoscale.getDomainRecord({
+ *         domain: myDomain.name,
+ *         filter: {
+ *             contentRegex: "ns.*",
+ *         },
+ *     });
+ *     return {
+ *         myExoscaleDomainARecords: (await std.join({
+ *             separator: "\n",
+ *             input: (await std.formatlist({
+ *                 input: "%s",
+ *                 args: [myExoscaleDomainARecords.records.map(__item => __item.name)],
+ *             })).result,
+ *         })).result,
+ *         myExoscaleDomainNSRecords: (await std.join({
+ *             separator: "\n",
+ *             input: (await std.formatlist({
+ *                 input: "%s",
+ *                 args: [myExoscaleDomainNSRecords.records.map(__item => __item.content)],
+ *             })).result,
+ *         })).result,
+ *     };
+ * }
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
  */
 export function getDomainRecord(args: GetDomainRecordArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainRecordResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -58,6 +104,52 @@ export interface GetDomainRecordResult {
  * Fetch Exoscale [DNS](https://community.exoscale.com/product/networking/dns/) Domain Records data.
  *
  * Corresponding resource: exoscale_domain_record.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumiverse/exoscale";
+ * import * as std from "@pulumi/std";
+ *
+ * export = async () => {
+ *     const myDomain = await exoscale.getDomain({
+ *         name: "my.domain",
+ *     });
+ *     const myExoscaleDomainARecords = await exoscale.getDomainRecord({
+ *         domain: myDomain.name,
+ *         filter: {
+ *             name: "my-host",
+ *             recordType: "A",
+ *         },
+ *     });
+ *     const myExoscaleDomainNSRecords = await exoscale.getDomainRecord({
+ *         domain: myDomain.name,
+ *         filter: {
+ *             contentRegex: "ns.*",
+ *         },
+ *     });
+ *     return {
+ *         myExoscaleDomainARecords: (await std.join({
+ *             separator: "\n",
+ *             input: (await std.formatlist({
+ *                 input: "%s",
+ *                 args: [myExoscaleDomainARecords.records.map(__item => __item.name)],
+ *             })).result,
+ *         })).result,
+ *         myExoscaleDomainNSRecords: (await std.join({
+ *             separator: "\n",
+ *             input: (await std.formatlist({
+ *                 input: "%s",
+ *                 args: [myExoscaleDomainNSRecords.records.map(__item => __item.content)],
+ *             })).result,
+ *         })).result,
+ *     };
+ * }
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
  */
 export function getDomainRecordOutput(args: GetDomainRecordOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDomainRecordResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

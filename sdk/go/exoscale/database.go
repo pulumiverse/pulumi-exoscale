@@ -15,6 +15,59 @@ import (
 // ❗This resource is deprecated and renamed to exoscale_dbaas, do not use it to create new resources❗
 // Manage Exoscale [Database Services (DBaaS)](https://community.exoscale.com/documentation/dbaas/).
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"timezone": "Europe/Zurich",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = exoscale.NewDatabase(ctx, "my_database", &exoscale.DatabaseArgs{
+//				Zone:                  pulumi.String("ch-gva-2"),
+//				Name:                  pulumi.String("my-database"),
+//				Type:                  pulumi.String("pg"),
+//				Plan:                  pulumi.String("startup-4"),
+//				MaintenanceDow:        pulumi.String("sunday"),
+//				MaintenanceTime:       pulumi.String("23:00:00"),
+//				TerminationProtection: pulumi.Bool(true),
+//				Pg: &exoscale.DatabasePgArgs{
+//					Version:        pulumi.String("13"),
+//					BackupSchedule: pulumi.String("04:00"),
+//					IpFilters: pulumi.StringArray{
+//						pulumi.String("1.2.3.4/32"),
+//						pulumi.String("5.6.7.8/32"),
+//					},
+//					PgSettings: pulumi.String(json0),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Please refer to the examples
+// directory for complete configuration examples.
+//
 // ## Import
 //
 // An existing database service may be imported by `<name>@<zone>`:
@@ -59,14 +112,12 @@ type Database struct {
 	Pg DatabasePgPtrOutput `pulumi:"pg"`
 	// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE> --plans` - for reference).
 	Plan pulumi.StringOutput `pulumi:"plan"`
-	// *redis* database service type specific arguments. Structure is documented below.
-	Redis DatabaseRedisPtrOutput `pulumi:"redis"`
 	// The current state of the database service.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The database service protection boolean flag against termination/power-off.
 	TerminationProtection pulumi.BoolOutput         `pulumi:"terminationProtection"`
 	Timeouts              DatabaseTimeoutsPtrOutput `pulumi:"timeouts"`
-	// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `valkey`, `grafana`).
+	// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `valkey`, `grafana`).
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The date of the latest database service update.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
@@ -145,14 +196,12 @@ type databaseState struct {
 	Pg *DatabasePg `pulumi:"pg"`
 	// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE> --plans` - for reference).
 	Plan *string `pulumi:"plan"`
-	// *redis* database service type specific arguments. Structure is documented below.
-	Redis *DatabaseRedis `pulumi:"redis"`
 	// The current state of the database service.
 	State *string `pulumi:"state"`
 	// The database service protection boolean flag against termination/power-off.
 	TerminationProtection *bool             `pulumi:"terminationProtection"`
 	Timeouts              *DatabaseTimeouts `pulumi:"timeouts"`
-	// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `valkey`, `grafana`).
+	// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `valkey`, `grafana`).
 	Type *string `pulumi:"type"`
 	// The date of the latest database service update.
 	UpdatedAt *string `pulumi:"updatedAt"`
@@ -193,14 +242,12 @@ type DatabaseState struct {
 	Pg DatabasePgPtrInput
 	// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE> --plans` - for reference).
 	Plan pulumi.StringPtrInput
-	// *redis* database service type specific arguments. Structure is documented below.
-	Redis DatabaseRedisPtrInput
 	// The current state of the database service.
 	State pulumi.StringPtrInput
 	// The database service protection boolean flag against termination/power-off.
 	TerminationProtection pulumi.BoolPtrInput
 	Timeouts              DatabaseTimeoutsPtrInput
-	// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `valkey`, `grafana`).
+	// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `valkey`, `grafana`).
 	Type pulumi.StringPtrInput
 	// The date of the latest database service update.
 	UpdatedAt pulumi.StringPtrInput
@@ -233,12 +280,10 @@ type databaseArgs struct {
 	Pg *DatabasePg `pulumi:"pg"`
 	// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE> --plans` - for reference).
 	Plan string `pulumi:"plan"`
-	// *redis* database service type specific arguments. Structure is documented below.
-	Redis *DatabaseRedis `pulumi:"redis"`
 	// The database service protection boolean flag against termination/power-off.
 	TerminationProtection *bool             `pulumi:"terminationProtection"`
 	Timeouts              *DatabaseTimeouts `pulumi:"timeouts"`
-	// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `valkey`, `grafana`).
+	// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `valkey`, `grafana`).
 	Type string `pulumi:"type"`
 	// *valkey* database service type specific arguments. Structure is documented below.
 	Valkey *DatabaseValkey `pulumi:"valkey"`
@@ -266,12 +311,10 @@ type DatabaseArgs struct {
 	Pg DatabasePgPtrInput
 	// The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE> --plans` - for reference).
 	Plan pulumi.StringInput
-	// *redis* database service type specific arguments. Structure is documented below.
-	Redis DatabaseRedisPtrInput
 	// The database service protection boolean flag against termination/power-off.
 	TerminationProtection pulumi.BoolPtrInput
 	Timeouts              DatabaseTimeoutsPtrInput
-	// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `valkey`, `grafana`).
+	// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `valkey`, `grafana`).
 	Type pulumi.StringInput
 	// *valkey* database service type specific arguments. Structure is documented below.
 	Valkey DatabaseValkeyPtrInput
@@ -441,11 +484,6 @@ func (o DatabaseOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Plan }).(pulumi.StringOutput)
 }
 
-// *redis* database service type specific arguments. Structure is documented below.
-func (o DatabaseOutput) Redis() DatabaseRedisPtrOutput {
-	return o.ApplyT(func(v *Database) DatabaseRedisPtrOutput { return v.Redis }).(DatabaseRedisPtrOutput)
-}
-
 // The current state of the database service.
 func (o DatabaseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
@@ -460,7 +498,7 @@ func (o DatabaseOutput) Timeouts() DatabaseTimeoutsPtrOutput {
 	return o.ApplyT(func(v *Database) DatabaseTimeoutsPtrOutput { return v.Timeouts }).(DatabaseTimeoutsPtrOutput)
 }
 
-// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `valkey`, `grafana`).
+// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `valkey`, `grafana`).
 func (o DatabaseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

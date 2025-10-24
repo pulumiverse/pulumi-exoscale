@@ -40,28 +40,28 @@ export class DbaasPgUser extends pulumi.CustomResource {
     /**
      * Allows replication
      */
-    public readonly allowReplication!: pulumi.Output<boolean>;
+    declare public readonly allowReplication: pulumi.Output<boolean>;
     /**
      * The password of the service user.
      */
-    public /*out*/ readonly password!: pulumi.Output<string>;
+    declare public /*out*/ readonly password: pulumi.Output<string>;
     /**
      * ❗ The name of the database service.
      */
-    public readonly service!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.DbaasPgUserTimeouts | undefined>;
+    declare public readonly service: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.DbaasPgUserTimeouts | undefined>;
     /**
      * The type of the service user.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * ❗ The name of the user for this service.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
     /**
      * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a DbaasPgUser resource with the given unique name, arguments, and options.
@@ -76,29 +76,29 @@ export class DbaasPgUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DbaasPgUserState | undefined;
-            resourceInputs["allowReplication"] = state ? state.allowReplication : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["allowReplication"] = state?.allowReplication;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["service"] = state?.service;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["username"] = state?.username;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as DbaasPgUserArgs | undefined;
-            if ((!args || args.service === undefined) && !opts.urn) {
+            if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            if ((!args || args.zone === undefined) && !opts.urn) {
+            if (args?.zone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            resourceInputs["allowReplication"] = args ? args.allowReplication : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["allowReplication"] = args?.allowReplication;
+            resourceInputs["service"] = args?.service;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["username"] = args?.username;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["password"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }

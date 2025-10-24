@@ -40,16 +40,16 @@ export class SosBucketPolicy extends pulumi.CustomResource {
     /**
      * ❗ The name of the bucket to which the policy is to be applied.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * The content of the policy
      */
-    public readonly policy!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.SosBucketPolicyTimeouts | undefined>;
+    declare public readonly policy: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.SosBucketPolicyTimeouts | undefined>;
     /**
      * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a SosBucketPolicy resource with the given unique name, arguments, and options.
@@ -64,25 +64,25 @@ export class SosBucketPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SosBucketPolicyState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["policy"] = state ? state.policy : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["policy"] = state?.policy;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as SosBucketPolicyArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.policy === undefined) && !opts.urn) {
+            if (args?.policy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policy'");
             }
-            if ((!args || args.zone === undefined) && !opts.urn) {
+            if (args?.zone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["policy"] = args ? args.policy : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["policy"] = args?.policy;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["zone"] = args?.zone;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SosBucketPolicy.__pulumiType, name, resourceInputs, opts);

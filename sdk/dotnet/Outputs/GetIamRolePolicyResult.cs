@@ -15,7 +15,7 @@ namespace Pulumiverse.Exoscale.Outputs
     public sealed class GetIamRolePolicyResult
     {
         /// <summary>
-        /// Default service strategy (`allow` or `deny`).
+        /// Default service strategy (`Allow` or `Deny`).
         /// </summary>
         public readonly string DefaultServiceStrategy;
         /// <summary>

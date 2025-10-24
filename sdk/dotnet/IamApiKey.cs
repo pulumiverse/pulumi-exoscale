@@ -12,6 +12,44 @@ namespace Pulumiverse.Exoscale
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Exoscale = Pulumiverse.Exoscale;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myRole = new Exoscale.IamRole("my_role", new()
+    ///     {
+    ///         Name = "my-role",
+    ///         Description = "Example role",
+    ///         Editable = true,
+    ///         Policy = new Exoscale.Inputs.IamRolePolicyArgs
+    ///         {
+    ///             DefaultServiceStrategy = "deny",
+    ///             Services = 
+    ///             {
+    ///                 { "sos", new Exoscale.Inputs.IamRolePolicyServicesArgs
+    ///                 {
+    ///                     Type = "allow",
+    ///                 } },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var myApiKey = new Exoscale.IamApiKey("my_api_key", new()
+    ///     {
+    ///         Name = "my-api-key",
+    ///         RoleId = myRole.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Please refer to the examples
+    /// directory for complete configuration examples.
     /// </summary>
     [ExoscaleResourceType("exoscale:index/iamApiKey:IamApiKey")]
     public partial class IamApiKey : global::Pulumi.CustomResource

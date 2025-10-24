@@ -35,7 +35,15 @@ namespace Pulumiverse.Exoscale.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ElasticIpIds;
         /// <summary>
-        /// The compute instance ID to match (conflicts with `name`).
+        /// Indicates if the instance has secure boot enabled.
+        /// </summary>
+        public readonly bool EnableSecureBoot;
+        /// <summary>
+        /// Indicates if the instance has TPM enabled.
+        /// </summary>
+        public readonly bool EnableTpm;
+        /// <summary>
+        /// The compute instance ID to match (conflicts with `Name`).
         /// </summary>
         public readonly string? Id;
         /// <summary>
@@ -59,7 +67,7 @@ namespace Pulumiverse.Exoscale.Outputs
         /// </summary>
         public readonly string ManagerType;
         /// <summary>
-        /// The instance name to match (conflicts with `id`).
+        /// The instance name to match (conflicts with `Id`).
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -119,6 +127,10 @@ namespace Pulumiverse.Exoscale.Outputs
 
             ImmutableArray<string> elasticIpIds,
 
+            bool enableSecureBoot,
+
+            bool enableTpm,
+
             string? id,
 
             bool ipv6,
@@ -160,6 +172,8 @@ namespace Pulumiverse.Exoscale.Outputs
             DeployTargetId = deployTargetId;
             DiskSize = diskSize;
             ElasticIpIds = elasticIpIds;
+            EnableSecureBoot = enableSecureBoot;
+            EnableTpm = enableTpm;
             Id = id;
             Ipv6 = ipv6;
             Ipv6Address = ipv6Address;

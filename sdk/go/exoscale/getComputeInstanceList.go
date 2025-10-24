@@ -14,6 +14,49 @@ import (
 // List Exoscale [Compute Instances](https://community.exoscale.com/documentation/compute/).
 //
 // Corresponding resource: exoscale_compute_instance.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// myComputeInstanceList, err := exoscale.GetComputeInstanceList(ctx, &exoscale.GetComputeInstanceListArgs{
+// Zone: "ch-gva-2",
+// Type: pulumi.StringRef("standard.micro"),
+// Name: pulumi.StringRef("/.*ubuntu.*/"),
+// Labels: map[string]interface{}{
+// "customer": "/.*bank.*/",
+// "contract": "premium-support",
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("myComputeInstanceIds", pulumi.String(std.Join(ctx, &std.JoinArgs{
+// Separator: "\n",
+// Input: std.Formatlist(ctx, &std.FormatlistArgs{
+// Input: "%s",
+// Args: [][]*string{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:15,16-53),
+// },
+// }, nil).Result,
+// }, nil).Result))
+// return nil
+// })
+// }
+// ```
+//
+// Please refer to the examples
+// directory for complete configuration examples.
 func GetComputeInstanceList(ctx *pulumi.Context, args *GetComputeInstanceListArgs, opts ...pulumi.InvokeOption) (*GetComputeInstanceListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetComputeInstanceListResult
@@ -31,7 +74,9 @@ type GetComputeInstanceListArgs struct {
 	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 	DeployTargetId *string `pulumi:"deployTargetId"`
 	// Match against this int
-	DiskSize *int `pulumi:"diskSize"`
+	DiskSize         *int  `pulumi:"diskSize"`
+	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
+	EnableTpm        *bool `pulumi:"enableTpm"`
 	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 	Id *string `pulumi:"id"`
 	// Match against this bool
@@ -71,7 +116,9 @@ type GetComputeInstanceListResult struct {
 	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 	DeployTargetId *string `pulumi:"deployTargetId"`
 	// Match against this int
-	DiskSize *int `pulumi:"diskSize"`
+	DiskSize         *int  `pulumi:"diskSize"`
+	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
+	EnableTpm        *bool `pulumi:"enableTpm"`
 	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 	Id *string `pulumi:"id"`
 	// The list of exoscale*compute*instance.
@@ -122,7 +169,9 @@ type GetComputeInstanceListOutputArgs struct {
 	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 	DeployTargetId pulumi.StringPtrInput `pulumi:"deployTargetId"`
 	// Match against this int
-	DiskSize pulumi.IntPtrInput `pulumi:"diskSize"`
+	DiskSize         pulumi.IntPtrInput  `pulumi:"diskSize"`
+	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
+	EnableTpm        pulumi.BoolPtrInput `pulumi:"enableTpm"`
 	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Match against this bool
@@ -187,6 +236,14 @@ func (o GetComputeInstanceListResultOutput) DeployTargetId() pulumi.StringPtrOut
 // Match against this int
 func (o GetComputeInstanceListResultOutput) DiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetComputeInstanceListResult) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetComputeInstanceListResultOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetComputeInstanceListResult) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetComputeInstanceListResultOutput) EnableTpm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetComputeInstanceListResult) *bool { return v.EnableTpm }).(pulumi.BoolPtrOutput)
 }
 
 // Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.

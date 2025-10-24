@@ -14,6 +14,71 @@ import (
 // Fetch Exoscale [DNS](https://community.exoscale.com/product/networking/dns/) Domain Records data.
 //
 // Corresponding resource: exoscale_domain_record.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// myDomain, err := exoscale.LookupDomain(ctx, &exoscale.LookupDomainArgs{
+// Name: "my.domain",
+// }, nil);
+// if err != nil {
+// return err
+// }
+// myExoscaleDomainARecords, err := exoscale.LookupDomainRecord(ctx, &exoscale.LookupDomainRecordArgs{
+// Domain: myDomain.Name,
+// Filter: exoscale.GetDomainRecordFilter{
+// Name: pulumi.StringRef("my-host"),
+// RecordType: pulumi.StringRef("A"),
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// myExoscaleDomainNSRecords, err := exoscale.LookupDomainRecord(ctx, &exoscale.LookupDomainRecordArgs{
+// Domain: myDomain.Name,
+// Filter: exoscale.GetDomainRecordFilter{
+// ContentRegex: pulumi.StringRef("ns.*"),
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("myExoscaleDomainARecords", pulumi.String(std.Join(ctx, &std.JoinArgs{
+// Separator: "\n",
+// Input: std.Formatlist(ctx, &std.FormatlistArgs{
+// Input: "%s",
+// Args: [][]*string{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:24,16-56),
+// },
+// }, nil).Result,
+// }, nil).Result))
+// ctx.Export("myExoscaleDomainNSRecords", pulumi.String(std.Join(ctx, &std.JoinArgs{
+// Separator: "\n",
+// Input: std.Formatlist(ctx, &std.FormatlistArgs{
+// Input: "%s",
+// Args: [][]*string{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:34,16-60),
+// },
+// }, nil).Result,
+// }, nil).Result))
+// return nil
+// })
+// }
+// ```
+//
+// Please refer to the examples
+// directory for complete configuration examples.
 func LookupDomainRecord(ctx *pulumi.Context, args *LookupDomainRecordArgs, opts ...pulumi.InvokeOption) (*LookupDomainRecordResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDomainRecordResult

@@ -125,7 +125,7 @@ namespace Pulumiverse.Exoscale
         public string? Description { get; set; }
 
         /// <summary>
-        /// The private network ID to match (conflicts with `name`).
+        /// The private network ID to match (conflicts with `Name`).
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
@@ -143,7 +143,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The network name to match (conflicts with `id`).
+        /// The network name to match (conflicts with `Id`).
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -169,7 +169,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The private network ID to match (conflicts with `name`).
+        /// The private network ID to match (conflicts with `Name`).
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -187,7 +187,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The network name to match (conflicts with `id`).
+        /// The network name to match (conflicts with `Id`).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -217,7 +217,7 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly string EndIp;
         /// <summary>
-        /// The private network ID to match (conflicts with `name`).
+        /// The private network ID to match (conflicts with `Name`).
         /// </summary>
         public readonly string? Id;
         /// <summary>
@@ -225,7 +225,7 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>
-        /// The network name to match (conflicts with `id`).
+        /// The network name to match (conflicts with `Id`).
         /// </summary>
         public readonly string? Name;
         /// <summary>

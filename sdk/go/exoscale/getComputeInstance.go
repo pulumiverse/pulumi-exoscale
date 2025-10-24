@@ -77,6 +77,10 @@ type LookupComputeInstanceResult struct {
 	DiskSize int `pulumi:"diskSize"`
 	// The list of attached exoscale*elastic*ip (IDs).
 	ElasticIpIds []string `pulumi:"elasticIpIds"`
+	// Whether secure boot is enabled on the instance.
+	EnableSecureBoot bool `pulumi:"enableSecureBoot"`
+	// Whether TPM is enabled on the instance.
+	EnableTpm bool `pulumi:"enableTpm"`
 	// The compute instance ID to match (conflicts with `name`).
 	Id *string `pulumi:"id"`
 	// Whether IPv6 is enabled on the instance.
@@ -178,6 +182,16 @@ func (o LookupComputeInstanceResultOutput) DiskSize() pulumi.IntOutput {
 // The list of attached exoscale*elastic*ip (IDs).
 func (o LookupComputeInstanceResultOutput) ElasticIpIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupComputeInstanceResult) []string { return v.ElasticIpIds }).(pulumi.StringArrayOutput)
+}
+
+// Whether secure boot is enabled on the instance.
+func (o LookupComputeInstanceResultOutput) EnableSecureBoot() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) bool { return v.EnableSecureBoot }).(pulumi.BoolOutput)
+}
+
+// Whether TPM is enabled on the instance.
+func (o LookupComputeInstanceResultOutput) EnableTpm() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) bool { return v.EnableTpm }).(pulumi.BoolOutput)
 }
 
 // The compute instance ID to match (conflicts with `name`).

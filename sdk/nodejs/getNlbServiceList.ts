@@ -10,6 +10,11 @@ import * as utilities from "./utilities";
  * Fetch Exoscale [Network Load Balancers (NLB)](https://community.exoscale.com/product/networking/nlb/) Services.
  *
  * Corresponding resource: exoscale_nlb.
+ *
+ * ## Example Usage
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
  */
 export function getNlbServiceList(args: GetNlbServiceListArgs, opts?: pulumi.InvokeOptions): Promise<GetNlbServiceListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -70,6 +75,11 @@ export interface GetNlbServiceListResult {
  * Fetch Exoscale [Network Load Balancers (NLB)](https://community.exoscale.com/product/networking/nlb/) Services.
  *
  * Corresponding resource: exoscale_nlb.
+ *
+ * ## Example Usage
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
  */
 export function getNlbServiceListOutput(args: GetNlbServiceListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNlbServiceListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

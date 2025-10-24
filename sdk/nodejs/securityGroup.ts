@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const mySecurityGroup = new exoscale.SecurityGroup("mySecurityGroup", {});
+ * const mySecurityGroup = new exoscale.SecurityGroup("my_security_group", {name: "my-security-group"});
  * ```
  *
  * Next step is to attach exoscale_security_group_rule(s) to the group.
@@ -66,15 +66,15 @@ export class SecurityGroup extends pulumi.CustomResource {
     /**
      * ❗ A free-form text describing the group.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * A list of external network sources, in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation) notation.
      */
-    public readonly externalSources!: pulumi.Output<string[] | undefined>;
+    declare public readonly externalSources: pulumi.Output<string[] | undefined>;
     /**
      * ❗ The security group name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a SecurityGroup resource with the given unique name, arguments, and options.
@@ -89,14 +89,14 @@ export class SecurityGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityGroupState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["externalSources"] = state ? state.externalSources : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["externalSources"] = state?.externalSources;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as SecurityGroupArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["externalSources"] = args ? args.externalSources : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["externalSources"] = args?.externalSources;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecurityGroup.__pulumiType, name, resourceInputs, opts);

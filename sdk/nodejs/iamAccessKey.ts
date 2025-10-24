@@ -11,14 +11,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const mySosAccessKey = new exoscale.IamAccessKey("mySosAccessKey", {
+ * const mySosAccessKey = new exoscale.IamAccessKey("my_sos_access_key", {
+ *     name: "my-sos-access-key",
  *     operations: [
  *         "get-sos-object",
  *         "list-sos-bucket",
  *     ],
  *     resources: ["sos/bucket:my-bucket"],
  * });
- * const mySksAccessKey = new exoscale.IamAccessKey("mySksAccessKey", {tags: ["sks"]});
+ * const mySksAccessKey = new exoscale.IamAccessKey("my_sks_access_key", {
+ *     name: "my-sks-access-key",
+ *     tags: ["sks"],
+ * });
  * ```
  *
  * Please refer to the examples
@@ -57,28 +61,28 @@ export class IamAccessKey extends pulumi.CustomResource {
     /**
      * The IAM access key (identifier).
      */
-    public /*out*/ readonly key!: pulumi.Output<string>;
+    declare public /*out*/ readonly key: pulumi.Output<string>;
     /**
      * ❗ The IAM access key name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * ❗ A list of API operations to restrict the key to.
      */
-    public readonly operations!: pulumi.Output<string[]>;
+    declare public readonly operations: pulumi.Output<string[]>;
     /**
      * ❗ A list of API [resources](https://community.exoscale.com/documentation/iam/quick-start/#restricting-api-access-keys-to-resources) to restrict the key to (`<domain>/<type>:<name>`).
      */
-    public readonly resources!: pulumi.Output<string[] | undefined>;
+    declare public readonly resources: pulumi.Output<string[] | undefined>;
     /**
      * The key secret.
      */
-    public /*out*/ readonly secret!: pulumi.Output<string>;
+    declare public /*out*/ readonly secret: pulumi.Output<string>;
     /**
      * ❗ A list of tags to restrict the key to.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
-    public /*out*/ readonly tagsOperations!: pulumi.Output<string[]>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
+    declare public /*out*/ readonly tagsOperations: pulumi.Output<string[]>;
 
     /**
      * Create a IamAccessKey resource with the given unique name, arguments, and options.
@@ -93,19 +97,19 @@ export class IamAccessKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IamAccessKeyState | undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["operations"] = state ? state.operations : undefined;
-            resourceInputs["resources"] = state ? state.resources : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tagsOperations"] = state ? state.tagsOperations : undefined;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["operations"] = state?.operations;
+            resourceInputs["resources"] = state?.resources;
+            resourceInputs["secret"] = state?.secret;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tagsOperations"] = state?.tagsOperations;
         } else {
             const args = argsOrState as IamAccessKeyArgs | undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["operations"] = args ? args.operations : undefined;
-            resourceInputs["resources"] = args ? args.resources : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["operations"] = args?.operations;
+            resourceInputs["resources"] = args?.resources;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["key"] = undefined /*out*/;
             resourceInputs["secret"] = undefined /*out*/;
             resourceInputs["tagsOperations"] = undefined /*out*/;

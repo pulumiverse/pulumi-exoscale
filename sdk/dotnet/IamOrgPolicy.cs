@@ -12,12 +12,38 @@ namespace Pulumiverse.Exoscale
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Exoscale = Pulumiverse.Exoscale;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var orgPolicy = new Exoscale.IamOrgPolicy("org_policy", new()
+    ///     {
+    ///         DefaultServiceStrategy = "allow",
+    ///         Services = 
+    ///         {
+    ///             { "sos", new Exoscale.Inputs.IamOrgPolicyServicesArgs
+    ///             {
+    ///                 Type = "deny",
+    ///             } },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Please refer to the examples
+    /// directory for complete configuration examples.
     /// </summary>
     [ExoscaleResourceType("exoscale:index/iamOrgPolicy:IamOrgPolicy")]
     public partial class IamOrgPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Default service strategy (`allow` or `deny`).
+        /// Default service strategy (`Allow` or `Deny`).
         /// </summary>
         [Output("defaultServiceStrategy")]
         public Output<string> DefaultServiceStrategy { get; private set; } = null!;
@@ -79,7 +105,7 @@ namespace Pulumiverse.Exoscale
     public sealed class IamOrgPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Default service strategy (`allow` or `deny`).
+        /// Default service strategy (`Allow` or `Deny`).
         /// </summary>
         [Input("defaultServiceStrategy", required: true)]
         public Input<string> DefaultServiceStrategy { get; set; } = null!;
@@ -108,7 +134,7 @@ namespace Pulumiverse.Exoscale
     public sealed class IamOrgPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Default service strategy (`allow` or `deny`).
+        /// Default service strategy (`Allow` or `Deny`).
         /// </summary>
         [Input("defaultServiceStrategy")]
         public Input<string>? DefaultServiceStrategy { get; set; }

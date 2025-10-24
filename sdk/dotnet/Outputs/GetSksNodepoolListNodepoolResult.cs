@@ -41,7 +41,7 @@ namespace Pulumiverse.Exoscale.Outputs
         /// </summary>
         public readonly string InstancePoolId;
         /// <summary>
-        /// The string used to prefix the managed instances name (default `pool`).
+        /// The string used to prefix the managed instances name (default `Pool`).
         /// </summary>
         public readonly string? InstancePrefix;
         /// <summary>

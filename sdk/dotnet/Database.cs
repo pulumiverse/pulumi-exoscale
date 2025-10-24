@@ -14,6 +14,48 @@ namespace Pulumiverse.Exoscale
     /// ❗This resource is deprecated and renamed to exoscale_dbaas, do not use it to create new resources❗
     /// Manage Exoscale [Database Services (DBaaS)](https://community.exoscale.com/documentation/dbaas/).
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Exoscale = Pulumiverse.Exoscale;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myDatabase = new Exoscale.Database("my_database", new()
+    ///     {
+    ///         Zone = "ch-gva-2",
+    ///         Name = "my-database",
+    ///         Type = "pg",
+    ///         Plan = "startup-4",
+    ///         MaintenanceDow = "sunday",
+    ///         MaintenanceTime = "23:00:00",
+    ///         TerminationProtection = true,
+    ///         Pg = new Exoscale.Inputs.DatabasePgArgs
+    ///         {
+    ///             Version = "13",
+    ///             BackupSchedule = "04:00",
+    ///             IpFilters = new[]
+    ///             {
+    ///                 "1.2.3.4/32",
+    ///                 "5.6.7.8/32",
+    ///             },
+    ///             PgSettings = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["timezone"] = "Europe/Zurich",
+    ///             }),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Please refer to the examples
+    /// directory for complete configuration examples.
+    /// 
     /// ## Import
     /// 
     /// An existing database service may be imported by `&lt;name&gt;@&lt;zone&gt;`:
@@ -60,7 +102,7 @@ namespace Pulumiverse.Exoscale
         public Output<Outputs.DatabaseKafka?> Kafka { get; private set; } = null!;
 
         /// <summary>
-        /// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
+        /// The day of week to perform the automated database service maintenance (`Never`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`).
         /// </summary>
         [Output("maintenanceDow")]
         public Output<string> MaintenanceDow { get; private set; } = null!;
@@ -120,12 +162,6 @@ namespace Pulumiverse.Exoscale
         public Output<string> Plan { get; private set; } = null!;
 
         /// <summary>
-        /// *redis* database service type specific arguments. Structure is documented below.
-        /// </summary>
-        [Output("redis")]
-        public Output<Outputs.DatabaseRedis?> Redis { get; private set; } = null!;
-
-        /// <summary>
         /// The current state of the database service.
         /// </summary>
         [Output("state")]
@@ -141,7 +177,7 @@ namespace Pulumiverse.Exoscale
         public Output<Outputs.DatabaseTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
-        /// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `valkey`, `grafana`).
+        /// ❗ The type of the database service (`Kafka`, `Mysql`, `Opensearch`, `Pg`, `Valkey`, `Grafana`).
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -224,7 +260,7 @@ namespace Pulumiverse.Exoscale
         public Input<Inputs.DatabaseKafkaArgs>? Kafka { get; set; }
 
         /// <summary>
-        /// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
+        /// The day of week to perform the automated database service maintenance (`Never`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`).
         /// </summary>
         [Input("maintenanceDow")]
         public Input<string>? MaintenanceDow { get; set; }
@@ -266,12 +302,6 @@ namespace Pulumiverse.Exoscale
         public Input<string> Plan { get; set; } = null!;
 
         /// <summary>
-        /// *redis* database service type specific arguments. Structure is documented below.
-        /// </summary>
-        [Input("redis")]
-        public Input<Inputs.DatabaseRedisArgs>? Redis { get; set; }
-
-        /// <summary>
         /// The database service protection boolean flag against termination/power-off.
         /// </summary>
         [Input("terminationProtection")]
@@ -281,7 +311,7 @@ namespace Pulumiverse.Exoscale
         public Input<Inputs.DatabaseTimeoutsArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `valkey`, `grafana`).
+        /// ❗ The type of the database service (`Kafka`, `Mysql`, `Opensearch`, `Pg`, `Valkey`, `Grafana`).
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -337,7 +367,7 @@ namespace Pulumiverse.Exoscale
         public Input<Inputs.DatabaseKafkaGetArgs>? Kafka { get; set; }
 
         /// <summary>
-        /// The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
+        /// The day of week to perform the automated database service maintenance (`Never`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`).
         /// </summary>
         [Input("maintenanceDow")]
         public Input<string>? MaintenanceDow { get; set; }
@@ -397,12 +427,6 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Plan { get; set; }
 
         /// <summary>
-        /// *redis* database service type specific arguments. Structure is documented below.
-        /// </summary>
-        [Input("redis")]
-        public Input<Inputs.DatabaseRedisGetArgs>? Redis { get; set; }
-
-        /// <summary>
         /// The current state of the database service.
         /// </summary>
         [Input("state")]
@@ -418,7 +442,7 @@ namespace Pulumiverse.Exoscale
         public Input<Inputs.DatabaseTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `valkey`, `grafana`).
+        /// ❗ The type of the database service (`Kafka`, `Mysql`, `Opensearch`, `Pg`, `Valkey`, `Grafana`).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -21,8 +21,9 @@ import * as utilities from "./utilities";
  *     zone: "ch-gva-2",
  *     name: "Linux Ubuntu 22.04 LTS 64-bit",
  * });
- * const myInstancePool = new exoscale.InstancePool("myInstancePool", {
+ * const myInstancePool = new exoscale.InstancePool("my_instance_pool", {
  *     zone: "ch-gva-2",
+ *     name: "my-instance-pool",
  *     templateId: myTemplate.then(myTemplate => myTemplate.id),
  *     instanceType: "standard.medium",
  *     diskSize: 10,
@@ -78,96 +79,96 @@ export class InstancePool extends pulumi.CustomResource {
      *
      * @deprecated Use antiAffinityGroupIds instead.
      */
-    public readonly affinityGroupIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly affinityGroupIds: pulumi.Output<string[] | undefined>;
     /**
      * A list of exoscale*anti*affinity_group (IDs; may only be set at creation time).
      */
-    public readonly antiAffinityGroupIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly antiAffinityGroupIds: pulumi.Output<string[] | undefined>;
     /**
      * A deploy target ID.
      */
-    public readonly deployTargetId!: pulumi.Output<string | undefined>;
+    declare public readonly deployTargetId: pulumi.Output<string | undefined>;
     /**
      * A free-form text describing the pool.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The managed instances disk size (GiB).
      */
-    public readonly diskSize!: pulumi.Output<number>;
+    declare public readonly diskSize: pulumi.Output<number>;
     /**
      * A list of exoscale*elastic*ip (IDs).
      */
-    public readonly elasticIpIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly elasticIpIds: pulumi.Output<string[] | undefined>;
     /**
      * The string used to prefix managed instances name (default: `pool`).
      */
-    public readonly instancePrefix!: pulumi.Output<string | undefined>;
+    declare public readonly instancePrefix: pulumi.Output<string | undefined>;
     /**
      * The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * The list of managed instances. Structure is documented below.
      */
-    public readonly instances!: pulumi.Output<outputs.InstancePoolInstance[]>;
+    declare public readonly instances: pulumi.Output<outputs.InstancePoolInstance[]>;
     /**
      * Enable IPv6 on managed instances (boolean; default: `false`).
      */
-    public readonly ipv6!: pulumi.Output<boolean | undefined>;
+    declare public readonly ipv6: pulumi.Output<boolean | undefined>;
     /**
      * The exoscale*ssh*key (name) to authorize in the managed instances.
      */
-    public readonly keyPair!: pulumi.Output<string | undefined>;
+    declare public readonly keyPair: pulumi.Output<string | undefined>;
     /**
      * A map of key/value labels.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Minimum number of running Instances.
      */
-    public readonly minAvailable!: pulumi.Output<number>;
+    declare public readonly minAvailable: pulumi.Output<number>;
     /**
      * The instance pool name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A list of exoscale*private*network (IDs).
      */
-    public readonly networkIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly networkIds: pulumi.Output<string[] | undefined>;
     /**
      * A list of exoscale*security*group (IDs).
      */
-    public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly securityGroupIds: pulumi.Output<string[] | undefined>;
     /**
      * The managed instances type. Please use the `instanceType` argument instead.
      *
      * @deprecated This attribute has been replaced by "instanceType".
      */
-    public readonly serviceOffering!: pulumi.Output<string>;
+    declare public readonly serviceOffering: pulumi.Output<string>;
     /**
      * The number of managed instances.
      */
-    public readonly size!: pulumi.Output<number>;
-    public readonly state!: pulumi.Output<string>;
+    declare public readonly size: pulumi.Output<number>;
+    declare public readonly state: pulumi.Output<string>;
     /**
      * The exoscale.getTemplate (ID) to use when creating the managed instances.
      */
-    public readonly templateId!: pulumi.Output<string>;
+    declare public readonly templateId: pulumi.Output<string>;
     /**
      * [cloud-init](http://cloudinit.readthedocs.io/) configuration to apply to the managed instances.
      */
-    public readonly userData!: pulumi.Output<string | undefined>;
+    declare public readonly userData: pulumi.Output<string | undefined>;
     /**
      * The list of managed instances (IDs). Please use the `instances.*.id` attribute instead.
      *
      * @deprecated Use the instances exported attribute instead.
      */
-    public readonly virtualMachines!: pulumi.Output<string[]>;
+    declare public readonly virtualMachines: pulumi.Output<string[]>;
     /**
      * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a InstancePool resource with the given unique name, arguments, and options.
@@ -182,63 +183,63 @@ export class InstancePool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstancePoolState | undefined;
-            resourceInputs["affinityGroupIds"] = state ? state.affinityGroupIds : undefined;
-            resourceInputs["antiAffinityGroupIds"] = state ? state.antiAffinityGroupIds : undefined;
-            resourceInputs["deployTargetId"] = state ? state.deployTargetId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["diskSize"] = state ? state.diskSize : undefined;
-            resourceInputs["elasticIpIds"] = state ? state.elasticIpIds : undefined;
-            resourceInputs["instancePrefix"] = state ? state.instancePrefix : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["instances"] = state ? state.instances : undefined;
-            resourceInputs["ipv6"] = state ? state.ipv6 : undefined;
-            resourceInputs["keyPair"] = state ? state.keyPair : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["minAvailable"] = state ? state.minAvailable : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkIds"] = state ? state.networkIds : undefined;
-            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            resourceInputs["serviceOffering"] = state ? state.serviceOffering : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["templateId"] = state ? state.templateId : undefined;
-            resourceInputs["userData"] = state ? state.userData : undefined;
-            resourceInputs["virtualMachines"] = state ? state.virtualMachines : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["affinityGroupIds"] = state?.affinityGroupIds;
+            resourceInputs["antiAffinityGroupIds"] = state?.antiAffinityGroupIds;
+            resourceInputs["deployTargetId"] = state?.deployTargetId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["diskSize"] = state?.diskSize;
+            resourceInputs["elasticIpIds"] = state?.elasticIpIds;
+            resourceInputs["instancePrefix"] = state?.instancePrefix;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["instances"] = state?.instances;
+            resourceInputs["ipv6"] = state?.ipv6;
+            resourceInputs["keyPair"] = state?.keyPair;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["minAvailable"] = state?.minAvailable;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkIds"] = state?.networkIds;
+            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
+            resourceInputs["serviceOffering"] = state?.serviceOffering;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["templateId"] = state?.templateId;
+            resourceInputs["userData"] = state?.userData;
+            resourceInputs["virtualMachines"] = state?.virtualMachines;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as InstancePoolArgs | undefined;
-            if ((!args || args.size === undefined) && !opts.urn) {
+            if (args?.size === undefined && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            if ((!args || args.templateId === undefined) && !opts.urn) {
+            if (args?.templateId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'templateId'");
             }
-            if ((!args || args.zone === undefined) && !opts.urn) {
+            if (args?.zone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            resourceInputs["affinityGroupIds"] = args ? args.affinityGroupIds : undefined;
-            resourceInputs["antiAffinityGroupIds"] = args ? args.antiAffinityGroupIds : undefined;
-            resourceInputs["deployTargetId"] = args ? args.deployTargetId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["diskSize"] = args ? args.diskSize : undefined;
-            resourceInputs["elasticIpIds"] = args ? args.elasticIpIds : undefined;
-            resourceInputs["instancePrefix"] = args ? args.instancePrefix : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["instances"] = args ? args.instances : undefined;
-            resourceInputs["ipv6"] = args ? args.ipv6 : undefined;
-            resourceInputs["keyPair"] = args ? args.keyPair : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["minAvailable"] = args ? args.minAvailable : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkIds"] = args ? args.networkIds : undefined;
-            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            resourceInputs["serviceOffering"] = args ? args.serviceOffering : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
-            resourceInputs["templateId"] = args ? args.templateId : undefined;
-            resourceInputs["userData"] = args ? args.userData : undefined;
-            resourceInputs["virtualMachines"] = args ? args.virtualMachines : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["affinityGroupIds"] = args?.affinityGroupIds;
+            resourceInputs["antiAffinityGroupIds"] = args?.antiAffinityGroupIds;
+            resourceInputs["deployTargetId"] = args?.deployTargetId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["diskSize"] = args?.diskSize;
+            resourceInputs["elasticIpIds"] = args?.elasticIpIds;
+            resourceInputs["instancePrefix"] = args?.instancePrefix;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["instances"] = args?.instances;
+            resourceInputs["ipv6"] = args?.ipv6;
+            resourceInputs["keyPair"] = args?.keyPair;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["minAvailable"] = args?.minAvailable;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkIds"] = args?.networkIds;
+            resourceInputs["securityGroupIds"] = args?.securityGroupIds;
+            resourceInputs["serviceOffering"] = args?.serviceOffering;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["state"] = args?.state;
+            resourceInputs["templateId"] = args?.templateId;
+            resourceInputs["userData"] = args?.userData;
+            resourceInputs["virtualMachines"] = args?.virtualMachines;
+            resourceInputs["zone"] = args?.zone;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InstancePool.__pulumiType, name, resourceInputs, opts);

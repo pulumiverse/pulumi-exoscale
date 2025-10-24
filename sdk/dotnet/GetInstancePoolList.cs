@@ -16,6 +16,44 @@ namespace Pulumiverse.Exoscale
         /// List Exoscale [Instance Pools](https://community.exoscale.com/product/compute/instances/how-to/instance-pools/).
         /// 
         /// Corresponding resource: exoscale_instance_pool.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Exoscale = Pulumi.Exoscale;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myInstancePoolList = Exoscale.GetInstancePoolList.Invoke(new()
+        ///     {
+        ///         Zone = "ch-gva-2",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myInstancePoolIds"] = Std.Formatlist.Invoke(new()
+        ///         {
+        ///             Input = "%s",
+        ///             Args = new[]
+        ///             {
+        ///                 myInstancePoolList.Apply(getInstancePoolListResult =&gt; getInstancePoolListResult.Pools).Select(__item =&gt; __item.Id).ToList(),
+        ///             },
+        ///         }).Apply(invoke =&gt; Std.Join.Invoke(new()
+        ///         {
+        ///             Separator = @"
+        /// ",
+        ///             Input = invoke.Result,
+        ///         })).Apply(invoke =&gt; invoke.Result),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Please refer to the examples
+        /// directory for complete configuration examples.
         /// </summary>
         public static Task<GetInstancePoolListResult> InvokeAsync(GetInstancePoolListArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancePoolListResult>("exoscale:index/getInstancePoolList:getInstancePoolList", args ?? new GetInstancePoolListArgs(), options.WithDefaults());
@@ -24,6 +62,44 @@ namespace Pulumiverse.Exoscale
         /// List Exoscale [Instance Pools](https://community.exoscale.com/product/compute/instances/how-to/instance-pools/).
         /// 
         /// Corresponding resource: exoscale_instance_pool.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Exoscale = Pulumi.Exoscale;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myInstancePoolList = Exoscale.GetInstancePoolList.Invoke(new()
+        ///     {
+        ///         Zone = "ch-gva-2",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myInstancePoolIds"] = Std.Formatlist.Invoke(new()
+        ///         {
+        ///             Input = "%s",
+        ///             Args = new[]
+        ///             {
+        ///                 myInstancePoolList.Apply(getInstancePoolListResult =&gt; getInstancePoolListResult.Pools).Select(__item =&gt; __item.Id).ToList(),
+        ///             },
+        ///         }).Apply(invoke =&gt; Std.Join.Invoke(new()
+        ///         {
+        ///             Separator = @"
+        /// ",
+        ///             Input = invoke.Result,
+        ///         })).Apply(invoke =&gt; invoke.Result),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Please refer to the examples
+        /// directory for complete configuration examples.
         /// </summary>
         public static Output<GetInstancePoolListResult> Invoke(GetInstancePoolListInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancePoolListResult>("exoscale:index/getInstancePoolList:getInstancePoolList", args ?? new GetInstancePoolListInvokeArgs(), options.WithDefaults());
@@ -32,6 +108,44 @@ namespace Pulumiverse.Exoscale
         /// List Exoscale [Instance Pools](https://community.exoscale.com/product/compute/instances/how-to/instance-pools/).
         /// 
         /// Corresponding resource: exoscale_instance_pool.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Exoscale = Pulumi.Exoscale;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myInstancePoolList = Exoscale.GetInstancePoolList.Invoke(new()
+        ///     {
+        ///         Zone = "ch-gva-2",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myInstancePoolIds"] = Std.Formatlist.Invoke(new()
+        ///         {
+        ///             Input = "%s",
+        ///             Args = new[]
+        ///             {
+        ///                 myInstancePoolList.Apply(getInstancePoolListResult =&gt; getInstancePoolListResult.Pools).Select(__item =&gt; __item.Id).ToList(),
+        ///             },
+        ///         }).Apply(invoke =&gt; Std.Join.Invoke(new()
+        ///         {
+        ///             Separator = @"
+        /// ",
+        ///             Input = invoke.Result,
+        ///         })).Apply(invoke =&gt; invoke.Result),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Please refer to the examples
+        /// directory for complete configuration examples.
         /// </summary>
         public static Output<GetInstancePoolListResult> Invoke(GetInstancePoolListInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancePoolListResult>("exoscale:index/getInstancePoolList:getInstancePoolList", args ?? new GetInstancePoolListInvokeArgs(), options.WithDefaults());

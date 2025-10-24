@@ -15,10 +15,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const mySksCluster = new exoscale.SksCluster("mySksCluster", {zone: "ch-gva-2"});
- * const mySksNodepool = new exoscale.SksNodepool("mySksNodepool", {
+ * const mySksCluster = new exoscale.SksCluster("my_sks_cluster", {
+ *     zone: "ch-gva-2",
+ *     name: "my-sks-cluster",
+ * });
+ * const mySksNodepool = new exoscale.SksNodepool("my_sks_nodepool", {
  *     clusterId: mySksCluster.id,
  *     zone: mySksCluster.zone,
+ *     name: "my-sks-nodepool",
  *     instanceType: "standard.medium",
  *     size: 3,
  * });
@@ -70,88 +74,88 @@ export class SksNodepool extends pulumi.CustomResource {
     /**
      * A list of exoscale*anti*affinity_group (IDs) to be attached to the managed instances.
      */
-    public readonly antiAffinityGroupIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly antiAffinityGroupIds: pulumi.Output<string[] | undefined>;
     /**
      * ❗ The parent exoscale*sks*cluster ID.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The pool creation date.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * A deploy target ID.
      */
-    public readonly deployTargetId!: pulumi.Output<string | undefined>;
+    declare public readonly deployTargetId: pulumi.Output<string | undefined>;
     /**
      * A free-form text describing the pool.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The managed instances disk size (GiB; default: `50`).
      */
-    public readonly diskSize!: pulumi.Output<number | undefined>;
+    declare public readonly diskSize: pulumi.Output<number | undefined>;
     /**
      * The underlying exoscale*instance*pool ID.
      */
-    public /*out*/ readonly instancePoolId!: pulumi.Output<string>;
+    declare public /*out*/ readonly instancePoolId: pulumi.Output<string>;
     /**
      * The string used to prefix the managed instances name (default `pool`).
      */
-    public readonly instancePrefix!: pulumi.Output<string | undefined>;
+    declare public readonly instancePrefix: pulumi.Output<string | undefined>;
     /**
      * The managed compute instances type (`<family>.<size>`, e.g. `standard.medium`; use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo compute instance-type list` - for the list of available types).
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * Enable IPV6 for the nodepool nodes
      */
-    public readonly ipv6!: pulumi.Output<boolean | undefined>;
+    declare public readonly ipv6: pulumi.Output<boolean | undefined>;
     /**
      * Configuration for this nodepool's kubelet image garbage collector
      */
-    public readonly kubeletImageGcs!: pulumi.Output<outputs.SksNodepoolKubeletImageGc[] | undefined>;
+    declare public readonly kubeletImageGcs: pulumi.Output<outputs.SksNodepoolKubeletImageGc[] | undefined>;
     /**
      * A map of key/value labels.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The SKS node pool name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A list of exoscale*private*network (IDs) to be attached to the managed instances.
      */
-    public readonly privateNetworkIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly privateNetworkIds: pulumi.Output<string[] | undefined>;
     /**
      * A list of exoscale*security*group (IDs) to be attached to the managed instances.
      */
-    public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
-    public readonly size!: pulumi.Output<number>;
+    declare public readonly securityGroupIds: pulumi.Output<string[] | undefined>;
+    declare public readonly size: pulumi.Output<number>;
     /**
      * The current pool state.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Create nodes with non-standard partitioning for persistent storage (requires min 100G of disk space) (may only be set at creation time).
      */
-    public readonly storageLvm!: pulumi.Output<boolean | undefined>;
+    declare public readonly storageLvm: pulumi.Output<boolean | undefined>;
     /**
      * A map of key/value Kubernetes [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) ('taints = { \n\n = "\n\n:\n\n" }').
      */
-    public readonly taints!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly taints: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The managed instances template ID.
      */
-    public /*out*/ readonly templateId!: pulumi.Output<string>;
+    declare public /*out*/ readonly templateId: pulumi.Output<string>;
     /**
      * The managed instances version.
      */
-    public /*out*/ readonly version!: pulumi.Output<string>;
+    declare public /*out*/ readonly version: pulumi.Output<string>;
     /**
      * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a SksNodepool resource with the given unique name, arguments, and options.
@@ -166,59 +170,59 @@ export class SksNodepool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SksNodepoolState | undefined;
-            resourceInputs["antiAffinityGroupIds"] = state ? state.antiAffinityGroupIds : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["deployTargetId"] = state ? state.deployTargetId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["diskSize"] = state ? state.diskSize : undefined;
-            resourceInputs["instancePoolId"] = state ? state.instancePoolId : undefined;
-            resourceInputs["instancePrefix"] = state ? state.instancePrefix : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["ipv6"] = state ? state.ipv6 : undefined;
-            resourceInputs["kubeletImageGcs"] = state ? state.kubeletImageGcs : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["privateNetworkIds"] = state ? state.privateNetworkIds : undefined;
-            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["storageLvm"] = state ? state.storageLvm : undefined;
-            resourceInputs["taints"] = state ? state.taints : undefined;
-            resourceInputs["templateId"] = state ? state.templateId : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["antiAffinityGroupIds"] = state?.antiAffinityGroupIds;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["deployTargetId"] = state?.deployTargetId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["diskSize"] = state?.diskSize;
+            resourceInputs["instancePoolId"] = state?.instancePoolId;
+            resourceInputs["instancePrefix"] = state?.instancePrefix;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["ipv6"] = state?.ipv6;
+            resourceInputs["kubeletImageGcs"] = state?.kubeletImageGcs;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["privateNetworkIds"] = state?.privateNetworkIds;
+            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["storageLvm"] = state?.storageLvm;
+            resourceInputs["taints"] = state?.taints;
+            resourceInputs["templateId"] = state?.templateId;
+            resourceInputs["version"] = state?.version;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as SksNodepoolArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.instanceType === undefined) && !opts.urn) {
+            if (args?.instanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            if ((!args || args.size === undefined) && !opts.urn) {
+            if (args?.size === undefined && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            if ((!args || args.zone === undefined) && !opts.urn) {
+            if (args?.zone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            resourceInputs["antiAffinityGroupIds"] = args ? args.antiAffinityGroupIds : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["deployTargetId"] = args ? args.deployTargetId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["diskSize"] = args ? args.diskSize : undefined;
-            resourceInputs["instancePrefix"] = args ? args.instancePrefix : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["ipv6"] = args ? args.ipv6 : undefined;
-            resourceInputs["kubeletImageGcs"] = args ? args.kubeletImageGcs : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["privateNetworkIds"] = args ? args.privateNetworkIds : undefined;
-            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["storageLvm"] = args ? args.storageLvm : undefined;
-            resourceInputs["taints"] = args ? args.taints : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["antiAffinityGroupIds"] = args?.antiAffinityGroupIds;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["deployTargetId"] = args?.deployTargetId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["diskSize"] = args?.diskSize;
+            resourceInputs["instancePrefix"] = args?.instancePrefix;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["ipv6"] = args?.ipv6;
+            resourceInputs["kubeletImageGcs"] = args?.kubeletImageGcs;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["privateNetworkIds"] = args?.privateNetworkIds;
+            resourceInputs["securityGroupIds"] = args?.securityGroupIds;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["storageLvm"] = args?.storageLvm;
+            resourceInputs["taints"] = args?.taints;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["instancePoolId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

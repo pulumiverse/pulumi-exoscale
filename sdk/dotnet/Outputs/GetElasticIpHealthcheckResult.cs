@@ -39,11 +39,11 @@ namespace Pulumiverse.Exoscale.Outputs
         /// </summary>
         public readonly int Timeout;
         /// <summary>
-        /// Disable TLS certificate verification for healthcheck in `https` mode.
+        /// Disable TLS certificate verification for healthcheck in `Https` mode.
         /// </summary>
         public readonly bool TlsSkipVerify;
         /// <summary>
-        /// The healthcheck server name to present with SNI in `https` mode.
+        /// The healthcheck server name to present with SNI in `Https` mode.
         /// </summary>
         public readonly string TlsSni;
         /// <summary>

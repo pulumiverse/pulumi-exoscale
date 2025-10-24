@@ -15,11 +15,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const myNlb = new exoscale.Nlb("myNlb", {zone: "ch-gva-2"});
- * const myNlbService = new exoscale.NlbService("myNlbService", {
+ * const myNlb = new exoscale.Nlb("my_nlb", {
+ *     zone: "ch-gva-2",
+ *     name: "my-nlb",
+ * });
+ * const myNlbService = new exoscale.NlbService("my_nlb_service", {
  *     nlbId: myNlb.id,
  *     zone: myNlb.zone,
- *     instancePoolId: exoscale_instance_pool.my_instance_pool.id,
+ *     name: "my-nlb-service",
+ *     instancePoolId: myInstancePool.id,
  *     protocol: "tcp",
  *     port: 443,
  *     targetPort: 8443,
@@ -82,44 +86,44 @@ export class NlbService extends pulumi.CustomResource {
     /**
      * A free-form text describing the NLB service.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The service health checking configuration.
      */
-    public readonly healthchecks!: pulumi.Output<outputs.NlbServiceHealthcheck[]>;
+    declare public readonly healthchecks: pulumi.Output<outputs.NlbServiceHealthcheck[]>;
     /**
      * ❗ The exoscale*instance*pool (ID) to forward traffic to.
      */
-    public readonly instancePoolId!: pulumi.Output<string>;
+    declare public readonly instancePoolId: pulumi.Output<string>;
     /**
      * The NLB service name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * ❗ The parent exoscale.Nlb ID.
      */
-    public readonly nlbId!: pulumi.Output<string>;
+    declare public readonly nlbId: pulumi.Output<string>;
     /**
      * The healthcheck port.
      */
-    public readonly port!: pulumi.Output<number>;
+    declare public readonly port: pulumi.Output<number>;
     /**
      * The protocol (`tcp`|`udp`; default: `tcp`).
      */
-    public readonly protocol!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The strategy (`round-robin`|`source-hash`; default: `round-robin`).
      */
-    public readonly strategy!: pulumi.Output<string | undefined>;
+    declare public readonly strategy: pulumi.Output<string | undefined>;
     /**
      * The (TCP/UDP) port to forward traffic to (on target instance pool members).
      */
-    public readonly targetPort!: pulumi.Output<number>;
+    declare public readonly targetPort: pulumi.Output<number>;
     /**
      * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a NlbService resource with the given unique name, arguments, and options.
@@ -134,47 +138,47 @@ export class NlbService extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NlbServiceState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["healthchecks"] = state ? state.healthchecks : undefined;
-            resourceInputs["instancePoolId"] = state ? state.instancePoolId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nlbId"] = state ? state.nlbId : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["strategy"] = state ? state.strategy : undefined;
-            resourceInputs["targetPort"] = state ? state.targetPort : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["healthchecks"] = state?.healthchecks;
+            resourceInputs["instancePoolId"] = state?.instancePoolId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nlbId"] = state?.nlbId;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["strategy"] = state?.strategy;
+            resourceInputs["targetPort"] = state?.targetPort;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as NlbServiceArgs | undefined;
-            if ((!args || args.healthchecks === undefined) && !opts.urn) {
+            if (args?.healthchecks === undefined && !opts.urn) {
                 throw new Error("Missing required property 'healthchecks'");
             }
-            if ((!args || args.instancePoolId === undefined) && !opts.urn) {
+            if (args?.instancePoolId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instancePoolId'");
             }
-            if ((!args || args.nlbId === undefined) && !opts.urn) {
+            if (args?.nlbId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nlbId'");
             }
-            if ((!args || args.port === undefined) && !opts.urn) {
+            if (args?.port === undefined && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
-            if ((!args || args.targetPort === undefined) && !opts.urn) {
+            if (args?.targetPort === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetPort'");
             }
-            if ((!args || args.zone === undefined) && !opts.urn) {
+            if (args?.zone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["healthchecks"] = args ? args.healthchecks : undefined;
-            resourceInputs["instancePoolId"] = args ? args.instancePoolId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nlbId"] = args ? args.nlbId : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["strategy"] = args ? args.strategy : undefined;
-            resourceInputs["targetPort"] = args ? args.targetPort : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["healthchecks"] = args?.healthchecks;
+            resourceInputs["instancePoolId"] = args?.instancePoolId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nlbId"] = args?.nlbId;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["strategy"] = args?.strategy;
+            resourceInputs["targetPort"] = args?.targetPort;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

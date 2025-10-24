@@ -25,7 +25,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := exoscale.NewIamAccessKey(ctx, "mySosAccessKey", &exoscale.IamAccessKeyArgs{
+//			_, err := exoscale.NewIamAccessKey(ctx, "my_sos_access_key", &exoscale.IamAccessKeyArgs{
+//				Name: pulumi.String("my-sos-access-key"),
 //				Operations: pulumi.StringArray{
 //					pulumi.String("get-sos-object"),
 //					pulumi.String("list-sos-bucket"),
@@ -37,7 +38,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = exoscale.NewIamAccessKey(ctx, "mySksAccessKey", &exoscale.IamAccessKeyArgs{
+//			_, err = exoscale.NewIamAccessKey(ctx, "my_sks_access_key", &exoscale.IamAccessKeyArgs{
+//				Name: pulumi.String("my-sks-access-key"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("sks"),
 //				},

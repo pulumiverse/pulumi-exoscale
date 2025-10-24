@@ -107,19 +107,19 @@ namespace Pulumiverse.Exoscale
     public sealed class GetTemplateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The compute instance template ID to match (conflicts with `name`).
+        /// The compute instance template ID to match (conflicts with `Name`).
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// The template name to match (conflicts with `id`) (when multiple templates have the same name, the newest one will be returned).
+        /// The template name to match (conflicts with `Id`) (when multiple templates have the same name, the newest one will be returned).
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// A template category filter (default: `public`); among: - `public` - official Exoscale templates - `private` - custom templates private to my organization
+        /// A template category filter (default: `Public`); among: - `Public` - official Exoscale templates - `Private` - custom templates private to my organization
         /// </summary>
         [Input("visibility")]
         public string? Visibility { get; set; }
@@ -139,19 +139,19 @@ namespace Pulumiverse.Exoscale
     public sealed class GetTemplateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The compute instance template ID to match (conflicts with `name`).
+        /// The compute instance template ID to match (conflicts with `Name`).
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The template name to match (conflicts with `id`) (when multiple templates have the same name, the newest one will be returned).
+        /// The template name to match (conflicts with `Id`) (when multiple templates have the same name, the newest one will be returned).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A template category filter (default: `public`); among: - `public` - official Exoscale templates - `private` - custom templates private to my organization
+        /// A template category filter (default: `Public`); among: - `Public` - official Exoscale templates - `Private` - custom templates private to my organization
         /// </summary>
         [Input("visibility")]
         public Input<string>? Visibility { get; set; }
@@ -177,15 +177,15 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly string DefaultUser;
         /// <summary>
-        /// The compute instance template ID to match (conflicts with `name`).
+        /// The compute instance template ID to match (conflicts with `Name`).
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// The template name to match (conflicts with `id`) (when multiple templates have the same name, the newest one will be returned).
+        /// The template name to match (conflicts with `Id`) (when multiple templates have the same name, the newest one will be returned).
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// A template category filter (default: `public`); among: - `public` - official Exoscale templates - `private` - custom templates private to my organization
+        /// A template category filter (default: `Public`); among: - `Public` - official Exoscale templates - `Private` - custom templates private to my organization
         /// </summary>
         public readonly string? Visibility;
         /// <summary>

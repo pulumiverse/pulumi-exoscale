@@ -116,13 +116,13 @@ namespace Pulumiverse.Exoscale
     public sealed class GetSecurityGroupArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The security group ID to match (conflicts with `name`)
+        /// The security group ID to match (conflicts with `Name`)
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// The name to match (conflicts with `id`)
+        /// The name to match (conflicts with `Id`)
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -136,13 +136,13 @@ namespace Pulumiverse.Exoscale
     public sealed class GetSecurityGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The security group ID to match (conflicts with `name`)
+        /// The security group ID to match (conflicts with `Name`)
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The name to match (conflicts with `id`)
+        /// The name to match (conflicts with `Id`)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -162,11 +162,11 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly ImmutableArray<string> ExternalSources;
         /// <summary>
-        /// The security group ID to match (conflicts with `name`)
+        /// The security group ID to match (conflicts with `Name`)
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// The name to match (conflicts with `id`)
+        /// The name to match (conflicts with `Id`)
         /// </summary>
         public readonly string? Name;
 

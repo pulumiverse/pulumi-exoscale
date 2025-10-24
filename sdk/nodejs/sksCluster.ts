@@ -15,7 +15,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const mySksCluster = new exoscale.SksCluster("mySksCluster", {zone: "ch-gva-2"});
+ * const mySksCluster = new exoscale.SksCluster("my_sks_cluster", {
+ *     zone: "ch-gva-2",
+ *     name: "my-sks-cluster",
+ * });
  * export const mySksClusterEndpoint = mySksCluster.endpoint;
  * ```
  *
@@ -67,91 +70,95 @@ export class SksCluster extends pulumi.CustomResource {
     /**
      * @deprecated This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
      */
-    public readonly addons!: pulumi.Output<string[]>;
+    declare public readonly addons: pulumi.Output<string[]>;
     /**
      * The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
      */
-    public /*out*/ readonly aggregationCa!: pulumi.Output<string>;
+    declare public /*out*/ readonly aggregationCa: pulumi.Output<string>;
+    /**
+     * Parameters for Kubernetes Audit configuration (may only be enabled at creation time)
+     */
+    declare public readonly audit: pulumi.Output<outputs.SksClusterAudit | undefined>;
     /**
      * Enable automatic upgrading of the control plane version.
      */
-    public readonly autoUpgrade!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoUpgrade: pulumi.Output<boolean | undefined>;
     /**
      * The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
      */
-    public readonly cni!: pulumi.Output<string | undefined>;
+    declare public readonly cni: pulumi.Output<string | undefined>;
     /**
      * The CA certificate (in PEM format) for TLS communications between control plane components.
      */
-    public /*out*/ readonly controlPlaneCa!: pulumi.Output<string>;
+    declare public /*out*/ readonly controlPlaneCa: pulumi.Output<string>;
     /**
      * The cluster creation date.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * A free-form text describing the cluster.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * ❗ Indicates whether to deploy the Kubernetes network proxy. (may only be set at creation time)
      */
-    public readonly enableKubeProxy!: pulumi.Output<boolean>;
+    declare public readonly enableKubeProxy: pulumi.Output<boolean>;
     /**
      * The cluster API endpoint.
      */
-    public /*out*/ readonly endpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpoint: pulumi.Output<string>;
     /**
      * Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
      */
-    public readonly exoscaleCcm!: pulumi.Output<boolean | undefined>;
+    declare public readonly exoscaleCcm: pulumi.Output<boolean | undefined>;
     /**
      * Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
      */
-    public readonly exoscaleCsi!: pulumi.Output<boolean | undefined>;
+    declare public readonly exoscaleCsi: pulumi.Output<boolean | undefined>;
     /**
      * Feature gates options for the cluster.
      */
-    public readonly featureGates!: pulumi.Output<string[] | undefined>;
+    declare public readonly featureGates: pulumi.Output<string[] | undefined>;
     /**
      * The CA certificate (in PEM format) for TLS communications between kubelets and the control plane.
      */
-    public /*out*/ readonly kubeletCa!: pulumi.Output<string>;
+    declare public /*out*/ readonly kubeletCa: pulumi.Output<string>;
     /**
      * A map of key/value labels.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
      */
-    public readonly metricsServer!: pulumi.Output<boolean | undefined>;
+    declare public readonly metricsServer: pulumi.Output<boolean | undefined>;
     /**
      * The SKS cluster name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The list of exoscale*sks*nodepool (IDs) attached to the cluster.
      */
-    public /*out*/ readonly nodepools!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly nodepools: pulumi.Output<string[]>;
     /**
      * An OpenID Connect configuration to provide to the Kubernetes API server (may only be set at creation time). Structure is documented below.
      */
-    public readonly oidc!: pulumi.Output<outputs.SksClusterOidc>;
+    declare public readonly oidc: pulumi.Output<outputs.SksClusterOidc>;
     /**
      * The service level of the control plane (`pro` or `starter`; default: `pro`; may only be set at creation time).
      */
-    public readonly serviceLevel!: pulumi.Output<string | undefined>;
+    declare public readonly serviceLevel: pulumi.Output<string | undefined>;
     /**
      * The cluster state.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The version of the control plane (default: latest version available from the API; see `exo compute sks versions` for reference; may only be set at creation time).
      */
-    public readonly version!: pulumi.Output<string>;
+    declare public readonly version: pulumi.Output<string>;
     /**
      * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a SksCluster resource with the given unique name, arguments, and options.
@@ -166,48 +173,50 @@ export class SksCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SksClusterState | undefined;
-            resourceInputs["addons"] = state ? state.addons : undefined;
-            resourceInputs["aggregationCa"] = state ? state.aggregationCa : undefined;
-            resourceInputs["autoUpgrade"] = state ? state.autoUpgrade : undefined;
-            resourceInputs["cni"] = state ? state.cni : undefined;
-            resourceInputs["controlPlaneCa"] = state ? state.controlPlaneCa : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enableKubeProxy"] = state ? state.enableKubeProxy : undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["exoscaleCcm"] = state ? state.exoscaleCcm : undefined;
-            resourceInputs["exoscaleCsi"] = state ? state.exoscaleCsi : undefined;
-            resourceInputs["featureGates"] = state ? state.featureGates : undefined;
-            resourceInputs["kubeletCa"] = state ? state.kubeletCa : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["metricsServer"] = state ? state.metricsServer : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodepools"] = state ? state.nodepools : undefined;
-            resourceInputs["oidc"] = state ? state.oidc : undefined;
-            resourceInputs["serviceLevel"] = state ? state.serviceLevel : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["addons"] = state?.addons;
+            resourceInputs["aggregationCa"] = state?.aggregationCa;
+            resourceInputs["audit"] = state?.audit;
+            resourceInputs["autoUpgrade"] = state?.autoUpgrade;
+            resourceInputs["cni"] = state?.cni;
+            resourceInputs["controlPlaneCa"] = state?.controlPlaneCa;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enableKubeProxy"] = state?.enableKubeProxy;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["exoscaleCcm"] = state?.exoscaleCcm;
+            resourceInputs["exoscaleCsi"] = state?.exoscaleCsi;
+            resourceInputs["featureGates"] = state?.featureGates;
+            resourceInputs["kubeletCa"] = state?.kubeletCa;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["metricsServer"] = state?.metricsServer;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodepools"] = state?.nodepools;
+            resourceInputs["oidc"] = state?.oidc;
+            resourceInputs["serviceLevel"] = state?.serviceLevel;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["version"] = state?.version;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as SksClusterArgs | undefined;
-            if ((!args || args.zone === undefined) && !opts.urn) {
+            if (args?.zone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            resourceInputs["addons"] = args ? args.addons : undefined;
-            resourceInputs["autoUpgrade"] = args ? args.autoUpgrade : undefined;
-            resourceInputs["cni"] = args ? args.cni : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enableKubeProxy"] = args ? args.enableKubeProxy : undefined;
-            resourceInputs["exoscaleCcm"] = args ? args.exoscaleCcm : undefined;
-            resourceInputs["exoscaleCsi"] = args ? args.exoscaleCsi : undefined;
-            resourceInputs["featureGates"] = args ? args.featureGates : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["metricsServer"] = args ? args.metricsServer : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["oidc"] = args ? args.oidc : undefined;
-            resourceInputs["serviceLevel"] = args ? args.serviceLevel : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["addons"] = args?.addons;
+            resourceInputs["audit"] = args?.audit;
+            resourceInputs["autoUpgrade"] = args?.autoUpgrade;
+            resourceInputs["cni"] = args?.cni;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enableKubeProxy"] = args?.enableKubeProxy;
+            resourceInputs["exoscaleCcm"] = args?.exoscaleCcm;
+            resourceInputs["exoscaleCsi"] = args?.exoscaleCsi;
+            resourceInputs["featureGates"] = args?.featureGates;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["metricsServer"] = args?.metricsServer;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["oidc"] = args?.oidc;
+            resourceInputs["serviceLevel"] = args?.serviceLevel;
+            resourceInputs["version"] = args?.version;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["aggregationCa"] = undefined /*out*/;
             resourceInputs["controlPlaneCa"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
@@ -233,6 +242,10 @@ export interface SksClusterState {
      * The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
      */
     aggregationCa?: pulumi.Input<string>;
+    /**
+     * Parameters for Kubernetes Audit configuration (may only be enabled at creation time)
+     */
+    audit?: pulumi.Input<inputs.SksClusterAudit>;
     /**
      * Enable automatic upgrading of the control plane version.
      */
@@ -323,6 +336,10 @@ export interface SksClusterArgs {
      * @deprecated This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
      */
     addons?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Parameters for Kubernetes Audit configuration (may only be enabled at creation time)
+     */
+    audit?: pulumi.Input<inputs.SksClusterAudit>;
     /**
      * Enable automatic upgrading of the control plane version.
      */

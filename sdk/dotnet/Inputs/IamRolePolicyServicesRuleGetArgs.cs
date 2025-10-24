@@ -14,7 +14,7 @@ namespace Pulumiverse.Exoscale.Inputs
     public sealed class IamRolePolicyServicesRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// IAM policy rule action (`allow` or `deny`).
+        /// IAM policy rule action (`Allow` or `Deny`).
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

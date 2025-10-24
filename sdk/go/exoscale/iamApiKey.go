@@ -13,6 +13,50 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myRole, err := exoscale.NewIamRole(ctx, "my_role", &exoscale.IamRoleArgs{
+//				Name:        pulumi.String("my-role"),
+//				Description: pulumi.String("Example role"),
+//				Editable:    pulumi.Bool(true),
+//				Policy: &exoscale.IamRolePolicyArgs{
+//					DefaultServiceStrategy: pulumi.String("deny"),
+//					Services: exoscale.IamRolePolicyServicesMap{
+//						"sos": &exoscale.IamRolePolicyServicesArgs{
+//							Type: pulumi.String("allow"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = exoscale.NewIamApiKey(ctx, "my_api_key", &exoscale.IamApiKeyArgs{
+//				Name:   pulumi.String("my-api-key"),
+//				RoleId: myRole.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Please refer to the examples
+// directory for complete configuration examples.
 type IamApiKey struct {
 	pulumi.CustomResourceState
 

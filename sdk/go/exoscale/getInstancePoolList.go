@@ -14,6 +14,43 @@ import (
 // List Exoscale [Instance Pools](https://community.exoscale.com/product/compute/instances/how-to/instance-pools/).
 //
 // Corresponding resource: exoscale_instance_pool.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// myInstancePoolList, err := exoscale.GetInstancePoolList(ctx, &exoscale.GetInstancePoolListArgs{
+// Zone: "ch-gva-2",
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("myInstancePoolIds", pulumi.String(std.Join(ctx, &std.JoinArgs{
+// Separator: "\n",
+// Input: std.Formatlist(ctx, &std.FormatlistArgs{
+// Input: "%s",
+// Args: [][]*string{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:9,16-46),
+// },
+// }, nil).Result,
+// }, nil).Result))
+// return nil
+// })
+// }
+// ```
+//
+// Please refer to the examples
+// directory for complete configuration examples.
 func GetInstancePoolList(ctx *pulumi.Context, args *GetInstancePoolListArgs, opts ...pulumi.InvokeOption) (*GetInstancePoolListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstancePoolListResult

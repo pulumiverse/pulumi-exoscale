@@ -12,6 +12,63 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-exoscale/sdk/go/exoscale"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"timezone": "Europe/Zurich",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = exoscale.NewDatabase(ctx, "my_database", &exoscale.DatabaseArgs{
+//				Zone:                  pulumi.String("ch-gva-2"),
+//				Name:                  pulumi.String("my-database"),
+//				Type:                  pulumi.String("pg"),
+//				Plan:                  pulumi.String("startup-4"),
+//				MaintenanceDow:        pulumi.String("sunday"),
+//				MaintenanceTime:       pulumi.String("23:00:00"),
+//				TerminationProtection: pulumi.Bool(true),
+//				Pg: &exoscale.DatabasePgArgs{
+//					Version:        pulumi.String("13"),
+//					BackupSchedule: pulumi.String("04:00"),
+//					IpFilters: pulumi.StringArray{
+//						pulumi.String("1.2.3.4/32"),
+//						pulumi.String("5.6.7.8/32"),
+//					},
+//					PgSettings: pulumi.String(json0),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myDatabase, err := exoscale.GetDatabaseUri(ctx, &exoscale.GetDatabaseUriArgs{
+//				Name: "my-database",
+//				Type: "pg",
+//				Zone: "ch-gva-2",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("myDatabaseUri", myDatabase.Uri)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDatabaseUri(ctx *pulumi.Context, args *GetDatabaseUriArgs, opts ...pulumi.InvokeOption) (*GetDatabaseUriResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseUriResult
@@ -27,7 +84,7 @@ type GetDatabaseUriArgs struct {
 	// Name of database service to match.
 	Name     string                  `pulumi:"name"`
 	Timeouts *GetDatabaseUriTimeouts `pulumi:"timeouts"`
-	// The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `valkey`, `grafana`).
+	// The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `valkey`, `grafana`).
 	Type string `pulumi:"type"`
 	// The Exoscale Zone name.
 	Zone string `pulumi:"zone"`
@@ -50,7 +107,7 @@ type GetDatabaseUriResult struct {
 	// Database service connection schema
 	Schema   string                  `pulumi:"schema"`
 	Timeouts *GetDatabaseUriTimeouts `pulumi:"timeouts"`
-	// The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `valkey`, `grafana`).
+	// The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `valkey`, `grafana`).
 	Type string `pulumi:"type"`
 	// Database service connection URI.
 	Uri string `pulumi:"uri"`
@@ -74,7 +131,7 @@ type GetDatabaseUriOutputArgs struct {
 	// Name of database service to match.
 	Name     pulumi.StringInput             `pulumi:"name"`
 	Timeouts GetDatabaseUriTimeoutsPtrInput `pulumi:"timeouts"`
-	// The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `valkey`, `grafana`).
+	// The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `valkey`, `grafana`).
 	Type pulumi.StringInput `pulumi:"type"`
 	// The Exoscale Zone name.
 	Zone pulumi.StringInput `pulumi:"zone"`
@@ -138,7 +195,7 @@ func (o GetDatabaseUriResultOutput) Timeouts() GetDatabaseUriTimeoutsPtrOutput {
 	return o.ApplyT(func(v GetDatabaseUriResult) *GetDatabaseUriTimeouts { return v.Timeouts }).(GetDatabaseUriTimeoutsPtrOutput)
 }
 
-// The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `valkey`, `grafana`).
+// The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `valkey`, `grafana`).
 func (o GetDatabaseUriResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseUriResult) string { return v.Type }).(pulumi.StringOutput)
 }

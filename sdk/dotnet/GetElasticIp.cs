@@ -119,13 +119,13 @@ namespace Pulumiverse.Exoscale
     public sealed class GetElasticIpArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The Elastic IP (EIP) ID to match (conflicts with `ip_address` and `labels`).
+        /// The Elastic IP (EIP) ID to match (conflicts with `IpAddress` and `Labels`).
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// The EIP IPv4 or IPv6 address to match (conflicts with `id` and `labels`).
+        /// The EIP IPv4 or IPv6 address to match (conflicts with `Id` and `Labels`).
         /// </summary>
         [Input("ipAddress")]
         public string? IpAddress { get; set; }
@@ -134,7 +134,7 @@ namespace Pulumiverse.Exoscale
         private Dictionary<string, string>? _labels;
 
         /// <summary>
-        /// The EIP labels to match (conflicts with `ip_address` and `id`).
+        /// The EIP labels to match (conflicts with `IpAddress` and `Id`).
         /// </summary>
         public Dictionary<string, string> Labels
         {
@@ -157,13 +157,13 @@ namespace Pulumiverse.Exoscale
     public sealed class GetElasticIpInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The Elastic IP (EIP) ID to match (conflicts with `ip_address` and `labels`).
+        /// The Elastic IP (EIP) ID to match (conflicts with `IpAddress` and `Labels`).
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The EIP IPv4 or IPv6 address to match (conflicts with `id` and `labels`).
+        /// The EIP IPv4 or IPv6 address to match (conflicts with `Id` and `Labels`).
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
@@ -172,7 +172,7 @@ namespace Pulumiverse.Exoscale
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The EIP labels to match (conflicts with `ip_address` and `id`).
+        /// The EIP labels to match (conflicts with `IpAddress` and `Id`).
         /// </summary>
         public InputMap<string> Labels
         {
@@ -197,7 +197,7 @@ namespace Pulumiverse.Exoscale
     public sealed class GetElasticIpResult
     {
         /// <summary>
-        /// The Elastic IP (EIP) address family (`inet4` or `inet6`).
+        /// The Elastic IP (EIP) address family (`Inet4` or `Inet6`).
         /// </summary>
         public readonly string AddressFamily;
         /// <summary>
@@ -213,15 +213,15 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly ImmutableArray<Outputs.GetElasticIpHealthcheckResult> Healthchecks;
         /// <summary>
-        /// The Elastic IP (EIP) ID to match (conflicts with `ip_address` and `labels`).
+        /// The Elastic IP (EIP) ID to match (conflicts with `IpAddress` and `Labels`).
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// The EIP IPv4 or IPv6 address to match (conflicts with `id` and `labels`).
+        /// The EIP IPv4 or IPv6 address to match (conflicts with `Id` and `Labels`).
         /// </summary>
         public readonly string? IpAddress;
         /// <summary>
-        /// The EIP labels to match (conflicts with `ip_address` and `id`).
+        /// The EIP labels to match (conflicts with `IpAddress` and `Id`).
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>

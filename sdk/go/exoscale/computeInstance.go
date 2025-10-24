@@ -39,8 +39,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = exoscale.NewComputeInstance(ctx, "myInstance", &exoscale.ComputeInstanceArgs{
+//			_, err = exoscale.NewComputeInstance(ctx, "my_instance", &exoscale.ComputeInstanceArgs{
 //				Zone:       pulumi.String("ch-gva-2"),
+//				Name:       pulumi.String("my-instance"),
 //				TemplateId: pulumi.String(myTemplate.Id),
 //				Type:       pulumi.String("standard.medium"),
 //				DiskSize:   pulumi.Int(10),
@@ -85,6 +86,10 @@ type ComputeInstance struct {
 	DiskSize pulumi.IntOutput `pulumi:"diskSize"`
 	// A list of exoscale*elastic*ip (IDs) to attach to the instance.
 	ElasticIpIds pulumi.StringArrayOutput `pulumi:"elasticIpIds"`
+	// Indicates whether secure boot is enabled on the instance.
+	EnableSecureBoot pulumi.BoolPtrOutput `pulumi:"enableSecureBoot"`
+	// Indicates whether TPM is enabled on the instance.
+	EnableTpm pulumi.BoolPtrOutput `pulumi:"enableTpm"`
 	// Enable IPv6 on the instance (boolean; default: `false`).
 	Ipv6 pulumi.BoolPtrOutput `pulumi:"ipv6"`
 	// The instance (main network interface) IPv6 address (if enabled).
@@ -183,6 +188,10 @@ type computeInstanceState struct {
 	DiskSize *int `pulumi:"diskSize"`
 	// A list of exoscale*elastic*ip (IDs) to attach to the instance.
 	ElasticIpIds []string `pulumi:"elasticIpIds"`
+	// Indicates whether secure boot is enabled on the instance.
+	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
+	// Indicates whether TPM is enabled on the instance.
+	EnableTpm *bool `pulumi:"enableTpm"`
 	// Enable IPv6 on the instance (boolean; default: `false`).
 	Ipv6 *bool `pulumi:"ipv6"`
 	// The instance (main network interface) IPv6 address (if enabled).
@@ -240,6 +249,10 @@ type ComputeInstanceState struct {
 	DiskSize pulumi.IntPtrInput
 	// A list of exoscale*elastic*ip (IDs) to attach to the instance.
 	ElasticIpIds pulumi.StringArrayInput
+	// Indicates whether secure boot is enabled on the instance.
+	EnableSecureBoot pulumi.BoolPtrInput
+	// Indicates whether TPM is enabled on the instance.
+	EnableTpm pulumi.BoolPtrInput
 	// Enable IPv6 on the instance (boolean; default: `false`).
 	Ipv6 pulumi.BoolPtrInput
 	// The instance (main network interface) IPv6 address (if enabled).
@@ -299,6 +312,10 @@ type computeInstanceArgs struct {
 	DiskSize int `pulumi:"diskSize"`
 	// A list of exoscale*elastic*ip (IDs) to attach to the instance.
 	ElasticIpIds []string `pulumi:"elasticIpIds"`
+	// Indicates whether secure boot is enabled on the instance.
+	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
+	// Indicates whether TPM is enabled on the instance.
+	EnableTpm *bool `pulumi:"enableTpm"`
 	// Enable IPv6 on the instance (boolean; default: `false`).
 	Ipv6 *bool `pulumi:"ipv6"`
 	// A map of key/value labels.
@@ -345,6 +362,10 @@ type ComputeInstanceArgs struct {
 	DiskSize pulumi.IntInput
 	// A list of exoscale*elastic*ip (IDs) to attach to the instance.
 	ElasticIpIds pulumi.StringArrayInput
+	// Indicates whether secure boot is enabled on the instance.
+	EnableSecureBoot pulumi.BoolPtrInput
+	// Indicates whether TPM is enabled on the instance.
+	EnableTpm pulumi.BoolPtrInput
 	// Enable IPv6 on the instance (boolean; default: `false`).
 	Ipv6 pulumi.BoolPtrInput
 	// A map of key/value labels.
@@ -497,6 +518,16 @@ func (o ComputeInstanceOutput) DiskSize() pulumi.IntOutput {
 // A list of exoscale*elastic*ip (IDs) to attach to the instance.
 func (o ComputeInstanceOutput) ElasticIpIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ComputeInstance) pulumi.StringArrayOutput { return v.ElasticIpIds }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether secure boot is enabled on the instance.
+func (o ComputeInstanceOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeInstance) pulumi.BoolPtrOutput { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether TPM is enabled on the instance.
+func (o ComputeInstanceOutput) EnableTpm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeInstance) pulumi.BoolPtrOutput { return v.EnableTpm }).(pulumi.BoolPtrOutput)
 }
 
 // Enable IPv6 on the instance (boolean; default: `false`).

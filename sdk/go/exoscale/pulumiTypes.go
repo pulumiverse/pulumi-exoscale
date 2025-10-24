@@ -2442,162 +2442,6 @@ func (o DatabasePgPtrOutput) Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type DatabaseRedis struct {
-	// A list of CIDR blocks to allow incoming connections from.
-	IpFilters []string `pulumi:"ipFilters"`
-	// Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
-	RedisSettings *string `pulumi:"redisSettings"`
-}
-
-// DatabaseRedisInput is an input type that accepts DatabaseRedisArgs and DatabaseRedisOutput values.
-// You can construct a concrete instance of `DatabaseRedisInput` via:
-//
-//	DatabaseRedisArgs{...}
-type DatabaseRedisInput interface {
-	pulumi.Input
-
-	ToDatabaseRedisOutput() DatabaseRedisOutput
-	ToDatabaseRedisOutputWithContext(context.Context) DatabaseRedisOutput
-}
-
-type DatabaseRedisArgs struct {
-	// A list of CIDR blocks to allow incoming connections from.
-	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
-	// Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
-	RedisSettings pulumi.StringPtrInput `pulumi:"redisSettings"`
-}
-
-func (DatabaseRedisArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseRedis)(nil)).Elem()
-}
-
-func (i DatabaseRedisArgs) ToDatabaseRedisOutput() DatabaseRedisOutput {
-	return i.ToDatabaseRedisOutputWithContext(context.Background())
-}
-
-func (i DatabaseRedisArgs) ToDatabaseRedisOutputWithContext(ctx context.Context) DatabaseRedisOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseRedisOutput)
-}
-
-func (i DatabaseRedisArgs) ToDatabaseRedisPtrOutput() DatabaseRedisPtrOutput {
-	return i.ToDatabaseRedisPtrOutputWithContext(context.Background())
-}
-
-func (i DatabaseRedisArgs) ToDatabaseRedisPtrOutputWithContext(ctx context.Context) DatabaseRedisPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseRedisOutput).ToDatabaseRedisPtrOutputWithContext(ctx)
-}
-
-// DatabaseRedisPtrInput is an input type that accepts DatabaseRedisArgs, DatabaseRedisPtr and DatabaseRedisPtrOutput values.
-// You can construct a concrete instance of `DatabaseRedisPtrInput` via:
-//
-//	        DatabaseRedisArgs{...}
-//
-//	or:
-//
-//	        nil
-type DatabaseRedisPtrInput interface {
-	pulumi.Input
-
-	ToDatabaseRedisPtrOutput() DatabaseRedisPtrOutput
-	ToDatabaseRedisPtrOutputWithContext(context.Context) DatabaseRedisPtrOutput
-}
-
-type databaseRedisPtrType DatabaseRedisArgs
-
-func DatabaseRedisPtr(v *DatabaseRedisArgs) DatabaseRedisPtrInput {
-	return (*databaseRedisPtrType)(v)
-}
-
-func (*databaseRedisPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseRedis)(nil)).Elem()
-}
-
-func (i *databaseRedisPtrType) ToDatabaseRedisPtrOutput() DatabaseRedisPtrOutput {
-	return i.ToDatabaseRedisPtrOutputWithContext(context.Background())
-}
-
-func (i *databaseRedisPtrType) ToDatabaseRedisPtrOutputWithContext(ctx context.Context) DatabaseRedisPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseRedisPtrOutput)
-}
-
-type DatabaseRedisOutput struct{ *pulumi.OutputState }
-
-func (DatabaseRedisOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseRedis)(nil)).Elem()
-}
-
-func (o DatabaseRedisOutput) ToDatabaseRedisOutput() DatabaseRedisOutput {
-	return o
-}
-
-func (o DatabaseRedisOutput) ToDatabaseRedisOutputWithContext(ctx context.Context) DatabaseRedisOutput {
-	return o
-}
-
-func (o DatabaseRedisOutput) ToDatabaseRedisPtrOutput() DatabaseRedisPtrOutput {
-	return o.ToDatabaseRedisPtrOutputWithContext(context.Background())
-}
-
-func (o DatabaseRedisOutput) ToDatabaseRedisPtrOutputWithContext(ctx context.Context) DatabaseRedisPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseRedis) *DatabaseRedis {
-		return &v
-	}).(DatabaseRedisPtrOutput)
-}
-
-// A list of CIDR blocks to allow incoming connections from.
-func (o DatabaseRedisOutput) IpFilters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v DatabaseRedis) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
-}
-
-// Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
-func (o DatabaseRedisOutput) RedisSettings() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseRedis) *string { return v.RedisSettings }).(pulumi.StringPtrOutput)
-}
-
-type DatabaseRedisPtrOutput struct{ *pulumi.OutputState }
-
-func (DatabaseRedisPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseRedis)(nil)).Elem()
-}
-
-func (o DatabaseRedisPtrOutput) ToDatabaseRedisPtrOutput() DatabaseRedisPtrOutput {
-	return o
-}
-
-func (o DatabaseRedisPtrOutput) ToDatabaseRedisPtrOutputWithContext(ctx context.Context) DatabaseRedisPtrOutput {
-	return o
-}
-
-func (o DatabaseRedisPtrOutput) Elem() DatabaseRedisOutput {
-	return o.ApplyT(func(v *DatabaseRedis) DatabaseRedis {
-		if v != nil {
-			return *v
-		}
-		var ret DatabaseRedis
-		return ret
-	}).(DatabaseRedisOutput)
-}
-
-// A list of CIDR blocks to allow incoming connections from.
-func (o DatabaseRedisPtrOutput) IpFilters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *DatabaseRedis) []string {
-		if v == nil {
-			return nil
-		}
-		return v.IpFilters
-	}).(pulumi.StringArrayOutput)
-}
-
-// Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
-func (o DatabaseRedisPtrOutput) RedisSettings() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseRedis) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RedisSettings
-	}).(pulumi.StringPtrOutput)
-}
-
 type DatabaseTimeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 	Create *string `pulumi:"create"`
@@ -5878,162 +5722,6 @@ func (o DbaasPgUserTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type DbaasRedis struct {
-	// A list of CIDR blocks to allow incoming connections from.
-	IpFilters []string `pulumi:"ipFilters"`
-	// Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
-	RedisSettings *string `pulumi:"redisSettings"`
-}
-
-// DbaasRedisInput is an input type that accepts DbaasRedisArgs and DbaasRedisOutput values.
-// You can construct a concrete instance of `DbaasRedisInput` via:
-//
-//	DbaasRedisArgs{...}
-type DbaasRedisInput interface {
-	pulumi.Input
-
-	ToDbaasRedisOutput() DbaasRedisOutput
-	ToDbaasRedisOutputWithContext(context.Context) DbaasRedisOutput
-}
-
-type DbaasRedisArgs struct {
-	// A list of CIDR blocks to allow incoming connections from.
-	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
-	// Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
-	RedisSettings pulumi.StringPtrInput `pulumi:"redisSettings"`
-}
-
-func (DbaasRedisArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DbaasRedis)(nil)).Elem()
-}
-
-func (i DbaasRedisArgs) ToDbaasRedisOutput() DbaasRedisOutput {
-	return i.ToDbaasRedisOutputWithContext(context.Background())
-}
-
-func (i DbaasRedisArgs) ToDbaasRedisOutputWithContext(ctx context.Context) DbaasRedisOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DbaasRedisOutput)
-}
-
-func (i DbaasRedisArgs) ToDbaasRedisPtrOutput() DbaasRedisPtrOutput {
-	return i.ToDbaasRedisPtrOutputWithContext(context.Background())
-}
-
-func (i DbaasRedisArgs) ToDbaasRedisPtrOutputWithContext(ctx context.Context) DbaasRedisPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DbaasRedisOutput).ToDbaasRedisPtrOutputWithContext(ctx)
-}
-
-// DbaasRedisPtrInput is an input type that accepts DbaasRedisArgs, DbaasRedisPtr and DbaasRedisPtrOutput values.
-// You can construct a concrete instance of `DbaasRedisPtrInput` via:
-//
-//	        DbaasRedisArgs{...}
-//
-//	or:
-//
-//	        nil
-type DbaasRedisPtrInput interface {
-	pulumi.Input
-
-	ToDbaasRedisPtrOutput() DbaasRedisPtrOutput
-	ToDbaasRedisPtrOutputWithContext(context.Context) DbaasRedisPtrOutput
-}
-
-type dbaasRedisPtrType DbaasRedisArgs
-
-func DbaasRedisPtr(v *DbaasRedisArgs) DbaasRedisPtrInput {
-	return (*dbaasRedisPtrType)(v)
-}
-
-func (*dbaasRedisPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DbaasRedis)(nil)).Elem()
-}
-
-func (i *dbaasRedisPtrType) ToDbaasRedisPtrOutput() DbaasRedisPtrOutput {
-	return i.ToDbaasRedisPtrOutputWithContext(context.Background())
-}
-
-func (i *dbaasRedisPtrType) ToDbaasRedisPtrOutputWithContext(ctx context.Context) DbaasRedisPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DbaasRedisPtrOutput)
-}
-
-type DbaasRedisOutput struct{ *pulumi.OutputState }
-
-func (DbaasRedisOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DbaasRedis)(nil)).Elem()
-}
-
-func (o DbaasRedisOutput) ToDbaasRedisOutput() DbaasRedisOutput {
-	return o
-}
-
-func (o DbaasRedisOutput) ToDbaasRedisOutputWithContext(ctx context.Context) DbaasRedisOutput {
-	return o
-}
-
-func (o DbaasRedisOutput) ToDbaasRedisPtrOutput() DbaasRedisPtrOutput {
-	return o.ToDbaasRedisPtrOutputWithContext(context.Background())
-}
-
-func (o DbaasRedisOutput) ToDbaasRedisPtrOutputWithContext(ctx context.Context) DbaasRedisPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbaasRedis) *DbaasRedis {
-		return &v
-	}).(DbaasRedisPtrOutput)
-}
-
-// A list of CIDR blocks to allow incoming connections from.
-func (o DbaasRedisOutput) IpFilters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v DbaasRedis) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
-}
-
-// Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
-func (o DbaasRedisOutput) RedisSettings() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DbaasRedis) *string { return v.RedisSettings }).(pulumi.StringPtrOutput)
-}
-
-type DbaasRedisPtrOutput struct{ *pulumi.OutputState }
-
-func (DbaasRedisPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DbaasRedis)(nil)).Elem()
-}
-
-func (o DbaasRedisPtrOutput) ToDbaasRedisPtrOutput() DbaasRedisPtrOutput {
-	return o
-}
-
-func (o DbaasRedisPtrOutput) ToDbaasRedisPtrOutputWithContext(ctx context.Context) DbaasRedisPtrOutput {
-	return o
-}
-
-func (o DbaasRedisPtrOutput) Elem() DbaasRedisOutput {
-	return o.ApplyT(func(v *DbaasRedis) DbaasRedis {
-		if v != nil {
-			return *v
-		}
-		var ret DbaasRedis
-		return ret
-	}).(DbaasRedisOutput)
-}
-
-// A list of CIDR blocks to allow incoming connections from.
-func (o DbaasRedisPtrOutput) IpFilters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *DbaasRedis) []string {
-		if v == nil {
-			return nil
-		}
-		return v.IpFilters
-	}).(pulumi.StringArrayOutput)
-}
-
-// Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
-func (o DbaasRedisPtrOutput) RedisSettings() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DbaasRedis) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RedisSettings
-	}).(pulumi.StringPtrOutput)
-}
-
 type DbaasTimeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 	Create *string `pulumi:"create"`
@@ -7957,6 +7645,200 @@ func (o NlbServiceHealthcheckArrayOutput) Index(i pulumi.IntInput) NlbServiceHea
 	}).(NlbServiceHealthcheckOutput)
 }
 
+type SksClusterAudit struct {
+	// The optional bearer token to include in the request header
+	BearerToken *string `pulumi:"bearerToken"`
+	// Whether to run the APIServer with the configured Kubernetes Audit
+	Enabled *bool `pulumi:"enabled"`
+	// The cluster API endpoint.
+	Endpoint *string `pulumi:"endpoint"`
+	// The Initial Backoff to wait before sending data to the remote server (default '10s')
+	InitialBackoff *string `pulumi:"initialBackoff"`
+}
+
+// SksClusterAuditInput is an input type that accepts SksClusterAuditArgs and SksClusterAuditOutput values.
+// You can construct a concrete instance of `SksClusterAuditInput` via:
+//
+//	SksClusterAuditArgs{...}
+type SksClusterAuditInput interface {
+	pulumi.Input
+
+	ToSksClusterAuditOutput() SksClusterAuditOutput
+	ToSksClusterAuditOutputWithContext(context.Context) SksClusterAuditOutput
+}
+
+type SksClusterAuditArgs struct {
+	// The optional bearer token to include in the request header
+	BearerToken pulumi.StringPtrInput `pulumi:"bearerToken"`
+	// Whether to run the APIServer with the configured Kubernetes Audit
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The cluster API endpoint.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// The Initial Backoff to wait before sending data to the remote server (default '10s')
+	InitialBackoff pulumi.StringPtrInput `pulumi:"initialBackoff"`
+}
+
+func (SksClusterAuditArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SksClusterAudit)(nil)).Elem()
+}
+
+func (i SksClusterAuditArgs) ToSksClusterAuditOutput() SksClusterAuditOutput {
+	return i.ToSksClusterAuditOutputWithContext(context.Background())
+}
+
+func (i SksClusterAuditArgs) ToSksClusterAuditOutputWithContext(ctx context.Context) SksClusterAuditOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SksClusterAuditOutput)
+}
+
+func (i SksClusterAuditArgs) ToSksClusterAuditPtrOutput() SksClusterAuditPtrOutput {
+	return i.ToSksClusterAuditPtrOutputWithContext(context.Background())
+}
+
+func (i SksClusterAuditArgs) ToSksClusterAuditPtrOutputWithContext(ctx context.Context) SksClusterAuditPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SksClusterAuditOutput).ToSksClusterAuditPtrOutputWithContext(ctx)
+}
+
+// SksClusterAuditPtrInput is an input type that accepts SksClusterAuditArgs, SksClusterAuditPtr and SksClusterAuditPtrOutput values.
+// You can construct a concrete instance of `SksClusterAuditPtrInput` via:
+//
+//	        SksClusterAuditArgs{...}
+//
+//	or:
+//
+//	        nil
+type SksClusterAuditPtrInput interface {
+	pulumi.Input
+
+	ToSksClusterAuditPtrOutput() SksClusterAuditPtrOutput
+	ToSksClusterAuditPtrOutputWithContext(context.Context) SksClusterAuditPtrOutput
+}
+
+type sksClusterAuditPtrType SksClusterAuditArgs
+
+func SksClusterAuditPtr(v *SksClusterAuditArgs) SksClusterAuditPtrInput {
+	return (*sksClusterAuditPtrType)(v)
+}
+
+func (*sksClusterAuditPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SksClusterAudit)(nil)).Elem()
+}
+
+func (i *sksClusterAuditPtrType) ToSksClusterAuditPtrOutput() SksClusterAuditPtrOutput {
+	return i.ToSksClusterAuditPtrOutputWithContext(context.Background())
+}
+
+func (i *sksClusterAuditPtrType) ToSksClusterAuditPtrOutputWithContext(ctx context.Context) SksClusterAuditPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SksClusterAuditPtrOutput)
+}
+
+type SksClusterAuditOutput struct{ *pulumi.OutputState }
+
+func (SksClusterAuditOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SksClusterAudit)(nil)).Elem()
+}
+
+func (o SksClusterAuditOutput) ToSksClusterAuditOutput() SksClusterAuditOutput {
+	return o
+}
+
+func (o SksClusterAuditOutput) ToSksClusterAuditOutputWithContext(ctx context.Context) SksClusterAuditOutput {
+	return o
+}
+
+func (o SksClusterAuditOutput) ToSksClusterAuditPtrOutput() SksClusterAuditPtrOutput {
+	return o.ToSksClusterAuditPtrOutputWithContext(context.Background())
+}
+
+func (o SksClusterAuditOutput) ToSksClusterAuditPtrOutputWithContext(ctx context.Context) SksClusterAuditPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SksClusterAudit) *SksClusterAudit {
+		return &v
+	}).(SksClusterAuditPtrOutput)
+}
+
+// The optional bearer token to include in the request header
+func (o SksClusterAuditOutput) BearerToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SksClusterAudit) *string { return v.BearerToken }).(pulumi.StringPtrOutput)
+}
+
+// Whether to run the APIServer with the configured Kubernetes Audit
+func (o SksClusterAuditOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SksClusterAudit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The cluster API endpoint.
+func (o SksClusterAuditOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SksClusterAudit) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The Initial Backoff to wait before sending data to the remote server (default '10s')
+func (o SksClusterAuditOutput) InitialBackoff() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SksClusterAudit) *string { return v.InitialBackoff }).(pulumi.StringPtrOutput)
+}
+
+type SksClusterAuditPtrOutput struct{ *pulumi.OutputState }
+
+func (SksClusterAuditPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SksClusterAudit)(nil)).Elem()
+}
+
+func (o SksClusterAuditPtrOutput) ToSksClusterAuditPtrOutput() SksClusterAuditPtrOutput {
+	return o
+}
+
+func (o SksClusterAuditPtrOutput) ToSksClusterAuditPtrOutputWithContext(ctx context.Context) SksClusterAuditPtrOutput {
+	return o
+}
+
+func (o SksClusterAuditPtrOutput) Elem() SksClusterAuditOutput {
+	return o.ApplyT(func(v *SksClusterAudit) SksClusterAudit {
+		if v != nil {
+			return *v
+		}
+		var ret SksClusterAudit
+		return ret
+	}).(SksClusterAuditOutput)
+}
+
+// The optional bearer token to include in the request header
+func (o SksClusterAuditPtrOutput) BearerToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SksClusterAudit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BearerToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to run the APIServer with the configured Kubernetes Audit
+func (o SksClusterAuditPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SksClusterAudit) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The cluster API endpoint.
+func (o SksClusterAuditPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SksClusterAudit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Initial Backoff to wait before sending data to the remote server (default '10s')
+func (o SksClusterAuditPtrOutput) InitialBackoff() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SksClusterAudit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InitialBackoff
+	}).(pulumi.StringPtrOutput)
+}
+
 type SksClusterOidc struct {
 	// The OpenID client ID.
 	ClientId string `pulumi:"clientId"`
@@ -9003,6 +8885,10 @@ type GetComputeInstanceListInstance struct {
 	DiskSize int `pulumi:"diskSize"`
 	// The list of attached ElasticIp (IDs).
 	ElasticIpIds []string `pulumi:"elasticIpIds"`
+	// Indicates if the instance has secure boot enabled.
+	EnableSecureBoot bool `pulumi:"enableSecureBoot"`
+	// Indicates if the instance has TPM enabled.
+	EnableTpm bool `pulumi:"enableTpm"`
 	// The compute instance ID to match (conflicts with `name`).
 	Id *string `pulumi:"id"`
 	// Whether IPv6 is enabled on the instance.
@@ -9065,6 +8951,10 @@ type GetComputeInstanceListInstanceArgs struct {
 	DiskSize pulumi.IntInput `pulumi:"diskSize"`
 	// The list of attached ElasticIp (IDs).
 	ElasticIpIds pulumi.StringArrayInput `pulumi:"elasticIpIds"`
+	// Indicates if the instance has secure boot enabled.
+	EnableSecureBoot pulumi.BoolInput `pulumi:"enableSecureBoot"`
+	// Indicates if the instance has TPM enabled.
+	EnableTpm pulumi.BoolInput `pulumi:"enableTpm"`
 	// The compute instance ID to match (conflicts with `name`).
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Whether IPv6 is enabled on the instance.
@@ -9179,6 +9069,16 @@ func (o GetComputeInstanceListInstanceOutput) DiskSize() pulumi.IntOutput {
 // The list of attached ElasticIp (IDs).
 func (o GetComputeInstanceListInstanceOutput) ElasticIpIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetComputeInstanceListInstance) []string { return v.ElasticIpIds }).(pulumi.StringArrayOutput)
+}
+
+// Indicates if the instance has secure boot enabled.
+func (o GetComputeInstanceListInstanceOutput) EnableSecureBoot() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetComputeInstanceListInstance) bool { return v.EnableSecureBoot }).(pulumi.BoolOutput)
+}
+
+// Indicates if the instance has TPM enabled.
+func (o GetComputeInstanceListInstanceOutput) EnableTpm() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetComputeInstanceListInstance) bool { return v.EnableTpm }).(pulumi.BoolOutput)
 }
 
 // The compute instance ID to match (conflicts with `name`).
@@ -11680,11 +11580,207 @@ func (o GetNlbServiceListTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetSksClusterAudit struct {
+	// The optional bearer token to include in the request header
+	BearerToken *string `pulumi:"bearerToken"`
+	// Whether to run the APIServer with the configured Kubernetes Audit
+	Enabled *bool `pulumi:"enabled"`
+	// The cluster API endpoint.
+	Endpoint *string `pulumi:"endpoint"`
+	// The Initial Backoff to wait before sending data to the remote server (default '10s')
+	InitialBackoff *string `pulumi:"initialBackoff"`
+}
+
+// GetSksClusterAuditInput is an input type that accepts GetSksClusterAuditArgs and GetSksClusterAuditOutput values.
+// You can construct a concrete instance of `GetSksClusterAuditInput` via:
+//
+//	GetSksClusterAuditArgs{...}
+type GetSksClusterAuditInput interface {
+	pulumi.Input
+
+	ToGetSksClusterAuditOutput() GetSksClusterAuditOutput
+	ToGetSksClusterAuditOutputWithContext(context.Context) GetSksClusterAuditOutput
+}
+
+type GetSksClusterAuditArgs struct {
+	// The optional bearer token to include in the request header
+	BearerToken pulumi.StringPtrInput `pulumi:"bearerToken"`
+	// Whether to run the APIServer with the configured Kubernetes Audit
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The cluster API endpoint.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// The Initial Backoff to wait before sending data to the remote server (default '10s')
+	InitialBackoff pulumi.StringPtrInput `pulumi:"initialBackoff"`
+}
+
+func (GetSksClusterAuditArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSksClusterAudit)(nil)).Elem()
+}
+
+func (i GetSksClusterAuditArgs) ToGetSksClusterAuditOutput() GetSksClusterAuditOutput {
+	return i.ToGetSksClusterAuditOutputWithContext(context.Background())
+}
+
+func (i GetSksClusterAuditArgs) ToGetSksClusterAuditOutputWithContext(ctx context.Context) GetSksClusterAuditOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSksClusterAuditOutput)
+}
+
+func (i GetSksClusterAuditArgs) ToGetSksClusterAuditPtrOutput() GetSksClusterAuditPtrOutput {
+	return i.ToGetSksClusterAuditPtrOutputWithContext(context.Background())
+}
+
+func (i GetSksClusterAuditArgs) ToGetSksClusterAuditPtrOutputWithContext(ctx context.Context) GetSksClusterAuditPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSksClusterAuditOutput).ToGetSksClusterAuditPtrOutputWithContext(ctx)
+}
+
+// GetSksClusterAuditPtrInput is an input type that accepts GetSksClusterAuditArgs, GetSksClusterAuditPtr and GetSksClusterAuditPtrOutput values.
+// You can construct a concrete instance of `GetSksClusterAuditPtrInput` via:
+//
+//	        GetSksClusterAuditArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSksClusterAuditPtrInput interface {
+	pulumi.Input
+
+	ToGetSksClusterAuditPtrOutput() GetSksClusterAuditPtrOutput
+	ToGetSksClusterAuditPtrOutputWithContext(context.Context) GetSksClusterAuditPtrOutput
+}
+
+type getSksClusterAuditPtrType GetSksClusterAuditArgs
+
+func GetSksClusterAuditPtr(v *GetSksClusterAuditArgs) GetSksClusterAuditPtrInput {
+	return (*getSksClusterAuditPtrType)(v)
+}
+
+func (*getSksClusterAuditPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSksClusterAudit)(nil)).Elem()
+}
+
+func (i *getSksClusterAuditPtrType) ToGetSksClusterAuditPtrOutput() GetSksClusterAuditPtrOutput {
+	return i.ToGetSksClusterAuditPtrOutputWithContext(context.Background())
+}
+
+func (i *getSksClusterAuditPtrType) ToGetSksClusterAuditPtrOutputWithContext(ctx context.Context) GetSksClusterAuditPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSksClusterAuditPtrOutput)
+}
+
+type GetSksClusterAuditOutput struct{ *pulumi.OutputState }
+
+func (GetSksClusterAuditOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSksClusterAudit)(nil)).Elem()
+}
+
+func (o GetSksClusterAuditOutput) ToGetSksClusterAuditOutput() GetSksClusterAuditOutput {
+	return o
+}
+
+func (o GetSksClusterAuditOutput) ToGetSksClusterAuditOutputWithContext(ctx context.Context) GetSksClusterAuditOutput {
+	return o
+}
+
+func (o GetSksClusterAuditOutput) ToGetSksClusterAuditPtrOutput() GetSksClusterAuditPtrOutput {
+	return o.ToGetSksClusterAuditPtrOutputWithContext(context.Background())
+}
+
+func (o GetSksClusterAuditOutput) ToGetSksClusterAuditPtrOutputWithContext(ctx context.Context) GetSksClusterAuditPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSksClusterAudit) *GetSksClusterAudit {
+		return &v
+	}).(GetSksClusterAuditPtrOutput)
+}
+
+// The optional bearer token to include in the request header
+func (o GetSksClusterAuditOutput) BearerToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksClusterAudit) *string { return v.BearerToken }).(pulumi.StringPtrOutput)
+}
+
+// Whether to run the APIServer with the configured Kubernetes Audit
+func (o GetSksClusterAuditOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSksClusterAudit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The cluster API endpoint.
+func (o GetSksClusterAuditOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksClusterAudit) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The Initial Backoff to wait before sending data to the remote server (default '10s')
+func (o GetSksClusterAuditOutput) InitialBackoff() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksClusterAudit) *string { return v.InitialBackoff }).(pulumi.StringPtrOutput)
+}
+
+type GetSksClusterAuditPtrOutput struct{ *pulumi.OutputState }
+
+func (GetSksClusterAuditPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSksClusterAudit)(nil)).Elem()
+}
+
+func (o GetSksClusterAuditPtrOutput) ToGetSksClusterAuditPtrOutput() GetSksClusterAuditPtrOutput {
+	return o
+}
+
+func (o GetSksClusterAuditPtrOutput) ToGetSksClusterAuditPtrOutputWithContext(ctx context.Context) GetSksClusterAuditPtrOutput {
+	return o
+}
+
+func (o GetSksClusterAuditPtrOutput) Elem() GetSksClusterAuditOutput {
+	return o.ApplyT(func(v *GetSksClusterAudit) GetSksClusterAudit {
+		if v != nil {
+			return *v
+		}
+		var ret GetSksClusterAudit
+		return ret
+	}).(GetSksClusterAuditOutput)
+}
+
+// The optional bearer token to include in the request header
+func (o GetSksClusterAuditPtrOutput) BearerToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSksClusterAudit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BearerToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to run the APIServer with the configured Kubernetes Audit
+func (o GetSksClusterAuditPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetSksClusterAudit) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The cluster API endpoint.
+func (o GetSksClusterAuditPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSksClusterAudit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Initial Backoff to wait before sending data to the remote server (default '10s')
+func (o GetSksClusterAuditPtrOutput) InitialBackoff() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSksClusterAudit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InitialBackoff
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetSksClusterListCluster struct {
 	// Deprecated: This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
 	Addons []string `pulumi:"addons"`
 	// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
 	AggregationCa string `pulumi:"aggregationCa"`
+	// Parameters for Kubernetes Audit configuration (may only be enabled at creation time)
+	Audit *GetSksClusterListClusterAudit `pulumi:"audit"`
 	// Enable automatic upgrading of the control plane version.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
 	// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
@@ -11742,6 +11838,8 @@ type GetSksClusterListClusterArgs struct {
 	Addons pulumi.StringArrayInput `pulumi:"addons"`
 	// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
 	AggregationCa pulumi.StringInput `pulumi:"aggregationCa"`
+	// Parameters for Kubernetes Audit configuration (may only be enabled at creation time)
+	Audit GetSksClusterListClusterAuditPtrInput `pulumi:"audit"`
 	// Enable automatic upgrading of the control plane version.
 	AutoUpgrade pulumi.BoolPtrInput `pulumi:"autoUpgrade"`
 	// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
@@ -11842,6 +11940,11 @@ func (o GetSksClusterListClusterOutput) Addons() pulumi.StringArrayOutput {
 // The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
 func (o GetSksClusterListClusterOutput) AggregationCa() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSksClusterListCluster) string { return v.AggregationCa }).(pulumi.StringOutput)
+}
+
+// Parameters for Kubernetes Audit configuration (may only be enabled at creation time)
+func (o GetSksClusterListClusterOutput) Audit() GetSksClusterListClusterAuditPtrOutput {
+	return o.ApplyT(func(v GetSksClusterListCluster) *GetSksClusterListClusterAudit { return v.Audit }).(GetSksClusterListClusterAuditPtrOutput)
 }
 
 // Enable automatic upgrading of the control plane version.
@@ -11964,6 +12067,200 @@ func (o GetSksClusterListClusterArrayOutput) Index(i pulumi.IntInput) GetSksClus
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSksClusterListCluster {
 		return vs[0].([]GetSksClusterListCluster)[vs[1].(int)]
 	}).(GetSksClusterListClusterOutput)
+}
+
+type GetSksClusterListClusterAudit struct {
+	// The optional bearer token to include in the request header
+	BearerToken *string `pulumi:"bearerToken"`
+	// Whether to run the APIServer with the configured Kubernetes Audit
+	Enabled *bool `pulumi:"enabled"`
+	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+	Endpoint *string `pulumi:"endpoint"`
+	// The Initial Backoff to wait before sending data to the remote server (default '10s')
+	InitialBackoff *string `pulumi:"initialBackoff"`
+}
+
+// GetSksClusterListClusterAuditInput is an input type that accepts GetSksClusterListClusterAuditArgs and GetSksClusterListClusterAuditOutput values.
+// You can construct a concrete instance of `GetSksClusterListClusterAuditInput` via:
+//
+//	GetSksClusterListClusterAuditArgs{...}
+type GetSksClusterListClusterAuditInput interface {
+	pulumi.Input
+
+	ToGetSksClusterListClusterAuditOutput() GetSksClusterListClusterAuditOutput
+	ToGetSksClusterListClusterAuditOutputWithContext(context.Context) GetSksClusterListClusterAuditOutput
+}
+
+type GetSksClusterListClusterAuditArgs struct {
+	// The optional bearer token to include in the request header
+	BearerToken pulumi.StringPtrInput `pulumi:"bearerToken"`
+	// Whether to run the APIServer with the configured Kubernetes Audit
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// The Initial Backoff to wait before sending data to the remote server (default '10s')
+	InitialBackoff pulumi.StringPtrInput `pulumi:"initialBackoff"`
+}
+
+func (GetSksClusterListClusterAuditArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSksClusterListClusterAudit)(nil)).Elem()
+}
+
+func (i GetSksClusterListClusterAuditArgs) ToGetSksClusterListClusterAuditOutput() GetSksClusterListClusterAuditOutput {
+	return i.ToGetSksClusterListClusterAuditOutputWithContext(context.Background())
+}
+
+func (i GetSksClusterListClusterAuditArgs) ToGetSksClusterListClusterAuditOutputWithContext(ctx context.Context) GetSksClusterListClusterAuditOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSksClusterListClusterAuditOutput)
+}
+
+func (i GetSksClusterListClusterAuditArgs) ToGetSksClusterListClusterAuditPtrOutput() GetSksClusterListClusterAuditPtrOutput {
+	return i.ToGetSksClusterListClusterAuditPtrOutputWithContext(context.Background())
+}
+
+func (i GetSksClusterListClusterAuditArgs) ToGetSksClusterListClusterAuditPtrOutputWithContext(ctx context.Context) GetSksClusterListClusterAuditPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSksClusterListClusterAuditOutput).ToGetSksClusterListClusterAuditPtrOutputWithContext(ctx)
+}
+
+// GetSksClusterListClusterAuditPtrInput is an input type that accepts GetSksClusterListClusterAuditArgs, GetSksClusterListClusterAuditPtr and GetSksClusterListClusterAuditPtrOutput values.
+// You can construct a concrete instance of `GetSksClusterListClusterAuditPtrInput` via:
+//
+//	        GetSksClusterListClusterAuditArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSksClusterListClusterAuditPtrInput interface {
+	pulumi.Input
+
+	ToGetSksClusterListClusterAuditPtrOutput() GetSksClusterListClusterAuditPtrOutput
+	ToGetSksClusterListClusterAuditPtrOutputWithContext(context.Context) GetSksClusterListClusterAuditPtrOutput
+}
+
+type getSksClusterListClusterAuditPtrType GetSksClusterListClusterAuditArgs
+
+func GetSksClusterListClusterAuditPtr(v *GetSksClusterListClusterAuditArgs) GetSksClusterListClusterAuditPtrInput {
+	return (*getSksClusterListClusterAuditPtrType)(v)
+}
+
+func (*getSksClusterListClusterAuditPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSksClusterListClusterAudit)(nil)).Elem()
+}
+
+func (i *getSksClusterListClusterAuditPtrType) ToGetSksClusterListClusterAuditPtrOutput() GetSksClusterListClusterAuditPtrOutput {
+	return i.ToGetSksClusterListClusterAuditPtrOutputWithContext(context.Background())
+}
+
+func (i *getSksClusterListClusterAuditPtrType) ToGetSksClusterListClusterAuditPtrOutputWithContext(ctx context.Context) GetSksClusterListClusterAuditPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSksClusterListClusterAuditPtrOutput)
+}
+
+type GetSksClusterListClusterAuditOutput struct{ *pulumi.OutputState }
+
+func (GetSksClusterListClusterAuditOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSksClusterListClusterAudit)(nil)).Elem()
+}
+
+func (o GetSksClusterListClusterAuditOutput) ToGetSksClusterListClusterAuditOutput() GetSksClusterListClusterAuditOutput {
+	return o
+}
+
+func (o GetSksClusterListClusterAuditOutput) ToGetSksClusterListClusterAuditOutputWithContext(ctx context.Context) GetSksClusterListClusterAuditOutput {
+	return o
+}
+
+func (o GetSksClusterListClusterAuditOutput) ToGetSksClusterListClusterAuditPtrOutput() GetSksClusterListClusterAuditPtrOutput {
+	return o.ToGetSksClusterListClusterAuditPtrOutputWithContext(context.Background())
+}
+
+func (o GetSksClusterListClusterAuditOutput) ToGetSksClusterListClusterAuditPtrOutputWithContext(ctx context.Context) GetSksClusterListClusterAuditPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSksClusterListClusterAudit) *GetSksClusterListClusterAudit {
+		return &v
+	}).(GetSksClusterListClusterAuditPtrOutput)
+}
+
+// The optional bearer token to include in the request header
+func (o GetSksClusterListClusterAuditOutput) BearerToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksClusterListClusterAudit) *string { return v.BearerToken }).(pulumi.StringPtrOutput)
+}
+
+// Whether to run the APIServer with the configured Kubernetes Audit
+func (o GetSksClusterListClusterAuditOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSksClusterListClusterAudit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+func (o GetSksClusterListClusterAuditOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksClusterListClusterAudit) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The Initial Backoff to wait before sending data to the remote server (default '10s')
+func (o GetSksClusterListClusterAuditOutput) InitialBackoff() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSksClusterListClusterAudit) *string { return v.InitialBackoff }).(pulumi.StringPtrOutput)
+}
+
+type GetSksClusterListClusterAuditPtrOutput struct{ *pulumi.OutputState }
+
+func (GetSksClusterListClusterAuditPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSksClusterListClusterAudit)(nil)).Elem()
+}
+
+func (o GetSksClusterListClusterAuditPtrOutput) ToGetSksClusterListClusterAuditPtrOutput() GetSksClusterListClusterAuditPtrOutput {
+	return o
+}
+
+func (o GetSksClusterListClusterAuditPtrOutput) ToGetSksClusterListClusterAuditPtrOutputWithContext(ctx context.Context) GetSksClusterListClusterAuditPtrOutput {
+	return o
+}
+
+func (o GetSksClusterListClusterAuditPtrOutput) Elem() GetSksClusterListClusterAuditOutput {
+	return o.ApplyT(func(v *GetSksClusterListClusterAudit) GetSksClusterListClusterAudit {
+		if v != nil {
+			return *v
+		}
+		var ret GetSksClusterListClusterAudit
+		return ret
+	}).(GetSksClusterListClusterAuditOutput)
+}
+
+// The optional bearer token to include in the request header
+func (o GetSksClusterListClusterAuditPtrOutput) BearerToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSksClusterListClusterAudit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BearerToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to run the APIServer with the configured Kubernetes Audit
+func (o GetSksClusterListClusterAuditPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetSksClusterListClusterAudit) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+func (o GetSksClusterListClusterAuditPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSksClusterListClusterAudit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Initial Backoff to wait before sending data to the remote server (default '10s')
+func (o GetSksClusterListClusterAuditPtrOutput) InitialBackoff() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSksClusterListClusterAudit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InitialBackoff
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetSksClusterListClusterOidc struct {
@@ -12999,8 +13296,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseOpensearchIndexTemplatePtrInput)(nil)).Elem(), DatabaseOpensearchIndexTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePgInput)(nil)).Elem(), DatabasePgArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePgPtrInput)(nil)).Elem(), DatabasePgArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseRedisInput)(nil)).Elem(), DatabaseRedisArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseRedisPtrInput)(nil)).Elem(), DatabaseRedisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTimeoutsInput)(nil)).Elem(), DatabaseTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTimeoutsPtrInput)(nil)).Elem(), DatabaseTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseValkeyInput)(nil)).Elem(), DatabaseValkeyArgs{})
@@ -13033,8 +13328,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DbaasPgDatabaseTimeoutsPtrInput)(nil)).Elem(), DbaasPgDatabaseTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbaasPgUserTimeoutsInput)(nil)).Elem(), DbaasPgUserTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbaasPgUserTimeoutsPtrInput)(nil)).Elem(), DbaasPgUserTimeoutsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DbaasRedisInput)(nil)).Elem(), DbaasRedisArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DbaasRedisPtrInput)(nil)).Elem(), DbaasRedisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbaasTimeoutsInput)(nil)).Elem(), DbaasTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbaasTimeoutsPtrInput)(nil)).Elem(), DbaasTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbaasValkeyInput)(nil)).Elem(), DbaasValkeyArgs{})
@@ -13061,6 +13354,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePoolInstanceArrayInput)(nil)).Elem(), InstancePoolInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NlbServiceHealthcheckInput)(nil)).Elem(), NlbServiceHealthcheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NlbServiceHealthcheckArrayInput)(nil)).Elem(), NlbServiceHealthcheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SksClusterAuditInput)(nil)).Elem(), SksClusterAuditArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SksClusterAuditPtrInput)(nil)).Elem(), SksClusterAuditArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SksClusterOidcInput)(nil)).Elem(), SksClusterOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SksClusterOidcPtrInput)(nil)).Elem(), SksClusterOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SksNodepoolKubeletImageGcInput)(nil)).Elem(), SksNodepoolKubeletImageGcArgs{})
@@ -13110,8 +13405,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNlbServiceListServiceHealthcheckInput)(nil)).Elem(), GetNlbServiceListServiceHealthcheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNlbServiceListTimeoutsInput)(nil)).Elem(), GetNlbServiceListTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNlbServiceListTimeoutsPtrInput)(nil)).Elem(), GetNlbServiceListTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSksClusterAuditInput)(nil)).Elem(), GetSksClusterAuditArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSksClusterAuditPtrInput)(nil)).Elem(), GetSksClusterAuditArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSksClusterListClusterInput)(nil)).Elem(), GetSksClusterListClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSksClusterListClusterArrayInput)(nil)).Elem(), GetSksClusterListClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSksClusterListClusterAuditInput)(nil)).Elem(), GetSksClusterListClusterAuditArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSksClusterListClusterAuditPtrInput)(nil)).Elem(), GetSksClusterListClusterAuditArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSksClusterListClusterOidcInput)(nil)).Elem(), GetSksClusterListClusterOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSksClusterOidcInput)(nil)).Elem(), GetSksClusterOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSksClusterOidcPtrInput)(nil)).Elem(), GetSksClusterOidcArgs{})
@@ -13149,8 +13448,6 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseOpensearchIndexTemplatePtrOutput{})
 	pulumi.RegisterOutputType(DatabasePgOutput{})
 	pulumi.RegisterOutputType(DatabasePgPtrOutput{})
-	pulumi.RegisterOutputType(DatabaseRedisOutput{})
-	pulumi.RegisterOutputType(DatabaseRedisPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseTimeoutsOutput{})
 	pulumi.RegisterOutputType(DatabaseTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseValkeyOutput{})
@@ -13183,8 +13480,6 @@ func init() {
 	pulumi.RegisterOutputType(DbaasPgDatabaseTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(DbaasPgUserTimeoutsOutput{})
 	pulumi.RegisterOutputType(DbaasPgUserTimeoutsPtrOutput{})
-	pulumi.RegisterOutputType(DbaasRedisOutput{})
-	pulumi.RegisterOutputType(DbaasRedisPtrOutput{})
 	pulumi.RegisterOutputType(DbaasTimeoutsOutput{})
 	pulumi.RegisterOutputType(DbaasTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(DbaasValkeyOutput{})
@@ -13211,6 +13506,8 @@ func init() {
 	pulumi.RegisterOutputType(InstancePoolInstanceArrayOutput{})
 	pulumi.RegisterOutputType(NlbServiceHealthcheckOutput{})
 	pulumi.RegisterOutputType(NlbServiceHealthcheckArrayOutput{})
+	pulumi.RegisterOutputType(SksClusterAuditOutput{})
+	pulumi.RegisterOutputType(SksClusterAuditPtrOutput{})
 	pulumi.RegisterOutputType(SksClusterOidcOutput{})
 	pulumi.RegisterOutputType(SksClusterOidcPtrOutput{})
 	pulumi.RegisterOutputType(SksNodepoolKubeletImageGcOutput{})
@@ -13260,8 +13557,12 @@ func init() {
 	pulumi.RegisterOutputType(GetNlbServiceListServiceHealthcheckOutput{})
 	pulumi.RegisterOutputType(GetNlbServiceListTimeoutsOutput{})
 	pulumi.RegisterOutputType(GetNlbServiceListTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetSksClusterAuditOutput{})
+	pulumi.RegisterOutputType(GetSksClusterAuditPtrOutput{})
 	pulumi.RegisterOutputType(GetSksClusterListClusterOutput{})
 	pulumi.RegisterOutputType(GetSksClusterListClusterArrayOutput{})
+	pulumi.RegisterOutputType(GetSksClusterListClusterAuditOutput{})
+	pulumi.RegisterOutputType(GetSksClusterListClusterAuditPtrOutput{})
 	pulumi.RegisterOutputType(GetSksClusterListClusterOidcOutput{})
 	pulumi.RegisterOutputType(GetSksClusterOidcOutput{})
 	pulumi.RegisterOutputType(GetSksClusterOidcPtrOutput{})

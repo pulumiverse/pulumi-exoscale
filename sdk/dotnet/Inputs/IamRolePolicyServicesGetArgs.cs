@@ -17,7 +17,7 @@ namespace Pulumiverse.Exoscale.Inputs
         private InputList<Inputs.IamRolePolicyServicesRuleGetArgs>? _rules;
 
         /// <summary>
-        /// List of IAM service rules (if type is `rules`).
+        /// List of IAM service rules (if type is `Rules`).
         /// </summary>
         public InputList<Inputs.IamRolePolicyServicesRuleGetArgs> Rules
         {
@@ -26,7 +26,7 @@ namespace Pulumiverse.Exoscale.Inputs
         }
 
         /// <summary>
-        /// Service type (`rules`, `allow`, or `deny`).
+        /// Service type (`Rules`, `Allow`, or `Deny`).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -77,7 +77,7 @@ namespace Pulumiverse.Exoscale
         public string? InstancePoolId { get; set; }
 
         /// <summary>
-        /// The string used to prefix the managed instances name (default `pool`).
+        /// The string used to prefix the managed instances name (default `Pool`).
         /// </summary>
         [Input("instancePrefix")]
         public string? InstancePrefix { get; set; }
@@ -247,7 +247,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? InstancePoolId { get; set; }
 
         /// <summary>
-        /// The string used to prefix the managed instances name (default `pool`).
+        /// The string used to prefix the managed instances name (default `Pool`).
         /// </summary>
         [Input("instancePrefix")]
         public Input<string>? InstancePrefix { get; set; }
@@ -397,7 +397,7 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly string InstancePoolId;
         /// <summary>
-        /// The string used to prefix the managed instances name (default `pool`).
+        /// The string used to prefix the managed instances name (default `Pool`).
         /// </summary>
         public readonly string? InstancePrefix;
         /// <summary>

@@ -258,17 +258,6 @@ export interface DatabasePg {
     version?: pulumi.Input<string>;
 }
 
-export interface DatabaseRedis {
-    /**
-     * A list of CIDR blocks to allow incoming connections from.
-     */
-    ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
-     */
-    redisSettings?: pulumi.Input<string>;
-}
-
 export interface DatabaseTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -623,17 +612,6 @@ export interface DbaasPgUserTimeouts {
     update?: pulumi.Input<string>;
 }
 
-export interface DbaasRedis {
-    /**
-     * A list of CIDR blocks to allow incoming connections from.
-     */
-    ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
-     */
-    redisSettings?: pulumi.Input<string>;
-}
-
 export interface DbaasTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -837,6 +815,44 @@ export interface GetNlbServiceListTimeoutsArgs {
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
     read?: pulumi.Input<string>;
+}
+
+export interface GetSksClusterAudit {
+    /**
+     * The optional bearer token to include in the request header
+     */
+    bearerToken?: string;
+    /**
+     * Whether to run the APIServer with the configured Kubernetes Audit
+     */
+    enabled?: boolean;
+    /**
+     * The cluster API endpoint.
+     */
+    endpoint?: string;
+    /**
+     * The Initial Backoff to wait before sending data to the remote server (default '10s')
+     */
+    initialBackoff?: string;
+}
+
+export interface GetSksClusterAuditArgs {
+    /**
+     * The optional bearer token to include in the request header
+     */
+    bearerToken?: pulumi.Input<string>;
+    /**
+     * Whether to run the APIServer with the configured Kubernetes Audit
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * The cluster API endpoint.
+     */
+    endpoint?: pulumi.Input<string>;
+    /**
+     * The Initial Backoff to wait before sending data to the remote server (default '10s')
+     */
+    initialBackoff?: pulumi.Input<string>;
 }
 
 export interface GetSksClusterOidc {
@@ -1077,6 +1093,25 @@ export interface NlbServiceHealthcheck {
      * The healthcheck URI (must be set only if `mode` is `http(s)`).
      */
     uri?: pulumi.Input<string>;
+}
+
+export interface SksClusterAudit {
+    /**
+     * The optional bearer token to include in the request header
+     */
+    bearerToken?: pulumi.Input<string>;
+    /**
+     * Whether to run the APIServer with the configured Kubernetes Audit
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * The cluster API endpoint.
+     */
+    endpoint?: pulumi.Input<string>;
+    /**
+     * The Initial Backoff to wait before sending data to the remote server (default '10s')
+     */
+    initialBackoff?: pulumi.Input<string>;
 }
 
 export interface SksClusterOidc {

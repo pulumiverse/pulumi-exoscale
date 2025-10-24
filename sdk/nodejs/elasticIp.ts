@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const myElasticIp = new exoscale.ElasticIp("myElasticIp", {zone: "ch-gva-2"});
+ * const myElasticIp = new exoscale.ElasticIp("my_elastic_ip", {zone: "ch-gva-2"});
  * ```
  *
  * *Managed* EIPv6:
@@ -28,20 +28,20 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const myManagedElasticIp = new exoscale.ElasticIp("myManagedElasticIp", {
+ * const myManagedElasticIp = new exoscale.ElasticIp("my_managed_elastic_ip", {
+ *     zone: "ch-gva-2",
  *     addressFamily: "inet6",
+ *     reverseDns: "example.net",
  *     healthcheck: {
- *         interval: 5,
  *         mode: "https",
  *         port: 443,
- *         strikesFail: 3,
- *         strikesOk: 2,
- *         timeout: 3,
- *         tlsSni: "example.net",
  *         uri: "/health",
+ *         interval: 5,
+ *         timeout: 3,
+ *         strikesOk: 2,
+ *         strikesFail: 3,
+ *         tlsSni: "example.net",
  *     },
- *     reverseDns: "example.net",
- *     zone: "ch-gva-2",
  * });
  * ```
  *
@@ -91,35 +91,35 @@ export class ElasticIp extends pulumi.CustomResource {
     /**
      * ❗ The Elastic IP (EIP) address family (`inet4` or `inet6`; default: `inet4`).
      */
-    public readonly addressFamily!: pulumi.Output<string>;
+    declare public readonly addressFamily: pulumi.Output<string>;
     /**
      * The Elastic IP (EIP) CIDR.
      */
-    public /*out*/ readonly cidr!: pulumi.Output<string>;
+    declare public /*out*/ readonly cidr: pulumi.Output<string>;
     /**
      * A free-form text describing the Elastic IP (EIP).
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Healthcheck configuration for *managed* EIPs. It can not be added to an existing *Unmanaged* EIP.
      */
-    public readonly healthcheck!: pulumi.Output<outputs.ElasticIpHealthcheck>;
+    declare public readonly healthcheck: pulumi.Output<outputs.ElasticIpHealthcheck>;
     /**
      * The Elastic IP (EIP) IPv4 or IPv6 address.
      */
-    public /*out*/ readonly ipAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipAddress: pulumi.Output<string>;
     /**
      * A map of key/value labels.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Domain name for reverse DNS record.
      */
-    public readonly reverseDns!: pulumi.Output<string | undefined>;
+    declare public readonly reverseDns: pulumi.Output<string | undefined>;
     /**
      * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a ElasticIp resource with the given unique name, arguments, and options.
@@ -134,25 +134,25 @@ export class ElasticIp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ElasticIpState | undefined;
-            resourceInputs["addressFamily"] = state ? state.addressFamily : undefined;
-            resourceInputs["cidr"] = state ? state.cidr : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["healthcheck"] = state ? state.healthcheck : undefined;
-            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["reverseDns"] = state ? state.reverseDns : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["addressFamily"] = state?.addressFamily;
+            resourceInputs["cidr"] = state?.cidr;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["healthcheck"] = state?.healthcheck;
+            resourceInputs["ipAddress"] = state?.ipAddress;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["reverseDns"] = state?.reverseDns;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as ElasticIpArgs | undefined;
-            if ((!args || args.zone === undefined) && !opts.urn) {
+            if (args?.zone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            resourceInputs["addressFamily"] = args ? args.addressFamily : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["healthcheck"] = args ? args.healthcheck : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["reverseDns"] = args ? args.reverseDns : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["addressFamily"] = args?.addressFamily;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["healthcheck"] = args?.healthcheck;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["reverseDns"] = args?.reverseDns;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["cidr"] = undefined /*out*/;
             resourceInputs["ipAddress"] = undefined /*out*/;
         }

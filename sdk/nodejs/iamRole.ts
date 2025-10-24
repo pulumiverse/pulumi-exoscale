@@ -40,28 +40,28 @@ export class IamRole extends pulumi.CustomResource {
     /**
      * A free-form text describing the IAM Role
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Defines if IAM Role Policy is editable or not.
      */
-    public readonly editable!: pulumi.Output<boolean>;
+    declare public readonly editable: pulumi.Output<boolean>;
     /**
      * IAM Role labels.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * ❗Name of IAM Role.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * IAM Role permissions.
      */
-    public readonly permissions!: pulumi.Output<string[]>;
+    declare public readonly permissions: pulumi.Output<string[]>;
     /**
      * IAM Policy.
      */
-    public readonly policy!: pulumi.Output<outputs.IamRolePolicy>;
-    public readonly timeouts!: pulumi.Output<outputs.IamRoleTimeouts | undefined>;
+    declare public readonly policy: pulumi.Output<outputs.IamRolePolicy>;
+    declare public readonly timeouts: pulumi.Output<outputs.IamRoleTimeouts | undefined>;
 
     /**
      * Create a IamRole resource with the given unique name, arguments, and options.
@@ -76,22 +76,22 @@ export class IamRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IamRoleState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["editable"] = state ? state.editable : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["permissions"] = state ? state.permissions : undefined;
-            resourceInputs["policy"] = state ? state.policy : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["editable"] = state?.editable;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["permissions"] = state?.permissions;
+            resourceInputs["policy"] = state?.policy;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as IamRoleArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["editable"] = args ? args.editable : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["permissions"] = args ? args.permissions : undefined;
-            resourceInputs["policy"] = args ? args.policy : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["editable"] = args?.editable;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["permissions"] = args?.permissions;
+            resourceInputs["policy"] = args?.policy;
+            resourceInputs["timeouts"] = args?.timeouts;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IamRole.__pulumiType, name, resourceInputs, opts);

@@ -116,13 +116,13 @@ namespace Pulumiverse.Exoscale
     public sealed class GetAntiAffinityGroupArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The anti-affinity group ID to match (conflicts with `name`).
+        /// The anti-affinity group ID to match (conflicts with `Name`).
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// The group name to match (conflicts with `id`).
+        /// The group name to match (conflicts with `Id`).
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -136,13 +136,13 @@ namespace Pulumiverse.Exoscale
     public sealed class GetAntiAffinityGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The anti-affinity group ID to match (conflicts with `name`).
+        /// The anti-affinity group ID to match (conflicts with `Name`).
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The group name to match (conflicts with `id`).
+        /// The group name to match (conflicts with `Id`).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -158,7 +158,7 @@ namespace Pulumiverse.Exoscale
     public sealed class GetAntiAffinityGroupResult
     {
         /// <summary>
-        /// The anti-affinity group ID to match (conflicts with `name`).
+        /// The anti-affinity group ID to match (conflicts with `Name`).
         /// </summary>
         public readonly string? Id;
         /// <summary>
@@ -166,7 +166,7 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly ImmutableArray<string> Instances;
         /// <summary>
-        /// The group name to match (conflicts with `id`).
+        /// The group name to match (conflicts with `Id`).
         /// </summary>
         public readonly string? Name;
 

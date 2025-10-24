@@ -29,7 +29,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := exoscale.NewDomain(ctx, "myDomain", nil)
+//			_, err := exoscale.NewDomain(ctx, "my_domain", &exoscale.DomainArgs{
+//				Name: pulumi.String("my.domain"),
+//			})
 //			if err != nil {
 //				return err
 //			}

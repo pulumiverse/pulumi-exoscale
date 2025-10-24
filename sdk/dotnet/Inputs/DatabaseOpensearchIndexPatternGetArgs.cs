@@ -26,7 +26,7 @@ namespace Pulumiverse.Exoscale.Inputs
         public Input<string>? Pattern { get; set; }
 
         /// <summary>
-        /// `alphabetical` or `creation_date`.
+        /// `Alphabetical` or `CreationDate`.
         /// </summary>
         [Input("sortingAlgorithm")]
         public Input<string>? SortingAlgorithm { get; set; }

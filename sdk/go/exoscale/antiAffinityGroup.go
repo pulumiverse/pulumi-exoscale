@@ -29,7 +29,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := exoscale.NewAntiAffinityGroup(ctx, "myAntiAffinityGroup", &exoscale.AntiAffinityGroupArgs{
+//			_, err := exoscale.NewAntiAffinityGroup(ctx, "my_anti_affinity_group", &exoscale.AntiAffinityGroupArgs{
+//				Name:        pulumi.String("my-anti-affinity-group"),
 //				Description: pulumi.String("Prevent compute instances to run on the same host"),
 //			})
 //			if err != nil {

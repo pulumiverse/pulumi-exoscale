@@ -119,13 +119,13 @@ namespace Pulumiverse.Exoscale
     public sealed class GetComputeInstanceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The compute instance ID to match (conflicts with `name`).
+        /// The compute instance ID to match (conflicts with `Name`).
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// The instance name to match (conflicts with `id`).
+        /// The instance name to match (conflicts with `Id`).
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -145,13 +145,13 @@ namespace Pulumiverse.Exoscale
     public sealed class GetComputeInstanceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The compute instance ID to match (conflicts with `name`).
+        /// The compute instance ID to match (conflicts with `Name`).
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The instance name to match (conflicts with `id`).
+        /// The instance name to match (conflicts with `Id`).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -193,7 +193,15 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly ImmutableArray<string> ElasticIpIds;
         /// <summary>
-        /// The compute instance ID to match (conflicts with `name`).
+        /// Whether secure boot is enabled on the instance.
+        /// </summary>
+        public readonly bool EnableSecureBoot;
+        /// <summary>
+        /// Whether TPM is enabled on the instance.
+        /// </summary>
+        public readonly bool EnableTpm;
+        /// <summary>
+        /// The compute instance ID to match (conflicts with `Name`).
         /// </summary>
         public readonly string? Id;
         /// <summary>
@@ -217,7 +225,7 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly string ManagerType;
         /// <summary>
-        /// The instance name to match (conflicts with `id`).
+        /// The instance name to match (conflicts with `Id`).
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -277,6 +285,10 @@ namespace Pulumiverse.Exoscale
 
             ImmutableArray<string> elasticIpIds,
 
+            bool enableSecureBoot,
+
+            bool enableTpm,
+
             string? id,
 
             bool ipv6,
@@ -318,6 +330,8 @@ namespace Pulumiverse.Exoscale
             DeployTargetId = deployTargetId;
             DiskSize = diskSize;
             ElasticIpIds = elasticIpIds;
+            EnableSecureBoot = enableSecureBoot;
+            EnableTpm = enableTpm;
             Id = id;
             Ipv6 = ipv6;
             Ipv6Address = ipv6Address;

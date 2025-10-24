@@ -41,13 +41,13 @@ namespace Pulumiverse.Exoscale
     public sealed class GetIamRoleArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The role ID to match (conflicts with `name`).
+        /// The role ID to match (conflicts with `Name`).
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// the role name to match (conflicts with `id`).
+        /// the role name to match (conflicts with `Id`).
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -64,13 +64,13 @@ namespace Pulumiverse.Exoscale
     public sealed class GetIamRoleInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The role ID to match (conflicts with `name`).
+        /// The role ID to match (conflicts with `Name`).
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// the role name to match (conflicts with `id`).
+        /// the role name to match (conflicts with `Id`).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -97,7 +97,7 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly bool Editable;
         /// <summary>
-        /// The role ID to match (conflicts with `name`).
+        /// The role ID to match (conflicts with `Name`).
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -105,7 +105,7 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// the role name to match (conflicts with `id`).
+        /// the role name to match (conflicts with `Id`).
         /// </summary>
         public readonly string Name;
         /// <summary>

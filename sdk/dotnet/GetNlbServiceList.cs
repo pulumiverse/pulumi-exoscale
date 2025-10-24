@@ -16,6 +16,13 @@ namespace Pulumiverse.Exoscale
         /// Fetch Exoscale [Network Load Balancers (NLB)](https://community.exoscale.com/product/networking/nlb/) Services.
         /// 
         /// Corresponding resource: exoscale_nlb.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// 
+        /// 
+        /// Please refer to the examples
+        /// directory for complete configuration examples.
         /// </summary>
         public static Task<GetNlbServiceListResult> InvokeAsync(GetNlbServiceListArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNlbServiceListResult>("exoscale:index/getNlbServiceList:getNlbServiceList", args ?? new GetNlbServiceListArgs(), options.WithDefaults());
@@ -24,6 +31,13 @@ namespace Pulumiverse.Exoscale
         /// Fetch Exoscale [Network Load Balancers (NLB)](https://community.exoscale.com/product/networking/nlb/) Services.
         /// 
         /// Corresponding resource: exoscale_nlb.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// 
+        /// 
+        /// Please refer to the examples
+        /// directory for complete configuration examples.
         /// </summary>
         public static Output<GetNlbServiceListResult> Invoke(GetNlbServiceListInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNlbServiceListResult>("exoscale:index/getNlbServiceList:getNlbServiceList", args ?? new GetNlbServiceListInvokeArgs(), options.WithDefaults());
@@ -32,6 +46,13 @@ namespace Pulumiverse.Exoscale
         /// Fetch Exoscale [Network Load Balancers (NLB)](https://community.exoscale.com/product/networking/nlb/) Services.
         /// 
         /// Corresponding resource: exoscale_nlb.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// 
+        /// 
+        /// Please refer to the examples
+        /// directory for complete configuration examples.
         /// </summary>
         public static Output<GetNlbServiceListResult> Invoke(GetNlbServiceListInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetNlbServiceListResult>("exoscale:index/getNlbServiceList:getNlbServiceList", args ?? new GetNlbServiceListInvokeArgs(), options.WithDefaults());
@@ -41,13 +62,13 @@ namespace Pulumiverse.Exoscale
     public sealed class GetNlbServiceListArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The NLB ID to match (conflicts with `name`).
+        /// The NLB ID to match (conflicts with `Name`).
         /// </summary>
         [Input("nlbId")]
         public string? NlbId { get; set; }
 
         /// <summary>
-        /// The NLB name to match (conflicts with `id`).
+        /// The NLB name to match (conflicts with `Id`).
         /// </summary>
         [Input("nlbName")]
         public string? NlbName { get; set; }
@@ -70,13 +91,13 @@ namespace Pulumiverse.Exoscale
     public sealed class GetNlbServiceListInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The NLB ID to match (conflicts with `name`).
+        /// The NLB ID to match (conflicts with `Name`).
         /// </summary>
         [Input("nlbId")]
         public Input<string>? NlbId { get; set; }
 
         /// <summary>
-        /// The NLB name to match (conflicts with `id`).
+        /// The NLB name to match (conflicts with `Id`).
         /// </summary>
         [Input("nlbName")]
         public Input<string>? NlbName { get; set; }
@@ -105,11 +126,11 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The NLB ID to match (conflicts with `name`).
+        /// The NLB ID to match (conflicts with `Name`).
         /// </summary>
         public readonly string? NlbId;
         /// <summary>
-        /// The NLB name to match (conflicts with `id`).
+        /// The NLB name to match (conflicts with `Id`).
         /// </summary>
         public readonly string? NlbName;
         /// <summary>
