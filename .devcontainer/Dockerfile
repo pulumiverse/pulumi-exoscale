@@ -1,4 +1,4 @@
-FROM  --platform=linux/amd64 pulumi/pulumi:3.181.0
+FROM  --platform=linux/amd64 pulumi/pulumi:3.204.0
 
 
 # create a directory for pulumictl and download the binary to it and set to PATH
@@ -20,3 +20,4 @@ RUN sudo apt install vim -y
 
 RUN go install github.com/pulumi/upgrade-provider@main
 RUN pip install setuptools
+RUN curl https://mise.run | sh
