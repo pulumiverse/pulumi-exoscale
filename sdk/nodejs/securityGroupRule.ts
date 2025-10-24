@@ -13,8 +13,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const mySecurityGroup = new exoscale.SecurityGroup("mySecurityGroup", {});
- * const mySecurityGroupRule = new exoscale.SecurityGroupRule("mySecurityGroupRule", {
+ * const mySecurityGroup = new exoscale.SecurityGroup("my_security_group", {name: "my-security-group"});
+ * const mySecurityGroupRule = new exoscale.SecurityGroupRule("my_security_group_rule", {
  *     securityGroupId: mySecurityGroup.id,
  *     type: "INGRESS",
  *     protocol: "TCP",
@@ -70,59 +70,59 @@ export class SecurityGroupRule extends pulumi.CustomResource {
     /**
      * ❗ An (`INGRESS`) source / (`EGRESS`) destination IP subnet (in [CIDR notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)) to match (conflicts with `publicSecurityGroup`/`userSecurityGroup`/`userSecurityGroupId`).
      */
-    public readonly cidr!: pulumi.Output<string | undefined>;
+    declare public readonly cidr: pulumi.Output<string | undefined>;
     /**
      * ❗ A free-form text describing the security group rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * ❗ A `TCP`/`UDP` port range to match.
      */
-    public readonly endPort!: pulumi.Output<number | undefined>;
+    declare public readonly endPort: pulumi.Output<number | undefined>;
     /**
      * ❗ An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
      */
-    public readonly icmpCode!: pulumi.Output<number | undefined>;
+    declare public readonly icmpCode: pulumi.Output<number | undefined>;
     /**
      * ❗ An ICMP/ICMPv6 [type/code](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages) to match.
      */
-    public readonly icmpType!: pulumi.Output<number | undefined>;
+    declare public readonly icmpType: pulumi.Output<number | undefined>;
     /**
      * ❗ The network protocol to match (`TCP`, `UDP`, `ICMP`, `ICMPv6`, `AH`, `ESP`, `GRE`, `IPIP` or `ALL`)
      */
-    public readonly protocol!: pulumi.Output<string | undefined>;
+    declare public readonly protocol: pulumi.Output<string | undefined>;
     /**
      * ❗ An (`INGRESS`) source / (`EGRESS`) destination public security group name to match (conflicts with `cidr`/`userSecurityGroup`/`userSecurityGroupId`).
      */
-    public readonly publicSecurityGroup!: pulumi.Output<string>;
+    declare public readonly publicSecurityGroup: pulumi.Output<string>;
     /**
      * ❗ The parent security group name. Please use the `securityGroupId` argument along the exoscale*security*group data source instead.
      *
      * @deprecated Deprecated in favor of `securityGroupId`
      */
-    public readonly securityGroup!: pulumi.Output<string>;
+    declare public readonly securityGroup: pulumi.Output<string>;
     /**
      * ❗ The parent exoscale*security*group ID.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
     /**
      * ❗ A `TCP`/`UDP` port range to match.
      */
-    public readonly startPort!: pulumi.Output<number | undefined>;
+    declare public readonly startPort: pulumi.Output<number | undefined>;
     /**
      * ❗ The traffic direction to match (`INGRESS` or `EGRESS`).
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * ❗ An (`INGRESS`) source / (`EGRESS`) destination security group name to match (conflicts with `cidr`/`publicSecurityGroup`/`userSecurityGroupId`). Please use the `userSecurityGroupId` argument along the exoscale*security*group data source instead.
      *
      * @deprecated Deprecated in favor of `userSecurityGroupId`
      */
-    public readonly userSecurityGroup!: pulumi.Output<string>;
+    declare public readonly userSecurityGroup: pulumi.Output<string>;
     /**
      * ❗ An (`INGRESS`) source / (`EGRESS`) destination security group ID to match (conflicts with `cidr`/`publicSecurityGroup`/`user_security_group)`).
      */
-    public readonly userSecurityGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly userSecurityGroupId: pulumi.Output<string | undefined>;
 
     /**
      * Create a SecurityGroupRule resource with the given unique name, arguments, and options.
@@ -137,37 +137,37 @@ export class SecurityGroupRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityGroupRuleState | undefined;
-            resourceInputs["cidr"] = state ? state.cidr : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["endPort"] = state ? state.endPort : undefined;
-            resourceInputs["icmpCode"] = state ? state.icmpCode : undefined;
-            resourceInputs["icmpType"] = state ? state.icmpType : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["publicSecurityGroup"] = state ? state.publicSecurityGroup : undefined;
-            resourceInputs["securityGroup"] = state ? state.securityGroup : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["startPort"] = state ? state.startPort : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["userSecurityGroup"] = state ? state.userSecurityGroup : undefined;
-            resourceInputs["userSecurityGroupId"] = state ? state.userSecurityGroupId : undefined;
+            resourceInputs["cidr"] = state?.cidr;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["endPort"] = state?.endPort;
+            resourceInputs["icmpCode"] = state?.icmpCode;
+            resourceInputs["icmpType"] = state?.icmpType;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["publicSecurityGroup"] = state?.publicSecurityGroup;
+            resourceInputs["securityGroup"] = state?.securityGroup;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["startPort"] = state?.startPort;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["userSecurityGroup"] = state?.userSecurityGroup;
+            resourceInputs["userSecurityGroupId"] = state?.userSecurityGroupId;
         } else {
             const args = argsOrState as SecurityGroupRuleArgs | undefined;
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["cidr"] = args ? args.cidr : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["endPort"] = args ? args.endPort : undefined;
-            resourceInputs["icmpCode"] = args ? args.icmpCode : undefined;
-            resourceInputs["icmpType"] = args ? args.icmpType : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["publicSecurityGroup"] = args ? args.publicSecurityGroup : undefined;
-            resourceInputs["securityGroup"] = args ? args.securityGroup : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["startPort"] = args ? args.startPort : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["userSecurityGroup"] = args ? args.userSecurityGroup : undefined;
-            resourceInputs["userSecurityGroupId"] = args ? args.userSecurityGroupId : undefined;
+            resourceInputs["cidr"] = args?.cidr;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["endPort"] = args?.endPort;
+            resourceInputs["icmpCode"] = args?.icmpCode;
+            resourceInputs["icmpType"] = args?.icmpType;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["publicSecurityGroup"] = args?.publicSecurityGroup;
+            resourceInputs["securityGroup"] = args?.securityGroup;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["startPort"] = args?.startPort;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["userSecurityGroup"] = args?.userSecurityGroup;
+            resourceInputs["userSecurityGroupId"] = args?.userSecurityGroupId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecurityGroupRule.__pulumiType, name, resourceInputs, opts);

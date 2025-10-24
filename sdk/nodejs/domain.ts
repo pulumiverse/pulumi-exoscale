@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const myDomain = new exoscale.Domain("myDomain", {});
+ * const myDomain = new exoscale.Domain("my_domain", {name: "my.domain"});
  * ```
  *
  * Next step is to attach exoscale_domain_record(s) to the domain.
@@ -68,29 +68,29 @@ export class Domain extends pulumi.CustomResource {
      *
      * @deprecated Not used, will be removed in the future
      */
-    public /*out*/ readonly autoRenew!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly autoRenew: pulumi.Output<boolean>;
     /**
      * The domain expiration date, if known.
      *
      * @deprecated Not used, will be removed in the future
      */
-    public /*out*/ readonly expiresOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly expiresOn: pulumi.Output<string>;
     /**
      * ❗ The DNS domain name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The domain state.
      *
      * @deprecated Not used, will be removed in the future
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * A security token that can be used as an alternative way to manage DNS domains via the Exoscale API.
      *
      * @deprecated Not used, will be removed in the future
      */
-    public /*out*/ readonly token!: pulumi.Output<string>;
+    declare public /*out*/ readonly token: pulumi.Output<string>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -105,14 +105,14 @@ export class Domain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["expiresOn"] = state ? state.expiresOn : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["expiresOn"] = state?.expiresOn;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["token"] = state?.token;
         } else {
             const args = argsOrState as DomainArgs | undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["name"] = args?.name;
             resourceInputs["autoRenew"] = undefined /*out*/;
             resourceInputs["expiresOn"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

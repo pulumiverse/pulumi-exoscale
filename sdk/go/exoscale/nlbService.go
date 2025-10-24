@@ -28,16 +28,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myNlb, err := exoscale.NewNlb(ctx, "myNlb", &exoscale.NlbArgs{
+//			myNlb, err := exoscale.NewNlb(ctx, "my_nlb", &exoscale.NlbArgs{
 //				Zone: pulumi.String("ch-gva-2"),
+//				Name: pulumi.String("my-nlb"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = exoscale.NewNlbService(ctx, "myNlbService", &exoscale.NlbServiceArgs{
+//			_, err = exoscale.NewNlbService(ctx, "my_nlb_service", &exoscale.NlbServiceArgs{
 //				NlbId:          myNlb.ID(),
 //				Zone:           myNlb.Zone,
-//				InstancePoolId: pulumi.Any(exoscale_instance_pool.My_instance_pool.Id),
+//				Name:           pulumi.String("my-nlb-service"),
+//				InstancePoolId: pulumi.Any(myInstancePool.Id),
 //				Protocol:       pulumi.String("tcp"),
 //				Port:           pulumi.Int(443),
 //				TargetPort:     pulumi.Int(8443),

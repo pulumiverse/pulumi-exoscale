@@ -8,6 +8,38 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumiverse/exoscale";
+ *
+ * const myDatabaseDatabase = new exoscale.Database("my_database", {
+ *     zone: "ch-gva-2",
+ *     name: "my-database",
+ *     type: "pg",
+ *     plan: "startup-4",
+ *     maintenanceDow: "sunday",
+ *     maintenanceTime: "23:00:00",
+ *     terminationProtection: true,
+ *     pg: {
+ *         version: "13",
+ *         backupSchedule: "04:00",
+ *         ipFilters: [
+ *             "1.2.3.4/32",
+ *             "5.6.7.8/32",
+ *         ],
+ *         pgSettings: JSON.stringify({
+ *             timezone: "Europe/Zurich",
+ *         }),
+ *     },
+ * });
+ * const myDatabase = exoscale.getDatabaseUri({
+ *     name: "my-database",
+ *     type: "pg",
+ *     zone: "ch-gva-2",
+ * });
+ * export const myDatabaseUri = myDatabase.then(myDatabase => myDatabase.uri);
+ * ```
  */
 export function getDatabaseUri(args: GetDatabaseUriArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseUriResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -29,7 +61,7 @@ export interface GetDatabaseUriArgs {
     name: string;
     timeouts?: inputs.GetDatabaseUriTimeouts;
     /**
-     * The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `valkey`, `grafana`).
+     * The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `valkey`, `grafana`).
      */
     type: string;
     /**
@@ -72,7 +104,7 @@ export interface GetDatabaseUriResult {
     readonly schema: string;
     readonly timeouts?: outputs.GetDatabaseUriTimeouts;
     /**
-     * The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `valkey`, `grafana`).
+     * The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `valkey`, `grafana`).
      */
     readonly type: string;
     /**
@@ -90,6 +122,38 @@ export interface GetDatabaseUriResult {
 }
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumiverse/exoscale";
+ *
+ * const myDatabaseDatabase = new exoscale.Database("my_database", {
+ *     zone: "ch-gva-2",
+ *     name: "my-database",
+ *     type: "pg",
+ *     plan: "startup-4",
+ *     maintenanceDow: "sunday",
+ *     maintenanceTime: "23:00:00",
+ *     terminationProtection: true,
+ *     pg: {
+ *         version: "13",
+ *         backupSchedule: "04:00",
+ *         ipFilters: [
+ *             "1.2.3.4/32",
+ *             "5.6.7.8/32",
+ *         ],
+ *         pgSettings: JSON.stringify({
+ *             timezone: "Europe/Zurich",
+ *         }),
+ *     },
+ * });
+ * const myDatabase = exoscale.getDatabaseUri({
+ *     name: "my-database",
+ *     type: "pg",
+ *     zone: "ch-gva-2",
+ * });
+ * export const myDatabaseUri = myDatabase.then(myDatabase => myDatabase.uri);
+ * ```
  */
 export function getDatabaseUriOutput(args: GetDatabaseUriOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseUriResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -111,7 +175,7 @@ export interface GetDatabaseUriOutputArgs {
     name: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.GetDatabaseUriTimeoutsArgs>;
     /**
-     * The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `valkey`, `grafana`).
+     * The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `valkey`, `grafana`).
      */
     type: pulumi.Input<string>;
     /**

@@ -11,6 +11,7 @@ export function getSksCluster(args: GetSksClusterArgs, opts?: pulumi.InvokeOptio
     return pulumi.runtime.invoke("exoscale:index/getSksCluster:getSksCluster", {
         "addons": args.addons,
         "aggregationCa": args.aggregationCa,
+        "audit": args.audit,
         "autoUpgrade": args.autoUpgrade,
         "cni": args.cni,
         "controlPlaneCa": args.controlPlaneCa,
@@ -47,6 +48,7 @@ export interface GetSksClusterArgs {
      * The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
      */
     aggregationCa?: string;
+    audit?: inputs.GetSksClusterAudit;
     /**
      * Enable automatic upgrading of the control plane version.
      */
@@ -139,6 +141,7 @@ export interface GetSksClusterResult {
      * The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
      */
     readonly aggregationCa: string;
+    readonly audit?: outputs.GetSksClusterAudit;
     /**
      * Enable automatic upgrading of the control plane version.
      */
@@ -223,6 +226,7 @@ export function getSksClusterOutput(args: GetSksClusterOutputArgs, opts?: pulumi
     return pulumi.runtime.invokeOutput("exoscale:index/getSksCluster:getSksCluster", {
         "addons": args.addons,
         "aggregationCa": args.aggregationCa,
+        "audit": args.audit,
         "autoUpgrade": args.autoUpgrade,
         "cni": args.cni,
         "controlPlaneCa": args.controlPlaneCa,
@@ -259,6 +263,7 @@ export interface GetSksClusterOutputArgs {
      * The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
      */
     aggregationCa?: pulumi.Input<string>;
+    audit?: pulumi.Input<inputs.GetSksClusterAuditArgs>;
     /**
      * Enable automatic upgrading of the control plane version.
      */

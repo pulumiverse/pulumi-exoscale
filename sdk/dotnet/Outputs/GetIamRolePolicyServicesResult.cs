@@ -15,11 +15,11 @@ namespace Pulumiverse.Exoscale.Outputs
     public sealed class GetIamRolePolicyServicesResult
     {
         /// <summary>
-        /// List of IAM service rules (if type is `rules`).
+        /// List of IAM service rules (if type is `Rules`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetIamRolePolicyServicesRuleResult> Rules;
         /// <summary>
-        /// Service type (`rules`, `allow`, or `deny`).
+        /// Service type (`Rules`, `Allow`, or `Deny`).
         /// </summary>
         public readonly string Type;
 

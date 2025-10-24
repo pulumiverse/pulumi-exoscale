@@ -20,7 +20,7 @@ namespace Pulumiverse.Exoscale.Inputs
         public Input<int>? Interval { get; set; }
 
         /// <summary>
-        /// The healthcheck mode (`tcp`|`http`|`https`; default: `tcp`).
+        /// The healthcheck mode (`Tcp`|`Http`|`Https`; default: `Tcp`).
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -44,13 +44,13 @@ namespace Pulumiverse.Exoscale.Inputs
         public Input<int>? Timeout { get; set; }
 
         /// <summary>
-        /// The healthcheck TLS SNI server name (only if `mode` is `https`).
+        /// The healthcheck TLS SNI server name (only if `Mode` is `Https`).
         /// </summary>
         [Input("tlsSni")]
         public Input<string>? TlsSni { get; set; }
 
         /// <summary>
-        /// The healthcheck URI (must be set only if `mode` is `http(s)`).
+        /// The healthcheck URI (must be set only if `Mode` is `http(s)`).
         /// </summary>
         [Input("uri")]
         public Input<string>? Uri { get; set; }

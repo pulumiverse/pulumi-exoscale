@@ -258,17 +258,6 @@ export interface DatabasePg {
     version: string;
 }
 
-export interface DatabaseRedis {
-    /**
-     * A list of CIDR blocks to allow incoming connections from.
-     */
-    ipFilters: string[];
-    /**
-     * Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
-     */
-    redisSettings: string;
-}
-
 export interface DatabaseTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -623,17 +612,6 @@ export interface DbaasPgUserTimeouts {
     update?: string;
 }
 
-export interface DbaasRedis {
-    /**
-     * A list of CIDR blocks to allow incoming connections from.
-     */
-    ipFilters: string[];
-    /**
-     * Redis configuration settings in JSON format (`exo dbaas type show redis --settings=redis` for reference).
-     */
-    redisSettings: string;
-}
-
 export interface DbaasTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -759,6 +737,14 @@ export interface GetComputeInstanceListInstance {
      * The list of attached exoscale.ElasticIp (IDs).
      */
     elasticIpIds: string[];
+    /**
+     * Indicates if the instance has secure boot enabled.
+     */
+    enableSecureBoot: boolean;
+    /**
+     * Indicates if the instance has TPM enabled.
+     */
+    enableTpm: boolean;
     /**
      * The compute instance ID to match (conflicts with `name`).
      */
@@ -1203,6 +1189,25 @@ export interface GetNlbServiceListTimeouts {
     read?: string;
 }
 
+export interface GetSksClusterAudit {
+    /**
+     * The optional bearer token to include in the request header
+     */
+    bearerToken?: string;
+    /**
+     * Whether to run the APIServer with the configured Kubernetes Audit
+     */
+    enabled?: boolean;
+    /**
+     * The cluster API endpoint.
+     */
+    endpoint?: string;
+    /**
+     * The Initial Backoff to wait before sending data to the remote server (default '10s')
+     */
+    initialBackoff?: string;
+}
+
 export interface GetSksClusterListCluster {
     /**
      * @deprecated This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
@@ -1212,6 +1217,10 @@ export interface GetSksClusterListCluster {
      * The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
      */
     aggregationCa: string;
+    /**
+     * Parameters for Kubernetes Audit configuration (may only be enabled at creation time)
+     */
+    audit?: outputs.GetSksClusterListClusterAudit;
     /**
      * Enable automatic upgrading of the control plane version.
      */
@@ -1287,6 +1296,25 @@ export interface GetSksClusterListCluster {
      */
     version: string;
     zone: string;
+}
+
+export interface GetSksClusterListClusterAudit {
+    /**
+     * The optional bearer token to include in the request header
+     */
+    bearerToken?: string;
+    /**
+     * Whether to run the APIServer with the configured Kubernetes Audit
+     */
+    enabled?: boolean;
+    /**
+     * Match against this string. If you supply a string that begins and ends with a "/" it will be matched as a regex.
+     */
+    endpoint?: string;
+    /**
+     * The Initial Backoff to wait before sending data to the remote server (default '10s')
+     */
+    initialBackoff?: string;
 }
 
 export interface GetSksClusterListClusterOidc {
@@ -1600,6 +1628,25 @@ export interface NlbServiceHealthcheck {
      * The healthcheck URI (must be set only if `mode` is `http(s)`).
      */
     uri?: string;
+}
+
+export interface SksClusterAudit {
+    /**
+     * The optional bearer token to include in the request header
+     */
+    bearerToken?: string;
+    /**
+     * Whether to run the APIServer with the configured Kubernetes Audit
+     */
+    enabled?: boolean;
+    /**
+     * The cluster API endpoint.
+     */
+    endpoint?: string;
+    /**
+     * The Initial Backoff to wait before sending data to the remote server (default '10s')
+     */
+    initialBackoff?: string;
 }
 
 export interface SksClusterOidc {

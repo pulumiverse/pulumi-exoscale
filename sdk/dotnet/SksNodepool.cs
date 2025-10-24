@@ -23,15 +23,17 @@ namespace Pulumiverse.Exoscale
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mySksCluster = new Exoscale.SksCluster("mySksCluster", new()
+    ///     var mySksCluster = new Exoscale.SksCluster("my_sks_cluster", new()
     ///     {
     ///         Zone = "ch-gva-2",
+    ///         Name = "my-sks-cluster",
     ///     });
     /// 
-    ///     var mySksNodepool = new Exoscale.SksNodepool("mySksNodepool", new()
+    ///     var mySksNodepool = new Exoscale.SksNodepool("my_sks_nodepool", new()
     ///     {
     ///         ClusterId = mySksCluster.Id,
     ///         Zone = mySksCluster.Zone,
+    ///         Name = "my-sks-nodepool",
     ///         InstanceType = "standard.medium",
     ///         Size = 3,
     ///     });
@@ -100,7 +102,7 @@ namespace Pulumiverse.Exoscale
         public Output<string> InstancePoolId { get; private set; } = null!;
 
         /// <summary>
-        /// The string used to prefix the managed instances name (default `pool`).
+        /// The string used to prefix the managed instances name (default `Pool`).
         /// </summary>
         [Output("instancePrefix")]
         public Output<string?> InstancePrefix { get; private set; } = null!;
@@ -270,7 +272,7 @@ namespace Pulumiverse.Exoscale
         public Input<int>? DiskSize { get; set; }
 
         /// <summary>
-        /// The string used to prefix the managed instances name (default `pool`).
+        /// The string used to prefix the managed instances name (default `Pool`).
         /// </summary>
         [Input("instancePrefix")]
         public Input<string>? InstancePrefix { get; set; }
@@ -425,7 +427,7 @@ namespace Pulumiverse.Exoscale
         public Input<string>? InstancePoolId { get; set; }
 
         /// <summary>
-        /// The string used to prefix the managed instances name (default `pool`).
+        /// The string used to prefix the managed instances name (default `Pool`).
         /// </summary>
         [Input("instancePrefix")]
         public Input<string>? InstancePrefix { get; set; }

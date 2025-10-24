@@ -15,7 +15,7 @@ namespace Pulumiverse.Exoscale.Outputs
     public sealed class GetInstancePoolListPoolResult
     {
         /// <summary>
-        /// The list of attached exoscale.AntiAffinityGroup (IDs). Use anti_affinity_group_ids instead.
+        /// The list of attached exoscale.AntiAffinityGroup (IDs). Use AntiAffinityGroupIds instead.
         /// </summary>
         public readonly ImmutableArray<string> AffinityGroupIds;
         /// <summary>
@@ -39,7 +39,7 @@ namespace Pulumiverse.Exoscale.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ElasticIpIds;
         /// <summary>
-        /// The instance pool ID to match (conflicts with `name`).
+        /// The instance pool ID to match (conflicts with `Name`).
         /// </summary>
         public readonly string? Id;
         /// <summary>
@@ -71,7 +71,7 @@ namespace Pulumiverse.Exoscale.Outputs
         /// </summary>
         public readonly int MinAvailable;
         /// <summary>
-        /// The pool name to match (conflicts with `id`).
+        /// The pool name to match (conflicts with `Id`).
         /// </summary>
         public readonly string? Name;
         /// <summary>

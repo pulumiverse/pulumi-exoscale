@@ -77,6 +77,14 @@ export interface GetComputeInstanceResult {
      */
     readonly elasticIpIds: string[];
     /**
+     * Whether secure boot is enabled on the instance.
+     */
+    readonly enableSecureBoot: boolean;
+    /**
+     * Whether TPM is enabled on the instance.
+     */
+    readonly enableTpm: boolean;
+    /**
      * The compute instance ID to match (conflicts with `name`).
      */
     readonly id?: string;

@@ -26,7 +26,8 @@ type LookupSksClusterArgs struct {
 	// Deprecated: This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
 	Addons []string `pulumi:"addons"`
 	// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
-	AggregationCa *string `pulumi:"aggregationCa"`
+	AggregationCa *string             `pulumi:"aggregationCa"`
+	Audit         *GetSksClusterAudit `pulumi:"audit"`
 	// Enable automatic upgrading of the control plane version.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
 	// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
@@ -74,7 +75,8 @@ type LookupSksClusterResult struct {
 	// Deprecated: This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
 	Addons []string `pulumi:"addons"`
 	// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
-	AggregationCa string `pulumi:"aggregationCa"`
+	AggregationCa string              `pulumi:"aggregationCa"`
+	Audit         *GetSksClusterAudit `pulumi:"audit"`
 	// Enable automatic upgrading of the control plane version.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
 	// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
@@ -131,7 +133,8 @@ type LookupSksClusterOutputArgs struct {
 	// Deprecated: This attribute has been replaced by `exoscaleCcm`/`metricsServer` attributes, it will be removed in a future release.
 	Addons pulumi.StringArrayInput `pulumi:"addons"`
 	// The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
-	AggregationCa pulumi.StringPtrInput `pulumi:"aggregationCa"`
+	AggregationCa pulumi.StringPtrInput      `pulumi:"aggregationCa"`
+	Audit         GetSksClusterAuditPtrInput `pulumi:"audit"`
 	// Enable automatic upgrading of the control plane version.
 	AutoUpgrade pulumi.BoolPtrInput `pulumi:"autoUpgrade"`
 	// The CNI plugin that is to be used. Available options are "calico" or "cilium". Defaults to "calico". Setting empty string will result in a cluster with no CNI.
@@ -201,6 +204,10 @@ func (o LookupSksClusterResultOutput) Addons() pulumi.StringArrayOutput {
 // The CA certificate (in PEM format) for TLS communications between the control plane and the aggregation layer (e.g. `metrics-server`).
 func (o LookupSksClusterResultOutput) AggregationCa() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSksClusterResult) string { return v.AggregationCa }).(pulumi.StringOutput)
+}
+
+func (o LookupSksClusterResultOutput) Audit() GetSksClusterAuditPtrOutput {
+	return o.ApplyT(func(v LookupSksClusterResult) *GetSksClusterAudit { return v.Audit }).(GetSksClusterAuditPtrOutput)
 }
 
 // Enable automatic upgrading of the control plane version.

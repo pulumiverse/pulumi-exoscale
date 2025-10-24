@@ -17,7 +17,7 @@ namespace Pulumiverse.Exoscale
     public partial class DbaasMysqlUser : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// ❗ Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.
+        /// ❗ Authentication details. The possible values are `Null`, `CachingSha2Password` and `MysqlNativePassword`.
         /// </summary>
         [Output("authentication")]
         public Output<string> Authentication { get; private set; } = null!;
@@ -107,7 +107,7 @@ namespace Pulumiverse.Exoscale
     public sealed class DbaasMysqlUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ❗ Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.
+        /// ❗ Authentication details. The possible values are `Null`, `CachingSha2Password` and `MysqlNativePassword`.
         /// </summary>
         [Input("authentication")]
         public Input<string>? Authentication { get; set; }
@@ -142,7 +142,7 @@ namespace Pulumiverse.Exoscale
     public sealed class DbaasMysqlUserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ❗ Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.
+        /// ❗ Authentication details. The possible values are `Null`, `CachingSha2Password` and `MysqlNativePassword`.
         /// </summary>
         [Input("authentication")]
         public Input<string>? Authentication { get; set; }

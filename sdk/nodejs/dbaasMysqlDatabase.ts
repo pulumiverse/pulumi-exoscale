@@ -40,16 +40,16 @@ export class DbaasMysqlDatabase extends pulumi.CustomResource {
     /**
      * ❗ The name of the database for this service.
      */
-    public readonly databaseName!: pulumi.Output<string>;
+    declare public readonly databaseName: pulumi.Output<string>;
     /**
      * ❗ The name of the database service.
      */
-    public readonly service!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.DbaasMysqlDatabaseTimeouts | undefined>;
+    declare public readonly service: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.DbaasMysqlDatabaseTimeouts | undefined>;
     /**
      * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a DbaasMysqlDatabase resource with the given unique name, arguments, and options.
@@ -64,25 +64,25 @@ export class DbaasMysqlDatabase extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DbaasMysqlDatabaseState | undefined;
-            resourceInputs["databaseName"] = state ? state.databaseName : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["databaseName"] = state?.databaseName;
+            resourceInputs["service"] = state?.service;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as DbaasMysqlDatabaseArgs | undefined;
-            if ((!args || args.databaseName === undefined) && !opts.urn) {
+            if (args?.databaseName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databaseName'");
             }
-            if ((!args || args.service === undefined) && !opts.urn) {
+            if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            if ((!args || args.zone === undefined) && !opts.urn) {
+            if (args?.zone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            resourceInputs["databaseName"] = args ? args.databaseName : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["databaseName"] = args?.databaseName;
+            resourceInputs["service"] = args?.service;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["zone"] = args?.zone;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DbaasMysqlDatabase.__pulumiType, name, resourceInputs, opts);

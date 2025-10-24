@@ -23,7 +23,7 @@ namespace Pulumiverse.Exoscale.Outputs
         /// </summary>
         public readonly string? Pattern;
         /// <summary>
-        /// `alphabetical` or `creation_date`.
+        /// `Alphabetical` or `CreationDate`.
         /// </summary>
         public readonly string? SortingAlgorithm;
 
