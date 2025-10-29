@@ -10,6 +10,28 @@ import * as utilities from "./utilities";
  * List Exoscale [Instance Pools](https://community.exoscale.com/product/compute/instances/how-to/instance-pools/).
  *
  * Corresponding resource: exoscale_instance_pool.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumiverse/exoscale";
+ * import * as std from "@pulumi/std";
+ *
+ * const myInstancePoolList = exoscale.getInstancePoolList({
+ *     zone: "ch-gva-2",
+ * });
+ * export const myInstancePoolIds = std.formatlist({
+ *     input: "%s",
+ *     args: [myInstancePoolList.then(myInstancePoolList => myInstancePoolList.pools.map(__item => __item.id))],
+ * }).then(invoke => std.join({
+ *     separator: "\n",
+ *     input: invoke.result,
+ * })).then(invoke => invoke.result);
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
  */
 export function getInstancePoolList(args: GetInstancePoolListArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancePoolListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -49,6 +71,28 @@ export interface GetInstancePoolListResult {
  * List Exoscale [Instance Pools](https://community.exoscale.com/product/compute/instances/how-to/instance-pools/).
  *
  * Corresponding resource: exoscale_instance_pool.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumiverse/exoscale";
+ * import * as std from "@pulumi/std";
+ *
+ * const myInstancePoolList = exoscale.getInstancePoolList({
+ *     zone: "ch-gva-2",
+ * });
+ * export const myInstancePoolIds = std.formatlist({
+ *     input: "%s",
+ *     args: [myInstancePoolList.then(myInstancePoolList => myInstancePoolList.pools.map(__item => __item.id))],
+ * }).then(invoke => std.join({
+ *     separator: "\n",
+ *     input: invoke.result,
+ * })).then(invoke => invoke.result);
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
  */
 export function getInstancePoolListOutput(args: GetInstancePoolListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstancePoolListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

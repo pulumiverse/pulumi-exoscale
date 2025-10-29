@@ -119,13 +119,13 @@ namespace Pulumiverse.Exoscale
     public sealed class GetNlbArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The Network Load Balancers (NLB) ID to match (conflicts with `name`).
+        /// The Network Load Balancers (NLB) ID to match (conflicts with `Name`).
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// The NLB name to match (conflicts with `id`).
+        /// The NLB name to match (conflicts with `Id`).
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -145,13 +145,13 @@ namespace Pulumiverse.Exoscale
     public sealed class GetNlbInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The Network Load Balancers (NLB) ID to match (conflicts with `name`).
+        /// The Network Load Balancers (NLB) ID to match (conflicts with `Name`).
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The NLB name to match (conflicts with `id`).
+        /// The NLB name to match (conflicts with `Id`).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -181,7 +181,7 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The Network Load Balancers (NLB) ID to match (conflicts with `name`).
+        /// The Network Load Balancers (NLB) ID to match (conflicts with `Name`).
         /// </summary>
         public readonly string? Id;
         /// <summary>
@@ -189,7 +189,7 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly string IpAddress;
         /// <summary>
-        /// The NLB name to match (conflicts with `id`).
+        /// The NLB name to match (conflicts with `Id`).
         /// </summary>
         public readonly string? Name;
         /// <summary>

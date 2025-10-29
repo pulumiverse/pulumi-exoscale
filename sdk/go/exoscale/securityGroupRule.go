@@ -28,11 +28,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			mySecurityGroup, err := exoscale.NewSecurityGroup(ctx, "mySecurityGroup", nil)
+//			mySecurityGroup, err := exoscale.NewSecurityGroup(ctx, "my_security_group", &exoscale.SecurityGroupArgs{
+//				Name: pulumi.String("my-security-group"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = exoscale.NewSecurityGroupRule(ctx, "mySecurityGroupRule", &exoscale.SecurityGroupRuleArgs{
+//			_, err = exoscale.NewSecurityGroupRule(ctx, "my_security_group_rule", &exoscale.SecurityGroupRuleArgs{
 //				SecurityGroupId: mySecurityGroup.ID(),
 //				Type:            pulumi.String("INGRESS"),
 //				Protocol:        pulumi.String("TCP"),

@@ -14,7 +14,7 @@ namespace Pulumiverse.Exoscale.Inputs
     public sealed class IamRolePolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Default service strategy (`allow` or `deny`).
+        /// Default service strategy (`Allow` or `Deny`).
         /// </summary>
         [Input("defaultServiceStrategy")]
         public Input<string>? DefaultServiceStrategy { get; set; }

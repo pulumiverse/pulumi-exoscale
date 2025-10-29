@@ -23,9 +23,10 @@ namespace Pulumiverse.Exoscale
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mySksCluster = new Exoscale.SksCluster("mySksCluster", new()
+    ///     var mySksCluster = new Exoscale.SksCluster("my_sks_cluster", new()
     ///     {
     ///         Zone = "ch-gva-2",
+    ///         Name = "my-sks-cluster",
     ///     });
     /// 
     ///     return new Dictionary&lt;string, object?&gt;
@@ -63,6 +64,12 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         [Output("aggregationCa")]
         public Output<string> AggregationCa { get; private set; } = null!;
+
+        /// <summary>
+        /// Parameters for Kubernetes Audit configuration (may only be enabled at creation time)
+        /// </summary>
+        [Output("audit")]
+        public Output<Outputs.SksClusterAudit?> Audit { get; private set; } = null!;
 
         /// <summary>
         /// Enable automatic upgrading of the control plane version.
@@ -107,13 +114,13 @@ namespace Pulumiverse.Exoscale
         public Output<string> Endpoint { get; private set; } = null!;
 
         /// <summary>
-        /// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
+        /// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `True`; may only be set at creation time).
         /// </summary>
         [Output("exoscaleCcm")]
         public Output<bool?> ExoscaleCcm { get; private set; } = null!;
 
         /// <summary>
-        /// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
+        /// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `False`; requires the CCM to be enabled).
         /// </summary>
         [Output("exoscaleCsi")]
         public Output<bool?> ExoscaleCsi { get; private set; } = null!;
@@ -137,7 +144,7 @@ namespace Pulumiverse.Exoscale
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
+        /// Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `True`; may only be set at creation time).
         /// </summary>
         [Output("metricsServer")]
         public Output<bool?> MetricsServer { get; private set; } = null!;
@@ -161,7 +168,7 @@ namespace Pulumiverse.Exoscale
         public Output<Outputs.SksClusterOidc> Oidc { get; private set; } = null!;
 
         /// <summary>
-        /// The service level of the control plane (`pro` or `starter`; default: `pro`; may only be set at creation time).
+        /// The service level of the control plane (`Pro` or `Starter`; default: `Pro`; may only be set at creation time).
         /// </summary>
         [Output("serviceLevel")]
         public Output<string?> ServiceLevel { get; private set; } = null!;
@@ -233,12 +240,18 @@ namespace Pulumiverse.Exoscale
     {
         [Input("addons")]
         private InputList<string>? _addons;
-        [Obsolete(@"This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.")]
+        [Obsolete(@"This attribute has been replaced by `ExoscaleCcm`/`MetricsServer` attributes, it will be removed in a future release.")]
         public InputList<string> Addons
         {
             get => _addons ?? (_addons = new InputList<string>());
             set => _addons = value;
         }
+
+        /// <summary>
+        /// Parameters for Kubernetes Audit configuration (may only be enabled at creation time)
+        /// </summary>
+        [Input("audit")]
+        public Input<Inputs.SksClusterAuditArgs>? Audit { get; set; }
 
         /// <summary>
         /// Enable automatic upgrading of the control plane version.
@@ -265,13 +278,13 @@ namespace Pulumiverse.Exoscale
         public Input<bool>? EnableKubeProxy { get; set; }
 
         /// <summary>
-        /// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
+        /// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `True`; may only be set at creation time).
         /// </summary>
         [Input("exoscaleCcm")]
         public Input<bool>? ExoscaleCcm { get; set; }
 
         /// <summary>
-        /// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
+        /// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `False`; requires the CCM to be enabled).
         /// </summary>
         [Input("exoscaleCsi")]
         public Input<bool>? ExoscaleCsi { get; set; }
@@ -301,7 +314,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
+        /// Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `True`; may only be set at creation time).
         /// </summary>
         [Input("metricsServer")]
         public Input<bool>? MetricsServer { get; set; }
@@ -319,7 +332,7 @@ namespace Pulumiverse.Exoscale
         public Input<Inputs.SksClusterOidcArgs>? Oidc { get; set; }
 
         /// <summary>
-        /// The service level of the control plane (`pro` or `starter`; default: `pro`; may only be set at creation time).
+        /// The service level of the control plane (`Pro` or `Starter`; default: `Pro`; may only be set at creation time).
         /// </summary>
         [Input("serviceLevel")]
         public Input<string>? ServiceLevel { get; set; }
@@ -346,7 +359,7 @@ namespace Pulumiverse.Exoscale
     {
         [Input("addons")]
         private InputList<string>? _addons;
-        [Obsolete(@"This attribute has been replaced by `exoscale_ccm`/`metrics_server` attributes, it will be removed in a future release.")]
+        [Obsolete(@"This attribute has been replaced by `ExoscaleCcm`/`MetricsServer` attributes, it will be removed in a future release.")]
         public InputList<string> Addons
         {
             get => _addons ?? (_addons = new InputList<string>());
@@ -358,6 +371,12 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         [Input("aggregationCa")]
         public Input<string>? AggregationCa { get; set; }
+
+        /// <summary>
+        /// Parameters for Kubernetes Audit configuration (may only be enabled at creation time)
+        /// </summary>
+        [Input("audit")]
+        public Input<Inputs.SksClusterAuditGetArgs>? Audit { get; set; }
 
         /// <summary>
         /// Enable automatic upgrading of the control plane version.
@@ -402,13 +421,13 @@ namespace Pulumiverse.Exoscale
         public Input<string>? Endpoint { get; set; }
 
         /// <summary>
-        /// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `true`; may only be set at creation time).
+        /// Deploy the Exoscale [Cloud Controller Manager](https://github.com/exoscale/exoscale-cloud-controller-manager/) in the control plane (boolean; default: `True`; may only be set at creation time).
         /// </summary>
         [Input("exoscaleCcm")]
         public Input<bool>? ExoscaleCcm { get; set; }
 
         /// <summary>
-        /// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `false`; requires the CCM to be enabled).
+        /// Deploy the Exoscale [Container Storage Interface](https://github.com/exoscale/exoscale-csi-driver/) on worker nodes (boolean; default: `False`; requires the CCM to be enabled).
         /// </summary>
         [Input("exoscaleCsi")]
         public Input<bool>? ExoscaleCsi { get; set; }
@@ -444,7 +463,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `true`; may only be set at creation time).
+        /// Deploy the [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server/) in the control plane (boolean; default: `True`; may only be set at creation time).
         /// </summary>
         [Input("metricsServer")]
         public Input<bool>? MetricsServer { get; set; }
@@ -474,7 +493,7 @@ namespace Pulumiverse.Exoscale
         public Input<Inputs.SksClusterOidcGetArgs>? Oidc { get; set; }
 
         /// <summary>
-        /// The service level of the control plane (`pro` or `starter`; default: `pro`; may only be set at creation time).
+        /// The service level of the control plane (`Pro` or `Starter`; default: `Pro`; may only be set at creation time).
         /// </summary>
         [Input("serviceLevel")]
         public Input<string>? ServiceLevel { get; set; }

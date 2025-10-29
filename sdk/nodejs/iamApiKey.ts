@@ -8,6 +8,32 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumiverse/exoscale";
+ *
+ * const myRole = new exoscale.IamRole("my_role", {
+ *     name: "my-role",
+ *     description: "Example role",
+ *     editable: true,
+ *     policy: {
+ *         defaultServiceStrategy: "deny",
+ *         services: {
+ *             sos: {
+ *                 type: "allow",
+ *             },
+ *         },
+ *     },
+ * });
+ * const myApiKey = new exoscale.IamApiKey("my_api_key", {
+ *     name: "my-api-key",
+ *     roleId: myRole.id,
+ * });
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
  */
 export class IamApiKey extends pulumi.CustomResource {
     /**
@@ -40,20 +66,20 @@ export class IamApiKey extends pulumi.CustomResource {
     /**
      * The IAM API Key to match.
      */
-    public /*out*/ readonly key!: pulumi.Output<string>;
+    declare public /*out*/ readonly key: pulumi.Output<string>;
     /**
      * ❗ IAM API Key name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * ❗ IAM API role ID.
      */
-    public readonly roleId!: pulumi.Output<string>;
+    declare public readonly roleId: pulumi.Output<string>;
     /**
      * Secret for the IAM API Key.
      */
-    public /*out*/ readonly secret!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.IamApiKeyTimeouts | undefined>;
+    declare public /*out*/ readonly secret: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.IamApiKeyTimeouts | undefined>;
 
     /**
      * Create a IamApiKey resource with the given unique name, arguments, and options.
@@ -68,19 +94,19 @@ export class IamApiKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IamApiKeyState | undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["roleId"] = state ? state.roleId : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["roleId"] = state?.roleId;
+            resourceInputs["secret"] = state?.secret;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as IamApiKeyArgs | undefined;
-            if ((!args || args.roleId === undefined) && !opts.urn) {
+            if (args?.roleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleId'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["roleId"] = args ? args.roleId : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["roleId"] = args?.roleId;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["key"] = undefined /*out*/;
             resourceInputs["secret"] = undefined /*out*/;
         }

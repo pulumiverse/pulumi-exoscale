@@ -10,6 +10,37 @@ import * as utilities from "./utilities";
  * ❗This resource is deprecated and renamed to exoscale_dbaas, do not use it to create new resources❗
  * Manage Exoscale [Database Services (DBaaS)](https://community.exoscale.com/documentation/dbaas/).
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as exoscale from "@pulumiverse/exoscale";
+ *
+ * const myDatabase = new exoscale.Database("my_database", {
+ *     zone: "ch-gva-2",
+ *     name: "my-database",
+ *     type: "pg",
+ *     plan: "startup-4",
+ *     maintenanceDow: "sunday",
+ *     maintenanceTime: "23:00:00",
+ *     terminationProtection: true,
+ *     pg: {
+ *         version: "13",
+ *         backupSchedule: "04:00",
+ *         ipFilters: [
+ *             "1.2.3.4/32",
+ *             "5.6.7.8/32",
+ *         ],
+ *         pgSettings: JSON.stringify({
+ *             timezone: "Europe/Zurich",
+ *         }),
+ *     },
+ * });
+ * ```
+ *
+ * Please refer to the examples
+ * directory for complete configuration examples.
+ *
  * ## Import
  *
  * An existing database service may be imported by `<name>@<zone>`:
@@ -53,92 +84,88 @@ export class Database extends pulumi.CustomResource {
     /**
      * CA Certificate required to reach a DBaaS service through a TLS-protected connection.
      */
-    public /*out*/ readonly caCertificate!: pulumi.Output<string>;
+    declare public /*out*/ readonly caCertificate: pulumi.Output<string>;
     /**
      * The creation date of the database service.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The disk size of the database service.
      */
-    public /*out*/ readonly diskSize!: pulumi.Output<number>;
+    declare public /*out*/ readonly diskSize: pulumi.Output<number>;
     /**
      * *grafana* database service type specific arguments. Structure is documented below.
      */
-    public readonly grafana!: pulumi.Output<outputs.DatabaseGrafana | undefined>;
+    declare public readonly grafana: pulumi.Output<outputs.DatabaseGrafana | undefined>;
     /**
      * *kafka* database service type specific arguments. Structure is documented below.
      */
-    public readonly kafka!: pulumi.Output<outputs.DatabaseKafka | undefined>;
+    declare public readonly kafka: pulumi.Output<outputs.DatabaseKafka | undefined>;
     /**
      * The day of week to perform the automated database service maintenance (`never`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`).
      */
-    public readonly maintenanceDow!: pulumi.Output<string>;
+    declare public readonly maintenanceDow: pulumi.Output<string>;
     /**
      * The time of day to perform the automated database service maintenance (`HH:MM:SS`)
      */
-    public readonly maintenanceTime!: pulumi.Output<string>;
+    declare public readonly maintenanceTime: pulumi.Output<string>;
     /**
      * *mysql* database service type specific arguments. Structure is documented below.
      */
-    public readonly mysql!: pulumi.Output<outputs.DatabaseMysql | undefined>;
+    declare public readonly mysql: pulumi.Output<outputs.DatabaseMysql | undefined>;
     /**
      * ❗ The name of the database service.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The number of CPUs of the database service.
      */
-    public /*out*/ readonly nodeCpus!: pulumi.Output<number>;
+    declare public /*out*/ readonly nodeCpus: pulumi.Output<number>;
     /**
      * The amount of memory of the database service.
      */
-    public /*out*/ readonly nodeMemory!: pulumi.Output<number>;
+    declare public /*out*/ readonly nodeMemory: pulumi.Output<number>;
     /**
      * The number of nodes of the database service.
      */
-    public /*out*/ readonly nodes!: pulumi.Output<number>;
+    declare public /*out*/ readonly nodes: pulumi.Output<number>;
     /**
      * *opensearch* database service type specific arguments. Structure is documented below.
      */
-    public readonly opensearch!: pulumi.Output<outputs.DatabaseOpensearch | undefined>;
+    declare public readonly opensearch: pulumi.Output<outputs.DatabaseOpensearch | undefined>;
     /**
      * *pg* database service type specific arguments. Structure is documented below.
      */
-    public readonly pg!: pulumi.Output<outputs.DatabasePg | undefined>;
+    declare public readonly pg: pulumi.Output<outputs.DatabasePg | undefined>;
     /**
      * The plan of the database service (use the [Exoscale CLI](https://github.com/exoscale/cli/) - `exo dbaas type show <TYPE> --plans` - for reference).
      */
-    public readonly plan!: pulumi.Output<string>;
-    /**
-     * *redis* database service type specific arguments. Structure is documented below.
-     */
-    public readonly redis!: pulumi.Output<outputs.DatabaseRedis | undefined>;
+    declare public readonly plan: pulumi.Output<string>;
     /**
      * The current state of the database service.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The database service protection boolean flag against termination/power-off.
      */
-    public readonly terminationProtection!: pulumi.Output<boolean>;
-    public readonly timeouts!: pulumi.Output<outputs.DatabaseTimeouts | undefined>;
+    declare public readonly terminationProtection: pulumi.Output<boolean>;
+    declare public readonly timeouts: pulumi.Output<outputs.DatabaseTimeouts | undefined>;
     /**
-     * ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `valkey`, `grafana`).
+     * ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `valkey`, `grafana`).
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The date of the latest database service update.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * *valkey* database service type specific arguments. Structure is documented below.
      */
-    public readonly valkey!: pulumi.Output<outputs.DatabaseValkey | undefined>;
+    declare public readonly valkey: pulumi.Output<outputs.DatabaseValkey | undefined>;
     /**
      * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a Database resource with the given unique name, arguments, and options.
@@ -153,55 +180,53 @@ export class Database extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
-            resourceInputs["caCertificate"] = state ? state.caCertificate : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["diskSize"] = state ? state.diskSize : undefined;
-            resourceInputs["grafana"] = state ? state.grafana : undefined;
-            resourceInputs["kafka"] = state ? state.kafka : undefined;
-            resourceInputs["maintenanceDow"] = state ? state.maintenanceDow : undefined;
-            resourceInputs["maintenanceTime"] = state ? state.maintenanceTime : undefined;
-            resourceInputs["mysql"] = state ? state.mysql : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeCpus"] = state ? state.nodeCpus : undefined;
-            resourceInputs["nodeMemory"] = state ? state.nodeMemory : undefined;
-            resourceInputs["nodes"] = state ? state.nodes : undefined;
-            resourceInputs["opensearch"] = state ? state.opensearch : undefined;
-            resourceInputs["pg"] = state ? state.pg : undefined;
-            resourceInputs["plan"] = state ? state.plan : undefined;
-            resourceInputs["redis"] = state ? state.redis : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["terminationProtection"] = state ? state.terminationProtection : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["valkey"] = state ? state.valkey : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["caCertificate"] = state?.caCertificate;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["diskSize"] = state?.diskSize;
+            resourceInputs["grafana"] = state?.grafana;
+            resourceInputs["kafka"] = state?.kafka;
+            resourceInputs["maintenanceDow"] = state?.maintenanceDow;
+            resourceInputs["maintenanceTime"] = state?.maintenanceTime;
+            resourceInputs["mysql"] = state?.mysql;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeCpus"] = state?.nodeCpus;
+            resourceInputs["nodeMemory"] = state?.nodeMemory;
+            resourceInputs["nodes"] = state?.nodes;
+            resourceInputs["opensearch"] = state?.opensearch;
+            resourceInputs["pg"] = state?.pg;
+            resourceInputs["plan"] = state?.plan;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["terminationProtection"] = state?.terminationProtection;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["valkey"] = state?.valkey;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
-            if ((!args || args.plan === undefined) && !opts.urn) {
+            if (args?.plan === undefined && !opts.urn) {
                 throw new Error("Missing required property 'plan'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.zone === undefined) && !opts.urn) {
+            if (args?.zone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            resourceInputs["grafana"] = args ? args.grafana : undefined;
-            resourceInputs["kafka"] = args ? args.kafka : undefined;
-            resourceInputs["maintenanceDow"] = args ? args.maintenanceDow : undefined;
-            resourceInputs["maintenanceTime"] = args ? args.maintenanceTime : undefined;
-            resourceInputs["mysql"] = args ? args.mysql : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["opensearch"] = args ? args.opensearch : undefined;
-            resourceInputs["pg"] = args ? args.pg : undefined;
-            resourceInputs["plan"] = args ? args.plan : undefined;
-            resourceInputs["redis"] = args ? args.redis : undefined;
-            resourceInputs["terminationProtection"] = args ? args.terminationProtection : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["valkey"] = args ? args.valkey : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["grafana"] = args?.grafana;
+            resourceInputs["kafka"] = args?.kafka;
+            resourceInputs["maintenanceDow"] = args?.maintenanceDow;
+            resourceInputs["maintenanceTime"] = args?.maintenanceTime;
+            resourceInputs["mysql"] = args?.mysql;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["opensearch"] = args?.opensearch;
+            resourceInputs["pg"] = args?.pg;
+            resourceInputs["plan"] = args?.plan;
+            resourceInputs["terminationProtection"] = args?.terminationProtection;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["valkey"] = args?.valkey;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["caCertificate"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["diskSize"] = undefined /*out*/;
@@ -281,10 +306,6 @@ export interface DatabaseState {
      */
     plan?: pulumi.Input<string>;
     /**
-     * *redis* database service type specific arguments. Structure is documented below.
-     */
-    redis?: pulumi.Input<inputs.DatabaseRedis>;
-    /**
      * The current state of the database service.
      */
     state?: pulumi.Input<string>;
@@ -294,7 +315,7 @@ export interface DatabaseState {
     terminationProtection?: pulumi.Input<boolean>;
     timeouts?: pulumi.Input<inputs.DatabaseTimeouts>;
     /**
-     * ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `valkey`, `grafana`).
+     * ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `valkey`, `grafana`).
      */
     type?: pulumi.Input<string>;
     /**
@@ -352,16 +373,12 @@ export interface DatabaseArgs {
      */
     plan: pulumi.Input<string>;
     /**
-     * *redis* database service type specific arguments. Structure is documented below.
-     */
-    redis?: pulumi.Input<inputs.DatabaseRedis>;
-    /**
      * The database service protection boolean flag against termination/power-off.
      */
     terminationProtection?: pulumi.Input<boolean>;
     timeouts?: pulumi.Input<inputs.DatabaseTimeouts>;
     /**
-     * ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `redis`, `valkey`, `grafana`).
+     * ❗ The type of the database service (`kafka`, `mysql`, `opensearch`, `pg`, `valkey`, `grafana`).
      */
     type: pulumi.Input<string>;
     /**

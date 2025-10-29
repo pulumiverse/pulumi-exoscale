@@ -42,32 +42,32 @@ export class BlockStorageVolumeSnapshot extends pulumi.CustomResource {
     /**
      * Snapshot creation date.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Resource labels.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Volume snapshot name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Snapshot size in GB.
      */
-    public /*out*/ readonly size!: pulumi.Output<number>;
+    declare public /*out*/ readonly size: pulumi.Output<number>;
     /**
      * Snapshot state.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.BlockStorageVolumeSnapshotTimeouts | undefined>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.BlockStorageVolumeSnapshotTimeouts | undefined>;
     /**
      * Volume from which to create a snapshot.
      */
-    public readonly volume!: pulumi.Output<outputs.BlockStorageVolumeSnapshotVolume>;
+    declare public readonly volume: pulumi.Output<outputs.BlockStorageVolumeSnapshotVolume>;
     /**
      * ❗ The Exoscale [Zone](https://www.exoscale.com/datacenters/) name.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a BlockStorageVolumeSnapshot resource with the given unique name, arguments, and options.
@@ -82,27 +82,27 @@ export class BlockStorageVolumeSnapshot extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BlockStorageVolumeSnapshotState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["volume"] = state ? state.volume : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["volume"] = state?.volume;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as BlockStorageVolumeSnapshotArgs | undefined;
-            if ((!args || args.volume === undefined) && !opts.urn) {
+            if (args?.volume === undefined && !opts.urn) {
                 throw new Error("Missing required property 'volume'");
             }
-            if ((!args || args.zone === undefined) && !opts.urn) {
+            if (args?.zone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
-            resourceInputs["volume"] = args ? args.volume : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["volume"] = args?.volume;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["size"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

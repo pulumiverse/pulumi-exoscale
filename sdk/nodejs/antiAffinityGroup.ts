@@ -15,7 +15,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as exoscale from "@pulumiverse/exoscale";
  *
- * const myAntiAffinityGroup = new exoscale.AntiAffinityGroup("myAntiAffinityGroup", {description: "Prevent compute instances to run on the same host"});
+ * const myAntiAffinityGroup = new exoscale.AntiAffinityGroup("my_anti_affinity_group", {
+ *     name: "my-anti-affinity-group",
+ *     description: "Prevent compute instances to run on the same host",
+ * });
  * ```
  *
  * Please refer to the examples
@@ -64,11 +67,11 @@ export class AntiAffinityGroup extends pulumi.CustomResource {
     /**
      * ❗ A free-form text describing the group.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * ❗ The anti-affinity group name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a AntiAffinityGroup resource with the given unique name, arguments, and options.
@@ -83,12 +86,12 @@ export class AntiAffinityGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AntiAffinityGroupState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as AntiAffinityGroupArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AntiAffinityGroup.__pulumiType, name, resourceInputs, opts);

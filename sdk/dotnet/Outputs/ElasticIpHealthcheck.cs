@@ -19,7 +19,7 @@ namespace Pulumiverse.Exoscale.Outputs
         /// </summary>
         public readonly int? Interval;
         /// <summary>
-        /// The healthcheck mode (`tcp`, `http` or `https`; may only be set at creation time).
+        /// The healthcheck mode (`Tcp`, `Http` or `Https`; may only be set at creation time).
         /// </summary>
         public readonly string Mode;
         /// <summary>
@@ -39,11 +39,11 @@ namespace Pulumiverse.Exoscale.Outputs
         /// </summary>
         public readonly int? Timeout;
         /// <summary>
-        /// Disable TLS certificate verification for healthcheck in `https` mode (boolean; default: `false`).
+        /// Disable TLS certificate verification for healthcheck in `Https` mode (boolean; default: `False`).
         /// </summary>
         public readonly bool? TlsSkipVerify;
         /// <summary>
-        /// The healthcheck server name to present with SNI in `https` mode.
+        /// The healthcheck server name to present with SNI in `Https` mode.
         /// </summary>
         public readonly string? TlsSni;
         /// <summary>

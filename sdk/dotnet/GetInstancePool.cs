@@ -119,7 +119,7 @@ namespace Pulumiverse.Exoscale
     public sealed class GetInstancePoolArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The instance pool ID to match (conflicts with `name`).
+        /// The instance pool ID to match (conflicts with `Name`).
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
@@ -137,7 +137,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The pool name to match (conflicts with `id`).
+        /// The pool name to match (conflicts with `Id`).
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -157,7 +157,7 @@ namespace Pulumiverse.Exoscale
     public sealed class GetInstancePoolInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The instance pool ID to match (conflicts with `name`).
+        /// The instance pool ID to match (conflicts with `Name`).
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -175,7 +175,7 @@ namespace Pulumiverse.Exoscale
         }
 
         /// <summary>
-        /// The pool name to match (conflicts with `id`).
+        /// The pool name to match (conflicts with `Id`).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -221,7 +221,7 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly ImmutableArray<string> ElasticIpIds;
         /// <summary>
-        /// The instance pool ID to match (conflicts with `name`).
+        /// The instance pool ID to match (conflicts with `Name`).
         /// </summary>
         public readonly string? Id;
         /// <summary>
@@ -253,7 +253,7 @@ namespace Pulumiverse.Exoscale
         /// </summary>
         public readonly int MinAvailable;
         /// <summary>
-        /// The pool name to match (conflicts with `id`).
+        /// The pool name to match (conflicts with `Id`).
         /// </summary>
         public readonly string? Name;
         /// <summary>

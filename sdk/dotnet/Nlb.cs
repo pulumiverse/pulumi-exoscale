@@ -25,9 +25,10 @@ namespace Pulumiverse.Exoscale
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myNlb = new Exoscale.Nlb("myNlb", new()
+    ///     var myNlb = new Exoscale.Nlb("my_nlb", new()
     ///     {
     ///         Zone = "ch-gva-2",
+    ///         Name = "my-nlb",
     ///     });
     /// 
     /// });
