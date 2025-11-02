@@ -12,7 +12,7 @@ replace (
 require (
 	github.com/exoscale/terraform-provider-exoscale/shim v0.0.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.116.0
-	github.com/pulumi/pulumi/sdk/v3 v3.190.0
+	github.com/pulumi/pulumi/sdk/v3 v3.205.0
 )
 
 require (
@@ -213,7 +213,6 @@ require (
 	github.com/rivo/uniseg v0.4.6 // indirect
 	github.com/rogpeppe/go-internal v1.14.1 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
-	github.com/sabhiram/go-gitignore v0.0.0-20210923224102-525f6e181f06 // indirect
 	github.com/sagikazarmark/locafero v0.9.0 // indirect
 	github.com/santhosh-tekuri/jsonschema/v5 v5.0.0 // indirect
 	github.com/schollz/closestmatch v2.1.0+incompatible // indirect
