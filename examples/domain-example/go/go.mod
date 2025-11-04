@@ -1,8 +1,6 @@
-module sks-go-example
+module exo-go
 
 go 1.23.11
-
-toolchain go1.24.4
 
 require (
 	github.com/pulumi/pulumi/sdk/v3 v3.204.0

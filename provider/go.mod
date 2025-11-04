@@ -1,18 +1,17 @@
 module github.com/pulumiverse/pulumi-exoscale/provider
 
-go 1.24.0
+go 1.24.7
 
-toolchain go1.24.2
+toolchain go1.24.9
 
 replace (
-	github.com/exoscale/terraform-provider-exoscale/shim => ./shim
 	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20250923233607-7f1981c8674a
 )
 
 require (
 	github.com/exoscale/terraform-provider-exoscale/shim v0.0.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.116.0
-	github.com/pulumi/pulumi/sdk/v3 v3.190.0
+	github.com/pulumi/pulumi/sdk/v3 v3.205.0
 )
 
 require (
@@ -207,7 +206,7 @@ require (
 	github.com/pulumi/pulumi-java/pkg v1.12.0 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.49.0 // indirect
 	github.com/pulumi/pulumi-yaml v1.19.1 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.190.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.205.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.6 // indirect
@@ -219,15 +218,15 @@ require (
 	github.com/schollz/closestmatch v2.1.0+incompatible // indirect
 	github.com/segmentio/asm v1.1.3 // indirect
 	github.com/segmentio/encoding v0.3.5 // indirect
-	github.com/sergi/go-diff v1.3.2-0.20230802210424-5b0b94c5c0d3 // indirect
+	github.com/sergi/go-diff v1.4.0 // indirect
 	github.com/shopspring/decimal v1.3.1 // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
 	github.com/skeema/knownhosts v1.3.1 // indirect
 	github.com/sourcegraph/conc v0.3.0 // indirect
 	github.com/spf13/afero v1.14.0 // indirect
 	github.com/spf13/cast v1.9.2 // indirect
-	github.com/spf13/cobra v1.9.1 // indirect
-	github.com/spf13/pflag v1.0.6 // indirect
+	github.com/spf13/cobra v1.10.1 // indirect
+	github.com/spf13/pflag v1.0.9 // indirect
 	github.com/spf13/viper v1.20.1 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/stretchr/testify v1.10.0 // indirect

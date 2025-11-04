@@ -1,4 +1,4 @@
-name: sks-go-example
+name: go-example
 description: A minimal Go Pulumi program
 runtime: go
 plugins:
