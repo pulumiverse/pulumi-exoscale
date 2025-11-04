@@ -15,14 +15,18 @@
 package exoscale
 
 import (
+	"context"
 	_ "embed"
 	"fmt"
 	"path/filepath"
 	"unicode"
 
-	"github.com/exoscale/terraform-provider-exoscale/shim"
+	"github.com/exoscale/terraform-provider-exoscale/exoscale"
+	p "github.com/exoscale/terraform-provider-exoscale/pkg/provider"
+	pftfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/pulumiverse/pulumi-exoscale/provider/pkg/version"
 )
@@ -68,7 +72,11 @@ func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:       shim.ShimmedProvider(),
+		P: pftfbridge.MuxShimWithPF(
+			context.Background(),
+			shimv2.NewProvider(exoscale.Provider()),
+			p.New()(),
+		),
 		Name:    "exoscale",
 		Version: version.Version,
 		// DisplayName is a way to be able to change the casing of the provider

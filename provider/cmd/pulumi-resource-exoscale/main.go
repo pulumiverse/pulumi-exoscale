@@ -17,16 +17,16 @@
 package main
 
 import (
+	"context"
 	_ "embed"
 
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	exoscale "github.com/pulumiverse/pulumi-exoscale/provider"
-	"github.com/pulumiverse/pulumi-exoscale/provider/pkg/version"
 )
 
 //go:embed schema-embed.json
 var pulumiSchema []byte
 
 func main() {
-	tfbridge.Main("exoscale", version.Version, exoscale.Provider(), pulumiSchema)
+	tfbridge.MainWithMuxer(context.Background(), "exoscale", exoscale.Provider(), pulumiSchema)
 }

@@ -7,14 +7,14 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		cluster, err := exoscale.NewSksCluster(ctx, "sks-cluster", &exoscale.SksClusterArgs{
-			Name: pulumi.String("my-sks-cluster"),
-			Zone: pulumi.String("ch-gva-2"),
+
+		demoDomain, err := exoscale.NewDomain(ctx, "demo-domain", &exoscale.DomainArgs{
+			Name: pulumi.String("my-domain.tld"),
 		})
 		if err != nil {
 			return err
 		}
-		ctx.Export("endpoint", cluster.Endpoint)
+		ctx.Export("domainName", demoDomain.Name)
 		return nil
 	})
 }
